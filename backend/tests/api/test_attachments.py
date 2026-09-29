@@ -57,7 +57,7 @@ def _png(color: tuple[int, int, int] = (255, 0, 0)) -> bytes:
 def _test(client: TestClient, admin: Signed, name: str) -> str:
     made = client.post(
         "/api/reliability-tests",
-        json={"workspace_slug": admin.workspace, "name": name},
+        json={"division_code": "mx", "name": name},
         headers=admin.headers,
     )
     assert made.status_code == 201, made.text

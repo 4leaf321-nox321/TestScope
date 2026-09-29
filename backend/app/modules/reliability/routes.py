@@ -14,6 +14,10 @@ from app.modules.reliability import capability as capability_service
 from app.modules.reliability import services
 from app.modules.reliability.schemas import (
     CapabilityOut,
+    DivisionOut,
+    ReliabilityBulkOut,
+    ReliabilityBulkRequest,
+    ReliabilityRejectRequest,
     ReliabilityTestCreateRequest,
     ReliabilityTestOut,
     ReliabilityTestUpdateRequest,
@@ -25,28 +29,41 @@ router = APIRouter(prefix="/reliability-tests", tags=["reliability"])
 
 @router.get("", response_model=list[ReliabilityTestOut])
 def list_reliability_tests(
-    workspace: str | None = Query(default=None, max_length=64),
+    division: str | None = Query(default=None, max_length=120),
     attr: list[str] = Query(default_factory=list, max_length=10),
     status: Literal["candidate", "confirmed", "all"] | None = Query(default=None),
     user: User = Depends(current_user),
     db: Session = Depends(get_db),
 ) -> list[ReliabilityTestOut]:
     """신뢰성 시험 — **부서가 등록한 절차**다. 「시험 항목」(장비가 할 수 있는 측정, 전사
-    공용)과 다르다. `workspace` 를 주면 그 부서 것만, 안 주면 전사 전부(부서 순). 시험마다
-    쓰는 시험 항목과, 그 항목이 되는 그 부서의 장비 수를 함께 준다 — 0 이면 시험은 정했는데
+    공용)과 다르다. `division` 에 사업부 코드(`mx`…)를 주면 그 사업부 것만, 안 주면 전사
+    전부(사업부 순). 시험마다 쓰는 시험 항목과, 그 항목이 되는 **그 사업부의** 장비 수를
+    함께 준다 — 0 이면 시험은 정했는데
     돌릴 장비가 없다는 뜻이다.
 
     `attr` 은 **속성 값으로 거른다** — 여러 번 주면 모두 만족해야 한다(`attr=<키><연산><값>`,
     연산은 `>=` `<=` `>` `<` `=` `!=` `~`(포함) `*`(적혀 있기만 하면)). 왼쪽은 속성 정의의
     `key` 다 — 이름은 관리자가 고치면 바뀌고, 그때 저장해 둔 주소가 조용히 빈 답을 낸다.
 
-    `status` 를 **안 주면 자리에 따라 다르다** — 부서를 주면 후보까지(검토하는 자리라서),
-    전사면 확정된 것만(「저 부서가 무슨 시험을 하나」 에 후보는 아직 답이 아니다). 일부러
+    `status` 를 **안 주면 자리에 따라 다르다** — 사업부를 주면 후보까지(검토하는 자리라서),
+    전사면 확정된 것만(「저 사업부가 무슨 시험을 하나」 에 후보는 아직 답이 아니다). 일부러
     보려면 `status="all"`, 후보만 세려면 `status="candidate"`.
     """
-    if workspace:
-        return services.list_for_workspace(db, user, workspace, attr, status)
+    if division:
+        return services.list_for_division(db, user, division, attr, status)
     return services.list_all(db, user, attr, status)
+
+
+@router.get("/divisions", response_model=list[DivisionOut])
+def list_divisions(
+    user: User = Depends(current_user), db: Session = Depends(get_db)
+) -> list[DivisionOut]:
+    """사업부 목록 — 줄마다 **내가 올릴 수 있는지**를 함께 준다.
+
+    `/reliability-tests/{id}` 보다 **먼저** 선언한다 — 뒤에 두면 `divisions` 가 id 로
+    읽혀서 「신뢰성 시험을 찾을 수 없습니다」 가 온다.
+    """
+    return services.divisions(db, user)
 
 
 @router.post("", response_model=ReliabilityTestOut, status_code=201)
@@ -113,6 +130,38 @@ def confirm_reliability_test(
     누가 언제 확인했는지가 줄과 감사에 남는다.
     """
     return services.test_out(db, user, services.confirm(db, user, test_id))
+
+
+@router.post("/{test_id}/reject", status_code=204)
+def reject_reliability_test(
+    test_id: uuid.UUID,
+    payload: ReliabilityRejectRequest,
+    user: User = Depends(current_user),
+    db: Session = Depends(get_db),
+) -> None:
+    """AI 가 올린 후보를 **아니라고 한다.** 사람만, 후보만, 사유와 함께.
+
+    줄은 지우기와 같은 자리로 가지만 감사에 **다른 action 과 사유**가 남는다 — 지우기는
+    「이제 안 하는 시험」 이고 반려는 「애초에 틀린 줄」 이다.
+    """
+    services.reject(db, user, test_id, payload.reason)
+
+
+@router.post("/bulk", response_model=ReliabilityBulkOut)
+def bulk_reliability_tests(
+    payload: ReliabilityBulkRequest,
+    user: User = Depends(current_user),
+    db: Session = Depends(get_db),
+) -> ReliabilityBulkOut:
+    """여러 줄을 한 번에 — 확인 · 반려 · 지우기.
+
+    **`/{test_id}` 보다 먼저 선언한다** — 뒤에 두면 `bulk` 가 id 로 읽혀 404 가 온다.
+    """
+    return ReliabilityBulkOut(
+        **services.bulk(
+            db, user, ids=payload.ids, action=payload.action, reason=payload.reason
+        )
+    )
 
 
 @router.post("/{test_id}/reopen", response_model=ReliabilityTestOut)

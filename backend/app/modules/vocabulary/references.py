@@ -42,6 +42,7 @@ from app.modules.reliability.models import ReliabilityTest
 from app.modules.test_items.models import EquipmentTestItem, SeriesTestItem
 from app.modules.vocabulary.models import VocabularyTerm
 from app.modules.vocabulary.specs import SpecDefinition, SpecDefinitionCategory
+from app.modules.workspaces.models import Workspace
 
 #: (사람이 읽는 이름, 화면 주소) — 주소가 없으면 None.
 Described = tuple[str, str | None]
@@ -85,6 +86,14 @@ def _describe_series(db: Session, row: EquipmentSeries) -> Described:
 
 def _describe_model(db: Session, row: EquipmentModel) -> Described:
     return f"{_series(db, row.series_id)} · {row.name}", f"/catalog/equipment-models/{row.id}"
+
+
+def _describe_workspace(db: Session, row: Workspace) -> Described:
+    return row.name, "/admin/workspaces"
+
+
+def _describe_reliability_test(db: Session, row: ReliabilityTest) -> Described:
+    return row.name, "/reliability-tests"
 
 
 def _describe_equipment(db: Session, row: Equipment) -> Described:
@@ -265,6 +274,26 @@ REFERENCE_KINDS: tuple[ReferenceKind, ...] = (
         EquipmentSeries.drive_term_id,
         "null",
         _describe_series,
+    ),
+    # 사업부는 두 군데서 쓰인다 — 부서에 붙고(떼면 물려받는 값으로 돌아간다), 신뢰성
+    # 시험이 가리킨다(그건 못 뗀다 — 소속 없는 시험은 없다).
+    ReferenceKind(
+        "workspace_division",
+        "division",
+        "부서의 사업부",
+        Workspace,
+        Workspace.division_term_id,
+        "null",
+        _describe_workspace,
+    ),
+    ReferenceKind(
+        "reliability_division",
+        "division",
+        "신뢰성 시험의 사업부",
+        ReliabilityTest,
+        ReliabilityTest.division_term_id,
+        "none",
+        _describe_reliability_test,
     ),
     ReferenceKind(
         "equipment_site",

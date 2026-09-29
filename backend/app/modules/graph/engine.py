@@ -213,15 +213,16 @@ def lookup(db: Session, user: User, wanted: dict[str, set[uuid.UUID]]) -> dict[s
                     ReliabilityTest.id.in_(id_list), ReliabilityTest.deleted_at.is_(None)
                 )
             ):
-                ws = workspaces.get(r.workspace_id)
+                # 시험은 사업부의 것이다 — 부서 이름을 달면 어느 팀이 갖는지로 읽힌다.
+                division = db.get(VocabularyTerm, r.division_term_id)
                 out[node_id(type_slug, r.id)] = NodeInfo(
                     node_id(type_slug, r.id),
                     type_slug,
                     r.name,
                     None,
                     "active",
-                    ws.name if ws else None,
-                    ws.slug if ws else None,
+                    division.value if division else None,
+                    division.code if division else None,
                 )
         elif type_slug == "workspace":
             for wid in id_list:

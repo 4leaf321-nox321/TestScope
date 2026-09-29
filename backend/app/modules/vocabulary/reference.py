@@ -24,8 +24,9 @@ from sqlalchemy import func, select
 from sqlalchemy.orm import Session
 
 from app.modules.attributes.models import AttributeDefinition, AttributeValue
-from app.modules.vocabulary.models import ConditionKey, Vocabulary
+from app.modules.vocabulary.models import ConditionKey, Vocabulary, VocabularyTerm
 from app.modules.vocabulary.specs import SpecDefinition, SpecGroup
+from app.shared.text import compare_key
 
 #: (slug, label, 어디의 축, 입력 정책, 부모 축, 순서, 설명)
 #:
@@ -34,7 +35,36 @@ from app.modules.vocabulary.specs import SpecDefinition, SpecGroup
 #:
 #: **어디의 축인지를 함께 적는다.** 한 목록에 일곱이 나란히 서면 「이게 어디 쓰이는
 #: 값이지」 를 알 수 없고, 그때 제정기관 축에 회사 이름이 들어간다.
+#: 축을 심을 때 **값까지** 함께 심는 것. `(code, 보여 주는 값)`.
+#:
+#: 사업부는 회사 구조라 설치한 사람이 지어낼 것이 아니다. 비어 있으면 부서에 아무것도
+#: 못 붙이고, 그러면 신뢰성 시험 등록이 통째로 막힌다. 여기에 없는 사업부는 화면에서
+#: 더한다(닫힌 축이라 시스템 관리자만).
+DEFAULT_TERMS: dict[str, list[tuple[str, str]]] = {
+    "division": [
+        ("mx", "MX"),
+        ("vd", "VD"),
+        ("da", "DA"),
+        ("nw", "NW"),
+        ("medical", "의료기기"),
+        ("gtr", "GTR"),
+        ("sr", "SR"),
+        ("cs", "CS"),
+    ],
+}
+
 AXES: list[tuple[str, str, str, str, str | None, int, str]] = [
+    (
+        "division",
+        "사업부",
+        "common",
+        "closed",
+        None,
+        5,
+        "MX·VD·DA 처럼 회사를 가르는 단위. 부서(조직도)에 붙이면 그 아래가 모두 물려받고, "
+        "신뢰성 시험은 부서가 아니라 이 사업부에 속한다 — 같은 시험이 팀마다 갈라지지 "
+        "않게. 조직 개편으로 팀이 옮겨 다녀도 시험은 사업부에 남는다.",
+    ),
     (
         "test_item",
         "시험 항목",
@@ -1267,6 +1297,32 @@ def ensure_reference_data(db: Session) -> ReferenceCounts:
         axis = db.scalar(select(Vocabulary).where(Vocabulary.slug == slug))
         if axis is not None and not axis.attribute_schema:
             axis.attribute_schema = schema
+
+    # **값까지 심는 축이 있다.** 사업부는 회사 구조라 설치한 사람이 지어낼 것이 아니고,
+    # 비어 있으면 부서에 아무것도 못 붙여서 신뢰성 시험 등록이 통째로 막힌다.
+    # **하나라도 있으면 안 건드린다** — 지운 값을 설치가 되살리면 그것은 사고다.
+    for slug, values in DEFAULT_TERMS.items():
+        axis = db.scalar(select(Vocabulary).where(Vocabulary.slug == slug))
+        if axis is None:
+            continue
+        has_any = db.scalar(
+            select(func.count())
+            .select_from(VocabularyTerm)
+            .where(VocabularyTerm.vocabulary_id == axis.id)
+        )
+        if has_any:
+            continue
+        for order, (code, value) in enumerate(values, start=1):
+            db.add(
+                VocabularyTerm(
+                    vocabulary_id=axis.id,
+                    value=value,
+                    normalized=compare_key(value),
+                    code=code,
+                    sort_order=order * 10,
+                )
+            )
+    db.flush()
 
     known_keys = set(db.scalars(select(ConditionKey.key)))
     added_keys = 0

@@ -21,7 +21,7 @@ from sqlalchemy.orm import Session
 
 from app.modules.audit.models import AuditEntry
 from app.modules.workspaces.models import Workspace
-from tests.api.conftest import Signed
+from tests.api.conftest import Signed, division_term_id
 
 #: 1x1 투명 PNG. 첨부가 형식을 보므로 진짜 바이트라야 한다.
 PNG = (
@@ -47,7 +47,11 @@ def _machine(client: TestClient, admin: Signed) -> dict[str, str]:
 
 
 def _lab(db: Session) -> Workspace:
-    lab = Workspace(slug=f"rev-{uuid.uuid4().hex[:6]}", name="신뢰성검토팀")
+    lab = Workspace(
+        slug=f"rev-{uuid.uuid4().hex[:6]}",
+        name="신뢰성검토팀",
+        division_term_id=division_term_id(db, "vd"),
+    )
     db.add(lab)
     db.commit()
     return lab
@@ -56,7 +60,7 @@ def _lab(db: Session) -> Workspace:
 def _make(client: TestClient, lab: Workspace, name: str, headers: dict[str, str]) -> str:
     made = client.post(
         "/api/reliability-tests",
-        json={"workspace_slug": lab.slug, "name": name},
+        json={"division_code": "vd", "name": name},
         headers=headers,
     )
     assert made.status_code == 201, made.text
@@ -66,12 +70,14 @@ def _make(client: TestClient, lab: Workspace, name: str, headers: dict[str, str]
 def test_기계가_올린_시험은_후보로_서고_화면에서_넣은_것은_확정이다(
     client: TestClient, db: Session, admin: Signed
 ) -> None:
-    lab = _lab(db)
+    # 사업부(VD)에 속한 부서를 하나 둔다 — 시험이 사업부에 살고, 올릴 자격은 그 사업부에
+    # 속한 부서의 관리자다.
+    _lab(db)
     tag = uuid.uuid4().hex[:6]
 
     by_ai = client.post(
         "/api/reliability-tests",
-        json={"workspace_slug": lab.slug, "name": f"고온고습-{tag}", "purpose": "85/85"},
+        json={"division_code": "vd", "name": f"고온고습-{tag}", "purpose": "85/85"},
         headers=_machine(client, admin),
     )
     assert by_ai.status_code == 201, by_ai.text
@@ -82,7 +88,7 @@ def test_기계가_올린_시험은_후보로_서고_화면에서_넣은_것은_
 
     by_hand = client.post(
         "/api/reliability-tests",
-        json={"workspace_slug": lab.slug, "name": f"열충격-{tag}", "purpose": "-40/125"},
+        json={"division_code": "vd", "name": f"열충격-{tag}", "purpose": "-40/125"},
         headers=admin.headers,
     )
     assert by_hand.status_code == 201, by_hand.text
@@ -236,13 +242,138 @@ def test_전사_목록은_후보를_안_내고_부서_화면은_낸다(
     assert shown in everyone
     assert hidden not in everyone
 
-    # 부서 화면은 검토하는 자리다 — 후보가 보여야 하고, 먼저 와야 한다.
-    theirs = client.get(
-        f"/api/reliability-tests?workspace={lab.slug}", headers=admin.headers
-    ).json()
-    assert next(one["id"] for one in theirs) == hidden
+    # 사업부 화면은 검토하는 자리다 — 후보가 보여야 하고, 먼저 와야 한다.
+    # **이 시험이 만든 것만 본다** — 사업부는 시험끼리 나눠 쓰므로 옆 시험의 줄이 섞인다.
+    theirs = [
+        one
+        for one in client.get(
+            "/api/reliability-tests?division=vd", headers=admin.headers
+        ).json()
+        if one["name"].endswith(tag)
+    ]
+    assert theirs[0]["id"] == hidden
     assert {one["id"] for one in theirs} == {hidden, shown}
 
     # 일부러 열면 전사에서도 보인다.
     assert hidden in _ids("?status=all")
-    assert _ids(f"?workspace={lab.slug}&status=candidate") == {hidden}
+    assert hidden in _ids("?division=vd&status=candidate")
+
+
+def test_후보를_반려하면_사유와_함께_감사에_남는다(
+    client: TestClient, db: Session, admin: Signed
+) -> None:
+    """**지우기와 반려는 가는 자리가 같고 뜻이 다르다.**
+
+    지우기는 「이제 안 하는 시험」 이고 반려는 「애초에 틀린 줄」 이다. 그 차이는 감사의
+    action 과 사유에만 남으므로, 거기 안 적으면 AI 가 무엇을 자주 틀리는지 영영 못 센다.
+    """
+    _lab(db)
+    tag = uuid.uuid4().hex[:6]
+    made = client.post(
+        "/api/reliability-tests",
+        json={"division_code": "vd", "name": f"엉뚱한 시험-{tag}"},
+        headers=_machine(client, admin),
+    ).json()
+    assert made["status"] == "candidate"
+
+    # 사유 없이는 안 된다.
+    assert (
+        client.post(
+            f"/api/reliability-tests/{made['id']}/reject",
+            json={"reason": ""},
+            headers=admin.headers,
+        ).status_code
+        == 422
+    )
+
+    gone = client.post(
+        f"/api/reliability-tests/{made['id']}/reject",
+        json={"reason": "규격서에 없는 시험입니다"},
+        headers=admin.headers,
+    )
+    assert gone.status_code == 204, gone.text
+    assert (
+        client.get(f"/api/reliability-tests/{made['id']}", headers=admin.headers).status_code
+        == 404
+    )
+
+    entry = db.scalars(
+        select(AuditEntry)
+        .where(AuditEntry.action == "reliability_test.rejected")
+        .order_by(AuditEntry.created_at.desc())
+    ).first()
+    assert entry is not None
+    assert entry.reason == "규격서에 없는 시험입니다"
+
+
+def test_확정된_것은_반려가_아니라_다시_후보로가_먼저다(
+    client: TestClient, db: Session, admin: Signed
+) -> None:
+    """이미 사람이 보증한 줄이다. 되돌리려면 그 과정이 감사에 남아야 한다."""
+    _lab(db)
+    tag = uuid.uuid4().hex[:6]
+    made = client.post(
+        "/api/reliability-tests",
+        json={"division_code": "vd", "name": f"확정된 것-{tag}"},
+        headers=admin.headers,
+    ).json()
+    assert made["status"] == "confirmed"
+
+    refused = client.post(
+        f"/api/reliability-tests/{made['id']}/reject",
+        json={"reason": "아니다"},
+        headers=admin.headers,
+    )
+    assert refused.status_code == 409, refused.text
+    assert refused.json()["error"]["code"] == "TSC-RELIABILITY-0009"
+
+
+def test_한_번에_확인하고_한_번에_반려한다(
+    client: TestClient, db: Session, admin: Signed
+) -> None:
+    """**AI 가 몇천 건을 올린다.** 줄마다 창을 열어 누르는 것은 사람이 할 수 있는 일이
+    아니고, 못 하면 후보가 쌓인 채로 아무도 안 본다 — 그러면 확인이라는 단계가 이름만
+    남는다.
+
+    **줄마다 결과가 온다.** 전부 되거나 전부 안 되거나로 두면 한 줄 때문에 나머지가 함께
+    막힌다.
+    """
+    _lab(db)
+    tag = uuid.uuid4().hex[:6]
+    machine = _machine(client, admin)
+    ids = [
+        client.post(
+            "/api/reliability-tests",
+            json={"division_code": "vd", "name": f"무더기-{tag}-{index}"},
+            headers=machine,
+        ).json()["id"]
+        for index in range(4)
+    ]
+
+    ok = client.post(
+        "/api/reliability-tests/bulk",
+        json={"ids": ids[:2], "action": "confirm"},
+        headers=admin.headers,
+    )
+    assert ok.status_code == 200, ok.text
+    assert ok.json()["requested"] == 2
+    assert len(ok.json()["done"]) == 2 and ok.json()["failed"] == []
+
+    rejected = client.post(
+        "/api/reliability-tests/bulk",
+        json={"ids": ids[2:], "action": "reject", "reason": "중복입니다"},
+        headers=admin.headers,
+    )
+    assert rejected.status_code == 200, rejected.text
+    assert len(rejected.json()["done"]) == 2
+
+    # 확정된 것을 또 반려하면 **그 줄만** 실패하고 왜인지 온다.
+    mixed = client.post(
+        "/api/reliability-tests/bulk",
+        json={"ids": ids[:2], "action": "reject", "reason": "다시"},
+        headers=admin.headers,
+    )
+    assert mixed.status_code == 200, mixed.text
+    assert mixed.json()["done"] == []
+    assert {one["code"] for one in mixed.json()["failed"]} == {"TSC-RELIABILITY-0009"}
+    assert all(one["message"] for one in mixed.json()["failed"]), "왜인지 적혀 있어야 한다"

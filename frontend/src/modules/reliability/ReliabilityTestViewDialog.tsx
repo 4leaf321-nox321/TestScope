@@ -217,7 +217,7 @@ export function ReliabilityTestViewDialog({
             <CandidateBadge row={test} />
           </DialogTitle>
           <DialogDescription>
-            {test.workspace_name} 가 수행하는 시험입니다. 고치려면 아래 「수정」 을 누르십시오.
+            {test.division_name} 가 수행하는 시험입니다. 고치려면 아래 「수정」 을 누르십시오.
           </DialogDescription>
         </DialogHeader>
 

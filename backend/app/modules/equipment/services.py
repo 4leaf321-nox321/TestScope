@@ -966,6 +966,38 @@ def _attribute_items(raw: Any) -> list[AttributeValueIn]:
     ]
 
 
+#: 한 번에 지울 수 있는 대수. 신뢰성 시험과 같은 값을 쓴다 — 두 화면이 같은 손놀림이다.
+BULK_LIMIT = 500
+
+
+def bulk_delete(db: Session, user: User, *, ids: list[uuid.UUID]) -> dict[str, Any]:
+    """고른 장비를 한 번에 내린다.
+
+    **줄마다 결과를 돌려준다** — 전부 되거나 전부 안 되거나로 두면, 오백 대 중 한 대가
+    남의 부서라는 이유로 사백구십구 대가 함께 막힌다. 안 된 줄은 **왜**와 함께 온다.
+    """
+    if not ids:
+        raise AppError("TSC-EQUIPMENT-0020", "고른 장비가 없습니다.")
+    if len(ids) > BULK_LIMIT:
+        raise AppError(
+            "TSC-EQUIPMENT-0020",
+            f"한 번에 {BULK_LIMIT}대까지입니다 — {len(ids)}대를 골랐습니다. 나눠 누르십시오.",
+        )
+    done: list[str] = []
+    failed: list[dict[str, str]] = []
+    for equipment_id in ids:
+        try:
+            delete(db, user, equipment_id)
+            done.append(str(equipment_id))
+        except AppError as refused:
+            # 막힌 줄을 되돌려 놓고 다음으로 — 안 그러면 반쯤 바뀐 상태가 묻어 간다.
+            db.rollback()
+            failed.append(
+                {"id": str(equipment_id), "code": refused.code, "message": refused.message}
+            )
+    return {"done": done, "failed": failed, "requested": len(ids)}
+
+
 def delete(db: Session, user: User, equipment_id: uuid.UUID) -> None:
     """소프트 삭제. **행은 남는다** — 이 장비로 잰 데이터가 밖에 있고, 몇 년 뒤에도
     그것이 어느 장비였는지는 물어질 수 있다."""

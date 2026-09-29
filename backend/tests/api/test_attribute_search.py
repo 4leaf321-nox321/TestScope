@@ -237,7 +237,7 @@ def test_시험의_조건_속성이_그대로_장비_판정이_된다(
     test = client.post(
         "/api/reliability-tests",
         json={
-            "workspace_slug": admin.workspace,
+            "division_code": "mx",
             "name": f"열충격-{tag}",
             "test_item_term_ids": [item],
             "attributes": [
@@ -292,7 +292,7 @@ def test_시험_목록도_조건_속성으로_거른다(
         made = client.post(
             "/api/reliability-tests",
             json={
-                "workspace_slug": admin.workspace,
+                "division_code": "mx",
                 "name": name,
                 "attributes": [
                     {
@@ -363,7 +363,7 @@ def test_빈_결과는_왜_비었는지_조건마다_말한다(
         made = client.post(
             "/api/reliability-tests",
             json={
-                "workspace_slug": admin.workspace,
+                "division_code": "mx",
                 "name": name,
                 "attributes": [
                     {

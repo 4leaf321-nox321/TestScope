@@ -401,28 +401,6 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/api/workspaces/reliability-listed": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        /**
-         * Reliability Listed
-         * @description 사이드바 「신뢰성 시험」 아래에 설 부서들 — 관리자가 「부서 정보」 에서 고른 것.
-         *
-         *     소속과 무관하게 로그인한 누구나 본다. 이 시스템의 물음은 부서를 가로지른다.
-         */
-        get: operations["reliability_listed_api_workspaces_reliability_listed_get"];
-        put?: never;
-        post?: never;
-        delete?: never;
-        options?: never;
-        head?: never;
-        patch?: never;
-        trace?: never;
-    };
     "/api/workspaces": {
         parameters: {
             query?: never;
@@ -1292,6 +1270,29 @@ export interface paths {
         head?: never;
         /** Update Equipment */
         patch: operations["update_equipment_api_equipment__equipment_id__patch"];
+        trace?: never;
+    };
+    "/api/equipment/bulk-delete": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /**
+         * Bulk Delete Equipment
+         * @description 고른 장비를 한 번에 내린다 — 줄마다 결과가 온다.
+         *
+         *     **DELETE 가 아니라 POST 다.** 몸통에 목록을 싣는데, DELETE 의 몸통은 프록시·클라이언트
+         *     마다 다루는 법이 갈려서 어떤 자리에서는 통째로 버려진다.
+         */
+        post: operations["bulk_delete_equipment_api_equipment_bulk_delete_post"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
         trace?: never;
     };
     "/api/equipment/{equipment_id}/calibrations": {
@@ -2260,16 +2261,17 @@ export interface paths {
         /**
          * List Reliability Tests
          * @description 신뢰성 시험 — **부서가 등록한 절차**다. 「시험 항목」(장비가 할 수 있는 측정, 전사
-         *     공용)과 다르다. `workspace` 를 주면 그 부서 것만, 안 주면 전사 전부(부서 순). 시험마다
-         *     쓰는 시험 항목과, 그 항목이 되는 그 부서의 장비 수를 함께 준다 — 0 이면 시험은 정했는데
+         *     공용)과 다르다. `division` 에 사업부 코드(`mx`…)를 주면 그 사업부 것만, 안 주면 전사
+         *     전부(사업부 순). 시험마다 쓰는 시험 항목과, 그 항목이 되는 **그 사업부의** 장비 수를
+         *     함께 준다 — 0 이면 시험은 정했는데
          *     돌릴 장비가 없다는 뜻이다.
          *
          *     `attr` 은 **속성 값으로 거른다** — 여러 번 주면 모두 만족해야 한다(`attr=<키><연산><값>`,
          *     연산은 `>=` `<=` `>` `<` `=` `!=` `~`(포함) `*`(적혀 있기만 하면)). 왼쪽은 속성 정의의
          *     `key` 다 — 이름은 관리자가 고치면 바뀌고, 그때 저장해 둔 주소가 조용히 빈 답을 낸다.
          *
-         *     `status` 를 **안 주면 자리에 따라 다르다** — 부서를 주면 후보까지(검토하는 자리라서),
-         *     전사면 확정된 것만(「저 부서가 무슨 시험을 하나」 에 후보는 아직 답이 아니다). 일부러
+         *     `status` 를 **안 주면 자리에 따라 다르다** — 사업부를 주면 후보까지(검토하는 자리라서),
+         *     전사면 확정된 것만(「저 사업부가 무슨 시험을 하나」 에 후보는 아직 답이 아니다). 일부러
          *     보려면 `status="all"`, 후보만 세려면 `status="candidate"`.
          */
         get: operations["list_reliability_tests_api_reliability_tests_get"];
@@ -2280,6 +2282,29 @@ export interface paths {
          *     값이어야 한다(`POST /api/resolve` 로 먼저 찾는다).
          */
         post: operations["create_reliability_test_api_reliability_tests_post"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/reliability-tests/divisions": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * List Divisions
+         * @description 사업부 목록 — 줄마다 **내가 올릴 수 있는지**를 함께 준다.
+         *
+         *     `/reliability-tests/{id}` 보다 **먼저** 선언한다 — 뒤에 두면 `divisions` 가 id 로
+         *     읽혀서 「신뢰성 시험을 찾을 수 없습니다」 가 온다.
+         */
+        get: operations["list_divisions_api_reliability_tests_divisions_get"];
+        put?: never;
+        post?: never;
         delete?: never;
         options?: never;
         head?: never;
@@ -2356,6 +2381,51 @@ export interface paths {
          *     누가 언제 확인했는지가 줄과 감사에 남는다.
          */
         post: operations["confirm_reliability_test_api_reliability_tests__test_id__confirm_post"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/reliability-tests/{test_id}/reject": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /**
+         * Reject Reliability Test
+         * @description AI 가 올린 후보를 **아니라고 한다.** 사람만, 후보만, 사유와 함께.
+         *
+         *     줄은 지우기와 같은 자리로 가지만 감사에 **다른 action 과 사유**가 남는다 — 지우기는
+         *     「이제 안 하는 시험」 이고 반려는 「애초에 틀린 줄」 이다.
+         */
+        post: operations["reject_reliability_test_api_reliability_tests__test_id__reject_post"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/reliability-tests/bulk": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /**
+         * Bulk Reliability Tests
+         * @description 여러 줄을 한 번에 — 확인 · 반려 · 지우기.
+         *
+         *     **`/{test_id}` 보다 먼저 선언한다** — 뒤에 두면 `bulk` 가 id 로 읽혀 404 가 온다.
+         */
+        post: operations["bulk_reliability_tests_api_reliability_tests_bulk_post"];
         delete?: never;
         options?: never;
         head?: never;
@@ -4157,6 +4227,18 @@ export interface components {
             /** Used Percent */
             used_percent: number;
         };
+        /**
+         * DivisionOut
+         * @description 사업부 하나 — 사이드바와 등록 창이 쓴다.
+         */
+        DivisionOut: {
+            /** Code */
+            code: string;
+            /** Name */
+            name: string;
+            /** Can Register */
+            can_register: boolean;
+        };
         /** EdgeOut */
         EdgeOut: {
             /** Id */
@@ -4173,6 +4255,25 @@ export interface components {
             src: string;
             /** Dst */
             dst: string;
+        };
+        /** EquipmentBulkDeleteRequest */
+        EquipmentBulkDeleteRequest: {
+            /** Ids */
+            ids: string[];
+        };
+        /**
+         * EquipmentBulkOut
+         * @description 줄마다의 결과. **전부 되거나 전부 안 되거나로 두지 않는다.**
+         */
+        EquipmentBulkOut: {
+            /** Requested */
+            requested: number;
+            /** Done */
+            done: string[];
+            /** Failed */
+            failed: {
+                [key: string]: string;
+            }[];
         };
         /**
          * EquipmentCreateRequest
@@ -6279,10 +6380,42 @@ export interface components {
             /** Node Type Label */
             node_type_label: string;
         };
+        /**
+         * ReliabilityBulkOut
+         * @description 줄마다의 결과. **전부 되거나 전부 안 되거나로 두지 않는다** — 오백 줄 중 하나가
+         *     남의 사업부라고 사백구십구 줄이 함께 막히면 쓸 수가 없다.
+         */
+        ReliabilityBulkOut: {
+            /** Requested */
+            requested: number;
+            /** Done */
+            done: string[];
+            /** Failed */
+            failed: {
+                [key: string]: string;
+            }[];
+        };
+        /** ReliabilityBulkRequest */
+        ReliabilityBulkRequest: {
+            /** Ids */
+            ids: string[];
+            /**
+             * Action
+             * @enum {string}
+             */
+            action: "confirm" | "reject" | "delete";
+            /** Reason */
+            reason?: string | null;
+        };
+        /** ReliabilityRejectRequest */
+        ReliabilityRejectRequest: {
+            /** Reason */
+            reason: string;
+        };
         /** ReliabilityTestCreateRequest */
         ReliabilityTestCreateRequest: {
-            /** Workspace Slug */
-            workspace_slug: string;
+            /** Division Code */
+            division_code: string;
             /** Name */
             name: string;
             /**
@@ -6317,10 +6450,10 @@ export interface components {
              * Format: uuid
              */
             id: string;
-            /** Workspace Slug */
-            workspace_slug: string;
-            /** Workspace Name */
-            workspace_name: string;
+            /** Division Code */
+            division_code: string;
+            /** Division Name */
+            division_name: string;
             /** Name */
             name: string;
             /** Purpose */
@@ -7668,6 +7801,8 @@ export interface components {
             name: string;
             /** Parent Slug */
             parent_slug?: string | null;
+            /** Division Code */
+            division_code?: string | null;
         };
         /**
          * WorkspaceImportRequest
@@ -7796,8 +7931,12 @@ export interface components {
             is_active: boolean;
             /** Restricted */
             restricted: boolean;
-            /** Reliability Listed */
-            reliability_listed: boolean;
+            /** Division Code */
+            division_code: string | null;
+            /** Division Name */
+            division_name: string | null;
+            /** Division Own */
+            division_own: boolean;
             /**
              * Created At
              * Format: date-time
@@ -7887,8 +8026,8 @@ export interface components {
             is_active?: boolean | null;
             /** Restricted */
             restricted?: boolean | null;
-            /** Reliability Listed */
-            reliability_listed?: boolean | null;
+            /** Division Code */
+            division_code?: string | null;
         };
         /** FactOut */
         app__modules__graph__schemas__FactOut: {
@@ -8627,26 +8766,6 @@ export interface operations {
         };
     };
     options_api_workspaces_options_get: {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        requestBody?: never;
-        responses: {
-            /** @description Successful Response */
-            200: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": components["schemas"]["WorkspaceOption"][];
-                };
-            };
-        };
-    };
-    reliability_listed_api_workspaces_reliability_listed_get: {
         parameters: {
             query?: never;
             header?: never;
@@ -10400,6 +10519,39 @@ export interface operations {
                 };
                 content: {
                     "application/json": components["schemas"]["EquipmentOut"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    bulk_delete_equipment_api_equipment_bulk_delete_post: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["EquipmentBulkDeleteRequest"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["EquipmentBulkOut"];
                 };
             };
             /** @description Validation Error */
@@ -12340,7 +12492,7 @@ export interface operations {
     list_reliability_tests_api_reliability_tests_get: {
         parameters: {
             query?: {
-                workspace?: string | null;
+                division?: string | null;
                 attr?: string[];
                 status?: ("candidate" | "confirmed" | "all") | null;
             };
@@ -12399,6 +12551,26 @@ export interface operations {
                 };
                 content: {
                     "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    list_divisions_api_reliability_tests_divisions_get: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["DivisionOut"][];
                 };
             };
         };
@@ -12547,6 +12719,72 @@ export interface operations {
                 };
                 content: {
                     "application/json": components["schemas"]["ReliabilityTestOut"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    reject_reliability_test_api_reliability_tests__test_id__reject_post: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                test_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["ReliabilityRejectRequest"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            204: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    bulk_reliability_tests_api_reliability_tests_bulk_post: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["ReliabilityBulkRequest"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ReliabilityBulkOut"];
                 };
             };
             /** @description Validation Error */

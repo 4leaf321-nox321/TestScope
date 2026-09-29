@@ -12,6 +12,19 @@ from app.modules.attributes.schemas import AttributeValueIn, AttributeValueOut
 from app.shared.schemas import Request
 
 
+class EquipmentBulkDeleteRequest(Request):
+    ids: list[uuid.UUID] = Field(min_length=1, max_length=500)
+    """고른 장비들. 한 번에 500대까지 — 그 이상은 나눠 누른다."""
+
+
+class EquipmentBulkOut(BaseModel):
+    """줄마다의 결과. **전부 되거나 전부 안 되거나로 두지 않는다.**"""
+
+    requested: int
+    done: list[uuid.UUID]
+    failed: list[dict[str, str]]
+
+
 class CalibrationOut(BaseModel):
     model_config = ConfigDict(from_attributes=True)
 

@@ -2178,24 +2178,42 @@ async def detach_term_reference(
     )
 
 
-# ── 신뢰성 시험 — 부서가 수행하는 절차 ────────────────────────────────────────
+# ── 신뢰성 시험 — 사업부가 수행하는 절차 ──────────────────────────────────────
+
+
+@mcp.tool()
+async def list_divisions(ctx: Context) -> dict[str, Any]:
+    """사업부 목록 — 신뢰성 시험이 **사는 자리**다.
+
+    줄마다 `code`(`mx`·`vd`… — 코드가 거는 키라 이름이 바뀌어도 안 깨진다) · `name` ·
+    `can_register`(내 토큰의 주인이 여기 올릴 수 있나)가 온다.
+
+    **올리기 전에 부른다.** `can_register` 가 false 인 사업부에 `create_reliability_test`
+    를 걸면 403 이 온다 — 그 403 은 「범위가 없다」 로 읽혀서, 사람은 토큰을 다시 만들러
+    간다. 실제로는 그 사람의 부서가 그 사업부에 속하지 않은 것이다.
+    """
+    return _listed(await _get(ctx, "/reliability-tests/divisions"), "divisions")
 
 
 @mcp.tool()
 async def list_reliability_tests(
     ctx: Context,
-    workspace: str | None = None,
+    division: str | None = None,
     attr: list[str] | None = None,
     status: str | None = None,
 ) -> dict[str, Any]:
-    """부서가 수행하는 **신뢰성 시험**(고온고습 1000h · 열충격 500 cycle …).
+    """**사업부**가 수행하는 신뢰성 시험(고온고습 1000h · 열충격 500 cycle …).
 
     「시험 항목」(장비가 하는 측정 — 인장·경도)과 **다른 층**이다: 신뢰성 시험 하나가 시험
-    항목 하나 이상을 써서 돌고, 그 항목이 장비로 이어진다. `workspace` 를 주면 그 부서 것만,
-    안 주면 전사 전부 — 「저 부서는 무슨 시험을 하나」 를 가로질러 본다.
+    항목 하나 이상을 써서 돌고, 그 항목이 장비로 이어진다. `division` 에 사업부 코드
+    (`mx`·`vd`… — `list_divisions`)를 주면 그 사업부 것만, 안 주면 전사 전부 — 「저
+    사업부는 무슨 시험을 하나」 를 가로질러 본다.
 
-    줄마다 적용 시험 항목과 **그 항목이 되는 그 부서 장비 수**가 온다. 0 이면 시험은 정했는데
-    돌릴 장비가 그 부서에 없다는 뜻이다(다른 부서에는 있을 수 있다 — `test_capability`).
+    **부서(팀)가 아니라 사업부다.** 같은 시험을 여러 팀이 돌리는데 팀마다 줄을 만들면
+    「저 사업부가 무슨 시험을 하나」 가 답이 안 나온다.
+
+    줄마다 적용 시험 항목과 **그 항목이 되는 그 사업부 장비 수**가 온다(사업부에 속한 부서
+    전부를 합친다). 0 이면 시험은 정했는데 돌릴 장비가 그 사업부에 없다는 뜻이다.
 
     `attr` 은 속성 값 조건이다 — 왼쪽은 `list_attribute_definitions` 가 주는 `key` 다
     (`["temp_x>=100"]`). 여러 개면 **모두** 만족해야 한다.
@@ -2213,7 +2231,7 @@ async def list_reliability_tests(
         await _get(
             ctx,
             "/reliability-tests",
-            {"workspace": workspace, "attr": attr, "status": status},
+            {"division": division, "attr": attr, "status": status},
         ),
         "tests",
     )
@@ -2388,13 +2406,14 @@ async def list_attachments(ctx: Context, target: str, object_id: str) -> dict[st
 @writes
 async def create_reliability_test(
     ctx: Context,
-    workspace_slug: str,
+    division_code: str,
     name: str,
     purpose: str = "",
     test_item_term_ids: list[str] | None = None,
     attributes: list[dict[str, Any]] | None = None,
 ) -> dict[str, Any]:
-    """신뢰성 시험 하나를 **후보로** 올린다. **그 부서의 관리자**(또는 시스템 관리자)만.
+    """신뢰성 시험 하나를 **후보로** 올린다. **그 사업부에 속한 부서의 관리자**(또는 시스템
+    관리자)만. 사업부 코드는 `list_divisions` 가 준다 — `can_register` 가 true 인 것만 된다.
 
     **네가 올린 것은 바로 쓰이지 않는다.** 신뢰성 시험은 값 하나가 틀리면 그 조건으로 장비를
     고르고 그 장비로 보고서가 나간다 — 그래서 사람이 화면에서 읽고 확인해야 확정이다. 그때까지
@@ -2433,7 +2452,7 @@ async def create_reliability_test(
             "POST",
             "/reliability-tests",
             {
-                "workspace_slug": workspace_slug,
+                "division_code": division_code,
                 "name": name,
                 "purpose": purpose,
                 "test_item_term_ids": test_item_term_ids or [],

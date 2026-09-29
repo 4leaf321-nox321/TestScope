@@ -23,7 +23,7 @@ from app.modules.auth import security
 from app.modules.auth.models import PersonalAccessToken
 from app.modules.review.models import ReviewProposal
 from app.modules.workspaces.models import Workspace, WorkspaceMember
-from tests.api.conftest import Signed, category_id, site_id
+from tests.api.conftest import Signed, category_id, division_term_id, site_id
 
 
 def _token(client: TestClient, admin: Signed, scopes: list[str]) -> dict[str, str]:
@@ -124,7 +124,7 @@ def test_새_도구가_쓰는_경로도_범위_안이다(client: TestClient, adm
     test = client.post(
         "/api/reliability-tests",
         json={
-            "workspace_slug": admin.workspace,
+            "division_code": "mx",
             "name": f"MCP 고온고습-{tag}",
             "test_item_term_ids": [term.json()["id"]],
             "attributes": [
@@ -137,7 +137,7 @@ def test_새_도구가_쓰는_경로도_범위_안이다(client: TestClient, adm
     assert (
         client.post(
             "/api/reliability-tests",
-            json={"workspace_slug": admin.workspace, "name": f"막힘-{tag}"},
+            json={"division_code": "mx", "name": f"막힘-{tag}"},
             headers=catalog,
         ).status_code
         == 403
@@ -242,22 +242,25 @@ def test_부서의_것도_이름으로_하나로_정한다(
     함께 주면 그때 하나로 줄어든다. 장비는 자산번호가 유일하니 그것만 exact 다.
     """
     tag = uuid.uuid4().hex[:6]
-    other = Workspace(slug=f"lab-{tag}", name=f"신뢰성팀-{tag}")
+    other = Workspace(
+        slug=f"lab-{tag}", name=f"신뢰성팀-{tag}", division_term_id=division_term_id(db, "vd")
+    )
     db.add(other)
     db.commit()
 
     name = f"고온고습 1000h-{tag}"
-    for slug in (admin.workspace, other.slug):
+    # **같은 이름이 사업부마다 하나씩** — 이름만으로는 어느 것인지 정할 수 없다.
+    for code in ("mx", "vd"):
         made = client.post(
             "/api/reliability-tests",
-            json={"workspace_slug": slug, "name": name},
+            json={"division_code": code, "name": name},
             headers=admin.headers,
         )
         assert made.status_code == 201, made.text
 
     both = _resolve(client, admin.headers, kind="reliability_test", text=name)
     assert both["match"] == "candidates", "같은 이름이 둘인데 하나로 정하면 안 된다"
-    assert {one["detail"] for one in both["candidates"]} == {"시험팀", f"신뢰성팀-{tag}"}
+    assert {one["detail"] for one in both["candidates"]} == {"MX", "VD"}
     assert "사람에게" in both["hint"]
 
     one_team = _resolve(
@@ -656,11 +659,11 @@ def test_온톨로지를_고치는_것은_범위가_아니라_자격이_막는�
     # **지우는 것만 부서 관리자다.** 고친 것은 되돌릴 수 있지만 지운 것은 목록에서 사라진다.
     assert client.delete(f"/api/equipment/{equipment_id}", headers=machine).status_code == 403
 
-    # 신뢰성 시험은 부서의 **절차**라 여전히 부서 관리자다.
+    # 신뢰성 시험은 **사업부**의 절차라, 그 사업부에 속한 부서의 관리자여야 한다.
     assert (
         client.post(
             "/api/reliability-tests",
-            json={"workspace_slug": workspace.slug, "name": f"시험-{tag}"},
+            json={"division_code": "mx", "name": f"시험-{tag}"},
             headers=machine,
         ).status_code
         == 403

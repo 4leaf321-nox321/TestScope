@@ -994,32 +994,6 @@
         }
       }
     },
-    "/api/workspaces/reliability-listed": {
-      "get": {
-        "tags": [
-          "workspaces"
-        ],
-        "summary": "Reliability Listed",
-        "description": "사이드바 「신뢰성 시험」 아래에 설 부서들 — 관리자가 「부서 정보」 에서 고른 것.\n\n소속과 무관하게 로그인한 누구나 본다. 이 시스템의 물음은 부서를 가로지른다.",
-        "operationId": "reliability_listed_api_workspaces_reliability_listed_get",
-        "responses": {
-          "200": {
-            "description": "Successful Response",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "items": {
-                    "$ref": "#/components/schemas/WorkspaceOption"
-                  },
-                  "type": "array",
-                  "title": "Response Reliability Listed Api Workspaces Reliability Listed Get"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
     "/api/workspaces": {
       "get": {
         "tags": [
@@ -3850,6 +3824,48 @@
         "responses": {
           "204": {
             "description": "Successful Response"
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/equipment/bulk-delete": {
+      "post": {
+        "tags": [
+          "equipment"
+        ],
+        "summary": "Bulk Delete Equipment",
+        "description": "고른 장비를 한 번에 내린다 — 줄마다 결과가 온다.\n\n**DELETE 가 아니라 POST 다.** 몸통에 목록을 싣는데, DELETE 의 몸통은 프록시·클라이언트\n마다 다루는 법이 갈려서 어떤 자리에서는 통째로 버려진다.",
+        "operationId": "bulk_delete_equipment_api_equipment_bulk_delete_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/EquipmentBulkDeleteRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/EquipmentBulkOut"
+                }
+              }
+            }
           },
           "422": {
             "description": "Validation Error",
@@ -7143,24 +7159,24 @@
           "reliability"
         ],
         "summary": "List Reliability Tests",
-        "description": "신뢰성 시험 — **부서가 등록한 절차**다. 「시험 항목」(장비가 할 수 있는 측정, 전사\n공용)과 다르다. `workspace` 를 주면 그 부서 것만, 안 주면 전사 전부(부서 순). 시험마다\n쓰는 시험 항목과, 그 항목이 되는 그 부서의 장비 수를 함께 준다 — 0 이면 시험은 정했는데\n돌릴 장비가 없다는 뜻이다.\n\n`attr` 은 **속성 값으로 거른다** — 여러 번 주면 모두 만족해야 한다(`attr=<키><연산><값>`,\n연산은 `>=` `<=` `>` `<` `=` `!=` `~`(포함) `*`(적혀 있기만 하면)). 왼쪽은 속성 정의의\n`key` 다 — 이름은 관리자가 고치면 바뀌고, 그때 저장해 둔 주소가 조용히 빈 답을 낸다.\n\n`status` 를 **안 주면 자리에 따라 다르다** — 부서를 주면 후보까지(검토하는 자리라서),\n전사면 확정된 것만(「저 부서가 무슨 시험을 하나」 에 후보는 아직 답이 아니다). 일부러\n보려면 `status=\"all\"`, 후보만 세려면 `status=\"candidate\"`.",
+        "description": "신뢰성 시험 — **부서가 등록한 절차**다. 「시험 항목」(장비가 할 수 있는 측정, 전사\n공용)과 다르다. `division` 에 사업부 코드(`mx`…)를 주면 그 사업부 것만, 안 주면 전사\n전부(사업부 순). 시험마다 쓰는 시험 항목과, 그 항목이 되는 **그 사업부의** 장비 수를\n함께 준다 — 0 이면 시험은 정했는데\n돌릴 장비가 없다는 뜻이다.\n\n`attr` 은 **속성 값으로 거른다** — 여러 번 주면 모두 만족해야 한다(`attr=<키><연산><값>`,\n연산은 `>=` `<=` `>` `<` `=` `!=` `~`(포함) `*`(적혀 있기만 하면)). 왼쪽은 속성 정의의\n`key` 다 — 이름은 관리자가 고치면 바뀌고, 그때 저장해 둔 주소가 조용히 빈 답을 낸다.\n\n`status` 를 **안 주면 자리에 따라 다르다** — 사업부를 주면 후보까지(검토하는 자리라서),\n전사면 확정된 것만(「저 사업부가 무슨 시험을 하나」 에 후보는 아직 답이 아니다). 일부러\n보려면 `status=\"all\"`, 후보만 세려면 `status=\"candidate\"`.",
         "operationId": "list_reliability_tests_api_reliability_tests_get",
         "parameters": [
           {
-            "name": "workspace",
+            "name": "division",
             "in": "query",
             "required": false,
             "schema": {
               "anyOf": [
                 {
                   "type": "string",
-                  "maxLength": 64
+                  "maxLength": 120
                 },
                 {
                   "type": "null"
                 }
               ],
-              "title": "Workspace"
+              "title": "Division"
             }
           },
           {
@@ -7259,6 +7275,32 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/reliability-tests/divisions": {
+      "get": {
+        "tags": [
+          "reliability"
+        ],
+        "summary": "List Divisions",
+        "description": "사업부 목록 — 줄마다 **내가 올릴 수 있는지**를 함께 준다.\n\n`/reliability-tests/{id}` 보다 **먼저** 선언한다 — 뒤에 두면 `divisions` 가 id 로\n읽혀서 「신뢰성 시험을 찾을 수 없습니다」 가 온다.",
+        "operationId": "list_divisions_api_reliability_tests_divisions_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/DivisionOut"
+                  },
+                  "type": "array",
+                  "title": "Response List Divisions Api Reliability Tests Divisions Get"
                 }
               }
             }
@@ -7467,6 +7509,95 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/ReliabilityTestOut"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/reliability-tests/{test_id}/reject": {
+      "post": {
+        "tags": [
+          "reliability"
+        ],
+        "summary": "Reject Reliability Test",
+        "description": "AI 가 올린 후보를 **아니라고 한다.** 사람만, 후보만, 사유와 함께.\n\n줄은 지우기와 같은 자리로 가지만 감사에 **다른 action 과 사유**가 남는다 — 지우기는\n「이제 안 하는 시험」 이고 반려는 「애초에 틀린 줄」 이다.",
+        "operationId": "reject_reliability_test_api_reliability_tests__test_id__reject_post",
+        "parameters": [
+          {
+            "name": "test_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "title": "Test Id"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ReliabilityRejectRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "204": {
+            "description": "Successful Response"
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/reliability-tests/bulk": {
+      "post": {
+        "tags": [
+          "reliability"
+        ],
+        "summary": "Bulk Reliability Tests",
+        "description": "여러 줄을 한 번에 — 확인 · 반려 · 지우기.\n\n**`/{test_id}` 보다 먼저 선언한다** — 뒤에 두면 `bulk` 가 id 로 읽혀 404 가 온다.",
+        "operationId": "bulk_reliability_tests_api_reliability_tests_bulk_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ReliabilityBulkRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ReliabilityBulkOut"
                 }
               }
             }
@@ -12444,6 +12575,30 @@
         ],
         "title": "DiskOut"
       },
+      "DivisionOut": {
+        "properties": {
+          "code": {
+            "type": "string",
+            "title": "Code"
+          },
+          "name": {
+            "type": "string",
+            "title": "Name"
+          },
+          "can_register": {
+            "type": "boolean",
+            "title": "Can Register"
+          }
+        },
+        "type": "object",
+        "required": [
+          "code",
+          "name",
+          "can_register"
+        ],
+        "title": "DivisionOut",
+        "description": "사업부 하나 — 사이드바와 등록 창이 쓴다."
+      },
       "EdgeOut": {
         "properties": {
           "id": {
@@ -12486,6 +12641,60 @@
           "dst"
         ],
         "title": "EdgeOut"
+      },
+      "EquipmentBulkDeleteRequest": {
+        "properties": {
+          "ids": {
+            "items": {
+              "type": "string",
+              "format": "uuid"
+            },
+            "type": "array",
+            "maxItems": 500,
+            "minItems": 1,
+            "title": "Ids"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "ids"
+        ],
+        "title": "EquipmentBulkDeleteRequest"
+      },
+      "EquipmentBulkOut": {
+        "properties": {
+          "requested": {
+            "type": "integer",
+            "title": "Requested"
+          },
+          "done": {
+            "items": {
+              "type": "string",
+              "format": "uuid"
+            },
+            "type": "array",
+            "title": "Done"
+          },
+          "failed": {
+            "items": {
+              "additionalProperties": {
+                "type": "string"
+              },
+              "type": "object"
+            },
+            "type": "array",
+            "title": "Failed"
+          }
+        },
+        "type": "object",
+        "required": [
+          "requested",
+          "done",
+          "failed"
+        ],
+        "title": "EquipmentBulkOut",
+        "description": "줄마다의 결과. **전부 되거나 전부 안 되거나로 두지 않는다.**"
       },
       "EquipmentCreateRequest": {
         "properties": {
@@ -18731,11 +18940,103 @@
         ],
         "title": "RelatedOut"
       },
+      "ReliabilityBulkOut": {
+        "properties": {
+          "requested": {
+            "type": "integer",
+            "title": "Requested"
+          },
+          "done": {
+            "items": {
+              "type": "string",
+              "format": "uuid"
+            },
+            "type": "array",
+            "title": "Done"
+          },
+          "failed": {
+            "items": {
+              "additionalProperties": {
+                "type": "string"
+              },
+              "type": "object"
+            },
+            "type": "array",
+            "title": "Failed"
+          }
+        },
+        "type": "object",
+        "required": [
+          "requested",
+          "done",
+          "failed"
+        ],
+        "title": "ReliabilityBulkOut",
+        "description": "줄마다의 결과. **전부 되거나 전부 안 되거나로 두지 않는다** — 오백 줄 중 하나가\n남의 사업부라고 사백구십구 줄이 함께 막히면 쓸 수가 없다."
+      },
+      "ReliabilityBulkRequest": {
+        "properties": {
+          "ids": {
+            "items": {
+              "type": "string",
+              "format": "uuid"
+            },
+            "type": "array",
+            "maxItems": 500,
+            "minItems": 1,
+            "title": "Ids"
+          },
+          "action": {
+            "type": "string",
+            "enum": [
+              "confirm",
+              "reject",
+              "delete"
+            ],
+            "title": "Action"
+          },
+          "reason": {
+            "anyOf": [
+              {
+                "type": "string",
+                "maxLength": 500
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Reason"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "ids",
+          "action"
+        ],
+        "title": "ReliabilityBulkRequest"
+      },
+      "ReliabilityRejectRequest": {
+        "properties": {
+          "reason": {
+            "type": "string",
+            "maxLength": 500,
+            "minLength": 1,
+            "title": "Reason"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "reason"
+        ],
+        "title": "ReliabilityRejectRequest"
+      },
       "ReliabilityTestCreateRequest": {
         "properties": {
-          "workspace_slug": {
+          "division_code": {
             "type": "string",
-            "title": "Workspace Slug"
+            "title": "Division Code"
           },
           "name": {
             "type": "string",
@@ -18768,7 +19069,7 @@
         "additionalProperties": false,
         "type": "object",
         "required": [
-          "workspace_slug",
+          "division_code",
           "name"
         ],
         "title": "ReliabilityTestCreateRequest"
@@ -18805,13 +19106,13 @@
             "format": "uuid",
             "title": "Id"
           },
-          "workspace_slug": {
+          "division_code": {
             "type": "string",
-            "title": "Workspace Slug"
+            "title": "Division Code"
           },
-          "workspace_name": {
+          "division_name": {
             "type": "string",
-            "title": "Workspace Name"
+            "title": "Division Name"
           },
           "name": {
             "type": "string",
@@ -18897,8 +19198,8 @@
         "type": "object",
         "required": [
           "id",
-          "workspace_slug",
-          "workspace_name",
+          "division_code",
+          "division_name",
           "name",
           "purpose",
           "test_items",
@@ -22556,6 +22857,17 @@
               }
             ],
             "title": "Parent Slug"
+          },
+          "division_code": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Division Code"
           }
         },
         "additionalProperties": false,
@@ -22832,9 +23144,31 @@
             "type": "boolean",
             "title": "Restricted"
           },
-          "reliability_listed": {
+          "division_code": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Division Code"
+          },
+          "division_name": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Division Name"
+          },
+          "division_own": {
             "type": "boolean",
-            "title": "Reliability Listed"
+            "title": "Division Own"
           },
           "created_at": {
             "type": "string",
@@ -22872,7 +23206,9 @@
           "sort_order",
           "is_active",
           "restricted",
-          "reliability_listed",
+          "division_code",
+          "division_name",
+          "division_own",
           "created_at",
           "member_count",
           "equipment_count",
@@ -23063,16 +23399,16 @@
             ],
             "title": "Restricted"
           },
-          "reliability_listed": {
+          "division_code": {
             "anyOf": [
               {
-                "type": "boolean"
+                "type": "string"
               },
               {
                 "type": "null"
               }
             ],
-            "title": "Reliability Listed"
+            "title": "Division Code"
           }
         },
         "additionalProperties": false,

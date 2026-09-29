@@ -15,7 +15,7 @@ from sqlalchemy.orm import Session
 
 from app.modules.workspaces.models import Workspace
 from app.shared import semantic
-from tests.api.conftest import Signed
+from tests.api.conftest import Signed, division_term_id
 from tests.api.test_reliability_tests import _signed_in
 
 
@@ -37,7 +37,9 @@ def test_새_이름은_초안이_되고_정식_항목과_함께_값이_붙는다
     # 이라고 보는데, 16진수 여섯 자리가 전부 숫자로 나오면(약 4%) 같은 이름이 되어 시험이
     # 저 혼자 깨진다 — 스물여섯 번에 한 번꼴로 빨간 CI 를 보고 원인을 못 찾게 된다.
     tag = "a" + uuid.uuid4().hex[:5]
-    lab = Workspace(slug=f"lab-{tag}", name="신뢰성팀")
+    lab = Workspace(
+        slug=f"lab-{tag}", name="신뢰성팀", division_term_id=division_term_id(db, "vd")
+    )
     db.add(lab)
     db.commit()
     manager = _signed_in(client, db, lab, "manager")
@@ -77,7 +79,7 @@ def test_새_이름은_초안이_되고_정식_항목과_함께_값이_붙는다
     made = client.post(
         "/api/reliability-tests",
         json={
-            "workspace_slug": lab.slug,
+            "division_code": "vd",
             "name": f"고온고습-{tag}",
             "attributes": [
                 {
@@ -112,7 +114,7 @@ def test_새_이름은_초안이_되고_정식_항목과_함께_값이_붙는다
     again = client.post(
         "/api/reliability-tests",
         json={
-            "workspace_slug": lab.slug,
+            "division_code": "vd",
             "name": f"열충격-{tag}",
             "attributes": [
                 {"new_label": f"시료 수-{tag.upper()}", "new_kind": "text", "num_value": 10}
@@ -129,7 +131,7 @@ def test_새_이름은_초안이_되고_정식_항목과_함께_값이_붙는다
     wrong = client.post(
         "/api/reliability-tests",
         json={
-            "workspace_slug": lab.slug,
+            "division_code": "vd",
             "name": f"틀림-{tag}",
             "attributes": [
                 {"definition_id": listed[f"시료 수-{tag}"]["id"], "text_value": "다섯"}
@@ -165,7 +167,7 @@ def test_초안은_색인_카드에_안_들어가고_정식은_들어간다(
     made = client.post(
         "/api/reliability-tests",
         json={
-            "workspace_slug": admin.workspace,
+            "division_code": "mx",
             "name": f"HAST-{tag}",
             "attributes": [
                 {"definition_id": standard["id"], "text_value": f"사내 규정 {tag}"},
@@ -189,7 +191,7 @@ def test_합치면_값이_옮겨_가고_정식으로_올릴_수_있다(
         made = client.post(
             "/api/reliability-tests",
             json={
-                "workspace_slug": admin.workspace,
+                "division_code": "mx",
                 "name": name,
                 "attributes": [{"new_label": label, "new_kind": kind, **value}],
             },

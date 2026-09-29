@@ -301,7 +301,10 @@ def _workspace(client: TestClient, admin: Signed) -> str:
     부서로 가른다."""
     made = client.post(
         "/api/workspaces",
-        json={"slug": f"c-{uuid.uuid4().hex[:8]}", "name": "질의 수 확인"},
+        json={
+            "slug": f"c-{uuid.uuid4().hex[:8]}",
+            "name": "질의 수 확인",
+        },
         headers=admin.headers,
     )
     assert made.status_code == 201, made.text
@@ -316,23 +319,23 @@ def test_신뢰성_시험_목록의_질의가_줄_수를_따라_늘지_않는다
     **상한만 보면 부족하다.** 줄당 한 번씩만 묻는 코드도 열두 줄이면 상한 안에 들어오고,
     그러면 규격이 253회까지 자란 길을 그대로 되밟는다 — 적은 줄과 많은 줄을 함께 잰다.
     """
-    thin = _workspace(client, admin)
-    thick = _workspace(client, admin)
-    for slug, count in ((thin, FEW), (thick, MANY)):
+    # 시험이 사업부에 살므로 **사업부로 갈라 잰다**(전에는 부서였다, 0037).
+    thin, thick = "gtr", "cs"
+    for code, count in ((thin, FEW), (thick, MANY)):
         for index in range(count):
             made = client.post(
                 "/api/reliability-tests",
                 json={
-                    "workspace_slug": slug,
+                    "division_code": code,
                     "name": f"질의 수 확인-{uuid.uuid4().hex[:6]}-{index}",
                 },
                 headers=admin.headers,
             )
             assert made.status_code == 201, made.text
 
-    few, _ = _cost(client, admin, f"/api/reliability-tests?workspace={thin}&status=all")
+    few, _ = _cost(client, admin, f"/api/reliability-tests?division={thin}&status=all")
     many, statements = _cost(
-        client, admin, f"/api/reliability-tests?workspace={thick}&status=all"
+        client, admin, f"/api/reliability-tests?division={thick}&status=all"
     )
     assert many <= BUDGET, f"질의 {many}회 — 줄마다 묻고 있다.\n{_why(statements)}"
     assert many <= few + 2, f"{FEW}줄에 {few}회 · {MANY}줄에 {many}회 — 줄에 비례한다"

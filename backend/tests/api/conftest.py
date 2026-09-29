@@ -12,10 +12,12 @@ from dataclasses import dataclass
 
 import pytest
 from fastapi.testclient import TestClient
+from sqlalchemy import select
 from sqlalchemy.orm import Session
 
 from app.modules.accounts.models import User
 from app.modules.auth import security
+from app.modules.vocabulary.models import Vocabulary, VocabularyTerm
 from app.modules.vocabulary.reference import ensure_reference_data
 from app.modules.workspaces.models import Workspace, WorkspaceMember
 
@@ -53,11 +55,34 @@ def reference(schema: None) -> None:
 
 @pytest.fixture
 def workspace(db: Session) -> Workspace:
-    row = Workspace(slug=f"team-{uuid.uuid4().hex[:8]}", name="시험팀")
+    """시험이 쓰는 기본 부서.
+
+    **사업부(MX)를 붙여 둔다** — 신뢰성 시험은 사업부에 살고(0037), 올릴 수 있는 사람은
+    「제 부서가 그 사업부에 속한 관리자」 다. 안 붙이면 이 부서의 관리자는 어느 사업부에도
+    못 올린다. 물려받는 쪽·안 붙은 쪽을 보려는 시험은 제 부서를 따로 만들어 쓴다.
+    """
+    row = Workspace(
+        slug=f"team-{uuid.uuid4().hex[:8]}",
+        name="시험팀",
+        division_term_id=division_term_id(db, "mx"),
+    )
     db.add(row)
     db.commit()
     db.refresh(row)
     return row
+
+
+def division_term_id(db: Session, code: str) -> uuid.UUID:
+    """사업부 값 하나의 id. 축과 값은 `ensure_reference_data` 가 심는다."""
+    axis = db.scalar(select(Vocabulary).where(Vocabulary.slug == "division"))
+    assert axis is not None, "division 축이 없습니다 — ensure_reference_data 를 보세요"
+    term = db.scalar(
+        select(VocabularyTerm).where(
+            VocabularyTerm.vocabulary_id == axis.id, VocabularyTerm.code == code
+        )
+    )
+    assert term is not None, f"사업부 값이 없습니다: {code}"
+    return term.id
 
 
 @pytest.fixture

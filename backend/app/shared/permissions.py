@@ -21,6 +21,56 @@ from app.modules.workspaces.models import Workspace, WorkspaceMember
 from app.shared.errors import Forbidden, NotFound
 
 
+def division_map(db: Session) -> dict[uuid.UUID, uuid.UUID | None]:
+    """부서마다 **효력 있는 사업부**(`division` 축의 값 id). 없으면 None.
+
+    부서에 안 붙어 있으면 조직도를 타고 **올라가** 처음 만나는 값이 그 부서의 사업부다.
+    사업부에 한 번 붙이면 그 아래 수십 개 팀에 다시 붙일 일이 없고, 팀이 다른 사업부로
+    옮겨 가면 부모만 바뀌어도 따라간다 — 값을 팀마다 적어 두면 개편 때마다 전부 고쳐야
+    하고, 한 줄 빠뜨리면 그 팀의 시험이 엉뚱한 사업부로 올라간다.
+
+    **한 번에 다 계산한다.** 부서마다 조상을 거슬러 물으면 목록 한 장에 질의가 부서 수만큼
+    난다(트리가 깊을수록 더).
+    """
+    rows = list(db.scalars(select(Workspace)))
+    by_id = {row.id: row for row in rows}
+    resolved: dict[uuid.UUID, uuid.UUID | None] = {}
+
+    def walk(node: Workspace, seen: set[uuid.UUID]) -> uuid.UUID | None:
+        if node.id in resolved:
+            return resolved[node.id]
+        if node.division_term_id is not None:
+            resolved[node.id] = node.division_term_id
+            return node.division_term_id
+        parent = by_id.get(node.parent_id) if node.parent_id else None
+        # 고리가 있어도 멈춘다 — 조직도가 꼬였다고 목록이 통째로 안 뜨면 고칠 수도 없다.
+        found = None if parent is None or parent.id in seen else walk(parent, seen | {node.id})
+        resolved[node.id] = found
+        return found
+
+    for row in rows:
+        walk(row, set())
+    return resolved
+
+
+def my_division_term_ids(db: Session, user: User) -> set[uuid.UUID]:
+    """이 사람이 **데이터를 올릴 수 있는** 사업부들.
+
+    내 소속 중 **관리자 역할**인 부서의 사업부다(멤버는 읽기만 — 저장소의 기존 규칙을
+    그대로 두고 축만 부서에서 사업부로 옮긴 것이다). HE팀 관리자면 그 위 MX 사업부에
+    올릴 수 있다.
+
+    시스템 관리자는 여기를 안 지난다 — 모든 사업부에 올릴 수 있고, 부를 쪽이 먼저 본다.
+    """
+    mine = db.scalars(
+        select(WorkspaceMember.workspace_id).where(
+            WorkspaceMember.user_id == user.id, WorkspaceMember.role == "manager"
+        )
+    )
+    divisions = division_map(db)
+    return {found for wid in mine if (found := divisions.get(wid)) is not None}
+
+
 def workspace_by_slug(db: Session, slug: str) -> Workspace:
     workspace = db.scalar(select(Workspace).where(Workspace.slug == slug))
     if workspace is None:

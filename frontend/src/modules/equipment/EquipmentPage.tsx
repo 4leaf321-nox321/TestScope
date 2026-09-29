@@ -25,7 +25,10 @@ import { Link, useNavigate, useSearchParams } from 'react-router-dom'
 import { useAuth } from '@/shared/auth/AuthContext'
 import { isAnyManager } from '@/shared/auth/roles'
 import { EmptyState } from '@/shared/components/EmptyState'
+import { BulkBar } from '@/shared/components/BulkBar'
+import type { BulkOutcome } from '@/shared/components/BulkBar'
 import { ErrorNotice } from '@/shared/components/ErrorNotice'
+import { useSelection } from '@/shared/hooks/useSelection'
 import { PageHeader } from '@/shared/components/PageHeader'
 import { StatusBadge } from '@/shared/components/StatusBadge'
 import { Badge } from '@/shared/components/ui/badge'
@@ -121,6 +124,24 @@ export default function EquipmentPage() {
   )
 
   const canCreate = isAnyManager(user)
+  const items = page.data?.items ?? []
+  // 고른 것은 **지금 보이는 줄만** — 거르기를 좁혔는데 안 보이는 줄이 남아 있으면,
+  // 열 줄을 보면서 수백 대를 지우게 된다.
+  const picked = useSelection(items.map((one) => one.id))
+  const [busy, setBusy] = useState(false)
+  const [outcome, setOutcome] = useState<BulkOutcome | null>(null)
+
+  async function removePicked() {
+    setBusy(true)
+    setOutcome(null)
+    try {
+      setOutcome(await equipmentApi.bulkRemove(picked.ids))
+      picked.clear()
+      page.reload()
+    } finally {
+      setBusy(false)
+    }
+  }
 
   return (
     <div className="space-y-6">
@@ -178,6 +199,29 @@ export default function EquipmentPage() {
 
       <ErrorNotice error={page.error} />
 
+      {canCreate && (
+        <BulkBar
+          count={picked.ids.length}
+          onClear={picked.clear}
+          busy={busy}
+          outcome={outcome}
+        >
+          <Button
+            size="sm"
+            variant="outline"
+            disabled={busy}
+            onClick={() => {
+              // **지운 것은 목록에서 사라진다.** 한 번 묻고, 몇 대인지 함께 적는다.
+              if (window.confirm(`${picked.ids.length}대를 내립니다. 되돌릴 수 없습니다.`)) {
+                void removePicked()
+              }
+            }}
+          >
+            선택한 장비 내리기
+          </Button>
+        </BulkBar>
+      )}
+
       {/* **비어도 표를 지우지 않는다.** 거르다 0 건이 되었을 때 머리글째 사라지면
           방금 건 조건이 화면에서 없어져서, 무엇을 풀어야 할지가 안 보인다.
           정말 한 대도 없을 때만(거르기 없음) 안내로 갈음한다. */}
@@ -191,6 +235,19 @@ export default function EquipmentPage() {
           <Table>
             <TableHeader>
               <TableRow>
+                {canCreate && (
+                  <TableHead className="w-8">
+                    <input
+                      type="checkbox"
+                      aria-label="보이는 줄 전부 고르기"
+                      checked={picked.allPicked}
+                      ref={(box) => {
+                        if (box) box.indeterminate = picked.somePicked
+                      }}
+                      onChange={picked.toggleAll}
+                    />
+                  </TableHead>
+                )}
                 <TableHead>자산번호</TableHead>
                 <TableHead>이름</TableHead>
                 <TableHead>분류</TableHead>
@@ -221,6 +278,16 @@ export default function EquipmentPage() {
                     isPlainRowClick(event) && navigate(`/equipment/${one.id}`)
                   }
                 >
+                  {canCreate && (
+                    <TableCell onClick={(event) => event.stopPropagation()}>
+                      <input
+                        type="checkbox"
+                        aria-label={`${one.asset_no} 고르기`}
+                        checked={picked.has(one.id)}
+                        onChange={() => picked.toggle(one.id)}
+                      />
+                    </TableCell>
+                  )}
                   <TableCell className="font-mono text-xs">
                     <Link to={`/equipment/${one.id}`} className="hover:underline">
                       {one.asset_no}

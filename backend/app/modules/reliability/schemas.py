@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import uuid
 from datetime import datetime
+from typing import Literal
 
 from pydantic import BaseModel, Field
 
@@ -18,14 +19,52 @@ class ReliabilityTestItemOut(BaseModel):
     term_id: uuid.UUID
     value: str
     equipment_count: int
-    """이 부서 장비 중 이 시험 항목이 되는 것. 내가 볼 수 있는 것만 센다 — 검색과 같은 규칙.
-    0 이면 시험은 정해졌는데 돌릴 장비가 이 부서에 없다는 뜻이다."""
+    """**이 사업부 장비** 중 이 시험 항목이 되는 것. 내가 볼 수 있는 것만 센다 — 검색과
+    같은 규칙. 0 이면 시험은 정해졌는데 돌릴 장비가 이 사업부에 없다는 뜻이다.
+
+    사업부에 속한 부서 전부의 장비를 센다(조직도를 타고 내려간다) — 시험이 사업부의
+    것이 된 뒤로 「이 팀에 없다」 는 답이 되지 않는다."""
+
+
+class ReliabilityRejectRequest(Request):
+    reason: str = Field(min_length=1, max_length=500)
+    """왜 아닌가. **받아 둬야** AI 가 무엇을 자주 틀리는지 셀 수 있고, 같은 것을 또
+    올리는지 안다 — 계정 거절이 사유를 받는 것과 같은 이유다."""
+
+
+class ReliabilityBulkRequest(Request):
+    ids: list[uuid.UUID] = Field(min_length=1, max_length=500)
+    """고른 줄들. 한 번에 500건까지 — 몇천 건은 나눠 누른다."""
+    action: Literal["confirm", "reject", "delete"]
+    reason: str | None = Field(default=None, max_length=500)
+    """`reject` 일 때만 쓴다(그때는 필수)."""
+
+
+class ReliabilityBulkOut(BaseModel):
+    """줄마다의 결과. **전부 되거나 전부 안 되거나로 두지 않는다** — 오백 줄 중 하나가
+    남의 사업부라고 사백구십구 줄이 함께 막히면 쓸 수가 없다."""
+
+    requested: int
+    done: list[uuid.UUID]
+    failed: list[dict[str, str]]
+    """안 된 줄과 **왜**. 「12건 실패」 만으로는 다시 누를지 고칠지 알 수 없다."""
+
+
+class DivisionOut(BaseModel):
+    """사업부 하나 — 사이드바와 등록 창이 쓴다."""
+
+    code: str
+    name: str
+    can_register: bool
+    """내가 이 사업부에 시험을 올릴 수 있나. **줄마다 말한다** — 못 고를 것을 숨기면
+    「왜 우리 사업부가 없지」 가 되고, 표시 없이 보이면 다 적고 나서 거절당한다."""
 
 
 class ReliabilityTestOut(BaseModel):
     id: uuid.UUID
-    workspace_slug: str
-    workspace_name: str
+    division_code: str
+    """사업부의 코드(`mx`·`vd`…). 주소와 코드가 거는 키라 이름이 바뀌어도 안 깨진다."""
+    division_name: str
     name: str
     purpose: str
     status: str = "confirmed"
@@ -43,14 +82,16 @@ class ReliabilityTestOut(BaseModel):
     """붙은 그림 수. **목록이 낱장을 받지 않는다** — 줄마다 그림을 받아 오면 스무 줄에
     쉰 번을 왕복한다. 수만 보이고, 누르면 그때 받는다."""
     can_edit: bool
-    """요청한 사람이 고칠 수 있나 — 그 부서의 관리자 또는 시스템 관리자. 화면이 단추를
-    보일지 정하는 데 쓴다. 판정은 서버가 한다."""
+    """요청한 사람이 고칠 수 있나 — **그 사업부에 속한 부서의 관리자** 또는 시스템
+    관리자. 화면이 단추를 보일지 정하는 데 쓴다. 판정은 서버가 한다."""
     created_at: datetime
     updated_at: datetime
 
 
 class ReliabilityTestCreateRequest(Request):
-    workspace_slug: str
+    division_code: str
+    """어느 사업부의 시험인가. 내 소속(관리자 역할)이 속한 사업부만 받는다 —
+    시스템 관리자는 전부."""
     name: str = Field(min_length=1, max_length=200)
     purpose: str = Field(default="", max_length=4000)
     test_item_term_ids: list[uuid.UUID] = Field(default_factory=list)

@@ -33,7 +33,14 @@ from app.modules.workspaces.models import Workspace, WorkspaceMember
 from tests.api.conftest import Signed, category_id, site_id
 
 
-def _team(client: TestClient, admin: Signed, *, parent: str | None = None) -> str:
+def _team(
+    client: TestClient, admin: Signed, *, parent: str | None = None, reliability: bool = True
+) -> str:
+    """이 파일의 부서는 기본으로 **신뢰성 시험을 둘 수 있다.**
+
+    여기서 보려는 것은 삭제와 이관이지 소유 자격이 아니다 — 끄는 쪽은 아래
+    「표시가 꺼진 부서로는 못 옮긴다」 가 따로 본다.
+    """
     made = client.post(
         "/api/workspaces",
         json={
@@ -62,10 +69,12 @@ def _equipment(client: TestClient, admin: Signed, slug: str, **extra: Any) -> Re
     return made
 
 
-def _reliability(client: TestClient, admin: Signed, slug: str, name: str) -> Response:
+def _reliability(client: TestClient, admin: Signed, code: str, name: str) -> Response:
+    """신뢰성 시험은 **사업부**의 것이라 부서와 무관하다(0037). 여기서는 「부서를 지워도
+    안 딸려 간다」 를 보이려고 쓴다."""
     made: Response = client.post(
         "/api/reliability-tests",
-        json={"workspace_slug": slug, "name": name},
+        json={"division_code": code, "name": name},
         headers=admin.headers,
     )
     assert made.status_code == 201, made.text
@@ -88,27 +97,40 @@ def _references(client: TestClient, admin: Signed, slug: str) -> dict[str, dict[
     return {one["table"]: one for one in got.json()}
 
 
-def test_신뢰성_시험과_규격서도_세고_막는다(client: TestClient, admin: Signed) -> None:
+def test_사내_규격서는_세고_막는다(client: TestClient, admin: Signed) -> None:
     """**세는 자리와 막는 자리는 같아야 한다.**
 
-    두 표는 나중에 생겼는데 세는 목록에 없었다. 그래서 시험이 있는 부서를 지우면 DB 의
+    이 표는 나중에 생겼는데 세는 목록에 없었다. 그래서 규격서가 있는 부서를 지우면 DB 의
     외래키가 막아 500 이 났다 — 화면에 뜨는 것은 원인이 안 적힌 오류이고, 사람은 무엇을
     먼저 치워야 하는지 알 수 없었다.
     """
     team = _team(client, admin)
-    _reliability(client, admin, team, f"고온고습-{uuid.uuid4().hex[:6]}")
     _document(client, admin, team, f"MX-{uuid.uuid4().hex[:6]}")
 
     seen = _references(client, admin, team)
-    assert seen["reliability_tests"]["count"] == 1
-    assert seen["reliability_tests"]["blocks_delete"] is True
     assert seen["spec_documents"]["count"] == 1
 
     blocked = client.delete(f"/api/workspaces/{team}", headers=admin.headers)
     assert blocked.status_code == 409, blocked.text
     assert blocked.json()["error"]["code"] == "TSC-WORKSPACES-0006"
     # **무엇이 남아 있는지 말한다** — 「지울 수 없습니다」 만으로는 치울 수가 없다.
-    assert "신뢰성 시험" in blocked.json()["error"]["message"]
+    assert "사내 규격서" in blocked.json()["error"]["message"]
+
+
+def test_신뢰성_시험은_부서를_지워도_안_딸려_간다(client: TestClient, admin: Signed) -> None:
+    """**시험은 사업부의 것이다**(0037). 부서를 지우는 일과 시험의 소속은 다른 축이라,
+    부서가 사라져도 시험은 그대로 있다 — 조직 개편 때 시험이 함께 없어지면 안 된다."""
+    team = _team(client, admin)
+    name = f"고온고습-{uuid.uuid4().hex[:6]}"
+    made = _reliability(client, admin, "mx", name).json()
+
+    # 부서를 가리키지 않으므로 세는 목록에도 안 선다.
+    seen = _references(client, admin, team)
+    assert "reliability_tests" not in seen
+
+    assert client.delete(f"/api/workspaces/{team}", headers=admin.headers).status_code == 204
+    still = client.get(f"/api/reliability-tests/{made['id']}", headers=admin.headers)
+    assert still.status_code == 200, still.text
 
 
 def test_이관하면_가진_것이_전부_따라간다(
@@ -120,7 +142,6 @@ def test_이관하면_가진_것이_전부_따라간다(
     child = _team(client, admin, parent=gone)
 
     equipment = _equipment(client, admin, gone).json()
-    test = _reliability(client, admin, gone, f"열충격-{uuid.uuid4().hex[:6]}").json()
     document = _document(client, admin, gone, f"MX-{uuid.uuid4().hex[:6]}").json()
     method = client.post(
         "/api/methods",
@@ -161,7 +182,7 @@ def test_이관하면_가진_것이_전부_따라간다(
     )
     assert preview.status_code == 200, preview.text
     moves = {one["table"]: one["count"] for one in preview.json()["moves"]}
-    assert moves["equipment"] == 1 and moves["reliability_tests"] == 1
+    assert moves["equipment"] == 1
     assert moves["spec_documents"] == 1 and moves["workspaces"] == 1
     assert preview.json()["clashes"] == []
 
@@ -181,8 +202,6 @@ def test_이관하면_가진_것이_전부_따라간다(
         ]
         == stays
     )
-    moved_test = client.get(f"/api/reliability-tests/{test['id']}", headers=admin.headers)
-    assert moved_test.json()["workspace_slug"] == stays
     moved_doc = client.get(f"/api/spec-documents/{document['id']}", headers=admin.headers)
     assert moved_doc.json()["workspace_slug"] == stays
     assert (
@@ -215,10 +234,6 @@ def test_옮기면_이름이_겹치는_것을_먼저_말한다(client: TestClien
     """**우리가 고르지 않는다.** 둘 중 무엇을 남길지는 사람이 정할 일이다."""
     gone = _team(client, admin)
     stays = _team(client, admin)
-    name = f"고온고습 1000h-{uuid.uuid4().hex[:6]}"
-    _reliability(client, admin, gone, name)
-    _reliability(client, admin, stays, name)
-
     asset = f"A-{uuid.uuid4().hex[:6]}"
     _equipment(client, admin, gone, dept_asset_no=asset)
     _equipment(client, admin, stays, dept_asset_no=asset)
@@ -229,7 +244,6 @@ def test_옮기면_이름이_겹치는_것을_먼저_말한다(client: TestClien
         headers=admin.headers,
     )
     clashes = {one["table"]: one["values"] for one in preview.json()["clashes"]}
-    assert clashes["reliability_tests"] == [name]
     assert clashes["equipment"] == [asset]
 
     blocked = client.delete(
@@ -238,7 +252,7 @@ def test_옮기면_이름이_겹치는_것을_먼저_말한다(client: TestClien
     assert blocked.status_code == 409, blocked.text
     assert blocked.json()["error"]["code"] == "TSC-WORKSPACES-0008"
     # 값까지 말한다 — 「겹칩니다」 만으로는 무엇을 고칠지 모른다.
-    assert name in blocked.json()["error"]["message"]
+    assert asset in blocked.json()["error"]["message"]
 
 
 def test_규격서_번호는_대소문자를_같은_것으로_본다(client: TestClient, admin: Signed) -> None:
@@ -365,39 +379,6 @@ def test_지우는_것은_시스템_관리자뿐(client: TestClient, admin: Sign
         ).status_code
         == 403
     )
-
-
-def test_지운_시험이_남아_있어도_막고_말한다(client: TestClient, admin: Signed) -> None:
-    """**지운 줄도 표에는 남고, DB 는 그것까지 보고 막는다.**
-
-    산 것만 세면 「가리키는 것이 없다」 고 답해 놓고 삭제에서 ForeignKeyViolation 이 난다 —
-    화면에는 원인이 안 적힌 500 이 뜬다(2026-09-25 실측). 세는 자리가 DB 와 같은 눈으로
-    봐야 하고, 사람에게는 **지운 것이라고 말해 줘야** 한다(「나는 지웠는데?」 가 되지 않게).
-    """
-    team = _team(client, admin)
-    test = _reliability(client, admin, team, f"지울 시험-{uuid.uuid4().hex[:6]}").json()
-    assert (
-        client.delete(
-            f"/api/reliability-tests/{test['id']}", headers=admin.headers
-        ).status_code
-        == 204
-    )
-
-    seen = _references(client, admin, team)
-    assert seen["reliability_tests_deleted"]["count"] == 1
-    assert seen["reliability_tests_deleted"]["blocks_delete"] is True
-    assert "지운 것" in seen["reliability_tests_deleted"]["label"]
-    assert "reliability_tests" not in seen, "산 시험은 0건이라 안 선다"
-
-    blocked = client.delete(f"/api/workspaces/{team}", headers=admin.headers)
-    assert blocked.status_code == 409, blocked.text
-
-    # **이관하면 지운 줄도 함께 간다** — 그것 말고는 치울 방법이 없다.
-    stays = _team(client, admin)
-    dropped = client.delete(
-        f"/api/workspaces/{team}", params={"reassign_to": stays}, headers=admin.headers
-    )
-    assert dropped.status_code == 204, dropped.text
 
 
 def test_번호를_안_적은_장비가_둘이어도_들어간다(client: TestClient, admin: Signed) -> None:

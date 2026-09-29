@@ -17,6 +17,7 @@ import { PageHeader } from '@/shared/components/PageHeader'
 import { Button } from '@/shared/components/ui/button'
 import { Input } from '@/shared/components/ui/input'
 import { Label } from '@/shared/components/ui/label'
+import { reliabilityApi } from '@/modules/reliability/api'
 import { useResource } from '@/shared/hooks/useResource'
 import { useBackFromReference } from '@/shared/hooks/useBackFromReference'
 import { DeleteWorkspaceDialog } from '@/modules/workspaces/DeleteWorkspaceDialog'
@@ -27,6 +28,9 @@ import type { Workspace } from '@/modules/workspaces/api'
 
 export default function WorkspacesAdminPage() {
   const list = useResource(() => workspaceApi.list(true), [])
+  // 고를 수 있는 사업부. 값을 더하는 자리는 「관리 → 온톨로지」 의 사업부 축이다 —
+  // 여기서 만들게 두면 오타가 그대로 사업부가 된다(닫힌 축인 이유).
+  const divisions = useResource(() => reliabilityApi.divisions(), [])
   const [slug, setSlug] = useState('')
   const [name, setName] = useState('')
   const [error, setError] = useState<ApiError | Error | null>(null)
@@ -145,23 +149,40 @@ export default function WorkspacesAdminPage() {
               >
                 {one.restricted ? '멤버만' : '전원'}
               </Button>
-              {/* 체크한 부서가 사이드바 「신뢰성 시험」 아래에 선다 — 조직도를 통째로
-                  메뉴에 펼치지 않는다. */}
-              <label className="flex cursor-pointer items-center gap-1 text-xs">
-                <input
-                  type="checkbox"
-                  checked={one.reliability_listed}
-                  aria-label={`${one.name} 신뢰성 시험 메뉴 표시`}
-                  onChange={(event) =>
-                    act(() =>
-                      workspaceApi.update(one.slug, {
-                        reliability_listed: event.target.checked,
-                      }),
-                    )
-                  }
-                />
-                <span className="text-muted-foreground">메뉴</span>
-              </label>
+              {/* **사업부.** 붙이면 그 아래 부서가 모두 물려받는다 — 사업부에 한 번
+                  붙이면 수십 개 팀에 다시 붙일 일이 없고, 팀이 옮겨 가면 부모만 바뀌어도
+                  따라간다. 신뢰성 시험은 부서가 아니라 이 사업부에 속한다.
+
+                  **물려받은 것은 흐리게** 보인다 — 「여기 안 붙었네」 하고 또 붙이면
+                  그 팀만 조직 개편에서 떨어져 나간다. */}
+              <select
+                className="bg-background h-7 rounded-md border px-1 text-xs"
+                aria-label={`${one.name} 사업부`}
+                title={
+                  one.division_own
+                    ? '이 부서에 직접 붙은 사업부입니다'
+                    : one.division_name
+                      ? `위에서 물려받았습니다: ${one.division_name}`
+                      : '사업부가 없습니다'
+                }
+                value={one.division_own ? (one.division_code ?? '') : ''}
+                onChange={(event) =>
+                  act(() =>
+                    workspaceApi.update(one.slug, { division_code: event.target.value }),
+                  )
+                }
+              >
+                <option value="">
+                  {one.division_name && !one.division_own
+                    ? `(물려받음: ${one.division_name})`
+                    : '(사업부 없음)'}
+                </option>
+                {(divisions.data ?? []).map((division) => (
+                  <option key={division.code} value={division.code}>
+                    {division.name}
+                  </option>
+                ))}
+              </select>
               <Button
                 variant="ghost"
                 size="sm"

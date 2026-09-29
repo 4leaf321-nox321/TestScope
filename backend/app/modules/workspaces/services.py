@@ -18,7 +18,8 @@ from app.modules.accounts.models import User
 from app.modules.documents.models import SpecDocument
 from app.modules.equipment.models import Equipment
 from app.modules.methods.models import TestMethod
-from app.modules.reliability.models import ReliabilityTest
+from app.modules.reliability.services import division_by_code
+from app.modules.vocabulary.models import VocabularyTerm
 from app.modules.workspaces.models import Workspace, WorkspaceMember
 from app.modules.workspaces.schemas import (
     MemberOut,
@@ -31,7 +32,7 @@ from app.modules.workspaces.schemas import (
 )
 from app.shared import audit
 from app.shared.errors import AppError, Conflict, NotFound
-from app.shared.permissions import membership_of, workspace_by_slug
+from app.shared.permissions import division_map, membership_of, workspace_by_slug
 
 ROLES = ("member", "manager")
 
@@ -144,6 +145,12 @@ def workspace_out(
                 break
 
     membership = membership_of(db, workspace_id=workspace.id, user_id=viewer.id)
+    # **효력 있는 사업부** — 제가 안 갖고 있으면 위에서 물려받은 것을 보인다. 화면이
+    # 「비었다」 와 「물려받았다」 를 구별해야 하므로 `division_own` 으로 가른다.
+    found = division_map(db).get(workspace.id)
+    term = db.get(VocabularyTerm, found) if found else None
+    division_code = term.code if term else None
+    division_name = term.value if term else None
     return WorkspaceOut(
         id=workspace.id,
         slug=workspace.slug,
@@ -153,9 +160,11 @@ def workspace_out(
         path=path or workspace.name,
         sort_order=workspace.sort_order,
         restricted=workspace.restricted,
-        reliability_listed=workspace.reliability_listed,
         is_active=workspace.is_active,
         created_at=workspace.created_at,
+        division_code=division_code,
+        division_name=division_name,
+        division_own=workspace.division_term_id is not None,
         member_count=_member_count(db, workspace.id),
         equipment_count=_equipment_count(db, workspace.id),
         my_role=membership.role if membership else None,
@@ -168,19 +177,6 @@ def options(db: Session) -> list[WorkspaceOption]:
         WorkspaceOption(slug=node.slug, name=node.name, path=path, depth=depth)
         for node, depth, path in ordered_tree(db)
         if node.is_active
-    ]
-
-
-def reliability_listed(db: Session) -> list[WorkspaceOption]:
-    """사이드바 「신뢰성 시험」 아래에 설 부서들 — **소속과 무관하게 누구나 본다.**
-
-    이 시스템의 물음은 부서를 가로지른다(「저 부서는 무슨 시험을 하나」). 내 소속만
-    주면 남의 부서 메뉴가 안 보이고, 그때 사람은 그 부서가 시험을 안 하는 줄 안다.
-    보관한 부서는 뺀다 — 메뉴에 남으면 눌러 보고 나서야 없어진 것을 안다."""
-    return [
-        WorkspaceOption(slug=node.slug, name=node.name, path=path, depth=depth)
-        for node, depth, path in ordered_tree(db)
-        if node.is_active and node.reliability_listed
     ]
 
 
@@ -210,7 +206,13 @@ def list_for(db: Session, user: User, *, all_workspaces: bool) -> list[Workspace
 
 
 def create(
-    db: Session, *, slug: str, name: str, creator: User, parent_slug: str | None
+    db: Session,
+    *,
+    slug: str,
+    name: str,
+    creator: User,
+    parent_slug: str | None,
+    division_code: str | None = None,
 ) -> Workspace:
     if db.scalar(select(Workspace).where(Workspace.slug == slug)) is not None:
         raise Conflict("TSC-WORKSPACES-0004", f"이미 있는 부서 주소입니다: {slug}")
@@ -227,6 +229,7 @@ def create(
         name=name,
         parent_id=parent.id if parent else None,
         sort_order=(last or 0) + 1,
+        division_term_id=(division_by_code(db, division_code).id if division_code else None),
     )
     db.add(workspace)
     db.flush()
@@ -246,7 +249,7 @@ def update(
     name: str | None,
     is_active: bool | None,
     restricted: bool | None,
-    reliability_listed: bool | None = None,
+    division_code: str | None = None,
 ) -> Workspace:
     """**안 보낸 것과 비운 것을 구별한다.** None 은 "안 바꿈" 이다 — 구별하지 않으면
     이름만 고칠 때마다 공개 설정이 함께 초기화된다."""
@@ -257,8 +260,12 @@ def update(
         workspace.is_active = is_active
     if restricted is not None:
         workspace.restricted = restricted
-    if reliability_listed is not None:
-        workspace.reliability_listed = reliability_listed
+    if division_code is not None:
+        # 빈 문자열이면 **뗀다** — 그러면 위에서 물려받는다. null 과 구별하려고 빈 값을
+        # 쓴다(안 보낸 칸은 그대로 두는 규약이라 None 은 「안 보냄」 이다).
+        workspace.division_term_id = (
+            division_by_code(db, division_code).id if division_code else None
+        )
     db.commit()
     db.refresh(workspace)
     return workspace
@@ -428,14 +435,6 @@ def _counts(db: Session, workspace: Workspace) -> list[Reference]:
         ),
         *_restricted(
             db,
-            "reliability_tests",
-            "신뢰성 시험",
-            ReliabilityTest,
-            ReliabilityTest.workspace_id == workspace.id,
-            ReliabilityTest.deleted_at,
-        ),
-        *_restricted(
-            db,
             "spec_documents",
             "사내 규격서",
             SpecDocument,
@@ -512,7 +511,6 @@ def _clashes(db: Session, source: Workspace, target: Workspace) -> list[Workspac
         # 빈 글자를 그대로 보이면 화면에 아무것도 안 뜬다 — 무엇이 겹쳤는지 말해 준다.
         return sorted(one or "(빈 값)" for one in hit)
 
-    alive = ReliabilityTest.deleted_at.is_(None)
     live = SpecDocument.deleted_at.is_(None)
     found = [
         WorkspaceClashOut(
@@ -521,14 +519,6 @@ def _clashes(db: Session, source: Workspace, target: Workspace) -> list[Workspac
             values=_both(
                 _names(Equipment.dept_asset_no, Equipment.owner_workspace_id == target.id),
                 _names(Equipment.dept_asset_no, Equipment.owner_workspace_id == source.id),
-            ),
-        ),
-        WorkspaceClashOut(
-            table="reliability_tests",
-            label="신뢰성 시험 이름",
-            values=_both(
-                _names(ReliabilityTest.name, ReliabilityTest.workspace_id == target.id, alive),
-                _names(ReliabilityTest.name, ReliabilityTest.workspace_id == source.id, alive),
             ),
         ),
         WorkspaceClashOut(
@@ -626,11 +616,10 @@ def _check_target(source: Workspace, target: Workspace) -> None:
 
 def _reassign(db: Session, *, source: Workspace, target: Workspace) -> dict[str, int]:
     """이 부서의 것을 전부 대상 부서로 옮긴다. 옮긴 수를 돌려준다(감사에 적는다)."""
+    # **신뢰성 시험은 안 옮긴다.** 그것은 사업부의 것이라 부서가 사라져도 그대로 있다 —
+    # 부서를 지우는 일과 시험의 소속은 이제 다른 축이다.
     moved = {
         "equipment": _move(db, Equipment, Equipment.owner_workspace_id, source, target),
-        "reliability_tests": _move(
-            db, ReliabilityTest, ReliabilityTest.workspace_id, source, target
-        ),
         "spec_documents": _move(db, SpecDocument, SpecDocument.workspace_id, source, target),
         "test_methods": _move(db, TestMethod, TestMethod.owner_workspace_id, source, target),
     }

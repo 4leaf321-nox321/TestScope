@@ -99,7 +99,7 @@ describe('경로', () => {
     const item = NAV_GROUPS.flatMap((group) => group.items).find(
       (one) => one.label === '신뢰성 시험',
     )
-    expect(item?.expands).toBe('reliability-workspaces')
+    expect(item?.expands).toBe('reliability-divisions')
     expect(reliabilityHref('metal-lab')).toBe('/reliability-tests/metal-lab')
   })
 

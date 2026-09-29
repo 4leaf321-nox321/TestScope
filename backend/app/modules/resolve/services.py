@@ -41,7 +41,7 @@ from app.modules.vocabulary.models import Vocabulary, VocabularyAlias, Vocabular
 from app.modules.workspaces.models import Workspace
 from app.shared import semantic
 from app.shared.errors import AppError
-from app.shared.permissions import visible_equipment
+from app.shared.permissions import division_map, visible_equipment
 from app.shared.text import clean, compare_key
 
 _EXACT = "정확히 같음"
@@ -328,23 +328,25 @@ def _workspace_id(db: Session, slug: str | None) -> uuid.UUID | None:
 def _resolve_reliability_test(
     db: Session, text: str, workspace: str | None, limit: int
 ) -> ResolveResponse:
-    """부서가 등록한 시험 절차를 찾는다. **이름은 부서를 가로질러 겹친다.**
+    """사업부가 등록한 시험 절차를 찾는다. **이름은 사업부를 가로질러 겹친다.**
 
-    「고온고습 1000h」 는 거의 모든 부서에 하나씩 있다. 그래서 이름이 정확히 같아도
-    **둘 이상이면 exact 가 아니다** — 부서(`workspace`)를 함께 주거나, 사람에게 어느
-    부서의 것인지 물어야 한다. 이름표에 부서를 붙여 후보끼리 구별되게 한다.
+    「고온고습 1000h」 는 거의 모든 사업부에 하나씩 있다. 그래서 이름이 정확히 같아도
+    **둘 이상이면 exact 가 아니다** — 부서(`workspace`)를 함께 주면 그 부서가 속한
+    사업부로 좁힌다. 이름표에 사업부를 붙여 후보끼리 구별되게 한다.
     """
     stmt = select(ReliabilityTest).where(ReliabilityTest.deleted_at.is_(None))
     picked = _workspace_id(db, workspace)
     if picked is not None:
-        stmt = stmt.where(ReliabilityTest.workspace_id == picked)
+        # 부서로 물어도 답은 사업부 단위다 — 그 부서가 속한 사업부로 좁힌다.
+        found = division_map(db).get(picked)
+        stmt = stmt.where(ReliabilityTest.division_term_id == found)
 
     def _label(row: ReliabilityTest) -> tuple[str, str | None]:
-        team = db.get(Workspace, row.workspace_id)
+        team = db.get(VocabularyTerm, row.division_term_id)
         # **후보는 후보라고 말한다.** 안 붙이면 AI 가 제가 올린 미확인 시험을 확정된 것과
         # 같이 다루고, 그것을 근거로 「이 부서는 이 시험을 합니다」 라고 답한다.
         mark = " · 후보(확인 전)" if row.status == "candidate" else ""
-        return row.name, (f"{team.name}{mark}" if team else mark.strip(" ·") or None)
+        return row.name, (f"{team.value}{mark}" if team else mark.strip(" ·") or None)
 
     key = compare_key(text)
     same = [row for row in db.scalars(stmt) if compare_key(row.name) == key]

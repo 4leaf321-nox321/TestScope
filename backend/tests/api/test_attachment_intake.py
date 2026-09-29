@@ -220,7 +220,7 @@ def test_이미_올라온_그림을_시험에_가리킨다(
         made = client.post(
             "/api/reliability-tests",
             json={
-                "workspace_slug": admin.workspace,
+                "division_code": "mx",
                 "name": f"열충격-{uuid.uuid4().hex[:6]}-{index}",
             },
             headers=admin.headers,
@@ -335,7 +335,7 @@ def test_그림_여럿을_한_번에_제자리로(client: TestClient, admin: Sig
         made = client.post(
             "/api/reliability-tests",
             json={
-                "workspace_slug": admin.workspace,
+                "division_code": "mx",
                 "name": f"일괄-{uuid.uuid4().hex[:6]}-{index}",
             },
             headers=admin.headers,
@@ -417,7 +417,7 @@ def test_미리보기는_커밋해도_아무것도_안_남긴다(
     ).json()["images"]
     made = client.post(
         "/api/reliability-tests",
-        json={"workspace_slug": admin.workspace, "name": f"미리보기-{uuid.uuid4().hex[:6]}"},
+        json={"division_code": "mx", "name": f"미리보기-{uuid.uuid4().hex[:6]}"},
         headers=admin.headers,
     )
     test_id = made.json()["id"]

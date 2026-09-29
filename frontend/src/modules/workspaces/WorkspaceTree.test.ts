@@ -27,7 +27,7 @@ function ws(slug: string, parent: string | null, order: number): Workspace {
     sort_order: order,
     is_active: true,
     restricted: false,
-    reliability_listed: false,
+    reliability_owner: false,
     member_count: 0,
     equipment_count: 0,
   } as unknown as Workspace

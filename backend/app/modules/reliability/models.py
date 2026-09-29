@@ -37,10 +37,10 @@ from app.database import Base
 class ReliabilityTest(Base):
     __tablename__ = "reliability_tests"
     __table_args__ = (
-        # 같은 부서에 같은 이름은 하나 — 지운 것은 빼고(부분 유일 인덱스).
+        # 같은 사업부에 같은 이름은 하나 — 지운 것은 빼고(부분 유일 인덱스).
         Index(
-            "uq_reliability_tests_workspace_name",
-            "workspace_id",
+            "uq_reliability_tests_division_name",
+            "division_term_id",
             "name",
             unique=True,
             postgresql_where=text("deleted_at IS NULL"),
@@ -51,13 +51,16 @@ class ReliabilityTest(Base):
     id: Mapped[uuid.UUID] = mapped_column(
         PgUUID(as_uuid=True), primary_key=True, default=uuid.uuid4
     )
-    workspace_id: Mapped[uuid.UUID] = mapped_column(
+    division_term_id: Mapped[uuid.UUID] = mapped_column(
         PgUUID(as_uuid=True),
-        ForeignKey("workspaces.id", ondelete="RESTRICT"),
+        ForeignKey("vocabulary_terms.id", ondelete="RESTRICT"),
         index=True,
     )
-    """수행하는 부서. **비울 수 없다** — 전역 신뢰성 시험은 없다. 같은 이름의 시험을
-    두 부서가 다른 조건으로 돌리는 것이 보통이고, 그 차이가 이 표의 존재 이유다."""
+    """수행하는 **사업부**. **비울 수 없다** — 전역 신뢰성 시험은 없다.
+
+    부서(팀)가 아니라 사업부인 이유: 같은 시험을 여러 팀이 돌리는데 팀마다 줄을 만들면
+    「저 사업부가 무슨 시험을 하나」 가 답이 안 나오고, 이름 유일성도 팀 단위라 막아 주지
+    않는다. 누가 넣었는지는 `created_by` 와 감사 기록이 안다."""
     name: Mapped[str] = mapped_column(String(200))
     purpose: Mapped[str] = mapped_column(Text, default="", server_default="")
     """무엇을 확인하는 시험인가. 이름만으로는 「HAST」 가 무엇을 보려는 것인지 옆 부서

@@ -61,7 +61,7 @@ def test_구조와_찾기와_이웃이_한_사슬로_이어진다(client: TestCl
     assert edges[("performs", "series", "test_item")]["count"] >= 1
     assert edges[("belongs_to", "method", "test_item")]["count"] >= 1
     # 정의만 있고 비어 있을 수 있는 선도 목록에 있다(0 이면 점선).
-    assert ("run_by", "reliability_test", "workspace") in edges
+    assert ("run_by", "reliability_test", "division") in edges
 
     hits = client.get("/api/graph/search", params={"q": f"인장-{tag}"}, headers=admin.headers)
     assert hits.status_code == 200

@@ -64,7 +64,7 @@ function haystack(row: ReliabilityTest): string {
   return [
     row.name,
     row.purpose,
-    row.workspace_name,
+    row.division_name,
     ...row.test_items.map((one) => one.value),
     ...row.attributes.map((one) => `${one.label} ${one.display}`),
   ]
@@ -93,7 +93,7 @@ export default function ReliabilityTestsPage() {
     () => (needle ? rows.filter((row) => haystack(row).includes(needle)) : rows),
     [rows, needle],
   )
-  const workspaces = new Set(rows.map((row) => row.workspace_slug)).size
+  const workspaces = new Set(rows.map((row) => row.division_code)).size
 
   return (
     <div className="space-y-6">
@@ -172,10 +172,10 @@ export default function ReliabilityTestsPage() {
                 <TableCell className="whitespace-nowrap">
                   {/* 고치는 문 — 부서 화면. 여기서는 읽기만. */}
                   <Link
-                    to={`/reliability-tests/${row.workspace_slug}`}
+                    to={`/reliability-tests/${row.division_code}`}
                     className="hover:underline"
                   >
-                    {row.workspace_name}
+                    {row.division_name}
                   </Link>
                 </TableCell>
                 <TableCell>

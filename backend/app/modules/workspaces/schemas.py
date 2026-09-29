@@ -37,8 +37,12 @@ class WorkspaceOut(BaseModel):
     is_active: bool
     restricted: bool
     """장비를 멤버에게만 보이나. 기본 false — 가입자 전원이 본다."""
-    reliability_listed: bool
-    """사이드바 「신뢰성 시험」 아래에 올리나. 기본 false — 관리자가 고른 부서만."""
+    division_code: str | None
+    """이 부서가 속한 **사업부** 코드(`mx`…). 제 값이 없으면 위에서 물려받은 것이 온다."""
+    division_name: str | None
+    division_own: bool
+    """이 부서에 **직접** 붙은 값인가. false 면 위에서 물려받은 것이다 — 화면이 둘을
+    구별해야 「여기 안 붙었네」 하고 또 붙이는 일이 없다."""
     created_at: datetime
     member_count: int
     equipment_count: int
@@ -52,6 +56,8 @@ class WorkspaceCreateRequest(Request):
     slug: str = Field(pattern=SLUG_PATTERN)
     name: str = Field(min_length=1, max_length=100)
     parent_slug: str | None = None
+    division_code: str | None = None
+    """이 부서의 사업부 코드. 안 주면 위에서 물려받는다."""
 
 
 class WorkspaceUpdateRequest(Request):
@@ -60,8 +66,8 @@ class WorkspaceUpdateRequest(Request):
     """false 로 두면 보관 상태. 자료는 남기고 새 활동만 막는다(삭제하지 않는다)."""
     restricted: bool | None = None
     """true 로 두면 이 부서의 장비를 **멤버에게만** 보인다. 안 보내면 그대로."""
-    reliability_listed: bool | None = None
-    """true 로 두면 사이드바 「신뢰성 시험」 아래에 이 부서가 선다. 안 보내면 그대로."""
+    division_code: str | None = None
+    """사업부를 붙인다. **빈 문자열이면 뗀다**(그러면 위에서 물려받는다). 안 보내면 그대로."""
 
 
 class WorkspaceMoveRequest(Request):

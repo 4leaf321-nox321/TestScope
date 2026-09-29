@@ -64,7 +64,7 @@ export interface NavItem {
   /** 아래에 **서버가 정하는 항목들**이 붙는다. 사이드바가 그 목록을 받아 펼치고,
    *  이 항목 자체는 화면이 아니라 접고 펴는 손잡이가 된다. 어떤 목록인지는 이름
    *  하나로 가리키고, 목록을 받는 것과 자식의 경로는 사이드바가 안다. */
-  expands?: 'reliability-workspaces'
+  expands?: 'reliability-divisions'
 }
 
 export interface NavGroup {
@@ -111,7 +111,7 @@ export const NAV_GROUPS: NavGroup[] = [
         label: '신뢰성 시험',
         icon: Gauge,
         to: '/reliability-tests',
-        expands: 'reliability-workspaces',
+        expands: 'reliability-divisions',
         summary: '부서마다 수행하는 신뢰성 시험을 한 표로. 아래에서 부서를 골라 하나씩 본다.',
       },
       {
@@ -320,9 +320,10 @@ export function visibleGroups(viewer: {
   })).filter((group) => canSee(group.audience, viewer) && group.items.length > 0)
 }
 
-/** 부서 하나의 신뢰성 시험 화면. 사이드바의 자식 항목과 라우터가 같은 모양을 쓴다. */
-export function reliabilityHref(slug: string): string {
-  return `/reliability-tests/${slug}`
+/** 사업부 하나의 신뢰성 시험 화면. 사이드바의 자식 항목과 라우터가 같은 모양을 쓴다.
+ *  주소에는 **코드**(`mx`)가 온다 — 이름이 바뀌어도 걸어 둔 주소가 안 깨진다. */
+export function reliabilityHref(code: string): string {
+  return `/reliability-tests/${code}`
 }
 
 /** 아직 화면이 없는 항목들. 라우터가 이것으로 stub 경로를 만든다 — **사이드바가

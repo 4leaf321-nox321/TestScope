@@ -21,6 +21,8 @@ from app.modules.equipment.schemas import (
     CalibrationCreateRequest,
     CalibrationOut,
     CatalogFilterOptionsOut,
+    EquipmentBulkDeleteRequest,
+    EquipmentBulkOut,
     EquipmentCreateRequest,
     EquipmentFilterOptionsOut,
     EquipmentImportRequest,
@@ -254,6 +256,20 @@ def update_equipment(
     # None 으로 와서, 상태 하나 바꿀 때마다 담당자와 위치가 지워진다.
     row = services.update(db, user, equipment_id, payload.model_dump(exclude_unset=True))
     return services.equipment_out(db, row, user)
+
+
+@router.post("/bulk-delete", response_model=EquipmentBulkOut)
+def bulk_delete_equipment(
+    payload: EquipmentBulkDeleteRequest,
+    user: User = Depends(current_user),
+    db: Session = Depends(get_db),
+) -> EquipmentBulkOut:
+    """고른 장비를 한 번에 내린다 — 줄마다 결과가 온다.
+
+    **DELETE 가 아니라 POST 다.** 몸통에 목록을 싣는데, DELETE 의 몸통은 프록시·클라이언트
+    마다 다루는 법이 갈려서 어떤 자리에서는 통째로 버려진다.
+    """
+    return EquipmentBulkOut(**services.bulk_delete(db, user, ids=payload.ids))
 
 
 @router.delete("/{equipment_id}", status_code=204)

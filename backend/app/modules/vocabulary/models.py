@@ -188,6 +188,12 @@ class VocabularyTerm(Base):
     )
     """이 값이 갖는 부속 정보. 시험 항목이면 대표 조건 키 목록 같은 것."""
 
+    sort_order: Mapped[int] = mapped_column(Integer, default=0, server_default="0")
+    """**사람이 정하는 순서.** 0 이면 이름순으로 떨어진다(대부분의 축이 그렇다).
+
+    사업부처럼 **회사가 정한 차례**가 있는 축이 있다 — MX·VD·DA·NW·의료기기·GTR·SR·CS
+    는 이름순이 아니고, 이름순으로 두면 보는 사람이 「왜 CS 가 먼저지」 를 생각한다."""
+
     status: Mapped[str] = mapped_column(String(20), default="active", index=True)
 
     created_by_id: Mapped[uuid.UUID | None] = mapped_column(

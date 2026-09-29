@@ -17,7 +17,7 @@ from app.modules.accounts.models import User
 from app.modules.audit.models import AuditEntry
 from app.modules.auth import security
 from app.modules.workspaces.models import Workspace, WorkspaceMember
-from tests.api.conftest import Signed, category_id, site_id
+from tests.api.conftest import Signed, category_id, division_term_id, site_id
 
 
 def _term(client: TestClient, admin: Signed, axis: str, value: str) -> str:
@@ -45,17 +45,19 @@ def _signed_in(client: TestClient, db: Session, workspace: Workspace, role: str)
     return Signed(email=email, token=token.json()["access_token"], workspace=workspace.slug)
 
 
-def test_그_부서의_관리자만_등록하고_누구나_본다(
+def test_그_사업부_부서의_관리자만_등록하고_누구나_본다(
     client: TestClient, db: Session, admin: Signed
 ) -> None:
     tag = uuid.uuid4().hex[:6]
-    lab = Workspace(slug=f"lab-{tag}", name="신뢰성팀")
+    lab = Workspace(
+        slug=f"lab-{tag}", name="신뢰성팀", division_term_id=division_term_id(db, "vd")
+    )
     db.add(lab)
     db.commit()
     manager = _signed_in(client, db, lab, "manager")
     member = _signed_in(client, db, lab, "member")
 
-    body = {"workspace_slug": lab.slug, "name": f"고온고습-{tag}", "purpose": "85/85 1000h"}
+    body = {"division_code": "vd", "name": f"고온고습-{tag}", "purpose": "85/85 1000h"}
     assert (
         client.post("/api/reliability-tests", json=body, headers=member.headers).status_code
         == 403
@@ -66,9 +68,12 @@ def test_그_부서의_관리자만_등록하고_누구나_본다(
 
     # **다른 부서 사람도 본다** — 이 시스템의 물음은 부서를 가로지른다. 고치지는 못한다.
     seen = client.get(
-        "/api/reliability-tests", params={"workspace": lab.slug}, headers=admin.headers
+        "/api/reliability-tests", params={"division": "vd"}, headers=admin.headers
     )
-    assert [one["name"] for one in seen.json()] == [f"고온고습-{tag}"]
+    # **태그로 가른다** — 사업부는 시험끼리 나눠 쓰므로 옆 시험의 줄이 섞인다.
+    assert [one["name"] for one in seen.json() if one["name"].endswith(tag)] == [
+        f"고온고습-{tag}"
+    ]
     as_member = client.get(
         f"/api/reliability-tests/{made.json()['id']}", headers=member.headers
     )
@@ -92,7 +97,7 @@ def test_시험_항목을_잇고_그_부서의_장비_수를_센다(client: Test
     wrong = client.post(
         "/api/reliability-tests",
         json={
-            "workspace_slug": admin.workspace,
+            "division_code": "mx",
             "name": f"TS-{tag}",
             "test_item_term_ids": [site],
         },
@@ -103,7 +108,7 @@ def test_시험_항목을_잇고_그_부서의_장비_수를_센다(client: Test
     made = client.post(
         "/api/reliability-tests",
         json={
-            "workspace_slug": admin.workspace,
+            "division_code": "mx",
             "name": f"TS-{tag}",
             "test_item_term_ids": [shock],
         },
@@ -155,7 +160,7 @@ def test_지우면_목록에서_빠지고_감사에_남는다(
     tag = uuid.uuid4().hex[:6]
     made = client.post(
         "/api/reliability-tests",
-        json={"workspace_slug": admin.workspace, "name": f"낙하-{tag}"},
+        json={"division_code": "mx", "name": f"낙하-{tag}"},
         headers=admin.headers,
     ).json()
     gone = client.delete(f"/api/reliability-tests/{made['id']}", headers=admin.headers)
@@ -174,7 +179,7 @@ def test_지우면_목록에서_빠지고_감사에_남는다(
     # 지운 이름은 다시 쓸 수 있다 — 부분 유일 인덱스.
     again = client.post(
         "/api/reliability-tests",
-        json={"workspace_slug": admin.workspace, "name": f"낙하-{tag}"},
+        json={"division_code": "mx", "name": f"낙하-{tag}"},
         headers=admin.headers,
     )
     assert again.status_code == 201
@@ -183,27 +188,32 @@ def test_지우면_목록에서_빠지고_감사에_남는다(
 def test_부서를_안_주면_전사_전부가_부서_순으로_온다(
     client: TestClient, db: Session, admin: Signed
 ) -> None:
-    """전체 표 — 「누가 무슨 시험을 하나」 를 부서를 가로질러 본다. 읽기는 누구나."""
+    """전체 표 — 「누가 무슨 시험을 하나」 를 사업부를 가로질러 본다. 읽기는 누구나."""
     tag = uuid.uuid4().hex[:6]
-    lab = Workspace(slug=f"lab-{tag}", name="신뢰성팀", sort_order=999)
+    lab = Workspace(
+        slug=f"lab-{tag}",
+        name="신뢰성팀",
+        sort_order=999,
+        division_term_id=division_term_id(db, "vd"),
+    )
     db.add(lab)
     db.commit()
     manager = _signed_in(client, db, lab, "manager")
     for name in (f"열충격-{tag}", f"고온고습-{tag}"):
         made = client.post(
             "/api/reliability-tests",
-            json={"workspace_slug": lab.slug, "name": name},
+            json={"division_code": "vd", "name": name},
             headers=manager.headers,
         )
         assert made.status_code == 201, made.text
     listed = client.get("/api/reliability-tests", headers=admin.headers)
     assert listed.status_code == 200, listed.text
-    mine = [one for one in listed.json() if one["workspace_slug"] == lab.slug]
+    # **태그로 가른다** — 사업부는 시험끼리 공유하므로 사업부로 거르면 옆 시험의 줄이 섞인다.
+    mine = [one for one in listed.json() if one["name"].endswith(tag)]
     assert [one["name"] for one in mine] == [f"고온고습-{tag}", f"열충격-{tag}"]
-    # 다른 부서 것도 같이 온다 — 이 부서 것만이 아니다.
+    # 다른 사업부 것도 같이 온다 — 이 사업부 것만이 아니다.
     assert (
-        any(one["workspace_slug"] != lab.slug for one in listed.json())
-        or len(listed.json()) == 2
+        any(one["division_code"] != "vd" for one in listed.json()) or len(listed.json()) == 2
     )
 
 
@@ -278,7 +288,7 @@ def test_등급별_수량은_짝으로_담기고_이름_없는_숫자는_거절�
     made = client.post(
         "/api/reliability-tests",
         json={
-            "workspace_slug": admin.workspace,
+            "division_code": "mx",
             "name": f"짝 시험-{tag}",
             "attributes": [
                 {
@@ -319,7 +329,7 @@ def test_등급별_수량은_짝으로_담기고_이름_없는_숫자는_거절�
     bad = client.post(
         "/api/reliability-tests",
         json={
-            "workspace_slug": admin.workspace,
+            "division_code": "mx",
             "name": f"이름 없는 숫자-{tag}",
             "attributes": [
                 {"definition_id": definitions["등급별 수량"], "json_value": [{"value": 4}]}
@@ -357,7 +367,7 @@ def test_조건은_한쪽만_적어도_되고_숫자로_못_적으면_비고에_
     made = client.post(
         "/api/reliability-tests",
         json={
-            "workspace_slug": admin.workspace,
+            "division_code": "mx",
             "name": f"한쪽 조건-{tag}",
             "attributes": [
                 # 85 이상 — 최대를 비운다.
@@ -377,7 +387,7 @@ def test_조건은_한쪽만_적어도_되고_숫자로_못_적으면_비고에_
     empty = client.post(
         "/api/reliability-tests",
         json={
-            "workspace_slug": admin.workspace,
+            "division_code": "mx",
             "name": f"빈 조건-{tag}",
             "attributes": [{"definition_id": conditions["토크"]["id"]}],
         },
@@ -385,3 +395,96 @@ def test_조건은_한쪽만_적어도_되고_숫자로_못_적으면_비고에_
     )
     assert empty.status_code == 400, empty.text
     assert empty.json()["error"]["code"] == "TSC-ATTR-0011"
+
+
+def test_내_부서가_속한_사업부에만_올린다(
+    client: TestClient, db: Session, admin: Signed
+) -> None:
+    """**신뢰성 시험은 사업부에 산다**(0037). 올릴 수 있는 사람은 「제 부서가 그 사업부에
+    속한 관리자」 다.
+
+    부서(팀)가 아니라 사업부인 이유: 같은 시험을 여러 팀이 돌리는데 팀마다 줄을 만들면
+    「저 사업부가 무슨 시험을 하나」 가 답이 안 나오고, 이름 유일성도 팀 단위라 막아 주지
+    않는다. 실제로 시험을 돌리는 것은 팀이므로 **팀 관리자가 제 사업부에** 올린다.
+
+    사업부는 조직도를 타고 **물려받는다** — 팀에 안 붙어 있어도 위에서 찾는다.
+    """
+    tag = uuid.uuid4().hex[:6]
+    head = Workspace(
+        slug=f"head-{tag}", name="본부", division_term_id=division_term_id(db, "da")
+    )
+    db.add(head)
+    db.flush()
+    # 팀에는 사업부를 안 붙인다 — 본부에서 물려받아야 한다.
+    team = Workspace(slug=f"team-{tag}", name="개발팀", parent_id=head.id)
+    db.add(team)
+    db.commit()
+    manager = _signed_in(client, db, team, "manager")
+
+    # 물려받은 사업부(DA)에는 올라간다.
+    made = client.post(
+        "/api/reliability-tests",
+        json={"division_code": "da", "name": f"고온고습-{tag}"},
+        headers=manager.headers,
+    )
+    assert made.status_code == 201, made.text
+    assert made.json()["division_code"] == "da"
+
+    # 남의 사업부에는 못 올린다 — 막는 것은 권한 등급이 아니라 **소속**이다.
+    refused = client.post(
+        "/api/reliability-tests",
+        json={"division_code": "mx", "name": f"열충격-{tag}"},
+        headers=manager.headers,
+    )
+    assert refused.status_code == 403, refused.text
+    assert refused.json()["error"]["code"] == "TSC-RELIABILITY-0007"
+
+    # 시스템 관리자는 어느 사업부에나 올린다 — 골라서.
+    assert (
+        client.post(
+            "/api/reliability-tests",
+            json={"division_code": "mx", "name": f"열충격-{tag}"},
+            headers=admin.headers,
+        ).status_code
+        == 201
+    )
+
+    # 없는 사업부는 그렇게 말한다.
+    missing = client.post(
+        "/api/reliability-tests",
+        json={"division_code": "no-such", "name": f"낙하-{tag}"},
+        headers=admin.headers,
+    )
+    assert missing.status_code == 404, missing.text
+    assert missing.json()["error"]["code"] == "TSC-RELIABILITY-0008"
+
+
+def test_사업부_목록은_올릴_수_있는지를_함께_준다(
+    client: TestClient, db: Session, admin: Signed
+) -> None:
+    """못 고를 것을 숨기면 「왜 우리 사업부가 없지」 가 되고, 표시 없이 보이면 다 적고
+    나서 거절당한다. **목록은 다 주고 줄마다 말한다.**"""
+    listed = client.get("/api/reliability-tests/divisions", headers=admin.headers)
+    assert listed.status_code == 200, listed.text
+    rows = {one["code"]: one for one in listed.json()}
+    # 기본 여덟이 심겨 있다.
+    assert {"mx", "vd", "da", "nw", "medical", "gtr", "sr", "cs"} <= set(rows)
+    # 시스템 관리자는 전부 올릴 수 있다.
+    assert all(one["can_register"] for one in rows.values())
+
+    team = Workspace(
+        slug=f"t-{uuid.uuid4().hex[:6]}",
+        name="팀",
+        division_term_id=division_term_id(db, "sr"),
+    )
+    db.add(team)
+    db.commit()
+    manager = _signed_in(client, db, team, "manager")
+    mine = {
+        one["code"]: one["can_register"]
+        for one in client.get(
+            "/api/reliability-tests/divisions", headers=manager.headers
+        ).json()
+    }
+    assert mine["sr"] is True
+    assert mine["mx"] is False

@@ -3,6 +3,8 @@
 import { api, downloadFile } from '@/shared/api/client'
 import type { components } from '@/shared/api/schema'
 
+export type EquipmentBulkResult = components['schemas']['EquipmentBulkOut']
+
 export type Equipment = components['schemas']['EquipmentOut']
 export type Calibration = components['schemas']['CalibrationOut']
 export type EquipmentFilterOptions = components['schemas']['EquipmentFilterOptionsOut']
@@ -128,6 +130,13 @@ export const equipmentApi = {
   update: (id: string, body: Record<string, unknown>) =>
     api.patch<Equipment>(`/equipment/${id}`, body),
   remove: (id: string) => api.delete<void>(`/equipment/${id}`),
+  /** **여러 대를 한 번에 내린다.** 한 대씩 들어가 지우는 것은 몇백 대에서 할 수 있는
+   *  일이 아니다. 줄마다 결과가 온다 — 안 된 줄은 왜까지.
+   *
+   *  DELETE 가 아니라 POST 인 이유: 몸통에 목록을 싣는데, DELETE 의 몸통은 프록시·
+   *  클라이언트마다 다루는 법이 갈려서 어떤 자리에서는 통째로 버려진다. */
+  bulkRemove: (ids: string[]) =>
+    api.post<EquipmentBulkResult>('/equipment/bulk-delete', { ids }),
 
   calibrations: (id: string) => api.get<Calibration[]>(`/equipment/${id}/calibrations`),
   addCalibration: (id: string, body: Record<string, unknown>) =>

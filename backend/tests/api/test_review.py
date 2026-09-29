@@ -1295,7 +1295,7 @@ def test_초안_속성은_합치거나_정식으로_올린다(
     made = client.post(
         "/api/reliability-tests",
         json={
-            "workspace_slug": admin.workspace,
+            "division_code": "mx",
             "name": f"고온고습-{tag}",
             "attributes": [
                 {"new_label": f"시험온도 {tag}", "new_kind": "text", "text_value": "85"},

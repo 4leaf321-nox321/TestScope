@@ -96,6 +96,12 @@ RELIABILITY_TEST_CONFIRMED = "reliability_test.confirmed"
 줄에도 `confirmed_by_id` · `confirmed_at` 이 남지만, 그것은 **지금의 상태**다. 확인했다가
 다시 후보로 열고 다시 확인한 이력은 여기에만 남는다 — 「이 값 누가 언제 보증했어」 를 물을
 때 필요한 것이 그 이력이다."""
+RELIABILITY_TEST_REJECTED = "reliability_test.rejected"
+"""AI 가 올린 후보를 사람이 읽고 **아니라고 했다.**
+
+지우기와 줄은 같은 곳(`deleted_at`)으로 가지만 **뜻이 다르다** — 지우기는 「이제 안 하는
+시험」 이고 반려는 「애초에 틀린 줄」 이다. 그 차이가 남아야 AI 가 무엇을 자주 틀리는지
+셀 수 있고, 사유가 있어야 다음에 같은 것을 또 올리는지 안다."""
 RELIABILITY_TEST_REOPENED = "reliability_test.reopened"
 """확정된 시험을 **다시 후보로** 열었다. 그 순간부터 AI 가 다시 고칠 수 있게 되므로,
 누가 그 문을 열었는지가 남아야 한다."""

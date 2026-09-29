@@ -62,7 +62,7 @@ import { testItemCatalogApi } from '@/modules/test_items/api'
 
 export function ReliabilityTestDialog({
   open,
-  workspace,
+  division,
   editing,
   onClose,
   onSaved,
@@ -70,7 +70,7 @@ export function ReliabilityTestDialog({
 }: {
   open: boolean
   /** 부서 주소. 등록은 이 부서로 들어간다. */
-  workspace: string
+  division: string
   /** 있으면 수정, 없으면 등록. */
   editing: ReliabilityTest | null
   onClose: () => void
@@ -79,8 +79,9 @@ export function ReliabilityTestDialog({
    *  「내가 방금 뭘 확인했더라」 가 되고, 이어서 고칠 수도 없다. */
   onReviewed?: (next: ReliabilityTest) => void
 }) {
-  // 시험 항목 목록 — 이 부서 장비 수를 함께 받는다(카탈로그의 `?workspace=`).
-  const catalog = useResource(() => testItemCatalogApi.list(workspace), [workspace])
+  // 시험 항목 목록. 사업부에는 부서가 여럿이라 「이 부서 장비 수」 를 걸 자리가 없다 —
+  // 전사 수로 받는다(사업부 단위 수는 목록 화면이 서버에서 받아 보인다).
+  const catalog = useResource(() => testItemCatalogApi.list(), [])
 
   const [name, setName] = useState('')
   const [purpose, setPurpose] = useState('')
@@ -207,7 +208,7 @@ export function ReliabilityTestDialog({
         attributes: [...toStandardPayload(standardDefs, standard), ...toPayload(attributes)],
       }
       if (editing) await reliabilityApi.update(editing.id, body)
-      else await reliabilityApi.create(workspace, body)
+      else await reliabilityApi.create(division, body)
       onSaved()
     } catch (caught) {
       setError(caught instanceof Error ? caught : new Error('알 수 없는 오류'))

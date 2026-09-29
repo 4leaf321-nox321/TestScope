@@ -29,8 +29,6 @@ import { useState } from 'react'
 import { Link, useParams } from 'react-router-dom'
 import { Pencil, Plus, Trash2, Wrench } from 'lucide-react'
 
-import { useAuth } from '@/shared/auth/AuthContext'
-import { isManagerOf } from '@/shared/auth/roles'
 import { ConfirmDialog } from '@/shared/components/ConfirmDialog'
 import { EmptyState } from '@/shared/components/EmptyState'
 import { ErrorNotice } from '@/shared/components/ErrorNotice'
@@ -55,37 +53,58 @@ import {
   RowOpener,
 } from '@/modules/reliability/ReliabilityTestViewDialog'
 import { reliabilityApi } from '@/modules/reliability/api'
+import type { BulkAction } from '@/modules/reliability/api'
+import { BulkBar } from '@/shared/components/BulkBar'
+import type { BulkOutcome } from '@/shared/components/BulkBar'
+import { useSelection } from '@/shared/hooks/useSelection'
 import type { ReliabilityTest } from '@/modules/reliability/api'
-import { workspaceApi } from '@/modules/workspaces/api'
 
-export default function WorkspaceReliabilityPage() {
-  const { slug = '' } = useParams<{ slug: string }>()
-  const { user } = useAuth()
-  // 부서 이름은 메뉴와 같은 목록에서 받는다 — 여기 없으면 메뉴에도 없는 부서다.
-  const listed = useResource(() => workspaceApi.reliabilityListed(), [])
-  const tests = useResource(() => reliabilityApi.list(slug), [slug])
+export default function DivisionReliabilityPage() {
+  // 주소에는 사업부 **코드**(`mx`)가 온다 — 이름이 바뀌어도 걸어 둔 주소가 안 깨진다.
+  const { slug: code = '' } = useParams<{ slug: string }>()
+  // 사업부 이름은 메뉴와 같은 목록에서 받는다 — 여기 없으면 메뉴에도 없는 사업부다.
+  const listed = useResource(() => reliabilityApi.divisions(), [])
+  const tests = useResource(() => reliabilityApi.list(code), [code])
   const [editing, setEditing] = useState<ReliabilityTest | null>(null)
   const [creating, setCreating] = useState(false)
   const [removing, setRemoving] = useState<ReliabilityTest | null>(null)
   const [asking, setAsking] = useState<ReliabilityTest | null>(null)
   /** 읽기만 하는 창 — 줄을 누르면 이것. */
   const [viewing, setViewing] = useState<ReliabilityTest | null>(null)
+  const [busy, setBusy] = useState(false)
+  const [outcome, setOutcome] = useState<BulkOutcome | null>(null)
 
-  const workspace = listed.data?.find((one) => one.slug === slug)
+  const division = listed.data?.find((one) => one.code === code)
   const rows = tests.data ?? []
+  // **고른 것은 목록에 있는 것만** — 거르기를 좁혔는데 안 보이는 줄이 골라진 채로 남으면,
+  // 열 줄을 보면서 500건을 지우게 된다.
+  const picked = useSelection(rows.map((one) => one.id))
+
+  /** 고른 줄에 한 번에 — 결과는 띠가 말한다(줄마다 성패가 갈린다). */
+  async function runBulk(action: BulkAction, reason?: string) {
+    setBusy(true)
+    setOutcome(null)
+    try {
+      setOutcome(await reliabilityApi.bulk(picked.ids, action, reason))
+      picked.clear()
+      tests.reload()
+    } finally {
+      setBusy(false)
+    }
+  }
   // 서버가 후보를 앞으로 보내 준다 — 여기서는 세기만 한다.
   const pending = rows.filter(isCandidate).length
-  // **표시일 뿐 권한이 아니다.** 등록 단추는 roles.ts 가, 줄마다의 수정은 서버의 can_edit 가
-  // 정한다 — 눌러야 403 을 아는 단추는 「할 수 있는 일」 을 알려 주지 못한다.
-  const canEdit = isManagerOf(user, slug)
+  // **표시일 뿐 권한이 아니다.** 서버가 줄마다 `can_edit` 을, 사업부마다 `can_register` 를
+  // 판정한다 — 눌러야 403 을 아는 단추는 「할 수 있는 일」 을 알려 주지 못한다.
+  const canEdit = division?.can_register ?? false
 
-  if (listed.data && !workspace) {
+  if (listed.data && !division) {
     return (
       <div className="space-y-6">
         <PageHeader title="신뢰성 시험" />
         <EmptyState
-          title="이 부서는 신뢰성 시험 메뉴에 없습니다"
-          hint="시스템 관리자가 「관리 → 부서 정보」 에서 체크한 부서만 여기 섭니다. 보관한 부서도 빠집니다."
+          title="그런 사업부가 없습니다"
+          hint="사업부는 「관리 → 온톨로지」 의 사업부 축에 있습니다. 지운 값이면 주소도 함께 사라집니다."
         />
       </div>
     )
@@ -95,10 +114,10 @@ export default function WorkspaceReliabilityPage() {
     <div className="space-y-6">
       <PageHeader
         back={useBackFromReference()}
-        title={workspace ? `${workspace.name} · 신뢰성 시험` : '신뢰성 시험'}
+        title={division ? `${division.name} · 신뢰성 시험` : '신뢰성 시험'}
         description={
-          workspace
-            ? `${workspace.path} 가 제품 개발·검증을 위해 수행하는 시험. 적용 시험 항목 옆의 수가 이 부서 장비 중 그 항목이 되는 대수입니다.`
+          division
+            ? `${division.name} 사업부가 제품 개발·검증을 위해 수행하는 시험. 적용 시험 항목 옆의 수는 이 사업부에 속한 부서들의 장비 중 그 항목이 되는 대수입니다.`
             : undefined
         }
         actions={
@@ -125,6 +144,45 @@ export default function WorkspaceReliabilityPage() {
 
       <ErrorNotice error={tests.error ?? listed.error} />
 
+      {canEdit && (
+        <BulkBar
+          count={picked.ids.length}
+          onClear={picked.clear}
+          busy={busy}
+          outcome={outcome}
+        >
+          <Button size="sm" disabled={busy} onClick={() => void runBulk('confirm')}>
+            확인
+          </Button>
+          <Button
+            size="sm"
+            variant="outline"
+            disabled={busy}
+            onClick={() => {
+              // **사유를 받는다** — 없으면 AI 가 무엇을 자주 틀리는지 셀 수 없다.
+              const said = window.prompt(
+                `${picked.ids.length}건을 반려합니다. 사유를 적어 주십시오`,
+              )
+              if (said?.trim()) void runBulk('reject', said.trim())
+            }}
+          >
+            반려
+          </Button>
+          <Button
+            size="sm"
+            variant="outline"
+            disabled={busy}
+            onClick={() => {
+              if (window.confirm(`${picked.ids.length}건을 지웁니다. 되돌릴 수 없습니다.`)) {
+                void runBulk('delete')
+              }
+            }}
+          >
+            지우기
+          </Button>
+        </BulkBar>
+      )}
+
       {tests.data && rows.length === 0 ? (
         <EmptyState
           title="등록된 신뢰성 시험이 없습니다"
@@ -138,6 +196,21 @@ export default function WorkspaceReliabilityPage() {
         <Table>
           <TableHeader>
             <TableRow>
+              {canEdit && (
+                <TableHead className="w-8">
+                  <input
+                    type="checkbox"
+                    aria-label="보이는 줄 전부 고르기"
+                    checked={picked.allPicked}
+                    ref={(box) => {
+                      // 하나라도 골랐지만 전부는 아니면 **반쯤 찬 모양** — 「전부 골랐다」
+                      // 로 읽히면 그대로 지우기를 누른다.
+                      if (box) box.indeterminate = picked.somePicked
+                    }}
+                    onChange={picked.toggleAll}
+                  />
+                </TableHead>
+              )}
               <TableHead>신뢰성 시험</TableHead>
               <TableHead className="hidden w-full min-w-96 lg:table-cell">목적</TableHead>
               <TableHead className="hidden min-w-48 md:table-cell">
@@ -157,6 +230,16 @@ export default function WorkspaceReliabilityPage() {
                 // 누른 사람은 그 항목으로 가려던 것이다.
                 onClick={(event) => isPlainRowClick(event) && setViewing(row)}
               >
+                {canEdit && (
+                  <TableCell onClick={(event) => event.stopPropagation()}>
+                    <input
+                      type="checkbox"
+                      aria-label={`${row.name} 고르기`}
+                      checked={picked.has(row.id)}
+                      onChange={() => picked.toggle(row.id)}
+                    />
+                  </TableCell>
+                )}
                 <TableCell>
                   <RowOpener name={row.name} onOpen={() => setViewing(row)}>
                     <CandidateBadge row={row} />
@@ -191,7 +274,7 @@ export default function WorkspaceReliabilityPage() {
                             </span>
                           ) : (
                             <Link
-                              to={`/equipment?workspace=${slug}&test_item_term_id=${item.term_id}`}
+                              to={`/equipment?test_item_term_id=${item.term_id}`}
                               className="text-muted-foreground text-xs hover:underline"
                             >
                               {item.equipment_count}대
@@ -281,7 +364,7 @@ export default function WorkspaceReliabilityPage() {
 
       <ReliabilityTestDialog
         open={creating || editing !== null}
-        workspace={slug}
+        division={code}
         editing={editing}
         onReviewed={(next) => {
           // 창은 열어 둔다 — 확인한 뒤에 이어서 고칠 수 있어야 한다.

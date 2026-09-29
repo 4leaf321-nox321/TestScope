@@ -17,7 +17,7 @@ import { useResource } from '@/shared/hooks/useResource'
 import { itemHref, reliabilityHref, visibleGroups } from '@/shared/layout/navigation'
 import type { NavItem } from '@/shared/layout/navigation'
 import { cn } from '@/shared/lib/utils'
-import { workspaceApi } from '@/modules/workspaces/api'
+import { reliabilityApi } from '@/modules/reliability/api'
 
 const ITEM_CLASS = 'flex items-center gap-2 rounded-md px-2 py-1.5 text-sm transition-colors'
 const ACTIVE_CLASS = 'bg-sidebar-accent text-sidebar-accent-foreground font-medium'
@@ -53,11 +53,11 @@ function writeExpanded(label: string, expanded: boolean): void {
  */
 function ExpandableItem({ item, onNavigate }: { item: NavItem; onNavigate?: () => void }) {
   const location = useLocation()
-  const children = useResource(() => workspaceApi.reliabilityListed(), [])
+  const children = useResource(() => reliabilityApi.divisions(), [])
   const [expanded, setExpanded] = useState(() => readExpanded(item.label))
   const rows = children.data ?? []
   const insideChild = rows.some((one) =>
-    location.pathname.startsWith(reliabilityHref(one.slug)),
+    location.pathname.startsWith(reliabilityHref(one.code)),
   )
   const open = expanded
 
@@ -90,15 +90,15 @@ function ExpandableItem({ item, onNavigate }: { item: NavItem; onNavigate?: () =
           {/* **비면 이유를 말한다.** 아무것도 안 그리면 손잡이가 고장난 것처럼 보인다. */}
           {children.data && rows.length === 0 && (
             <li className="text-muted-foreground/70 px-2 py-1 text-xs">
-              「부서 정보」 에서 고른 부서가 없습니다
+              사업부가 없습니다 — 「관리 → 온톨로지」 의 사업부 축에서 더합니다
             </li>
           )}
           {rows.map((one) => (
-            <li key={one.slug}>
+            <li key={one.code}>
               <NavLink
-                to={reliabilityHref(one.slug)}
+                to={reliabilityHref(one.code)}
                 onClick={onNavigate}
-                title={one.path}
+                title={one.can_register ? `${one.name} — 등록할 수 있습니다` : one.name}
                 className={({ isActive }) =>
                   cn(ITEM_CLASS, 'py-1', isActive ? ACTIVE_CLASS : IDLE_CLASS)
                 }

@@ -136,7 +136,7 @@ def test_개정해도_걸어_둔_시험의_링크가_안_끊긴다(client: TestC
     test = client.post(
         "/api/reliability-tests",
         json={
-            "workspace_slug": admin.workspace,
+            "division_code": "mx",
             "name": f"환경 시험-{uuid.uuid4().hex[:6]}",
             "attributes": [
                 {"definition_id": definitions["규격서"]["id"], "document_id": document["id"]}
@@ -179,7 +179,7 @@ def test_거는_시험이_있으면_못_지운다(client: TestClient, admin: Sig
     client.post(
         "/api/reliability-tests",
         json={
-            "workspace_slug": admin.workspace,
+            "division_code": "mx",
             "name": f"거는 시험-{uuid.uuid4().hex[:6]}",
             "attributes": [
                 {"definition_id": definitions["규격서"], "document_id": document["id"]}

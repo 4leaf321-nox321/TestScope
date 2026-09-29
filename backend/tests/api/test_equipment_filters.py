@@ -244,3 +244,39 @@ def test_모르는_교정_거르기는_거절한다(client: TestClient, admin: S
     """**조용히 무시하지 않는다.** 무시하면 거른 줄 아는 사람이 전체 목록을 본다."""
     response = client.get("/api/equipment?calibration=weird", headers=admin.headers)
     assert response.status_code == 422, response.text
+
+
+def test_여러_대를_한_번에_내린다(client: TestClient, admin: Signed) -> None:
+    """**한 대씩 들어가 지우는 것은 몇백 대에서 할 수 있는 일이 아니다.**
+
+    줄마다 결과를 돌려준다 — 전부 되거나 전부 안 되거나로 두면, 오백 대 중 한 대가
+    남의 부서라는 이유로 나머지가 함께 막힌다.
+    """
+    rows = [_equipment(client, admin) for _ in range(3)]
+    ids = [one["id"] for one in rows]
+
+    gone = client.post("/api/equipment/bulk-delete", json={"ids": ids}, headers=admin.headers)
+    assert gone.status_code == 200, gone.text
+    assert gone.json()["requested"] == 3
+    assert len(gone.json()["done"]) == 3 and gone.json()["failed"] == []
+    for one in ids:
+        assert client.get(f"/api/equipment/{one}", headers=admin.headers).status_code == 404
+
+    # 이미 내린 것을 또 고르면 **그 줄만** 실패하고 왜인지 온다.
+    again = client.post(
+        "/api/equipment/bulk-delete", json={"ids": ids[:1]}, headers=admin.headers
+    )
+    assert again.status_code == 200, again.text
+    assert again.json()["done"] == []
+    assert len(again.json()["failed"]) == 1
+    assert again.json()["failed"][0]["message"], "왜인지 적혀 있어야 한다"
+
+
+def test_한_번에_고를_수_있는_수에_상한이_있다(client: TestClient, admin: Signed) -> None:
+    """무한이면 한 번의 실수가 되돌릴 수 없는 크기가 된다. 나눠 누르면 그 사이에 결과를
+    보고 멈출 수 있다."""
+    too_many = [str(uuid.uuid4()) for _ in range(501)]
+    refused = client.post(
+        "/api/equipment/bulk-delete", json={"ids": too_many}, headers=admin.headers
+    )
+    assert refused.status_code == 422, refused.text

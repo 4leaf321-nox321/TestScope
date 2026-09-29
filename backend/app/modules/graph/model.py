@@ -456,18 +456,18 @@ EDGE_KINDS: tuple[EdgeKind, ...] = (
             Equipment.deleted_at.is_(None)
         ),
     ),
-    # ⑫ 신뢰성 시험 → 부서, ⑬ → 시험 항목
+    # ⑫ 신뢰성 시험 → 사업부, ⑬ → 시험 항목
     _kind(
         "run_by",
-        "수행 부서",
+        "수행 사업부",
         "수행 신뢰성 시험",
         "reliability_test",
-        "workspace",
+        "division",
         ReliabilityTest.id,
-        ReliabilityTest.workspace_id,
+        ReliabilityTest.division_term_id,
         ReliabilityTest.id,
         base=select(
-            ReliabilityTest.id, ReliabilityTest.workspace_id, ReliabilityTest.id
+            ReliabilityTest.id, ReliabilityTest.division_term_id, ReliabilityTest.id
         ).where(ReliabilityTest.deleted_at.is_(None)),
     ),
     _kind(

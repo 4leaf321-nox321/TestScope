@@ -539,17 +539,17 @@ def _reliability_cards(db: Session) -> list[Chunk]:
     attributes = _standard_attributes(db, "reliability_test_id")
     rows = db.execute(
         text("""
-        SELECT r.id, r.name, r.purpose, w.name FROM reliability_tests r
-        JOIN workspaces w ON w.id = r.workspace_id
+        SELECT r.id, r.name, r.purpose, d.value FROM reliability_tests r
+        JOIN vocabulary_terms d ON d.id = r.division_term_id
         WHERE r.deleted_at IS NULL ORDER BY r.name
         """)
     ).all()
     made: list[Chunk] = []
-    for test_id, name, purpose, workspace in rows:
+    for test_id, name, purpose, division in rows:
         body = _card(
             f"신뢰성 시험: {name}",
             [
-                f"부서: {workspace}",
+                f"사업부: {division}",
                 _listed("적용 시험 항목", tests.get(str(test_id), [])),
                 f"목적: {purpose}" if purpose else "",
                 *attributes.get(str(test_id), []),

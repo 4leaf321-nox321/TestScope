@@ -76,15 +76,22 @@ class Workspace(Base):
     "우리 조직이 무엇을 시험할 수 있나" 에 답하는 것이라, 가리는 쪽이 예외여야
     한다. 쓰기는 이 값과 무관하게 여전히 소유 부서의 관리자만 한다."""
 
-    reliability_listed: Mapped[bool] = mapped_column(
-        Boolean, default=False, server_default="false"
+    division_term_id: Mapped[uuid.UUID | None] = mapped_column(
+        PgUUID(as_uuid=True),
+        ForeignKey("vocabulary_terms.id", ondelete="RESTRICT"),
+        nullable=True,
+        index=True,
     )
-    """사이드바 「신뢰성 시험」 아래에 이 부서를 올리나.
+    """이 부서가 속한 **사업부**(`division` 축의 값).
 
-    조직도의 부서가 전부 시험을 하는 곳은 아니다 — 본부·지원 부서는 장비가 없다.
-    메뉴에 조직도를 통째로 펼치면 시험을 하는 부서 넷을 찾으려고 서른을 훑게 되므로,
-    관리자가 「부서 정보」 에서 고른 부서만 올린다. 가시성(`restricted`)과는 다른
-    물음이다 — 이것은 메뉴 자리이고, 그것은 장비를 누가 보나다."""
+    **비워 두면 위에서 물려받는다.** 조직도를 타고 올라가 처음 만나는 값이 이 부서의
+    사업부다 — 사업부에 한 번 붙이면 그 아래 수십 개 팀에 다시 붙일 일이 없고, 팀이
+    다른 사업부로 옮겨 가면 부모만 바뀌어도 따라간다.
+
+    신뢰성 시험은 부서가 아니라 이 사업부에 속한다. 팀에 두면 같은 시험이 팀마다
+    갈라지고, 「저 사업부가 무슨 시험을 하나」 가 답이 안 나온다.
+
+    RESTRICT 인 이유: 쓰이는 사업부 값을 지우면 그 부서가 어디 소속이었는지가 사라진다."""
 
     created_at: Mapped[datetime] = mapped_column(
         DateTime(timezone=True), server_default=func.now()
