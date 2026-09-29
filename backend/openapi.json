@@ -7159,7 +7159,7 @@
           "reliability"
         ],
         "summary": "List Reliability Tests",
-        "description": "신뢰성 시험 — **부서가 등록한 절차**다. 「시험 항목」(장비가 할 수 있는 측정, 전사\n공용)과 다르다. `division` 에 사업부 코드(`mx`…)를 주면 그 사업부 것만, 안 주면 전사\n전부(사업부 순). 시험마다 쓰는 시험 항목과, 그 항목이 되는 **그 사업부의** 장비 수를\n함께 준다 — 0 이면 시험은 정했는데\n돌릴 장비가 없다는 뜻이다.\n\n`attr` 은 **속성 값으로 거른다** — 여러 번 주면 모두 만족해야 한다(`attr=<키><연산><값>`,\n연산은 `>=` `<=` `>` `<` `=` `!=` `~`(포함) `*`(적혀 있기만 하면)). 왼쪽은 속성 정의의\n`key` 다 — 이름은 관리자가 고치면 바뀌고, 그때 저장해 둔 주소가 조용히 빈 답을 낸다.\n\n`status` 를 **안 주면 자리에 따라 다르다** — 사업부를 주면 후보까지(검토하는 자리라서),\n전사면 확정된 것만(「저 사업부가 무슨 시험을 하나」 에 후보는 아직 답이 아니다). 일부러\n보려면 `status=\"all\"`, 후보만 세려면 `status=\"candidate\"`.",
+        "description": "신뢰성 시험 — **부서가 등록한 절차**다. 「시험 항목」(장비가 할 수 있는 측정, 전사\n공용)과 다르다. `division` 에 사업부 코드(`mx`…)를 주면 그 사업부 것만, 안 주면 전사\n전부(사업부 순). 시험마다 쓰는 시험 항목과, 그 항목이 되는 **그 사업부의** 장비 수를\n함께 준다 — 0 이면 시험은 정했는데\n돌릴 장비가 없다는 뜻이다.\n\n`attr` 은 **속성 값으로 거른다** — 여러 번 주면 모두 만족해야 한다(`attr=<키><연산><값>`,\n연산은 `>=` `<=` `>` `<` `=` `!=` `~`(포함) `*`(적혀 있기만 하면)). 왼쪽은 속성 정의의\n`key` 다 — 이름은 관리자가 고치면 바뀌고, 그때 저장해 둔 주소가 조용히 빈 답을 낸다.\n\n`status` 를 **안 주면 자리에 따라 다르다** — 사업부를 주면 후보까지(검토하는 자리라서),\n전사면 확정된 것만(「저 사업부가 무슨 시험을 하나」 에 후보는 아직 답이 아니다). 일부러\n보려면 `status=\"all\"`, 후보만 세려면 `status=\"candidate\"`.\n\n`document` 에 사내 규격서 id 를 주면 **그 문서에서 나온 줄만** 온다 — 묶음으로 올라온\n스무 건을 한 자리에서 보고 한 번에 확인·반려하는 길이다.",
         "operationId": "list_reliability_tests_api_reliability_tests_get",
         "parameters": [
           {
@@ -7211,6 +7211,23 @@
                 }
               ],
               "title": "Status"
+            }
+          },
+          {
+            "name": "document",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string",
+                  "format": "uuid"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Document"
             }
           }
         ],
@@ -7559,6 +7576,48 @@
         "responses": {
           "204": {
             "description": "Successful Response"
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/reliability-tests/batch": {
+      "post": {
+        "tags": [
+          "reliability"
+        ],
+        "summary": "Create Reliability Tests",
+        "description": "문서 하나에서 뽑은 시험들을 **한 번에** 올린다 — 줄마다 결과가 온다.\n\n**207 로 답한다.** 201 은 「만들었다」, 400 은 「못 만들었다」 인데 이 답은 둘 다다 —\n스무 줄 중 열여덟이 들어가고 둘이 막힐 수 있고, 그 둘을 201 뒤에 숨기면 부른 쪽이\n안 본다.\n\n**`/{test_id}` 보다 먼저 선언한다** — 뒤에 두면 `batch` 가 id 로 읽혀 404 가 온다.",
+        "operationId": "create_reliability_tests_api_reliability_tests_batch_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ReliabilityBatchRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "207": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ReliabilityBatchOut"
+                }
+              }
+            }
           },
           "422": {
             "description": "Validation Error",
@@ -19010,6 +19069,76 @@
         ],
         "title": "RelatedOut"
       },
+      "ReliabilityBatchOut": {
+        "properties": {
+          "requested": {
+            "type": "integer",
+            "title": "Requested"
+          },
+          "created": {
+            "items": {
+              "$ref": "#/components/schemas/ReliabilityTestOut"
+            },
+            "type": "array",
+            "title": "Created"
+          },
+          "failed": {
+            "items": {
+              "additionalProperties": {
+                "type": "string"
+              },
+              "type": "object"
+            },
+            "type": "array",
+            "title": "Failed"
+          }
+        },
+        "type": "object",
+        "required": [
+          "requested",
+          "created",
+          "failed"
+        ],
+        "title": "ReliabilityBatchOut",
+        "description": "줄마다의 결과 — **전부 되거나 전부 안 되거나로 두지 않는다.**\n\n스무 줄 중 하나가 이름이 겹친다고 열아홉이 함께 막히면, 부른 쪽은 그 하나를 고치려고\n스무 줄을 다시 보낸다. 그러다 하나를 빠뜨린다."
+      },
+      "ReliabilityBatchRequest": {
+        "properties": {
+          "division_code": {
+            "type": "string",
+            "title": "Division Code"
+          },
+          "document_id": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "uuid"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Document Id"
+          },
+          "tests": {
+            "items": {
+              "$ref": "#/components/schemas/ReliabilityTestBatchItem"
+            },
+            "type": "array",
+            "maxItems": 500,
+            "minItems": 1,
+            "title": "Tests"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "division_code",
+          "tests"
+        ],
+        "title": "ReliabilityBatchRequest",
+        "description": "문서 하나에서 뽑은 시험들을 **한 번에** 올린다.\n\nAI 가 규격서 한 권에서 시험 스무 건을 뽑는다. 한 건씩 스무 번 부르면 중간에 열 번째가\n막혔을 때 **앞의 아홉은 이미 들어가 있고** 뒤의 열은 없다 — 무엇이 올라갔는지 부른 쪽도\n사람도 모른다. 그리고 그 스무 건이 한 문서에서 나왔다는 사실이 어디에도 안 남는다."
+      },
       "ReliabilityBulkOut": {
         "properties": {
           "requested": {
@@ -19101,6 +19230,44 @@
           "reason"
         ],
         "title": "ReliabilityRejectRequest"
+      },
+      "ReliabilityTestBatchItem": {
+        "properties": {
+          "name": {
+            "type": "string",
+            "maxLength": 200,
+            "minLength": 1,
+            "title": "Name"
+          },
+          "purpose": {
+            "type": "string",
+            "maxLength": 4000,
+            "title": "Purpose",
+            "default": ""
+          },
+          "test_item_term_ids": {
+            "items": {
+              "type": "string",
+              "format": "uuid"
+            },
+            "type": "array",
+            "title": "Test Item Term Ids"
+          },
+          "attributes": {
+            "items": {
+              "$ref": "#/components/schemas/AttributeValueIn"
+            },
+            "type": "array",
+            "title": "Attributes"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "name"
+        ],
+        "title": "ReliabilityTestBatchItem",
+        "description": "묶음 안의 한 줄. `division_code` 는 묶음이 갖는다."
       },
       "ReliabilityTestCreateRequest": {
         "properties": {

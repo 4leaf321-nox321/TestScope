@@ -19,7 +19,9 @@ from app.modules.attachments import services as attachments
 from app.modules.attachments.models import Attachment
 from app.modules.attributes import filters as attribute_filters
 from app.modules.attributes import services as attributes
+from app.modules.attributes.models import AttributeDefinition, AttributeValue
 from app.modules.attributes.schemas import AttributeValueIn
+from app.modules.documents import services as documents
 from app.modules.equipment.models import Equipment
 from app.modules.reliability.models import ReliabilityTest, ReliabilityTestItem
 from app.modules.reliability.schemas import (
@@ -204,6 +206,7 @@ def list_for_division(
     code: str,
     attrs: list[str] | None = None,
     status: str | None = None,
+    document_id: uuid.UUID | None = None,
 ) -> list[ReliabilityTestOut]:
     """그 사업부의 시험 — **후보까지 보인다.** 후보를 검토하는 자리가 여기다.
 
@@ -218,8 +221,29 @@ def list_for_division(
         # 후보(candidate)가 확정(confirmed)보다 앞 — 글자 순이 마침 그렇다.
         .order_by(ReliabilityTest.status, ReliabilityTest.name)
     )
-    rows = list(db.scalars(_by_attributes(db, _by_status(stmt, status, default="all"), attrs)))
+    narrowed = _by_document(_by_status(stmt, status, default="all"), document_id)
+    rows = list(db.scalars(_by_attributes(db, narrowed, attrs)))
     return _outs(db, user, rows)
+
+
+def _by_document(
+    stmt: Select[tuple[ReliabilityTest]], document_id: uuid.UUID | None
+) -> Select[tuple[ReliabilityTest]]:
+    """그 사내 규격서를 가리키는 시험만 — **문서 단위로 검토하려는 자리다.**
+
+    한 문서에서 뽑힌 줄들은 **같은 실수를 함께 한다**(옮겨 적은 사람도 AI 도 한 번에
+    읽었다). 스무 건을 스무 개의 따로 난 일로 보면 그 결이 안 보이고, 한 건씩 판단하다
+    같은 오답을 스무 번 통과시킨다.
+    """
+    if document_id is None:
+        return stmt
+    return stmt.where(
+        ReliabilityTest.id.in_(
+            select(AttributeValue.reliability_test_id).where(
+                AttributeValue.ref_document_id == document_id
+            )
+        )
+    )
 
 
 def _by_attributes(
@@ -237,7 +261,11 @@ def _by_attributes(
 
 
 def list_all(
-    db: Session, user: User, attrs: list[str] | None = None, status: str | None = None
+    db: Session,
+    user: User,
+    attrs: list[str] | None = None,
+    status: str | None = None,
+    document_id: uuid.UUID | None = None,
 ) -> list[ReliabilityTestOut]:
     """전사의 신뢰성 시험 — **「저 부서는 무슨 시험을 하나」 를 부서를 가로질러 묻는 표.**
     읽기는 누구나(부서를 가로지르는 것이 이 시스템의 물음), 고치기는 각 부서 화면에서.
@@ -252,9 +280,8 @@ def list_all(
         .where(ReliabilityTest.deleted_at.is_(None))
         .order_by(VocabularyTerm.sort_order, VocabularyTerm.value, ReliabilityTest.name)
     )
-    rows = list(
-        db.scalars(_by_attributes(db, _by_status(stmt, status, default=CONFIRMED), attrs))
-    )
+    narrowed = _by_document(_by_status(stmt, status, default=CONFIRMED), document_id)
+    rows = list(db.scalars(_by_attributes(db, narrowed, attrs)))
     return _outs(db, user, rows)
 
 
@@ -683,6 +710,108 @@ def bulk(
                 {"id": str(test_id), "code": refused.code, "message": refused.message}
             )
     return {"done": done, "failed": failed, "requested": len(ids)}
+
+
+#: 사내 규격서를 가리키는 속성의 key. 묶음 등록이 이 칸에 문서를 건다.
+SPEC_DOCUMENT_KEY = "reliability_spec_document"
+
+
+def _spec_document_definition(db: Session) -> AttributeDefinition | None:
+    """「규격서」 칸의 정의. **없으면 안 건다** — 설치가 덜 된 DB 에서 묶음 등록이 통째로
+    막히면, 문서를 못 걸어서가 아니라 시험을 못 올려서 문제가 된다."""
+    return db.scalar(
+        select(AttributeDefinition).where(
+            AttributeDefinition.target == "reliability_test",
+            AttributeDefinition.key == SPEC_DOCUMENT_KEY,
+        )
+    )
+
+
+def _with_document(
+    items: list[dict[str, Any]], definition: AttributeDefinition | None, document_id: uuid.UUID
+) -> list[dict[str, Any]]:
+    """줄의 속성에 규격서를 건다 — **이미 적힌 줄은 안 덮는다.**
+
+    AI 가 줄마다 다른 규격서를 적었을 수 있다(한 문서가 다른 문서를 인용한다). 묶음이
+    준 문서로 그것을 덮으면, 더 정확한 값이 덜 정확한 값에 밀린다.
+    """
+    if definition is None:
+        return items
+    out = list(items)
+    if any(str(one.get("definition_id") or "") == str(definition.id) for one in out):
+        return out
+    out.append(
+        {"definition_id": definition.id, "document_id": document_id, "new_kind": "document"}
+    )
+    return out
+
+
+def create_many(db: Session, user: User, payload: dict[str, Any]) -> dict[str, Any]:
+    """문서 하나에서 뽑은 시험들을 **한 번에** 올린다.
+
+    한 건씩 스무 번 부르는 것과 무엇이 다른가 — **중간에 막혔을 때의 자리**가 다르다.
+    열 번째에서 끊기면 앞의 아홉은 들어가 있고 뒤의 열은 없는데, 부른 쪽은 그 경계를
+    모른다. 다시 부르면 아홉이 이름 겹침으로 막히고, 그 오류를 보고 사람은 「안 올라갔나」
+    라고 읽는다. 여기서는 **줄마다 결과가 온다** — 무엇이 들어가고 무엇이 왜 막혔는지가
+    한 답에 있다.
+
+    그리고 **한 문서에서 나왔다는 사실이 줄에 남는다**(`document_id`). 그것이 없으면
+    검토하는 사람은 스무 줄을 스무 건으로 본다 — 같은 문서에서 나온 줄은 같은 실수를
+    함께 하고, 함께 봐야 그것이 보인다.
+
+    **줄마다 커밋한다.** 한 덩이로 묶으면 한 줄의 이름 겹침이 열아홉을 되돌린다.
+    """
+    division = division_by_code(db, str(payload["division_code"]))
+    # **권한은 줄마다가 아니라 먼저 본다** — 못 올릴 사업부면 오백 번 시도할 이유가 없다.
+    _require_can_register(db, user, division.id)
+
+    tests: list[dict[str, Any]] = list(payload.get("tests") or [])
+    if not tests:
+        raise AppError("TSC-RELIABILITY-0012", "올릴 줄이 없습니다.")
+    if len(tests) > BULK_LIMIT:
+        raise AppError(
+            "TSC-RELIABILITY-0012",
+            f"한 번에 {BULK_LIMIT}건까지입니다 — {len(tests)}건을 보냈습니다."
+            " 나눠 보내십시오.",
+        )
+
+    document_id = payload.get("document_id")
+    definition = _spec_document_definition(db) if document_id else None
+    if document_id is not None:
+        # 없는 문서에 걸면 줄마다 같은 오류가 오백 번 난다 — 여기서 한 번에 막는다.
+        documents.get(db, uuid.UUID(str(document_id)))
+
+    created: list[ReliabilityTest] = []
+    failed: list[dict[str, str]] = []
+    for one in tests:
+        name = str(one.get("name") or "")
+        items = [dict(each) for each in (one.get("attributes") or [])]
+        if document_id is not None:
+            items = _with_document(items, definition, uuid.UUID(str(document_id)))
+        try:
+            created.append(
+                create(
+                    db,
+                    user,
+                    {
+                        "division_code": str(payload["division_code"]),
+                        "name": name,
+                        "purpose": one.get("purpose") or "",
+                        "test_item_term_ids": one.get("test_item_term_ids") or [],
+                        "attributes": items,
+                    },
+                )
+            )
+        except AppError as refused:
+            # **한 줄이 막혀도 나머지는 간다.** 반쯤 만들어진 줄을 되돌리고 다음으로 —
+            # 안 그러면 실패한 줄의 조각이 다음 줄의 커밋에 묻어 간다.
+            db.rollback()
+            failed.append({"name": name, "code": refused.code, "message": refused.message})
+    return {
+        "requested": len(tests),
+        "created": _outs(db, user, created),
+        "failed": failed,
+    }
 
 
 def delete(db: Session, user: User, test_id: uuid.UUID) -> None:

@@ -24,6 +24,7 @@ import { useResource } from '@/shared/hooks/useResource'
 import { AttachmentStrip } from '@/modules/attachments/AttachmentStrip'
 import { attachmentApi } from '@/modules/attachments/api'
 import type { Attachment } from '@/modules/attachments/api'
+import { DocumentTestReview } from '@/modules/documents/DocumentTestReview'
 import type { SpecDocument } from '@/modules/documents/api'
 
 export function SpecDocumentViewDialog({
@@ -93,10 +94,13 @@ export function SpecDocumentViewDialog({
           />
         </section>
 
+        {/* **검토를 문서 옆에 둔다.** 한 문서에서 뽑힌 줄은 같은 실수를 함께 하는데,
+            사업부 화면에서는 다른 문서에서 온 줄과 섞여 그 결이 안 보인다. */}
+        <DocumentTestReview documentId={document.id} />
+
         {document.linked_test_count > 0 && (
-          <p className="text-muted-foreground text-sm">
-            이 규격서를 가리키는 신뢰성 시험 <strong>{document.linked_test_count}건</strong>.
-            지우려면 먼저 끊어야 합니다.
+          <p className="text-muted-foreground text-xs">
+            이 규격서를 가리키는 시험이 있으면 규격서를 지울 수 없습니다 — 먼저 끊어야 합니다.
           </p>
         )}
 

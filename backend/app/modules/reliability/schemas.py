@@ -99,6 +99,47 @@ class ReliabilityTestCreateRequest(Request):
     """항목 값. `definition_id` 가 없고 `new_label` 이 있으면 초안 항목이 생긴다."""
 
 
+class ReliabilityTestBatchItem(Request):
+    """묶음 안의 한 줄. `division_code` 는 묶음이 갖는다."""
+
+    name: str = Field(min_length=1, max_length=200)
+    purpose: str = Field(default="", max_length=4000)
+    test_item_term_ids: list[uuid.UUID] = Field(default_factory=list)
+    attributes: list[AttributeValueIn] = Field(default_factory=list)
+
+
+class ReliabilityBatchRequest(Request):
+    """문서 하나에서 뽑은 시험들을 **한 번에** 올린다.
+
+    AI 가 규격서 한 권에서 시험 스무 건을 뽑는다. 한 건씩 스무 번 부르면 중간에 열 번째가
+    막혔을 때 **앞의 아홉은 이미 들어가 있고** 뒤의 열은 없다 — 무엇이 올라갔는지 부른 쪽도
+    사람도 모른다. 그리고 그 스무 건이 한 문서에서 나왔다는 사실이 어디에도 안 남는다.
+    """
+
+    division_code: str
+    """줄마다 다시 적지 않는다 — 한 문서는 한 사업부의 것이다."""
+    document_id: uuid.UUID | None = None
+    """어느 사내 규격서에서 뽑았나. **주면 줄마다 「규격서」 칸에 걸린다** — 그래야 사람이
+    문서 단위로 모아 보고, 값이 틀렸을 때 원본으로 되짚는다. 줄이 제 `attributes` 에
+    규격서를 이미 적었으면 그것을 안 덮는다."""
+    tests: list[ReliabilityTestBatchItem] = Field(min_length=1, max_length=500)
+    """한 번에 500건까지 — `ReliabilityBulkRequest` 와 같은 상한이다."""
+
+
+class ReliabilityBatchOut(BaseModel):
+    """줄마다의 결과 — **전부 되거나 전부 안 되거나로 두지 않는다.**
+
+    스무 줄 중 하나가 이름이 겹친다고 열아홉이 함께 막히면, 부른 쪽은 그 하나를 고치려고
+    스무 줄을 다시 보낸다. 그러다 하나를 빠뜨린다.
+    """
+
+    requested: int
+    created: list[ReliabilityTestOut]
+    failed: list[dict[str, str]]
+    """안 된 줄과 **왜**. `name` 이 함께 온다 — id 가 없는 줄이라 그것 말고는 가리킬 것이
+    없다."""
+
+
 class ReliabilityTestUpdateRequest(Request):
     """안 보낸 칸은 그대로. `test_item_term_ids` 는 보내면 **통째로** 바뀐다."""
 

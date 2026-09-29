@@ -457,6 +457,57 @@ async def _write_chain(ctx: _Ctx) -> int:
             await server.create_method(ctx, code=f"MCP  {tag}", title="중복"),
         )
 
+    # 8-1. 규격서 한 권 -> 시험 묶음 -> 문서로 모아 보기.
+    #
+    # 한 건씩 올리는 길만 있으면 스무 건을 스무 번 부르다 중간에 끊기고, 그때 무엇이
+    # 올라갔는지 부른 쪽도 사람도 모른다. 그리고 그 스무 건이 한 문서에서 나왔다는 사실이
+    # 안 남아 **문서 단위로 검토할 수 없다.**
+    teams = step("list_workspaces", await server.list_workspaces(ctx), ["count"])
+    slug = (teams or {}).get("workspaces", [{}])[0].get("slug") if teams else None
+    if slug:
+        paper = step(
+            "create_spec_document",
+            await server.create_spec_document(
+                ctx, workspace_slug=slug, code=f"MCP-DOC-{tag}", title="MCP확인 규격서"
+            ),
+            ["code"],
+        )
+        if paper is not None:
+            batch = step(
+                "create_reliability_tests(묶음)",
+                await server.create_reliability_tests(
+                    ctx,
+                    division_code=code,
+                    document_id=paper["id"],
+                    tests=[
+                        {"name": f"MCP확인 묶음 하나-{tag}"},
+                        {"name": f"MCP확인 묶음 둘-{tag}"},
+                        # **일부러 겹치게 둔다** — 한 줄이 막혀도 나머지가 가는지 본다.
+                        {"name": f"MCP확인 열충격-{tag}"},
+                    ],
+                ),
+                ["requested"],
+            )
+            if batch is not None:
+                made = [one["name"] for one in batch.get("created", [])]
+                if len(made) != 2:
+                    bad += 1
+                    print(f"  실패 묶음에서 두 줄이 들어가야 하는데 {len(made)}줄입니다")
+                if len(batch.get("failed", [])) != 1:
+                    bad += 1
+                    print("  실패 이름이 겹친 줄이 막히지 않았습니다 — 또는 왜가 안 옵니다")
+                # 줄마다 규격서가 걸렸나 — 안 걸리면 문서 단위로 못 모은다.
+                for one in batch.get("created", []):
+                    codes = [
+                        each["document_code"]
+                        for each in one.get("attributes", [])
+                        if each.get("document_code")
+                    ]
+                    if codes != [f"MCP-DOC-{tag}"]:
+                        bad += 1
+                        print(f"  실패 묶음이 규격서를 안 걸었습니다: {_short(codes, 80)}")
+                        break
+
     # 9. 물성 연결은 제안으로만 들어가야 한다.
     prop = await server.create_term(ctx, "property", f"MCP확인 항복강도-{tag}")
     if "error" not in prop:

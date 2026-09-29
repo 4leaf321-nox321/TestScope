@@ -2273,6 +2273,9 @@ export interface paths {
          *     `status` 를 **안 주면 자리에 따라 다르다** — 사업부를 주면 후보까지(검토하는 자리라서),
          *     전사면 확정된 것만(「저 사업부가 무슨 시험을 하나」 에 후보는 아직 답이 아니다). 일부러
          *     보려면 `status="all"`, 후보만 세려면 `status="candidate"`.
+         *
+         *     `document` 에 사내 규격서 id 를 주면 **그 문서에서 나온 줄만** 온다 — 묶음으로 올라온
+         *     스무 건을 한 자리에서 보고 한 번에 확인·반려하는 길이다.
          */
         get: operations["list_reliability_tests_api_reliability_tests_get"];
         put?: never;
@@ -2404,6 +2407,32 @@ export interface paths {
          *     「이제 안 하는 시험」 이고 반려는 「애초에 틀린 줄」 이다.
          */
         post: operations["reject_reliability_test_api_reliability_tests__test_id__reject_post"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/reliability-tests/batch": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /**
+         * Create Reliability Tests
+         * @description 문서 하나에서 뽑은 시험들을 **한 번에** 올린다 — 줄마다 결과가 온다.
+         *
+         *     **207 로 답한다.** 201 은 「만들었다」, 400 은 「못 만들었다」 인데 이 답은 둘 다다 —
+         *     스무 줄 중 열여덟이 들어가고 둘이 막힐 수 있고, 그 둘을 201 뒤에 숨기면 부른 쪽이
+         *     안 본다.
+         *
+         *     **`/{test_id}` 보다 먼저 선언한다** — 뒤에 두면 `batch` 가 id 로 읽혀 404 가 온다.
+         */
+        post: operations["create_reliability_tests_api_reliability_tests_batch_post"];
         delete?: never;
         options?: never;
         head?: never;
@@ -6397,6 +6426,39 @@ export interface components {
             node_type_label: string;
         };
         /**
+         * ReliabilityBatchOut
+         * @description 줄마다의 결과 — **전부 되거나 전부 안 되거나로 두지 않는다.**
+         *
+         *     스무 줄 중 하나가 이름이 겹친다고 열아홉이 함께 막히면, 부른 쪽은 그 하나를 고치려고
+         *     스무 줄을 다시 보낸다. 그러다 하나를 빠뜨린다.
+         */
+        ReliabilityBatchOut: {
+            /** Requested */
+            requested: number;
+            /** Created */
+            created: components["schemas"]["ReliabilityTestOut"][];
+            /** Failed */
+            failed: {
+                [key: string]: string;
+            }[];
+        };
+        /**
+         * ReliabilityBatchRequest
+         * @description 문서 하나에서 뽑은 시험들을 **한 번에** 올린다.
+         *
+         *     AI 가 규격서 한 권에서 시험 스무 건을 뽑는다. 한 건씩 스무 번 부르면 중간에 열 번째가
+         *     막혔을 때 **앞의 아홉은 이미 들어가 있고** 뒤의 열은 없다 — 무엇이 올라갔는지 부른 쪽도
+         *     사람도 모른다. 그리고 그 스무 건이 한 문서에서 나왔다는 사실이 어디에도 안 남는다.
+         */
+        ReliabilityBatchRequest: {
+            /** Division Code */
+            division_code: string;
+            /** Document Id */
+            document_id?: string | null;
+            /** Tests */
+            tests: components["schemas"]["ReliabilityTestBatchItem"][];
+        };
+        /**
          * ReliabilityBulkOut
          * @description 줄마다의 결과. **전부 되거나 전부 안 되거나로 두지 않는다** — 오백 줄 중 하나가
          *     남의 사업부라고 사백구십구 줄이 함께 막히면 쓸 수가 없다.
@@ -6427,6 +6489,23 @@ export interface components {
         ReliabilityRejectRequest: {
             /** Reason */
             reason: string;
+        };
+        /**
+         * ReliabilityTestBatchItem
+         * @description 묶음 안의 한 줄. `division_code` 는 묶음이 갖는다.
+         */
+        ReliabilityTestBatchItem: {
+            /** Name */
+            name: string;
+            /**
+             * Purpose
+             * @default
+             */
+            purpose: string;
+            /** Test Item Term Ids */
+            test_item_term_ids?: string[];
+            /** Attributes */
+            attributes?: components["schemas"]["AttributeValueIn"][];
         };
         /** ReliabilityTestCreateRequest */
         ReliabilityTestCreateRequest: {
@@ -12513,6 +12592,7 @@ export interface operations {
                 division?: string | null;
                 attr?: string[];
                 status?: ("candidate" | "confirmed" | "all") | null;
+                document?: string | null;
             };
             header?: never;
             path?: never;
@@ -12771,6 +12851,39 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content?: never;
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    create_reliability_tests_api_reliability_tests_batch_post: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["ReliabilityBatchRequest"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            207: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ReliabilityBatchOut"];
+                };
             };
             /** @description Validation Error */
             422: {

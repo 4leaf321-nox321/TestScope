@@ -41,6 +41,15 @@ export const reliabilityApi = {
     const query = search.toString()
     return api.get<ReliabilityTest[]>(`/reliability-tests${query ? `?${query}` : ''}`)
   },
+  /** **한 규격서에서 올라온 시험들** — 후보까지, 확정된 것까지.
+   *
+   *  AI 가 규격서 한 권에서 스무 건을 뽑아 올린다. 그 스무 줄은 **같은 실수를 함께 한다**
+   *  (한 번에 읽은 것이다) — 한 건씩 흩어 놓고 보면 그 결이 안 보이고, 같은 오답을 스무
+   *  번 통과시킨다. 그래서 문서 단위로 모아 본다. */
+  byDocument: (documentId: string) =>
+    api.get<ReliabilityTest[]>(
+      `/reliability-tests?status=all&document=${encodeURIComponent(documentId)}`,
+    ),
   /** **이 시험을 돌릴 수 있는 장비.** 조건 속성이 그대로 검색 조건이 된다 — 판정 규칙은
    *  장비 찾기와 같은 것 하나다. 범위 하나는 물음 둘(위로·아래로). */
   capability: (id: string) => api.get<Capability>(`/reliability-tests/${id}/equipment`),

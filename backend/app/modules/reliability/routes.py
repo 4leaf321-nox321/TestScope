@@ -15,6 +15,8 @@ from app.modules.reliability import services
 from app.modules.reliability.schemas import (
     CapabilityOut,
     DivisionOut,
+    ReliabilityBatchOut,
+    ReliabilityBatchRequest,
     ReliabilityBulkOut,
     ReliabilityBulkRequest,
     ReliabilityRejectRequest,
@@ -32,6 +34,7 @@ def list_reliability_tests(
     division: str | None = Query(default=None, max_length=120),
     attr: list[str] = Query(default_factory=list, max_length=10),
     status: Literal["candidate", "confirmed", "all"] | None = Query(default=None),
+    document: uuid.UUID | None = Query(default=None),
     user: User = Depends(current_user),
     db: Session = Depends(get_db),
 ) -> list[ReliabilityTestOut]:
@@ -48,10 +51,13 @@ def list_reliability_tests(
     `status` 를 **안 주면 자리에 따라 다르다** — 사업부를 주면 후보까지(검토하는 자리라서),
     전사면 확정된 것만(「저 사업부가 무슨 시험을 하나」 에 후보는 아직 답이 아니다). 일부러
     보려면 `status="all"`, 후보만 세려면 `status="candidate"`.
+
+    `document` 에 사내 규격서 id 를 주면 **그 문서에서 나온 줄만** 온다 — 묶음으로 올라온
+    스무 건을 한 자리에서 보고 한 번에 확인·반려하는 길이다.
     """
     if division:
-        return services.list_for_division(db, user, division, attr, status)
-    return services.list_all(db, user, attr, status)
+        return services.list_for_division(db, user, division, attr, status, document)
+    return services.list_all(db, user, attr, status, document)
 
 
 @router.get("/divisions", response_model=list[DivisionOut])
@@ -145,6 +151,23 @@ def reject_reliability_test(
     「이제 안 하는 시험」 이고 반려는 「애초에 틀린 줄」 이다.
     """
     services.reject(db, user, test_id, payload.reason)
+
+
+@router.post("/batch", response_model=ReliabilityBatchOut, status_code=207)
+def create_reliability_tests(
+    payload: ReliabilityBatchRequest,
+    user: User = Depends(current_user),
+    db: Session = Depends(get_db),
+) -> ReliabilityBatchOut:
+    """문서 하나에서 뽑은 시험들을 **한 번에** 올린다 — 줄마다 결과가 온다.
+
+    **207 로 답한다.** 201 은 「만들었다」, 400 은 「못 만들었다」 인데 이 답은 둘 다다 —
+    스무 줄 중 열여덟이 들어가고 둘이 막힐 수 있고, 그 둘을 201 뒤에 숨기면 부른 쪽이
+    안 본다.
+
+    **`/{test_id}` 보다 먼저 선언한다** — 뒤에 두면 `batch` 가 id 로 읽혀 404 가 온다.
+    """
+    return ReliabilityBatchOut(**services.create_many(db, user, payload.model_dump()))
 
 
 @router.post("/bulk", response_model=ReliabilityBulkOut)

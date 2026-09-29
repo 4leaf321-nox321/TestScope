@@ -660,10 +660,13 @@ async def list_conditions(ctx: Context) -> dict[str, Any]:
 async def list_workspaces(ctx: Context) -> dict[str, Any]:
     """부서 목록 — slug · 이름 · 조직도 경로(「개발본부 / 재료시험팀」).
 
-    쓰기 API 가 요구하는 것은 이름이 아니라 **slug** 다(`create_reliability_test` 의
-    `workspace_slug`, `register_equipment` 의 `workspace_slug`). 이 목록 없이 이름으로
-    짐작해 넣으면 대개 404 이거나 남의 부서다. **같은 이름의 팀이 본부마다 있을 수 있다** —
-    경로(`path`)로 가른다. 이름 하나만 알면 `resolve(kind="workspace", …)` 가 더 빠르다.
+    장비·규격서를 올리는 도구가 요구하는 것은 이름이 아니라 **slug** 다(`register_equipment`
+    의 `workspace_slug`). 이 목록 없이 이름으로 짐작해 넣으면 대개 404 이거나 남의 부서다.
+    **같은 이름의 팀이 본부마다 있을 수 있다** — 경로(`path`)로 가른다. 이름 하나만 알면
+    `resolve(kind="workspace", …)` 가 더 빠르다.
+
+    **신뢰성 시험은 부서가 아니라 사업부에 속한다** — 거기에는 이 목록이 아니라
+    `list_divisions` 의 사업부 코드를 쓴다.
     """
     return _listed(await _get(ctx, "/workspaces/options"), "workspaces")
 
@@ -866,7 +869,7 @@ async def create_model(
     series: str | None = None,
     series_id: str | None = None,
     maker: str | None = None,
-    form_factor: str | None = None,
+    form_factor_term_id: str | None = None,
     summary: str | None = None,
 ) -> dict[str, Any]:
     """기종을 만든다. **계열이 먼저 있어야 한다.**
@@ -877,6 +880,9 @@ async def create_model(
 
     기종명에 계열 이름을 섞지 마라. `6800 68FM-300` 과 `68FM-300` 이 별개 기종으로
     갈리고, 그 둘을 나중에 묶을 방법이 없다.
+
+    형태(`form_factor_term_id`)는 **축의 값 id** 다 — `resolve(kind="term",
+    axis="form_factor", name="탁상형")`. 자유 문자열이 아니다.
     """
     return await _send(
         ctx,
@@ -887,7 +893,7 @@ async def create_model(
             "series": series,
             "series_id": series_id,
             "maker": maker,
-            "form_factor": form_factor or "",
+            "form_factor_term_id": form_factor_term_id,
             "summary": summary,
         },
     )
@@ -1884,7 +1890,7 @@ async def list_axes(ctx: Context) -> dict[str, Any]:
 
 @mcp.tool()
 async def list_terms(
-    ctx: Context, axis: str, q: str | None = None, include_inactive: bool = False
+    ctx: Context, axis: str, q: str | None = None, include_deprecated: bool = False
 ) -> dict[str, Any]:
     """한 축의 값 — 이름 · 코드 · 별칭 · 상위 값 · 상태.
 
@@ -1897,7 +1903,7 @@ async def list_terms(
         await _get(
             ctx,
             f"/vocabularies/{axis}/terms",
-            {"q": q, "include_inactive": "true" if include_inactive else None},
+            {"q": q, "include_deprecated": "true" if include_deprecated else None},
         ),
         "terms",
     )
@@ -2510,6 +2516,49 @@ async def create_reliability_test(
         "후보로 올라갔다. 사람이 부서 화면에서 확인해야 확정이고, 그때까지 전사 목록에 안"
         " 나온다. 「등록 완료」 가 아니라 「후보로 올렸으니 확인해 달라」 고 말하고, 못 채운"
         " 칸이 있으면 무엇인지 함께 말하라. 확인은 네가 못 한다 — 사람이 화면에서 한다.",
+    )
+
+
+@writes
+async def create_reliability_tests(
+    ctx: Context,
+    division_code: str,
+    tests: list[dict[str, Any]],
+    document_id: str | None = None,
+) -> dict[str, Any]:
+    """**문서 하나에서 뽑은 시험들을 한 번에** 올린다 — 줄마다 결과가 온다.
+
+    규격서 한 권에서 시험 스무 건을 뽑았으면 `create_reliability_test` 를 스무 번 부르지
+    말고 이것을 한 번 불러라. 스무 번 부르다 열 번째에서 끊기면 **앞의 아홉은 들어가 있고
+    뒤의 열은 없는데**, 다시 부르면 아홉이 이름 겹침으로 막힌다 — 그 오류를 보고 사람은
+    「안 올라갔나」 라고 읽는다.
+
+    `tests` 의 한 줄은 `{"name": …, "purpose": …, "test_item_term_ids": [...],
+    "attributes": [...]}` 다 — `create_reliability_test` 의 같은 칸이고, `division_code`
+    만 묶음이 갖는다. 한 번에 500건까지.
+
+    **`document_id` 를 줘라**(`resolve(kind="spec_document", text="MX-REL-012",
+    workspace=…)`). 줄마다 「규격서」 칸에 걸려, 사람이 **문서 단위로 모아 검토**한다 —
+    한 문서에서 나온 줄은 같은 실수를 함께 하고, 함께 봐야 그것이 보인다. 줄이 제
+    `attributes` 에 규격서를 이미 적었으면 그것을 안 덮는다.
+
+    답의 `created` 는 들어간 줄, `failed` 는 막힌 줄과 **왜**다. **둘 다 읽고 말하라** —
+    「올렸습니다」 만 말하면 막힌 줄은 아무도 모른다.
+    """
+    return _then(
+        await _send(
+            ctx,
+            "POST",
+            "/reliability-tests/batch",
+            {
+                "division_code": division_code,
+                "document_id": document_id,
+                "tests": tests,
+            },
+        ),
+        "줄마다 결과가 왔다. **`failed` 를 세어 무엇이 왜 막혔는지 함께 말하라** — 들어간"
+        " 줄만 말하면 막힌 줄은 아무도 안 본다. 들어간 줄은 전부 후보이고, 사람이 화면에서"
+        " 문서 단위로 확인해야 확정이다.",
     )
 
 

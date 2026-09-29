@@ -119,6 +119,156 @@ def test_도구가_부르는_경로가_실재한다() -> None:
     assert not missing, f"서버에 없는 경로를 부른다: {missing}"
 
 
+def _spec() -> dict[str, Any]:
+    import json
+
+    loaded: dict[str, Any] = json.loads(
+        (SERVER.parents[1] / "backend" / "openapi.json").read_text(encoding="utf-8")
+    )
+    return loaded
+
+
+def _shape(path: str) -> str:
+    import re
+
+    #: `{model_id}` 같은 자리를 하나로 맞춘다 — 이름은 달라도 같은 자리다.
+    return re.sub(r"\{[^}]+\}", "{}", path)
+
+
+def _operations(spec: dict[str, Any]) -> dict[str, dict[str, Any]]:
+    """모양 -> {METHOD: 그 동작}."""
+    out: dict[str, dict[str, Any]] = {}
+    for raw, ops in spec["paths"].items():
+        out.setdefault(_shape(raw.removeprefix("/api")), {}).update(
+            {
+                method.upper(): one
+                for method, one in ops.items()
+                if method in ("get", "post", "put", "patch", "delete")
+            }
+        )
+    return out
+
+
+def _body_fields(spec: dict[str, Any], op: dict[str, Any]) -> tuple[set[str], set[str]] | None:
+    """그 동작이 받는 본문 칸과, 그중 필수. 모양을 못 읽으면 None."""
+    body = op.get("requestBody")
+    if not body:
+        return None
+    schema = body.get("content", {}).get("application/json", {}).get("schema")
+    if not schema:
+        return None
+    if "$ref" in schema:
+        node: Any = spec
+        for part in schema["$ref"].lstrip("#/").split("/"):
+            node = node[part]
+        schema = node
+    if "properties" not in schema:
+        return None
+    return set(schema["properties"]), set(schema.get("required", []))
+
+
+def _literal_keys(node: ast.AST) -> set[str] | None:
+    """`{"a": …}` 의 글자 키. 변수로 만든 dict 이거나 `**` 가 섞이면 None — 못 본다."""
+    if not isinstance(node, ast.Dict):
+        return None
+    out: set[str] = set()
+    for key in node.keys:
+        if not isinstance(key, ast.Constant) or not isinstance(key.value, str):
+            return None
+        out.add(key.value)
+    return out
+
+
+def _path_text(node: ast.AST) -> str | None:
+    if isinstance(node, ast.Constant) and isinstance(node.value, str):
+        return node.value
+    if isinstance(node, ast.JoinedStr):
+        return "".join(
+            str(bit.value) if isinstance(bit, ast.Constant) else "{}" for bit in node.values
+        )
+    return None
+
+
+def _calls() -> list[tuple[str, str, str, ast.AST | None, ast.AST | None]]:
+    """도구가 서버를 부르는 자리 — (도구, METHOD, 경로, 본문, 질의)."""
+    tree = ast.parse(SERVER.read_text(encoding="utf-8"))
+    out: list[tuple[str, str, str, ast.AST | None, ast.AST | None]] = []
+    for fn in ast.walk(tree):
+        if not isinstance(fn, ast.FunctionDef | ast.AsyncFunctionDef):
+            continue
+        for call in ast.walk(fn):
+            if not isinstance(call, ast.Call) or not isinstance(call.func, ast.Name):
+                continue
+            if call.func.id not in ("_send", "_get"):
+                continue
+            args = call.args
+            named = {one.arg: one.value for one in call.keywords}
+            if call.func.id == "_send":
+                if len(args) < 3 or not isinstance(args[1], ast.Constant):
+                    continue
+                method = str(args[1].value)
+                raw = _path_text(args[2])
+                body = args[3] if len(args) > 3 else named.get("body")
+                params = args[4] if len(args) > 4 else named.get("params")
+            else:
+                if len(args) < 2:
+                    continue
+                method, body = "GET", None
+                raw = _path_text(args[1])
+                params = args[2] if len(args) > 2 else named.get("params")
+            if raw is not None:
+                out.append((fn.name, method, raw, body, params))
+    return out
+
+
+def test_도구가_보내는_칸이_서버_스키마에_있다() -> None:
+    """**경로가 맞아도 칸 이름이 어긋나면 값은 조용히 버려진다.**
+
+    MCP 는 얇은 프록시라 본문을 글자 키로 짓는다. 서버가 칸 이름을 바꾸면(실제로
+    `form_factor` 가 `form_factor_term_id` 가 되고, 부서 slug 가 사업부 코드가 됐다)
+    요청은 200 으로 돌아오고 **그 칸만 없는 채로 저장된다.** 경로 시험은 이것을 못
+    잡는다 — 경로는 그대로이기 때문이다.
+
+    이 시험이 어긋남을 구조적으로 없앤다: 스키마가 정본이고, 도구는 그 정본에 맞는지
+    여기서 대조된다. 서버가 칸을 바꾸면 **올리기 전에** 빨간 줄이 뜬다.
+    """
+    spec = _spec()
+    operations = _operations(spec)
+    wrong: list[str] = []
+    seen = 0
+    for tool, method, raw, body, params in _calls():
+        op = operations.get(_shape(raw), {}).get(method)
+        if op is None:
+            continue  # 경로 자체는 위의 「경로가 실재한다」 가 본다.
+        seen += 1
+        if body is not None:
+            keys = _literal_keys(body)
+            fields = _body_fields(spec, op)
+            if keys is not None and fields is not None:
+                known, required = fields
+                extra = sorted(keys - known)
+                if extra:
+                    wrong.append(
+                        f"{tool}: {method} {raw} 가 서버가 모르는 칸을 보낸다 {extra}"
+                    )
+                missing = sorted(required - keys)
+                if missing:
+                    wrong.append(f"{tool}: {method} {raw} 의 필수 칸을 안 보낸다 {missing}")
+        if params is not None:
+            keys = _literal_keys(params)
+            if keys is not None:
+                known = {
+                    one["name"] for one in op.get("parameters", []) if one.get("in") == "query"
+                }
+                extra = sorted(keys - known)
+                if extra:
+                    wrong.append(
+                        f"{tool}: {method} {raw} 가 서버가 모르는 질의 칸을 보낸다 {extra}"
+                    )
+    assert seen >= 60, f"대조한 호출이 {seen}개뿐입니다 — 읽는 방식이 깨졌을 수 있습니다"
+    assert not wrong, "MCP 와 서버 스키마가 어긋납니다:\n  " + "\n  ".join(wrong)
+
+
 def test_띄우는_길_셋이_server_py_의_main_하나를_지난다() -> None:
     """전송·바인딩·허용 Host 를 정하는 자리는 **하나**여야 한다.
 
@@ -277,9 +427,16 @@ def test_도구_목록이_조용히_불어나지_않는다() -> None:
     `/api/spec-documents` 가 범위 표에 없어서, AI 는 시험은 올리면서 그 근거 문서는 못
     만들었다. 값이 틀렸을 때 되짚을 자리가 없어진다. 여는 대신 그 줄에 누가 올렸는지가
     남는다(`submitted_via`).
+
+    81 -> 82 (2026-09-30): `create_reliability_tests`. **등록만 한 건씩이었다** — 규격서
+    한 권에서 뽑은 스무 건을 스무 번 불러 올리면, 열 번째에서 끊겼을 때 앞의 아홉은 들어가
+    있고 뒤의 열은 없는데 부른 쪽은 그 경계를 모른다. 그리고 그 스무 건이 한 문서에서
+    나왔다는 사실이 어디에도 안 남아, 검토하는 사람이 **문서 단위로 못 본다** — 한 문서에서
+    나온 줄은 같은 실수를 함께 하고, 함께 봐야 그것이 보인다. 한 건짜리(`create_reliability_
+    test`)를 지우지 않은 것은, 문서 없이 한 건을 올리는 길이 실제로 더 많기 때문이다.
     """
     tools = _tools()
-    assert len(tools) <= 81, f"도구가 {len(tools)}개입니다 — 묶거나 상한을 다시 정하세요"
+    assert len(tools) <= 82, f"도구가 {len(tools)}개입니다 — 묶거나 상한을 다시 정하세요"
     for tool in tools:
         doc = ast.get_docstring(tool) or ""
         assert len(doc) <= 1600, (
