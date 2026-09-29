@@ -17,6 +17,18 @@
 연산자는 `>=` `<=` `>` `<` `!=` `=` `~` `*` 여덟이고, 왼쪽은 정의의 `key` 다(이름이 아니라).
 이름은 관리자가 고치면 바뀌고, 그때 저장해 둔 링크가 조용히 빈 결과를 낸다.
 
+## 조건 묶음을 지정하려면 `key@묶음`
+
+    attr=temp>=80         묶음을 안 가린다 — **한 줄이라도** 닿으면 걸린다
+    attr=temp@주>=80       주 묶음의 값만 본다
+    attr=temp@불량 시>=80   그 묶음의 값만
+
+묶음이 생기면서 필요해졌다(0041). 주 조건 70 °C · 불량 시 90 °C 인 시험이 `temp>=80` 에
+걸린다 — 어느 쪽도 80을 **주 조건으로** 요구하지 않는데. 안 가리는 쪽을 기본으로 둔 것은
+「이 시험이 80 °C 를 요구하기는 하나」 가 실제로 더 자주 묻는 물음이기 때문이다.
+
+묶음 이름에는 연산자 글자가 못 들어간다 — 안 그러면 어디까지가 이름인지 못 가른다.
+
 ## 수치는 파이썬에서 판정한다
 
 값마다 단위가 다르다(정식으로 올리기 전에는 사람마다 kN·N·kgf 로 적는다). SQL 안에서
@@ -64,8 +76,12 @@ from app.shared.units import convert
 MAX_FILTERS = 10
 
 _OPS = ("<=", ">=", "!=", "<", ">", "=", "~", "*")
+#: `key<연산>값`, 그리고 조건 묶음을 지정하는 `key@묶음<연산>값`.
+#: 묶음 이름에는 연산자 글자가 못 들어간다 — 안 그러면 어디까지가 이름인지 못 가른다.
 _PATTERN = re.compile(
-    r"^(?P<key>[A-Za-z0-9_\-.]{1,60})(?P<op>\*|<=|>=|!=|<|>|=|~)(?P<raw>.*)$"
+    r"^(?P<key>[A-Za-z0-9_\-.]{1,60})"
+    r"(@(?P<set>[^<>=!~*]{1,60}))?"
+    r"(?P<op>\*|<=|>=|!=|<|>|=|~)(?P<raw>.*)$"
 )
 
 #: 대상 → 값이 그 대상을 가리키는 열. 새 대상은 여기에 한 줄.
@@ -84,6 +100,15 @@ class AttributeFilter:
     definition: AttributeDefinition
     op: str
     raw: str
+    set_label: str | None = None
+    """어느 조건 묶음의 값을 볼까. **비우면 묶음을 안 가린다**(한 줄이라도 닿으면 걸린다).
+
+    묶음이 생기면서 필요해졌다: 주 조건 70 °C · 불량 시 90 °C 인 시험이 `temp>=80` 에
+    걸린다 — 어느 쪽도 80을 **주 조건으로** 요구하지 않는데. 「주 묶음이 80 이상」 은
+    `temp@주>=80` 으로 묻는다.
+
+    안 가리는 쪽을 기본으로 둔 것은, 「이 시험이 80 °C 를 요구하기는 하나」 가 실제로
+    더 자주 묻는 물음이기 때문이다."""
 
 
 def _number(raw: str, label: str) -> float:
@@ -128,9 +153,13 @@ def parse(db: Session, target: str, raw_filters: list[str]) -> list[AttributeFil
         )
         if definition is None:
             raise AppError("TSC-ATTR-0124", f"「{key}」 라는 속성이 이 대상에 없습니다.")
+        picked = (matched.group("set") or "").strip()
         out.append(
             AttributeFilter(
-                definition=definition, op=matched.group("op"), raw=matched.group("raw")
+                definition=definition,
+                op=matched.group("op"),
+                raw=matched.group("raw"),
+                set_label=picked or None,
             )
         )
     return out
@@ -159,6 +188,13 @@ def _numeric_match(one: AttributeFilter, bottom: float | None, top: float | None
     )
 
 
+def _set_where(one: AttributeFilter) -> list[Any]:
+    """묶음을 지정했으면 그 묶음의 줄만. 안 했으면 안 가린다."""
+    if one.set_label is None:
+        return []
+    return [AttributeValue.set_label == one.set_label]
+
+
 def _numeric_ids(db: Session, column: Any, one: AttributeFilter) -> set[uuid.UUID]:
     """수치·범위 — 단위를 정의의 단위로 맞춰 파이썬에서 잰다."""
     rows = db.execute(
@@ -168,7 +204,11 @@ def _numeric_ids(db: Session, column: Any, one: AttributeFilter) -> set[uuid.UUI
             AttributeValue.num_min,
             AttributeValue.num_max,
             AttributeValue.unit,
-        ).where(AttributeValue.definition_id == one.definition.id, column.is_not(None))
+        ).where(
+            AttributeValue.definition_id == one.definition.id,
+            column.is_not(None),
+            *_set_where(one),
+        )
     ).all()
 
     found: set[uuid.UUID] = set()
@@ -269,7 +309,11 @@ def apply[T: tuple[Any, ...]](
             # 빈 집합을 그대로 넘기면 `IN ()` 이 되어 아무것도 안 남는다 — 맞는 답이다.
             stmt = stmt.where(id_column.in_(found))
             continue
-        where = [AttributeValue.definition_id == one.definition.id, column == id_column]
+        where = [
+            AttributeValue.definition_id == one.definition.id,
+            column == id_column,
+            *_set_where(one),
+        ]
         predicate = _value_predicate(one)
         if predicate is not None:
             where.append(predicate)

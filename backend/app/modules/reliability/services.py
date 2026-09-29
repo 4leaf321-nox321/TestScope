@@ -333,26 +333,137 @@ def name_key(name: str) -> str:
     return "".join(compare_key(name).split())
 
 
+#: 이름이 같아도 **다른 시험으로 가르는** 칸.
+PRODUCT_GROUP_KEY = "reliability_product_group"
+SPEC_DOCUMENT_KEY = "reliability_spec_document"
+NAME_SCOPE_KEYS = (PRODUCT_GROUP_KEY, SPEC_DOCUMENT_KEY)
+
+#: 이름 유일성의 자리 — (적용군 값 id, 규격서 id). 둘 다 비면 예전과 같은 「이름 하나」 다.
+NameScope = tuple[str, str]
+
+
+def _scope_of_items(db: Session, items: list[AttributeValueIn]) -> NameScope:
+    """보낼 값에서 (적용군, 규격서)를 뽑는다."""
+    ids = {one.definition_id for one in items if one.definition_id}
+    if not ids:
+        return "", ""
+    keys = {
+        row[0]: row[1]
+        for row in db.execute(
+            select(AttributeDefinition.id, AttributeDefinition.key).where(
+                AttributeDefinition.id.in_(ids)
+            )
+        ).all()
+    }
+    group = document = ""
+    for one in items:
+        key = keys.get(one.definition_id)
+        if key == PRODUCT_GROUP_KEY and one.term_id:
+            group = str(one.term_id)
+        elif key == SPEC_DOCUMENT_KEY and one.document_id:
+            document = str(one.document_id)
+    return group, document
+
+
+def _scope_of_rows(db: Session, test_ids: list[uuid.UUID]) -> dict[uuid.UUID, NameScope]:
+    """이미 있는 줄들의 (적용군, 규격서). 질의 한 번으로."""
+    out: dict[uuid.UUID, NameScope] = {one: ("", "") for one in test_ids}
+    if not test_ids:
+        return out
+    rows = db.execute(
+        select(
+            AttributeValue.reliability_test_id,
+            AttributeDefinition.key,
+            AttributeValue.term_id,
+            AttributeValue.ref_document_id,
+        )
+        .join(AttributeDefinition, AttributeDefinition.id == AttributeValue.definition_id)
+        .where(
+            AttributeValue.reliability_test_id.in_(test_ids),
+            AttributeDefinition.key.in_(NAME_SCOPE_KEYS),
+        )
+    ).all()
+    for test_id, key, term_id, document_id in rows:
+        group, document = out.get(test_id, ("", ""))
+        if key == PRODUCT_GROUP_KEY and term_id:
+            group = str(term_id)
+        if key == SPEC_DOCUMENT_KEY and document_id:
+            document = str(document_id)
+        out[test_id] = (group, document)
+    return out
+
+
 def _check_name_free(
-    db: Session, division_term_id: uuid.UUID, name: str, *, except_id: uuid.UUID | None
+    db: Session,
+    division_term_id: uuid.UUID,
+    name: str,
+    *,
+    except_id: uuid.UUID | None,
+    scope: NameScope = ("", ""),
 ) -> None:
-    """이 사업부에 같은 이름이 있나. **resolve 선행은 규율이고, 이것이 장치다** —
-    규율은 수백 건을 적재하는 동안 한 번은 깨진다."""
+    """이 사업부에 **같은 이름이면서 같은 자리인** 시험이 있나.
+
+    **자리는 (적용군, 규격서)다.** 이름만으로 유일하게 두었더니 실제 문서와 부딪혔다
+    (2026-09-30): 같은 이름이지만 **적용군이 다른 별개의 시험**이 있고, 제품군마다 제
+    규격서가 제 판을 갖는다. 634장 중 202장이 그렇게 막혔고, 이름을 선점당한 17건은 아예
+    못 들어왔다 — 막은 것이 중복이 아니라 **서로 다른 시험**이었다.
+
+    셋 다 같아야 같은 시험이다:
+
+        같은 이름 · 적용군 다름    -> 다른 시험. 들어간다
+        같은 이름 · 규격서 다름    -> 다른 시험. 들어간다
+        같은 이름 · 둘 다 같음     -> 같은 시험. 막는다
+        같은 이름 · 둘 다 안 적힘   -> 가를 근거가 없다. 막는다(예전 그대로)
+
+    마지막 줄이 중요하다. **적용군도 규격서도 없으면 예전과 똑같이 이름 하나다** — 수백
+    건을 적재하는 동안 동명이 쌓이는 것을 막는 장치가 거기 남아 있어야 한다. 가르고 싶으면
+    **가르는 근거를 적으라**는 뜻이기도 하다.
+
+    한쪽만 적힌 것과 안 적힌 것은 **다른 자리로 본다**(적용군 「A」 와 빈 적용군은 다르다).
+    안 적은 것을 「아무거나」 로 받아 주면, 적어 둔 사람의 줄이 안 적은 사람의 줄에 밀린다.
+    """
     key = name_key(name)
-    rows = db.scalars(
-        select(ReliabilityTest).where(
-            ReliabilityTest.division_term_id == division_term_id,
-            ReliabilityTest.deleted_at.is_(None),
-            ReliabilityTest.id != except_id if except_id else true(),
+    rows = list(
+        db.scalars(
+            select(ReliabilityTest).where(
+                ReliabilityTest.division_term_id == division_term_id,
+                ReliabilityTest.deleted_at.is_(None),
+                ReliabilityTest.id != except_id if except_id else true(),
+            )
         )
     )
-    clash = next((one for one in rows if name_key(one.name) == key), None)
-    if clash is not None:
-        raise Conflict(
-            "TSC-RELIABILITY-0003",
-            f"이 사업부에 같은 이름의 신뢰성 시험이 있습니다: {clash.name}",
-            details={"id": str(clash.id), "name": clash.name},
-        )
+    same = [one for one in rows if name_key(one.name) == key]
+    if not same:
+        return
+    scopes = _scope_of_rows(db, [one.id for one in same])
+    clash = next((one for one in same if scopes.get(one.id, ("", "")) == scope), None)
+    if clash is None:
+        return
+    group, document = scope
+    where = (
+        "같은 적용군·규격서"
+        if group and document
+        else "같은 적용군"
+        if group
+        else "같은 규격서"
+        if document
+        else "적용군도 규격서도 안 적힌 채"
+    )
+    raise Conflict(
+        "TSC-RELIABILITY-0003",
+        f"이 사업부에 {where}로 같은 이름의 신뢰성 시험이 있습니다: {clash.name}"
+        + (
+            " — 별개의 시험이면 적용군이나 규격서를 적어 가르십시오."
+            if not (group or document)
+            else ""
+        ),
+        details={
+            "id": str(clash.id),
+            "name": clash.name,
+            "product_group_term_id": group or None,
+            "spec_document_id": document or None,
+        },
+    )
 
 
 def _set_items(db: Session, test_id: uuid.UUID, term_ids: list[uuid.UUID]) -> None:
@@ -445,7 +556,10 @@ def create(db: Session, user: User, payload: dict[str, Any]) -> ReliabilityTest:
     name = str(payload["name"]).strip()
     if not name:
         raise AppError("TSC-RELIABILITY-0004", "이름을 적어 주십시오.")
-    _check_name_free(db, division.id, name, except_id=None)
+    # **자리를 먼저 뽑는다.** 이름 검사가 속성보다 앞서므로, 보낼 값에서 적용군·규격서를
+    # 읽어 함께 넘긴다 — 안 그러면 「가르는 근거」 가 아직 없는 채로 판정하게 된다.
+    items = _attribute_items(payload.get("attributes"))
+    _check_name_free(db, division.id, name, except_id=None, scope=_scope_of_items(db, items))
     term_ids: list[uuid.UUID] = list(payload.get("test_item_term_ids") or [])
     _check_test_item_terms(db, term_ids)
 
@@ -464,13 +578,7 @@ def create(db: Session, user: User, payload: dict[str, Any]) -> ReliabilityTest:
     db.add(row)
     db.flush()
     _set_items(db, row.id, term_ids)
-    attributes.set_values(
-        db,
-        user,
-        target="reliability_test",
-        object_id=row.id,
-        items=_attribute_items(payload.get("attributes")),
-    )
+    attributes.set_values(db, user, target="reliability_test", object_id=row.id, items=items)
     db.commit()
     db.refresh(row)
     return row
@@ -528,7 +636,14 @@ def update(
         name = str(changes["name"]).strip()
         if not name:
             raise AppError("TSC-RELIABILITY-0004", "이름을 적어 주십시오.")
-        _check_name_free(db, division.id, name, except_id=row.id)
+        # 속성을 **함께** 보냈으면 그것이 새 자리다(적용군을 바꾸면서 이름을 바꾸는 일이
+        # 실제로 있다). 안 보냈으면 지금 줄의 자리를 쓴다.
+        scope = (
+            _scope_of_items(db, _attribute_items(changes["attributes"]))
+            if changes.get("attributes") is not None
+            else _scope_of_rows(db, [row.id])[row.id]
+        )
+        _check_name_free(db, division.id, name, except_id=row.id, scope=scope)
         row.name = name
     if "purpose" in changes:
         row.purpose = str(changes["purpose"] or "").strip()

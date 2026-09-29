@@ -1033,12 +1033,26 @@ async def search_equipment(
     q: str | None = None,
     model_id: str | None = None,
     workspace: str | None = None,
+    attr: list[str] | None = None,
     limit: int = 20,
 ) -> dict[str, Any]:
     """우리가 가진 장비. 각 줄에 **시험 항목**과 계열·기종이 함께 온다.
 
     `test_items` 가 비어 있으면 그 장비는 **검색에 절대 안 걸린다** — 시험 항목이 안
     적혀 있다는 뜻이다.
+
+    `attr` 은 **적어 둔 속성 값으로 거른다** — 여러 개면 모두 만족해야 한다.
+    왼쪽은 `list_attribute_definitions(target="equipment")` 가 주는 `key` 다(이름이
+    아니다 — 이름은 관리자가 고치면 바뀌고, 그때 저장해 둔 물음이 조용히 빈 답을 낸다).
+
+        ["invest_year>=2020"]   수치 · 날짜
+        ["purpose~고온"]         문장 포함
+        ["reserve_url*"]        값이 적혀 있기만 하면
+        ["holder!=3동"]          같지 않다
+
+    **조건으로 「되는 장비」 를 찾는 것은 이것이 아니다** — 그것은
+    `search_test_items(conditions=…)` 다. 여기는 「적어 둔 칸의 값」 으로 거르는 자리라,
+    온도 범위 같은 **능력**은 안 본다(능력은 사양이고, 사양은 기종에 있다).
     """
     return await _get(
         ctx,
@@ -1047,6 +1061,7 @@ async def search_equipment(
             "q": q,
             "model_id": model_id,
             "workspace": workspace,
+            "attr": attr,
             "limit": min(limit, MAX_LIMIT),
         },
     )
@@ -2240,6 +2255,10 @@ async def list_reliability_tests(
 
     `attr` 은 속성 값 조건이다 — 왼쪽은 `list_attribute_definitions` 가 주는 `key` 다
     (`["temp_x>=100"]`). 여러 개면 **모두** 만족해야 한다.
+
+    **조건 묶음을 지정하려면 `key@묶음`** 이다(`["temp_x@주>=80"]`). 안 쓰면 묶음을 안
+    가린다 — 한 줄이라도 닿으면 걸리므로, 주 조건 70 °C·불량 시 90 °C 인 시험이
+    `temp_x>=80` 에 걸린다. 「주 조건이 80 이상」 을 물을 때만 `@` 를 쓴다.
 
     조건을 걸었는데 0건이면 `diagnosis` 가 함께 온다 — 조건마다 값이 적힌 수 · 단위 못
     바꾼 수 · 그 조건 하나로 걸리는 수와 한 줄. **「그런 시험 없습니다」 로 뭉개지 말고 그

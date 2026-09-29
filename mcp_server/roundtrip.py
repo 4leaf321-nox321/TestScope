@@ -486,20 +486,28 @@ async def _write_chain(ctx: _Ctx) -> int:
                     tests=[
                         {"name": f"MCP확인 묶음 하나-{tag}"},
                         {"name": f"MCP확인 묶음 둘-{tag}"},
-                        # **일부러 겹치게 둔다** — 한 줄이 막혀도 나머지가 가는지 본다.
+                        # **같은 이름인데 규격서가 다르다 — 들어가야 한다.** 위에서 만든
+                        # 시험은 규격서가 없고 이 줄은 이 문서의 것이다. 이름만으로
+                        # 유일하게 두었더니 실제 문서와 부딪혔다(634장 중 202장).
                         {"name": f"MCP확인 열충격-{tag}"},
+                        # **이것은 진짜 겹침** — 같은 묶음 안에서 이름도 규격서도 같다.
+                        # 한 줄이 막혀도 나머지가 가는지 함께 본다.
+                        {"name": f"MCP확인 묶음 하나-{tag}"},
                     ],
                 ),
                 ["requested"],
             )
             if batch is not None:
                 made = [one["name"] for one in batch.get("created", [])]
-                if len(made) != 2:
+                if len(made) != 3:
                     bad += 1
-                    print(f"  실패 묶음에서 두 줄이 들어가야 하는데 {len(made)}줄입니다")
+                    print(f"  실패 묶음에서 세 줄이 들어가야 하는데 {len(made)}줄입니다")
+                if f"MCP확인 열충격-{tag}" not in made:
+                    bad += 1
+                    print("  실패 규격서가 다른 동명이 막혔습니다 — 별개의 시험이다")
                 if len(batch.get("failed", [])) != 1:
                     bad += 1
-                    print("  실패 이름이 겹친 줄이 막히지 않았습니다 — 또는 왜가 안 옵니다")
+                    print("  실패 진짜 겹침이 안 막혔습니다 — 또는 왜가 안 옵니다")
                 # 줄마다 규격서가 걸렸나 — 안 걸리면 문서 단위로 못 모은다.
                 for one in batch.get("created", []):
                     codes = [

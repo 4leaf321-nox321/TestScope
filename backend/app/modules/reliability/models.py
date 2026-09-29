@@ -26,7 +26,6 @@ from sqlalchemy import (
     Text,
     UniqueConstraint,
     func,
-    text,
 )
 from sqlalchemy.dialects.postgresql import UUID as PgUUID
 from sqlalchemy.orm import Mapped, mapped_column
@@ -37,14 +36,11 @@ from app.database import Base
 class ReliabilityTest(Base):
     __tablename__ = "reliability_tests"
     __table_args__ = (
-        # 같은 사업부에 같은 이름은 하나 — 지운 것은 빼고(부분 유일 인덱스).
-        Index(
-            "uq_reliability_tests_division_name",
-            "division_term_id",
-            "name",
-            unique=True,
-            postgresql_where=text("deleted_at IS NULL"),
-        ),
+        # **이름 유일성은 DB 가 못 건다**(0044). 같은 이름이라도 **적용군이나 규격서가
+        # 다르면 별개의 시험**인데, 그 둘은 `attribute_values` 에 있어서 한 표의 유일
+        # 인덱스로는 표현이 안 된다. 두 칸을 여기 베껴 두는 길도 있었지만, 베낀 값은
+        # 반드시 갈라진다 — 판정은 `services._check_name_free` 한 곳이다.
+        Index("ix_reliability_tests_division_name", "division_term_id", "name"),
         CheckConstraint("status IN ('candidate','confirmed')", name="status"),
     )
 
