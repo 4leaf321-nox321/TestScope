@@ -463,7 +463,11 @@ async def _write_chain(ctx: _Ctx) -> int:
     # 올라갔는지 부른 쪽도 사람도 모른다. 그리고 그 스무 건이 한 문서에서 나왔다는 사실이
     # 안 남아 **문서 단위로 검토할 수 없다.**
     teams = step("list_workspaces", await server.list_workspaces(ctx), ["count"])
-    slug = (teams or {}).get("workspaces", [{}])[0].get("slug") if teams else None
+    # **빈 목록을 기본값이 못 막는다.** `.get(키, [{}])` 는 키가 *없을* 때만 기본값을 쓰는데,
+    # 서버는 키를 주고 목록만 비운다 — 부서가 하나도 없는 설치에서 `[0]` 이 IndexError 로
+    # 터졌다. 확인 스크립트가 터지면 무엇이 되는지 안 되는지도 못 알린다.
+    listed = (teams or {}).get("workspaces") or []
+    slug = listed[0].get("slug") if listed else None
     if slug:
         paper = step(
             "create_spec_document",
