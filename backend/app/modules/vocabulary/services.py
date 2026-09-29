@@ -18,6 +18,7 @@ from __future__ import annotations
 from app.modules.vocabulary.conditions import (
     _condition_usage,
     condition_out,
+    condition_reach,
     create_condition,
     get_condition,
     list_conditions,
@@ -86,6 +87,7 @@ __all__ = [
     "_usage_of",
     "add_alias",
     "condition_out",
+    "condition_reach",
     "create_condition",
     "create_spec_definition",
     "create_spec_group",

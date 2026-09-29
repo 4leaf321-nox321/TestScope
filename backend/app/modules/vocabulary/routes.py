@@ -20,6 +20,7 @@ from app.modules.vocabulary.schemas import (
     ConditionKeyCreateRequest,
     ConditionKeyOut,
     ConditionKeyUpdateRequest,
+    ConditionReachOut,
     ReferenceGroupOut,
     ReferenceReassignRequest,
     SpecDefinitionCreateRequest,
@@ -231,6 +232,24 @@ def list_conditions(
     db: Session = Depends(get_db),
 ) -> list[ConditionKeyOut]:
     return services.list_conditions(db, include_inactive=include_inactive)
+
+
+@conditions_router.get("/{condition_id}/reach", response_model=ConditionReachOut)
+def condition_reach(
+    condition_id: uuid.UUID,
+    _: User = Depends(current_user),
+    db: Session = Depends(get_db),
+) -> ConditionReachOut:
+    """이 조건 축이 신뢰성 시험에서 **얼마나, 어디까지** 쓰이나.
+
+    온톨로지에서 축을 열면 「이 조건을 거는 시험」 까지는 보이는데 **값이 안 보였다** —
+    「-40 °C 이하인 시험」 을 물으려다 막히면, 이 플랫폼이 그걸 못 한다고 읽힌다. 실제로는
+    검색(`attr`)이 답하는 물음인데 그 경계가 화면에 없었다.
+
+    **구간은 안 나눈다** — 몇 건이고 어디까지 쓰이나만 준다. 좁히는 것은 `definitions[].key`
+    를 `attr` 에 실어 검색으로 넘긴다.
+    """
+    return services.condition_reach(db, condition_id)
 
 
 @conditions_router.post("", response_model=ConditionKeyOut, status_code=201)

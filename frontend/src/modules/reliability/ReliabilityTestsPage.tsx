@@ -29,8 +29,8 @@
  * 열이 하나뿐이므로 넓어진 화면의 여유는 거기로 가는 것이 맞다.
  */
 
-import { useMemo, useState } from 'react'
-import { Link } from 'react-router-dom'
+import { useCallback, useMemo, useState } from 'react'
+import { Link, useSearchParams } from 'react-router-dom'
 import { Image as ImageIcon, Wrench } from 'lucide-react'
 
 import { EmptyState } from '@/shared/components/EmptyState'
@@ -73,8 +73,31 @@ function haystack(row: ReliabilityTest): string {
 }
 
 export default function ReliabilityTestsPage() {
-  // 속성 조건은 **서버가** 거른다 — 아래 찾기 칸은 받은 쪽 안에서만 훑는다.
-  const [attrs, setAttrs] = useState<string[]>([])
+  /**
+   * 속성 조건은 **서버가** 거른다 — 아래 찾기 칸은 받은 쪽 안에서만 훑는다.
+   *
+   * **조건을 주소에 싣는다.** 그래야 온톨로지 쪽에서 「값으로 좁히기」 로 넘어올 수 있고,
+   * 좁혀 놓은 화면을 옆 사람에게 링크로 건넬 수 있다. 조건이 화면 안에만 있으면 그 둘이
+   * 다 안 되고, 「-40 °C 이하인 시험」 을 물으려던 사람은 매번 조건을 다시 친다.
+   */
+  const [params, setParams] = useSearchParams()
+  const attrs = useMemo(() => params.getAll('attr'), [params])
+  const setAttrs = useCallback(
+    (next: string[]) => {
+      setParams(
+        (before) => {
+          const moved = new URLSearchParams(before)
+          moved.delete('attr')
+          for (const one of next) moved.append('attr', one)
+          return moved
+        },
+        // 거르기는 **되돌아갈 자리가 아니다** — 뒤로 가기가 조건 하나씩 풀리면
+        // 목록으로 못 나간다.
+        { replace: true },
+      )
+    },
+    [setParams],
+  )
   /** 확인 전 후보까지 볼까. **기본은 안 본다** — 확정된 것만이 이 표의 답이다. */
   const [withCandidates, setWithCandidates] = useState(false)
   const tests = useResource(

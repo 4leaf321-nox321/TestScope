@@ -6,6 +6,7 @@ import type { components } from '@/shared/api/schema'
 export type Vocabulary = components['schemas']['VocabularyOut']
 export type Term = components['schemas']['TermOut']
 export type ConditionKey = components['schemas']['ConditionKeyOut']
+export type ConditionReach = components['schemas']['ConditionReachOut']
 export type SpecGroup = components['schemas']['SpecGroupOut']
 export type SpecDefinition = components['schemas']['SpecDefinitionOut']
 export type ReferenceGroup = components['schemas']['ReferenceGroupOut']
@@ -47,6 +48,13 @@ export const vocabularyApi = {
       target_term_id: targetTermId,
     }),
 
+  /** 이 조건 축이 신뢰성 시험에서 **얼마나, 어디까지** 쓰이나.
+   *
+   *  온톨로지에서 축을 열면 「이 조건을 거는 시험」 까지는 보이는데 **값이 안 보였다** —
+   *  「-40 °C 이하인 시험」 을 물으려다 막히면 이 플랫폼이 그걸 못 한다고 읽힌다.
+   *  **구간은 안 나눈다**(임의 경계는 없는 것보다 나쁘다) — 몇 건이고 어디까지인지만 주고,
+   *  좁히는 것은 `definitions[].key` 를 `attr` 에 실어 검색으로 넘긴다. */
+  reach: (id: string) => api.get<ConditionReach>(`/condition-keys/${id}/reach`),
   conditions: (includeInactive = false) =>
     api.get<ConditionKey[]>(
       `/condition-keys${includeInactive ? '?include_inactive=true' : ''}`,

@@ -12,7 +12,9 @@ from sqlalchemy import func, select
 from sqlalchemy.orm import Session
 
 from app.modules.accounts.models import User
+from app.modules.attributes.models import AttributeDefinition, AttributeValue
 from app.modules.methods.models import MethodRequirement
+from app.modules.reliability.models import ReliabilityTest
 from app.modules.test_items.models import (
     EquipmentTestCondition,
 )
@@ -21,9 +23,12 @@ from app.modules.vocabulary.models import (
 )
 from app.modules.vocabulary.schemas import (
     ConditionKeyOut,
+    ConditionReachDefinitionOut,
+    ConditionReachOut,
 )
 from app.shared import audit
 from app.shared.errors import Conflict, NotFound
+from app.shared.units import convert
 
 # --- 조건 정의 ---------------------------------------------------------------
 
@@ -131,3 +136,99 @@ def update_condition(
     db.commit()
     db.refresh(row)
     return row
+
+
+def condition_reach(db: Session, condition_key_id: uuid.UUID) -> ConditionReachOut:
+    """이 조건 축이 **신뢰성 시험에서 얼마나, 어디까지 쓰이나.**
+
+    온톨로지 쪽에서 축을 열면 「이 조건을 거는 시험」 까지는 보이는데 **값이 안 보였다.**
+    그래서 읽는 사람은 「-40 °C 이하인 시험」 을 물으려다 막히고, 이 플랫폼이 그걸 못
+    한다고 읽었다 — 실제로는 검색(`attr`)이 답하는 물음인데 그 경계가 화면에 없었다.
+
+    **구간을 안 나눈다.** 온도를 「-40 이하 / -40~85 / 85 이상」 으로 가르는 근거가 없고,
+    축마다 다르다(VSWR 과 낙하 높이를 같은 규칙으로 못 나눈다). 임의로 나눈 구간은 없는
+    것보다 나쁘다 — 읽는 사람이 그 경계에 뜻이 있다고 믿는다. 그래서 **몇 건이고 어디까지
+    쓰이나**만 답하고, 좁히는 것은 검색으로 넘긴다.
+
+    `definitions` 가 그 넘김의 열쇠다 — `attr` 이 받는 것은 조건 축 id 가 아니라 속성
+    정의의 `key` 라, 화면이 링크를 만들려면 이것이 있어야 한다.
+    """
+    key = get_condition(db, condition_key_id)
+    definitions = list(
+        db.scalars(
+            select(AttributeDefinition).where(
+                AttributeDefinition.condition_key_id == condition_key_id,
+                AttributeDefinition.target == "reliability_test",
+                AttributeDefinition.kind == "condition",
+                AttributeDefinition.status == "standard",
+                AttributeDefinition.is_active.is_(True),
+            )
+        )
+    )
+    if not definitions:
+        return ConditionReachOut(
+            condition_key_id=key.id,
+            label=key.label,
+            display_unit=key.display_unit,
+            definitions=[],
+            test_count=0,
+            valued_count=0,
+            unconvertible_count=0,
+            low=None,
+            high=None,
+        )
+
+    rows = db.execute(
+        select(
+            AttributeValue.reliability_test_id,
+            AttributeValue.num_value,
+            AttributeValue.num_min,
+            AttributeValue.num_max,
+            AttributeValue.unit,
+            AttributeDefinition.unit,
+        )
+        .join(AttributeDefinition, AttributeDefinition.id == AttributeValue.definition_id)
+        .join(ReliabilityTest, ReliabilityTest.id == AttributeValue.reliability_test_id)
+        .where(
+            AttributeValue.definition_id.in_([one.id for one in definitions]),
+            ReliabilityTest.deleted_at.is_(None),
+        )
+    ).all()
+
+    tests: set[uuid.UUID] = set()
+    valued: set[uuid.UUID] = set()
+    unconvertible: set[uuid.UUID] = set()
+    low: float | None = None
+    high: float | None = None
+    for test_id, point, bottom, top, wrote_unit, definition_unit in rows:
+        tests.add(test_id)
+        numbers = [one for one in (point, bottom, top) if one is not None]
+        if not numbers:
+            continue
+        source = wrote_unit or definition_unit or key.display_unit
+        moved = [convert(one, source, key.display_unit) for one in numbers]
+        if any(one is None for one in moved):
+            # **못 바꾼 값은 범위에 안 넣는다.** 틀린 자리에 놓느니 안 보이는 편이 낫고,
+            # 몇 건이 그랬는지는 따로 센다 — 안 세면 「그만큼만 쓰인다」 로 읽힌다.
+            unconvertible.add(test_id)
+            continue
+        valued.add(test_id)
+        for one in moved:
+            assert one is not None
+            low = one if low is None else min(low, one)
+            high = one if high is None else max(high, one)
+
+    return ConditionReachOut(
+        condition_key_id=key.id,
+        label=key.label,
+        display_unit=key.display_unit,
+        definitions=[
+            ConditionReachDefinitionOut(id=one.id, key=one.key, label=one.label)
+            for one in definitions
+        ],
+        test_count=len(tests),
+        valued_count=len(valued),
+        unconvertible_count=len(unconvertible - valued),
+        low=low,
+        high=high,
+    )

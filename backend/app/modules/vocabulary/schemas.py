@@ -145,6 +145,39 @@ class ReferenceReassignRequest(Request):
     target_term_id: uuid.UUID
 
 
+class ConditionReachDefinitionOut(BaseModel):
+    """이 축에 걸린 신뢰성 시험 속성 하나. **`key` 가 검색으로 넘기는 열쇠다** —
+    `attr` 이 받는 것은 조건 축 id 가 아니라 이 `key` 다."""
+
+    id: uuid.UUID
+    key: str
+    label: str
+
+
+class ConditionReachOut(BaseModel):
+    """이 조건 축이 신뢰성 시험에서 **얼마나, 어디까지** 쓰이나.
+
+    **구간을 안 나눈다.** 온도를 「-40 이하 / -40~85 / 85 이상」 으로 가르는 근거가 없고
+    축마다 다르다 — 임의로 나눈 구간은 없는 것보다 나쁘다(읽는 사람이 그 경계에 뜻이
+    있다고 믿는다). 몇 건이고 어디까지 쓰이나만 답하고, 좁히는 것은 검색으로 넘긴다.
+    """
+
+    condition_key_id: uuid.UUID
+    label: str
+    display_unit: str
+    definitions: list[ConditionReachDefinitionOut]
+    test_count: int
+    """이 조건을 거는 신뢰성 시험 수(값이 안 적힌 것도 포함)."""
+    valued_count: int
+    """그중 **값이 적힌** 것. `test_count` 와 차이가 크면 칸만 꺼내 놓고 안 채운 것이다."""
+    unconvertible_count: int
+    """단위를 이 축의 표시 단위로 못 바꿔 **범위에서 빠진** 시험 수. 0 이 아니면 아래
+    범위가 전부가 아니다 — 조용히 빼면 「그만큼만 쓰인다」 로 읽힌다."""
+    low: float | None
+    """적힌 값의 최소(표시 단위). 값이 하나도 없으면 비어 있다."""
+    high: float | None
+
+
 class ConditionKeyOut(BaseModel):
     model_config = ConfigDict(from_attributes=True)
 

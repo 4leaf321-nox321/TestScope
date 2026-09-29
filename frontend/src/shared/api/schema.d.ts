@@ -988,6 +988,33 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/api/condition-keys/{condition_id}/reach": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * Condition Reach
+         * @description 이 조건 축이 신뢰성 시험에서 **얼마나, 어디까지** 쓰이나.
+         *
+         *     온톨로지에서 축을 열면 「이 조건을 거는 시험」 까지는 보이는데 **값이 안 보였다** —
+         *     「-40 °C 이하인 시험」 을 물으려다 막히면, 이 플랫폼이 그걸 못 한다고 읽힌다. 실제로는
+         *     검색(`attr`)이 답하는 물음인데 그 경계가 화면에 없었다.
+         *
+         *     **구간은 안 나눈다** — 몇 건이고 어디까지 쓰이나만 준다. 좁히는 것은 `definitions[].key`
+         *     를 `attr` 에 실어 검색으로 넘긴다.
+         */
+        get: operations["condition_reach_api_condition_keys__condition_id__reach_get"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/api/condition-keys/{condition_id}": {
         parameters: {
             query?: never;
@@ -4383,6 +4410,53 @@ export interface components {
             at_most?: number | null;
             /** Text */
             text?: string | null;
+        };
+        /**
+         * ConditionReachDefinitionOut
+         * @description 이 축에 걸린 신뢰성 시험 속성 하나. **`key` 가 검색으로 넘기는 열쇠다** —
+         *     `attr` 이 받는 것은 조건 축 id 가 아니라 이 `key` 다.
+         */
+        ConditionReachDefinitionOut: {
+            /**
+             * Id
+             * Format: uuid
+             */
+            id: string;
+            /** Key */
+            key: string;
+            /** Label */
+            label: string;
+        };
+        /**
+         * ConditionReachOut
+         * @description 이 조건 축이 신뢰성 시험에서 **얼마나, 어디까지** 쓰이나.
+         *
+         *     **구간을 안 나눈다.** 온도를 「-40 이하 / -40~85 / 85 이상」 으로 가르는 근거가 없고
+         *     축마다 다르다 — 임의로 나눈 구간은 없는 것보다 나쁘다(읽는 사람이 그 경계에 뜻이
+         *     있다고 믿는다). 몇 건이고 어디까지 쓰이나만 답하고, 좁히는 것은 검색으로 넘긴다.
+         */
+        ConditionReachOut: {
+            /**
+             * Condition Key Id
+             * Format: uuid
+             */
+            condition_key_id: string;
+            /** Label */
+            label: string;
+            /** Display Unit */
+            display_unit: string;
+            /** Definitions */
+            definitions: components["schemas"]["ConditionReachDefinitionOut"][];
+            /** Test Count */
+            test_count: number;
+            /** Valued Count */
+            valued_count: number;
+            /** Unconvertible Count */
+            unconvertible_count: number;
+            /** Low */
+            low: number | null;
+            /** High */
+            high: number | null;
         };
         /**
          * CreateAccountRequest
@@ -10361,6 +10435,37 @@ export interface operations {
                 };
                 content: {
                     "application/json": components["schemas"]["ConditionKeyOut"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    condition_reach_api_condition_keys__condition_id__reach_get: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                condition_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ConditionReachOut"];
                 };
             };
             /** @description Validation Error */

@@ -40,6 +40,7 @@ import {
   X,
 } from 'lucide-react'
 
+import { ConditionReach } from '@/modules/graph/ConditionReach'
 import { graphApi } from '@/modules/graph/api'
 import type {
   GraphEdge,
@@ -1494,6 +1495,10 @@ function NodeDetail({
           </Button>
         )}
       </div>
+
+      {/* **조건 축은 값까지 말해 준다** — 「어느 축을 거는가」 만 보이면, 「-40 °C 이하인
+          시험」 을 물으려던 사람이 여기서 막히고 이 플랫폼이 그걸 못 한다고 읽는다. */}
+      {node.type_slug === 'condition_key' && <ConditionReach nodeId={node.id} />}
 
       {profile.error && <ErrorNotice error={profile.error} />}
       {properties.length > 0 && (

@@ -2850,6 +2850,50 @@
         }
       }
     },
+    "/api/condition-keys/{condition_id}/reach": {
+      "get": {
+        "tags": [
+          "vocabulary"
+        ],
+        "summary": "Condition Reach",
+        "description": "이 조건 축이 신뢰성 시험에서 **얼마나, 어디까지** 쓰이나.\n\n온톨로지에서 축을 열면 「이 조건을 거는 시험」 까지는 보이는데 **값이 안 보였다** —\n「-40 °C 이하인 시험」 을 물으려다 막히면, 이 플랫폼이 그걸 못 한다고 읽힌다. 실제로는\n검색(`attr`)이 답하는 물음인데 그 경계가 화면에 없었다.\n\n**구간은 안 나눈다** — 몇 건이고 어디까지 쓰이나만 준다. 좁히는 것은 `definitions[].key`\n를 `attr` 에 실어 검색으로 넘긴다.",
+        "operationId": "condition_reach_api_condition_keys__condition_id__reach_get",
+        "parameters": [
+          {
+            "name": "condition_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "title": "Condition Id"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ConditionReachOut"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/api/condition-keys/{condition_id}": {
       "patch": {
         "tags": [
@@ -13056,6 +13100,103 @@
         ],
         "title": "ConditionQuery",
         "description": "조건 하나에 대한 물음.\n\n**셋 중 하나만 채운다.** 여러 개를 채우면 서로 다른 물음이 한 줄에 섞인다.\n값은 SI 로 보낸다 — 화면이 조건 정의의 si_unit 을 보고 환산한다."
+      },
+      "ConditionReachDefinitionOut": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Id"
+          },
+          "key": {
+            "type": "string",
+            "title": "Key"
+          },
+          "label": {
+            "type": "string",
+            "title": "Label"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "key",
+          "label"
+        ],
+        "title": "ConditionReachDefinitionOut",
+        "description": "이 축에 걸린 신뢰성 시험 속성 하나. **`key` 가 검색으로 넘기는 열쇠다** —\n`attr` 이 받는 것은 조건 축 id 가 아니라 이 `key` 다."
+      },
+      "ConditionReachOut": {
+        "properties": {
+          "condition_key_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Condition Key Id"
+          },
+          "label": {
+            "type": "string",
+            "title": "Label"
+          },
+          "display_unit": {
+            "type": "string",
+            "title": "Display Unit"
+          },
+          "definitions": {
+            "items": {
+              "$ref": "#/components/schemas/ConditionReachDefinitionOut"
+            },
+            "type": "array",
+            "title": "Definitions"
+          },
+          "test_count": {
+            "type": "integer",
+            "title": "Test Count"
+          },
+          "valued_count": {
+            "type": "integer",
+            "title": "Valued Count"
+          },
+          "unconvertible_count": {
+            "type": "integer",
+            "title": "Unconvertible Count"
+          },
+          "low": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Low"
+          },
+          "high": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "High"
+          }
+        },
+        "type": "object",
+        "required": [
+          "condition_key_id",
+          "label",
+          "display_unit",
+          "definitions",
+          "test_count",
+          "valued_count",
+          "unconvertible_count",
+          "low",
+          "high"
+        ],
+        "title": "ConditionReachOut",
+        "description": "이 조건 축이 신뢰성 시험에서 **얼마나, 어디까지** 쓰이나.\n\n**구간을 안 나눈다.** 온도를 「-40 이하 / -40~85 / 85 이상」 으로 가르는 근거가 없고\n축마다 다르다 — 임의로 나눈 구간은 없는 것보다 나쁘다(읽는 사람이 그 경계에 뜻이\n있다고 믿는다). 몇 건이고 어디까지 쓰이나만 답하고, 좁히는 것은 검색으로 넘긴다."
       },
       "CreateAccountRequest": {
         "properties": {
