@@ -165,6 +165,35 @@ export default function AccountsAdminPage() {
                     <Button size="sm" variant="outline" onClick={() => setMoving(one)}>
                       소속
                     </Button>
+                    {/* **위의 경고가 시키는 일을 여기서 한다.** 「한 명 더 지정해
+                        두십시오」 라고 적어 두고 지정할 자리가 없으면, 읽은 사람은
+                        서버 콘솔을 찾아보다 그만둔다.
+
+                        마지막 한 명은 **해제를 못 누르게** 막는다 — 서버도 거절하지만,
+                        눌러 보고 오류를 읽는 것과 못 누르는 것은 다르다. */}
+                    <Button
+                      size="sm"
+                      variant="outline"
+                      disabled={one.is_system_admin && onlyOneAdmin}
+                      title={
+                        one.is_system_admin && onlyOneAdmin
+                          ? '마지막 시스템 관리자입니다. 다른 사람을 먼저 지정하십시오.'
+                          : undefined
+                      }
+                      onClick={() => {
+                        const grant = !one.is_system_admin
+                        // 권한을 넓히는 쪽이라 한 번 묻는다. 무엇이 열리는지 함께 적는다 —
+                        // 「관리자」 라는 말만으로는 어디까지인지 사람마다 다르게 읽는다.
+                        const asked = grant
+                          ? `${one.display_name}(${one.email}) 을(를) 시스템 관리자로 지정합니다.\n\n카탈로그·온톨로지·계정·부서·서버 설정을 모두 고칠 수 있게 됩니다.`
+                          : `${one.display_name}(${one.email}) 의 시스템 관리자 권한을 해제합니다.`
+                        if (window.confirm(asked)) {
+                          act(() => accountApi.setSystemAdmin(one.id, grant))
+                        }
+                      }}
+                    >
+                      {one.is_system_admin ? '관리자 해제' : '관리자 지정'}
+                    </Button>
                     <Button
                       size="sm"
                       variant="outline"
