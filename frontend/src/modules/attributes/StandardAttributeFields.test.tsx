@@ -154,15 +154,22 @@ describe('정식 속성 칸', () => {
       pairs: [],
       matrix: [],
       note: '',
+      definitionId: temperature.id,
+      setLabel: '',
+      stepOrder: null,
+      stepLabel: '',
     }
+    const plain = { set_label: null, step_order: null, step_label: null }
 
     // 양쪽 다 적으면 그 사이.
     expect(
       toStandardPayload(rows, { [temperature.id]: { ...blank, numMin: -40, numMax: 85 } }),
     ).toEqual([
       {
+        ...plain,
         definition_id: temperature.id,
         new_kind: 'condition',
+        num_value: null,
         num_min: -40,
         num_max: 85,
         unit: 'degC',
@@ -173,8 +180,10 @@ describe('정식 속성 칸', () => {
     // **한쪽만 적어도 간다** — 「85 이상」 은 최대를 비운 것이다.
     expect(toStandardPayload(rows, { [temperature.id]: { ...blank, numMin: 85 } })).toEqual([
       {
+        ...plain,
         definition_id: temperature.id,
         new_kind: 'condition',
+        num_value: null,
         num_min: 85,
         num_max: null,
         unit: 'degC',
@@ -185,8 +194,10 @@ describe('정식 속성 칸', () => {
     // **숫자가 없어도 비고가 있으면 간다** — 「상온」 처럼 숫자로 못 적는 조건이 있다.
     expect(toStandardPayload(rows, { [temperature.id]: { ...blank, note: '상온' } })).toEqual([
       {
+        ...plain,
         definition_id: temperature.id,
         new_kind: 'condition',
+        num_value: null,
         num_min: null,
         num_max: null,
         unit: 'degC',
@@ -234,6 +245,119 @@ describe('정식 속성 칸', () => {
     expect(screen.getByPlaceholderText('최소')).toBeTruthy()
     // 그 줄 안에 이미지가 있다.
     expect(screen.getByAltText('온습도 프로파일')).toBeTruthy()
+  })
+
+  it('점으로 적으면 「폭 없음」 이라고 말해 준다 — 구간으로 안 읽힌다', async () => {
+    /**
+     * -40 · -20 · 25 · 85 °C 네 점에서 시험하는 문서를 -40 ~ 85 구간으로 옮기면, 그 사이
+     * 아무 온도나 된다는 뜻이 된다. 문서는 그런 말을 한 적이 없고, 그 구간으로 장비를 고른다.
+     */
+    await act(async () => {
+      render(<Harness />)
+    })
+    await act(async () => {
+      fireEvent.click(screen.getByText('조건 추가'))
+    })
+    await act(async () => {
+      fireEvent.click(screen.getByText('시험 온도'))
+    })
+    await act(async () => {
+      fireEvent.change(screen.getByPlaceholderText('최소'), { target: { value: '85' } })
+    })
+    // 모양을 「점」 으로 바꾸면 구간 칸이 사라지고 값 하나만 남는다.
+    await act(async () => {
+      fireEvent.click(screen.getByLabelText('시험 온도 모양'))
+    })
+    await act(async () => {
+      fireEvent.click(screen.getByText('점'))
+    })
+    expect(screen.queryByPlaceholderText('최소')).toBeNull()
+    expect((screen.getByPlaceholderText('값') as HTMLInputElement).value).toBe('85')
+    expect(screen.getByText(/85 degC 한 점/)).toBeTruthy()
+  })
+
+  it('묶음으로 가르면 같은 칸이 두 줄 선다 — 동작과 저장', async () => {
+    /**
+     * 한 벌로 뭉치면 -40 ~ 45 라는 **문서에 없는 조건**이 생기고, 그 조건으로 장비를 고른다.
+     */
+    let sent: unknown[] = []
+    let defs: Awaited<ReturnType<typeof attributeApi.definitions>> = []
+    function Two() {
+      const [values, setValues] = useState<Record<string, StandardValue>>({})
+      sent = defs.length > 0 ? toStandardPayload(defs, values) : []
+      return (
+        <StandardAttributeFields
+          target="reliability_test"
+          values={values}
+          onChange={setValues}
+          onLoaded={(rows) => (defs = rows as typeof defs)}
+        />
+      )
+    }
+    await act(async () => {
+      render(<Two />)
+    })
+
+    await act(async () => {
+      fireEvent.click(screen.getByText('조건 묶음 나누기'))
+    })
+    // 첫 묶음에 이름을 주고 조건을 하나 적는다.
+    const name = screen.getAllByLabelText('묶음 이름')[0]
+    await act(async () => {
+      fireEvent.change(name, { target: { value: '동작' } })
+    })
+    await act(async () => {
+      fireEvent.blur(name)
+    })
+    await act(async () => {
+      fireEvent.click(screen.getAllByText('조건 추가')[0])
+    })
+    await act(async () => {
+      fireEvent.click(screen.getByText('시험 온도'))
+    })
+    await act(async () => {
+      fireEvent.change(screen.getByPlaceholderText('최소'), { target: { value: '-15' } })
+    })
+    await act(async () => {
+      fireEvent.change(screen.getByPlaceholderText('최대'), { target: { value: '45' } })
+    })
+
+    // 묶음을 하나 더 만들어 같은 칸을 다시 적는다.
+    await act(async () => {
+      fireEvent.click(screen.getByText('묶음 추가'))
+    })
+    const second = screen.getAllByLabelText('묶음 이름')[1]
+    await act(async () => {
+      fireEvent.change(second, { target: { value: '저장' } })
+    })
+    await act(async () => {
+      fireEvent.blur(second)
+    })
+    await act(async () => {
+      fireEvent.click(screen.getAllByText('조건 추가')[1])
+    })
+    await act(async () => {
+      // 첫 줄의 이름표도 「시험 온도」 라 목록에 뜬 쪽(뒤)을 고른다.
+      const found = screen.getAllByText('시험 온도')
+      fireEvent.click(found[found.length - 1])
+    })
+    const mins = screen.getAllByPlaceholderText('최소')
+    expect(mins.length).toBe(2)
+    await act(async () => {
+      fireEvent.change(mins[1], { target: { value: '-40' } })
+    })
+
+    // **두 줄이 따로 간다.** 하나로 뭉개지면 저장 조건이 없는 시험이 된다.
+    const temperature = defs.find((one) => one.key === 'reliability_temperature')!
+    const rows = (
+      sent as { definition_id: string; set_label: string | null; num_min: number }[]
+    )
+      .filter((one) => one.definition_id === temperature.id)
+      .map((one) => [one.set_label, one.num_min])
+    expect(rows).toEqual([
+      ['동작', -15],
+      ['저장', -40],
+    ])
   })
 
   it('값도 이미지도 없으면 조건 줄은 안 선다 — 빈 축을 세워 두지 않는다', async () => {

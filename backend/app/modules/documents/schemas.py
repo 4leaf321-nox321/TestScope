@@ -18,6 +18,9 @@ class SpecDocumentOut(BaseModel):
     title: str
     revision: str | None
     note: str | None
+    submitted_via: str | None = None
+    """기계 자격으로 올렸으면 그 토큰 이름. **줄에 보인다** — 사람이 넣은 것과 구별이
+    안 되면 검토하는 사람이 무엇을 더 봐야 하는지 모른다."""
     file_count: int
     """붙은 파일 수. **목록이 낱장을 받지 않는다** — 줄마다 받아 오면 스무 줄에 스무 번을
     왕복한다. 수만 보이고, 누르면 그때 받는다."""

@@ -81,6 +81,10 @@ class AttributeValueIn(Request):
     num_max(+unit) · text/choice: text_value · boolean: bool_value · date: date_value ·
     term: term_id · method: method_id · document: document_id · pairs/matrix: json_value.
     다른 칸은 무시한다.
+
+    **조건(condition)은 점 하나로도 적는다** — `num_value`. -40 · -20 · 25 · 85 °C 처럼
+    문서가 점을 늘어놓을 때다. 이것을 -40 ~ 85 구간으로 뭉치면 그 사이 아무 온도나 된다는
+    뜻이 되고, 문서는 그런 말을 한 적이 없다.
     """
 
     definition_id: uuid.UUID | None = None
@@ -107,12 +111,25 @@ class AttributeValueIn(Request):
     document_id: uuid.UUID | None = None
     """kind=document — **사내 규격서**를 가리킨다(`/spec-documents`)."""
     note: str | None = Field(default=None, max_length=2000)
+    """**어느 줄에나 함께 실을 수 있다.** 숫자를 비운 채 이것만 실어도 된다 — 값을 비우는
+    것과 아무 말 없이 비우는 것은 다르다(전자는 「아직 모른다」, 후자는 「없다」 로 읽힌다)."""
+    set_label: str | None = Field(default=None, max_length=60)
+    """이 값이 속한 **조건 묶음**(「동작」 · 「저장」 · 「주」 · 「불량 시」). 비우면 이름
+    없는 한 벌이다. 같은 칸을 묶음마다 하나씩 적을 수 있다."""
+    step_order: int | None = Field(default=None, ge=0, le=999)
+    """묶음 안에서의 **차례**. 비우면 묶음 전체에 걸린다(사이클 수 같은 것)."""
+    step_label: str | None = Field(default=None, max_length=60)
+    """그 차례의 이름(「승온」 · 「유지」). 없어도 된다."""
 
 
 class AttributeValueOut(BaseModel):
     definition_id: uuid.UUID
     label: str
     kind: str
+    set_label: str | None = None
+    """조건 묶음 이름. 비면 이름 없는 한 벌이다."""
+    step_order: int | None = None
+    step_label: str | None = None
     status: str
     """`draft` 면 초안 — 화면은 표시로 가르고, MCP 는 비교·집계에 쓰지 말라고 적는다."""
     unit: str

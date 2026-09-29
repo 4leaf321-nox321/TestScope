@@ -53,9 +53,48 @@ export interface StandardValue {
   matrix: MatrixRow[]
   /** 조건 줄의 비고 — 숫자로 못 적는 것(「상온」·「규격에 따름」). */
   note: string
+  /** 어느 칸의 값인가. **키가 칸 id 가 아니게 되면서** 줄이 제 칸을 알아야 한다. */
+  definitionId: string
+  /** 조건 묶음 — 「동작」·「저장」·「주」·「불량 시」. 비우면 이름 없는 한 벌. */
+  setLabel: string
+  /** 묶음 안의 차례. 비우면 묶음 전체에 걸린다(사이클 수 같은 것). */
+  stepOrder: number | null
+  /** 그 차례의 이름(「승온」·「유지」). 없어도 된다. */
+  stepLabel: string
 }
 
-function empty(): StandardValue {
+/**
+ * 값 하나의 자리 — **칸 하나가 아니라 (칸, 묶음, 차례)다.**
+ *
+ * 묶음이 없는 줄의 키는 **칸 id 그대로**다. 조건 아닌 칸에는 묶음이 없고, 없는 것 때문에
+ * 키가 바뀌면 이 파일 바깥(수정 창·시험)까지 같이 고쳐야 한다 — 고칠 이유가 없는 것을
+ * 고치면 그중 하나를 빠뜨린다.
+ */
+export function valueKey(
+  definitionId: string,
+  setLabel = '',
+  stepOrder: number | null = null,
+): string {
+  if (!setLabel && stepOrder === null) return definitionId
+  return JSON.stringify([definitionId, setLabel, stepOrder])
+}
+
+/** 자리에서 (칸, 묶음, 차례)를 되읽는다 — **값이 아직 없는 줄**도 그려야 한다(그림만 붙은 칸). */
+export function parseKey(key: string): {
+  definitionId: string
+  setLabel: string
+  stepOrder: number | null
+} {
+  if (!key.startsWith('[')) return { definitionId: key, setLabel: '', stepOrder: null }
+  const [definitionId, setLabel, stepOrder] = JSON.parse(key) as [
+    string,
+    string,
+    number | null,
+  ]
+  return { definitionId, setLabel, stepOrder }
+}
+
+function empty(definitionId = ''): StandardValue {
   return {
     numValue: null,
     numMin: null,
@@ -67,15 +106,26 @@ function empty(): StandardValue {
     pairs: [],
     matrix: [],
     note: '',
+    definitionId,
+    setLabel: '',
+    stepOrder: null,
+    stepLabel: '',
   }
 }
 
-/** 서버가 준 값 → 편집 상태. 정의 id 로 묶는다. */
+/** 서버가 준 값 → 편집 상태. **(칸, 묶음, 차례)로 묶는다** — 동작 -15~45 와 저장 -40~25 는
+ *  같은 칸 두 줄이라, 칸 id 로만 묶으면 수정 창을 여는 것만으로 하나가 사라진다. */
 export function fromValues(rows: AttributeValue[] | undefined): Record<string, StandardValue> {
   const out: Record<string, StandardValue> = {}
   for (const row of rows ?? []) {
     const json = row.json_value as unknown
-    out[row.definition_id] = {
+    const setLabel = row.set_label ?? ''
+    const stepOrder = row.step_order ?? null
+    out[valueKey(row.definition_id, setLabel, stepOrder)] = {
+      definitionId: row.definition_id,
+      setLabel,
+      stepOrder,
+      stepLabel: row.step_label ?? '',
       numValue: row.num_value ?? null,
       numMin: row.num_min ?? null,
       numMax: row.num_max ?? null,
@@ -96,21 +146,46 @@ export function toStandardPayload(
   definitions: AttributeDefinition[],
   values: Record<string, StandardValue>,
 ): AttributeValueIn[] {
+  const byId = new Map(definitions.map((one) => [one.id, one]))
+  const order = new Map(definitions.map((one, index) => [one.id, index]))
+  // **줄을 값에서 센다.** 칸마다 하나였을 때는 정의를 돌면 됐지만, 묶음이 생기면서 한 칸이
+  // 여러 줄이 된다(동작 · 저장) — 정의를 돌면 그중 하나만 나가고 나머지는 조용히 사라진다.
+  // 순서는 읽을 때와 같게 둔다(이름 없는 묶음 먼저 · 묶음 · 차례 · 칸).
+  const rows = Object.values(values)
+    .filter((one) => byId.has(one.definitionId))
+    .sort(
+      (a, b) =>
+        a.setLabel.localeCompare(b.setLabel) ||
+        (a.stepOrder ?? -1) - (b.stepOrder ?? -1) ||
+        (order.get(a.definitionId) ?? 0) - (order.get(b.definitionId) ?? 0),
+    )
   const out: AttributeValueIn[] = []
-  for (const definition of definitions) {
-    const value = values[definition.id]
-    if (!value) continue
+  for (const value of rows) {
+    const definition = byId.get(value.definitionId)
+    if (!definition) continue
     // `unit` 은 생성 타입에서 필수 칸이다 — 안 쓰는 종류도 빈 값으로 채운다.
-    const base = { definition_id: definition.id, new_kind: definition.kind, unit: '' }
+    const base = {
+      definition_id: definition.id,
+      new_kind: definition.kind,
+      unit: '',
+      set_label: value.setLabel.trim() || null,
+      step_order: value.stepOrder,
+      step_label: value.stepLabel.trim() || null,
+    }
     if (definition.kind === 'number' && value.numValue !== null) {
       out.push({ ...base, num_value: value.numValue, unit: definition.unit })
     } else if (
       (definition.kind === 'condition' || definition.kind === 'range') &&
       // **숫자가 없어도 비고가 있으면 보낸다** — 「상온」 처럼 숫자로 못 적는 조건이 있다.
-      (value.numMin !== null || value.numMax !== null || value.note.trim())
+      (value.numMin !== null ||
+        value.numMax !== null ||
+        value.numValue !== null ||
+        value.note.trim())
     ) {
       out.push({
         ...base,
+        // 점(-40 · 25 · 85)은 조건에만 있다. 구간 칸과 섞이지 않게 화면이 한쪽만 채운다.
+        num_value: definition.kind === 'condition' ? value.numValue : null,
         num_min: value.numMin,
         num_max: value.numMax,
         unit: definition.unit,
@@ -293,7 +368,7 @@ export function StandardAttributeFields({
   }, [definitions, onLoaded])
 
   const set = (id: string, patch: Partial<StandardValue>) =>
-    onChange({ ...values, [id]: { ...(values[id] ?? empty()), ...patch } })
+    onChange({ ...values, [id]: { ...(values[id] ?? empty(id)), ...patch } })
 
   const grouped = useMemo(() => groupDefinitions(definitions), [definitions])
 
@@ -480,17 +555,23 @@ export function StandardAttributeFields({
 }
 
 /**
- * 시험 조건 — **줄을 필요한 만큼 늘린다.**
+ * 시험 조건 — **줄을 필요한 만큼 늘리고, 한 벌이 아니면 묶음으로 가른다.**
  *
- * 조건 축은 열하나다. 전부 빈 칸으로 세워 두면 카드가 빈 칸으로만 길어지고, 정작 적을
+ * 조건 축은 스물이다. 전부 빈 칸으로 세워 두면 카드가 빈 칸으로만 길어지고, 정작 적을
  * 두 줄이 그 사이에 묻힌다. 그래서 **적은 것만 서고**, 나머지는 「조건 추가」 로 꺼낸다.
  *
- * 한 줄이 셋 중 하나가 된다:
+ * 한 줄이 넷 중 하나가 된다:
  *
  *     -40 ~ 85       양쪽 다 적음 — 그 사이
  *     85 이상         최대만 비움
  *     -40 이하        최소만 비움
+ *     85             점 하나 — 폭이 없다(이산 점 · 프로파일의 한 차례)
  *     (비고만)        숫자로 못 적는 것 — 「상온」·「규격에 따름」. 판정에는 안 쓰인다
+ *
+ * **묶음**은 문서의 조건이 한 벌이 아닐 때 쓴다 — 동작 -15 ~ 45 와 저장 -40 ~ 25, 주 조건과
+ * 「불량 시」, 24 cycle 을 도는 프로파일. 한 벌로 뭉치면 -40 ~ 45 라는 **문서에 없는 조건**이
+ * 생기고, 그 조건으로 장비를 고른다. 묶음을 안 쓰는 시험은 화면이 예전 그대로다 — 안 쓰는
+ * 것 때문에 칸이 둘 늘면, 늘 쓰는 사람이 그 값을 치른다.
  */
 function ConditionRows({
   definitions,
@@ -509,6 +590,19 @@ function ConditionRows({
     onChanged: () => void
   }
 }) {
+  const byId = useMemo(() => new Map(definitions.map((one) => [one.id, one])), [definitions])
+  const order = useMemo(
+    () => new Map(definitions.map((one, index) => [one.id, index])),
+    [definitions],
+  )
+
+  const written = (one: StandardValue | undefined) =>
+    !!one &&
+    (one.numMin !== null ||
+      one.numMax !== null ||
+      one.numValue !== null ||
+      one.note.trim() !== '')
+
   /**
    * 줄을 꺼낼 이유 — 값이 있거나 **이미지가 붙어 있거나.**
    *
@@ -516,113 +610,421 @@ function ConditionRows({
    * 시간을 아직 모름). 값만 보고 줄을 접으면 그 이미지는 수정 창에서 **찾을 길이 없다** —
    * 붙인 사람은 붙인 줄 알고, 고치려는 사람은 없는 줄 안다.
    */
-  const filled = (one: AttributeDefinition) => {
-    if (attachments?.rows.some((row) => row.definition_id === one.id)) return true
-    const value = values[one.id]
-    if (!value) return false
-    return value.numMin !== null || value.numMax !== null || value.note.trim() !== ''
+  const wanted = () => {
+    const keys = Object.entries(values)
+      .filter(([, one]) => byId.has(one.definitionId) && written(one))
+      .map(([key]) => key)
+    for (const row of attachments?.rows ?? []) {
+      // 그림은 **칸**에 붙지 묶음에 붙지 않는다 — 이름 없는 줄로 꺼낸다.
+      if (row.definition_id && byId.has(row.definition_id))
+        keys.push(valueKey(row.definition_id))
+    }
+    return [...new Set(keys)]
   }
-  // 한 번 꺼낸 줄은 비워도 남는다 — 지우려고 값을 비웠는데 줄이 사라지면 놀란다.
-  const [shown, setShown] = useState<string[]>(() =>
-    definitions.filter(filled).map((one) => one.id),
-  )
+
+  const [shown, setShown] = useState<string[]>(wanted)
   useEffect(() => {
     setShown((prev) => {
-      const next = definitions.filter((one) => filled(one) && !prev.includes(one.id))
-      return next.length > 0 ? [...prev, ...next.map((one) => one.id)] : prev
+      const next = wanted().filter((one) => !prev.includes(one))
+      return next.length > 0 ? [...prev, ...next] : prev
     })
     // 값이 밖에서 통째로 바뀔 때(수정 창 열기)와 이미지가 붙고 빠질 때 맞춘다.
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [definitions, values, attachments?.rows])
 
-  const rows = definitions.filter((one) => shown.includes(one.id))
-  const rest = definitions.filter((one) => !shown.includes(one.id))
-  const set = (id: string, patch: Partial<StandardValue>) =>
-    onChange({ ...values, [id]: { ...(values[id] ?? empty()), ...patch } })
+  /**
+   * 묶음 칸을 꺼낼까. **이미 묶음이 있으면 켜 둔다** — 안 그러면 AI 가 올린 동작/저장을
+   * 사람이 열었을 때 묶음이 안 보이고, 안 보이는 것은 고칠 수 없다.
+   */
+  const hasSets = shown.some((key) => (values[key]?.setLabel ?? '') !== '')
+  const [grouping, setGrouping] = useState(false)
+  useEffect(() => {
+    if (hasSets) setGrouping(true)
+  }, [hasSets])
+
+  const rows = shown
+    .map((key) => {
+      const at = parseKey(key)
+      // 값이 없는 자리도 줄로 선다 — 그림만 붙은 조건이 그렇다.
+      const value = values[key] ?? {
+        ...empty(at.definitionId),
+        setLabel: at.setLabel,
+        stepOrder: at.stepOrder,
+      }
+      return { key, value, definition: byId.get(at.definitionId) }
+    })
+    .filter(
+      (row): row is { key: string; value: StandardValue; definition: AttributeDefinition } =>
+        !!row.value && !!row.definition,
+    )
+    .sort(
+      (a, b) =>
+        a.value.setLabel.localeCompare(b.value.setLabel) ||
+        (a.value.stepOrder ?? -1) - (b.value.stepOrder ?? -1) ||
+        (order.get(a.definition.id) ?? 0) - (order.get(b.definition.id) ?? 0),
+    )
+
+  const set = (key: string, patch: Partial<StandardValue>) => {
+    const at = parseKey(key)
+    const now = values[key] ?? {
+      ...empty(at.definitionId),
+      setLabel: at.setLabel,
+      stepOrder: at.stepOrder,
+    }
+    onChange({ ...values, [key]: { ...now, ...patch } })
+  }
+
+  /** 줄을 다른 묶음·차례로 옮긴다 — **자리(키)가 바뀌므로 값과 목록을 함께 옮긴다.** */
+  function move(key: string, patch: { setLabel?: string; stepOrder?: number | null }) {
+    const at = parseKey(key)
+    const now = values[key] ?? {
+      ...empty(at.definitionId),
+      setLabel: at.setLabel,
+      stepOrder: at.stepOrder,
+    }
+    if (!byId.has(now.definitionId)) return
+    const moved = { ...now, ...patch }
+    const next = valueKey(moved.definitionId, moved.setLabel, moved.stepOrder)
+    if (next === key) return
+    if (values[next] && written(values[next])) return // 이미 적힌 줄을 덮지 않는다
+    const rest = { ...values }
+    delete rest[key]
+    onChange({ ...rest, [next]: moved })
+    setShown((prev) => prev.map((one) => (one === key ? next : one)).filter(unique))
+  }
+
+  function add(definitionId: string, setLabel: string) {
+    // 같은 묶음에 같은 칸이 이미 있으면 **다음 차례**로 붙는다 — 프로파일이 그렇게 늘어난다.
+    const mine = rows.filter(
+      (row) => row.definition.id === definitionId && row.value.setLabel === setLabel,
+    )
+    if (mine.length === 0) {
+      const key = valueKey(definitionId, setLabel, null)
+      if (shown.includes(key)) return
+      onChange({ ...values, [key]: { ...empty(definitionId), setLabel, stepOrder: null } })
+      setShown((prev) => [...prev, key])
+      return
+    }
+    // **첫 줄도 함께 번호를 받는다.** 하나는 「묶음 전체」 이고 하나는 「2번째」 이면, 프로파일
+    // 넷 중 첫 도막이 어디 갔는지 읽는 사람이 못 찾는다.
+    const numbered = mine.filter((row) => row.value.stepOrder !== null)
+    if (numbered.length === 0) mine.forEach((row) => move(row.key, { stepOrder: 1 }))
+    const step = Math.max(0, ...mine.map((row) => row.value.stepOrder ?? 1)) + 1
+    const key = valueKey(definitionId, setLabel, step)
+    if (shown.includes(key)) return
+    onChange({ ...values, [key]: { ...empty(definitionId), setLabel, stepOrder: step } })
+    setShown((prev) => [...prev, key])
+  }
+
+  function drop(key: string) {
+    const rest = { ...values }
+    delete rest[key]
+    onChange(rest)
+    setShown((prev) => prev.filter((one) => one !== key))
+  }
+
+  /** 화면에 설 묶음 — 이름 없는 것이 먼저다. 비어 있어도 사람이 만든 묶음은 남는다. */
+  const [extraSets, setExtraSets] = useState<string[]>([])
+  const setNames = [
+    ...new Set(['', ...rows.map((row) => row.value.setLabel), ...extraSets]),
+  ].sort((a, b) => (a === '' ? -1 : b === '' ? 1 : a.localeCompare(b)))
+  // 이름 없는 묶음은 **줄이 있을 때만** 선다(다른 묶음이 하나도 없으면 그것이 유일한 자리다).
+  // 늘 세워 두면 이름을 다 지어 둔 카드 위에 빈 카드가 하나 더 붙어 어디에 적을지 흐려진다.
+  const groups = grouping
+    ? setNames.filter(
+        (one) =>
+          one !== '' || setNames.length === 1 || rows.some((row) => row.value.setLabel === ''),
+      )
+    : ['']
 
   return (
-    <div className="mb-4 max-w-4xl space-y-2">
-      {rows.map((definition) => {
-        const value = values[definition.id] ?? empty()
-        const id = `attr-${definition.id}`
+    <div className="mb-4 max-w-4xl space-y-3">
+      {groups.map((name) => {
+        const mine = grouping ? rows.filter((row) => row.value.setLabel === name) : rows
+        // 묶음을 쓸 때는 **이미 적은 칸도 다시 고를 수 있다** — 프로파일 한 벌은 시험 온도가
+        // 네 줄이다(차례 1·2·3·4). 묶음을 안 쓰면 예전대로 칸마다 하나다.
+        const taken = new Set(mine.map((row) => row.definition.id))
+        const rest = grouping ? definitions : definitions.filter((one) => !taken.has(one.id))
         return (
           <div
-            key={definition.id}
-            id={anchorOf('field', definition.key)}
-            className="bg-muted/30 scroll-mt-4 rounded-md border p-2.5"
+            key={name || '(기본)'}
+            className={grouping && name ? 'rounded-md border border-dashed p-2' : ''}
           >
-            <div className="flex flex-wrap items-center gap-2">
-              <Label htmlFor={id} className="w-28 shrink-0 text-sm">
-                {definition.label}
-              </Label>
-              <Input
-                id={id}
-                type="number"
-                value={value.numMin ?? ''}
-                onChange={(event) =>
-                  set(definition.id, {
-                    numMin: event.target.value === '' ? null : Number(event.target.value),
-                  })
-                }
-                placeholder="최소"
-                className="w-24"
-              />
-              <span className="text-muted-foreground text-sm">~</span>
-              <Input
-                type="number"
-                value={value.numMax ?? ''}
-                onChange={(event) =>
-                  set(definition.id, {
-                    numMax: event.target.value === '' ? null : Number(event.target.value),
-                  })
-                }
-                placeholder="최대"
-                aria-label={`${definition.label} 최대`}
-                className="w-24"
-              />
-              <span className="text-muted-foreground w-12 text-sm">{definition.unit}</span>
-              <Input
-                value={value.note}
-                onChange={(event) => set(definition.id, { note: event.target.value })}
-                placeholder="비고 — 숫자로 못 적는 것 (상온 · 규격에 따름)"
-                aria-label={`${definition.label} 비고`}
-                className="min-w-40 flex-1"
-                maxLength={2000}
-              />
-              <button
-                type="button"
-                aria-label={`${definition.label} 제거`}
-                className="text-muted-foreground hover:text-foreground"
-                onClick={() => {
-                  setShown((prev) => prev.filter((one) => one !== definition.id))
-                  set(definition.id, { numMin: null, numMax: null, note: '' })
-                }}
-              >
-                <X className="size-4" />
-              </button>
+            {grouping && (
+              <div className="mb-1.5 flex flex-wrap items-center gap-2">
+                <SetNameInput
+                  value={name}
+                  placeholder="묶음 이름 — 동작 · 저장 · 주 · 불량 시"
+                  onCommit={(next) => {
+                    if (next === name || setNames.includes(next)) return
+                    for (const row of mine) move(row.key, { setLabel: next })
+                    // **줄이 없어도 이름은 남는다.** 사람은 묶음을 만들고 이름부터 짓는다 —
+                    // 그때 이름이 안 붙으면, 다음에 적는 조건이 이름 없는 한 벌로 들어간다.
+                    setExtraSets((prev) =>
+                      prev.includes(name)
+                        ? prev.map((one) => (one === name ? next : one))
+                        : [...prev, next],
+                    )
+                  }}
+                />
+                {name === '' && mine.length === 0 && (
+                  <span className="text-muted-foreground text-xs">
+                    이름을 비워 두면 「이름 없는 한 벌」 입니다.
+                  </span>
+                )}
+              </div>
+            )}
+
+            <div className="space-y-2">
+              {mine.map((row) => (
+                <ConditionRow
+                  key={row.key}
+                  definition={row.definition}
+                  value={row.value}
+                  grouping={grouping}
+                  onChange={(patch) => set(row.key, patch)}
+                  onStep={(step) => move(row.key, { stepOrder: step })}
+                  onRemove={() => drop(row.key)}
+                  attachments={attachments}
+                />
+              ))}
             </div>
-            <p className="text-muted-foreground mt-1 pl-30 text-xs">
-              {describeRange(value, definition.unit)}
-            </p>
-            {attachments && (
-              <div className="mt-1 pl-30">
-                <FieldAttachments definition={definition} bag={attachments} />
+
+            {rest.length > 0 && (
+              <div className="mt-2">
+                <SearchablePicker
+                  id={name === '' ? 'condition-add' : undefined}
+                  options={rest.map((one) => ({
+                    id: one.id,
+                    label: one.label,
+                    detail: one.unit,
+                  }))}
+                  value=""
+                  onChange={(id) => id && add(id, name)}
+                  placeholder="조건 추가"
+                  detailTitle="시험 조건"
+                  detailHint="여기 없는 축이 필요하면 관리자가 「검색 조건」 에 축을 더합니다."
+                />
               </div>
             )}
           </div>
         )
       })}
 
-      {rest.length > 0 && (
-        <SearchablePicker
-          id="condition-add"
-          options={rest.map((one) => ({ id: one.id, label: one.label, detail: one.unit }))}
-          value=""
-          onChange={(id) => id && setShown((prev) => [...prev, id])}
-          placeholder="조건 추가"
-          detailTitle="시험 조건"
-          detailHint="여기 없는 축이 필요하면 관리자가 「검색 조건」 에 축을 더합니다."
+      <div className="flex flex-wrap items-center gap-2">
+        {!grouping ? (
+          <button
+            type="button"
+            className="text-muted-foreground hover:text-foreground text-xs underline"
+            onClick={() => setGrouping(true)}
+          >
+            조건 묶음 나누기
+          </button>
+        ) : (
+          <>
+            <button
+              type="button"
+              className="text-muted-foreground hover:text-foreground text-xs underline"
+              onClick={() => setExtraSets((prev) => [...prev, nextSetName(setNames)])}
+            >
+              묶음 추가
+            </button>
+            {!hasSets && (
+              <button
+                type="button"
+                className="text-muted-foreground hover:text-foreground text-xs underline"
+                onClick={() => {
+                  setExtraSets([])
+                  setGrouping(false)
+                }}
+              >
+                묶음 없이
+              </button>
+            )}
+          </>
+        )}
+        <span className="text-muted-foreground text-xs">
+          {grouping
+            ? '동작 -15 ~ 45 와 저장 -40 ~ 25 처럼 한 벌이 아닌 조건을 가릅니다. 프로파일은 묶음 안에서 차례로 적고, 몇 번 도는지는 「사이클 수」 를 차례 없이 적습니다.'
+            : '문서의 조건이 한 벌이 아니면(동작·저장, 주 조건과 예외, 프로파일) 묶음으로 가릅니다.'}
+        </span>
+      </div>
+    </div>
+  )
+}
+
+function unique<T>(one: T, index: number, all: T[]): boolean {
+  return all.indexOf(one) === index
+}
+
+/** 「묶음 2」 · 「묶음 3」 … — 이미 있는 이름은 피한다. */
+function nextSetName(taken: string[]): string {
+  for (let index = 2; index < 100; index += 1) {
+    const name = `묶음 ${index}`
+    if (!taken.includes(name)) return name
+  }
+  return '묶음'
+}
+
+/**
+ * 친 뒤 **빠져나갈 때** 반영하는 칸.
+ *
+ * 묶음 이름은 줄의 자리(키)를 이룬다 — 글자마다 반영하면 한 글자 칠 때마다 줄이 옮겨 다니고,
+ * 치던 칸이 사라진다.
+ */
+function SetNameInput({
+  value,
+  placeholder,
+  onCommit,
+}: {
+  value: string
+  placeholder: string
+  onCommit: (next: string) => void
+}) {
+  const [draft, setDraft] = useState(value)
+  useEffect(() => setDraft(value), [value])
+  return (
+    <Input
+      value={draft}
+      onChange={(event) => setDraft(event.target.value)}
+      onBlur={() => onCommit(draft.trim())}
+      onKeyDown={(event) => {
+        if (event.key === 'Enter') {
+          event.preventDefault()
+          ;(event.target as HTMLInputElement).blur()
+        }
+      }}
+      placeholder={placeholder}
+      aria-label="묶음 이름"
+      className="w-72"
+      maxLength={60}
+    />
+  )
+}
+
+/** 조건 한 줄. 구간이거나 점이거나 — 둘을 함께 적을 수는 없다. */
+function ConditionRow({
+  definition,
+  value,
+  grouping,
+  onChange,
+  onStep,
+  onRemove,
+  attachments,
+}: {
+  definition: AttributeDefinition
+  value: StandardValue
+  grouping: boolean
+  onChange: (patch: Partial<StandardValue>) => void
+  onStep: (step: number | null) => void
+  onRemove: () => void
+  attachments?: {
+    rows: Attachment[]
+    canEdit: boolean
+    objectId: string | null
+    onChanged: () => void
+  }
+}) {
+  const id = `attr-${definition.id}-${value.setLabel}-${value.stepOrder ?? ''}`
+  const point = value.numValue !== null
+  const num = (text: string) => (text === '' ? null : Number(text))
+  return (
+    <div
+      id={anchorOf('field', definition.key)}
+      className="bg-muted/30 scroll-mt-4 rounded-md border p-2.5"
+    >
+      <div className="flex flex-wrap items-center gap-2">
+        <Label htmlFor={id} className="w-28 shrink-0 text-sm">
+          {definition.label}
+        </Label>
+        {grouping && (
+          <Input
+            type="number"
+            value={value.stepOrder ?? ''}
+            onChange={(event) => onStep(num(event.target.value))}
+            placeholder="차례"
+            aria-label={`${definition.label} 차례`}
+            className="w-16"
+            min={0}
+            max={999}
+          />
+        )}
+        <Select
+          value={point ? 'point' : 'range'}
+          onValueChange={(next) =>
+            // **한쪽만 채운다.** 구간과 점이 한 줄에 함께 있으면 어느 쪽이 참인지 알 수 없다.
+            next === 'point'
+              ? onChange({
+                  numValue: value.numMin ?? value.numMax,
+                  numMin: null,
+                  numMax: null,
+                })
+              : onChange({ numMin: value.numValue, numMax: value.numValue, numValue: null })
+          }
+        >
+          <SelectTrigger className="w-20" aria-label={`${definition.label} 모양`}>
+            <SelectValue />
+          </SelectTrigger>
+          <SelectContent>
+            <SelectItem value="range">범위</SelectItem>
+            <SelectItem value="point">점</SelectItem>
+          </SelectContent>
+        </Select>
+        {point ? (
+          <Input
+            id={id}
+            type="number"
+            value={value.numValue ?? ''}
+            onChange={(event) => onChange({ numValue: num(event.target.value) })}
+            placeholder="값"
+            className="w-24"
+          />
+        ) : (
+          <>
+            <Input
+              id={id}
+              type="number"
+              value={value.numMin ?? ''}
+              onChange={(event) => onChange({ numMin: num(event.target.value) })}
+              placeholder="최소"
+              className="w-24"
+            />
+            <span className="text-muted-foreground text-sm">~</span>
+            <Input
+              type="number"
+              value={value.numMax ?? ''}
+              onChange={(event) => onChange({ numMax: num(event.target.value) })}
+              placeholder="최대"
+              aria-label={`${definition.label} 최대`}
+              className="w-24"
+            />
+          </>
+        )}
+        <span className="text-muted-foreground w-12 text-sm">{definition.unit}</span>
+        <Input
+          value={value.note}
+          onChange={(event) => onChange({ note: event.target.value })}
+          placeholder="비고 — 숫자로 못 적는 것 (상온 · 규격에 따름)"
+          aria-label={`${definition.label} 비고`}
+          className="min-w-40 flex-1"
+          maxLength={2000}
         />
+        <button
+          type="button"
+          aria-label={`${definition.label} 제거`}
+          className="text-muted-foreground hover:text-foreground"
+          onClick={onRemove}
+        >
+          <X className="size-4" />
+        </button>
+      </div>
+      <p className="text-muted-foreground mt-1 pl-30 text-xs">
+        {describeRange(value, definition.unit)}
+      </p>
+      {attachments && (
+        <div className="mt-1 pl-30">
+          <FieldAttachments definition={definition} bag={attachments} />
+        </div>
       )}
     </div>
   )
@@ -631,11 +1033,16 @@ function ConditionRows({
 /** 지금 적힌 것이 무슨 뜻인지 한 줄로 — 한쪽만 적은 것이 실수인지 뜻인지 사람이 본다. */
 function describeRange(value: StandardValue, unit: string): string {
   const suffix = unit ? ` ${unit}` : ''
+  const where = value.setLabel
+    ? `「${value.setLabel}」${value.stepOrder === null ? '' : ` ${value.stepOrder}번째`} · `
+    : ''
+  // 점은 폭이 없다 — 그 값에서만 한다는 뜻이고, 사이 온도로 읽히면 안 된다.
+  if (value.numValue !== null) return `${where}${value.numValue}${suffix} 한 점 (폭 없음)`
   if (value.numMin !== null && value.numMax !== null) {
-    return `${value.numMin} ~ ${value.numMax}${suffix} 사이`
+    return `${where}${value.numMin} ~ ${value.numMax}${suffix} 사이`
   }
-  if (value.numMin !== null) return `${value.numMin}${suffix} 이상 (최대는 제한 없음)`
-  if (value.numMax !== null) return `${value.numMax}${suffix} 이하 (최소는 제한 없음)`
+  if (value.numMin !== null) return `${where}${value.numMin}${suffix} 이상 (최대는 제한 없음)`
+  if (value.numMax !== null) return `${where}${value.numMax}${suffix} 이하 (최소는 제한 없음)`
   if (value.note.trim()) return '숫자가 없어 장비 판정에는 안 쓰입니다 — 사람이 읽는 줄입니다.'
   return '최소·최대 중 하나만 적어도 됩니다.'
 }

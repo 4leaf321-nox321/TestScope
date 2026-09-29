@@ -36,6 +36,11 @@ def display_attribute(
     if kind == "number":
         return f"{_number(num_value)}{suffix}" if num_value is not None else ""
     if kind in ("range", "condition"):
+        # **점 하나로 적은 조건.** -40 · -20 · 25 · 85 °C 처럼 문서가 점을 늘어놓으면
+        # 폭이 없다. 그것을 「-40 이상」 으로 적으면 없는 여유를 만들어 주는 셈이고,
+        # 그 글자를 그대로 믿은 사람이 -30 °C 에서 시험해도 된다고 읽는다.
+        if num_value is not None:
+            return f"{_number(num_value)}{suffix}"
         low = _number(num_min) if num_min is not None else ""
         high = _number(num_max) if num_max is not None else ""
         if low and high:

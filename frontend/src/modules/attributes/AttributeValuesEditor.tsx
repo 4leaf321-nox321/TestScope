@@ -68,6 +68,16 @@ export interface AttributeRow {
   methodId: string | null
   methodLabel: string
   note: string
+  /**
+   * 조건 묶음 — **여기서는 안 그린다. 다만 떨어뜨리지도 않는다.**
+   *
+   * 이 편집기는 초안 속성을 적는 자리라 묶음을 쓸 일이 거의 없다. 그래도 MCP 로 올라온
+   * 초안에 묶음이 붙어 있을 수 있고, 그때 이 칸이 없으면 사람이 수정 창을 여닫는 것만으로
+   * 묶음이 풀려 두 줄이 한 줄로 뭉개진다.
+   */
+  setLabel: string
+  stepOrder: number | null
+  stepLabel: string
 }
 
 let counter = 0
@@ -96,6 +106,9 @@ function blank(partial: Partial<AttributeRow>): AttributeRow {
     methodId: null,
     methodLabel: '',
     note: '',
+    setLabel: '',
+    stepOrder: null,
+    stepLabel: '',
     ...partial,
   }
 }
@@ -132,6 +145,9 @@ export function fromValues(values: AttributeValue[]): AttributeRow[] {
       methodId: one.method_id,
       methodLabel: one.method_code ?? '',
       note: one.note ?? '',
+      setLabel: one.set_label ?? '',
+      stepOrder: one.step_order ?? null,
+      stepLabel: one.step_label ?? '',
     })
   })
 }
@@ -178,6 +194,9 @@ export function toPayload(rows: AttributeRow[]): AttributeValueIn[] {
       term_id: row.termId,
       method_id: row.methodId,
       note: row.note.trim() || null,
+      set_label: row.setLabel.trim() || null,
+      step_order: row.stepOrder,
+      step_label: row.stepLabel.trim() || null,
     }))
 }
 

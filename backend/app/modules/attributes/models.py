@@ -180,10 +180,15 @@ class AttributeValue(Base):
             " + (series_id IS NOT NULL)::int + (method_id IS NOT NULL)::int = 1",
             name="one_target",
         ),
+        # **묶음·차례까지 함께 유일하다.** 이것이 좁으면(시험+정의) 조건이 칸마다 하나뿐이
+        # 되어 동작·저장을 둘 다 못 적는다. NULL 끼리는 서로 다르다고 보므로 COALESCE 로
+        # 눌러 둔다 — 안 그러면 이름 없는 묶음의 같은 칸이 여러 줄로 들어온다.
         Index(
             "uq_attribute_values_reliability",
             "reliability_test_id",
             "definition_id",
+            text("COALESCE(set_label, '')"),
+            text("COALESCE(step_order, -1)"),
             unique=True,
             postgresql_where=text("reliability_test_id IS NOT NULL"),
         ),
@@ -281,6 +286,30 @@ class AttributeValue(Base):
     )
     """kind=document 값이 가리키는 **사내 규격서**. 공개 규격(`ref_method_id`)과 다른 표다 —
     출처도 권한도 개정 주기도 다르다."""
+    set_label: Mapped[str | None] = mapped_column(String(60), nullable=True, index=True)
+    """이 값이 속한 **조건 묶음**의 이름. 비우면 이름 없는 한 벌이다.
+
+    **한 시험에 조건이 한 벌뿐이 아니다.** 실제 문서는 이렇게 적혀 있다:
+
+        동작 -15 ~ 45 °C · 저장 -40 ~ 25 °C        두 벌이 한 벌처럼 쓰인다
+        80 °C 80% 120h · 불량 시 70 °C 90% 360h   주 조건과 예외
+
+    칸마다 값이 하나뿐이면 이 중 하나만 적고 나머지는 문장으로 흘린다 — 그러면 검색이
+    못 읽는다. 묶음 이름으로 갈라 두면 둘 다 수치로 남는다."""
+
+    step_order: Mapped[int | None] = mapped_column(Integer, nullable=True)
+    """묶음 안에서의 **차례**. 비우면 묶음 전체에 걸리는 값이다(사이클 수 같은 것).
+
+        70 °C 1h -> 25 °C 1h -> 30 °C 1h -> 25 °C 1h, 24 cycle
+        ───────    ───────    ───────    ───────     ────────
+        step 1     step 2     step 3     step 4      step 비움
+
+    이산 점(-40 · -20 · 25 · 85 °C)도 차례로 적는다 — 순서가 뜻을 갖지 않을 뿐
+    같은 모양이다."""
+
+    step_label: Mapped[str | None] = mapped_column(String(60), nullable=True)
+    """그 차례에 붙는 이름(「승온」 · 「유지」). 없어도 된다 — 번호만으로 읽히면 그만이다."""
+
     note: Mapped[str | None] = mapped_column(Text, nullable=True)
     """수치로 못 담는 단서. 「챔버 장착 시」 「시료 5개 기준」."""
 

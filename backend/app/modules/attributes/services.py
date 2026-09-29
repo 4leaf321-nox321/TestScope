@@ -421,11 +421,14 @@ def _check_value_shape(
         kind in ("range", "condition")
         and item.num_min is None
         and item.num_max is None
+        # 조건은 **점 하나**로도 적는다 — 이산 점(-40 · -20 · 25 · 85 °C)이 그렇다.
+        and not (kind == "condition" and item.num_value is not None)
         and not clean(item.note or "")
     ):
         raise AppError(
             "TSC-ATTR-0011",
-            f"「{label}」 은 최소·최대 중 하나를 적거나, 숫자로 못 적으면 비고에 적으십시오.",
+            f"「{label}」 은 최소·최대(또는 점 하나)를 적거나,"
+            " 숫자로 못 적으면 비고에 적으십시오.",
         )
     if (
         kind in ("range", "condition")
@@ -517,7 +520,9 @@ def set_values(
     for old in db.scalars(select(AttributeValue).where(column == object_id)):
         db.delete(old)
     db.flush()
-    seen: dict[uuid.UUID, AttributeValue] = {}
+    # **열쇠가 (정의, 묶음, 차례) 다.** 정의만으로 누르면 동작·저장이 서로를 덮어써서
+    # 마지막 한 줄만 남는다 — 보낸 사람은 둘 다 보냈다고 알고 있다.
+    seen: dict[tuple[uuid.UUID, str, int], AttributeValue] = {}
     for item in items:
         if item.definition_id is not None:
             definition = get_definition(db, item.definition_id)
@@ -536,7 +541,10 @@ def set_values(
         numeric = definition.kind in _NUMERIC_KINDS
         value = AttributeValue(
             definition_id=definition.id,
-            num_value=item.num_value if definition.kind == "number" else None,
+            # **조건은 점으로도 적는다.** 이산 점(-40 · -20 · 25 · 85 °C)은 구간이 아니라
+            # 값 하나다. 판정은 이미 이 칸을 읽을 줄 알았는데(`ConditionQuery(at=…)`)
+            # 여기서 버리고 있어서, 그 길이 닿지 않았다.
+            num_value=item.num_value if definition.kind in ("number", "condition") else None,
             num_min=item.num_min if definition.kind in ("range", "condition") else None,
             num_max=item.num_max if definition.kind in ("range", "condition") else None,
             unit=clean(item.unit or "") if numeric else "",
@@ -550,9 +558,17 @@ def set_values(
             ref_document_id=(item.document_id if definition.kind == "document" else None),
             json_value=(item.json_value if definition.kind in ("pairs", "matrix") else None),
             note=clean(item.note or "") or None,
+            set_label=clean(item.set_label or "") or None,
+            step_order=item.step_order,
+            step_label=clean(item.step_label or "") or None,
         )
         setattr(value, column.key, object_id)
-        seen[definition.id] = value
+        where = (
+            definition.id,
+            value.set_label or "",
+            value.step_order if value.step_order is not None else -1,
+        )
+        seen[where] = value
     for value in seen.values():
         db.add(value)
     db.flush()
@@ -605,6 +621,10 @@ def values_of(
         .where(column.in_(object_ids))
         .order_by(
             AttributeDefinition.status.desc(),
+            # **묶음이 먼저 뭉친다.** 정의 순서로만 늘어놓으면 동작의 온도와 저장의 온도가
+            # 나란히 서고, 읽는 사람은 그 둘이 한 벌인 줄 안다. 이름 없는 묶음이 맨 앞이다.
+            AttributeValue.set_label.nulls_first(),
+            AttributeValue.step_order.nulls_first(),
             AttributeDefinition.sort_order,
             AttributeDefinition.label,
         )
@@ -649,6 +669,9 @@ def values_of(
                 label=definition.label,
                 kind=definition.kind,
                 status=definition.status,
+                set_label=value.set_label,
+                step_order=value.step_order,
+                step_label=value.step_label,
                 unit=value.unit,
                 num_value=value.num_value,
                 num_min=value.num_min,

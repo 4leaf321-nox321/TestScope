@@ -342,6 +342,102 @@ async def _write_chain(ctx: _Ctx) -> int:
                 bad += 1
                 print("  실패 뺐는데 칸이 그대로입니다")
 
+    # 7-1. 조건 묶음 — **같은 칸이 묶음마다 한 줄**이다.
+    #
+    # 동작 -15 ~ 45 와 저장 -40 ~ 25 는 두 줄인데, 병합이 칸 이름만 보면 하나가 조용히
+    # 사라진다. 그 병합은 MCP 안에서 일어나므로 살아 있는 서버가 있는 여기서만 잡힌다.
+    grouped = step(
+        "set_reliability_attributes(묶음 둘)",
+        await server.set_reliability_attributes(
+            ctx,
+            test["id"],
+            [
+                {
+                    "definition_id": definition["id"],
+                    "set_label": "동작",
+                    "num_min": -15,
+                    "num_max": 45,
+                    "unit": "degC",
+                },
+                {
+                    "definition_id": definition["id"],
+                    "set_label": "저장",
+                    "num_min": -40,
+                    "num_max": 25,
+                    "unit": "degC",
+                },
+            ],
+        ),
+        ["name"],
+    )
+    if grouped is not None:
+        sets = {
+            one["set_label"]: one["display"]
+            for one in grouped["attributes"]
+            if one["definition_id"] == definition["id"]
+        }
+        if sets != {None: "-55 ~ 125 degC", "동작": "-15 ~ 45 degC", "저장": "-40 ~ 25 degC"}:
+            bad += 1
+            print(f"  실패 묶음 두 줄이 제대로 안 섰습니다: {_short(sets, 120)}")
+
+    if grouped is not None:
+        # 묶음 하나만 고친다 — 나머지 묶음은 그대로여야 한다.
+        moved = step(
+            "set_reliability_attributes(묶음 하나만)",
+            await server.set_reliability_attributes(
+                ctx,
+                test["id"],
+                [
+                    {
+                        "definition_id": definition["id"],
+                        "set_label": "저장",
+                        "num_min": -50,
+                        "num_max": 25,
+                        "unit": "degC",
+                    }
+                ],
+            ),
+            ["name"],
+        )
+        if moved is not None:
+            sets = {
+                one["set_label"]: one["display"]
+                for one in moved["attributes"]
+                if one["definition_id"] == definition["id"]
+            }
+            if sets.get("동작") != "-15 ~ 45 degC":
+                bad += 1
+                print(f"  실패 안 건드린 묶음이 바뀌었습니다: {_short(sets, 120)}")
+            if sets.get("저장") != "-50 ~ 25 degC":
+                bad += 1
+                print(f"  실패 고친 묶음이 안 바뀌었습니다: {_short(sets, 120)}")
+
+        # 점으로 적은 조건 — 폭이 없다. 「-40 이상」 으로 읽히면 없는 여유가 생긴다.
+        pointed = step(
+            "set_reliability_attributes(점)",
+            await server.set_reliability_attributes(
+                ctx,
+                test["id"],
+                [
+                    {
+                        "definition_id": definition["id"],
+                        "set_label": "시험 점",
+                        "step_order": 1,
+                        "num_value": 85,
+                        "unit": "degC",
+                    }
+                ],
+            ),
+            ["name"],
+        )
+        if pointed is not None:
+            point = next(
+                (one for one in pointed["attributes"] if one["set_label"] == "시험 점"), None
+            )
+            if point is None or point["display"] != "85 degC":
+                bad += 1
+                print(f"  실패 점이 제대로 안 섰습니다: {_short(point, 120)}")
+
     # 8. 규격과 요구 조건 — 표기만 다른 중복은 거절되어야 한다.
     method = step(
         "create_method",

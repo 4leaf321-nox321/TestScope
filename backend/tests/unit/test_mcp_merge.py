@@ -45,6 +45,9 @@ def _value(definition_id: str, **over: Any) -> dict[str, Any]:
         "document_code": None,
         "json_value": None,
         "note": None,
+        "set_label": None,
+        "step_order": None,
+        "step_label": None,
         **over,
     }
 
@@ -102,3 +105,81 @@ def test_순서가_안_흔들린다() -> None:
     now = [_value(f"d-{index}") for index in range(5)]
     after = merge(now, [{"definition_id": "d-3", "num_min": 0, "num_max": 10}])
     assert [row["definition_id"] for row in after] == [f"d-{index}" for index in range(5)]
+
+
+def test_묶음이_다르면_다른_줄이다() -> None:
+    """동작 -15 ~ 45 와 저장 -40 ~ 25 는 **같은 칸 두 줄**이다.
+
+    칸 이름만 보고 겹친다고 치면 둘 중 하나가 조용히 사라지고, 그 시험은 저장 조건이 없는
+    시험이 된다 — 카드에는 온도가 한 줄만 서니 사람은 그것이 전부인 줄 안다.
+    """
+    now = [
+        _value("d-temp", set_label="동작", num_min=-15, num_max=45),
+        _value("d-temp", set_label="저장", num_min=-40, num_max=25),
+        _value("d-proc", text_value="절차", num_min=None, num_max=None),
+    ]
+    after = merge(now, [{"definition_id": "d-temp", "set_label": "저장", "num_min": -50}])
+
+    assert len(after) == 3, "묶음이 다른 줄까지 덮으면 안 된다"
+    by_set = {row.get("set_label"): row for row in after if row["definition_id"] == "d-temp"}
+    assert by_set["동작"]["num_max"] == 45, "동작은 안 건드렸다"
+    assert by_set["저장"]["num_min"] == -50 and "num_max" not in by_set["저장"]
+
+
+def test_차례가_다르면_다른_줄이다() -> None:
+    """프로파일 한 벌 — 70 °C 1h -> 25 °C 1h -> 30 °C 1h -> 25 °C 1h."""
+    now = [
+        _value(
+            "d-temp",
+            set_label="온도 사이클",
+            step_order=step,
+            num_value=value,
+            num_min=None,
+            num_max=None,
+        )
+        for step, value in enumerate([70, 25, 30, 25], 1)
+    ]
+    after = merge(
+        now,
+        [
+            {
+                "definition_id": "d-temp",
+                "set_label": "온도 사이클",
+                "step_order": 3,
+                "num_value": 35,
+            },
+        ],
+    )
+    assert len(after) == 4
+    assert [row["num_value"] for row in after] == [70, 25, 35, 25]
+
+
+def test_묶음_없이_보내면_이름_없는_한_벌이다() -> None:
+    """묶음이 있는 시험에 묶음 없이 보내면 **그 둘이 아니라 세 번째 줄**이다.
+
+    묶음을 안 적은 것을 「아무거나 하나」 로 받아 주면, 동작에 걸릴지 저장에 걸릴지 보낸
+    쪽이 모르는 채로 값이 들어간다.
+    """
+    now = [
+        _value("d-temp", set_label="동작", num_min=-15, num_max=45),
+        _value("d-temp", set_label="저장", num_min=-40, num_max=25),
+    ]
+    after = merge(now, [{"definition_id": "d-temp", "num_min": 0, "num_max": 60}])
+    assert len(after) == 3
+    assert after[2].get("set_label") is None
+
+
+def test_묶음은_되돌려_보내는_칸이다() -> None:
+    """`set_label` 을 안 실으면, 고칠 때마다 묶음이 풀려 한 줄로 뭉개진다."""
+    sent = as_input(_value("d-temp", set_label="동작", step_order=2, step_label="유지"))
+    assert sent["set_label"] == "동작"
+    assert sent["step_order"] == 2 and sent["step_label"] == "유지"
+
+
+def test_묶음까지_같아야_지워진다() -> None:
+    now = [
+        _value("d-temp", set_label="동작", num_min=-15, num_max=45),
+        _value("d-temp", set_label="저장", num_min=-40, num_max=25),
+    ]
+    after = merge(now, [{"definition_id": "d-temp", "set_label": "동작", "remove": True}])
+    assert len(after) == 1 and after[0]["set_label"] == "저장"

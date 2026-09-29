@@ -11018,12 +11018,49 @@
               }
             ],
             "title": "Note"
+          },
+          "set_label": {
+            "anyOf": [
+              {
+                "type": "string",
+                "maxLength": 60
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Set Label"
+          },
+          "step_order": {
+            "anyOf": [
+              {
+                "type": "integer",
+                "maximum": 999.0,
+                "minimum": 0.0
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Step Order"
+          },
+          "step_label": {
+            "anyOf": [
+              {
+                "type": "string",
+                "maxLength": 60
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Step Label"
           }
         },
         "additionalProperties": false,
         "type": "object",
         "title": "AttributeValueIn",
-        "description": "값 하나. `definition_id` 가 있으면 그 항목, 없으면 `new_label` 로 **초안을 새로\n만든다.**\n\n종류별로 채우는 칸이 다르다 — number: num_value(+unit) · range/condition: num_min·\nnum_max(+unit) · text/choice: text_value · boolean: bool_value · date: date_value ·\nterm: term_id · method: method_id · document: document_id · pairs/matrix: json_value.\n다른 칸은 무시한다."
+        "description": "값 하나. `definition_id` 가 있으면 그 항목, 없으면 `new_label` 로 **초안을 새로\n만든다.**\n\n종류별로 채우는 칸이 다르다 — number: num_value(+unit) · range/condition: num_min·\nnum_max(+unit) · text/choice: text_value · boolean: bool_value · date: date_value ·\nterm: term_id · method: method_id · document: document_id · pairs/matrix: json_value.\n다른 칸은 무시한다.\n\n**조건(condition)은 점 하나로도 적는다** — `num_value`. -40 · -20 · 25 · 85 °C 처럼\n문서가 점을 늘어놓을 때다. 이것을 -40 ~ 85 구간으로 뭉치면 그 사이 아무 온도나 된다는\n뜻이 되고, 문서는 그런 말을 한 적이 없다."
       },
       "AttributeValueOut": {
         "properties": {
@@ -11039,6 +11076,39 @@
           "kind": {
             "type": "string",
             "title": "Kind"
+          },
+          "set_label": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Set Label"
+          },
+          "step_order": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Step Order"
+          },
+          "step_label": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Step Label"
           },
           "status": {
             "type": "string",
@@ -21107,6 +21177,17 @@
               }
             ],
             "title": "Note"
+          },
+          "submitted_via": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Submitted Via"
           },
           "file_count": {
             "type": "integer",

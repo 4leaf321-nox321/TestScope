@@ -61,6 +61,14 @@ class SpecDocument(Base):
     """판 — Rev.3 · 2024-05. **줄을 나누지 않는다**(머리말 참고)."""
     note: Mapped[str | None] = mapped_column(Text, nullable=True)
 
+    submitted_via: Mapped[str | None] = mapped_column(String(100), nullable=True)
+    """기계 자격으로 올렸으면 그 토큰 이름. 사람이 화면에서 넣었으면 비어 있다.
+
+    **AI 가 규격서를 등록할 수 있게 열면서 붙인다**(2026-09-30). 출처를 기계가 못 붙이면
+    시험은 들어오는데 근거 문서가 안 들어와, 값이 틀렸을 때 되짚을 자리가 없다. 열되
+    **누가 넣었는지는 줄에 보여야** 한다 — 사람이 등록한 것과 구별이 안 되면 검토하는
+    사람이 무엇을 더 봐야 하는지 모른다(신뢰성 시험의 `submitted_via` 와 같은 자리)."""
+
     created_by_id: Mapped[uuid.UUID | None] = mapped_column(
         PgUUID(as_uuid=True), ForeignKey("users.id", ondelete="SET NULL"), nullable=True
     )

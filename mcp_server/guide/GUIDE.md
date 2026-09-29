@@ -254,7 +254,8 @@ search_models(series="6800 Series Universal Testing Systems")  ->  그 계열의
 카드에 칸이 스물 넘게 서는데, 온도 하나를 고치려고 스물둘을 다시 보내다 하나를 빠뜨리면 그
 값은 조용히 사라진다 — 지운 기억이 없으니 아무도 못 찾는다. 그래서 **몇 칸만 고칠 때는
 `set_reliability_attributes`** 를 쓴다: 지금 있는 것을 읽어 `definition_id` 가 같은 줄만
-갈아 끼운다. 지우려면 `{"definition_id": "…", "remove": true}` 라고 그렇게 말한다.
+갈아 끼운다. 지우려면 `{"definition_id": "…", "remove": true}` 라고 그렇게 말한다. 묶음이
+있는 줄은 **`set_label`·`step_order` 까지 같아야 같은 줄**이다(아래 「조건 묶음」).
 
 ### 속성 한 줄의 모양 — 칸의 종류마다 채우는 자리가 다르다
 
@@ -262,6 +263,7 @@ search_models(series="6800 Series Universal Testing Systems")  ->  그 계열의
 **종류와 다른 값을 보내면 그 값은 조용히 버려진다.**
 
     range·condition   {"num_min": -40, "num_max": 125, "unit": "degC"}   구간·조건
+    condition(점)     {"num_value": 85, "unit": "degC"}                  폭이 없는 한 점
     number            {"num_value": 5}                                   수치
     text·choice       {"text_value": "외관 이상 없음"}                     문장·선택지
     boolean           {"bool_value": true}                               있다·없다
@@ -272,8 +274,70 @@ search_models(series="6800 Series Universal Testing Systems")  ->  그 계열의
     pairs             {"json_value": [{"label": "A등급", "value": 4}]}        이름별 수량
     matrix            {"json_value": [{"label": "사양 A", "entries": [ … ]}]}  사양 매트릭스
     새 이름 → 초안     {"new_label": "시료 수", "new_kind": "number", "num_value": 5}
+    ──────────────────────────────────────────────────────────────────────────
+    note              {"note": "원문: 상온, 값 미상"}   **어느 줄에나 함께 실을 수 있다**
+    묶음              {"set_label": "저장", "step_order": 2, "step_label": "유지"}
 
 줄마다 `definition_id` 를 함께 싣는다(`new_label` 로 만들 때만 뺀다).
+
+### 조건 묶음 — 한 시험에 조건이 한 벌뿐이 아니다
+
+문서의 조건은 「칸 하나에 값 하나」 로 안 끝난다. 그것을 한 벌로 뭉개면 **없는 시험을 적는
+것**이 된다 — 동작과 저장을 합치면 -40 ~ 45 °C 라는, 문서에 없는 조건이 생긴다.
+
+    set_label    동작 · 저장 · 주 · 불량 시 · 온도 사이클   비우면 이름 없는 한 벌
+    step_order   1 · 2 · 3 · 4                          비우면 그 묶음 전체
+    step_label   승온 · 유지                             없어도 된다
+
+네 가지가 이것으로 담긴다:
+
+**두 벌이 한 벌처럼** — 동작 -15 ~ 45 °C, 저장 -40 ~ 25 °C
+
+    {"definition_id": "<시험 온도>", "set_label": "동작", "num_min": -15, "num_max": 45, "unit": "degC"}
+    {"definition_id": "<시험 온도>", "set_label": "저장", "num_min": -40, "num_max": 25, "unit": "degC"}
+
+**이산 점** — -40 · -20 · 25 · 85 °C 네 점에서 시험. 폭이 없으므로 `num_value` 다.
+**구간으로 적지 마라**: -40 ~ 85 는 그 사이 아무 온도나 된다는 뜻이고, 문서는 그런 말을
+한 적이 없다.
+
+    {"definition_id": "<시험 온도>", "set_label": "시험 점", "step_order": 1, "num_value": -40, "unit": "degC"}
+    … step_order 2·3·4 로 -20 · 25 · 85
+
+**주 조건과 예외** — 80 °C 80% 120h, 불량 시 70 °C 90% 360h. 묶음 이름으로 가른다.
+
+    {"definition_id": "<시험 온도>", "set_label": "주", "num_min": 80, "unit": "degC"}
+    {"definition_id": "<상대 습도>", "set_label": "주", "num_min": 80, "unit": "%"}
+    {"definition_id": "<유지 시간>", "set_label": "주", "num_min": 120, "unit": "h"}
+    {"definition_id": "<시험 온도>", "set_label": "불량 시", "num_min": 70, "unit": "degC"}
+    … 불량 시의 습도·시간도 같은 묶음으로
+
+**프로파일** — 70 °C 1h → 25 °C 1h → 30 °C 1h → 25 °C 1h, 24 cycle.
+차례는 `step_order`, **몇 번 도는지는 `cycles` 를 차례 없이** 그 묶음에 적는다.
+
+    {"definition_id": "<사이클 수>", "set_label": "온도 사이클", "num_value": 24}
+    {"definition_id": "<시험 온도>", "set_label": "온도 사이클", "step_order": 1, "num_value": 70, "unit": "degC"}
+    {"definition_id": "<유지 시간>", "set_label": "온도 사이클", "step_order": 1, "num_value": 1, "unit": "h"}
+    … step_order 2·3·4 로 25 · 30 · 25
+
+묶음 이름은 **문서에 적힌 말을 그대로** 쓴다(「동작」 「저장」 「불량 시」). 없는 말을 지어
+내면 옆 시험과 안 맞고, 그러면 「저장 조건이 -40 °C 이하인 시험」 을 한 번에 못 찾는다.
+조건이 한 벌뿐이면 `set_label` 을 **비운다** — 없는 묶음 이름을 만들 이유가 없다.
+
+### 확실하지 않으면 — 비우고 `note` 에 적는다
+
+**값을 비우는 것과 아무 말 없이 비우는 것은 다르다.** 전자는 「아직 모른다」 이고 후자는
+「없다」 로 읽힌다 — 검토하는 사람은 그 둘을 구별할 방법이 없고, 그래서 빈 칸을 보고도
+무엇을 채워야 하는지 모른다.
+
+`note` 는 **모든 줄에 함께 실린다.** 숫자 칸을 비운 채 note 만 실어도 된다:
+
+    {"definition_id": "…", "note": "원문 「상온」 — 몇 도인지 문서에 없음"}
+    {"definition_id": "…", "num_min": 70, "unit": "degC", "note": "원문은 158 °F"}
+    {"definition_id": "…", "num_min": 120, "unit": "h", "note": "원문에 시작 시점이 없음"}
+
+**그럴듯하게 채우지 마라.** 빈 칸은 눈에 띄지만 그럴듯한 오답은 안 띈다 — 그 값으로 장비를
+고르고 그 장비로 보고서가 나간다. 원문의 말·단위·조건이 애매하면 **옮긴 값 옆에 원문을
+남긴다**: 나중에 다시 읽을 사람에게 그것이 유일한 끈이다.
 
 id 를 얻는 길: `term_id` 는 `resolve(kind="term", axis=…)`, `method_id` 는 `list_methods` ·
 `resolve(kind="method")`, **`document_id` 는 `resolve(kind="spec_document", text="MX-REL-012",

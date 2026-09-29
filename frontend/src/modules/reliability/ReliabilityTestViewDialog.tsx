@@ -68,6 +68,23 @@ function PairTable({ rows, unit }: { rows: Pair[]; unit: string }) {
   )
 }
 
+/**
+ * 이 줄이 어느 묶음의 몇 번째인가.
+ *
+ * **안 보이면 두 줄이 한 벌로 읽힌다** — 동작 -15 ~ 45 와 저장 -40 ~ 25 가 나란히 서 있는데
+ * 이름이 없으면, 읽는 사람은 그 시험이 -40 ~ 45 를 요구한다고 읽는다.
+ */
+function SetTag({ row }: { row: AttributeValue }) {
+  if (!row.set_label && row.step_order === null) return null
+  return (
+    <span className="bg-muted rounded px-1 py-px text-[10px] font-normal">
+      {row.set_label}
+      {row.step_order !== null && `${row.set_label ? ' ' : ''}${row.step_order}번째`}
+      {row.step_label && ` ${row.step_label}`}
+    </span>
+  )
+}
+
 function Value({ row }: { row: AttributeValue }) {
   if (row.kind === 'pairs') return <PairTable rows={pairs(row.json_value)} unit={row.unit} />
   if (row.kind === 'matrix') {
@@ -130,17 +147,21 @@ export function ReliabilityTestViewDialog({
   const grouped = useMemo(() => {
     const values = test?.attributes ?? []
     if (values.length === 0) return []
-    const left = new Map(values.map((one) => [one.definition_id, one]))
+    // **줄마다 자리를 준다**(칸 id 가 아니라 순번). 묶음이 생기면서 한 칸이 여러 줄이 된다
+    // — 칸 id 로 묶으면 동작 -15~45 와 저장 -40~25 중 하나가 화면에서 조용히 사라진다.
+    const left = new Map(values.map((one, at) => [at, one]))
     const out: { title: string; rows: AttributeValue[] }[] = []
     for (const section of SECTIONS) {
       const rows: AttributeValue[] = []
       for (const key of section.keys) {
-        const hit = values.find((one) => keyOf.get(one.definition_id) === key)
-        if (hit && left.delete(hit.definition_id)) rows.push(hit)
+        for (const [at, one] of left) {
+          if (keyOf.get(one.definition_id) === key && left.delete(at)) rows.push(one)
+        }
       }
       if (section.conditions) {
-        for (const one of values) {
-          if (one.kind === 'condition' && left.delete(one.definition_id)) rows.push(one)
+        // 서버가 준 순서 그대로 — 이름 없는 묶음이 먼저, 묶음 · 차례 · 칸 순이다.
+        for (const [at, one] of left) {
+          if (one.kind === 'condition' && left.delete(at)) rows.push(one)
         }
       }
       if (rows.length > 0) out.push({ title: section.title, rows })
@@ -167,11 +188,16 @@ export function ReliabilityTestViewDialog({
       items.push({
         anchor: anchorOf('section', section.title),
         label: section.title,
-        children: section.rows.map((row) => ({
-          anchor: anchorOf('field', keyOf.get(row.definition_id) ?? row.definition_id),
-          label: row.label,
-          filled: true,
-        })),
+        children: section.rows
+          .filter(
+            (row, at) =>
+              section.rows.findIndex((one) => one.definition_id === row.definition_id) === at,
+          )
+          .map((row) => ({
+            anchor: anchorOf('field', keyOf.get(row.definition_id) ?? row.definition_id),
+            label: row.label,
+            filled: true,
+          })),
       })
     }
     return items
@@ -273,14 +299,26 @@ export function ReliabilityTestViewDialog({
               >
                 <h3 className="border-b pb-1 text-sm font-medium">{section.title}</h3>
                 <div className="grid gap-x-8 gap-y-3 md:grid-cols-2">
-                  {section.rows.map((row) => (
+                  {section.rows.map((row, at) => (
                     <div
-                      key={row.definition_id}
-                      id={anchorOf('field', keyOf.get(row.definition_id) ?? row.definition_id)}
+                      key={`${row.definition_id}-${row.set_label ?? ''}-${row.step_order ?? ''}`}
+                      // 같은 칸이 묶음마다 서므로 **자리는 첫 줄만 갖는다** — 같은 id 가 둘이면
+                      // 목차가 어디로 가는지 브라우저가 정한다.
+                      id={
+                        section.rows.findIndex(
+                          (one) => one.definition_id === row.definition_id,
+                        ) === at
+                          ? anchorOf(
+                              'field',
+                              keyOf.get(row.definition_id) ?? row.definition_id,
+                            )
+                          : undefined
+                      }
                       className={`scroll-mt-4 space-y-1 ${isWide(row) ? 'md:col-span-2' : ''}`}
                     >
                       <dt className="text-muted-foreground flex items-center gap-1 text-xs font-medium">
                         {row.label}
+                        <SetTag row={row} />
                         {row.status === 'draft' && (
                           <span title="초안 속성 — 검색·판정에는 안 쓰입니다">초안</span>
                         )}

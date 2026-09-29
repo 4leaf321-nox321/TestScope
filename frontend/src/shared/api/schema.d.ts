@@ -3638,6 +3638,10 @@ export interface components {
          *     num_max(+unit) · text/choice: text_value · boolean: bool_value · date: date_value ·
          *     term: term_id · method: method_id · document: document_id · pairs/matrix: json_value.
          *     다른 칸은 무시한다.
+         *
+         *     **조건(condition)은 점 하나로도 적는다** — `num_value`. -40 · -20 · 25 · 85 °C 처럼
+         *     문서가 점을 늘어놓을 때다. 이것을 -40 ~ 85 구간으로 뭉치면 그 사이 아무 온도나 된다는
+         *     뜻이 되고, 문서는 그런 말을 한 적이 없다.
          */
         AttributeValueIn: {
             /** Definition Id */
@@ -3676,6 +3680,12 @@ export interface components {
             document_id?: string | null;
             /** Note */
             note?: string | null;
+            /** Set Label */
+            set_label?: string | null;
+            /** Step Order */
+            step_order?: number | null;
+            /** Step Label */
+            step_label?: string | null;
         };
         /** AttributeValueOut */
         AttributeValueOut: {
@@ -3688,6 +3698,12 @@ export interface components {
             label: string;
             /** Kind */
             kind: string;
+            /** Set Label */
+            set_label?: string | null;
+            /** Step Order */
+            step_order?: number | null;
+            /** Step Label */
+            step_label?: string | null;
             /** Status */
             status: string;
             /** Unit */
@@ -7143,6 +7159,8 @@ export interface components {
             revision: string | null;
             /** Note */
             note: string | null;
+            /** Submitted Via */
+            submitted_via?: string | null;
             /** File Count */
             file_count: number;
             /** Linked Test Count */

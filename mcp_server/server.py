@@ -2374,6 +2374,49 @@ async def list_spec_documents(
     )
 
 
+
+@writes
+async def create_spec_document(
+    ctx: Context,
+    workspace_slug: str,
+    code: str,
+    title: str,
+    revision: str | None = None,
+    note: str | None = None,
+) -> dict[str, Any]:
+    """사내 규격서 하나를 등록한다 — **시험의 출처가 될 문서.**
+
+    **먼저 `resolve(kind="spec_document", text=code, workspace=…)` 로 있는지 본다.** 같은
+    부서에 같은 번호는 하나이고, 이미 있으면 그것을 쓰면 된다 — 번호만 달리 적어 둘을
+    만들면 그 뒤로 어느 쪽이 정본인지 아무도 모른다.
+
+    **이 줄에는 네가 올렸다는 표가 남는다**(`submitted_via`). 사람이 등록한 것과 구별되어야
+    검토하는 사람이 무엇을 더 봐야 하는지 안다 — 그러니 **문서에 적힌 그대로** 넣어라.
+    번호·제목을 다듬거나 지어내면 그 표가 있어도 소용없다.
+
+    만든 뒤 원본 파일을 붙인다: `create_upload_ticket` → 티켓으로 올리기 →
+    `attach_references(target="spec_document", …)`. 파일 없는 규격서는 번호만 있는 껍데기라,
+    값이 틀렸을 때 되짚을 자리가 못 된다.
+
+    그리고 그 문서를 **시험의 「규격서」 칸에 건다**(`document_id`) — 그래야 시험에서
+    원본으로 한 번에 간다.
+    """
+    return _then(
+        await _send(
+            ctx,
+            "POST",
+            "/spec-documents",
+            {
+                "workspace_slug": workspace_slug,
+                "code": code,
+                "title": title,
+                "revision": revision,
+                "note": note,
+            },
+        ),
+        "규격서를 등록했습니다. 원본 파일을 붙이고, 시험의 「규격서」 칸에 거십시오.",
+    )
+
 @mcp.tool()
 async def list_attachments(ctx: Context, target: str, object_id: str) -> dict[str, Any]:
     """붙은 **그림과 첨부**의 목록 — 무엇이 어느 칸에 붙어 있나.
@@ -2431,20 +2474,25 @@ async def create_reliability_test(
     axis="test_item", name=…)` 로 찾는다. **모르면 비운다**: 비슷한 항목을 끼워 넣으면 그
     시험이 엉뚱한 장비로 이어지고, 검색은 그 장비로 「됩니다」 라고 답한다.
 
-    `attributes` 는 칸 하나가 한 줄이고 **칸의 종류마다 채우는 자리가 다르다** — 구간은
-    `num_min`·`num_max`, 온톨로지 값은 `term_id`, 공개 규격은 `method_id`, **사내 규격서는
-    `document_id`**(`resolve(kind="spec_document", …)`), 이름별 수량·매트릭스는 `json_value`.
-    열두 갈래의 모양과 id 얻는 길은 `get_guide("신뢰성 시험")` 에 표로 있다. 종류와 다른
-    값을 보내면 **그 값은 조용히 버려진다** — 먼저 `list_attribute_definitions` 로 `kind` 를
-    본다.
+    `attributes` 는 칸 하나가 한 줄이고 **칸의 종류마다 채우는 자리가 다르다** — 모양과
+    id 얻는 길은 `get_guide("신뢰성 시험")` 에 표로 있다. 종류와 다른 값을 보내면 **그
+    값은 조용히 버려진다** — 먼저 `list_attribute_definitions` 로 `kind` 를 본다.
 
-    **새 이름을 만들기 전에 정의 목록을 본다.** `new_label` 로 적으면 초안 속성이 새로 생기고,
-    초안은 온톨로지 밖이라 검색·판정에 안 쓰인다 — 같은 뜻의 정식 속성이 있으면 그 쪽
-    `definition_id` 를 쓴다.
+    **새 이름을 만들기 전에 정의 목록을 본다.** `new_label` 로 적으면 초안이 새로 생기고,
+    초안은 온톨로지 밖이라 검색·판정에 안 쓰인다.
 
     **조건 속성(`kind="condition"`)은 그대로 장비 판정이 된다** — -40~125 degC 로 적어 두면
-    `test_capability` 가 그 온도를 내는 장비만 답한다. 그래서 조건은 문장이 아니라 수치로
-    적는 것이 중요하다.
+    `test_capability` 가 그 온도를 내는 장비만 답한다. 그래서 조건은 문장이 아니라 수치다.
+    폭이 없는 한 점은 `num_value` 다 — **점 넷을 -40 ~ 85 구간으로 뭉치지 마라**: 그것은
+    사이 아무 온도나 된다는 뜻이고, 문서는 그런 말을 한 적이 없다.
+
+    **조건이 한 벌이 아니면 묶음으로 가른다**(`set_label`·`step_order`). 동작 -15 ~ 45 와
+    저장 -40 ~ 25 를 뭉개면 -40 ~ 45 라는 **문서에 없는 조건**이 생긴다. 주 조건과 예외,
+    프로파일의 차례도 같은 자리다 — 모양은 가이드의 「조건 묶음」.
+
+    **확실하지 않으면 비우고 `note` 를 실어라.** 숫자를 비운 채 note 만 보내도 된다. 값을
+    비우는 것과 **아무 말 없이 비우는 것**은 다르다: 전자는 「아직 모른다」 이고 후자는
+    「없다」 로 읽혀서, 검토하는 사람이 무엇을 채워야 하는지 모른다.
     """
     return _then(
         await _send(
@@ -2515,8 +2563,13 @@ async def set_reliability_attributes(
     줄의 모양은 `create_reliability_test` 와 같다(구간·수치·문장·불리언·날짜·term·method·
     document·pairs·matrix). 없던 칸이면 새로 붙고, `new_label` 로 주면 초안이 생긴다.
 
+    **묶음이 있으면 `set_label`·`step_order` 까지 같아야 같은 줄이다.** 동작과 저장은 같은
+    「시험 온도」 두 줄이라, 묶음을 안 적고 보내면 그 둘이 아니라 **세 번째 줄**이 생긴다 —
+    먼저 읽어서 지금 어떤 묶음이 있는지 보고, 고칠 줄의 묶음을 그대로 실어라.
+
     **지우려면 그렇게 말한다** — `{"definition_id": "…", "remove": true}`. 빈 값을 보내는
-    것으로는 안 지워진다(빈 문자열과 「안 적음」 은 다르다).
+    것으로는 안 지워진다(빈 문자열과 「안 적음」 은 다르다). 묶음이 있는 줄은 묶음까지
+    같아야 지워진다.
 
     확정된 시험은 못 고친다(409) — 사람이 화면에서 「다시 후보로」 를 눌러야 한다.
     """

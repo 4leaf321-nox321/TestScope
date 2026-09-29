@@ -272,9 +272,14 @@ def test_도구_목록이_조용히_불어나지_않는다() -> None:
     올릴 자리를 이름으로 지어낼 수 없게 됐다 — 코드(`mx`)가 키이고, 올릴 수 있는지는 그
     사람의 부서가 그 사업부에 속하는지로 갈린다. 미리 못 물으면 다 적고 나서 403 을 받고,
     그 403 은 「범위가 없다」 로 읽혀 토큰을 다시 만들러 간다.
+
+    80 -> 81 (2026-09-30): `create_spec_document`. **출처를 기계가 못 붙이고 있었다** —
+    `/api/spec-documents` 가 범위 표에 없어서, AI 는 시험은 올리면서 그 근거 문서는 못
+    만들었다. 값이 틀렸을 때 되짚을 자리가 없어진다. 여는 대신 그 줄에 누가 올렸는지가
+    남는다(`submitted_via`).
     """
     tools = _tools()
-    assert len(tools) <= 80, f"도구가 {len(tools)}개입니다 — 묶거나 상한을 다시 정하세요"
+    assert len(tools) <= 81, f"도구가 {len(tools)}개입니다 — 묶거나 상한을 다시 정하세요"
     for tool in tools:
         doc = ast.get_docstring(tool) or ""
         assert len(doc) <= 1600, (

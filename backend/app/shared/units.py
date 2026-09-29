@@ -67,6 +67,8 @@ _define("frequency", {"Hz": 1, "kHz": 1e3, "MHz": 1e6, "GHz": 1e9})
 _define("voltage", {"V": 1, "mV": 1e-3, "kV": 1e3, "uV": 1e-6})
 _define("current", {"A": 1, "mA": 1e-3, "uA": 1e-6, "kA": 1e3})
 _define("power", {"W": 1, "mW": 1e-3, "kW": 1e3, "MW": 1e6})
+# 승온·하강 속도. **온도 차이의 속도라 K 와 degC 가 같다** — 0점이 다를 뿐 눈금이 같다.
+_define("temperature_rate", {"degC/s": 1, "degC/min": 1 / 60, "K/s": 1, "K/min": 1 / 60})
 _define("torque", {"N·m": 1, "Nm": 1, "mN·m": 1e-3, "mNm": 1e-3, "nN·m": 1e-9, "nNm": 1e-9})
 _define("energy", {"J": 1, "kJ": 1e3, "mJ": 1e-3, "Wh": 3600, "kWh": 3.6e6})
 _define("viscosity", {"Pa·s": 1, "Pas": 1, "mPa·s": 1e-3, "mPas": 1e-3, "cP": 1e-3, "P": 0.1})

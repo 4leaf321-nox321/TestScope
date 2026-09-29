@@ -53,6 +53,11 @@ _WRITE_SCOPES: tuple[tuple[str, str], ...] = (
     # 부서가 등록하는 시험 절차 — 장비와 같은 「부서 것」 이라 같은 범위다.
     ("/api/reliability-tests", "equipment:write"),
     ("/api/attribute-definitions", "catalog:write"),
+    # **사내 규격서는 부서 것이다** — 장비·신뢰성 시험과 같은 범위를 쓴다. 전에는 표에
+    # 없어서 기계 자격으로 못 썼는데, 그러면 AI 가 시험은 올리면서 **그 근거 문서는 못
+    # 붙인다** — 값이 틀렸을 때 되짚을 자리가 없어진다(2026-09-30). 대신 누가 넣었는지가
+    # 줄에 남는다(`submitted_via`).
+    ("/api/spec-documents", "equipment:write"),
     # 첨부는 **붙는 대상의 것**이다 — 지금은 신뢰성 시험뿐이라 그 범위를 쓴다.
     # 대상이 늘면(장비 사진·교정 성적서) 경로를 가르는 것이 아니라 이 한 줄을 다시 본다.
     ("/api/attachments", "equipment:write"),

@@ -32,9 +32,19 @@ export function AttributeValuesList({ values }: { values: AttributeValue[] }) {
   return (
     <dl className="grid grid-cols-1 gap-x-6 gap-y-2 sm:grid-cols-2">
       {values.map((one) => (
-        <div key={one.definition_id} className="flex flex-wrap items-baseline gap-x-2">
+        <div
+          // 같은 칸이 묶음마다 한 줄씩 선다 — 칸 id 로 묶으면 동작과 저장 중 하나가 사라진다.
+          key={`${one.definition_id}-${one.set_label ?? ''}-${one.step_order ?? ''}`}
+          className="flex flex-wrap items-baseline gap-x-2"
+        >
           <dt className="text-muted-foreground text-xs">
             {one.label}
+            {(one.set_label || one.step_order !== null) && (
+              <span className="bg-muted ml-1 rounded px-1 py-px text-[10px]">
+                {one.set_label}
+                {one.step_order !== null && `${one.set_label ? ' ' : ''}${one.step_order}번째`}
+              </span>
+            )}
             {one.status === 'draft' && (
               <span
                 className="ml-1"

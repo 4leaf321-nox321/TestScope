@@ -23,6 +23,7 @@ from app.modules.workspaces.models import Workspace
 from app.shared import audit
 from app.shared.errors import AppError, Conflict, NotFound
 from app.shared.permissions import membership_of, require_manager, workspace_by_slug
+from app.shared.request_context import get_actor_token
 from app.shared.text import clean
 
 _WHAT = "사내 규격서"
@@ -92,6 +93,7 @@ def _outs(db: Session, user: User, rows: list[SpecDocument]) -> list[SpecDocumen
                 title=row.title,
                 revision=row.revision,
                 note=row.note,
+                submitted_via=row.submitted_via,
                 file_count=files.get(row.id, 0),
                 linked_test_count=linked.get(row.id, 0),
                 can_edit=editable[row.workspace_id],
@@ -159,6 +161,9 @@ def create(db: Session, user: User, payload: dict[str, Any]) -> SpecDocument:
         title=clean(str(payload["title"])),
         revision=clean(str(payload.get("revision") or "")) or None,
         note=payload.get("note") or None,
+        # **누가 넣었는지 줄에 남긴다.** 사람이 등록한 것과 구별이 안 되면, 검토하는
+        # 사람이 무엇을 더 봐야 하는지 모른다.
+        submitted_via=get_actor_token(),
         created_by_id=user.id,
     )
     db.add(row)

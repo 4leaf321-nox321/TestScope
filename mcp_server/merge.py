@@ -16,6 +16,9 @@ from typing import Any
 #: 같은 것은 서버가 만들어 주는 글자라 도로 보내면 안 된다(지금은 무시되지만, 무시되는
 #: 것에 기대면 오타도 같이 조용해진다).
 VALUE_FIELDS = (
+    "set_label",
+    "step_order",
+    "step_label",
     "num_value",
     "num_min",
     "num_max",
@@ -38,13 +41,29 @@ def as_input(row: dict[str, Any]) -> dict[str, Any]:
     return kept
 
 
+def key_of(row: dict[str, Any]) -> tuple[str, str, int]:
+    """겹치는 자리는 **칸 하나가 아니라 (칸, 묶음, 차례)다.**
+
+    동작 -15 ~ 45 와 저장 -40 ~ 25 는 같은 「시험 온도」 두 줄이다. 칸 이름만 보고 겹친다고
+    치면 둘 중 하나가 조용히 사라지고, 그 시험은 저장 조건이 없는 시험이 된다 — 지운 기억이
+    없으니 아무도 못 찾는다. 묶음을 안 적은 줄끼리는 예전처럼 칸 하나에 하나다.
+    """
+    return (
+        str(row.get("definition_id") or ""),
+        str(row.get("set_label") or ""),
+        int(row["step_order"]) if row.get("step_order") is not None else -1,
+    )
+
+
 def merge(
     current: list[dict[str, Any]], incoming: list[dict[str, Any]]
 ) -> list[dict[str, Any]]:
     """지금 있는 것 위에 보낸 줄만 얹는다.
 
-    * `definition_id` 가 같으면 **갈아 끼운다** — 반만 보내도 그 칸 전체가 그 값이 된다
-      (한 칸 안에서 `num_min` 만 바꾸고 `num_max` 를 남기는 일은 없다: 구간은 한 값이다).
+    * **(칸, 묶음, 차례)가 같으면 갈아 끼운다** — 반만 보내도 그 줄 전체가 그 값이 된다
+      (한 줄 안에서 `num_min` 만 바꾸고 `num_max` 를 남기는 일은 없다: 구간은 한 값이다).
+      묶음(`set_label`)을 안 적으면 **이름 없는 한 벌**을 가리킨다 — 동작/저장처럼 묶음이
+      있는 시험에서 묶음 없이 보내면 그 둘이 아니라 세 번째 줄이 생긴다.
     * `remove: true` 면 그 칸을 **뺀다.** 빈 값을 보내는 것으로는 안 지워진다 — 빈 문자열과
       「안 적음」 은 다르다.
     * `definition_id` 가 없는 줄(`new_label`)은 겹칠 자리가 없으니 뒤에 더한다.
@@ -52,21 +71,19 @@ def merge(
     **순서를 지킨다.** 지금 있는 줄의 순서가 먼저고 새 줄이 뒤다 — 카드가 매번 다른 순서로
     읽히면 사람이 「뭐가 바뀌었지」 를 눈으로 못 찾는다.
     """
-    kept: dict[str, dict[str, Any]] = {
-        str(row["definition_id"]): as_input(row)
-        for row in current
-        if row.get("definition_id")
+    kept: dict[tuple[str, str, int], dict[str, Any]] = {
+        key_of(row): as_input(row) for row in current if row.get("definition_id")
     }
     fresh: list[dict[str, Any]] = []
     for row in incoming:
-        key = str(row.get("definition_id") or "")
-        if not key:
+        if not row.get("definition_id"):
             fresh.append({one: value for one, value in row.items() if one != "remove"})
             continue
+        key = key_of(row)
         if row.get("remove"):
             kept.pop(key, None)
             continue
-        kept[key] = {
-            one: value for one, value in row.items() if one != "remove"
-        } | {"definition_id": key}
+        kept[key] = {one: value for one, value in row.items() if one != "remove"} | {
+            "definition_id": key[0]
+        }
     return [*kept.values(), *fresh]
