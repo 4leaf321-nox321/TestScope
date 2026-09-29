@@ -33,7 +33,7 @@ PowerShell 을 사이에 두면 멈출 때 자식 프로세스가 남는 일이 
 
 param(
     [Parameter(Mandatory = $true)][string]$AppPath,
-    [ValidateSet('install', 'uninstall', 'start', 'stop', 'restart', 'status', 'check')]
+    [ValidateSet('install', 'uninstall', 'start', 'stop', 'restart', 'status', 'check', 'refresh')]
     [string]$Action = 'install',
     [switch]$NoMcp
 )
@@ -262,6 +262,29 @@ function Install-One($def) {
     Invoke-WinSW $id 'start'
 }
 
+function Update-Definitions {
+    # **이미 등록된 서비스의 정의만 다시 쓴다.** 새로 등록하지도, SCM 을 건드리지도 않는다 —
+    # 그건 `-Action install` 의 일이고, 배포가 운영자가 안 부른 서비스를 슬쩍 만들면 안 된다.
+    #
+    # 이걸 배포가 부른다. ReportArchive 가 배포마다 systemd 유닛을 다시 렌더링하는 것과
+    # 같은 자리다 — 안 하면 `.env` 를 고쳐도 서비스는 등록 때 굳은 값으로 뜬다.
+    $written = @()
+    foreach ($def in Get-Definitions) {
+        $id = $def.Id
+        if (-not (Get-ServiceOrNull $id)) { continue }
+        $xml = Join-Path $serviceDir "$id.xml"
+        $content = New-ServiceXml -Id $id -DisplayName $def.DisplayName -Description $def.Description `
+            -Executable $def.Executable -Arguments $def.Arguments -WorkingDirectory $def.WorkingDirectory `
+            -Env $def.Env -DependsOn $def.DependsOn
+        $have = if (Test-Path $xml) { [System.IO.File]::ReadAllText($xml) } else { '' }
+        if ($content.Trim() -eq $have.Trim()) { continue }
+        [System.IO.File]::WriteAllText($xml, $content, (New-Object System.Text.UTF8Encoding $false))
+        $written += $id
+    }
+    return $written
+}
+
+
 function Test-Drift {
     # **등록된 서비스 정의가 지금 설정과 같은가.**
     #
@@ -352,6 +375,16 @@ switch ($Action) {
         Show-Status
     }
     'status' { Show-Status }
+    'refresh' {
+        # **정의만 다시 쓴다.** WinSW 는 서비스가 시작될 때 XML 을 읽으므로, 다음 시작부터
+        # 새 값으로 뜬다 — 배포는 이 뒤에 서비스를 띄운다.
+        $written = Update-Definitions
+        if ($written.Count -eq 0) {
+            Write-Host '서비스 정의가 이미 지금 설정과 같습니다.'
+        } else {
+            Write-Log "서비스 정의 갱신: $($written -join ', ')"
+        }
+    }
     'check' {
         $drifted = Test-Drift
         if ($drifted.Count -eq 0) {

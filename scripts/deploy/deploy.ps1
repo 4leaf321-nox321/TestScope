@@ -523,6 +523,29 @@ if ($installed) { Write-Log ("배포한 버전: " + ($installed -replace '^versi
 Write-Log '배포 완료'
 Write-Host ''
 if ($serviceIds.Count -gt 0) {
+    # **정의를 여기서 다시 쓴다.** 배포가 서비스를 멈췄다 켜기만 하던 때, 서비스 정의
+    # (WinSW 의 XML)는 등록 때 굳은 값 그대로였다 — `.env` 의 PORT·MCP_HOST 를 고쳐도
+    # 안 실렸고, 그 사실은 도구가 실패하고 나서야 드러났다(운영 실측 2026-09-29: MCP 가
+    # .env 는 0.0.0.0 인데 127.0.0.1 에 붙어 있었다. 배포를 몇 번 해도 그대로였다).
+    #
+    # ReportArchive 가 배포마다 systemd 유닛을 다시 렌더링하는 것과 같은 자리다. 여기에
+    # 추가로 드는 권한은 없다 — 배포는 이미 Stop-Service·Start-Service 를 하고 있고,
+    # `_service\` 는 앱 폴더 밖이라 교체에도 안 쓸려 간다.
+    #
+    # **서비스를 새로 등록하지는 않는다**(`-Action refresh`). 운영자가 안 부른 서비스를
+    # 배포가 슬쩍 만들면 안 된다 — 그건 `-Action install` 의 일이다.
+    $servicePs1 = Join-Path $PSScriptRoot 'service.ps1'
+    if (Test-Path $servicePs1) {
+        try {
+            & $servicePs1 -AppPath $AppPath -Action refresh
+        } catch {
+            Write-Warning "서비스 정의를 갱신하지 못했습니다: $_"
+            Write-Warning "관리자 PowerShell 에서: .\service.ps1 -AppPath '$AppPath' -Action install"
+        }
+    }
+
+    # 정의를 쓴 **뒤에** 띄운다 — WinSW 는 서비스가 시작될 때 XML 을 읽는다. 순서가
+    # 바뀌면 이번 배포는 옛 정의로 뜨고, 새 값은 다음 시작부터 듣는다.
     if ($LeaveServicesStopped) { Write-Log '서비스는 멈춘 채 둡니다 (-LeaveServicesStopped)' } else { Start-AppServices }
     Write-Host '서비스:'
     foreach ($id in @('TestScope', 'TestScope-Worker', 'TestScope-MCP')) {
@@ -531,21 +554,6 @@ if ($serviceIds.Count -gt 0) {
     }
     Write-Host "  상태·제어: .\service.ps1 -AppPath '$AppPath' -Action status"
 
-    # **정의가 어긋났는지 여기서 말한다.** 배포는 서비스를 멈췄다 켜기만 하고 정의(WinSW
-    # XML)는 등록 때 굳은 것을 그대로 쓴다 — `.env` 의 PORT·MCP_HOST 를 고쳐도 반영이
-    # 안 되고, 그 사실은 도구가 실패하고 나서야 드러난다(운영 실측 2026-09-29: MCP 가
-    # .env 는 0.0.0.0 인데 127.0.0.1 에 붙어 있었다).
-    #
-    # ReportArchive 는 배포마다 systemd 유닛을 다시 렌더링한다. 여기서도 그러고 싶지만
-    # 정의를 쓰는 데는 관리자 권한이 필요하고 배포는 그것 없이도 돌아야 하므로, **재는
-    # 것까지 하고 고치는 것은 사람에게 넘긴다** — 조용히 지나가지만 않으면 된다.
-    $servicePs1 = Join-Path $PSScriptRoot 'service.ps1'
-    if (Test-Path $servicePs1) {
-        & $servicePs1 -AppPath $AppPath -Action check
-        if ($LASTEXITCODE -eq 3) {
-            Write-Warning '위 안내대로 정의를 갱신하기 전에는 .env 의 변경이 서비스에 안 실립니다.'
-        }
-    }
 } else {
     Write-Host '시작:'
     Write-Host "  cd '$AppPath'"
