@@ -33,7 +33,7 @@ PowerShell 을 사이에 두면 멈출 때 자식 프로세스가 남는 일이 
 
 param(
     [Parameter(Mandatory = $true)][string]$AppPath,
-    [ValidateSet('install', 'uninstall', 'start', 'stop', 'restart', 'status')]
+    [ValidateSet('install', 'uninstall', 'start', 'stop', 'restart', 'status', 'check')]
     [string]$Action = 'install',
     [switch]$NoMcp
 )
@@ -77,7 +77,7 @@ function Invoke-Native {
 
 $isAdmin = ([Security.Principal.WindowsPrincipal][Security.Principal.WindowsIdentity]::GetCurrent()
     ).IsInRole([Security.Principal.WindowsBuiltInRole]::Administrator)
-if (-not $isAdmin -and $Action -ne 'status') {
+if (-not $isAdmin -and $Action -notin @('status', 'check')) {
     throw '서비스 등록·제어는 관리자 PowerShell 에서 해야 합니다.'
 }
 
@@ -262,6 +262,32 @@ function Install-One($def) {
     Invoke-WinSW $id 'start'
 }
 
+function Test-Drift {
+    # **등록된 서비스 정의가 지금 설정과 같은가.**
+    #
+    # WinSW 의 XML 은 `-Action install` 때 만들어져 그대로 굳는다. deploy.ps1 은 서비스를
+    # 멈췄다 켜기만 하므로, `.env` 의 PORT·MCP_HOST 를 고쳐도 **정의는 옛 값 그대로**다 —
+    # 고쳤는데 안 듣는 것은 도구가 실패하고 나서야 드러나고, 그때 원인이 「내가 적은 값이
+    # 안 읽힌다」 라 찾는 데 오래 걸린다(운영 실측 2026-09-29: MCP 가 .env 는 0.0.0.0 인데
+    # 127.0.0.1 에 붙어 있었다).
+    #
+    # **만드는 자리와 재는 자리를 하나로 둔다** — 여기서 XML 을 다시 만들어 글자로 견준다.
+    $drifted = @()
+    foreach ($def in Get-Definitions) {
+        $id = $def.Id
+        if (-not (Get-ServiceOrNull $id)) { continue }
+        $xml = Join-Path $serviceDir "$id.xml"
+        if (-not (Test-Path $xml)) { $drifted += "$id (정의 파일이 없습니다)"; continue }
+        $want = New-ServiceXml -Id $id -DisplayName $def.DisplayName -Description $def.Description `
+            -Executable $def.Executable -Arguments $def.Arguments -WorkingDirectory $def.WorkingDirectory `
+            -Env $def.Env -DependsOn $def.DependsOn
+        $have = [System.IO.File]::ReadAllText($xml)
+        if ($want.Trim() -ne $have.Trim()) { $drifted += $id }
+    }
+    return $drifted
+}
+
+
 function Uninstall-One([string]$id) {
     $existing = Get-ServiceOrNull $id
     if (-not $existing) { Write-Log "서비스 $id 는 등록돼 있지 않습니다"; return }
@@ -326,4 +352,15 @@ switch ($Action) {
         Show-Status
     }
     'status' { Show-Status }
+    'check' {
+        $drifted = Test-Drift
+        if ($drifted.Count -eq 0) {
+            Write-Host '서비스 정의가 지금 설정과 같습니다.'
+        } else {
+            Write-Warning "서비스 정의가 지금 설정과 다릅니다: $($drifted -join ', ')"
+            Write-Warning '배포는 서비스를 멈췄다 켜기만 하고 **정의는 다시 쓰지 않습니다** — .env 를 고쳤다면 아래를 관리자 PowerShell 에서 한 번 돌리십시오:'
+            Write-Warning "  .\service.ps1 -AppPath '$AppPath' -Action install"
+            exit 3
+        }
+    }
 }

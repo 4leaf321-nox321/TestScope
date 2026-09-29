@@ -80,7 +80,7 @@ if (-not $ApiBase) {
     $ApiBase = "http://127.0.0.1:$backendPort/api"
 }
 $env:TESTSCOPE_API_BASE = $ApiBase
-Write-Host "백엔드: $ApiBase"
+Write-Host "백엔드(이 기계 안): $ApiBase"   # 등록에 적을 주소가 아니다
 
 # 도구 목록은 매 턴 통째로 실린다 — 읽기만 쓰는 연결에 쓰기 도구 스물넷을 보여 줄
 # 이유가 없다(어차피 범위가 없으면 403 이다).

@@ -530,6 +530,22 @@ if ($serviceIds.Count -gt 0) {
         if ($svc) { Write-Host ("  {0,-14} {1}" -f $id, $svc.Status) }
     }
     Write-Host "  상태·제어: .\service.ps1 -AppPath '$AppPath' -Action status"
+
+    # **정의가 어긋났는지 여기서 말한다.** 배포는 서비스를 멈췄다 켜기만 하고 정의(WinSW
+    # XML)는 등록 때 굳은 것을 그대로 쓴다 — `.env` 의 PORT·MCP_HOST 를 고쳐도 반영이
+    # 안 되고, 그 사실은 도구가 실패하고 나서야 드러난다(운영 실측 2026-09-29: MCP 가
+    # .env 는 0.0.0.0 인데 127.0.0.1 에 붙어 있었다).
+    #
+    # ReportArchive 는 배포마다 systemd 유닛을 다시 렌더링한다. 여기서도 그러고 싶지만
+    # 정의를 쓰는 데는 관리자 권한이 필요하고 배포는 그것 없이도 돌아야 하므로, **재는
+    # 것까지 하고 고치는 것은 사람에게 넘긴다** — 조용히 지나가지만 않으면 된다.
+    $servicePs1 = Join-Path $PSScriptRoot 'service.ps1'
+    if (Test-Path $servicePs1) {
+        & $servicePs1 -AppPath $AppPath -Action check
+        if ($LASTEXITCODE -eq 3) {
+            Write-Warning '위 안내대로 정의를 갱신하기 전에는 .env 의 변경이 서비스에 안 실립니다.'
+        }
+    }
 } else {
     Write-Host '시작:'
     Write-Host "  cd '$AppPath'"
