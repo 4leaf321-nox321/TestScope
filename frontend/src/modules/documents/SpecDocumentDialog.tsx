@@ -63,6 +63,9 @@ export function SpecDocumentDialog({
   const [code, setCode] = useState('')
   const [title, setTitle] = useState('')
   const [revision, setRevision] = useState('')
+  const [pages, setPages] = useState('')
+  const [isExcerpt, setIsExcerpt] = useState(false)
+  const [sourcePath, setSourcePath] = useState('')
   const [note, setNote] = useState('')
   /** 저장한 뒤에 올릴 것들. 문서 줄이 없으면 붙을 자리가 없어서 여기 들고 있는다. */
   const [picked, setPicked] = useState<File[]>([])
@@ -77,6 +80,9 @@ export function SpecDocumentDialog({
     setCode(editing?.code ?? '')
     setTitle(editing?.title ?? '')
     setRevision(editing?.revision ?? '')
+    setPages(editing?.pages ?? '')
+    setIsExcerpt(editing?.is_excerpt ?? false)
+    setSourcePath(editing?.source_path ?? '')
     setNote(editing?.note ?? '')
     setPicked([])
     // 열 때마다 대상에 맞춰 채운다 — 지난번 값이 남아 있으면 안 된다.
@@ -89,9 +95,13 @@ export function SpecDocumentDialog({
     setError(null)
     try {
       const body = {
-        code: code.trim(),
+        // **번호는 비울 수 있다** — 번호 없는 사내 문서가 실제로 있다.
+        code: code.trim() || null,
         title: title.trim(),
         revision: revision.trim() || null,
+        pages: pages.trim() || null,
+        is_excerpt: isExcerpt,
+        source_path: sourcePath.trim() || null,
         note: note.trim() || null,
       }
       const saved = editing
@@ -145,12 +155,14 @@ export function SpecDocumentDialog({
                 id="doc-code"
                 value={code}
                 onChange={(event) => setCode(event.target.value)}
-                placeholder="MX-REL-012"
-                required
+                placeholder="MX-REL-012 (없으면 비웁니다)"
                 maxLength={100}
               />
+              {/* **지어낸 번호가 더 나쁘다** — 문서관리 시스템의 번호인 줄 알고 찾으러 간다. */}
               <p className="text-muted-foreground text-xs">
-                문서관리 시스템의 번호를 그대로 적습니다. 같은 부서에 같은 번호는 하나입니다.
+                문서관리 시스템의 번호를 그대로 적습니다. 같은 부서에 같은 번호는 하나이고,
+                번호가 없는 문서는 <strong>비워 두십시오</strong> — 지어낸 번호는 찾으러 간
+                사람을 헛걸음시킵니다.
               </p>
             </div>
             <div className="space-y-2">
@@ -167,6 +179,47 @@ export function SpecDocumentDialog({
               <p className="text-muted-foreground text-xs">
                 개정하면 이 칸을 고치고 새 파일을 더합니다. 줄을 새로 만들지 않아서 걸어 둔
                 시험의 링크가 끊기지 않습니다.
+              </p>
+            </div>
+            <div className="space-y-2">
+              <Label htmlFor="doc-pages">본 자리</Label>
+              <Input
+                id="doc-pages"
+                value={pages}
+                onChange={(event) => setPages(event.target.value)}
+                placeholder="12-18"
+                maxLength={60}
+              />
+              <p className="text-muted-foreground text-xs">
+                두꺼운 규격서에서 이 시험이 나온 쪽입니다.
+              </p>
+            </div>
+            <div className="space-y-2">
+              <Label htmlFor="doc-source-path">원본 위치</Label>
+              <Input
+                id="doc-source-path"
+                value={sourcePath}
+                onChange={(event) => setSourcePath(event.target.value)}
+                placeholder="\nas\규격4\… 또는 URL"
+                maxLength={2000}
+              />
+              <p className="text-muted-foreground text-xs">
+                파일을 못 올리는 문서(대외비·용량)의 「어디 가면 있다」 입니다.
+              </p>
+            </div>
+            <div className="space-y-2 sm:col-span-2">
+              <label className="flex items-center gap-2 text-sm">
+                <input
+                  type="checkbox"
+                  checked={isExcerpt}
+                  onChange={(event) => setIsExcerpt(event.target.checked)}
+                />
+                발췌입니다 — 전문을 보지 않았습니다
+              </label>
+              {/* **안 보이면 읽는 사람은 이 문서를 다 반영한 줄 안다.** */}
+              <p className="text-muted-foreground text-xs">
+                일부만 보고 옮겼으면 켜 두십시오. 줄에 표시되어, 읽는 사람이 나머지를 더 봐야
+                하는지 압니다.
               </p>
             </div>
             <div className="space-y-2 sm:col-span-2">

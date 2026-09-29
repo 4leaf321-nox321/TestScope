@@ -2314,6 +2314,59 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/api/reliability-tests/item-proposals": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * List Item Proposals
+         * @description 시험 항목 제안 — **같은 말끼리 모아서.** 건수가 큰 것이 먼저.
+         *
+         *     축(`test_item`)이 closed 라 기계는 값을 못 더한다. 그래서 「문서에 이런 말이 있었는데
+         *     축에 없다」 를 여기에 쌓고, 관리자가 한 번 정하면 그 말을 낸 시험들에 함께 걸린다.
+         *
+         *     **`/{test_id}` 보다 먼저 선언한다** — 뒤에 두면 id 로 읽혀 404 가 온다.
+         */
+        get: operations["list_item_proposals_api_reliability_tests_item_proposals_get"];
+        put?: never;
+        /**
+         * Add Item Proposal
+         * @description 축에 맞는 값이 없다는 것을 남긴다. 그 시험을 고칠 수 있는 사람이면 된다(기계도).
+         *
+         *     **같은 말을 두 번 내도 거절하지 않는다** — 적재를 다시 돌리는 일이 흔하고, 그때 409 가
+         *     오면 부른 쪽은 그 줄을 실패로 세어 사람에게 없는 문제를 보고한다.
+         */
+        post: operations["add_item_proposal_api_reliability_tests_item_proposals_post"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/reliability-tests/item-proposals/decide": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /**
+         * Decide Item Proposal
+         * @description 제안 한 묶음을 정한다 — **시스템 관리자만.** 정한 값이 그 말을 낸 시험들에
+         *     한꺼번에 걸린다.
+         */
+        post: operations["decide_item_proposal_api_reliability_tests_item_proposals_decide_post"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/api/reliability-tests/{test_id}": {
         parameters: {
             query?: never;
@@ -2482,6 +2535,50 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/api/reliability-tests/{test_id}/item-proposals": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * Test Item Proposals
+         * @description 이 시험이 낸 제안 — **왜 시험 항목이 비었는지가 여기 있다.**
+         */
+        get: operations["test_item_proposals_api_reliability_tests__test_id__item_proposals_get"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/reliability-tests/{test_id}/reviewed-revision": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /**
+         * Mark Reviewed
+         * @description 이 시험을 **어느 개정까지 봤다**고 적는다. 비우면 표를 도로 붙인다.
+         *
+         *     규격서가 개정되어도 확정은 그대로 두므로(수십 건이 한꺼번에 내려가면 그날 일이 멈춘다),
+         *     「아직 안 봤다」 는 표를 떼는 것이 사람이 하는 일이다. **기계는 못 한다** — 기계가
+         *     「봤다」 고 적으면 사람의 확인이 이름만 남는다.
+         */
+        post: operations["mark_reviewed_api_reliability_tests__test_id__reviewed_revision_post"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/api/attribute-definitions": {
         parameters: {
             query?: never;
@@ -2630,6 +2727,33 @@ export interface paths {
          *     걸어 둔 신뢰성 시험의 링크가 안 끊긴다.
          */
         patch: operations["update_spec_document_api_spec_documents__document_id__patch"];
+        trace?: never;
+    };
+    "/api/spec-documents/{document_id}/revisions": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * List Revisions
+         * @description 개정 이력 — 나중 판이 먼저. 최신판 줄에 **아직 안 본 시험 수**가 함께 온다.
+         */
+        get: operations["list_revisions_api_spec_documents__document_id__revisions_get"];
+        put?: never;
+        /**
+         * Add Revision
+         * @description 개정 한 줄을 쌓는다.
+         *
+         *     **딸린 시험은 확정인 채로 둔다** — 수십 건이 한꺼번에 후보로 내려가면 그날 일이 멈추고,
+         *     멈춘 일은 미뤄진다. 대신 그 시험들에 「이 개정을 아직 안 봤다」 는 표가 붙는다.
+         */
+        post: operations["add_revision_api_spec_documents__document_id__revisions_post"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
         trace?: never;
     };
     "/api/attachments": {
@@ -3715,6 +3839,12 @@ export interface components {
             step_order?: number | null;
             /** Step Label */
             step_label?: string | null;
+            /** Source Text */
+            source_text?: string | null;
+            /** Original Value */
+            original_value?: string | null;
+            /** Original Unit */
+            original_unit?: string | null;
         };
         /** AttributeValueOut */
         AttributeValueOut: {
@@ -3733,6 +3863,12 @@ export interface components {
             step_order?: number | null;
             /** Step Label */
             step_label?: string | null;
+            /** Source Text */
+            source_text?: string | null;
+            /** Original Value */
+            original_value?: string | null;
+            /** Original Unit */
+            original_unit?: string | null;
             /** Status */
             status: string;
             /** Unit */
@@ -3936,6 +4072,25 @@ export interface components {
              * Format: uuid
              */
             test_id: string;
+            /** Conditions Asked */
+            conditions_asked: number;
+            /** Skipped */
+            skipped: components["schemas"]["SkippedConditionOut"][];
+            /** Items */
+            items: components["schemas"]["CapabilityItemOut"][];
+            /**
+             * Sets
+             * @default []
+             */
+            sets: components["schemas"]["CapabilitySetOut"][];
+        };
+        /**
+         * CapabilitySetOut
+         * @description 조건 묶음 하나의 답 — 「주 조건으로는 12대, 불량 시 조건으로는 8대」.
+         */
+        CapabilitySetOut: {
+            /** Set Label */
+            set_label: string | null;
             /** Conditions Asked */
             conditions_asked: number;
             /** Skipped */
@@ -7211,11 +7366,20 @@ export interface components {
             /** Workspace Slug */
             workspace_slug: string;
             /** Code */
-            code: string;
+            code?: string | null;
             /** Title */
             title: string;
             /** Revision */
             revision?: string | null;
+            /** Pages */
+            pages?: string | null;
+            /**
+             * Is Excerpt
+             * @default false
+             */
+            is_excerpt: boolean;
+            /** Source Path */
+            source_path?: string | null;
             /** Note */
             note?: string | null;
         };
@@ -7231,13 +7395,27 @@ export interface components {
             /** Workspace Name */
             workspace_name: string;
             /** Code */
-            code: string;
+            code: string | null;
             /** Title */
             title: string;
             /** Revision */
             revision: string | null;
+            /** Pages */
+            pages?: string | null;
+            /**
+             * Is Excerpt
+             * @default false
+             */
+            is_excerpt: boolean;
+            /** Source Path */
+            source_path?: string | null;
             /** Note */
             note: string | null;
+            /**
+             * Revisions
+             * @default []
+             */
+            revisions: components["schemas"]["SpecDocumentRevisionOut"][];
             /** Submitted Via */
             submitted_via?: string | null;
             /** File Count */
@@ -7257,6 +7435,45 @@ export interface components {
              */
             updated_at: string;
         };
+        /** SpecDocumentRevisionOut */
+        SpecDocumentRevisionOut: {
+            /**
+             * Id
+             * Format: uuid
+             */
+            id: string;
+            /** Label */
+            label: string;
+            /** Issued On */
+            issued_on: string | null;
+            /** Summary */
+            summary: string | null;
+            /** Sort Order */
+            sort_order: number;
+            /** Submitted Via */
+            submitted_via?: string | null;
+            /**
+             * Stale Test Count
+             * @default 0
+             */
+            stale_test_count: number;
+            /**
+             * Created At
+             * Format: date-time
+             */
+            created_at: string;
+        };
+        /** SpecDocumentRevisionRequest */
+        SpecDocumentRevisionRequest: {
+            /** Label */
+            label: string;
+            /** Issued On */
+            issued_on?: string | null;
+            /** Summary */
+            summary?: string | null;
+            /** Sort Order */
+            sort_order?: number | null;
+        };
         /**
          * SpecDocumentUpdateRequest
          * @description 안 보낸 칸은 그대로.
@@ -7268,6 +7485,12 @@ export interface components {
             title?: string | null;
             /** Revision */
             revision?: string | null;
+            /** Pages */
+            pages?: string | null;
+            /** Is Excerpt */
+            is_excerpt?: boolean | null;
+            /** Source Path */
+            source_path?: string | null;
             /** Note */
             note?: string | null;
             /** Workspace Slug */
@@ -7663,6 +7886,79 @@ export interface components {
         TestItemPropertyUpdateRequest: {
             /** Status */
             status?: string | null;
+            /** Note */
+            note?: string | null;
+        };
+        /**
+         * TestItemProposalDecision
+         * @description 정하기 — 기존 값에 잇거나(`term_id`), 축에 세우거나(`new_value`), 아니라고 하거나.
+         */
+        TestItemProposalDecision: {
+            /** Normalized */
+            normalized: string;
+            /** Term Id */
+            term_id?: string | null;
+            /** New Value */
+            new_value?: string | null;
+        };
+        /**
+         * TestItemProposalGroupOut
+         * @description 같은 말끼리 모은 한 줄 — **관리자는 스무 번이 아니라 한 번 판단한다.**
+         */
+        TestItemProposalGroupOut: {
+            /** Normalized */
+            normalized: string;
+            /** Text */
+            text: string;
+            /** Count */
+            count: number;
+            /** Proposals */
+            proposals: components["schemas"]["TestItemProposalOut"][];
+        };
+        /**
+         * TestItemProposalOut
+         * @description 축에 맞는 값이 없어 남긴 제안 한 줄.
+         */
+        TestItemProposalOut: {
+            /**
+             * Id
+             * Format: uuid
+             */
+            id: string;
+            /** Text */
+            text: string;
+            /** Note */
+            note: string | null;
+            /** Status */
+            status: string;
+            /**
+             * Reliability Test Id
+             * Format: uuid
+             */
+            reliability_test_id: string;
+            /** Reliability Test Name */
+            reliability_test_name: string;
+            /** Term Id */
+            term_id: string | null;
+            /** Term Value */
+            term_value: string | null;
+            /** Submitted Via */
+            submitted_via: string | null;
+            /**
+             * Created At
+             * Format: date-time
+             */
+            created_at: string;
+        };
+        /** TestItemProposalRequest */
+        TestItemProposalRequest: {
+            /**
+             * Reliability Test Id
+             * Format: uuid
+             */
+            reliability_test_id: string;
+            /** Text */
+            text: string;
             /** Note */
             note?: string | null;
         };
@@ -12673,6 +12969,105 @@ export interface operations {
             };
         };
     };
+    list_item_proposals_api_reliability_tests_item_proposals_get: {
+        parameters: {
+            query?: {
+                include_decided?: boolean;
+            };
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["TestItemProposalGroupOut"][];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    add_item_proposal_api_reliability_tests_item_proposals_post: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["TestItemProposalRequest"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            201: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["TestItemProposalOut"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    decide_item_proposal_api_reliability_tests_item_proposals_decide_post: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["TestItemProposalDecision"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        [key: string]: unknown;
+                    };
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
     read_reliability_test_api_reliability_tests__test_id__get: {
         parameters: {
             query?: never;
@@ -12948,6 +13343,68 @@ export interface operations {
                 content: {
                     "application/json": components["schemas"]["ReliabilityTestOut"];
                 };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    test_item_proposals_api_reliability_tests__test_id__item_proposals_get: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                test_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["TestItemProposalOut"][];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    mark_reviewed_api_reliability_tests__test_id__reviewed_revision_post: {
+        parameters: {
+            query?: {
+                revision_id?: string | null;
+            };
+            header?: never;
+            path: {
+                test_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            204: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
             };
             /** @description Validation Error */
             422: {
@@ -13303,6 +13760,72 @@ export interface operations {
                 };
                 content: {
                     "application/json": components["schemas"]["SpecDocumentOut"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    list_revisions_api_spec_documents__document_id__revisions_get: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                document_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["SpecDocumentRevisionOut"][];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    add_revision_api_spec_documents__document_id__revisions_post: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                document_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["SpecDocumentRevisionRequest"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            201: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["SpecDocumentRevisionOut"];
                 };
             };
             /** @description Validation Error */

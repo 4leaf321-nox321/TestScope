@@ -158,8 +158,18 @@ describe('정식 속성 칸', () => {
       setLabel: '',
       stepOrder: null,
       stepLabel: '',
+      sourceText: '',
+      originalValue: '',
+      originalUnit: '',
     }
-    const plain = { set_label: null, step_order: null, step_label: null }
+    const plain = {
+      set_label: null,
+      step_order: null,
+      step_label: null,
+      source_text: null,
+      original_value: null,
+      original_unit: null,
+    }
 
     // 양쪽 다 적으면 그 사이.
     expect(

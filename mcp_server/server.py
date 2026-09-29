@@ -217,23 +217,40 @@ def _failed(got: httpx.Response) -> dict[str, Any]:
     return out
 
 
-def _auth_error(status: int) -> dict[str, Any] | None:
-    if status == 401:
-        return {
-            "error": (
-                "인증에 실패했습니다. TestScope 화면의 「내 정보 → 토큰」 에서 발급한"
-                " 개인 토큰을 Authorization 헤더로 등록했는지 확인하세요."
-            )
-        }
-    if status == 403:
-        return {
-            "error": (
-                "권한이 없습니다 — 계정 권한이 모자라거나, 토큰에 그 범위가 없습니다."
-                " 카탈로그를 고치려면 catalog:write, 장비를 고치려면 equipment:write"
-                " 범위가 필요합니다."
-            )
-        }
-    return None
+def _auth_error(got: httpx.Response) -> dict[str, Any] | None:
+    """401·403 을 사람이 고칠 수 있는 문장으로.
+
+    **서버가 한 말을 버리지 않는다.** 예전에는 고정 문구만 돌려줬는데, 403 의 이유는 여러
+    가지다 — 토큰 범위가 없는 것과 남의 사업부에 올리는 것과 확정된 줄을 기계가 고치려는
+    것이 전부 403 이고, 그 셋은 **할 일이 완전히 다르다.** 고정 문구를 읽은 쪽은 셋 다
+    「토큰을 다시 발급」 으로 읽고, 다시 발급해도 안 되니 거기서 멈춘다.
+
+    그래서 서버의 말과 `details` 를 먼저 싣고, 그 뒤에 범위 이야기를 **덧붙인다**.
+    """
+    if got.status_code not in (401, 403):
+        return None
+    said, details = "", None
+    try:
+        body = got.json()["error"]
+        said = f"{body.get('message')} ({body.get('code')})"
+        details = body.get("details") or None
+    except Exception:
+        said = ""
+    if got.status_code == 401:
+        hint = (
+            "인증에 실패했습니다. TestScope 화면의 「내 정보 → 토큰」 에서 발급한"
+            " 개인 토큰을 Authorization 헤더로 등록했는지 확인하세요."
+        )
+    else:
+        hint = (
+            "권한이 없습니다 — 계정 권한이 모자라거나, 토큰에 그 범위가 없거나,"
+            " 그 자리에 올릴 수 없는 것입니다(남의 사업부 · 확정된 줄). 범위는 카탈로그가"
+            " catalog:write, 장비·규격서·신뢰성 시험이 equipment:write 입니다."
+        )
+    out: dict[str, Any] = {"error": f"{said} {hint}".strip() if said else hint}
+    if details:
+        out["details"] = details
+    return out
 
 
 async def _get(ctx: Context, path: str, params: dict[str, Any] | None = None) -> Any:
@@ -248,7 +265,7 @@ async def _get(ctx: Context, path: str, params: dict[str, Any] | None = None) ->
             got = await client.get(path, params=clean, headers=_headers(ctx))
     except httpx.RequestError as failed:
         return {"error": f"백엔드에 닿지 못했습니다({API_BASE}): {failed}"}
-    problem = _auth_error(got.status_code)
+    problem = _auth_error(got)
     if problem is not None:
         return problem
     if got.status_code >= 400:
@@ -275,7 +292,7 @@ async def _send(
             )
     except httpx.RequestError as failed:
         return {"error": f"백엔드에 닿지 못했습니다({API_BASE}): {failed}"}
-    problem = _auth_error(got.status_code)
+    problem = _auth_error(got)
     if problem is not None:
         return problem
     if got.status_code >= 400:
@@ -2385,9 +2402,12 @@ async def list_spec_documents(
 async def create_spec_document(
     ctx: Context,
     workspace_slug: str,
-    code: str,
     title: str,
+    code: str | None = None,
     revision: str | None = None,
+    pages: str | None = None,
+    is_excerpt: bool = False,
+    source_path: str | None = None,
     note: str | None = None,
 ) -> dict[str, Any]:
     """사내 규격서 하나를 등록한다 — **시험의 출처가 될 문서.**
@@ -2406,6 +2426,11 @@ async def create_spec_document(
 
     그리고 그 문서를 **시험의 「규격서」 칸에 건다**(`document_id`) — 그래야 시험에서
     원본으로 한 번에 간다.
+
+    **번호가 없으면 비워라.** 번호 없는 사내 문서가 실제로 있다 — 지어낸 번호는 문서관리
+    시스템의 번호인 줄 알고 누가 찾으러 간다. 대신 `pages`(본 자리 「12-18」),
+    `is_excerpt`(전문을 안 봤으면 참), `source_path`(원본이 있는 사내 경로·URL)를 채워라.
+    이 셋을 비고 문장에 섞어 넣으면 검색도 추적도 안 된다.
     """
     return _then(
         await _send(
@@ -2417,6 +2442,9 @@ async def create_spec_document(
                 "code": code,
                 "title": title,
                 "revision": revision,
+                "pages": pages,
+                "is_excerpt": is_excerpt,
+                "source_path": source_path,
                 "note": note,
             },
         ),
@@ -2636,6 +2664,73 @@ async def set_reliability_attributes(
         ),
         "보낸 칸만 바뀌었고 나머지는 그대로다. 고친 칸이 조건(`kind=\"condition\"`)이면"
         " 장비 판정이 따라 바뀐다 — `test_capability` 로 다시 보고 말하라.",
+    )
+
+
+@writes
+async def propose_test_item(
+    ctx: Context, test_id: str, text: str, note: str | None = None
+) -> dict[str, Any]:
+    """시험 항목 축에 **맞는 값이 없다**는 것을 남긴다.
+
+    시험 항목 축은 닫혀 있어 네가 값을 못 더한다 — 검색의 첫 축이라 오타 하나가 값이 되면
+    그 뒤로 아무도 못 찾기 때문이고, 그것은 옳다. 그런데 **말할 자리가 없어서** 지금까지는
+    그냥 비웠고, 빈 칸은 「없다」 로 읽혔다.
+
+    `text` 는 **문서에 적힌 그대로**다(「염수분무(5%)」). 고쳐 쓰거나 비슷한 축 값으로
+    바꾸지 마라 — 판단하는 사람이 원문을 봐야 정할 수 있다. `note` 에는 왜 못 찾았는지를
+    적어라(「염수 분무는 있는데 농도별 구분이 없음」).
+
+    같은 말이 여러 시험에서 나오면 한 줄로 모인다. 관리자가 한 번 정하면 그 말을 낸 시험
+    **전부**에 걸리므로, 스무 건이면 스무 번 부르는 것이 맞다.
+
+    **비슷한 값으로 때우지 마라.** 「인장」 이 없다고 「굽힘」 을 넣으면 그 시험이 엉뚱한
+    장비로 이어지고, 검색은 그 장비로 「됩니다」 라고 답한다.
+    """
+    return _then(
+        await _send(
+            ctx,
+            "POST",
+            "/reliability-tests/item-proposals",
+            {"reliability_test_id": test_id, "text": text, "note": note},
+        ),
+        "제안으로 올라갔다. **시험 항목은 아직 안 걸렸다** — 관리자가 정해야 걸린다."
+        " 사용자에게 「시험 항목을 못 찾아 제안으로 남겼다」 고 그대로 말하라.",
+    )
+
+
+@writes
+async def add_spec_document_revision(
+    ctx: Context,
+    document_id: str,
+    label: str,
+    issued_on: str | None = None,
+    summary: str | None = None,
+) -> dict[str, Any]:
+    """규격서에 **개정 한 줄**을 쌓는다.
+
+    `revision` 글자 하나로는 「이 시험은 개정 18에서 신설」 을 못 적는다. 개정을 줄로 쌓아야
+    시험이 어느 판에서 들어왔는지, 사람이 어느 판까지 확인했는지를 가리킬 수 있다.
+
+    `label` 은 문서가 적은 그대로다 — 「18」 · 「Rev.3」 · 「2024-05」.
+
+    **`summary` 를 비우지 마라.** 무엇이 바뀌었는지가 **재검토의 범위를 정한다** —
+    「오타 수정」 이면 딸린 시험을 다시 볼 이유가 없고, 「시험 온도 상향」 이면 전부 다시
+    봐야 한다. 그 판단을 사람이 하는데, 줄에 아무 말이 없으면 판단할 것이 없다.
+
+    개정을 쌓아도 **딸린 시험은 확정인 채로 남는다.** 수십 건이 한꺼번에 후보로 내려가면
+    그날 일이 멈추기 때문이고, 대신 「이 개정을 아직 안 봤다」 는 표가 붙는다. **그 표를
+    떼는 것은 사람의 일이다** — 네가 못 한다.
+    """
+    return _then(
+        await _send(
+            ctx,
+            "POST",
+            f"/spec-documents/{document_id}/revisions",
+            {"label": label, "issued_on": issued_on, "summary": summary},
+        ),
+        "개정이 쌓였다. 딸린 시험은 확정인 채로 두고 「아직 안 본 시험」 표가 붙는다 —"
+        " 그 표를 떼는 것은 사람이 화면에서 한다. 몇 건이 걸렸는지 함께 말하라.",
     )
 
 

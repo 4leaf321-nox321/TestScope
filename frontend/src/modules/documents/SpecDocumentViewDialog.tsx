@@ -24,6 +24,7 @@ import { useResource } from '@/shared/hooks/useResource'
 import { AttachmentStrip } from '@/modules/attachments/AttachmentStrip'
 import { attachmentApi } from '@/modules/attachments/api'
 import type { Attachment } from '@/modules/attachments/api'
+import { DocumentRevisions } from '@/modules/documents/DocumentRevisions'
 import { DocumentTestReview } from '@/modules/documents/DocumentTestReview'
 import type { SpecDocument } from '@/modules/documents/api'
 
@@ -93,6 +94,12 @@ export function SpecDocumentViewDialog({
             }}
           />
         </section>
+
+        <DocumentRevisions
+          documentId={document.id}
+          canEdit={document.can_edit}
+          onChanged={() => onChanged?.()}
+        />
 
         {/* **검토를 문서 옆에 둔다.** 한 문서에서 뽑힌 줄은 같은 실수를 함께 하는데,
             사업부 화면에서는 다른 문서에서 온 줄과 섞여 그 결이 안 보인다. */}

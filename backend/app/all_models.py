@@ -17,7 +17,7 @@ from app.modules.attachments.models import Attachment, StoredFile
 from app.modules.attributes.models import AttributeDefinition, AttributeValue
 from app.modules.audit.models import AccessLog, AuditEntry
 from app.modules.auth.models import PersonalAccessToken, RefreshToken
-from app.modules.documents.models import SpecDocument
+from app.modules.documents.models import SpecDocument, SpecDocumentRevision
 from app.modules.equipment.models import (
     Equipment,
     EquipmentCalibration,
@@ -33,7 +33,11 @@ from app.modules.methods.models import MethodRequirement, TestMethod, TestMethod
 from app.modules.notices.models import Notice, NoticeRead
 from app.modules.notifications.models import Notification
 from app.modules.properties.models import TestItemProperty
-from app.modules.reliability.models import ReliabilityTest, ReliabilityTestItem
+from app.modules.reliability.models import (
+    ReliabilityTest,
+    ReliabilityTestItem,
+    TestItemProposal,
+)
 from app.modules.review.models import ReviewProposal, ReviewVote
 from app.modules.test_items.models import (
     EquipmentTestCondition,
@@ -93,11 +97,13 @@ __all__ = [
     "SpecDefinition",
     "SpecDefinitionCategory",
     "SpecDocument",
+    "SpecDocumentRevision",
     "SpecGroup",
     "SpecSource",
     "StoredFile",
     "TestItemConditionKey",
     "TestItemProperty",
+    "TestItemProposal",
     "TestMethod",
     "TestMethodItem",
     "User",

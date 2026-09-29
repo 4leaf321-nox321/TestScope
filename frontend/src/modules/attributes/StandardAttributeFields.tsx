@@ -53,6 +53,11 @@ export interface StandardValue {
   matrix: MatrixRow[]
   /** 조건 줄의 비고 — 숫자로 못 적는 것(「상온」·「규격에 따름」). */
   note: string
+  /** 문서에 적힌 그대로. **비고와 다른 칸이다** — 비고는 *해석*이고 이것은 *증거*다. */
+  sourceText: string
+  /** 환산 전 값·단위 — `158` `degF`. 안 남기면 환산이 틀렸을 때 되짚을 자리가 없다. */
+  originalValue: string
+  originalUnit: string
   /** 어느 칸의 값인가. **키가 칸 id 가 아니게 되면서** 줄이 제 칸을 알아야 한다. */
   definitionId: string
   /** 조건 묶음 — 「동작」·「저장」·「주」·「불량 시」. 비우면 이름 없는 한 벌. */
@@ -106,6 +111,9 @@ function empty(definitionId = ''): StandardValue {
     pairs: [],
     matrix: [],
     note: '',
+    sourceText: '',
+    originalValue: '',
+    originalUnit: '',
     definitionId,
     setLabel: '',
     stepOrder: null,
@@ -136,6 +144,9 @@ export function fromValues(rows: AttributeValue[] | undefined): Record<string, S
       pairs: Array.isArray(json) && row.kind === 'pairs' ? (json as Pair[]) : [],
       matrix: Array.isArray(json) && row.kind === 'matrix' ? (json as MatrixRow[]) : [],
       note: row.note ?? '',
+      sourceText: row.source_text ?? '',
+      originalValue: row.original_value ?? '',
+      originalUnit: row.original_unit ?? '',
     }
   }
   return out
@@ -180,7 +191,9 @@ export function toStandardPayload(
       (value.numMin !== null ||
         value.numMax !== null ||
         value.numValue !== null ||
-        value.note.trim())
+        value.note.trim() ||
+        // 숫자를 아직 못 옮겼어도 **원문은 남는다** — 그 줄이 다음 사람의 시작점이다.
+        value.sourceText.trim())
     ) {
       out.push({
         ...base,
@@ -190,6 +203,10 @@ export function toStandardPayload(
         num_max: value.numMax,
         unit: definition.unit,
         note: value.note.trim() || null,
+        // **원문은 안 다듬는다** — 줄바꿈과 띄어쓰기가 문서의 모양이다.
+        source_text: value.sourceText.trim() || null,
+        original_value: value.originalValue.trim() || null,
+        original_unit: value.originalUnit.trim() || null,
       })
     } else if (definition.kind === 'term' && value.termId) {
       out.push({ ...base, term_id: value.termId })
@@ -1017,6 +1034,40 @@ function ConditionRow({
         >
           <X className="size-4" />
         </button>
+      </div>
+      {/**
+       * **원문과 환산 전 값은 비고와 다른 칸이다.**
+       *
+       * 비고는 옮겨 적은 사람의 *해석*이고 원문은 *증거*다. 한 칸에 섞이면 검토하는 사람이
+       * 「이게 문서에 있는 말인가 옮긴 사람의 말인가」 를 못 가르고, 값 하나를 확인하려고
+       * 원본을 다시 연다 — 그것이 검토 한 건의 시간을 늘린다.
+       */}
+      <div className="mt-1 flex flex-wrap items-center gap-2 pl-30">
+        <Input
+          value={value.sourceText}
+          onChange={(event) => onChange({ sourceText: event.target.value })}
+          placeholder="문서 원문 — 적힌 그대로"
+          aria-label={`${definition.label} 원문`}
+          className="min-w-48 flex-1"
+          maxLength={4000}
+        />
+        <span className="text-muted-foreground text-xs">환산 전</span>
+        <Input
+          value={value.originalValue}
+          onChange={(event) => onChange({ originalValue: event.target.value })}
+          placeholder="158"
+          aria-label={`${definition.label} 환산 전 값`}
+          className="w-24"
+          maxLength={100}
+        />
+        <Input
+          value={value.originalUnit}
+          onChange={(event) => onChange({ originalUnit: event.target.value })}
+          placeholder="degF"
+          aria-label={`${definition.label} 환산 전 단위`}
+          className="w-24"
+          maxLength={40}
+        />
       </div>
       <p className="text-muted-foreground mt-1 pl-30 text-xs">
         {describeRange(value, definition.unit)}

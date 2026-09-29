@@ -88,6 +88,10 @@ RELIABILITY_TEST_DELETED = "reliability_test.deleted"
 """부서가 등록한 신뢰성 시험을 내렸다. 화면에서는 사라지므로 「그 시험 어디 갔어」 의 답이
 여기뿐이다. 만들고 고친 것은 줄 자체(created_by · updated_at)가 말한다."""
 SPEC_DOCUMENT_DELETED = "spec_document.deleted"
+#: 개정이 쌓였다 — 딸린 시험 수십 건의 「다시 볼 일」 이 여기서 생긴다.
+SPEC_DOCUMENT_REVISED = "spec_document.revised"
+#: 시험 항목 제안을 정했다 — 축에 값이 서거나, 기존 값에 이어지거나.
+TEST_ITEM_PROPOSAL_DECIDED = "test_item_proposal.decided"
 """사내 규격서를 내렸다. **그 문서로 한 시험의 결과가 밖에 나가 있다** — 번호가 무엇을
 가리켰는지 물을 자리가 여기뿐이다."""
 RELIABILITY_TEST_CONFIRMED = "reliability_test.confirmed"

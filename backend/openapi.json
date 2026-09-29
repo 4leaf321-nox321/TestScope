@@ -7325,6 +7325,138 @@
         }
       }
     },
+    "/api/reliability-tests/item-proposals": {
+      "get": {
+        "tags": [
+          "reliability"
+        ],
+        "summary": "List Item Proposals",
+        "description": "시험 항목 제안 — **같은 말끼리 모아서.** 건수가 큰 것이 먼저.\n\n축(`test_item`)이 closed 라 기계는 값을 못 더한다. 그래서 「문서에 이런 말이 있었는데\n축에 없다」 를 여기에 쌓고, 관리자가 한 번 정하면 그 말을 낸 시험들에 함께 걸린다.\n\n**`/{test_id}` 보다 먼저 선언한다** — 뒤에 두면 id 로 읽혀 404 가 온다.",
+        "operationId": "list_item_proposals_api_reliability_tests_item_proposals_get",
+        "parameters": [
+          {
+            "name": "include_decided",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "boolean",
+              "default": false,
+              "title": "Include Decided"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/TestItemProposalGroupOut"
+                  },
+                  "title": "Response List Item Proposals Api Reliability Tests Item Proposals Get"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "reliability"
+        ],
+        "summary": "Add Item Proposal",
+        "description": "축에 맞는 값이 없다는 것을 남긴다. 그 시험을 고칠 수 있는 사람이면 된다(기계도).\n\n**같은 말을 두 번 내도 거절하지 않는다** — 적재를 다시 돌리는 일이 흔하고, 그때 409 가\n오면 부른 쪽은 그 줄을 실패로 세어 사람에게 없는 문제를 보고한다.",
+        "operationId": "add_item_proposal_api_reliability_tests_item_proposals_post",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/TestItemProposalRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TestItemProposalOut"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/reliability-tests/item-proposals/decide": {
+      "post": {
+        "tags": [
+          "reliability"
+        ],
+        "summary": "Decide Item Proposal",
+        "description": "제안 한 묶음을 정한다 — **시스템 관리자만.** 정한 값이 그 말을 낸 시험들에\n한꺼번에 걸린다.",
+        "operationId": "decide_item_proposal_api_reliability_tests_item_proposals_decide_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/TestItemProposalDecision"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "additionalProperties": true,
+                  "type": "object",
+                  "title": "Response Decide Item Proposal Api Reliability Tests Item Proposals Decide Post"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/api/reliability-tests/{test_id}": {
       "get": {
         "tags": [
@@ -7704,6 +7836,108 @@
                 }
               }
             }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/reliability-tests/{test_id}/item-proposals": {
+      "get": {
+        "tags": [
+          "reliability"
+        ],
+        "summary": "Test Item Proposals",
+        "description": "이 시험이 낸 제안 — **왜 시험 항목이 비었는지가 여기 있다.**",
+        "operationId": "test_item_proposals_api_reliability_tests__test_id__item_proposals_get",
+        "parameters": [
+          {
+            "name": "test_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "title": "Test Id"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/TestItemProposalOut"
+                  },
+                  "title": "Response Test Item Proposals Api Reliability Tests  Test Id  Item Proposals Get"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/reliability-tests/{test_id}/reviewed-revision": {
+      "post": {
+        "tags": [
+          "reliability"
+        ],
+        "summary": "Mark Reviewed",
+        "description": "이 시험을 **어느 개정까지 봤다**고 적는다. 비우면 표를 도로 붙인다.\n\n규격서가 개정되어도 확정은 그대로 두므로(수십 건이 한꺼번에 내려가면 그날 일이 멈춘다),\n「아직 안 봤다」 는 표를 떼는 것이 사람이 하는 일이다. **기계는 못 한다** — 기계가\n「봤다」 고 적으면 사람의 확인이 이름만 남는다.",
+        "operationId": "mark_reviewed_api_reliability_tests__test_id__reviewed_revision_post",
+        "parameters": [
+          {
+            "name": "test_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "title": "Test Id"
+            }
+          },
+          {
+            "name": "revision_id",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string",
+                  "format": "uuid"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Revision Id"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Successful Response"
           },
           "422": {
             "description": "Validation Error",
@@ -8248,6 +8482,106 @@
         "responses": {
           "204": {
             "description": "Successful Response"
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/spec-documents/{document_id}/revisions": {
+      "get": {
+        "tags": [
+          "documents"
+        ],
+        "summary": "List Revisions",
+        "description": "개정 이력 — 나중 판이 먼저. 최신판 줄에 **아직 안 본 시험 수**가 함께 온다.",
+        "operationId": "list_revisions_api_spec_documents__document_id__revisions_get",
+        "parameters": [
+          {
+            "name": "document_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "title": "Document Id"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/SpecDocumentRevisionOut"
+                  },
+                  "title": "Response List Revisions Api Spec Documents  Document Id  Revisions Get"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "documents"
+        ],
+        "summary": "Add Revision",
+        "description": "개정 한 줄을 쌓는다.\n\n**딸린 시험은 확정인 채로 둔다** — 수십 건이 한꺼번에 후보로 내려가면 그날 일이 멈추고,\n멈춘 일은 미뤄진다. 대신 그 시험들에 「이 개정을 아직 안 봤다」 는 표가 붙는다.",
+        "operationId": "add_revision_api_spec_documents__document_id__revisions_post",
+        "parameters": [
+          {
+            "name": "document_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "title": "Document Id"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SpecDocumentRevisionRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SpecDocumentRevisionOut"
+                }
+              }
+            }
           },
           "422": {
             "description": "Validation Error",
@@ -11114,6 +11448,42 @@
               }
             ],
             "title": "Step Label"
+          },
+          "source_text": {
+            "anyOf": [
+              {
+                "type": "string",
+                "maxLength": 4000
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Source Text"
+          },
+          "original_value": {
+            "anyOf": [
+              {
+                "type": "string",
+                "maxLength": 100
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Original Value"
+          },
+          "original_unit": {
+            "anyOf": [
+              {
+                "type": "string",
+                "maxLength": 40
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Original Unit"
           }
         },
         "additionalProperties": false,
@@ -11168,6 +11538,39 @@
               }
             ],
             "title": "Step Label"
+          },
+          "source_text": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Source Text"
+          },
+          "original_value": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Original Value"
+          },
+          "original_unit": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Original Unit"
           },
           "status": {
             "type": "string",
@@ -11822,6 +12225,14 @@
             },
             "type": "array",
             "title": "Items"
+          },
+          "sets": {
+            "items": {
+              "$ref": "#/components/schemas/CapabilitySetOut"
+            },
+            "type": "array",
+            "title": "Sets",
+            "default": []
           }
         },
         "type": "object",
@@ -11833,6 +12244,48 @@
         ],
         "title": "CapabilityOut",
         "description": "「이 시험, 어느 장비로 돌리나」 의 답 — 조건 속성을 그대로 검색 조건으로 옮긴 것."
+      },
+      "CapabilitySetOut": {
+        "properties": {
+          "set_label": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Set Label"
+          },
+          "conditions_asked": {
+            "type": "integer",
+            "title": "Conditions Asked"
+          },
+          "skipped": {
+            "items": {
+              "$ref": "#/components/schemas/SkippedConditionOut"
+            },
+            "type": "array",
+            "title": "Skipped"
+          },
+          "items": {
+            "items": {
+              "$ref": "#/components/schemas/CapabilityItemOut"
+            },
+            "type": "array",
+            "title": "Items"
+          }
+        },
+        "type": "object",
+        "required": [
+          "set_label",
+          "conditions_asked",
+          "skipped",
+          "items"
+        ],
+        "title": "CapabilitySetOut",
+        "description": "조건 묶음 하나의 답 — 「주 조건으로는 12대, 불량 시 조건으로는 8대」."
       },
       "CatalogFilterOptionsOut": {
         "properties": {
@@ -21255,9 +21708,15 @@
             "title": "Workspace Slug"
           },
           "code": {
-            "type": "string",
-            "maxLength": 100,
-            "minLength": 1,
+            "anyOf": [
+              {
+                "type": "string",
+                "maxLength": 100
+              },
+              {
+                "type": "null"
+              }
+            ],
             "title": "Code"
           },
           "title": {
@@ -21278,6 +21737,35 @@
             ],
             "title": "Revision"
           },
+          "pages": {
+            "anyOf": [
+              {
+                "type": "string",
+                "maxLength": 60
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Pages"
+          },
+          "is_excerpt": {
+            "type": "boolean",
+            "title": "Is Excerpt",
+            "default": false
+          },
+          "source_path": {
+            "anyOf": [
+              {
+                "type": "string",
+                "maxLength": 2000
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Source Path"
+          },
           "note": {
             "anyOf": [
               {
@@ -21295,7 +21783,6 @@
         "type": "object",
         "required": [
           "workspace_slug",
-          "code",
           "title"
         ],
         "title": "SpecDocumentCreateRequest"
@@ -21316,7 +21803,14 @@
             "title": "Workspace Name"
           },
           "code": {
-            "type": "string",
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
             "title": "Code"
           },
           "title": {
@@ -21334,6 +21828,33 @@
             ],
             "title": "Revision"
           },
+          "pages": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Pages"
+          },
+          "is_excerpt": {
+            "type": "boolean",
+            "title": "Is Excerpt",
+            "default": false
+          },
+          "source_path": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Source Path"
+          },
           "note": {
             "anyOf": [
               {
@@ -21344,6 +21865,14 @@
               }
             ],
             "title": "Note"
+          },
+          "revisions": {
+            "items": {
+              "$ref": "#/components/schemas/SpecDocumentRevisionOut"
+            },
+            "type": "array",
+            "title": "Revisions",
+            "default": []
           },
           "submitted_via": {
             "anyOf": [
@@ -21396,14 +21925,137 @@
         ],
         "title": "SpecDocumentOut"
       },
+      "SpecDocumentRevisionOut": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Id"
+          },
+          "label": {
+            "type": "string",
+            "title": "Label"
+          },
+          "issued_on": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "date"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Issued On"
+          },
+          "summary": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Summary"
+          },
+          "sort_order": {
+            "type": "integer",
+            "title": "Sort Order"
+          },
+          "submitted_via": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Submitted Via"
+          },
+          "stale_test_count": {
+            "type": "integer",
+            "title": "Stale Test Count",
+            "default": 0
+          },
+          "created_at": {
+            "type": "string",
+            "format": "date-time",
+            "title": "Created At"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "label",
+          "issued_on",
+          "summary",
+          "sort_order",
+          "created_at"
+        ],
+        "title": "SpecDocumentRevisionOut"
+      },
+      "SpecDocumentRevisionRequest": {
+        "properties": {
+          "label": {
+            "type": "string",
+            "maxLength": 60,
+            "minLength": 1,
+            "title": "Label"
+          },
+          "issued_on": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "date"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Issued On"
+          },
+          "summary": {
+            "anyOf": [
+              {
+                "type": "string",
+                "maxLength": 4000
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Summary"
+          },
+          "sort_order": {
+            "anyOf": [
+              {
+                "type": "integer",
+                "maximum": 9999.0,
+                "minimum": 0.0
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Sort Order"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "label"
+        ],
+        "title": "SpecDocumentRevisionRequest"
+      },
       "SpecDocumentUpdateRequest": {
         "properties": {
           "code": {
             "anyOf": [
               {
                 "type": "string",
-                "maxLength": 100,
-                "minLength": 1
+                "maxLength": 100
               },
               {
                 "type": "null"
@@ -21435,6 +22087,41 @@
               }
             ],
             "title": "Revision"
+          },
+          "pages": {
+            "anyOf": [
+              {
+                "type": "string",
+                "maxLength": 60
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Pages"
+          },
+          "is_excerpt": {
+            "anyOf": [
+              {
+                "type": "boolean"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Is Excerpt"
+          },
+          "source_path": {
+            "anyOf": [
+              {
+                "type": "string",
+                "maxLength": 2000
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Source Path"
           },
           "note": {
             "anyOf": [
@@ -22493,6 +23180,205 @@
         "additionalProperties": false,
         "type": "object",
         "title": "TestItemPropertyUpdateRequest"
+      },
+      "TestItemProposalDecision": {
+        "properties": {
+          "normalized": {
+            "type": "string",
+            "maxLength": 200,
+            "minLength": 1,
+            "title": "Normalized"
+          },
+          "term_id": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "uuid"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Term Id"
+          },
+          "new_value": {
+            "anyOf": [
+              {
+                "type": "string",
+                "maxLength": 200,
+                "minLength": 1
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "New Value"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "normalized"
+        ],
+        "title": "TestItemProposalDecision",
+        "description": "정하기 — 기존 값에 잇거나(`term_id`), 축에 세우거나(`new_value`), 아니라고 하거나."
+      },
+      "TestItemProposalGroupOut": {
+        "properties": {
+          "normalized": {
+            "type": "string",
+            "title": "Normalized"
+          },
+          "text": {
+            "type": "string",
+            "title": "Text"
+          },
+          "count": {
+            "type": "integer",
+            "title": "Count"
+          },
+          "proposals": {
+            "items": {
+              "$ref": "#/components/schemas/TestItemProposalOut"
+            },
+            "type": "array",
+            "title": "Proposals"
+          }
+        },
+        "type": "object",
+        "required": [
+          "normalized",
+          "text",
+          "count",
+          "proposals"
+        ],
+        "title": "TestItemProposalGroupOut",
+        "description": "같은 말끼리 모은 한 줄 — **관리자는 스무 번이 아니라 한 번 판단한다.**"
+      },
+      "TestItemProposalOut": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Id"
+          },
+          "text": {
+            "type": "string",
+            "title": "Text"
+          },
+          "note": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Note"
+          },
+          "status": {
+            "type": "string",
+            "title": "Status"
+          },
+          "reliability_test_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Reliability Test Id"
+          },
+          "reliability_test_name": {
+            "type": "string",
+            "title": "Reliability Test Name"
+          },
+          "term_id": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "uuid"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Term Id"
+          },
+          "term_value": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Term Value"
+          },
+          "submitted_via": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Submitted Via"
+          },
+          "created_at": {
+            "type": "string",
+            "format": "date-time",
+            "title": "Created At"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "text",
+          "note",
+          "status",
+          "reliability_test_id",
+          "reliability_test_name",
+          "term_id",
+          "term_value",
+          "submitted_via",
+          "created_at"
+        ],
+        "title": "TestItemProposalOut",
+        "description": "축에 맞는 값이 없어 남긴 제안 한 줄."
+      },
+      "TestItemProposalRequest": {
+        "properties": {
+          "reliability_test_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Reliability Test Id"
+          },
+          "text": {
+            "type": "string",
+            "maxLength": 200,
+            "minLength": 1,
+            "title": "Text"
+          },
+          "note": {
+            "anyOf": [
+              {
+                "type": "string",
+                "maxLength": 2000
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Note"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "reliability_test_id",
+          "text"
+        ],
+        "title": "TestItemProposalRequest"
       },
       "TestItemSeriesOut": {
         "properties": {

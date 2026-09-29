@@ -452,11 +452,21 @@ def _check_value_shape(
     if kind == "date" and item.date_value is None:
         raise AppError("TSC-ATTR-0011", f"「{label}」 은 날짜가 필요합니다.")
     if kind == "term":
-        term = db.get(VocabularyTerm, item.term_id) if item.term_id else None
-        if term is None or term.vocabulary_id != definition.vocabulary_id:
-            raise AppError(
-                "TSC-ATTR-0011", f"「{label}」 은 그 축의 온톨로지 값이어야 합니다."
-            )
+        # **맞는 값이 축에 없을 때 그 사실을 남길 자리가 있어야 한다.** 조건은 숫자를 비우고
+        # 비고만 실어도 통과하는데 온톨로지 값은 400 이었다 — 그래서 옮겨 적는 쪽은 「축에
+        # 없다」 를 말할 방법이 없어 **그냥 비웠고**, 빈 칸은 「없다」 로 읽혔다. 비우는
+        # 것과 아무 말 없이 비우는 것은 다르다. 축이 닫혀 있을수록(시험 항목·물성) 이
+        # 자리가 필요하다 — 값을 더할 수 있는 사람은 관리자뿐이다.
+        if item.term_id is None and clean(item.note or ""):
+            pass
+        else:
+            term = db.get(VocabularyTerm, item.term_id) if item.term_id else None
+            if term is None or term.vocabulary_id != definition.vocabulary_id:
+                raise AppError(
+                    "TSC-ATTR-0011",
+                    f"「{label}」 은 그 축의 온톨로지 값이어야 합니다 —"
+                    " 맞는 값이 없으면 비우고 비고(note)에 원문을 적으십시오.",
+                )
     if kind == "method":
         method = db.get(TestMethod, item.method_id) if item.method_id else None
         if method is None or method.deleted_at is not None:
@@ -513,7 +523,12 @@ def set_values(
 ) -> None:
     """대상 하나의 값을 **통째로** 바꾼다. 커밋은 부르는 쪽이 한다.
 
-    같은 항목이 두 번 오면 뒤의 것이 남는다. 새 이름은 초안을 만든다.
+    **같은 자리에 두 줄이 오면 거절한다**(422). 예전에는 뒤의 것이 남았는데, 보낸 쪽은
+    둘 다 보냈다고 알고 있으니 그 손실이 아무 데도 안 드러났다 — 수백 건을 적재하면서
+    조건이 하나씩 사라지는데 누구도 그 사실을 모르는 것이 실제 위험이다. 자리는 (칸,
+    묶음, 차례)이고, 같은 칸을 여러 벌 적으려면 **묶음을 달면 된다.**
+
+    새 이름은 초안을 만든다.
     """
     _check_target(target)
     column = _TARGET_COLUMN[target]
@@ -523,6 +538,7 @@ def set_values(
     # **열쇠가 (정의, 묶음, 차례) 다.** 정의만으로 누르면 동작·저장이 서로를 덮어써서
     # 마지막 한 줄만 남는다 — 보낸 사람은 둘 다 보냈다고 알고 있다.
     seen: dict[tuple[uuid.UUID, str, int], AttributeValue] = {}
+    clashes: list[str] = []
     for item in items:
         if item.definition_id is not None:
             definition = get_definition(db, item.definition_id)
@@ -561,6 +577,11 @@ def set_values(
             set_label=clean(item.set_label or "") or None,
             step_order=item.step_order,
             step_label=clean(item.step_label or "") or None,
+            # **원문은 안 다듬는다.** 줄바꿈과 띄어쓰기가 문서의 모양이고, 그것을 고르면
+            # 「그대로」 가 아니게 된다 — 앞뒤 공백만 턴다.
+            source_text=(item.source_text or "").strip() or None,
+            original_value=clean(item.original_value or "") or None,
+            original_unit=clean(item.original_unit or "") or None,
         )
         setattr(value, column.key, object_id)
         where = (
@@ -568,10 +589,34 @@ def set_values(
             value.set_label or "",
             value.step_order if value.step_order is not None else -1,
         )
+        if where in seen:
+            # **덮어쓰지 않고 말한다.** 어느 칸이 몇 번 왔는지까지 적어 준다 — 「값이
+            # 겹칩니다」 만으로는 스무 줄 중 어느 것을 고칠지 알 수 없다.
+            clashes.append(_where_text(definition.label, value))
         seen[where] = value
+    if clashes:
+        raise AppError(
+            "TSC-ATTR-0013",
+            "같은 자리에 값이 두 번 왔습니다: "
+            + " · ".join(sorted(set(clashes)))
+            + ". 같은 칸을 여러 벌 적으려면 묶음(set_label)이나 차례(step_order)로"
+            " 가르십시오 — 안 가르면 한 줄만 남고 나머지는 사라집니다.",
+            status=422,
+            details={"duplicates": sorted(set(clashes))},
+        )
     for value in seen.values():
         db.add(value)
     db.flush()
+
+
+def _where_text(label: str, value: AttributeValue) -> str:
+    """「시험 온도」 · 「시험 온도(동작)」 · 「시험 온도(온도 사이클 2번째)」."""
+    if not value.set_label and value.step_order is None:
+        return f"「{label}」"
+    inside = value.set_label or ""
+    if value.step_order is not None:
+        inside = f"{inside} {value.step_order}번째".strip()
+    return f"「{label}」({inside})"
 
 
 def display_of(
@@ -672,6 +717,9 @@ def values_of(
                 set_label=value.set_label,
                 step_order=value.step_order,
                 step_label=value.step_label,
+                source_text=value.source_text,
+                original_value=value.original_value,
+                original_unit=value.original_unit,
                 unit=value.unit,
                 num_value=value.num_value,
                 num_min=value.num_min,

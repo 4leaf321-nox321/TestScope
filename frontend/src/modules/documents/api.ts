@@ -11,10 +11,18 @@ import { api } from '@/shared/api/client'
 import type { components } from '@/shared/api/schema'
 
 export type SpecDocument = components['schemas']['SpecDocumentOut']
+export type SpecDocumentRevision = components['schemas']['SpecDocumentRevisionOut']
 export type SpecDocumentWrite = {
-  code: string
+  /** **번호는 없을 수 있다** — 번호 안 붙은 사내 문서가 실제로 있다. */
+  code: string | null
   title: string
   revision: string | null
+  /** 본 자리 — 「12-18」. */
+  pages: string | null
+  /** 발췌인가. 전문을 안 본 채 옮긴 것은 그렇게 보여야 한다. */
+  is_excerpt: boolean
+  /** 원본이 있는 사내 경로·URL. 파일을 못 올리는 문서가 있다. */
+  source_path: string | null
   note: string | null
 }
 
@@ -35,6 +43,15 @@ export const specDocumentApi = {
    *  걸어 둔 신뢰성 시험의 링크가 안 끊긴다. */
   update: (id: string, body: Partial<SpecDocumentWrite>) =>
     api.patch<SpecDocument>(`/spec-documents/${id}`, body),
+  /** 개정 이력 — 나중 판이 먼저. 최신판 줄에 **아직 안 본 시험 수**가 함께 온다. */
+  revisions: (id: string) =>
+    api.get<SpecDocumentRevision[]>(`/spec-documents/${id}/revisions`),
+  /** 개정 한 줄을 쌓는다. **딸린 시험은 확정인 채로 두고** 「아직 안 봤다」 표만 붙는다 —
+   *  수십 건이 한꺼번에 후보로 내려가면 그날 일이 멈추고, 멈춘 일은 미뤄진다. */
+  addRevision: (
+    id: string,
+    body: { label: string; issued_on?: string | null; summary?: string | null },
+  ) => api.post<SpecDocumentRevision>(`/spec-documents/${id}/revisions`, body),
   /** 걸려 있는 시험이 있으면 409 — 지우고 나면 그 시험이 무엇을 따랐는지 알 수 없다. */
   remove: (id: string) => api.delete<void>(`/spec-documents/${id}`),
 }

@@ -404,10 +404,13 @@ def _resolve_spec_document(
         detail = " · ".join(
             part for part in (row.title, row.revision, team.name if team else None) if part
         )
-        return row.code, detail or None
+        # **번호가 없는 문서가 있다.** 그때는 제목이 이름 자리에 선다 — 빈 이름으로 세우면
+        # 고르는 화면에 빈 줄이 뜬다.
+        return row.code or row.title, detail or None
 
     key = compare_key(text)
-    same = [row for row in db.scalars(stmt) if compare_key(row.code) == key]
+    # 번호로 찾고, 번호가 없는 문서는 **제목으로** 찾는다.
+    same = [row for row in db.scalars(stmt) if compare_key(row.code or row.title) == key]
     if len(same) == 1:
         head, detail = _label(same[0])
         return _answer(

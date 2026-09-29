@@ -88,6 +88,24 @@ export default function ReviewPage() {
         ))}
       </ul>
 
+      {/**
+       * **시험 항목 제안은 다른 표에서 온다** — 위 목록은 반입·정본이 세운 후보인데,
+       * 이것은 AI 가 문서를 읽다 「축에 없다」 고 남긴 말이다. 한 화면에 모아 두는 이유는
+       * 「검토하러 오는 자리」 가 하나여야 사람이 그 습관을 들이기 때문이다.
+       */}
+      <div className="rounded-md border p-4">
+        <h2 className="text-base font-semibold">시험 항목 제안</h2>
+        <p className="text-muted-foreground mt-1 text-sm">
+          AI 가 문서에서 읽었지만 시험 항목 축에 없던 말. 축은 닫혀 있어 AI 가 값을 못 더합니다
+          — 축에 세우거나 기존 값에 이으면 그 말을 낸 시험 전부에 한 번에 걸립니다.
+        </p>
+        <div className="mt-3">
+          <Button asChild size="sm" variant="outline">
+            <Link to="/admin/item-proposals">보러 가기</Link>
+          </Button>
+        </div>
+      </div>
+
       <p className="text-muted-foreground text-xs">
         후보는 반입(카탈로그)과 정본의 추천(
         <span className="font-mono">source/catalog/proposals</span>)에서 옵니다. 추천은 정답이

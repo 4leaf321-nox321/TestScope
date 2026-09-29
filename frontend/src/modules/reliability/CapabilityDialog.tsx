@@ -91,6 +91,37 @@ export function CapabilityDialog({
                 : `조건 ${data.conditions_asked}개로 물었습니다 (범위 하나는 위·아래 두 물음입니다).`}
             </p>
 
+            {/**
+             * **묶음이 둘 이상이면 묶음마다 따로 답한다.**
+             *
+             * 주 조건 80 °C 와 「불량 시」 70 °C 를 한꺼번에 물으면 아무도 요구하지 않는
+             * 조건이 만들어지고, 그 조건으로 장비가 걸러지는데 왜 걸러졌는지 화면 어디에도
+             * 안 나왔다. 아래 표는 **모든 묶음을 한꺼번에** 만족하는 장비다 — 그것도 답이지만
+             * (예외까지 통째로 돌릴 장비), 유일한 답이 아니었던 것이 문제였다.
+             */}
+            {(data.sets ?? []).length > 0 && (
+              <div className="space-y-2 rounded-md border p-3">
+                <p className="text-sm font-medium">조건 묶음별로 보면</p>
+                <ul className="space-y-1 text-sm">
+                  {(data.sets ?? []).map((one) => (
+                    <li key={one.set_label ?? '(기본)'} className="flex flex-wrap gap-x-2">
+                      <span className="font-medium">{one.set_label || '이름 없는 한 벌'}</span>
+                      <span className="text-muted-foreground">
+                        조건 {one.conditions_asked}개 ·{' '}
+                        {one.items
+                          .map((item) => `${item.value} ${item.total}대`)
+                          .join(' · ') || '적용 시험 항목 없음'}
+                      </span>
+                    </li>
+                  ))}
+                </ul>
+                <p className="text-muted-foreground text-xs">
+                  아래 표는 <strong>모든 묶음을 한꺼번에</strong> 만족하는 장비입니다 — 예외
+                  경로까지 이 시험을 통째로 돌릴 장비입니다.
+                </p>
+              </div>
+            )}
+
             {data.skipped.length > 0 && (
               // **조용히 빼지 않는다.** 뺀 줄 모르면 조건을 다 본 것처럼 읽힌다.
               <div className="flex gap-2 rounded-md border border-amber-300 p-3 text-sm">

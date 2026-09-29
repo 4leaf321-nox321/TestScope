@@ -35,6 +35,7 @@ import { attributeApi } from '@/modules/attributes/api'
 import type { AttributeValue } from '@/modules/attributes/api'
 import { SECTIONS, anchorOf } from '@/modules/attributes/StandardAttributeFields'
 import { CandidateBadge, ReviewBanner } from '@/modules/reliability/CandidateReview'
+import { reliabilityApi } from '@/modules/reliability/api'
 import { CardOutline } from '@/modules/reliability/CardOutline'
 import type { OutlineItem } from '@/modules/reliability/CardOutline'
 import type { ReliabilityTest } from '@/modules/reliability/api'
@@ -82,6 +83,38 @@ function SetTag({ row }: { row: AttributeValue }) {
       {row.step_order !== null && `${row.set_label ? ' ' : ''}${row.step_order}번째`}
       {row.step_label && ` ${row.step_label}`}
     </span>
+  )
+}
+
+/**
+ * 축에 맞는 값이 없어 남긴 제안 — **「시험 항목 미지정」 옆에 왜가 서야 한다.**
+ *
+ * 시험 항목 축은 닫혀 있어 AI 가 값을 못 더한다. 그래서 지금까지는 그냥 비웠고, 검토하는
+ * 사람은 그 줄을 「안 적은 것」 과 구별할 수 없었다 — 스무 건 중 아홉 건이 그랬다.
+ */
+function ItemProposals({ testId }: { testId: string }) {
+  const rows = useResource(() => reliabilityApi.itemProposals(testId), [testId])
+  const listed = rows.data ?? []
+  if (listed.length === 0) return null
+  return (
+    <div className="mt-1 space-y-1 rounded-md border border-amber-300 p-2">
+      <p className="text-xs font-medium">축에서 못 찾아 제안으로 남긴 것</p>
+      <ul className="space-y-0.5 text-sm">
+        {listed.map((one) => (
+          <li key={one.id} className="flex flex-wrap items-baseline gap-2">
+            <span className="font-medium">{one.text}</span>
+            {one.note && <span className="text-muted-foreground text-xs">{one.note}</span>}
+            <span className="text-muted-foreground text-xs">
+              {one.status === 'open'
+                ? '관리자 판단 대기'
+                : one.term_value
+                  ? `→ ${one.term_value}`
+                  : '아니라고 정해짐'}
+            </span>
+          </li>
+        ))}
+      </ul>
+    </div>
   )
 }
 
@@ -289,6 +322,7 @@ export function ReliabilityTestViewDialog({
                   ))
                 )}
               </dd>
+              <ItemProposals testId={test.id} />
             </div>
 
             {grouped.map((section) => (

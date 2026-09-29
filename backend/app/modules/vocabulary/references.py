@@ -38,7 +38,7 @@ from app.modules.equipment.models import (
 )
 from app.modules.methods.models import TestMethod, TestMethodItem
 from app.modules.properties.models import TestItemProperty
-from app.modules.reliability.models import ReliabilityTest
+from app.modules.reliability.models import ReliabilityTest, ReliabilityTestItem
 from app.modules.test_items.models import EquipmentTestItem, SeriesTestItem
 from app.modules.vocabulary.models import VocabularyTerm
 from app.modules.vocabulary.specs import SpecDefinition, SpecDefinitionCategory
@@ -94,6 +94,14 @@ def _describe_workspace(db: Session, row: Workspace) -> Described:
 
 def _describe_reliability_test(db: Session, row: ReliabilityTest) -> Described:
     return row.name, "/reliability-tests"
+
+
+def _describe_reliability_item(db: Session, row: ReliabilityTestItem) -> Described:
+    """짝 표의 줄 하나 — 가리키는 것은 **신뢰성 시험**이다. 줄 자체는 이름이 없다."""
+    test = db.get(ReliabilityTest, row.reliability_test_id)
+    if test is None or test.deleted_at is not None:
+        return "(시험 없음)", None
+    return test.name, f"/reliability/{test.id}"
 
 
 def _describe_equipment(db: Session, row: Equipment) -> Described:
@@ -184,6 +192,19 @@ REFERENCE_KINDS: tuple[ReferenceKind, ...] = (
         # 짝 표의 줄은 **지운다** — 칸이 아니라 관계라 비울 것이 없다.
         "delete",
         _describe_method_item,
+    ),
+    ReferenceKind(
+        # **여기 없으면 그 값은 0 으로 보인다.** 신뢰성 시험만 쓰는 시험 항목이 「아무도 안
+        # 쓴다」 로 떠서, 그것을 보고 합치기를 누르면 RESTRICT 에 막혀 500 이 난다 —
+        # 자료는 안 깨지지만 화면은 왜 실패했는지 말해 주지 못한다(2026-09-30 실측).
+        "reliability_test_item",
+        "test_item",
+        "신뢰성 시험의 시험 항목",
+        ReliabilityTestItem,
+        ReliabilityTestItem.test_item_term_id,
+        # 짝 표의 줄은 **지운다** — 칸이 아니라 관계라 비울 것이 없다.
+        "delete",
+        _describe_reliability_item,
     ),
     ReferenceKind(
         "item_property_by_item",

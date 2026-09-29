@@ -11,6 +11,7 @@ from sqlalchemy.orm import Session
 from app.database import get_db
 from app.modules.accounts.models import User
 from app.modules.reliability import capability as capability_service
+from app.modules.reliability import proposals as proposal_service
 from app.modules.reliability import services
 from app.modules.reliability.schemas import (
     CapabilityOut,
@@ -23,6 +24,10 @@ from app.modules.reliability.schemas import (
     ReliabilityTestCreateRequest,
     ReliabilityTestOut,
     ReliabilityTestUpdateRequest,
+    TestItemProposalDecision,
+    TestItemProposalGroupOut,
+    TestItemProposalOut,
+    TestItemProposalRequest,
 )
 from app.shared.auth import current_user
 
@@ -82,6 +87,48 @@ def create_reliability_test(
     값이어야 한다(`POST /api/resolve` 로 먼저 찾는다)."""
     row = services.create(db, user, payload.model_dump())
     return services.test_out(db, user, row)
+
+
+@router.get("/item-proposals", response_model=list[TestItemProposalGroupOut])
+def list_item_proposals(
+    include_decided: bool = Query(default=False),
+    user: User = Depends(current_user),
+    db: Session = Depends(get_db),
+) -> list[TestItemProposalGroupOut]:
+    """시험 항목 제안 — **같은 말끼리 모아서.** 건수가 큰 것이 먼저.
+
+    축(`test_item`)이 closed 라 기계는 값을 못 더한다. 그래서 「문서에 이런 말이 있었는데
+    축에 없다」 를 여기에 쌓고, 관리자가 한 번 정하면 그 말을 낸 시험들에 함께 걸린다.
+
+    **`/{test_id}` 보다 먼저 선언한다** — 뒤에 두면 id 로 읽혀 404 가 온다.
+    """
+    return proposal_service.groups(db, include_decided=include_decided)
+
+
+@router.post("/item-proposals", response_model=TestItemProposalOut, status_code=201)
+def add_item_proposal(
+    payload: TestItemProposalRequest,
+    user: User = Depends(current_user),
+    db: Session = Depends(get_db),
+) -> TestItemProposalOut:
+    """축에 맞는 값이 없다는 것을 남긴다. 그 시험을 고칠 수 있는 사람이면 된다(기계도).
+
+    **같은 말을 두 번 내도 거절하지 않는다** — 적재를 다시 돌리는 일이 흔하고, 그때 409 가
+    오면 부른 쪽은 그 줄을 실패로 세어 사람에게 없는 문제를 보고한다.
+    """
+    row = proposal_service.add(db, user, payload.model_dump())
+    return proposal_service._out(db, row)
+
+
+@router.post("/item-proposals/decide")
+def decide_item_proposal(
+    payload: TestItemProposalDecision,
+    user: User = Depends(current_user),
+    db: Session = Depends(get_db),
+) -> dict[str, object]:
+    """제안 한 묶음을 정한다 — **시스템 관리자만.** 정한 값이 그 말을 낸 시험들에
+    한꺼번에 걸린다."""
+    return proposal_service.decide(db, user, payload.model_dump())
 
 
 @router.get("/{test_id}", response_model=ReliabilityTestOut)
@@ -206,3 +253,32 @@ def delete_reliability_test(
 ) -> None:
     """지우지 않고 `deleted_at` 만 채운다. 감사 기록에 남는다."""
     services.delete(db, user, test_id)
+
+
+@router.get("/{test_id}/item-proposals", response_model=list[TestItemProposalOut])
+def test_item_proposals(
+    test_id: uuid.UUID,
+    user: User = Depends(current_user),
+    db: Session = Depends(get_db),
+) -> list[TestItemProposalOut]:
+    """이 시험이 낸 제안 — **왜 시험 항목이 비었는지가 여기 있다.**"""
+    services.get(db, test_id)
+    return proposal_service.of_test(db, test_id)
+
+
+@router.post("/{test_id}/reviewed-revision", status_code=204)
+def mark_reviewed(
+    test_id: uuid.UUID,
+    revision_id: uuid.UUID | None = Query(default=None),
+    user: User = Depends(current_user),
+    db: Session = Depends(get_db),
+) -> None:
+    """이 시험을 **어느 개정까지 봤다**고 적는다. 비우면 표를 도로 붙인다.
+
+    규격서가 개정되어도 확정은 그대로 두므로(수십 건이 한꺼번에 내려가면 그날 일이 멈춘다),
+    「아직 안 봤다」 는 표를 떼는 것이 사람이 하는 일이다. **기계는 못 한다** — 기계가
+    「봤다」 고 적으면 사람의 확인이 이름만 남는다.
+    """
+    from app.modules.documents import services as documents
+
+    documents.mark_reviewed(db, user, test_id, revision_id)

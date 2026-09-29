@@ -24,6 +24,7 @@
 from __future__ import annotations
 
 import uuid
+from typing import Any
 
 from sqlalchemy import select
 from sqlalchemy.orm import Session
@@ -34,6 +35,7 @@ from app.modules.reliability.models import ReliabilityTest, ReliabilityTestItem
 from app.modules.reliability.schemas import (
     CapabilityItemOut,
     CapabilityOut,
+    CapabilitySetOut,
     SkippedConditionOut,
 )
 from app.modules.search import services as search_services
@@ -53,10 +55,38 @@ def _si(value: float | None, unit: str, key: ConditionKey) -> float | None:
     return convert(value, unit or key.si_unit, key.si_unit)
 
 
+#: 「묶음을 가리지 않는다」 를 나타내는 표식. `None` 은 **이름 없는 묶음**이라 쓸 수 없다.
+_EVERY: Any = object()
+
+
+def _set_labels(db: Session, test_id: uuid.UUID) -> list[str | None]:
+    """이 시험에 있는 조건 묶음들 — 이름 없는 것이 먼저.
+
+    **한 벌뿐이면 묶음 이야기를 안 꺼낸다**(빈 목록이 아니라 `[None]` 하나다). 조건이
+    한 벌인 시험이 대부분이고, 거기에 「묶음: 기본」 이 서면 없는 개념이 하나 는다.
+    """
+    rows = db.scalars(
+        select(AttributeValue.set_label)
+        .join(AttributeDefinition, AttributeDefinition.id == AttributeValue.definition_id)
+        .where(
+            AttributeValue.reliability_test_id == test_id,
+            AttributeDefinition.kind == "condition",
+        )
+        .distinct()
+    ).all()
+    found = {one or None for one in rows}
+    ordered = sorted((one for one in found if one), key=str)
+    return ([None] if None in found else []) + ordered
+
+
 def _conditions(
-    db: Session, test_id: uuid.UUID
+    db: Session, test_id: uuid.UUID, *, set_label: str | None = _EVERY
 ) -> tuple[list[ConditionQuery], list[SkippedConditionOut]]:
-    """조건 속성 → 검색 조건. 범위는 두 물음으로 갈라진다."""
+    """조건 속성 → 검색 조건. 범위는 두 물음으로 갈라진다.
+
+    `set_label` 을 주면 **그 묶음만** 본다. 안 주면 묶음을 가리지 않고 전부 — 그것은 「이
+    시험을 통째로(예외 경로까지) 돌릴 장비」 라는 다른 물음이다.
+    """
     rows = db.execute(
         select(AttributeValue, AttributeDefinition, ConditionKey)
         .join(AttributeDefinition, AttributeValue.definition_id == AttributeDefinition.id)
@@ -67,6 +97,8 @@ def _conditions(
         )
         .order_by(AttributeDefinition.sort_order, AttributeDefinition.label)
     ).all()
+    if set_label is not _EVERY:
+        rows = [one for one in rows if (one[0].set_label or None) == set_label]
 
     queries: list[ConditionQuery] = []
     skipped: list[SkippedConditionOut] = []
@@ -99,12 +131,22 @@ def _conditions(
 def capability(db: Session, user: User, test: ReliabilityTest) -> CapabilityOut:
     """시험 항목마다 「이 조건으로 이 항목이 되는 장비」.
 
+    **조건이 한 벌이 아니면 묶음마다 따로 답한다**(`sets`). 주 조건 80 °C 와 「불량 시」
+    70 °C 를 한 묶음으로 섞어 물으면, 실제로는 아무도 요구하지 않는 조건이 만들어진다 —
+    그 조건으로 장비가 걸러지는데 왜 걸러졌는지 화면 어디에도 안 나온다.
+
+    `items` 는 **모든 묶음을 한꺼번에** 만족하는 장비다. 그것도 답이다(예외 경로까지 이
+    시험을 통째로 돌릴 장비), 다만 **유일한 답이 아니었던 것이 문제였다.** 묶음이 한
+    벌뿐이면 `sets` 는 비어 있다 — 같은 표를 두 번 그릴 이유가 없다.
+
+    묶음 **안의** 차례(프로파일 1·2·3·4)는 따로 안 가른다. 한 벌을 도는 동안 챔버는 그
+    점들을 **다** 내야 하므로, 차례들을 한꺼번에 묻는 것이 곧 구간 전체를 묻는 것이다.
+
     부서로 좁히지 않는다 — 이 시스템의 물음은 부서를 가로지르고(옆 부서에 있으면 빌리러
     간다), 어느 부서 것인지는 줄마다 적혀 있다. 대신 **그 시험을 등록한 부서의 장비가
     위로 오게** 두지도 않는다: 순서는 검색과 같은 규칙(확실한 것이 위)이라야 두 화면이
     같은 답으로 읽힌다.
     """
-    conditions, skipped = _conditions(db, test.id)
     items = db.execute(
         select(ReliabilityTestItem.test_item_term_id, VocabularyTerm.value)
         .join(VocabularyTerm, ReliabilityTestItem.test_item_term_id == VocabularyTerm.id)
@@ -112,25 +154,45 @@ def capability(db: Session, user: User, test: ReliabilityTest) -> CapabilityOut:
         .order_by(VocabularyTerm.value)
     ).all()
 
-    out: list[CapabilityItemOut] = []
-    for term_id, value in items:
-        found = search_services.search(
-            db,
-            user,
-            SearchRequest(test_item_term_id=term_id, conditions=conditions),
-        )
-        out.append(
-            CapabilityItemOut(
-                term_id=term_id,
-                value=value,
-                total=found.total,
-                unmet_count=found.unmet_count,
-                hits=found.hits[:MAX_HITS_PER_ITEM],
+    def answer(conditions: list[ConditionQuery]) -> list[CapabilityItemOut]:
+        out: list[CapabilityItemOut] = []
+        for term_id, value in items:
+            found = search_services.search(
+                db,
+                user,
+                SearchRequest(test_item_term_id=term_id, conditions=conditions),
             )
-        )
+            out.append(
+                CapabilityItemOut(
+                    term_id=term_id,
+                    value=value,
+                    total=found.total,
+                    unmet_count=found.unmet_count,
+                    hits=found.hits[:MAX_HITS_PER_ITEM],
+                )
+            )
+        return out
+
+    every, skipped = _conditions(db, test.id)
+    labels = _set_labels(db, test.id)
+    sets: list[CapabilitySetOut] = []
+    # **묶음이 둘 이상일 때만 따로 답한다.** 한 벌뿐이면 묶음별 답이 합친 답과 같은 것이라,
+    # 똑같은 표를 두 번 그리는 셈이 된다.
+    if len(labels) > 1:
+        for label in labels:
+            picked, dropped = _conditions(db, test.id, set_label=label)
+            sets.append(
+                CapabilitySetOut(
+                    set_label=label,
+                    conditions_asked=len(picked),
+                    skipped=dropped,
+                    items=answer(picked),
+                )
+            )
     return CapabilityOut(
         test_id=test.id,
-        conditions_asked=len(conditions),
+        conditions_asked=len(every),
         skipped=skipped,
-        items=out,
+        items=answer(every),
+        sets=sets,
     )

@@ -100,13 +100,14 @@ def test_같은_칸이_묶음마다_한_줄씩_선다(
     assert shown["저장"] == "-40 ~ 25 degC"
 
 
-def test_묶음이_없으면_예전처럼_칸마다_하나다(
+def test_같은_자리에_두_줄이_오면_거절한다(
     client: TestClient, db: Session, admin: Signed, condition_ids: dict[str, str]
 ) -> None:
-    """묶음을 안 적은 같은 칸 두 줄은 **하나로 눌린다.**
+    """묶음을 안 적은 같은 칸 두 줄은 **조용히 하나로 눌리지 않는다**(422).
 
-    안 그러면 「칸마다 하나」 라는, 묶음 이전부터 있던 규칙이 조용히 깨진다 — 같은 칸이
-    이름 없이 두 줄로 들어와 어느 쪽이 참인지 아무도 모르게 된다.
+    예전에는 뒤의 것이 남았다. 보낸 쪽은 둘 다 보냈다고 알고 있으니 그 손실이 아무 데도
+    안 드러났다 — 수백 건을 적재하면서 조건이 하나씩 사라지는데 누구도 그 사실을 모르는
+    것이 실제 위험이다. 같은 칸을 여러 벌 적으려면 **묶음을 달면 된다.**
     """
     tag = "a" + uuid.uuid4().hex[:5]
     lab = Workspace(
@@ -119,11 +120,11 @@ def test_묶음이_없으면_예전처럼_칸마다_하나다(
         client, admin, f"시험 온도-{tag}", condition_ids["temperature"], "degC"
     )
 
-    made = client.post(
+    got = client.post(
         "/api/reliability-tests",
         json={
             "division_code": "vd",
-            "name": f"한벌-{tag}",
+            "name": f"겹침-{tag}",
             "attributes": [
                 {"definition_id": temperature, "num_min": 10, "unit": "degC"},
                 {"definition_id": temperature, "num_min": 20, "unit": "degC"},
@@ -131,8 +132,59 @@ def test_묶음이_없으면_예전처럼_칸마다_하나다(
         },
         headers=manager.headers,
     )
-    assert made.status_code == 201, made.text
-    assert _rows(made.json(), temperature) == [(None, None, 20.0, None, None)]
+    assert got.status_code == 422, got.text
+    body = got.json()["error"]
+    assert body["code"] == "TSC-ATTR-0013"
+    # **어느 칸이 겹쳤는지 말한다** — 「값이 겹칩니다」 만으로는 스무 줄 중 어느 것을
+    # 고칠지 알 수 없다.
+    assert f"시험 온도-{tag}" in str(body["details"]["duplicates"])
+    # 한 줄도 안 들어갔다 — 반만 들어간 시험이 남으면 그게 더 나쁘다.
+    listed = client.get(
+        "/api/reliability-tests",
+        params={"division": "vd", "status": "all"},
+        headers=manager.headers,
+    )
+    assert f"겹침-{tag}" not in {one["name"] for one in listed.json()}
+
+
+def test_묶음이_다르면_두_줄이_나란히_선다(
+    client: TestClient, db: Session, admin: Signed, condition_ids: dict[str, str]
+) -> None:
+    """겹침을 막는 것이 **여러 벌을 막는 것은 아니다** — 묶음을 달면 그대로 간다."""
+    tag = "a" + uuid.uuid4().hex[:5]
+    lab = Workspace(
+        slug=f"lab-{tag}", name="신뢰성팀", division_term_id=division_term_id(db, "vd")
+    )
+    db.add(lab)
+    db.commit()
+    manager = _signed_in(client, db, lab, "manager")
+    temperature = _definition(
+        client, admin, f"시험 온도-{tag}", condition_ids["temperature"], "degC"
+    )
+    got = client.post(
+        "/api/reliability-tests",
+        json={
+            "division_code": "vd",
+            "name": f"두벌-{tag}",
+            "attributes": [
+                {
+                    "definition_id": temperature,
+                    "set_label": "동작",
+                    "num_min": 10,
+                    "unit": "degC",
+                },
+                {
+                    "definition_id": temperature,
+                    "set_label": "저장",
+                    "num_min": 20,
+                    "unit": "degC",
+                },
+            ],
+        },
+        headers=manager.headers,
+    )
+    assert got.status_code == 201, got.text
+    assert len(_rows(got.json(), temperature)) == 2
 
 
 def test_이산_점_넷은_구간이_아니다(

@@ -308,6 +308,18 @@ class AttributeValue(Base):
     같은 모양이다."""
 
     step_label: Mapped[str | None] = mapped_column(String(60), nullable=True)
+
+    source_text: Mapped[str | None] = mapped_column(Text, nullable=True)
+    """**문서에 적힌 그대로.** `note` 와 다른 칸인 이유 — note 는 옮겨 적은 사람의
+    *해석*이고 이것은 *증거*다. 한 칸에 섞이면 검토하는 사람이 「이게 문서에 있는 말인가
+    옮긴 사람의 말인가」 를 못 가르고, 그러면 값 하나를 확인하는 데 원본을 다시 연다."""
+    original_value: Mapped[str | None] = mapped_column(String(100), nullable=True)
+    """환산 전 값 — 158. 글자로 둔다: 문서가 「약 1/8 인치」 라고 적으면 그것도 원문이다."""
+    original_unit: Mapped[str | None] = mapped_column(String(40), nullable=True)
+    """환산 전 단위 — degF · inch · dBm.
+
+    **환산을 남기지 않으면 되짚을 수 없다.** `70 degC` 만 보면 그것이 문서의 값인지
+    158 °F 를 옮긴 값인지 알 수 없고, 환산이 틀렸을 때 어디서 틀렸는지 아무도 못 찾는다."""
     """그 차례에 붙는 이름(「승온」 · 「유지」). 없어도 된다 — 번호만으로 읽히면 그만이다."""
 
     note: Mapped[str | None] = mapped_column(Text, nullable=True)

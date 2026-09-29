@@ -120,6 +120,15 @@ class AttributeValueIn(Request):
     """묶음 안에서의 **차례**. 비우면 묶음 전체에 걸린다(사이클 수 같은 것)."""
     step_label: str | None = Field(default=None, max_length=60)
     """그 차례의 이름(「승온」 · 「유지」). 없어도 된다."""
+    source_text: str | None = Field(default=None, max_length=4000)
+    """**문서에 적힌 그대로.** `note` 와 다른 칸이다 — note 는 옮겨 적은 사람의 *해석*이고
+    이것은 *증거*다. 한 칸에 섞이면 검토하는 사람이 「이게 문서에 있는 말인가 옮긴 사람의
+    말인가」 를 못 가르고, 값 하나를 확인하려고 원본을 다시 연다."""
+    original_value: str | None = Field(default=None, max_length=100)
+    """환산 전 값 — `158`. 글자다: 문서가 「약 1/8 인치」 라고 적으면 그것도 원문이다."""
+    original_unit: str | None = Field(default=None, max_length=40)
+    """환산 전 단위 — `degF` · `inch` · `dBm`. **환산을 남기지 않으면 되짚을 수 없다** —
+    `70 degC` 만 보면 그것이 문서의 값인지 158 °F 를 옮긴 값인지 알 수 없다."""
 
 
 class AttributeValueOut(BaseModel):
@@ -130,6 +139,10 @@ class AttributeValueOut(BaseModel):
     """조건 묶음 이름. 비면 이름 없는 한 벌이다."""
     step_order: int | None = None
     step_label: str | None = None
+    source_text: str | None = None
+    """문서에 적힌 그대로 — 옮긴 값의 **증거**다(`note` 는 해석)."""
+    original_value: str | None = None
+    original_unit: str | None = None
     status: str
     """`draft` 면 초안 — 화면은 표시로 가르고, MCP 는 비교·집계에 쓰지 말라고 적는다."""
     unit: str

@@ -16,6 +16,8 @@ const ANSWER: Capability = {
   test_id: 't1',
   conditions_asked: 2,
   skipped: [{ label: '측정 주기', reason: '단위 「쇼어」 를 온도의 degC 로 못 바꿉니다.' }],
+  // 묶음이 한 벌이면 비어 있다 — 같은 표를 두 번 그릴 이유가 없다.
+  sets: [],
   items: [
     {
       term_id: 'i1',

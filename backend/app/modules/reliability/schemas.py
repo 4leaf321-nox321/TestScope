@@ -150,6 +150,50 @@ class ReliabilityTestUpdateRequest(Request):
     """보내면 통째로 바뀐다 — 시험 항목과 같은 규칙."""
 
 
+class TestItemProposalOut(BaseModel):
+    """축에 맞는 값이 없어 남긴 제안 한 줄."""
+
+    id: uuid.UUID
+    text: str
+    """문서에 적힌 그대로 — 「염수분무(5%)」."""
+    note: str | None
+    """왜 축에서 못 찾았는지."""
+    status: str
+    """`open` · `linked` · `created` · `rejected`."""
+    reliability_test_id: uuid.UUID
+    reliability_test_name: str
+    term_id: uuid.UUID | None
+    term_value: str | None
+    submitted_via: str | None
+    created_at: datetime
+
+
+class TestItemProposalGroupOut(BaseModel):
+    """같은 말끼리 모은 한 줄 — **관리자는 스무 번이 아니라 한 번 판단한다.**"""
+
+    normalized: str
+    text: str
+    count: int
+    """이 말을 낸 시험 수. **큰 것이 먼저** — 스무 시험에서 나온 말은 축에 없는 것이 거의
+    확실하고, 한 번 나온 말은 오타일 수 있다."""
+    proposals: list[TestItemProposalOut]
+
+
+class TestItemProposalRequest(Request):
+    reliability_test_id: uuid.UUID
+    text: str = Field(min_length=1, max_length=200)
+    """문서에 적힌 그대로. **고쳐 쓰지 마라** — 판단하는 사람이 원문을 봐야 한다."""
+    note: str | None = Field(default=None, max_length=2000)
+
+
+class TestItemProposalDecision(Request):
+    """정하기 — 기존 값에 잇거나(`term_id`), 축에 세우거나(`new_value`), 아니라고 하거나."""
+
+    normalized: str = Field(min_length=1, max_length=200)
+    term_id: uuid.UUID | None = None
+    new_value: str | None = Field(default=None, min_length=1, max_length=200)
+
+
 class SkippedConditionOut(BaseModel):
     """물음에서 뺀 조건과 그 이유. **조용히 빼지 않는다** — 다 본 것처럼 읽힌다."""
 
@@ -170,6 +214,16 @@ class CapabilityItemOut(BaseModel):
     hits: list[SearchHit]
 
 
+class CapabilitySetOut(BaseModel):
+    """조건 묶음 하나의 답 — 「주 조건으로는 12대, 불량 시 조건으로는 8대」."""
+
+    set_label: str | None
+    """묶음 이름. `null` 이면 이름 없는 한 벌이다."""
+    conditions_asked: int
+    skipped: list[SkippedConditionOut]
+    items: list[CapabilityItemOut]
+
+
 class CapabilityOut(BaseModel):
     """「이 시험, 어느 장비로 돌리나」 의 답 — 조건 속성을 그대로 검색 조건으로 옮긴 것."""
 
@@ -178,3 +232,10 @@ class CapabilityOut(BaseModel):
     """검색에 넘긴 조건 물음 수. 범위 하나는 물음 둘이다(위로 얼마까지 · 아래로 얼마까지)."""
     skipped: list[SkippedConditionOut]
     items: list[CapabilityItemOut]
+    """**모든 묶음을 한꺼번에** 만족하는 장비 — 예외 경로까지 이 시험을 통째로 돌릴 장비다."""
+    sets: list[CapabilitySetOut] = []
+    """묶음마다 따로 답한 것. **묶음이 둘 이상일 때만 찬다.**
+
+    주 조건 80 °C 와 「불량 시」 70 °C 를 섞어 물으면 아무도 요구하지 않는 조건이 만들어지고,
+    그 조건으로 장비가 걸러지는데 왜 걸러졌는지가 화면에 안 나온다. 비어 있으면 조건이 한
+    벌이라는 뜻이고, 그때는 `items` 가 곧 그 한 벌의 답이다."""

@@ -39,6 +39,7 @@ from app.shared.permissions import (
     visible_equipment_ids,
 )
 from app.shared.request_context import get_actor_token
+from app.shared.text import compare_key
 
 #: 사업부 축의 slug. 코드가 축을 이 이름으로 건다.
 DIVISION_AXIS = "division"
@@ -318,20 +319,39 @@ def _check_test_item_terms(db: Session, term_ids: list[uuid.UUID]) -> None:
         )
 
 
+def name_key(name: str) -> str:
+    """이름의 비교키 — **띄어쓰기까지 지운다.**
+
+    `lower()` 만으로는 「고온고습 1000h」 와 「고온고습1000h」 가 다른 시험이 된다. 사람이
+    하나씩 적을 때는 드문 일이지만, **수백 건을 적재하면 동명이 쌓인다** — 옮겨 적는 쪽이
+    문서마다 띄어쓰기를 다르게 읽기 때문이다. 둘이 서고 나면 어느 쪽이 정본인지 아무도
+    모르고, 「이 시험 되는 장비」 가 절반만 답한다.
+
+    전각·반각도 모은다(`compare_key` 의 NFKC) — 전각으로 친 ASTM 과 반각 ASTM 이 갈리지 않게.
+    속성 이름이 쓰는 규칙(`_attribute_name_key`)과 같은 것이다.
+    """
+    return "".join(compare_key(name).split())
+
+
 def _check_name_free(
     db: Session, division_term_id: uuid.UUID, name: str, *, except_id: uuid.UUID | None
 ) -> None:
-    clash = db.scalar(
+    """이 사업부에 같은 이름이 있나. **resolve 선행은 규율이고, 이것이 장치다** —
+    규율은 수백 건을 적재하는 동안 한 번은 깨진다."""
+    key = name_key(name)
+    rows = db.scalars(
         select(ReliabilityTest).where(
             ReliabilityTest.division_term_id == division_term_id,
             ReliabilityTest.deleted_at.is_(None),
-            func.lower(ReliabilityTest.name) == name.lower(),
             ReliabilityTest.id != except_id if except_id else true(),
         )
     )
+    clash = next((one for one in rows if name_key(one.name) == key), None)
     if clash is not None:
         raise Conflict(
-            "TSC-RELIABILITY-0003", f"이 사업부에 같은 이름의 신뢰성 시험이 있습니다: {name}"
+            "TSC-RELIABILITY-0003",
+            f"이 사업부에 같은 이름의 신뢰성 시험이 있습니다: {clash.name}",
+            details={"id": str(clash.id), "name": clash.name},
         )
 
 

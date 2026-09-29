@@ -9,6 +9,8 @@ export type Capability = components['schemas']['CapabilityOut']
 export type ReliabilityTestItem = components['schemas']['ReliabilityTestItemOut']
 export type Division = components['schemas']['DivisionOut']
 export type BulkResult = components['schemas']['ReliabilityBulkOut']
+export type TestItemProposal = components['schemas']['TestItemProposalOut']
+export type TestItemProposalGroup = components['schemas']['TestItemProposalGroupOut']
 /** 여럿에게 한 번에 할 수 있는 일. */
 export type BulkAction = 'confirm' | 'reject' | 'delete'
 export type ReliabilityTestWrite = {
@@ -69,6 +71,29 @@ export const reliabilityApi = {
    *  여는 것은 사람이 할 수 있는 일이 아니다. 줄마다 결과가 온다(안 된 줄은 왜까지). */
   bulk: (ids: string[], action: BulkAction, reason?: string) =>
     api.post<BulkResult>('/reliability-tests/bulk', { ids, action, reason }),
+  /** 이 시험이 낸 **시험 항목 제안** — 축에 맞는 값이 없어 남긴 것.
+   *
+   *  시험 항목 축은 닫혀 있어 AI 가 값을 못 더한다(검색의 첫 축이라 오타 하나가 값이 되면
+   *  아무도 못 찾는다). 그래서 지금까지는 그냥 비웠고, **왜 비었는지가 아무 데도 안 남았다.** */
+  itemProposals: (id: string) =>
+    api.get<TestItemProposal[]>(`/reliability-tests/${id}/item-proposals`),
+  /** 같은 말끼리 모은 제안 목록 — 건수가 큰 것이 먼저. 관리자가 한 번 정하면 그 말을
+   *  낸 시험 전부에 걸린다. */
+  proposalGroups: () => api.get<TestItemProposalGroup[]>('/reliability-tests/item-proposals'),
+  /** 제안 한 묶음을 정한다 — **시스템 관리자만.** */
+  decideProposal: (body: {
+    normalized: string
+    term_id?: string | null
+    new_value?: string | null
+  }) => api.post<Record<string, unknown>>('/reliability-tests/item-proposals/decide', body),
+  /** 이 시험을 **어느 개정까지 봤다**고 적는다. 비우면 표를 도로 붙인다. 사람만 한다. */
+  markReviewed: (id: string, revisionId: string | null) =>
+    api.post<void>(
+      `/reliability-tests/${id}/reviewed-revision${
+        revisionId ? `?revision_id=${encodeURIComponent(revisionId)}` : ''
+      }`,
+      {},
+    ),
   /** 확정을 풀어 다시 후보로. 그 순간부터 AI 가 다시 채울 수 있다 — 감사에 남는다. */
   reopen: (id: string) => api.post<ReliabilityTest>(`/reliability-tests/${id}/reopen`, {}),
   remove: (id: string) => api.delete<void>(`/reliability-tests/${id}`),

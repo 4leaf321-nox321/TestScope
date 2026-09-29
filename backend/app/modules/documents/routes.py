@@ -13,6 +13,8 @@ from app.modules.documents import services
 from app.modules.documents.schemas import (
     SpecDocumentCreateRequest,
     SpecDocumentOut,
+    SpecDocumentRevisionOut,
+    SpecDocumentRevisionRequest,
     SpecDocumentUpdateRequest,
 )
 from app.shared.auth import current_user
@@ -77,3 +79,35 @@ def delete_spec_document(
 ) -> None:
     """지우지 않고 `deleted_at` 만 채운다. **걸려 있는 시험이 있으면 409.**"""
     services.delete(db, user, document_id)
+
+
+@router.get("/{document_id}/revisions", response_model=list[SpecDocumentRevisionOut])
+def list_revisions(
+    document_id: uuid.UUID,
+    user: User = Depends(current_user),
+    db: Session = Depends(get_db),
+) -> list[SpecDocumentRevisionOut]:
+    """개정 이력 — 나중 판이 먼저. 최신판 줄에 **아직 안 본 시험 수**가 함께 온다."""
+    services.get(db, document_id)
+    return services.revisions_of(db, document_id)
+
+
+@router.post(
+    "/{document_id}/revisions",
+    response_model=SpecDocumentRevisionOut,
+    status_code=201,
+)
+def add_revision(
+    document_id: uuid.UUID,
+    payload: SpecDocumentRevisionRequest,
+    user: User = Depends(current_user),
+    db: Session = Depends(get_db),
+) -> SpecDocumentRevisionOut:
+    """개정 한 줄을 쌓는다.
+
+    **딸린 시험은 확정인 채로 둔다** — 수십 건이 한꺼번에 후보로 내려가면 그날 일이 멈추고,
+    멈춘 일은 미뤄진다. 대신 그 시험들에 「이 개정을 아직 안 봤다」 는 표가 붙는다.
+    """
+    services.add_revision(db, user, document_id, payload.model_dump())
+    rows = services.revisions_of(db, document_id)
+    return next(one for one in rows if one.label == payload.label.strip())

@@ -480,6 +480,39 @@ EDGE_KINDS: tuple[EdgeKind, ...] = (
         ReliabilityTestItem.test_item_term_id,
         ReliabilityTestItem.id,
     ),
+    # ⑭ 신뢰성 시험 → 검색 조건 축
+    #
+    # **없으면 조건 축에서 시험이 안 보인다.** 「시험 온도」 노드는 그 조건을 묻는 시험
+    # 항목과 요구하는 규격만 보여 줬다 — 정작 그 조건을 **거는** 신뢰성 시험이 한 건도 안
+    # 왔다(2026-09-30 실측). 「-40 °C 를 요구하는 시험이 몇 건인가」 는 검색(`attr=`)으로는
+    # 답이 나오는데 온톨로지 쪽에서는 못 물었다.
+    #
+    # 값이 아니라 **칸의 축**을 가리킨다 — 조건 속성 하나가 조건 축 하나에 걸려 있고, 그
+    # 값이 얼마인지는 이 선의 관심이 아니다(그것은 검색이 본다). 정식 속성만 센다: 초안은
+    # 온톨로지 밖이라 그래프에 선으로 서면 안 된다.
+    _kind(
+        "sets_condition",
+        "거는 조건 축",
+        "이 조건을 거는 신뢰성 시험",
+        "reliability_test",
+        "condition_key",
+        AttributeValue.reliability_test_id,
+        AttributeDefinition.condition_key_id,
+        AttributeValue.id,
+        base=select(
+            AttributeValue.reliability_test_id,
+            AttributeDefinition.condition_key_id,
+            AttributeValue.id,
+        )
+        .join(AttributeDefinition, AttributeDefinition.id == AttributeValue.definition_id)
+        .join(ReliabilityTest, ReliabilityTest.id == AttributeValue.reliability_test_id)
+        .where(
+            AttributeDefinition.kind == "condition",
+            AttributeDefinition.status == "standard",
+            AttributeDefinition.is_active.is_(True),
+            ReliabilityTest.deleted_at.is_(None),
+        ),
+    ),
     # 부서 트리
     _kind(
         "workspace_parent",
