@@ -22,7 +22,6 @@ import zipfile
 from typing import Any
 
 import httpx
-
 import probe
 import server
 
@@ -141,15 +140,22 @@ async def _write_chain(ctx: _Ctx) -> int:
         return 1
 
     # 3. 신뢰성 시험 — 시험 항목과 조건을 함께.
-    workspaces = step("list_workspaces", await server.list_workspaces(ctx), ["count"])
-    if not workspaces or not workspaces.get("workspaces"):
+    #
+    # **시험은 부서가 아니라 사업부에 산다**(0037). 올릴 수 있는 사업부를 먼저 묻는다 —
+    # 지어낸 코드를 주면 404 이고, 못 올리는 사업부를 주면 403 이다.
+    divisions = step("list_divisions", await server.list_divisions(ctx), ["count"])
+    if not divisions or not divisions.get("divisions"):
         return 1
-    slug = workspaces["workspaces"][0]["slug"]
+    mine = [one for one in divisions["divisions"] if one.get("can_register")]
+    if not mine:
+        print("  실패 올릴 수 있는 사업부가 없습니다 — 부서에 사업부가 안 붙었습니다")
+        return 1
+    code = mine[0]["code"]
     test = step(
         "create_reliability_test",
         await server.create_reliability_test(
             ctx,
-            workspace_slug=slug,
+            division_code=code,
             name=f"MCP확인 열충격-{tag}",
             purpose="MCP 왕복 확인",
             test_item_term_ids=[term["id"]],
@@ -182,9 +188,7 @@ async def _write_chain(ctx: _Ctx) -> int:
     # 안 나온다. 이것을 안 주면 왕복이 「못 찾았다」 로 끝난다(실측 2026-09-24, CI).
     hot = step(
         "list_reliability_tests(>=100)",
-        await server.list_reliability_tests(
-            ctx, attr=[f"mcp_temp_{tag}>=100"], status="all"
-        ),
+        await server.list_reliability_tests(ctx, attr=[f"mcp_temp_{tag}>=100"], status="all"),
         ["count"],
     )
     if hot is not None and hot.get("count", 0) < 1:
@@ -192,9 +196,7 @@ async def _write_chain(ctx: _Ctx) -> int:
         print("  실패 속성 조건으로 되찾지 못했습니다")
     cold = step(
         "list_reliability_tests(>=200)",
-        await server.list_reliability_tests(
-            ctx, attr=[f"mcp_temp_{tag}>=200"], status="all"
-        ),
+        await server.list_reliability_tests(ctx, attr=[f"mcp_temp_{tag}>=200"], status="all"),
         ["count"],
     )
     diagnosis = cold.get("diagnosis") if cold is not None else None
@@ -323,11 +325,7 @@ async def _write_chain(ctx: _Ctx) -> int:
 
     if narrowed is not None:
         extra = next(
-            (
-                one
-                for one in narrowed["attributes"]
-                if one["label"] == f"MCP확인 비고-{tag}"
-            ),
+            (one for one in narrowed["attributes"] if one["label"] == f"MCP확인 비고-{tag}"),
             None,
         )
         if extra is not None:
