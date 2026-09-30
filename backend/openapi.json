@@ -3754,6 +3754,106 @@
         }
       }
     },
+    "/api/equipment/{equipment_id}/model-proposals": {
+      "get": {
+        "tags": [
+          "equipment"
+        ],
+        "summary": "List Equipment Model Proposals",
+        "description": "이 장비가 낸 **카탈로그 기종 등록 요청** — 왜 기종이 비었는지가 그 화면에 보인다.",
+        "operationId": "list_equipment_model_proposals_api_equipment__equipment_id__model_proposals_get",
+        "parameters": [
+          {
+            "name": "equipment_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "title": "Equipment Id"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/EquipmentModelProposalOut"
+                  },
+                  "title": "Response List Equipment Model Proposals Api Equipment  Equipment Id  Model Proposals Get"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "equipment"
+        ],
+        "summary": "Propose Equipment Model",
+        "description": "**카탈로그에 이 기종을 올려 달라**고 남긴다. 그 장비를 고칠 수 있는 사람이면 된다.\n\n카탈로그에 기종을 세우는 것이 **아니다** — 세우는 것은 시스템 관리자다(기종을 고르면\n그 계열의 시험 항목이 복사되고 조건 판정이 그 사양을 쓴다). 여기서는 「이런 기종을 못\n찾았다」 를 적어 둘 뿐이고, 그래야 비워 둔 이유가 남는다.\n\n같은 장비가 같은 요청을 두 번 내면 **먼저 것을 돌려준다** — 등록 창을 다시 저장하는\n일이 흔하고, 그때 409 가 오면 사람은 저장이 실패한 것으로 읽는다.",
+        "operationId": "propose_equipment_model_api_equipment__equipment_id__model_proposals_post",
+        "parameters": [
+          {
+            "name": "equipment_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "title": "Equipment Id"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/EquipmentModelProposalRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/EquipmentModelProposalOut"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/api/equipment/{equipment_id}": {
       "get": {
         "tags": [
@@ -5128,6 +5228,98 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/CatalogFilterOptionsOut"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/equipment-models/proposals": {
+      "get": {
+        "tags": [
+          "catalog"
+        ],
+        "summary": "List Model Proposals",
+        "description": "**카탈로그에 없다고 올라온 기종들** — 같은 것끼리 모아, 건수가 큰 것부터.\n\n다섯 부서가 같은 기종을 요청했으면 그것은 카탈로그에 있어야 할 기종이 거의 확실하고,\n한 번 세우면 다섯 대가 함께 이어진다. 한 번 나온 것은 자작 장비일 수 있어 뒤에 온다.\n\n`/{model_id}` 보다 **먼저 선언한다** — 뒤에 두면 `proposals` 가 기종 id 로 읽혀서\n「기종을 찾을 수 없습니다」 가 온다.",
+        "operationId": "list_model_proposals_api_equipment_models_proposals_get",
+        "parameters": [
+          {
+            "name": "include_decided",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "boolean",
+              "default": false,
+              "title": "Include Decided"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/EquipmentModelProposalGroupOut"
+                  },
+                  "title": "Response List Model Proposals Api Equipment Models Proposals Get"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/equipment-models/proposals/decide": {
+      "post": {
+        "tags": [
+          "catalog"
+        ],
+        "summary": "Decide Model Proposal",
+        "description": "요청 한 묶음을 정한다 — **시스템 관리자만.**\n\n`model_id` 면 이미 있는 기종에 잇고, `series_id` + `name` 이면 그 계열에 기종을 세운 뒤\n잇는다. 둘 다 없으면 아니라고 한 것이다(자작 장비처럼 카탈로그에 올릴 것이 아닌 경우).\n\n**정한 기종이 요청한 장비들에 한꺼번에 걸린다.** 여기까지 안 하면 관리자는 기종을 세우고\n나서 장비를 하나씩 열어 다시 골라야 한다. 한 대가 막혀도 나머지는 잇고, 막힌 줄은\n`failed` 로 돌려준다.",
+        "operationId": "decide_model_proposal_api_equipment_models_proposals_decide_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/EquipmentModelProposalDecision"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "additionalProperties": true,
+                  "type": "object",
+                  "title": "Response Decide Model Proposal Api Equipment Models Proposals Decide Post"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
                 }
               }
             }
@@ -7203,7 +7395,7 @@
           "reliability"
         ],
         "summary": "List Reliability Tests",
-        "description": "신뢰성 시험 — **부서가 등록한 절차**다. 「시험 항목」(장비가 할 수 있는 측정, 전사\n공용)과 다르다. `division` 에 사업부 코드(`mx`…)를 주면 그 사업부 것만, 안 주면 전사\n전부(사업부 순). 시험마다 쓰는 시험 항목과, 그 항목이 되는 **그 사업부의** 장비 수를\n함께 준다 — 0 이면 시험은 정했는데\n돌릴 장비가 없다는 뜻이다.\n\n`attr` 은 **속성 값으로 거른다** — 여러 번 주면 모두 만족해야 한다(`attr=<키><연산><값>`,\n연산은 `>=` `<=` `>` `<` `=` `!=` `~`(포함) `*`(적혀 있기만 하면) `!*`(**안 적힌 것**)).\n왼쪽은 속성 정의의 `key` 다 — 이름은 관리자가 고치면 바뀌고, 그때 저장해 둔 주소가\n조용히 빈 답을 낸다.\n\n`status` 를 **안 주면 자리에 따라 다르다** — 사업부를 주면 후보까지(검토하는 자리라서),\n전사면 확정된 것만(「저 사업부가 무슨 시험을 하나」 에 후보는 아직 답이 아니다). 일부러\n보려면 `status=\"all\"`, 후보만 세려면 `status=\"candidate\"`.\n\n`q` 는 이름·목적에 든 글자다 — **쪽을 나누면 찾기도 서버가 해야 한다.** 화면 안에서\n훑으면 지금 쪽의 쉰 줄만 뒤지고, 뒤쪽에 있는 줄은 영영 안 걸린다.\n\n**쪽으로 끊어 온다**(`items` · `total` · `limit` · `offset`). 한 사업부에 1784건이\n들어온 적이 있고, 통째로 그리면 브라우저가 멎는다 — 줄마다 속성·시험 항목·장비 수가\n딸려 오므로 응답부터 무겁다.\n\n`revision` 에 규격서 판 id 를 주면 **그 판의 목록**이 온다 — 판마다 한 벌이라 계산이\n없다. `document` 에 사내 규격서 id 를 주면 **그 문서에서 나온 줄만** 온다 — 묶음으로 올라온\n스무 건을 한 자리에서 보고 한 번에 확인·반려하는 길이다.",
+        "description": "신뢰성 시험 — **부서가 등록한 절차**다. 「시험 항목」(장비가 할 수 있는 측정, 전사\n공용)과 다르다. `division` 에 사업부 코드(`mx`…)를 주면 그 사업부 것만, 안 주면 전사\n전부(사업부 순). 시험마다 쓰는 시험 항목과, 그 항목이 되는 **그 사업부의** 장비 수를\n함께 준다 — 0 이면 시험은 정했는데\n돌릴 장비가 없다는 뜻이다.\n\n`attr` 은 **속성 값으로 거른다** — 여러 번 주면 모두 만족해야 한다(`attr=<키><연산><값>`,\n연산은 `>=` `<=` `>` `<` `=` `!=` `~`(포함) `*`(적혀 있기만 하면) `!*`(**안 적힌 것**)).\n왼쪽은 속성 정의의 `key` 다 — 이름은 관리자가 고치면 바뀌고, 그때 저장해 둔 주소가\n조용히 빈 답을 낸다.\n\n`status` 를 **안 주면 자리에 따라 다르다** — 사업부를 주면 후보까지(검토하는 자리라서),\n전사면 확정된 것만(「저 사업부가 무슨 시험을 하나」 에 후보는 아직 답이 아니다). 일부러\n보려면 `status=\"all\"`, 후보만 세려면 `status=\"candidate\"`.\n\n`q` 는 이름·목적에 든 글자다 — **쪽을 나누면 찾기도 서버가 해야 한다.** 화면 안에서\n훑으면 지금 쪽의 쉰 줄만 뒤지고, 뒤쪽에 있는 줄은 영영 안 걸린다.\n\n**표가 열로 보여 주는 것은 열로 거른다** — `name`(이름) · `purpose`(목적) ·\n`test_item`(시험 항목 이름) · `equipment`. 여럿이면 모두 만족해야 한다(`attr` 과 같다).\n셋은 `none` 으로 **안 적힌 것**을 묻는다: `purpose=none` 은 목적이 빈 줄,\n`test_item=none` 은 시험 항목을 하나도 안 정한 줄, `equipment=none` 은 **그 사업부에\n돌릴 장비가 한 대도 없는 줄**이다(목록이 노란 「0대」 로 적고 있는 바로 그 줄).\n\n「안 정함」 과 「장비 없음」 은 다르다 — 앞은 시험 항목을 아직 안 이은 것이고, 뒤는\n이었는데 그 항목이 되는 장비가 없는 것이다. 해야 할 일이 다르다.\n\n**쪽으로 끊어 온다**(`items` · `total` · `limit` · `offset`). 한 사업부에 1784건이\n들어온 적이 있고, 통째로 그리면 브라우저가 멎는다 — 줄마다 속성·시험 항목·장비 수가\n딸려 오므로 응답부터 무겁다.\n\n`revision` 에 규격서 판 id 를 주면 **그 판의 목록**이 온다 — 판마다 한 벌이라 계산이\n없다. `document` 에 사내 규격서 id 를 주면 **그 문서에서 나온 줄만** 온다 — 묶음으로 올라온\n스무 건을 한 자리에서 보고 한 번에 확인·반려하는 길이다.",
         "operationId": "list_reliability_tests_api_reliability_tests_get",
         "parameters": [
           {
@@ -7306,6 +7498,74 @@
                 }
               ],
               "title": "Q"
+            }
+          },
+          {
+            "name": "name",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string",
+                  "maxLength": 200
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Name"
+            }
+          },
+          {
+            "name": "purpose",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string",
+                  "maxLength": 200
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Purpose"
+            }
+          },
+          {
+            "name": "test_item",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string",
+                  "maxLength": 200
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Test Item"
+            }
+          },
+          {
+            "name": "equipment",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "const": "none",
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Equipment"
             }
           },
           {
@@ -14448,6 +14708,246 @@
           "can_edit"
         ],
         "title": "EquipmentModelOut"
+      },
+      "EquipmentModelProposalDecision": {
+        "properties": {
+          "normalized": {
+            "type": "string",
+            "maxLength": 400,
+            "minLength": 1,
+            "title": "Normalized"
+          },
+          "model_id": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "uuid"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Model Id"
+          },
+          "series_id": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "uuid"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Series Id"
+          },
+          "name": {
+            "anyOf": [
+              {
+                "type": "string",
+                "maxLength": 150,
+                "minLength": 1
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Name"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "normalized"
+        ],
+        "title": "EquipmentModelProposalDecision",
+        "description": "정하기 — 이미 있는 기종에 잇거나(`model_id`), 계열에 세우거나(`series_id`+`name`),\n아니라고 하거나(둘 다 비움)."
+      },
+      "EquipmentModelProposalGroupOut": {
+        "properties": {
+          "normalized": {
+            "type": "string",
+            "title": "Normalized"
+          },
+          "text": {
+            "type": "string",
+            "title": "Text"
+          },
+          "count": {
+            "type": "integer",
+            "title": "Count"
+          },
+          "proposals": {
+            "items": {
+              "$ref": "#/components/schemas/EquipmentModelProposalOut"
+            },
+            "type": "array",
+            "title": "Proposals"
+          }
+        },
+        "type": "object",
+        "required": [
+          "normalized",
+          "text",
+          "count",
+          "proposals"
+        ],
+        "title": "EquipmentModelProposalGroupOut",
+        "description": "같은 기종을 요청한 것끼리 모은 한 줄 — **관리자는 다섯 번이 아니라 한 번 판단한다.**"
+      },
+      "EquipmentModelProposalOut": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Id"
+          },
+          "maker_text": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Maker Text"
+          },
+          "model_text": {
+            "type": "string",
+            "title": "Model Text"
+          },
+          "text": {
+            "type": "string",
+            "title": "Text"
+          },
+          "note": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Note"
+          },
+          "status": {
+            "type": "string",
+            "title": "Status"
+          },
+          "equipment_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Equipment Id"
+          },
+          "equipment_asset_no": {
+            "type": "string",
+            "title": "Equipment Asset No"
+          },
+          "equipment_name": {
+            "type": "string",
+            "title": "Equipment Name"
+          },
+          "model_id": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "uuid"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Model Id"
+          },
+          "model_name": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Model Name"
+          },
+          "submitted_via": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Submitted Via"
+          },
+          "created_at": {
+            "type": "string",
+            "format": "date-time",
+            "title": "Created At"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "maker_text",
+          "model_text",
+          "text",
+          "note",
+          "status",
+          "equipment_id",
+          "equipment_asset_no",
+          "equipment_name",
+          "model_id",
+          "model_name",
+          "submitted_via",
+          "created_at"
+        ],
+        "title": "EquipmentModelProposalOut",
+        "description": "카탈로그에 그 기종이 없어 남긴 등록 요청 한 줄."
+      },
+      "EquipmentModelProposalRequest": {
+        "properties": {
+          "model_text": {
+            "type": "string",
+            "maxLength": 200,
+            "minLength": 1,
+            "title": "Model Text"
+          },
+          "maker_text": {
+            "anyOf": [
+              {
+                "type": "string",
+                "maxLength": 200
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Maker Text"
+          },
+          "note": {
+            "anyOf": [
+              {
+                "type": "string",
+                "maxLength": 2000
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Note"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "model_text"
+        ],
+        "title": "EquipmentModelProposalRequest",
+        "description": "이 장비의 기종을 카탈로그에 올려 달라고 남긴다."
       },
       "EquipmentModelRow": {
         "properties": {

@@ -48,6 +48,10 @@ def list_reliability_tests(
     document: uuid.UUID | None = Query(default=None),
     revision: uuid.UUID | None = Query(default=None),
     q: str | None = Query(default=None, max_length=200),
+    name: str | None = Query(default=None, max_length=200),
+    purpose: str | None = Query(default=None, max_length=200),
+    test_item: str | None = Query(default=None, max_length=200),
+    equipment: Literal["none"] | None = Query(default=None),
     limit: int = Query(default=50, ge=1, le=MAX_LIMIT),
     offset: int = Query(default=0, ge=0),
     user: User = Depends(current_user),
@@ -71,6 +75,15 @@ def list_reliability_tests(
     `q` 는 이름·목적에 든 글자다 — **쪽을 나누면 찾기도 서버가 해야 한다.** 화면 안에서
     훑으면 지금 쪽의 쉰 줄만 뒤지고, 뒤쪽에 있는 줄은 영영 안 걸린다.
 
+    **표가 열로 보여 주는 것은 열로 거른다** — `name`(이름) · `purpose`(목적) ·
+    `test_item`(시험 항목 이름) · `equipment`. 여럿이면 모두 만족해야 한다(`attr` 과 같다).
+    셋은 `none` 으로 **안 적힌 것**을 묻는다: `purpose=none` 은 목적이 빈 줄,
+    `test_item=none` 은 시험 항목을 하나도 안 정한 줄, `equipment=none` 은 **그 사업부에
+    돌릴 장비가 한 대도 없는 줄**이다(목록이 노란 「0대」 로 적고 있는 바로 그 줄).
+
+    「안 정함」 과 「장비 없음」 은 다르다 — 앞은 시험 항목을 아직 안 이은 것이고, 뒤는
+    이었는데 그 항목이 되는 장비가 없는 것이다. 해야 할 일이 다르다.
+
     **쪽으로 끊어 온다**(`items` · `total` · `limit` · `offset`). 한 사업부에 1784건이
     들어온 적이 있고, 통째로 그리면 브라우저가 멎는다 — 줄마다 속성·시험 항목·장비 수가
     딸려 오므로 응답부터 무겁다.
@@ -79,11 +92,16 @@ def list_reliability_tests(
     없다. `document` 에 사내 규격서 id 를 주면 **그 문서에서 나온 줄만** 온다 — 묶음으로 올라온
     스무 건을 한 자리에서 보고 한 번에 확인·반려하는 길이다.
     """
+    rows = services.RowFilters(
+        name=name, purpose=purpose, test_item=test_item, equipment=equipment
+    )
     if division:
         return services.list_for_division(
-            db, user, division, attr, status, document, revision, limit, offset, q
+            db, user, division, attr, status, document, revision, limit, offset, q, rows
         )
-    return services.list_all(db, user, attr, status, document, revision, limit, offset, q)
+    return services.list_all(
+        db, user, attr, status, document, revision, limit, offset, q, rows
+    )
 
 
 @router.get("/divisions", response_model=list[DivisionOut])

@@ -30,10 +30,12 @@ from app.modules.accounts.models import User
 from app.modules.attributes.models import AttributeDefinition, AttributeValue
 from app.modules.auth import security
 from app.modules.auth.models import PersonalAccessToken
+from app.modules.equipment.models import Equipment, EquipmentModelProposal
 from app.modules.methods.models import MethodRequirement, TestMethod
 from app.modules.properties.models import TestItemProperty
 from app.modules.reliability.models import ReliabilityTest, ReliabilityTestItem
 from app.modules.review.models import ReviewProposal
+from app.modules.test_items.models import EquipmentTestItem
 from app.modules.vocabulary.models import VocabularyAlias, VocabularyTerm
 from app.modules.workspaces.models import Workspace, WorkspaceMember
 
@@ -138,6 +140,19 @@ def cleanup() -> int:
             db.execute(delete(VocabularyAlias).where(VocabularyAlias.term_id == term.id))
             db.delete(term)
             gone.append(f"값 {term.value}")
+        # 확인용으로 등록한 장비와 그 기종 등록 요청. **요청부터 지운다** — 장비를 먼저
+        # 지우면 CASCADE 가 지우긴 하지만, 여기서 세는 줄이 사라져 무엇이 지워졌는지 못 적는다.
+        for unit in db.scalars(select(Equipment).where(Equipment.name.like(f"{TAG}%"))):
+            db.execute(
+                delete(EquipmentModelProposal).where(
+                    EquipmentModelProposal.equipment_id == unit.id
+                )
+            )
+            db.execute(
+                delete(EquipmentTestItem).where(EquipmentTestItem.equipment_id == unit.id)
+            )
+            db.delete(unit)
+            gone.append(f"장비 {unit.asset_no} {unit.name}")
         # **먼저 밀어 넣는다.** 한 트랜잭션에 두면 users 를 먼저 지우려 들고, 그 값을 만든
         # 사람이 이 계정이라 FK 에 걸려 전체가 되돌아간다 — 아무것도 안 지워진다.
         db.flush()

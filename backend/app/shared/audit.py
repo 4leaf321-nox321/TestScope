@@ -67,6 +67,8 @@ EQUIPMENT_IMPORTED = "equipment.imported"
 그렇다고 대마다 한 줄씩 남기면 반입 한 번에 감사 300줄이 생겨 정작 찾을 것을 가린다.
 한 줄에 새로 넣은 자산번호·갱신한 자산번호와 그 전후를 담는다."""
 EQUIPMENT_RETIRED = "equipment.retired"
+EQUIPMENT_MODEL_PROPOSAL_DECIDED = "equipment_model_proposal.decided"
+"""카탈로그 기종 등록 요청을 정했다 — 그 요청을 낸 장비들이 한꺼번에 이어진다."""
 EQUIPMENT_DELETED = "equipment.deleted"
 METHOD_SUPERSEDED = "method.superseded"
 METHOD_MERGED = "method.merged"

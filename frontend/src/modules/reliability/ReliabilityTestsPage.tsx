@@ -65,6 +65,13 @@ import {
   useAttributeColumns,
 } from '@/modules/attributes/AttributeColumns'
 import { CandidateBadge } from '@/modules/reliability/CandidateReview'
+import {
+  NameHead,
+  PurposeHead,
+  RowFilterChips,
+  TestItemHead,
+  useRowFilters,
+} from '@/modules/reliability/ColumnFilters'
 import { CapabilityDialog } from '@/modules/reliability/CapabilityDialog'
 import {
   ReliabilityTestViewDialog,
@@ -101,6 +108,8 @@ export default function ReliabilityTestsPage() {
   )
   /** 확인 전 후보까지 볼까. **기본은 안 본다** — 확정된 것만이 이 표의 답이다. */
   const [withCandidates, setWithCandidates] = useState(false)
+  /** 속성 아닌 열의 조건 — 이름 · 목적 · 시험 항목 · 보유 장비. 주소에 함께 실린다. */
+  const rowFilters = useRowFilters()
   /** 열로 세울 속성 — 고른 것은 브라우저에 남는다. */
   const columns = useAttributeColumns('reliability_test')
   /** 몇 번째 쪽. 조건이 바뀌면 처음으로 — 세 번째 쪽을 보다 좁히면 빈 화면이 뜬다. */
@@ -113,10 +122,18 @@ export default function ReliabilityTestsPage() {
     return () => clearTimeout(timer)
   }, [query])
   const tests = useResource(
-    () => reliabilityApi.listAll(attrs, withCandidates, PAGE, page * PAGE, asked),
-    [attrs, withCandidates, page, asked],
+    () =>
+      reliabilityApi.listAll(
+        attrs,
+        withCandidates,
+        PAGE,
+        page * PAGE,
+        asked,
+        rowFilters.value,
+      ),
+    [attrs, withCandidates, page, asked, rowFilters.value],
   )
-  useEffect(() => setPage(0), [attrs, withCandidates, asked])
+  useEffect(() => setPage(0), [attrs, withCandidates, asked, rowFilters.value])
   const [asking, setAsking] = useState<ReliabilityTest | null>(null)
   /** 그림 보기 — **조회하는 사람의 자리.** 수정 창을 열지 않고 본다. */
   const [showing, setShowing] = useState<typeof asking>(null)
@@ -126,6 +143,11 @@ export default function ReliabilityTestsPage() {
   // **서버가 좁혀 준 것이 곧 결과다** — 화면 안에서 다시 훑으면 지금 쪽만 뒤진다.
   const shown = rows
   const workspaces = new Set(rows.map((row) => row.division_code)).size
+  /**
+   * 필터나 검색어가 걸렸나. **0건이어도 표는 남긴다** — 표가 사라지면 머리글의 필터도
+   * 함께 사라져서, 어느 열에 무엇이 걸렸는지 볼 수도 풀 수도 없다.
+   */
+  const filtered = attrs.length > 0 || rowFilters.count > 0 || Boolean(asked)
 
   return (
     <div className="space-y-6">
@@ -143,17 +165,20 @@ export default function ReliabilityTestsPage() {
         empty={tests.data?.total === 0}
       />
 
+      {/* 열 머리글에서 걸든 여기서 풀든 **같은 목록**이다. */}
+      <RowFilterChips rows={rowFilters} />
+
       <div className="flex flex-wrap items-center gap-3">
         <Input
           value={query}
           onChange={(event) => setQuery(event.target.value)}
-          placeholder="찾기 — 시험 · 목적 · 부서 · 시험 항목 · 속성 값"
+          placeholder="검색 — 시험 · 목적 · 부서 · 시험 항목 · 속성 값"
           className="w-80"
         />
         {tests.data && (
           <p className="text-muted-foreground text-sm">
             신뢰성 시험 {tests.data?.total ?? rows.length}종 · 이 쪽 {rows.length}종 · 부서{' '}
-            {workspaces}곳{asked && ' · 이름·목적으로 좁힌 결과'}
+            {workspaces}곳{asked && ' · 검색어 적용됨'}
           </p>
         )}
         <label className="text-muted-foreground flex items-center gap-1.5 text-sm">
@@ -170,31 +195,43 @@ export default function ReliabilityTestsPage() {
 
       <ErrorNotice error={tests.error} />
 
-      {tests.data && rows.length === 0 ? (
+      {tests.data && rows.length === 0 && !filtered ? (
         <EmptyState
           title="등록된 신뢰성 시험이 없습니다"
           hint="사이드바 「신뢰성 시험」 아래의 부서 화면에서 그 부서의 관리자가 등록합니다. 부서가 안 보이면 「관리 → 부서 정보」 의 「신뢰성 시험」 표시를 켭니다."
-        />
-      ) : tests.data && shown.length === 0 ? (
-        <EmptyState
-          title="조건에 맞는 신뢰성 시험이 없습니다"
-          hint="검색어를 줄여 보십시오."
         />
       ) : (
         <Table viewport>
           <TableHeader>
             <TableRow>
+              {/* 부서는 **누르면 그 부서 화면**이라 여기에 따로 거르기를 안 둔다 —
+                  그 화면이 곧 「이 부서만」 이고, 후보까지 보여 준다. */}
               <TableHead>부서</TableHead>
-              <TableHead>신뢰성 시험</TableHead>
-              <TableHead className="hidden w-full min-w-96 lg:table-cell">목적</TableHead>
+              <TableHead className="min-w-44">
+                <NameHead rows={rowFilters} />
+              </TableHead>
+              <TableHead className="hidden w-full min-w-96 lg:table-cell">
+                <PurposeHead rows={rowFilters} />
+              </TableHead>
               <TableHead className="hidden min-w-48 md:table-cell">
-                적용 시험 항목 · 보유 장비
+                <TestItemHead rows={rowFilters} />
               </TableHead>
               <AttributeHeadCells columns={columns.shown} value={attrs} onChange={setAttrs} />
               <TableHead className="w-32" />
             </TableRow>
           </TableHeader>
           <TableBody>
+            {rows.length === 0 && (
+              // **표는 남기고 줄 자리에 적는다.** 표가 통째로 사라지면 머리글의 필터도
+              // 사라져서, 어느 열에 무엇이 걸렸는지 볼 수도 풀 수도 없다 — 사람에게는
+              // 「눌렀더니 다 없어졌다」 로 보인다.
+              <TableRow>
+                <TableCell colSpan={99} className="text-muted-foreground py-10 text-center">
+                  필터 조건에 해당하는 신뢰성 시험이 없습니다. 위의 조건을 하나씩 해제해
+                  보십시오 — 등록된 시험이 사라진 것은 아닙니다.
+                </TableCell>
+              </TableRow>
+            )}
             {shown.map((row) => (
               <TableRow
                 key={row.id}

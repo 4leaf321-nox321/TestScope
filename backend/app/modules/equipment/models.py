@@ -789,3 +789,62 @@ class EquipmentSpecValue(Base):
     updated_at: Mapped[datetime] = mapped_column(
         DateTime(timezone=True), server_default=func.now(), onupdate=func.now(), nullable=False
     )
+
+
+class EquipmentModelProposal(Base):
+    """카탈로그에 **그 기종이 없을 때** 사람이 남기는 등록 요청.
+
+    카탈로그 정본은 시스템 관리자만 고친다 — 기종을 고르면 그 계열의 시험 항목이 이 장비로
+    복사되고 조건 판정이 그 기종의 사양을 쓴다. 아무나 세운 기종은 **잘못된 답의 근거**가
+    된다. 그래서 못 세우게 하는 것은 옳다.
+
+    그런데 못 세우는 쪽에 **말할 자리도** 없었다: 비워 두라는 안내만 있고, 비워 둔 다음에
+    왜 비었는지가 아무 데도 안 남았다. 관리자는 미연결 목록에서 제조사·모델명 글자를 보고
+    짐작하는 수밖에 없었고, 그 글자는 표시용이라 아무도 그것을 일감으로 세지 않았다.
+
+    시험 항목 제안(`TestItemProposal`)과 **같은 모양**이다 — 닫힌 축에 값을 못 더하는
+    자리에서 쓰는 방식이 하나여야, 다음에 같은 문제가 나왔을 때 또 새로 고민하지 않는다.
+    """
+
+    __tablename__ = "equipment_model_proposals"
+    __table_args__ = (
+        UniqueConstraint(
+            "equipment_id", "normalized", name="uq_equipment_model_proposals_pair"
+        ),
+    )
+
+    id: Mapped[uuid.UUID] = mapped_column(
+        PgUUID(as_uuid=True), primary_key=True, default=uuid.uuid4
+    )
+    equipment_id: Mapped[uuid.UUID] = mapped_column(
+        PgUUID(as_uuid=True), ForeignKey("equipment.id", ondelete="CASCADE"), index=True
+    )
+    maker_text: Mapped[str | None] = mapped_column(String(200), nullable=True)
+    model_text: Mapped[str] = mapped_column(String(200))
+    """라벨에 적힌 그대로 — **고쳐 쓰지 않는다.** 판단하는 사람이 그 글자를 봐야 카탈로그의
+    어느 계열인지 정할 수 있다."""
+    normalized: Mapped[str] = mapped_column(String(400), index=True)
+    """제조사 + 모델명을 합친 비교키. 띄어쓰기·대소문자를 지운다 — 「Instron 68FM-300」 과
+    「instron 68fm-300」 이 다른 줄로 서면 관리자가 같은 판단을 두 번 한다."""
+    note: Mapped[str | None] = mapped_column(Text, nullable=True)
+    """카탈로그에서 왜 못 찾았는지 — 「6800 시리즈는 있는데 이 모델만 없음」."""
+    status: Mapped[str] = mapped_column(String(20), default="open", server_default="open")
+    """`open` · `linked`(이미 있던 기종에 이었다) · `created`(카탈로그에 세웠다) ·
+    `rejected`(카탈로그에 올릴 것이 아니다 — 자작 장비 등)."""
+    model_id: Mapped[uuid.UUID | None] = mapped_column(
+        PgUUID(as_uuid=True),
+        ForeignKey("equipment_models.id", ondelete="SET NULL"),
+        nullable=True,
+    )
+    """정하고 나서 어느 기종이 됐나."""
+    submitted_via: Mapped[str | None] = mapped_column(String(100), nullable=True)
+    created_by_id: Mapped[uuid.UUID | None] = mapped_column(
+        PgUUID(as_uuid=True), ForeignKey("users.id", ondelete="SET NULL"), nullable=True
+    )
+    created_at: Mapped[datetime] = mapped_column(
+        DateTime(timezone=True), server_default=func.now(), nullable=False
+    )
+    decided_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True), nullable=True)
+    decided_by_id: Mapped[uuid.UUID | None] = mapped_column(
+        PgUUID(as_uuid=True), ForeignKey("users.id", ondelete="SET NULL"), nullable=True
+    )

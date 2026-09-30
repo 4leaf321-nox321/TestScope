@@ -17,8 +17,14 @@ import { cn } from "@/shared/lib/utils"
  * 같은 어림도 아니다). 표 위에 오는 것은 화면마다 다르고 — 제목·설명·거르기 칩·대량 처리
  * 줄 — 아래에 오는 것도 다르다(쪽 넘기기 줄이 있을 때와 없을 때). 어림잡으면 둘 중 하나가
  * 난다: 모자라면 표 바닥이 화면 밖으로 내려가 **고치려던 문제가 돌아오고**, 남으면 표
- * 아래가 빈 채로 남는다. 그래서 「표가 쓸 수 있는 공간 − 표 아래에 이미 있는 것」 을
+ * 아래가 빈 채로 남는다. 그래서 「본문 바닥 − 표 시작점 − 표 아래에 이미 있는 것」 을
  * 그대로 잰다.
+ *
+ * **「아래에 있는 것」 은 표의 높이와 무관하게 잰다.** 스크롤 높이로 재 봤더니 두 번
+ * 틀렸다(2026-09-30): 줄이 오기 전(목록이 비어 있을 때) 한 번 재고 나면 본문 크기가 안
+ * 바뀌어 다시 잴 일이 없었고, 그래서 표가 바닥값 240px 에 갇혔다 — 쪽 넘기기 단추 아래가
+ * 통째로 비었다. 지금은 조상마다 「부모 바닥 − 내 바닥」 을 더한다: 내가 커지면 부모도 같이
+ * 커지므로 이 값은 **처음부터 끝까지 같다.** 줄이 없어도 맞는 답이 나온다.
  */
 /** 아무리 좁아도 이만큼은 — 이보다 작으면 표가 아니라 창이 된다. */
 const VIEWPORT_FLOOR = 240
@@ -32,6 +38,25 @@ function scrollerOf(node: HTMLElement): HTMLElement | null {
   return null
 }
 
+/**
+ * 표 **아래**에 이미 있는 것 — 쪽 넘기기 줄 · 그 사이 간격 · 본문 아래 여백.
+ *
+ * 조상마다 「부모 바닥 − 내 바닥」 을 더한다. 뒤따르는 형제와 그 사이 간격, 부모의 아래
+ * 여백이 거기 다 든다. **표가 커지면 부모도 같이 커지므로 이 값은 안 변한다** — 그래서
+ * 표 높이를 정하는 데 쓸 수 있고, 재고 또 재는 되먹임도 없다.
+ */
+function spaceBelow(node: HTMLElement, scroller: HTMLElement | null): number {
+  let total = 0
+  let at: HTMLElement = node
+  while (at.parentElement && at.parentElement !== scroller) {
+    const parent = at.parentElement
+    total += parent.getBoundingClientRect().bottom - at.getBoundingClientRect().bottom
+    at = parent
+  }
+  if (scroller) total += parseFloat(getComputedStyle(scroller).paddingBottom) || 0
+  return Math.max(0, total)
+}
+
 function Table({
   className,
   viewport = false,
@@ -41,29 +66,26 @@ function Table({
   const [tall, setTall] = React.useState<number | null>(null)
 
   React.useLayoutEffect(() => {
-    if (!viewport) return
+    const node = box.current
+    if (!viewport || !node) return
+    const scroller = scrollerOf(node)
     const measure = () => {
-      const node = box.current
-      if (!node) return
-      const rect = node.getBoundingClientRect()
-      const scroller = scrollerOf(node)
-      const frame = scroller?.getBoundingClientRect()
-      const bottom = frame ? frame.bottom : window.innerHeight
-      const scrolled = scroller ? scroller.scrollTop : window.scrollY
-      const whole = scroller
-        ? scroller.scrollHeight
-        : document.documentElement.scrollHeight
-      // 표 **아래**에 이미 있는 것(쪽 넘기기 줄 · 본문 아래 여백)만큼만 남긴다. 표를
-      // 줄여도 이 값은 그대로라 한 번에 자리를 잡는다 — 재고 또 재는 되먹임이 없다.
-      const below = Math.max(0, (frame ? frame.top : 0) + whole - scrolled - rect.bottom)
-      setTall(Math.max(VIEWPORT_FLOOR, Math.round(bottom - rect.top - below)))
+      const bottom = scroller
+        ? scroller.getBoundingClientRect().bottom
+        : window.innerHeight
+      const room = bottom - node.getBoundingClientRect().top - spaceBelow(node, scroller)
+      setTall(Math.max(VIEWPORT_FLOOR, Math.round(room)))
     }
     measure()
     window.addEventListener("resize", measure)
-    // 위아래가 자라면(칩 한 줄, 진단 한 줄, 쪽 넘기기 줄) 다시 잰다.
     const watch =
       typeof ResizeObserver === "undefined" ? null : new ResizeObserver(measure)
-    watch?.observe(document.body)
+    // **속 표를 본다** — 줄이 늦게 오면(목록은 비어서 그려진다) 가둔 칸의 크기는 안 바뀌고
+    // 속 표만 자란다. 이것을 안 보면 처음 잰 값에 갇힌다.
+    if (node.firstElementChild) watch?.observe(node.firstElementChild)
+    // 위아래가 자라면(칩 한 줄, 진단 한 줄, 쪽 넘기기 줄) 시작점과 아래가 함께 바뀐다.
+    if (node.parentElement) watch?.observe(node.parentElement)
+    if (scroller) watch?.observe(scroller)
     return () => {
       window.removeEventListener("resize", measure)
       watch?.disconnect()

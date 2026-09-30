@@ -525,6 +525,59 @@ async def _write_chain(ctx: _Ctx) -> int:
                         print(f"  실패 묶음이 규격서를 안 걸었습니다: {_short(codes, 80)}")
                         break
 
+    # 8-2. 카탈로그에 없는 기종 — **못 고르는 쪽에 말할 자리가 있나.**
+    #
+    # 기종을 비우고 등록하는 길은 있었는데, 비운 다음에 왜 비었는지가 아무 데도 안 남았다.
+    # 「원문은 비고에 남겨라」 가 설명이었지만 비고에 적힌 것은 아무도 일감으로 안 센다.
+    if slug:
+        sites = await server.list_terms(ctx, "site")
+        site_rows = (sites or {}).get("terms") or []
+        kinds = await server.list_terms(ctx, "equipment_category")
+        kind_rows = (kinds or {}).get("terms") or []
+        if site_rows and kind_rows:
+            unit = step(
+                "register_equipment(기종 없이)",
+                await server.register_equipment(
+                    ctx,
+                    asset_no=f"MCP-{tag}",
+                    name=f"MCP확인 만능기-{tag}",
+                    workspace_slug=slug,
+                    site_term_id=site_rows[0]["id"],
+                    location="3동 201호",
+                    category_term_id=kind_rows[0]["id"],
+                    maker_text="Instron",
+                    model_text=f"68FM-{tag}",
+                ),
+                ["asset_no"],
+            )
+            if unit is not None:
+                asked = step(
+                    "propose_equipment_model",
+                    await server.propose_equipment_model(
+                        ctx,
+                        unit["id"],
+                        model_text=f"68FM-{tag}",
+                        maker_text="Instron",
+                        note="6800 시리즈는 있는데 이 모델만 없음",
+                    ),
+                    ["status", "text"],
+                )
+                # **기종은 아직 안 걸려야 한다** — 요청은 카탈로그를 안 건드린다.
+                if asked is not None and asked.get("status") != "open":
+                    bad += 1
+                    print(f"  실패 요청이 open 이 아닙니다: {_short(asked, 70)}")
+                # 같은 요청을 두 번 내도 막히지 않는다 — 반입을 다시 돌리는 일이 흔하다.
+                twice = step(
+                    "propose_equipment_model(다시)",
+                    await server.propose_equipment_model(
+                        ctx, unit["id"], model_text=f"68FM-{tag}", maker_text="Instron"
+                    ),
+                    ["status"],
+                )
+                if asked is not None and twice is not None and twice["id"] != asked["id"]:
+                    bad += 1
+                    print("  실패 같은 요청이 두 줄로 쌓였습니다")
+
     # 9. 물성 연결은 제안으로만 들어가야 한다.
     prop = await server.create_term(ctx, "property", f"MCP확인 항복강도-{tag}")
     if "error" not in prop:

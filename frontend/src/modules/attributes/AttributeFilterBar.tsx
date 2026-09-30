@@ -32,15 +32,15 @@ import type { AttributeDefinition, AttributeTarget } from '@/modules/attributes/
 
 /** 연산자와 그 우리말. 글자(`>=`)는 서버 문법이고, 이름은 사람이 고를 말이다. */
 const OPERATORS = [
-  { op: '=', label: '같다' },
-  { op: '!=', label: '다르다' },
+  { op: '=', label: '일치' },
+  { op: '!=', label: '불일치' },
   { op: '>=', label: '이상' },
   { op: '<=', label: '이하' },
   { op: '>', label: '초과' },
   { op: '<', label: '미만' },
   { op: '~', label: '포함' },
-  { op: '*', label: '값이 있다' },
-  { op: '!*', label: '값이 없다' },
+  { op: '*', label: '값 있음' },
+  { op: '!*', label: '값 없음' },
 ] as const
 
 /** 값을 안 받는 연산 — 「있다」 「없다」 는 무엇과 견주는 것이 아니다. */
@@ -118,7 +118,7 @@ export function ActiveFilterChips({
           {describe(one, definitions)}
           <button
             type="button"
-            aria-label={`${describe(one, definitions)} 제거`}
+            aria-label={`${describe(one, definitions)} 필터 해제`}
             className="hover:bg-background rounded-full p-0.5"
             onClick={() => onChange(value.filter((row) => row !== one))}
           >
@@ -126,8 +126,9 @@ export function ActiveFilterChips({
           </button>
         </li>
       ))}
-      {/* 여러 조건은 **모두** 만족해야 한다 — 「또는」 으로 읽으면 결과 수를 오해한다. */}
-      <li className="text-muted-foreground ml-1">조건 모두 만족</li>
+      {/* **거르는 방향과 「또는/그리고」 를 한 줄에.** 「값 없음」 을 걸었는데 목록이
+          그대로면 고장으로 읽히고, 「또는」 으로 읽으면 결과 수를 오해한다. */}
+      <li className="text-muted-foreground ml-1">모든 조건을 만족하는 항목만 표시</li>
     </ul>
   )
 }
@@ -202,7 +203,7 @@ export function AttributeFilterBar({ target, value, onChange, empty = false }: P
           <span className="text-muted-foreground text-xs">속성</span>
           <Select value={key} onValueChange={setKey}>
             <SelectTrigger size="sm" className="w-48">
-              <SelectValue placeholder="속성으로 거르기" />
+              <SelectValue placeholder="속성 선택" />
             </SelectTrigger>
             <SelectContent>
               {rows.map((one) => (
@@ -216,7 +217,7 @@ export function AttributeFilterBar({ target, value, onChange, empty = false }: P
           </Select>
         </label>
         <label className="space-y-1">
-          <span className="text-muted-foreground text-xs">조건</span>
+          <span className="text-muted-foreground text-xs">연산자</span>
           <Select value={op} onValueChange={setOp} disabled={!picked}>
             <SelectTrigger size="sm" className="w-28">
               <SelectValue />
@@ -249,7 +250,7 @@ export function AttributeFilterBar({ target, value, onChange, empty = false }: P
         )}
         <Button size="sm" variant="outline" disabled={!picked} onClick={add}>
           <Plus className="mr-1 size-3.5" />
-          조건 추가
+          필터 추가
         </Button>
       </div>
 

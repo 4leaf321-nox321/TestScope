@@ -3,6 +3,9 @@
 import { api } from '@/shared/api/client'
 import type { components } from '@/shared/api/schema'
 import type { AttributeValueIn } from '@/modules/attributes/api'
+import type { RowFilters } from '@/modules/reliability/ColumnFilters'
+
+export type { RowFilters }
 
 export type ReliabilityTest = components['schemas']['ReliabilityTestOut']
 export type Capability = components['schemas']['CapabilityOut']
@@ -45,7 +48,13 @@ export const reliabilityApi = {
   divisions: () => api.get<Division[]>('/reliability-tests/divisions'),
   /** 한 사업부의 신뢰성 시험 전부 — **후보까지.** 검토하는 자리가 사업부 화면이라 후보가
    *  먼저 온다. 시험마다 쓰는 시험 항목과 그 항목이 되는 이 사업부 장비 수. */
-  list: (division: string, limit = PAGE, offset = 0, attrs: string[] = []) => {
+  list: (
+    division: string,
+    limit = PAGE,
+    offset = 0,
+    attrs: string[] = [],
+    rows: RowFilters = {},
+  ) => {
     const search = new URLSearchParams({
       division,
       limit: String(limit),
@@ -54,6 +63,7 @@ export const reliabilityApi = {
     // **거르기는 서버가 한다** — 한 쪽을 받아 놓고 화면에서 거르면 쉰 줄만 뒤지고,
     // 그러고도 표는 「조건에 맞는 것이 이것뿐」 이라고 적는다.
     for (const one of attrs) search.append('attr', one)
+    for (const [key, one] of Object.entries(rows)) if (one) search.set(key, one)
     return api.get<Page>(`/reliability-tests?${search}`)
   },
   /** 전사 전부 — 사업부 순. 「누가 무슨 시험을 하나」 를 가로질러 본다.
@@ -64,12 +74,15 @@ export const reliabilityApi = {
     limit = PAGE,
     offset = 0,
     query = '',
+    rows: RowFilters = {},
   ) => {
     const search = new URLSearchParams({ limit: String(limit), offset: String(offset) })
     // **쪽을 나누면 찾기도 서버가 해야 한다** — 화면 안에서 훑으면 지금 쪽의 쉰 줄만
     // 뒤지고, 뒤쪽에 있는 줄은 영영 안 걸린다.
     if (query.trim()) search.set('q', query.trim())
     for (const one of attrs) search.append('attr', one)
+    // 열마다의 조건 — 이름 · 목적 · 시험 항목 · 보유 장비. 여럿이면 모두 만족해야 한다.
+    for (const [key, one] of Object.entries(rows)) if (one) search.set(key, one)
     // **기본은 확정된 것만.** 이 표는 「저 사업부가 무슨 시험을 하나」 에 답하는데, 확인 안
     // 된 후보는 아직 그 답이 아니다 — 옆 사업부 사람은 배지를 안 보고 읽는다.
     if (withCandidates) search.append('status', 'all')

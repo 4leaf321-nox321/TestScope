@@ -394,6 +394,24 @@ def test_값을_안_적은_줄을_찾는다(
     # 두 조건을 함께 — 비고도 온도도 없는 줄.
     assert names(f"note_{tag}!*", f"temp_{tag}!*") == {f"빔-{tag}"}
 
+    # **줄이 아니라 값을 본다.** 비고만 적어 보낼 수 있는데(0032), 그런 줄은 칸이 비어
+    # 있고 화면도 「—」 로 그린다 — 줄의 유무로 세면 사람이 빈 칸을 보면서 「값 없음」 을
+    # 걸었는데 그 줄이 안 나온다.
+    noted = client.post(
+        "/api/reliability-tests",
+        json={
+            "division_code": "mx",
+            "name": f"비고만-{tag}",
+            "attributes": [
+                {"definition_id": temperature["id"], "note": "원문이 「상온」 이라 숫자 없음"}
+            ],
+        },
+        headers=admin.headers,
+    )
+    assert noted.status_code == 201, noted.text
+    assert f"비고만-{tag}" in names(f"temp_{tag}!*")
+    assert f"비고만-{tag}" not in names(f"temp_{tag}*")
+
     # 0건일 때 이유를 **반대로 말하지 않는다** — 다른 연산은 「값이 적힌 것이 없다」 가 곧
     # 0건의 이유지만, `!*` 는 그때 오히려 전부가 걸린다.
     told = client.get(

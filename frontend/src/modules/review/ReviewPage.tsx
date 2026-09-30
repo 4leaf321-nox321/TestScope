@@ -106,6 +106,24 @@ export default function ReviewPage() {
         </div>
       </div>
 
+      {/**
+       * **같은 모양의 다른 축** — 카탈로그 기종도 시스템 관리자만 세운다(기종을 고르면 그
+       * 계열의 시험 항목이 복사되고 조건 판정이 그 사양을 쓴다). 못 세우는 쪽에 말할 자리를
+       * 둔 것이 시험 항목 제안과 같아서, 검토하러 오는 자리도 같아야 한다.
+       */}
+      <div className="rounded-md border p-4">
+        <h2 className="text-base font-semibold">기종 등록 요청</h2>
+        <p className="text-muted-foreground mt-1 text-sm">
+          장비를 등록하면서 카탈로그에서 못 찾은 기종. 계열을 고르고 세우면 그 기종을 요청한
+          장비 전부가 한 번에 이어집니다 — 세워 놓고 장비를 하나씩 다시 열 필요가 없습니다.
+        </p>
+        <div className="mt-3">
+          <Button asChild size="sm" variant="outline">
+            <Link to="/admin/model-proposals">보러 가기</Link>
+          </Button>
+        </div>
+      </div>
+
       <p className="text-muted-foreground text-xs">
         후보는 반입(카탈로그)과 정본의 추천(
         <span className="font-mono">source/catalog/proposals</span>)에서 옵니다. 추천은 정답이

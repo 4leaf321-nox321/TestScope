@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import uuid
+from typing import Any
 
 from fastapi import APIRouter, Depends, Query, Response
 from sqlalchemy.orm import Session
@@ -14,6 +15,7 @@ from app.modules.equipment import (
     equipment_specs,
     free_specs,
     imports,
+    proposals,
     services,
     specs,
 )
@@ -29,6 +31,10 @@ from app.modules.equipment.schemas import (
     EquipmentImportResult,
     EquipmentModelCreateRequest,
     EquipmentModelOut,
+    EquipmentModelProposalDecision,
+    EquipmentModelProposalGroupOut,
+    EquipmentModelProposalOut,
+    EquipmentModelProposalRequest,
     EquipmentModelRow,
     EquipmentModelUpdateRequest,
     EquipmentOut,
@@ -235,6 +241,40 @@ def create_equipment(
 ) -> EquipmentOut:
     row = services.create(db, user, payload.model_dump())
     return services.equipment_out(db, row, user)
+
+
+@router.get("/{equipment_id}/model-proposals", response_model=list[EquipmentModelProposalOut])
+def list_equipment_model_proposals(
+    equipment_id: uuid.UUID,
+    user: User = Depends(current_user),
+    db: Session = Depends(get_db),
+) -> list[EquipmentModelProposalOut]:
+    """이 장비가 낸 **카탈로그 기종 등록 요청** — 왜 기종이 비었는지가 그 화면에 보인다."""
+    get_equipment(db, user, equipment_id)
+    return proposals.of_equipment(db, equipment_id)
+
+
+@router.post(
+    "/{equipment_id}/model-proposals",
+    response_model=EquipmentModelProposalOut,
+    status_code=201,
+)
+def propose_equipment_model(
+    equipment_id: uuid.UUID,
+    payload: EquipmentModelProposalRequest,
+    user: User = Depends(current_user),
+    db: Session = Depends(get_db),
+) -> EquipmentModelProposalOut:
+    """**카탈로그에 이 기종을 올려 달라**고 남긴다. 그 장비를 고칠 수 있는 사람이면 된다.
+
+    카탈로그에 기종을 세우는 것이 **아니다** — 세우는 것은 시스템 관리자다(기종을 고르면
+    그 계열의 시험 항목이 복사되고 조건 판정이 그 사양을 쓴다). 여기서는 「이런 기종을 못
+    찾았다」 를 적어 둘 뿐이고, 그래야 비워 둔 이유가 남는다.
+
+    같은 장비가 같은 요청을 두 번 내면 **먼저 것을 돌려준다** — 등록 창을 다시 저장하는
+    일이 흔하고, 그때 409 가 오면 사람은 저장이 실패한 것으로 읽는다.
+    """
+    return proposals.add(db, user, equipment_id, payload.model_dump())
 
 
 @router.get("/{equipment_id}", response_model=EquipmentOut)
@@ -625,6 +665,41 @@ def model_filter_options(
     `/{model_id}` 보다 **먼저 선언한다.**
     """
     return catalog.model_filter_options(db)
+
+
+@catalog_router.get("/proposals", response_model=list[EquipmentModelProposalGroupOut])
+def list_model_proposals(
+    include_decided: bool = Query(default=False),
+    _: User = Depends(current_user),
+    db: Session = Depends(get_db),
+) -> list[EquipmentModelProposalGroupOut]:
+    """**카탈로그에 없다고 올라온 기종들** — 같은 것끼리 모아, 건수가 큰 것부터.
+
+    다섯 부서가 같은 기종을 요청했으면 그것은 카탈로그에 있어야 할 기종이 거의 확실하고,
+    한 번 세우면 다섯 대가 함께 이어진다. 한 번 나온 것은 자작 장비일 수 있어 뒤에 온다.
+
+    `/{model_id}` 보다 **먼저 선언한다** — 뒤에 두면 `proposals` 가 기종 id 로 읽혀서
+    「기종을 찾을 수 없습니다」 가 온다.
+    """
+    return proposals.groups(db, include_decided=include_decided)
+
+
+@catalog_router.post("/proposals/decide")
+def decide_model_proposal(
+    payload: EquipmentModelProposalDecision,
+    admin: User = Depends(current_user),
+    db: Session = Depends(get_db),
+) -> dict[str, Any]:
+    """요청 한 묶음을 정한다 — **시스템 관리자만.**
+
+    `model_id` 면 이미 있는 기종에 잇고, `series_id` + `name` 이면 그 계열에 기종을 세운 뒤
+    잇는다. 둘 다 없으면 아니라고 한 것이다(자작 장비처럼 카탈로그에 올릴 것이 아닌 경우).
+
+    **정한 기종이 요청한 장비들에 한꺼번에 걸린다.** 여기까지 안 하면 관리자는 기종을 세우고
+    나서 장비를 하나씩 열어 다시 골라야 한다. 한 대가 막혀도 나머지는 잇고, 막힌 줄은
+    `failed` 로 돌려준다.
+    """
+    return proposals.decide(db, admin, payload.model_dump())
 
 
 @catalog_router.post("", response_model=EquipmentModelOut, status_code=201)

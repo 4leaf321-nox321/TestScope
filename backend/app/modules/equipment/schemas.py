@@ -1139,3 +1139,56 @@ class EquipmentSpecSaveResult(BaseModel):
     """검색축에 이어진 사양이면 그 축 이름. **이 숫자가 검색에 쓰인다**는 뜻이다."""
     reflected: bool
     """이 장비의 시험 조건이 실제로 갱신됐나. 손으로 고쳐 둔 조건은 안 덮는다."""
+
+
+class EquipmentModelProposalOut(BaseModel):
+    """카탈로그에 그 기종이 없어 남긴 등록 요청 한 줄."""
+
+    id: uuid.UUID
+    maker_text: str | None
+    model_text: str
+    text: str
+    """사람이 읽는 한 줄 — 「Instron 68FM-300」."""
+    note: str | None
+    """카탈로그에서 왜 못 찾았는지."""
+    status: str
+    """`open` · `linked` · `created` · `rejected`."""
+    equipment_id: uuid.UUID
+    equipment_asset_no: str
+    equipment_name: str
+    model_id: uuid.UUID | None
+    model_name: str | None
+    submitted_via: str | None
+    created_at: datetime
+
+
+class EquipmentModelProposalGroupOut(BaseModel):
+    """같은 기종을 요청한 것끼리 모은 한 줄 — **관리자는 다섯 번이 아니라 한 번 판단한다.**"""
+
+    normalized: str
+    text: str
+    count: int
+    """이 기종을 요청한 장비 수. **큰 것이 먼저** — 다섯 부서가 요청한 기종은 카탈로그에
+    있어야 할 것이 거의 확실하고, 한 번 나온 것은 자작 장비일 수 있다."""
+    proposals: list[EquipmentModelProposalOut]
+
+
+class EquipmentModelProposalRequest(Request):
+    """이 장비의 기종을 카탈로그에 올려 달라고 남긴다."""
+
+    model_text: str = Field(min_length=1, max_length=200)
+    """라벨에 적힌 그대로. **고쳐 쓰지 마라** — 판단하는 사람이 그 글자를 봐야 한다."""
+    maker_text: str | None = Field(default=None, max_length=200)
+    note: str | None = Field(default=None, max_length=2000)
+
+
+class EquipmentModelProposalDecision(Request):
+    """정하기 — 이미 있는 기종에 잇거나(`model_id`), 계열에 세우거나(`series_id`+`name`),
+    아니라고 하거나(둘 다 비움)."""
+
+    normalized: str = Field(min_length=1, max_length=400)
+    model_id: uuid.UUID | None = None
+    series_id: uuid.UUID | None = None
+    name: str | None = Field(default=None, min_length=1, max_length=150)
+    """세울 기종의 이름. **계열 이름을 섞지 않는다** — 섞으면 `6800 68FM-300` 과
+    `68FM-300` 이 별개 기종으로 갈리고, 그 둘을 나중에 묶을 방법이 없다."""

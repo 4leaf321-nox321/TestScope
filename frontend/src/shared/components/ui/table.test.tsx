@@ -9,7 +9,8 @@
  * 1. `viewport` 를 켠 표만 가둔다 — 짧은 표까지 가두면 아래에 빈 공간만 생긴다.
  * 2. 높이는 **위아래를 다 재서** 정한다. 어림잡으면 둘 중 하나가 난다: 모자라면 표 바닥이
  *    화면 밖으로 내려가 고치려던 문제가 돌아오고, 남으면 **표 아래가 빈 채로 남는다.**
- *    두 번째가 실제로 났다(꼬리를 96px 로 어림잡았다 — 2026-09-30).
+ *    두 번째가 두 번 났다 — 꼬리를 96px 로 어림잡았을 때, 그리고 스크롤 높이로 쟀을 때
+ *    (목록이 비어 있는 동안 재고 나면 다시 잴 일이 없어 240px 에 갇혔다).
  * 3. 표 아래에 있는 것이 줄면(쪽 넘기기 줄이 없는 사업부) 그만큼 표가 **더 커진다.**
  * 4. 창이 아무리 좁아도 바닥값 아래로는 안 줄인다.
  */
@@ -46,15 +47,15 @@ interface Scene {
   frame?: { top: number; bottom: number }
   /** 표가 시작하는 자리와, 안 가뒀을 때의 끝. */
   table: { top: number; bottom: number }
-  /** 본문 전체의 높이 — 표 아래에 무엇이 얼마나 있는지가 여기서 나온다. */
-  content: number
+  /** 표를 감싼 쪽의 바닥 — **표 아래에 무엇이 얼마나 있는지**가 이 차이에서 나온다. */
+  page: number
 }
 
 function show(viewport: boolean, scene: Scene) {
   rects()
   const view = render(
     <div data-testid="scroller" style={{ overflowY: 'auto' }}>
-      <div>
+      <div data-testid="page">
         <Table viewport={viewport}>
           <TableBody>
             <TableRow>
@@ -67,15 +68,13 @@ function show(viewport: boolean, scene: Scene) {
     </div>,
   )
   const box = view.container.querySelector<HTMLElement>('[data-slot="table-container"]')
+  const page = view.container.querySelector<HTMLElement>('[data-testid="page"]')
   const scroller = view.container.querySelector<HTMLElement>('[data-testid="scroller"]')
-  if (!box || !scroller) throw new Error('표나 스크롤 칸이 없습니다')
+  if (!box || !page || !scroller) throw new Error('표나 스크롤 칸이 없습니다')
 
   box.dataset.rect = JSON.stringify(scene.table)
+  page.dataset.rect = JSON.stringify({ top: 0, bottom: scene.page })
   scroller.dataset.rect = JSON.stringify(scene.frame ?? { top: 60, bottom: 900 })
-  Object.defineProperty(scroller, 'scrollHeight', {
-    value: scene.content,
-    configurable: true,
-  })
   act(() => {
     window.dispatchEvent(new Event('resize'))
   })
@@ -86,42 +85,51 @@ afterEach(() => vi.restoreAllMocks())
 
 describe('표 가두기', () => {
   it('안 켠 표는 안 가둔다 — 짧은 표를 가두면 빈 공간만 생긴다', () => {
-    const box = show(false, { table: { top: 300, bottom: 1400 }, content: 1500 })
+    const box = show(false, { table: { top: 300, bottom: 1400 }, page: 1460 })
     expect(box.style.maxHeight).toBe('')
   })
 
   it('위아래를 다 재서 창을 딱 채운다', () => {
-    // 본문 60~900, 표는 300 에서 시작해 1400 까지 뻗었고, 본문 전체는 1500.
-    // 표 아래에 있는 것 = (60 + 1500) − 1400 = 160. 그러니 표 몫은 900 − 300 − 160.
-    const box = show(true, { table: { top: 300, bottom: 1400 }, content: 1500 })
-    expect(box.style.maxHeight).toBe('440px')
+    // 본문 60~900, 표는 300 에서 시작하고, 표 아래에 60(쪽 넘기기 줄 + 여백)이 있다.
+    const box = show(true, { table: { top: 300, bottom: 1400 }, page: 1460 })
+    expect(box.style.maxHeight).toBe('540px')
   })
 
   it('아래에 있는 것이 줄면 표가 그만큼 커진다 — 남는 공간을 안 버린다', () => {
     // 쪽 넘기기 줄이 없는 사업부: 표 아래에 본문 여백 24px 뿐이다.
-    const box = show(true, { table: { top: 300, bottom: 1400 }, content: 1364 })
+    const box = show(true, { table: { top: 300, bottom: 1400 }, page: 1424 })
     // **어림잡은 꼬리라면 여기서도 같은 값이 나온다** — 그것이 아래를 비워 둔 원인이었다.
     expect(box.style.maxHeight).toBe('576px')
   })
 
+  it('줄이 아직 안 왔어도 맞는 높이가 나온다 — 빈 표에 갇히지 않는다', () => {
+    /**
+     * 목록은 **비어서 그려지고** 줄은 나중에 온다. 스크롤 높이로 재면 그때의 본문이
+     * 화면보다 짧아서 표 몫이 0 으로 나오고, 바닥값 240px 에 갇힌 채 다시 잴 일이
+     * 없었다 — 쪽 넘기기 단추 아래가 통째로 비었다(2026-09-30).
+     */
+    const box = show(true, { table: { top: 300, bottom: 300 }, page: 360 })
+    expect(box.style.maxHeight).toBe('540px')
+  })
+
   it('위가 자란 만큼 표가 줄어든다 — 바닥은 언제나 화면 안이다', () => {
     // 칩 한 줄이 늘어 표가 60px 내려갔다.
-    const box = show(true, { table: { top: 360, bottom: 1400 }, content: 1500 })
-    expect(box.style.maxHeight).toBe('380px')
+    const box = show(true, { table: { top: 360, bottom: 1400 }, page: 1460 })
+    expect(box.style.maxHeight).toBe('480px')
   })
 
   it('창이 좁아도 바닥값 아래로는 안 줄인다', () => {
     const box = show(true, {
       frame: { top: 60, bottom: 400 },
       table: { top: 340, bottom: 900 },
-      content: 1000,
+      page: 960,
     })
     // 남는 것이 몇 픽셀뿐이라도 그만큼만 주면 표가 아니라 창이 된다.
     expect(box.style.maxHeight).toBe('240px')
   })
 
   it('머리글이 위에 붙는다 — 스무 번째 열이 무슨 열인지 알아야 한다', () => {
-    const box = show(true, { table: { top: 300, bottom: 1400 }, content: 1500 })
+    const box = show(true, { table: { top: 300, bottom: 1400 }, page: 1460 })
     expect(box.className).toContain('[&>table>thead]:sticky')
     expect(box.className).toContain('overflow-y-auto')
   })

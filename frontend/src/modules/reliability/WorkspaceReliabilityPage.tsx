@@ -64,6 +64,13 @@ import {
   useAttributeColumns,
 } from '@/modules/attributes/AttributeColumns'
 import { CandidateBadge, isCandidate } from '@/modules/reliability/CandidateReview'
+import {
+  NameHead,
+  PurposeHead,
+  RowFilterChips,
+  TestItemHead,
+  useRowFilters,
+} from '@/modules/reliability/ColumnFilters'
 import { CapabilityDialog } from '@/modules/reliability/CapabilityDialog'
 import { ReliabilityTestDialog } from '@/modules/reliability/ReliabilityTestDialog'
 import {
@@ -105,13 +112,15 @@ export default function DivisionReliabilityPage() {
     },
     [setParams],
   )
+  /** 속성 아닌 열의 조건 — 이름 · 목적 · 시험 항목 · 보유 장비. 주소에 함께 실린다. */
+  const rowFilters = useRowFilters()
   /** 열로 세울 속성 — 고른 것은 브라우저에 남는다. */
   const columns = useAttributeColumns('reliability_test')
   const tests = useResource(
-    () => reliabilityApi.list(code, PAGE, page * PAGE, attrs),
-    [code, page, attrs],
+    () => reliabilityApi.list(code, PAGE, page * PAGE, attrs, rowFilters.value),
+    [code, page, attrs, rowFilters.value],
   )
-  useEffect(() => setPage(0), [code, attrs])
+  useEffect(() => setPage(0), [code, attrs, rowFilters.value])
   const [editing, setEditing] = useState<ReliabilityTest | null>(null)
   const [creating, setCreating] = useState(false)
   const [removing, setRemoving] = useState<ReliabilityTest | null>(null)
@@ -145,13 +154,18 @@ export default function DivisionReliabilityPage() {
     for (let at = 0; at < total; at += MAX_PAGE) {
       // **거른 조건을 그대로 들고 간다** — 안 그러면 「이 조건의 전체 20건」 이라고 적어
       // 놓고 사업부의 1784건을 전부 확인한다.
-      const got = await reliabilityApi.list(code, MAX_PAGE, at, attrs)
+      const got = await reliabilityApi.list(code, MAX_PAGE, at, attrs, rowFilters.value)
       out.push(...got.items.map((one) => one.id))
       if (got.items.length === 0) break
     }
     return out
   }
   // 서버가 후보를 앞으로 보내 준다 — 여기서는 세기만 한다.
+  /**
+   * 필터가 걸렸나. **0건이어도 표는 남긴다** — 표가 사라지면 머리글의 필터도 함께
+   * 사라져서, 어느 열에 무엇이 걸렸는지 볼 수도 풀 수도 없다.
+   */
+  const filtered = attrs.length > 0 || rowFilters.count > 0
   const pending = rows.filter(isCandidate).length
   const pages = Math.max(1, Math.ceil(total / PAGE))
   // **표시일 뿐 권한이 아니다.** 서버가 줄마다 `can_edit` 을, 사업부마다 `can_register` 를
@@ -193,7 +207,7 @@ export default function DivisionReliabilityPage() {
       <div className="flex flex-wrap items-center gap-3">
         {tests.data && (
           <p className="text-muted-foreground text-sm">
-            신뢰성 시험 {total}종{attrs.length > 0 && ' · 조건으로 좁힌 결과'}
+            신뢰성 시험 {total}종{filtered && ' · 필터 적용됨'}
             {pending > 0 && (
               // **숫자를 눈에 띄게 둔다.** 「확인 전 3건」 이 안 보이면 아무도 안 연다.
               <span className="text-destructive ml-2 font-medium">
@@ -207,7 +221,10 @@ export default function DivisionReliabilityPage() {
 
       {/* 열 머리글에서 걸든 여기서 풀든 **같은 목록**이다 — 두 곳에 나눠 그리면 한쪽에서
           건 조건이 다른 쪽에서 안 보이고, 그러면 왜 스무 건만 뜨는지 못 찾는다. */}
-      <ActiveFilterChips definitions={columns.all} value={attrs} onChange={setAttrs} />
+      <div className="flex flex-wrap items-center gap-2">
+        <ActiveFilterChips definitions={columns.all} value={attrs} onChange={setAttrs} />
+        <RowFilterChips rows={rowFilters} />
+      </div>
       {attrs.length > 0 && total === 0 && (
         <FilterDiagnosis target="reliability_test" attrs={attrs} />
       )}
@@ -238,7 +255,7 @@ export default function DivisionReliabilityPage() {
                 disabled={bulk.busy}
                 onChange={(event) => setWholeSet(event.target.checked)}
               />
-              이 조건의 전체 {total}건에 적용
+              필터 결과 전체 {total}건 적용
             </label>
           )}
           <Button size="sm" disabled={bulk.busy} onClick={() => runBulk('confirm')}>
@@ -291,14 +308,7 @@ export default function DivisionReliabilityPage() {
         </BulkBar>
       )}
 
-      {tests.data && rows.length === 0 && attrs.length > 0 ? (
-        // **조건 때문에 빈 것**과 아무것도 없는 것은 해야 할 일이 다르다 — 위의 진단이
-        // 조건마다 왜 0건인지 적고, 여기서는 조건을 풀라고만 말한다.
-        <EmptyState
-          title="조건에 맞는 신뢰성 시험이 없습니다"
-          hint="위의 조건을 하나씩 빼 보십시오. 이 부서에 등록된 시험이 없어진 것은 아닙니다."
-        />
-      ) : tests.data && rows.length === 0 ? (
+      {tests.data && rows.length === 0 && !filtered ? (
         <EmptyState
           title="등록된 신뢰성 시험이 없습니다"
           hint={
@@ -326,10 +336,14 @@ export default function DivisionReliabilityPage() {
                   />
                 </TableHead>
               )}
-              <TableHead>신뢰성 시험</TableHead>
-              <TableHead className="hidden w-full min-w-96 lg:table-cell">목적</TableHead>
+              <TableHead className="min-w-44">
+                <NameHead rows={rowFilters} />
+              </TableHead>
+              <TableHead className="hidden w-full min-w-96 lg:table-cell">
+                <PurposeHead rows={rowFilters} />
+              </TableHead>
               <TableHead className="hidden min-w-48 md:table-cell">
-                적용 시험 항목 · 보유 장비
+                <TestItemHead rows={rowFilters} />
               </TableHead>
               <AttributeHeadCells columns={columns.shown} value={attrs} onChange={setAttrs} />
               <TableHead className="w-32" />
@@ -337,6 +351,17 @@ export default function DivisionReliabilityPage() {
             </TableRow>
           </TableHeader>
           <TableBody>
+            {rows.length === 0 && (
+              // **표는 남기고 줄 자리에 적는다.** 표가 통째로 사라지면 머리글의 필터도
+              // 사라져서, 어느 열에 무엇이 걸렸는지 볼 수도 풀 수도 없다 — 사람에게는
+              // 「눌렀더니 다 없어졌다」 로 보인다.
+              <TableRow>
+                <TableCell colSpan={99} className="text-muted-foreground py-10 text-center">
+                  필터 조건에 해당하는 신뢰성 시험이 없습니다. 위의 조건을 하나씩 해제해
+                  보십시오 — 등록된 시험이 사라진 것은 아닙니다.
+                </TableCell>
+              </TableRow>
+            )}
             {rows.map((row) => (
               <TableRow
                 key={row.id}

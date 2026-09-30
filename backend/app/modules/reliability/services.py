@@ -8,11 +8,12 @@
 from __future__ import annotations
 
 import uuid
+from dataclasses import dataclass
 from datetime import UTC, datetime
 from typing import Any
 
-from sqlalchemy import Select, func, select, true
-from sqlalchemy.orm import Session
+from sqlalchemy import Select, func, or_, select, true, tuple_
+from sqlalchemy.orm import Session, aliased
 
 from app.modules.accounts.models import User
 from app.modules.attachments import services as attachments
@@ -235,6 +236,7 @@ def list_for_division(
     limit: int = MAX_LIMIT,
     offset: int = 0,
     query: str | None = None,
+    rows: RowFilters | None = None,
 ) -> Page[ReliabilityTestOut]:
     """그 사업부의 시험 — **후보까지 보인다.** 후보를 검토하는 자리가 여기다.
 
@@ -259,7 +261,9 @@ def list_for_division(
         ),
         query,
     )
-    return _page(db, user, _by_attributes(db, narrowed, attrs), limit, offset)
+    return _page(
+        db, user, _by_rows(db, user, _by_attributes(db, narrowed, attrs), rows), limit, offset
+    )
 
 
 def _page(
@@ -299,6 +303,146 @@ def _by_text(
         return stmt
     like = f"%{said}%"
     return stmt.where(ReliabilityTest.name.ilike(like) | ReliabilityTest.purpose.ilike(like))
+
+
+@dataclass(frozen=True)
+class RowFilters:
+    """표의 **속성 아닌 열**로 거르기 — 이름 · 목적 · 시험 항목 · 보유 장비.
+
+    속성에는 `attr` 문법이 있는데 이 넷에는 없었다. 그래서 1784건에서 「목적을 안 적은 줄」
+    을 찾으려면 서른여섯 쪽을 눈으로 훑어야 했다 — **화면이 열로 보여 주는 것은 열로 거를
+    수 있어야 한다.**
+
+    `none` 은 「안 적힌 것」 이다(목적 · 시험 항목 · 보유 장비). 채워야 할 자리를 찾는
+    물음이라 실제로 가장 자주 쓰인다 — 속성의 `!*` 와 같은 쓸모다.
+    """
+
+    name: str | None = None
+    purpose: str | None = None
+    test_item: str | None = None
+    equipment: str | None = None
+
+
+#: 「안 적힘」 을 묻는 말. 목록 API 가 이미 `test_item=none` · `models=none` 으로 쓰고 있다 —
+#: 한 시스템 안에서 같은 물음은 같은 말이라야 한다.
+NONE = "none"
+
+
+def _by_rows(
+    db: Session,
+    user: User,
+    stmt: Select[tuple[ReliabilityTest]],
+    rows: RowFilters | None,
+) -> Select[tuple[ReliabilityTest]]:
+    """속성 아닌 열의 조건을 한 번에 — 여러 개면 **모두** 만족해야 한다(속성과 같다)."""
+    if rows is None:
+        return stmt
+    return _by_equipment(
+        db,
+        user,
+        _by_item(_by_purpose(_by_name(stmt, rows.name), rows.purpose), rows.test_item),
+        rows.equipment,
+    )
+
+
+def _by_name(
+    stmt: Select[tuple[ReliabilityTest]], said: str | None
+) -> Select[tuple[ReliabilityTest]]:
+    """이름에 든 글자. `q` 와 달리 **이름만** 본다 — 「목적에 걸린 것까지 왜 나오나」 를
+    묻게 하지 않는다."""
+    want = (said or "").strip()
+    return stmt if not want else stmt.where(ReliabilityTest.name.ilike(f"%{want}%"))
+
+
+def _by_purpose(
+    stmt: Select[tuple[ReliabilityTest]], said: str | None
+) -> Select[tuple[ReliabilityTest]]:
+    """목적에 든 글자, 또는 `none` 으로 **목적이 빈 줄.**
+
+    빈 글자와 NULL 을 함께 본다 — 칸은 NOT NULL 이라 안 적으면 빈 글자로 들어오는데,
+    한쪽만 보면 같은 「안 적음」 이 둘로 갈려 수가 안 맞는다.
+    """
+    want = (said or "").strip()
+    if not want:
+        return stmt
+    if want == NONE:
+        return stmt.where(
+            or_(
+                ReliabilityTest.purpose.is_(None),
+                func.trim(ReliabilityTest.purpose) == "",
+            )
+        )
+    return stmt.where(ReliabilityTest.purpose.ilike(f"%{want}%"))
+
+
+def _by_item(
+    stmt: Select[tuple[ReliabilityTest]], said: str | None
+) -> Select[tuple[ReliabilityTest]]:
+    """시험 항목 이름에 든 글자, 또는 `none` 으로 **하나도 안 정한 줄.**
+
+    「안 정함」 은 「장비 없음」 과 다르다 — 앞은 시험 항목을 아직 안 이은 것이고, 뒤는
+    이었는데 그 항목이 되는 장비가 그 사업부에 없는 것이다. 해야 할 일이 다르다.
+    """
+    want = (said or "").strip()
+    if not want:
+        return stmt
+    mine = select(ReliabilityTestItem.id).where(
+        ReliabilityTestItem.reliability_test_id == ReliabilityTest.id
+    )
+    if want == NONE:
+        return stmt.where(~mine.exists())
+    named = mine.join(
+        VocabularyTerm, VocabularyTerm.id == ReliabilityTestItem.test_item_term_id
+    ).where(VocabularyTerm.value.ilike(f"%{want}%"))
+    return stmt.where(named.exists())
+
+
+def _by_equipment(
+    db: Session,
+    user: User,
+    stmt: Select[tuple[ReliabilityTest]],
+    said: str | None,
+) -> Select[tuple[ReliabilityTest]]:
+    """`none` — **그 사업부에 돌릴 장비가 한 대도 없는 시험.**
+
+    목록이 줄마다 「0대」 를 노랗게 적고 있는데 그것으로 좁힐 길이 없었다. 1784건에서 0대인
+    줄을 찾으려면 서른여섯 쪽을 눈으로 훑어야 했다 — 그러면 아무도 안 찾는다.
+
+    **(사업부, 시험 항목) 짝으로 본다.** 같은 항목이라도 저 사업부에는 장비가 있고 이
+    사업부에는 없다 — 항목만 보면 「어딘가에는 있다」 를 「우리가 할 수 있다」 로 읽는다.
+    짝은 파이썬에서 모은다: 부서의 사업부는 조직도를 거슬러 정해지므로(`division_map`)
+    SQL 안에 그 규칙이 없다.
+    """
+    if (said or "").strip() != NONE:
+        return stmt
+    by_workspace = division_map(db)
+    pairs = db.execute(
+        select(Equipment.owner_workspace_id, EquipmentTestItem.test_item_term_id)
+        .join(EquipmentTestItem, EquipmentTestItem.equipment_id == Equipment.id)
+        .where(Equipment.id.in_(visible_equipment_ids(db, user)))
+        .distinct()
+    ).all()
+    covered = {
+        (by_workspace[workspace_id], term_id)
+        for workspace_id, term_id in pairs
+        if by_workspace.get(workspace_id) is not None
+    }
+    if not covered:
+        # 볼 수 있는 장비가 하나도 없으면 **전부**가 「돌릴 장비 없음」 이다.
+        return stmt
+    # 바깥 쿼리의 `ReliabilityTest` 와 **다른 이름**으로 든다 — 같은 이름이면 상관 하위
+    # 쿼리가 되어 「자기 자신인 줄」 만 보고, 조건이 통째로 무너진다.
+    inner = aliased(ReliabilityTest)
+    able = (
+        select(ReliabilityTestItem.reliability_test_id)
+        .join(inner, inner.id == ReliabilityTestItem.reliability_test_id)
+        .where(
+            tuple_(inner.division_term_id, ReliabilityTestItem.test_item_term_id).in_(
+                sorted(covered)
+            )
+        )
+    )
+    return stmt.where(~ReliabilityTest.id.in_(able))
 
 
 def _by_document(
@@ -366,6 +510,7 @@ def list_all(
     limit: int = MAX_LIMIT,
     offset: int = 0,
     query: str | None = None,
+    rows: RowFilters | None = None,
 ) -> Page[ReliabilityTestOut]:
     """전사의 신뢰성 시험 — **「저 부서는 무슨 시험을 하나」 를 부서를 가로질러 묻는 표.**
     읽기는 누구나(부서를 가로지르는 것이 이 시스템의 물음), 고치기는 각 부서 화면에서.
@@ -387,7 +532,9 @@ def list_all(
         ),
         query,
     )
-    return _page(db, user, _by_attributes(db, narrowed, attrs), limit, offset)
+    return _page(
+        db, user, _by_rows(db, user, _by_attributes(db, narrowed, attrs), rows), limit, offset
+    )
 
 
 def get(db: Session, test_id: uuid.UUID) -> ReliabilityTest:

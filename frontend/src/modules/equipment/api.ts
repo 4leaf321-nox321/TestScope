@@ -15,6 +15,8 @@ export type EquipmentTestItem = components['schemas']['EquipmentTestItemOut']
 export type EquipmentTestCondition = components['schemas']['LimitOut']
 type EquipmentPage = components['schemas']['Page_EquipmentOut_']
 
+export type ModelProposal = components['schemas']['EquipmentModelProposalOut']
+export type ModelProposalGroup = components['schemas']['EquipmentModelProposalGroupOut']
 export type EquipmentSeries = components['schemas']['EquipmentSeriesOut']
 export type SeriesRelation = components['schemas']['SeriesRelationOut']
 export type EquipmentModel = components['schemas']['EquipmentModelOut']
@@ -141,6 +143,31 @@ export const equipmentApi = {
   calibrations: (id: string) => api.get<Calibration[]>(`/equipment/${id}/calibrations`),
   addCalibration: (id: string, body: Record<string, unknown>) =>
     api.post<Calibration>(`/equipment/${id}/calibrations`, body),
+
+  /** 이 장비가 낸 **카탈로그 기종 등록 요청** — 왜 기종이 비었는지가 그 화면에 보인다. */
+  modelProposals: (id: string) => api.get<ModelProposal[]>(`/equipment/${id}/model-proposals`),
+  /** **카탈로그에 이 기종을 올려 달라**고 남긴다.
+   *
+   *  카탈로그에 기종을 세우는 것이 아니다 — 세우는 것은 시스템 관리자다(기종을 고르면 그
+   *  계열의 시험 항목이 복사되고 조건 판정이 그 사양을 쓴다). 여기서는 「이런 기종을 못
+   *  찾았다」 를 적어 둘 뿐이고, 그래야 비워 둔 이유가 남는다. */
+  proposeModel: (
+    id: string,
+    body: { model_text: string; maker_text?: string | null; note?: string | null },
+  ) => api.post<ModelProposal>(`/equipment/${id}/model-proposals`, body),
+}
+
+/** 카탈로그에 없다고 올라온 기종들 — 검토하고 정하는 자리(시스템 관리자). */
+export const modelProposalApi = {
+  groups: () => api.get<ModelProposalGroup[]>('/equipment-models/proposals'),
+  /** `model_id` 면 이미 있는 기종에 잇고, `series_id`+`name` 이면 세운 뒤 잇는다.
+   *  둘 다 없으면 아니라고 한 것이다. **정한 기종이 요청한 장비들에 한꺼번에 걸린다.** */
+  decide: (body: {
+    normalized: string
+    model_id?: string | null
+    series_id?: string | null
+    name?: string | null
+  }) => api.post<Record<string, unknown>>('/equipment-models/proposals/decide', body),
 }
 
 /**

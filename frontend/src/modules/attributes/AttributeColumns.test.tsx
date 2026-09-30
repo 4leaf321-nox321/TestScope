@@ -143,16 +143,31 @@ suite('속성 열', () => {
     expect(screen.getAllByText('—').length).toBe(2)
   })
 
+  it('필터의 방향과 값 건수를 적는다 — 안 줄어드는 이유를 그 자리에서 안다', async () => {
+    /**
+     * 「값 없음」 을 걸었는데 목록이 그대로면 사람은 **고장으로 읽는다.** 실제로는 그
+     * 속성에 값을 적은 항목이 한 건도 없어서 전부가 조건에 맞은 것이다(2026-09-30 실측:
+     * 「유형」 에 값이 0건이라 전부가 「값 없음」 이었다).
+     */
+    await show()
+    await act(async () => {
+      fireEvent.click(screen.getByLabelText('상대 습도 필터'))
+    })
+    expect(screen.getByText(/조건에 맞는 항목만 표시됩니다/)).toBeTruthy()
+    // 값이 0건이면 「값 없음」 이 전부와 맞는다 — 그 수가 보여야 납득이 된다.
+    expect(screen.getByText(/전사 기준 0건/)).toBeTruthy()
+  })
+
   it('「값 없음」 은 `!*` 다 — `!=` 로는 못 묻는다', async () => {
     await show()
     await act(async () => {
-      fireEvent.click(screen.getByLabelText('상대 습도 거르기'))
+      fireEvent.click(screen.getByLabelText('상대 습도 필터'))
     })
     await act(async () => {
-      fireEvent.change(screen.getByLabelText('상대 습도 연산'), { target: { value: '!*' } })
+      fireEvent.change(screen.getByLabelText('상대 습도 연산자'), { target: { value: '!*' } })
     })
     await act(async () => {
-      fireEvent.click(screen.getByText('거르기'))
+      fireEvent.click(screen.getByText('필터 적용'))
     })
     // **`!=` 가 아니다.** `!=` 는 *적혀 있는데* 그 값이 아닌 것이고, 안 적힌 줄은 어떤
     // 비교에도 안 걸린다 — 그래서 이 물음에는 제 연산이 필요하다.
@@ -162,17 +177,17 @@ suite('속성 열', () => {
   it('값이 있는 조건은 그 열의 키로 만들어진다', async () => {
     await show()
     await act(async () => {
-      fireEvent.click(screen.getByLabelText('시험 온도 거르기'))
+      fireEvent.click(screen.getByLabelText('시험 온도 필터'))
     })
     await act(async () => {
-      fireEvent.change(screen.getByLabelText('시험 온도 연산'), { target: { value: '>=' } })
+      fireEvent.change(screen.getByLabelText('시험 온도 연산자'), { target: { value: '>=' } })
     })
     const box = screen.getByPlaceholderText('degC')
     await act(async () => {
       fireEvent.change(box, { target: { value: '100' } })
     })
     await act(async () => {
-      fireEvent.click(screen.getByText('거르기'))
+      fireEvent.click(screen.getByText('필터 적용'))
     })
     expect(asked).toEqual(['temp_x>=100'])
   })
@@ -180,10 +195,10 @@ suite('속성 열', () => {
   it('빈 값으로는 안 걸린다 — 누른 사람이 400 을 받지 않는다', async () => {
     await show()
     await act(async () => {
-      fireEvent.click(screen.getByLabelText('비고 거르기'))
+      fireEvent.click(screen.getByLabelText('비고 필터'))
     })
     await act(async () => {
-      fireEvent.click(screen.getByText('거르기'))
+      fireEvent.click(screen.getByText('필터 적용'))
     })
     expect(asked).toEqual([])
   })

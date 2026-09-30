@@ -99,7 +99,7 @@ describe('대량 처리', () => {
       screen.getByLabelText('보이는 줄 전부 고르기').click()
     })
     await act(async () => {
-      screen.getByLabelText('이 조건의 전체 1784건에 적용').click()
+      screen.getByLabelText('필터 결과 전체 1784건 적용').click()
     })
     await act(async () => {
       screen.getByText('확인').click()

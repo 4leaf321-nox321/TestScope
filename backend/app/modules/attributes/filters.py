@@ -20,7 +20,9 @@
 
 이름은 관리자가 고치면 바뀌고, 그때 저장해 둔 링크가 조용히 빈 결과를 낸다.
 
-`*` 와 `!*` 는 **종류를 안 가린다** — 「적혀 있나」 는 수치든 글자든 같은 물음이다.
+`*` 와 `!*` 는 **종류를 안 가린다** — 「적혀 있나」 는 수치든 글자든 같은 물음이다. 그리고
+**줄이 아니라 값을 본다**: 비고만 적은 줄은 칸이 비어 있으므로 「값 없음」 이다(화면도 그
+칸을 「—」 로 그린다).
 
 **`!*` 는 「안 적힌 것」 이다.** 채워야 할 칸을 찾는 물음이라 실제로 자주 쓰인다 — 「조건을
 안 적은 시험」 이 곧 장비 판정에서 빠지는 줄이다. `!=` 와 다르다: `!=` 는 *적혀 있는데* 그
@@ -203,6 +205,31 @@ def _numeric_match(one: AttributeFilter, bottom: float | None, top: float | None
     )
 
 
+def _written() -> Any:
+    """그 줄에 **값이 적혔나.**
+
+    줄이 있는 것과 값이 있는 것은 다르다. 비고만 적어 보낼 수 있고(`note` 단독 전송 —
+    0032에서 일부러 열어 뒀다), 출처 글만 남긴 줄도 있다. 그런 줄은 **칸이 비어 있고 화면도
+    「—」 로 그린다** — 그런데 줄의 유무로 판정하면 「값 없음」 이 그 줄을 「값 있음」 으로
+    센다. 사람이 빈 칸을 보면서 「값 없음」 을 걸었는데 그 줄이 안 나오는 것이다.
+    """
+    return or_(
+        AttributeValue.num_value.is_not(None),
+        AttributeValue.num_min.is_not(None),
+        AttributeValue.num_max.is_not(None),
+        func.coalesce(AttributeValue.text_value, "") != "",
+        AttributeValue.bool_value.is_not(None),
+        AttributeValue.date_value.is_not(None),
+        # **JSONB 는 두 가지 「없음」 이 있다** — SQL NULL 과 JSON `null`. 값을 안 적은
+        # 줄에도 JSON `null` 이 들어가 있어서, `IS NOT NULL` 로 보면 **모든 줄이 「값
+        # 있음」** 이 된다(2026-09-30 실측). 그러면 「값 없음」 은 늘 0건이다.
+        func.coalesce(func.jsonb_typeof(AttributeValue.json_value), "null") != "null",
+        AttributeValue.term_id.is_not(None),
+        AttributeValue.ref_method_id.is_not(None),
+        AttributeValue.ref_document_id.is_not(None),
+    )
+
+
 def _set_where(one: AttributeFilter) -> list[Any]:
     """묶음을 지정했으면 그 묶음의 줄만, 그리고 **지금 값만.**
 
@@ -333,6 +360,7 @@ def apply[T: tuple[Any, ...]](
             where = [
                 AttributeValue.definition_id == one.definition.id,
                 column == id_column,
+                _written(),
                 *_set_where(one),
             ]
             exists = select(AttributeValue.id).where(and_(*where)).exists()
@@ -459,6 +487,7 @@ def diagnose(
                     .where(
                         AttributeValue.definition_id == one.definition.id,
                         scope,
+                        _written(),
                         *_set_where(one),
                     )
                 )

@@ -90,6 +90,13 @@ export function EquipmentDialog({
   const [category, setCategory] = useState('')
   const [makerText, setMakerText] = useState('')
   const [modelText, setModelText] = useState('')
+  /**
+   * **카탈로그에 올려 달라고 남길까.** 기종을 못 고른 채로 저장하면 지금까지는 왜 비었는지가
+   * 아무 데도 안 남았다 — 제조사·모델명 글자는 표시용이라 아무도 그것을 일감으로 안 셌다.
+   * 여기서 켜 두면 관리자의 검토 목록에 서고, 세워지면 이 장비가 자동으로 이어진다.
+   */
+  const [askCatalog, setAskCatalog] = useState(false)
+  const [askNote, setAskNote] = useState('')
 
   // 소속이 여럿이면 어느 부서 것인지 사람이 정해야 한다. 하나면 그것으로 채운다.
   const managed = (user?.memberships ?? []).filter(
@@ -187,12 +194,21 @@ export function EquipmentDialog({
         note: note || null,
         attributes: toPayload(attributes),
       }
+      let saved = editing
       if (editing) {
         // **자산번호는 안 보낸다** — 서버가 안 받는다. 이 장비를 가리키는 이름이라,
         // 바꾸면 밖에 나간 문서·라벨과 어긋난다.
-        await equipmentApi.update(editing.id, body)
+        saved = await equipmentApi.update(editing.id, body)
       } else {
-        await equipmentApi.create({ ...body, asset_no: assetNo })
+        saved = await equipmentApi.create({ ...body, asset_no: assetNo })
+      }
+      // **장비를 만든 다음에 낸다** — 요청은 그 장비에 붙는 것이라 id 가 있어야 한다.
+      if (!linked && askCatalog && modelText.trim() && saved) {
+        await equipmentApi.proposeModel(saved.id, {
+          model_text: modelText.trim(),
+          maker_text: makerText.trim() || null,
+          note: askNote.trim() || null,
+        })
       }
       onSaved()
     } catch (caught) {
@@ -330,6 +346,41 @@ export function EquipmentDialog({
                   이 둘은 <strong>표시용입니다</strong> — 온톨로지와 이어져 있지 않아 검색이
                   보지 않습니다. 나중에 기종에 연결하면 지워집니다.
                 </p>
+
+                {/**
+                 * **못 고르는 쪽에 말할 자리.** 카탈로그 정본은 시스템 관리자만 세운다
+                 * (기종을 고르면 그 계열의 시험 항목이 복사되고 조건 판정이 그 사양을 쓴다).
+                 * 그래서 여기서 기종을 만들지는 않고, 「없더라」 를 남긴다 — 그래야 비워 둔
+                 * 이유가 남고, 관리자가 세우면 이 장비가 자동으로 이어진다.
+                 */}
+                <div className="space-y-2 rounded-md border border-dashed p-3">
+                  <label className="flex items-start gap-2 text-sm">
+                    <input
+                      type="checkbox"
+                      className="mt-1 size-3.5"
+                      checked={askCatalog}
+                      disabled={!modelText.trim()}
+                      onChange={(event) => setAskCatalog(event.target.checked)}
+                    />
+                    <span>
+                      카탈로그 기종 등록 요청
+                      <span className="text-muted-foreground block text-xs">
+                        시스템 관리자의 검토 목록에 섭니다. 세워지면{' '}
+                        <strong>이 장비가 자동으로 이어집니다</strong> — 다시 열어 고를 필요가
+                        없습니다. 모델명을 적어야 켤 수 있습니다.
+                      </span>
+                    </span>
+                  </label>
+                  {askCatalog && (
+                    <Input
+                      value={askNote}
+                      onChange={(event) => setAskNote(event.target.value)}
+                      aria-label="기종 등록 요청 사유"
+                      placeholder="카탈로그에서 못 찾은 사정 — 「6800 시리즈는 있는데 이 모델만 없음」"
+                      maxLength={2000}
+                    />
+                  )}
+                </div>
               </div>
             )}
           </section>

@@ -8,10 +8,12 @@
  * 2. 조건은 **주소에 실린다** — 좁혀 놓은 화면을 링크로 건넬 수 있어야 한다.
  * 3. 「이 조건의 전체 N건에 적용」 이 **그 조건의 N건**이다. 조건을 안 들고 가면 스무
  *    건이라고 적어 놓고 사업부의 1784건을 전부 확인한다.
+ * 4. **속성 아닌 열도 걸린다** — 이름 · 목적 · 시험 항목 · 보유 장비. 화면이 열로 보여
+ *    주는 것은 열로 거를 수 있어야 한다.
  */
 
 import { afterEach, describe, expect, it, vi } from 'vitest'
-import { act, render, screen } from '@testing-library/react'
+import { act, fireEvent, render, screen } from '@testing-library/react'
 import { MemoryRouter } from 'react-router-dom'
 
 const get = vi.fn()
@@ -79,7 +81,10 @@ async function show(search: string) {
     const limit = Number(found.get('limit') ?? 50)
     const offset = Number(found.get('offset') ?? 0)
     // **서버가 좁혀서 준다** — 조건이 걸리면 전체도 그 수다.
-    const total = found.getAll('attr').length > 0 ? MATCHED : 1784
+    const narrowed =
+      found.getAll('attr').length > 0 ||
+      ['name', 'purpose', 'test_item', 'equipment'].some((key) => found.get(key))
+    const total = narrowed ? MATCHED : 1784
     const items = Array.from(
       { length: Math.max(0, Math.min(limit, total - offset)) },
       (_, at) => row(offset + at),
@@ -103,7 +108,7 @@ describe('사업부 화면의 속성 조건', () => {
     // 「값이 없는 것」 은 **서버만** 셀 수 있다: 줄 자체가 없는 것이라 받은 줄을 아무리
     // 뒤져도 안 나온다.
     expect(listed().some((path) => path.includes('attr=hum_x!*'))).toBe(true)
-    expect(screen.getByText(/조건으로 좁힌 결과/)).toBeTruthy()
+    expect(screen.getByText(/필터 적용됨/)).toBeTruthy()
   })
 
   it('「전체에 적용」 이 그 조건의 전체다 — 사업부 전부가 아니다', async () => {
@@ -112,7 +117,7 @@ describe('사업부 화면의 속성 조건', () => {
       screen.getByLabelText('보이는 줄 전부 고르기').click()
     })
     await act(async () => {
-      screen.getByLabelText(`이 조건의 전체 ${MATCHED}건에 적용`).click()
+      screen.getByLabelText(`필터 결과 전체 ${MATCHED}건 적용`).click()
     })
     await act(async () => {
       screen.getByText('확인').click()
@@ -132,7 +137,60 @@ describe('사업부 화면의 속성 조건', () => {
     expect(many).toBe(MATCHED)
   })
 
-  it('조건 때문에 빈 것과 아무것도 없는 것을 가른다', async () => {
+  it('머리글의 깔때기가 열마다 조건을 만든다', async () => {
+    await show('')
+    // 「목적을 안 적은 줄」 — AI 가 올린 줄은 목적이 비어 있는 경우가 많다.
+    await act(async () => {
+      fireEvent.click(screen.getByLabelText('목적 필터'))
+    })
+    await act(async () => {
+      fireEvent.click(screen.getByLabelText(/목적 미입력/))
+    })
+    expect(listed().some((path) => path.includes('purpose=none'))).toBe(true)
+
+    // 「돌릴 장비 없음」 은 「미지정」 과 **다른 물음**이다 — 앞은 항목을 이었는데 그
+    // 항목이 되는 장비가 없는 것이고, 뒤는 항목을 아직 안 이은 것이다.
+    await act(async () => {
+      fireEvent.click(screen.getByLabelText('적용 시험 항목 · 보유 장비 필터'))
+    })
+    await act(async () => {
+      fireEvent.click(screen.getByLabelText(/보유 장비 없음/))
+    })
+    const last = listed().at(-1) ?? ''
+    expect(last).toContain('equipment=none')
+    // 앞서 건 조건도 함께 간다 — 여럿이면 모두 만족해야 한다.
+    expect(last).toContain('purpose=none')
+  })
+
+  it('걸린 조건은 칩으로 서고, 칩에서 풀린다', async () => {
+    await show('?purpose=none&equipment=none')
+    expect(screen.getByText('목적 미입력')).toBeTruthy()
+    expect(screen.getByText('보유 장비 없음')).toBeTruthy()
+    await act(async () => {
+      fireEvent.click(screen.getByLabelText('목적 미입력 필터 해제'))
+    })
+    const last = listed().at(-1) ?? ''
+    expect(last).not.toContain('purpose=none')
+    expect(last).toContain('equipment=none')
+  })
+
+  it('열 조건도 대량 처리가 들고 간다 — 「전체 N건」 이 그 조건의 N건이다', async () => {
+    await show('?purpose=none')
+    await act(async () => {
+      screen.getByLabelText('보이는 줄 전부 고르기').click()
+    })
+    await act(async () => {
+      screen.getByLabelText(`필터 결과 전체 ${MATCHED}건 적용`).click()
+    })
+    await act(async () => {
+      screen.getByText('확인').click()
+    })
+    const gathered = listed().filter((path) => path.includes('limit=200'))
+    expect(gathered.length).toBeGreaterThan(0)
+    expect(gathered.every((path) => path.includes('purpose=none'))).toBe(true)
+  })
+
+  it('0건이어도 표와 머리글은 남는다 — 필터를 풀 자리가 있어야 한다', async () => {
     get.mockImplementation(async (path: string) => {
       if (path.startsWith('/reliability-tests/divisions')) {
         return [{ code: 'vd', name: 'VD', can_register: true, test_count: 1784 }]
@@ -148,6 +206,8 @@ describe('사업부 화면의 속성 조건', () => {
       )
     })
     // **해야 할 일이 다르다** — 「등록하십시오」 를 읽은 사람은 이미 있는 것을 또 만든다.
-    expect(screen.getByText('조건에 맞는 신뢰성 시험이 없습니다')).toBeTruthy()
+    expect(screen.getByText(/필터 조건에 해당하는 신뢰성 시험이 없습니다/)).toBeTruthy()
+    // **표는 남는다** — 머리글이 사라지면 어느 열에 무엇이 걸렸는지 볼 수도 풀 수도 없다.
+    expect(screen.getByLabelText('목적 필터')).toBeTruthy()
   })
 })

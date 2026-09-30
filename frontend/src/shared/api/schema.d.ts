@@ -1281,6 +1281,37 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/api/equipment/{equipment_id}/model-proposals": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * List Equipment Model Proposals
+         * @description 이 장비가 낸 **카탈로그 기종 등록 요청** — 왜 기종이 비었는지가 그 화면에 보인다.
+         */
+        get: operations["list_equipment_model_proposals_api_equipment__equipment_id__model_proposals_get"];
+        put?: never;
+        /**
+         * Propose Equipment Model
+         * @description **카탈로그에 이 기종을 올려 달라**고 남긴다. 그 장비를 고칠 수 있는 사람이면 된다.
+         *
+         *     카탈로그에 기종을 세우는 것이 **아니다** — 세우는 것은 시스템 관리자다(기종을 고르면
+         *     그 계열의 시험 항목이 복사되고 조건 판정이 그 사양을 쓴다). 여기서는 「이런 기종을 못
+         *     찾았다」 를 적어 둘 뿐이고, 그래야 비워 둔 이유가 남는다.
+         *
+         *     같은 장비가 같은 요청을 두 번 내면 **먼저 것을 돌려준다** — 등록 창을 다시 저장하는
+         *     일이 흔하고, 그때 409 가 오면 사람은 저장이 실패한 것으로 읽는다.
+         */
+        post: operations["propose_equipment_model_api_equipment__equipment_id__model_proposals_post"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/api/equipment/{equipment_id}": {
         parameters: {
             query?: never;
@@ -1654,6 +1685,59 @@ export interface paths {
         get: operations["model_filter_options_api_equipment_models_filter_options_get"];
         put?: never;
         post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/equipment-models/proposals": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * List Model Proposals
+         * @description **카탈로그에 없다고 올라온 기종들** — 같은 것끼리 모아, 건수가 큰 것부터.
+         *
+         *     다섯 부서가 같은 기종을 요청했으면 그것은 카탈로그에 있어야 할 기종이 거의 확실하고,
+         *     한 번 세우면 다섯 대가 함께 이어진다. 한 번 나온 것은 자작 장비일 수 있어 뒤에 온다.
+         *
+         *     `/{model_id}` 보다 **먼저 선언한다** — 뒤에 두면 `proposals` 가 기종 id 로 읽혀서
+         *     「기종을 찾을 수 없습니다」 가 온다.
+         */
+        get: operations["list_model_proposals_api_equipment_models_proposals_get"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/equipment-models/proposals/decide": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /**
+         * Decide Model Proposal
+         * @description 요청 한 묶음을 정한다 — **시스템 관리자만.**
+         *
+         *     `model_id` 면 이미 있는 기종에 잇고, `series_id` + `name` 이면 그 계열에 기종을 세운 뒤
+         *     잇는다. 둘 다 없으면 아니라고 한 것이다(자작 장비처럼 카탈로그에 올릴 것이 아닌 경우).
+         *
+         *     **정한 기종이 요청한 장비들에 한꺼번에 걸린다.** 여기까지 안 하면 관리자는 기종을 세우고
+         *     나서 장비를 하나씩 열어 다시 골라야 한다. 한 대가 막혀도 나머지는 잇고, 막힌 줄은
+         *     `failed` 로 돌려준다.
+         */
+        post: operations["decide_model_proposal_api_equipment_models_proposals_decide_post"];
         delete?: never;
         options?: never;
         head?: never;
@@ -2307,6 +2391,15 @@ export interface paths {
          *
          *     `q` 는 이름·목적에 든 글자다 — **쪽을 나누면 찾기도 서버가 해야 한다.** 화면 안에서
          *     훑으면 지금 쪽의 쉰 줄만 뒤지고, 뒤쪽에 있는 줄은 영영 안 걸린다.
+         *
+         *     **표가 열로 보여 주는 것은 열로 거른다** — `name`(이름) · `purpose`(목적) ·
+         *     `test_item`(시험 항목 이름) · `equipment`. 여럿이면 모두 만족해야 한다(`attr` 과 같다).
+         *     셋은 `none` 으로 **안 적힌 것**을 묻는다: `purpose=none` 은 목적이 빈 줄,
+         *     `test_item=none` 은 시험 항목을 하나도 안 정한 줄, `equipment=none` 은 **그 사업부에
+         *     돌릴 장비가 한 대도 없는 줄**이다(목록이 노란 「0대」 로 적고 있는 바로 그 줄).
+         *
+         *     「안 정함」 과 「장비 없음」 은 다르다 — 앞은 시험 항목을 아직 안 이은 것이고, 뒤는
+         *     이었는데 그 항목이 되는 장비가 없는 것이다. 해야 할 일이 다르다.
          *
          *     **쪽으로 끊어 온다**(`items` · `total` · `limit` · `offset`). 한 사업부에 1784건이
          *     들어온 적이 있고, 통째로 그리면 브라우저가 멎는다 — 줄마다 속성·시험 항목·장비 수가
@@ -4950,6 +5043,88 @@ export interface components {
             created_at: string;
             /** Can Edit */
             can_edit: boolean;
+        };
+        /**
+         * EquipmentModelProposalDecision
+         * @description 정하기 — 이미 있는 기종에 잇거나(`model_id`), 계열에 세우거나(`series_id`+`name`),
+         *     아니라고 하거나(둘 다 비움).
+         */
+        EquipmentModelProposalDecision: {
+            /** Normalized */
+            normalized: string;
+            /** Model Id */
+            model_id?: string | null;
+            /** Series Id */
+            series_id?: string | null;
+            /** Name */
+            name?: string | null;
+        };
+        /**
+         * EquipmentModelProposalGroupOut
+         * @description 같은 기종을 요청한 것끼리 모은 한 줄 — **관리자는 다섯 번이 아니라 한 번 판단한다.**
+         */
+        EquipmentModelProposalGroupOut: {
+            /** Normalized */
+            normalized: string;
+            /** Text */
+            text: string;
+            /** Count */
+            count: number;
+            /** Proposals */
+            proposals: components["schemas"]["EquipmentModelProposalOut"][];
+        };
+        /**
+         * EquipmentModelProposalOut
+         * @description 카탈로그에 그 기종이 없어 남긴 등록 요청 한 줄.
+         */
+        EquipmentModelProposalOut: {
+            /**
+             * Id
+             * Format: uuid
+             */
+            id: string;
+            /** Maker Text */
+            maker_text: string | null;
+            /** Model Text */
+            model_text: string;
+            /** Text */
+            text: string;
+            /** Note */
+            note: string | null;
+            /** Status */
+            status: string;
+            /**
+             * Equipment Id
+             * Format: uuid
+             */
+            equipment_id: string;
+            /** Equipment Asset No */
+            equipment_asset_no: string;
+            /** Equipment Name */
+            equipment_name: string;
+            /** Model Id */
+            model_id: string | null;
+            /** Model Name */
+            model_name: string | null;
+            /** Submitted Via */
+            submitted_via: string | null;
+            /**
+             * Created At
+             * Format: date-time
+             */
+            created_at: string;
+        };
+        /**
+         * EquipmentModelProposalRequest
+         * @description 이 장비의 기종을 카탈로그에 올려 달라고 남긴다.
+         */
+        EquipmentModelProposalRequest: {
+            /** Model Text */
+            model_text: string;
+            /** Maker Text */
+            maker_text?: string | null;
+            /** Note */
+            note?: string | null;
         };
         /**
          * EquipmentModelRow
@@ -11193,6 +11368,72 @@ export interface operations {
             };
         };
     };
+    list_equipment_model_proposals_api_equipment__equipment_id__model_proposals_get: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                equipment_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["EquipmentModelProposalOut"][];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    propose_equipment_model_api_equipment__equipment_id__model_proposals_post: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                equipment_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["EquipmentModelProposalRequest"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            201: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["EquipmentModelProposalOut"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
     read_equipment_api_equipment__equipment_id__get: {
         parameters: {
             query?: never;
@@ -11959,6 +12200,72 @@ export interface operations {
                 };
                 content: {
                     "application/json": components["schemas"]["CatalogFilterOptionsOut"];
+                };
+            };
+        };
+    };
+    list_model_proposals_api_equipment_models_proposals_get: {
+        parameters: {
+            query?: {
+                include_decided?: boolean;
+            };
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["EquipmentModelProposalGroupOut"][];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    decide_model_proposal_api_equipment_models_proposals_decide_post: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["EquipmentModelProposalDecision"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        [key: string]: unknown;
+                    };
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
                 };
             };
         };
@@ -13254,6 +13561,10 @@ export interface operations {
                 document?: string | null;
                 revision?: string | null;
                 q?: string | null;
+                name?: string | null;
+                purpose?: string | null;
+                test_item?: string | null;
+                equipment?: "none" | null;
                 limit?: number;
                 offset?: number;
             };

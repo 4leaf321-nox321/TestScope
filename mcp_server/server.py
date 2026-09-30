@@ -1177,8 +1177,12 @@ async def register_equipment(
     카탈로그에 없는 기종이면 `model_id` 를 **비운 채로 등록하라.** 비슷한 기종을
     골라 넣지 마라 — 그 순간 그 장비의 하중·온도가 남의 것이 된다.
 
-    비워 두면 「카탈로그 미연결」 로 표시되고 홈의 「남은 일」 이 그것을 센다. 원문
-    (`Instron 5982` 같은 것)은 `note` 에 그대로 남겨라 — 나중에 이을 유일한 끈이다.
+    비워 두면 「카탈로그 미연결」 로 표시되고 홈의 「남은 일」 이 그것을 센다. 라벨의 글자는
+    `maker_text` · `model_text` 에 **그대로** 적어라(`Instron` · `5982`).
+
+    그리고 **등록한 뒤에 `propose_equipment_model` 을 불러라.** 그 두 칸은 표시용이라
+    아무도 그것을 일감으로 세지 않는다 — 요청으로 남겨야 관리자의 검토 목록에 서고, 기종이
+    세워지면 이 장비가 **자동으로 이어진다.**
 
     자산번호가 이미 있으면 409 다. **덮어쓰지 않는다** — 같은 번호의 다른 장비일
     수도 있고, 그때 덮으면 있던 이력이 사라진다.
@@ -2244,6 +2248,10 @@ async def list_reliability_tests(
     attr: list[str] | None = None,
     status: str | None = None,
     revision: str | None = None,
+    name: str | None = None,
+    purpose: str | None = None,
+    test_item: str | None = None,
+    equipment: str | None = None,
     limit: int = 50,
     offset: int = 0,
 ) -> dict[str, Any]:
@@ -2251,14 +2259,10 @@ async def list_reliability_tests(
 
     「시험 항목」(장비가 하는 측정 — 인장·경도)과 **다른 층**이다: 신뢰성 시험 하나가 시험
     항목 하나 이상을 써서 돌고, 그 항목이 장비로 이어진다. `division` 에 사업부 코드
-    (`mx`·`vd`… — `list_divisions`)를 주면 그 사업부 것만, 안 주면 전사 전부 — 「저
-    사업부는 무슨 시험을 하나」 를 가로질러 본다.
+    (`mx`·`vd`… — `list_divisions`)를 주면 그 사업부 것만, 안 주면 전사 전부.
 
-    **부서(팀)가 아니라 사업부다.** 같은 시험을 여러 팀이 돌리는데 팀마다 줄을 만들면
-    「저 사업부가 무슨 시험을 하나」 가 답이 안 나온다.
-
-    줄마다 적용 시험 항목과 **그 항목이 되는 그 사업부 장비 수**가 온다(사업부에 속한 부서
-    전부를 합친다). 0 이면 시험은 정했는데 돌릴 장비가 그 사업부에 없다는 뜻이다.
+    **부서(팀)가 아니라 사업부다.** 줄마다 적용 시험 항목과 **그 항목이 되는 그 사업부
+    장비 수**가 온다. 0 이면 시험은 정했는데 돌릴 장비가 그 사업부에 없다는 뜻이다.
 
     `attr` 은 속성 값 조건이다 — 왼쪽은 `list_attribute_definitions` 가 주는 `key` 다
     (`["temp_x>=100"]`). 여러 개면 **모두** 만족해야 한다. `key*` 는 적혀 있기만 하면,
@@ -2269,9 +2273,14 @@ async def list_reliability_tests(
     가린다 — 한 줄이라도 닿으면 걸리므로, 주 조건 70 °C·불량 시 90 °C 인 시험이
     `temp_x>=80` 에 걸린다. 「주 조건이 80 이상」 을 물을 때만 `@` 를 쓴다.
 
-    **쪽으로 끊어 온다** — `count` 는 조건에 맞는 전체 수이고 `shown` 은 이번에 받은
-    줄 수다. 둘이 다르면 나머지가 있다는 뜻이니 `offset` 을 밀어 더 받아라. 한 사업부에
-    1784건이 있을 수 있으므로, **전부 받아 세지 말고 `count` 를 읽어라.**
+    속성 아닌 칸도 거른다 — `name`·`purpose`(든 글자), `test_item`(시험 항목 이름).
+    셋 중 둘은 **`"none"` 으로 안 적힌 것**을 묻는다: `purpose="none"` 은 목적이 빈 줄,
+    `test_item="none"` 은 시험 항목을 하나도 안 정한 줄. `equipment="none"` 은 **그
+    사업부에 돌릴 장비가 한 대도 없는 줄**이다 — 「미지정」 과 다르다: 앞은 항목을 이었는데
+    그 항목이 되는 장비가 없는 것이고, 뒤는 항목을 아직 안 이은 것이다.
+
+    **쪽으로 끊어 온다** — `count` 는 조건에 맞는 전체 수, `shown` 은 이번에 받은 줄 수다.
+    한 사업부에 1784건이 있으므로 **전부 받아 세지 말고 `count` 를 읽어라.**
 
     조건을 걸었는데 0건이면 `diagnosis` 가 함께 온다 — 조건마다 값이 적힌 수 · 단위 못
     바꾼 수 · 그 조건 하나로 걸리는 수와 한 줄. **「그런 시험 없습니다」 로 뭉개지 말고 그
@@ -2279,8 +2288,7 @@ async def list_reliability_tests(
 
     줄마다 `status` 가 온다 — `candidate`(후보) · `confirmed`(확정). **후보는 AI 가 올리고
     아직 사람이 확인 안 한 것이다:** 그것을 근거로 「이 부서는 이 시험을 합니다」 라고 말하지
-    마라. 전사 목록(`workspace` 없이)에는 확정된 것만 온다. 내가 올린 것이 확인됐는지 보려면
-    `workspace` 와 함께 `status="candidate"` 로 부른다.
+    마라. 전사 목록에는 확정된 것만 온다.
     """
     got = await _get(
         ctx,
@@ -2290,6 +2298,10 @@ async def list_reliability_tests(
             "attr": attr,
             "status": status,
             "revision": revision,
+            "name": name,
+            "purpose": purpose,
+            "test_item": test_item,
+            "equipment": equipment,
             "limit": limit,
             "offset": offset,
         },
@@ -2758,6 +2770,48 @@ async def propose_test_item(
         ),
         "제안으로 올라갔다. **시험 항목은 아직 안 걸렸다** — 관리자가 정해야 걸린다."
         " 사용자에게 「시험 항목을 못 찾아 제안으로 남겼다」 고 그대로 말하라.",
+    )
+
+
+@writes
+async def propose_equipment_model(
+    ctx: Context,
+    equipment_id: str,
+    model_text: str,
+    maker_text: str | None = None,
+    note: str | None = None,
+) -> dict[str, Any]:
+    """카탈로그에 **그 기종이 없다**는 것을 남긴다.
+
+    카탈로그 기종은 시스템 관리자만 세운다 — 기종을 고르면 그 계열의 시험 항목이 그 장비로
+    복사되고 조건 판정이 그 기종의 사양을 쓴다. 네가 세운 기종은 **잘못된 답의 근거**가 되고,
+    그 답은 조용하다. 그래서 못 세우는 것은 옳다.
+
+    그런데 **말할 자리가 없어서** 지금까지는 그냥 비웠고, 빈 칸은 「아직 안 채운 것」 으로
+    읽혔다. 그 둘은 할 일이 다르다.
+
+    `model_text` 는 **라벨에 적힌 그대로**다(`68FM-300`). 고쳐 쓰거나 비슷한 기종 이름으로
+    바꾸지 마라 — 판단하는 사람이 그 글자를 봐야 어느 계열인지 정할 수 있다. `maker_text` 에
+    제조사를, `note` 에 왜 못 찾았는지를 적어라(「6800 시리즈는 있는데 이 모델만 없음」).
+
+    **`register_equipment` 로 등록한 다음에 부른다** — 요청은 그 장비에 붙는다.
+
+    같은 기종을 여러 장비가 요청하면 한 줄로 모인다. 관리자가 한 번 정하면 그 기종을 요청한
+    장비 **전부**가 이어지므로, 열 대면 열 번 부르는 것이 맞다. 같은 장비에 같은 요청을 두
+    번 내도 막히지 않는다.
+
+    **비슷한 기종으로 때우지 마라.** 카탈로그에 있는 다른 기종을 골라 넣으면 그 장비의
+    하중·온도가 남의 것이 되고, 조건으로 장비를 찾는 화면이 그 수치로 「됩니다」 라고 답한다.
+    """
+    return _then(
+        await _send(
+            ctx,
+            "POST",
+            f"/equipment/{equipment_id}/model-proposals",
+            {"model_text": model_text, "maker_text": maker_text, "note": note},
+        ),
+        "요청으로 올라갔다. **기종은 아직 안 걸렸다** — 관리자가 카탈로그에 세워야 걸린다."
+        " 사용자에게 「카탈로그에서 기종을 못 찾아 등록 요청으로 남겼다」 고 그대로 말하라.",
     )
 
 

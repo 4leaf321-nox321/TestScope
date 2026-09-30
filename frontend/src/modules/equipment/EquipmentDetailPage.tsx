@@ -39,12 +39,15 @@ function Field({ label, value }: { label: string; value: string | null | undefin
 export default function EquipmentDetailPage() {
   const { id = '' } = useParams<{ id: string }>()
   const equipment = useResource(() => equipmentApi.read(id), [id])
+  /** 이 장비가 낸 **카탈로그 기종 등록 요청** — 왜 기종이 비었는지가 여기 보여야 한다. */
+  const proposals = useResource(() => equipmentApi.modelProposals(id), [id])
   const [editing, setEditing] = useState(false)
 
   if (equipment.error) return <ErrorNotice error={equipment.error} />
   if (!equipment.data) return null
 
   const one = equipment.data
+  const waiting = (proposals.data ?? []).filter((row) => row.status === 'open')
 
   return (
     <div className="space-y-6">
@@ -76,7 +79,16 @@ export default function EquipmentDetailPage() {
               </>
             ) : (
               // 빈 칸을 빈 칸으로 두면 아무도 안 채운다(ADR 0004).
-              <span className="ml-2 text-amber-600">카탈로그 미연결</span>
+              <span className="ml-2 text-amber-600">
+                카탈로그 미연결
+                {/* **왜 비었는지를 그 자리에 적는다.** 등록 요청이 서 있으면 「아직 안 채운
+                    것」 이 아니라 「관리자를 기다리는 것」 이다 — 그 둘은 할 일이 다르다. */}
+                {waiting.length > 0 && (
+                  <span className="text-muted-foreground ml-1 text-sm font-normal">
+                    · 기종 등록 요청 중({waiting.map((row) => row.text).join(', ')})
+                  </span>
+                )}
+              </span>
             )}
           </>
         }

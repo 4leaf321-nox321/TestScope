@@ -56,7 +56,7 @@ vi.mock('@/shared/api/client', () => ({
 
 import { AttributeFilterBar, describe } from '@/modules/attributes/AttributeFilterBar'
 
-suite('속성 거르기 칸', () => {
+suite('속성 필터 칸', () => {
   it('건 조건을 사람 말로 보이고 하나씩 뺀다', async () => {
     const onChange = vi.fn()
     render(
@@ -70,9 +70,11 @@ suite('속성 거르기 칸', () => {
     await waitFor(() => expect(screen.getByText('시험 온도 100 degC 이상')).toBeTruthy())
     expect(screen.getByText('장비 용도 고온 포함')).toBeTruthy()
     // 여러 조건은 **모두** 만족해야 한다 — 「또는」 으로 읽으면 결과 수를 오해한다.
-    expect(screen.getByText('조건 모두 만족')).toBeTruthy()
+    expect(screen.getByText('모든 조건을 만족하는 항목만 표시')).toBeTruthy()
 
-    await userEvent.click(screen.getByRole('button', { name: '시험 온도 100 degC 이상 제거' }))
+    await userEvent.click(
+      screen.getByRole('button', { name: '시험 온도 100 degC 이상 필터 해제' }),
+    )
     expect(onChange).toHaveBeenCalledWith(['use_x~고온'])
   })
 
@@ -93,14 +95,14 @@ suite('속성 거르기 칸', () => {
     // (서버가 그 꼴만 받는다) 모르는 키도 그 이름 그대로 선다.
     expect(describe('gone_x>=3', [])).toBe('gone_x 3 이상')
     expect(describe('말이 안 되는 것', [])).toBe('말이 안 되는 것')
-    expect(describe('book_x*', [])).toBe('book_x 값이 있다')
+    expect(describe('book_x*', [])).toBe('book_x 값 있음')
   })
 
-  it('「값이 없다」 와 묶음이 칩에 그대로 보인다', () => {
+  it('「값 없음」 과 묶음이 칩에 그대로 보인다', () => {
     // **`!=` 와 다른 물음이다** — `!=` 는 *적혀 있는데* 그 값이 아닌 것이고, `!*` 는
     // 줄 자체가 없는 것이다. 칩이 둘을 같은 말로 적으면 결과 수를 오해한다.
-    expect(describe('book_x!*', [])).toBe('book_x 값이 없다')
-    expect(describe('book_x!=3동', [])).toBe('book_x 3동 다르다')
+    expect(describe('book_x!*', [])).toBe('book_x 값 없음')
+    expect(describe('book_x!=3동', [])).toBe('book_x 3동 불일치')
     // 묶음을 가린 조건은 **그 사실이 보여야** 한다 — 「주 조건이 80 이상」 과
     // 「어느 묶음이든 80 이상」 은 다른 물음이다.
     expect(describe('temp_x@주>=100', DEFINITIONS as AttributeDefinition[])).toBe(
