@@ -95,4 +95,16 @@ suite('속성 거르기 칸', () => {
     expect(describe('말이 안 되는 것', [])).toBe('말이 안 되는 것')
     expect(describe('book_x*', [])).toBe('book_x 값이 있다')
   })
+
+  it('「값이 없다」 와 묶음이 칩에 그대로 보인다', () => {
+    // **`!=` 와 다른 물음이다** — `!=` 는 *적혀 있는데* 그 값이 아닌 것이고, `!*` 는
+    // 줄 자체가 없는 것이다. 칩이 둘을 같은 말로 적으면 결과 수를 오해한다.
+    expect(describe('book_x!*', [])).toBe('book_x 값이 없다')
+    expect(describe('book_x!=3동', [])).toBe('book_x 3동 다르다')
+    // 묶음을 가린 조건은 **그 사실이 보여야** 한다 — 「주 조건이 80 이상」 과
+    // 「어느 묶음이든 80 이상」 은 다른 물음이다.
+    expect(describe('temp_x@주>=100', DEFINITIONS as AttributeDefinition[])).toBe(
+      '시험 온도 (주) 100 degC 이상',
+    )
+  })
 })

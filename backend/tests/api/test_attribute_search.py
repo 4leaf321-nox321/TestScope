@@ -319,6 +319,97 @@ def test_시험_목록도_조건_속성으로_거른다(
     assert {one["name"] for one in hot.json()["items"]} == {f"열충격-{tag}"}
 
 
+def test_값을_안_적은_줄을_찾는다(
+    client: TestClient, admin: Signed, condition_ids: dict[str, str]
+) -> None:
+    """**채워야 할 칸을 찾는 물음.** `!=` 로는 안 된다 — 줄이 아예 없으면 어떤 비교도 안
+    걸리고, 그래서 「안 적은 것」 은 지금껏 화면에서 셀 수가 없었다."""
+    tag = uuid.uuid4().hex[:6]
+    note = _definition(
+        client,
+        admin,
+        target="reliability_test",
+        label=f"비고-{tag}",
+        key=f"note_{tag}",
+        kind="text",
+        status="standard",
+    )
+    temperature = _definition(
+        client,
+        admin,
+        target="reliability_test",
+        label=f"시험 온도-{tag}",
+        key=f"temp_{tag}",
+        kind="condition",
+        unit="degC",
+        condition_key_id=condition_ids["temperature"],
+        status="standard",
+    )
+    for name, attributes in (
+        (f"적음-{tag}", [{"definition_id": note["id"], "text_value": "재확인 필요"}]),
+        (f"다름-{tag}", [{"definition_id": note["id"], "text_value": "완료"}]),
+        (f"빔-{tag}", []),
+        (
+            f"주만-{tag}",
+            [
+                {
+                    "definition_id": temperature["id"],
+                    "set_label": "주",
+                    "num_value": 85,
+                    "unit": "degC",
+                }
+            ],
+        ),
+    ):
+        made = client.post(
+            "/api/reliability-tests",
+            json={"division_code": "mx", "name": name, "attributes": attributes},
+            headers=admin.headers,
+        )
+        assert made.status_code == 201, made.text
+
+    def names(*attrs: str) -> set[str]:
+        got = client.get(
+            "/api/reliability-tests",
+            params=[("q", tag), ("limit", "200")] + [("attr", one) for one in attrs],
+            headers=admin.headers,
+        )
+        assert got.status_code == 200, got.text
+        return {one["name"] for one in got.json()["items"]}
+
+    # 값이 적힌 줄은 `*`, 안 적힌 줄은 `!*` — 둘을 합치면 전부다.
+    assert names(f"note_{tag}*") == {f"적음-{tag}", f"다름-{tag}"}
+    assert names(f"note_{tag}!*") == {f"빔-{tag}", f"주만-{tag}"}
+    # **수치 속성에도 `*` 가 통한다.** 값 없는 물음인데 수치 길로 내려보내면 빈 값을
+    # 숫자로 읽으려다 400 이 난다 — 화면이 「값이 있다」 를 그 종류에도 보여 주므로,
+    # 누른 사람이 오류를 받는다(2026-09-30 운영 확인).
+    assert names(f"temp_{tag}*") == {f"주만-{tag}"}
+    # **`!=` 와 다르다.** 「완료가 아닌 것」 은 *적혀 있는* 줄만 본다 — 빈 줄은 안 걸린다.
+    assert names(f"note_{tag}!=완료") == {f"적음-{tag}"}
+    # 종류를 안 가린다 — 수치 속성에도 같은 뜻이다.
+    assert names(f"temp_{tag}!*") == {f"적음-{tag}", f"다름-{tag}", f"빔-{tag}"}
+    # 묶음도 가린다 — 주 조건만 적은 줄은 「불량 시를 안 적은 줄」 이다.
+    assert f"주만-{tag}" in names(f"temp_{tag}@불량 시!*")
+    assert f"주만-{tag}" not in names(f"temp_{tag}@주!*")
+    # 두 조건을 함께 — 비고도 온도도 없는 줄.
+    assert names(f"note_{tag}!*", f"temp_{tag}!*") == {f"빔-{tag}"}
+
+    # 0건일 때 이유를 **반대로 말하지 않는다** — 다른 연산은 「값이 적힌 것이 없다」 가 곧
+    # 0건의 이유지만, `!*` 는 그때 오히려 전부가 걸린다.
+    told = client.get(
+        "/api/attribute-definitions/diagnose",
+        params=[
+            ("target", "reliability_test"),
+            ("attr", f"note_{tag}!*"),
+            ("attr", f"temp_{tag}>=9000"),
+        ],
+        headers=admin.headers,
+    )
+    assert told.status_code == 200, told.text
+    empty = {one["key"]: one for one in told.json()}[f"note_{tag}"]
+    assert empty["matched"] >= 2 and "다른 조건과 함께" in empty["hint"]
+
+
 def test_빈_결과는_왜_비었는지_조건마다_말한다(
     client: TestClient, admin: Signed, condition_ids: dict[str, str]
 ) -> None:

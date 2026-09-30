@@ -11,11 +11,20 @@
     attr=invest_year>=2020      수치 · 날짜
     attr=purpose~고온           문장 포함(대소문자 무시)
     attr=reserve_url*           값이 적혀 있기만 하면
+    attr=reserve_url!*          **값이 없는 것** — 아직 아무도 안 적은 줄을 찾는다
     attr=sample_form=시편       선택지 · 온톨로지 값 · 참(true)/거짓(false)
     attr=holder!=3동            같지 않다
 
-연산자는 `>=` `<=` `>` `<` `!=` `=` `~` `*` 여덟이고, 왼쪽은 정의의 `key` 다(이름이 아니라).
+연산자는 `>=` `<=` `>` `<` `!=` `=` `~` `*` `!*` 아홉이고, 왼쪽은 정의의 `key` 다(이름이
+아니라).
+
 이름은 관리자가 고치면 바뀌고, 그때 저장해 둔 링크가 조용히 빈 결과를 낸다.
+
+`*` 와 `!*` 는 **종류를 안 가린다** — 「적혀 있나」 는 수치든 글자든 같은 물음이다.
+
+**`!*` 는 「안 적힌 것」 이다.** 채워야 할 칸을 찾는 물음이라 실제로 자주 쓰인다 — 「조건을
+안 적은 시험」 이 곧 장비 판정에서 빠지는 줄이다. `!=` 와 다르다: `!=` 는 *적혀 있는데* 그
+값이 아닌 것이고, `!*` 는 **줄 자체가 없는 것**이다.
 
 ## 조건 묶음을 지정하려면 `key@묶음`
 
@@ -75,13 +84,19 @@ from app.shared.units import convert
 #: 그때는 값마다 쿼리가 늘어 목록이 느려진다.
 MAX_FILTERS = 10
 
-_OPS = ("<=", ">=", "!=", "<", ">", "=", "~", "*")
+_OPS = ("<=", ">=", "!=", "<", ">", "=", "~", "*", "!*")
+
+#: **값을 안 받는 연산** — 「있다」 「없다」 는 무엇과 견주는 것이 아니다. 종류를 안 가리므로
+#: 수치 길로 내려보내면 안 된다(내려보내면 빈 값을 숫자로 읽으려다 400 이 난다).
+NO_VALUE_OPS = ("*", "!*")
+
 #: `key<연산>값`, 그리고 조건 묶음을 지정하는 `key@묶음<연산>값`.
 #: 묶음 이름에는 연산자 글자가 못 들어간다 — 안 그러면 어디까지가 이름인지 못 가른다.
 _PATTERN = re.compile(
     r"^(?P<key>[A-Za-z0-9_\-.]{1,60})"
     r"(@(?P<set>[^<>=!~*]{1,60}))?"
-    r"(?P<op>\*|<=|>=|!=|<|>|=|~)(?P<raw>.*)$"
+    # `!*` 가 `!=` 보다 **먼저** 와야 한다 — 뒤에 두면 `!` 만 먹고 `*` 가 값이 된다.
+    r"(?P<op>!\*|\*|<=|>=|!=|<|>|=|~)(?P<raw>.*)$"
 )
 
 #: 대상 → 값이 그 대상을 가리키는 열. 새 대상은 여기에 한 줄.
@@ -310,6 +325,19 @@ def apply[T: tuple[Any, ...]](
         return stmt
     column = TARGET_COLUMN[target]
     for one in filters:
+        if one.op in NO_VALUE_OPS:
+            # **종류를 안 가린다.** 「값이 있다/없다」 는 수치든 글자든 같은 뜻이라, 여기서
+            # 한 번에 본다 — 종류마다 따로 쓰면 그중 하나가 다른 답을 낸다. 실제로 그랬다:
+            # 수치 속성에 `*` 를 물으면 값 없는 물음인데도 아래 수치 길로 내려가
+            # 「숫자로 물어 주십시오」 400 이 왔다(2026-09-30 실측).
+            where = [
+                AttributeValue.definition_id == one.definition.id,
+                column == id_column,
+                *_set_where(one),
+            ]
+            exists = select(AttributeValue.id).where(and_(*where)).exists()
+            stmt = stmt.where(exists if one.op == "*" else ~exists)
+            continue
         if one.definition.kind in ("number", "range", "condition"):
             found = _numeric_ids(db, column, one)
             # 빈 집합을 그대로 넘기면 `IN ()` 이 되어 아무것도 안 남는다 — 맞는 답이다.
@@ -364,6 +392,14 @@ def _base_ids(target: str) -> Select[tuple[uuid.UUID]]:
 
 def _hint(one: AttributeFilter, with_value: int, unconvertible: int, matched: int) -> str:
     label = one.definition.label
+    if one.op == "!*":
+        # **읽는 방향이 반대다.** 다른 연산은 「적힌 값이 없다」 가 곧 0건의 이유지만,
+        # `!*` 는 그때 오히려 전부가 걸린다. 갈라 두지 않으면 정반대로 말한다.
+        if matched == 0:
+            return f"「{label}」 을 안 적은 것이 없습니다 — 걸린 것이 모두 적어 두었습니다."
+        return f"이 조건만으로는 {matched}건이 걸립니다 — 다른 조건과 함께 걸어서 비었습니다."
+    if one.op == "*" and with_value == 0:
+        return f"「{label}」 에 값이 적힌 것이 없습니다 — 아직 아무도 안 적었습니다."
     if with_value == 0:
         return (
             f"「{label}」 에 값이 적힌 것이 없습니다 — 조건이 아니라 적힌 값이 없는 것입니다."
@@ -413,7 +449,29 @@ def diagnose(
         with_value = len({row[0] for row in rows})
         unconvertible = 0
         matched = 0
-        if one.definition.kind in NUMERIC_KINDS and one.op != "*":
+        if one.op in NO_VALUE_OPS:
+            # **세는 방향이 반대다** — 「값이 없는 것」 이 걸리는 수이므로, 전체에서 적힌
+            # 것을 뺀다. `apply` 와 **같은 조건으로** 빼야 둘이 다른 수를 말하지 않는다.
+            wrote = int(
+                db.scalar(
+                    select(func.count(func.distinct(column)))
+                    .select_from(AttributeValue)
+                    .where(
+                        AttributeValue.definition_id == one.definition.id,
+                        scope,
+                        *_set_where(one),
+                    )
+                )
+                or 0
+            )
+            if one.op == "*":
+                matched = wrote
+            else:
+                everyone = int(
+                    db.scalar(select(func.count()).select_from(ids.subquery())) or 0
+                )
+                matched = max(0, everyone - wrote)
+        elif one.definition.kind in NUMERIC_KINDS and one.op != "*":
             for _owner, num, low, high, wrote_unit in rows:
                 verdict = _numeric_row(one, num, low, high, wrote_unit)
                 if verdict is None:

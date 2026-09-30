@@ -45,10 +45,17 @@ export const reliabilityApi = {
   divisions: () => api.get<Division[]>('/reliability-tests/divisions'),
   /** 한 사업부의 신뢰성 시험 전부 — **후보까지.** 검토하는 자리가 사업부 화면이라 후보가
    *  먼저 온다. 시험마다 쓰는 시험 항목과 그 항목이 되는 이 사업부 장비 수. */
-  list: (division: string, limit = PAGE, offset = 0) =>
-    api.get<Page>(
-      `/reliability-tests?division=${encodeURIComponent(division)}&limit=${limit}&offset=${offset}`,
-    ),
+  list: (division: string, limit = PAGE, offset = 0, attrs: string[] = []) => {
+    const search = new URLSearchParams({
+      division,
+      limit: String(limit),
+      offset: String(offset),
+    })
+    // **거르기는 서버가 한다** — 한 쪽을 받아 놓고 화면에서 거르면 쉰 줄만 뒤지고,
+    // 그러고도 표는 「조건에 맞는 것이 이것뿐」 이라고 적는다.
+    for (const one of attrs) search.append('attr', one)
+    return api.get<Page>(`/reliability-tests?${search}`)
+  },
   /** 전사 전부 — 사업부 순. 「누가 무슨 시험을 하나」 를 가로질러 본다.
    *  `attrs` 는 속성 값 조건(`키>=값`) — 여러 개면 **모두** 만족해야 한다. */
   listAll: (

@@ -19,14 +19,25 @@
  * 위험하고(읽다가 글자를 건드린다), 고칠 권한이 없는 사람은 연필이 없어 카드를 열 길이
  * 아예 없었다.
  *
- * 좁은 창에서는 **덜 급한 열을 접는다**(속성 → 목적 → 시험 항목 순). 시험 항목·속성은
- * 줄바꿈이 안 되는 덩어리라 폭을 안 내놓고, 그러면 목적 열만 혼자 찌그러져 글자 한 자
- * 폭이 되면서 가로 스크롤까지 생긴다 — 전사 목록과 같은 규칙이다. 목적 열은 `w-` 가
- * 아니라 **`min-w-`** 라야 한다: `w-` 는 표가 눌리면 브라우저가 무시한다.
+ * 좁은 창에서는 **덜 급한 열을 접는다**(목적 → 시험 항목 순). 시험 항목은 줄바꿈이 안 되는
+ * 덩어리라 폭을 안 내놓고, 그러면 목적 열만 혼자 찌그러져 글자 한 자 폭이 된다 — 전사
+ * 목록과 같은 규칙이다. 목적 열은 `w-` 가 아니라 **`min-w-`** 라야 한다: `w-` 는 표가
+ * 눌리면 브라우저가 무시한다.
+ *
+ * ## 속성은 **열로** 선다
+ *
+ * 한 칸에 「시험 온도: 85 ℃ / 시험 시간: 1000 h / …」 를 쌓아 두면 세로로 못 읽는다 —
+ * 「온도를 안 적은 시험이 몇 건인가」 는 한 열을 위아래로 훑어야 보이는 것인데, 덩어리
+ * 안에서는 같은 속성이 줄마다 다른 높이에 있다. 그래서 정의마다 열을 세우고, 머리글의
+ * 깔때기로 **그 열만** 거른다(「값 없음」 을 포함해서). 열이 서른을 넘으므로 고르는 자리를
+ * 함께 둔다.
+ *
+ * 열이 늘어난 만큼 표를 **화면 높이에 가둔다**(`viewport`): 안 그러면 가로 스크롤 막대가
+ * 표 맨 아래에 있어서, 오른쪽 열을 보려면 먼저 세로로 끝까지 내려가야 한다.
  */
 
-import { useEffect, useState } from 'react'
-import { Link, useParams } from 'react-router-dom'
+import { useCallback, useEffect, useMemo, useState } from 'react'
+import { Link, useParams, useSearchParams } from 'react-router-dom'
 import { Pencil, Plus, Trash2, Wrench } from 'lucide-react'
 
 import { ConfirmDialog } from '@/shared/components/ConfirmDialog'
@@ -45,6 +56,13 @@ import {
 import { useResource } from '@/shared/hooks/useResource'
 import { isPlainRowClick } from '@/shared/lib/rowClick'
 import { useBackFromReference } from '@/shared/hooks/useBackFromReference'
+import { ActiveFilterChips, FilterDiagnosis } from '@/modules/attributes/AttributeFilterBar'
+import {
+  AttributeBodyCells,
+  AttributeColumnPicker,
+  AttributeHeadCells,
+  useAttributeColumns,
+} from '@/modules/attributes/AttributeColumns'
 import { CandidateBadge, isCandidate } from '@/modules/reliability/CandidateReview'
 import { CapabilityDialog } from '@/modules/reliability/CapabilityDialog'
 import { ReliabilityTestDialog } from '@/modules/reliability/ReliabilityTestDialog'
@@ -66,8 +84,34 @@ export default function DivisionReliabilityPage() {
   const listed = useResource(() => reliabilityApi.divisions(), [])
   /** 몇 번째 쪽. 운영에서 한 사업부에 1784건이 들어왔다 — 통째로 그리면 브라우저가 멎는다. */
   const [page, setPage] = useState(0)
-  const tests = useResource(() => reliabilityApi.list(code, PAGE, page * PAGE), [code, page])
-  useEffect(() => setPage(0), [code])
+  /**
+   * 속성 조건. **주소에 싣는다** — 좁혀 놓은 화면을 옆 사람에게 링크로 건넬 수 있어야 하고,
+   * 「조건을 안 적은 시험」 같은 물음은 한 번 만들면 계속 쓴다. 화면 안에만 두면 매번 다시 건다.
+   */
+  const [params, setParams] = useSearchParams()
+  const attrs = useMemo(() => params.getAll('attr'), [params])
+  const setAttrs = useCallback(
+    (next: string[]) => {
+      setParams(
+        (before) => {
+          const moved = new URLSearchParams(before)
+          moved.delete('attr')
+          for (const one of next) moved.append('attr', one)
+          return moved
+        },
+        // 거르기는 **되돌아갈 자리가 아니다** — 뒤로 가기가 조건 하나씩 풀리면 못 나간다.
+        { replace: true },
+      )
+    },
+    [setParams],
+  )
+  /** 열로 세울 속성 — 고른 것은 브라우저에 남는다. */
+  const columns = useAttributeColumns('reliability_test')
+  const tests = useResource(
+    () => reliabilityApi.list(code, PAGE, page * PAGE, attrs),
+    [code, page, attrs],
+  )
+  useEffect(() => setPage(0), [code, attrs])
   const [editing, setEditing] = useState<ReliabilityTest | null>(null)
   const [creating, setCreating] = useState(false)
   const [removing, setRemoving] = useState<ReliabilityTest | null>(null)
@@ -99,7 +143,9 @@ export default function DivisionReliabilityPage() {
   async function everyId(): Promise<string[]> {
     const out: string[] = []
     for (let at = 0; at < total; at += MAX_PAGE) {
-      const got = await reliabilityApi.list(code, MAX_PAGE, at)
+      // **거른 조건을 그대로 들고 간다** — 안 그러면 「이 조건의 전체 20건」 이라고 적어
+      // 놓고 사업부의 1784건을 전부 확인한다.
+      const got = await reliabilityApi.list(code, MAX_PAGE, at, attrs)
       out.push(...got.items.map((one) => one.id))
       if (got.items.length === 0) break
     }
@@ -144,16 +190,26 @@ export default function DivisionReliabilityPage() {
         }
       />
 
-      {tests.data && (
-        <p className="text-muted-foreground text-sm">
-          신뢰성 시험 {rows.length}종
-          {pending > 0 && (
-            // **숫자를 눈에 띄게 둔다.** 「확인 전 3건」 이 안 보이면 아무도 안 연다.
-            <span className="text-destructive ml-2 font-medium">
-              확인 전 {pending}건 — 내용을 읽고 확인해 주십시오
-            </span>
-          )}
-        </p>
+      <div className="flex flex-wrap items-center gap-3">
+        {tests.data && (
+          <p className="text-muted-foreground text-sm">
+            신뢰성 시험 {total}종{attrs.length > 0 && ' · 조건으로 좁힌 결과'}
+            {pending > 0 && (
+              // **숫자를 눈에 띄게 둔다.** 「확인 전 3건」 이 안 보이면 아무도 안 연다.
+              <span className="text-destructive ml-2 font-medium">
+                확인 전 {pending}건 — 내용을 읽고 확인해 주십시오
+              </span>
+            )}
+          </p>
+        )}
+        <AttributeColumnPicker columns={columns} />
+      </div>
+
+      {/* 열 머리글에서 걸든 여기서 풀든 **같은 목록**이다 — 두 곳에 나눠 그리면 한쪽에서
+          건 조건이 다른 쪽에서 안 보이고, 그러면 왜 스무 건만 뜨는지 못 찾는다. */}
+      <ActiveFilterChips definitions={columns.all} value={attrs} onChange={setAttrs} />
+      {attrs.length > 0 && total === 0 && (
+        <FilterDiagnosis target="reliability_test" attrs={attrs} />
       )}
 
       <ErrorNotice error={bulk.error ?? tests.error ?? listed.error} />
@@ -235,7 +291,14 @@ export default function DivisionReliabilityPage() {
         </BulkBar>
       )}
 
-      {tests.data && rows.length === 0 ? (
+      {tests.data && rows.length === 0 && attrs.length > 0 ? (
+        // **조건 때문에 빈 것**과 아무것도 없는 것은 해야 할 일이 다르다 — 위의 진단이
+        // 조건마다 왜 0건인지 적고, 여기서는 조건을 풀라고만 말한다.
+        <EmptyState
+          title="조건에 맞는 신뢰성 시험이 없습니다"
+          hint="위의 조건을 하나씩 빼 보십시오. 이 부서에 등록된 시험이 없어진 것은 아닙니다."
+        />
+      ) : tests.data && rows.length === 0 ? (
         <EmptyState
           title="등록된 신뢰성 시험이 없습니다"
           hint={
@@ -245,7 +308,7 @@ export default function DivisionReliabilityPage() {
           }
         />
       ) : (
-        <Table>
+        <Table viewport>
           <TableHeader>
             <TableRow>
               {canEdit && (
@@ -268,7 +331,7 @@ export default function DivisionReliabilityPage() {
               <TableHead className="hidden min-w-48 md:table-cell">
                 적용 시험 항목 · 보유 장비
               </TableHead>
-              <TableHead className="hidden min-w-56 xl:table-cell">속성</TableHead>
+              <AttributeHeadCells columns={columns.shown} value={attrs} onChange={setAttrs} />
               <TableHead className="w-32" />
               {canEdit && <TableHead className="w-24" />}
             </TableRow>
@@ -337,29 +400,7 @@ export default function DivisionReliabilityPage() {
                     </ul>
                   )}
                 </TableCell>
-                <TableCell className="hidden align-top xl:table-cell">
-                  {row.attributes.length === 0 ? (
-                    <span className="text-muted-foreground text-sm">—</span>
-                  ) : (
-                    <ul className="space-y-0.5 text-sm">
-                      {row.attributes.map((item) => (
-                        <li key={item.definition_id} className="flex flex-wrap gap-x-1">
-                          <span className="text-muted-foreground">{item.label}</span>
-                          <span>{item.display}</span>
-                          {item.status === 'draft' && (
-                            // 초안은 표시·수집만 — 검색 판정에 안 쓰인다는 것을 읽는 사람이 알아야 한다.
-                            <span
-                              className="text-muted-foreground text-xs"
-                              title="초안 속성 — 시스템 관리자가 정식으로 올리기 전입니다"
-                            >
-                              초안
-                            </span>
-                          )}
-                        </li>
-                      ))}
-                    </ul>
-                  )}
-                </TableCell>
+                <AttributeBodyCells columns={columns.shown} values={row.attributes} />
                 {/* **이 시험, 어느 장비로 돌리나.** 조건 속성이 그대로 검색 조건이 된다 —
                     「이 부서 장비 N대」 는 조건을 안 본 수라, 그 N 대를 사람이 다시 하나씩
                     열어 봐야 했다. 읽기는 누구나 — 빌릴 곳을 찾는 것이 이 화면의 쓸모다. */}

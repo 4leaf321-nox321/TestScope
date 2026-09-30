@@ -15,18 +15,25 @@
  * **줄을 누르면 보기 창이 열린다.** 여기 오는 사람은 대개 옆 부서 사람이라 고칠 권한이
  * 없는데, 그 전에는 카드 안을 볼 길이 아예 없었다 — 목록의 요약만 읽고 돌아갔다.
  *
+ * ## 속성은 **열로** 선다
+ *
+ * 한 칸에 「시험 온도: 85 ℃ / 시험 시간: 1000 h / …」 를 쌓아 두면 세로로 못 읽는다 —
+ * 「온도를 안 적은 시험이 몇 건인가」 는 한 열을 위아래로 훑어야 보이는 것인데, 덩어리
+ * 안에서는 같은 속성이 줄마다 다른 높이에 있다. 그래서 정의마다 열을 세우고, 머리글의
+ * 깔때기로 **그 열만** 거른다(「값 없음」 을 포함해서).
+ *
+ * 열이 서른을 넘으므로 표를 **화면 높이에 가둔다**(`viewport`) — 안 그러면 가로 스크롤
+ * 막대가 표 맨 아래에 있어서, 오른쪽 열을 보려면 먼저 세로로 끝까지 내려가야 한다.
+ *
  * ## 좁은 창에서는 열을 접는다
  *
- * 열이 여섯인데 시험 항목·속성은 줄바꿈이 안 되는 덩어리라 폭을 안 내놓는다. 그래서 창이
- * 좁아지면 **목적 열만 혼자 찌그러져** 글자 한 자 폭이 되고(높이는 수십 줄), 그러고도
- * 가로 스크롤이 생긴다 — 둘 다 겪는 최악이다.
- *
- * 줄을 누르면 카드 전체가 보기 창에 열리므로, 좁을 때는 **덜 급한 열을 아예 접는다**:
- * 속성(xl) → 목적(lg) → 시험 항목(md) 순으로 사라지고 이름과 단추는 끝까지 남는다.
+ * 시험 항목은 줄바꿈이 안 되는 덩어리라 폭을 안 내놓는다. 그래서 창이 좁아지면 **목적 열만
+ * 혼자 찌그러져** 글자 한 자 폭이 된다(높이는 수십 줄). 줄을 누르면 카드 전체가 보기 창에
+ * 열리므로, 좁을 때는 **덜 급한 열을 아예 접는다**: 목적(lg) → 시험 항목(md) 순으로
+ * 사라지고 이름과 단추는 끝까지 남는다.
  *
  * 목적 열은 `w-` 가 아니라 **`min-w-`** 다. `w-` 는 표가 눌리면 브라우저가 그냥 무시해서
- * 다시 한 자 폭이 된다. `w-full` 을 같이 둬서 **남는 폭은 목적이 가져간다** — 글을 담는
- * 열이 하나뿐이므로 넓어진 화면의 여유는 거기로 가는 것이 맞다.
+ * 다시 한 자 폭이 된다.
  */
 
 import { useCallback, useEffect, useMemo, useState } from 'react'
@@ -51,6 +58,12 @@ import { isPlainRowClick } from '@/shared/lib/rowClick'
 import { Button } from '@/shared/components/ui/button'
 import { AttachmentsDialog } from '@/modules/attachments/AttachmentsDialog'
 import { AttributeFilterBar } from '@/modules/attributes/AttributeFilterBar'
+import {
+  AttributeBodyCells,
+  AttributeColumnPicker,
+  AttributeHeadCells,
+  useAttributeColumns,
+} from '@/modules/attributes/AttributeColumns'
 import { CandidateBadge } from '@/modules/reliability/CandidateReview'
 import { CapabilityDialog } from '@/modules/reliability/CapabilityDialog'
 import {
@@ -88,6 +101,8 @@ export default function ReliabilityTestsPage() {
   )
   /** 확인 전 후보까지 볼까. **기본은 안 본다** — 확정된 것만이 이 표의 답이다. */
   const [withCandidates, setWithCandidates] = useState(false)
+  /** 열로 세울 속성 — 고른 것은 브라우저에 남는다. */
+  const columns = useAttributeColumns('reliability_test')
   /** 몇 번째 쪽. 조건이 바뀌면 처음으로 — 세 번째 쪽을 보다 좁히면 빈 화면이 뜬다. */
   const [page, setPage] = useState(0)
   const [query, setQuery] = useState('')
@@ -150,6 +165,7 @@ export default function ReliabilityTestsPage() {
           />
           미확인 후보 포함
         </label>
+        <AttributeColumnPicker columns={columns} />
       </div>
 
       <ErrorNotice error={tests.error} />
@@ -165,7 +181,7 @@ export default function ReliabilityTestsPage() {
           hint="검색어를 줄여 보십시오."
         />
       ) : (
-        <Table>
+        <Table viewport>
           <TableHeader>
             <TableRow>
               <TableHead>부서</TableHead>
@@ -174,7 +190,7 @@ export default function ReliabilityTestsPage() {
               <TableHead className="hidden min-w-48 md:table-cell">
                 적용 시험 항목 · 보유 장비
               </TableHead>
-              <TableHead className="hidden min-w-56 xl:table-cell">속성</TableHead>
+              <AttributeHeadCells columns={columns.shown} value={attrs} onChange={setAttrs} />
               <TableHead className="w-32" />
             </TableRow>
           </TableHeader>
@@ -235,23 +251,7 @@ export default function ReliabilityTestsPage() {
                     </ul>
                   )}
                 </TableCell>
-                <TableCell className="hidden align-top xl:table-cell">
-                  {row.attributes.length === 0 ? (
-                    <span className="text-muted-foreground text-sm">—</span>
-                  ) : (
-                    <ul className="space-y-0.5 text-sm">
-                      {row.attributes.map((item) => (
-                        <li key={item.definition_id} className="flex flex-wrap gap-x-1">
-                          <span className="text-muted-foreground">{item.label}</span>
-                          <span>{item.display}</span>
-                          {item.status === 'draft' && (
-                            <span className="text-muted-foreground text-xs">초안</span>
-                          )}
-                        </li>
-                      ))}
-                    </ul>
-                  )}
-                </TableCell>
+                <AttributeBodyCells columns={columns.shown} values={row.attributes} />
                 <TableCell className="text-right whitespace-nowrap">
                   {/* **이 시험, 어느 장비로 돌리나.** 조건 속성이 그대로 검색 조건이 된다 —
                       시험 항목까지만 이으면 답이 「인장 되는 장비 N대」 라서, 사람이 다시

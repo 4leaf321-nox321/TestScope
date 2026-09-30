@@ -40,31 +40,96 @@ const OPERATORS = [
   { op: '<', label: '미만' },
   { op: '~', label: '포함' },
   { op: '*', label: '값이 있다' },
+  { op: '!*', label: '값이 없다' },
 ] as const
+
+/** 값을 안 받는 연산 — 「있다」 「없다」 는 무엇과 견주는 것이 아니다. */
+export const NO_VALUE_OPS: readonly string[] = ['*', '!*']
 
 const NUMERIC = new Set(['number', 'range', 'condition'])
 
-function operatorsFor(kind: string): readonly { op: string; label: string }[] {
+/**
+ * 그 종류에 **쓸 수 있는** 연산만. 수치에 「포함」 을 보여 주면 눌러 본 사람이 400 을 본다.
+ *
+ * 「값이 있다/없다」 는 **모든 종류에** 둔다 — 「아직 안 적은 칸」 은 수치든 글자든 같은
+ * 물음이고, 채워야 할 자리를 찾는 물음이라 실제로 가장 자주 쓰인다.
+ */
+export function operatorsFor(kind: string): readonly { op: string; label: string }[] {
   if (NUMERIC.has(kind) || kind === 'date') {
     return OPERATORS.filter((one) => one.op !== '~')
   }
-  if (kind === 'boolean') return OPERATORS.filter((one) => one.op === '=' || one.op === '*')
+  if (kind === 'boolean') {
+    return OPERATORS.filter((one) => one.op === '=' || NO_VALUE_OPS.includes(one.op))
+  }
   return OPERATORS.filter(
     (one) => one.op !== '>' && one.op !== '<' && one.op !== '>=' && one.op !== '<=',
   )
 }
 
+/**
+ * 조건 한 줄을 **키·묶음·연산·값**으로 푼다. 서버의 `filters.py` 와 같은 문법이고,
+ * `!*` 가 `!=` 보다 **먼저** 와야 하는 것도 같다 — 뒤에 두면 `!` 만 먹고 `*` 가 값이 된다.
+ */
+export function parseFilter(
+  raw: string,
+): { key: string; set: string | null; op: string; value: string } | null {
+  const matched = /^([A-Za-z0-9_\-.]+)(?:@([^<>=!~*]+))?(!\*|\*|<=|>=|!=|<|>|=|~)(.*)$/.exec(
+    raw,
+  )
+  if (!matched) return null
+  return { key: matched[1], set: matched[2] ?? null, op: matched[3], value: matched[4] }
+}
+
 /** 「temp_x>=100」 을 「시험 온도 이상 100 degC」 로. 못 읽는 것은 그대로 보여 준다. */
 export function describe(raw: string, definitions: AttributeDefinition[]): string {
-  const matched = /^([A-Za-z0-9_\-.]+)(\*|<=|>=|!=|<|>|=|~)(.*)$/.exec(raw)
-  if (!matched) return raw
-  const [, key, op, value] = matched
-  const definition = definitions.find((one) => one.key === key)
-  const label = definition?.label ?? key
-  const word = OPERATORS.find((one) => one.op === op)?.label ?? op
-  if (op === '*') return `${label} ${word}`
+  const found = parseFilter(raw)
+  if (!found) return raw
+  const definition = definitions.find((one) => one.key === found.key)
+  // 묶음 이름은 그대로 붙인다 — 「주 조건이 80 이상」 과 「어느 묶음이든」 은 다른 물음이고,
+  // 칩에서 안 보이면 왜 결과가 다른지 알 길이 없다.
+  const label = (definition?.label ?? found.key) + (found.set ? ` (${found.set})` : '')
+  const word = OPERATORS.find((one) => one.op === found.op)?.label ?? found.op
+  if (NO_VALUE_OPS.includes(found.op)) return `${label} ${word}`
   const unit = definition && NUMERIC.has(definition.kind) ? ` ${definition.unit}` : ''
-  return `${label} ${value}${unit} ${word}`
+  return `${label} ${found.value}${unit} ${word}`
+}
+
+/**
+ * 걸린 조건을 칩으로. **푸는 자리는 한 곳**이라야 한다 — 열 머리글에서 걸든 이 칸에서
+ * 걸든 같은 목록이고, 두 곳에 나눠 그리면 한쪽에서 건 조건이 다른 쪽에서 안 보인다.
+ */
+export function ActiveFilterChips({
+  definitions,
+  value,
+  onChange,
+}: {
+  definitions: AttributeDefinition[]
+  value: string[]
+  onChange: (next: string[]) => void
+}) {
+  if (value.length === 0) return null
+  return (
+    <ul className="flex flex-wrap items-center gap-1 text-xs">
+      {value.map((one) => (
+        <li
+          key={one}
+          className="bg-muted flex items-center gap-1 rounded-full py-0.5 pr-1 pl-2"
+        >
+          {describe(one, definitions)}
+          <button
+            type="button"
+            aria-label={`${describe(one, definitions)} 제거`}
+            className="hover:bg-background rounded-full p-0.5"
+            onClick={() => onChange(value.filter((row) => row !== one))}
+          >
+            <X className="size-3" />
+          </button>
+        </li>
+      ))}
+      {/* 여러 조건은 **모두** 만족해야 한다 — 「또는」 으로 읽으면 결과 수를 오해한다. */}
+      <li className="text-muted-foreground ml-1">조건 모두 만족</li>
+    </ul>
+  )
 }
 
 interface Props {
@@ -79,7 +144,13 @@ interface Props {
 }
 
 /** 0건일 때 조건마다 한 줄 — 서버가 세고 서버가 말한다(MCP 도 같은 것을 받는다). */
-function EmptyDiagnosis({ target, attrs }: { target: AttributeTarget; attrs: string[] }) {
+export function FilterDiagnosis({
+  target,
+  attrs,
+}: {
+  target: AttributeTarget
+  attrs: string[]
+}) {
   const key = attrs.join('\u0000')
   const rows = useResource(() => attributeApi.diagnose(target, attrs), [target, key])
   if (!rows.data || rows.data.length === 0) return null
@@ -115,10 +186,11 @@ export function AttributeFilterBar({ target, value, onChange, empty = false }: P
 
   if (rows.length === 0) return null
 
+  const blank = NO_VALUE_OPS.includes(op)
   const add = () => {
     if (!picked) return
-    if (op !== '*' && !text.trim()) return
-    const next = `${picked.key}${op}${op === '*' ? '' : text.trim()}`
+    if (!blank && !text.trim()) return
+    const next = `${picked.key}${op}${blank ? '' : text.trim()}`
     if (!value.includes(next)) onChange([...value, next])
     setText('')
   }
@@ -158,7 +230,7 @@ export function AttributeFilterBar({ target, value, onChange, empty = false }: P
             </SelectContent>
           </Select>
         </label>
-        {op !== '*' && (
+        {!blank && (
           <label className="space-y-1">
             <span className="text-muted-foreground text-xs">
               값{picked?.unit ? ` (${picked.unit})` : ''}
@@ -181,29 +253,8 @@ export function AttributeFilterBar({ target, value, onChange, empty = false }: P
         </Button>
       </div>
 
-      {value.length > 0 && (
-        <ul className="flex flex-wrap items-center gap-1 text-xs">
-          {value.map((one) => (
-            <li
-              key={one}
-              className="bg-muted flex items-center gap-1 rounded-full py-0.5 pr-1 pl-2"
-            >
-              {describe(one, rows)}
-              <button
-                type="button"
-                aria-label={`${describe(one, rows)} 제거`}
-                className="hover:bg-background rounded-full p-0.5"
-                onClick={() => onChange(value.filter((row) => row !== one))}
-              >
-                <X className="size-3" />
-              </button>
-            </li>
-          ))}
-          {/* 여러 조건은 **모두** 만족해야 한다 — 「또는」 으로 읽으면 결과 수를 오해한다. */}
-          <li className="text-muted-foreground ml-1">조건 모두 만족</li>
-        </ul>
-      )}
-      {empty && value.length > 0 && <EmptyDiagnosis target={target} attrs={value} />}
+      <ActiveFilterChips definitions={rows} value={value} onChange={onChange} />
+      {empty && value.length > 0 && <FilterDiagnosis target={target} attrs={value} />}
     </div>
   )
 }
