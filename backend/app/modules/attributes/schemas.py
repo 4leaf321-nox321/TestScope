@@ -139,6 +139,11 @@ class AttributeValueOut(BaseModel):
     """조건 묶음 이름. 비면 이름 없는 한 벌이다."""
     step_order: int | None = None
     step_label: str | None = None
+    document_revision_id: uuid.UUID | None = None
+    """이 값이 **규격서의 몇 판** 것인가. 시험은 한 줄이고 판은 값에 붙는다."""
+    document_revision_label: str | None = None
+    is_current: bool = True
+    """이 자리의 **지금 값**인가. 거짓이면 과거 판의 값이다 — 목록은 기본으로 안 준다."""
     source_text: str | None = None
     """문서에 적힌 그대로 — 옮긴 값의 **증거**다(`note` 는 해석)."""
     original_value: str | None = None

@@ -490,8 +490,9 @@ async def _write_chain(ctx: _Ctx) -> int:
                         # 시험은 규격서가 없고 이 줄은 이 문서의 것이다. 이름만으로
                         # 유일하게 두었더니 실제 문서와 부딪혔다(634장 중 202장).
                         {"name": f"MCP확인 열충격-{tag}"},
-                        # **이것은 진짜 겹침** — 같은 묶음 안에서 이름도 규격서도 같다.
-                        # 한 줄이 막혀도 나머지가 가는지 함께 본다.
+                        # **같은 시험을 다시 보낸다** — 이름도 규격서도 같다. 막히지 않고
+                        # 그 시험의 값에 판이 붙어야 한다(0046): 개정본을 올리는 것은 새
+                        # 시험이 아니라 있던 시험의 새 시점이다.
                         {"name": f"MCP확인 묶음 하나-{tag}"},
                     ],
                 ),
@@ -499,15 +500,19 @@ async def _write_chain(ctx: _Ctx) -> int:
             )
             if batch is not None:
                 made = [one["name"] for one in batch.get("created", [])]
+                folded = [one["name"] for one in batch.get("merged", [])]
                 if len(made) != 3:
                     bad += 1
                     print(f"  실패 묶음에서 세 줄이 들어가야 하는데 {len(made)}줄입니다")
                 if f"MCP확인 열충격-{tag}" not in made:
                     bad += 1
                     print("  실패 규격서가 다른 동명이 막혔습니다 — 별개의 시험이다")
-                if len(batch.get("failed", [])) != 1:
+                if folded != [f"MCP확인 묶음 하나-{tag}"]:
                     bad += 1
-                    print("  실패 진짜 겹침이 안 막혔습니다 — 또는 왜가 안 옵니다")
+                    print(f"  실패 같은 시험을 다시 보낸 줄이 안 접혔습니다: {folded}")
+                if batch.get("failed"):
+                    bad += 1
+                    print(f"  실패 막힌 줄이 있습니다: {_short(batch.get('failed'), 120)}")
                 # 줄마다 규격서가 걸렸나 — 안 걸리면 문서 단위로 못 모은다.
                 for one in batch.get("created", []):
                     codes = [

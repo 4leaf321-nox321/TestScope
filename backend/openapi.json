@@ -7386,6 +7386,123 @@
         }
       }
     },
+    "/api/reliability-tests/capability-preview": {
+      "post": {
+        "tags": [
+          "reliability"
+        ],
+        "summary": "Capability Preview",
+        "description": "**아직 저장하지 않은 조건**으로 장비를 본다 — 적으면서 보는 자리.\n\n지금은 저장한 뒤 따로 열어야 보여서, 「95 °C 로 올리면 돌릴 장비가 0대」 를 저장하고\n나서 안다. 단위 환산은 서버가 한다 — 화면이 SI 로 바꿔 보내면 그 환산이 두 벌이 된다.\n\n**`/{test_id}` 보다 먼저 선언한다.**",
+        "operationId": "capability_preview_api_reliability_tests_capability_preview_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CapabilityPreviewRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CapabilityOut"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/reliability-tests/siblings": {
+      "get": {
+        "tags": [
+          "reliability"
+        ],
+        "summary": "Siblings",
+        "description": "이름이 같은 다른 시험 — **무엇으로 갈렸는지**(적용군·규격서·판) 함께.\n\n적으면서 이 목록이 보이면 중복으로 올리다 409 를 받는 일이 줄고, 옆 제품군이 어떤\n조건으로 하는지 보면서 적을 수 있다.",
+        "operationId": "siblings_api_reliability_tests_siblings_get",
+        "parameters": [
+          {
+            "name": "division",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "maxLength": 120,
+              "title": "Division"
+            }
+          },
+          {
+            "name": "name",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "maxLength": 200,
+              "title": "Name"
+            }
+          },
+          {
+            "name": "exclude",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string",
+                  "format": "uuid"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Exclude"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/SiblingTestOut"
+                  },
+                  "title": "Response Siblings Api Reliability Tests Siblings Get"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/api/reliability-tests/revision-compare": {
       "get": {
         "tags": [
@@ -8057,6 +8174,54 @@
         "responses": {
           "204": {
             "description": "Successful Response"
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/reliability-tests/{test_id}/value-history": {
+      "get": {
+        "tags": [
+          "reliability"
+        ],
+        "summary": "Value History",
+        "description": "이 시험의 **판별 값 전부** — 지금 값과 과거 판이 함께.\n\n시험은 한 줄이고 판은 값에 붙는다(0046). 목록·카드는 지금 값만 보여 주므로, 「개정\n14에서는 얼마였나」 를 보려면 이 자리가 필요하다. 줄마다 `document_revision_label` 과\n`is_current` 가 온다 — 같은 자리의 값들이 판 순서로 늘어선다.",
+        "operationId": "value_history_api_reliability_tests__test_id__value_history_get",
+        "parameters": [
+          {
+            "name": "test_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "title": "Test Id"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/AttributeValueOut"
+                  },
+                  "title": "Response Value History Api Reliability Tests  Test Id  Value History Get"
+                }
+              }
+            }
           },
           "422": {
             "description": "Validation Error",
@@ -11658,6 +11823,34 @@
             ],
             "title": "Step Label"
           },
+          "document_revision_id": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "uuid"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Document Revision Id"
+          },
+          "document_revision_label": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Document Revision Label"
+          },
+          "is_current": {
+            "type": "boolean",
+            "title": "Is Current",
+            "default": true
+          },
           "source_text": {
             "anyOf": [
               {
@@ -12363,6 +12556,29 @@
         ],
         "title": "CapabilityOut",
         "description": "「이 시험, 어느 장비로 돌리나」 의 답 — 조건 속성을 그대로 검색 조건으로 옮긴 것."
+      },
+      "CapabilityPreviewRequest": {
+        "properties": {
+          "test_item_term_ids": {
+            "items": {
+              "type": "string",
+              "format": "uuid"
+            },
+            "type": "array",
+            "title": "Test Item Term Ids"
+          },
+          "attributes": {
+            "items": {
+              "$ref": "#/components/schemas/AttributeValueIn"
+            },
+            "type": "array",
+            "title": "Attributes"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "title": "CapabilityPreviewRequest",
+        "description": "아직 저장 안 한 조건으로 장비를 본다 — **적으면서 보는 자리.**"
       },
       "CapabilitySetOut": {
         "properties": {
@@ -19751,6 +19967,14 @@
             "type": "array",
             "title": "Created"
           },
+          "merged": {
+            "items": {
+              "$ref": "#/components/schemas/ReliabilityTestOut"
+            },
+            "type": "array",
+            "title": "Merged",
+            "default": []
+          },
           "failed": {
             "items": {
               "additionalProperties": {
@@ -21704,6 +21928,67 @@
           "jobs"
         ],
         "title": "ServerStatusOut"
+      },
+      "SiblingTestOut": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Id"
+          },
+          "name": {
+            "type": "string",
+            "title": "Name"
+          },
+          "status": {
+            "type": "string",
+            "title": "Status"
+          },
+          "product_group": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Product Group"
+          },
+          "spec_document_code": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Spec Document Code"
+          },
+          "document_revision_label": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Document Revision Label"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "name",
+          "status",
+          "product_group",
+          "spec_document_code",
+          "document_revision_label"
+        ],
+        "title": "SiblingTestOut",
+        "description": "이름이 같은 다른 시험 — 적용군·규격서·판이 무엇으로 갈렸나."
       },
       "SignupRequest": {
         "properties": {

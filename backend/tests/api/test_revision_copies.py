@@ -1,10 +1,14 @@
-"""판마다 한 벌 — **규격서 하나에 시험이 한 벌만 붙던 것을 푼다.**
+"""한 시험은 한 줄, 과거 판은 **값에.**
 
 같은 규격서의 개정 14와 18에 이름이 같은 시험이 70개, 그중 36개는 조건이 다른데 먼저
-올라간 판이 이기고 나머지는 409 로 막혔다(2026-09-30). 유일성 자리에 판이 없었다.
+올라간 판이 이기고 나머지는 409 로 막혔다(2026-09-30).
 
-**판마다 복제한다.** 신뢰성 시험은 수백 건이고 개정이 잦지 않아 그 값이 싸다 — 대신
-「이 판의 목록」 이 계산 없이 바로 나온다.
+판마다 시험을 복제해 봤더니(0045) 같은 시험이 판 수만큼 줄로 늘어났다 — 고칠 때 어느
+줄을 고칠지 사람이 정해야 하고, 장비 판정·검색·색인이 같은 시험을 여러 건으로 셌다.
+그래서 **시험은 한 줄**로 두고 판을 값에 붙인다(0046).
+
+    시험의 정체 = 규격서 + 이름 + 적용군    (판은 자리가 아니다)
+    값마다 `document_revision_id` 와 `is_current`
 """
 
 from __future__ import annotations
@@ -65,30 +69,17 @@ def _temperature(client: TestClient, admin: Signed, tag: str, key_id: str) -> di
     return dict(made.json())
 
 
-def test_같은_이름이_판마다_따로_선다(client: TestClient, db: Session, admin: Signed) -> None:
-    """**먼저 올라간 판이 이기던 것**을 푼다."""
+def test_같은_이름의_다른_판은_같은_시험이다(
+    client: TestClient, db: Session, admin: Signed
+) -> None:
+    """**판은 자리가 아니다.** 개정 14와 18은 같은 시험의 두 시점이다."""
     tag = "a" + uuid.uuid4().hex[:5]
     manager, slug = _lab(db, client, tag)
     paper = _paper(client, manager, slug, tag)
-    old, new = _revision(client, manager, paper, "14"), _revision(client, manager, paper, "18")
+    old = _revision(client, manager, paper, "14")
+    new = _revision(client, manager, paper, "18")
 
-    made = [
-        client.post(
-            "/api/reliability-tests",
-            json={
-                "division_code": "vd",
-                "name": f"고온고습 1000h {tag}",
-                "document_revision_id": revision,
-            },
-            headers=manager.headers,
-        )
-        for revision in (old, new)
-    ]
-    assert [one.status_code for one in made] == [201, 201], [one.text for one in made]
-    assert [one.json()["document_revision_label"] for one in made] == ["14", "18"]
-
-    # **같은 판에 같은 이름은 여전히 막는다** — 그 둘은 같은 시험이다.
-    again = client.post(
+    first = client.post(
         "/api/reliability-tests",
         json={
             "division_code": "vd",
@@ -97,16 +88,48 @@ def test_같은_이름이_판마다_따로_선다(client: TestClient, db: Sessio
         },
         headers=manager.headers,
     )
+    assert first.status_code == 201, first.text
+
+    # 한 건 등록은 **거절한다** — 사람이 이름을 다시 친 것이라면 그렇게 말해야 한다.
+    again = client.post(
+        "/api/reliability-tests",
+        json={
+            "division_code": "vd",
+            "name": f"고온고습 1000h {tag}",
+            "document_revision_id": new,
+        },
+        headers=manager.headers,
+    )
     assert again.status_code == 409, again.text
-    assert again.json()["error"]["details"]["document_revision_id"] == old
+    # **무엇을 하면 되는지 말한다** — 판이 다르면 그 시험을 고치면 된다.
+    assert "다른 판이면" in again.json()["error"]["message"]
+
+    # 묶음 적재는 **그 시험의 값에 판을 붙인다** — 개정 18을 올리는 것은 새 시험이 아니다.
+    batch = client.post(
+        "/api/reliability-tests/batch",
+        json={
+            "division_code": "vd",
+            "document_revision_id": new,
+            "tests": [{"name": f"고온고습 1000h {tag}"}],
+        },
+        headers=manager.headers,
+    )
+    assert batch.status_code == 207, batch.text
+    assert batch.json()["created"] == []
+    assert [one["id"] for one in batch.json()["merged"]] == [first.json()["id"]]
+    assert batch.json()["merged"][0]["document_revision_label"] == "18"
 
 
 def test_판으로_목록을_좁힌다(client: TestClient, db: Session, admin: Signed) -> None:
-    """**계산이 없다** — 판마다 한 벌이라 이것이 곧 「이 판의 목록」 이다."""
+    """「이 판의 목록」 = **그 판에서 값이 적힌 시험.**
+
+    개정 18이 손대지 않은 시험은 18의 목록에 안 뜬다 — 그것이 맞다.
+    """
     tag = "a" + uuid.uuid4().hex[:5]
     manager, slug = _lab(db, client, tag)
     paper = _paper(client, manager, slug, tag)
-    old, new = _revision(client, manager, paper, "14"), _revision(client, manager, paper, "18")
+    old = _revision(client, manager, paper, "14")
+    new = _revision(client, manager, paper, "18")
 
     batch = client.post(
         "/api/reliability-tests/batch",
@@ -121,7 +144,6 @@ def test_판으로_목록을_좁힌다(client: TestClient, db: Session, admin: S
     assert batch.status_code == 207, batch.text
     assert len(batch.json()["created"]) == 2
 
-    # 뒤 판은 같은 이름을 **다시** 올린다 — 판만 바꾼다.
     later = client.post(
         "/api/reliability-tests/batch",
         json={
@@ -133,7 +155,9 @@ def test_판으로_목록을_좁힌다(client: TestClient, db: Session, admin: S
         headers=manager.headers,
     )
     assert later.status_code == 207, later.text
-    assert len(later.json()["created"]) == 2, later.text
+    # 고온고습은 **있던 시험의 새 판**, 낙하는 새 시험.
+    assert [one["name"] for one in later.json()["merged"]] == [f"고온고습 {tag}"]
+    assert [one["name"] for one in later.json()["created"]] == [f"낙하 {tag}"]
 
     def names(revision: str) -> list[str]:
         got = client.get(
@@ -145,7 +169,16 @@ def test_판으로_목록을_좁힌다(client: TestClient, db: Session, admin: S
         return sorted(one["name"] for one in got.json())
 
     assert names(old) == sorted([f"고온고습 {tag}", f"열충격 {tag}"])
+    # 열충격은 18이 손대지 않았으므로 18의 목록에 없다.
     assert names(new) == sorted([f"고온고습 {tag}", f"낙하 {tag}"])
+
+    # **줄은 셋뿐이다** — 판마다 복제하던 때는 넷이었다.
+    everything = client.get(
+        "/api/reliability-tests",
+        params={"division": "vd", "status": "all"},
+        headers=manager.headers,
+    )
+    assert len([one for one in everything.json() if tag in one["name"]]) == 3
 
 
 def test_줄이_제_판을_적으면_묶음이_안_덮는다(
@@ -205,22 +238,24 @@ def test_두_판을_견준다(
     temperature = _temperature(client, admin, tag, condition_ids["temperature"])
 
     def put(revision: str, name: str, degrees: int | None) -> None:
+        """묶음으로 올린다 — **있던 시험이면 그 값에 판이 붙는다.** 한 건 등록은 같은
+        이름을 거절하므로(같은 시험이니까) 적재 경로가 이쪽이다."""
         attrs = (
             [{"definition_id": temperature["id"], "num_min": degrees, "unit": "degC"}]
             if degrees is not None
             else []
         )
         got = client.post(
-            "/api/reliability-tests",
+            "/api/reliability-tests/batch",
             json={
                 "division_code": "vd",
-                "name": name,
                 "document_revision_id": revision,
-                "attributes": attrs,
+                "tests": [{"name": name, "attributes": attrs}],
             },
             headers=manager.headers,
         )
-        assert got.status_code == 201, got.text
+        assert got.status_code == 207, got.text
+        assert not got.json()["failed"], got.text
 
     put(old, f"그대로 {tag}", 85)
     put(old, f"조건 바뀜 {tag}", 85)
@@ -239,6 +274,8 @@ def test_두_판을_견준다(
     assert [one["name"] for one in body["added"]] == [f"더해짐 {tag}"]
     assert [one["name"] for one in body["removed"]] == [f"없어짐 {tag}"]
     assert [one["name"] for one in body["changed"]] == [f"조건 바뀜 {tag}"]
+    # 한 줄 안의 두 시점이라 **앞뒤가 같은 시험**이다 — 줄을 잇는 수고가 없다.
+    assert body["changed"][0]["before_id"] == body["changed"][0]["after_id"]
     assert body["unchanged_count"] == 1, "안 바뀐 것을 세야 개정의 범위가 보인다"
     # **무엇이 어떻게 바뀌었는지** 한 줄로 — 「바뀜」 만으로는 다시 열어 봐야 한다.
     difference = body["changed"][0]["differences"][0]
@@ -269,3 +306,85 @@ def test_다른_문서의_판끼리는_못_견준다(
     )
     assert got.status_code == 400, got.text
     assert got.json()["error"]["code"] == "TSC-RELIABILITY-0017"
+
+
+def test_과거_판의_값은_지금_값을_안_흉내낸다(
+    client: TestClient, db: Session, admin: Signed, condition_ids: dict[str, str]
+) -> None:
+    """**이것이 이 설계의 가장 위험한 자리다.**
+
+    값이 판마다 쌓이므로, 읽는 쪽이 `is_current` 를 안 걸면 과거 판의 조건으로 검색에
+    답한다 — 그 답은 조용히 틀린다. 거르기·장비 판정·카드·이력을 한 번에 본다.
+    """
+    tag = "a" + uuid.uuid4().hex[:5]
+    manager, slug = _lab(db, client, tag)
+    paper = _paper(client, manager, slug, tag)
+    old = _revision(client, manager, paper, "14")
+    new = _revision(client, manager, paper, "18")
+    temperature = _temperature(client, admin, tag, condition_ids["temperature"])
+    key = temperature["key"]
+
+    def load(revision: str, degrees: int) -> None:
+        got = client.post(
+            "/api/reliability-tests/batch",
+            json={
+                "division_code": "vd",
+                "document_revision_id": revision,
+                "tests": [
+                    {
+                        "name": f"온도 오름 {tag}",
+                        "attributes": [
+                            {
+                                "definition_id": temperature["id"],
+                                "num_value": degrees,
+                                "unit": "degC",
+                            }
+                        ],
+                    }
+                ],
+            },
+            headers=manager.headers,
+        )
+        assert got.status_code == 207, got.text
+        assert not got.json()["failed"], got.text
+
+    load(old, 85)
+    load(new, 95)
+
+    rows = client.get(
+        "/api/reliability-tests",
+        params={"division": "vd", "status": "all"},
+        headers=manager.headers,
+    ).json()
+    mine = next(one for one in rows if one["name"] == f"온도 오름 {tag}")
+
+    # ① 카드에는 **지금 값만** — 85 와 95 가 나란히 서면 어느 것이 조건인지 안 보인다.
+    shown = [
+        one["display"] for one in mine["attributes"] if one["label"] == temperature["label"]
+    ]
+    assert shown == ["95 degC"], shown
+
+    # ② 거르기가 과거 값으로 안 걸린다.
+    def found(attr: str) -> list[str]:
+        got = client.get(
+            "/api/reliability-tests",
+            params={"division": "vd", "status": "all", "attr": attr},
+            headers=manager.headers,
+        )
+        assert got.status_code == 200, got.text
+        return [one["name"] for one in got.json()]
+
+    assert f"온도 오름 {tag}" in found(f"{key}=95")
+    assert f"온도 오름 {tag}" not in found(f"{key}=85"), "개정 14의 값으로 걸렸습니다"
+
+    # ③ 이력에는 **둘 다** 있고, 어느 판의 것인지가 줄에 적혀 있다.
+    history = client.get(
+        f"/api/reliability-tests/{mine['id']}/value-history", headers=manager.headers
+    )
+    assert history.status_code == 200, history.text
+    marks = sorted(
+        (one["document_revision_label"], one["display"], one["is_current"])
+        for one in history.json()
+        if one["label"] == temperature["label"]
+    )
+    assert marks == [("14", "85 degC", False), ("18", "95 degC", True)]

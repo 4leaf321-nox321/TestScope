@@ -150,6 +150,9 @@ class ReliabilityBatchOut(BaseModel):
 
     requested: int
     created: list[ReliabilityTestOut]
+    merged: list[ReliabilityTestOut] = []
+    """**이미 있던 시험에 이 판의 값을 붙인 것.** 시험의 정체는 규격서 + 이름 + 적용군이라,
+    개정 18을 올리는 것은 새 시험이 아니라 있던 시험의 새 판이다 — 이 줄들이 그것이다."""
     failed: list[dict[str, str]]
     """안 된 줄과 **왜**. `name` 이 함께 온다 — id 가 없는 줄이라 그것 말고는 가리킬 것이
     없다."""
@@ -259,6 +262,24 @@ class RevisionCompareOut(BaseModel):
     changed: list[RevisionChangedOut]
     unchanged_count: int
     """둘 다 있고 조건도 같은 것. **이 수가 크면 개정의 범위가 좁다는 뜻이다.**"""
+
+
+class CapabilityPreviewRequest(Request):
+    """아직 저장 안 한 조건으로 장비를 본다 — **적으면서 보는 자리.**"""
+
+    test_item_term_ids: list[uuid.UUID] = Field(default_factory=list)
+    attributes: list[AttributeValueIn] = Field(default_factory=list)
+
+
+class SiblingTestOut(BaseModel):
+    """이름이 같은 다른 시험 — 적용군·규격서·판이 무엇으로 갈렸나."""
+
+    id: uuid.UUID
+    name: str
+    status: str
+    product_group: str | None
+    spec_document_code: str | None
+    document_revision_label: str | None
 
 
 class SkippedConditionOut(BaseModel):

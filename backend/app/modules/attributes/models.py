@@ -184,11 +184,26 @@ class AttributeValue(Base):
         # 되어 동작·저장을 둘 다 못 적는다. NULL 끼리는 서로 다르다고 보므로 COALESCE 로
         # 눌러 둔다 — 안 그러면 이름 없는 묶음의 같은 칸이 여러 줄로 들어온다.
         Index(
+            # **지금 값은 자리마다 하나** — 이 인덱스가 `is_current` 의 불변식을 보증한다.
             "uq_attribute_values_reliability",
             "reliability_test_id",
             "definition_id",
             text("COALESCE(set_label, '')"),
             text("COALESCE(step_order, -1)"),
+            unique=True,
+            postgresql_where=text("reliability_test_id IS NOT NULL AND is_current"),
+        ),
+        Index(
+            # 한 판이 같은 자리에 두 값을 못 쓴다. 판을 안 적은 값도 하나로 센다
+            # (널끼리는 서로 다르다고 보므로 자리를 채워 둔다).
+            "uq_attribute_values_revision",
+            "reliability_test_id",
+            "definition_id",
+            text("COALESCE(set_label, '')"),
+            text("COALESCE(step_order, -1)"),
+            text(
+                "COALESCE(document_revision_id, '00000000-0000-0000-0000-000000000000'::uuid)"
+            ),
             unique=True,
             postgresql_where=text("reliability_test_id IS NOT NULL"),
         ),
@@ -308,6 +323,24 @@ class AttributeValue(Base):
     같은 모양이다."""
 
     step_label: Mapped[str | None] = mapped_column(String(60), nullable=True)
+
+    document_revision_id: Mapped[uuid.UUID | None] = mapped_column(
+        PgUUID(as_uuid=True),
+        ForeignKey("spec_document_revisions.id", ondelete="SET NULL"),
+        nullable=True,
+        index=True,
+    )
+    """이 값이 **규격서의 몇 판** 것인가. 시험은 한 줄이고 판은 값에 붙는다 —
+    개정 14의 85 °C 와 개정 18의 95 °C 가 같은 자리에 함께 남는다."""
+    is_current: Mapped[bool] = mapped_column(Boolean, default=True, server_default="true")
+    """이 자리(칸·묶음·차례)의 **지금 값**인가.
+
+    **읽는 쪽마다 「판 순서가 가장 뒤인 것」 을 다시 구현하면 그중 하나는 반드시 잊는다** —
+    거르기·장비 판정·색인 카드·그래프 간선·MCP 병합. 잊은 자리는 과거 판의 값으로 검색에
+    답하고, 틀린 답은 조용하다. 칸으로 두면 읽는 쪽은 이 한 줄만 더하면 되고, **유일
+    인덱스가 자리마다 하나임을 DB 에서 보증한다.**
+
+    쓰는 자리는 `set_values` 하나다 — 그래서 베껴도 안 갈라진다."""
 
     source_text: Mapped[str | None] = mapped_column(Text, nullable=True)
     """**문서에 적힌 그대로.** `note` 와 다른 칸인 이유 — note 는 옮겨 적은 사람의

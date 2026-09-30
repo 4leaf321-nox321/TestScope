@@ -72,10 +72,11 @@ def test_묶음으로_올리면_줄마다_결과가_온다(
     body = got.json()
     assert body["requested"] == 3
     assert [one["name"] for one in body["created"]] == [f"고온고습-{tag}", f"열충격-{tag}"]
-    # **왜 막혔는지가 함께 온다** — 「1건 실패」 만으로는 다시 누를지 고칠지 알 수 없다.
-    assert len(body["failed"]) == 1
-    assert body["failed"][0]["name"] == f"이미 있는 시험-{tag}"
-    assert "같은 이름" in body["failed"][0]["message"] or body["failed"][0]["code"]
+    # **이미 있는 시험은 막지 않고 그 값에 판을 붙인다**(0046) — 시험의 정체는 규격서 +
+    # 이름 + 적용군이라, 다시 올리는 것은 같은 시험의 새 시점이다. 막으면 개정본을 올릴
+    # 때 이백 줄이 전부 실패로 오고, 부른 쪽은 그것을 「이미 다 있다」 로 읽는다.
+    assert [one["name"] for one in body["merged"]] == [f"이미 있는 시험-{tag}"]
+    assert body["failed"] == []
 
 
 def test_문서를_주면_줄마다_규격서가_걸리고_문서로_모아_볼_수_있다(

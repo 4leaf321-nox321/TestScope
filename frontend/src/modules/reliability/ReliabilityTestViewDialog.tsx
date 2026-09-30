@@ -35,6 +35,7 @@ import { attributeApi } from '@/modules/attributes/api'
 import type { AttributeValue } from '@/modules/attributes/api'
 import { SECTIONS, anchorOf } from '@/modules/attributes/StandardAttributeFields'
 import { CandidateBadge, ReviewBanner } from '@/modules/reliability/CandidateReview'
+import { ValueHistory } from '@/modules/reliability/ValueHistory'
 import { reliabilityApi } from '@/modules/reliability/api'
 import { CardOutline } from '@/modules/reliability/CardOutline'
 import type { OutlineItem } from '@/modules/reliability/CardOutline'
@@ -403,6 +404,25 @@ export function ReliabilityTestViewDialog({
               </p>
             )}
           </dl>
+
+          {/**
+           * **화면은 최신판을 보여 주고, 과거 판은 여기서 본다.**
+           *
+           * 위 카드가 지금 값만 보여 주는 것은 옳지만(85 와 95 가 나란히 서면 어느 것이
+           * 조건인지 안 보인다), 그러면 「개정 14에서는 얼마였나」 를 볼 길이 없어진다 —
+           * 그 물음이 곧 「이 개정에서 무엇이 바뀌었나」 다.
+           */}
+          <section className="space-y-2">
+            <h3 className="border-b pb-1 text-sm font-medium">
+              판별 이력
+              {test.document_revision_label && (
+                <span className="text-muted-foreground ml-2 text-xs font-normal">
+                  지금 판 {test.document_revision_label}
+                </span>
+              )}
+            </h3>
+            <ValueHistory testId={test.id} />
+          </section>
         </div>
 
         <DialogFooter>

@@ -495,7 +495,10 @@ def _equipment_cards(db: Session) -> list[Chunk]:
 
 def _standard_attributes(db: Session, column: str) -> dict[str, list[str]]:
     """대상마다 **정식 속성**의 「이름: 값」 줄. 초안은 표시와 수집용이라 카드에 넣지 않는다 —
-    초안이 쌓여도 검색 품질이 흔들리지 않아야 한다(attributes/models.py)."""
+    초안이 쌓여도 검색 품질이 흔들리지 않아야 한다(attributes/models.py).
+
+    **지금 값만 담는다**(`is_current`). 신뢰성 시험은 판마다 값이 쌓이므로(0046), 안 거르면
+    카드 하나에 개정 14의 85 °C 와 18의 95 °C 가 함께 들어가 의미 검색이 옛 값으로 걸린다."""
     assert column in ("reliability_test_id", "equipment_id", "series_id", "method_id")
     rows = db.execute(
         text(f"""
@@ -505,7 +508,7 @@ def _standard_attributes(db: Session, column: str) -> dict[str, list[str]]:
         JOIN attribute_definitions d ON d.id = v.definition_id AND d.status = 'standard'
         LEFT JOIN vocabulary_terms t ON t.id = v.term_id
         LEFT JOIN test_methods m ON m.id = v.ref_method_id
-        WHERE v.{column} IS NOT NULL
+        WHERE v.{column} IS NOT NULL AND v.is_current
         ORDER BY d.sort_order, d.label
         """)
     ).all()

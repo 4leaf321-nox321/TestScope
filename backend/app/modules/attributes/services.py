@@ -26,7 +26,7 @@ from app.modules.attributes.schemas import (
     AttributeValueIn,
     AttributeValueOut,
 )
-from app.modules.documents.models import SpecDocument
+from app.modules.documents.models import SpecDocument, SpecDocumentRevision
 from app.modules.methods.models import TestMethod
 from app.modules.vocabulary.models import ConditionKey, Vocabulary, VocabularyTerm
 from app.shared.attribute_text import display_attribute
@@ -520,6 +520,7 @@ def set_values(
     target: str,
     object_id: uuid.UUID,
     items: list[AttributeValueIn],
+    revision_id: uuid.UUID | None = None,
 ) -> None:
     """대상 하나의 값을 **통째로** 바꾼다. 커밋은 부르는 쪽이 한다.
 
@@ -528,11 +529,21 @@ def set_values(
     조건이 하나씩 사라지는데 누구도 그 사실을 모르는 것이 실제 위험이다. 자리는 (칸,
     묶음, 차례)이고, 같은 칸을 여러 벌 적으려면 **묶음을 달면 된다.**
 
+    **신뢰성 시험은 판마다 한 벌씩 쌓인다**(`revision_id`). 시험은 한 줄이고 판은 값에
+    붙으므로, 이 부름은 **그 판의 값만** 갈아 끼운다 — 개정 18을 올려도 14의 값은 남아
+    이력이 된다. 판을 안 주면 판 없는 값만 바뀐다(다른 대상은 판이 없어 예전 그대로다).
+
     새 이름은 초안을 만든다.
     """
     _check_target(target)
     column = _TARGET_COLUMN[target]
-    for old in db.scalars(select(AttributeValue).where(column == object_id)):
+    # **그 판의 것만 지운다.** 통째로 지우면 개정 18을 올리는 순간 14의 값이 사라지고,
+    # 이력이 있다고 알고 있던 사람은 그것을 영영 못 찾는다.
+    stale = select(AttributeValue).where(
+        column == object_id,
+        AttributeValue.document_revision_id.is_not_distinct_from(revision_id),
+    )
+    for old in db.scalars(stale):
         db.delete(old)
     db.flush()
     # **열쇠가 (정의, 묶음, 차례) 다.** 정의만으로 누르면 동작·저장이 서로를 덮어써서
@@ -605,7 +616,69 @@ def set_values(
             details={"duplicates": sorted(set(clashes))},
         )
     for value in seen.values():
+        value.document_revision_id = revision_id
+        # **끄고 들어간다.** 새 판의 값을 켠 채로 넣으면, 옛 판의 값이 아직 켜져 있어서
+        # 「자리마다 하나」 인덱스를 어긴다 — 표식은 아래에서 한 번에 다시 세운다.
+        value.is_current = target != "reliability_test"
         db.add(value)
+    db.flush()
+    if target == "reliability_test":
+        _mark_current(db, object_id)
+
+
+def _mark_current(db: Session, test_id: uuid.UUID) -> None:
+    """자리마다 **지금 값**을 하나 고른다 — 판 순서가 가장 뒤인 것.
+
+    **읽는 쪽이 이 판정을 다시 하지 않게** 칸에 적어 둔다(모델의 `is_current` 참고).
+    유일 인덱스가 자리마다 하나임을 보증하므로, 여기서 틀리면 커밋이 막힌다 — 조용히
+    두 개가 서는 일은 없다.
+
+    판 없는 값은 **가장 아래**다. 판을 적은 값이 하나라도 있으면 그것이 이긴다 — 나중에
+    판을 붙인 것이 더 정확한 정보다.
+    """
+    rows = list(
+        db.scalars(select(AttributeValue).where(AttributeValue.reliability_test_id == test_id))
+    )
+    if not rows:
+        return
+    orders = {
+        one.id: one.sort_order
+        for one in db.scalars(
+            select(SpecDocumentRevision).where(
+                SpecDocumentRevision.id.in_(
+                    {r.document_revision_id for r in rows if r.document_revision_id}
+                )
+            )
+        )
+    }
+    slots: dict[tuple[uuid.UUID, str, int], list[AttributeValue]] = {}
+    for one in rows:
+        where = (
+            one.definition_id,
+            one.set_label or "",
+            one.step_order if one.step_order is not None else -1,
+        )
+        slots.setdefault(where, []).append(one)
+    # **두 번에 나눠 쓴다.** 켜고 끄는 것을 한 문장에 섞으면 그 사이에 자리마다 둘이
+    # 켜진 순간이 생기고, 유일 인덱스는 그 순간을 본다(미룰 수 없는 인덱스다).
+    winners: list[AttributeValue] = []
+    for mine in slots.values():
+        # 판이 없으면 -1 — 판을 적은 것이 언제나 이긴다.
+        winners.append(
+            max(
+                mine,
+                key=lambda one: (
+                    orders.get(one.document_revision_id, -1)
+                    if one.document_revision_id
+                    else -1
+                ),
+            )
+        )
+    for one in rows:
+        one.is_current = False
+    db.flush()
+    for one in winners:
+        one.is_current = True
     db.flush()
 
 
@@ -652,9 +725,19 @@ def display_of(
 
 
 def values_of(
-    db: Session, *, target: str, object_ids: list[uuid.UUID], include_draft: bool = True
+    db: Session,
+    *,
+    target: str,
+    object_ids: list[uuid.UUID],
+    include_draft: bool = True,
+    include_past: bool = False,
 ) -> dict[uuid.UUID, list[AttributeValueOut]]:
-    """여러 대상의 값을 질의 몇 번으로. 정식이 먼저, 초안이 뒤."""
+    """여러 대상의 값을 질의 몇 번으로. 정식이 먼저, 초안이 뒤.
+
+    **지금 값만 준다**(`is_current`). 신뢰성 시험은 판마다 값이 쌓이므로(0046), 안 거르면
+    카드에 개정 14의 85 °C 와 18의 95 °C 가 나란히 서서 어느 것이 지금 조건인지 안 보인다.
+    과거 판까지 보려면 `include_past=True` — 이력 화면이 그렇게 부른다.
+    """
     _check_target(target)
     out: dict[uuid.UUID, list[AttributeValueOut]] = {one: [] for one in object_ids}
     if not object_ids:
@@ -676,6 +759,8 @@ def values_of(
     )
     if not include_draft:
         stmt = stmt.where(AttributeDefinition.status == "standard")
+    if not include_past:
+        stmt = stmt.where(AttributeValue.is_current.is_(True))
     pairs = db.execute(stmt).all()
     term_ids = {v.term_id for v, _ in pairs if v.term_id}
     terms = (
@@ -704,6 +789,17 @@ def values_of(
         if document_ids
         else {}
     )
+    # 판 이름도 한 번에 — id 만 오면 사람이 못 읽는다.
+    revisions = {
+        one.id: one.label
+        for one in db.scalars(
+            select(SpecDocumentRevision).where(
+                SpecDocumentRevision.id.in_(
+                    {v.document_revision_id for v, _ in pairs if v.document_revision_id}
+                )
+            )
+        )
+    }
     for value, definition in pairs:
         term_value = terms.get(value.term_id) if value.term_id else None
         method_code = methods.get(value.ref_method_id) if value.ref_method_id else None
@@ -717,6 +813,11 @@ def values_of(
                 set_label=value.set_label,
                 step_order=value.step_order,
                 step_label=value.step_label,
+                document_revision_id=value.document_revision_id,
+                document_revision_label=revisions.get(value.document_revision_id)
+                if value.document_revision_id
+                else None,
+                is_current=value.is_current,
                 source_text=value.source_text,
                 original_value=value.original_value,
                 original_unit=value.original_unit,

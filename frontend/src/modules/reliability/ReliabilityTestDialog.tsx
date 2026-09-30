@@ -54,6 +54,7 @@ import type { AttributeDefinition } from '@/modules/attributes/api'
 import { AttachmentStrip } from '@/modules/attachments/AttachmentStrip'
 import { attachmentApi } from '@/modules/attachments/api'
 import { CardOutline } from '@/modules/reliability/CardOutline'
+import { EditingAside } from '@/modules/reliability/EditingAside'
 import type { OutlineItem } from '@/modules/reliability/CardOutline'
 import { ReviewBanner } from '@/modules/reliability/CandidateReview'
 import { reliabilityApi } from '@/modules/reliability/api'
@@ -217,6 +218,9 @@ export function ReliabilityTestDialog({
     }
   }
 
+  /** 지금 고른 규격서 — 「규격서」 칸의 값이다. 원본·쪽수를 옆에서 보여 주려고 꺼낸다. */
+  const documentId = Object.values(standard).find((one) => one.documentId)?.documentId ?? null
+
   return (
     <Dialog open={open} onOpenChange={(next) => !next && !busy && onClose()}>
       <DialogContent className="max-h-[88vh] w-[92vw] overflow-y-auto sm:max-w-[92vw] lg:max-w-[1400px]">
@@ -368,6 +372,26 @@ export function ReliabilityTestDialog({
                   target="reliability_test"
                   rows={attributes}
                   onChange={setAttributes}
+                />
+              </fieldset>
+
+              {/**
+               * **저장하고 나서 알면 늦는 것들.** 돌릴 장비가 0대라는 것, 개정 14에서는
+               * 얼마였다는 것, 같은 이름이 옆 제품군에 있다는 것, 고른 규격서가 발췌라는
+               * 것 — 넷 다 적는 동안 알아야 손을 고칠 수 있다.
+               */}
+              <fieldset className="rounded-lg border p-4">
+                <legend className="px-1.5 text-sm font-medium">적으면서 보기</legend>
+                <EditingAside
+                  divisionCode={division}
+                  testId={editing?.id ?? null}
+                  name={name}
+                  termIds={termIds}
+                  attributes={[
+                    ...toStandardPayload(standardDefs, standard),
+                    ...toPayload(attributes),
+                  ]}
+                  documentId={documentId}
                 />
               </fieldset>
             </div>

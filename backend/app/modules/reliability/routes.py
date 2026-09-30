@@ -10,11 +10,14 @@ from sqlalchemy.orm import Session
 
 from app.database import get_db
 from app.modules.accounts.models import User
+from app.modules.attributes import services as attributes
+from app.modules.attributes.schemas import AttributeValueOut
 from app.modules.reliability import capability as capability_service
 from app.modules.reliability import proposals as proposal_service
 from app.modules.reliability import services
 from app.modules.reliability.schemas import (
     CapabilityOut,
+    CapabilityPreviewRequest,
     DivisionOut,
     ReliabilityBatchOut,
     ReliabilityBatchRequest,
@@ -25,6 +28,7 @@ from app.modules.reliability.schemas import (
     ReliabilityTestOut,
     ReliabilityTestUpdateRequest,
     RevisionCompareOut,
+    SiblingTestOut,
     TestItemProposalDecision,
     TestItemProposalGroupOut,
     TestItemProposalOut,
@@ -90,6 +94,43 @@ def create_reliability_test(
     값이어야 한다(`POST /api/resolve` 로 먼저 찾는다)."""
     row = services.create(db, user, payload.model_dump())
     return services.test_out(db, user, row)
+
+
+@router.post("/capability-preview", response_model=CapabilityOut)
+def capability_preview(
+    payload: CapabilityPreviewRequest,
+    user: User = Depends(current_user),
+    db: Session = Depends(get_db),
+) -> CapabilityOut:
+    """**아직 저장하지 않은 조건**으로 장비를 본다 — 적으면서 보는 자리.
+
+    지금은 저장한 뒤 따로 열어야 보여서, 「95 °C 로 올리면 돌릴 장비가 0대」 를 저장하고
+    나서 안다. 단위 환산은 서버가 한다 — 화면이 SI 로 바꿔 보내면 그 환산이 두 벌이 된다.
+
+    **`/{test_id}` 보다 먼저 선언한다.**
+    """
+    return capability_service.preview(
+        db,
+        user,
+        test_item_term_ids=payload.test_item_term_ids,
+        items=payload.attributes,
+    )
+
+
+@router.get("/siblings", response_model=list[SiblingTestOut])
+def siblings(
+    division: str = Query(max_length=120),
+    name: str = Query(max_length=200),
+    exclude: uuid.UUID | None = Query(default=None),
+    user: User = Depends(current_user),
+    db: Session = Depends(get_db),
+) -> list[SiblingTestOut]:
+    """이름이 같은 다른 시험 — **무엇으로 갈렸는지**(적용군·규격서·판) 함께.
+
+    적으면서 이 목록이 보이면 중복으로 올리다 409 를 받는 일이 줄고, 옆 제품군이 어떤
+    조건으로 하는지 보면서 적을 수 있다.
+    """
+    return services.siblings(db, division, name, exclude)
 
 
 @router.get("/revision-compare", response_model=RevisionCompareOut)
@@ -302,3 +343,22 @@ def mark_reviewed(
     from app.modules.documents import services as documents
 
     documents.mark_reviewed(db, user, test_id, revision_id)
+
+
+@router.get("/{test_id}/value-history", response_model=list[AttributeValueOut])
+def value_history(
+    test_id: uuid.UUID,
+    user: User = Depends(current_user),
+    db: Session = Depends(get_db),
+) -> list[AttributeValueOut]:
+    """이 시험의 **판별 값 전부** — 지금 값과 과거 판이 함께.
+
+    시험은 한 줄이고 판은 값에 붙는다(0046). 목록·카드는 지금 값만 보여 주므로, 「개정
+    14에서는 얼마였나」 를 보려면 이 자리가 필요하다. 줄마다 `document_revision_label` 과
+    `is_current` 가 온다 — 같은 자리의 값들이 판 순서로 늘어선다.
+    """
+    services.get(db, test_id)
+    rows = attributes.values_of(
+        db, target="reliability_test", object_ids=[test_id], include_past=True
+    )
+    return rows.get(test_id, [])

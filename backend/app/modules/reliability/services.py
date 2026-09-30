@@ -22,7 +22,7 @@ from app.modules.attributes import services as attributes
 from app.modules.attributes.models import AttributeDefinition, AttributeValue
 from app.modules.attributes.schemas import AttributeValueIn
 from app.modules.documents import services as documents
-from app.modules.documents.models import SpecDocumentRevision
+from app.modules.documents.models import SpecDocument, SpecDocumentRevision
 from app.modules.equipment.models import Equipment
 from app.modules.reliability.models import ReliabilityTest, ReliabilityTestItem
 from app.modules.reliability.schemas import (
@@ -34,6 +34,7 @@ from app.modules.reliability.schemas import (
     RevisionCompareOut,
     RevisionDifferenceOut,
     RevisionTestBriefOut,
+    SiblingTestOut,
 )
 from app.modules.test_items.models import EquipmentTestItem
 from app.modules.vocabulary.models import Vocabulary, VocabularyTerm
@@ -265,7 +266,8 @@ def _by_document(
     return stmt.where(
         ReliabilityTest.id.in_(
             select(AttributeValue.reliability_test_id).where(
-                AttributeValue.ref_document_id == document_id
+                AttributeValue.ref_document_id == document_id,
+                AttributeValue.is_current.is_(True),
             )
         )
     )
@@ -274,13 +276,21 @@ def _by_document(
 def _by_revision(
     stmt: Select[tuple[ReliabilityTest]], revision_id: uuid.UUID | None
 ) -> Select[tuple[ReliabilityTest]]:
-    """그 판의 시험만 — **판마다 한 벌이라 이것이 곧 「이 판의 목록」 이다.**
+    """그 판에서 값이 적힌 시험만 — **「이 판의 목록」.**
 
-    계산이 없다. 판 사이의 차이를 매번 접어 목록을 만드는 쪽은 판 수만큼 일이 늘고, 그
-    계산이 틀리면 어느 판의 조건인지 아무도 모른다."""
+    시험은 한 줄이고 판은 값에 붙는다(0046). 그 판에서 아무것도 안 적힌 시험은 그 판의
+    목록에 없다 — 개정 18이 손대지 않은 시험은 18의 목록에 안 뜬다는 뜻이고, 그것이 맞다."""
     if revision_id is None:
         return stmt
-    return stmt.where(ReliabilityTest.document_revision_id == revision_id)
+    # **그 판의 값을 가진 시험.** 시험은 한 줄이고 판은 값에 붙으므로(0046), 「이 판의
+    # 목록」 은 그 판에서 무언가 적힌 시험들이다 — 현재 판이 무엇이든.
+    return stmt.where(
+        ReliabilityTest.id.in_(
+            select(AttributeValue.reliability_test_id).where(
+                AttributeValue.document_revision_id == revision_id
+            )
+        )
+    )
 
 
 def _by_attributes(
@@ -377,19 +387,20 @@ PRODUCT_GROUP_KEY = "reliability_product_group"
 SPEC_DOCUMENT_KEY = "reliability_spec_document"
 NAME_SCOPE_KEYS = (PRODUCT_GROUP_KEY, SPEC_DOCUMENT_KEY)
 
-#: 이름 유일성의 자리 — (적용군 값 id, 규격서 id, 규격서 판 id). 셋 다 비면 예전과 같은
-#: 「이름 하나」 다. 판만 칸이고(`document_revision_id`) 나머지 둘은 속성이다.
-NameScope = tuple[str, str, str]
+#: 이름 유일성의 자리 — (적용군 값 id, 규격서 id). 둘 다 비면 예전과 같은 「이름 하나」 다.
+#:
+#: **판은 자리가 아니다**(0046). 시험의 정체는 규격서 + 이름 + 적용군이고, 판은 그 시험의
+#: 값에 붙는 꼬리표다 — 개정 14와 18은 **같은 시험의 두 시점**이지 두 시험이 아니다.
+#: 판을 자리에 넣었더니(0045) 같은 시험이 판 수만큼 줄로 늘어나, 고칠 때 어느 줄을 고칠지
+#: 사람이 정해야 하고 장비 판정·검색·색인이 같은 시험을 여러 건으로 셌다.
+NameScope = tuple[str, str]
 
 
-def _scope_of_items(
-    db: Session, items: list[AttributeValueIn], revision_id: Any = None
-) -> NameScope:
-    """보낼 값에서 (적용군, 규격서)를 뽑고, 판은 받은 것을 쓴다."""
-    revision = str(revision_id) if revision_id else ""
+def _scope_of_items(db: Session, items: list[AttributeValueIn]) -> NameScope:
+    """보낼 값에서 (적용군, 규격서)를 뽑는다."""
     ids = {one.definition_id for one in items if one.definition_id}
     if not ids:
-        return "", "", revision
+        return "", ""
     keys = {
         row[0]: row[1]
         for row in db.execute(
@@ -405,25 +416,12 @@ def _scope_of_items(
             group = str(one.term_id)
         elif key == SPEC_DOCUMENT_KEY and one.document_id:
             document = str(one.document_id)
-    return group, document, revision
+    return group, document
 
 
 def _scope_of_rows(db: Session, test_ids: list[uuid.UUID]) -> dict[uuid.UUID, NameScope]:
     """이미 있는 줄들의 (적용군, 규격서). 질의 한 번으로."""
-    rows_by_id = {
-        one.id: one
-        for one in db.scalars(select(ReliabilityTest).where(ReliabilityTest.id.in_(test_ids)))
-    }
-    out: dict[uuid.UUID, NameScope] = {
-        one: (
-            "",
-            "",
-            str(rows_by_id[one].document_revision_id)
-            if one in rows_by_id and rows_by_id[one].document_revision_id
-            else "",
-        )
-        for one in test_ids
-    }
+    out: dict[uuid.UUID, NameScope] = {one: ("", "") for one in test_ids}
     if not test_ids:
         return out
     rows = db.execute(
@@ -437,15 +435,16 @@ def _scope_of_rows(db: Session, test_ids: list[uuid.UUID]) -> dict[uuid.UUID, Na
         .where(
             AttributeValue.reliability_test_id.in_(test_ids),
             AttributeDefinition.key.in_(NAME_SCOPE_KEYS),
+            AttributeValue.is_current.is_(True),
         )
     ).all()
     for test_id, key, term_id, document_id in rows:
-        group, document, revision = out.get(test_id, ("", "", ""))
+        group, document = out.get(test_id, ("", ""))
         if key == PRODUCT_GROUP_KEY and term_id:
             group = str(term_id)
         if key == SPEC_DOCUMENT_KEY and document_id:
             document = str(document_id)
-        out[test_id] = (group, document, revision)
+        out[test_id] = (group, document)
     return out
 
 
@@ -466,7 +465,7 @@ def _check_name_free(
     name: str,
     *,
     except_id: uuid.UUID | None,
-    scope: NameScope = ("", "", ""),
+    scope: NameScope = ("", ""),
 ) -> None:
     """이 사업부에 **같은 이름이면서 같은 자리인** 시험이 있나.
 
@@ -477,15 +476,14 @@ def _check_name_free(
 
     셋 다 같아야 같은 시험이다:
 
-        같은 이름 · 적용군 다름     -> 다른 시험. 들어간다
-        같은 이름 · 규격서 다름     -> 다른 시험. 들어간다
-        같은 이름 · **판** 다름     -> 다른 시험. 들어간다(개정 14와 18은 다른 한 벌)
-        같은 이름 · 셋 다 같음      -> 같은 시험. 막는다
-        같은 이름 · 셋 다 안 적힘    -> 가를 근거가 없다. 막는다(예전 그대로)
+        같은 이름 · 적용군 다름    -> 다른 시험. 들어간다
+        같은 이름 · 규격서 다름    -> 다른 시험. 들어간다
+        같은 이름 · 둘 다 같음     -> **같은 시험.** 판이 달라도 같다 — 값에 판을 붙인다
+        같은 이름 · 둘 다 안 적힘   -> 가를 근거가 없다. 막는다(예전 그대로)
 
-    판이 자리에 들어온 이유(2026-09-30): 규격서 하나에 시험이 **한 벌만** 붙어, 같은 문서의
-    개정 14와 18에 이름이 같은 시험 70개 중 36개가 조건이 다른데도 먼저 올라간 판이 이기고
-    나머지는 막혔다.
+    **판은 자리가 아니다.** 개정 14와 18은 같은 시험의 두 시점이지 두 시험이 아니다 —
+    판을 자리에 넣었더니 같은 시험이 판 수만큼 줄로 늘어났다(0045 -> 0046). 판이 다른
+    같은 시험을 올리면 **그 시험의 값에 판이 붙는다**(`set_values(revision_id=…)`).
 
     마지막 줄이 중요하다. **가를 근거가 하나도 없으면 예전과 똑같이 이름 하나다** — 수백
     건을 적재하는 동안 동명이 쌓이는 것을 막는 장치가 거기 남아 있어야 한다. 가르고 싶으면
@@ -508,21 +506,18 @@ def _check_name_free(
     if not same:
         return
     scopes = _scope_of_rows(db, [one.id for one in same])
-    clash = next((one for one in same if scopes.get(one.id, ("", "", "")) == scope), None)
+    clash = next((one for one in same if scopes.get(one.id, ("", "")) == scope), None)
     if clash is None:
         return
-    group, document, revision = scope
-    parts = [
-        label
-        for label, filled in (("적용군", group), ("규격서", document), ("판", revision))
-        if filled
-    ]
-    where = f"같은 {'·'.join(parts)}" if parts else "적용군도 규격서도 판도 안 적힌 채"
+    group, document = scope
+    parts = [label for label, filled in (("적용군", group), ("규격서", document)) if filled]
+    where = f"같은 {'·'.join(parts)}" if parts else "적용군도 규격서도 안 적힌 채"
     raise Conflict(
         "TSC-RELIABILITY-0003",
         f"이 사업부에 {where}로 같은 이름의 신뢰성 시험이 있습니다: {clash.name}"
         + (
-            " — 별개의 시험이면 적용군·규격서·판 중 하나를 적어 가르십시오."
+            " — 별개의 시험이면 적용군이나 규격서를 적어 가르십시오."
+            " (같은 시험의 다른 판이면 그 시험을 고치면 됩니다 — 값에 판이 붙습니다.)"
             if not parts
             else ""
         ),
@@ -531,7 +526,6 @@ def _check_name_free(
             "name": clash.name,
             "product_group_term_id": group or None,
             "spec_document_id": document or None,
-            "document_revision_id": revision or None,
         },
     )
 
@@ -635,7 +629,7 @@ def create(db: Session, user: User, payload: dict[str, Any]) -> ReliabilityTest:
         division.id,
         name,
         except_id=None,
-        scope=_scope_of_items(db, items, revision_id),
+        scope=_scope_of_items(db, items),
     )
     term_ids: list[uuid.UUID] = list(payload.get("test_item_term_ids") or [])
     _check_test_item_terms(db, term_ids)
@@ -656,7 +650,15 @@ def create(db: Session, user: User, payload: dict[str, Any]) -> ReliabilityTest:
     db.add(row)
     db.flush()
     _set_items(db, row.id, term_ids)
-    attributes.set_values(db, user, target="reliability_test", object_id=row.id, items=items)
+    attributes.set_values(
+        db,
+        user,
+        target="reliability_test",
+        object_id=row.id,
+        items=items,
+        # **값에 판이 붙는다.** 시험은 한 줄이고, 개정 18을 올려도 14의 값은 이력으로 남는다.
+        revision_id=revision_id,
+    )
     db.commit()
     db.refresh(row)
     return row
@@ -710,26 +712,22 @@ def update(
     division = db.get(VocabularyTerm, row.division_term_id)
     assert division is not None
 
+    # **판을 먼저 반영한다** — 아래 값 쓰기가 이 칸을 보고 어느 판에 쓸지 정한다.
+    if "document_revision_id" in changes:
+        row.document_revision_id = _checked_revision(db, changes["document_revision_id"])
     if "name" in changes:
         name = str(changes["name"]).strip()
         if not name:
             raise AppError("TSC-RELIABILITY-0004", "이름을 적어 주십시오.")
         # 속성을 **함께** 보냈으면 그것이 새 자리다(적용군을 바꾸면서 이름을 바꾸는 일이
         # 실제로 있다). 안 보냈으면 지금 줄의 자리를 쓴다.
-        moved = (
-            _checked_revision(db, changes["document_revision_id"])
-            if "document_revision_id" in changes
-            else row.document_revision_id
-        )
         scope = (
-            _scope_of_items(db, _attribute_items(changes["attributes"]), moved)
+            _scope_of_items(db, _attribute_items(changes["attributes"]))
             if changes.get("attributes") is not None
-            else (*_scope_of_rows(db, [row.id])[row.id][:2], str(moved) if moved else "")
+            else _scope_of_rows(db, [row.id])[row.id]
         )
         _check_name_free(db, division.id, name, except_id=row.id, scope=scope)
         row.name = name
-    if "document_revision_id" in changes:
-        row.document_revision_id = _checked_revision(db, changes["document_revision_id"])
     if "purpose" in changes:
         row.purpose = str(changes["purpose"] or "").strip()
     if changes.get("test_item_term_ids") is not None:
@@ -737,12 +735,15 @@ def update(
         _check_test_item_terms(db, term_ids)
         _set_items(db, row.id, term_ids)
     if changes.get("attributes") is not None:
+        # **어느 판의 값인가** — 보낸 판이 있으면 그것, 없으면 이 시험의 현재 판. 판을
+        # 안 정하면 사람이 고친 값이 판 없는 자리에 떨어져, 판을 적은 값 아래로 숨는다.
         attributes.set_values(
             db,
             user,
             target="reliability_test",
             object_id=row.id,
             items=_attribute_items(changes["attributes"]),
+            revision_id=row.document_revision_id,
         )
     db.commit()
     db.refresh(row)
@@ -966,6 +967,73 @@ def _with_document(
     return out
 
 
+def _same_test(
+    db: Session, division_term_id: uuid.UUID, name: str, scope: NameScope
+) -> ReliabilityTest | None:
+    """같은 시험이 이미 있나 — **규격서 + 이름 + 적용군**이 같으면 같은 시험이다."""
+    key = name_key(name)
+    rows = db.scalars(
+        select(ReliabilityTest).where(
+            ReliabilityTest.division_term_id == division_term_id,
+            ReliabilityTest.deleted_at.is_(None),
+        )
+    )
+    same = [one for one in rows if name_key(one.name) == key]
+    if not same:
+        return None
+    scopes = _scope_of_rows(db, [one.id for one in same])
+    return next((one for one in same if scopes.get(one.id, ("", "")) == scope), None)
+
+
+def _merge_revision(
+    db: Session,
+    user: User,
+    row: ReliabilityTest,
+    sent: dict[str, Any],
+    items: list[AttributeValueIn],
+    revision_id: uuid.UUID | None,
+) -> ReliabilityTest:
+    """있는 시험에 **그 판의 값**을 붙인다 — 다른 판의 값은 그대로 둔다.
+
+    **현재 판은 뒤로 안 간다.** 개정 18을 올린 뒤 14를 다시 올리면 14의 값은 이력으로
+    들어가되 현재 판은 18로 남아야 한다 — 안 그러면 화면이 옛 판을 지금 값으로 그린다.
+    """
+    require_editable(db, user, row.id)
+    _refuse_machine_edit(row)
+    if revision_id is not None and _is_later(db, revision_id, row.document_revision_id):
+        row.document_revision_id = revision_id
+    if sent.get("purpose"):
+        row.purpose = str(sent["purpose"]).strip()
+    if sent.get("test_item_term_ids"):
+        term_ids = list(sent["test_item_term_ids"])
+        _check_test_item_terms(db, term_ids)
+        _set_items(db, row.id, term_ids)
+    attributes.set_values(
+        db,
+        user,
+        target="reliability_test",
+        object_id=row.id,
+        items=items,
+        revision_id=revision_id,
+    )
+    db.commit()
+    db.refresh(row)
+    return row
+
+
+def _is_later(db: Session, one: uuid.UUID, other: uuid.UUID | None) -> bool:
+    """`one` 판이 `other` 보다 뒤인가. 판이 없으면 무엇이든 뒤다."""
+    if other is None:
+        return True
+    rows = {
+        row.id: row.sort_order
+        for row in db.scalars(
+            select(SpecDocumentRevision).where(SpecDocumentRevision.id.in_({one, other}))
+        )
+    }
+    return rows.get(one, -1) >= rows.get(other, -1)
+
+
 def create_many(db: Session, user: User, payload: dict[str, Any]) -> dict[str, Any]:
     """문서 하나에서 뽑은 시험들을 **한 번에** 올린다.
 
@@ -978,6 +1046,11 @@ def create_many(db: Session, user: User, payload: dict[str, Any]) -> dict[str, A
     그리고 **한 문서에서 나왔다는 사실이 줄에 남는다**(`document_id`). 그것이 없으면
     검토하는 사람은 스무 줄을 스무 건으로 본다 — 같은 문서에서 나온 줄은 같은 실수를
     함께 하고, 함께 봐야 그것이 보인다.
+
+    **이미 있는 시험이면 줄을 새로 만들지 않고 그 시험의 값에 판을 붙인다**(`merged`).
+    시험의 정체는 규격서 + 이름 + 적용군이고 판은 값에 붙으므로(0046), 개정 18을 올리는
+    것은 새 시험 이백 건이 아니라 **있던 시험 이백 건의 새 판**이다 — 이것이 없으면 그
+    이백 줄이 전부 409 로 막히고, 부른 쪽은 그것을 「이미 다 있다」 로 읽는다.
 
     **줄마다 커밋한다.** 한 덩이로 묶으면 한 줄의 이름 겹침이 열아홉을 되돌린다.
     """
@@ -1005,13 +1078,23 @@ def create_many(db: Session, user: User, payload: dict[str, Any]) -> dict[str, A
     batch_revision = _checked_revision(db, payload.get("document_revision_id"))
 
     created: list[ReliabilityTest] = []
+    merged: list[ReliabilityTest] = []
     failed: list[dict[str, str]] = []
     for one in tests:
         name = str(one.get("name") or "")
-        items = [dict(each) for each in (one.get("attributes") or [])]
+        raw_items = [dict(each) for each in (one.get("attributes") or [])]
         if document_id is not None:
-            items = _with_document(items, definition, uuid.UUID(str(document_id)))
+            raw_items = _with_document(raw_items, definition, uuid.UUID(str(document_id)))
+        items = _attribute_items(raw_items)
+        row_revision = _checked_revision(db, one.get("document_revision_id")) or batch_revision
         try:
+            found = _same_test(db, division.id, name, _scope_of_items(db, items))
+            if found is not None:
+                # **같은 시험의 다른 판이다.** 줄을 새로 만들지 않고 그 시험의 값에 판을
+                # 붙인다 — 이것이 없으면 개정 18을 올릴 때 이백 줄이 전부 409 로 막히고,
+                # 부른 쪽은 그것을 「이미 다 있다」 로 읽는다.
+                merged.append(_merge_revision(db, user, found, one, items, row_revision))
+                continue
             created.append(
                 create(
                     db,
@@ -1022,10 +1105,9 @@ def create_many(db: Session, user: User, payload: dict[str, Any]) -> dict[str, A
                         "purpose": one.get("purpose") or "",
                         # **줄이 제 판을 적으면 묶음이 준 판을 안 덮는다** — 한 묶음에 두
                         # 판이 섞인다(개정 18에서 안 바뀐 시험은 14의 판으로 남긴다).
-                        "document_revision_id": one.get("document_revision_id")
-                        or batch_revision,
+                        "document_revision_id": row_revision,
                         "test_item_term_ids": one.get("test_item_term_ids") or [],
-                        "attributes": items,
+                        "attributes": raw_items,
                     },
                 )
             )
@@ -1037,6 +1119,7 @@ def create_many(db: Session, user: User, payload: dict[str, Any]) -> dict[str, A
     return {
         "requested": len(tests),
         "created": _outs(db, user, created),
+        "merged": _outs(db, user, merged),
         "failed": failed,
     }
 
@@ -1053,45 +1136,30 @@ def delete(db: Session, user: User, test_id: uuid.UUID) -> None:
     db.commit()
 
 
-def _condition_fingerprint(
-    db: Session, test_ids: list[uuid.UUID]
-) -> dict[uuid.UUID, dict[str, str]]:
-    """시험마다 **조건의 지문** — {자리: 사람이 읽는 글자}.
+def _values_at(db: Session, revision_id: uuid.UUID) -> dict[uuid.UUID, dict[str, str]]:
+    """그 판에 적힌 값 — {시험: {자리: 사람이 읽는 글자}}.
 
-    자리는 (칸 key, 묶음, 차례)다. 판을 견줄 때 바뀐 것을 짚으려면 자리가 같아야 하고,
-    자리가 정의 id 면 판마다 다른 초안이 끼었을 때 전부 「바뀜」 이 된다 — key 로 잡는다.
-
-    **글자로 견준다.** 숫자만 보면 단위가 바뀐 것(85 °C -> 185 °F)을 「안 바뀜」 으로 읽고,
-    행을 통째로 보면 사람이 못 읽는다. 화면에 뜨는 그 글자가 사람이 다르다고 말할 기준이다.
+    자리는 `칸key@묶음#차례` 다. **정의 id 로 잡으면** 판마다 다른 초안이 낀 순간 전부
+    「바뀜」 이 된다. **글자로 견주는 이유**: 숫자만 보면 단위가 바뀐 것(85 °C -> 185 °F)을
+    「안 바뀜」 으로 읽고, 행을 통째로 보면 사람이 못 읽는다.
     """
-    out: dict[uuid.UUID, dict[str, str]] = {one: {} for one in test_ids}
-    if not test_ids:
-        return out
     rows = db.execute(
         select(AttributeValue, AttributeDefinition)
         .join(AttributeDefinition, AttributeDefinition.id == AttributeValue.definition_id)
+        .join(ReliabilityTest, ReliabilityTest.id == AttributeValue.reliability_test_id)
         .where(
-            AttributeValue.reliability_test_id.in_(test_ids),
-            AttributeDefinition.kind == "condition",
+            AttributeValue.document_revision_id == revision_id,
+            ReliabilityTest.deleted_at.is_(None),
         )
     ).all()
+    out: dict[uuid.UUID, dict[str, str]] = {}
     for value, definition in rows:
         step = value.step_order if value.step_order is not None else ""
         where = f"{definition.key}@{value.set_label or ''}#{step}"
         shown = attributes.display_of(value, definition, term_value=None, method_code=None)
+        assert value.reliability_test_id is not None
         out.setdefault(value.reliability_test_id, {})[where] = shown or (value.note or "")
     return out
-
-
-def _match_key(db: Session, rows: list[ReliabilityTest]) -> dict[uuid.UUID, tuple[str, str]]:
-    """판을 가로질러 **같은 시험**을 잇는 열쇠 — (이름 비교키, 적용군).
-
-    판이 바뀌어도 이름은 그대로인 것이 보통이라 이름이 축이다. 적용군을 함께 보는 이유:
-    한 판 안에 같은 이름이 적용군별로 여럿 있을 수 있고(그것이 0044 에서 푼 문제다),
-    이름만으로 이으면 그 둘이 서로 바뀐 것처럼 보인다.
-    """
-    scopes = _scope_of_rows(db, [one.id for one in rows])
-    return {one.id: (name_key(one.name), scopes.get(one.id, ("", "", ""))[0]) for one in rows}
 
 
 def compare_revisions(
@@ -1100,10 +1168,11 @@ def compare_revisions(
     """두 판을 견준다 — **더해진 시험 · 없어진 시험 · 조건이 바뀐 시험** 셋으로.
 
     개정이 오면 딸린 수십 건 중 **무엇을 다시 봐야 하는지**가 문제다. 「전부 다시」 는
-    그날 일을 멈추고, 「아무것도 안 봄」 은 바뀐 조건을 놓친다. 그 사이를 이 답이 메운다 —
-    바뀐 것만 보면 된다.
+    그날 일을 멈추고, 「아무것도 안 봄」 은 바뀐 조건을 놓친다. 그 사이를 이 답이 메운다.
 
-    판마다 한 벌을 두므로 이 비교는 **두 목록을 견주는 일**이지 이력을 접는 일이 아니다.
+    시험은 한 줄이고 판은 값에 붙으므로(0046), 이 비교는 **한 줄 안의 두 시점**을 견주는
+    일이다 — 줄을 잇는 수고가 없다. 「더해짐」 은 뒤 판에서 처음 값이 적힌 시험이고,
+    「없어짐」 은 앞 판에는 있었는데 뒤 판이 손대지 않은 시험이다.
     """
     left = documents.revision_of(db, left_id)
     right = documents.revision_of(db, right_id)
@@ -1113,47 +1182,36 @@ def compare_revisions(
             "다른 규격서의 판끼리는 못 견줍니다 — 견주려면 같은 문서의 두 판이어야 합니다.",
             status=400,
         )
-
-    def rows_of(revision_id: uuid.UUID) -> list[ReliabilityTest]:
-        return list(
-            db.scalars(
-                select(ReliabilityTest).where(
-                    ReliabilityTest.document_revision_id == revision_id,
-                    ReliabilityTest.deleted_at.is_(None),
-                )
-            )
+    before, after = _values_at(db, left_id), _values_at(db, right_id)
+    rows = {
+        one.id: one
+        for one in db.scalars(
+            select(ReliabilityTest).where(ReliabilityTest.id.in_(set(before) | set(after)))
         )
+    }
 
-    before, after = rows_of(left_id), rows_of(right_id)
-    keys = _match_key(db, before + after)
-    marks = _condition_fingerprint(db, [one.id for one in before + after])
-    by_left = {keys[one.id]: one for one in before}
-    by_right = {keys[one.id]: one for one in after}
-
-    added = [_brief(one) for key, one in by_right.items() if key not in by_left]
-    removed = [_brief(one) for key, one in by_left.items() if key not in by_right]
+    added = [_brief(rows[one]) for one in after if one not in before and one in rows]
+    removed = [_brief(rows[one]) for one in before if one not in after and one in rows]
     changed: list[RevisionChangedOut] = []
     same = 0
-    for key, older in by_left.items():
-        newer = by_right.get(key)
-        if newer is None:
+    for test_id in before:
+        if test_id not in after or test_id not in rows:
             continue
-        gone, fresh = marks.get(older.id, {}), marks.get(newer.id, {})
-        where = sorted(set(gone) | set(fresh))
-        rows = [
+        gone, fresh = before[test_id], after[test_id]
+        differences = [
             RevisionDifferenceOut(
                 at=one, before=gone.get(one) or None, after=fresh.get(one) or None
             )
-            for one in where
+            for one in sorted(set(gone) | set(fresh))
             if gone.get(one) != fresh.get(one)
         ]
-        if rows:
+        if differences:
             changed.append(
                 RevisionChangedOut(
-                    name=newer.name,
-                    before_id=older.id,
-                    after_id=newer.id,
-                    differences=rows,
+                    name=rows[test_id].name,
+                    before_id=test_id,
+                    after_id=test_id,
+                    differences=differences,
                 )
             )
         else:
@@ -1175,3 +1233,73 @@ def compare_revisions(
 
 def _brief(row: ReliabilityTest) -> RevisionTestBriefOut:
     return RevisionTestBriefOut(id=row.id, name=row.name, status=row.status)
+
+
+def siblings(
+    db: Session, division_code: str, name: str, except_id: uuid.UUID | None
+) -> list[SiblingTestOut]:
+    """이름이 같은 다른 시험 — **무엇으로 갈렸는지** 함께.
+
+    같은 이름이 적용군·규격서마다 여럿 있을 수 있다(0044). 적으면서 그 목록이 보이면
+    중복으로 올리다 409 를 받는 일이 줄고, 옆 제품군이 어떤 조건으로 하는지 보면서 적을
+    수 있다 — 같은 시험의 다른 벌이 서로 다른 값을 갖는 것을 그 자리에서 안다.
+    """
+    division = division_by_code(db, division_code)
+    key = name_key(name)
+    rows = [
+        one
+        for one in db.scalars(
+            select(ReliabilityTest).where(
+                ReliabilityTest.division_term_id == division.id,
+                ReliabilityTest.deleted_at.is_(None),
+                ReliabilityTest.id != except_id if except_id else true(),
+            )
+        )
+        if name_key(one.name) == key
+    ]
+    if not rows:
+        return []
+    scopes = _scope_of_rows(db, [one.id for one in rows])
+    terms = {
+        one.id: one.value
+        for one in db.scalars(
+            select(VocabularyTerm).where(
+                VocabularyTerm.id.in_({uuid.UUID(g) for g, _ in scopes.values() if g})
+            )
+        )
+    }
+    papers = {
+        one.id: one.code or one.title
+        for one in db.scalars(
+            select(SpecDocument).where(
+                SpecDocument.id.in_({uuid.UUID(d) for _, d in scopes.values() if d})
+            )
+        )
+    }
+    labels = {
+        one.id: one.label
+        for one in db.scalars(
+            select(SpecDocumentRevision).where(
+                SpecDocumentRevision.id.in_(
+                    {r.document_revision_id for r in rows if r.document_revision_id}
+                )
+            )
+        )
+    }
+    out = []
+    for one in rows:
+        group, document = scopes.get(one.id, ("", ""))
+        out.append(
+            SiblingTestOut(
+                id=one.id,
+                name=one.name,
+                status=one.status,
+                product_group=terms.get(uuid.UUID(group)) if group else None,
+                spec_document_code=papers.get(uuid.UUID(document)) if document else None,
+                document_revision_label=labels.get(one.document_revision_id)
+                if one.document_revision_id
+                else None,
+            )
+        )
+    out.sort(key=lambda one: (one.product_group or "", one.spec_document_code or ""))
+    return out

@@ -189,10 +189,16 @@ def _numeric_match(one: AttributeFilter, bottom: float | None, top: float | None
 
 
 def _set_where(one: AttributeFilter) -> list[Any]:
-    """묶음을 지정했으면 그 묶음의 줄만. 안 했으면 안 가린다."""
-    if one.set_label is None:
-        return []
-    return [AttributeValue.set_label == one.set_label]
+    """묶음을 지정했으면 그 묶음의 줄만, 그리고 **지금 값만.**
+
+    신뢰성 시험은 판마다 값이 쌓인다(0046). `is_current` 를 안 걸면 개정 14의 85 °C 가
+    개정 18의 95 °C 와 나란히 걸려, 「지금 95 인 시험」 을 물어도 옛 값으로 답한다 —
+    그 답은 조용히 틀린다. 다른 대상의 값은 언제나 `is_current` 다.
+    """
+    out: list[Any] = [AttributeValue.is_current.is_(True)]
+    if one.set_label is not None:
+        out.append(AttributeValue.set_label == one.set_label)
+    return out
 
 
 def _numeric_ids(db: Session, column: Any, one: AttributeFilter) -> set[uuid.UUID]:

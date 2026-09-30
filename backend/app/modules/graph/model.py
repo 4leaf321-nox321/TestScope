@@ -195,6 +195,9 @@ def _attribute_kinds() -> list[EdgeKind]:
             AttributeDefinition.target == target,
             AttributeDefinition.status == "standard",
             AttributeDefinition.is_active.is_(True),
+            # 과거 판의 값이 선으로 서면 안 된다 — 신뢰성 시험만 판이 있지만, 조건을
+            # 대상마다 가르면 그중 하나를 잊는다(다른 대상은 언제나 참이다).
+            AttributeValue.is_current.is_(True),
         ]
         out.append(
             _kind(
@@ -511,6 +514,8 @@ EDGE_KINDS: tuple[EdgeKind, ...] = (
             AttributeDefinition.status == "standard",
             AttributeDefinition.is_active.is_(True),
             ReliabilityTest.deleted_at.is_(None),
+            # 과거 판의 조건이 선으로 서면 「지금 이 축을 거는 시험」 이 부풀어 보인다.
+            AttributeValue.is_current.is_(True),
         ),
     ),
     # 부서 트리

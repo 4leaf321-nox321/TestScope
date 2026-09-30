@@ -10,6 +10,8 @@ export type ReliabilityTestItem = components['schemas']['ReliabilityTestItemOut'
 export type Division = components['schemas']['DivisionOut']
 export type BulkResult = components['schemas']['ReliabilityBulkOut']
 export type RevisionCompare = components['schemas']['RevisionCompareOut']
+export type AttributeValueRow = components['schemas']['AttributeValueOut']
+export type SiblingTest = components['schemas']['SiblingTestOut']
 export type TestItemProposal = components['schemas']['TestItemProposalOut']
 export type TestItemProposalGroup = components['schemas']['TestItemProposalGroupOut']
 /** 여럿에게 한 번에 할 수 있는 일. */
@@ -72,6 +74,27 @@ export const reliabilityApi = {
    *  여는 것은 사람이 할 수 있는 일이 아니다. 줄마다 결과가 온다(안 된 줄은 왜까지). */
   bulk: (ids: string[], action: BulkAction, reason?: string) =>
     api.post<BulkResult>('/reliability-tests/bulk', { ids, action, reason }),
+  /** **아직 저장 안 한 조건**으로 장비를 센다 — 적으면서 보는 자리.
+   *
+   *  지금은 저장한 뒤 따로 열어야 보여서, 「95 °C 로 올리면 돌릴 장비가 0대」 를 저장하고
+   *  나서 안다. 단위 환산은 서버가 한다. */
+  capabilityPreview: (termIds: string[], attributes: AttributeValueIn[]) =>
+    api.post<Capability>('/reliability-tests/capability-preview', {
+      test_item_term_ids: termIds,
+      attributes,
+    }),
+  /** 이름이 같은 다른 시험 — 적용군·규격서·판 중 무엇으로 갈렸는지 함께. */
+  siblings: (division: string, name: string, exclude: string | null) => {
+    const search = new URLSearchParams({ division, name })
+    if (exclude) search.set('exclude', exclude)
+    return api.get<SiblingTest[]>(`/reliability-tests/siblings?${search}`)
+  },
+  /** 이 시험의 **판별 값 전부** — 지금 값과 과거 판이 함께.
+   *
+   *  시험은 한 줄이고 판은 값에 붙는다. 카드는 지금 값만 보여 주므로, 「개정 14에서는
+   *  얼마였나」 를 보려면 이 자리가 필요하다. */
+  valueHistory: (id: string) =>
+    api.get<AttributeValueRow[]>(`/reliability-tests/${id}/value-history`),
   /** 같은 규격서의 **두 판을 견준다** — 더해진 시험 · 없어진 시험 · 조건이 바뀐 시험.
    *
    *  개정이 오면 딸린 수십 건 중 **무엇을 다시 봐야 하는지**가 문제다. 「전부 다시」 는

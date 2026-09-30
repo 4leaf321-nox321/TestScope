@@ -31,6 +31,7 @@ from sqlalchemy.orm import Session
 
 from app.modules.accounts.models import User
 from app.modules.attributes.models import AttributeDefinition, AttributeValue
+from app.modules.attributes.schemas import AttributeValueIn
 from app.modules.reliability.models import ReliabilityTest, ReliabilityTestItem
 from app.modules.reliability.schemas import (
     CapabilityItemOut,
@@ -71,6 +72,7 @@ def _set_labels(db: Session, test_id: uuid.UUID) -> list[str | None]:
         .where(
             AttributeValue.reliability_test_id == test_id,
             AttributeDefinition.kind == "condition",
+            AttributeValue.is_current.is_(True),
         )
         .distinct()
     ).all()
@@ -94,6 +96,9 @@ def _conditions(
         .where(
             AttributeValue.reliability_test_id == test_id,
             AttributeDefinition.kind == "condition",
+            # **지금 값만 판정에 실린다.** 과거 판의 조건까지 걸면 아무도 요구하지 않는
+            # 조건이 만들어지고, 그 조건으로 장비가 걸러진다(0046).
+            AttributeValue.is_current.is_(True),
         )
         .order_by(AttributeDefinition.sort_order, AttributeDefinition.label)
     ).all()
@@ -195,4 +200,82 @@ def capability(db: Session, user: User, test: ReliabilityTest) -> CapabilityOut:
         skipped=skipped,
         items=answer(every),
         sets=sets,
+    )
+
+
+def preview(
+    db: Session,
+    user: User,
+    *,
+    test_item_term_ids: list[uuid.UUID],
+    items: list[AttributeValueIn],
+) -> CapabilityOut:
+    """**아직 저장하지 않은 조건**으로 장비를 본다 — 적으면서 보는 자리.
+
+    지금은 저장한 뒤 따로 열어야 보인다. 그래서 「95 °C 로 올리면 돌릴 장비가 0대」 를
+    저장하고 나서 안다 — 돌릴 수 없는 조건을 적어 둔 시험이 그렇게 생긴다.
+
+    **단위 환산은 서버가 한다.** 화면이 SI 로 바꿔 보내게 하면 그 환산이 두 벌이 되고,
+    두 벌은 갈라진다(`_conditions` 와 같은 길을 쓴다).
+    """
+    queries: list[ConditionQuery] = []
+    skipped: list[SkippedConditionOut] = []
+    for item in items:
+        if item.definition_id is None:
+            continue
+        definition = db.get(AttributeDefinition, item.definition_id)
+        if definition is None or definition.kind != "condition":
+            continue
+        if definition.condition_key_id is None:
+            continue
+        key = db.get(ConditionKey, definition.condition_key_id)
+        if key is None:
+            continue
+        unit = item.unit or definition.unit
+        low, high = _si(item.num_min, unit, key), _si(item.num_max, unit, key)
+        point = _si(item.num_value, unit, key)
+        wrote = any(one is not None for one in (item.num_min, item.num_max, item.num_value))
+        if not wrote:
+            continue
+        if low is None and high is None and point is None:
+            skipped.append(
+                SkippedConditionOut(
+                    label=definition.label,
+                    reason=f"단위 「{unit}」 를 {key.label} 의 {key.si_unit} 로 못 바꿉니다.",
+                )
+            )
+            continue
+        if point is not None:
+            queries.append(ConditionQuery(condition_key_id=key.id, at=point))
+        if high is not None:
+            queries.append(ConditionQuery(condition_key_id=key.id, at_least=high))
+        if low is not None:
+            queries.append(ConditionQuery(condition_key_id=key.id, at_most=low))
+
+    names = {
+        one.id: one.value
+        for one in db.scalars(
+            select(VocabularyTerm).where(VocabularyTerm.id.in_(test_item_term_ids))
+        )
+    }
+    out: list[CapabilityItemOut] = []
+    for term_id in test_item_term_ids:
+        found = search_services.search(
+            db, user, SearchRequest(test_item_term_id=term_id, conditions=queries)
+        )
+        out.append(
+            CapabilityItemOut(
+                term_id=term_id,
+                value=names.get(term_id, "(없는 항목)"),
+                total=found.total,
+                unmet_count=found.unmet_count,
+                hits=found.hits[:MAX_HITS_PER_ITEM],
+            )
+        )
+    return CapabilityOut(
+        test_id=uuid.UUID(int=0),
+        conditions_asked=len(queries),
+        skipped=skipped,
+        items=out,
+        sets=[],
     )

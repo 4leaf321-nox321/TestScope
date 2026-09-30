@@ -2342,6 +2342,54 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/api/reliability-tests/capability-preview": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /**
+         * Capability Preview
+         * @description **아직 저장하지 않은 조건**으로 장비를 본다 — 적으면서 보는 자리.
+         *
+         *     지금은 저장한 뒤 따로 열어야 보여서, 「95 °C 로 올리면 돌릴 장비가 0대」 를 저장하고
+         *     나서 안다. 단위 환산은 서버가 한다 — 화면이 SI 로 바꿔 보내면 그 환산이 두 벌이 된다.
+         *
+         *     **`/{test_id}` 보다 먼저 선언한다.**
+         */
+        post: operations["capability_preview_api_reliability_tests_capability_preview_post"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/reliability-tests/siblings": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * Siblings
+         * @description 이름이 같은 다른 시험 — **무엇으로 갈렸는지**(적용군·규격서·판) 함께.
+         *
+         *     적으면서 이 목록이 보이면 중복으로 올리다 409 를 받는 일이 줄고, 옆 제품군이 어떤
+         *     조건으로 하는지 보면서 적을 수 있다.
+         */
+        get: operations["siblings_api_reliability_tests_siblings_get"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/api/reliability-tests/revision-compare": {
         parameters: {
             query?: never;
@@ -2626,6 +2674,30 @@ export interface paths {
          *     「봤다」 고 적으면 사람의 확인이 이름만 남는다.
          */
         post: operations["mark_reviewed_api_reliability_tests__test_id__reviewed_revision_post"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/reliability-tests/{test_id}/value-history": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * Value History
+         * @description 이 시험의 **판별 값 전부** — 지금 값과 과거 판이 함께.
+         *
+         *     시험은 한 줄이고 판은 값에 붙는다(0046). 목록·카드는 지금 값만 보여 주므로, 「개정
+         *     14에서는 얼마였나」 를 보려면 이 자리가 필요하다. 줄마다 `document_revision_label` 과
+         *     `is_current` 가 온다 — 같은 자리의 값들이 판 순서로 늘어선다.
+         */
+        get: operations["value_history_api_reliability_tests__test_id__value_history_get"];
+        put?: never;
+        post?: never;
         delete?: never;
         options?: never;
         head?: never;
@@ -3916,6 +3988,15 @@ export interface components {
             step_order?: number | null;
             /** Step Label */
             step_label?: string | null;
+            /** Document Revision Id */
+            document_revision_id?: string | null;
+            /** Document Revision Label */
+            document_revision_label?: string | null;
+            /**
+             * Is Current
+             * @default true
+             */
+            is_current: boolean;
             /** Source Text */
             source_text?: string | null;
             /** Original Value */
@@ -4136,6 +4217,16 @@ export interface components {
              * @default []
              */
             sets: components["schemas"]["CapabilitySetOut"][];
+        };
+        /**
+         * CapabilityPreviewRequest
+         * @description 아직 저장 안 한 조건으로 장비를 본다 — **적으면서 보는 자리.**
+         */
+        CapabilityPreviewRequest: {
+            /** Test Item Term Ids */
+            test_item_term_ids?: string[];
+            /** Attributes */
+            attributes?: components["schemas"]["AttributeValueIn"][];
         };
         /**
          * CapabilitySetOut
@@ -6692,6 +6783,11 @@ export interface components {
             requested: number;
             /** Created */
             created: components["schemas"]["ReliabilityTestOut"][];
+            /**
+             * Merged
+             * @default []
+             */
+            merged: components["schemas"]["ReliabilityTestOut"][];
             /** Failed */
             failed: {
                 [key: string]: string;
@@ -7399,6 +7495,27 @@ export interface components {
             catalog: components["schemas"]["CatalogStateOut"];
             semantic: components["schemas"]["SemanticStateOut"];
             jobs: components["schemas"]["JobsStateOut"];
+        };
+        /**
+         * SiblingTestOut
+         * @description 이름이 같은 다른 시험 — 적용군·규격서·판이 무엇으로 갈렸나.
+         */
+        SiblingTestOut: {
+            /**
+             * Id
+             * Format: uuid
+             */
+            id: string;
+            /** Name */
+            name: string;
+            /** Status */
+            status: string;
+            /** Product Group */
+            product_group: string | null;
+            /** Spec Document Code */
+            spec_document_code: string | null;
+            /** Document Revision Label */
+            document_revision_label: string | null;
         };
         /** SignupRequest */
         SignupRequest: {
@@ -13190,6 +13307,72 @@ export interface operations {
             };
         };
     };
+    capability_preview_api_reliability_tests_capability_preview_post: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["CapabilityPreviewRequest"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["CapabilityOut"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    siblings_api_reliability_tests_siblings_get: {
+        parameters: {
+            query: {
+                division: string;
+                name: string;
+                exclude?: string | null;
+            };
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["SiblingTestOut"][];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
     compare_revisions_api_reliability_tests_revision_compare_get: {
         parameters: {
             query: {
@@ -13660,6 +13843,37 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content?: never;
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    value_history_api_reliability_tests__test_id__value_history_get: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                test_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["AttributeValueOut"][];
+                };
             };
             /** @description Validation Error */
             422: {
