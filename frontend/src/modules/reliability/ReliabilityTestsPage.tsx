@@ -29,7 +29,7 @@
  * 열이 하나뿐이므로 넓어진 화면의 여유는 거기로 가는 것이 맞다.
  */
 
-import { useCallback, useMemo, useState } from 'react'
+import { useCallback, useEffect, useMemo, useState } from 'react'
 import { Link, useSearchParams } from 'react-router-dom'
 import { Image as ImageIcon, Wrench } from 'lucide-react'
 
@@ -57,20 +57,8 @@ import {
   ReliabilityTestViewDialog,
   RowOpener,
 } from '@/modules/reliability/ReliabilityTestViewDialog'
-import { reliabilityApi } from '@/modules/reliability/api'
+import { PAGE, reliabilityApi } from '@/modules/reliability/api'
 import type { ReliabilityTest } from '@/modules/reliability/api'
-
-function haystack(row: ReliabilityTest): string {
-  return [
-    row.name,
-    row.purpose,
-    row.division_name,
-    ...row.test_items.map((one) => one.value),
-    ...row.attributes.map((one) => `${one.label} ${one.display}`),
-  ]
-    .join(' ')
-    .toLowerCase()
-}
 
 export default function ReliabilityTestsPage() {
   /**
@@ -100,22 +88,28 @@ export default function ReliabilityTestsPage() {
   )
   /** 확인 전 후보까지 볼까. **기본은 안 본다** — 확정된 것만이 이 표의 답이다. */
   const [withCandidates, setWithCandidates] = useState(false)
-  const tests = useResource(
-    () => reliabilityApi.listAll(attrs, withCandidates),
-    [attrs, withCandidates],
-  )
+  /** 몇 번째 쪽. 조건이 바뀌면 처음으로 — 세 번째 쪽을 보다 좁히면 빈 화면이 뜬다. */
+  const [page, setPage] = useState(0)
   const [query, setQuery] = useState('')
+  /** 친 뒤 잠깐 기다렸다 묻는다 — 글자마다 부르면 스무 번 왕복한다. */
+  const [asked, setAsked] = useState('')
+  useEffect(() => {
+    const timer = setTimeout(() => setAsked(query), 400)
+    return () => clearTimeout(timer)
+  }, [query])
+  const tests = useResource(
+    () => reliabilityApi.listAll(attrs, withCandidates, PAGE, page * PAGE, asked),
+    [attrs, withCandidates, page, asked],
+  )
+  useEffect(() => setPage(0), [attrs, withCandidates, asked])
   const [asking, setAsking] = useState<ReliabilityTest | null>(null)
   /** 그림 보기 — **조회하는 사람의 자리.** 수정 창을 열지 않고 본다. */
   const [showing, setShowing] = useState<typeof asking>(null)
   /** 카드 전체 보기 — 줄을 누르면 이것. */
   const [viewing, setViewing] = useState<typeof asking>(null)
-  const rows = tests.data ?? []
-  const needle = query.trim().toLowerCase()
-  const shown = useMemo(
-    () => (needle ? rows.filter((row) => haystack(row).includes(needle)) : rows),
-    [rows, needle],
-  )
+  const rows = tests.data?.items ?? []
+  // **서버가 좁혀 준 것이 곧 결과다** — 화면 안에서 다시 훑으면 지금 쪽만 뒤진다.
+  const shown = rows
   const workspaces = new Set(rows.map((row) => row.division_code)).size
 
   return (
@@ -131,7 +125,7 @@ export default function ReliabilityTestsPage() {
         target="reliability_test"
         value={attrs}
         onChange={setAttrs}
-        empty={tests.data?.length === 0}
+        empty={tests.data?.total === 0}
       />
 
       <div className="flex flex-wrap items-center gap-3">
@@ -143,8 +137,8 @@ export default function ReliabilityTestsPage() {
         />
         {tests.data && (
           <p className="text-muted-foreground text-sm">
-            신뢰성 시험 {rows.length}종 · 부서 {workspaces}곳
-            {needle && ` · 걸린 것 ${shown.length}종`}
+            신뢰성 시험 {tests.data?.total ?? rows.length}종 · 이 쪽 {rows.length}종 · 부서{' '}
+            {workspaces}곳{asked && ' · 이름·목적으로 좁힌 결과'}
           </p>
         )}
         <label className="text-muted-foreground flex items-center gap-1.5 text-sm">
@@ -282,6 +276,32 @@ export default function ReliabilityTestsPage() {
             ))}
           </TableBody>
         </Table>
+      )}
+
+      {/* **쪽을 넘는다** — 전사 목록은 사업부를 가로지르므로 더 길다. */}
+      {(tests.data?.total ?? 0) > PAGE && (
+        <div className="flex flex-wrap items-center gap-3 text-sm">
+          <Button
+            size="sm"
+            variant="outline"
+            disabled={page === 0 || tests.loading}
+            onClick={() => setPage((before) => Math.max(0, before - 1))}
+          >
+            이전
+          </Button>
+          <span className="text-muted-foreground">
+            {page + 1} / {Math.max(1, Math.ceil((tests.data?.total ?? 0) / PAGE))} 쪽 · 전체{' '}
+            {tests.data?.total ?? 0}건
+          </span>
+          <Button
+            size="sm"
+            variant="outline"
+            disabled={(page + 1) * PAGE >= (tests.data?.total ?? 0) || tests.loading}
+            onClick={() => setPage((before) => before + 1)}
+          >
+            다음
+          </Button>
+        </div>
       )}
 
       {asking && <CapabilityDialog test={asking} onClose={() => setAsking(null)} />}

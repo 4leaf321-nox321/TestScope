@@ -311,12 +311,12 @@ def test_시험_목록도_조건_속성으로_거른다(
         "/api/reliability-tests", params={"attr": f"temp_{tag}<=-40"}, headers=admin.headers
     )
     assert cold.status_code == 200, cold.text
-    assert [one["name"] for one in cold.json()] == [f"열충격-{tag}"]
+    assert [one["name"] for one in cold.json()["items"]] == [f"열충격-{tag}"]
 
     hot = client.get(
         "/api/reliability-tests", params={"attr": f"temp_{tag}>=100"}, headers=admin.headers
     )
-    assert {one["name"] for one in hot.json()} == {f"열충격-{tag}"}
+    assert {one["name"] for one in hot.json()["items"]} == {f"열충격-{tag}"}
 
 
 def test_빈_결과는_왜_비었는지_조건마다_말한다(

@@ -25,7 +25,7 @@
  * 아니라 **`min-w-`** 라야 한다: `w-` 는 표가 눌리면 브라우저가 무시한다.
  */
 
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { Link, useParams } from 'react-router-dom'
 import { Pencil, Plus, Trash2, Wrench } from 'lucide-react'
 
@@ -52,7 +52,7 @@ import {
   ReliabilityTestViewDialog,
   RowOpener,
 } from '@/modules/reliability/ReliabilityTestViewDialog'
-import { reliabilityApi } from '@/modules/reliability/api'
+import { CHUNK, MAX_PAGE, PAGE, reliabilityApi } from '@/modules/reliability/api'
 import type { BulkAction } from '@/modules/reliability/api'
 import { BulkBar } from '@/shared/components/BulkBar'
 import type { BulkOutcome } from '@/shared/components/BulkBar'
@@ -64,7 +64,10 @@ export default function DivisionReliabilityPage() {
   const { slug: code = '' } = useParams<{ slug: string }>()
   // 사업부 이름은 메뉴와 같은 목록에서 받는다 — 여기 없으면 메뉴에도 없는 사업부다.
   const listed = useResource(() => reliabilityApi.divisions(), [])
-  const tests = useResource(() => reliabilityApi.list(code), [code])
+  /** 몇 번째 쪽. 운영에서 한 사업부에 1784건이 들어왔다 — 통째로 그리면 브라우저가 멎는다. */
+  const [page, setPage] = useState(0)
+  const tests = useResource(() => reliabilityApi.list(code, PAGE, page * PAGE), [code, page])
+  useEffect(() => setPage(0), [code])
   const [editing, setEditing] = useState<ReliabilityTest | null>(null)
   const [creating, setCreating] = useState(false)
   const [removing, setRemoving] = useState<ReliabilityTest | null>(null)
@@ -73,27 +76,66 @@ export default function DivisionReliabilityPage() {
   const [viewing, setViewing] = useState<ReliabilityTest | null>(null)
   const [busy, setBusy] = useState(false)
   const [outcome, setOutcome] = useState<BulkOutcome | null>(null)
+  /** 일괄 처리가 **통째로** 막혔을 때 — 줄마다의 실패는 `outcome` 이 말한다. */
+  const [bulkError, setBulkError] = useState<Error | null>(null)
 
   const division = listed.data?.find((one) => one.code === code)
-  const rows = tests.data ?? []
+  const rows = tests.data?.items ?? []
+  const total = tests.data?.total ?? 0
   // **고른 것은 목록에 있는 것만** — 거르기를 좁혔는데 안 보이는 줄이 골라진 채로 남으면,
   // 열 줄을 보면서 500건을 지우게 된다.
   const picked = useSelection(rows.map((one) => one.id))
+  /** 쪽을 넘어 **전부**에 적용할까. 끈 채로 두면 보이는 쪽만 건드린다. */
+  const [wholeSet, setWholeSet] = useState(false)
 
-  /** 고른 줄에 한 번에 — 결과는 띠가 말한다(줄마다 성패가 갈린다). */
+  /**
+   * 고른 줄에 한 번에 — 결과는 띠가 말한다(줄마다 성패가 갈린다).
+   *
+   * **오백 건씩 끊어 보낸다.** 서버가 한 번에 500건까지만 받는데(한 번의 실수가 되돌릴
+   * 수 없는 크기가 되지 않게), 1784건을 골라 누르면 422 가 나고 **화면은 그것을 안
+   * 잡았다** — 사람에게는 「눌러도 아무 일이 없다」 로 보였다(운영 실측 2026-09-30).
+   *
+   * 끊어 보내면서 **중간 결과를 쌓아 보여 준다.** 세 묶음째에서 막히면 앞의 둘은 이미
+   * 처리된 것이고, 그 경계를 사람이 알아야 다시 누를지 정할 수 있다.
+   */
   async function runBulk(action: BulkAction, reason?: string) {
     setBusy(true)
     setOutcome(null)
+    setBulkError(null)
     try {
-      setOutcome(await reliabilityApi.bulk(picked.ids, action, reason))
+      const ids = wholeSet ? await everyId() : picked.ids
+      const sum: BulkOutcome = { requested: 0, done: [], failed: [] }
+      for (let at = 0; at < ids.length; at += CHUNK) {
+        const got = await reliabilityApi.bulk(ids.slice(at, at + CHUNK), action, reason)
+        sum.requested += got.requested
+        sum.done = [...sum.done, ...got.done]
+        sum.failed = [...sum.failed, ...got.failed]
+        setOutcome({ ...sum })
+      }
       picked.clear()
+      setWholeSet(false)
       tests.reload()
+    } catch (failed) {
+      // **잡지 않으면 조용히 끝난다** — 이것이 1784건이 「작동 안 하는」 것처럼 보인 이유다.
+      setBulkError(failed as Error)
     } finally {
       setBusy(false)
     }
   }
+
+  /** 지금 조건에 맞는 **전부**의 id. 쪽을 넘어 적용할 때만 부른다. */
+  async function everyId(): Promise<string[]> {
+    const out: string[] = []
+    for (let at = 0; at < total; at += MAX_PAGE) {
+      const got = await reliabilityApi.list(code, MAX_PAGE, at)
+      out.push(...got.items.map((one) => one.id))
+      if (got.items.length === 0) break
+    }
+    return out
+  }
   // 서버가 후보를 앞으로 보내 준다 — 여기서는 세기만 한다.
   const pending = rows.filter(isCandidate).length
+  const pages = Math.max(1, Math.ceil(total / PAGE))
   // **표시일 뿐 권한이 아니다.** 서버가 줄마다 `can_edit` 을, 사업부마다 `can_register` 를
   // 판정한다 — 눌러야 403 을 아는 단추는 「할 수 있는 일」 을 알려 주지 못한다.
   const canEdit = division?.can_register ?? false
@@ -142,15 +184,35 @@ export default function DivisionReliabilityPage() {
         </p>
       )}
 
-      <ErrorNotice error={tests.error ?? listed.error} />
+      <ErrorNotice error={bulkError ?? tests.error ?? listed.error} />
 
       {canEdit && (
         <BulkBar
-          count={picked.ids.length}
-          onClear={picked.clear}
+          count={wholeSet ? total : picked.ids.length}
+          onClear={() => {
+            picked.clear()
+            setWholeSet(false)
+          }}
           busy={busy}
           outcome={outcome}
         >
+          {/**
+           * **쪽을 넘어 전부에 적용할까.** 쪽을 나누고 나면 「보이는 것 전부」 가 쉰 건
+           * 뿐이라, 1784건을 확인하려면 서른여섯 번을 눌러야 한다 — 그것은 쪽을 나누기
+           * 전과 똑같이 아무도 안 하는 일이다. 대신 **일부러 켜야** 하고, 켜면 몇 건인지
+           * 숫자로 보인다.
+           */}
+          {total > rows.length && (
+            <label className="flex items-center gap-1 text-xs">
+              <input
+                type="checkbox"
+                checked={wholeSet}
+                disabled={busy}
+                onChange={(event) => setWholeSet(event.target.checked)}
+              />
+              이 조건의 전체 {total}건에 적용
+            </label>
+          )}
           <Button size="sm" disabled={busy} onClick={() => void runBulk('confirm')}>
             확인
           </Button>
@@ -161,7 +223,7 @@ export default function DivisionReliabilityPage() {
             onClick={() => {
               // **사유를 받는다** — 없으면 AI 가 무엇을 자주 틀리는지 셀 수 없다.
               const said = window.prompt(
-                `${picked.ids.length}건을 반려합니다. 사유를 적어 주십시오`,
+                `${wholeSet ? total : picked.ids.length}건을 반려합니다. 사유를 적어 주십시오`,
               )
               if (said?.trim()) void runBulk('reject', said.trim())
             }}
@@ -177,7 +239,7 @@ export default function DivisionReliabilityPage() {
               // 누르지만, 서른 건이 한꺼번에 풀리면 반년 뒤에 「왜 풀렸나」 를 묻는 사람이
               // 반드시 있다 — 감사에 「누가 열었나」 만 있으면 답할 수 없다.
               const said = window.prompt(
-                `${picked.ids.length}건의 확정을 풀어 다시 후보로 돌립니다.` +
+                `${wholeSet ? total : picked.ids.length}건의 확정을 풀어 다시 후보로 돌립니다.` +
                   ' 그 순간부터 AI 가 다시 채울 수 있습니다. 사유를 적어 주십시오',
               )
               if (said?.trim()) void runBulk('reopen', said.trim())
@@ -190,7 +252,8 @@ export default function DivisionReliabilityPage() {
             variant="outline"
             disabled={busy}
             onClick={() => {
-              if (window.confirm(`${picked.ids.length}건을 지웁니다. 되돌릴 수 없습니다.`)) {
+              const many = wholeSet ? total : picked.ids.length
+              if (window.confirm(`${many}건을 지웁니다. 되돌릴 수 없습니다.`)) {
                 void runBulk('delete')
               }
             }}
@@ -362,6 +425,32 @@ export default function DivisionReliabilityPage() {
             ))}
           </TableBody>
         </Table>
+      )}
+
+      {/* **쪽을 넘는다.** 1784건을 한 화면에 그리면 브라우저가 멎는다 — 줄마다 속성과
+          시험 항목과 장비 수가 딸려 온다. */}
+      {pages > 1 && (
+        <div className="flex flex-wrap items-center gap-3 text-sm">
+          <Button
+            size="sm"
+            variant="outline"
+            disabled={page === 0 || tests.loading}
+            onClick={() => setPage((before) => Math.max(0, before - 1))}
+          >
+            이전
+          </Button>
+          <span className="text-muted-foreground">
+            {page + 1} / {pages} 쪽 · 전체 {total}건
+          </span>
+          <Button
+            size="sm"
+            variant="outline"
+            disabled={page + 1 >= pages || tests.loading}
+            onClick={() => setPage((before) => before + 1)}
+          >
+            다음
+          </Button>
+        </div>
       )}
 
       {asking && <CapabilityDialog test={asking} onClose={() => setAsking(null)} />}

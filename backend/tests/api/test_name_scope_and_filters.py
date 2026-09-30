@@ -233,7 +233,7 @@ def test_묶음을_지정해_거를_수_있다(
             headers=manager.headers,
         )
         assert got.status_code == 200, got.text
-        return [one["name"] for one in got.json()]
+        return [one["name"] for one in got.json()["items"]]
 
     # 묶음을 안 가리면 예전 그대로 — 한 줄이라도 닿으면 걸린다.
     assert name in found(f"{key}>=80")

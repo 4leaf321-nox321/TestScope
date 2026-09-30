@@ -111,7 +111,10 @@ def test_문서를_주면_줄마다_규격서가_걸리고_문서로_모아_볼_
         headers=manager.headers,
     )
     assert listed.status_code == 200, listed.text
-    assert sorted(one["name"] for one in listed.json()) == [f"고온고습-{tag}", f"열충격-{tag}"]
+    assert sorted(one["name"] for one in listed.json()["items"]) == [
+        f"고온고습-{tag}",
+        f"열충격-{tag}",
+    ]
 
     # 문서를 안 주면 그 사업부의 다른 줄도 함께 온다 — 거르기가 실제로 좁힌 것이다.
     other = client.post(
@@ -123,14 +126,14 @@ def test_문서를_주면_줄마다_규격서가_걸리고_문서로_모아_볼_
     both = client.get(
         "/api/reliability-tests", params={"division": "vd"}, headers=manager.headers
     )
-    names = {one["name"] for one in both.json()}
+    names = {one["name"] for one in both.json()["items"]}
     assert f"문서 없는 시험-{tag}" in names
     still = client.get(
         "/api/reliability-tests",
         params={"division": "vd", "document": document},
         headers=manager.headers,
     )
-    assert f"문서 없는 시험-{tag}" not in {one["name"] for one in still.json()}
+    assert f"문서 없는 시험-{tag}" not in {one["name"] for one in still.json()["items"]}
 
 
 def test_줄이_제_규격서를_적었으면_묶음이_안_덮는다(
@@ -195,7 +198,7 @@ def test_못_올리는_사업부면_한_줄도_안_들어간다(
         params={"division": "mx", "status": "all"},
         headers=manager.headers,
     )
-    assert f"남의 사업부-{tag}" not in {one["name"] for one in listed.json()}
+    assert f"남의 사업부-{tag}" not in {one["name"] for one in listed.json()["items"]}
 
 
 def test_없는_문서를_주면_한_줄도_안_들어간다(
@@ -220,4 +223,4 @@ def test_없는_문서를_주면_한_줄도_안_들어간다(
         params={"division": "vd", "status": "all"},
         headers=manager.headers,
     )
-    assert f"없는 문서-{tag}" not in {one["name"] for one in listed.json()}
+    assert f"없는 문서-{tag}" not in {one["name"] for one in listed.json()["items"]}

@@ -40,6 +40,7 @@ from app.modules.test_items.models import EquipmentTestItem
 from app.modules.vocabulary.models import Vocabulary, VocabularyTerm
 from app.shared import audit
 from app.shared.errors import AppError, Conflict, Forbidden, NotFound
+from app.shared.pagination import MAX_LIMIT, Page, clamp_limit
 from app.shared.permissions import (
     division_map,
     my_division_term_ids,
@@ -231,10 +232,17 @@ def list_for_division(
     status: str | None = None,
     document_id: uuid.UUID | None = None,
     revision_id: uuid.UUID | None = None,
-) -> list[ReliabilityTestOut]:
+    limit: int = MAX_LIMIT,
+    offset: int = 0,
+    query: str | None = None,
+) -> Page[ReliabilityTestOut]:
     """그 사업부의 시험 — **후보까지 보인다.** 후보를 검토하는 자리가 여기다.
 
-    후보가 먼저 온다. 목록 아래쪽에 섞여 있으면 아무도 안 본다."""
+    후보가 먼저 온다. 목록 아래쪽에 섞여 있으면 아무도 안 본다.
+
+    **쪽으로 끊는다.** 운영에서 한 사업부에 1784건이 들어왔고, 그것을 한 화면에 통째로
+    그리면 브라우저가 멎는다 — 줄마다 속성과 시험 항목과 장비 수가 딸려 오므로 응답부터
+    무겁다(2026-09-30)."""
     division = division_by_code(db, code)
     stmt = (
         select(ReliabilityTest)
@@ -245,11 +253,52 @@ def list_for_division(
         # 후보(candidate)가 확정(confirmed)보다 앞 — 글자 순이 마침 그렇다.
         .order_by(ReliabilityTest.status, ReliabilityTest.name)
     )
-    narrowed = _by_revision(
-        _by_document(_by_status(stmt, status, default="all"), document_id), revision_id
+    narrowed = _by_text(
+        _by_revision(
+            _by_document(_by_status(stmt, status, default="all"), document_id), revision_id
+        ),
+        query,
     )
-    rows = list(db.scalars(_by_attributes(db, narrowed, attrs)))
-    return _outs(db, user, rows)
+    return _page(db, user, _by_attributes(db, narrowed, attrs), limit, offset)
+
+
+def _page(
+    db: Session,
+    user: User,
+    stmt: Select[tuple[ReliabilityTest]],
+    limit: int,
+    offset: int,
+) -> Page[ReliabilityTestOut]:
+    """한 쪽만 만든다 — **자르고 나서 살을 붙인다.**
+
+    `_outs` 는 줄마다 시험 항목·장비 수·첨부 수를 붙인다. 전부 붙인 뒤 자르면 1784건에
+    그 일을 다 하고 쉰 건만 보내는 셈이라, 쪽을 나눈 뜻이 없어진다.
+    """
+    total = int(
+        db.scalar(select(func.count()).select_from(stmt.order_by(None).subquery())) or 0
+    )
+    rows = list(db.scalars(stmt.limit(clamp_limit(limit)).offset(max(0, offset))))
+    return Page(
+        items=_outs(db, user, rows),
+        total=total,
+        limit=clamp_limit(limit),
+        offset=max(0, offset),
+    )
+
+
+def _by_text(
+    stmt: Select[tuple[ReliabilityTest]], query: str | None
+) -> Select[tuple[ReliabilityTest]]:
+    """이름·목적에 든 글자로 좁힌다.
+
+    **쪽을 나누면 찾기도 서버가 해야 한다.** 화면 안에서 훑으면 지금 쪽의 쉰 줄만 뒤지고,
+    사람은 「없다」 로 읽는다 — 1784건 중 뒤쪽에 있는 줄은 영영 안 걸린다.
+    """
+    said = (query or "").strip()
+    if not said:
+        return stmt
+    like = f"%{said}%"
+    return stmt.where(ReliabilityTest.name.ilike(like) | ReliabilityTest.purpose.ilike(like))
 
 
 def _by_document(
@@ -314,7 +363,10 @@ def list_all(
     status: str | None = None,
     document_id: uuid.UUID | None = None,
     revision_id: uuid.UUID | None = None,
-) -> list[ReliabilityTestOut]:
+    limit: int = MAX_LIMIT,
+    offset: int = 0,
+    query: str | None = None,
+) -> Page[ReliabilityTestOut]:
     """전사의 신뢰성 시험 — **「저 부서는 무슨 시험을 하나」 를 부서를 가로질러 묻는 표.**
     읽기는 누구나(부서를 가로지르는 것이 이 시스템의 물음), 고치기는 각 부서 화면에서.
     부서 순서(조직도) → 이름.
@@ -328,11 +380,14 @@ def list_all(
         .where(ReliabilityTest.deleted_at.is_(None))
         .order_by(VocabularyTerm.sort_order, VocabularyTerm.value, ReliabilityTest.name)
     )
-    narrowed = _by_revision(
-        _by_document(_by_status(stmt, status, default=CONFIRMED), document_id), revision_id
+    narrowed = _by_text(
+        _by_revision(
+            _by_document(_by_status(stmt, status, default=CONFIRMED), document_id),
+            revision_id,
+        ),
+        query,
     )
-    rows = list(db.scalars(_by_attributes(db, narrowed, attrs)))
-    return _outs(db, user, rows)
+    return _page(db, user, _by_attributes(db, narrowed, attrs), limit, offset)
 
 
 def get(db: Session, test_id: uuid.UUID) -> ReliabilityTest:

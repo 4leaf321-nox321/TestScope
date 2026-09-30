@@ -129,6 +129,8 @@ export function AttachmentStrip({
   onChanged,
   label,
   size = 'sm',
+  onStage,
+  staged = [],
 }: {
   target: AttachmentTarget
   objectId: string | null
@@ -141,6 +143,13 @@ export function AttachmentStrip({
   label?: string
   /** `sm` 고치는 자리 · `lg` 읽는 자리. 자세한 것은 `SIZES`. */
   size?: StripSize
+  /**
+   * **아직 저장 안 한 대상**에 그림을 골라 둘 때. 주면 `objectId` 가 없어도 고를 수 있고,
+   * 저장한 쪽이 뒤이어 올린다 — 없으면 「저장한 뒤에」 라고만 말한다.
+   */
+  onStage?: (files: File[], definitionId: string | null) => void
+  /** 골라 둔(아직 안 올라간) 파일 이름들. */
+  staged?: string[]
 }) {
   const [busy, setBusy] = useState(false)
   const [error, setError] = useState<ApiError | Error | null>(null)
@@ -168,10 +177,44 @@ export function AttachmentStrip({
   }
 
   if (!objectId) {
-    // 아직 저장 안 한 시험에는 붙일 곳이 없다 — 대상 id 가 있어야 붙는다.
-    return canEdit ? (
-      <p className="text-muted-foreground text-xs">저장한 뒤에 이미지를 첨부할 수 있습니다.</p>
-    ) : null
+    if (!canEdit) return null
+    // **골라 두기.** 첨부는 대상 id 를 요구하지만, 「저장하고 다시 열어 붙이기」 를
+    // 시키면 대개 만들기까지만 하고 그림은 안 올라온다 — 골라 두면 저장한 쪽이 이어 올린다.
+    if (!onStage) {
+      return (
+        <p className="text-muted-foreground text-xs">
+          저장한 뒤에 이미지를 첨부할 수 있습니다.
+        </p>
+      )
+    }
+    return (
+      <div className="space-y-1">
+        <input
+          ref={picker}
+          type="file"
+          accept="image/*"
+          multiple
+          className="hidden"
+          onChange={(event) => {
+            onStage(Array.from(event.target.files ?? []), definitionId)
+            event.target.value = ''
+          }}
+        />
+        <Button
+          type="button"
+          size="sm"
+          variant="outline"
+          onClick={() => picker.current?.click()}
+        >
+          {label ?? '이미지 고르기'}
+        </Button>
+        {staged.length > 0 && (
+          <p className="text-muted-foreground text-xs">
+            저장할 때 올립니다: {staged.join(', ')}
+          </p>
+        )}
+      </div>
+    )
   }
 
   return (

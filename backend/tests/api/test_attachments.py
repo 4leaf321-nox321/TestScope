@@ -289,7 +289,7 @@ def test_목록은_장수만_보이고_낱장은_안_받는다(client: TestClien
         )
 
     rows = client.get("/api/reliability-tests", headers=admin.headers).json()
-    mine = next(one for one in rows if one["id"] == test_id)
+    mine = next(one for one in rows["items"] if one["id"] == test_id)
     assert mine["attachment_count"] == 2
     # 낱장은 목록에 안 실린다.
     assert "attachments" not in mine

@@ -35,20 +35,24 @@ from app.modules.reliability.schemas import (
     TestItemProposalRequest,
 )
 from app.shared.auth import current_user
+from app.shared.pagination import MAX_LIMIT, Page
 
 router = APIRouter(prefix="/reliability-tests", tags=["reliability"])
 
 
-@router.get("", response_model=list[ReliabilityTestOut])
+@router.get("", response_model=Page[ReliabilityTestOut])
 def list_reliability_tests(
     division: str | None = Query(default=None, max_length=120),
     attr: list[str] = Query(default_factory=list, max_length=10),
     status: Literal["candidate", "confirmed", "all"] | None = Query(default=None),
     document: uuid.UUID | None = Query(default=None),
     revision: uuid.UUID | None = Query(default=None),
+    q: str | None = Query(default=None, max_length=200),
+    limit: int = Query(default=50, ge=1, le=MAX_LIMIT),
+    offset: int = Query(default=0, ge=0),
     user: User = Depends(current_user),
     db: Session = Depends(get_db),
-) -> list[ReliabilityTestOut]:
+) -> Page[ReliabilityTestOut]:
     """신뢰성 시험 — **부서가 등록한 절차**다. 「시험 항목」(장비가 할 수 있는 측정, 전사
     공용)과 다르다. `division` 에 사업부 코드(`mx`…)를 주면 그 사업부 것만, 안 주면 전사
     전부(사업부 순). 시험마다 쓰는 시험 항목과, 그 항목이 되는 **그 사업부의** 장비 수를
@@ -63,13 +67,22 @@ def list_reliability_tests(
     전사면 확정된 것만(「저 사업부가 무슨 시험을 하나」 에 후보는 아직 답이 아니다). 일부러
     보려면 `status="all"`, 후보만 세려면 `status="candidate"`.
 
+    `q` 는 이름·목적에 든 글자다 — **쪽을 나누면 찾기도 서버가 해야 한다.** 화면 안에서
+    훑으면 지금 쪽의 쉰 줄만 뒤지고, 뒤쪽에 있는 줄은 영영 안 걸린다.
+
+    **쪽으로 끊어 온다**(`items` · `total` · `limit` · `offset`). 한 사업부에 1784건이
+    들어온 적이 있고, 통째로 그리면 브라우저가 멎는다 — 줄마다 속성·시험 항목·장비 수가
+    딸려 오므로 응답부터 무겁다.
+
     `revision` 에 규격서 판 id 를 주면 **그 판의 목록**이 온다 — 판마다 한 벌이라 계산이
     없다. `document` 에 사내 규격서 id 를 주면 **그 문서에서 나온 줄만** 온다 — 묶음으로 올라온
     스무 건을 한 자리에서 보고 한 번에 확인·반려하는 길이다.
     """
     if division:
-        return services.list_for_division(db, user, division, attr, status, document, revision)
-    return services.list_all(db, user, attr, status, document, revision)
+        return services.list_for_division(
+            db, user, division, attr, status, document, revision, limit, offset, q
+        )
+    return services.list_all(db, user, attr, status, document, revision, limit, offset, q)
 
 
 @router.get("/divisions", response_model=list[DivisionOut])

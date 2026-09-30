@@ -42,7 +42,8 @@ function test_(id: string, over: Record<string, unknown> = {}) {
 }
 
 async function show(rows: unknown[]) {
-  get.mockResolvedValue(rows)
+  // 목록은 쪽으로 온다 — 1784건을 한 화면에 그리면 브라우저가 멎는다(0.38.0).
+  get.mockResolvedValue({ items: rows, total: rows.length, limit: 50, offset: 0 })
   await act(async () => {
     render(
       <MemoryRouter>

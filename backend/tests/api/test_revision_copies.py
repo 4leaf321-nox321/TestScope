@@ -166,7 +166,7 @@ def test_판으로_목록을_좁힌다(client: TestClient, db: Session, admin: S
             headers=manager.headers,
         )
         assert got.status_code == 200, got.text
-        return sorted(one["name"] for one in got.json())
+        return sorted(one["name"] for one in got.json()["items"])
 
     assert names(old) == sorted([f"고온고습 {tag}", f"열충격 {tag}"])
     # 열충격은 18이 손대지 않았으므로 18의 목록에 없다.
@@ -178,7 +178,7 @@ def test_판으로_목록을_좁힌다(client: TestClient, db: Session, admin: S
         params={"division": "vd", "status": "all"},
         headers=manager.headers,
     )
-    assert len([one for one in everything.json() if tag in one["name"]]) == 3
+    assert len([one for one in everything.json()["items"] if tag in one["name"]]) == 3
 
 
 def test_줄이_제_판을_적으면_묶음이_안_덮는다(
@@ -353,9 +353,10 @@ def test_과거_판의_값은_지금_값을_안_흉내낸다(
 
     rows = client.get(
         "/api/reliability-tests",
-        params={"division": "vd", "status": "all"},
+        # **태그로 좁힌다** — 쪽이 생긴 뒤로는 첫 쉰 줄에 내 줄이 없을 수 있다.
+        params={"division": "vd", "status": "all", "q": tag},
         headers=manager.headers,
-    ).json()
+    ).json()["items"]
     mine = next(one for one in rows if one["name"] == f"온도 오름 {tag}")
 
     # ① 카드에는 **지금 값만** — 85 와 95 가 나란히 서면 어느 것이 조건인지 안 보인다.
@@ -372,7 +373,7 @@ def test_과거_판의_값은_지금_값을_안_흉내낸다(
             headers=manager.headers,
         )
         assert got.status_code == 200, got.text
-        return [one["name"] for one in got.json()]
+        return [one["name"] for one in got.json()["items"]]
 
     assert f"온도 오름 {tag}" in found(f"{key}=95")
     assert f"온도 오름 {tag}" not in found(f"{key}=85"), "개정 14의 값으로 걸렸습니다"
@@ -388,3 +389,54 @@ def test_과거_판의_값은_지금_값을_안_흉내낸다(
         if one["label"] == temperature["label"]
     )
     assert marks == [("14", "85 degC", False), ("18", "95 degC", True)]
+
+
+def test_목록은_쪽으로_끊어_온다(client: TestClient, db: Session, admin: Signed) -> None:
+    """운영에서 한 사업부에 **1784건**이 들어왔다. 통째로 그리면 브라우저가 멎는다 —
+    줄마다 속성·시험 항목·장비 수가 딸려 오므로 응답부터 무겁다(2026-09-30)."""
+    tag = "a" + uuid.uuid4().hex[:5]
+    manager, _ = _lab(db, client, tag)
+    got = client.post(
+        "/api/reliability-tests/batch",
+        json={
+            "division_code": "vd",
+            "tests": [{"name": f"쪽 {at:02d}-{tag}"} for at in range(7)],
+        },
+        headers=manager.headers,
+    )
+    assert got.status_code == 207, got.text
+
+    def page(limit: int, offset: int) -> dict[str, Any]:
+        found = client.get(
+            "/api/reliability-tests",
+            params={
+                "division": "vd",
+                "status": "all",
+                "attr": [],
+                "limit": limit,
+                "offset": offset,
+            },
+            headers=manager.headers,
+        )
+        assert found.status_code == 200, found.text
+        body: dict[str, Any] = found.json()
+        return body
+
+    first = page(3, 0)
+    # **전체 수는 쪽과 따로 온다** — 이것이 없으면 화면이 「몇 쪽인가」 를 못 그린다.
+    assert first["total"] >= 7
+    assert len(first["items"]) == 3
+    assert first["limit"] == 3 and first["offset"] == 0
+
+    second = page(3, 3)
+    assert len(second["items"]) == 3
+    # 쪽이 겹치지 않는다 — 겹치면 같은 줄을 두 번 확인하게 된다.
+    assert not ({one["id"] for one in first["items"]} & {one["id"] for one in second["items"]})
+
+    # 상한을 넘겨 부르면 422 — 「전부 주세요」 로 우회할 수 없어야 쪽이 뜻을 갖는다.
+    over = client.get(
+        "/api/reliability-tests",
+        params={"division": "vd", "limit": 5000},
+        headers=manager.headers,
+    )
+    assert over.status_code == 422, over.text

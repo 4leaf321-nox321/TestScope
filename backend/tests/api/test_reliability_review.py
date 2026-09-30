@@ -236,9 +236,10 @@ def test_전사_목록은_후보를_안_내고_부서_화면은_낸다(
     def _ids(query: str) -> set[str]:
         rows = client.get(f"/api/reliability-tests{query}", headers=admin.headers)
         assert rows.status_code == 200, rows.text
-        return {one["id"] for one in rows.json()}
+        return {one["id"] for one in rows.json()["items"]}
 
-    everyone = _ids("")
+    # **태그로 좁힌다** — 쪽이 생긴 뒤로는 전사 목록의 첫 쉰 줄에 내 줄이 없을 수 있다.
+    everyone = _ids(f"?q={tag}")
     assert shown in everyone
     assert hidden not in everyone
 
@@ -247,15 +248,15 @@ def test_전사_목록은_후보를_안_내고_부서_화면은_낸다(
     theirs = [
         one
         for one in client.get(
-            "/api/reliability-tests?division=vd", headers=admin.headers
-        ).json()
+            f"/api/reliability-tests?division=vd&q={tag}", headers=admin.headers
+        ).json()["items"]
         if one["name"].endswith(tag)
     ]
     assert theirs[0]["id"] == hidden
     assert {one["id"] for one in theirs} == {hidden, shown}
 
     # 일부러 열면 전사에서도 보인다.
-    assert hidden in _ids("?status=all")
+    assert hidden in _ids(f"?status=all&q={tag}")
     assert hidden in _ids("?division=vd&status=candidate")
 
 

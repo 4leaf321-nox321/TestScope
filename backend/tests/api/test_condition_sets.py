@@ -144,7 +144,7 @@ def test_같은_자리에_두_줄이_오면_거절한다(
         params={"division": "vd", "status": "all"},
         headers=manager.headers,
     )
-    assert f"겹침-{tag}" not in {one["name"] for one in listed.json()}
+    assert f"겹침-{tag}" not in {one["name"] for one in listed.json()["items"]}
 
 
 def test_묶음이_다르면_두_줄이_나란히_선다(

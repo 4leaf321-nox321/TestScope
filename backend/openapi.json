@@ -7203,7 +7203,7 @@
           "reliability"
         ],
         "summary": "List Reliability Tests",
-        "description": "신뢰성 시험 — **부서가 등록한 절차**다. 「시험 항목」(장비가 할 수 있는 측정, 전사\n공용)과 다르다. `division` 에 사업부 코드(`mx`…)를 주면 그 사업부 것만, 안 주면 전사\n전부(사업부 순). 시험마다 쓰는 시험 항목과, 그 항목이 되는 **그 사업부의** 장비 수를\n함께 준다 — 0 이면 시험은 정했는데\n돌릴 장비가 없다는 뜻이다.\n\n`attr` 은 **속성 값으로 거른다** — 여러 번 주면 모두 만족해야 한다(`attr=<키><연산><값>`,\n연산은 `>=` `<=` `>` `<` `=` `!=` `~`(포함) `*`(적혀 있기만 하면)). 왼쪽은 속성 정의의\n`key` 다 — 이름은 관리자가 고치면 바뀌고, 그때 저장해 둔 주소가 조용히 빈 답을 낸다.\n\n`status` 를 **안 주면 자리에 따라 다르다** — 사업부를 주면 후보까지(검토하는 자리라서),\n전사면 확정된 것만(「저 사업부가 무슨 시험을 하나」 에 후보는 아직 답이 아니다). 일부러\n보려면 `status=\"all\"`, 후보만 세려면 `status=\"candidate\"`.\n\n`revision` 에 규격서 판 id 를 주면 **그 판의 목록**이 온다 — 판마다 한 벌이라 계산이\n없다. `document` 에 사내 규격서 id 를 주면 **그 문서에서 나온 줄만** 온다 — 묶음으로 올라온\n스무 건을 한 자리에서 보고 한 번에 확인·반려하는 길이다.",
+        "description": "신뢰성 시험 — **부서가 등록한 절차**다. 「시험 항목」(장비가 할 수 있는 측정, 전사\n공용)과 다르다. `division` 에 사업부 코드(`mx`…)를 주면 그 사업부 것만, 안 주면 전사\n전부(사업부 순). 시험마다 쓰는 시험 항목과, 그 항목이 되는 **그 사업부의** 장비 수를\n함께 준다 — 0 이면 시험은 정했는데\n돌릴 장비가 없다는 뜻이다.\n\n`attr` 은 **속성 값으로 거른다** — 여러 번 주면 모두 만족해야 한다(`attr=<키><연산><값>`,\n연산은 `>=` `<=` `>` `<` `=` `!=` `~`(포함) `*`(적혀 있기만 하면)). 왼쪽은 속성 정의의\n`key` 다 — 이름은 관리자가 고치면 바뀌고, 그때 저장해 둔 주소가 조용히 빈 답을 낸다.\n\n`status` 를 **안 주면 자리에 따라 다르다** — 사업부를 주면 후보까지(검토하는 자리라서),\n전사면 확정된 것만(「저 사업부가 무슨 시험을 하나」 에 후보는 아직 답이 아니다). 일부러\n보려면 `status=\"all\"`, 후보만 세려면 `status=\"candidate\"`.\n\n`q` 는 이름·목적에 든 글자다 — **쪽을 나누면 찾기도 서버가 해야 한다.** 화면 안에서\n훑으면 지금 쪽의 쉰 줄만 뒤지고, 뒤쪽에 있는 줄은 영영 안 걸린다.\n\n**쪽으로 끊어 온다**(`items` · `total` · `limit` · `offset`). 한 사업부에 1784건이\n들어온 적이 있고, 통째로 그리면 브라우저가 멎는다 — 줄마다 속성·시험 항목·장비 수가\n딸려 오므로 응답부터 무겁다.\n\n`revision` 에 규격서 판 id 를 주면 **그 판의 목록**이 온다 — 판마다 한 벌이라 계산이\n없다. `document` 에 사내 규격서 id 를 주면 **그 문서에서 나온 줄만** 온다 — 묶음으로 올라온\n스무 건을 한 자리에서 보고 한 번에 확인·반려하는 길이다.",
         "operationId": "list_reliability_tests_api_reliability_tests_get",
         "parameters": [
           {
@@ -7290,6 +7290,46 @@
               ],
               "title": "Revision"
             }
+          },
+          {
+            "name": "q",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string",
+                  "maxLength": 200
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Q"
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "maximum": 200,
+              "minimum": 1,
+              "default": 50,
+              "title": "Limit"
+            }
+          },
+          {
+            "name": "offset",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "minimum": 0,
+              "default": 0,
+              "title": "Offset"
+            }
           }
         ],
         "responses": {
@@ -7298,11 +7338,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/ReliabilityTestOut"
-                  },
-                  "title": "Response List Reliability Tests Api Reliability Tests Get"
+                  "$ref": "#/components/schemas/Page_ReliabilityTestOut_"
                 }
               }
             }
@@ -19253,6 +19289,37 @@
           "offset"
         ],
         "title": "Page[MethodOut]"
+      },
+      "Page_ReliabilityTestOut_": {
+        "properties": {
+          "items": {
+            "items": {
+              "$ref": "#/components/schemas/ReliabilityTestOut"
+            },
+            "type": "array",
+            "title": "Items"
+          },
+          "total": {
+            "type": "integer",
+            "title": "Total"
+          },
+          "limit": {
+            "type": "integer",
+            "title": "Limit"
+          },
+          "offset": {
+            "type": "integer",
+            "title": "Offset"
+          }
+        },
+        "type": "object",
+        "required": [
+          "items",
+          "total",
+          "limit",
+          "offset"
+        ],
+        "title": "Page[ReliabilityTestOut]"
       },
       "Page_SpecSourceOut_": {
         "properties": {

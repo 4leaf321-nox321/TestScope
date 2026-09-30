@@ -40,6 +40,17 @@ import { specDocumentApi } from '@/modules/documents/api'
 import { methodApi } from '@/modules/methods/api'
 import { vocabularyApi } from '@/modules/vocabulary/api'
 
+/** 칸마다 붙는 그림을 다루는 한 벌. **저장 전에도 고를 수 있다**(`onStage`). */
+export interface AttachmentBag {
+  rows: Attachment[]
+  canEdit: boolean
+  objectId: string | null
+  onChanged: () => void
+  /** 아직 저장 안 했을 때 — 고른 파일을 부모가 들고 있다가 저장한 뒤 올린다. */
+  onStage?: (files: File[], definitionId: string | null) => void
+  staged?: { file: File; definitionId: string | null }[]
+}
+
 /** 칸 하나의 지금 값. 종류에 따라 쓰는 자리가 다르다. */
 export interface StandardValue {
   numValue: number | null
@@ -367,12 +378,7 @@ export function StandardAttributeFields({
   onLoaded?: (definitions: AttributeDefinition[]) => void
   /** 칸마다 그림을 그릴 때. **어느 칸에 붙는지가 문서마다 다르므로** 칸이 아니라
    *  그림이 자리를 안다 — 여기서는 그 칸의 것만 골라 준다. */
-  attachments?: {
-    rows: Attachment[]
-    canEdit: boolean
-    objectId: string | null
-    onChanged: () => void
-  }
+  attachments?: AttachmentBag
 }) {
   const listed = useResource(() => attributeApi.definitions(target), [target])
   const definitions = useMemo(
@@ -600,12 +606,7 @@ function ConditionRows({
   values: Record<string, StandardValue>
   onChange: (next: Record<string, StandardValue>) => void
   /** 조건 줄에도 이미지가 붙는다 — 온습도 프로파일은 「시험 온도」 의 그림이다. */
-  attachments?: {
-    rows: Attachment[]
-    canEdit: boolean
-    objectId: string | null
-    onChanged: () => void
-  }
+  attachments?: AttachmentBag
 }) {
   const byId = useMemo(() => new Map(definitions.map((one) => [one.id, one])), [definitions])
   const order = useMemo(
@@ -935,12 +936,7 @@ function ConditionRow({
   onChange: (patch: Partial<StandardValue>) => void
   onStep: (step: number | null) => void
   onRemove: () => void
-  attachments?: {
-    rows: Attachment[]
-    canEdit: boolean
-    objectId: string | null
-    onChanged: () => void
-  }
+  attachments?: AttachmentBag
 }) {
   const id = `attr-${definition.id}-${value.setLabel}-${value.stepOrder ?? ''}`
   const point = value.numValue !== null
@@ -1105,17 +1101,14 @@ function FieldAttachments({
   bag,
 }: {
   definition: AttributeDefinition
-  bag: {
-    rows: Attachment[]
-    canEdit: boolean
-    objectId: string | null
-    onChanged: () => void
-  }
+  bag: AttachmentBag
 }) {
   const mine = bag.rows.filter((one) => one.definition_id === definition.id)
+  // 아직 저장 안 했을 때 이 칸에 골라 둔 것 — 저장하면 이어서 올라간다.
+  const waiting = (bag.staged ?? []).filter((one) => one.definitionId === definition.id)
   const [open, setOpen] = useState(false)
   if (mine.length === 0 && !bag.canEdit) return null
-  if (mine.length === 0 && !open) {
+  if (mine.length === 0 && waiting.length === 0 && !open) {
     return (
       <button
         type="button"
@@ -1135,6 +1128,8 @@ function FieldAttachments({
       canEdit={bag.canEdit}
       onChanged={bag.onChanged}
       label="이 항목의 이미지"
+      onStage={bag.onStage}
+      staged={waiting.map((one) => one.file.name)}
     />
   )
 }

@@ -28,7 +28,9 @@ import type { BulkAction } from '@/modules/reliability/api'
 
 export function DocumentTestReview({ documentId }: { documentId: string }) {
   const tests = useResource(() => reliabilityApi.byDocument(documentId), [documentId])
-  const rows = tests.data ?? []
+  const rows = tests.data?.items ?? []
+  // 한 문서에서 나온 줄이 한 쪽을 넘으면 그 사실을 말한다 — 안 말하면 「이게 전부」 로 읽힌다.
+  const more = (tests.data?.total ?? 0) - rows.length
   // **고를 수 있는 것은 고칠 수 있는 것뿐이다.** 남의 사업부 줄까지 골라지면, 누른 사람은
   // 「12건 실패」 를 받고 무엇이 왜 막혔는지 세어 보게 된다.
   const editable = rows.filter((one) => one.can_edit)
@@ -59,7 +61,12 @@ export function DocumentTestReview({ documentId }: { documentId: string }) {
   return (
     <section className="space-y-2">
       <h3 className="text-sm font-medium">
-        이 규격서에서 올라온 시험 {rows.length}건
+        이 규격서에서 올라온 시험 {tests.data?.total ?? rows.length}건
+        {more > 0 && (
+          <span className="text-muted-foreground ml-1 text-xs font-normal">
+            (앞 {rows.length}건만 보입니다)
+          </span>
+        )}
         {pending > 0 && (
           // **문서 단위로 세어 준다.** 「확인 전 12건」 이 안 보이면 아무도 안 연다.
           <span className="text-destructive ml-2">확인 전 {pending}건</span>

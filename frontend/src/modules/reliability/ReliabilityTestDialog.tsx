@@ -92,6 +92,14 @@ export function ReliabilityTestDialog({
   const [standard, setStandard] = useState<Record<string, StandardValue>>({})
   const [standardDefs, setStandardDefs] = useState<AttributeDefinition[]>([])
   // 그림은 **저장된 시험에만** 붙는다 — 대상 id 가 있어야 붙일 자리가 정해진다.
+  /**
+   * 저장 전에 골라 둔 이미지 — **저장하고 이어서 올린다.**
+   *
+   * 첨부는 대상 id 를 요구해서 줄이 먼저 있어야 한다. 그 두 걸음을 사람에게 시키면
+   * 「만들고 → 다시 열고 → 붙이기」 가 되고, 그러면 대개 만들기까지만 하고 그림은
+   * 안 올라온다. `definitionId` 는 그 그림이 어느 칸의 것인가다(없으면 시험 전체).
+   */
+  const [staged, setStaged] = useState<{ file: File; definitionId: string | null }[]>([])
   const shots = useResource(
     () => (editing ? attachmentApi.list('reliability_test', editing.id) : Promise.resolve([])),
     [editing?.id, open],
@@ -208,8 +216,38 @@ export function ReliabilityTestDialog({
         test_item_term_ids: termIds,
         attributes: [...toStandardPayload(standardDefs, standard), ...toPayload(attributes)],
       }
-      if (editing) await reliabilityApi.update(editing.id, body)
-      else await reliabilityApi.create(division, body)
+      const saved = editing
+        ? await reliabilityApi.update(editing.id, body)
+        : await reliabilityApi.create(division, body)
+
+      // **저장하고 이어서 올린다.** 첨부는 대상 id 를 요구해서 줄이 먼저 있어야 하는데,
+      // 그 두 걸음을 사람에게 시키면 「만들고 → 다시 열고 → 붙이기」 가 되고 그러면 대개
+      // 만들기까지만 한다 — 그림 없는 시험이 남는다(규격서 창이 같은 이유로 그렇게 한다).
+      //
+      // **한 장씩 보낸다** — 하나가 막혀도 나머지는 들어가고, 어느 것이 막혔는지 말한다.
+      const failed: string[] = []
+      for (const one of staged) {
+        try {
+          await attachmentApi.upload('reliability_test', saved.id, one.file, {
+            definitionId: one.definitionId ?? undefined,
+          })
+        } catch {
+          failed.push(one.file.name)
+        }
+      }
+      if (failed.length > 0) {
+        // 시험은 이미 저장됐다 — 조용히 닫으면 사람은 그림이 갔는지 모른 채 나간다.
+        setStaged([])
+        setError(
+          new Error(
+            `시험은 저장됐지만 이미지 ${failed.length}장이 안 올라갔습니다:` +
+              ` ${failed.join(', ')}. 형식과 크기를 보고 다시 올려 주십시오.`,
+          ),
+        )
+        onSaved()
+        return
+      }
+      setStaged([])
       onSaved()
     } catch (caught) {
       setError(caught instanceof Error ? caught : new Error('알 수 없는 오류'))
@@ -335,9 +373,16 @@ export function ReliabilityTestDialog({
                 onLoaded={setStandardDefs}
                 attachments={{
                   rows: shots.data ?? [],
-                  canEdit: Boolean(editing),
+                  // **저장 전에도 고를 수 있다** — 고른 것은 저장한 뒤 이어서 올라간다.
+                  canEdit: true,
                   objectId: editing?.id ?? null,
                   onChanged: () => shots.reload(),
+                  onStage: (files, definitionId) =>
+                    setStaged((before) => [
+                      ...before,
+                      ...files.map((file) => ({ file, definitionId })),
+                    ]),
+                  staged,
                 }}
               />
 
@@ -347,8 +392,8 @@ export function ReliabilityTestDialog({
               >
                 <legend className="px-1.5 text-sm font-medium">이미지</legend>
                 <p className="text-muted-foreground mb-3 text-xs">
-                  **어느 칸에도 안 붙는 그림**이 여기 섭니다(부록·전경 사진). 절차나 판정
-                  기준에 항목별 이미지는 해당 항목 아래에서 첨부하십시오.
+                  <strong>어느 칸에도 안 붙는 그림</strong>이 여기 섭니다(부록·전경 사진).
+                  절차나 판정 기준에 항목별 이미지는 해당 항목 아래에서 첨부하십시오.
                 </p>
                 <AttachmentStrip
                   target="reliability_test"
@@ -356,6 +401,15 @@ export function ReliabilityTestDialog({
                   rows={(shots.data ?? []).filter((one) => one.definition_id === null)}
                   canEdit
                   onChanged={() => shots.reload()}
+                  onStage={(files, definitionId) =>
+                    setStaged((before) => [
+                      ...before,
+                      ...files.map((file) => ({ file, definitionId })),
+                    ])
+                  }
+                  staged={staged
+                    .filter((one) => one.definitionId === null)
+                    .map((one) => one.file.name)}
                 />
               </fieldset>
 

@@ -1363,7 +1363,7 @@ def test_초안_속성은_합치거나_정식으로_올린다(
         params={"attr": f"temp_{tag}=85"},
         headers=admin.headers,
     )
-    assert [one["name"] for one in found.json()] == [f"고온고습-{tag}"]
+    assert [one["name"] for one in found.json()["items"]] == [f"고온고습-{tag}"]
 
     # 남은 초안을 화면에서 먼저 정식으로 올리면, 다시 세울 때 결정으로 닫힌다.
     promoted = client.patch(

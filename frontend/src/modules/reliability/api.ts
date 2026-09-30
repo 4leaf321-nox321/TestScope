@@ -12,6 +12,18 @@ export type BulkResult = components['schemas']['ReliabilityBulkOut']
 export type RevisionCompare = components['schemas']['RevisionCompareOut']
 export type AttributeValueRow = components['schemas']['AttributeValueOut']
 export type SiblingTest = components['schemas']['SiblingTestOut']
+export type Page = components['schemas']['Page_ReliabilityTestOut_']
+
+/** 한 쪽에 몇 줄. **운영에서 한 사업부에 1784건이 들어왔다** — 통째로 그리면 브라우저가
+ *  멎는다(줄마다 속성·시험 항목·장비 수가 딸려 온다). */
+export const PAGE = 50
+
+/** 서버가 한 번에 받는 상한. **1784건을 한 번에 보내면 422 다** — 화면이 이 크기로
+ *  끊어 보내고, 중간 결과를 쌓아 보여 준다. */
+export const CHUNK = 500
+
+/** id 만 그러모을 때 쓰는 쪽 크기 — 서버의 `MAX_LIMIT` 과 같다. */
+export const MAX_PAGE = 200
 export type TestItemProposal = components['schemas']['TestItemProposalOut']
 export type TestItemProposalGroup = components['schemas']['TestItemProposalGroupOut']
 /** 여럿에게 한 번에 할 수 있는 일. */
@@ -33,27 +45,38 @@ export const reliabilityApi = {
   divisions: () => api.get<Division[]>('/reliability-tests/divisions'),
   /** 한 사업부의 신뢰성 시험 전부 — **후보까지.** 검토하는 자리가 사업부 화면이라 후보가
    *  먼저 온다. 시험마다 쓰는 시험 항목과 그 항목이 되는 이 사업부 장비 수. */
-  list: (division: string) =>
-    api.get<ReliabilityTest[]>(`/reliability-tests?division=${encodeURIComponent(division)}`),
+  list: (division: string, limit = PAGE, offset = 0) =>
+    api.get<Page>(
+      `/reliability-tests?division=${encodeURIComponent(division)}&limit=${limit}&offset=${offset}`,
+    ),
   /** 전사 전부 — 사업부 순. 「누가 무슨 시험을 하나」 를 가로질러 본다.
    *  `attrs` 는 속성 값 조건(`키>=값`) — 여러 개면 **모두** 만족해야 한다. */
-  listAll: (attrs: string[] = [], withCandidates = false) => {
-    const search = new URLSearchParams()
+  listAll: (
+    attrs: string[] = [],
+    withCandidates = false,
+    limit = PAGE,
+    offset = 0,
+    query = '',
+  ) => {
+    const search = new URLSearchParams({ limit: String(limit), offset: String(offset) })
+    // **쪽을 나누면 찾기도 서버가 해야 한다** — 화면 안에서 훑으면 지금 쪽의 쉰 줄만
+    // 뒤지고, 뒤쪽에 있는 줄은 영영 안 걸린다.
+    if (query.trim()) search.set('q', query.trim())
     for (const one of attrs) search.append('attr', one)
     // **기본은 확정된 것만.** 이 표는 「저 사업부가 무슨 시험을 하나」 에 답하는데, 확인 안
     // 된 후보는 아직 그 답이 아니다 — 옆 사업부 사람은 배지를 안 보고 읽는다.
     if (withCandidates) search.append('status', 'all')
-    const query = search.toString()
-    return api.get<ReliabilityTest[]>(`/reliability-tests${query ? `?${query}` : ''}`)
+    return api.get<Page>(`/reliability-tests?${search}`)
   },
   /** **한 규격서에서 올라온 시험들** — 후보까지, 확정된 것까지.
    *
    *  AI 가 규격서 한 권에서 스무 건을 뽑아 올린다. 그 스무 줄은 **같은 실수를 함께 한다**
    *  (한 번에 읽은 것이다) — 한 건씩 흩어 놓고 보면 그 결이 안 보이고, 같은 오답을 스무
    *  번 통과시킨다. 그래서 문서 단위로 모아 본다. */
-  byDocument: (documentId: string) =>
-    api.get<ReliabilityTest[]>(
-      `/reliability-tests?status=all&document=${encodeURIComponent(documentId)}`,
+  byDocument: (documentId: string, limit = PAGE, offset = 0) =>
+    api.get<Page>(
+      `/reliability-tests?status=all&limit=${limit}&offset=${offset}` +
+        `&document=${encodeURIComponent(documentId)}`,
     ),
   /** **이 시험을 돌릴 수 있는 장비.** 조건 속성이 그대로 검색 조건이 된다 — 판정 규칙은
    *  장비 찾기와 같은 것 하나다. 범위 하나는 물음 둘(위로·아래로). */

@@ -2240,6 +2240,8 @@ async def list_reliability_tests(
     attr: list[str] | None = None,
     status: str | None = None,
     revision: str | None = None,
+    limit: int = 50,
+    offset: int = 0,
 ) -> dict[str, Any]:
     """**사업부**가 수행하는 신뢰성 시험(고온고습 1000h · 열충격 500 cycle …).
 
@@ -2261,6 +2263,10 @@ async def list_reliability_tests(
     가린다 — 한 줄이라도 닿으면 걸리므로, 주 조건 70 °C·불량 시 90 °C 인 시험이
     `temp_x>=80` 에 걸린다. 「주 조건이 80 이상」 을 물을 때만 `@` 를 쓴다.
 
+    **쪽으로 끊어 온다** — `count` 는 조건에 맞는 전체 수이고 `shown` 은 이번에 받은
+    줄 수다. 둘이 다르면 나머지가 있다는 뜻이니 `offset` 을 밀어 더 받아라. 한 사업부에
+    1784건이 있을 수 있으므로, **전부 받아 세지 말고 `count` 를 읽어라.**
+
     조건을 걸었는데 0건이면 `diagnosis` 가 함께 온다 — 조건마다 값이 적힌 수 · 단위 못
     바꾼 수 · 그 조건 하나로 걸리는 수와 한 줄. **「그런 시험 없습니다」 로 뭉개지 말고 그
     줄을 그대로 말하라.** 가장 흔한 실제는 「아무도 안 적었다」 다.
@@ -2270,19 +2276,29 @@ async def list_reliability_tests(
     마라. 전사 목록(`workspace` 없이)에는 확정된 것만 온다. 내가 올린 것이 확인됐는지 보려면
     `workspace` 와 함께 `status="candidate"` 로 부른다.
     """
-    found = _listed(
-        await _get(
-            ctx,
-            "/reliability-tests",
-            {
-                "division": division,
-                "attr": attr,
-                "status": status,
-                "revision": revision,
-            },
-        ),
-        "tests",
+    got = await _get(
+        ctx,
+        "/reliability-tests",
+        {
+            "division": division,
+            "attr": attr,
+            "status": status,
+            "revision": revision,
+            "limit": limit,
+            "offset": offset,
+        },
     )
+    # 서버는 쪽으로 준다(`items`·`total`). **도구의 모양은 그대로 둔다** — 부르는 쪽이
+    # 읽던 `tests`·`count` 가 바뀌면, 그 글을 읽고 짜인 대화가 전부 어긋난다.
+    if isinstance(got, dict) and "items" in got:
+        found = {
+            "tests": got["items"],
+            "count": got.get("total", len(got["items"])),
+            "shown": len(got["items"]),
+            "offset": got.get("offset", 0),
+        }
+    else:
+        found = _listed(got, "tests")
     if attr and found.get("count") == 0:
         # 빈 목록만 돌려주면 AI 는 「없다」 로 옮긴다. 진단은 서버가 세고 서버가 말한다 —
         # 화면도 같은 엔드포인트를 쓴다.

@@ -71,7 +71,7 @@ def test_그_사업부_부서의_관리자만_등록하고_누구나_본다(
         "/api/reliability-tests", params={"division": "vd"}, headers=admin.headers
     )
     # **태그로 가른다** — 사업부는 시험끼리 나눠 쓰므로 옆 시험의 줄이 섞인다.
-    assert [one["name"] for one in seen.json() if one["name"].endswith(tag)] == [
+    assert [one["name"] for one in seen.json()["items"] if one["name"].endswith(tag)] == [
         f"고온고습-{tag}"
     ]
     as_member = client.get(
@@ -206,14 +206,16 @@ def test_부서를_안_주면_전사_전부가_부서_순으로_온다(
             headers=manager.headers,
         )
         assert made.status_code == 201, made.text
-    listed = client.get("/api/reliability-tests", headers=admin.headers)
+    # **태그로 좁혀 받는다** — 쪽이 생긴 뒤로는 전사 목록의 첫 쉰 줄에 내 줄이 없을 수
+    # 있다. 사업부는 시험끼리 공유하므로 사업부로 거르는 것으로는 안 가려진다.
+    listed = client.get(f"/api/reliability-tests?q={tag}", headers=admin.headers)
     assert listed.status_code == 200, listed.text
-    # **태그로 가른다** — 사업부는 시험끼리 공유하므로 사업부로 거르면 옆 시험의 줄이 섞인다.
-    mine = [one for one in listed.json() if one["name"].endswith(tag)]
+    mine = [one for one in listed.json()["items"] if one["name"].endswith(tag)]
     assert [one["name"] for one in mine] == [f"고온고습-{tag}", f"열충격-{tag}"]
     # 다른 사업부 것도 같이 온다 — 이 사업부 것만이 아니다.
-    assert (
-        any(one["division_code"] != "vd" for one in listed.json()) or len(listed.json()) == 2
+    everyone = client.get("/api/reliability-tests", headers=admin.headers).json()
+    assert any(one["division_code"] != "vd" for one in everyone["items"]) or (
+        everyone["total"] == 2
     )
 
 
