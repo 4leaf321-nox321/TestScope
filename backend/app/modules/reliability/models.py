@@ -80,6 +80,21 @@ class ReliabilityTest(Base):
         DateTime(timezone=True), nullable=True
     )
 
+    document_revision_id: Mapped[uuid.UUID | None] = mapped_column(
+        PgUUID(as_uuid=True),
+        ForeignKey("spec_document_revisions.id", ondelete="SET NULL"),
+        nullable=True,
+        index=True,
+    )
+    """이 줄이 속한 **규격서의 판.**
+
+    **판마다 한 벌을 둔다.** 규격서 하나에 시험이 한 벌만 붙었더니, 같은 문서의 개정 14와
+    18에 이름이 같은 시험 70개 중 36개가 조건이 다른데도 먼저 올라간 판이 이기고 나머지는
+    막혔다(2026-09-30). 신뢰성 시험은 수백 건이고 개정이 잦지 않아 복제의 값이 싸다 —
+    그 대신 「이 판의 목록」 이 계산 없이 바로 나온다.
+
+    `introduced_revision_id` 와 다르다: 이 칸은 **지금 어느 판의 것인가**(자리)이고
+    그쪽은 **어디서 왔는가**(이력)다. 개정 18의 줄도 「개정 14에서 신설」 일 수 있다."""
     introduced_revision_id: Mapped[uuid.UUID | None] = mapped_column(
         PgUUID(as_uuid=True),
         ForeignKey("spec_document_revisions.id", ondelete="SET NULL"),

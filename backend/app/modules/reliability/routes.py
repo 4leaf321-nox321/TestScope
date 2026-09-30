@@ -24,6 +24,7 @@ from app.modules.reliability.schemas import (
     ReliabilityTestCreateRequest,
     ReliabilityTestOut,
     ReliabilityTestUpdateRequest,
+    RevisionCompareOut,
     TestItemProposalDecision,
     TestItemProposalGroupOut,
     TestItemProposalOut,
@@ -40,6 +41,7 @@ def list_reliability_tests(
     attr: list[str] = Query(default_factory=list, max_length=10),
     status: Literal["candidate", "confirmed", "all"] | None = Query(default=None),
     document: uuid.UUID | None = Query(default=None),
+    revision: uuid.UUID | None = Query(default=None),
     user: User = Depends(current_user),
     db: Session = Depends(get_db),
 ) -> list[ReliabilityTestOut]:
@@ -57,12 +59,13 @@ def list_reliability_tests(
     전사면 확정된 것만(「저 사업부가 무슨 시험을 하나」 에 후보는 아직 답이 아니다). 일부러
     보려면 `status="all"`, 후보만 세려면 `status="candidate"`.
 
-    `document` 에 사내 규격서 id 를 주면 **그 문서에서 나온 줄만** 온다 — 묶음으로 올라온
+    `revision` 에 규격서 판 id 를 주면 **그 판의 목록**이 온다 — 판마다 한 벌이라 계산이
+    없다. `document` 에 사내 규격서 id 를 주면 **그 문서에서 나온 줄만** 온다 — 묶음으로 올라온
     스무 건을 한 자리에서 보고 한 번에 확인·반려하는 길이다.
     """
     if division:
-        return services.list_for_division(db, user, division, attr, status, document)
-    return services.list_all(db, user, attr, status, document)
+        return services.list_for_division(db, user, division, attr, status, document, revision)
+    return services.list_all(db, user, attr, status, document, revision)
 
 
 @router.get("/divisions", response_model=list[DivisionOut])
@@ -87,6 +90,23 @@ def create_reliability_test(
     값이어야 한다(`POST /api/resolve` 로 먼저 찾는다)."""
     row = services.create(db, user, payload.model_dump())
     return services.test_out(db, user, row)
+
+
+@router.get("/revision-compare", response_model=RevisionCompareOut)
+def compare_revisions(
+    before: uuid.UUID = Query(description="앞 판"),
+    after: uuid.UUID = Query(description="뒤 판"),
+    user: User = Depends(current_user),
+    db: Session = Depends(get_db),
+) -> RevisionCompareOut:
+    """같은 규격서의 **두 판을 견준다** — 더해진 시험 · 없어진 시험 · 조건이 바뀐 시험.
+
+    개정이 오면 딸린 수십 건 중 **무엇을 다시 봐야 하는지**가 문제다. 「전부 다시」 는 그날
+    일을 멈추고 「아무것도 안 봄」 은 바뀐 조건을 놓친다.
+
+    **`/{test_id}` 보다 먼저 선언한다** — 뒤에 두면 id 로 읽혀 404 가 온다.
+    """
+    return services.compare_revisions(db, user, before, after)
 
 
 @router.get("/item-proposals", response_model=list[TestItemProposalGroupOut])

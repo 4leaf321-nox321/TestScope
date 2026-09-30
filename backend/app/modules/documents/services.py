@@ -311,6 +311,13 @@ def _stale_count(db: Session, document_id: uuid.UUID, revision_id: uuid.UUID) ->
     )
 
 
+def revision_of(db: Session, revision_id: uuid.UUID) -> SpecDocumentRevision:
+    row = db.get(SpecDocumentRevision, revision_id)
+    if row is None:
+        raise NotFound("TSC-DOCS-0008", "그 규격서 판을 찾을 수 없습니다.")
+    return row
+
+
 def add_revision(
     db: Session, user: User, document_id: uuid.UUID, payload: dict[str, Any]
 ) -> SpecDocumentRevision:

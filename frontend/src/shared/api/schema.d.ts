@@ -2301,7 +2301,8 @@ export interface paths {
          *     전사면 확정된 것만(「저 사업부가 무슨 시험을 하나」 에 후보는 아직 답이 아니다). 일부러
          *     보려면 `status="all"`, 후보만 세려면 `status="candidate"`.
          *
-         *     `document` 에 사내 규격서 id 를 주면 **그 문서에서 나온 줄만** 온다 — 묶음으로 올라온
+         *     `revision` 에 규격서 판 id 를 주면 **그 판의 목록**이 온다 — 판마다 한 벌이라 계산이
+         *     없다. `document` 에 사내 규격서 id 를 주면 **그 문서에서 나온 줄만** 온다 — 묶음으로 올라온
          *     스무 건을 한 자리에서 보고 한 번에 확인·반려하는 길이다.
          */
         get: operations["list_reliability_tests_api_reliability_tests_get"];
@@ -2333,6 +2334,31 @@ export interface paths {
          *     읽혀서 「신뢰성 시험을 찾을 수 없습니다」 가 온다.
          */
         get: operations["list_divisions_api_reliability_tests_divisions_get"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/reliability-tests/revision-compare": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * Compare Revisions
+         * @description 같은 규격서의 **두 판을 견준다** — 더해진 시험 · 없어진 시험 · 조건이 바뀐 시험.
+         *
+         *     개정이 오면 딸린 수십 건 중 **무엇을 다시 봐야 하는지**가 문제다. 「전부 다시」 는 그날
+         *     일을 멈추고 「아무것도 안 봄」 은 바뀐 조건을 놓친다.
+         *
+         *     **`/{test_id}` 보다 먼저 선언한다** — 뒤에 두면 id 로 읽혀 404 가 온다.
+         */
+        get: operations["compare_revisions_api_reliability_tests_revision_compare_get"];
         put?: never;
         post?: never;
         delete?: never;
@@ -6684,6 +6710,8 @@ export interface components {
             division_code: string;
             /** Document Id */
             document_id?: string | null;
+            /** Document Revision Id */
+            document_revision_id?: string | null;
             /** Tests */
             tests: components["schemas"]["ReliabilityTestBatchItem"][];
         };
@@ -6731,6 +6759,8 @@ export interface components {
              * @default
              */
             purpose: string;
+            /** Document Revision Id */
+            document_revision_id?: string | null;
             /** Test Item Term Ids */
             test_item_term_ids?: string[];
             /** Attributes */
@@ -6747,6 +6777,8 @@ export interface components {
              * @default
              */
             purpose: string;
+            /** Document Revision Id */
+            document_revision_id?: string | null;
             /** Test Item Term Ids */
             test_item_term_ids?: string[];
             /** Attributes */
@@ -6782,6 +6814,10 @@ export interface components {
             name: string;
             /** Purpose */
             purpose: string;
+            /** Document Revision Id */
+            document_revision_id?: string | null;
+            /** Document Revision Label */
+            document_revision_label?: string | null;
             /**
              * Status
              * @default confirmed
@@ -6824,6 +6860,8 @@ export interface components {
             name?: string | null;
             /** Purpose */
             purpose?: string | null;
+            /** Document Revision Id */
+            document_revision_id?: string | null;
             /** Test Item Term Ids */
             test_item_term_ids?: string[] | null;
             /** Attributes */
@@ -7008,6 +7046,83 @@ export interface components {
             candidates: components["schemas"]["ResolveCandidate"][];
             /** Hint */
             hint: string;
+        };
+        /** RevisionBriefOut */
+        RevisionBriefOut: {
+            /**
+             * Id
+             * Format: uuid
+             */
+            id: string;
+            /** Label */
+            label: string;
+            /** Test Count */
+            test_count: number;
+        };
+        /** RevisionChangedOut */
+        RevisionChangedOut: {
+            /** Name */
+            name: string;
+            /**
+             * Before Id
+             * Format: uuid
+             */
+            before_id: string;
+            /**
+             * After Id
+             * Format: uuid
+             */
+            after_id: string;
+            /** Differences */
+            differences: components["schemas"]["RevisionDifferenceOut"][];
+        };
+        /**
+         * RevisionCompareOut
+         * @description 두 판의 차이 — **더해진 것 · 없어진 것 · 조건이 바뀐 것** 셋.
+         *
+         *     개정이 오면 딸린 수십 건 중 **무엇을 다시 봐야 하는지**가 문제다. 「전부 다시」 는
+         *     그날 일을 멈추고 「아무것도 안 봄」 은 바뀐 조건을 놓친다 — 그 사이를 이 답이 메운다.
+         */
+        RevisionCompareOut: {
+            /**
+             * Document Id
+             * Format: uuid
+             */
+            document_id: string;
+            before: components["schemas"]["RevisionBriefOut"];
+            after: components["schemas"]["RevisionBriefOut"];
+            /** Added */
+            added: components["schemas"]["RevisionTestBriefOut"][];
+            /** Removed */
+            removed: components["schemas"]["RevisionTestBriefOut"][];
+            /** Changed */
+            changed: components["schemas"]["RevisionChangedOut"][];
+            /** Unchanged Count */
+            unchanged_count: number;
+        };
+        /**
+         * RevisionDifferenceOut
+         * @description 조건 한 자리가 어떻게 바뀌었나.
+         */
+        RevisionDifferenceOut: {
+            /** At */
+            at: string;
+            /** Before */
+            before: string | null;
+            /** After */
+            after: string | null;
+        };
+        /** RevisionTestBriefOut */
+        RevisionTestBriefOut: {
+            /**
+             * Id
+             * Format: uuid
+             */
+            id: string;
+            /** Name */
+            name: string;
+            /** Status */
+            status: string;
         };
         /**
          * SearchDiagnosis
@@ -12994,6 +13109,7 @@ export interface operations {
                 attr?: string[];
                 status?: ("candidate" | "confirmed" | "all") | null;
                 document?: string | null;
+                revision?: string | null;
             };
             header?: never;
             path?: never;
@@ -13070,6 +13186,40 @@ export interface operations {
                 };
                 content: {
                     "application/json": components["schemas"]["DivisionOut"][];
+                };
+            };
+        };
+    };
+    compare_revisions_api_reliability_tests_revision_compare_get: {
+        parameters: {
+            query: {
+                /** @description 앞 판 */
+                before: string;
+                /** @description 뒤 판 */
+                after: string;
+            };
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["RevisionCompareOut"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
                 };
             };
         };

@@ -7203,7 +7203,7 @@
           "reliability"
         ],
         "summary": "List Reliability Tests",
-        "description": "신뢰성 시험 — **부서가 등록한 절차**다. 「시험 항목」(장비가 할 수 있는 측정, 전사\n공용)과 다르다. `division` 에 사업부 코드(`mx`…)를 주면 그 사업부 것만, 안 주면 전사\n전부(사업부 순). 시험마다 쓰는 시험 항목과, 그 항목이 되는 **그 사업부의** 장비 수를\n함께 준다 — 0 이면 시험은 정했는데\n돌릴 장비가 없다는 뜻이다.\n\n`attr` 은 **속성 값으로 거른다** — 여러 번 주면 모두 만족해야 한다(`attr=<키><연산><값>`,\n연산은 `>=` `<=` `>` `<` `=` `!=` `~`(포함) `*`(적혀 있기만 하면)). 왼쪽은 속성 정의의\n`key` 다 — 이름은 관리자가 고치면 바뀌고, 그때 저장해 둔 주소가 조용히 빈 답을 낸다.\n\n`status` 를 **안 주면 자리에 따라 다르다** — 사업부를 주면 후보까지(검토하는 자리라서),\n전사면 확정된 것만(「저 사업부가 무슨 시험을 하나」 에 후보는 아직 답이 아니다). 일부러\n보려면 `status=\"all\"`, 후보만 세려면 `status=\"candidate\"`.\n\n`document` 에 사내 규격서 id 를 주면 **그 문서에서 나온 줄만** 온다 — 묶음으로 올라온\n스무 건을 한 자리에서 보고 한 번에 확인·반려하는 길이다.",
+        "description": "신뢰성 시험 — **부서가 등록한 절차**다. 「시험 항목」(장비가 할 수 있는 측정, 전사\n공용)과 다르다. `division` 에 사업부 코드(`mx`…)를 주면 그 사업부 것만, 안 주면 전사\n전부(사업부 순). 시험마다 쓰는 시험 항목과, 그 항목이 되는 **그 사업부의** 장비 수를\n함께 준다 — 0 이면 시험은 정했는데\n돌릴 장비가 없다는 뜻이다.\n\n`attr` 은 **속성 값으로 거른다** — 여러 번 주면 모두 만족해야 한다(`attr=<키><연산><값>`,\n연산은 `>=` `<=` `>` `<` `=` `!=` `~`(포함) `*`(적혀 있기만 하면)). 왼쪽은 속성 정의의\n`key` 다 — 이름은 관리자가 고치면 바뀌고, 그때 저장해 둔 주소가 조용히 빈 답을 낸다.\n\n`status` 를 **안 주면 자리에 따라 다르다** — 사업부를 주면 후보까지(검토하는 자리라서),\n전사면 확정된 것만(「저 사업부가 무슨 시험을 하나」 에 후보는 아직 답이 아니다). 일부러\n보려면 `status=\"all\"`, 후보만 세려면 `status=\"candidate\"`.\n\n`revision` 에 규격서 판 id 를 주면 **그 판의 목록**이 온다 — 판마다 한 벌이라 계산이\n없다. `document` 에 사내 규격서 id 를 주면 **그 문서에서 나온 줄만** 온다 — 묶음으로 올라온\n스무 건을 한 자리에서 보고 한 번에 확인·반려하는 길이다.",
         "operationId": "list_reliability_tests_api_reliability_tests_get",
         "parameters": [
           {
@@ -7272,6 +7272,23 @@
                 }
               ],
               "title": "Document"
+            }
+          },
+          {
+            "name": "revision",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string",
+                  "format": "uuid"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Revision"
             }
           }
         ],
@@ -7362,6 +7379,64 @@
                   },
                   "type": "array",
                   "title": "Response List Divisions Api Reliability Tests Divisions Get"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/reliability-tests/revision-compare": {
+      "get": {
+        "tags": [
+          "reliability"
+        ],
+        "summary": "Compare Revisions",
+        "description": "같은 규격서의 **두 판을 견준다** — 더해진 시험 · 없어진 시험 · 조건이 바뀐 시험.\n\n개정이 오면 딸린 수십 건 중 **무엇을 다시 봐야 하는지**가 문제다. 「전부 다시」 는 그날\n일을 멈추고 「아무것도 안 봄」 은 바뀐 조건을 놓친다.\n\n**`/{test_id}` 보다 먼저 선언한다** — 뒤에 두면 id 로 읽혀 404 가 온다.",
+        "operationId": "compare_revisions_api_reliability_tests_revision_compare_get",
+        "parameters": [
+          {
+            "name": "before",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "description": "앞 판",
+              "title": "Before"
+            },
+            "description": "앞 판"
+          },
+          {
+            "name": "after",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "description": "뒤 판",
+              "title": "After"
+            },
+            "description": "뒤 판"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RevisionCompareOut"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
                 }
               }
             }
@@ -19714,6 +19789,18 @@
             ],
             "title": "Document Id"
           },
+          "document_revision_id": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "uuid"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Document Revision Id"
+          },
           "tests": {
             "items": {
               "$ref": "#/components/schemas/ReliabilityTestBatchItem"
@@ -19839,6 +19926,18 @@
             "title": "Purpose",
             "default": ""
           },
+          "document_revision_id": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "uuid"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Document Revision Id"
+          },
           "test_item_term_ids": {
             "items": {
               "type": "string",
@@ -19880,6 +19979,18 @@
             "maxLength": 4000,
             "title": "Purpose",
             "default": ""
+          },
+          "document_revision_id": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "uuid"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Document Revision Id"
           },
           "test_item_term_ids": {
             "items": {
@@ -19952,6 +20063,29 @@
           "purpose": {
             "type": "string",
             "title": "Purpose"
+          },
+          "document_revision_id": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "uuid"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Document Revision Id"
+          },
+          "document_revision_label": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Document Revision Label"
           },
           "status": {
             "type": "string",
@@ -20067,6 +20201,18 @@
               }
             ],
             "title": "Purpose"
+          },
+          "document_revision_id": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "uuid"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Document Revision Id"
           },
           "test_item_term_ids": {
             "anyOf": [
@@ -20563,6 +20709,177 @@
         ],
         "title": "ResolveResponse",
         "description": "찾은 결과.\n\n`match` 가 세 값인 것이 요점이다.\n\n    exact       하나로 정해졌다. `id` 를 그대로 쓰면 된다\n    candidates  여럿이다. **고르지 말고 사람에게 물어라**\n    none        없다. 만들거나, 비워 두거나 — 지어내지는 마라"
+      },
+      "RevisionBriefOut": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Id"
+          },
+          "label": {
+            "type": "string",
+            "title": "Label"
+          },
+          "test_count": {
+            "type": "integer",
+            "title": "Test Count"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "label",
+          "test_count"
+        ],
+        "title": "RevisionBriefOut"
+      },
+      "RevisionChangedOut": {
+        "properties": {
+          "name": {
+            "type": "string",
+            "title": "Name"
+          },
+          "before_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Before Id"
+          },
+          "after_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "After Id"
+          },
+          "differences": {
+            "items": {
+              "$ref": "#/components/schemas/RevisionDifferenceOut"
+            },
+            "type": "array",
+            "title": "Differences"
+          }
+        },
+        "type": "object",
+        "required": [
+          "name",
+          "before_id",
+          "after_id",
+          "differences"
+        ],
+        "title": "RevisionChangedOut"
+      },
+      "RevisionCompareOut": {
+        "properties": {
+          "document_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Document Id"
+          },
+          "before": {
+            "$ref": "#/components/schemas/RevisionBriefOut"
+          },
+          "after": {
+            "$ref": "#/components/schemas/RevisionBriefOut"
+          },
+          "added": {
+            "items": {
+              "$ref": "#/components/schemas/RevisionTestBriefOut"
+            },
+            "type": "array",
+            "title": "Added"
+          },
+          "removed": {
+            "items": {
+              "$ref": "#/components/schemas/RevisionTestBriefOut"
+            },
+            "type": "array",
+            "title": "Removed"
+          },
+          "changed": {
+            "items": {
+              "$ref": "#/components/schemas/RevisionChangedOut"
+            },
+            "type": "array",
+            "title": "Changed"
+          },
+          "unchanged_count": {
+            "type": "integer",
+            "title": "Unchanged Count"
+          }
+        },
+        "type": "object",
+        "required": [
+          "document_id",
+          "before",
+          "after",
+          "added",
+          "removed",
+          "changed",
+          "unchanged_count"
+        ],
+        "title": "RevisionCompareOut",
+        "description": "두 판의 차이 — **더해진 것 · 없어진 것 · 조건이 바뀐 것** 셋.\n\n개정이 오면 딸린 수십 건 중 **무엇을 다시 봐야 하는지**가 문제다. 「전부 다시」 는\n그날 일을 멈추고 「아무것도 안 봄」 은 바뀐 조건을 놓친다 — 그 사이를 이 답이 메운다."
+      },
+      "RevisionDifferenceOut": {
+        "properties": {
+          "at": {
+            "type": "string",
+            "title": "At"
+          },
+          "before": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Before"
+          },
+          "after": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "After"
+          }
+        },
+        "type": "object",
+        "required": [
+          "at",
+          "before",
+          "after"
+        ],
+        "title": "RevisionDifferenceOut",
+        "description": "조건 한 자리가 어떻게 바뀌었나."
+      },
+      "RevisionTestBriefOut": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Id"
+          },
+          "name": {
+            "type": "string",
+            "title": "Name"
+          },
+          "status": {
+            "type": "string",
+            "title": "Status"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "name",
+          "status"
+        ],
+        "title": "RevisionTestBriefOut"
       },
       "SearchDiagnosis": {
         "properties": {

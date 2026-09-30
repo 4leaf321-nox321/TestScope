@@ -20,6 +20,7 @@ import { Label } from '@/shared/components/ui/label'
 import { Textarea } from '@/shared/components/ui/textarea'
 import { useResource } from '@/shared/hooks/useResource'
 import { specDocumentApi } from '@/modules/documents/api'
+import { RevisionCompare } from '@/modules/documents/RevisionCompare'
 
 export function DocumentRevisions({
   documentId,
@@ -135,6 +136,9 @@ export function DocumentRevisions({
           </div>
         </form>
       )}
+
+      {/* **개정이 오면 무엇을 다시 봐야 하는가** — 판마다 한 벌이라 두 목록을 견주면 된다. */}
+      <RevisionCompare revisions={listed} />
 
       {listed.length > 0 && (
         <ul className="divide-y rounded-md border text-sm">

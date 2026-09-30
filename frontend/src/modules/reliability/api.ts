@@ -9,6 +9,7 @@ export type Capability = components['schemas']['CapabilityOut']
 export type ReliabilityTestItem = components['schemas']['ReliabilityTestItemOut']
 export type Division = components['schemas']['DivisionOut']
 export type BulkResult = components['schemas']['ReliabilityBulkOut']
+export type RevisionCompare = components['schemas']['RevisionCompareOut']
 export type TestItemProposal = components['schemas']['TestItemProposalOut']
 export type TestItemProposalGroup = components['schemas']['TestItemProposalGroupOut']
 /** 여럿에게 한 번에 할 수 있는 일. */
@@ -71,6 +72,14 @@ export const reliabilityApi = {
    *  여는 것은 사람이 할 수 있는 일이 아니다. 줄마다 결과가 온다(안 된 줄은 왜까지). */
   bulk: (ids: string[], action: BulkAction, reason?: string) =>
     api.post<BulkResult>('/reliability-tests/bulk', { ids, action, reason }),
+  /** 같은 규격서의 **두 판을 견준다** — 더해진 시험 · 없어진 시험 · 조건이 바뀐 시험.
+   *
+   *  개정이 오면 딸린 수십 건 중 **무엇을 다시 봐야 하는지**가 문제다. 「전부 다시」 는
+   *  그날 일을 멈추고 「아무것도 안 봄」 은 바뀐 조건을 놓친다. */
+  compareRevisions: (before: string, after: string) =>
+    api.get<RevisionCompare>(
+      `/reliability-tests/revision-compare?before=${encodeURIComponent(before)}&after=${encodeURIComponent(after)}`,
+    ),
   /** 이 시험이 낸 **시험 항목 제안** — 축에 맞는 값이 없어 남긴 것.
    *
    *  시험 항목 축은 닫혀 있어 AI 가 값을 못 더한다(검색의 첫 축이라 오타 하나가 값이 되면

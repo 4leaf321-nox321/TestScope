@@ -67,6 +67,10 @@ class ReliabilityTestOut(BaseModel):
     division_name: str
     name: str
     purpose: str
+    document_revision_id: uuid.UUID | None = None
+    """이 줄이 속한 규격서의 판. **판마다 한 벌**이라 같은 이름이 판마다 따로 선다."""
+    document_revision_label: str | None = None
+    """그 판의 이름(「18」·「Rev.3」) — id 만 오면 사람이 못 읽는다."""
     status: str = "confirmed"
     """`candidate`(후보) · `confirmed`(확정). **후보는 AI 가 올리고 아직 사람이 안 본
     것이다** — 화면이 배지를 달고, 확인 전에는 전사 목록에 안 낸다."""
@@ -94,6 +98,9 @@ class ReliabilityTestCreateRequest(Request):
     시스템 관리자는 전부."""
     name: str = Field(min_length=1, max_length=200)
     purpose: str = Field(default="", max_length=4000)
+    document_revision_id: uuid.UUID | None = None
+    """이 시험이 **규격서의 어느 판**의 것인가. 판마다 한 벌을 둔다 — 개정 14와 18의 같은
+    이름은 서로 다른 시험이고, 이 칸이 그것을 가른다."""
     test_item_term_ids: list[uuid.UUID] = Field(default_factory=list)
     attributes: list[AttributeValueIn] = Field(default_factory=list)
     """항목 값. `definition_id` 가 없고 `new_label` 이 있으면 초안 항목이 생긴다."""
@@ -104,6 +111,9 @@ class ReliabilityTestBatchItem(Request):
 
     name: str = Field(min_length=1, max_length=200)
     purpose: str = Field(default="", max_length=4000)
+    document_revision_id: uuid.UUID | None = None
+    """줄이 제 판을 적으면 **묶음이 준 판을 안 덮는다** — 한 묶음에 두 판이 섞이는 일이
+    실제로 있다(개정 18에서 안 바뀐 시험은 14의 판으로 남긴다)."""
     test_item_term_ids: list[uuid.UUID] = Field(default_factory=list)
     attributes: list[AttributeValueIn] = Field(default_factory=list)
 
@@ -122,6 +132,11 @@ class ReliabilityBatchRequest(Request):
     """어느 사내 규격서에서 뽑았나. **주면 줄마다 「규격서」 칸에 걸린다** — 그래야 사람이
     문서 단위로 모아 보고, 값이 틀렸을 때 원본으로 되짚는다. 줄이 제 `attributes` 에
     규격서를 이미 적었으면 그것을 안 덮는다."""
+    document_revision_id: uuid.UUID | None = None
+    """어느 **판**의 것인가. `document_id` 와 같은 방식으로 **줄마다 걸린다.**
+
+    판마다 한 벌을 두므로, 개정 14를 올린 뒤 개정 18을 올릴 때는 이 칸만 바꿔 같은 이름을
+    다시 올린다 — 그 둘은 서로 다른 시험이다."""
     tests: list[ReliabilityTestBatchItem] = Field(min_length=1, max_length=500)
     """한 번에 500건까지 — `ReliabilityBulkRequest` 와 같은 상한이다."""
 
@@ -145,6 +160,8 @@ class ReliabilityTestUpdateRequest(Request):
 
     name: str | None = Field(default=None, min_length=1, max_length=200)
     purpose: str | None = Field(default=None, max_length=4000)
+    document_revision_id: uuid.UUID | None = None
+    """판을 옮긴다. 보내면 이름 유일성의 자리도 함께 바뀐다."""
     test_item_term_ids: list[uuid.UUID] | None = None
     attributes: list[AttributeValueIn] | None = None
     """보내면 통째로 바뀐다 — 시험 항목과 같은 규칙."""
@@ -192,6 +209,56 @@ class TestItemProposalDecision(Request):
     normalized: str = Field(min_length=1, max_length=200)
     term_id: uuid.UUID | None = None
     new_value: str | None = Field(default=None, min_length=1, max_length=200)
+
+
+class RevisionBriefOut(BaseModel):
+    id: uuid.UUID
+    label: str
+    test_count: int
+
+
+class RevisionTestBriefOut(BaseModel):
+    id: uuid.UUID
+    name: str
+    status: str
+
+
+class RevisionDifferenceOut(BaseModel):
+    """조건 한 자리가 어떻게 바뀌었나."""
+
+    at: str
+    """자리 — `칸key@묶음#차례`. **정의 id 가 아니라 key 다**: 판마다 다른 초안이 끼면
+    id 로는 전부 「바뀜」 이 된다."""
+    before: str | None
+    after: str | None
+    """사람이 읽는 글자로 견준다. 숫자만 보면 단위가 바뀐 것(85 °C -> 185 °F)을
+    「안 바뀜」 으로 읽는다."""
+
+
+class RevisionChangedOut(BaseModel):
+    name: str
+    before_id: uuid.UUID
+    after_id: uuid.UUID
+    differences: list[RevisionDifferenceOut]
+
+
+class RevisionCompareOut(BaseModel):
+    """두 판의 차이 — **더해진 것 · 없어진 것 · 조건이 바뀐 것** 셋.
+
+    개정이 오면 딸린 수십 건 중 **무엇을 다시 봐야 하는지**가 문제다. 「전부 다시」 는
+    그날 일을 멈추고 「아무것도 안 봄」 은 바뀐 조건을 놓친다 — 그 사이를 이 답이 메운다.
+    """
+
+    document_id: uuid.UUID
+    before: RevisionBriefOut
+    after: RevisionBriefOut
+    added: list[RevisionTestBriefOut]
+    """뒤 판에만 있는 시험."""
+    removed: list[RevisionTestBriefOut]
+    """앞 판에만 있는 시험. **없어진 것이지 지워진 것이 아니다** — 앞 판의 줄은 남는다."""
+    changed: list[RevisionChangedOut]
+    unchanged_count: int
+    """둘 다 있고 조건도 같은 것. **이 수가 크면 개정의 범위가 좁다는 뜻이다.**"""
 
 
 class SkippedConditionOut(BaseModel):

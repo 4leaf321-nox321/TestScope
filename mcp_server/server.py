@@ -2239,6 +2239,7 @@ async def list_reliability_tests(
     division: str | None = None,
     attr: list[str] | None = None,
     status: str | None = None,
+    revision: str | None = None,
 ) -> dict[str, Any]:
     """**사업부**가 수행하는 신뢰성 시험(고온고습 1000h · 열충격 500 cycle …).
 
@@ -2273,7 +2274,12 @@ async def list_reliability_tests(
         await _get(
             ctx,
             "/reliability-tests",
-            {"division": division, "attr": attr, "status": status},
+            {
+                "division": division,
+                "attr": attr,
+                "status": status,
+                "revision": revision,
+            },
         ),
         "tests",
     )
@@ -2505,6 +2511,7 @@ async def create_reliability_test(
     division_code: str,
     name: str,
     purpose: str = "",
+    document_revision_id: str | None = None,
     test_item_term_ids: list[str] | None = None,
     attributes: list[dict[str, Any]] | None = None,
 ) -> dict[str, Any]:
@@ -2556,6 +2563,7 @@ async def create_reliability_test(
                 "division_code": division_code,
                 "name": name,
                 "purpose": purpose,
+                "document_revision_id": document_revision_id,
                 "test_item_term_ids": test_item_term_ids or [],
                 "attributes": attributes or [],
             },
@@ -2572,6 +2580,7 @@ async def create_reliability_tests(
     division_code: str,
     tests: list[dict[str, Any]],
     document_id: str | None = None,
+    document_revision_id: str | None = None,
 ) -> dict[str, Any]:
     """**문서 하나에서 뽑은 시험들을 한 번에** 올린다 — 줄마다 결과가 온다.
 
@@ -2589,6 +2598,11 @@ async def create_reliability_tests(
     한 문서에서 나온 줄은 같은 실수를 함께 하고, 함께 봐야 그것이 보인다. 줄이 제
     `attributes` 에 규격서를 이미 적었으면 그것을 안 덮는다.
 
+    **`document_revision_id` 로 판을 준다** — 판마다 한 벌이다. 개정 14를 올린 뒤 개정 18을
+    올릴 때는 이 칸만 바꿔 **같은 이름을 다시** 올린다: 그 둘은 서로 다른 시험이다(조건이
+    다를 수 있고, 실제로 70개 중 36개가 달랐다). 개정 18에서 안 바뀐 시험만 줄에
+    `document_revision_id` 를 따로 적어 14 로 남긴다. 판 목록은 `get_spec_document` 가 준다.
+
     답의 `created` 는 들어간 줄, `failed` 는 막힌 줄과 **왜**다. **둘 다 읽고 말하라** —
     「올렸습니다」 만 말하면 막힌 줄은 아무도 모른다.
     """
@@ -2600,6 +2614,7 @@ async def create_reliability_tests(
             {
                 "division_code": division_code,
                 "document_id": document_id,
+                "document_revision_id": document_revision_id,
                 "tests": tests,
             },
         ),
@@ -2750,6 +2765,26 @@ async def add_spec_document_revision(
         ),
         "개정이 쌓였다. 딸린 시험은 확정인 채로 두고 「아직 안 본 시험」 표가 붙는다 —"
         " 그 표를 떼는 것은 사람이 화면에서 한다. 몇 건이 걸렸는지 함께 말하라.",
+    )
+
+
+@mcp.tool()
+async def compare_revisions(ctx: Context, before: str, after: str) -> dict[str, Any]:
+    """같은 규격서의 **두 판을 견준다** — 더해진 시험 · 없어진 시험 · 조건이 바뀐 시험.
+
+    개정이 오면 딸린 수십 건 중 **무엇을 다시 봐야 하는지**가 문제다. 「전부 다시」 는 그날
+    일을 멈추고, 「아무것도 안 봄」 은 바뀐 조건을 놓친다.
+
+    `changed[].differences` 가 **어디가 어떻게** 바뀌었는지를 한 줄로 준다(85 degC 이상 ->
+    95 degC 이상). **그것을 그대로 옮겨라** — 「N건 바뀜」 으로 접으면 사람이 다시 열어
+    봐야 하고, 그 수고를 없애려고 만든 답이다.
+
+    `unchanged_count` 가 크면 개정의 범위가 좁다는 뜻이다 — 그 사실도 함께 말하라.
+
+    판 id 는 `get_spec_document` 의 `revisions` 가 준다. 다른 문서의 판끼리는 못 견준다.
+    """
+    return await _get(
+        ctx, "/reliability-tests/revision-compare", {"before": before, "after": after}
     )
 
 
