@@ -114,6 +114,21 @@ export function DocumentTestReview({ documentId }: { documentId: string }) {
               variant="outline"
               disabled={busy}
               onClick={() => {
+                // **확정을 푸는 것이라 사유를 받는다** — 문서 단위로 다시 볼 때 한 번에
+                // 푸는 일이 실제로 있다(개정본이 왔거나, 원문을 다시 파싱하려 할 때).
+                const said = window.prompt(
+                  `${picked.ids.length}건의 확정을 풀어 다시 후보로 돌립니다. 사유를 적어 주십시오`,
+                )
+                if (said?.trim()) void runBulk('reopen', said.trim())
+              }}
+            >
+              다시 후보로
+            </Button>
+            <Button
+              size="sm"
+              variant="outline"
+              disabled={busy}
+              onClick={() => {
                 if (window.confirm(`${picked.ids.length}건을 지웁니다. 되돌릴 수 없습니다.`)) {
                   void runBulk('delete')
                 }

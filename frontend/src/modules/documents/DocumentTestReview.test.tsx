@@ -119,4 +119,28 @@ describe('문서 단위 검토', () => {
     await show([])
     expect(screen.queryByText(/이 규격서에서 올라온 시험/)).toBeNull()
   })
+
+  it('다시 후보로도 사유를 받는다 — 확정을 푸는 일이다', async () => {
+    await show([test_('t1', { status: 'confirmed' })])
+    await act(async () => {
+      fireEvent.click(screen.getByLabelText('이 문서의 시험 전부 고르기'))
+    })
+    const ask = vi.spyOn(window, 'prompt').mockReturnValue('')
+    await act(async () => {
+      fireEvent.click(screen.getByText('다시 후보로'))
+    })
+    // **빈 사유로는 안 간다** — 서른 건이 한꺼번에 풀리면 왜인지가 남아야 한다.
+    expect(post).not.toHaveBeenCalled()
+
+    ask.mockReturnValue('기타 조건의 원문을 다시 옮기려고')
+    await act(async () => {
+      fireEvent.click(screen.getByText('다시 후보로'))
+    })
+    expect(post).toHaveBeenCalledWith('/reliability-tests/bulk', {
+      ids: ['t1'],
+      action: 'reopen',
+      reason: '기타 조건의 원문을 다시 옮기려고',
+    })
+    ask.mockRestore()
+  })
 })

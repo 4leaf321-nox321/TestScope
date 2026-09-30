@@ -173,6 +173,23 @@ export default function DivisionReliabilityPage() {
             variant="outline"
             disabled={busy}
             onClick={() => {
+              // **확정을 푸는 것이라 사유를 받는다.** 한 건씩 누를 때는 그 자리에서 보고
+              // 누르지만, 서른 건이 한꺼번에 풀리면 반년 뒤에 「왜 풀렸나」 를 묻는 사람이
+              // 반드시 있다 — 감사에 「누가 열었나」 만 있으면 답할 수 없다.
+              const said = window.prompt(
+                `${picked.ids.length}건의 확정을 풀어 다시 후보로 돌립니다.` +
+                  ' 그 순간부터 AI 가 다시 채울 수 있습니다. 사유를 적어 주십시오',
+              )
+              if (said?.trim()) void runBulk('reopen', said.trim())
+            }}
+          >
+            다시 후보로
+          </Button>
+          <Button
+            size="sm"
+            variant="outline"
+            disabled={busy}
+            onClick={() => {
               if (window.confirm(`${picked.ids.length}건을 지웁니다. 되돌릴 수 없습니다.`)) {
                 void runBulk('delete')
               }

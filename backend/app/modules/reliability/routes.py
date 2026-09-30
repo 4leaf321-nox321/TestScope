@@ -284,7 +284,11 @@ def bulk_reliability_tests(
     user: User = Depends(current_user),
     db: Session = Depends(get_db),
 ) -> ReliabilityBulkOut:
-    """여러 줄을 한 번에 — 확인 · 반려 · 지우기.
+    """여러 줄을 한 번에 — 확인 · 반려 · 지우기 · **다시 후보로.**
+
+    `reopen` 과 `reject` 는 **사유가 필수**다 — 여럿을 한 번에 푸는 것은 줄마다 보고
+    누르는 일이 아니라 한 가지 이유로 묶어 푸는 일이고, 그 이유가 안 남으면 반년 뒤에
+    「왜 서른 건이 풀렸나」 에 답할 수 없다.
 
     **`/{test_id}` 보다 먼저 선언한다** — 뒤에 두면 `bulk` 가 id 로 읽혀 404 가 온다.
     """

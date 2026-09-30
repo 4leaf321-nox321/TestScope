@@ -2687,6 +2687,8 @@ async def set_reliability_attributes(
     같아야 지워진다.
 
     확정된 시험은 못 고친다(409) — 사람이 화면에서 「다시 후보로」 를 눌러야 한다.
+    **여러 건이면 목록에서 체크해 한 번에 풀 수 있다**(사유를 적는다). 그러니 막힌 줄이
+    여럿이면 하나씩 풀어 달라고 하지 말고, **그 목록을 세어 한 번에 풀어 달라**고 하라.
     """
     now = await _get(ctx, f"/reliability-tests/{test_id}")
     if isinstance(now, dict) and now.get("error"):

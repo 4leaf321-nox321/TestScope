@@ -15,7 +15,7 @@ export type SiblingTest = components['schemas']['SiblingTestOut']
 export type TestItemProposal = components['schemas']['TestItemProposalOut']
 export type TestItemProposalGroup = components['schemas']['TestItemProposalGroupOut']
 /** 여럿에게 한 번에 할 수 있는 일. */
-export type BulkAction = 'confirm' | 'reject' | 'delete'
+export type BulkAction = 'confirm' | 'reject' | 'delete' | 'reopen'
 export type ReliabilityTestWrite = {
   name: string
   purpose: string
@@ -72,6 +72,10 @@ export const reliabilityApi = {
     api.post<void>(`/reliability-tests/${id}/reject`, { reason }),
   /** **여러 줄을 한 번에** — 확인 · 반려 · 지우기. AI 가 몇천 건을 올리므로 줄마다 창을
    *  여는 것은 사람이 할 수 있는 일이 아니다. 줄마다 결과가 온다(안 된 줄은 왜까지). */
+  /** **여러 줄을 한 번에** — 확인 · 반려 · 지우기 · 다시 후보로.
+   *
+   *  `reject` 와 `reopen` 은 **사유가 필수**다: 서른 건이 한꺼번에 풀리면 반년 뒤에
+   *  「왜 풀렸나」 를 묻는 사람이 반드시 있고, 감사에 「누가 열었나」 만 있으면 답할 수 없다. */
   bulk: (ids: string[], action: BulkAction, reason?: string) =>
     api.post<BulkResult>('/reliability-tests/bulk', { ids, action, reason }),
   /** **아직 저장 안 한 조건**으로 장비를 센다 — 적으면서 보는 자리.

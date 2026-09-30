@@ -35,9 +35,14 @@ class ReliabilityRejectRequest(Request):
 class ReliabilityBulkRequest(Request):
     ids: list[uuid.UUID] = Field(min_length=1, max_length=500)
     """고른 줄들. 한 번에 500건까지 — 몇천 건은 나눠 누른다."""
-    action: Literal["confirm", "reject", "delete"]
+    action: Literal["confirm", "reject", "delete", "reopen"]
+    """`reopen` 은 **확정을 푸는 것**이다 — 그 순간부터 AI 가 다시 채울 수 있다."""
     reason: str | None = Field(default=None, max_length=500)
-    """`reject` 일 때만 쓴다(그때는 필수)."""
+    """`reject` 와 `reopen` 일 때 **필수**다.
+
+    한 건씩 누를 때는 그 자리에서 보고 누르는 것이라 안 받지만, 서른 건이 한꺼번에
+    풀리면 반년 뒤에 「왜 풀렸나」 를 묻는 사람이 반드시 있다 — 그때 감사에 「누가
+    열었나」 만 있으면 답할 수 없다."""
 
 
 class ReliabilityBulkOut(BaseModel):

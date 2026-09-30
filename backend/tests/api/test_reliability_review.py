@@ -377,3 +377,65 @@ def test_한_번에_확인하고_한_번에_반려한다(
     assert mixed.json()["done"] == []
     assert {one["code"] for one in mixed.json()["failed"]} == {"TSC-RELIABILITY-0009"}
     assert all(one["message"] for one in mixed.json()["failed"]), "왜인지 적혀 있어야 한다"
+
+
+def test_여럿을_한_번에_다시_후보로_열고_사유를_남긴다(
+    client: TestClient, db: Session, admin: Signed
+) -> None:
+    """**한 건씩 누르게 두면 서른 건은 아무도 안 한다.**
+
+    기타 조건에 원문이 남은 확정본을 AI 가 다시 파싱하게 하려면 먼저 풀어야 하는데, 그것은
+    줄마다 내용을 판단하는 일이 아니라 **한 가지 이유로 묶어 푸는 일**이다.
+
+    대신 **사유를 받는다** — 서른 건이 한꺼번에 풀리면 반년 뒤에 「왜 풀렸나」 를 묻는
+    사람이 반드시 있고, 감사에 「누가 열었나」 만 있으면 답할 수 없다.
+    """
+    tag = "a" + uuid.uuid4().hex[:5]
+    lab = _lab(db)
+    # 실제 경로 그대로 — **기계가 올리고 사람이 확인한** 줄을 다시 푼다.
+    machine = _machine(client, admin)
+    ids = [_make(client, lab, f"확정본 {at}-{tag}", machine) for at in range(3)]
+    for one in ids:
+        got = client.post(f"/api/reliability-tests/{one}/confirm", headers=admin.headers)
+        assert got.status_code == 200, got.text
+        assert got.json()["status"] == "confirmed"
+
+    # **사유 없이는 한 줄도 안 풀린다** — 줄마다 거절하면 오백 줄이 같은 이유로 실패한다.
+    bare = client.post(
+        "/api/reliability-tests/bulk",
+        json={"ids": ids, "action": "reopen"},
+        headers=admin.headers,
+    )
+    assert bare.status_code == 400, bare.text
+    assert "사유" in bare.json()["error"]["message"]
+    still = client.get(f"/api/reliability-tests/{ids[0]}", headers=admin.headers)
+    assert still.json()["status"] == "confirmed", "거절됐는데 한 줄이 풀렸습니다"
+
+    got = client.post(
+        "/api/reliability-tests/bulk",
+        json={
+            "ids": ids,
+            "action": "reopen",
+            "reason": "기타 조건의 원문을 조건 칸으로 다시 옮기려고",
+        },
+        headers=admin.headers,
+    )
+    assert got.status_code == 200, got.text
+    assert len(got.json()["done"]) == 3 and got.json()["failed"] == []
+    for one in ids:
+        row = client.get(f"/api/reliability-tests/{one}", headers=admin.headers)
+        assert row.json()["status"] == "candidate"
+        # **확인을 지우지 않는다** — 「전에 누가 봤었나」 는 다시 확인할 때 도움이 된다.
+        assert row.json()["confirmed_by"] is not None
+
+    # **사유가 감사에 남는다** — 이것이 없으면 반년 뒤 「왜 풀렸나」 에 답할 수 없다.
+    logs = list(
+        db.scalars(
+            select(AuditEntry).where(
+                AuditEntry.action == "reliability_test.reopened",
+                AuditEntry.target_id.in_([uuid.UUID(one) for one in ids]),
+            )
+        )
+    )
+    assert len(logs) == 3, logs
+    assert all("기타 조건의 원문" in (one.reason or "") for one in logs)

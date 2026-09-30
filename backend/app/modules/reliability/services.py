@@ -803,11 +803,18 @@ def confirm(db: Session, user: User, test_id: uuid.UUID) -> ReliabilityTest:
     return row
 
 
-def reopen(db: Session, user: User, test_id: uuid.UUID) -> ReliabilityTest:
+def reopen(
+    db: Session, user: User, test_id: uuid.UUID, reason: str | None = None
+) -> ReliabilityTest:
     """확정을 풀어 **다시 후보로.** 그 순간부터 AI 가 다시 채울 수 있다.
 
     확인을 지우지 않는다 — `confirmed_by_id` · `confirmed_at` 은 그대로 두고 상태만 돌린다.
     「전에 누가 봤었나」 는 다시 확인할 때 도움이 된다.
+
+    **여럿을 한 번에 풀 때는 사유를 받는다**(`bulk`). 한 건씩 누를 때는 그 자리에서 보고
+    누르는 것이라 안 받지만, 서른 건이 한꺼번에 풀리면 반년 뒤에 「왜 풀렸나」 를 묻는
+    사람이 반드시 있다 — 감사에 「누가 열었나」 만 있고 「왜」 가 없으면 답할 수 없다.
+    반려가 사유를 받는 것과 같은 이유다.
     """
     row = get(db, test_id)
     _human_only(row, "다시 후보로 여는 것은")
@@ -817,6 +824,7 @@ def reopen(db: Session, user: User, test_id: uuid.UUID) -> ReliabilityTest:
     division = db.get(VocabularyTerm, row.division_term_id)
     assert division is not None
     row.status = CANDIDATE
+    said = (reason or "").strip()
     audit.record(
         db,
         action=audit.RELIABILITY_TEST_REOPENED,
@@ -825,6 +833,7 @@ def reopen(db: Session, user: User, test_id: uuid.UUID) -> ReliabilityTest:
         target_id=row.id,
         target_label=f"{division.value} · {row.name}",
         changes={"status": {"before": CONFIRMED, "after": CANDIDATE}},
+        reason=said or None,
     )
     db.commit()
     db.refresh(row)
@@ -893,7 +902,7 @@ BULK_LIMIT = 500
 def bulk(
     db: Session, user: User, *, ids: list[uuid.UUID], action: str, reason: str | None
 ) -> dict[str, Any]:
-    """여러 줄을 한 번에 — 확인 · 반려 · 지우기.
+    """여러 줄을 한 번에 — 확인 · 반려 · 지우기 · **다시 후보로.**
 
     **AI 가 몇천 건을 올린다.** 줄마다 창을 열어 확인을 누르는 것은 사람이 할 수 있는
     일이 아니고, 못 하면 후보가 쌓인 채로 아무도 안 본다 — 그러면 확인이라는 단계가
@@ -902,6 +911,10 @@ def bulk(
     **줄마다 결과를 돌려준다.** 전부 되거나 전부 안 되거나로 두면, 오백 줄 중 한 줄이
     남의 사업부라는 이유로 사백구십구 줄이 함께 막힌다. 안 된 줄은 **왜**와 함께 온다 —
     「12건 실패」 만으로는 다시 누를지 고칠지 알 수 없다.
+
+    **반려와 「다시 후보로」 는 사유를 받는다.** 한 건씩 누를 때는 그 자리에서 보고 누르는
+    것이지만, 서른 건이 한꺼번에 풀리면 반년 뒤에 「왜 풀렸나」 를 묻는 사람이 반드시
+    있다 — 그때 감사에 「누가 열었나」 만 있으면 답할 수 없다.
     """
     if not ids:
         raise AppError("TSC-RELIABILITY-0011", "고른 줄이 없습니다.")
@@ -910,16 +923,27 @@ def bulk(
             "TSC-RELIABILITY-0011",
             f"한 번에 {BULK_LIMIT}건까지입니다 — {len(ids)}건을 골랐습니다. 나눠 누르십시오.",
         )
-    run = {"confirm": confirm, "reject": reject, "delete": delete}.get(action)
+    run = {
+        "confirm": confirm,
+        "reject": reject,
+        "delete": delete,
+        "reopen": reopen,
+    }.get(action)
     if run is None:
         raise AppError("TSC-RELIABILITY-0011", f"알 수 없는 동작입니다: {action}")
+    # **사유를 먼저 본다.** 줄마다 거절하면 오백 줄이 같은 이유로 실패하고, 그 목록을
+    # 읽는 사람은 무엇이 잘못됐는지 못 찾는다.
+    said = (reason or "").strip()
+    if action in ("reject", "reopen") and not said:
+        what = "반려" if action == "reject" else "다시 후보로 여는"
+        raise AppError("TSC-RELIABILITY-0011", f"{what} 사유를 적어 주십시오.")
 
     done: list[str] = []
     failed: list[dict[str, str]] = []
     for test_id in ids:
         try:
-            if action == "reject":
-                reject(db, user, test_id, reason or "")
+            if action in ("reject", "reopen"):
+                run(db, user, test_id, said)  # type: ignore[operator]
             else:
                 run(db, user, test_id)  # type: ignore[operator]
             done.append(str(test_id))
