@@ -1156,6 +1156,7 @@ async def register_equipment(
     manufactured_year: int | None = None,
     calibration_required: bool = False,
     calibration_interval_months: int | None = None,
+    status_reason: str | None = None,
     maker_text: str | None = None,
     model_text: str | None = None,
     note: str | None = None,
@@ -1168,30 +1169,29 @@ async def register_equipment(
 
     ## 기종을 고르는 순서
 
-    **계열부터 좁혀라.** `search_models(series="인스트론 6800 시리즈")` 로 그 계열의
-    기종을 전부 받아 라벨과 대조한다 — 기종명만으로 찾으면 비슷한 이름의 다른 계열
-    것을 집을 수 있다.
+    **계열부터 좁혀라.** `search_models(series="인스트론 6800 시리즈")` 로 라벨과
+    대조한다 — 기종명만으로 찾으면 비슷한 이름의 다른 계열 것을 집는다.
 
     ## 못 찾았으면 비워라
 
     카탈로그에 없는 기종이면 `model_id` 를 **비운 채로 등록하라.** 비슷한 기종을
     골라 넣지 마라 — 그 순간 그 장비의 하중·온도가 남의 것이 된다.
 
-    비워 두면 「카탈로그 미연결」 로 표시되고 홈의 「남은 일」 이 그것을 센다. 라벨의 글자는
-    `maker_text` · `model_text` 에 **그대로** 적어라(`Instron` · `5982`).
-
-    그리고 **등록한 뒤에 `propose_equipment_model` 을 불러라.** 그 두 칸은 표시용이라
-    아무도 그것을 일감으로 세지 않는다 — 요청으로 남겨야 관리자의 검토 목록에 서고, 기종이
-    세워지면 이 장비가 **자동으로 이어진다.**
+    라벨의 글자는 `maker_text` · `model_text` 에 **그대로** 적고, 등록한 뒤에
+    **`propose_equipment_model` 을 불러라.** 그 두 칸은 표시용이라 아무도 일감으로 안
+    센다 — 요청으로 남겨야 기종이 세워질 때 이 장비가 **자동으로 이어진다.**
 
     자산번호가 이미 있으면 409 다. **덮어쓰지 않는다** — 같은 번호의 다른 장비일
     수도 있고, 그때 덮으면 있던 이력이 사라진다.
 
     ## 등록으로 끝이 아니다
 
-    기종을 골랐으면 계열의 시험 항목이 복사된다. **비웠으면 시험 항목이 0 건이고,
-    0 건이면 검색에 절대 안 걸린다** — 이어서 `add_equipment_test_item` 으로 채워라.
-    안 채우면 그 장비는 대장에만 있고 아무도 못 찾는다.
+    기종을 골랐으면 계열의 시험 항목이 복사된다. **비웠으면 0 건이고, 0 건이면 검색에
+    절대 안 걸린다** — 이어서 `add_equipment_test_item` 으로 채워라.
+
+    상태가 `operational` 이 아니면 **`status_reason` 에 왜 그런지를 적어라**(「제어보드 고장,
+    부품 대기」). 비고에 적지 마라 — 비고에는 온갖 것이 함께 적혀서 아무도 그것을 상태의
+    근거로 안 읽는다.
 
     ## 비울 수 없는 것
 
@@ -1238,6 +1238,7 @@ async def register_equipment(
             "manufactured_year": manufactured_year,
             "calibration_required": calibration_required,
             "calibration_interval_months": calibration_interval_months,
+            "status_reason": status_reason,
             "maker_text": maker_text,
             "model_text": model_text,
             "note": note,
@@ -1405,6 +1406,7 @@ async def update_equipment(
     ctx: Context,
     equipment_id: str,
     status: str | None = None,
+    status_reason: str | None = None,
     location: str | None = None,
     site_term_id: str | None = None,
     contact_user_id: str | None = None,
@@ -1421,11 +1423,16 @@ async def update_equipment(
 
     **폐기일은 상태가 `retired` 일 때만** 받는다. 되돌리면 서버가 비운다.
 
+    `status_reason` 은 **왜 그 상태인가**다 — 「제어보드 고장, 부품 대기」. 상태를 바꿀 때는
+    같이 보내라: 안 보내면 서버가 비운다. 근거는 상태에 붙는 것이지 장비에 붙는 것이
+    아니어서, 고친 장비에 옛 고장 사유가 남으면 목록이 그것을 그대로 그린다.
+
     보유 부서·거점·상세위치는 **비울 수 없다** — 어디 있는지 모르는 장비는 찾아도
     소용이 없다. 부서 이관은 양쪽 다 관리자여야 해서 이 도구로는 안 한다.
     """
     body = {
         "status": status,
+        "status_reason": status_reason,
         "location": location,
         "site_term_id": site_term_id,
         "contact_user_id": contact_user_id,
@@ -2350,6 +2357,10 @@ async def create_upload_ticket(ctx: Context, local_path: str | None = None) -> d
     돌려주는 `curl` 에 `<대상>` 자리를 채워 실행하면 `{id, …}` 가 나온다. 그 id 가
     첨부의 id 이고, 워드·파워포인트면 `extract_document_images` 에 넘긴다.
 
+    `target` 은 `spec_document` · `reliability_test` · `method` · `equipment` 다. 장비에는
+    그 장비의 사양서·매뉴얼·성적서를 붙인다 — 붙인 뒤 읽은 것을 간추려
+    `set_equipment_attributes` 의 「장비 자료 발췌」 에 적으면 의미 검색이 그 글까지 읽는다.
+
     사람에게는 **명령을 그대로 보여 주고 실행해 달라고 말한다** — 네가 셸을 가진 자리면
     직접 돌려도 된다.
     """
@@ -2359,8 +2370,10 @@ async def create_upload_ticket(ctx: Context, local_path: str | None = None) -> d
     ticket = got.get("ticket", "")
     url = f"{API_BASE}/attachments/upload-with-ticket"
     where = local_path or "<로컬 파일 경로>"
+    # **자리를 비워 둔다.** `spec_document` 를 박아 두면 장비에 붙이려던 사람이 그대로
+    # 실행하고, 그 파일은 엉뚱한 규격서에 붙는다 — 되돌리려면 지우고 다시 올려야 한다.
     query = (
-        "?target=spec_document&object_id=<규격서 id>"
+        "?target=<spec_document|reliability_test|method|equipment>&object_id=<대상 id>"
         f"&filename={quote(Path(where).name, safe='')}"
     )
     return {
@@ -2514,8 +2527,8 @@ async def create_spec_document(
 async def list_attachments(ctx: Context, target: str, object_id: str) -> dict[str, Any]:
     """붙은 **그림과 첨부**의 목록 — 무엇이 어느 칸에 붙어 있나.
 
-    `target` 은 `reliability_test` · `method` · `spec_document` 셋이다. 줄마다 `caption` ·
-    `definition_label`(어느 칸에 붙었나, 비면 카드 전체) · 형식 · 크기가 온다.
+    `target` 은 `reliability_test` · `method` · `spec_document` · `equipment` 넷이다. 줄마다
+    `caption` · `definition_label`(어느 칸에 붙었나, 비면 카드 전체) · 형식 · 크기가 온다.
 
     **원문이 붙는 자리는 둘이고 서로 다른 표다.** `method` 는 공개 규격(ASTM·ISO·KS)의
     원문이고, `spec_document` 는 **사내 규격서**다(`list_spec_documents`). 어느 신뢰성
@@ -2529,6 +2542,10 @@ async def list_attachments(ctx: Context, target: str, object_id: str) -> dict[st
 
     **PDF 의 본문도 못 읽는다.** 규격서가 붙어 있다는 사실과 파일 이름·설명까지만 안다 —
     「ASTM E8 원문이 있습니다」 는 되지만 그 안의 요구 조건을 말하면 지어내는 것이다.
+
+    **올린 파일을 서버에서 되받아 읽는 길은 없다.** 장비 자료를 간추려
+    `set_equipment_attributes` 의 「장비 자료 발췌」 에 적으려면, 올리기 **전에** 네가 가진
+    그 파일을 읽어라 — 올리고 나서 서버에 물으면 파일 이름밖에 못 받는다.
 
     사람에게 보이려면 화면의 그 시험이나 규격을 열라고 말한다. 파일 주소(`url`)는 자격이
     있어야 열리므로 그대로 건네도 브라우저에서 안 열린다.
@@ -2738,6 +2755,43 @@ async def set_reliability_attributes(
         ),
         "보낸 칸만 바뀌었고 나머지는 그대로다. 고친 칸이 조건(`kind=\"condition\"`)이면"
         " 장비 판정이 따라 바뀐다 — `test_capability` 로 다시 보고 말하라.",
+    )
+
+
+@writes
+async def set_equipment_attributes(
+    ctx: Context, equipment_id: str, attributes: list[dict[str, Any]]
+) -> dict[str, Any]:
+    """보유 장비의 **칸 몇 개만** 고친다 — 나머지는 그대로 둔다.
+
+    `update_equipment` 에는 속성 칸이 없고, 장비의 `attributes` 를 통째로 보내면 안 보낸
+    칸이 조용히 사라진다. 여기서는 지금 있는 것을 읽어 **`definition_id` 가 같은 줄만**
+    갈아 끼운다. 줄의 모양은 신뢰성 시험과 같다(`set_reliability_attributes`).
+
+    ## 장비 자료 발췌(`equipment_document_digest`)
+
+    **이 칸이 네 자리다.** 장비에 붙은 사양서·매뉴얼에서 읽은 것을 간추려 여기 적으면,
+    의미 검색의 장비 카드에 함께 실려 임베딩된다 — 그러면 「얇은 판 잡아당기는 장비」
+    처럼 낱말이 하나도 안 겹치는 물음으로도 그 장비가 걸린다.
+
+    원문을 통째로 넣지 마라. 카드가 길수록 조각이 늘고, 조각이 늘수록 한 조각의 뜻이
+    흐려져 **오히려 덜 걸린다.** 무엇을 재는 장비인지·어느 범위인지·무엇이 딸렸는지를
+    몇 문장으로 적어라. 지어내지 마라 — 자료에 없는 수치를 적으면 그 수치로 검색이 답한다.
+
+    자료를 먼저 붙이려면 `create_upload_ticket` 으로 `target=equipment` 에 올린다.
+
+    **지우려면** `{"definition_id": "…", "remove": true}`. 빈 값으로는 안 지워진다.
+    """
+    now = await _get(ctx, f"/equipment/{equipment_id}")
+    if isinstance(now, dict) and now.get("error"):
+        # 못 읽었으면 **보내지 않는다** — 빈 목록으로 덮으면 있던 칸이 한 번에 사라진다.
+        return now
+
+    return await _send(
+        ctx,
+        "PATCH",
+        f"/equipment/{equipment_id}",
+        {"attributes": merge(now.get("attributes", []), attributes)},
     )
 
 

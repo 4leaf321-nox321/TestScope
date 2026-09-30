@@ -23,10 +23,16 @@ const TONE_CLASS: Record<Tone, string> = {
 const EQUIPMENT: Record<string, { label: string; tone: Tone }> = {
   incoming: { label: '입고', tone: 'neutral' },
   operational: { label: '가동', tone: 'good' },
-  idle: { label: '유휴', tone: 'good' },
+  // **미사용·미가동은 좋은 쪽이다** — 안 쓰고 있다는 것은 못 쓴다는 뜻이 아니고,
+  // 빌리려는 사람에게는 오히려 가장 쉬운 장비다.
+  stopped: { label: '미가동', tone: 'good' },
+  idle: { label: '미사용', tone: 'good' },
   maintenance: { label: '점검·교정', tone: 'warn' },
-  repair: { label: '고장', tone: 'bad' },
+  repair: { label: '고장 수리중', tone: 'bad' },
   retired: { label: '폐기', tone: 'neutral' },
+  // 원본 대장에서 줄이 그어진 것. **폐기와 다르다** — 왜 그었는지는 대장이 안 말한다.
+  struck: { label: '취소선', tone: 'neutral' },
+  unknown: { label: '미기재', tone: 'warn' },
 }
 
 /** 시험 항목을 어디까지 믿을 수 있나. */

@@ -91,6 +91,21 @@ def require_can_edit(db: Session, user: User, *, target: str, object_id: uuid.UU
         from app.modules.documents import services as documents
 
         documents.require_editable(db, user, object_id)
+    elif target == "equipment":
+        # **장비를 고칠 수 있는 사람이면 자료도 붙인다**(`role="member"`). 장비를 쓰는
+        # 사람이 그 장비를 등록하고 시험 항목을 적는데, 자료만 관리자를 거치게 하면
+        # 사양서는 공유 폴더에 남고 대장에는 안 붙는다.
+        from app.shared.permissions import get_equipment, require_owner_edit
+
+        unit = get_equipment(db, user, object_id)
+        require_owner_edit(
+            db,
+            user,
+            unit.owner_workspace_id,
+            what="보유 장비",
+            code="TSC-EQUIPMENT",
+            role="member",
+        )
 
 
 def _resolve_type(content_type: str, filename: str) -> str | None:

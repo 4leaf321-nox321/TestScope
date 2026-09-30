@@ -1124,6 +1124,9 @@ export interface paths {
          *     `q` 는 자산번호와 이름을 함께 보고, `asset_no`·`name` 은 **그 열만** 본다 —
          *     화면은 열마다 거르므로 뒤엣것을 쓴다.
          *
+         *     `status_reason` 은 **왜 그 상태인지**에 든 글자다. `none` 이면 **근거를 안 적은
+         *     장비** — 「폐기인데 왜 버렸는지가 없다」 가 이 칸을 만든 물음이다.
+         *
          *     `test_item=none` 은 **시험 항목이 하나도 없는 장비**다. 홈의 「남은 일」 이 그 줄로
          *     링크하므로, 세는 조건과 여기 거르는 조건이 같아야 한다.
          *
@@ -4821,6 +4824,8 @@ export interface components {
              * @default operational
              */
             status: string;
+            /** Status Reason */
+            status_reason?: string | null;
             /** Acquired On */
             acquired_on?: string | null;
             /** Manufactured Year */
@@ -5235,6 +5240,13 @@ export interface components {
             location: string | null;
             /** Status */
             status: string;
+            /** Status Reason */
+            status_reason: string | null;
+            /**
+             * Attachment Count
+             * @default 0
+             */
+            attachment_count: number;
             /** Acquired On */
             acquired_on: string | null;
             /** Manufactured Year */
@@ -5717,6 +5729,8 @@ export interface components {
             shared_use?: boolean | null;
             /** Status */
             status?: string | null;
+            /** Status Reason */
+            status_reason?: string | null;
             /** Acquired On */
             acquired_on?: string | null;
             /** Manufactured Year */
@@ -11201,6 +11215,7 @@ export interface operations {
                 asset_no?: string | null;
                 name?: string | null;
                 status?: string | null;
+                status_reason?: string | null;
                 workspace?: string | null;
                 model_id?: string | null;
                 category_term_id?: string | null;

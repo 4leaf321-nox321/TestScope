@@ -51,6 +51,8 @@ export interface EquipmentFilterState {
   workspace: string
   siteTermId: string
   status: string
+  /** **왜 그 상태인가** 에 든 글자. `none` 은 근거를 안 적은 장비다. */
+  statusReason: string
   testItemTermId: string
   /** `none` 이면 **시험 항목이 하나도 없는 장비**만. 홈의 「남은 일」 이 이걸로 온다. */
   testItem: string
@@ -66,6 +68,7 @@ export const EMPTY_FILTERS: EquipmentFilterState = {
   workspace: '',
   siteTermId: '',
   status: '',
+  statusReason: '',
   testItemTermId: '',
   testItem: '',
   catalog: '',
@@ -255,6 +258,15 @@ export function EquipmentFilters({
             className="w-full"
           />
         )}
+      </td>
+      <td className="p-1">
+        {/* 상태 열 다음 칸 — **머리글과 수가 같아야** 열이 안 밀린다. */}
+        <Input
+          value={value.statusReason}
+          onChange={(event) => set({ statusReason: event.target.value })}
+          placeholder="상태 근거"
+          className="w-full"
+        />
       </td>
       <td className="p-1">
         <Pick

@@ -51,6 +51,8 @@ import {
   SelectValue,
 } from '@/shared/components/ui/select'
 import { useResource } from '@/shared/hooks/useResource'
+import { AttachmentStrip } from '@/modules/attachments/AttachmentStrip'
+import { attachmentApi } from '@/modules/attachments/api'
 import {
   AttributeValuesEditor,
   fromValues,
@@ -58,7 +60,7 @@ import {
 } from '@/modules/attributes/AttributeValuesEditor'
 import type { AttributeRow } from '@/modules/attributes/AttributeValuesEditor'
 import { ModelPicker } from '@/modules/equipment/ModelPicker'
-import { EQUIPMENT_STATUS_OPTIONS } from '@/modules/equipment/status'
+import { EQUIPMENT_STATUS_OPTIONS, NEEDS_REASON } from '@/modules/equipment/status'
 import { AXIS, vocabularyApi } from '@/modules/vocabulary/api'
 import { equipmentApi } from '@/modules/equipment/api'
 import type { Equipment } from '@/modules/equipment/api'
@@ -108,6 +110,20 @@ export function EquipmentDialog({
   const [shared, setShared] = useState(false)
 
   const [status, setStatus] = useState('operational')
+  /** **왜 그 상태인가.** 비고와 다른 칸이다 — 비고에는 온갖 것이 함께 적혀서 아무도
+   *  그것을 상태의 근거로 안 읽고, 상태가 바뀌어도 안 지워진다. */
+  const [statusReason, setStatusReason] = useState('')
+  /**
+   * 아직 올리지 않은 자료. **첨부는 대상 id 를 요구해서 장비가 먼저 있어야 하는데**, 그
+   * 두 걸음을 사람에게 시키면 「만들고 → 다시 열고 → 붙이기」 가 되고 그러면 대개 만들기
+   * 까지만 한다 — 사양서 없는 장비가 남는다(신뢰성 시험 창이 같은 이유로 그렇게 한다).
+   */
+  const [staged, setStaged] = useState<File[]>([])
+  /** 이미 붙어 있는 자료 — 수정 창에서만 채워진다(새 장비는 아직 id 가 없다). */
+  const files = useResource(
+    () => (editing ? attachmentApi.list('equipment', editing.id) : Promise.resolve([])),
+    [editing?.id],
+  )
   const [acquiredOn, setAcquiredOn] = useState('')
   const [madeYear, setMadeYear] = useState('')
 
@@ -149,6 +165,7 @@ export function EquipmentDialog({
     setLocation(editing?.location ?? '')
     setShared(editing?.shared_use ?? false)
     setStatus(editing?.status ?? 'operational')
+    setStatusReason(editing?.status_reason ?? '')
     setAcquiredOn(editing?.acquired_on ?? '')
     setMadeYear(editing?.manufactured_year ? String(editing.manufactured_year) : '')
     setCalibrated(editing?.calibration_required ?? false)
@@ -186,6 +203,9 @@ export function EquipmentDialog({
         maker_text: linked ? null : makerText || null,
         model_text: linked ? null : modelText || null,
         status,
+        // **상태를 바꾸면서 근거를 안 보내면 서버가 비운다.** 창이 늘 함께 보내므로
+        // 여기서 지워진 근거는 사람이 지운 것이다.
+        status_reason: statusReason.trim() || null,
         acquired_on: acquiredOn || null,
         manufactured_year: madeYear ? Number(madeYear) : null,
         calibration_required: calibrated,
@@ -201,6 +221,30 @@ export function EquipmentDialog({
         saved = await equipmentApi.update(editing.id, body)
       } else {
         saved = await equipmentApi.create({ ...body, asset_no: assetNo })
+      }
+      // **저장하고 이어서 올린다.** 한 개씩 보낸다 — 하나가 막혀도 나머지는 들어가고,
+      // 어느 것이 막혔는지 말한다.
+      if (saved && staged.length > 0) {
+        const failed: string[] = []
+        for (const one of staged) {
+          try {
+            await attachmentApi.upload('equipment', saved.id, one)
+          } catch {
+            failed.push(one.name)
+          }
+        }
+        setStaged([])
+        if (failed.length > 0) {
+          // 장비는 이미 저장됐다 — 조용히 닫으면 사람은 자료가 갔는지 모른 채 나간다.
+          setError(
+            new Error(
+              `장비는 저장됐지만 자료 ${failed.length}개가 안 올라갔습니다:` +
+                ` ${failed.join(', ')}. 형식과 크기(100 MB)를 보고 다시 올려 주십시오.`,
+            ),
+          )
+          setBusy(false)
+          return
+        }
       }
       // **장비를 만든 다음에 낸다** — 요청은 그 장비에 붙는 것이라 id 가 있어야 한다.
       if (!linked && askCatalog && modelText.trim() && saved) {
@@ -487,6 +531,34 @@ export function EquipmentDialog({
               </div>
             </div>
 
+            {/**
+             * **왜 그 상태인가.** 비고와 다른 칸이다 — 비고에는 온갖 것이 함께 적혀서
+             * 아무도 그것을 상태의 근거로 안 읽고, 상태가 바뀌어도 안 지워진다.
+             * 고장·유휴·폐기는 그 이유가 있어야 할 일이 정해진다.
+             */}
+            <div className="space-y-2">
+              <Label htmlFor="status-reason">상태 근거</Label>
+              <Textarea
+                id="status-reason"
+                rows={2}
+                value={statusReason}
+                onChange={(event) => setStatusReason(event.target.value)}
+                placeholder="제어보드 고장, 부품 대기 — 3주 예상"
+                maxLength={2000}
+              />
+              <p className="text-muted-foreground text-xs">
+                {NEEDS_REASON.has(status) ? (
+                  <>
+                    <strong>적어 주십시오.</strong> 무엇이 고장인지·언제까지 유휴인지·왜
+                    버렸는지가 없으면 다음 사람이 할 일을 못 정합니다.
+                  </>
+                ) : (
+                  '가동·입고는 비워 두어도 됩니다.'
+                )}{' '}
+                <strong>상태를 바꾸면 지워집니다</strong> — 근거는 상태에 붙습니다.
+              </p>
+            </div>
+
             <div className="space-y-2">
               <label className="flex items-center gap-2 text-sm">
                 <input
@@ -547,6 +619,31 @@ export function EquipmentDialog({
                 />
               </div>
             </div>
+          </section>
+
+          {/**
+           * 장비 자료 — 사양서·매뉴얼·성적서. **여기서 못 붙이면 공유 폴더에 두고 대장에는
+           * 경로를 적게 되는데, 그 경로는 반년이면 깨진다.** 등록하면서 바로 붙이는 것은
+           * 「만들고 → 다시 열고 → 붙이기」 가 되면 대개 만들기까지만 하기 때문이다.
+           */}
+          <section className="space-y-2 border-t pt-4">
+            <Label>장비 자료</Label>
+            <AttachmentStrip
+              target="equipment"
+              objectId={editing?.id ?? null}
+              rows={files.data ?? []}
+              canEdit
+              size="lg"
+              label="자료 올리기"
+              onChanged={() => files.reload()}
+              onStage={(picked) => setStaged((before) => [...before, ...picked])}
+              staged={staged.map((one) => one.name)}
+            />
+            <p className="text-muted-foreground text-xs">
+              사양서·매뉴얼·성적서. 한 개에 100 MB 까지, PDF·오피스 문서·이미지를 받습니다. AI
+              가 이 자료를 읽어 아래 <strong>「장비 자료 발췌」</strong> 속성에 간추려 적으면
+              의미 검색이 그 글까지 읽습니다.
+            </p>
           </section>
 
           {/* **고정 칸이 아닌 정보는 여기.** 담당 구역·구매 연도처럼 부서마다 다른 것 — 열을

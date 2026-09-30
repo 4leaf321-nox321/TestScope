@@ -25,7 +25,9 @@ from app.database import Base
 #:
 #: `spec_document` 는 **사내 규격서**의 파일이다 — 원본과 개정본이 함께 붙는다.
 #: 공개 규격(`method`)과 다른 표인 이유는 `documents/models.py` 머리말에 있다.
-ATTACHMENT_TARGETS = ("reliability_test", "method", "spec_document")
+#: **장비가 들어간다**(2026-10-01) — 장비마다 사양서·매뉴얼·성적서가 따로 오고, 그것을
+#: 못 붙이면 사람은 공유 폴더에 두고 대장에는 경로를 적는다. 그 경로는 반년이면 깨진다.
+ATTACHMENT_TARGETS = ("reliability_test", "method", "spec_document", "equipment")
 
 #: 받는 형식. 스캔본이 PDF 로 오는 일이 많아 그림만 받지 않고, **사내 규격서는 원본이
 #: 한글·워드·엑셀로 오는 일이 흔해서** 그것도 받는다.

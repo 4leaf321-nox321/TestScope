@@ -14,7 +14,13 @@ export type Attachment = components['schemas']['AttachmentOut']
  *
  *  `method` 는 **규격서 원문**이다 — 사내 규격서도 여기 붙는다. 여러 신뢰성 시험이
  *  한 문서를 인용하므로 시험마다 복사하지 않고 규격에 두고 「참조 규격」 으로 가리킨다. */
-export type AttachmentTarget = 'reliability_test' | 'method' | 'spec_document'
+export type AttachmentTarget =
+  | 'reliability_test'
+  | 'method'
+  | 'spec_document'
+  /** 장비마다 사양서·매뉴얼·성적서가 따로 온다. 못 붙이면 공유 폴더에 두고 대장에는
+   *  경로를 적게 되는데, 그 경로는 반년이면 깨진다. */
+  | 'equipment'
 
 export const attachmentApi = {
   list: (target: AttachmentTarget, objectId: string) =>

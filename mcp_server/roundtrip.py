@@ -578,6 +578,45 @@ async def _write_chain(ctx: _Ctx) -> int:
                     bad += 1
                     print("  실패 같은 요청이 두 줄로 쌓였습니다")
 
+                # 8-3. **장비 자료 발췌** — AI 가 읽은 것을 적으면 의미 검색의 카드에
+                # 실린다. 이 칸에 못 적으면 자료는 붙어 있어도 아무도 못 찾는다.
+                defs = await server.list_attribute_definitions(ctx, target="equipment")
+                digest = next(
+                    (
+                        one
+                        for one in (defs or {}).get("definitions", [])
+                        if one.get("key") == "equipment_document_digest"
+                    ),
+                    None,
+                )
+                if digest is not None:
+                    wrote = step(
+                        "set_equipment_attributes",
+                        await server.set_equipment_attributes(
+                            ctx,
+                            unit["id"],
+                            [
+                                {
+                                    "definition_id": digest["id"],
+                                    "text_value": "MCP확인: 만능시험기, 하중 300 kN,"
+                                    " 시편 두께 0.1~20 mm",
+                                }
+                            ],
+                        ),
+                        ["asset_no"],
+                    )
+                    # **적은 것이 되돌아와야 한다** — 통째로 갈아 끼우는 길로 잘못 가면
+                    # 다른 칸이 조용히 사라지고, 그 손실은 여기서만 보인다.
+                    if wrote is not None:
+                        kept = [
+                            one
+                            for one in wrote.get("attributes", [])
+                            if one.get("definition_id") == digest["id"]
+                        ]
+                        if not kept:
+                            bad += 1
+                            print("  실패 장비 자료 발췌가 안 들어갔습니다")
+
     # 9. 물성 연결은 제안으로만 들어가야 한다.
     prop = await server.create_term(ctx, "property", f"MCP확인 항복강도-{tag}")
     if "error" not in prop:

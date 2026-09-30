@@ -16,6 +16,7 @@ from sqlalchemy import func, or_, select
 from sqlalchemy.orm import Session
 
 from app.modules.accounts.models import User
+from app.modules.attachments.models import Attachment
 from app.modules.attributes import filters as attribute_filters
 from app.modules.attributes import services as attributes
 from app.modules.attributes.schemas import AttributeValueIn
@@ -213,6 +214,8 @@ class _Bulk:
     overrides: dict[uuid.UUID, int]
     due: dict[uuid.UUID, tuple[date | None, date | None]]
     attributes: dict[uuid.UUID, list[Any]]
+    attachments: dict[uuid.UUID, int]
+    """붙은 자료 수. **한 번에 센다** — 줄마다 세면 쉰 줄에 쉰 번 왕복한다."""
     editable: dict[uuid.UUID | None, bool]
 
     def term_value(self, term_id: uuid.UUID | None) -> str | None:
@@ -258,8 +261,21 @@ def _bulk(db: Session, rows: list[Equipment], viewer: User) -> _Bulk:
     ids = [row.id for row in rows]
     if not ids:
         empty: dict[Any, Any] = {}
+        # **자리 수를 세어 넘기지 않는다.** 칸을 하나 더할 때마다 이 줄의 `empty` 를 세어야
+        # 하고, 한 번 어긋나면 엉뚱한 칸에 들어간다 — 이름으로 준다.
         return _Bulk(
-            empty, empty, empty, empty, empty, empty, empty, empty, empty, empty, empty
+            workspaces=empty,
+            users=empty,
+            models=empty,
+            series=empty,
+            terms=empty,
+            item_count=empty,
+            items=empty,
+            overrides=empty,
+            due=empty,
+            attributes=empty,
+            attachments=empty,
+            editable=empty,
         )
 
     models = {
@@ -368,8 +384,27 @@ def _bulk(db: Session, rows: list[Equipment], viewer: User) -> _Bulk:
         overrides=overrides,
         due=due,
         attributes=attributes.values_of(db, target="equipment", object_ids=ids),
+        attachments=_attachment_counts(db, ids),
         editable=editable,
     )
+
+
+def _attachment_counts(db: Session, ids: list[uuid.UUID]) -> dict[uuid.UUID, int]:
+    """장비마다 붙은 자료 수 — **한 번에 센다.**
+
+    목록이 「자료 3」 을 그리려고 줄마다 세면 쉰 줄에 쉰 번 왕복한다. 첨부 표는 대상과
+    객체 id 로 색인돼 있다(`ix_attachments_object`).
+    """
+    if not ids:
+        return {}
+    return {
+        object_id: int(count)
+        for object_id, count in db.execute(
+            select(Attachment.object_id, func.count())
+            .where(Attachment.target == "equipment", Attachment.object_id.in_(ids))
+            .group_by(Attachment.object_id)
+        ).all()
+    }
 
 
 def equipment_out(
@@ -397,6 +432,7 @@ def equipment_out(
         test_items = _test_items(db, row.id)
         overrides = _override_count(db, row.id)
         values = attributes.values_of(db, target="equipment", object_ids=[row.id])[row.id]
+        files = _attachment_counts(db, [row.id]).get(row.id, 0)
         editable = _can_edit(db, viewer, row)
     else:
         workspace = (
@@ -415,6 +451,7 @@ def equipment_out(
         test_items = bulk.items.get(row.id, [])
         overrides = bulk.overrides.get(row.id, 0)
         values = bulk.attributes.get(row.id, [])
+        files = bulk.attachments.get(row.id, 0)
         editable = bulk.editable.get(row.owner_workspace_id, False)
     return EquipmentOut(
         id=row.id,
@@ -436,6 +473,8 @@ def equipment_out(
         site=site,
         location=row.location,
         status=row.status,
+        status_reason=row.status_reason,
+        attachment_count=files,
         acquired_on=row.acquired_on,
         manufactured_year=row.manufactured_year,
         retired_on=row.retired_on,
@@ -501,6 +540,7 @@ def list_equipment(
     asset_no: str | None = None,
     name: str | None = None,
     status: str | None,
+    status_reason: str | None = None,
     workspace_slug: str | None,
     model_id: uuid.UUID | None = None,
     category_term_id: uuid.UUID | None = None,
@@ -532,6 +572,19 @@ def list_equipment(
         stmt = stmt.where(Equipment.asset_no.ilike(f"%{clean(asset_no)}%"))
     if name:
         stmt = stmt.where(Equipment.name.ilike(f"%{clean(name)}%"))
+    if status_reason:
+        said = clean(status_reason)
+        if said == "none":
+            # **폐기인데 근거를 안 적은 장비** — 이 물음이 이 칸을 만든 이유다. 빈 글자와
+            # NULL 을 함께 본다: 칸은 비울 수 있고 화면은 빈 글자를 보낼 수 있다.
+            stmt = stmt.where(
+                or_(
+                    Equipment.status_reason.is_(None),
+                    func.trim(Equipment.status_reason) == "",
+                )
+            )
+        else:
+            stmt = stmt.where(Equipment.status_reason.ilike(f"%{said}%"))
     if model_id is not None:
         # **서버가 거른다.** 화면이 전체 목록을 받아 걸러 내면, 상한(200)을 넘는
         # 순간 나머지가 조용히 안 보인다 — 그리고 그때 그 기종은 「보유 없음」 이
@@ -811,6 +864,7 @@ def create(
         site_term_id=payload.get("site_term_id"),
         location=clean(payload["location"]),
         status=status,
+        status_reason=payload.get("status_reason") or None,
         acquired_on=payload.get("acquired_on"),
         manufactured_year=payload.get("manufactured_year"),
         retired_on=payload.get("retired_on"),
@@ -902,13 +956,25 @@ def update(
                     target_id=row.id,
                     target_label=f"{row.asset_no} {row.name}",
                     workspace_id=row.owner_workspace_id,
-                    changes={"status": {"before": row.status, "after": status}},
+                    # **왜 버렸는지를 함께 남긴다.** 「누가 언제 폐기했나」 만 있으면
+                    # 반년 뒤 「그 장비 어디 갔냐」 에 답할 수 없다.
+                    changes={
+                        "status": {"before": row.status, "after": status},
+                        "status_reason": changes.get("status_reason") or None,
+                    },
                 )
             # 부서 관리자에게 알린다 — 폐기·고장은 그 부서가 알아야 할 일이다.
             rules.equipment_status_changed(
                 db, row, before=row.status, after=status, actor=user
             )
             row.status = status
+            # **근거는 상태에 붙는다.** 고쳐서 가동으로 되돌렸는데 「제어보드 고장」 이
+            # 남아 있으면 목록은 가동 중인 장비에 고장 사유를 그려 준다. 새 근거를 같이
+            # 보냈으면 아래에서 그것으로 덮인다.
+            row.status_reason = None
+
+    if "status_reason" in changes:
+        row.status_reason = changes["status_reason"] or None
 
     if "model_id" in changes:
         row.model_id = changes["model_id"]

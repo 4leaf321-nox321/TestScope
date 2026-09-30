@@ -16,6 +16,8 @@ import { StatusBadge } from '@/shared/components/StatusBadge'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/shared/components/ui/tabs'
 import { useResource } from '@/shared/hooks/useResource'
 import { shownDate } from '@/shared/lib/datetime'
+import { AttachmentStrip } from '@/modules/attachments/AttachmentStrip'
+import { attachmentApi } from '@/modules/attachments/api'
 import { AttributeValuesPanel } from '@/modules/attributes/AttributeValuesPanel'
 import { GraphPanel } from '@/modules/graph/GraphPanel'
 import { Button } from '@/shared/components/ui/button'
@@ -41,6 +43,8 @@ export default function EquipmentDetailPage() {
   const equipment = useResource(() => equipmentApi.read(id), [id])
   /** 이 장비가 낸 **카탈로그 기종 등록 요청** — 왜 기종이 비었는지가 여기 보여야 한다. */
   const proposals = useResource(() => equipmentApi.modelProposals(id), [id])
+  /** 이 장비에 붙은 자료 — 사양서·매뉴얼·성적서. */
+  const files = useResource(() => attachmentApi.list('equipment', id), [id])
   const [editing, setEditing] = useState(false)
 
   if (equipment.error) return <ErrorNotice error={equipment.error} />
@@ -133,6 +137,8 @@ export default function EquipmentDetailPage() {
           value={[one.site, one.location].filter(Boolean).join(' · ')}
         />
         <Field label="담당자" value={one.contact_name} />
+        {/* **왜 그 상태인가.** 고장·유휴·폐기는 그 이유가 있어야 할 일이 정해진다. */}
+        <Field label="상태 근거" value={one.status_reason} />
         <Field label="제조사" value={one.manufacturer} />
         <Field label="제조번호" value={one.serial_no} />
         <Field label="부서관리번호" value={one.dept_asset_no} />
@@ -177,6 +183,9 @@ export default function EquipmentDetailPage() {
           <TabsTrigger value="attributes">
             속성{one.attributes.length > 0 && ` · ${one.attributes.length}`}
           </TabsTrigger>
+          <TabsTrigger value="files">
+            자료{one.attachment_count > 0 && ` · ${one.attachment_count}`}
+          </TabsTrigger>
         </TabsList>
         <TabsContent value="test_items" className="pt-4">
           <TestItemPanel equipmentId={one.id} canEdit={one.can_edit} />
@@ -199,6 +208,29 @@ export default function EquipmentDetailPage() {
               equipment.reload()
             }}
           />
+        </TabsContent>
+        <TabsContent value="files" className="space-y-3 pt-4">
+          {/**
+           * 장비의 사양서·매뉴얼·성적서. **못 붙이면 공유 폴더에 두고 대장에는 경로를
+           * 적게 되는데, 그 경로는 반년이면 깨진다** — 그러면 근거가 시스템 밖에 남는다.
+           *
+           * 장비를 고칠 수 있는 사람이면 붙인다(관리자를 거치게 하면 안 올라온다).
+           */}
+          <ErrorNotice error={files.error} />
+          <AttachmentStrip
+            target="equipment"
+            objectId={one.id}
+            rows={files.data ?? []}
+            canEdit={one.can_edit}
+            size="lg"
+            label="자료 올리기"
+            onChanged={() => files.reload()}
+          />
+          <p className="text-muted-foreground text-xs">
+            사양서·매뉴얼·성적서. 한 개에 100 MB 까지, PDF·오피스 문서·이미지를 받습니다.
+            <strong> AI 가 이 자료를 읽어 「장비 자료 발췌」 속성에 간추려 적으면</strong> 의미
+            검색이 그 글까지 읽습니다 — 낱말이 안 겹치는 물음으로도 이 장비가 걸립니다.
+          </p>
         </TabsContent>
       </Tabs>
     </div>

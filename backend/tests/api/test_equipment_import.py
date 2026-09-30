@@ -114,6 +114,33 @@ def test_미리보기는_아무것도_저장하지_않는다(client: TestClient,
     assert listed.json()["total"] == 0, "미리보기 뒤에 장비가 남아 있다"
 
 
+def test_상태_칸이_비면_미기재다(client: TestClient, admin: Signed) -> None:
+    """**지어내지 않는다.** 대장이 상태를 안 적었는데 「가동」 으로 채우면 우리가 말한 적
+    없는 것을 만든 것이고, 검색은 그 장비로 「됩니다」 라고 답한다. 비어 있다는 사실 자체가
+    정보라서 적을 자리를 뒀다(2026-10-01)."""
+    workspace, site, category = _fixture(client, admin)
+    tag = uuid.uuid4().hex[:6]
+    body = (
+        f"{HEADER}\n"
+        f"ST-{tag}-1,만능기,{workspace},{site},3동,{category},,,예\n"
+        f"ST-{tag}-2,충격기,{workspace},{site},3동,{category},,취소선,예\n"
+        f"ST-{tag}-3,경도계,{workspace},{site},3동,{category},,미가동,예\n"
+        f"ST-{tag}-4,항온조,{workspace},{site},3동,{category},,고장 수리중,예\n"
+    )
+    result = _upload(client, admin, body, dry_run=False)
+    assert result["created"] == 4, result
+
+    got = client.get(f"/api/equipment?q=ST-{tag}&limit=50", headers=admin.headers)
+    assert got.status_code == 200, got.text
+    by_asset = {one["asset_no"]: one["status"] for one in got.json()["items"]}
+    assert by_asset[f"ST-{tag}-1"] == "unknown"
+    # 대장에 실제로 적혀 오는 말들을 그대로 받는다 — 「모르는 상태」 로 거절하면
+    # 그 줄이 안 들어간다.
+    assert by_asset[f"ST-{tag}-2"] == "struck"
+    assert by_asset[f"ST-{tag}-3"] == "stopped"
+    assert by_asset[f"ST-{tag}-4"] == "repair"
+
+
 def test_확인하면_들어간다(client: TestClient, admin: Signed) -> None:
     workspace, site, category = _fixture(client, admin)
     tag = uuid.uuid4().hex[:6]

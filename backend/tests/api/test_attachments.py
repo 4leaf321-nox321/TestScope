@@ -91,6 +91,50 @@ def _upload(
     return response
 
 
+def test_장비에도_자료가_붙고_장비_화면이_센다(client: TestClient, admin: Signed) -> None:
+    """장비마다 사양서·매뉴얼·성적서가 따로 온다. **못 붙이면 공유 폴더에 두고 대장에는
+    경로를 적게 되는데, 그 경로는 반년이면 깨진다**(2026-10-01)."""
+    from tests.api.conftest import category_id, site_id
+
+    tag = uuid.uuid4().hex[:6]
+    made = client.post(
+        "/api/equipment",
+        json={
+            "asset_no": f"AT-{tag}",
+            "name": f"만능기-{tag}",
+            "workspace_slug": admin.workspace,
+            "site_term_id": site_id(client, admin),
+            "location": "3동",
+            "category_term_id": category_id(client, admin),
+        },
+        headers=admin.headers,
+    )
+    assert made.status_code == 201, made.text
+    unit = made.json()
+    assert unit["attachment_count"] == 0
+
+    got = client.post(
+        "/api/attachments",
+        data={"target": "equipment", "object_id": unit["id"], "caption": "사양서"},
+        files={"file": ("사양서.pdf", io.BytesIO(b"%PDF-1.4 x"), "application/pdf")},
+        headers=admin.headers,
+    )
+    assert got.status_code == 201, got.text
+
+    # **장비 화면이 센다** — 0 이면 이 장비의 근거가 시스템 밖에 있다는 뜻이다.
+    again = client.get(f"/api/equipment/{unit['id']}", headers=admin.headers)
+    assert again.json()["attachment_count"] == 1
+    listed = client.get(
+        f"/api/attachments?target=equipment&object_id={unit['id']}", headers=admin.headers
+    )
+    assert listed.status_code == 200, listed.text
+    assert [one["caption"] for one in listed.json()] == ["사양서"]
+
+    # 목록에서도 센다 — 줄마다 세면 쉰 줄에 쉰 번 왕복하므로 한 번에 센다.
+    page = client.get(f"/api/equipment?q=AT-{tag}", headers=admin.headers)
+    assert [one["attachment_count"] for one in page.json()["items"]] == [1]
+
+
 def test_붙는_자리는_골라도_되고_안_골라도_된다(client: TestClient, admin: Signed) -> None:
     tag = uuid.uuid4().hex[:6]
     test_id = _test(client, admin, f"그림 시험-{tag}")

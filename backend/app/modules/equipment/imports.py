@@ -120,6 +120,9 @@ COLUMNS: dict[str, tuple[str, ...]] = {
     "serial_no": ("제조번호", "시리얼", "serial_no"),
     "shared_use": ("공용여부", "공용 여부", "공용", "shared_use"),
     "status": ("상태", "status"),
+    # **왜 그 상태인가.** 대장에 「고장(제어보드)」 처럼 상태와 사유가 한 칸에 적혀
+    # 오는 일이 흔한데, 그것을 상태 칸에 그대로 두면 「모르는 상태」 로 거절된다.
+    "status_reason": ("상태근거", "상태 근거", "상태사유", "상태 사유", "status_reason"),
     "acquired_on": ("도입일", "취득일", "acquired_on"),
     "manufactured_year": ("제조연도", "제조 연도", "manufactured_year"),
     "calibration_required": ("교정대상", "교정 대상", "calibration_required"),
@@ -149,13 +152,24 @@ STATUS_WORDS: dict[str, str] = {
     "운영": "operational",
     "운영중": "operational",
     "유휴": "idle",
+    "미사용": "idle",
+    "미가동": "stopped",
+    "정지": "stopped",
     "점검": "maintenance",
     "점검·교정": "maintenance",
     "점검교정": "maintenance",
     "교정중": "maintenance",
     "수리": "repair",
+    "수리중": "repair",
     "고장": "repair",
+    "고장 수리중": "repair",
+    "고장수리중": "repair",
     "폐기": "retired",
+    # 원본 대장에서 줄이 그어진 것. **폐기와 다르다** — 왜 그었는지는 대장이 안 말한다.
+    "취소선": "struck",
+    "취소": "struck",
+    "미기재": "unknown",
+    "미상": "unknown",
 }
 
 #: 예·아니오를 받는 말들. 엑셀에서 오는 모양이 제각각이다.
@@ -499,10 +513,13 @@ def _row_payload(
         problems.add("category", "기종을 안 적었으면 장비유형은 필수입니다")
 
     status_text = clean(values.get("status", ""))
-    status = STATUS_WORDS.get(status_text, status_text) or "operational"
+    # **상태 칸이 비었으면 `unknown` 이다** — 「가동」 으로 채우면 대장이 말한 적 없는
+    # 것을 우리가 지어내는 것이고, 검색은 그 장비로 「됩니다」 라고 답한다. 비어 있다는
+    # 사실 자체가 정보라서 적을 자리를 뒀다(2026-10-01).
+    status = STATUS_WORDS.get(status_text, status_text) or "unknown"
     if status not in EQUIPMENT_STATUSES:
         problems.add("status", f"「{status_text}」 는 모르는 상태입니다")
-        status = "operational"
+        status = "unknown"
 
     shared = _flag(values.get("shared_use", ""), "shared_use", problems)
     calibrated = _flag(
@@ -530,6 +547,7 @@ def _row_payload(
         "serial_no": clean(values.get("serial_no", "")) or None,
         "shared_use": bool(shared),
         "status": status,
+        "status_reason": clean(values.get("status_reason", "")) or None,
         "acquired_on": _date(values.get("acquired_on", ""), "acquired_on", problems),
         "manufactured_year": _int(
             values.get("manufactured_year", ""), "manufactured_year", problems
@@ -551,6 +569,7 @@ UPDATABLE = (
     "serial_no",
     "shared_use",
     "status",
+    "status_reason",
     "acquired_on",
     "manufactured_year",
     "calibration_required",

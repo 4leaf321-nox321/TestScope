@@ -86,6 +86,10 @@ class EquipmentOut(BaseModel):
     site: str | None
     location: str | None
     status: str
+    status_reason: str | None
+    """**왜 그 상태인가** — 「제어보드 고장, 부품 대기」. 상태가 바뀌면 비워진다."""
+    attachment_count: int = 0
+    """붙은 자료 수 — 사양서·매뉴얼·성적서. 0 이면 이 장비의 근거가 시스템 밖에 있다."""
     acquired_on: date | None
     manufactured_year: int | None
     retired_on: date | None
@@ -400,6 +404,9 @@ class EquipmentCreateRequest(Request):
     location: str = Field(min_length=1, max_length=200)
     """거점과 그 안의 자리. 둘 다 필수다 — 어디 있는지 모르는 장비는 찾아도 소용없다."""
     status: str = Field(default="operational")
+    status_reason: str | None = Field(default=None, max_length=2000)
+    """**왜 그 상태인가.** 「제어보드 고장, 부품 대기」. 비고와 다른 칸이다 — 비고에는
+    온갖 것이 함께 적혀서 아무도 그것을 상태의 근거로 안 읽는다."""
     acquired_on: date | None = None
     manufactured_year: int | None = Field(default=None, ge=1900, le=2200)
     retired_on: date | None = None
@@ -442,6 +449,10 @@ class EquipmentUpdateRequest(Request):
     location: str | None = None
     shared_use: bool | None = None
     status: str | None = None
+    status_reason: str | None = None
+    """**상태를 바꾸면서 근거를 같이 안 보내면 서버가 비운다.** 근거는 상태에 붙는
+    것이지 장비에 붙는 것이 아니다 — 고쳐서 가동으로 되돌렸는데 「제어보드 고장」 이
+    남아 있으면 목록은 가동 중인 장비에 고장 사유를 그려 준다."""
     acquired_on: date | None = None
     manufactured_year: int | None = Field(default=None, ge=1900, le=2200)
     retired_on: date | None = None

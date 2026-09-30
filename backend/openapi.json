@@ -3311,7 +3311,7 @@
           "equipment"
         ],
         "summary": "List Equipment",
-        "description": "보유 장비 목록. **거르기는 서버가 한다.**\n\n화면이 한 쪽을 받아 놓고 거르면 상한을 넘는 순간 나머지가 조용히 빠지고, 그때\n목록은 「그 조건에 맞는 장비가 이것뿐」 이라고 거짓말한다.\n\n`calibration` 은 넷이다 — `required` 대상 전부 · `exempt` 대상 아님 ·\n`missing` 대상인데 이력 없음 · `overdue` 기한 지남.\n\n`q` 는 자산번호와 이름을 함께 보고, `asset_no`·`name` 은 **그 열만** 본다 —\n화면은 열마다 거르므로 뒤엣것을 쓴다.\n\n`test_item=none` 은 **시험 항목이 하나도 없는 장비**다. 홈의 「남은 일」 이 그 줄로\n링크하므로, 세는 조건과 여기 거르는 조건이 같아야 한다.\n\n`attr` 은 **속성 값으로 거른다** — 여러 번 주면 모두 만족해야 한다.\n`attr=invest_year>=2020` · `attr=purpose~고온` · `attr=reserve_url*`(적혀 있기만 하면)\n· `attr=reserve_url!*`(**안 적힌 것** — 채워야 할 칸을 찾는다).\n왼쪽은 속성 정의의 `key` 다(이름이 아니다 — 이름은 관리자가 고치면 바뀐다).\n\n`catalog=unlinked` 는 **기종을 안 고른 장비**다. 그 기종이 카탈로그에 없어서 비운\n경우가 실제로 있고, 시스템 관리자가 이 목록을 보고 카탈로그를 채운다.",
+        "description": "보유 장비 목록. **거르기는 서버가 한다.**\n\n화면이 한 쪽을 받아 놓고 거르면 상한을 넘는 순간 나머지가 조용히 빠지고, 그때\n목록은 「그 조건에 맞는 장비가 이것뿐」 이라고 거짓말한다.\n\n`calibration` 은 넷이다 — `required` 대상 전부 · `exempt` 대상 아님 ·\n`missing` 대상인데 이력 없음 · `overdue` 기한 지남.\n\n`q` 는 자산번호와 이름을 함께 보고, `asset_no`·`name` 은 **그 열만** 본다 —\n화면은 열마다 거르므로 뒤엣것을 쓴다.\n\n`status_reason` 은 **왜 그 상태인지**에 든 글자다. `none` 이면 **근거를 안 적은\n장비** — 「폐기인데 왜 버렸는지가 없다」 가 이 칸을 만든 물음이다.\n\n`test_item=none` 은 **시험 항목이 하나도 없는 장비**다. 홈의 「남은 일」 이 그 줄로\n링크하므로, 세는 조건과 여기 거르는 조건이 같아야 한다.\n\n`attr` 은 **속성 값으로 거른다** — 여러 번 주면 모두 만족해야 한다.\n`attr=invest_year>=2020` · `attr=purpose~고온` · `attr=reserve_url*`(적혀 있기만 하면)\n· `attr=reserve_url!*`(**안 적힌 것** — 채워야 할 칸을 찾는다).\n왼쪽은 속성 정의의 `key` 다(이름이 아니다 — 이름은 관리자가 고치면 바뀐다).\n\n`catalog=unlinked` 는 **기종을 안 고른 장비**다. 그 기종이 카탈로그에 없어서 비운\n경우가 실제로 있고, 시스템 관리자가 이 목록을 보고 카탈로그를 채운다.",
         "operationId": "list_equipment_api_equipment_get",
         "parameters": [
           {
@@ -3379,6 +3379,23 @@
                 }
               ],
               "title": "Status"
+            }
+          },
+          {
+            "name": "status_reason",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string",
+                  "maxLength": 200
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Status Reason"
             }
           },
           {
@@ -14117,6 +14134,18 @@
             "title": "Status",
             "default": "operational"
           },
+          "status_reason": {
+            "anyOf": [
+              {
+                "type": "string",
+                "maxLength": 2000
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Status Reason"
+          },
           "acquired_on": {
             "anyOf": [
               {
@@ -15327,6 +15356,22 @@
             "type": "string",
             "title": "Status"
           },
+          "status_reason": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Status Reason"
+          },
+          "attachment_count": {
+            "type": "integer",
+            "title": "Attachment Count",
+            "default": 0
+          },
           "acquired_on": {
             "anyOf": [
               {
@@ -15472,6 +15517,7 @@
           "site",
           "location",
           "status",
+          "status_reason",
           "acquired_on",
           "manufactured_year",
           "retired_on",
@@ -17005,6 +17051,17 @@
               }
             ],
             "title": "Status"
+          },
+          "status_reason": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Status Reason"
           },
           "acquired_on": {
             "anyOf": [

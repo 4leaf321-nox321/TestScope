@@ -59,23 +59,34 @@ from app.database import Base
 #:   repair       고장 — 언제 돌아올지 모른다
 #:   retired      폐기 — 목록에서 빠지되 기록은 남는다
 #:
-#: **유휴를 고장과 한 칸에 두지 않는다.** 「안 쓰고 있다」 와 「못 쓴다」 는 빌리려는
-#: 사람에게 정반대다 — 유휴는 오히려 빌리기 가장 쉬운 장비다.
+#: **미사용을 고장과 한 칸에 두지 않는다.** 「안 쓰고 있다」 와 「못 쓴다」 는 빌리려는
+#: 사람에게 정반대다 — 미사용은 오히려 빌리기 가장 쉬운 장비다.
+#:
+#: 사람이 읽는 말은 화면이 갖는다(`frontend/src/modules/equipment/status.ts`). 여기는
+#: **저장하는 값**이다 — 값을 바꾸면 이미 적힌 줄이 전부 「모르는 상태」 가 되므로,
+#: 이름만 바뀐 것(유휴 → 미사용 · 고장 → 고장 수리중)은 값을 그대로 둔다.
 EQUIPMENT_STATUSES = (
     "incoming",
     "operational",
+    "stopped",
     "idle",
     "maintenance",
     "repair",
     "retired",
+    "struck",
+    "unknown",
 )
 
 #: 검색이 "쓸 수 있다" 로 세는 상태.
 #:
-#: **유휴가 들어간다** — 안 쓰고 있다는 것은 못 쓴다는 뜻이 아니다. 입고는 뺀다:
-#: 아직 자리에 안 앉은 장비를 가능하다고 답하면, 그 답을 믿고 일정을 짠 사람이
-#: 막힌다. 점검·수리·폐기도 같은 이유로 뺀다.
-AVAILABLE_STATUSES = ("operational", "idle")
+#: **미사용·미가동이 들어간다** — 안 쓰고 있다는 것은 못 쓴다는 뜻이 아니다. 고장
+#: 수리중·점검·교정은 뺀다: 지금 못 돌리는 장비를 「됩니다」 로 답하면 그 답을 믿고
+#: 일정을 짠 사람이 막힌다. 입고·폐기·취소선도 같은 이유로 뺀다.
+#:
+#: **미기재가 들어간다**(2026-10-01, 운영 판단) — 상태를 안 적었다고 검색에서 통째로
+#: 빼면 대장에 있는 장비가 없는 것이 된다. 대신 그 답은 「모르는 것을 됩니다로 말한
+#: 것」 이므로, 화면은 그 줄에 상태를 그대로 보여 준다.
+AVAILABLE_STATUSES = ("operational", "idle", "stopped", "unknown")
 
 #: 카탈로그 항목의 상태.
 #:   active        파는 것 / 쓰는 것
@@ -473,6 +484,16 @@ class Equipment(Base):
     status: Mapped[str] = mapped_column(
         String(20), default="operational", server_default="operational", index=True
     )
+    status_reason: Mapped[str | None] = mapped_column(Text, nullable=True)
+    """**왜 그 상태인가.** 「제어보드 고장, 부품 대기」 「과제 종료로 유휴」.
+
+    비고(`note`)와 다른 칸이다. 비고에는 온갖 것이 함께 적히므로 아무도 그것을 상태의
+    근거로 안 읽고, 상태가 바뀌어도 안 지워진다.
+
+    **상태가 바뀌면 사라진다**(`services.update`). 근거는 상태에 붙는 것이지 장비에 붙는
+    것이 아니다 — 고쳐서 가동으로 되돌렸는데 「제어보드 고장」 이 남아 있으면 목록은
+    가동 중인 장비에 고장 사유를 그려 준다."""
+
     acquired_on: Mapped[date | None] = mapped_column(Date, nullable=True)
     """도입일. 우리 것이 된 날이다 — 만들어진 날(`manufactured_year`)과 다르다."""
     manufactured_year: Mapped[int | None] = mapped_column(Integer, nullable=True)

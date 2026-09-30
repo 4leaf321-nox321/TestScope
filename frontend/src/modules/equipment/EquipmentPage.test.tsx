@@ -30,6 +30,7 @@ const ONE = {
   site: '본사',
   location: '1동',
   status: 'operational',
+  status_reason: null as string | null,
   test_items: ['인장'],
   calibration_required: false,
   calibration_missing: false,
@@ -130,6 +131,43 @@ describe('보유 장비 목록', () => {
     await open('/equipment?calibration=missing')
     expect(screen.getByPlaceholderText('자산번호')).toBeTruthy()
     expect(screen.getByText(/필터에 맞는 장비가 없습니다/)).toBeTruthy()
+  })
+
+  it('거르는 줄의 칸 수가 머리글과 같다 — 어긋나면 열이 통째로 밀린다', async () => {
+    /**
+     * 거르기는 머리글 **바로 아래 줄**이고, 칸이 자리로 맞춰진다. 열을 하나 더하면서
+     * 그 줄에 칸을 안 더하면 모든 거르기가 한 칸씩 밀려서, 「상태」 칸에 친 글자가
+     * 「위치」 로 나간다 — 화면은 멀쩡해 보이고 결과만 틀린다.
+     */
+    await open()
+    const rows = document.querySelectorAll('thead tr')
+    expect(rows.length).toBe(2)
+    expect(rows[1].children.length).toBe(rows[0].children.length)
+  })
+
+  it('상태 근거를 서버로 보낸다', async () => {
+    await open()
+    await act(async () => {
+      fireEvent.change(screen.getByPlaceholderText('상태 근거'), {
+        target: { value: '제어보드' },
+      })
+    })
+    await act(async () => {
+      await new Promise((done) => setTimeout(done, 300))
+    })
+    expect(lastList()).toContain('status_reason=%EC%A0%9C%EC%96%B4%EB%B3%B4%EB%93%9C')
+  })
+
+  it('근거가 필요한 상태에만 「미입력」 을 칠한다', async () => {
+    // 가동·입고는 이유를 물을 것이 없다 — 전부에 칠하면 그 표시가 아무 뜻도 없어진다.
+    await open()
+    expect(screen.queryByText('미입력')).toBeNull()
+
+    ONE.status = 'retired'
+    await open()
+    // 폐기인데 왜 버렸는지가 없다 — 반년 뒤 「그 장비 어디 갔냐」 에 답할 수 없다.
+    expect(screen.getByText('미입력')).toBeTruthy()
+    ONE.status = 'operational'
   })
 
   it('고를 수 있는 값을 서버에서 받아 온다', async () => {

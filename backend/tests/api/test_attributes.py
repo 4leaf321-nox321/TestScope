@@ -425,6 +425,13 @@ def test_보유_장비의_정식_속성은_설치가_심고_다시_심어도_안
             select(AttributeDefinition).where(AttributeDefinition.target == "equipment")
         )
     }
-    assert {"equipment_purpose", "investment_year", "reservation_url"} <= set(keys)
+    assert {
+        "equipment_purpose",
+        "investment_year",
+        "reservation_url",
+        # **AI 가 채우는 칸.** 장비 자료에서 뽑은 글이 의미 검색의 카드에 실린다 —
+        # 정식 속성이라야 카드에 들어간다(`shared/semantic.py`).
+        "equipment_document_digest",
+    } <= set(keys)
     assert keys["reservation_url"].status == "standard"
     assert keys["investment_year"].kind == "number"

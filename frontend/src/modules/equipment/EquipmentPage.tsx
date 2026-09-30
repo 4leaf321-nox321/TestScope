@@ -53,6 +53,7 @@ import {
   activeCount,
 } from '@/modules/equipment/EquipmentFilters'
 import type { EquipmentFilterState } from '@/modules/equipment/EquipmentFilters'
+import { NEEDS_REASON } from '@/modules/equipment/status'
 import { EquipmentImportDialog } from '@/modules/equipment/EquipmentImportDialog'
 import { EquipmentDialog } from '@/modules/equipment/EquipmentDialog'
 import { AttributeFilterBar } from '@/modules/attributes/AttributeFilterBar'
@@ -73,6 +74,7 @@ export default function EquipmentPage() {
     testItem: params.get('test_item') ?? '',
     catalog: params.get('catalog') ?? '',
     status: params.get('status') ?? '',
+    statusReason: params.get('status_reason') ?? '',
     workspace: params.get('workspace') ?? '',
     testItemTermId: params.get('test_item_term_id') ?? '',
   })
@@ -91,7 +93,13 @@ export default function EquipmentPage() {
   // 고르는 칸(피커·드롭다운)은 기다릴 것이 없지만, 한 자리에서 다루는 편이 낫다.
   useEffect(() => {
     const timer = setTimeout(
-      () => setFilters({ ...typed, assetNo: typed.assetNo.trim(), name: typed.name.trim() }),
+      () =>
+        setFilters({
+          ...typed,
+          assetNo: typed.assetNo.trim(),
+          name: typed.name.trim(),
+          statusReason: typed.statusReason.trim(),
+        }),
       250,
     )
     return () => clearTimeout(timer)
@@ -109,6 +117,7 @@ export default function EquipmentPage() {
         assetNo: filters.assetNo || undefined,
         name: filters.name || undefined,
         status: filters.status || undefined,
+        statusReason: filters.statusReason || undefined,
         workspace: filters.workspace || undefined,
         categoryTermId: filters.categoryTermId || undefined,
         siteTermId: filters.siteTermId || undefined,
@@ -254,6 +263,7 @@ export default function EquipmentPage() {
                 <TableHead>보유</TableHead>
                 <TableHead>위치</TableHead>
                 <TableHead>상태</TableHead>
+                <TableHead className="min-w-40">상태 근거</TableHead>
                 <TableHead>시험 항목</TableHead>
                 <TableHead>교정 예정</TableHead>
               </TableRow>
@@ -328,6 +338,18 @@ export default function EquipmentPage() {
                   </TableCell>
                   <TableCell>
                     <StatusBadge kind="equipment" value={one.status} />
+                  </TableCell>
+                  {/* **왜 그 상태인가.** 고장·유휴·폐기는 그 이유가 있어야 할 일이
+                      정해진다 — 「무엇이 고장인가」 「언제까지 유휴인가」 「왜 버렸나」.
+                      가동·입고는 이유를 물을 것이 없으므로 빈 칸을 흠으로 안 적는다. */}
+                  <TableCell className="min-w-40 text-sm">
+                    {one.status_reason ? (
+                      <span className="whitespace-pre-line">{one.status_reason}</span>
+                    ) : NEEDS_REASON.has(one.status) ? (
+                      <span className="text-amber-600">미입력</span>
+                    ) : (
+                      <span className="text-muted-foreground">—</span>
+                    )}
                   </TableCell>
                   <TableCell>
                     {/* **이 표에서 가장 중요한 칸이다.** 「우리가 무슨 시험을 할 수
