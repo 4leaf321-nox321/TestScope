@@ -13,17 +13,16 @@
  * 검토용 편집 화면을 따로 두면 두 벌이 되고, 그 둘은 반드시 갈라진다.
  */
 
-import { useState } from 'react'
 import { Link } from 'react-router-dom'
 
 import { BulkBar } from '@/shared/components/BulkBar'
-import type { BulkOutcome } from '@/shared/components/BulkBar'
 import { ErrorNotice } from '@/shared/components/ErrorNotice'
 import { Button } from '@/shared/components/ui/button'
 import { useResource } from '@/shared/hooks/useResource'
 import { useSelection } from '@/shared/hooks/useSelection'
 import { CandidateBadge, isCandidate } from '@/modules/reliability/CandidateReview'
 import { reliabilityApi } from '@/modules/reliability/api'
+import { useBulkRunner } from '@/modules/reliability/useBulkRunner'
 import type { BulkAction } from '@/modules/reliability/api'
 
 export function DocumentTestReview({ documentId }: { documentId: string }) {
@@ -35,19 +34,19 @@ export function DocumentTestReview({ documentId }: { documentId: string }) {
   // 「12건 실패」 를 받고 무엇이 왜 막혔는지 세어 보게 된다.
   const editable = rows.filter((one) => one.can_edit)
   const picked = useSelection(editable.map((one) => one.id))
-  const [busy, setBusy] = useState(false)
-  const [outcome, setOutcome] = useState<BulkOutcome | null>(null)
+  /**
+   * 끊어 보내고, **막히면 말한다** — 사업부 목록과 같은 것 하나를 쓴다.
+   *
+   * 여기도 `catch` 가 없어서 실패가 조용히 사라지고 있었다. 이 자리는 한 쪽(쉰 건)만
+   * 고를 수 있어 500 상한에 안 닿지만, 403·409 는 얼마든지 난다.
+   */
+  const bulk = useBulkRunner(() => {
+    picked.clear()
+    tests.reload()
+  })
 
-  async function runBulk(action: BulkAction, reason?: string) {
-    setBusy(true)
-    setOutcome(null)
-    try {
-      setOutcome(await reliabilityApi.bulk(picked.ids, action, reason))
-      picked.clear()
-      tests.reload()
-    } finally {
-      setBusy(false)
-    }
+  function runBulk(action: BulkAction, reason?: string) {
+    void bulk.run(picked.ids, action, reason)
   }
 
   if (rows.length === 0) {
@@ -73,7 +72,7 @@ export function DocumentTestReview({ documentId }: { documentId: string }) {
         )}
       </h3>
 
-      <ErrorNotice error={tests.error} />
+      <ErrorNotice error={bulk.error ?? tests.error} />
 
       {canEdit && (
         <>
@@ -96,22 +95,22 @@ export function DocumentTestReview({ documentId }: { documentId: string }) {
           <BulkBar
             count={picked.ids.length}
             onClear={picked.clear}
-            busy={busy}
-            outcome={outcome}
+            busy={bulk.busy}
+            outcome={bulk.outcome}
           >
-            <Button size="sm" disabled={busy} onClick={() => void runBulk('confirm')}>
+            <Button size="sm" disabled={bulk.busy} onClick={() => runBulk('confirm')}>
               확인
             </Button>
             <Button
               size="sm"
               variant="outline"
-              disabled={busy}
+              disabled={bulk.busy}
               onClick={() => {
                 // **사유를 받는다** — 없으면 AI 가 무엇을 자주 틀리는지 셀 수 없다.
                 const said = window.prompt(
                   `${picked.ids.length}건을 반려합니다. 사유를 적어 주십시오`,
                 )
-                if (said?.trim()) void runBulk('reject', said.trim())
+                if (said?.trim()) runBulk('reject', said.trim())
               }}
             >
               반려
@@ -119,14 +118,14 @@ export function DocumentTestReview({ documentId }: { documentId: string }) {
             <Button
               size="sm"
               variant="outline"
-              disabled={busy}
+              disabled={bulk.busy}
               onClick={() => {
                 // **확정을 푸는 것이라 사유를 받는다** — 문서 단위로 다시 볼 때 한 번에
                 // 푸는 일이 실제로 있다(개정본이 왔거나, 원문을 다시 파싱하려 할 때).
                 const said = window.prompt(
                   `${picked.ids.length}건의 확정을 풀어 다시 후보로 돌립니다. 사유를 적어 주십시오`,
                 )
-                if (said?.trim()) void runBulk('reopen', said.trim())
+                if (said?.trim()) runBulk('reopen', said.trim())
               }}
             >
               다시 후보로
@@ -134,10 +133,10 @@ export function DocumentTestReview({ documentId }: { documentId: string }) {
             <Button
               size="sm"
               variant="outline"
-              disabled={busy}
+              disabled={bulk.busy}
               onClick={() => {
                 if (window.confirm(`${picked.ids.length}건을 지웁니다. 되돌릴 수 없습니다.`)) {
-                  void runBulk('delete')
+                  runBulk('delete')
                 }
               }}
             >

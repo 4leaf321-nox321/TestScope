@@ -52,10 +52,10 @@ import {
   ReliabilityTestViewDialog,
   RowOpener,
 } from '@/modules/reliability/ReliabilityTestViewDialog'
-import { CHUNK, MAX_PAGE, PAGE, reliabilityApi } from '@/modules/reliability/api'
+import { MAX_PAGE, PAGE, reliabilityApi } from '@/modules/reliability/api'
+import { useBulkRunner } from '@/modules/reliability/useBulkRunner'
 import type { BulkAction } from '@/modules/reliability/api'
 import { BulkBar } from '@/shared/components/BulkBar'
-import type { BulkOutcome } from '@/shared/components/BulkBar'
 import { useSelection } from '@/shared/hooks/useSelection'
 import type { ReliabilityTest } from '@/modules/reliability/api'
 
@@ -74,10 +74,12 @@ export default function DivisionReliabilityPage() {
   const [asking, setAsking] = useState<ReliabilityTest | null>(null)
   /** 읽기만 하는 창 — 줄을 누르면 이것. */
   const [viewing, setViewing] = useState<ReliabilityTest | null>(null)
-  const [busy, setBusy] = useState(false)
-  const [outcome, setOutcome] = useState<BulkOutcome | null>(null)
-  /** 일괄 처리가 **통째로** 막혔을 때 — 줄마다의 실패는 `outcome` 이 말한다. */
-  const [bulkError, setBulkError] = useState<Error | null>(null)
+  /** 끊어 보내고, 막히면 말한다 — 문서 단위 검토와 **같은 것 하나**를 쓴다. */
+  const bulk = useBulkRunner(() => {
+    picked.clear()
+    setWholeSet(false)
+    tests.reload()
+  })
 
   const division = listed.data?.find((one) => one.code === code)
   const rows = tests.data?.items ?? []
@@ -88,39 +90,9 @@ export default function DivisionReliabilityPage() {
   /** 쪽을 넘어 **전부**에 적용할까. 끈 채로 두면 보이는 쪽만 건드린다. */
   const [wholeSet, setWholeSet] = useState(false)
 
-  /**
-   * 고른 줄에 한 번에 — 결과는 띠가 말한다(줄마다 성패가 갈린다).
-   *
-   * **오백 건씩 끊어 보낸다.** 서버가 한 번에 500건까지만 받는데(한 번의 실수가 되돌릴
-   * 수 없는 크기가 되지 않게), 1784건을 골라 누르면 422 가 나고 **화면은 그것을 안
-   * 잡았다** — 사람에게는 「눌러도 아무 일이 없다」 로 보였다(운영 실측 2026-09-30).
-   *
-   * 끊어 보내면서 **중간 결과를 쌓아 보여 준다.** 세 묶음째에서 막히면 앞의 둘은 이미
-   * 처리된 것이고, 그 경계를 사람이 알아야 다시 누를지 정할 수 있다.
-   */
-  async function runBulk(action: BulkAction, reason?: string) {
-    setBusy(true)
-    setOutcome(null)
-    setBulkError(null)
-    try {
-      const ids = wholeSet ? await everyId() : picked.ids
-      const sum: BulkOutcome = { requested: 0, done: [], failed: [] }
-      for (let at = 0; at < ids.length; at += CHUNK) {
-        const got = await reliabilityApi.bulk(ids.slice(at, at + CHUNK), action, reason)
-        sum.requested += got.requested
-        sum.done = [...sum.done, ...got.done]
-        sum.failed = [...sum.failed, ...got.failed]
-        setOutcome({ ...sum })
-      }
-      picked.clear()
-      setWholeSet(false)
-      tests.reload()
-    } catch (failed) {
-      // **잡지 않으면 조용히 끝난다** — 이것이 1784건이 「작동 안 하는」 것처럼 보인 이유다.
-      setBulkError(failed as Error)
-    } finally {
-      setBusy(false)
-    }
+  /** 고른 줄(또는 조건에 맞는 전부)에 한 번에. */
+  function runBulk(action: BulkAction, reason?: string) {
+    void bulk.run(wholeSet ? everyId : picked.ids, action, reason)
   }
 
   /** 지금 조건에 맞는 **전부**의 id. 쪽을 넘어 적용할 때만 부른다. */
@@ -184,7 +156,7 @@ export default function DivisionReliabilityPage() {
         </p>
       )}
 
-      <ErrorNotice error={bulkError ?? tests.error ?? listed.error} />
+      <ErrorNotice error={bulk.error ?? tests.error ?? listed.error} />
 
       {canEdit && (
         <BulkBar
@@ -193,8 +165,8 @@ export default function DivisionReliabilityPage() {
             picked.clear()
             setWholeSet(false)
           }}
-          busy={busy}
-          outcome={outcome}
+          busy={bulk.busy}
+          outcome={bulk.outcome}
         >
           {/**
            * **쪽을 넘어 전부에 적용할까.** 쪽을 나누고 나면 「보이는 것 전부」 가 쉰 건
@@ -207,25 +179,25 @@ export default function DivisionReliabilityPage() {
               <input
                 type="checkbox"
                 checked={wholeSet}
-                disabled={busy}
+                disabled={bulk.busy}
                 onChange={(event) => setWholeSet(event.target.checked)}
               />
               이 조건의 전체 {total}건에 적용
             </label>
           )}
-          <Button size="sm" disabled={busy} onClick={() => void runBulk('confirm')}>
+          <Button size="sm" disabled={bulk.busy} onClick={() => runBulk('confirm')}>
             확인
           </Button>
           <Button
             size="sm"
             variant="outline"
-            disabled={busy}
+            disabled={bulk.busy}
             onClick={() => {
               // **사유를 받는다** — 없으면 AI 가 무엇을 자주 틀리는지 셀 수 없다.
               const said = window.prompt(
                 `${wholeSet ? total : picked.ids.length}건을 반려합니다. 사유를 적어 주십시오`,
               )
-              if (said?.trim()) void runBulk('reject', said.trim())
+              if (said?.trim()) runBulk('reject', said.trim())
             }}
           >
             반려
@@ -233,7 +205,7 @@ export default function DivisionReliabilityPage() {
           <Button
             size="sm"
             variant="outline"
-            disabled={busy}
+            disabled={bulk.busy}
             onClick={() => {
               // **확정을 푸는 것이라 사유를 받는다.** 한 건씩 누를 때는 그 자리에서 보고
               // 누르지만, 서른 건이 한꺼번에 풀리면 반년 뒤에 「왜 풀렸나」 를 묻는 사람이
@@ -242,7 +214,7 @@ export default function DivisionReliabilityPage() {
                 `${wholeSet ? total : picked.ids.length}건의 확정을 풀어 다시 후보로 돌립니다.` +
                   ' 그 순간부터 AI 가 다시 채울 수 있습니다. 사유를 적어 주십시오',
               )
-              if (said?.trim()) void runBulk('reopen', said.trim())
+              if (said?.trim()) runBulk('reopen', said.trim())
             }}
           >
             다시 후보로
@@ -250,11 +222,11 @@ export default function DivisionReliabilityPage() {
           <Button
             size="sm"
             variant="outline"
-            disabled={busy}
+            disabled={bulk.busy}
             onClick={() => {
               const many = wholeSet ? total : picked.ids.length
               if (window.confirm(`${many}건을 지웁니다. 되돌릴 수 없습니다.`)) {
-                void runBulk('delete')
+                runBulk('delete')
               }
             }}
           >

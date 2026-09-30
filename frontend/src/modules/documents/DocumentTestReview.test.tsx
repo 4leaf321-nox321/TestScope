@@ -144,4 +144,20 @@ describe('문서 단위 검토', () => {
     })
     ask.mockRestore()
   })
+
+  it('막히면 화면이 말한다 — 조용히 끝나지 않는다', async () => {
+    /**
+     * 사업부 목록에서 1784건이 「눌러도 아무 일이 없던」 것과 같은 자리다 — `catch` 가
+     * 없으면 403·409 가 예외로 사라지고, 사람에게는 아무 일도 안 일어난 것으로 보인다.
+     */
+    await show([test_('t1')])
+    await act(async () => {
+      fireEvent.click(screen.getByLabelText('이 문서의 시험 전부 고르기'))
+    })
+    post.mockRejectedValueOnce(new Error('남의 사업부입니다'))
+    await act(async () => {
+      fireEvent.click(screen.getByText('확인'))
+    })
+    expect(screen.getByText(/남의 사업부입니다/)).toBeTruthy()
+  })
 })
