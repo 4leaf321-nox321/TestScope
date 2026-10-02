@@ -25,8 +25,15 @@
  *
  * 고칠 때 걸리는 자리가 하나 있다. 이 주소는 **포트까지 글자 그대로** 서버의
  * `MCP_ALLOWED_HOSTS` 에 있어야 한다 — 서버가 Host 헤더를 그 목록과 글자로 견주므로,
- * 허용에 `127.0.0.1:8022` 만 있으면 같은 기계라도 `localhost:8022` 로 들어온 요청은
- * **421** 이다(`mcp_server/bind.py`). 그 421 은 토큰 문제처럼 보이지 않으니 미리 말한다.
+ * 같은 기계라도 `localhost` 로 붙는 것과 숫자 주소로 붙는 것은 서로 다른 글자다
+ * (`mcp_server/bind.py`). 그 **421** 은 토큰 문제처럼 보이지 않으니 미리 말한다.
+ *
+ * ## 화면에 나가는 글에 **숫자 주소를 적지 않는다**
+ *
+ * 릴리스 포장이 번들에서 개발 서버 주소를 찾으면 거기서 떨어진다 — 「프론트는 API 절대주소를
+ * 굽지 않는다」 를 지키는 검사다(`scripts/ci/package_deploy.ps1`). 설명하려고 **예로 적은
+ * 글자도 똑같이 걸리고**, 그 검사는 태그가 붙은 **뒤에** 돈다 — 0.45.0 이 그렇게 떨어졌다.
+ * 그래서 같은 검사를 시험으로 당겨 두었다(`McpSetup.test.tsx`).
  */
 
 import { useState } from 'react'
@@ -167,16 +174,19 @@ NODE_OPTIONS = "--use-system-ca"`
         </TabsContent>
       </Tabs>
 
-      {/* **주소를 고칠 사람에게 미리 말한다.** 421 은 토큰 문제처럼 보이지 않는다. */}
+      {/* **주소를 고칠 사람에게 미리 말한다.** 421 은 토큰 문제처럼 보이지 않는다.
+          여기에 숫자 주소를 **예로 적지 않는다** — 릴리스 포장이 번들에서 그 글자를
+          찾으면 떨어진다(`scripts/ci/package_deploy.ps1`). 시험이 그것을 막는다. */}
       <p className="text-muted-foreground text-xs">
         주소는 지금 보고 있는 서버(<code className="font-mono">{url}</code>)로 짐작한 것입니다
         — MCP 서버가 다른 기계나 포트에서 돌면 그 부분을 고치세요. 고친 주소는{' '}
         <strong>포트까지 그대로</strong> 서버의{' '}
-        <code className="font-mono">MCP_ALLOWED_HOSTS</code> 에 있어야 합니다. 글자로 견주므로{' '}
-        <code className="font-mono">127.0.0.1:8022</code> 만 허용된 서버에{' '}
-        <code className="font-mono">localhost:8022</code> 로 붙으면 같은 기계라도{' '}
-        <strong>421</strong> 이 옵니다. Claude Code 를 뺀 셋은 <strong>Node.js</strong> 가
-        있어야 합니다(<code className="font-mono">npx</code> 를 씁니다).
+        <code className="font-mono">MCP_ALLOWED_HOSTS</code> 에 있어야 합니다. 서버는 Host 를{' '}
+        <strong>글자로</strong> 견주므로, 같은 기계라도{' '}
+        <code className="font-mono">localhost</code> 로 붙는 것과 숫자 주소로 붙는 것은 서로
+        다른 글자입니다 — 목록에 없는 쪽으로 붙으면 <strong>421</strong> 이 옵니다. Claude Code
+        를 뺀 셋은 <strong>Node.js</strong> 가 있어야 합니다(
+        <code className="font-mono">npx</code> 를 씁니다).
       </p>
 
       {/* 막는 자리가 둘이라, 토큰으로 못 푸는 403 이 있다. 이 화면이 바로 사람이

@@ -60,4 +60,16 @@ describe('McpSetup', () => {
     expect(screen.getByText(/MCP_ALLOWED_HOSTS/)).toBeInTheDocument()
     expect(screen.getByText(/421/)).toBeInTheDocument()
   })
+
+  it('개발 서버 주소를 글자로 적지 않는다', () => {
+    // **릴리스 포장이 번들에서 이 글자를 찾으면 떨어진다**(`scripts/ci/package_deploy.ps1`)
+    // — 프론트가 API 절대주소를 굽지 않는다는 약속을 지키는 검사다. 설명하려고 예로 적은
+    // 글자도 똑같이 걸린다.
+    //
+    // 그 검사는 **태그가 붙은 뒤**에 도는 포장 단계에 있다. 0.45.0 이 거기서 떨어져
+    // 태그만 남고 배포판이 안 나왔다(2026-10-02). 그래서 여기로 당겨 온다 — 같은 고장을
+    // `npm test` 에서 몇 초 만에 본다.
+    const { container } = render(<McpSetup token="tsc_pat_abc123" />)
+    expect(container.textContent ?? '').not.toContain('127.0.0.1:80')
+  })
 })
