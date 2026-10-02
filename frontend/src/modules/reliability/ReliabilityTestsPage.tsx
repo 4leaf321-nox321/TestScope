@@ -25,15 +25,25 @@
  * 열이 서른을 넘으므로 표를 **화면 높이에 가둔다**(`viewport`) — 안 그러면 가로 스크롤
  * 막대가 표 맨 아래에 있어서, 오른쪽 열을 보려면 먼저 세로로 끝까지 내려가야 한다.
  *
+ * ## 한 줄에 **한 줄**
+ *
+ * 열마다 폭을 안 내놓으면 긴 값이 접히고, 접힌 칸 하나가 그 줄 전체를 높게 만든다 — 줄이
+ * 열 줄 높이면 위아래 줄을 눈으로 못 잇고, 그러면 표가 아니라 카드 더미가 된다(2026-10-03).
+ *
+ * 그래서 **값 칸은 안 접는다**: 속성 열과 시험 항목은 `whitespace-nowrap` 이고 폭 상한이
+ * 없다 — 내용만큼 넓어지고, 넘치는 것은 표가 가로로 스크롤한다(`viewport`).
+ *
+ * **목적만 다르다.** 프로즈라서 「안 접힐 만큼 넓게」 가 성립하지 않는다 — 한 문단을 한
+ * 줄로 펼치면 그 열 하나가 수천 픽셀이 되고 나머지 열이 저 밖으로 밀린다. 그래서 목적은
+ * 한 줄로 자르고(`truncate`) 전문은 툴팁과 보기 창에 둔다. 자르려면 **확정 상한**이
+ * 있어야 한다(`max-w-96`): `w-full` 이면 표가 그 한 줄을 다 담으려고 열을 늘려서 생략표가
+ * 아예 안 생긴다.
+ *
  * ## 좁은 창에서는 열을 접는다
  *
- * 시험 항목은 줄바꿈이 안 되는 덩어리라 폭을 안 내놓는다. 그래서 창이 좁아지면 **목적 열만
- * 혼자 찌그러져** 글자 한 자 폭이 된다(높이는 수십 줄). 줄을 누르면 카드 전체가 보기 창에
- * 열리므로, 좁을 때는 **덜 급한 열을 아예 접는다**: 목적(lg) → 시험 항목(md) 순으로
+ * 시험 항목은 줄바꿈이 안 되는 덩어리라 폭을 안 내놓는다. 줄을 누르면 카드 전체가 보기
+ * 창에 열리므로, 좁을 때는 **덜 급한 열을 아예 접는다**: 목적(lg) → 시험 항목(md) 순으로
  * 사라지고 이름과 단추는 끝까지 남는다.
- *
- * 목적 열은 `w-` 가 아니라 **`min-w-`** 다. `w-` 는 표가 눌리면 브라우저가 그냥 무시해서
- * 다시 한 자 폭이 된다.
  */
 
 import { useCallback, useEffect, useMemo, useState } from 'react'
@@ -227,7 +237,7 @@ export default function ReliabilityTestsPage() {
               <TableHead className="min-w-44">
                 <NameHead rows={rowFilters} />
               </TableHead>
-              <TableHead className="hidden w-full min-w-96 lg:table-cell">
+              <TableHead className="hidden max-w-96 min-w-96 lg:table-cell">
                 <PurposeHead rows={rowFilters} />
               </TableHead>
               <TableHead className="hidden min-w-48 md:table-cell">
@@ -272,8 +282,8 @@ export default function ReliabilityTestsPage() {
                 </TableCell>
                 {/* **줄 수를 묶는다.** 목적이 열 줄이면 표가 그만큼 성기어져 위아래 줄을
                     눈으로 못 잇는다. 전문은 줄을 눌러 보기 창에서 읽는다. */}
-                <TableCell className="text-muted-foreground hidden w-full min-w-96 align-top text-sm lg:table-cell">
-                  <p className="line-clamp-3 whitespace-pre-line" title={row.purpose}>
+                <TableCell className="text-muted-foreground hidden max-w-96 min-w-96 align-top text-sm lg:table-cell">
+                  <p className="truncate" title={row.purpose}>
                     {row.purpose || '—'}
                   </p>
                 </TableCell>
@@ -281,7 +291,7 @@ export default function ReliabilityTestsPage() {
                   {row.test_items.length === 0 ? (
                     <span className="text-muted-foreground text-sm">시험 항목 미지정</span>
                   ) : (
-                    <ul className="flex flex-wrap gap-x-3 gap-y-1 text-sm">
+                    <ul className="flex gap-x-3 text-sm">
                       {row.test_items.map((item) => (
                         <li key={item.term_id} className="flex items-center gap-1">
                           <Link

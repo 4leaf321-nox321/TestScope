@@ -13,6 +13,7 @@
  *    어떤 비교도 안 걸린다).
  * 5. 지금 값만 — 과거 판의 값은 이 자리의 답이 아니다.
  * 6. 열을 접으면 머리글도 값 칸도 함께 사라진다.
+ * 7. **값 칸은 안 접힌다** — 접힌 칸 하나가 그 줄 전체를 높게 만든다.
  */
 
 import { afterEach, describe as suite, expect, it, vi } from 'vitest'
@@ -201,6 +202,23 @@ suite('속성 열', () => {
       fireEvent.click(screen.getByText('필터 적용'))
     })
     expect(asked).toEqual([])
+  })
+
+  it('값 칸은 안 접힌다 — 접힌 칸 하나가 그 줄 전체를 높게 만든다', async () => {
+    // 긴 값이 접히면 줄이 열 줄 높이가 되고, 그러면 위아래 줄을 눈으로 못 잇는다(2026-10-03).
+    //
+    // **`whitespace-nowrap` 은 여기서 안 본다** — `TableCell` 이 기본으로 갖고 있어서
+    // 무엇을 고쳐도 통과한다(처음에 그것을 단정으로 썼다가 죽은 시험을 만들었다). 실제
+    // 범인 둘만 본다: 폭 상한과, 칸의 nowrap 을 이기는 `whitespace-pre-line`.
+    await show()
+    const value = screen.getByText('85 degC')
+    const cell = value.closest('td')
+    expect(cell).not.toBeNull()
+    // 상한이 있으면 그 폭에서 글자가 넘치고, 넘치면 접힌다.
+    expect(cell?.className ?? '').not.toContain('max-w-')
+    // 값 쪽 클래스가 칸의 nowrap 을 되돌리면 안 된다.
+    expect(value.className).not.toContain('whitespace-pre-line')
+    expect(value.className).not.toContain('break-words')
   })
 
   it('열을 접으면 머리글도 값 칸도 함께 사라진다', async () => {

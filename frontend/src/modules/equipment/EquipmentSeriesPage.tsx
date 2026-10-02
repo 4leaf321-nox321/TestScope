@@ -25,7 +25,6 @@ import { isSystemAdmin } from '@/shared/auth/roles'
 import { EmptyState } from '@/shared/components/EmptyState'
 import { ErrorNotice } from '@/shared/components/ErrorNotice'
 import { PageHeader } from '@/shared/components/PageHeader'
-import { Pager } from '@/shared/components/Pager'
 import { Button } from '@/shared/components/ui/button'
 import {
   Table,
@@ -35,6 +34,7 @@ import {
   TableHeader,
   TableRow,
 } from '@/shared/components/ui/table'
+import { fetchAll } from '@/shared/api/fetchAll'
 import { useResource } from '@/shared/hooks/useResource'
 import { AttributeFilterBar } from '@/modules/attributes/AttributeFilterBar'
 import { useBackFromReference } from '@/shared/hooks/useBackFromReference'
@@ -56,9 +56,17 @@ const KIND_LABEL: Record<string, string> = {
   software: '소프트웨어',
 }
 
-/** 한 쪽에 몇 줄. 서버 상한(200)보다 작게 둔다 — 상한까지 받아 놓고 쪽 넘김을 안
- *  달면 나머지가 조용히 사라지고, 그 사실은 화면 어디에도 안 남는다. */
-const PAGE_SIZE = 50
+/**
+ * **쪽으로 안 끊는다.** 카탈로그는 한 화면에 놓고 훑는 목록이다 — 기종 1608개를 50개씩
+ * 서른세 쪽으로 끊으면 「이 제조사 것이 몇 종인가」 를 사람이 종이에 적으며 봐야 한다.
+ *
+ * 그래서 `fetchAll` 로 **`total` 에 닿을 때까지** 받는다. 상한까지만 받아 놓고 「전부」 라고
+ * 그리면 나머지가 조용히 사라지고, 그 사실은 화면 어디에도 안 남는다. 덜 받은 경우에는
+ * 목록 아래에 적는다.
+ *
+ * 서버 상한도 카탈로그만 따로 높다(`CATALOG_MAX_LIMIT`). 전역으로 올리지 않은 이유는
+ * 측정으로 남아 있다 — 신뢰성 시험 1784건을 통째로 그리면 브라우저가 멎는다.
+ */
 
 export default function EquipmentSeriesPage() {
   const { user } = useAuth()
@@ -76,7 +84,6 @@ export default function EquipmentSeriesPage() {
   })
   const [typed, setTyped] = useState<SeriesFilterState>(fromUrl)
   const [filters, setFilters] = useState<SeriesFilterState>(fromUrl)
-  const [offset, setOffset] = useState(0)
   // 속성 조건 — 목록마다 같은 칸, 같은 문법.
   const [attrs, setAttrs] = useState<string[]>([])
   const [creating, setCreating] = useState(false)
@@ -87,31 +94,27 @@ export default function EquipmentSeriesPage() {
     return () => clearTimeout(timer)
   }, [typed])
 
-  // **거르기가 바뀌면 첫 쪽으로.** 안 그러면 세 번째 쪽을 보던 사람이 거르는 순간
-  // 빈 화면을 보고 그것을 「결과 없음」 으로 읽는다.
-  useEffect(() => {
-    setOffset(0)
-  }, [filters])
-
   // **한 번만 받는다.** 거를 때마다 다시 받으면 고르는 사이에 선택지가 흔들린다.
   const options = useResource(() => seriesApi.filterOptions(), [])
 
   const page = useResource(
     () =>
-      seriesApi.list({
-        name: filters.name || undefined,
-        kind: filters.kind || undefined,
-        makerTermId: filters.makerTermId || undefined,
-        categoryTermId: filters.categoryTermId || undefined,
-        status: filters.status || undefined,
-        models: filters.models || undefined,
-        testItem: filters.testItem || undefined,
-        owned: filters.owned === 'owned',
-        attrs,
-        limit: PAGE_SIZE,
-        offset,
-      }),
-    [filters, attrs, offset],
+      fetchAll((limit, offset) =>
+        seriesApi.list({
+          name: filters.name || undefined,
+          kind: filters.kind || undefined,
+          makerTermId: filters.makerTermId || undefined,
+          categoryTermId: filters.categoryTermId || undefined,
+          status: filters.status || undefined,
+          models: filters.models || undefined,
+          testItem: filters.testItem || undefined,
+          owned: filters.owned === 'owned',
+          attrs,
+          limit,
+          offset,
+        }),
+      ),
+    [filters, attrs],
   )
 
   return (
@@ -252,14 +255,12 @@ export default function EquipmentSeriesPage() {
             </TableBody>
           </Table>
 
-          {page.data && (
-            <Pager
-              total={page.data.total}
-              limit={page.data.limit}
-              offset={page.data.offset}
-              onOffset={setOffset}
-              unit="계열"
-            />
+          {page.data && !page.data.done && (
+            // **덜 받았으면 말한다.** 쪽 넘김이 없으니 이 줄이 유일한 경고다.
+            <p className="text-muted-foreground px-1 py-2 text-xs">
+              계열 {page.data.total}건 중 {page.data.items.length}건만 받았습니다 — 조건으로
+              좁히십시오.
+            </p>
           )}
         </div>
       )}

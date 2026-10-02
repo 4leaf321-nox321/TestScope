@@ -124,10 +124,15 @@ describe('계열 목록의 열별 거르기', () => {
     expect(lastList()).toContain('owned=true')
   })
 
-  it('쪽 넘김이 있다', async () => {
+  it('쪽으로 안 끊고 끝까지 받는다 — 50개씩 끊으면 계열 433개가 아홉 쪽이 된다', async () => {
     await open()
-    // 상한까지 받아 놓고 쪽 넘김을 안 달면 나머지가 조용히 사라진다.
-    expect(lastList()).toContain('limit=50')
+    // 쪽 넘김을 없앴으므로 **한 번에 많이** 달라고 해야 한다. 50 으로 돌아가면 나머지가
+    // 조용히 사라진다 — 쪽 넘김이 없으니 그것을 되찾을 길도 함께 없다(2026-10-03).
+    expect(lastList()).not.toContain('limit=50')
+    const asked = Number(new URL(`http://x${lastList()}`).searchParams.get('limit'))
+    expect(asked).toBeGreaterThan(400)
+    // 그리고 **못 받은 것은 말한다** — `fetchAll` 이 `done:false` 를 주면 목록 아래에 적힌다.
+    expect(screen.queryByText(/건만 받았습니다/)).toBeNull()
   })
 
   it('걸러서 0 건이 되어도 거르는 줄은 남는다', async () => {

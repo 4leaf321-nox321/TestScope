@@ -298,7 +298,7 @@ export function AttributeHeadCells({
   return (
     <>
       {columns.map((one) => (
-        <TableHead key={one.id} className="max-w-56 min-w-36">
+        <TableHead key={one.id} className="min-w-36">
           <ColumnFilter definition={one} value={value} onChange={onChange} />
         </TableHead>
       ))}
@@ -338,7 +338,7 @@ export function AttributeBodyCells({
           (item) => item.display || item.note,
         )
         return (
-          <TableCell key={one.id} className="max-w-56 min-w-36 align-top text-sm">
+          <TableCell key={one.id} className="min-w-36 align-top text-sm">
             {mine.length === 0 ? (
               // **빈 칸을 「—」 로 적는다** — 아무것도 안 그리면 열이 밀린 것인지 값이
               // 없는 것인지 구별이 안 된다.
@@ -353,11 +353,11 @@ export function AttributeBodyCells({
                       </span>
                     )}
                     {item.display ? (
-                      <span className="break-words whitespace-pre-line">{item.display}</span>
+                      <span>{item.display}</span>
                     ) : (
                       // 값 없이 비고만 — **값으로 안 센다**(「값 없음」 에 걸린다).
                       <span
-                        className="text-muted-foreground break-words whitespace-pre-line italic"
+                        className="text-muted-foreground italic"
                         title="값 없이 비고만 적힌 항목입니다"
                       >
                         {item.note}

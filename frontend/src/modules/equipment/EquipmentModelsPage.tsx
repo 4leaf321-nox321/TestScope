@@ -28,7 +28,6 @@ import { isSystemAdmin } from '@/shared/auth/roles'
 import { EmptyState } from '@/shared/components/EmptyState'
 import { ErrorNotice } from '@/shared/components/ErrorNotice'
 import { PageHeader } from '@/shared/components/PageHeader'
-import { Pager } from '@/shared/components/Pager'
 import { Button } from '@/shared/components/ui/button'
 import { Badge } from '@/shared/components/ui/badge'
 import {
@@ -39,6 +38,7 @@ import {
   TableHeader,
   TableRow,
 } from '@/shared/components/ui/table'
+import { fetchAll } from '@/shared/api/fetchAll'
 import { useResource } from '@/shared/hooks/useResource'
 import { useBackFromReference } from '@/shared/hooks/useBackFromReference'
 import { catalogApi } from '@/modules/equipment/api'
@@ -60,9 +60,17 @@ const ISSUE_NOTE: Record<string, string> = {
     '반입이 원본 카탈로그의 표를 잘못 읽었을 수 있다고 표시한 기종입니다. 원본을 열어 확인한 뒤 비고의 표시를 지우십시오.',
 }
 
-/** 한 쪽에 몇 줄. 서버 상한(200)보다 작게 둔다 — 상한까지 받아 놓고 안 그리면
- *  나머지가 조용히 사라지고, 그 사실은 화면 어디에도 안 남는다. */
-const PAGE_SIZE = 50
+/**
+ * **쪽으로 안 끊는다.** 카탈로그는 한 화면에 놓고 훑는 목록이다 — 기종 1608개를 50개씩
+ * 서른세 쪽으로 끊으면 「이 제조사 것이 몇 종인가」 를 사람이 종이에 적으며 봐야 한다.
+ *
+ * 그래서 `fetchAll` 로 **`total` 에 닿을 때까지** 받는다. 상한까지만 받아 놓고 「전부」 라고
+ * 그리면 나머지가 조용히 사라지고, 그 사실은 화면 어디에도 안 남는다. 덜 받은 경우에는
+ * 목록 아래에 적는다.
+ *
+ * 서버 상한도 카탈로그만 따로 높다(`CATALOG_MAX_LIMIT`). 전역으로 올리지 않은 이유는
+ * 측정으로 남아 있다 — 신뢰성 시험 1784건을 통째로 그리면 브라우저가 멎는다.
+ */
 
 /** 목록 한 줄에 시험 항목 이름을 몇 개까지. 나머지는 수로 접는다. */
 const ITEMS_SHOWN = 2
@@ -109,7 +117,6 @@ export default function EquipmentModelsPage() {
   // **물어보는 쪽도 같은 값으로 시작한다.** 여기를 비우면 첫 조회가 거르기 없이
   // 나가고, 그 한순간이 「안 걸러졌다」 로 읽힌다.
   const [filters, setFilters] = useState<ModelFilterState>(fromUrl)
-  const [offset, setOffset] = useState(0)
   const [creating, setCreating] = useState(false)
 
   // 글자마다 조회하지 않는다 — 타이핑 중에 결과가 요동치면 읽는 눈이 미끄러진다.
@@ -118,29 +125,25 @@ export default function EquipmentModelsPage() {
     return () => clearTimeout(timer)
   }, [typed])
 
-  // **거르기가 바뀌면 첫 쪽으로 돌아간다.** 안 그러면 세 번째 쪽을 보던 사람이
-  // 검색어를 치는 순간 빈 화면을 보고, 그것을 「결과 없음」 으로 읽는다.
-  useEffect(() => {
-    setOffset(0)
-  }, [filters])
-
   // **한 번만 받는다.** 거를 때마다 다시 받으면 고르는 사이에 선택지가 흔들린다.
   const options = useResource(() => catalogApi.filterOptions(), [])
 
   const page = useResource(
     () =>
-      catalogApi.list({
-        name: filters.name || undefined,
-        seriesId: filters.seriesId || undefined,
-        makerTermId: filters.makerTermId || undefined,
-        categoryTermId: filters.categoryTermId || undefined,
-        spec: filters.spec || undefined,
-        testItem: filters.testItem || undefined,
-        owned: filters.owned === 'owned',
-        limit: PAGE_SIZE,
-        offset,
-      }),
-    [filters, offset],
+      fetchAll((limit, offset) =>
+        catalogApi.list({
+          name: filters.name || undefined,
+          seriesId: filters.seriesId || undefined,
+          makerTermId: filters.makerTermId || undefined,
+          categoryTermId: filters.categoryTermId || undefined,
+          spec: filters.spec || undefined,
+          testItem: filters.testItem || undefined,
+          owned: filters.owned === 'owned',
+          limit,
+          offset,
+        }),
+      ),
+    [filters],
   )
 
   return (
@@ -300,14 +303,12 @@ export default function EquipmentModelsPage() {
             </TableBody>
           </Table>
 
-          {page.data && (
-            <Pager
-              total={page.data.total}
-              limit={page.data.limit}
-              offset={page.data.offset}
-              onOffset={setOffset}
-              unit="기종"
-            />
+          {page.data && !page.data.done && (
+            // **덜 받았으면 말한다.** 쪽 넘김이 없으니 이 줄이 유일한 경고다.
+            <p className="text-muted-foreground px-1 py-2 text-xs">
+              기종 {page.data.total}건 중 {page.data.items.length}건만 받았습니다 — 조건으로
+              좁히십시오.
+            </p>
           )}
         </div>
       )}

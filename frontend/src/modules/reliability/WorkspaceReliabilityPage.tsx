@@ -19,10 +19,12 @@
  * 위험하고(읽다가 글자를 건드린다), 고칠 권한이 없는 사람은 연필이 없어 카드를 열 길이
  * 아예 없었다.
  *
- * 좁은 창에서는 **덜 급한 열을 접는다**(목적 → 시험 항목 순). 시험 항목은 줄바꿈이 안 되는
- * 덩어리라 폭을 안 내놓고, 그러면 목적 열만 혼자 찌그러져 글자 한 자 폭이 된다 — 전사
- * 목록과 같은 규칙이다. 목적 열은 `w-` 가 아니라 **`min-w-`** 라야 한다: `w-` 는 표가
- * 눌리면 브라우저가 무시한다.
+ * 좁은 창에서는 **덜 급한 열을 접는다**(목적 → 시험 항목 순) — 전사 목록과 같은 규칙이다.
+ *
+ * **줄 하나는 한 줄 높이다.** 값 칸은 안 접고(속성·시험 항목은 `whitespace-nowrap`, 폭
+ * 상한 없음) 넘치는 것은 표가 가로로 스크롤한다. 목적만 프로즈라 한 줄로 자르는데, 자르려면
+ * `max-w-96` 같은 **확정 상한**이 있어야 한다 — `w-full` 이면 표가 그 한 줄을 다 담으려고
+ * 열을 늘려서 생략표가 안 생긴다. 규칙의 이유는 전사 목록 주석에 적어 두었다.
  *
  * ## 속성은 **열로** 선다
  *
@@ -362,7 +364,7 @@ export default function DivisionReliabilityPage() {
               <TableHead className="min-w-44">
                 <NameHead rows={rowFilters} />
               </TableHead>
-              <TableHead className="hidden w-full min-w-96 lg:table-cell">
+              <TableHead className="hidden max-w-96 min-w-96 lg:table-cell">
                 <PurposeHead rows={rowFilters} />
               </TableHead>
               <TableHead className="hidden min-w-48 md:table-cell">
@@ -409,8 +411,8 @@ export default function DivisionReliabilityPage() {
                   </RowOpener>
                 </TableCell>
                 {/* **줄 수를 묶는다.** 전문은 줄을 눌러 보기 창에서 읽는다. */}
-                <TableCell className="text-muted-foreground hidden w-full min-w-96 align-top text-sm lg:table-cell">
-                  <p className="line-clamp-3 whitespace-pre-line" title={row.purpose}>
+                <TableCell className="text-muted-foreground hidden max-w-96 min-w-96 align-top text-sm lg:table-cell">
+                  <p className="truncate" title={row.purpose}>
                     {row.purpose || '—'}
                   </p>
                 </TableCell>
@@ -419,7 +421,7 @@ export default function DivisionReliabilityPage() {
                     // 「장비 없음」 이 아니라 「안 정함」 — 둘은 해야 할 일이 다르다.
                     <span className="text-muted-foreground text-sm">시험 항목 미지정</span>
                   ) : (
-                    <ul className="flex flex-wrap gap-x-3 gap-y-1 text-sm">
+                    <ul className="flex gap-x-3 text-sm">
                       {row.test_items.map((item) => (
                         <li key={item.term_id} className="flex items-center gap-1">
                           <Link

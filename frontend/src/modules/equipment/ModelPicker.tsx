@@ -1,11 +1,15 @@
 /**
  * 기종 고르기 — **서버가 거른다. 계열로 좁힐 수 있다.**
  *
- * ## 목록을 통째로 받아 두지 않는다
+ * ## 거르는 것은 서버고, **고를 것을 숨기지 않는다**
  *
- * 카탈로그가 563기종이고 서버 상한은 한 번에 200이라, 받아 두는 방식은 **363기종을
- * 조용히 안 보여 준다** — 못 찾은 사람은 「카탈로그에 없구나」 하고 빈 칸으로
- * 저장한다. 실제로 그랬다. 그래서 타이핑을 서버로 보낸다.
+ * 전에는 목록을 통째로 받아 뒀다. 카탈로그 563기종에 서버 상한이 한 번에 200이라 **363기종을
+ * 조용히 안 보여 줬고**, 못 찾은 사람은 「카탈로그에 없구나」 하고 빈 칸으로 저장했다.
+ * 실제로 그랬다. 그래서 타이핑을 서버로 보낸다.
+ *
+ * 그 뒤로도 한 번에 50건만 받아 「1608건 중 50건」 이라고 적어 뒀는데, 그 줄을 읽어도 할 수
+ * 있는 일은 더 치는 것뿐이었다 — 라벨을 아직 못 본 사람에게는 막힌 길이다. 그래서 이제
+ * **끝까지 받는다**(`fetchAll`). 왕복 상한에 걸려 덜 받으면 아래 줄에 그 사실을 적는다.
  *
  * ## 계열로 한 번 좁힌다
  *
@@ -22,6 +26,7 @@ import { Check, ChevronRight, ChevronsUpDown, X } from 'lucide-react'
 import { Button } from '@/shared/components/ui/button'
 import { Input } from '@/shared/components/ui/input'
 import { Popover, PopoverContent, PopoverTrigger } from '@/shared/components/ui/popover'
+import { fetchAll } from '@/shared/api/fetchAll'
 import { useResource } from '@/shared/hooks/useResource'
 import { catalogApi, seriesApi } from '@/modules/equipment/api'
 import type { EquipmentModelRow } from '@/modules/equipment/api'
@@ -56,17 +61,17 @@ export function ModelPicker({
 
   const page = useResource(
     () =>
-      catalogApi.list({
-        q: query || undefined,
-        seriesId: series?.id,
-        limit: 50,
-      }),
+      fetchAll((limit, offset) =>
+        catalogApi.list({ q: query || undefined, seriesId: series?.id, limit, offset }),
+      ),
     [query, series?.id],
   )
   const seriesPage = useResource(
     () =>
       mode === 'series'
-        ? seriesApi.list({ q: query || undefined, kind: 'main', limit: 50 })
+        ? fetchAll((limit, offset) =>
+            seriesApi.list({ q: query || undefined, kind: 'main', limit, offset }),
+          )
         : Promise.resolve(null),
     [query, mode],
   )
@@ -255,7 +260,9 @@ export function ModelPicker({
             const shown = browsing ? seriesRows.length : rows.length
             const all = browsing ? (seriesPage.data?.total ?? 0) : total
             if (all === 0) return ' '
-            if (all > shown) return `${all}건 중 ${shown}건. 더 자세히 입력하십시오.`
+            // **덜 받았으면 그렇게 적는다.** 왕복 상한에 걸린 경우뿐이다 — 조용히
+            // 끊는 것이 이 화면의 머리 주석이 말하는 그 사고다.
+            if (all > shown) return `${all}건 중 ${shown}건만 받았습니다. 검색어로 좁히십시오.`
             return browsing ? `계열 ${all}건` : `기종 ${all}건`
           })()}
         </p>

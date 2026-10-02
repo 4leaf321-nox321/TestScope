@@ -63,7 +63,7 @@ from app.modules.equipment.schemas import (
     SpecSourceOut,
 )
 from app.shared.auth import current_user, require_system_admin
-from app.shared.pagination import MAX_LIMIT, Page, clamp_limit
+from app.shared.pagination import CATALOG_MAX_LIMIT, MAX_LIMIT, Page, clamp_limit
 from app.shared.permissions import get_equipment, require_owner_edit
 
 router = APIRouter(prefix="/equipment", tags=["equipment"])
@@ -435,7 +435,7 @@ def list_series(
     test_item: str | None = Query(default=None, pattern="^none$"),
     owned: bool = Query(default=False),
     attr: list[str] = Query(default_factory=list, max_length=10),
-    limit: int = Query(default=50, ge=1, le=MAX_LIMIT),
+    limit: int = Query(default=50, ge=1, le=CATALOG_MAX_LIMIT),
     offset: int = Query(default=0, ge=0),
     user: User = Depends(current_user),
     db: Session = Depends(get_db),
@@ -470,7 +470,7 @@ def list_series(
         test_item=test_item,
         owned=owned,
         attrs=attr,
-        limit=clamp_limit(limit),
+        limit=clamp_limit(limit, cap=CATALOG_MAX_LIMIT),
         offset=offset,
     )
 
@@ -636,7 +636,7 @@ def list_models(
     spec: str | None = Query(default=None, pattern="^(none|uncertain)$"),
     test_item: str | None = Query(default=None, pattern="^none$"),
     owned: bool = Query(default=False),
-    limit: int = Query(default=50, ge=1, le=MAX_LIMIT),
+    limit: int = Query(default=50, ge=1, le=CATALOG_MAX_LIMIT),
     offset: int = Query(default=0, ge=0),
     user: User = Depends(current_user),
     db: Session = Depends(get_db),
@@ -661,7 +661,7 @@ def list_models(
         spec=spec,
         test_item=test_item,
         owned=owned,
-        limit=clamp_limit(limit),
+        limit=clamp_limit(limit, cap=CATALOG_MAX_LIMIT),
         offset=offset,
     )
 
