@@ -116,11 +116,16 @@ export default function DivisionReliabilityPage() {
   const rowFilters = useRowFilters()
   /** 열로 세울 속성 — 고른 것은 브라우저에 남는다. */
   const columns = useAttributeColumns('reliability_test')
+  /**
+   * 지난 판까지 볼까. **기본은 최신판만** — 판마다 줄이 서므로(0049) 안 가리면 목록이
+   * 판 수만큼 부푼다. 「개정 14의 열충격」 과 「18의 열충격」 은 다른 줄이다.
+   */
+  const [withOld, setWithOld] = useState(false)
   const tests = useResource(
-    () => reliabilityApi.list(code, PAGE, page * PAGE, attrs, rowFilters.value),
-    [code, page, attrs, rowFilters.value],
+    () => reliabilityApi.list(code, PAGE, page * PAGE, attrs, rowFilters.value, withOld),
+    [code, page, attrs, rowFilters.value, withOld],
   )
-  useEffect(() => setPage(0), [code, attrs, rowFilters.value])
+  useEffect(() => setPage(0), [code, attrs, rowFilters.value, withOld])
   const [editing, setEditing] = useState<ReliabilityTest | null>(null)
   const [creating, setCreating] = useState(false)
   const [removing, setRemoving] = useState<ReliabilityTest | null>(null)
@@ -154,7 +159,14 @@ export default function DivisionReliabilityPage() {
     for (let at = 0; at < total; at += MAX_PAGE) {
       // **거른 조건을 그대로 들고 간다** — 안 그러면 「이 조건의 전체 20건」 이라고 적어
       // 놓고 사업부의 1784건을 전부 확인한다.
-      const got = await reliabilityApi.list(code, MAX_PAGE, at, attrs, rowFilters.value)
+      const got = await reliabilityApi.list(
+        code,
+        MAX_PAGE,
+        at,
+        attrs,
+        rowFilters.value,
+        withOld,
+      )
       out.push(...got.items.map((one) => one.id))
       if (got.items.length === 0) break
     }
@@ -216,6 +228,17 @@ export default function DivisionReliabilityPage() {
             )}
           </p>
         )}
+        {/* **지난 판은 일부러 펼친다.** 섞어 두면 같은 시험이 여러 줄로 서서, 어느 줄을
+            고칠지 사람이 매번 정해야 한다. */}
+        <label className="text-muted-foreground flex items-center gap-1.5 text-sm">
+          <input
+            type="checkbox"
+            checked={withOld}
+            onChange={(event) => setWithOld(event.target.checked)}
+            className="size-3.5"
+          />
+          과거 판 포함
+        </label>
         <AttributeColumnPicker columns={columns} />
       </div>
 

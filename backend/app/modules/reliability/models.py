@@ -114,6 +114,23 @@ class ReliabilityTest(Base):
     그날 일이 멈추고, 멈춘 일은 미뤄진다. 대신 이 칸이 최신 개정보다 뒤면 「개정 19 기준으로
     아직 안 본 시험」 으로 서고, 사람이 본 것부터 표가 떨어진다."""
 
+    superseded_by_id: Mapped[uuid.UUID | None] = mapped_column(
+        PgUUID(as_uuid=True),
+        ForeignKey("reliability_tests.id", ondelete="SET NULL"),
+        nullable=True,
+        index=True,
+    )
+    """이 줄을 **밀어낸 뒤 판의 줄.** 비어 있으면 그것이 최신판이다.
+
+    판이 다시 줄의 자리가 되면서(0049) 같은 시험이 판 수만큼 줄로 늘어난다. 목록이
+    그대로 부풀면 쓸 수 없으므로 기본은 **최신판만** 보여 주고, 지난 판은 「과거 판 포함」
+    이나 `revision=` 으로 본다.
+
+    **계산이 아니라 칸이다.** 「이 줄보다 뒤 판의 같은 시험이 있나」 를 질의로 풀려면
+    적용군과 규격서를 SQL 에서 알아야 하는데 그 둘은 속성 값에 있다 — 줄마다 읽으면 목록
+    한 장이 질의 수백 번이 된다. 적재가 이미 「같은 시험인가」 를 판정하므로 아는 자리에서
+    적어 둔다(0046 에서 `is_current` 를 칸으로 둔 것과 같은 판단)."""
+
     created_by: Mapped[uuid.UUID | None] = mapped_column(
         PgUUID(as_uuid=True), ForeignKey("users.id", ondelete="SET NULL"), nullable=True
     )

@@ -477,12 +477,20 @@ async def _write_chain(ctx: _Ctx) -> int:
             ["code"],
         )
         if paper is not None:
+            # **규격서를 줬으면 판도 줘야 한다**(0049). 판 없이 올리면 같은 자리에 쌓여
+            # 뒤엣것이 앞엣것을 조용히 덮는다 — 운영에서 36건이 그렇게 사라졌다.
+            edition = step(
+                "add_spec_document_revision",
+                await server.add_spec_document_revision(ctx, paper["id"], "14"),
+                ["label"],
+            )
             batch = step(
                 "create_reliability_tests(묶음)",
                 await server.create_reliability_tests(
                     ctx,
                     division_code=code,
                     document_id=paper["id"],
+                    document_revision_id=(edition or {}).get("id"),
                     tests=[
                         {"name": f"MCP확인 묶음 하나-{tag}"},
                         {"name": f"MCP확인 묶음 둘-{tag}"},
@@ -490,9 +498,9 @@ async def _write_chain(ctx: _Ctx) -> int:
                         # 시험은 규격서가 없고 이 줄은 이 문서의 것이다. 이름만으로
                         # 유일하게 두었더니 실제 문서와 부딪혔다(634장 중 202장).
                         {"name": f"MCP확인 열충격-{tag}"},
-                        # **같은 시험을 다시 보낸다** — 이름도 규격서도 같다. 막히지 않고
-                        # 그 시험의 값에 판이 붙어야 한다(0046): 개정본을 올리는 것은 새
-                        # 시험이 아니라 있던 시험의 새 시점이다.
+                        # **같은 판에 같은 시험을 다시 보낸다** — 막히지 않고 병합되되,
+                        # 무엇을 덮었는지가 함께 와야 한다(0049). 세기만 하면 보낸 값이
+                        # 반영이 안 돼도 성공처럼 보인다.
                         {"name": f"MCP확인 묶음 하나-{tag}"},
                     ],
                 ),
@@ -500,7 +508,9 @@ async def _write_chain(ctx: _Ctx) -> int:
             )
             if batch is not None:
                 made = [one["name"] for one in batch.get("created", [])]
-                folded = [one["name"] for one in batch.get("merged", [])]
+                # **병합이 무엇을 했는지 함께 온다**(0049) — 세기만 하면 보낸 값이
+                # 반영이 안 돼도 성공처럼 보인다.
+                folded = [one["test"]["name"] for one in batch.get("merged", [])]
                 if len(made) != 3:
                     bad += 1
                     print(f"  실패 묶음에서 세 줄이 들어가야 하는데 {len(made)}줄입니다")
@@ -510,6 +520,9 @@ async def _write_chain(ctx: _Ctx) -> int:
                 if folded != [f"MCP확인 묶음 하나-{tag}"]:
                     bad += 1
                     print(f"  실패 같은 시험을 다시 보낸 줄이 안 접혔습니다: {folded}")
+                elif batch["merged"][0].get("action") not in ("updated", "skipped"):
+                    bad += 1
+                    print(f"  실패 병합이 한 일을 안 말합니다: {_short(batch['merged'][0], 90)}")
                 if batch.get("failed"):
                     bad += 1
                     print(f"  실패 막힌 줄이 있습니다: {_short(batch.get('failed'), 120)}")

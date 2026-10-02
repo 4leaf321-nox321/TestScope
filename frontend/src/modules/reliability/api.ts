@@ -54,6 +54,7 @@ export const reliabilityApi = {
     offset = 0,
     attrs: string[] = [],
     rows: RowFilters = {},
+    includeSuperseded = false,
   ) => {
     const search = new URLSearchParams({
       division,
@@ -64,6 +65,8 @@ export const reliabilityApi = {
     // 그러고도 표는 「조건에 맞는 것이 이것뿐」 이라고 적는다.
     for (const one of attrs) search.append('attr', one)
     for (const [key, one] of Object.entries(rows)) if (one) search.set(key, one)
+    // **기본은 최신판만.** 판마다 줄이 서므로(0049) 안 가리면 목록이 판 수만큼 부푼다.
+    if (includeSuperseded) search.set('include_superseded', 'true')
     return api.get<Page>(`/reliability-tests?${search}`)
   },
   /** 전사 전부 — 사업부 순. 「누가 무슨 시험을 하나」 를 가로질러 본다.

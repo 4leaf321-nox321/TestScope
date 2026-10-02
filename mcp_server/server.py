@@ -2255,6 +2255,7 @@ async def list_reliability_tests(
     attr: list[str] | None = None,
     status: str | None = None,
     revision: str | None = None,
+    include_superseded: bool = False,
     name: str | None = None,
     purpose: str | None = None,
     test_item: str | None = None,
@@ -2286,6 +2287,10 @@ async def list_reliability_tests(
     사업부에 돌릴 장비가 한 대도 없는 줄**이다 — 「미지정」 과 다르다: 앞은 항목을 이었는데
     그 항목이 되는 장비가 없는 것이고, 뒤는 항목을 아직 안 이은 것이다.
 
+    **기본은 최신판만 온다.** 판마다 줄이 서므로(개정 14의 열충격과 18의 열충격은 다른
+    줄이다) 안 가리면 목록이 판 수만큼 부푼다. 지난 판까지 보려면 `include_superseded=True`,
+    그 판만 보려면 `revision` 이다.
+
     **쪽으로 끊어 온다** — `count` 는 조건에 맞는 전체 수, `shown` 은 이번에 받은 줄 수다.
     한 사업부에 1784건이 있으므로 **전부 받아 세지 말고 `count` 를 읽어라.**
 
@@ -2305,6 +2310,7 @@ async def list_reliability_tests(
             "attr": attr,
             "status": status,
             "revision": revision,
+            "include_superseded": include_superseded or None,
             "name": name,
             "purpose": purpose,
             "test_item": test_item,
@@ -2651,14 +2657,18 @@ async def create_reliability_tests(
     한 문서에서 나온 줄은 같은 실수를 함께 하고, 함께 봐야 그것이 보인다. 줄이 제
     `attributes` 에 규격서를 이미 적었으면 그것을 안 덮는다.
 
-    **`document_revision_id` 로 판을 준다.** 시험은 한 줄이고 판은 **값에** 붙는다 —
-    개정 14를 올린 뒤 18을 올릴 때는 이 칸만 바꿔 같은 이름을 다시 보내라. 줄이 새로
-    생기지 않고 **그 시험의 값에 18 판이 붙는다**(14의 값은 이력으로 남는다). 판 목록은
-    `get_spec_document` 의 `revisions` 가 준다.
+    **규격서를 줬으면 `document_revision_id` 도 줘야 한다**(안 주면 400). 판마다 줄이
+    서므로 개정 14를 올린 뒤 18을 올릴 때는 이 칸만 바꿔 같은 이름을 다시 보내라 — 18은
+    14의 줄에 안 붙고 **새 줄로 선다**(14의 값은 그 줄에 그대로 남는다). 목록은 최신판만
+    보여 주므로 줄이 부풀지 않는다. 판 목록은 `get_spec_document` 의 `revisions` 가 준다.
 
-    답이 셋이다 — `created`(새 시험), `merged`(**있던 시험의 새 판**), `failed`(막힌 줄과
-    왜). **셋 다 읽고 말하라**: 「올렸습니다」 만 말하면 접힌 줄도 막힌 줄도 아무도 모른다.
-    개정본을 올리면 대개 `merged` 가 대부분이고, 그것이 정상이다.
+    판 없이 올리면 같은 자리에 쌓여 **뒤엣것이 앞엣것을 조용히 덮는다** — 운영에서 그렇게
+    36건의 값이 사라졌다(2026-10-01).
+
+    답이 셋이다 — `created`(새 줄), `merged`(**같은 판을 다시 올린 것**), `failed`(막힌
+    줄과 왜). **셋 다 읽고 말하라.** `merged` 의 줄에는 `action` 이 있다: `updated` 면
+    `changed` 에 **덮어쓴 칸 이름**이 오고(그 칸의 옛 값은 이 판에서 사라졌다), `skipped`
+    면 바뀐 것이 없다. 「올렸습니다」 만 말하지 말고 덮은 칸을 그대로 말하라.
     """
     return _then(
         await _send(
@@ -2673,9 +2683,9 @@ async def create_reliability_tests(
             },
         ),
         "줄마다 결과가 왔다. **`created`·`merged`·`failed` 를 함께 말하라** — 들어간 줄만"
-        " 말하면 접힌 줄도 막힌 줄도 아무도 안 본다. `merged` 는 있던 시험에 이 판의 값이"
-        " 붙은 것이다(개정본을 올리면 대개 이쪽이 많고 정상이다). 새로 만든 줄은 후보이고,"
-        " 사람이 화면에서 문서 단위로 확인해야 확정이다.",
+        " 말하면 접힌 줄도 막힌 줄도 아무도 안 본다. `merged` 는 **같은 판을 다시 올린**"
+        " 것이고, 줄의 `changed` 에 덮어쓴 칸이 온다 — 그 칸의 옛 값은 사라졌으므로 그대로"
+        " 말하라. 새로 만든 줄은 후보이고, 사람이 화면에서 문서 단위로 확인해야 확정이다.",
     )
 
 

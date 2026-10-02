@@ -84,6 +84,16 @@ async function open(url = '/equipment') {
   })
 }
 
+/** 그 일이 일어날 때까지 — 디바운스를 고정 시간으로 재면 느린 기계에서 떨어진다. */
+async function waited(until: () => boolean, tries = 40): Promise<void> {
+  for (let at = 0; at < tries; at += 1) {
+    if (until()) return
+    await act(async () => {
+      await new Promise((done) => setTimeout(done, 25))
+    })
+  }
+}
+
 /** 목록을 부른 마지막 주소. 거르기가 **서버로 갔는지**는 이것으로만 안다. */
 function lastList(): string {
   const list = calls.filter((one) => one.startsWith('/equipment?') || one === '/equipment')
@@ -152,9 +162,11 @@ describe('보유 장비 목록', () => {
         target: { value: '제어보드' },
       })
     })
-    await act(async () => {
-      await new Promise((done) => setTimeout(done, 300))
-    })
+    // **고정 시간을 안 기다린다.** 화면은 250ms 쉬고 묻는데, 그보다 조금 긴 시간을 재면
+    // 느린 기계에서 아슬아슬하게 떨어진다 — 걸릴 때까지 본다.
+    await waited(() =>
+      lastList().includes('status_reason=%EC%A0%9C%EC%96%B4%EB%B3%B4%EB%93%9C'),
+    )
     expect(lastList()).toContain('status_reason=%EC%A0%9C%EC%96%B4%EB%B3%B4%EB%93%9C')
   })
 

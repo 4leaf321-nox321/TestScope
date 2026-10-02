@@ -237,6 +237,7 @@ def list_for_division(
     offset: int = 0,
     query: str | None = None,
     rows: RowFilters | None = None,
+    include_superseded: bool = False,
 ) -> Page[ReliabilityTestOut]:
     """그 사업부의 시험 — **후보까지 보인다.** 후보를 검토하는 자리가 여기다.
 
@@ -256,8 +257,13 @@ def list_for_division(
         .order_by(ReliabilityTest.status, ReliabilityTest.name)
     )
     narrowed = _by_text(
-        _by_revision(
-            _by_document(_by_status(stmt, status, default="all"), document_id), revision_id
+        _latest_only(
+            _by_revision(
+                _by_document(_by_status(stmt, status, default="all"), document_id),
+                revision_id,
+            ),
+            # 판을 집어 물었으면 그 판을 보여 준다 — 대개 지난 판이라 가리면 늘 0건이다.
+            include_superseded or revision_id is not None,
         ),
         query,
     )
@@ -445,6 +451,20 @@ def _by_equipment(
     return stmt.where(~ReliabilityTest.id.in_(able))
 
 
+def _latest_only(
+    stmt: Select[tuple[ReliabilityTest]], include_superseded: bool
+) -> Select[tuple[ReliabilityTest]]:
+    """**기본은 최신판만.** 판마다 줄이 서므로(0049) 안 가리면 목록이 판 수만큼 부푼다.
+
+    「개정 14의 열충격」 과 「개정 18의 열충격」 은 다른 줄인데, 사람이 목록에서 찾는 것은
+    대개 지금 쓰는 판 하나다. 지난 판은 「과거 판 포함」 으로 펼치거나 `revision=` 으로
+    그 판을 집어 본다 — 집어 볼 때는 가리면 안 되므로 그쪽이 이 필터를 끈다.
+    """
+    if include_superseded:
+        return stmt
+    return stmt.where(ReliabilityTest.superseded_by_id.is_(None))
+
+
 def _by_document(
     stmt: Select[tuple[ReliabilityTest]], document_id: uuid.UUID | None
 ) -> Select[tuple[ReliabilityTest]]:
@@ -469,19 +489,22 @@ def _by_document(
 def _by_revision(
     stmt: Select[tuple[ReliabilityTest]], revision_id: uuid.UUID | None
 ) -> Select[tuple[ReliabilityTest]]:
-    """그 판에서 값이 적힌 시험만 — **「이 판의 목록」.**
+    """**「이 판의 목록」** — 그 판의 줄, 또는 그 판에서 값이 적힌 줄.
 
-    시험은 한 줄이고 판은 값에 붙는다(0046). 그 판에서 아무것도 안 적힌 시험은 그 판의
-    목록에 없다 — 개정 18이 손대지 않은 시험은 18의 목록에 안 뜬다는 뜻이고, 그것이 맞다."""
+    판이 자리가 된 뒤로(0049) 줄 자체가 판을 갖는다. 그런데 0046 때 들어온 줄은 한 줄에
+    여러 판의 값을 들고 있으므로 **둘 다 본다** — 값으로만 보면 조건을 안 적은 줄이
+    자기 판의 목록에서 빠지고, 줄로만 보면 옛 데이터가 통째로 안 걸린다.
+    """
     if revision_id is None:
         return stmt
-    # **그 판의 값을 가진 시험.** 시험은 한 줄이고 판은 값에 붙으므로(0046), 「이 판의
-    # 목록」 은 그 판에서 무언가 적힌 시험들이다 — 현재 판이 무엇이든.
     return stmt.where(
-        ReliabilityTest.id.in_(
-            select(AttributeValue.reliability_test_id).where(
-                AttributeValue.document_revision_id == revision_id
-            )
+        or_(
+            ReliabilityTest.document_revision_id == revision_id,
+            ReliabilityTest.id.in_(
+                select(AttributeValue.reliability_test_id).where(
+                    AttributeValue.document_revision_id == revision_id
+                )
+            ),
         )
     )
 
@@ -511,6 +534,7 @@ def list_all(
     offset: int = 0,
     query: str | None = None,
     rows: RowFilters | None = None,
+    include_superseded: bool = False,
 ) -> Page[ReliabilityTestOut]:
     """전사의 신뢰성 시험 — **「저 부서는 무슨 시험을 하나」 를 부서를 가로질러 묻는 표.**
     읽기는 누구나(부서를 가로지르는 것이 이 시스템의 물음), 고치기는 각 부서 화면에서.
@@ -526,9 +550,12 @@ def list_all(
         .order_by(VocabularyTerm.sort_order, VocabularyTerm.value, ReliabilityTest.name)
     )
     narrowed = _by_text(
-        _by_revision(
-            _by_document(_by_status(stmt, status, default=CONFIRMED), document_id),
-            revision_id,
+        _latest_only(
+            _by_revision(
+                _by_document(_by_status(stmt, status, default=CONFIRMED), document_id),
+                revision_id,
+            ),
+            include_superseded or revision_id is not None,
         ),
         query,
     )
@@ -668,6 +695,7 @@ def _check_name_free(
     *,
     except_id: uuid.UUID | None,
     scope: NameScope = ("", ""),
+    revision_id: uuid.UUID | None = None,
 ) -> None:
     """이 사업부에 **같은 이름이면서 같은 자리인** 시험이 있나.
 
@@ -683,9 +711,10 @@ def _check_name_free(
         같은 이름 · 둘 다 같음     -> **같은 시험.** 판이 달라도 같다 — 값에 판을 붙인다
         같은 이름 · 둘 다 안 적힘   -> 가를 근거가 없다. 막는다(예전 그대로)
 
-    **판은 자리가 아니다.** 개정 14와 18은 같은 시험의 두 시점이지 두 시험이 아니다 —
-    판을 자리에 넣었더니 같은 시험이 판 수만큼 줄로 늘어났다(0045 -> 0046). 판이 다른
-    같은 시험을 올리면 **그 시험의 값에 판이 붙는다**(`set_values(revision_id=…)`).
+    **판도 자리다**(0049). 0046 은 「판은 값에」 로 갔는데 운영에서 그 약속이 깨졌다:
+    개정 14와 18을 올리니 겹치는 87건이 18 하나로 흡수되고 **내용이 다른 36건은 개정 14
+    값이 저장되지 않았다.** 판을 자리로 두면 같은 시험이 판 수만큼 줄로 늘지만, 목록이
+    부푸는 쪽은 `superseded_by_id` 로 푼다 — 기본은 최신판만 보인다.
 
     마지막 줄이 중요하다. **가를 근거가 하나도 없으면 예전과 똑같이 이름 하나다** — 수백
     건을 적재하는 동안 동명이 쌓이는 것을 막는 장치가 거기 남아 있어야 한다. 가르고 싶으면
@@ -704,7 +733,13 @@ def _check_name_free(
             )
         )
     )
-    same = [one for one in rows if name_key(one.name) == key]
+    # **판이 다르면 다른 자리다.** 이것이 없으면 개정 18을 올릴 때 14가 선점한 이름에
+    # 막히고, 그 409 는 「이미 다 있다」 로 읽힌다.
+    same = [
+        one
+        for one in rows
+        if name_key(one.name) == key and one.document_revision_id == revision_id
+    ]
     if not same:
         return
     scopes = _scope_of_rows(db, [one.id for one in same])
@@ -719,7 +754,7 @@ def _check_name_free(
         f"이 사업부에 {where}로 같은 이름의 신뢰성 시험이 있습니다: {clash.name}"
         + (
             " — 별개의 시험이면 적용군이나 규격서를 적어 가르십시오."
-            " (같은 시험의 다른 판이면 그 시험을 고치면 됩니다 — 값에 판이 붙습니다.)"
+            " (다른 판이면 그 판을 적으십시오 — 판마다 줄이 섭니다.)"
             if not parts
             else ""
         ),
@@ -826,12 +861,14 @@ def create(db: Session, user: User, payload: dict[str, Any]) -> ReliabilityTest:
     # 읽어 함께 넘긴다 — 안 그러면 「가르는 근거」 가 아직 없는 채로 판정하게 된다.
     items = _attribute_items(payload.get("attributes"))
     revision_id = _checked_revision(db, payload.get("document_revision_id"))
+    scope = _scope_of_items(db, items)
     _check_name_free(
         db,
         division.id,
         name,
         except_id=None,
-        scope=_scope_of_items(db, items),
+        scope=scope,
+        revision_id=revision_id,
     )
     term_ids: list[uuid.UUID] = list(payload.get("test_item_term_ids") or [])
     _check_test_item_terms(db, term_ids)
@@ -861,6 +898,9 @@ def create(db: Session, user: User, payload: dict[str, Any]) -> ReliabilityTest:
         # **값에 판이 붙는다.** 시험은 한 줄이고, 개정 18을 올려도 14의 값은 이력으로 남는다.
         revision_id=revision_id,
     )
+    # **판들 사이에 누가 최신인가**를 여기서 적는다. 목록이 이 칸 하나만 보므로, 새 판이
+    # 들어온 순간 지난 판은 비켜야 한다 — 안 적으면 같은 시험이 목록에 두 줄로 선다.
+    _resupersede(db, _siblings_of(db, division.id, name, scope))
     db.commit()
     db.refresh(row)
     return row
@@ -928,7 +968,14 @@ def update(
             if changes.get("attributes") is not None
             else _scope_of_rows(db, [row.id])[row.id]
         )
-        _check_name_free(db, division.id, name, except_id=row.id, scope=scope)
+        _check_name_free(
+            db,
+            division.id,
+            name,
+            except_id=row.id,
+            scope=scope,
+            revision_id=row.document_revision_id,
+        )
         row.name = name
     if "purpose" in changes:
         row.purpose = str(changes["purpose"] or "").strip()
@@ -1193,10 +1240,10 @@ def _with_document(
     return out
 
 
-def _same_test(
+def _siblings_of(
     db: Session, division_term_id: uuid.UUID, name: str, scope: NameScope
-) -> ReliabilityTest | None:
-    """같은 시험이 이미 있나 — **규격서 + 이름 + 적용군**이 같으면 같은 시험이다."""
+) -> list[ReliabilityTest]:
+    """같은 시험의 **모든 판.** 규격서 + 이름 + 적용군이 같으면 같은 시험이다."""
     key = name_key(name)
     rows = db.scalars(
         select(ReliabilityTest).where(
@@ -1206,9 +1253,94 @@ def _same_test(
     )
     same = [one for one in rows if name_key(one.name) == key]
     if not same:
-        return None
+        return []
     scopes = _scope_of_rows(db, [one.id for one in same])
-    return next((one for one in same if scopes.get(one.id, ("", "")) == scope), None)
+    return [one for one in same if scopes.get(one.id, ("", "")) == scope]
+
+
+def _same_test(
+    db: Session,
+    division_term_id: uuid.UUID,
+    name: str,
+    scope: NameScope,
+    revision_id: uuid.UUID | None,
+) -> ReliabilityTest | None:
+    """**같은 판의** 같은 시험이 이미 있나.
+
+    판이 자리가 되면서(0049) 개정 18은 14의 줄에 붙지 않는다 — 붙였더니 14의 값이
+    조용히 사라졌다. 같은 판을 다시 올린 것만 병합이다.
+    """
+    return next(
+        (
+            one
+            for one in _siblings_of(db, division_term_id, name, scope)
+            if one.document_revision_id == revision_id
+        ),
+        None,
+    )
+
+
+def sibling_ids(db: Session, test_id: uuid.UUID) -> list[uuid.UUID]:
+    """이 시험의 **모든 판의 줄** — 판 순서대로, 지난 판이 앞.
+
+    판이 자리가 된 뒤로(0049) 「과거 판의 값」 은 다른 줄에 있다. 값 이력과 비교 화면이
+    그 줄들을 가로질러 봐야 「개정 14에서는 얼마였나」 에 답할 수 있다.
+    """
+    row = get(db, test_id)
+    scope = _scope_of_rows(db, [row.id]).get(row.id, ("", ""))
+    rows = _siblings_of(db, row.division_term_id, row.name, scope)
+    orders = {
+        one.id: one.sort_order
+        for one in db.scalars(
+            select(SpecDocumentRevision).where(
+                SpecDocumentRevision.id.in_(
+                    {one.document_revision_id for one in rows if one.document_revision_id}
+                )
+            )
+        )
+    }
+    rows.sort(
+        key=lambda one: (
+            (1, orders.get(one.document_revision_id, 0))
+            if one.document_revision_id
+            else (0, 0),
+            one.created_at,
+        )
+    )
+    return [one.id for one in rows] or [test_id]
+
+
+def _resupersede(db: Session, rows: list[ReliabilityTest]) -> None:
+    """한 시험의 판들에 **최신 하나만 남긴다** — 나머지는 그 줄을 가리킨다.
+
+    목록이 기본으로 `superseded_by_id IS NULL` 만 보여 주므로, 이 한 줄이 「무엇이
+    최신판인가」 의 정본이다. 판 없는 줄은 **가장 앞**으로 본다: 판을 안 적은 것은 어느
+    개정의 것인지 모른다는 뜻이고, 아는 것이 모르는 것을 밀어내는 쪽이 맞다.
+    """
+    if len(rows) <= 1:
+        for one in rows:
+            one.superseded_by_id = None
+        return
+    orders = {
+        one.id: one.sort_order
+        for one in db.scalars(
+            select(SpecDocumentRevision).where(
+                SpecDocumentRevision.id.in_(
+                    {row.document_revision_id for row in rows if row.document_revision_id}
+                )
+            )
+        )
+    }
+
+    def rank(row: ReliabilityTest) -> tuple[int, int]:
+        if row.document_revision_id is None:
+            return (0, 0)
+        # 같은 순서면 나중에 만든 줄이 뒤다 — 판 이름이 같은 두 줄이 실제로 생긴다.
+        return (1, orders.get(row.document_revision_id, 0))
+
+    latest = max(rows, key=lambda row: (rank(row), row.created_at))
+    for one in rows:
+        one.superseded_by_id = None if one.id == latest.id else latest.id
 
 
 def _merge_revision(
@@ -1218,14 +1350,19 @@ def _merge_revision(
     sent: dict[str, Any],
     items: list[AttributeValueIn],
     revision_id: uuid.UUID | None,
-) -> ReliabilityTest:
-    """있는 시험에 **그 판의 값**을 붙인다 — 다른 판의 값은 그대로 둔다.
+) -> tuple[ReliabilityTest, str, list[str]]:
+    """**같은 판을 다시 올렸다.** 그 판의 값을 갈아 끼우고 **무엇을 덮었는지 돌려준다.**
 
-    **현재 판은 뒤로 안 간다.** 개정 18을 올린 뒤 14를 다시 올리면 14의 값은 이력으로
-    들어가되 현재 판은 18로 남아야 한다 — 안 그러면 화면이 옛 판을 지금 값으로 그린다.
+    판이 자리가 된 뒤로(0049) 여기 오는 것은 다른 개정이 아니라 **같은 판의 재적재**다.
+    갈아 끼우는 것 자체는 맞지만, 그동안 `merged` 한 줄로만 세어서 **버린 값이 아무 데도
+    안 드러났다** — 운영에서 36건의 값이 그렇게 사라졌다(2026-10-01).
+
+    돌려주는 것: `updated` 면 바뀐 칸 이름, `skipped` 면 바뀐 것이 없다는 뜻이다.
     """
     require_editable(db, user, row.id)
     _refuse_machine_edit(row)
+    # **덮기 전에 지금 값을 적어 둔다.** 덮고 나서는 무엇이 있었는지 알 길이 없다.
+    before = _value_marks(db, row.id, revision_id)
     if revision_id is not None and _is_later(db, revision_id, row.document_revision_id):
         row.document_revision_id = revision_id
     if sent.get("purpose"):
@@ -1242,9 +1379,28 @@ def _merge_revision(
         items=items,
         revision_id=revision_id,
     )
+    db.flush()
+    after = _value_marks(db, row.id, revision_id)
+    changed = sorted({label for label, _ in before.items() - after.items()})
     db.commit()
     db.refresh(row)
-    return row
+    return row, ("updated" if changed or before.keys() != after.keys() else "skipped"), changed
+
+
+def _value_marks(
+    db: Session, test_id: uuid.UUID, revision_id: uuid.UUID | None
+) -> dict[str, str]:
+    """그 판의 값을 **「칸 이름 → 지금 글자」** 로. 덮기 전후를 견주려는 것이다.
+
+    `display` 를 쓰는 이유: 사람에게 「무엇이 바뀌었나」 를 말할 글자가 그것이고, 화면과
+    MCP 가 이미 같은 글자를 쓴다.
+    """
+    rows = attributes.values_of(db, target="reliability_test", object_ids=[test_id])[test_id]
+    return {
+        f"{one.label}{f'({one.set_label})' if one.set_label else ''}": one.display
+        for one in rows
+        if one.document_revision_id == revision_id
+    }
 
 
 def _is_later(db: Session, one: uuid.UUID, other: uuid.UUID | None) -> bool:
@@ -1302,9 +1458,24 @@ def create_many(db: Session, user: User, payload: dict[str, Any]) -> dict[str, A
     # 판도 마찬가지다. **없는 판을 그대로 받으면** 오백 줄이 어느 판에도 안 속한 채로 남고,
     # 「이 판의 목록」 에서 통째로 빠진다 — 올린 사람은 올렸다고 안다.
     batch_revision = _checked_revision(db, payload.get("document_revision_id"))
+    # **규격서를 줬으면 판도 줘야 한다.** 판 없이 올리면 같은 자리에 쌓여 뒤엣것이
+    # 앞엣것을 조용히 덮는다 — 운영에서 1509건이 판 없이 들어갔고, 그 길로 개정 14의
+    # 값 36건이 사라졌다(2026-10-01). 규격서가 없는 묶음은 개정을 말할 것이 없으므로
+    # 그대로 둔다.
+    if (
+        document_id is not None
+        and batch_revision is None
+        and any(one.get("document_revision_id") is None for one in tests)
+    ):
+        raise AppError(
+            "TSC-RELIABILITY-0016",
+            "규격서를 주면 판(document_revision_id)도 함께 주십시오 — 판이 없으면"
+            " 같은 자리에 쌓여 먼저 올린 값이 조용히 덮입니다."
+            " 규격서의 판 목록은 `GET /spec-documents/{id}` 에 있습니다.",
+        )
 
     created: list[ReliabilityTest] = []
-    merged: list[ReliabilityTest] = []
+    merged: list[tuple[ReliabilityTest, str, list[str]]] = []
     failed: list[dict[str, str]] = []
     for one in tests:
         name = str(one.get("name") or "")
@@ -1314,12 +1485,15 @@ def create_many(db: Session, user: User, payload: dict[str, Any]) -> dict[str, A
         items = _attribute_items(raw_items)
         row_revision = _checked_revision(db, one.get("document_revision_id")) or batch_revision
         try:
-            found = _same_test(db, division.id, name, _scope_of_items(db, items))
+            scope = _scope_of_items(db, items)
+            found = _same_test(db, division.id, name, scope, row_revision)
             if found is not None:
                 # **같은 시험의 다른 판이다.** 줄을 새로 만들지 않고 그 시험의 값에 판을
                 # 붙인다 — 이것이 없으면 개정 18을 올릴 때 이백 줄이 전부 409 로 막히고,
                 # 부른 쪽은 그것을 「이미 다 있다」 로 읽는다.
                 merged.append(_merge_revision(db, user, found, one, items, row_revision))
+                _resupersede(db, _siblings_of(db, division.id, name, scope))
+                db.commit()
                 continue
             created.append(
                 create(
@@ -1342,10 +1516,32 @@ def create_many(db: Session, user: User, payload: dict[str, Any]) -> dict[str, A
             # 안 그러면 실패한 줄의 조각이 다음 줄의 커밋에 묻어 간다.
             db.rollback()
             failed.append({"name": name, "code": refused.code, "message": refused.message})
+    # **병합이 무엇을 했는지 돌려준다.** 예전에는 `merged` 로 세기만 해서, 보낸 값이
+    # 안 반영돼도 성공처럼 보였다 — 버린 값이 아무 데도 안 드러났다(2026-10-01).
+    shown = {
+        row.id: out
+        for row, out in zip(
+            [row for row, _, _ in merged],
+            _outs(db, user, [row for row, _, _ in merged]),
+            strict=True,
+        )
+    }
     return {
         "requested": len(tests),
         "created": _outs(db, user, created),
-        "merged": _outs(db, user, merged),
+        "merged": [
+            {
+                "test": shown[row.id],
+                "action": action,
+                "changed": changed,
+                "reason": (
+                    "보낸 값이 지금 값과 같습니다 — 바뀐 것이 없습니다."
+                    if action == "skipped"
+                    else None
+                ),
+            }
+            for row, action, changed in merged
+        ],
         "failed": failed,
     }
 
@@ -1396,9 +1592,10 @@ def compare_revisions(
     개정이 오면 딸린 수십 건 중 **무엇을 다시 봐야 하는지**가 문제다. 「전부 다시」 는
     그날 일을 멈추고, 「아무것도 안 봄」 은 바뀐 조건을 놓친다. 그 사이를 이 답이 메운다.
 
-    시험은 한 줄이고 판은 값에 붙으므로(0046), 이 비교는 **한 줄 안의 두 시점**을 견주는
-    일이다 — 줄을 잇는 수고가 없다. 「더해짐」 은 뒤 판에서 처음 값이 적힌 시험이고,
-    「없어짐」 은 앞 판에는 있었는데 뒤 판이 손대지 않은 시험이다.
+    판마다 줄이 서므로(0049) 앞뒤는 **다른 줄**이다. 그래서 줄 id 가 아니라 **정체**로
+    짝을 맞춘다 — 규격서 + 이름 + 적용군이 같으면 같은 시험의 두 판이다. id 로 맞추면
+    갈린 줄이 전부 「더해짐 + 없어짐」 으로 나오고, 읽는 사람은 개정 하나에 백 건이
+    새로 생겼다고 읽는다.
     """
     left = documents.revision_of(db, left_id)
     right = documents.revision_of(db, right_id)
@@ -1415,15 +1612,22 @@ def compare_revisions(
             select(ReliabilityTest).where(ReliabilityTest.id.in_(set(before) | set(after)))
         )
     }
+    # **정체로 짝을 맞춘다.** 줄 id 로 맞추면 판마다 갈린 줄이 전부 「더해짐 + 없어짐」 이
+    # 되고, 그 답은 개정 하나에 백 건이 새로 생겼다고 말한다.
+    scopes = _scope_of_rows(db, list(rows))
+    marks = {one: (name_key(rows[one].name), scopes.get(one, ("", ""))) for one in rows}
+    left_by = {marks[one]: one for one in before if one in rows}
+    right_by = {marks[one]: one for one in after if one in rows}
 
-    added = [_brief(rows[one]) for one in after if one not in before and one in rows]
-    removed = [_brief(rows[one]) for one in before if one not in after and one in rows]
+    added = [_brief(rows[right_by[mark]]) for mark in right_by if mark not in left_by]
+    removed = [_brief(rows[left_by[mark]]) for mark in left_by if mark not in right_by]
     changed: list[RevisionChangedOut] = []
     same = 0
-    for test_id in before:
-        if test_id not in after or test_id not in rows:
+    for mark, old_id in left_by.items():
+        new_id = right_by.get(mark)
+        if new_id is None:
             continue
-        gone, fresh = before[test_id], after[test_id]
+        gone, fresh = before[old_id], after[new_id]
         differences = [
             RevisionDifferenceOut(
                 at=one, before=gone.get(one) or None, after=fresh.get(one) or None
@@ -1434,9 +1638,9 @@ def compare_revisions(
         if differences:
             changed.append(
                 RevisionChangedOut(
-                    name=rows[test_id].name,
-                    before_id=test_id,
-                    after_id=test_id,
+                    name=rows[new_id].name,
+                    before_id=old_id,
+                    after_id=new_id,
                     differences=differences,
                 )
             )

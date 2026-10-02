@@ -140,10 +140,31 @@ class ReliabilityBatchRequest(Request):
     document_revision_id: uuid.UUID | None = None
     """어느 **판**의 것인가. `document_id` 와 같은 방식으로 **줄마다 걸린다.**
 
-    판마다 한 벌을 두므로, 개정 14를 올린 뒤 개정 18을 올릴 때는 이 칸만 바꿔 같은 이름을
-    다시 올린다 — 그 둘은 서로 다른 시험이다."""
+    판마다 줄이 서므로, 개정 14를 올린 뒤 개정 18을 올릴 때는 이 칸만 바꿔 같은 이름을
+    다시 올린다 — 그 둘은 서로 다른 줄이고, 목록은 최신판만 보여 준다.
+
+    **규격서를 줬으면 판도 줘야 한다.** 판 없이 올리면 같은 자리에 쌓여 뒤엣것이 앞엣것을
+    조용히 덮는다 — 운영에서 1509건이 판 없이 들어갔고 그 길로 값이 사라졌다."""
     tests: list[ReliabilityTestBatchItem] = Field(min_length=1, max_length=500)
     """한 번에 500건까지 — `ReliabilityBulkRequest` 와 같은 상한이다."""
+
+
+class ReliabilityMergeOut(BaseModel):
+    """**이미 있던 줄에 다시 올린 결과** — 무엇을 어떻게 했는지.
+
+    예전에는 `merged` 로 세기만 했다. 보낸 값이 반영이 안 돼도 성공처럼 보였고, 운영에서
+    36건의 값이 그렇게 조용히 사라졌다(2026-10-01). 세는 것과 **한 일을 말하는 것**은
+    다르다.
+    """
+
+    test: ReliabilityTestOut
+    action: str
+    """`updated` 바꿨다 · `skipped` 바뀐 것이 없다."""
+    changed: list[str] = []
+    """**덮어쓴 칸의 이름.** 「시험 온도」 「시험 시간(불량 시)」 — 그 칸의 옛 값은 이
+    판에서 사라졌다. 다른 판의 값은 그대로다."""
+    reason: str | None = None
+    """`skipped` 일 때 왜."""
 
 
 class ReliabilityBatchOut(BaseModel):
@@ -155,9 +176,10 @@ class ReliabilityBatchOut(BaseModel):
 
     requested: int
     created: list[ReliabilityTestOut]
-    merged: list[ReliabilityTestOut] = []
-    """**이미 있던 시험에 이 판의 값을 붙인 것.** 시험의 정체는 규격서 + 이름 + 적용군이라,
-    개정 18을 올리는 것은 새 시험이 아니라 있던 시험의 새 판이다 — 이 줄들이 그것이다."""
+    merged: list[ReliabilityMergeOut] = []
+    """**같은 판을 다시 올린 것.** 판이 줄의 자리가 된 뒤로(0049) 개정 18은 14의 줄에
+    안 붙는다 — 붙였더니 14의 값이 사라졌다. 여기 오는 것은 같은 판의 재적재이고, 줄마다
+    무엇을 덮었는지가 함께 온다."""
     failed: list[dict[str, str]]
     """안 된 줄과 **왜**. `name` 이 함께 온다 — id 가 없는 줄이라 그것 말고는 가리킬 것이
     없다."""

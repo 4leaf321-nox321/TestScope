@@ -38,6 +38,17 @@ def _document(client: TestClient, who: Signed, slug: str, code: str) -> str:
     return str(made.json()["id"])
 
 
+def _revision(client: TestClient, who: Signed, document: str, label: str) -> str:
+    """**규격서를 주면 판도 줘야 한다**(0049) — 판 없이 올리면 같은 자리에 쌓인다."""
+    made = client.post(
+        f"/api/spec-documents/{document}/revisions",
+        json={"label": label},
+        headers=who.headers,
+    )
+    assert made.status_code == 201, made.text
+    return str(made.json()["id"])
+
+
 def test_묶음으로_올리면_줄마다_결과가_온다(
     client: TestClient, db: Session, admin: Signed
 ) -> None:
@@ -75,7 +86,9 @@ def test_묶음으로_올리면_줄마다_결과가_온다(
     # **이미 있는 시험은 막지 않고 그 값에 판을 붙인다**(0046) — 시험의 정체는 규격서 +
     # 이름 + 적용군이라, 다시 올리는 것은 같은 시험의 새 시점이다. 막으면 개정본을 올릴
     # 때 이백 줄이 전부 실패로 오고, 부른 쪽은 그것을 「이미 다 있다」 로 읽는다.
-    assert [one["name"] for one in body["merged"]] == [f"이미 있는 시험-{tag}"]
+    # **병합이 무엇을 했는지 말한다.** 세기만 하면 보낸 값이 안 반영돼도 성공처럼 보인다.
+    assert [one["test"]["name"] for one in body["merged"]] == [f"이미 있는 시험-{tag}"]
+    assert body["merged"][0]["action"] in ("updated", "skipped")
     assert body["failed"] == []
 
 
@@ -87,12 +100,14 @@ def test_문서를_주면_줄마다_규격서가_걸리고_문서로_모아_볼_
     tag = "a" + uuid.uuid4().hex[:5]
     manager = _lab(db, client, tag)
     document = _document(client, manager, f"lab-{tag}", f"MX-REL-{tag}")
+    revision = _revision(client, manager, document, "14")
 
     got = client.post(
         "/api/reliability-tests/batch",
         json={
             "division_code": "vd",
             "document_id": document,
+            "document_revision_id": revision,
             "tests": [{"name": f"고온고습-{tag}"}, {"name": f"열충격-{tag}"}],
         },
         headers=manager.headers,
@@ -158,6 +173,7 @@ def test_줄이_제_규격서를_적었으면_묶음이_안_덮는다(
         json={
             "division_code": "vd",
             "document_id": outer,
+            "document_revision_id": _revision(client, manager, outer, "1"),
             "tests": [
                 {"name": f"바깥-{tag}"},
                 {

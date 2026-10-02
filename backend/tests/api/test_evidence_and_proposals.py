@@ -217,11 +217,20 @@ def test_개정이_쌓여도_확정은_유지되고_안_본_시험이_세어진�
         headers=manager.headers,
     ).json()
 
+    # **규격서를 주면 판도 줘야 한다**(0049) — 판 없이 올리면 같은 자리에 쌓인다.
+    first = client.post(
+        f"/api/spec-documents/{document['id']}/revisions",
+        json={"label": "14"},
+        headers=manager.headers,
+    )
+    assert first.status_code == 201, first.text
+
     batch = client.post(
         "/api/reliability-tests/batch",
         json={
             "division_code": "vd",
             "document_id": document["id"],
+            "document_revision_id": first.json()["id"],
             "tests": [{"name": f"고온고습-{tag}"}, {"name": f"열충격-{tag}"}],
         },
         headers=manager.headers,

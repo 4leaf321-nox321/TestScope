@@ -52,6 +52,7 @@ def list_reliability_tests(
     purpose: str | None = Query(default=None, max_length=200),
     test_item: str | None = Query(default=None, max_length=200),
     equipment: Literal["none"] | None = Query(default=None),
+    include_superseded: bool = Query(default=False),
     limit: int = Query(default=50, ge=1, le=MAX_LIMIT),
     offset: int = Query(default=0, ge=0),
     user: User = Depends(current_user),
@@ -88,6 +89,11 @@ def list_reliability_tests(
     들어온 적이 있고, 통째로 그리면 브라우저가 멎는다 — 줄마다 속성·시험 항목·장비 수가
     딸려 오므로 응답부터 무겁다.
 
+    **기본은 최신판만 온다.** 판마다 줄이 서므로(0049) 안 가리면 목록이 판 수만큼 부푼다 —
+    「개정 14의 열충격」 과 「개정 18의 열충격」 은 다른 줄이다. 지난 판까지 보려면
+    `include_superseded=true`, 특정 판만 보려면 `revision=` 이다(`revision` 을 주면 자동으로
+    지난 판도 보인다 — 안 그러면 그 물음이 늘 0건이다).
+
     `revision` 에 규격서 판 id 를 주면 **그 판의 목록**이 온다 — 판마다 한 벌이라 계산이
     없다. `document` 에 사내 규격서 id 를 주면 **그 문서에서 나온 줄만** 온다 — 묶음으로 올라온
     스무 건을 한 자리에서 보고 한 번에 확인·반려하는 길이다.
@@ -97,10 +103,21 @@ def list_reliability_tests(
     )
     if division:
         return services.list_for_division(
-            db, user, division, attr, status, document, revision, limit, offset, q, rows
+            db,
+            user,
+            division,
+            attr,
+            status,
+            document,
+            revision,
+            limit,
+            offset,
+            q,
+            rows,
+            include_superseded,
         )
     return services.list_all(
-        db, user, attr, status, document, revision, limit, offset, q, rows
+        db, user, attr, status, document, revision, limit, offset, q, rows, include_superseded
     )
 
 
@@ -389,12 +406,17 @@ def value_history(
 ) -> list[AttributeValueOut]:
     """이 시험의 **판별 값 전부** — 지금 값과 과거 판이 함께.
 
-    시험은 한 줄이고 판은 값에 붙는다(0046). 목록·카드는 지금 값만 보여 주므로, 「개정
-    14에서는 얼마였나」 를 보려면 이 자리가 필요하다. 줄마다 `document_revision_label` 과
-    `is_current` 가 온다 — 같은 자리의 값들이 판 순서로 늘어선다.
+    판마다 줄이 서므로(0049) 「과거 판」 은 **다른 줄**에 있다. 그래서 이 자리는 그 시험의
+    판들을 가로질러 모은다 — 화면은 최신판을 보여 주고 과거 판은 여기서 본다는 약속이
+    줄이 갈린 뒤에도 그대로여야 한다.
+
+    줄마다 `document_revision_label` 과 `is_current` 가 온다.
     """
     services.get(db, test_id)
+    # **판을 가로질러 모은다.** 한 줄만 보면 그 판의 값밖에 안 나오고, 「개정 14에서는
+    # 얼마였나」 는 영영 답이 없다.
+    ids = services.sibling_ids(db, test_id)
     rows = attributes.values_of(
-        db, target="reliability_test", object_ids=[test_id], include_past=True
+        db, target="reliability_test", object_ids=ids, include_past=True
     )
-    return rows.get(test_id, [])
+    return [one for test in ids for one in rows.get(test, [])]

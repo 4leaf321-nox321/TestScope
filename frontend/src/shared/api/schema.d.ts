@@ -2408,6 +2408,11 @@ export interface paths {
          *     들어온 적이 있고, 통째로 그리면 브라우저가 멎는다 — 줄마다 속성·시험 항목·장비 수가
          *     딸려 오므로 응답부터 무겁다.
          *
+         *     **기본은 최신판만 온다.** 판마다 줄이 서므로(0049) 안 가리면 목록이 판 수만큼 부푼다 —
+         *     「개정 14의 열충격」 과 「개정 18의 열충격」 은 다른 줄이다. 지난 판까지 보려면
+         *     `include_superseded=true`, 특정 판만 보려면 `revision=` 이다(`revision` 을 주면 자동으로
+         *     지난 판도 보인다 — 안 그러면 그 물음이 늘 0건이다).
+         *
          *     `revision` 에 규격서 판 id 를 주면 **그 판의 목록**이 온다 — 판마다 한 벌이라 계산이
          *     없다. `document` 에 사내 규격서 id 를 주면 **그 문서에서 나온 줄만** 온다 — 묶음으로 올라온
          *     스무 건을 한 자리에서 보고 한 번에 확인·반려하는 길이다.
@@ -2802,9 +2807,11 @@ export interface paths {
          * Value History
          * @description 이 시험의 **판별 값 전부** — 지금 값과 과거 판이 함께.
          *
-         *     시험은 한 줄이고 판은 값에 붙는다(0046). 목록·카드는 지금 값만 보여 주므로, 「개정
-         *     14에서는 얼마였나」 를 보려면 이 자리가 필요하다. 줄마다 `document_revision_label` 과
-         *     `is_current` 가 온다 — 같은 자리의 값들이 판 순서로 늘어선다.
+         *     판마다 줄이 서므로(0049) 「과거 판」 은 **다른 줄**에 있다. 그래서 이 자리는 그 시험의
+         *     판들을 가로질러 모은다 — 화면은 최신판을 보여 주고 과거 판은 여기서 본다는 약속이
+         *     줄이 갈린 뒤에도 그대로여야 한다.
+         *
+         *     줄마다 `document_revision_label` 과 `is_current` 가 온다.
          */
         get: operations["value_history_api_reliability_tests__test_id__value_history_get"];
         put?: never;
@@ -7002,7 +7009,7 @@ export interface components {
              * Merged
              * @default []
              */
-            merged: components["schemas"]["ReliabilityTestOut"][];
+            merged: components["schemas"]["ReliabilityMergeOut"][];
             /** Failed */
             failed: {
                 [key: string]: string;
@@ -7050,6 +7057,26 @@ export interface components {
              * @enum {string}
              */
             action: "confirm" | "reject" | "delete" | "reopen";
+            /** Reason */
+            reason?: string | null;
+        };
+        /**
+         * ReliabilityMergeOut
+         * @description **이미 있던 줄에 다시 올린 결과** — 무엇을 어떻게 했는지.
+         *
+         *     예전에는 `merged` 로 세기만 했다. 보낸 값이 반영이 안 돼도 성공처럼 보였고, 운영에서
+         *     36건의 값이 그렇게 조용히 사라졌다(2026-10-01). 세는 것과 **한 일을 말하는 것**은
+         *     다르다.
+         */
+        ReliabilityMergeOut: {
+            test: components["schemas"]["ReliabilityTestOut"];
+            /** Action */
+            action: string;
+            /**
+             * Changed
+             * @default []
+             */
+            changed: string[];
             /** Reason */
             reason?: string | null;
         };
@@ -13580,6 +13607,7 @@ export interface operations {
                 purpose?: string | null;
                 test_item?: string | null;
                 equipment?: "none" | null;
+                include_superseded?: boolean;
                 limit?: number;
                 offset?: number;
             };

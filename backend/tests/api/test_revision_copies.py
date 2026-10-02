@@ -1,14 +1,18 @@
-"""한 시험은 한 줄, 과거 판은 **값에.**
+"""판마다 줄, 목록은 **최신판만.**
 
-같은 규격서의 개정 14와 18에 이름이 같은 시험이 70개, 그중 36개는 조건이 다른데 먼저
-올라간 판이 이기고 나머지는 409 로 막혔다(2026-09-30).
+0046 은 「한 시험은 한 줄, 과거 판은 값에」 로 갔다. 그 약속이 운영에서 깨졌다
+(2026-10-01): 개정 14(117건)와 18(160건)을 올리니 겹치는 87건이 18 하나로 흡수되고,
+**내용이 실제로 다른 36건은 개정 14 값이 저장되지 않았다.** 그러면서 묶음 적재는
+`merged` 로 세어 성공처럼 보였다.
 
-판마다 시험을 복제해 봤더니(0045) 같은 시험이 판 수만큼 줄로 늘어났다 — 고칠 때 어느
-줄을 고칠지 사람이 정해야 하고, 장비 판정·검색·색인이 같은 시험을 여러 건으로 셌다.
-그래서 **시험은 한 줄**로 두고 판을 값에 붙인다(0046).
+그래서 **판을 다시 줄의 자리로 올린다**(0049). 0045 로 되돌아가는 것처럼 보이지만,
+그때 못 풀었던 「같은 시험이 판 수만큼 줄로 늘어나 목록이 부푼다」 를 여기서 함께 푼다:
 
-    시험의 정체 = 규격서 + 이름 + 적용군    (판은 자리가 아니다)
-    값마다 `document_revision_id` 와 `is_current`
+    시험의 정체 = 규격서 + 이름 + 적용군 + **판**
+    superseded_by_id            이 줄을 밀어낸 뒤 판의 줄. 비면 그것이 최신판
+    목록의 기본                  최신판만. 지난 판은 `include_superseded` 나 `revision=`
+    묶음 적재                    규격서를 주면 **판도 필수**
+    병합                        같은 판의 재적재만. **무엇을 덮었는지 돌려준다**
 """
 
 from __future__ import annotations
@@ -69,55 +73,61 @@ def _temperature(client: TestClient, admin: Signed, tag: str, key_id: str) -> di
     return dict(made.json())
 
 
-def test_같은_이름의_다른_판은_같은_시험이다(
+def test_같은_이름의_다른_판은_다른_줄이고_목록은_최신판만(
     client: TestClient, db: Session, admin: Signed
 ) -> None:
-    """**판은 자리가 아니다.** 개정 14와 18은 같은 시험의 두 시점이다."""
+    """**판은 자리다**(0049). 개정 14와 18은 다른 줄이고, 목록은 18만 보여 준다.
+
+    0046 은 반대로 갔었다 — 한 줄에 두 판의 값을 담으려 했는데, 운영에서 개정 18이 14를
+    흡수하면서 **내용이 다른 36건의 14 값이 사라졌다.**
+    """
     tag = "a" + uuid.uuid4().hex[:5]
     manager, slug = _lab(db, client, tag)
     paper = _paper(client, manager, slug, tag)
     old = _revision(client, manager, paper, "14")
     new = _revision(client, manager, paper, "18")
+    name = f"고온고습 1000h {tag}"
 
     first = client.post(
         "/api/reliability-tests",
-        json={
-            "division_code": "vd",
-            "name": f"고온고습 1000h {tag}",
-            "document_revision_id": old,
-        },
+        json={"division_code": "vd", "name": name, "document_revision_id": old},
         headers=manager.headers,
     )
     assert first.status_code == 201, first.text
 
-    # 한 건 등록은 **거절한다** — 사람이 이름을 다시 친 것이라면 그렇게 말해야 한다.
-    again = client.post(
+    # **같은 판에 같은 이름은 여전히 막는다** — 사람이 이름을 다시 친 것이다.
+    twice = client.post(
         "/api/reliability-tests",
-        json={
-            "division_code": "vd",
-            "name": f"고온고습 1000h {tag}",
-            "document_revision_id": new,
-        },
+        json={"division_code": "vd", "name": name, "document_revision_id": old},
         headers=manager.headers,
     )
-    assert again.status_code == 409, again.text
-    # **무엇을 하면 되는지 말한다** — 판이 다르면 그 시험을 고치면 된다.
-    assert "다른 판이면" in again.json()["error"]["message"]
+    assert twice.status_code == 409, twice.text
 
-    # 묶음 적재는 **그 시험의 값에 판을 붙인다** — 개정 18을 올리는 것은 새 시험이 아니다.
-    batch = client.post(
-        "/api/reliability-tests/batch",
-        json={
-            "division_code": "vd",
-            "document_revision_id": new,
-            "tests": [{"name": f"고온고습 1000h {tag}"}],
-        },
+    # **다른 판은 들어간다.** 예전에는 여기서 409 가 났고, 그 409 가 「이미 다 있다」 로
+    # 읽혀 개정 18의 160건이 통째로 막혔다.
+    later = client.post(
+        "/api/reliability-tests",
+        json={"division_code": "vd", "name": name, "document_revision_id": new},
         headers=manager.headers,
     )
-    assert batch.status_code == 207, batch.text
-    assert batch.json()["created"] == []
-    assert [one["id"] for one in batch.json()["merged"]] == [first.json()["id"]]
-    assert batch.json()["merged"][0]["document_revision_label"] == "18"
+    assert later.status_code == 201, later.text
+    assert later.json()["id"] != first.json()["id"]
+
+    def listed(**params: object) -> list[str]:
+        got = client.get(
+            "/api/reliability-tests",
+            params={"division": "vd", "status": "all", "q": tag, **params},
+            headers=manager.headers,
+        )
+        assert got.status_code == 200, got.text
+        return [one["document_revision_label"] for one in got.json()["items"]]
+
+    # **기본은 최신판만** — 안 가리면 목록이 판 수만큼 부푼다.
+    assert listed() == ["18"]
+    # 지난 판은 일부러 펼쳐야 보인다.
+    assert sorted(listed(include_superseded="true")) == ["14", "18"]
+    # 판을 집어 물으면 그 판이 온다 — 가리면 이 물음이 늘 0건이 된다.
+    assert listed(revision=old) == ["14"]
 
 
 def test_판으로_목록을_좁힌다(client: TestClient, db: Session, admin: Signed) -> None:
@@ -155,9 +165,12 @@ def test_판으로_목록을_좁힌다(client: TestClient, db: Session, admin: S
         headers=manager.headers,
     )
     assert later.status_code == 207, later.text
-    # 고온고습은 **있던 시험의 새 판**, 낙하는 새 시험.
-    assert [one["name"] for one in later.json()["merged"]] == [f"고온고습 {tag}"]
-    assert [one["name"] for one in later.json()["created"]] == [f"낙하 {tag}"]
+    # **판마다 줄이 선다**(0049) — 고온고습의 개정 18은 14의 줄에 안 붙는다. 붙였더니
+    # 14의 값이 사라졌다. 병합은 같은 판을 다시 올릴 때만이다.
+    assert later.json()["merged"] == []
+    assert sorted(one["name"] for one in later.json()["created"]) == sorted(
+        [f"고온고습 {tag}", f"낙하 {tag}"]
+    )
 
     def names(revision: str) -> list[str]:
         got = client.get(
@@ -172,13 +185,19 @@ def test_판으로_목록을_좁힌다(client: TestClient, db: Session, admin: S
     # 열충격은 18이 손대지 않았으므로 18의 목록에 없다.
     assert names(new) == sorted([f"고온고습 {tag}", f"낙하 {tag}"])
 
-    # **줄은 셋뿐이다** — 판마다 복제하던 때는 넷이었다.
-    everything = client.get(
-        "/api/reliability-tests",
-        params={"division": "vd", "status": "all"},
-        headers=manager.headers,
-    )
-    assert len([one for one in everything.json()["items"] if tag in one["name"]]) == 3
+    def everything(**params: object) -> list[str]:
+        got = client.get(
+            "/api/reliability-tests",
+            params={"division": "vd", "status": "all", "q": tag, **params},
+            headers=manager.headers,
+        )
+        assert got.status_code == 200, got.text
+        return sorted(one["name"] for one in got.json()["items"])
+
+    # **줄은 넷이지만 목록은 셋이다** — 고온고습의 개정 14가 18에 밀렸다. 판마다 줄을
+    # 두되 목록이 부풀지 않게 하는 것이 0049 의 요점이다.
+    assert everything() == sorted([f"고온고습 {tag}", f"열충격 {tag}", f"낙하 {tag}"])
+    assert len(everything(include_superseded="true")) == 4
 
 
 def test_줄이_제_판을_적으면_묶음이_안_덮는다(
@@ -274,8 +293,10 @@ def test_두_판을_견준다(
     assert [one["name"] for one in body["added"]] == [f"더해짐 {tag}"]
     assert [one["name"] for one in body["removed"]] == [f"없어짐 {tag}"]
     assert [one["name"] for one in body["changed"]] == [f"조건 바뀜 {tag}"]
-    # 한 줄 안의 두 시점이라 **앞뒤가 같은 시험**이다 — 줄을 잇는 수고가 없다.
-    assert body["changed"][0]["before_id"] == body["changed"][0]["after_id"]
+    # **앞뒤가 다른 줄이다**(0049). 그래서 짝은 줄 id 가 아니라 정체(규격서+이름+적용군)로
+    # 맞춘다 — id 로 맞추면 갈린 줄이 전부 「더해짐 + 없어짐」 이 되고, 그 답은 개정
+    # 하나에 백 건이 새로 생겼다고 말한다.
+    assert body["changed"][0]["before_id"] != body["changed"][0]["after_id"]
     assert body["unchanged_count"] == 1, "안 바뀐 것을 세야 개정의 범위가 보인다"
     # **무엇이 어떻게 바뀌었는지** 한 줄로 — 「바뀜」 만으로는 다시 열어 봐야 한다.
     difference = body["changed"][0]["differences"][0]
@@ -379,16 +400,167 @@ def test_과거_판의_값은_지금_값을_안_흉내낸다(
     assert f"온도 오름 {tag}" not in found(f"{key}=85"), "개정 14의 값으로 걸렸습니다"
 
     # ③ 이력에는 **둘 다** 있고, 어느 판의 것인지가 줄에 적혀 있다.
+    #
+    # 판마다 줄이 서므로(0049) 두 값은 **다른 줄**에 있다 — 이력은 그 줄들을 가로질러
+    # 모은다. 그러지 않으면 「개정 14에서는 얼마였나」 가 영영 답이 없다.
     history = client.get(
         f"/api/reliability-tests/{mine['id']}/value-history", headers=manager.headers
     )
     assert history.status_code == 200, history.text
-    marks = sorted(
+    marks = [
         (one["document_revision_label"], one["display"], one["is_current"])
         for one in history.json()
         if one["label"] == temperature["label"]
+    ]
+    # **판 순서로 온다** — 뒤가 최신이다. `is_current` 는 「그 줄 안의 지금 값」 이라
+    # 둘 다 참이다: 어느 판이 지금 쓰는 판인지는 `superseded_by_id` 가, 목록이 말한다.
+    assert marks == [("14", "85 degC", True), ("18", "95 degC", True)]
+
+
+def test_뒤_판이_앞_판을_안_삼킨다(
+    client: TestClient, db: Session, admin: Signed, condition_ids: dict[str, str]
+) -> None:
+    """**운영에서 값이 사라진 그 자리**(2026-10-01).
+
+    개정 14(117건)와 18(160건)을 올리니 겹치는 87건이 18 하나로 흡수되고, 내용이 실제로
+    다른 36건은 **개정 14 값이 저장되지 않았다.** 그러면서 묶음 적재는 `merged` 로 세어
+    성공처럼 보였다 — 버린 것이 어디에도 안 드러났다.
+    """
+    tag = "a" + uuid.uuid4().hex[:5]
+    manager, slug = _lab(db, client, tag)
+    paper = _paper(client, manager, slug, tag)
+    old = _revision(client, manager, paper, "14")
+    new = _revision(client, manager, paper, "18")
+    temperature = _temperature(client, admin, tag, condition_ids["temperature"])
+    name = f"열충격 {tag}"
+
+    def put(revision: str, degrees: int) -> dict[str, Any]:
+        got = client.post(
+            "/api/reliability-tests/batch",
+            json={
+                "division_code": "vd",
+                "document_id": paper,
+                "document_revision_id": revision,
+                "tests": [
+                    {
+                        "name": name,
+                        "attributes": [
+                            {
+                                "definition_id": temperature["id"],
+                                "num_value": degrees,
+                                "unit": "degC",
+                            }
+                        ],
+                    }
+                ],
+            },
+            headers=manager.headers,
+        )
+        assert got.status_code == 207, got.text
+        assert not got.json()["failed"], got.text
+        return dict(got.json())
+
+    put(old, 85)
+    later = put(new, 95)
+    # **흡수가 아니라 새 줄이다.** 예전에는 여기가 `merged` 였고 85가 사라졌다.
+    assert later["merged"] == []
+    assert len(later["created"]) == 1
+
+    # 두 판의 값이 **둘 다** 남는다 — 이것이 지켜지지 않아 36건이 사라졌다.
+    rows = client.get(
+        "/api/reliability-tests",
+        params={"division": "vd", "status": "all", "q": tag, "include_superseded": "true"},
+        headers=manager.headers,
+    ).json()["items"]
+    by_revision = {
+        one["document_revision_label"]: [
+            each["display"]
+            for each in one["attributes"]
+            if each["label"] == temperature["label"]
+        ]
+        for one in rows
+    }
+    assert by_revision == {"14": ["85 degC"], "18": ["95 degC"]}
+
+
+def test_같은_판을_다시_올리면_무엇을_덮었는지_말한다(
+    client: TestClient, db: Session, admin: Signed, condition_ids: dict[str, str]
+) -> None:
+    """**세는 것과 한 일을 말하는 것은 다르다.** 예전에는 `merged` 로 세기만 해서, 보낸
+    값이 반영이 안 돼도 성공처럼 보였다."""
+    tag = "a" + uuid.uuid4().hex[:5]
+    manager, slug = _lab(db, client, tag)
+    paper = _paper(client, manager, slug, tag)
+    one = _revision(client, manager, paper, "14")
+    temperature = _temperature(client, admin, tag, condition_ids["temperature"])
+
+    def put(degrees: int) -> dict[str, Any]:
+        got = client.post(
+            "/api/reliability-tests/batch",
+            json={
+                "division_code": "vd",
+                "document_id": paper,
+                "document_revision_id": one,
+                "tests": [
+                    {
+                        "name": f"고온고습 {tag}",
+                        "attributes": [
+                            {
+                                "definition_id": temperature["id"],
+                                "num_value": degrees,
+                                "unit": "degC",
+                            }
+                        ],
+                    }
+                ],
+            },
+            headers=manager.headers,
+        )
+        assert got.status_code == 207, got.text
+        return dict(got.json())
+
+    put(85)
+    # 같은 판을 다시 — 갈아 끼우는 것은 맞지만 **무엇을 덮었는지 말해야** 한다.
+    changed = put(95)["merged"]
+    assert len(changed) == 1
+    assert changed[0]["action"] == "updated"
+    assert changed[0]["changed"] == [temperature["label"]]
+
+    # 같은 값을 또 보내면 바뀐 것이 없다 — 그것도 그대로 말한다.
+    same = put(95)["merged"]
+    assert same[0]["action"] == "skipped"
+    assert same[0]["changed"] == []
+    assert "같습니다" in same[0]["reason"]
+
+
+def test_규격서를_주면_판도_있어야_한다(
+    client: TestClient, db: Session, admin: Signed
+) -> None:
+    """**1509건이 판 없이 들어갔고, 그 길로 값이 사라졌다**(2026-10-01)."""
+    tag = "a" + uuid.uuid4().hex[:5]
+    manager, slug = _lab(db, client, tag)
+    paper = _paper(client, manager, slug, tag)
+
+    refused = client.post(
+        "/api/reliability-tests/batch",
+        json={
+            "division_code": "vd",
+            "document_id": paper,
+            "tests": [{"name": f"고온고습 {tag}"}],
+        },
+        headers=manager.headers,
     )
-    assert marks == [("14", "85 degC", False), ("18", "95 degC", True)]
+    assert refused.status_code == 400, refused.text
+    # **무엇을 하면 되는지 말한다** — 「판이 필요합니다」 만으로는 어디서 찾는지 모른다.
+    assert "spec-documents" in refused.json()["error"]["message"]
+
+    # 규격서가 없는 묶음은 개정을 말할 것이 없으므로 그대로 받는다.
+    plain = client.post(
+        "/api/reliability-tests/batch",
+        json={"division_code": "vd", "tests": [{"name": f"규격서 없음 {tag}"}]},
+        headers=manager.headers,
+    )
+    assert plain.status_code == 207, plain.text
 
 
 def test_목록은_쪽으로_끊어_온다(client: TestClient, db: Session, admin: Signed) -> None:
