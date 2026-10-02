@@ -245,7 +245,15 @@ export default function EquipmentPage() {
         />
       ) : (
         <div className="space-y-3">
-          <Table>
+          {/**
+           * **표를 화면에 가둔다.** 열이 열이라(자산번호 … 담당자 · 시험 항목 · 교정 예정)
+           * 안 가두면 가로 스크롤 막대가 표 맨 아래에 붙어서, 오른쪽 열을 보려면 먼저
+           * 세로로 끝까지 내려가야 한다 — 신뢰성 표에서 고친 것과 같은 자리다(0.39.0).
+           *
+           * 머리글이 `thead` 째로 붙으므로 **거르는 줄도 함께 붙는다** — 스물째 줄을 보면서
+           * 어느 열을 거르고 있는지 알 수 있다.
+           */}
+          <Table viewport>
             <TableHeader>
               <TableRow>
                 {canCreate && (

@@ -10,6 +10,8 @@
  *    건이라고 적어 놓고 사업부의 1784건을 전부 확인한다.
  * 4. **속성 아닌 열도 걸린다** — 이름 · 목적 · 시험 항목 · 보유 장비. 화면이 열로 보여
  *    주는 것은 열로 거를 수 있어야 한다.
+ * 5. **지난 판은 일부러 펼친다** — 판마다 줄이 서므로(0049) 기본은 최신판만이고, 「과거 판
+ *    포함」 이 있어야 지난 판을 볼 길이 있다.
  */
 
 import { afterEach, describe, expect, it, vi } from 'vitest'
@@ -188,6 +190,15 @@ describe('사업부 화면의 속성 조건', () => {
     const gathered = listed().filter((path) => path.includes('limit=200'))
     expect(gathered.length).toBeGreaterThan(0)
     expect(gathered.every((path) => path.includes('purpose=none'))).toBe(true)
+  })
+
+  it('「과거 판 포함」 이 서버로 간다 — 없으면 지난 판을 볼 길이 없다', async () => {
+    await show('')
+    expect(listed().some((path) => path.includes('include_superseded'))).toBe(false)
+    await act(async () => {
+      fireEvent.click(screen.getByLabelText('과거 판 포함'))
+    })
+    expect(listed().at(-1)).toContain('include_superseded=true')
   })
 
   it('0건이어도 표와 머리글은 남는다 — 필터를 풀 자리가 있어야 한다', async () => {

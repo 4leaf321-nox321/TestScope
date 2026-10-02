@@ -78,6 +78,7 @@ export const reliabilityApi = {
     offset = 0,
     query = '',
     rows: RowFilters = {},
+    includeSuperseded = false,
   ) => {
     const search = new URLSearchParams({ limit: String(limit), offset: String(offset) })
     // **쪽을 나누면 찾기도 서버가 해야 한다** — 화면 안에서 훑으면 지금 쪽의 쉰 줄만
@@ -86,6 +87,8 @@ export const reliabilityApi = {
     for (const one of attrs) search.append('attr', one)
     // 열마다의 조건 — 이름 · 목적 · 시험 항목 · 보유 장비. 여럿이면 모두 만족해야 한다.
     for (const [key, one] of Object.entries(rows)) if (one) search.set(key, one)
+    // **기본은 최신판만.** 판마다 줄이 서므로(0049) 안 가리면 목록이 판 수만큼 부푼다.
+    if (includeSuperseded) search.set('include_superseded', 'true')
     // **기본은 확정된 것만.** 이 표는 「저 사업부가 무슨 시험을 하나」 에 답하는데, 확인 안
     // 된 후보는 아직 그 답이 아니다 — 옆 사업부 사람은 배지를 안 보고 읽는다.
     if (withCandidates) search.append('status', 'all')

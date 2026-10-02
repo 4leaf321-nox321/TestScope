@@ -214,6 +214,19 @@ describe('보유 장비 목록', () => {
     expect(screen.getByText('미입력')).toBeTruthy()
   })
 
+  it('표를 화면에 가둔다 — 열이 열이면 가로 막대에 닿을 수 없다', async () => {
+    /**
+     * 안 가두면 가로 스크롤 막대가 표 **맨 아래**에 붙어서, 오른쪽 열을 보려면 먼저 세로로
+     * 끝까지 내려가야 한다. 신뢰성 표에서 고친 자리인데(0.39.0) 그 뒤 이 표에 상태 근거·
+     * 담당자 두 열이 붙어 열이 열이 되도록 안 걸려 있었다(2026-10-02).
+     */
+    await open()
+    const box = document.querySelector('[data-slot="table-container"]')
+    expect(box?.className).toContain('overflow-y-auto')
+    // 머리글이 `thead` 째로 붙으므로 **거르는 줄도 함께 붙는다.**
+    expect(box?.className).toContain('[&>table>thead]:sticky')
+  })
+
   it('고를 수 있는 값을 서버에서 받아 온다', async () => {
     await open()
     // 온톨로지 전체가 아니라 **목록에 있는 값만** — 골라도 0 건인 선택지가 섞이면

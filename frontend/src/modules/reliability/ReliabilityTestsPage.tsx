@@ -110,6 +110,12 @@ export default function ReliabilityTestsPage() {
   const [withCandidates, setWithCandidates] = useState(false)
   /** 속성 아닌 열의 조건 — 이름 · 목적 · 시험 항목 · 보유 장비. 주소에 함께 실린다. */
   const rowFilters = useRowFilters()
+  /**
+   * 지난 판까지 볼까. **기본은 최신판만** — 판마다 줄이 서므로(0049) 안 가리면 목록이 판
+   * 수만큼 부푼다. 사업부 화면과 같은 체크다: 한쪽에만 두면 전사 목록에서는 과거 판을 볼
+   * 길이 아예 없다(0.42.0 에서 그렇게 두었다).
+   */
+  const [withOld, setWithOld] = useState(false)
   /** 열로 세울 속성 — 고른 것은 브라우저에 남는다. */
   const columns = useAttributeColumns('reliability_test')
   /** 몇 번째 쪽. 조건이 바뀌면 처음으로 — 세 번째 쪽을 보다 좁히면 빈 화면이 뜬다. */
@@ -130,10 +136,11 @@ export default function ReliabilityTestsPage() {
         page * PAGE,
         asked,
         rowFilters.value,
+        withOld,
       ),
-    [attrs, withCandidates, page, asked, rowFilters.value],
+    [attrs, withCandidates, page, asked, rowFilters.value, withOld],
   )
-  useEffect(() => setPage(0), [attrs, withCandidates, asked, rowFilters.value])
+  useEffect(() => setPage(0), [attrs, withCandidates, asked, rowFilters.value, withOld])
   const [asking, setAsking] = useState<ReliabilityTest | null>(null)
   /** 그림 보기 — **조회하는 사람의 자리.** 수정 창을 열지 않고 본다. */
   const [showing, setShowing] = useState<typeof asking>(null)
@@ -189,6 +196,16 @@ export default function ReliabilityTestsPage() {
             className="size-3.5"
           />
           미확인 후보 포함
+        </label>
+        {/* **지난 판은 일부러 펼친다.** 섞어 두면 같은 시험이 여러 줄로 선다. */}
+        <label className="text-muted-foreground flex items-center gap-1.5 text-sm">
+          <input
+            type="checkbox"
+            checked={withOld}
+            onChange={(event) => setWithOld(event.target.checked)}
+            className="size-3.5"
+          />
+          과거 판 포함
         </label>
         <AttributeColumnPicker columns={columns} />
       </div>
