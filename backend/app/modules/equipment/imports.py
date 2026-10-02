@@ -64,7 +64,7 @@ from collections.abc import Sequence
 from datetime import date
 from typing import Any
 
-from sqlalchemy import select
+from sqlalchemy import func, select
 from sqlalchemy.orm import Session
 
 from app.modules.accounts.models import User
@@ -132,6 +132,9 @@ COLUMNS: dict[str, tuple[str, ...]] = {
         "교정주기(개월)",
         "calibration_interval_months",
     ),
+    # **295대가 담당자 없이 있었다**(2026-10-02). 한 대씩 창을 열어 채우는 것은 사람이
+    # 할 수 있는 일이 아니라, 대장을 붙여 한 번에 채우는 길이 있어야 한다.
+    "contact": ("담당자", "담당자 이메일", "contact", "contact_email"),
     "note": ("비고", "note"),
 }
 
@@ -322,6 +325,8 @@ class Lookup:
         self.workspaces: dict[str, str | None] = {}
         self.workspace_problem: dict[str, str] = {}
         self.models: dict[str, tuple[uuid.UUID | None, str]] = {}
+        #: 담당자는 **한 사람을 여러 줄이 가리킨다** — 대장 한 장에 담당자는 대개 몇 명이다.
+        self.contacts: dict[str, tuple[uuid.UUID | None, str]] = {}
         self.terms: dict[str, dict[str, list[uuid.UUID]]] = {}
         #: 그 축이 **누구나 값을 더할 수 있는 축인가**. 열린 축이면 없는 값을
         #: 그 자리에서 만들 수 있다고 알려 준다.
@@ -355,6 +360,45 @@ class Lookup:
                 self.workspaces[row.name] = row.slug
                 self.workspaces[row.slug] = row.slug
                 self.workspaces_by_slug[row.slug] = row.id
+
+    def contact(self, text: str, problems: Problems) -> uuid.UUID | None:
+        """담당자를 **이메일이나 이름**으로 찾는다.
+
+        이메일이 먼저다 — 동명이인이 실제로 있고, 이름으로는 그 둘을 못 가른다. 이름으로
+        찾아 여럿이면 **고르지 않고 말한다**: 하나를 골라 넣으면 그 장비의 연락처가 남의
+        것이 되고, 틀린 것을 아무도 모른다.
+
+        쉰 계정은 안 받는다 — 담당자 칸의 쓸모가 「연락이 닿는다」 하나뿐이다.
+        """
+        body = clean(text)
+        if not body:
+            return None
+        if body.lower() not in self.contacts:
+            found = list(
+                self.db.scalars(
+                    select(User).where(
+                        func.lower(User.email) == body.lower()
+                        if "@" in body
+                        else User.display_name == body
+                    )
+                )
+            )
+            alive = [one for one in found if one.status == "active"]
+            if len(alive) == 1:
+                self.contacts[body.lower()] = (alive[0].id, "")
+            elif not found:
+                self.contacts[body.lower()] = (None, f"「{text}」 계정을 찾을 수 없습니다")
+            elif not alive:
+                self.contacts[body.lower()] = (None, f"「{text}」 은 쓰지 않는 계정입니다")
+            else:
+                self.contacts[body.lower()] = (
+                    None,
+                    f"「{text}」 가 여럿입니다 ({len(alive)}명) — 이메일로 적어 주십시오",
+                )
+        contact_id, said = self.contacts[body.lower()]
+        if said:
+            problems.add("contact", said)
+        return contact_id
 
     def workspace(self, text: str, problems: Problems) -> str | None:
         """부서를 찾고 **권한까지 본다.**
@@ -554,6 +598,7 @@ def _row_payload(
         ),
         "calibration_required": bool(calibrated),
         "calibration_interval_months": months,
+        "contact_user_id": look.contact(values.get("contact", ""), problems),
         "note": clean(values.get("note", "")) or None,
     }
 
@@ -574,6 +619,7 @@ UPDATABLE = (
     "manufactured_year",
     "calibration_required",
     "calibration_interval_months",
+    "contact_user_id",
     "note",
     "category_term_id",
     "maker_text",

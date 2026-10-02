@@ -389,6 +389,32 @@ def _bulk(db: Session, rows: list[Equipment], viewer: User) -> _Bulk:
     )
 
 
+def _checked_contact(db: Session, raw: Any) -> uuid.UUID | None:
+    """담당자가 **실제로 있는 활성 계정인가.**
+
+    예전에는 받은 id 를 그대로 넣었다. 없는 id 면 외래키가 500 으로 터지고, 그 500 은
+    「서버 오류」 로 읽혀 넣은 사람은 제 오타를 못 본다. 쉰 계정이면 조용히 들어가서
+    **연락이 안 되는 담당자**가 대장에 남는다 — 담당자 칸의 쓸모가 바로 그 하나인데.
+
+    **부서 소속까지는 안 본다.** 부서를 옮긴 사람이 그 장비를 계속 맡는 일이 실제로 있고,
+    그때 막으면 사람은 칸을 비워 둔다. 고르는 칸은 그 부서 사람만 보여 주고(화면), 받는
+    쪽은 살아 있는 계정이면 받는다.
+    """
+    if raw is None:
+        return None
+    contact_id = raw if isinstance(raw, uuid.UUID) else uuid.UUID(str(raw))
+    found = db.get(User, contact_id)
+    if found is None:
+        raise AppError("TSC-EQUIPMENT-0043", "그 담당자 계정을 찾을 수 없습니다.")
+    if found.status != "active":
+        raise AppError(
+            "TSC-EQUIPMENT-0043",
+            f"「{found.display_name}」 은 쓰지 않는 계정입니다 — 연락이 닿는 사람을"
+            " 담당자로 적어 주십시오.",
+        )
+    return contact_id
+
+
 def _attachment_counts(db: Session, ids: list[uuid.UUID]) -> dict[uuid.UUID, int]:
     """장비마다 붙은 자료 수 — **한 번에 센다.**
 
@@ -479,6 +505,7 @@ def equipment_out(
         manufactured_year=row.manufactured_year,
         retired_on=row.retired_on,
         contact_name=contact.display_name if contact else None,
+        contact_user_id=row.contact_user_id,
         note=row.note,
         test_item_count=test_item_count,
         test_items=test_items,
@@ -541,6 +568,7 @@ def list_equipment(
     name: str | None = None,
     status: str | None,
     status_reason: str | None = None,
+    contact: str | None = None,
     workspace_slug: str | None,
     model_id: uuid.UUID | None = None,
     category_term_id: uuid.UUID | None = None,
@@ -572,6 +600,10 @@ def list_equipment(
         stmt = stmt.where(Equipment.asset_no.ilike(f"%{clean(asset_no)}%"))
     if name:
         stmt = stmt.where(Equipment.name.ilike(f"%{clean(name)}%"))
+    if contact == "none":
+        # **담당자가 비어 있는 장비.** 「찾은 다음에 연락할 사람이 없으면 검색은 절반만 한
+        # 것」 인데, 넣을 칸이 화면에 없어서 299대 중 295대가 비어 있었다(2026-10-02).
+        stmt = stmt.where(Equipment.contact_user_id.is_(None))
     if status_reason:
         said = clean(status_reason)
         if said == "none":
@@ -870,7 +902,7 @@ def create(
         retired_on=payload.get("retired_on"),
         calibration_required=bool(payload.get("calibration_required")),
         calibration_interval_months=payload.get("calibration_interval_months"),
-        contact_user_id=payload.get("contact_user_id"),
+        contact_user_id=_checked_contact(db, payload.get("contact_user_id")),
         note=payload.get("note"),
         created_by_id=user.id,
     )
@@ -975,6 +1007,11 @@ def update(
 
     if "status_reason" in changes:
         row.status_reason = changes["status_reason"] or None
+
+    if "contact_user_id" in changes:
+        # **살아 있는 계정인지 먼저 본다.** 아래 `_PLAIN_FIELDS` 가 그대로 넣기 때문에,
+        # 여기서 안 보면 없는 id 는 외래키 500 으로, 쉰 계정은 조용히 들어간다.
+        changes["contact_user_id"] = _checked_contact(db, changes["contact_user_id"])
 
     if "model_id" in changes:
         row.model_id = changes["model_id"]

@@ -432,6 +432,8 @@ def test_보유_장비의_정식_속성은_설치가_심고_다시_심어도_안
         # **AI 가 채우는 칸.** 장비 자료에서 뽑은 글이 의미 검색의 카드에 실린다 —
         # 정식 속성이라야 카드에 들어간다(`shared/semantic.py`).
         "equipment_document_digest",
+        # 「장비 용도」(무엇을 하나)와 다른 칸 — 「왜 쓰나·왜 들였나」.
+        "equipment_usage_reason",
     } <= set(keys)
     assert keys["reservation_url"].status == "standard"
     assert keys["investment_year"].kind == "number"

@@ -158,7 +158,7 @@ describe('보유 장비 목록', () => {
   it('상태 근거를 서버로 보낸다', async () => {
     await open()
     await act(async () => {
-      fireEvent.change(screen.getByPlaceholderText('상태 근거'), {
+      fireEvent.change(screen.getByPlaceholderText('근거에 든 글자'), {
         target: { value: '제어보드' },
       })
     })
@@ -168,6 +168,26 @@ describe('보유 장비 목록', () => {
       lastList().includes('status_reason=%EC%A0%9C%EC%96%B4%EB%B3%B4%EB%93%9C'),
     )
     expect(lastList()).toContain('status_reason=%EC%A0%9C%EC%96%B4%EB%B3%B4%EB%93%9C')
+  })
+
+  it('「근거 미입력」 을 물을 자리가 있고 주소로도 온다', async () => {
+    /**
+     * 「폐기인데 왜 버렸는지가 없다」 가 상태 근거 칸을 만든 이유다. 서버는 `none` 을
+     * 받는데 화면에 글자 입력만 있어서 **눌러서 물을 수 없었다**(2026-10-02).
+     *
+     * 고르는 칸 자체는 Radix 라 jsdom 에서 눌러 볼 수 없다 — 여기서는 **그 칸이 있는지**와
+     * **주소에 실려 오면 서버로 가는지**를 본다(홈이나 링크로 들어오는 길이 그쪽이다).
+     */
+    await open()
+    expect(screen.getByText('근거 전체')).toBeTruthy()
+    expect(screen.getByPlaceholderText('근거에 든 글자')).toBeTruthy()
+  })
+
+  it('주소의 「근거 미입력」 이 서버로 가고 글자 칸은 숨는다', async () => {
+    await open('/equipment?status_reason=none')
+    expect(lastList()).toContain('status_reason=none')
+    // **둘을 함께 걸 수 있다고 읽히면 안 된다** — 서버는 하나만 받는다.
+    expect(screen.queryByPlaceholderText('근거에 든 글자')).toBeNull()
   })
 
   it('근거가 필요한 상태에만 「미입력」 을 칠한다', async () => {

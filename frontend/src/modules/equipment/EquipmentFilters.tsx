@@ -53,6 +53,8 @@ export interface EquipmentFilterState {
   status: string
   /** **왜 그 상태인가** 에 든 글자. `none` 은 근거를 안 적은 장비다. */
   statusReason: string
+  /** `none` 이면 **담당자가 비어 있는 장비만.** */
+  contact: string
   testItemTermId: string
   /** `none` 이면 **시험 항목이 하나도 없는 장비**만. 홈의 「남은 일」 이 이걸로 온다. */
   testItem: string
@@ -69,6 +71,7 @@ export const EMPTY_FILTERS: EquipmentFilterState = {
   siteTermId: '',
   status: '',
   statusReason: '',
+  contact: '',
   testItemTermId: '',
   testItem: '',
   catalog: '',
@@ -260,12 +263,38 @@ export function EquipmentFilters({
         )}
       </td>
       <td className="p-1">
-        {/* 상태 열 다음 칸 — **머리글과 수가 같아야** 열이 안 밀린다. */}
-        <Input
-          value={value.statusReason}
-          onChange={(event) => set({ statusReason: event.target.value })}
-          placeholder="상태 근거"
-          className="w-full"
+        {/**
+         * 상태 열 다음 칸 — **머리글과 수가 같아야** 열이 안 밀린다.
+         *
+         * **둘을 함께 둔다.** 「폐기인데 근거가 없다」 가 이 칸을 만든 물음이라 「미입력」
+         * 은 눌러서 물을 수 있어야 하고, 「제어보드」 로 근거만 뒤지는 일도 실제로 있다 —
+         * 위의 찾기 칸은 자산번호와 이름만 보므로 글자 쪽을 없애면 그 길이 사라진다.
+         */}
+        <div className="flex flex-col gap-1">
+          <Pick
+            value={value.statusReason === 'none' ? 'none' : ''}
+            onChange={(next) => set({ statusReason: next })}
+            placeholder="근거 전체"
+            options={[{ value: 'none', label: '근거 미입력' }]}
+          />
+          {value.statusReason !== 'none' && (
+            <Input
+              value={value.statusReason}
+              onChange={(event) => set({ statusReason: event.target.value })}
+              placeholder="근거에 든 글자"
+              className="w-full"
+            />
+          )}
+        </div>
+      </td>
+      <td className="p-1">
+        {/* **담당자 열의 칸.** 「없음」 만 고를 수 있으면 된다 — 사람 이름으로 거르는 것은
+            위의 찾기 칸이 이미 하고(이름·자산번호), 여기서 묻는 것은 「비어 있는 것」 이다. */}
+        <Pick
+          value={value.contact}
+          onChange={(next) => set({ contact: next })}
+          placeholder="담당자 전체"
+          options={[{ value: 'none', label: '담당자 없음' }]}
         />
       </td>
       <td className="p-1">

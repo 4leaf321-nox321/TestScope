@@ -3,7 +3,7 @@
 from __future__ import annotations
 
 import uuid
-from typing import Any
+from typing import Any, Literal
 
 from fastapi import APIRouter, Depends, Query, Response
 from sqlalchemy.orm import Session
@@ -76,6 +76,7 @@ def list_equipment(
     name: str | None = Query(default=None, max_length=200),
     status: str | None = Query(default=None),
     status_reason: str | None = Query(default=None, max_length=200),
+    contact: Literal["none"] | None = Query(default=None),
     workspace: str | None = Query(default=None),
     model_id: uuid.UUID | None = Query(default=None),
     category_term_id: uuid.UUID | None = Query(default=None),
@@ -107,6 +108,9 @@ def list_equipment(
     `status_reason` 은 **왜 그 상태인지**에 든 글자다. `none` 이면 **근거를 안 적은
     장비** — 「폐기인데 왜 버렸는지가 없다」 가 이 칸을 만든 물음이다.
 
+    `contact=none` 은 **담당자가 비어 있는 장비**다 — 찾은 다음에 연락할 사람이 없으면
+    검색은 절반만 한 것이다.
+
     `test_item=none` 은 **시험 항목이 하나도 없는 장비**다. 홈의 「남은 일」 이 그 줄로
     링크하므로, 세는 조건과 여기 거르는 조건이 같아야 한다.
 
@@ -126,6 +130,7 @@ def list_equipment(
         name=name,
         status=status,
         status_reason=status_reason,
+        contact=contact,
         workspace_slug=workspace,
         model_id=model_id,
         category_term_id=category_term_id,

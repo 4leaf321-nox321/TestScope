@@ -75,6 +75,7 @@ export default function EquipmentPage() {
     catalog: params.get('catalog') ?? '',
     status: params.get('status') ?? '',
     statusReason: params.get('status_reason') ?? '',
+    contact: params.get('contact') ?? '',
     workspace: params.get('workspace') ?? '',
     testItemTermId: params.get('test_item_term_id') ?? '',
   })
@@ -98,6 +99,8 @@ export default function EquipmentPage() {
           ...typed,
           assetNo: typed.assetNo.trim(),
           name: typed.name.trim(),
+          // 「none」 은 글자가 아니라 뜻이다 — 다듬어도 그대로지만, 뜻인 값을 글자처럼
+          // 다루기 시작하면 다음 사람이 여기에 소문자 변환 같은 것을 더한다.
           statusReason: typed.statusReason.trim(),
         }),
       250,
@@ -118,6 +121,7 @@ export default function EquipmentPage() {
         name: filters.name || undefined,
         status: filters.status || undefined,
         statusReason: filters.statusReason || undefined,
+        contact: filters.contact || undefined,
         workspace: filters.workspace || undefined,
         categoryTermId: filters.categoryTermId || undefined,
         siteTermId: filters.siteTermId || undefined,
@@ -264,6 +268,7 @@ export default function EquipmentPage() {
                 <TableHead>위치</TableHead>
                 <TableHead>상태</TableHead>
                 <TableHead className="min-w-40">상태 근거</TableHead>
+                <TableHead>담당자</TableHead>
                 <TableHead>시험 항목</TableHead>
                 <TableHead>교정 예정</TableHead>
               </TableRow>
@@ -350,6 +355,11 @@ export default function EquipmentPage() {
                     ) : (
                       <span className="text-muted-foreground">—</span>
                     )}
+                  </TableCell>
+                  {/* **찾은 다음에 연락할 사람.** 비어 있으면 검색은 절반만 한 것이라,
+                      빈 칸을 빈 칸으로 안 둔다 — 295대가 그렇게 비어 있었다. */}
+                  <TableCell className="text-sm">
+                    {one.contact_name ?? <span className="text-amber-600">미지정</span>}
                   </TableCell>
                   <TableCell>
                     {/* **이 표에서 가장 중요한 칸이다.** 「우리가 무슨 시험을 할 수

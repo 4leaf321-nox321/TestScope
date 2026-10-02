@@ -59,6 +59,8 @@ export const equipmentApi = {
     status?: string
     /** **왜 그 상태인가** 에 든 글자. `none` 이면 근거를 안 적은 장비만. */
     statusReason?: string
+    /** `none` 이면 **담당자가 비어 있는 장비만** — 295대를 찾아 채우는 자리. */
+    contact?: string
     workspace?: string
     /** 이 기종의 장비만. */
     modelId?: string
@@ -84,6 +86,7 @@ export const equipmentApi = {
     if (params.name) search.set('name', params.name)
     if (params.status) search.set('status', params.status)
     if (params.statusReason) search.set('status_reason', params.statusReason)
+    if (params.contact) search.set('contact', params.contact)
     if (params.workspace) search.set('workspace', params.workspace)
     if (params.modelId) search.set('model_id', params.modelId)
     if (params.categoryTermId) search.set('category_term_id', params.categoryTermId)

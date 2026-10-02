@@ -1127,6 +1127,9 @@ export interface paths {
          *     `status_reason` 은 **왜 그 상태인지**에 든 글자다. `none` 이면 **근거를 안 적은
          *     장비** — 「폐기인데 왜 버렸는지가 없다」 가 이 칸을 만든 물음이다.
          *
+         *     `contact=none` 은 **담당자가 비어 있는 장비**다 — 찾은 다음에 연락할 사람이 없으면
+         *     검색은 절반만 한 것이다.
+         *
          *     `test_item=none` 은 **시험 항목이 하나도 없는 장비**다. 홈의 「남은 일」 이 그 줄로
          *     링크하므로, 세는 조건과 여기 거르는 조건이 같아야 한다.
          *
@@ -5262,6 +5265,8 @@ export interface components {
             retired_on: string | null;
             /** Contact Name */
             contact_name: string | null;
+            /** Contact User Id */
+            contact_user_id?: string | null;
             /** Note */
             note: string | null;
             /** Test Item Count */
@@ -11243,6 +11248,7 @@ export interface operations {
                 name?: string | null;
                 status?: string | null;
                 status_reason?: string | null;
+                contact?: "none" | null;
                 workspace?: string | null;
                 model_id?: string | null;
                 category_term_id?: string | null;

@@ -95,6 +95,9 @@ class EquipmentOut(BaseModel):
     retired_on: date | None
     """폐기일. 상태가 `retired` 일 때만 값이 있다."""
     contact_name: str | None
+    contact_user_id: uuid.UUID | None = None
+    """**수정 창이 미리 고르려면 id 가 필요하다.** 이름만 주면 창이 그 이름으로 사람을
+    되찾아야 하고, 동명이인이 있으면 엉뚱한 사람이 골라진다."""
     note: str | None
     test_item_count: int
     """이 장비에 등록된 시험 항목 수. 0 이면 **검색에 절대 안 걸린다** — 목록에서

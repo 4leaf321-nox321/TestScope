@@ -24,6 +24,27 @@ const get = vi.fn(async (path: string) => {
   if (path.includes('/vocabularies/equipment_category/terms')) {
     return [{ id: 'cat-1', value: '만능재료시험기', aliases: [], status: 'active' }]
   }
+  if (path.includes('/members')) {
+    return [
+      {
+        user_id: 'u-1',
+        email: 'kim@testscope.local',
+        display_name: '김담당',
+        status: 'active',
+        role: 'member',
+        joined_at: '2026-01-01T00:00:00Z',
+      },
+      // 쉰 계정은 고를 목록에 안 선다 — 연락이 닿는 사람만 담당자다.
+      {
+        user_id: 'u-2',
+        email: 'gone@testscope.local',
+        display_name: '떠난사람',
+        status: 'suspended',
+        role: 'member',
+        joined_at: '2026-01-01T00:00:00Z',
+      },
+    ]
+  }
   if (path.includes('attribute-definitions')) return []
   if (path.includes('/vocabularies/')) return []
   return { items: [], total: 0 }
@@ -127,6 +148,31 @@ describe('보유 장비 수정', () => {
     expect(body).not.toHaveProperty('asset_no')
     expect(body.location).toBe('3동 105호')
     expect(body.note).toBe('펌웨어 2.1')
+  })
+
+  it('담당자를 그 부서 사람 중에서 고른다 — 쉰 계정은 안 선다', async () => {
+    /**
+     * 「찾은 다음에 연락할 사람이 없으면 검색은 절반만 한 것」 인데, 넣을 칸이 어느
+     * 화면에도 없어서 299대 중 295대가 비어 있었다(2026-10-02).
+     */
+    await show(one())
+    await act(async () => {
+      // 고르는 단추의 이름은 **딸린 라벨**이다(`<label for>` 는 button 에도 걸린다).
+      screen.getByRole('button', { name: '담당자' }).click()
+    })
+    expect(screen.getAllByText('김담당').length).toBeGreaterThan(0)
+    // 쉰 계정은 고를 수 없다 — 담당자 칸의 쓸모가 「연락이 닿는다」 하나뿐이다.
+    expect(screen.queryByText('떠난사람')).toBeNull()
+
+    await act(async () => {
+      screen.getAllByText('김담당')[0].click()
+    })
+    await act(async () => {
+      screen.getByRole('button', { name: '저장' }).click()
+    })
+    const [, body] = patch.mock.calls[0] as unknown as [string, Record<string, unknown>]
+    // **이름이 아니라 id 를 보낸다** — 동명이인이 있으면 이름으로는 못 가른다.
+    expect(body.contact_user_id).toBe('u-1')
   })
 
   it('등록으로 열면 POST 이고 자산번호를 싣는다', async () => {

@@ -62,6 +62,7 @@ import type { AttributeRow } from '@/modules/attributes/AttributeValuesEditor'
 import { ModelPicker } from '@/modules/equipment/ModelPicker'
 import { EQUIPMENT_STATUS_OPTIONS, NEEDS_REASON } from '@/modules/equipment/status'
 import { AXIS, vocabularyApi } from '@/modules/vocabulary/api'
+import { workspaceApi } from '@/modules/workspaces/api'
 import { equipmentApi } from '@/modules/equipment/api'
 import type { Equipment } from '@/modules/equipment/api'
 
@@ -118,7 +119,22 @@ export function EquipmentDialog({
    * 두 걸음을 사람에게 시키면 「만들고 → 다시 열고 → 붙이기」 가 되고 그러면 대개 만들기
    * 까지만 한다 — 사양서 없는 장비가 남는다(신뢰성 시험 창이 같은 이유로 그렇게 한다).
    */
+  /**
+   * 담당자. **찾은 다음에 연락할 사람이 없으면 검색은 절반만 한 것이다** — 모델 주석이
+   * 그렇게 적어 뒀는데 넣을 칸이 어느 화면에도 없어서 299대 중 295대가 비어 있었다
+   * (2026-10-02). 고르는 것은 **그 부서 사람**이다: 장비를 맡는 사람은 대개 그 부서에 있고,
+   * 전사에서 고르게 하면 목록이 수백 줄이 되어 아무도 안 고른다.
+   */
+  const [contact, setContact] = useState('')
   const [staged, setStaged] = useState<File[]>([])
+  /**
+   * 담당자로 고를 사람 — **그 부서의 구성원.** 부서를 바꾸면 다시 받는다: 옮긴 뒤에도
+   * 옛 부서 사람이 목록에 서 있으면, 고른 담당자가 그 장비와 아무 관계가 없어진다.
+   */
+  const members = useResource(
+    () => (workspace ? workspaceApi.members(workspace) : Promise.resolve([])),
+    [workspace],
+  )
   /** 이미 붙어 있는 자료 — 수정 창에서만 채워진다(새 장비는 아직 id 가 없다). */
   const files = useResource(
     () => (editing ? attachmentApi.list('equipment', editing.id) : Promise.resolve([])),
@@ -166,6 +182,7 @@ export function EquipmentDialog({
     setShared(editing?.shared_use ?? false)
     setStatus(editing?.status ?? 'operational')
     setStatusReason(editing?.status_reason ?? '')
+    setContact(editing?.contact_user_id ?? '')
     setAcquiredOn(editing?.acquired_on ?? '')
     setMadeYear(editing?.manufactured_year ? String(editing.manufactured_year) : '')
     setCalibrated(editing?.calibration_required ?? false)
@@ -206,6 +223,7 @@ export function EquipmentDialog({
         // **상태를 바꾸면서 근거를 안 보내면 서버가 비운다.** 창이 늘 함께 보내므로
         // 여기서 지워진 근거는 사람이 지운 것이다.
         status_reason: statusReason.trim() || null,
+        contact_user_id: contact || null,
         acquired_on: acquiredOn || null,
         manufactured_year: madeYear ? Number(madeYear) : null,
         calibration_required: calibrated,
@@ -474,6 +492,33 @@ export function EquipmentDialog({
                 />
               </div>
             </div>
+            {/**
+             * **담당자.** 「찾은 다음에 연락할 사람이 없으면 검색은 절반만 한 것」 인데,
+             * 넣을 칸이 어느 화면에도 없어서 299대 중 295대가 비어 있었다(2026-10-02).
+             *
+             * 고르는 것은 **그 부서 사람**이다 — 장비를 맡는 사람은 대개 그 부서에 있고,
+             * 전사에서 고르게 하면 목록이 수백 줄이 되어 아무도 안 고른다. 부서를 옮긴
+             * 사람이 계속 맡는 경우는 서버가 받아 준다(살아 있는 계정이면).
+             */}
+            <div className="max-w-sm space-y-2">
+              <Label htmlFor="contact">담당자</Label>
+              <SearchablePicker
+                id="contact"
+                value={contact}
+                onChange={setContact}
+                options={(members.data ?? [])
+                  .filter((one) => one.status === 'active')
+                  .map((one) => ({
+                    id: one.user_id,
+                    label: one.display_name,
+                    detail: one.email,
+                  }))}
+                placeholder={workspace ? '부서 사람 중에서' : '보유 부서를 먼저 고르십시오'}
+                detailTitle="담당자"
+                detailHint="보유 부서의 구성원입니다. 다른 부서 사람이 맡고 있으면 대장 반입의 「담당자」 열에 이메일로 적으십시오."
+              />
+            </div>
+
             <label className="flex items-start gap-2 text-sm">
               <input
                 type="checkbox"
