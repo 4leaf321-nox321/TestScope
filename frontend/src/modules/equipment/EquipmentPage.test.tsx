@@ -15,6 +15,13 @@ import { MemoryRouter, Route, Routes } from 'react-router-dom'
 const calls: string[] = []
 /** 걸러서 0 건이 된 상황을 만든다. */
 let empty = false
+/**
+ * 이번 테스트가 보는 상태. **`ONE` 을 직접 고치지 않는다** — 그 객체는 이미 그려진 화면이
+ * 들고 있고, 디바운스로 다시 그려지는 순간 바뀐 값을 읽는다. 한 테스트에서 두 번 그리면
+ * 같은 글자가 둘이 되어 `getByText` 가 「여럿입니다」 로 떨어진다(CI 에서 그렇게 떨어졌다,
+ * 2026-10-02). 부를 때마다 새 줄을 만든다.
+ */
+let status = 'operational'
 
 /** 한 대라도 있어야 표가 그려진다 — 한 대도 없는 회사는 거르기를 볼 일이 없다. */
 const ONE = {
@@ -54,7 +61,7 @@ vi.mock('@/shared/api/client', () => ({
       if (url.startsWith('/equipment')) {
         return empty
           ? { items: [], total: 0, limit: 50, offset: 0 }
-          : { items: [ONE], total: 1, limit: 50, offset: 0 }
+          : { items: [{ ...ONE, status }], total: 1, limit: 50, offset: 0 }
       }
       return []
     }),
@@ -103,6 +110,7 @@ function lastList(): string {
 beforeEach(() => {
   calls.length = 0
   empty = false
+  status = 'operational'
 })
 
 describe('보유 장비 목록', () => {
@@ -190,16 +198,20 @@ describe('보유 장비 목록', () => {
     expect(screen.queryByPlaceholderText('근거에 든 글자')).toBeNull()
   })
 
-  it('근거가 필요한 상태에만 「미입력」 을 칠한다', async () => {
-    // 가동·입고는 이유를 물을 것이 없다 — 전부에 칠하면 그 표시가 아무 뜻도 없어진다.
+  it('가동에는 「미입력」 을 안 칠한다 — 이유를 물을 것이 없다', async () => {
+    // 전부에 칠하면 그 표시가 아무 뜻도 없어진다.
     await open()
     expect(screen.queryByText('미입력')).toBeNull()
+  })
 
-    ONE.status = 'retired'
+  it('폐기인데 근거가 없으면 칠한다', async () => {
+    // 반년 뒤 「그 장비 어디 갔냐」 에 답할 수 없다.
+    //
+    // **한 테스트에 한 번만 그린다.** 두 번 그리면 먼저 그린 화면이 DOM 에 남아 같은 글자가
+    // 둘이 되고, 그러면 `getByText` 가 「여럿입니다」 로 떨어진다.
+    status = 'retired'
     await open()
-    // 폐기인데 왜 버렸는지가 없다 — 반년 뒤 「그 장비 어디 갔냐」 에 답할 수 없다.
     expect(screen.getByText('미입력')).toBeTruthy()
-    ONE.status = 'operational'
   })
 
   it('고를 수 있는 값을 서버에서 받아 온다', async () => {
