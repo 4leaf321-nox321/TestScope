@@ -976,8 +976,9 @@ async def set_spec(
     requires_accessory: bool = False,
     source_id: str | None = None,
     source_page: int | None = None,
+    replace: bool = False,
 ) -> dict[str, Any]:
-    """사양 한 칸을 넣거나 덮어쓴다. **정의의 종류에 맞는 칸만 채운다.**
+    """사양 한 칸을 넣는다. **정의의 종류에 맞는 칸만 채운다.**
 
         number   num_value
         range    num_min · num_max   (한쪽을 비우면 「제한 없음」 — 0 이 아니다)
@@ -993,6 +994,11 @@ async def set_spec(
     **옵션 부속 기준이면 `requires_accessory=True`.** 카탈로그가 「-180~320 °C」 를 항온조
     옵션으로 적으면 그것은 본체 값이 아니다. 비고에만 적으면 검색은 글자를 못 읽고 「됨」
     이라고 답한다 — 표시로 둬야 검색이 「부속 있으면」 으로 가른다.
+
+    **값이 이미 있는 자리는 조용히 못 덮는다.** 409 로 거절하고 지금 들어 있는 값을 함께
+    돌려준다 — 사람이 운영에서 고쳐 둔 값일 수 있다. 그럴 때는 그 값을 **사람에게 보여 주고
+    물어라.** 사양서가 다르다고 확신하면 `replace=True`. 빈 자리를 채우는 것은 그대로 되고,
+    백필이 하는 일은 그것이다.
 
     응답의 `search_axis` 가 채워져 있으면 이 값은 앞으로 이 기종으로 등록하는 장비의
     시험 조건이 된다. `existing_units` 는 **이미 등록된 대수**이고 그들에게는
@@ -1013,6 +1019,7 @@ async def set_spec(
             "requires_accessory": requires_accessory,
             "source_id": source_id,
             "source_page": source_page,
+            "replace": replace,
         },
     )
 
@@ -1214,9 +1221,10 @@ async def register_equipment(
 
     ## 상태
 
-    `incoming` 입고 · `operational` 가동 · `idle` 유휴 · `maintenance` 점검·교정 ·
-    `repair` 고장 · `retired` 폐기. **모르면 지어내지 마라** — 기본값 `operational`
-    보다 사람에게 묻는 편이 낫다. 검색이 「쓸 수 있다」 로 세는 것은 가동과 유휴다.
+    아홉이다 — `incoming` · `operational` · `stopped` · `idle` · `maintenance` ·
+    `repair` · `retired` · `struck` · `unknown`. **모르면 지어내지 마라**: 고르기
+    어려우면 `unknown` 미기재가 정직한 답이다. 뜻과 검색이 세는 넷은
+    `get_guide("보유 장비")`.
 
     ## 교정
 
@@ -1411,6 +1419,7 @@ async def set_test_condition(
 async def update_equipment(
     ctx: Context,
     equipment_id: str,
+    model_id: str | None = None,
     status: str | None = None,
     status_reason: str | None = None,
     location: str | None = None,
@@ -1424,8 +1433,19 @@ async def update_equipment(
 ) -> dict[str, Any]:
     """보유 장비 한 대를 고친다. **안 보낸 칸은 안 바뀐다.**
 
-    상태는 여섯이다: `incoming` 입고 · `operational` 가동 · `idle` 유휴 ·
-    `maintenance` 점검·교정 · `repair` 고장 · `retired` 폐기.
+    **기종 연결은 `model_id`.** 카탈로그 미연결 장비를 기종에 잇는 자리다 — 그 전에는
+    화면에서만 됐다. `search_models` 로 찾아 **라벨의 모델명과 글자로 맞을 때만** 잇는다:
+    비슷한 기종을 고르면 그 장비의 하중·온도가 남의 것이 되고, 조건으로 장비를 찾는 화면이
+    그 수치로 답한다. 못 찾으면 잇지 말고 `propose_equipment_model` 로 요청을 남긴다.
+    이으면 개체가 적어 둔 분류·제조사·모델명은 서버가 비우고, **시험 항목은 다시 복사되지
+    않는다** — 이미 이 장비의 것이 된 값을 사양서로 덮지 않는다.
+
+    상태는 아홉이다: `incoming` 입고 · `operational` 가동 · `stopped` 미가동 ·
+    `idle` 미사용 · `maintenance` 점검·교정 · `repair` 고장 수리중 · `retired` 폐기 ·
+    `struck` 취소선 · `unknown` 미기재.
+
+    검색이 「쓸 수 있다」 로 세는 것은 **`operational`·`idle`·`stopped`·`unknown`** 넷이다 —
+    안 쓰고 있다는 것은 못 쓴다는 뜻이 아니다. 고장·점검·입고·폐기·취소선은 빠진다.
 
     **폐기일은 상태가 `retired` 일 때만** 받는다. 되돌리면 서버가 비운다.
 
@@ -1441,6 +1461,7 @@ async def update_equipment(
     대장 반입(`import_equipment`)의 **「담당자」 열**에 이메일을 적는 쪽이 빠르다.
     """
     body = {
+        "model_id": model_id,
         "status": status,
         "status_reason": status_reason,
         "location": location,

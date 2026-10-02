@@ -19153,6 +19153,11 @@
               }
             ],
             "title": "Source Page"
+          },
+          "replace": {
+            "type": "boolean",
+            "title": "Replace",
+            "default": false
           }
         },
         "additionalProperties": false,

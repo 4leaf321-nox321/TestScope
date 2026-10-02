@@ -41,7 +41,8 @@ from app.modules.vocabulary.specs import (
     SpecDefinitionCategory,
     SpecGroup,
 )
-from app.shared.errors import AppError, NotFound
+from app.shared.errors import AppError, Conflict, NotFound
+from app.shared.request_context import get_actor_token
 from app.shared.units import compatible, convert
 
 #: 값이 담기는 칸들. 종류마다 채우는 것이 다르고, 나머지는 비워 둔다.
@@ -300,6 +301,47 @@ def conditions_from_specs_bulk(
     return out
 
 
+def _held_text(row: ModelSpecValue) -> str:
+    """지금 들어 있는 값을 사람이 읽는 꼴로. **거절할 때 이것을 함께 준다** — 무엇을
+    덮으려 했는지 안 보여 주면 부르는 쪽은 `replace` 를 눌러 보는 것밖에 할 게 없다."""
+    if row.num_value is not None:
+        return str(row.num_value)
+    if row.num_min is not None or row.num_max is not None:
+        low = "" if row.num_min is None else str(row.num_min)
+        high = "" if row.num_max is None else str(row.num_max)
+        return f"{low}~{high}"
+    if row.text_value is not None:
+        return row.text_value
+    if row.bool_value is not None:
+        return "예" if row.bool_value else "아니오"
+    return "(빈 값)"
+
+
+def _refuse_machine_replace(
+    row: ModelSpecValue, definition: SpecDefinition, *, replace: bool
+) -> None:
+    """**기계 자격은 있는 값을 조용히 못 덮는다.** 빈 자리를 채우는 것은 그대로 된다.
+
+    반입이 지키는 규칙과 같다(`catalog_import/values.py`: 「이미 있으면 안 덮는다 — 손으로
+    고쳐 둔 것이 사양서보다 정확하다」). 이 경로에만 그 규칙이 없어서, AI 가 사양을 채우다
+    사람이 운영에서 고쳐 둔 값을 사양서 값으로 되돌릴 수 있었다.
+
+    **누가 넣었는지로 가르지 않는다.** 그 칸이 없고, 넣으려 해도 이미 들어가 있는 값들은
+    반입이 넣은 것과 사람이 고친 것이 구별되지 않는다 — 그 구별을 지금 만들 수는 없으므로
+    「있는 값」 전부를 한 번 물어보게 한다. 사람 세션은 안 막는다: 화면에서 고치는 사람은
+    지금 값을 보고 있다.
+    """
+    if get_actor_token() is None or replace:
+        return
+    raise Conflict(
+        "TSC-SPEC-0014",
+        f"{definition.label}에 이미 값이 있습니다({_held_text(row)}). "
+        "사람이 고쳐 둔 값일 수 있어 기계 자격으로는 덮지 않습니다 — "
+        "정말 바꿀 것이면 replace 를 함께 보내고, 아니면 사람에게 물으십시오.",
+        details={"definition": definition.label, "held": _held_text(row)},
+    )
+
+
 def upsert(
     db: Session, model: EquipmentModel, payload: dict[str, Any]
 ) -> tuple[ModelSpecValueOut, str | None, int]:
@@ -315,6 +357,19 @@ def upsert(
     **이미 등록된 장비는 어떻게 되나** — 안 바뀐다(ADR 0004 의 복사 규칙). 대수를
     말해 주지 않으면 사람은 바뀌었다고 믿고, 그 믿음은 검색 결과가 어긋난 날에야
     깨진다.
+
+    ## 기계 자격은 **있는 값을 조용히 못 덮는다**
+
+    카탈로그 반입이 지키는 규칙과 같다 — 「이미 있으면 안 덮는다. 손으로 고쳐 둔 것이
+    사양서보다 정확하다」(`catalog_import/values.py`). 그런데 이 경로에는 그 규칙이 없어서,
+    AI 가 「카탈로그 사양 채워줘」 를 하다가 **사람이 운영에서 고쳐 둔 값을 사양서 값으로
+    되돌릴 수** 있었다. 실제로 그런 일이 있었다: 두 기종의 단위환산을 사람이 운영에서
+    직접 했다(2026-10-03).
+
+    그래서 기계 자격으로 **값이 이미 있는 자리**를 고치려면 `replace=True` 를 함께 보내야
+    한다. 빈 자리를 채우는 것은 그대로 된다 — 백필이 하는 일은 그것이다.
+
+    사람 세션은 안 막는다. 화면에서 고치는 사람은 지금 값을 보고 있다.
     """
     definition = get_definition(db, payload["definition_id"])
     if not definition.is_active:
@@ -340,6 +395,8 @@ def upsert(
     if row is None:
         row = ModelSpecValue(model_id=model.id, definition_id=definition.id)
         db.add(row)
+    else:
+        _refuse_machine_replace(row, definition, replace=bool(payload.get("replace")))
 
     # **종류에 안 맞는 칸은 비운다.** 남겨 두면 number 로 고친 사양에 옛 구간이
     # 그대로 붙어 있고, 화면마다 어느 칸을 읽느냐에 따라 다른 값이 보인다.

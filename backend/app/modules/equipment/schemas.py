@@ -1031,6 +1031,11 @@ class ModelSpecValueUpsertRequest(Request):
     """수치로 못 담는 단서. "챔버 장착 시" · "1상/3상에 따라 다름"."""
     source_id: uuid.UUID | None = None
     source_page: int | None = Field(default=None, ge=1)
+    replace: bool = False
+    """**이미 있는 값을 덮겠다는 뜻.** 기계 자격(개인 토큰)으로 값이 있는 자리를
+    고치려면 켜야 한다 — 사람이 운영에서 고쳐 둔 값을 AI 가 사양서 값으로 되돌리는 일을
+    막는다(`specs._refuse_machine_replace`). 빈 자리를 채울 때는 필요 없고, 사람 세션은
+    애초에 안 막는다."""
 
 
 class ModelSpecSaveResult(BaseModel):

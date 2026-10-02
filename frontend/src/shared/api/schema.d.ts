@@ -6500,6 +6500,11 @@ export interface components {
             source_id?: string | null;
             /** Source Page */
             source_page?: number | null;
+            /**
+             * Replace
+             * @default false
+             */
+            replace: boolean;
         };
         /** NeighborhoodOut */
         NeighborhoodOut: {

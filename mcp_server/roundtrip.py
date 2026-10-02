@@ -591,6 +591,81 @@ async def _write_chain(ctx: _Ctx) -> int:
                     bad += 1
                     print("  실패 같은 요청이 두 줄로 쌓였습니다")
 
+                # 8-2-b. **기종 연결** — 전에는 화면에서만 됐다(`update_equipment` 에
+                # `model_id` 가 없었다). 카탈로그 미연결 장비를 잇는 길이라, 이 칸이
+                # 빠지면 백필을 사람이 한 대씩 열어 해야 한다.
+                # **시드에 기종이 있든 없든 돈다.** 있는 줄을 찾아 쓰면 CI 의 빈 DB 에서
+                # 조용히 건너뛰고, 건너뛴 걸음은 지키는 게 없다 — 실제로 한 번 그랬다.
+                line = step(
+                    "create_series(연결용)",
+                    await server.create_series(ctx, name=f"MCP계열-{tag}"),
+                    ["name"],
+                )
+                picked = (
+                    step(
+                        "create_model(연결용)",
+                        await server.create_model(ctx, series_id=line["id"], name=f"MCP기종-{tag}"),
+                        ["name"],
+                    )
+                    if line is not None
+                    else None
+                )
+                if picked is not None:
+                    tied = step(
+                        "update_equipment(기종 연결)",
+                        await server.update_equipment(ctx, unit["id"], model_id=picked["id"]),
+                        ["asset_no"],
+                    )
+                    # **이어졌는지 되받아 본다** — 200 만 보고 믿으면 서버가 칸을 조용히
+                    # 버렸을 때 알 수가 없다.
+                    if tied is not None and not tied.get("catalog_linked"):
+                        bad += 1
+                        print("  실패 기종을 이었는데 catalog_linked 가 거짓입니다")
+
+                    # 8-2-c. **있는 값은 기계가 못 덮는다.** 사람이 운영에서 고쳐 둔 값을
+                    # AI 가 사양서 값으로 되돌리는 일을 막는다. 빈 자리는 그대로 채운다.
+                    shown = await server.list_spec_definitions(ctx)
+                    number = next(
+                        (
+                            one
+                            for one in (shown or {}).get("definitions", [])
+                            if one.get("kind") == "number"
+                        ),
+                        None,
+                    )
+                    if number is None:
+                        bad += 1
+                        print("  실패 수치 사양 정의가 하나도 없습니다")
+                    else:
+                        # 빈 자리는 채운다 — 백필이 하는 일이 그것이다.
+                        step(
+                            "set_spec(빈 자리)",
+                            await server.set_spec(
+                                ctx, picked["id"], number["id"], num_value=30
+                            ),
+                            ["search_axis"],
+                        )
+                        # 있는 자리는 **조용히 못 덮는다.** 사람이 운영에서 고쳐 둔 값일 수
+                        # 있어서, 409 로 거절하고 지금 값을 함께 준다.
+                        refused = await server.set_spec(
+                            ctx, picked["id"], number["id"], num_value=300
+                        )
+                        print(f"    ok set_spec(있는 값)              {_short(refused, 70)}")
+                        if "TSC-SPEC-0014" not in str(refused):
+                            bad += 1
+                            print("  실패 있는 값을 기계 자격으로 덮었습니다")
+                        # 길을 막는 것이 아니라 **의도를 적게** 하는 것이다.
+                        again = step(
+                            "set_spec(replace)",
+                            await server.set_spec(
+                                ctx, picked["id"], number["id"], num_value=300, replace=True
+                            ),
+                            ["search_axis"],
+                        )
+                        if again is None:
+                            bad += 1
+                            print("  실패 replace 로도 못 덮었습니다 — 길을 막아 버렸습니다")
+
                 # 8-3. **장비 자료 발췌** — AI 가 읽은 것을 적으면 의미 검색의 카드에
                 # 실린다. 이 칸에 못 적으면 자료는 붙어 있어도 아무도 못 찾는다.
                 defs = await server.list_attribute_definitions(ctx, target="equipment")
