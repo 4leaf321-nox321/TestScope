@@ -60,9 +60,16 @@ claude mcp add --transport http testscope http://10.240.25.85:8022/mcp \
   --header 'Authorization: Bearer <내 개인 토큰>'
 ```
 
-토큰은 각자 화면의 「내 정보 → 토큰」 에서 발급한다. **토큰은 클라이언트 설정 파일에
-평문으로 남는다** — MCP 클라이언트 공통 성질이라 막을 수 없으니 수명을 짧게 주고, 사람이
-바뀌거나 PC 를 옮기면 그 자리에서 폐기한다.
+위 한 줄은 **확인용**이다. 사람에게 줄 설정은 화면이 만든다 — 「내 정보 → 토큰」 에서
+발급하면 그 아래 「AI 도구에 등록하기」 가 Claude Code·Claude Desktop·Codex·Gemini 넷의
+설정을 **토큰까지 채워서** 내준다(`frontend/src/shared/components/McpSetup.tsx`).
+
+**여기에 네 벌을 베껴 적지 않는다.** Desktop·Codex·Gemini 는 설정 파일에 HTTP 서버를 못
+적어 `npx mcp-remote` 브리지를 거치고, 헤더 값의 공백(`Bearer …`) 때문에 `env` 로 돌려야
+한다 — 그 잔손질이 두 벌이 되면 한쪽만 고쳐진다. 고칠 일이 생기면 그 컴포넌트를 고친다.
+
+**토큰은 클라이언트 설정 파일에 평문으로 남는다** — MCP 클라이언트 공통 성질이라 막을 수
+없으니 수명을 짧게 주고, 사람이 바뀌거나 PC 를 옮기면 그 자리에서 폐기한다.
 
 전송은 평문 HTTP 다. 사내망 밖으로 낼 것이면 앞에 TLS 리버스 프록시를 두고, 그 프록시가
 보내는 Host 를 `MCP_ALLOWED_HOSTS` 에 적는다.

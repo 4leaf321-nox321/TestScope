@@ -10,6 +10,7 @@ import type { FormEvent } from 'react'
 import { ApiError, api } from '@/shared/api/client'
 import { useAuth } from '@/shared/auth/AuthContext'
 import { ErrorNotice } from '@/shared/components/ErrorNotice'
+import { McpSetup } from '@/shared/components/McpSetup'
 import { PageHeader } from '@/shared/components/PageHeader'
 import { Button } from '@/shared/components/ui/button'
 import { Input } from '@/shared/components/ui/input'
@@ -246,6 +247,21 @@ export default function ProfilePage() {
             ))}
           </TableBody>
         </Table>
+      </section>
+
+      {/* **토큰을 받고도 「어디에 넣나」 에서 막힌다.** 안내가 `mcp_server/README` 에만
+          있었는데 그 글은 서버를 띄우는 사람이 읽는 문서다 — 토큰을 받는 사람은 이
+          화면에 있고, 화면은 평문을 한 번 보여 준 뒤 아무 말도 안 했다. */}
+      <section className="space-y-3">
+        <div>
+          <h2 className="text-base font-semibold">AI 도구에 등록하기</h2>
+          <p className="text-muted-foreground mt-1 text-sm">
+            Claude·Codex·Gemini 에 이 시스템을 붙이면 그 도구가 장비와 시험을 직접 찾습니다.
+            권한은 <strong>붙인 토큰의 것</strong>입니다 — 공용 자격은 없으므로, 쓰는 사람
+            수만큼 연결이 생겨도 각자 자기 것만 봅니다.
+          </p>
+        </div>
+        <McpSetup token={issued} />
       </section>
     </div>
   )
