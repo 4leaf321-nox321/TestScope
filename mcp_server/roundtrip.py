@@ -165,6 +165,11 @@ async def _write_chain(ctx: _Ctx) -> int:
                     "num_min": -40,
                     "num_max": 125,
                     "unit": "degC",
+                    # **원문 근거.** 아래에서 *다른* 줄을 고친 뒤 이것이 남는지 본다 —
+                    # 운영에서 이 셋이 그렇게 사라졌다(2026-10-03).
+                    "source_text": "Operating temperature: -40 to 257 degF",
+                    "original_value": "-40 to 257",
+                    "original_unit": "degF",
                 }
             ],
         ),
@@ -304,6 +309,20 @@ async def _write_chain(ctx: _Ctx) -> int:
     if added is not None and len(added.get("attributes", [])) != 2:
         bad += 1
         print(f"  실패 더했는데 칸이 {len(added.get('attributes', []))}개입니다")
+    # **안 건드린 줄의 원문 근거가 남아야 한다.** 병합이 되돌려 보낼 칸에서 그 셋을 빠뜨리면
+    # 여기서만 드러난다 — 서버는 받은 대로 쓰고, 빠뜨린 쪽은 MCP 안이다(2026-10-03).
+    if added is not None:
+        kept = next(
+            (
+                one
+                for one in added.get("attributes", [])
+                if one.get("definition_id") == definition["id"]
+            ),
+            None,
+        )
+        if kept is None or kept.get("original_unit") != "degF":
+            bad += 1
+            print(f"  실패 안 건드린 줄의 원문 근거가 사라졌습니다: {_short(kept, 90)}")
 
     narrowed = step(
         "set_reliability_attributes(한 칸만)",

@@ -994,6 +994,16 @@ def update(
             items=_attribute_items(changes["attributes"]),
             revision_id=row.document_revision_id,
         )
+    # **고쳤으면 고친 때가 남아야 한다.**
+    #
+    # `updated_at` 은 `onupdate=func.now()` 인데, 그것은 **이 행이 UPDATE 될 때만** 돈다.
+    # 속성이나 시험 항목만 바꾸면 값은 딴 표에 있어서 이 행은 안 더러워지고, 그러면 UPDATE
+    # 가 아예 안 나가서 날짜가 그대로다 — 목록을 「최근 고친 것」 으로 보는 사람은 방금
+    # 고친 줄을 못 찾고, 「언제 고쳤나」 에 옛 날짜가 답한다(운영 보고, 2026-10-03).
+    #
+    # 손으로 적는다. 칸을 본 사람이 「왜 안 바뀌나」 를 되짚을 자리가 여기여야 한다.
+    if changes:
+        row.updated_at = datetime.now(UTC)
     db.commit()
     db.refresh(row)
     return row
@@ -1382,9 +1392,15 @@ def _merge_revision(
     db.flush()
     after = _value_marks(db, row.id, revision_id)
     changed = sorted({label for label, _ in before.items() - after.items()})
+    action = "updated" if changed or before.keys() != after.keys() else "skipped"
+    # **바뀐 때만 민다.** 같은 판을 다시 적재하는 일이 흔한데(`skipped`), 그때마다 날짜가
+    # 움직이면 「최근 고친 것」 목록이 적재 기록으로 가득 차서 쓸모가 없어진다. 값이 딴 표에
+    # 있어 이 행은 저절로 안 더러워지므로 손으로 적는다(`update()` 와 같은 이유).
+    if action == "updated":
+        row.updated_at = datetime.now(UTC)
     db.commit()
     db.refresh(row)
-    return row, ("updated" if changed or before.keys() != after.keys() else "skipped"), changed
+    return row, action, changed
 
 
 def _value_marks(

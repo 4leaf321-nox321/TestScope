@@ -48,8 +48,35 @@ def _value(definition_id: str, **over: Any) -> dict[str, Any]:
         "set_label": None,
         "step_order": None,
         "step_label": None,
+        # **원문 근거.** 비워 두면 떨어뜨려도 시험이 모른다 — 실제로 그래서 운영에서
+        # 잃었다(2026-10-03).
+        "source_text": "Operating temperature: -40 to 257 degF",
+        "original_value": "-40 to 257",
+        "original_unit": "degF",
         **over,
     }
+
+
+def test_원문_근거를_떨어뜨리지_않는다() -> None:
+    """**되찾을 수 없는 것부터 지킨다.**
+
+    `as_input` 이 안 싣는 칸은 `PATCH` 가 통째로 갈아 끼울 때 그 자리에서 사라진다. 한 칸을
+    고치면 **안 건드린 줄 전부**가 그렇게 된다 — 운영에서 그렇게 잃었다(2026-10-03).
+
+    `note` 는 옮긴 사람의 해석이라 다시 쓸 수 있지만 원문은 문서를 다시 열어야 나온다.
+    `70 degC` 만 남으면 그것이 문서의 값인지 158 °F 를 옮긴 값인지 알 길이 없다.
+    """
+    sent = as_input(_value("d-temp"))
+    assert sent["source_text"] == "Operating temperature: -40 to 257 degF"
+    assert sent["original_value"] == "-40 to 257"
+    assert sent["original_unit"] == "degF"
+
+    # 겹치지 않는 줄을 고칠 때도 남아 있어야 한다 — 그게 이 고장의 모양이었다.
+    done = merge(
+        [_value("d-temp"), _value("d-proc")], [{"definition_id": "d-proc", "note": "고침"}]
+    )
+    kept = next(one for one in done if one["definition_id"] == "d-temp")
+    assert kept["original_unit"] == "degF", "안 건드린 줄의 원문 근거가 사라졌다"
 
 
 def test_안_보낸_칸은_그대로_남는다() -> None:
@@ -73,8 +100,19 @@ def test_서버가_만들어_준_글자는_되돌려_보내지_않는다() -> No
     """`label` · `kind` · `display` 는 읽기용이다. 지금은 무시되지만, 무시되는 것에
     기대면 **오타도 같이 조용해진다**."""
     sent = as_input(_value("d-temp"))
-    assert set(sent) == {"definition_id", "unit", "num_min", "num_max"}
+    assert set(sent) == {
+        "definition_id",
+        "unit",
+        "num_min",
+        "num_max",
+        # 원문 근거는 **되돌려 보낸다** — 서버가 만들어 준 글자가 아니라 사람이 적은 증거다.
+        "source_text",
+        "original_value",
+        "original_unit",
+    }
     assert "display" not in sent and "kind" not in sent
+    # 서버가 계산해 주는 것도 안 싣는다 — 판은 값에 붙지만 보내는 쪽이 정하는 것이 아니다.
+    assert "document_revision_id" not in sent and "is_current" not in sent
     # 안 적힌 칸은 아예 안 싣는다 — `None` 을 보내면 「비우라」 는 뜻이 된다.
     assert "text_value" not in sent
 
