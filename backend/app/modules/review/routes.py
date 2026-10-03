@@ -11,6 +11,8 @@ from app.database import get_db
 from app.modules.accounts.models import User
 from app.modules.review import services
 from app.modules.review.schemas import (
+    BulkDecideResult,
+    DecideRecommendedRequest,
     DecideRequest,
     ProposalOut,
     ProposalPage,
@@ -85,6 +87,22 @@ def decide(
     **누가 골랐고 추천을 따랐는지**가 감사와 이 줄에 남는다."""
     row = services.decide(db, user, proposal_id, choice=payload.choice, note=payload.note)
     return services.with_votes(db, row, user.id)
+
+
+@router.post("/{queue}/decide-recommended", response_model=BulkDecideResult)
+def decide_recommended(
+    queue: str,
+    payload: DecideRecommendedRequest,
+    user: User = Depends(require_system_admin),
+    db: Session = Depends(get_db),
+) -> BulkDecideResult:
+    """고른 줄들을 **각자의 추천대로** 확정한다 — 줄마다 결과.
+
+    추천이 없거나 추천과 다른 의견이 있는 줄은 확정하지 않고 이유와 함께 돌려준다.
+    한꺼번에 넘기는 것은 합의된 줄이고, 갈린 줄은 사람이 보고 하나씩 정한다.
+    """
+    result = services.decide_recommended(db, user, queue, payload.ids, note=payload.note)
+    return BulkDecideResult(**result)
 
 
 @router.post("/{queue}/{proposal_id}/skip", response_model=ProposalOut)

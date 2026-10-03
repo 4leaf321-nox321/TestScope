@@ -19,6 +19,18 @@
  * `?status=decided` 에서 보고, 거기서 「다시 열기」 로 다른 걸로 고칠 수 있다 — 이미 일어난
  * 일(지운 연결·만든 정의)은 안 되돌린다. 대상이 지워진 줄은 `?status=gone` 에 따로 선다:
  * 정한 것이 아니라 물음이 사라진 것이다.
+ *
+ * ## 합의된 줄은 **골라서 한꺼번에**
+ *
+ * 하나씩 열어 「추천」 을 누르는 일이 고됐다(2026-10-03). 고된 것은 「훑어 확정」 쪽이라,
+ * 줄을 골라 **각자의 추천대로** 한 번에 확정한다. 다만 고를 수 있는 것은 합의된 줄뿐이다:
+ *
+ *   * **추천이 없는 줄** — 확신이 낮아 추천을 안 세웠다. 무엇으로 정할지가 없다.
+ *   * **추천과 다른 의견이 있는 줄** — 누군가 다르게 봤다. 한꺼번에 넘기면 그 의견을
+ *     아무도 안 읽은 채 지나간다. 하나씩 열면 같은 추천으로 정할 수도 있다.
+ *
+ * 그 판단은 서버도 똑같이 한다(`decide_recommended`) — 화면만 막으면 API 로는 넘어간다.
+ * 「자동 확정은 없다」 는 그대로다: 사람이 고르고 누른다.
  */
 
 import { useMemo, useState } from 'react'
@@ -75,6 +87,25 @@ function sourceText(source: string): string {
   }
 }
 
+/**
+ * 이 줄을 **추천대로 한꺼번에** 확정할 수 없는 이유. 고를 수 있으면 `null`.
+ *
+ * 서버의 `decide_recommended` 와 **같은 판단**이어야 한다 — 여기서 고를 수 있는데 서버가
+ * 돌려보내면 사람은 「눌렀는데 일부가 안 됐다」 를 이유도 모른 채 본다.
+ */
+export function bulkBlock(row: ReviewProposal): string | null {
+  const recommended = new Set(
+    row.candidates.filter((one) => one.recommended).map((one) => one.code),
+  )
+  if (recommended.size === 0) return '추천이 없는 줄입니다 — 하나씩 열어 골라 주십시오.'
+  const same = (choice: string[]) =>
+    choice.length === recommended.size && choice.every((code) => recommended.has(code))
+  const dissent = row.votes.filter((one) => !same(one.choice)).length
+  if (dissent > 0)
+    return `추천과 다른 의견이 ${dissent}건 있습니다 — 의견을 보고 하나씩 정해 주십시오.`
+  return null
+}
+
 export default function ReviewQueuePage() {
   const { queue = '' } = useParams<{ queue: string }>()
   const { user } = useAuth()
@@ -118,11 +149,52 @@ export default function ReviewQueuePage() {
 
   /** 이 화면에서 정한 줄 — 목록에서 빼되 다시 받지는 않는다(자리가 뛰지 않게). */
   const [gone, setGone] = useState<Set<string>>(new Set())
+  /** 한꺼번에 확정하려고 고른 줄. */
+  const [chosen, setChosen] = useState<Set<string>>(new Set())
+  /** 「정말 확정합니까」 한 번 더 — 확정하면 바로 적용되고 되돌리지 않는다. */
+  const [asking, setAsking] = useState(false)
+  const [bulkBusy, setBulkBusy] = useState(false)
+  /** 확정하지 못하고 돌아온 줄 — 이유와 함께 목록 위에 남긴다. */
+  const [bounced, setBounced] = useState<{ label: string; message: string }[]>([])
   const [error, setError] = useState<ApiError | Error | null>(null)
 
   const meta = (queues.data ?? []).find((one) => one.key === queue)
   const rows = (page.data?.items ?? []).filter((one) => !gone.has(one.id))
   const total = page.data?.total ?? 0
+  /** 정한 줄 · 사라진 줄에서는 고를 것이 없다 — 이미 닫혔다. */
+  const selectable = isAdmin && status !== 'decided' && status !== 'gone'
+  const eligible = rows.filter((one) => bulkBlock(one) === null)
+  const picked = rows.filter((one) => chosen.has(one.id))
+
+  async function decideChosen() {
+    setBulkBusy(true)
+    setError(null)
+    try {
+      const result = await reviewApi.decideRecommended(
+        queue,
+        picked.map((one) => one.id),
+      )
+      setGone((current) => {
+        const next = new Set(current)
+        for (const id of result.done) next.add(id)
+        return next
+      })
+      const labelOf = new Map(rows.map((one) => [one.id, one.subject_label]))
+      setBounced(
+        result.failed.map((one) => ({
+          label: labelOf.get(one.id) ?? one.id,
+          message: one.message,
+        })),
+      )
+      setChosen(new Set())
+      setAsking(false)
+      queues.reload()
+    } catch (caught) {
+      setError(caught instanceof Error ? caught : new Error('알 수 없는 오류'))
+    } finally {
+      setBulkBusy(false)
+    }
+  }
 
   async function act(row: ReviewProposal, run: () => Promise<unknown>) {
     setError(null)
@@ -159,6 +231,9 @@ export default function ReviewQueuePage() {
                 onClick={() => {
                   setOffset(0)
                   setGone(new Set())
+                  setChosen(new Set())
+                  setBounced([])
+                  setAsking(false)
                   setParams(value === 'open' ? {} : { status: value })
                 }}
               >
@@ -169,6 +244,72 @@ export default function ReviewQueuePage() {
         }
       />
       <ErrorNotice error={page.error ?? error} />
+
+      {selectable && rows.length > 0 && (
+        // **합의된 줄만 고를 수 있다** — 추천이 없거나 추천과 다른 의견이 있는 줄은 체크칸이
+        // 꺼져 있고, 왜 꺼졌는지가 그 칸에 올려 있다.
+        <div className="bg-muted/40 flex flex-wrap items-center gap-2 rounded-md border px-3 py-2 text-sm">
+          <Button
+            size="sm"
+            variant="outline"
+            disabled={eligible.length === 0}
+            onClick={() =>
+              setChosen((current) =>
+                current.size === eligible.length && eligible.length > 0
+                  ? new Set()
+                  : new Set(eligible.map((one) => one.id)),
+              )
+            }
+          >
+            {chosen.size === eligible.length && eligible.length > 0
+              ? '고른 것 풀기'
+              : `추천 있는 줄 고르기 (${eligible.length})`}
+          </Button>
+          <span className="text-muted-foreground">
+            {picked.length}건 고름
+            {rows.length > eligible.length &&
+              ` · ${rows.length - eligible.length}건은 하나씩 정할 줄`}
+          </span>
+          <div className="flex-1" />
+          {asking ? (
+            <>
+              {/* **한 번 더 묻는다.** 확정하면 기존 규칙(규격 → 인용 계열에 붙임 …)이 바로
+                  돌고, 다시 열어도 이미 일어난 일은 안 되돌린다. */}
+              <span>
+                {picked.length}건을 <strong>각자의 추천대로</strong> 확정합니다. 바로
+                적용됩니다.
+              </span>
+              {/* 이름을 줄의 「확정」 과 **다르게** 둔다 — 같은 이름의 단추가 둘이면 어느 쪽이
+                  몇 건을 정하는지 눌러 보기 전에는 모른다. */}
+              <Button size="sm" disabled={bulkBusy} onClick={() => void decideChosen()}>
+                {bulkBusy ? '확정하는 중…' : `${picked.length}건 확정`}
+              </Button>
+              <Button size="sm" variant="ghost" onClick={() => setAsking(false)}>
+                취소
+              </Button>
+            </>
+          ) : (
+            <Button size="sm" disabled={picked.length === 0} onClick={() => setAsking(true)}>
+              고른 {picked.length}건 추천대로 확정
+            </Button>
+          )}
+        </div>
+      )}
+
+      {bounced.length > 0 && (
+        // 확정하지 못한 줄 — **이유와 함께.** 「눌렀는데 일부가 안 됐다」 만 보이면 어느 줄을
+        // 왜 다시 봐야 하는지 모른다.
+        <div className="rounded-md border border-amber-500/40 bg-amber-500/5 p-3 text-sm">
+          <p className="font-medium">{bounced.length}건은 확정하지 않았습니다</p>
+          <ul className="mt-1 space-y-0.5">
+            {bounced.map((one) => (
+              <li key={one.label}>
+                {one.label} — <span className="text-muted-foreground">{one.message}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
 
       {page.data && rows.length === 0 ? (
         <EmptyState
@@ -181,6 +322,17 @@ export default function ReviewQueuePage() {
             <ProposalRow
               key={row.id}
               row={row}
+              selectable={selectable}
+              selected={chosen.has(row.id)}
+              blocked={bulkBlock(row)}
+              onSelect={() =>
+                setChosen((current) => {
+                  const next = new Set(current)
+                  if (next.has(row.id)) next.delete(row.id)
+                  else next.add(row.id)
+                  return next
+                })
+              }
               multi={meta?.multi ?? false}
               emptyWord={emptyLabel(queue)}
               directOptions={directOptions}
@@ -238,6 +390,10 @@ function ProposalRow({
   directOptions,
   readOnly,
   isAdmin,
+  selectable,
+  selected,
+  blocked,
+  onSelect,
   onDecide,
   onSkip,
   onVote,
@@ -245,6 +401,12 @@ function ProposalRow({
   onReopen,
 }: {
   row: ReviewProposal
+  /** 한꺼번에 확정할 줄을 고르는 칸을 그리나. */
+  selectable: boolean
+  selected: boolean
+  /** 고를 수 없는 이유. 고를 수 있으면 `null` — 칸을 끄고 이 말을 올려 둔다. */
+  blocked: string | null
+  onSelect: () => void
   multi: boolean
   emptyWord: string
   directOptions: { id: string; label: string; detail?: string | null }[]
@@ -311,9 +473,22 @@ function ProposalRow({
   }
 
   return (
-    <li className="rounded-md border p-4">
+    <li className={`rounded-md border p-4 ${selected ? 'border-primary bg-primary/5' : ''}`}>
       <div className="flex items-start justify-between gap-3">
-        <div className="min-w-0">
+        {selectable && (
+          // **못 고르는 줄은 칸을 끄고 왜인지 올려 둔다.** 숨기면 「이 줄은 왜 안 골라지지」
+          // 를 사람이 되짚어야 하고, 되짚기는 대개 실패한다.
+          <input
+            type="checkbox"
+            className="mt-1.5 shrink-0"
+            aria-label={`${row.subject_label} 고르기`}
+            checked={selected}
+            disabled={blocked !== null}
+            title={blocked ?? '고르면 위의 단추로 추천대로 한꺼번에 확정합니다'}
+            onChange={onSelect}
+          />
+        )}
+        <div className="min-w-0 flex-1">
           <p className="font-medium">
             {row.subject_label}
             {votes.length > 0 && (

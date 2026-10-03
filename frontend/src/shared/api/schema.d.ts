@@ -723,6 +723,29 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/api/review/{queue}/decide-recommended": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /**
+         * Decide Recommended
+         * @description 고른 줄들을 **각자의 추천대로** 확정한다 — 줄마다 결과.
+         *
+         *     추천이 없거나 추천과 다른 의견이 있는 줄은 확정하지 않고 이유와 함께 돌려준다.
+         *     한꺼번에 넘기는 것은 합의된 줄이고, 갈린 줄은 사람이 보고 하나씩 정한다.
+         */
+        post: operations["decide_recommended_api_review__queue__decide_recommended_post"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/api/review/{queue}/{proposal_id}/skip": {
         parameters: {
             query?: never;
@@ -4298,6 +4321,31 @@ export interface components {
             /** Offset */
             offset: number;
         };
+        /** BulkDecideFailure */
+        BulkDecideFailure: {
+            /**
+             * Id
+             * Format: uuid
+             */
+            id: string;
+            /** Code */
+            code: string;
+            /** Message */
+            message: string;
+        };
+        /**
+         * BulkDecideResult
+         * @description 줄마다 결과. **전부 되거나 전부 안 되거나로 두지 않는다** — 오십 줄 중 하나가 추천이
+         *     없다는 이유로 마흔아홉 줄이 함께 막히면 안 된다.
+         */
+        BulkDecideResult: {
+            /** Requested */
+            requested: number;
+            /** Done */
+            done: string[];
+            /** Failed */
+            failed: components["schemas"]["BulkDecideFailure"][];
+        };
         /** CalibrationCreateRequest */
         CalibrationCreateRequest: {
             /**
@@ -4791,6 +4839,19 @@ export interface components {
              * @default false
              */
             is_system_admin: boolean;
+        };
+        /**
+         * DecideRecommendedRequest
+         * @description 고른 줄들을 **각자의 추천대로** 확정한다.
+         *
+         *     추천이 없거나, **추천과 다른 의견이 있는** 줄은 확정하지 않고 이유와 함께 돌려준다 —
+         *     한꺼번에 넘기는 것은 합의된 줄이고, 갈린 줄은 사람이 보고 하나씩 정한다.
+         */
+        DecideRecommendedRequest: {
+            /** Ids */
+            ids: string[];
+            /** Note */
+            note?: string | null;
         };
         /**
          * DecideRequest
@@ -10574,6 +10635,41 @@ export interface operations {
                 };
                 content: {
                     "application/json": components["schemas"]["ProposalOut"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    decide_recommended_api_review__queue__decide_recommended_post: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                queue: string;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["DecideRecommendedRequest"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["BulkDecideResult"];
                 };
             };
             /** @description Validation Error */

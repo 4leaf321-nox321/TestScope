@@ -2011,6 +2011,59 @@
         }
       }
     },
+    "/api/review/{queue}/decide-recommended": {
+      "post": {
+        "tags": [
+          "review"
+        ],
+        "summary": "Decide Recommended",
+        "description": "고른 줄들을 **각자의 추천대로** 확정한다 — 줄마다 결과.\n\n추천이 없거나 추천과 다른 의견이 있는 줄은 확정하지 않고 이유와 함께 돌려준다.\n한꺼번에 넘기는 것은 합의된 줄이고, 갈린 줄은 사람이 보고 하나씩 정한다.",
+        "operationId": "decide_recommended_api_review__queue__decide_recommended_post",
+        "parameters": [
+          {
+            "name": "queue",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Queue"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/DecideRecommendedRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BulkDecideResult"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/api/review/{queue}/{proposal_id}/skip": {
       "post": {
         "tags": [
@@ -12815,6 +12868,61 @@
         ],
         "title": "BrowseOut"
       },
+      "BulkDecideFailure": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Id"
+          },
+          "code": {
+            "type": "string",
+            "title": "Code"
+          },
+          "message": {
+            "type": "string",
+            "title": "Message"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "code",
+          "message"
+        ],
+        "title": "BulkDecideFailure"
+      },
+      "BulkDecideResult": {
+        "properties": {
+          "requested": {
+            "type": "integer",
+            "title": "Requested"
+          },
+          "done": {
+            "items": {
+              "type": "string",
+              "format": "uuid"
+            },
+            "type": "array",
+            "title": "Done"
+          },
+          "failed": {
+            "items": {
+              "$ref": "#/components/schemas/BulkDecideFailure"
+            },
+            "type": "array",
+            "title": "Failed"
+          }
+        },
+        "type": "object",
+        "required": [
+          "requested",
+          "done",
+          "failed"
+        ],
+        "title": "BulkDecideResult",
+        "description": "줄마다 결과. **전부 되거나 전부 안 되거나로 두지 않는다** — 오십 줄 중 하나가 추천이\n없다는 이유로 마흔아홉 줄이 함께 막히면 안 된다."
+      },
       "CalibrationCreateRequest": {
         "properties": {
           "calibrated_on": {
@@ -14089,6 +14197,39 @@
         ],
         "title": "CreateAccountRequest",
         "description": "관리자가 직접 계정을 만들 때. 승인 절차 없이 바로 활성이다."
+      },
+      "DecideRecommendedRequest": {
+        "properties": {
+          "ids": {
+            "items": {
+              "type": "string",
+              "format": "uuid"
+            },
+            "type": "array",
+            "maxItems": 500,
+            "minItems": 1,
+            "title": "Ids"
+          },
+          "note": {
+            "anyOf": [
+              {
+                "type": "string",
+                "maxLength": 1000
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Note"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "ids"
+        ],
+        "title": "DecideRecommendedRequest",
+        "description": "고른 줄들을 **각자의 추천대로** 확정한다.\n\n추천이 없거나, **추천과 다른 의견이 있는** 줄은 확정하지 않고 이유와 함께 돌려준다 —\n한꺼번에 넘기는 것은 합의된 줄이고, 갈린 줄은 사람이 보고 하나씩 정한다."
       },
       "DecideRequest": {
         "properties": {

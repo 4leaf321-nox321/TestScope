@@ -2136,6 +2136,80 @@ def decide(
     return row
 
 
+def decide_recommended(
+    db: Session,
+    user: User,
+    queue: str,
+    ids: list[uuid.UUID],
+    *,
+    note: str | None,
+) -> dict[str, Any]:
+    """고른 줄들을 **각자의 추천대로** 확정한다. 줄마다 `decide` 를 그대로 돈다.
+
+    ## 한꺼번에 넘기는 것은 **합의된 줄**이다
+
+    이 화면은 처음부터 「합의된 건 훑어 확정하고, 갈린 것만 모여 얘기한다」 를 두고 만들었다.
+    한 줄씩 누르는 것이 고된 것은 그 「훑어 확정」 쪽이고, 그것을 덜어 준다. 그래서 둘을
+    **확정하지 않고 돌려준다**:
+
+    * **추천이 없는 줄** — 확신이 낮아 추천을 안 세운 줄이다. 무엇으로 정할지가 없다.
+    * **추천과 다른 의견이 있는 줄** — 누군가 다르게 봤다. 한꺼번에 넘기면 그 의견을 아무도
+      안 읽은 채 지나간다. 하나씩 열어 보면 같은 추천으로 정할 수도 있다 — 막는 것이 아니라
+      **보게 하는** 것이다.
+
+    ## 규칙은 하나다
+
+    `decide` 를 그대로 부른다 — 적용(규격 → 인용 계열에 붙임 …) · 「추천을 따랐나」 · 감사가
+    한 건 정할 때와 똑같이 돈다. 일괄용 적용을 따로 두면 두 벌이 갈라진다.
+
+    줄마다 커밋하고, 막힌 줄은 되돌리고 다음으로 간다 — 전부 되거나 전부 안 되거나로 두면
+    오십 줄 중 하나 때문에 마흔아홉이 함께 막힌다.
+    """
+    _require_admin(user)
+    said = note.strip() if note and note.strip() else "추천대로 한꺼번에 확정"
+    done: list[uuid.UUID] = []
+    failed: list[dict[str, Any]] = []
+    for proposal_id in ids:
+        try:
+            row = get_proposal(db, proposal_id)
+            if row.queue != queue:
+                raise AppError(
+                    "TSC-REVIEW-0013",
+                    "이 물음의 항목이 아닙니다.",
+                    status=400,
+                )
+            recommended = sorted(
+                {one["code"] for one in row.candidates if one.get("recommended")}
+            )
+            if not recommended:
+                raise AppError(
+                    "TSC-REVIEW-0014",
+                    "추천이 없는 항목입니다 — 하나씩 열어 골라 주십시오.",
+                    status=409,
+                )
+            dissent = [
+                one
+                for one in _votes(db, [row.id]).get(row.id, [])
+                if set(one.choice or []) != set(recommended)
+            ]
+            if dissent:
+                raise AppError(
+                    "TSC-REVIEW-0015",
+                    f"추천과 다른 의견이 {len(dissent)}건 있습니다 — 의견을 보고 하나씩 정해 "
+                    "주십시오.",
+                    status=409,
+                )
+            decide(db, user, proposal_id, choice=recommended, note=said)
+            done.append(proposal_id)
+        except AppError as refused:
+            # 막힌 줄을 되돌리고 다음으로 — 반쯤 바뀐 상태가 묻어 가지 않게.
+            db.rollback()
+            failed.append(
+                {"id": proposal_id, "code": refused.code, "message": refused.message}
+            )
+    return {"requested": len(ids), "done": done, "failed": failed}
+
+
 def skip(db: Session, user: User, proposal_id: uuid.UUID) -> ReviewProposal:
     _require_admin(user)
     row = get_proposal(db, proposal_id)

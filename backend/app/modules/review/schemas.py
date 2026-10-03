@@ -98,6 +98,38 @@ class DecideRequest(Request):
     note: str | None = Field(default=None, max_length=1000)
 
 
+#: 한 번에 확정하는 줄 수의 상한. 한 쪽이 50 줄이라 넉넉하다 — 다른 일괄 처리와 같은 값.
+BULK_LIMIT = 500
+
+
+class DecideRecommendedRequest(Request):
+    """고른 줄들을 **각자의 추천대로** 확정한다.
+
+    추천이 없거나, **추천과 다른 의견이 있는** 줄은 확정하지 않고 이유와 함께 돌려준다 —
+    한꺼번에 넘기는 것은 합의된 줄이고, 갈린 줄은 사람이 보고 하나씩 정한다.
+    """
+
+    ids: list[uuid.UUID] = Field(min_length=1, max_length=BULK_LIMIT)
+    note: str | None = Field(default=None, max_length=1000)
+    """감사에 남는 말. 비우면 「추천대로 한꺼번에 확정」 이 남는다 — 하나씩 정한 것과
+    갈린다."""
+
+
+class BulkDecideFailure(BaseModel):
+    id: uuid.UUID
+    code: str
+    message: str
+
+
+class BulkDecideResult(BaseModel):
+    """줄마다 결과. **전부 되거나 전부 안 되거나로 두지 않는다** — 오십 줄 중 하나가 추천이
+    없다는 이유로 마흔아홉 줄이 함께 막히면 안 된다."""
+
+    requested: int
+    done: list[uuid.UUID]
+    failed: list[BulkDecideFailure]
+
+
 class VoteRequest(Request):
     """의견 하나. 후보에 없는 코드도 된다(직접 고르기)."""
 
