@@ -23,7 +23,9 @@
       "Bash(npm test *)",
       "Bash(npx vitest *)",
       "Bash(curl -s http://127.0.0.1:8020/api/*)",
-      "Bash(curl -s http://127.0.0.1:8021/api/*)"
+      "Bash(curl -s http://127.0.0.1:8021/api/*)",
+      "mcp__claude-in-chrome__tabs_context_mcp",
+      "ClaudeInChromeDomain(127.0.0.1:8031)"
     ]
   }
 }
