@@ -225,8 +225,11 @@ describe('기종 등록 요청 검토', () => {
     await act(async () => {
       fireEvent.click(screen.getByRole('button', { name: '아니오' }))
     })
+    // 「아니오」 는 **말해서** 보낸다 — 빈 본문을 거절로 읽으면 인자를 빠뜨린 호출이 조용히
+    // 요청을 닫는다(서버는 이제 그것을 400 으로 막는다).
     expect(post).toHaveBeenCalledWith('/equipment-models/proposals/decide', {
       normalized: 'instron68fm300',
+      reject: true,
     })
   })
 })

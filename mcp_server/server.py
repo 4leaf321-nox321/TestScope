@@ -124,6 +124,7 @@ ROUTING = """무엇을 물었나 -> 여기서 시작한다 (자세한 것은 그
   무슨 칸을 적을 수 있나        list_attribute_definitions
   무엇이 무엇과 이어지나        graph_search -> graph_node
   사람이 정할 것이 뭐가 남았나   list_review_queues (확정은 사람이 화면에서)
+  카탈로그에 없다는 기종 요청   list_model_requests -> decide_model_request (사람 확인 뒤)
   어디부터 채우나              list_pending_work"""
 
 mcp = MCPServer(
@@ -1483,6 +1484,61 @@ async def update_equipment(
         "PATCH",
         f"/equipment/{equipment_id}",
         {key: value for key, value in body.items() if value is not None},
+    )
+
+
+@mcp.tool()
+async def list_model_requests(ctx: Context, include_decided: bool = False) -> dict[str, Any]:
+    """**카탈로그에 없다고 올라온 기종 요청들** — 같은 말끼리 묶어, 건수가 큰 것부터.
+
+    묶음마다 `normalized`(정할 때 쓰는 열쇠) · `text`(대표 표기) · `count` · `proposals`(어느
+    장비가 무엇을 적었나, 왜 못 찾았나)가 온다. 다섯 부서가 같은 기종을 요청했으면 카탈로그에
+    있어야 할 기종이 거의 확실하고, 한 번 정하면 다섯 대가 함께 이어진다. 한 번 나온 것은
+    자작 장비일 수 있다. 정하는 것은 `decide_model_request`.
+    """
+    return _listed(
+        await _get(
+            ctx,
+            "/equipment-models/proposals",
+            params={"include_decided": "true" if include_decided else "false"},
+        ),
+        "groups",
+    )
+
+
+@writes
+async def decide_model_request(
+    ctx: Context,
+    normalized: str,
+    model_id: str | None = None,
+    series_id: str | None = None,
+    name: str | None = None,
+    reject: bool = False,
+) -> dict[str, Any]:
+    """기종 요청 한 묶음을 정한다 — 잇기 · 세우기 · 아니오 중 **하나만**. 시스템 관리자.
+
+    `model_id`(이미 있는 기종 — `resolve(kind="model")`·`search_models` 로 찾는다) ·
+    `series_id`+`name`(그 계열에 기종을 세운다; **이름에 계열 이름을 섞지 마라** — 섞으면
+    `6800 68FM-300` 과 `68FM-300` 이 별개 기종이 된다) · `reject=True`(자작 장비처럼 카탈로그에
+    올릴 것이 아님). 아무것도 안 주면 400 이다. 정하면 **요청한 장비들이 한꺼번에 그 기종에
+    이어진다** — 한 대가 막혀도 나머지는 잇고, 막힌 줄은 `failed` 로 온다.
+
+    **사람에게 보여 주고 정하라.** 기종을 고르면 그 계열의 시험 항목이 장비에 복사되고 조건
+    판정이 그 기종의 사양을 쓴다 — 비슷한 기종으로 때우면 그 장비의 하중·온도가 남의 것이
+    되고, 그 오답은 조용하다. 확신이 없으면 정하지 말고 두어라(요청은 남는다). `reject` 는
+    사람이 아니라고 말했을 때만. 시스템 관리자의 토큰이 아니면 403(TSC-EQUIPMENT-0041)이다.
+    """
+    return await _send(
+        ctx,
+        "POST",
+        "/equipment-models/proposals/decide",
+        {
+            "normalized": normalized,
+            "model_id": model_id,
+            "series_id": series_id,
+            "name": name,
+            "reject": reject,
+        },
     )
 
 

@@ -6,19 +6,64 @@
 
 기록은 요청 처리와 별개 세션에서 한다. 로그를 남기다 실패해도 사용자의 요청은
 성공해야 한다.
+
+## 보존 기간이 지나면 지운다
+
+전에는 아무도 안 지워서 끝없이 자랐다. 하루 한 번, **응답을 보낸 뒤** 스레드에서 보존
+기간(`ACCESS_LOG_RETENTION_DAYS`, 기본 365일)보다 오래된 줄을 지운다 — 주기 작업을 돌릴
+자리가 따로 없고, 쓰는 곳이 여기뿐이라 지우는 것도 여기 둔다. 0 이면 지우지 않는다.
+감사 기록(`audit_entries`)은 지우지 않는다: 그쪽은 「누가 무엇을 바꿨나」 의 유일한 답이다.
 """
 
 from __future__ import annotations
 
 import logging
+import time
+from collections.abc import Callable
+from datetime import UTC, datetime, timedelta
 
+from sqlalchemy import delete
+from sqlalchemy.orm import Session
+from starlette.concurrency import run_in_threadpool
 from starlette.types import ASGIApp, Message, Receive, Scope, Send
 
+from app.config import get_settings
 from app.database import SessionLocal
 from app.modules.audit.models import AccessLog
 from app.shared.request_context import get_request_id
 
 logger = logging.getLogger(__name__)
+
+#: 지우기 간격. 보존 기간이 날 단위라 하루 한 번이면 된다. 워커가 여럿이면 저마다 하루 한
+#: 번 돌지만 같은 줄을 지우는 일이라 겹쳐도 해가 없다.
+PRUNE_EVERY_SECONDS = 24 * 3600.0
+_next_prune = 0.0
+"""다음에 지울 때(`time.monotonic`). 0 이면 기동 뒤 첫 기록에서 한 번 돈다."""
+
+
+def prune(db: Session, *, days: int) -> int:
+    """`days` 일보다 오래된 접근 로그를 지운다. 지운 줄 수를 돌려준다. 0 이하면 안 지운다."""
+    if days <= 0:
+        return 0
+    cutoff = datetime.now(UTC) - timedelta(days=days)
+    result = db.execute(delete(AccessLog).where(AccessLog.created_at < cutoff))
+    db.commit()
+    return int(getattr(result, "rowcount", 0) or 0)
+
+
+def _prune_quietly(factory: Callable[[], Session]) -> None:
+    """지우다 실패해도 요청과는 상관없다 — 남기고 넘어간다. 다음 날 다시 돈다."""
+    days = get_settings().access_log_retention_days
+    db = factory()
+    try:
+        gone = prune(db, days=days)
+        if gone:
+            logger.info("접근 로그 %d줄을 지웠습니다 (보존 %d일)", gone, days)
+    except Exception:
+        logger.exception("접근 로그 정리 실패")
+    finally:
+        db.close()
+
 
 #: 남길 메서드. GET 은 기본적으로 안 남긴다(조회는 양이 많고 가치가 낮다).
 _RECORDED_METHODS = {"POST", "PATCH", "PUT", "DELETE"}
@@ -60,12 +105,12 @@ class AccessLogMiddleware:
         if method not in _RECORDED_METHODS:
             return
 
+        # 세션 공장을 app.state 에서 가져온다. SessionLocal 을 직접 부르면 설정과
+        # 무관하게 늘 같은 DB 를 보게 되어, 테스트가 자기 DB 를 쓰지 못한다.
+        factory = getattr(scope["app"].state, "session_factory", SessionLocal)
         try:
             headers = dict(scope.get("headers") or {})
             client = scope.get("client")
-            # 세션 공장을 app.state 에서 가져온다. SessionLocal 을 직접 부르면 설정과
-            # 무관하게 늘 같은 DB 를 보게 되어, 테스트가 자기 DB 를 쓰지 못한다.
-            factory = getattr(scope["app"].state, "session_factory", SessionLocal)
             db = factory()
             try:
                 db.add(
@@ -86,3 +131,11 @@ class AccessLogMiddleware:
         except Exception:
             # 로그를 남기다 실패해도 사용자의 요청은 이미 끝났다. 삼키되 남긴다.
             logger.exception("접근 로그 기록 실패 (%s %s)", method, path)
+
+        global _next_prune
+        now = time.monotonic()
+        if now >= _next_prune:
+            _next_prune = now + PRUNE_EVERY_SECONDS
+            # **스레드에서.** 처음 도는 날은 수십만 줄일 수 있고, 그동안 이벤트 루프를 잡으면
+            # 다른 요청이 전부 멈춘다. 응답은 이미 나갔다.
+            await run_in_threadpool(_prune_quietly, factory)

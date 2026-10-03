@@ -88,7 +88,14 @@ REVIEW_REOPENED = "review.reopened"
 METHOD_REQUIREMENTS_IMPORTED = "method.requirements_imported"
 RELIABILITY_TEST_DELETED = "reliability_test.deleted"
 """부서가 등록한 신뢰성 시험을 내렸다. 화면에서는 사라지므로 「그 시험 어디 갔어」 의 답이
-여기뿐이다. 만들고 고친 것은 줄 자체(created_by · updated_at)가 말한다."""
+여기뿐이다. 만든 것은 줄 자체(created_by)가 말하고, 고친 것은 아래 `updated` 가 말한다."""
+RELIABILITY_TEST_UPDATED = "reliability_test.updated"
+"""신뢰성 시험을 **고쳤다** — 바뀐 칸만, 사람이 읽을 글자(전 → 후)로.
+
+전에는 「고친 것은 줄 자체(updated_at)가 말한다」 고 두었는데, 그것은 **언제**만 말한다.
+운영에서 AI 가 칸 몇 개를 고치다 원문 근거를 지운 일이 있었고(v0.47.1), 그때 「어느 시험을
+누가 무엇에서 무엇으로」 를 답할 자리가 접근 로그를 뒤지는 것밖에 없었다. 같은 판을 다시
+적재해 값이 바뀐 것(묶음 적재)도 여기 남는다 — 사유 칸이 그 경로를 말한다."""
 SPEC_DOCUMENT_DELETED = "spec_document.deleted"
 #: 개정이 쌓였다 — 딸린 시험 수십 건의 「다시 볼 일」 이 여기서 생긴다.
 SPEC_DOCUMENT_REVISED = "spec_document.revised"

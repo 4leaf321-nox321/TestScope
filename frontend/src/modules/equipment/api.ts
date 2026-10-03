@@ -166,13 +166,15 @@ export const equipmentApi = {
 /** 카탈로그에 없다고 올라온 기종들 — 검토하고 정하는 자리(시스템 관리자). */
 export const modelProposalApi = {
   groups: () => api.get<ModelProposalGroup[]>('/equipment-models/proposals'),
-  /** `model_id` 면 이미 있는 기종에 잇고, `series_id`+`name` 이면 세운 뒤 잇는다.
-   *  둘 다 없으면 아니라고 한 것이다. **정한 기종이 요청한 장비들에 한꺼번에 걸린다.** */
+  /** `model_id` 면 이미 있는 기종에 잇고, `series_id`+`name` 이면 세운 뒤 잇고, `reject`
+   *  면 아니라고 한 것이다 — **셋 중 하나만**(아무것도 없으면 400). 정한 기종이 요청한
+   *  장비들에 한꺼번에 걸린다. */
   decide: (body: {
     normalized: string
     model_id?: string | null
     series_id?: string | null
     name?: string | null
+    reject?: boolean
   }) => api.post<Record<string, unknown>>('/equipment-models/proposals/decide', body),
 }
 

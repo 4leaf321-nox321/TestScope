@@ -40,6 +40,10 @@ class Settings(BaseSettings):
 
     log_dir: Path = BACKEND_DIR / "logs"
     log_retention_days: int = 30
+    access_log_retention_days: int = 365
+    """접근 로그(`access_logs`)를 며칠 두나. 0 이면 안 지운다. 파일 로그(30일)보다 길게
+    두는 이유: 「이 값 언제 누가 바꿨나」 를 반년 뒤에 묻는 일이 실제로 있었고(v0.47.1 복구),
+    그때 요청 id 로 감사와 잇는 끈이 이것이다. 감사 기록은 이 값과 상관없이 남는다."""
 
     filestore_dir: Path = BACKEND_DIR / "filestore"
     """장비 사진·교정 성적서 같은 첨부가 사는 곳. DB 에는 경로와 해시만 둔다."""

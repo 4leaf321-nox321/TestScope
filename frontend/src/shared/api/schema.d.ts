@@ -1821,7 +1821,9 @@ export interface paths {
          * @description 요청 한 묶음을 정한다 — **시스템 관리자만.**
          *
          *     `model_id` 면 이미 있는 기종에 잇고, `series_id` + `name` 이면 그 계열에 기종을 세운 뒤
-         *     잇는다. 둘 다 없으면 아니라고 한 것이다(자작 장비처럼 카탈로그에 올릴 것이 아닌 경우).
+         *     잇는다. `reject` 면 아니라고 한 것이다(자작 장비처럼 카탈로그에 올릴 것이 아닌 경우).
+         *     **셋 중 하나만** — 아무것도 안 보내면 400 이다(빠뜨린 인자가 조용히 「아니오」 가 되지
+         *     않게).
          *
          *     **정한 기종이 요청한 장비들에 한꺼번에 걸린다.** 여기까지 안 하면 관리자는 기종을 세우고
          *     나서 장비를 하나씩 열어 다시 골라야 한다. 한 대가 막혀도 나머지는 잇고, 막힌 줄은
@@ -5264,7 +5266,7 @@ export interface components {
         /**
          * EquipmentModelProposalDecision
          * @description 정하기 — 이미 있는 기종에 잇거나(`model_id`), 계열에 세우거나(`series_id`+`name`),
-         *     아니라고 하거나(둘 다 비움).
+         *     아니라고 하거나(`reject=true`). **셋 중 하나만.**
          */
         EquipmentModelProposalDecision: {
             /** Normalized */
@@ -5275,6 +5277,11 @@ export interface components {
             series_id?: string | null;
             /** Name */
             name?: string | null;
+            /**
+             * Reject
+             * @default false
+             */
+            reject: boolean;
         };
         /**
          * EquipmentModelProposalGroupOut

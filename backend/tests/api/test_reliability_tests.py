@@ -8,6 +8,7 @@
 from __future__ import annotations
 
 import uuid
+from typing import Any
 
 from fastapi.testclient import TestClient
 from sqlalchemy import select
@@ -490,3 +491,73 @@ def test_사업부_목록은_올릴_수_있는지를_함께_준다(
     }
     assert mine["sr"] is True
     assert mine["mx"] is False
+
+
+def test_고친_것은_바뀐_칸만_감사에_남는다(client: TestClient, admin: Signed) -> None:
+    """「고친 것은 updated_at 이 말한다」 는 **언제**만 말한다. 누가 어느 칸을 무엇에서
+    무엇으로 바꿨는지가 남아야, AI 가 칸 몇 개를 고치다 원문 근거를 지운 일(v0.47.1) 같은
+    것을 되짚는다.
+    """
+    tag = uuid.uuid4().hex[:6]
+    rows = client.get(
+        "/api/attribute-definitions",
+        params={"target": "reliability_test"},
+        headers=admin.headers,
+    ).json()
+    temperature = next(one for one in rows if one["label"] == "시험 온도")["id"]
+    made = client.post(
+        "/api/reliability-tests",
+        json={
+            "division_code": "mx",
+            "name": f"감사-{tag}",
+            "attributes": [{"definition_id": temperature, "num_min": 85}],
+        },
+        headers=admin.headers,
+    )
+    assert made.status_code == 201, made.text
+    test_id = made.json()["id"]
+
+    def entries() -> list[dict[str, Any]]:
+        got = client.get(
+            "/api/audit/entries?action=reliability_test.updated&limit=200",
+            headers=admin.headers,
+        )
+        assert got.status_code == 200, got.text
+        return [one for one in got.json()["items"] if one["target_id"] == test_id]
+
+    # 바뀐 것이 없으면 남기지 않는다 — 같은 이름을 다시 보낸 것은 고친 것이 아니다.
+    same = client.patch(
+        f"/api/reliability-tests/{test_id}",
+        json={"name": f"감사-{tag}"},
+        headers=admin.headers,
+    )
+    assert same.status_code == 200, same.text
+    assert entries() == []
+
+    changed = client.patch(
+        f"/api/reliability-tests/{test_id}",
+        json={
+            "name": f"감사2-{tag}",
+            "attributes": [{"definition_id": temperature, "num_min": -40, "num_max": 125}],
+        },
+        headers=admin.headers,
+    )
+    assert changed.status_code == 200, changed.text
+    [entry] = entries()
+    assert entry["changes"]["이름"] == {"before": f"감사-{tag}", "after": f"감사2-{tag}"}
+    assert entry["changes"]["속성 시험 온도"] == {
+        "before": "85 degC 이상",
+        "after": "-40 ~ 125 degC",
+    }
+    # 안 바뀐 칸은 안 실린다 — 스무 칸 중 하나를 고쳤는데 스무 줄이 서면 그 하나가 안 보인다.
+    assert "목적" not in entry["changes"]
+
+    # 지운 칸도 남는다 — 전은 있고 후는 없다.
+    cleared = client.patch(
+        f"/api/reliability-tests/{test_id}", json={"attributes": []}, headers=admin.headers
+    )
+    assert cleared.status_code == 200, cleared.text
+    removed = [one for one in entries() if "속성 시험 온도" in one["changes"]]
+    assert {"before": "-40 ~ 125 degC", "after": None} in [
+        one["changes"]["속성 시험 온도"] for one in removed
+    ]

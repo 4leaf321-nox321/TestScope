@@ -186,8 +186,10 @@ def decide(db: Session, user: User, payload: dict[str, Any]) -> dict[str, Any]:
     """요청 한 묶음을 정한다 — **시스템 관리자만.**
 
     `model_id` 를 주면 이미 있는 기종에 잇고, `series_id` + `name` 을 주면 그 계열에 기종을
-    세운 뒤 잇는다. 둘 다 없으면 아니라고 한 것이다(`rejected`) — 자작 장비처럼 카탈로그에
-    올릴 것이 아닌 경우가 실제로 있다.
+    세운 뒤 잇는다. `reject` 면 아니라고 한 것이다(`rejected`) — 자작 장비처럼 카탈로그에
+    올릴 것이 아닌 경우가 실제로 있다. **셋 중 하나만** 받는다: 아무것도 안 보낸 것을
+    「아니오」 로 읽던 때는 인자를 빠뜨린 호출(AI 가 `model_id` 를 잊은 것)이 조용히 요청을
+    닫았다.
 
     이은 기종은 **요청한 장비들에 한꺼번에 걸린다.** 여기까지 안 하면 관리자는 기종을 세우고
     나서 장비를 하나씩 열어 다시 골라야 하고, 그 일이 밀리면 요청은 정해졌는데 장비는
@@ -200,6 +202,14 @@ def decide(db: Session, user: User, payload: dict[str, Any]) -> dict[str, Any]:
             "TSC-EQUIPMENT-0041",
             "카탈로그 기종은 시스템 관리자가 세웁니다 — 기종을 고르면 그 계열의 시험 항목이"
             " 복사되고 조건 판정이 그 사양을 씁니다.",
+        )
+    chosen = [name for name in ("model_id", "series_id", "reject") if payload.get(name)]
+    if len(chosen) != 1:
+        raise AppError(
+            "TSC-EQUIPMENT-0044",
+            "무엇으로 정할지 하나만 말해 주십시오 — model_id(이미 있는 기종에 잇기) · "
+            "series_id+name(계열에 세우기) · reject(카탈로그에 올릴 것이 아님).",
+            details={"given": chosen},
         )
     key = str(payload["normalized"]).strip()
     rows = list(

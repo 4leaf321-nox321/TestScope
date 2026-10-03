@@ -526,11 +526,31 @@ def test_같은_판을_다시_올리면_무엇을_덮었는지_말한다(
     assert changed[0]["action"] == "updated"
     assert changed[0]["changed"] == [temperature["label"]]
 
-    # 같은 값을 또 보내면 바뀐 것이 없다 — 그것도 그대로 말한다.
+    # 덮은 것은 **감사에도** 남는다 — 응답은 부른 쪽만 보고, 반년 뒤에 「이 값 언제 누가
+    # 바꿨나」 를 묻는 사람은 감사를 본다. 경로(묶음 적재)는 사유가 말한다.
+    def audited() -> list[dict[str, Any]]:
+        got = client.get(
+            "/api/audit/entries?action=reliability_test.updated&limit=200",
+            headers=admin.headers,
+        )
+        assert got.status_code == 200, got.text
+        return [
+            one for one in got.json()["items"] if one["target_id"] == changed[0]["test"]["id"]
+        ]
+
+    [entry] = audited()
+    assert entry["reason"] == "같은 판을 다시 적재"
+    shown = next(
+        value for key, value in entry["changes"].items() if temperature["label"] in key
+    )
+    assert shown == {"before": "85 degC", "after": "95 degC"}
+
+    # 같은 값을 또 보내면 바뀐 것이 없다 — 그것도 그대로 말한다. 감사도 늘지 않는다.
     same = put(95)["merged"]
     assert same[0]["action"] == "skipped"
     assert same[0]["changed"] == []
     assert "같습니다" in same[0]["reason"]
+    assert len(audited()) == 1
 
 
 def test_규격서를_주면_판도_있어야_한다(

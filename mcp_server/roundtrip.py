@@ -642,6 +642,39 @@ async def _write_chain(ctx: _Ctx) -> int:
                         bad += 1
                         print("  실패 기종을 이었는데 catalog_linked 가 거짓입니다")
 
+                    # 8-2-b'. **기종 요청을 보고 정한다** — 위에서 올린 요청을 방금 세운 기종에
+                    # 잇는다. 고르지 않고 부르면 400: 빠뜨린 인자가 조용히 「아니오」 가 되면
+                    # 요청한 부서는 왜 닫혔는지 모른다.
+                    waiting = step(
+                        "list_model_requests", await server.list_model_requests(ctx), ["count"]
+                    )
+                    mine = next(
+                        (
+                            one
+                            for one in (waiting or {}).get("groups", [])
+                            if tag in str(one.get("normalized", ""))
+                        ),
+                        None,
+                    )
+                    if mine is None:
+                        bad += 1
+                        print("  실패 올린 기종 요청이 list_model_requests 에 없습니다")
+                    else:
+                        expect_refusal(
+                            "decide_model_request(고르지 않음)",
+                            await server.decide_model_request(ctx, mine["normalized"]),
+                        )
+                        decided = step(
+                            "decide_model_request(잇기)",
+                            await server.decide_model_request(
+                                ctx, mine["normalized"], model_id=picked["id"]
+                            ),
+                            ["status", "linked"],
+                        )
+                        if decided is not None and decided.get("status") != "linked":
+                            bad += 1
+                            print(f"  실패 요청이 이어지지 않았습니다: {_short(decided, 70)}")
+
                     # 8-2-c. **AI 가 넣은 값은 AI 가 고친다.** 사람 · 반입 값을 못 덮는 쪽은
                     # pytest(`test_spec_overwrite.py`)가 본다 — 이 사슬은 토큰 하나로만 돌아서
                     # 사람이 적은 값을 만들 길이 없다(CI 의 DB 에는 반입 값도 없다).

@@ -945,14 +945,85 @@ def require_editable(db: Session, user: User, test_id: uuid.UUID) -> None:
     _refuse_machine_edit(row)
 
 
+def _audit_view(db: Session, row: ReliabilityTest) -> dict[str, str | None]:
+    """감사에 남길 **지금 모습** — 이름 · 목적 · 판 · 시험 항목과 칸마다의 글자.
+
+    고치기 전후에 한 번씩 찍어 **바뀐 칸만** 남긴다(`_record_update`). 글자는 화면과 MCP 가
+    쓰는 `display` 다 — 감사를 읽는 사람에게 「무엇이 바뀌었나」 를 말할 글자가 그것이다.
+    같은 이름의 칸이 묶음 · 차례로 여럿이면 묶음과 차례를 붙여 가른다(프로파일 1·2·3).
+    """
+    revision = (
+        db.get(SpecDocumentRevision, row.document_revision_id)
+        if row.document_revision_id
+        else None
+    )
+    out: dict[str, str | None] = {
+        "이름": row.name,
+        "목적": row.purpose or None,
+        "판": revision.label if revision else None,
+        "시험 항목": " · ".join(sorted(one.value for one in _items_of(db, [row.id])[row.id]))
+        or None,
+    }
+    for one in attributes.values_of(db, target="reliability_test", object_ids=[row.id])[
+        row.id
+    ]:
+        key = f"속성 {one.label}"
+        if one.set_label:
+            key += f"({one.set_label})"
+        if one.step_order is not None:
+            key += f" {one.step_label or one.step_order}"
+        out[key] = f"{out[key]} · {one.display}" if out.get(key) else one.display
+    return out
+
+
+def _record_update(
+    db: Session,
+    user: User,
+    row: ReliabilityTest,
+    before: dict[str, str | None],
+    after: dict[str, str | None],
+    *,
+    reason: str | None = None,
+) -> None:
+    """고친 것을 감사에 — **바뀐 칸만**, 전 → 후. 바뀐 것이 없으면 아무것도 안 남긴다.
+
+    지운 칸도 남는다(전에는 있고 후에는 없다). `audit.diff` 는 「후」 의 칸만 보므로 여기서
+    둘을 합쳐 견준다 — 안 그러면 AI 가 칸을 지운 일이 감사에서 안 보인다.
+    """
+    keys = list(dict.fromkeys([*before, *after]))
+    changes = {
+        key: {"before": before.get(key), "after": after.get(key)}
+        for key in keys
+        if before.get(key) != after.get(key)
+    }
+    if not changes:
+        return
+    division = db.get(VocabularyTerm, row.division_term_id)
+    audit.record(
+        db,
+        action=audit.RELIABILITY_TEST_UPDATED,
+        actor=user,
+        target_table="reliability_tests",
+        target_id=row.id,
+        target_label=f"{division.value if division else '?'} · {row.name}",
+        changes=changes,
+        reason=reason,
+    )
+
+
 def update(
     db: Session, user: User, test_id: uuid.UUID, changes: dict[str, Any]
 ) -> ReliabilityTest:
-    """`changes` 는 `exclude_unset` 으로 온다 — 안 보낸 칸은 안 건드린다."""
+    """`changes` 는 `exclude_unset` 으로 온다 — 안 보낸 칸은 안 건드린다.
+
+    **고친 것은 감사에 남는다**(`reliability_test.updated`, 바뀐 칸만 전 → 후). 누가 — 사람인지
+    어느 토큰인지 — 는 감사가 스스로 적는다.
+    """
     row = get(db, test_id)
     require_editable(db, user, test_id)
     division = db.get(VocabularyTerm, row.division_term_id)
     assert division is not None
+    before = _audit_view(db, row)
 
     # **판을 먼저 반영한다** — 아래 값 쓰기가 이 칸을 보고 어느 판에 쓸지 정한다.
     if "document_revision_id" in changes:
@@ -1004,6 +1075,8 @@ def update(
     # 손으로 적는다. 칸을 본 사람이 「왜 안 바뀌나」 를 되짚을 자리가 여기여야 한다.
     if changes:
         row.updated_at = datetime.now(UTC)
+    db.flush()
+    _record_update(db, user, row, before, _audit_view(db, row))
     db.commit()
     db.refresh(row)
     return row
@@ -1373,6 +1446,7 @@ def _merge_revision(
     _refuse_machine_edit(row)
     # **덮기 전에 지금 값을 적어 둔다.** 덮고 나서는 무엇이 있었는지 알 길이 없다.
     before = _value_marks(db, row.id, revision_id)
+    seen = _audit_view(db, row)
     if revision_id is not None and _is_later(db, revision_id, row.document_revision_id):
         row.document_revision_id = revision_id
     if sent.get("purpose"):
@@ -1398,6 +1472,7 @@ def _merge_revision(
     # 있어 이 행은 저절로 안 더러워지므로 손으로 적는다(`update()` 와 같은 이유).
     if action == "updated":
         row.updated_at = datetime.now(UTC)
+    _record_update(db, user, row, seen, _audit_view(db, row), reason="같은 판을 다시 적재")
     db.commit()
     db.refresh(row)
     return row, action, changed

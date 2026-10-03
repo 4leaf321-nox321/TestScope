@@ -159,9 +159,20 @@ def test_아니라고도_정한다(client: TestClient, admin: Signed) -> None:
     )
 
     mine = next(g for g in _groups(client, admin) if tag.lower() in g["normalized"])
-    decided = client.post(
+    # **아무것도 안 보내면 400 이다** — 빈 본문을 「아니오」 로 읽던 때는 인자를 빠뜨린
+    # 호출(AI 가 model_id 를 잊은 것)이 조용히 요청을 닫았다. 요청은 그대로 열려 있다.
+    silent = client.post(
         "/api/equipment-models/proposals/decide",
         json={"normalized": mine["normalized"]},
+        headers=admin.headers,
+    )
+    assert silent.status_code == 400, silent.text
+    assert silent.json()["error"]["code"] == "TSC-EQUIPMENT-0044"
+    assert any(tag.lower() in g["normalized"] for g in _groups(client, admin))
+
+    decided = client.post(
+        "/api/equipment-models/proposals/decide",
+        json={"normalized": mine["normalized"], "reject": True},
         headers=admin.headers,
     )
     assert decided.status_code == 200, decided.text

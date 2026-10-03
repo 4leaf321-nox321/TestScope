@@ -38,7 +38,7 @@ export default function ModelProposalsPage() {
 
   async function decide(
     normalized: string,
-    body: { series_id?: string | null; name?: string | null },
+    body: { series_id?: string | null; name?: string | null; reject?: boolean },
   ) {
     setBusy(normalized)
     setError(null)
@@ -135,7 +135,7 @@ export default function ModelProposalsPage() {
                   size="sm"
                   variant="outline"
                   disabled={busy === group.normalized}
-                  onClick={() => void decide(group.normalized, {})}
+                  onClick={() => void decide(group.normalized, { reject: true })}
                 >
                   아니오
                 </Button>

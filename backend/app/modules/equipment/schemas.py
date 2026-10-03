@@ -1210,7 +1210,7 @@ class EquipmentModelProposalRequest(Request):
 
 class EquipmentModelProposalDecision(Request):
     """정하기 — 이미 있는 기종에 잇거나(`model_id`), 계열에 세우거나(`series_id`+`name`),
-    아니라고 하거나(둘 다 비움)."""
+    아니라고 하거나(`reject=true`). **셋 중 하나만.**"""
 
     normalized: str = Field(min_length=1, max_length=400)
     model_id: uuid.UUID | None = None
@@ -1218,3 +1218,7 @@ class EquipmentModelProposalDecision(Request):
     name: str | None = Field(default=None, min_length=1, max_length=150)
     """세울 기종의 이름. **계열 이름을 섞지 않는다** — 섞으면 `6800 68FM-300` 과
     `68FM-300` 이 별개 기종으로 갈리고, 그 둘을 나중에 묶을 방법이 없다."""
+    reject: bool = False
+    """**아니라고 한다**(자작 장비처럼 카탈로그에 올릴 것이 아님). 전에는 `model_id` 도
+    `series_id` 도 안 보내면 「아니오」 로 읽었는데, 그러면 인자를 빠뜨린 호출이 조용히 요청을
+    닫는다 — 요청한 부서는 왜 거절됐는지 모른다. 이제 말해야 닫힌다."""
