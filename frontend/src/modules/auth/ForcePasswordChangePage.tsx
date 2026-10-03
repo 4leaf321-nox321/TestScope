@@ -28,7 +28,7 @@ export default function ForcePasswordChangePage() {
   async function submit(event: FormEvent) {
     event.preventDefault()
     if (next !== again) {
-      setError(new Error('새 비밀번호가 서로 다릅니다.'))
+      setError(new Error('새 비밀번호 불일치.'))
       return
     }
     setBusy(true)
@@ -52,9 +52,9 @@ export default function ForcePasswordChangePage() {
     <div className="flex min-h-svh items-center justify-center p-6">
       <form onSubmit={submit} className="w-full max-w-sm space-y-5">
         <div>
-          <h1 className="text-xl font-semibold tracking-tight">비밀번호를 바꿔 주십시오</h1>
+          <h1 className="text-xl font-semibold tracking-tight">비밀번호 변경 필요</h1>
           <p className="text-muted-foreground mt-1 text-sm">
-            임시 비밀번호로 로그인했습니다. 바꾸기 전에는 다른 화면을 쓸 수 없습니다.
+            임시 비밀번호로 로그인한 상태. 변경 전에는 다른 화면 사용 불가.
           </p>
         </div>
 

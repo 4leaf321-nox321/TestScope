@@ -97,12 +97,11 @@ export function bulkBlock(row: ReviewProposal): string | null {
   const recommended = new Set(
     row.candidates.filter((one) => one.recommended).map((one) => one.code),
   )
-  if (recommended.size === 0) return '추천이 없는 줄입니다 — 하나씩 열어 골라 주십시오.'
+  if (recommended.size === 0) return '추천 없는 줄. 개별 선택 필요.'
   const same = (choice: string[]) =>
     choice.length === recommended.size && choice.every((code) => recommended.has(code))
   const dissent = row.votes.filter((one) => !same(one.choice)).length
-  if (dissent > 0)
-    return `추천과 다른 의견이 ${dissent}건 있습니다 — 의견을 보고 하나씩 정해 주십시오.`
+  if (dissent > 0) return `추천과 다른 의견 ${dissent}건. 의견 확인 후 개별 결정 필요.`
   return null
 }
 
@@ -262,13 +261,13 @@ export default function ReviewQueuePage() {
             }
           >
             {chosen.size === eligible.length && eligible.length > 0
-              ? '고른 것 풀기'
+              ? '선택 해제'
               : `추천 있는 줄 고르기 (${eligible.length})`}
           </Button>
           <span className="text-muted-foreground">
-            {picked.length}건 고름
+            {picked.length}건 선택
             {rows.length > eligible.length &&
-              ` · ${rows.length - eligible.length}건은 하나씩 정할 줄`}
+              ` · ${rows.length - eligible.length}건은 개별 결정 대상`}
           </span>
           <div className="flex-1" />
           {asking ? (
@@ -276,13 +275,13 @@ export default function ReviewQueuePage() {
               {/* **한 번 더 묻는다.** 확정하면 기존 규칙(규격 → 인용 계열에 붙임 …)이 바로
                   돌고, 다시 열어도 이미 일어난 일은 안 되돌린다. */}
               <span>
-                {picked.length}건을 <strong>각자의 추천대로</strong> 확정합니다. 바로
-                적용됩니다.
+                {picked.length}건을 <strong>각자의 추천대로</strong> 확정하시겠습니까? 즉시
+                적용됨.
               </span>
               {/* 이름을 줄의 「확정」 과 **다르게** 둔다 — 같은 이름의 단추가 둘이면 어느 쪽이
                   몇 건을 정하는지 눌러 보기 전에는 모른다. */}
               <Button size="sm" disabled={bulkBusy} onClick={() => void decideChosen()}>
-                {bulkBusy ? '확정하는 중…' : `${picked.length}건 확정`}
+                {bulkBusy ? '확정 중…' : `${picked.length}건 확정`}
               </Button>
               <Button size="sm" variant="ghost" onClick={() => setAsking(false)}>
                 취소
@@ -300,11 +299,11 @@ export default function ReviewQueuePage() {
         // 확정하지 못한 줄 — **이유와 함께.** 「눌렀는데 일부가 안 됐다」 만 보이면 어느 줄을
         // 왜 다시 봐야 하는지 모른다.
         <div className="rounded-md border border-amber-500/40 bg-amber-500/5 p-3 text-sm">
-          <p className="font-medium">{bounced.length}건은 확정하지 않았습니다</p>
+          <p className="font-medium">{bounced.length}건 미확정</p>
           <ul className="mt-1 space-y-0.5">
             {bounced.map((one) => (
               <li key={one.label}>
-                {one.label} — <span className="text-muted-foreground">{one.message}</span>
+                {one.label}: <span className="text-muted-foreground">{one.message}</span>
               </li>
             ))}
           </ul>
@@ -313,8 +312,8 @@ export default function ReviewQueuePage() {
 
       {page.data && rows.length === 0 ? (
         <EmptyState
-          title={status === 'open' ? '남은 것이 없습니다' : '없습니다'}
-          hint={status === 'open' ? '이 물음은 끝났습니다.' : undefined}
+          title={status === 'open' ? '남은 항목 없음' : '항목 없음'}
+          hint={status === 'open' ? '이 물음 처리 완료.' : undefined}
         />
       ) : (
         <ul className="space-y-3">
@@ -484,7 +483,7 @@ function ProposalRow({
             aria-label={`${row.subject_label} 고르기`}
             checked={selected}
             disabled={blocked !== null}
-            title={blocked ?? '고르면 위의 단추로 추천대로 한꺼번에 확정합니다'}
+            title={blocked ?? '선택 후 위 버튼으로 추천대로 일괄 확정'}
             onChange={onSelect}
           />
         )}
@@ -562,7 +561,7 @@ function ProposalRow({
                 </span>
                 <span className="text-muted-foreground">
                   {' '}
-                  — {row.decided_by ?? '?'} · {shownDateTime(row.decided_at)}
+                  · {row.decided_by ?? '?'} · {shownDateTime(row.decided_at)}
                   {row.followed === true && ' · 추천대로'}
                   {row.followed === false && ' · 추천과 다르게'}
                 </span>
@@ -598,7 +597,7 @@ function ProposalRow({
               variant="outline"
               className="shrink-0"
               disabled={busy}
-              title="다른 걸로 고르려고 다시 엽니다. 이미 일어난 일(지운 연결·만든 정의)은 안 되돌립니다."
+              title="다른 답 선택을 위해 다시 열기. 이미 적용된 변경(삭제된 연결·생성된 정의)은 되돌리지 않음."
               onClick={async () => {
                 setBusy(true)
                 try {
@@ -674,7 +673,7 @@ function ProposalRow({
               <Input
                 value={direct}
                 onChange={(event) => setDirect(event.target.value)}
-                placeholder="직접 입력 — 후보에 없는 표기"
+                placeholder="직접 입력 (후보에 없는 표기)"
                 aria-label="별칭 직접 입력"
                 className="w-56"
               />
@@ -690,14 +689,14 @@ function ProposalRow({
                   options={directOptions}
                   placeholder="직접 선택"
                   detailTitle="직접 선택"
-                  detailHint="후보에 없는 답. 이 물음의 어휘 전부에서 고릅니다."
+                  detailHint="후보에 없는 답. 이 물음의 어휘 전체에서 선택."
                 />
               </div>
             )}
             <Input
               value={note}
               onChange={(event) => setNote(event.target.value)}
-              placeholder="메모 (선택) — 왜 그렇게 정했나"
+              placeholder="메모 (선택): 결정 이유"
               className="max-w-xs"
             />
             {/* 의견 — 누구나. 줄은 남고 의견만 바뀐다. */}
@@ -762,14 +761,11 @@ function ProposalRow({
             )}
             {recommended && !picked.length && !direct && (
               <span className="text-muted-foreground text-xs">
-                추천을 따르려면 「{recommended.label}」 을 누르십시오 — 자동으로 고르지
-                않습니다.
+                추천을 따르려면 ‘{recommended.label}’ 선택 필요. 자동 선택 안 됨.
               </span>
             )}
             {majority && !live.my_vote && picked.length > 0 && (
-              <span className="text-muted-foreground text-xs">
-                다수 의견으로 미리 골라 두었습니다.
-              </span>
+              <span className="text-muted-foreground text-xs">다수 의견으로 미리 선택됨.</span>
             )}
           </div>
         </>

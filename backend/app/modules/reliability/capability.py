@@ -128,7 +128,7 @@ def _conditions(
             skipped.append(
                 SkippedConditionOut(
                     label=definition.label,
-                    reason=f"단위 「{unit}」 를 {key.label} 의 {key.unit} 로 못 바꿉니다.",
+                    reason=f"단위 {unit}에서 {key.label} 단위({key.unit})로 변환 불가.",
                 )
             )
             continue
@@ -249,7 +249,7 @@ def preview(
             skipped.append(
                 SkippedConditionOut(
                     label=definition.label,
-                    reason=f"단위 「{unit}」 를 {key.label} 의 {key.unit} 로 못 바꿉니다.",
+                    reason=f"단위 {unit}에서 {key.label} 단위({key.unit})로 변환 불가.",
                 )
             )
             continue

@@ -256,8 +256,8 @@ export function EquipmentDialog({
           // 장비는 이미 저장됐다 — 조용히 닫으면 사람은 자료가 갔는지 모른 채 나간다.
           setError(
             new Error(
-              `장비는 저장됐지만 자료 ${failed.length}개가 안 올라갔습니다:` +
-                ` ${failed.join(', ')}. 형식과 크기(100 MB)를 보고 다시 올려 주십시오.`,
+              `장비 저장 완료, 자료 ${failed.length}개 업로드 실패:` +
+                ` ${failed.join(', ')}. 형식과 크기(100 MB) 확인 후 다시 업로드 필요.`,
             ),
           )
           setBusy(false)
@@ -291,8 +291,8 @@ export function EquipmentDialog({
             <DialogTitle>{editing ? '보유 장비 수정' : '장비 등록'}</DialogTitle>
             <DialogDescription>
               {editing
-                ? '자산번호는 바꿀 수 없습니다 — 이 장비를 가리키는 이름이라 밖에 나간 문서·라벨과 어긋납니다. 시험 항목·사양·교정 이력은 상세 화면의 탭에서 고칩니다.'
-                : '기종을 고르면 그 계열의 시험 항목이 복사되고 분류·제조사가 따라옵니다. 안 고르면 장비유형을 직접 골라야 합니다.'}
+                ? '자산번호 변경 불가(외부 문서·라벨과 어긋남). 시험 항목·사양·교정 이력은 상세 화면의 탭에서 수정.'
+                : '기종 선택 시 해당 계열의 시험 항목이 복사되고 분류·제조사가 자동 입력됨. 기종을 고르지 않으면 장비유형 직접 선택 필요.'}
             </DialogDescription>
           </DialogHeader>
 
@@ -325,7 +325,7 @@ export function EquipmentDialog({
                   required
                 />
                 <p className="text-muted-foreground text-xs">
-                  현장에서 부르는 이름입니다. 사람이 찾을 때 치는 말이 이쪽입니다.
+                  현장에서 부르는 이름. 검색 시 주로 입력하는 이름.
                 </p>
               </div>
               <div className="space-y-2">
@@ -334,7 +334,7 @@ export function EquipmentDialog({
                   id="dept-asset-no"
                   value={deptAssetNo}
                   onChange={(event) => setDeptAssetNo(event.target.value)}
-                  placeholder="선택 · 부서 안에서만 유일하면 됩니다"
+                  placeholder="선택 · 부서 내에서만 고유하면 됨"
                 />
               </div>
               <div className="space-y-2">
@@ -356,9 +356,9 @@ export function EquipmentDialog({
                   조용히 안 보이고, 못 찾은 사람은 빈 칸으로 저장한다. */}
               <ModelPicker id="model" value={model} onChange={(id) => setModel(id)} />
               <p className="text-muted-foreground text-xs">
-                고르면 그 기종이 속한 계열의 시험 항목이 이 장비로 복사되고, 조건은 이 기종의
-                사양에서 옵니다. <strong>카탈로그에 없으면 비워 두십시오</strong> — 비슷한
-                기종을 고르면 그 장비의 하중·온도가 남의 것이 됩니다.
+                선택 시 기종이 속한 계열의 시험 항목이 이 장비로 복사되고, 조건은 이 기종의
+                사양을 따름. <strong>카탈로그에 없으면 비워 두어야 함.</strong> 비슷한 기종을
+                고르면 다른 기종의 하중·온도가 이 장비의 값이 됨.
               </p>
             </div>
 
@@ -366,8 +366,8 @@ export function EquipmentDialog({
             {!linked && (
               <div className="bg-muted/40 space-y-4 rounded-md border p-3">
                 <p className="text-xs">
-                  카탈로그에 없는 장비입니다. <strong>장비유형은 반드시 고르십시오</strong> —
-                  종류를 모르는 장비는 분류로 좁히는 화면에서 통째로 빠집니다.
+                  카탈로그에 없는 장비. <strong>장비유형 선택 필수.</strong> 유형이 없는 장비는
+                  분류 필터 결과에서 빠짐.
                 </p>
                 <div className="space-y-2">
                   <Label htmlFor="category">장비유형</Label>
@@ -381,7 +381,7 @@ export function EquipmentDialog({
                     }))}
                     placeholder="유형 선택"
                     detailTitle="장비유형"
-                    detailHint="장비군 아래의 유형입니다. 고르면 장비군은 따라옵니다."
+                    detailHint="장비군 아래의 유형. 선택 시 장비군 자동 지정."
                   />
                 </div>
                 <div className="grid gap-4 sm:grid-cols-2">
@@ -405,8 +405,8 @@ export function EquipmentDialog({
                   </div>
                 </div>
                 <p className="text-muted-foreground text-xs">
-                  이 둘은 <strong>표시용입니다</strong> — 온톨로지와 이어져 있지 않아 검색이
-                  보지 않습니다. 나중에 기종에 연결하면 지워집니다.
+                  두 칸은 <strong>표시용</strong>. 온톨로지와 연결되지 않아 검색 대상 아님.
+                  나중에 기종에 연결하면 삭제됨.
                 </p>
 
                 {/**
@@ -427,9 +427,9 @@ export function EquipmentDialog({
                     <span>
                       카탈로그 기종 등록 요청
                       <span className="text-muted-foreground block text-xs">
-                        시스템 관리자의 검토 목록에 섭니다. 세워지면{' '}
-                        <strong>이 장비가 자동으로 이어집니다</strong> — 다시 열어 고를 필요가
-                        없습니다. 모델명을 적어야 켤 수 있습니다.
+                        시스템 관리자의 검토 목록에 추가됨. 기종이 등록되면{' '}
+                        <strong>이 장비에 자동 연결</strong>(다시 열어 선택할 필요 없음).
+                        모델명 입력 후 선택 가능.
                       </span>
                     </span>
                   </label>
@@ -438,7 +438,7 @@ export function EquipmentDialog({
                       value={askNote}
                       onChange={(event) => setAskNote(event.target.value)}
                       aria-label="기종 등록 요청 사유"
-                      placeholder="카탈로그에서 못 찾은 사정 — 「6800 시리즈는 있는데 이 모델만 없음」"
+                      placeholder="카탈로그에서 찾지 못한 사유(예: 6800 시리즈는 있는데 이 모델만 없음)"
                       maxLength={2000}
                     />
                   )}
@@ -513,9 +513,9 @@ export function EquipmentDialog({
                     label: one.display_name,
                     detail: one.email,
                   }))}
-                placeholder={workspace ? '부서 사람 중에서' : '보유 부서를 먼저 고르십시오'}
+                placeholder={workspace ? '부서 구성원 중 선택' : '보유 부서 먼저 선택'}
                 detailTitle="담당자"
-                detailHint="보유 부서의 구성원입니다. 다른 부서 사람이 맡고 있으면 대장 반입의 「담당자」 열에 이메일로 적으십시오."
+                detailHint="보유 부서의 구성원. 다른 부서 사람이 담당하면 대장 반입의 ‘담당자’ 열에 이메일로 입력."
               />
             </div>
 
@@ -527,9 +527,9 @@ export function EquipmentDialog({
                 onChange={(event) => setShared(event.target.checked)}
               />
               <span>
-                다른 부서도 쓸 수 있는 <strong>공용 장비</strong>입니다
+                다른 부서도 사용 가능한 <strong>공용 장비</strong>
                 <span className="text-muted-foreground block text-xs">
-                  관리하는 부서는 그대로입니다 — 공용이라고 주인이 없어지지 않습니다.
+                  관리 부서는 변경되지 않음.
                 </span>
               </span>
             </label>
@@ -588,19 +588,19 @@ export function EquipmentDialog({
                 rows={2}
                 value={statusReason}
                 onChange={(event) => setStatusReason(event.target.value)}
-                placeholder="제어보드 고장, 부품 대기 — 3주 예상"
+                placeholder="제어보드 고장, 부품 대기(3주 예상)"
                 maxLength={2000}
               />
               <p className="text-muted-foreground text-xs">
                 {NEEDS_REASON.has(status) ? (
                   <>
-                    <strong>적어 주십시오.</strong> 무엇이 고장인지·언제까지 유휴인지·왜
-                    버렸는지가 없으면 다음 사람이 할 일을 못 정합니다.
+                    <strong>입력 필요.</strong> 고장 내용·유휴 기간·폐기 사유가 없으면 후속
+                    조치를 정할 수 없음.
                   </>
                 ) : (
-                  '가동·입고는 비워 두어도 됩니다.'
+                  '가동·입고는 비워 두어도 됨.'
                 )}{' '}
-                <strong>상태를 바꾸면 지워집니다</strong> — 근거는 상태에 붙습니다.
+                <strong>상태를 바꾸면 삭제됨</strong>(근거는 상태에 종속).
               </p>
             </div>
 
@@ -611,7 +611,7 @@ export function EquipmentDialog({
                   checked={calibrated}
                   onChange={(event) => setCalibrated(event.target.checked)}
                 />
-                <strong>교정 대상</strong> 장비입니다
+                <strong>교정 대상</strong> 장비
               </label>
               {calibrated && (
                 <div className="flex items-end gap-3">
@@ -628,8 +628,7 @@ export function EquipmentDialog({
                     />
                   </div>
                   <p className="text-muted-foreground pb-2 text-xs">
-                    주기가 없으면 차기일을 계산할 수 없고, 그러면 「곧 만료」 목록이 이 장비를
-                    부르지 않습니다.
+                    주기가 없으면 차기일 계산 불가. ‘곧 만료’ 목록에 표시되지 않음.
                   </p>
                 </div>
               )}
@@ -637,7 +636,7 @@ export function EquipmentDialog({
           </section>
 
           <section className="space-y-4 border-t pt-4">
-            <h3 className="text-muted-foreground text-xs font-medium">그 밖</h3>
+            <h3 className="text-muted-foreground text-xs font-medium">기타</h3>
             <div className="grid gap-4 sm:grid-cols-2">
               {/* 폐기일은 폐기일 때만 묻는다 — 아닌 장비에 세워 두면 빈 칸으로만 남는다. */}
               {status === 'retired' && (
@@ -660,7 +659,7 @@ export function EquipmentDialog({
                   onChange={(event) => setNote(event.target.value)}
                   rows={3}
                   maxLength={4000}
-                  placeholder="상세 화면에 그대로 보입니다. 검색은 이 글자를 안 봅니다."
+                  placeholder="상세 화면에 그대로 표시. 검색 대상 아님."
                 />
               </div>
             </div>
@@ -685,9 +684,9 @@ export function EquipmentDialog({
               staged={staged.map((one) => one.name)}
             />
             <p className="text-muted-foreground text-xs">
-              사양서·매뉴얼·성적서. 한 개에 100 MB 까지, PDF·오피스 문서·이미지를 받습니다. AI
-              가 이 자료를 읽어 아래 <strong>「장비 자료 발췌」</strong> 속성에 간추려 적으면
-              의미 검색이 그 글까지 읽습니다.
+              사양서·매뉴얼·성적서. 파일당 최대 100 MB, PDF·오피스 문서·이미지 지원. AI가 이
+              자료를 읽고 아래 <strong>‘장비 자료 발췌’</strong> 속성에 요약하면 의미 검색
+              대상에 포함됨.
             </p>
           </section>
 

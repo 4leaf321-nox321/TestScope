@@ -63,7 +63,7 @@ export function DocumentTestReview({ documentId }: { documentId: string }) {
         이 규격서에서 올라온 시험 {tests.data?.total ?? rows.length}건
         {more > 0 && (
           <span className="text-muted-foreground ml-1 text-xs font-normal">
-            (앞 {rows.length}건만 보입니다)
+            (앞 {rows.length}건만 표시)
           </span>
         )}
         {pending > 0 && (
@@ -107,9 +107,7 @@ export function DocumentTestReview({ documentId }: { documentId: string }) {
               disabled={bulk.busy}
               onClick={() => {
                 // **사유를 받는다** — 없으면 AI 가 무엇을 자주 틀리는지 셀 수 없다.
-                const said = window.prompt(
-                  `${picked.ids.length}건을 반려합니다. 사유를 적어 주십시오`,
-                )
+                const said = window.prompt(`${picked.ids.length}건 반려. 사유 입력`)
                 if (said?.trim()) runBulk('reject', said.trim())
               }}
             >
@@ -123,7 +121,7 @@ export function DocumentTestReview({ documentId }: { documentId: string }) {
                 // **확정을 푸는 것이라 사유를 받는다** — 문서 단위로 다시 볼 때 한 번에
                 // 푸는 일이 실제로 있다(개정본이 왔거나, 원문을 다시 파싱하려 할 때).
                 const said = window.prompt(
-                  `${picked.ids.length}건의 확정을 풀어 다시 후보로 돌립니다. 사유를 적어 주십시오`,
+                  `${picked.ids.length}건 확정 해제 후 후보로 전환. 사유 입력`,
                 )
                 if (said?.trim()) runBulk('reopen', said.trim())
               }}
@@ -135,7 +133,11 @@ export function DocumentTestReview({ documentId }: { documentId: string }) {
               variant="outline"
               disabled={bulk.busy}
               onClick={() => {
-                if (window.confirm(`${picked.ids.length}건을 지웁니다. 되돌릴 수 없습니다.`)) {
+                if (
+                  window.confirm(
+                    `${picked.ids.length}건 삭제. 되돌릴 수 없음. 계속하시겠습니까?`,
+                  )
+                ) {
                   runBulk('delete')
                 }
               }}

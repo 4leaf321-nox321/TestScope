@@ -21,9 +21,7 @@ export function Placeholder({ title, phase, description }: PlaceholderProps) {
     <div className="mx-auto max-w-lg py-16 text-center">
       <Construction className="text-muted-foreground mx-auto size-8" />
       <h1 className="mt-4 text-lg font-semibold">{title}</h1>
-      <p className="text-muted-foreground mt-1 text-sm">
-        {description ?? '아직 구현되지 않은 화면입니다.'}
-      </p>
+      <p className="text-muted-foreground mt-1 text-sm">{description ?? '미구현 화면.'}</p>
       <p className="text-muted-foreground mt-4 text-xs">
         구현 예정: <span className="font-mono">{phase}</span>
       </p>

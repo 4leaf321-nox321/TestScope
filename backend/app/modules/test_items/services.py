@@ -102,7 +102,7 @@ def get_test_item(
 ) -> EquipmentTestItem:
     row = db.get(EquipmentTestItem, equipment_test_item_id)
     if row is None:
-        raise NotFound("TSC-CAPABILITIES-0001", "시험 항목을 찾을 수 없습니다.")
+        raise NotFound("TSC-CAPABILITIES-0001", "시험 항목을 찾을 수 없음.")
     get_equipment(db, user, row.equipment_id)
     return row
 
@@ -126,7 +126,7 @@ def create(db: Session, user: User, payload: dict[str, Any]) -> EquipmentTestIte
     if clash is not None:
         raise Conflict(
             "TSC-CAPABILITIES-0003",
-            "같은 시험 항목·시험법의 시험 항목이 이미 있습니다. 그것을 고치십시오.",
+            "같은 시험 항목·시험법의 시험 항목이 이미 있음. 기존 항목 수정 필요.",
             details={"equipment_test_item_id": str(clash.id)},
         )
 
@@ -199,7 +199,7 @@ def upsert_limit(
 
     key = db.get(ConditionKey, payload["condition_key_id"])
     if key is None:
-        raise NotFound("TSC-CAPABILITIES-0004", "조건 정의를 찾을 수 없습니다.")
+        raise NotFound("TSC-CAPABILITIES-0004", "조건 정의를 찾을 수 없음.")
 
     low, high = payload.get("min_value"), payload.get("max_value")
     if low is not None and high is not None and low > high:
@@ -207,7 +207,7 @@ def upsert_limit(
         # 사람은 "왜 우리 장비가 안 나오지" 를 묻게 되고, 그 원인은 안 보인다.
         raise AppError(
             "TSC-CAPABILITIES-0005",
-            f"{key.label}의 최소가 최대보다 큽니다.",
+            f"{key.label}의 최소가 최대보다 큼.",
             status=400,
         )
 
@@ -247,6 +247,6 @@ def delete_limit(
     )
     target = db.get(EquipmentTestCondition, limit_id)
     if target is None or target.equipment_test_item_id != row.id:
-        raise NotFound("TSC-CAPABILITIES-0006", "조건을 찾을 수 없습니다.")
+        raise NotFound("TSC-CAPABILITIES-0006", "조건을 찾을 수 없음.")
     db.delete(target)
     db.commit()

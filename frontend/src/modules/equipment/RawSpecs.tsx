@@ -122,7 +122,7 @@ function MaterialTwinBlock({ data }: { data: Record<string, unknown> }) {
                     {[row.notes, row.source_detail]
                       .filter((one) => one !== undefined && one !== null && one !== '')
                       .map((one) => String(one))
-                      .join(' — ') || '—'}
+                      .join(' · ') || '—'}
                     {row.mapping_confidence === 'low' && (
                       // 기계가 물성을 이은 확신이 낮다. 그 표시가 없으면 옮겨 적는 사람이
                       // 그 줄을 다른 줄과 같은 무게로 읽는다.
@@ -197,17 +197,15 @@ export function RawSpecs({
       <p className="text-muted-foreground mt-2 text-sm">
         {empty ? (
           <>
-            <strong>이 기종에는 사양이 하나도 안 적혀 있습니다.</strong> 아래 원문을 보고 위
-            사양표에 한 칸씩 옮겨 적으면, 검색이 이 기종을 「조건 미상」 이 아니라 되는지 안
-            되는지로 답합니다. 수치를 옮길 때는 <strong>출처 문서와 쪽</strong>을 함께
-            고르십시오.
+            <strong>이 기종에 입력된 사양 없음.</strong> 아래 원문을 위 사양표에 옮겨 적으면
+            검색 결과가 ‘조건 미상’ 대신 가능 여부로 표시됨. 수치를 옮길 때는{' '}
+            <strong>출처 문서와 쪽</strong>도 함께 선택.
           </>
         ) : (
           <>
-            제조사 카탈로그에 적힌 그대로입니다. <strong>위 사양표는 정의가 있는 칸만</strong>{' '}
-            담고, 여기에는 정의가 없는 것까지 전부 있습니다 — 원본에 950종 넘는 키가 있고
-            대부분이 한 카탈로그에만 나옵니다. 정의로 세우면 목록이 못 쓰게 되고, 안 세우면
-            사라지므로 둘 다 합니다.
+            제조사 카탈로그 원문 그대로. <strong>위 사양표에는 정의가 있는 칸만</strong>{' '}
+            표시되고, 여기에는 정의가 없는 키까지 전부 있음(원본 키 950종 이상, 대부분 한
+            카탈로그에만 등장).
           </>
         )}
       </p>

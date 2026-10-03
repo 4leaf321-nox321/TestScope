@@ -405,12 +405,12 @@ def _checked_contact(db: Session, raw: Any) -> uuid.UUID | None:
     contact_id = raw if isinstance(raw, uuid.UUID) else uuid.UUID(str(raw))
     found = db.get(User, contact_id)
     if found is None:
-        raise AppError("TSC-EQUIPMENT-0043", "그 담당자 계정을 찾을 수 없습니다.")
+        raise AppError("TSC-EQUIPMENT-0043", "해당 담당자 계정을 찾을 수 없음.")
     if found.status != "active":
         raise AppError(
             "TSC-EQUIPMENT-0043",
-            f"「{found.display_name}」 은 쓰지 않는 계정입니다 — 연락이 닿는 사람을"
-            " 담당자로 적어 주십시오.",
+            f"사용하지 않는 계정: {found.display_name}. "
+            "연락 가능한 사람을 담당자로 지정 필요.",
         )
     return contact_id
 
@@ -710,7 +710,7 @@ def owner_workspace(db: Session, user: User, slug: Any) -> uuid.UUID:
     if owner is None:
         raise AppError(
             "TSC-EQUIPMENT-0008",
-            "장비에는 보유 부서가 있어야 합니다. 공용 장비도 관리하는 부서는 하나입니다.",
+            "장비에는 보유 부서 필요. 공용 장비도 관리 부서는 하나임.",
             status=400,
         )
     return owner
@@ -730,14 +730,12 @@ _NOT_EMPTY = {
 def _check_not_emptied(changes: dict[str, Any]) -> None:
     for field, label in _NOT_EMPTY.items():
         if field in changes and changes[field] is None:
-            raise AppError(
-                "TSC-EQUIPMENT-0009", f"{label}은(는) 비울 수 없습니다.", status=400
-            )
+            raise AppError("TSC-EQUIPMENT-0009", f"{label}은(는) 비울 수 없음.", status=400)
 
 
 def _check_status(status: str) -> None:
     if status not in EQUIPMENT_STATUSES:
-        raise AppError("TSC-EQUIPMENT-0004", f"모르는 상태입니다: {status}", status=400)
+        raise AppError("TSC-EQUIPMENT-0004", f"알 수 없는 상태: {status}", status=400)
 
 
 def _check_calibration(required: bool, months: int | None) -> None:
@@ -750,7 +748,7 @@ def _check_calibration(required: bool, months: int | None) -> None:
     if required and not months:
         raise AppError(
             "TSC-EQUIPMENT-0005",
-            "교정 대상 장비는 교정 주기(개월)를 함께 적어야 합니다.",
+            "교정 대상 장비는 교정 주기(개월) 입력 필요.",
             status=400,
         )
 
@@ -761,7 +759,7 @@ def _check_retired(status: str, retired_on: Any) -> None:
     if retired_on is not None and status != "retired":
         raise AppError(
             "TSC-EQUIPMENT-0006",
-            "폐기일은 상태가 「폐기」 일 때만 적을 수 있습니다.",
+            "폐기일은 상태가 폐기일 때만 입력 가능.",
             status=400,
         )
 
@@ -777,7 +775,7 @@ def _check_identity(db: Session, category_term_id: Any, model_id: Any) -> None:
         return
     raise AppError(
         "TSC-EQUIPMENT-0007",
-        "카탈로그의 기종을 고르거나, 장비유형을 골라야 합니다.",
+        "카탈로그 기종 또는 장비유형 선택 필요.",
         status=400,
     )
 
@@ -867,7 +865,7 @@ def create(
     """
     asset_no = clean(payload["asset_no"])
     if db.scalar(select(Equipment).where(Equipment.asset_no == asset_no)) is not None:
-        raise Conflict("TSC-EQUIPMENT-0003", f"이미 등록된 자산번호입니다: {asset_no}")
+        raise Conflict("TSC-EQUIPMENT-0003", f"이미 등록된 자산번호: {asset_no}")
 
     status = payload.get("status") or "operational"
     _check_status(status)
@@ -1080,11 +1078,11 @@ def bulk_delete(db: Session, user: User, *, ids: list[uuid.UUID]) -> dict[str, A
     남의 부서라는 이유로 사백구십구 대가 함께 막힌다. 안 된 줄은 **왜**와 함께 온다.
     """
     if not ids:
-        raise AppError("TSC-EQUIPMENT-0020", "고른 장비가 없습니다.")
+        raise AppError("TSC-EQUIPMENT-0020", "선택한 장비 없음.")
     if len(ids) > BULK_LIMIT:
         raise AppError(
             "TSC-EQUIPMENT-0020",
-            f"한 번에 {BULK_LIMIT}대까지입니다 — {len(ids)}대를 골랐습니다. 나눠 누르십시오.",
+            f"한 번에 최대 {BULK_LIMIT}대까지 가능(선택: {len(ids)}대). 나눠서 실행 필요.",
         )
     done: list[str] = []
     failed: list[dict[str, str]] = []

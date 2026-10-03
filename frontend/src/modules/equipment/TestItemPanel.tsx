@@ -90,8 +90,8 @@ export function TestItemPanel({
 
       {list.data && list.data.length === 0 ? (
         <EmptyState
-          title="등록된 시험 항목이 없습니다"
-          hint="시험 항목이 없으면 이 장비는 검색에 걸리지 않습니다. 수행 가능한 시험 항목부터 적어 주십시오."
+          title="등록된 시험 항목 없음"
+          hint="시험 항목이 없으면 이 장비는 검색되지 않음. 수행 가능한 시험 항목부터 입력 필요."
         />
       ) : (
         <ul className="space-y-3">
@@ -189,7 +189,7 @@ function CapabilityCard({
             {limit.requires_accessory && (
               <span
                 className="rounded bg-amber-500/10 px-1.5 py-0.5 text-xs text-amber-700"
-                title="옵션 부속(챔버·노)이 있어야 나오는 범위 — 검색이 「됨」 대신 「부속 있으면」 으로 답합니다. 이 대에 실제로 있으면 조건을 다시 저장하며 끄십시오."
+                title="옵션 부속(챔버·노)이 있어야 나오는 범위. 검색 결과는 ‘됨’ 대신 ‘부속 있으면’으로 표시됨. 이 장비에 부속이 실제로 있으면 조건을 다시 저장하며 해제."
               >
                 부속 필요
               </span>

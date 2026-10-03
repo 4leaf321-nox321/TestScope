@@ -28,7 +28,7 @@ TEST_ITEM_AXIS = "test_item"
 def _axis_id(db: Session, slug: str) -> uuid.UUID:
     axis = db.scalar(select(Vocabulary).where(Vocabulary.slug == slug))
     if axis is None:
-        raise NotFound("TSC-PROPERTIES-0001", f"온톨로지 축이 없습니다: {slug}")
+        raise NotFound("TSC-PROPERTIES-0001", f"온톨로지 축 없음: {slug}")
     return axis.id
 
 
@@ -37,7 +37,7 @@ def _term_of(db: Session, term_id: uuid.UUID, slug: str, *, what: str) -> Vocabu
     제조사 id 를 시험 항목 자리에 넣어도 FK 는 통과하기 때문이다."""
     term = db.get(VocabularyTerm, term_id)
     if term is None or term.vocabulary_id != _axis_id(db, slug):
-        raise NotFound("TSC-PROPERTIES-0002", f"{what}을 찾을 수 없습니다.")
+        raise NotFound("TSC-PROPERTIES-0002", f"{what}을 찾을 수 없음.")
     return term
 
 
@@ -173,7 +173,7 @@ def _require_admin(user: User) -> None:
     if not user.is_system_admin:
         raise Forbidden(
             "TSC-PROPERTIES-0003",
-            "물성과 시험 항목의 연결은 전사 지식이라 시스템 관리자만 고칩니다.",
+            "물성과 시험 항목의 연결 수정은 시스템 관리자 전용 작업.",
         )
 
 
@@ -188,9 +188,7 @@ def create_link(db: Session, user: User, payload: dict[str, Any]) -> TestItemPro
         )
     )
     if clash is not None:
-        raise Conflict(
-            "TSC-PROPERTIES-0004", f"이미 이어져 있습니다: {item.value} → {prop.value}"
-        )
+        raise Conflict("TSC-PROPERTIES-0004", f"이미 연결됨: {item.value} → {prop.value}")
     # 사람이 손으로 더한 것은 그 자체가 확인이다 — 제안으로 두면 자기가 만든 것을
     # 자기가 다시 확인하는 헛걸음이 생긴다. **AI 가 낸 것은 제안이다**(status=suggested):
     # 확인은 「사람이 봤다」 는 뜻이고 카탈로그 정본에 실리므로 기계가 대신 못 한다.
@@ -216,7 +214,7 @@ def create_link(db: Session, user: User, payload: dict[str, Any]) -> TestItemPro
 def get_link(db: Session, link_id: uuid.UUID) -> TestItemProperty:
     row = db.get(TestItemProperty, link_id)
     if row is None:
-        raise NotFound("TSC-PROPERTIES-0005", "연결을 찾을 수 없습니다.")
+        raise NotFound("TSC-PROPERTIES-0005", "연결을 찾을 수 없음.")
     return row
 
 

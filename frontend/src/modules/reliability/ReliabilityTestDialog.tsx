@@ -240,8 +240,8 @@ export function ReliabilityTestDialog({
         setStaged([])
         setError(
           new Error(
-            `시험은 저장됐지만 이미지 ${failed.length}장이 안 올라갔습니다:` +
-              ` ${failed.join(', ')}. 형식과 크기를 보고 다시 올려 주십시오.`,
+            `시험 저장 완료, 이미지 ${failed.length}장 업로드 실패:` +
+              ` ${failed.join(', ')}. 형식과 크기 확인 후 다시 업로드 필요.`,
           ),
         )
         onSaved()
@@ -266,8 +266,8 @@ export function ReliabilityTestDialog({
           <DialogHeader>
             <DialogTitle>{editing ? '신뢰성 시험 수정' : '신뢰성 시험 등록'}</DialogTitle>
             <DialogDescription>
-              이 부서가 제품 개발·검증을 위해 수행하는 시험입니다. 적용 시험 항목을 이어 두면
-              그 항목이 되는 장비로 연결됩니다.
+              이 부서의 제품 개발·검증 시험. 적용 시험 항목 지정 시 해당 항목 수행 장비로
+              연결됨.
             </DialogDescription>
           </DialogHeader>
 
@@ -302,7 +302,7 @@ export function ReliabilityTestDialog({
                       className="max-w-3xl"
                       value={purpose}
                       onChange={(event) => setPurpose(event.target.value)}
-                      placeholder="무엇을 확인하는 시험인지. 옆 부서 사람이 이름만 보고는 모릅니다."
+                      placeholder="시험으로 확인하는 내용"
                       rows={3}
                       maxLength={4000}
                     />
@@ -358,10 +358,10 @@ export function ReliabilityTestDialog({
                   onChange={(id) => id && setTermIds((prev) => [...prev, id])}
                   placeholder="시험 항목 추가"
                   detailTitle="시험 항목 전부"
-                  detailHint="배지의 수는 이 부서 장비 중 그 항목이 되는 대수입니다."
+                  detailHint="배지의 수: 이 부서 장비 중 해당 항목 수행 가능 대수."
                 />
                 <p className="text-muted-foreground text-xs">
-                  비워 둘 수 있습니다 — 장비 없이 하는 시험이거나 아직 안 정한 경우.
+                  비워 두기 가능(장비 없이 하는 시험 또는 미정인 경우).
                 </p>
               </fieldset>
 
@@ -392,8 +392,8 @@ export function ReliabilityTestDialog({
               >
                 <legend className="px-1.5 text-sm font-medium">이미지</legend>
                 <p className="text-muted-foreground mb-3 text-xs">
-                  <strong>어느 칸에도 안 붙는 그림</strong>이 여기 섭니다(부록·전경 사진).
-                  절차나 판정 기준에 항목별 이미지는 해당 항목 아래에서 첨부하십시오.
+                  <strong>특정 칸에 속하지 않는 그림</strong>(부록·전경 사진) 첨부. 절차·판정
+                  기준의 항목별 이미지는 해당 항목 아래에서 첨부.
                 </p>
                 <AttachmentStrip
                   target="reliability_test"
@@ -419,8 +419,8 @@ export function ReliabilityTestDialog({
               >
                 <legend className="px-1.5 text-sm font-medium">기타 사항</legend>
                 <p className="text-muted-foreground text-xs">
-                  위 칸으로 안 잡히는 것만. 여기서 새로 적은 이름은 **초안**으로 남고, 관리자가
-                  정식으로 올리면 그때부터 모두의 칸이 됩니다.
+                  위 칸에 해당하지 않는 항목만 입력. 새로 적은 이름은 초안으로 남고, 관리자가
+                  정식 등록하면 모든 시험의 칸이 됨.
                 </p>
                 <AttributeValuesEditor
                   target="reliability_test"

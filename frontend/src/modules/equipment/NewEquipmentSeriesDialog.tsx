@@ -88,8 +88,8 @@ export function NewEquipmentSeriesDialog({
           <DialogHeader>
             <DialogTitle>장비 계열 등록</DialogTitle>
             <DialogDescription>
-              무슨 시험이 되는지는 등록한 뒤 상세 화면에서 적습니다. 수치 사양은 그 안의 기종이
-              갖습니다 — 한 계열 안에서 하중이 수백 배 갈리기 때문입니다.
+              가능한 시험은 등록 후 상세 화면에서 입력. 수치 사양은 계열에 속한 기종에 입력(한
+              계열 안에서도 하중이 수백 배 차이).
             </DialogDescription>
           </DialogHeader>
 
@@ -103,7 +103,7 @@ export function NewEquipmentSeriesDialog({
               required
             />
             <p className="text-muted-foreground text-xs">
-              제조사는 아래에서 고릅니다. 이름에 같이 적지 마십시오.
+              제조사는 아래에서 선택. 계열명에 포함 금지.
             </p>
           </div>
 

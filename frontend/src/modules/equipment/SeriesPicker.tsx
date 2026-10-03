@@ -123,9 +123,7 @@ export function SeriesPicker({
           ))}
           {rows.length === 0 && (
             <li className="text-muted-foreground px-3 py-6 text-center text-sm">
-              {query
-                ? '찾는 계열이 없습니다. 없으면 계열을 먼저 만듭니다.'
-                : '이름의 일부를 입력하십시오.'}
+              {query ? '검색 결과 없음. 계열을 먼저 등록해야 함.' : '이름 일부 입력.'}
             </li>
           )}
         </ul>
@@ -135,7 +133,7 @@ export function SeriesPicker({
           {total === 0
             ? ' '
             : total > rows.length
-              ? `${total}건 중 ${rows.length}건. 더 자세히 입력하십시오.`
+              ? `${total}건 중 ${rows.length}건. 더 자세히 입력 필요.`
               : `계열 ${total}건`}
         </p>
       </PopoverContent>

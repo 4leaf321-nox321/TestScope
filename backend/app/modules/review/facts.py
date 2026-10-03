@@ -350,7 +350,7 @@ class Sheet:
             out.append(fact("인용 규격", _join(sorted(m.code for m in methods))))
         models = self.series_models(series.id)
         if models:
-            out.append(fact("기종", f"{len(models)}종 — {_join(models, 3)}"))
+            out.append(fact("기종", f"{len(models)}종: {_join(models, 3)}"))
         return out
 
     def series_display(self, series: EquipmentSeries) -> str:
@@ -362,7 +362,7 @@ class Sheet:
         return f"{maker} {series.name}"
 
     def series_question(self, series: EquipmentSeries, what: str) -> str:
-        return f"「{self.series_display(series)}」 계열이 {what}"
+        return f"{self.series_display(series)} 계열: {what}"
 
     def method_facts(
         self, method: TestMethod, citing: list[uuid.UUID]
@@ -425,7 +425,7 @@ class Sheet:
                 term = self.terms().get(term_id)
                 if term and term.code:
                     label = sibling.code + (f":{sibling.edition}" if sibling.edition else "")
-                    out.append((term.code, f"다른 판 「{label}」 이 이 시험으로 정해져 있음"))
+                    out.append((term.code, f"다른 판 {label}에서 이 시험으로 지정됨"))
         return out
 
     def test_item_facts(
@@ -449,7 +449,7 @@ class Sheet:
                 for sid in doing
                 if sid in self.series()
             )
-            out.append(fact("하는 계열", f"{len(doing)}개 — {_join(names, 3)}"))
+            out.append(fact("하는 계열", f"{len(doing)}개: {_join(names, 3)}"))
         if doing and with_conditions:
             dims: dict[uuid.UUID, int] = defaultdict(int)
             for sid in doing:

@@ -178,7 +178,7 @@ export function SeriesFilters({
           options={asOptions(options?.makers, '계열')}
           placeholder="제조사 전체"
           detailTitle="제조사"
-          detailHint="카탈로그에 계열이 있는 제조사만 나옵니다."
+          detailHint="카탈로그에 계열이 있는 제조사만 표시."
           className="w-full"
         />
       </td>
@@ -190,7 +190,7 @@ export function SeriesFilters({
           options={asOptions(options?.categories, '계열')}
           placeholder="분류 전체"
           detailTitle="장비 분류"
-          detailHint="카탈로그에 계열이 있는 분류만 나옵니다. 묶음을 고르면 그 아래 분류가 다 걸립니다."
+          detailHint="카탈로그에 계열이 있는 분류만 표시. 묶음 선택 시 하위 분류 전체 포함."
           className="w-full"
         />
       </td>
@@ -266,7 +266,7 @@ export function ModelFilters({
               options={asOptions(options?.series, '기종')}
               placeholder="계열 전체"
               detailTitle="장비 계열"
-              detailHint="기종이 있는 계열만 나옵니다."
+              detailHint="기종이 있는 계열만 표시."
               className="w-full"
             />
           </div>
@@ -279,7 +279,7 @@ export function ModelFilters({
           options={asOptions(options?.categories, '기종')}
           placeholder="분류 전체"
           detailTitle="장비 분류"
-          detailHint="카탈로그에 기종이 있는 분류만 나옵니다. 묶음을 고르면 그 아래 분류가 다 걸립니다."
+          detailHint="카탈로그에 기종이 있는 분류만 표시. 묶음 선택 시 하위 분류 전체 포함."
           className="w-full"
         />
       </td>
@@ -290,7 +290,7 @@ export function ModelFilters({
           options={asOptions(options?.makers, '기종')}
           placeholder="제조사 전체"
           detailTitle="제조사"
-          detailHint="카탈로그에 기종이 있는 제조사만 나옵니다."
+          detailHint="카탈로그에 기종이 있는 제조사만 표시."
           className="w-full"
         />
       </td>

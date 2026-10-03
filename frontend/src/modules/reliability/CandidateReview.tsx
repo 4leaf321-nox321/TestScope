@@ -37,8 +37,8 @@ export function CandidateBadge({
       variant="destructive"
       title={
         row.submitted_via
-          ? `${row.submitted_via} 가 올렸습니다 — 아직 사람이 확인하지 않았습니다`
-          : '아직 사람이 확인하지 않았습니다'
+          ? `등록: ${row.submitted_via}. 아직 사람 확인 전`
+          : '아직 사람 확인 전'
       }
     >
       <AlertTriangle />
@@ -116,12 +116,12 @@ export function ReviewBanner({
       <AlertTriangle />
       <div className="space-y-2">
         <p className="font-medium">
-          아직 확인 전인 후보입니다
-          {row.submitted_via ? ` — ${row.submitted_via} 가 올렸습니다.` : '.'}
+          확인 전 후보
+          {row.submitted_via ? ` (등록: ${row.submitted_via})` : ''}
         </p>
         <p className="text-xs">
-          내용을 읽고 맞으면 확인하십시오. 틀린 칸은 여기서 고친 뒤에 확인하면 됩니다. 확인하기
-          전까지는 전사 「신뢰성 시험」 목록에 나오지 않습니다.
+          내용 검토 후 이상 없으면 확인. 틀린 칸은 여기서 수정 후 확인. 확인 전까지는 전사
+          ‘신뢰성 시험’ 목록에 표시되지 않음.
         </p>
         <ErrorNotice error={error} />
         {row.can_edit && (

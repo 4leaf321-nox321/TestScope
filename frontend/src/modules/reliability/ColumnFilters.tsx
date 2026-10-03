@@ -126,7 +126,7 @@ export function HeadFilter({
           <p className="text-sm font-medium">{label}</p>
           {/* **필터의 방향을 적는다** — 「미입력」 을 걸었는데 목록이 그대로면 사람은
               고장으로 읽는다. 실제로는 전부가 미입력이라 전부가 조건에 맞은 것이다. */}
-          <p className="text-muted-foreground text-xs">조건에 맞는 항목만 표시됩니다.</p>
+          <p className="text-muted-foreground text-xs">조건에 맞는 항목만 표시.</p>
           {children(() => setOpen(false))}
           {active && (
             <Button
@@ -279,7 +279,7 @@ export function PurposeHead({ rows }: { rows: RowFilterState }) {
           )}
           <FilterBlank
             label="목적 미입력"
-            hint="AI 가 등록한 항목은 목적이 비어 있는 경우가 많습니다."
+            hint="AI가 등록한 항목은 목적이 비어 있는 경우가 많음."
             on={blank}
             onChange={(on) => {
               rows.set('purpose', on ? NONE : '')
@@ -318,13 +318,13 @@ export function TestItemHead({ rows }: { rows: RowFilterState }) {
           )}
           <FilterBlank
             label="시험 항목 미지정"
-            hint="시험 항목이 하나도 연결되지 않은 항목 — 장비로 이어지는 연결이 없습니다."
+            hint="시험 항목이 하나도 연결되지 않은 항목(장비 연결 없음)."
             on={blank}
             onChange={(on) => rows.set('test_item', on ? NONE : '')}
           />
           <FilterBlank
             label="보유 장비 없음"
-            hint="시험 항목은 연결했으나 해당 항목을 수행할 장비가 이 사업부에 없는 항목 — 목록의 「0대」 표시입니다."
+            hint="시험 항목은 연결했으나 해당 항목 수행 장비가 이 사업부에 없는 항목(목록의 ‘0대’ 표시)."
             on={rows.value.equipment === NONE}
             onChange={(on) => rows.set('equipment', on ? NONE : '')}
           />

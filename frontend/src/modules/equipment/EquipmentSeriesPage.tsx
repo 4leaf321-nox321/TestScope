@@ -122,7 +122,7 @@ export default function EquipmentSeriesPage() {
       <PageHeader
         back={useBackFromReference()}
         title="장비 계열"
-        description="제조사가 파는 계열의 목록입니다. 무슨 시험이 되는지는 계열이 정하고, 어디까지 되는지는 그 안의 기종이 정합니다."
+        description="제조사가 판매하는 계열 목록. 가능한 시험은 계열이, 가능 범위는 계열에 속한 기종이 정함."
         actions={
           // 전사 공용이라 시스템 관리자만 고친다 — 한 부서가 고치면 다른 부서가
           // 가리키던 계열의 뜻이 바뀐다.
@@ -147,7 +147,7 @@ export default function EquipmentSeriesPage() {
           둘이 되고, 둘은 반드시 어긋난다. */}
       {activeCount(filters) > 0 && (
         <div className="text-muted-foreground flex items-center gap-2 text-sm">
-          <span>{activeCount(filters)}개 조건으로 걸렀습니다</span>
+          <span>{activeCount(filters)}개 조건 적용 중</span>
           <Button
             size="sm"
             variant="outline"
@@ -168,8 +168,8 @@ export default function EquipmentSeriesPage() {
           방금 건 조건이 화면에서 없어져서, 무엇을 풀어야 할지가 안 보인다. */}
       {page.data && page.data.items.length === 0 && activeCount(filters) === 0 ? (
         <EmptyState
-          title="계열이 없습니다"
-          hint="계열을 등록해 두면 같은 계열의 기종을 여러 개 들일 때 시험 항목을 한 번만 적으면 됩니다."
+          title="계열 없음"
+          hint="계열을 등록하면 같은 계열의 기종을 여러 개 들일 때 시험 항목을 한 번만 입력하면 됨."
         />
       ) : (
         <div className="space-y-3">
@@ -197,7 +197,7 @@ export default function EquipmentSeriesPage() {
               {page.data?.items.length === 0 && (
                 <TableRow className="hover:bg-transparent">
                   <TableCell colSpan={7} className="text-muted-foreground py-8 text-center">
-                    필터에 맞는 계열이 없습니다. 조건을 해제해 보십시오.
+                    필터에 맞는 계열 없음. 조건 해제 후 다시 확인.
                   </TableCell>
                 </TableRow>
               )}
@@ -258,8 +258,8 @@ export default function EquipmentSeriesPage() {
           {page.data && !page.data.done && (
             // **덜 받았으면 말한다.** 쪽 넘김이 없으니 이 줄이 유일한 경고다.
             <p className="text-muted-foreground px-1 py-2 text-xs">
-              계열 {page.data.total}건 중 {page.data.items.length}건만 받았습니다 — 조건으로
-              좁히십시오.
+              계열 {page.data.total}건 중 {page.data.items.length}건만 불러옴. 조건으로 좁혀야
+              함.
             </p>
           )}
         </div>

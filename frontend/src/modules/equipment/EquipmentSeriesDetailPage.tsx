@@ -238,8 +238,7 @@ export default function EquipmentSeriesDetailPage() {
         <div>
           <h2 className="text-base font-semibold">속성</h2>
           <p className="text-muted-foreground mt-1 text-sm">
-            고정 칸이 아닌 정보 — 「장비 계열 속성」 에서 정의한 칸과, 여기서 새 이름으로 적은
-            초안.
+            고정 칸 외 정보: ‘장비 계열 속성’에서 정의한 칸과 여기서 새 이름으로 입력한 초안.
           </p>
         </div>
         <AttributeValuesPanel
@@ -257,15 +256,12 @@ export default function EquipmentSeriesDetailPage() {
         <div>
           <h2 className="text-base font-semibold">기종</h2>
           <p className="text-muted-foreground mt-1 text-sm">
-            <strong>보유 장비는 계열이 아니라 기종을 가리킵니다.</strong> 한 계열 안에서 하중이
-            수백 배 갈리기 때문입니다 — 수치 사양은 각 기종에 적습니다.
+            <strong>보유 장비는 계열이 아닌 기종을 가리킴.</strong> 수치 사양은 각 기종에
+            입력(한 계열 안에서도 하중이 수백 배 차이).
           </p>
         </div>
         {(models.data?.items ?? []).length === 0 ? (
-          <EmptyState
-            title="기종이 없습니다"
-            hint="기종이 없으면 이 계열을 가리키는 보유 장비를 만들 수 없습니다."
-          />
+          <EmptyState title="기종 없음" hint="기종이 없으면 이 계열의 보유 장비 등록 불가." />
         ) : (
           <Table>
             <TableHeader>
@@ -301,8 +297,8 @@ export default function EquipmentSeriesDetailPage() {
         )}
         {modelsTotal > (models.data?.items ?? []).length && (
           <p className="text-muted-foreground text-xs">
-            {modelsTotal}개 중 {(models.data?.items ?? []).length}개만 보입니다 — 나머지는 기종
-            목록에서 이 계열로 거르십시오.
+            {modelsTotal}개 중 {(models.data?.items ?? []).length}개만 표시. 나머지는 기종
+            목록에서 이 계열로 필터링하여 확인.
           </p>
         )}
       </section>
@@ -357,16 +353,16 @@ function SeriesTestItems({
       <div>
         <h2 className="text-base font-semibold">시험 항목</h2>
         <p className="text-muted-foreground mt-1 text-sm">
-          여기 적은 값은 이 계열의 기종으로 <strong>보유 장비를 등록할 때 복사됩니다.</strong>{' '}
-          조건은 <strong>계열 전체가 만족하는 값만</strong> 적습니다 — 기종마다 갈리는 수치는
-          그 기종의 사양에 적으면 등록할 때 합쳐집니다.
+          여기 입력한 값은 이 계열의 기종으로 <strong>보유 장비를 등록할 때 복사됨.</strong>{' '}
+          조건에는 <strong>계열 전체가 만족하는 값만</strong> 입력. 기종마다 다른 수치는 해당
+          기종의 사양에 입력하면 등록 시 합쳐짐.
         </p>
       </div>
 
       {series.test_items.length === 0 ? (
         <EmptyState
-          title="시험 항목이 없습니다"
-          hint="비워 두면 이 계열의 기종으로 장비를 등록해도 복사될 것이 없어, 매번 손으로 적게 됩니다."
+          title="시험 항목 없음"
+          hint="비워 두면 이 계열의 기종으로 장비를 등록해도 복사될 항목이 없어 매번 직접 입력해야 함."
         />
       ) : (
         <ul className="space-y-3">
@@ -515,7 +511,7 @@ function SeriesTestItems({
             placeholder="시험 항목"
             searchPlaceholder="인장 · 경도 · 충격 …"
             detailTitle="시험 항목"
-            detailHint="이 계열이 무슨 시험을 하는지 고릅니다. 이미 적은 항목은 흐리게 보입니다."
+            detailHint="이 계열로 가능한 시험 선택. 이미 등록된 항목은 흐리게 표시."
           />
           <Button
             onClick={() =>
@@ -537,8 +533,8 @@ function SeriesTestItems({
               따로 보인다 — 안 보이면 카탈로그가 인용한 사실이 화면에서 사라진다. 규격 쪽에서
               시험 항목을 정하면 위 표로 옮겨 간다. */}
           <p className="text-muted-foreground mb-2">
-            이 계열이 인용했는데 <strong>어느 시험 항목의 규격인지 안 정해진 것</strong>{' '}
-            {series.pending_methods.length}건 — 규격에서 시험 항목을 정하면 위 표에 붙습니다.
+            이 계열이 인용했으나 <strong>시험 항목이 정해지지 않은 규격</strong>{' '}
+            {series.pending_methods.length}건. 규격에서 시험 항목을 정하면 위 표에 추가됨.
           </p>
           <ul className="flex flex-wrap gap-1.5">
             {series.pending_methods.map((one) => (

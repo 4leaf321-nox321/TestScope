@@ -53,7 +53,7 @@ export default function WorkspacesAdminPage() {
       <PageHeader
         back={useBackFromReference()}
         title="부서 정보"
-        description="조직도를 만들고 고칩니다. 부서를 옮겨도 장비는 하나도 움직이지 않습니다."
+        description="조직도 생성 및 수정. 부서를 이동해도 장비는 그대로 유지됨."
         actions={
           // ReportArchive 의 「부서 정보 내보내기」 와 컬럼·순서가 같다 — 양쪽으로
           // 오간다. 한쪽으로만 들어가는 것은 호환이 아니라 이사다.
@@ -128,8 +128,8 @@ export default function WorkspacesAdminPage() {
           없는 것처럼 보인다 — 실제로 그렇게 보인다는 말을 들었다(2026-09-28). 줄기를
           그리고, 줄마다 「↳ 상위」 를 적고, 끌어다 놓아 옮길 수 있게 한다. */}
       <p className="text-muted-foreground text-xs">
-        손잡이를 끌어 옮깁니다 — <strong>줄 위의 얇은 띠</strong> 에 놓으면 그 부서의 앞 형제가
-        되고, <strong>줄 자체</strong> 에 놓으면 그 부서의 마지막 자식이 됩니다.
+        손잡이를 끌어 이동. <strong>줄 위의 얇은 띠</strong>에 놓으면 그 부서의 앞 형제,{' '}
+        <strong>줄 자체</strong>에 놓으면 그 부서의 마지막 자식으로 배치됨.
       </p>
 
       <div className="rounded-md border">
@@ -160,10 +160,10 @@ export default function WorkspacesAdminPage() {
                 aria-label={`${one.name} 사업부`}
                 title={
                   one.division_own
-                    ? '이 부서에 직접 붙은 사업부입니다'
+                    ? '이 부서에 직접 지정된 사업부'
                     : one.division_name
-                      ? `위에서 물려받았습니다: ${one.division_name}`
-                      : '사업부가 없습니다'
+                      ? `상위 부서에서 상속: ${one.division_name}`
+                      : '사업부 없음'
                 }
                 value={one.division_own ? (one.division_code ?? '') : ''}
                 onChange={(event) =>

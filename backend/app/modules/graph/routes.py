@@ -207,7 +207,7 @@ def browse(
 ) -> BrowseOut:
     """한 종류를 이름순으로 쪽 단위로 — 훑어서 시작점을 고르는 길."""
     if type not in NODE_TYPE_BY_SLUG:
-        raise NotFound("TSC-GRAPH-0002", f"종류를 찾을 수 없습니다: {type}")
+        raise NotFound("TSC-GRAPH-0002", f"종류를 찾을 수 없음: {type}")
     items, total = engine.browse(db, user, type, q=q, limit=limit, offset=offset)
     return BrowseOut(
         items=[
@@ -244,11 +244,11 @@ def neighborhood(
     개까지.** 잘리면 `truncated` 와 노드의 `degree` 로 잘렸다고 말한다."""
     parsed = split_node_id(focus)
     if parsed is None:
-        raise NotFound("TSC-GRAPH-0001", "노드를 찾을 수 없습니다.")
+        raise NotFound("TSC-GRAPH-0001", "노드를 찾을 수 없음.")
     start_type, start_id = parsed
     start = engine.lookup(db, user, {start_type: {start_id}}).get(focus)
     if start is None:
-        raise NotFound("TSC-GRAPH-0001", "노드를 찾을 수 없습니다.")
+        raise NotFound("TSC-GRAPH-0001", "노드를 찾을 수 없음.")
 
     depth_n = _clamp(depth, default=DEFAULT_DEPTH, maximum=MAX_DEPTH)
     fanout_n = _clamp(fanout, default=DEFAULT_FANOUT, maximum=MAX_FANOUT)
@@ -333,7 +333,7 @@ def subgraph(
     node_limit = _clamp(limit, default=DEFAULT_NODES, maximum=MAX_NODES)
     wanted = [one for one in (_csv(types) or set()) if one in NODE_TYPE_BY_SLUG]
     if not wanted:
-        raise NotFound("TSC-GRAPH-0002", f"종류를 찾을 수 없습니다: {types}")
+        raise NotFound("TSC-GRAPH-0002", f"종류를 찾을 수 없음: {types}")
     wanted.sort(key=lambda slug: NODE_TYPE_BY_SLUG[slug].sort_order)
     # 쪽을 종류마다 나눠 채운다 — 한 종류가 첫 쪽을 다 차지하면 선이 없는 그림이 된다.
     share = max(1, node_limit // len(wanted))
@@ -372,11 +372,11 @@ def node(
     묶는다."""
     parsed = split_node_id(id)
     if parsed is None:
-        raise NotFound("TSC-GRAPH-0001", "노드를 찾을 수 없습니다.")
+        raise NotFound("TSC-GRAPH-0001", "노드를 찾을 수 없음.")
     type_slug, row_id = parsed
     info = engine.lookup(db, user, {type_slug: {row_id}}).get(id)
     if info is None:
-        raise NotFound("TSC-GRAPH-0001", "노드를 찾을 수 없습니다.")
+        raise NotFound("TSC-GRAPH-0001", "노드를 찾을 수 없음.")
     edges = engine.all_edges_of(db, user, type_slug, row_id, RELATED_LIMIT)
     others = {e.dst if e.src == id else e.src for e in edges}
     names = engine.lookup(db, user, _group(others))

@@ -56,7 +56,7 @@ def test_표기가_달라도_규격을_잡고_단위는_조건의_것이어야_�
     assert rows[2]["code"] == code and rows[2]["problems"] == []
     # 단위가 다르면 거절 — 「20 N」 을 kN 으로 들이면 천 배 틀린다.
     assert any("단위" in one for one in rows[4]["problems"])
-    assert any("조건 정의에 없습니다" in one for one in rows[5]["problems"])
+    assert any("조건 정의에 없음" in one for one in rows[5]["problems"])
     assert body["summary"] == {
         "total": 4,
         "ready": 2,

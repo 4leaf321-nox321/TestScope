@@ -118,11 +118,10 @@ export function ImageLightbox({
             <div className="flex w-96 max-w-full flex-col items-center gap-3 px-6 py-10 text-center">
               <FileText className="text-muted-foreground size-10" />
               <p className="text-sm font-medium">
-                {programOf(row)} 문서입니다 — 브라우저는 이 형식을 못 그립니다.
+                {programOf(row)} 문서. 브라우저에서 표시할 수 없는 형식.
               </p>
               <p className="text-muted-foreground text-xs">
-                내려받아 그 프로그램에서 여십시오. 사내망에서는 온라인 뷰어를 쓸 수 없습니다 —
-                파일이 인터넷에 공개돼 있어야 하기 때문입니다.
+                내려받은 후 해당 프로그램에서 열기. 사내망에서는 온라인 뷰어 사용 불가.
               </p>
             </div>
           ) : url === null ? (

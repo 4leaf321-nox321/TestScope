@@ -253,7 +253,7 @@ def upsert(
     if not definition.is_active:
         raise AppError(
             "TSC-SPEC-0012",
-            f"{definition.label}은(는) 더 쓰지 않는 사양입니다.",
+            f"{definition.label}은(는) 더 이상 쓰지 않는 사양.",
             status=400,
         )
     specs.check_value(definition, payload)
@@ -262,7 +262,7 @@ def upsert(
         payload.get("source_id") is not None
         and db.get(SpecSource, payload["source_id"]) is None
     ):
-        raise NotFound("TSC-SPEC-0013", "출처 문서를 찾을 수 없습니다.")
+        raise NotFound("TSC-SPEC-0013", "출처 문서를 찾을 수 없음.")
 
     row = db.scalar(
         select(EquipmentSpecValue).where(
@@ -314,6 +314,6 @@ def delete(db: Session, equipment: Equipment, definition_id: uuid.UUID) -> None:
         )
     )
     if row is None:
-        raise NotFound("TSC-SPEC-0015", "이 장비에 적힌 실측 사양이 아닙니다.")
+        raise NotFound("TSC-SPEC-0015", "이 장비에 기록된 실측 사양이 아님.")
     db.delete(row)
     db.commit()

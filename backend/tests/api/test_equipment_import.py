@@ -262,7 +262,7 @@ def test_파일_안의_자산번호_중복을_잡는다(client: TestClient, admi
     assert result["created"] == 1
     assert result["rows"][0]["imported"] is True
     assert result["rows"][1]["imported"] is False
-    assert any("겹칩니다" in one for one in _said(result["rows"][1]))
+    assert any("중복" in one for one in _said(result["rows"][1]))
     # 한 칸에 못 붙이는 문제다 — 어느 줄이 원본인지가 요점이다.
     assert None in _fields(result["rows"][1])
 

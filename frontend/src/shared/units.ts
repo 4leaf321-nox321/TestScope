@@ -175,9 +175,9 @@ export function convertValue(raw: string, targetUnit: string): ConvertResult {
   if (!text) return null
 
   const match = /^([-+]?\d+(?:[.,]\d+)?(?:[eE][-+]?\d+)?)\s*(.*)$/.exec(text)
-  if (!match) return { error: '숫자로 시작해야 합니다' }
+  if (!match) return { error: '숫자로 시작해야 함' }
   const value = Number(match[1].replace(',', '.'))
-  if (!Number.isFinite(value)) return { error: '숫자가 아닙니다' }
+  if (!Number.isFinite(value)) return { error: '숫자 아님' }
 
   const typed = match[2].trim()
   if (!typed) return { value }
@@ -190,7 +190,7 @@ export function convertValue(raw: string, targetUnit: string): ConvertResult {
   if (TEMPERATURE[from] && TEMPERATURE[to]) {
     const celsius = TEMPERATURE[from].toC(value)
     const out = fromC(celsius, to)
-    if (out === null) return { error: `${targetUnit} 로 바꿀 수 없습니다` }
+    if (out === null) return { error: `${targetUnit}(으)로 환산 불가` }
     return { value: tidy(out), note: `${text} → ${tidy(out)} ${targetUnit}` }
   }
 
@@ -198,11 +198,11 @@ export function convertValue(raw: string, targetUnit: string): ConvertResult {
   const target = UNITS[to]
   if (!source)
     return {
-      error: `모르는 단위입니다 (${typed}) — 이 칸의 단위(${targetUnit || '없음'})로 적으십시오`,
+      error: `모르는 단위(${typed}). 이 칸의 단위(${targetUnit || '없음'})로 입력 필요`,
     }
-  if (!target) return { error: `이 칸은 단위가 ${targetUnit || '없음'} 이라 바꿀 수 없습니다` }
+  if (!target) return { error: `이 칸의 단위(${targetUnit || '없음'})로 환산 불가` }
   if (source.dimension !== target.dimension) {
-    return { error: `${typed} 는 ${targetUnit} 로 바꿀 수 없습니다 — 재는 것이 다릅니다` }
+    return { error: `${typed}에서 ${targetUnit}(으)로 환산 불가: 측정 차원이 다름` }
   }
   const out = tidy((value * source.factor) / target.factor)
   return { value: out, note: `${text} → ${out} ${targetUnit}` }

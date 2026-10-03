@@ -191,8 +191,8 @@ export default function DivisionReliabilityPage() {
       <div className="space-y-6">
         <PageHeader title="신뢰성 시험" />
         <EmptyState
-          title="그런 사업부가 없습니다"
-          hint="사업부는 「관리 → 온톨로지」 의 사업부 축에 있습니다. 지운 값이면 주소도 함께 사라집니다."
+          title="해당 사업부 없음"
+          hint="사업부는 ‘관리 → 온톨로지’의 사업부 축에서 관리. 삭제된 값이면 주소도 함께 사라짐."
         />
       </div>
     )
@@ -205,7 +205,7 @@ export default function DivisionReliabilityPage() {
         title={division ? `${division.name} · 신뢰성 시험` : '신뢰성 시험'}
         description={
           division
-            ? `${division.name} 사업부가 제품 개발·검증을 위해 수행하는 시험. 적용 시험 항목 옆의 수는 이 사업부에 속한 부서들의 장비 중 그 항목이 되는 대수입니다.`
+            ? `${division.name} 사업부의 제품 개발·검증 시험. 적용 시험 항목 옆의 수: 이 사업부 소속 부서 장비 중 해당 항목 수행 가능 대수.`
             : undefined
         }
         actions={
@@ -225,7 +225,7 @@ export default function DivisionReliabilityPage() {
             {pending > 0 && (
               // **숫자를 눈에 띄게 둔다.** 「확인 전 3건」 이 안 보이면 아무도 안 연다.
               <span className="text-destructive ml-2 font-medium">
-                확인 전 {pending}건 — 내용을 읽고 확인해 주십시오
+                확인 전 {pending}건. 내용 검토 후 확인 필요
               </span>
             )}
           </p>
@@ -293,7 +293,7 @@ export default function DivisionReliabilityPage() {
             onClick={() => {
               // **사유를 받는다** — 없으면 AI 가 무엇을 자주 틀리는지 셀 수 없다.
               const said = window.prompt(
-                `${wholeSet ? total : picked.ids.length}건을 반려합니다. 사유를 적어 주십시오`,
+                `${wholeSet ? total : picked.ids.length}건 반려. 사유 입력`,
               )
               if (said?.trim()) runBulk('reject', said.trim())
             }}
@@ -309,8 +309,8 @@ export default function DivisionReliabilityPage() {
               // 누르지만, 서른 건이 한꺼번에 풀리면 반년 뒤에 「왜 풀렸나」 를 묻는 사람이
               // 반드시 있다 — 감사에 「누가 열었나」 만 있으면 답할 수 없다.
               const said = window.prompt(
-                `${wholeSet ? total : picked.ids.length}건의 확정을 풀어 다시 후보로 돌립니다.` +
-                  ' 그 순간부터 AI 가 다시 채울 수 있습니다. 사유를 적어 주십시오',
+                `${wholeSet ? total : picked.ids.length}건 확정 해제 후 후보로 전환.` +
+                  ' 전환 시점부터 AI가 다시 채울 수 있음. 사유 입력',
               )
               if (said?.trim()) runBulk('reopen', said.trim())
             }}
@@ -323,7 +323,7 @@ export default function DivisionReliabilityPage() {
             disabled={bulk.busy}
             onClick={() => {
               const many = wholeSet ? total : picked.ids.length
-              if (window.confirm(`${many}건을 지웁니다. 되돌릴 수 없습니다.`)) {
+              if (window.confirm(`${many}건 삭제. 되돌릴 수 없음. 계속하시겠습니까?`)) {
                 runBulk('delete')
               }
             }}
@@ -335,11 +335,11 @@ export default function DivisionReliabilityPage() {
 
       {tests.data && rows.length === 0 && !filtered ? (
         <EmptyState
-          title="등록된 신뢰성 시험이 없습니다"
+          title="등록된 신뢰성 시험 없음"
           hint={
             canEdit
-              ? '위의 「신뢰성 시험 등록」 으로 첫 시험을 적으십시오.'
-              : '이 부서의 관리자 또는 시스템 관리자가 등록합니다.'
+              ? '위의 ‘신뢰성 시험 등록’으로 첫 시험 등록.'
+              : '등록 권한: 이 부서 관리자 또는 시스템 관리자.'
           }
         />
       ) : (
@@ -382,8 +382,8 @@ export default function DivisionReliabilityPage() {
               // 「눌렀더니 다 없어졌다」 로 보인다.
               <TableRow>
                 <TableCell colSpan={99} className="text-muted-foreground py-10 text-center">
-                  필터 조건에 해당하는 신뢰성 시험이 없습니다. 위의 조건을 하나씩 해제해
-                  보십시오 — 등록된 시험이 사라진 것은 아닙니다.
+                  필터 조건에 해당하는 신뢰성 시험 없음. 위 조건을 하나씩 해제해 확인 필요.
+                  등록된 시험은 그대로 있음.
                 </TableCell>
               </TableRow>
             )}
@@ -433,7 +433,7 @@ export default function DivisionReliabilityPage() {
                           {item.equipment_count === 0 ? (
                             <span
                               className="text-amber-600 text-xs"
-                              title="이 항목이 되는 장비가 이 부서에 없습니다"
+                              title="이 부서에 이 항목 수행 가능 장비 없음"
                             >
                               0대
                             </span>
@@ -553,11 +553,11 @@ export default function DivisionReliabilityPage() {
 
       <ConfirmDialog
         open={removing !== null}
-        title="신뢰성 시험을 삭제합니다"
+        title="신뢰성 시험 삭제"
         description={
           <>
-            <strong>{removing?.name}</strong> 을 목록에서 삭제합니다. 데이터는 보존되며 변경
-            이력에 남습니다.
+            <strong>{removing?.name}</strong>을(를) 목록에서 삭제. 데이터는 보존되며 변경
+            이력에 남음.
           </>
         }
         confirmLabel="삭제"

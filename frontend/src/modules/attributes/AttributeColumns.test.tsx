@@ -154,7 +154,7 @@ suite('속성 열', () => {
     await act(async () => {
       fireEvent.click(screen.getByLabelText('상대 습도 필터'))
     })
-    expect(screen.getByText(/조건에 맞는 항목만 표시됩니다/)).toBeTruthy()
+    expect(screen.getByText(/조건에 맞는 항목만 표시/)).toBeTruthy()
     // 값이 0건이면 「값 없음」 이 전부와 맞는다 — 그 수가 보여야 납득이 된다.
     expect(screen.getByText(/전사 기준 0건/)).toBeTruthy()
   })

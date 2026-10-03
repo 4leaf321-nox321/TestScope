@@ -109,8 +109,8 @@ function PromoteDialog({
         apply_same_key: applySameKey,
       })
       onDone(
-        `「${label}」 정의를 세웠습니다. ${got.moved}줄을 옮겼고` +
-          (got.left > 0 ? `, 수치로 못 읽은 ${got.left}줄은 그대로 뒀습니다.` : '.'),
+        `‘${label}’ 정의 등록 완료. ${got.moved}줄 이동` +
+          (got.left > 0 ? `, 수치로 읽지 못한 ${got.left}줄은 그대로 유지.` : '.'),
       )
     } catch (caught) {
       setError(caught instanceof ApiError ? caught.message : '알 수 없는 오류')
@@ -125,10 +125,8 @@ function PromoteDialog({
         <DialogHeader>
           <DialogTitle>정의로 등록</DialogTitle>
           <DialogDescription>
-            이 값을 정식 사양 정의로 올립니다. 정의는 이 기종의 분류에 붙고, 앞으로 그 분류의
-            모든 기종에서 「사양 추가」 에 뜹니다.{' '}
-            <strong>이름과 단위는 사람이 정합니다</strong> — 기계가 지으면 그것이 진실이
-            됩니다.
+            이 값을 정식 사양 정의로 등록. 정의는 이 기종의 분류에 속하며, 이후 해당 분류의
+            모든 기종에서 ‘사양 추가’ 목록에 표시됨. <strong>이름과 단위는 직접 지정.</strong>
           </DialogDescription>
         </DialogHeader>
 
@@ -142,7 +140,9 @@ function PromoteDialog({
             />
           </div>
           <div className="grid gap-1">
-            <Label htmlFor="promote-key">키 (코드와 반입이 거는 이름 — 만든 뒤 못 바꿈)</Label>
+            <Label htmlFor="promote-key">
+              키 (코드와 반입에서 쓰는 이름, 생성 후 변경 불가)
+            </Label>
             <Input
               id="promote-key"
               value={key}
@@ -204,8 +204,8 @@ function PromoteDialog({
             </label>
           )}
           <p className="text-muted-foreground text-xs">
-            지금 값 「{row.value_text}」 를 {KIND_LABEL[kind]} 로 읽습니다. 못 읽으면(「약
-            300」) 그 줄은 그대로 남습니다 — 지어서 옮기지 않습니다.
+            현재 값 ‘{row.value_text}’의 해석 방식: {KIND_LABEL[kind]}. 해석할 수 없는 값(예:
+            ‘약 300’)은 옮기지 않고 그대로 남음.
           </p>
           {error && <p className="text-destructive text-sm">{error}</p>}
         </div>
@@ -270,7 +270,7 @@ export function FreeSpecsPanel({
       <Input
         value={draft.value_text ?? ''}
         onChange={(e) => setDraft({ ...draft, value_text: e.target.value })}
-        placeholder="값 — 원문 그대로"
+        placeholder="값 (원문 그대로)"
         aria-label="사양 값"
         className="w-64"
       />
@@ -301,10 +301,9 @@ export function FreeSpecsPanel({
       <div>
         <h2 className="text-base font-semibold">기종 고유 사양</h2>
         <p className="text-muted-foreground mt-1 text-sm">
-          정의 없이 이 기종에만 붙은 값입니다. 카탈로그 키 950종 중 803종이 한 기종에만
-          나오는데, 전부 정의로 세우면 「사양 추가」 목록이 못 쓰게 되고 버리면 사라지므로 여기
-          둡니다. <strong>다른 기종에도 같은 값이 있으면 정의로 세우십시오</strong> — 그때부터
-          비교가 됩니다.
+          정의 없이 이 기종에만 붙은 값(카탈로그 키 950종 중 803종이 한 기종에만 등장).{' '}
+          <strong>다른 기종에도 같은 값이 있으면 정의로 등록 필요.</strong> 정의로 등록하면
+          기종 간 비교 가능.
         </p>
       </div>
 
@@ -312,7 +311,7 @@ export function FreeSpecsPanel({
       {error && <p className="text-destructive text-sm">{error}</p>}
 
       {rows.length === 0 ? (
-        <p className="text-muted-foreground text-sm">아직 없습니다.</p>
+        <p className="text-muted-foreground text-sm">등록된 고유 사양 없음.</p>
       ) : (
         <ul className="divide-y rounded-md border text-sm">
           {rows.map((row) => (

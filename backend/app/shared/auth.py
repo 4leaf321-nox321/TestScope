@@ -24,7 +24,7 @@ from app.shared.request_context import set_actor_token
 
 logger = logging.getLogger(__name__)
 
-_UNAUTHENTICATED = "로그인이 필요합니다."
+_UNAUTHENTICATED = "로그인 필요."
 
 
 def _bearer(request: Request) -> str | None:
@@ -102,20 +102,20 @@ def _enforce_token_scope(request: Request, token_scopes: list[str], path: str) -
             return
         raise Forbidden(
             "TSC-AUTH-0104",
-            "이 토큰에는 읽기 범위(read)가 없습니다.",
+            "이 토큰에 읽기 범위(read) 없음.",
         )
 
     needed = _needed_scope(path)
     if needed is None:
         raise Forbidden(
             "TSC-AUTH-0105",
-            "개인 토큰으로는 이 경로를 고칠 수 없습니다. 화면에서 하십시오.",
+            "개인 토큰으로는 이 경로 수정 불가. 화면에서 수정 필요.",
             details={"path": path},
         )
     if needed not in token_scopes:
         raise Forbidden(
             "TSC-AUTH-0106",
-            f"이 토큰에는 {needed} 범위가 없습니다.",
+            f"이 토큰에 {needed} 범위 없음.",
             details={"needed": needed, "granted": token_scopes},
         )
 
@@ -129,7 +129,7 @@ def current_user(request: Request, db: Session = Depends(get_db)) -> User:
         found = services.resolve_pat(db, token)
         if found is None:
             logger.warning("PAT 인증 실패 (prefix=%s)", token[: len(security.PAT_PREFIX) + 6])
-            raise AppError("TSC-AUTH-0101", "토큰이 유효하지 않습니다.", status=401)
+            raise AppError("TSC-AUTH-0101", "유효하지 않은 토큰.", status=401)
         user, pat = found
         _enforce_token_scope(request, list(pat.scopes or []), request.url.path)
         # **감사에 토큰 이름을 남긴다.** 소유자만 남기면 사람이 넣은 것과 기계가
@@ -143,11 +143,11 @@ def current_user(request: Request, db: Session = Depends(get_db)) -> User:
     payload = security.decode_access_token(token)
     if payload is None:
         # 사유(만료·서명 불일치)는 응답에 싣지 않는다 — 공격자에게 힌트가 된다.
-        raise AppError("TSC-AUTH-0102", "세션이 만료되었습니다.", status=401)
+        raise AppError("TSC-AUTH-0102", "세션 만료.", status=401)
 
     signed_in = db.get(User, payload["sub"])
     if signed_in is None:
-        raise Forbidden("TSC-AUTH-0002", "삭제된 계정입니다. 관리자에게 문의하십시오.")
+        raise Forbidden("TSC-AUTH-0002", "삭제된 계정. 관리자 문의 필요.")
     services.ensure_can_sign_in(signed_in)
     request.scope["tsc_user_id"] = signed_in.id
     return signed_in
@@ -155,5 +155,5 @@ def current_user(request: Request, db: Session = Depends(get_db)) -> User:
 
 def require_system_admin(user: User = Depends(current_user)) -> User:
     if not user.is_system_admin:
-        raise Forbidden("TSC-AUTH-0103", "권한이 없습니다.")
+        raise Forbidden("TSC-AUTH-0103", "권한 없음.")
     return user

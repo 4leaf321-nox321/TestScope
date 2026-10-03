@@ -60,7 +60,7 @@ def category_of(db: Session, model: EquipmentModel) -> uuid.UUID | None:
 def get_definition(db: Session, definition_id: uuid.UUID) -> SpecDefinition:
     found = db.get(SpecDefinition, definition_id)
     if found is None:
-        raise NotFound("TSC-SPEC-0004", "사양 정의를 찾을 수 없습니다.")
+        raise NotFound("TSC-SPEC-0004", "사양 정의를 찾을 수 없음.")
     return found
 
 
@@ -176,21 +176,21 @@ def check_value(definition: SpecDefinition, payload: dict[str, Any]) -> None:
     """
     kind = definition.kind
     if kind == "number" and payload.get("num_value") is None:
-        raise AppError("TSC-SPEC-0008", f"{definition.label}: 값이 필요합니다.", status=400)
+        raise AppError("TSC-SPEC-0008", f"{definition.label}: 값 필요.", status=400)
     if kind == "range":
         low, high = payload.get("num_min"), payload.get("num_max")
         if low is None and high is None:
             raise AppError(
                 "TSC-SPEC-0009",
-                f"{definition.label}: 최소나 최대 중 하나는 있어야 합니다.",
+                f"{definition.label}: 최소나 최대 중 하나 이상 필요.",
                 status=400,
             )
         if low is not None and high is not None and low > high:
             raise AppError(
-                "TSC-SPEC-0010", f"{definition.label}: 최소가 최대보다 큽니다.", status=400
+                "TSC-SPEC-0010", f"{definition.label}: 최소가 최대보다 큼.", status=400
             )
     if kind in ("choice", "text") and not payload.get("text_value"):
-        raise AppError("TSC-SPEC-0008", f"{definition.label}: 값이 필요합니다.", status=400)
+        raise AppError("TSC-SPEC-0008", f"{definition.label}: 값 필요.", status=400)
     if (
         kind == "choice"
         and definition.choices
@@ -198,12 +198,11 @@ def check_value(definition: SpecDefinition, payload: dict[str, Any]) -> None:
     ):
         raise AppError(
             "TSC-SPEC-0011",
-            f"{definition.label}: 고를 수 있는 값이 아닙니다 "
-            f"({', '.join(definition.choices)}).",
+            f"{definition.label}: 선택지에 없는 값. 선택지: {', '.join(definition.choices)}.",
             status=400,
         )
     if kind == "boolean" and payload.get("bool_value") is None:
-        raise AppError("TSC-SPEC-0008", f"{definition.label}: 값이 필요합니다.", status=400)
+        raise AppError("TSC-SPEC-0008", f"{definition.label}: 값 필요.", status=400)
 
 
 def to_axis(
@@ -371,9 +370,9 @@ def _refuse_machine_replace(
     whose = _ORIGIN_TEXT.get(row.origin or "", _UNKNOWN_ORIGIN)
     raise Conflict(
         "TSC-SPEC-0014",
-        f"{definition.label}에 이미 값이 있습니다({_held_text(row)} — {whose}). "
-        "기계 자격으로는 AI 가 넣지 않은 값을 덮지 않습니다 — "
-        "정말 바꿀 것이면 replace 를 함께 보내고, 아니면 사람에게 물으십시오.",
+        f"{definition.label}에 이미 값 있음({_held_text(row)}, {whose}). "
+        "기계 자격으로는 AI가 넣지 않은 값 덮어쓰기 불가. "
+        "변경하려면 replace를 함께 전송, 아니면 사람에게 확인 필요.",
         details={
             "definition": definition.label,
             "held": _held_text(row),
@@ -417,7 +416,7 @@ def upsert(
     if not definition.is_active:
         raise AppError(
             "TSC-SPEC-0012",
-            f"{definition.label}은(는) 더 쓰지 않는 사양입니다.",
+            f"{definition.label}은(는) 더 이상 쓰지 않는 사양.",
             status=400,
         )
     check_value(definition, payload)
@@ -426,7 +425,7 @@ def upsert(
         payload.get("source_id") is not None
         and db.get(SpecSource, payload["source_id"]) is None
     ):
-        raise NotFound("TSC-SPEC-0013", "출처 문서를 찾을 수 없습니다.")
+        raise NotFound("TSC-SPEC-0013", "출처 문서를 찾을 수 없음.")
 
     row = db.scalar(
         select(ModelSpecValue).where(
@@ -489,6 +488,6 @@ def delete(db: Session, model: EquipmentModel, definition_id: uuid.UUID) -> None
         )
     )
     if row is None:
-        raise NotFound("TSC-SPEC-0014", "이 모델에 적힌 사양이 아닙니다.")
+        raise NotFound("TSC-SPEC-0014", "이 기종에 기록된 사양이 아님.")
     db.delete(row)
     db.commit()

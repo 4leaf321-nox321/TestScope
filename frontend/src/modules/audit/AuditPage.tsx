@@ -54,13 +54,13 @@ export default function AuditPage() {
     <div className="space-y-6">
       <PageHeader
         title="변경 이력"
-        description="되돌릴 수 없거나 권한이 실린 변경만 남습니다. 여기서는 고칠 수 없습니다."
+        description="되돌릴 수 없거나 권한 관련 변경만 기록됨. 이 화면에서는 수정 불가."
       />
 
       <ErrorNotice error={page.error} />
 
       {page.data && page.data.items.length === 0 ? (
-        <EmptyState title="기록이 없습니다" hint="아직 남길 만한 변경이 없었습니다." />
+        <EmptyState title="기록 없음" hint="기록 대상 변경 없음." />
       ) : (
         <Table>
           <TableHeader>

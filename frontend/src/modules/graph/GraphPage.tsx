@@ -367,7 +367,7 @@ export default function GraphPage() {
     >
       <PageHeader
         title="지식 그래프"
-        description="시험 항목·물성·규격·계열·기종·보유 장비·신뢰성 시험·부서가 어떻게 이어지는지(구조), 그리고 하나의 주변에 무엇이 있는지(탐색)."
+        description="시험 항목·물성·규격·계열·기종·보유 장비·신뢰성 시험·부서 간 연결 구조(구조) 및 객체 하나의 주변 관계(탐색)."
         actions={
           <Tabs value={mode} onValueChange={(value) => setMode(value as Mode)}>
             <TabsList>
@@ -549,11 +549,11 @@ function SchemaView({
   if (!loading && overview && overview.nodes.length === 0) {
     return (
       <EmptyState
-        title="그릴 종류가 없습니다"
+        title="표시할 종류 없음"
         hint={
           canDefine
-            ? '온톨로지에 객체가 들어오면 여기 구조가 그려집니다.'
-            : '시스템 관리자가 온톨로지를 채우면 여기 구조가 그려집니다.'
+            ? '온톨로지에 객체 등록 시 구조 표시.'
+            : '시스템 관리자가 온톨로지 입력 시 구조 표시.'
         }
         action={
           canDefine ? (
@@ -591,7 +591,7 @@ function SchemaView({
               onClick={() => setShape('web')}
             >
               <Share2 className="mr-1 size-3.5" />
-              그물로
+              그물 보기
             </Button>
             <Button
               size="icon-sm"
@@ -606,8 +606,8 @@ function SchemaView({
           </div>
           {flow.links.source.length === 0 ? (
             <p className="text-muted-foreground py-16 text-center text-sm">
-              이어진 관계가 아직 없습니다 — 흐름은 <strong>실제 연결된</strong> 관계가 있어야
-              그려집니다. 정의만 있는 관계는 굵기가 없어 그릴 것이 없습니다.
+              연결된 관계 없음. 흐름은 <strong>실제 연결된</strong> 관계가 있어야 표시됨.
+              정의만 있는 관계는 굵기가 없어 표시 대상 아님.
             </p>
           ) : (
             <LazyPlot
@@ -619,8 +619,8 @@ function SchemaView({
           )}
           {flow.dropped > 0 && (
             <p className="text-muted-foreground px-2 pb-1 text-xs">
-              되돌아오는 관계 {flow.dropped}개는 흐름에서 뺐습니다 — 흐름 그래프는 한
-              방향으로만 흐릅니다. 그 관계들은 <strong>그물</strong>에서 보입니다.
+              되돌아오는 관계 {flow.dropped}개는 흐름에서 제외됨(흐름 그래프는 단방향). 해당
+              관계는 <strong>그물</strong>에서 확인 가능.
             </p>
           )}
         </div>
@@ -654,7 +654,7 @@ function SchemaView({
                   onClick={() => setShape('flow')}
                 >
                   <Waypoints className="mr-1 size-3.5" />
-                  흐름으로
+                  흐름 보기
                 </Button>
               )}
               {loading && (
@@ -735,8 +735,8 @@ function SchemaView({
           </div>
         ) : (
           <div className="text-muted-foreground rounded-md border border-dashed p-3">
-            종류를 클릭하면 연결된 관계와 수가 나오고, 그 종류의 객체 전부를 그릴 수 있습니다.
-            점선은 정의만 있고 아직 아무것도 안 이어진 관계입니다.
+            종류 클릭 시 연결된 관계와 수 표시, 해당 종류의 객체 전체 표시 가능. 점선은 정의만
+            있고 아직 연결이 없는 관계.
           </div>
         )}
       </aside>
@@ -1149,8 +1149,8 @@ function ExploreView({
                 그것을 고장으로 읽고, 다음부터 이 화면을 안 연다. */}
             {nodeLimit > NODE_LIMITS[1] && (
               <span className="text-muted-foreground block text-xs">
-                수천 개를 한 그래프에 두면 배치가 느려집니다 — 1만 개가 넘으면 자리 잡는 데
-                수십 초가 걸릴 수 있습니다. 필터로 좁히는 편이 대개 빠르고 잘 읽힙니다.
+                노드가 수천 개이면 배치가 느려짐. 1만 개 초과 시 배치에 수십 초 소요 가능.
+                필터로 범위를 좁히면 더 빠르고 읽기 쉬움.
               </span>
             )}
           </label>
@@ -1227,7 +1227,7 @@ function ExploreView({
                     event.currentTarget.blur()
                   }
                 }}
-                placeholder="그래프에서 검색 (/) — 맞는 노드만 또렷하게"
+                placeholder="그래프에서 검색 (/): 일치 노드 강조"
                 className="pl-8"
                 disabled={nodeList.length < 2}
               />
@@ -1251,8 +1251,8 @@ function ExploreView({
         )}
         {!seed ? (
           <EmptyState
-            title="시작점을 선택하십시오"
-            hint="왼쪽에서 이름으로 찾거나(시험 항목·규격·계열·장비 …), 종류에서 훑어 고르거나, 한 종류를 전부 그립니다. 모든 종류를 한 번에 그리는 단추는 없습니다 — 전체 모양은 「구조」 에서 봅니다."
+            title="시작점 선택 필요"
+            hint="왼쪽에서 이름 검색(시험 항목·규격·계열·장비 …), 종류별 목록에서 선택, 또는 한 종류 전체 표시. 모든 종류를 한 번에 그리는 기능은 없음. 전체 모양은 ‘구조’ 탭에서 확인."
           />
         ) : (
           <GraphCanvas
@@ -1284,9 +1284,9 @@ function ExploreView({
                 )}
                 {explored && nodeList.length === 1 && !loading && (
                   <div className="text-muted-foreground absolute inset-x-0 top-3 text-center text-xs">
-                    연결된 관계가 없습니다
+                    연결된 관계 없음
                     {relationFilter.size + typeFilter.size > 0
-                      ? ' — 필터를 넓혀 보십시오.'
+                      ? '. 필터 범위 확대 필요.'
                       : '.'}
                   </div>
                 )}
@@ -1343,7 +1343,7 @@ function ExploreView({
                       )}
                     {explored.truncated && (
                       <span className="text-amber-600 dark:text-amber-400">
-                        · 일부만 실었습니다 — 「+N」 이 붙은 노드에서 더 펼칩니다
+                        · 일부만 표시됨. ‘+N’이 붙은 노드에서 추가 확장 가능
                       </span>
                     )}
                   </div>
@@ -1372,8 +1372,8 @@ function ExploreView({
           />
         ) : (
           <div className="text-muted-foreground rounded-md border border-dashed p-3">
-            노드를 클릭하면 상세와 「여기서 확장」 가 나옵니다. 더블클릭은 「여기를 중심으로」.
-            주황 링이 시작점, 「+N」 은 화면에 안 실린 관계의 수입니다.
+            노드 클릭 시 상세 정보와 ‘여기서 확장’ 표시. 더블클릭은 ‘여기를 중심으로’. 주황
+            링은 시작점, ‘+N’은 화면에 표시되지 않은 관계 수.
           </div>
         )}
         {explored && (
@@ -1381,7 +1381,7 @@ function ExploreView({
             {explored.limits.depth !== undefined
               ? `한 번에 ${explored.limits.depth}단계 · 노드당 이웃 ${explored.limits.fanout}개 · `
               : '한 쪽에 '}
-            노드 {explored.limits.node_limit}개까지. 상한은 서버가 정합니다.
+            노드 {explored.limits.node_limit}개까지. 상한은 서버 설정값.
           </p>
         )}
       </aside>
@@ -1541,9 +1541,7 @@ function NodeDetail({
                       type="button"
                       className="hover:bg-muted flex w-full items-baseline justify-between gap-2 rounded px-1.5 py-0.5 text-left text-xs disabled:cursor-default disabled:opacity-60"
                       title={
-                        here
-                          ? '그래프에서 선택'
-                          : '그래프에 없습니다 — 「여기서 확장」 로 불러옵니다'
+                        here ? '그래프에서 선택' : '그래프에 없음. ‘여기서 확장’으로 불러오기'
                       }
                       disabled={!here}
                       onClick={() => onSelect(one.node_id)}
@@ -1713,7 +1711,7 @@ function SeedPanel({
         )}
       </div>
       {text.trim() && !searching && hits.length === 0 && (
-        <p className="text-muted-foreground text-xs">결과가 없습니다.</p>
+        <p className="text-muted-foreground text-xs">결과 없음.</p>
       )}
       {hits.length > 0 && (
         <ul className="space-y-0.5 rounded-md border p-1">
@@ -1816,7 +1814,7 @@ function SeedPanel({
             )}
             {rows.items.length === 0 ? (
               <p className="text-muted-foreground text-xs">
-                {browsing ? '불러오는 중…' : '보이는 객체가 없습니다.'}
+                {browsing ? '불러오는 중…' : '표시할 객체 없음.'}
               </p>
             ) : (
               <ul className="space-y-0.5 rounded-md border p-1">

@@ -48,14 +48,14 @@ def _term_value(db: Session, term_id: uuid.UUID | None) -> str | None:
 def get_series(db: Session, series_id: uuid.UUID) -> EquipmentSeries:
     found = db.get(EquipmentSeries, series_id)
     if found is None or found.deleted_at is not None:
-        raise NotFound("TSC-CATALOG-0009", "장비 계열을 찾을 수 없습니다.")
+        raise NotFound("TSC-CATALOG-0009", "장비 계열을 찾을 수 없음.")
     return found
 
 
 def get_model(db: Session, model_id: uuid.UUID) -> EquipmentModel:
     found = db.get(EquipmentModel, model_id)
     if found is None or found.deleted_at is not None:
-        raise NotFound("TSC-CATALOG-0001", "장비 기종을 찾을 수 없습니다.")
+        raise NotFound("TSC-CATALOG-0001", "장비 기종을 찾을 수 없음.")
     return found
 
 

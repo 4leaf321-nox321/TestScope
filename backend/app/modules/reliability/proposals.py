@@ -88,10 +88,10 @@ def add(db: Session, user: User, payload: dict[str, Any]) -> TestItemProposal:
     services.require_editable(db, user, test.id)
     text = clean(str(payload["text"]))
     if not text:
-        raise AppError("TSC-RELIABILITY-0013", "제안할 말을 적어 주십시오.")
+        raise AppError("TSC-RELIABILITY-0013", "제안할 내용 입력 필요.")
     key = proposal_key(text)
     if not key:
-        raise AppError("TSC-RELIABILITY-0013", "제안할 말을 적어 주십시오.")
+        raise AppError("TSC-RELIABILITY-0013", "제안할 내용 입력 필요.")
     found = db.scalar(
         select(TestItemProposal).where(
             TestItemProposal.reliability_test_id == test.id,
@@ -164,8 +164,7 @@ def decide(db: Session, user: User, payload: dict[str, Any]) -> dict[str, Any]:
     if not user.is_system_admin:
         raise Forbidden(
             "TSC-RELIABILITY-0014",
-            "시험 항목 축은 시스템 관리자가 세웁니다 — 검색의 첫 축이라 값이 갈리면"
-            " 그 뒤로 아무도 못 찾습니다.",
+            "시험 항목 축 값 등록은 시스템 관리자 전용 작업.",
         )
     chosen = [name for name in ("term_id", "new_value", "reject") if payload.get(name)]
     if len(chosen) != 1:
@@ -184,14 +183,14 @@ def decide(db: Session, user: User, payload: dict[str, Any]) -> dict[str, Any]:
         )
     )
     if not rows:
-        raise NotFound("TSC-RELIABILITY-0015", "그 제안을 찾을 수 없습니다.")
+        raise NotFound("TSC-RELIABILITY-0015", "해당 제안을 찾을 수 없음.")
 
     term: VocabularyTerm | None = None
     status = "rejected"
     if payload.get("term_id"):
         term = db.get(VocabularyTerm, uuid.UUID(str(payload["term_id"])))
         if term is None:
-            raise NotFound("TSC-RELIABILITY-0015", "그 온톨로지 값을 찾을 수 없습니다.")
+            raise NotFound("TSC-RELIABILITY-0015", "해당 온톨로지 값을 찾을 수 없음.")
         status = "linked"
     elif payload.get("new_value"):
         term = _create_term(db, user, str(payload["new_value"]))
@@ -234,10 +233,10 @@ def _create_term(db: Session, user: User, value: str) -> VocabularyTerm:
 
     text = clean(value)
     if not text:
-        raise AppError("TSC-RELIABILITY-0013", "세울 값을 적어 주십시오.")
+        raise AppError("TSC-RELIABILITY-0013", "등록할 값 입력 필요.")
     axis = db.scalar(select(Vocabulary).where(Vocabulary.slug == "test_item"))
     if axis is None:  # pragma: no cover - 설치가 심는다
-        raise AppError("TSC-RELIABILITY-0002", "시험 항목 축이 없습니다.")
+        raise AppError("TSC-RELIABILITY-0002", "시험 항목 축 없음.")
     key = proposal_key(text)
     for one in db.scalars(
         select(VocabularyTerm).where(VocabularyTerm.vocabulary_id == axis.id)

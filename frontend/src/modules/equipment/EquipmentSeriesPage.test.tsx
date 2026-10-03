@@ -132,13 +132,13 @@ describe('계열 목록의 열별 거르기', () => {
     const asked = Number(new URL(`http://x${lastList()}`).searchParams.get('limit'))
     expect(asked).toBeGreaterThan(400)
     // 그리고 **못 받은 것은 말한다** — `fetchAll` 이 `done:false` 를 주면 목록 아래에 적힌다.
-    expect(screen.queryByText(/건만 받았습니다/)).toBeNull()
+    expect(screen.queryByText(/건만 불러옴/)).toBeNull()
   })
 
   it('걸러서 0 건이 되어도 거르는 줄은 남는다', async () => {
     items = []
     await open('/catalog/equipment-series?test_item=none')
     expect(screen.getByPlaceholderText('계열명')).toBeTruthy()
-    expect(screen.getByText(/필터에 맞는 계열이 없습니다/)).toBeTruthy()
+    expect(screen.getByText(/필터에 맞는 계열 없음/)).toBeTruthy()
   })
 })

@@ -35,8 +35,8 @@ import { VOC_STATUS_LABELS, vocApi } from '@/modules/voc/api'
 /** 머리의 거르기. 「전부」 는 끝난 것까지. */
 const FILTERS = [
   { key: '', label: '진행 중' },
-  { key: 'all', label: '전부' },
-  { key: 'mine', label: '내가 낸 것' },
+  { key: 'all', label: '전체' },
+  { key: 'mine', label: '내 등록 건' },
 ]
 
 export default function VocPage() {
@@ -80,7 +80,7 @@ export default function VocPage() {
     <div className="space-y-6">
       <PageHeader
         title="VOC"
-        description="안 되는 것·불편한 것을 여기에 냅니다. 로그인한 사람은 모두 볼 수 있고, 처리 과정이 그대로 남습니다."
+        description="오류·불편 사항 등록. 로그인한 사용자 모두 조회 가능, 처리 과정이 그대로 기록됨."
       />
 
       <div className="flex flex-wrap items-center gap-2">
@@ -96,7 +96,7 @@ export default function VocPage() {
         ))}
         <div className="flex-1" />
         <Button size="sm" onClick={() => setWriting((before) => !before)}>
-          {writing ? '접기' : '새로 내기'}
+          {writing ? '접기' : '새 VOC 등록'}
         </Button>
       </div>
 
@@ -105,25 +105,24 @@ export default function VocPage() {
           <Input
             value={title}
             onChange={(event) => setTitle(event.target.value)}
-            placeholder="한 줄로 — 「장비 수정에서 저장이 안 됩니다」"
+            placeholder="한 줄 요약 (예: 장비 수정에서 저장 안 됨)"
           />
           <Textarea
             value={body}
             onChange={(event) => setBody(event.target.value)}
             rows={6}
             placeholder={
-              '무엇을 하려다 무엇이 됐는지를 적어 주십시오.\n' +
-              '어느 화면 · 무엇을 눌렀나 · 기대한 것 · 실제로 본 것'
+              '시도한 작업과 발생한 결과 입력.\n' + '화면 · 누른 버튼 · 기대 결과 · 실제 결과'
             }
           />
           {/* **왜 자세히 적어야 하는지를 말해 준다.** 안 적어 두면 「안 돼요」 한 줄이
               오고, 그 한 줄로는 아무도 재현하지 못한다. */}
           <p className="text-muted-foreground text-xs">
-            자산번호·기종명처럼 <strong>그 줄을 찾을 수 있는 것</strong>을 함께 적으면 훨씬
-            빨리 고쳐집니다.
+            자산번호·기종명 등 <strong>해당 항목을 찾을 수 있는 정보</strong>를 함께 적으면
+            처리가 빨라짐.
           </p>
           <Button onClick={submit} disabled={busy || !title.trim() || !body.trim()}>
-            {busy ? '보내는 중…' : '내기'}
+            {busy ? '보내는 중…' : '등록'}
           </Button>
         </div>
       )}
@@ -136,8 +135,8 @@ export default function VocPage() {
             <TableHead className="w-16">번호</TableHead>
             <TableHead>제목</TableHead>
             <TableHead className="w-24">상태</TableHead>
-            <TableHead className="w-28">낸 사람</TableHead>
-            <TableHead className="w-28">낸 날</TableHead>
+            <TableHead className="w-28">등록자</TableHead>
+            <TableHead className="w-28">등록일</TableHead>
             <TableHead className="w-28">최근 처리</TableHead>
           </TableRow>
         </TableHeader>
@@ -146,10 +145,10 @@ export default function VocPage() {
             <TableRow>
               <TableCell colSpan={99} className="text-muted-foreground py-10 text-center">
                 {picked === 'mine'
-                  ? '내가 낸 것이 없습니다.'
+                  ? '내 등록 건 없음.'
                   : picked === 'all'
-                    ? '아직 낸 것이 없습니다.'
-                    : '진행 중인 것이 없습니다. 끝난 것까지 보려면 「전부」 를 누르십시오.'}
+                    ? '등록된 VOC 없음.'
+                    : '진행 중인 건 없음. 완료 건까지 보려면 ‘전체’ 선택.'}
               </TableCell>
             </TableRow>
           )}
@@ -165,7 +164,7 @@ export default function VocPage() {
                 {one.comment_count > 0 && (
                   // 말이 오간 건을 눈으로 고른다 — 조용한 건은 아직 아무도 안 봤다는 뜻이다.
                   <span className="text-muted-foreground ml-2 text-xs">
-                    말 {one.comment_count}
+                    의견 {one.comment_count}
                   </span>
                 )}
               </TableCell>

@@ -44,7 +44,7 @@ export default function WorkspaceHomePage() {
     <div className="space-y-8">
       <PageHeader
         title={workspace?.name ?? 'TestScope'}
-        description="어떤 시험이 가능한지 찾고, 우리 장비의 시험 항목을 채워 넣는 곳입니다."
+        description="시험 가능 장비 조회 및 보유 장비 시험 항목 입력"
         actions={
           <Button asChild>
             <Link to="/search">장비 찾기</Link>
@@ -59,7 +59,7 @@ export default function WorkspaceHomePage() {
         {/* **0 건인 항목은 서버가 안 내보낸다.** 다 0 인 목록을 매일 보면 사람은
             그 자리를 아예 안 읽게 되고, 그때 진짜 하나가 떠도 눈에 안 들어온다. */}
         {maintenance.data && maintenance.data.length === 0 ? (
-          <p className="text-muted-foreground text-sm">처리할 항목이 없습니다.</p>
+          <p className="text-muted-foreground text-sm">처리할 항목 없음.</p>
         ) : (
           <ul className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
             {(maintenance.data ?? []).map((one) => (
@@ -90,9 +90,7 @@ export default function WorkspaceHomePage() {
       <section className="space-y-3">
         <h2 className="text-base font-semibold">교정 예정·만료</h2>
         {due.data && due.data.length === 0 ? (
-          <p className="text-muted-foreground text-sm">
-            60일 안에 교정이 필요한 장비가 없습니다.
-          </p>
+          <p className="text-muted-foreground text-sm">60일 안에 교정이 필요한 장비 없음.</p>
         ) : (
           <ul className="space-y-2">
             {(due.data ?? []).map((one) => (

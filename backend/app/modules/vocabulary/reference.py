@@ -25,6 +25,7 @@ from sqlalchemy.orm import Session
 
 from app.modules.attributes.models import AttributeDefinition, AttributeValue
 from app.modules.vocabulary.models import ConditionKey, Vocabulary, VocabularyTerm
+from app.modules.vocabulary.seed_texts import RETIRED
 from app.modules.vocabulary.specs import SpecDefinition, SpecGroup
 from app.shared.text import compare_key
 
@@ -74,9 +75,8 @@ AXES: list[tuple[str, str, str, str, str | None, int, str]] = [
         "closed",
         None,
         5,
-        "MX·VD·DA 처럼 회사를 가르는 단위. 부서(조직도)에 붙이면 그 아래가 모두 물려받고, "
-        "신뢰성 시험은 부서가 아니라 이 사업부에 속한다 — 같은 시험이 팀마다 갈라지지 "
-        "않게. 조직 개편으로 팀이 옮겨 다녀도 시험은 사업부에 남는다.",
+        "MX, VD, DA 등 회사를 구분하는 단위. 부서(조직도)에 지정하면 하위 부서 전체에 적용됨. "
+        "신뢰성 시험은 부서가 아닌 사업부에 소속되며, 조직 개편으로 팀이 이동해도 유지됨.",
     ),
     (
         "test_item",
@@ -85,8 +85,8 @@ AXES: list[tuple[str, str, str, str, str | None, int, str]] = [
         "closed",
         None,
         10,
-        "인장·압축·충격처럼 무엇을 재는가. 검색의 첫 축이라 오타가 값이 되면 안 걸린다. "
-        "장비의 시험 항목·계열의 시험 항목·시험법이 모두 이 축을 가리킨다.",
+        "인장, 압축, 충격 등 측정 대상. 검색의 첫 축이므로 오타가 값이 되면 검색되지 않음. "
+        "장비의 시험 항목, 계열의 시험 항목, 시험법이 모두 이 축을 참조함.",
     ),
     (
         "property",
@@ -95,9 +95,9 @@ AXES: list[tuple[str, str, str, str, str | None, int, str]] = [
         "closed",
         None,
         15,
-        "인장강도·영률·유리전이온도처럼 시험으로 얻는 값. 검색이 「이 물성을 재려면」 으로 "
-        "시작할 때의 첫 축이고, 값의 code 가 MaterialTwin 키(mechanical.yield_strength)라 "
-        "재료 물성 쪽(MatNexus)과 같은 말을 쓴다. 시험 항목과 N:M 으로 이어진다.",
+        "인장강도, 영률, 유리전이온도 등 시험으로 얻는 값. 물성 기준 검색의 첫 축. 값의 "
+        "code는 MaterialTwin 키(예: mechanical.yield_strength)로, 재료 물성 "
+        "시스템(MatNexus)과 같은 키 사용. 시험 항목과 N:M으로 연결됨.",
     ),
     (
         "equipment_category",
@@ -106,8 +106,8 @@ AXES: list[tuple[str, str, str, str, str | None, int, str]] = [
         "open",
         None,
         20,
-        "만능재료시험기·충격시험기·경도계처럼 장비의 종류. 계열이 갖고, 보유 장비는 "
-        "그 계열에서 물려받는다 — 카탈로그에 없는 장비만 직접 가리킨다.",
+        "만능재료시험기, 충격시험기, 경도계 등 장비의 종류. 계열에 지정하며 보유 장비는 "
+        "계열의 값을 물려받음. 카탈로그에 없는 장비만 직접 지정.",
     ),
     ("manufacturer", "제조사", "catalog", "open", None, 30, "장비를 만든 회사."),
     (
@@ -117,8 +117,8 @@ AXES: list[tuple[str, str, str, str, str | None, int, str]] = [
         "open",
         None,
         35,
-        "탁상형·바닥형·휴대형처럼 그 기종이 어떤 몸을 가졌나. 자리가 나는지, 들고 갈 "
-        "수 있는지가 여기서 갈린다.",
+        "탁상형, 바닥형, 휴대형 등 기종의 형태. 설치 공간 확보와 휴대 가능 여부를 가르는 "
+        "기준.",
     ),
     (
         "drive",
@@ -127,8 +127,8 @@ AXES: list[tuple[str, str, str, str, str | None, int, str]] = [
         "open",
         None,
         36,
-        "전기기계식·유압식·진자식처럼 무엇으로 힘을 내나. 유압은 큰 하중을, 전기동력은 "
-        "높은 주파수를, 진자는 충격을 낸다 — 할 수 있는 시험이 여기서 갈린다.",
+        "전기기계식, 유압식, 진자식 등 힘을 내는 방식. 유압은 큰 하중, 전기동력은 높은 "
+        "주파수, 진자는 충격에 사용. 가능한 시험이 이 값에 따라 달라짐.",
     ),
     (
         "site",
@@ -137,7 +137,7 @@ AXES: list[tuple[str, str, str, str, str | None, int, str]] = [
         "open",
         None,
         40,
-        "공장·연구소처럼 가려면 이동해야 하는 단위. 실무에서 가장 먼저 묻는 것.",
+        "공장, 연구소 등 이동이 필요한 위치 단위. 실무에서 가장 먼저 확인하는 항목.",
     ),
     (
         "calibration_provider",
@@ -146,8 +146,8 @@ AXES: list[tuple[str, str, str, str, str | None, int, str]] = [
         "open",
         None,
         45,
-        "교정 성적서를 낸 곳. 자유 문자열로 두면 같은 기관이 「한국계량측정협회」 와 "
-        "「(주)한국계량측정협회」 로 갈리고, 그 둘은 서로 다른 기관이 된다.",
+        "교정 성적서를 발행한 기관. 같은 기관이 한국계량측정협회, (주)한국계량측정협회처럼 "
+        "별개 값으로 나뉘지 않도록 축의 값으로 관리.",
     ),
     (
         "standard_body",
@@ -156,7 +156,7 @@ AXES: list[tuple[str, str, str, str, str | None, int, str]] = [
         "open",
         None,
         50,
-        "ASTM · ISO · KS · 사내.",
+        "ASTM, ISO, KS, 사내 등.",
     ),
     (
         "reliability_test_type",
@@ -165,8 +165,7 @@ AXES: list[tuple[str, str, str, str, str | None, int, str]] = [
         "open",
         None,
         55,
-        "환경·기계·전기처럼 이 시험이 어느 갈래인가. 사내 시험 카드의 「유형」 칸이 "
-        "이 축에서 고른다 — 글자로 두면 「환경」 과 「환경시험」 이 갈린다.",
+        "환경, 기계, 전기 등 시험의 갈래. 사내 시험 카드의 유형 칸에서 이 축의 값을 선택함.",
     ),
     (
         "product_group",
@@ -175,8 +174,8 @@ AXES: list[tuple[str, str, str, str, str | None, int, str]] = [
         "open",
         None,
         56,
-        "이 시험을 적용하는 제품군. 사내 시험 카드의 「적용군」 칸이 이 축에서 고른다. "
-        "ERP·PLM 의 제품 코드를 가져올지는 아직 안 정했다(사내 신뢰성 반입 문서 5절).",
+        "이 시험을 적용하는 제품군. 사내 시험 카드의 적용군 칸에서 이 축의 값을 선택함. ERP, "
+        "PLM 제품 코드 연동 여부는 미정(사내 신뢰성 반입 문서 5절).",
     ),
     (
         "reliability_category",
@@ -185,8 +184,8 @@ AXES: list[tuple[str, str, str, str, str | None, int, str]] = [
         "open",
         None,
         57,
-        "사내 시험을 묶는 분류. 유형(환경·기계 …)보다 위이거나 옆인 갈래로, 회사마다 다르다 "
-        "— 그래서 값을 코드로 심지 않고 축으로 연다.",
+        "사내 시험을 묶는 분류. 유형(환경, 기계 등)의 상위 또는 별도 갈래로, 회사마다 다름. "
+        "기본값 없이 값을 직접 추가하는 축.",
     ),
     # **보유 장비의 축이다**(`common` 이 아니다). 지금 가리키는 것은 장비의 「소재 종류」
     # 하나뿐이고, `common` 은 여러 층이 함께 가리키는 것만 둔다(AGENTS.md). 시험·물성이
@@ -198,9 +197,9 @@ AXES: list[tuple[str, str, str, str, str | None, int, str]] = [
         "open",
         None,
         58,
-        "금속·플라스틱·고무처럼 무엇으로 만든 것인가. 장비의 「소재 종류」(이 장비로 다루는 "
-        "소재)가 이 축을 가리킨다 — 글로 적으면 SUS304 · STS304 · 스테인리스304 가 갈려 "
-        "아무도 못 거른다. 같은 것의 다른 이름은 값을 늘리지 말고 별칭으로 붙인다.",
+        "금속, 플라스틱, 고무 등 재질. 장비의 소재 종류(장비로 다루는 소재) 칸이 이 축을 "
+        "참조함. 같은 소재의 다른 이름(예: SUS304, STS304, 스테인리스304)은 값을 추가하지 "
+        "않고 별칭으로 등록.",
     ),
 ]
 
@@ -208,16 +207,16 @@ AXES: list[tuple[str, str, str, str, str | None, int, str]] = [
 #: 반입이 MaterialTwin 정의에서 기호·단위·설명을 넣고, 편집 화면이 이것을 보고 칸을 그린다.
 ATTRIBUTE_SCHEMAS: dict[str, list[dict[str, str]]] = {
     "property": [
-        {"key": "symbol", "label": "기호", "kind": "text", "help": "Rp0.2 · E · Tg"},
-        {"key": "si_unit", "label": "SI 단위", "kind": "text", "help": "Pa · K · 1(무차원)"},
-        {"key": "domain", "label": "분야", "kind": "text", "help": "mechanical · thermal …"},
+        {"key": "symbol", "label": "기호", "kind": "text", "help": "예: Rp0.2, E, Tg"},
+        {"key": "si_unit", "label": "SI 단위", "kind": "text", "help": "예: Pa, K, 1(무차원)"},
+        {"key": "domain", "label": "분야", "kind": "text", "help": "예: mechanical, thermal"},
         {"key": "description", "label": "설명", "kind": "text"},
         {"key": "test_standard", "label": "대표 규격", "kind": "text"},
         {
             "key": "condition_axes",
             "label": "조건 축",
             "kind": "list",
-            "help": "temperature_k 처럼 값이 갈리는 축",
+            "help": "물성 값이 달라지는 조건 축(예: temperature_k)",
         },
     ],
 }
@@ -236,7 +235,7 @@ CONDITIONS: list[tuple[str, str, str, str, str, str, int, str | None]] = [
         "degC",
         "degC",
         10,
-        "챔버·항온조로 낼 수 있는 시험 온도 범위.",
+        "챔버, 항온조로 낼 수 있는 시험 온도 범위.",
     ),
     (
         "force",
@@ -246,7 +245,7 @@ CONDITIONS: list[tuple[str, str, str, str, str, str, int, str | None]] = [
         "kN",
         "kN",
         20,
-        "이 장비가 낼 수 있는 하중. 상한을 비우면 제한 없음으로 읽힌다.",
+        "장비가 낼 수 있는 하중. 상한을 비우면 제한 없음으로 처리됨.",
     ),
     ("crosshead_speed", "크로스헤드 속도", "range", "speed", "mm/min", "mm/min", 30, None),
     ("frequency", "가진 주파수", "range", "frequency", "Hz", "Hz", 40, "동적 시험의 주파수."),
@@ -272,7 +271,7 @@ CONDITIONS: list[tuple[str, str, str, str, str, str, int, str | None]] = [
         "s",
         "h",
         62,
-        "그 조건을 얼마나 버티나. 1000h · 500h 처럼 시험 이름에 들어가는 값이다.",
+        "조건 유지 시간. 1000h, 500h처럼 시험 이름에 들어가는 값.",
     ),
     (
         "cycles",
@@ -282,7 +281,7 @@ CONDITIONS: list[tuple[str, str, str, str, str, str, int, str | None]] = [
         "",
         "회",
         63,
-        "되풀이 횟수. 500 cycle 처럼 프로파일 한 벌을 몇 번 도나 — 단위가 없는 셈이다.",
+        "반복 횟수. 500 cycle처럼 프로파일 한 벌을 반복하는 횟수이며 단위 없음.",
     ),
     (
         "pressure",
@@ -292,7 +291,7 @@ CONDITIONS: list[tuple[str, str, str, str, str, str, int, str | None]] = [
         "Pa",
         "kPa",
         64,
-        "감압·가압 시험의 압력. 고도로 적힌 문서는 고도(altitude)에 적는다.",
+        "감압, 가압 시험의 압력. 문서에 고도로 적힌 값은 고도(altitude)에 입력.",
     ),
     (
         "altitude",
@@ -302,8 +301,8 @@ CONDITIONS: list[tuple[str, str, str, str, str, str, int, str | None]] = [
         "m",
         "m",
         65,
-        "항공 수송·고지대 시험. 문서가 고도로 적으면 환산하지 말고 여기에 적는다 —"
-        " 환산식이 문서마다 다르고, 옮겨 적는 사람이 그것을 못 고른다.",
+        "항공 수송, 고지대 시험의 고도. 문서에 고도로 적힌 값은 기압으로 환산하지 않고 여기에 "
+        "입력(환산식이 문서마다 다름).",
     ),
     (
         "ramp_rate",
@@ -313,7 +312,8 @@ CONDITIONS: list[tuple[str, str, str, str, str, str, int, str | None]] = [
         "degC/s",
         "degC/min",
         66,
-        "열충격·온도 사이클이 요구하는 변화율. 챔버가 낼 수 있는 속도가 판정을 가른다.",
+        "열충격, 온도 사이클 시험이 요구하는 온도 변화율. 장비 판정은 챔버가 낼 수 있는 속도 "
+        "기준.",
     ),
     (
         "salt_concentration",
@@ -333,7 +333,7 @@ CONDITIONS: list[tuple[str, str, str, str, str, str, int, str | None]] = [
         "W",
         "W",
         68,
-        "RF 시험이 거는 입력. dBm 으로 적힌 문서는 W 로 옮기고 원문을 note 에 남긴다.",
+        "RF 시험의 입력 전력. 문서에 dBm으로 적힌 값은 W로 환산하고 원문은 비고(note)에 기록.",
     ),
     (
         "vswr",
@@ -343,7 +343,7 @@ CONDITIONS: list[tuple[str, str, str, str, str, str, int, str | None]] = [
         "",
         "",
         69,
-        "정재파비. 단위가 없는 비(比)라 1.5 : 1 은 1.5 로 적는다.",
+        "정재파비. 단위 없는 비(比)이므로 1.5 : 1은 1.5로 입력.",
     ),
     # 2026-09-30 (둘째) — 길이 계열이 시편 두께·고도뿐이라, 낙하 152 cm 도 굽힘 1~10 mm 도
     # 걸 자리가 없었다. 같은 「길이」 지만 **묻는 물음이 다르다** — 낙하는 「몇 cm 에서
@@ -357,8 +357,8 @@ CONDITIONS: list[tuple[str, str, str, str, str, str, int, str | None]] = [
         "m",
         "cm",
         71,
-        "낙하·충격 시험의 높이. 문서가 cm 로 적으면 cm 로 적는다(1 m = 100 cm 는 서버가"
-        " 환산한다). 지그 낙하 152 cm 처럼 시험 이름에 들어가는 값이다.",
+        "낙하, 충격 시험의 높이. 문서에 cm로 적힌 값은 cm로 입력(1 m = 100 cm 환산은 서버가 "
+        "처리). 지그 낙하 152 cm처럼 시험 이름에 들어가는 값.",
     ),
     (
         "displacement",
@@ -368,14 +368,23 @@ CONDITIONS: list[tuple[str, str, str, str, str, str, int, str | None]] = [
         "m",
         "mm",
         72,
-        "굽힘·처짐이 요구하는 이동량. MLCC 기판 굽힘 1~10 mm 처럼 **지그가 낼 수 있는"
-        " 변위**가 판정을 가른다 — 크로스헤드 속도(얼마나 빨리)와 다른 물음이다.",
+        "굽힘, 처짐 시험이 요구하는 이동량. MLCC 기판 굽힘 1~10 mm처럼 지그가 낼 수 있는 "
+        "변위로 장비 판정. 크로스헤드 속도(얼마나 빨리)와 별개 조건.",
     ),
-    ("chamber", "항온조", "boolean", "", "", "", 70, "있나 없나. 온도 범위는 따로 적는다."),
+    (
+        "chamber",
+        "항온조",
+        "boolean",
+        "",
+        "",
+        "",
+        70,
+        "항온조 유무. 온도 범위는 시험 온도에 별도 입력.",
+    ),
     # 2026-09-12 — 사양이 있는데 이어 줄 축이 없어 검색이 못 쓰던 것들. 축은 사양 정의가
     # 잇는 만큼만 만든다(아래 SPEC_DEFINITION_LINKS): 잇는 정의가 없는 축은 검색 폼에
     # 아무도 안 쓰는 칸이 하나 늘 뿐이다.
-    ("voltage", "전압", "range", "voltage", "V", "V", 80, "내전압·전원 시험이 거는 전압."),
+    ("voltage", "전압", "range", "voltage", "V", "V", 80, "내전압, 전원 시험이 거는 전압."),
     (
         "current",
         "전류",
@@ -384,7 +393,7 @@ CONDITIONS: list[tuple[str, str, str, str, str, str, int, str | None]] = [
         "A",
         "A",
         90,
-        "접지 저항·전원 시험이 흘리는 전류.",
+        "접지 저항, 전원 시험이 흘리는 전류.",
     ),
     (
         "torque",
@@ -404,7 +413,7 @@ CONDITIONS: list[tuple[str, str, str, str, str, str, int, str | None]] = [
         "g",
         "g",
         110,
-        "진동·충격 시험기가 낼 수 있는 가속도.",
+        "진동, 충격 시험기가 낼 수 있는 가속도.",
     ),
     (
         "impact_energy",
@@ -414,7 +423,7 @@ CONDITIONS: list[tuple[str, str, str, str, str, str, int, str | None]] = [
         "J",
         "J",
         120,
-        "진자·낙하 해머가 가진 에너지. 샤르피·아이조드 시험이 이 축으로 묻는다.",
+        "진자, 낙하 해머가 가진 에너지. 샤르피, 아이조드 시험의 검색 조건.",
     ),
 ]
 
@@ -466,22 +475,22 @@ SPEC_KIND_UPGRADES: dict[str, str] = {
 #: 조건을 한 줄에 늘어놓으면 **보는 사람이 다르다** — 시험을 맡길 사람은 앞의
 #: 셋만 보고, 자리를 낼 사람은 뒤의 하나만 본다.
 SPEC_GROUPS: list[tuple[str, str, int, str]] = [
-    ("capacity", "용량", 10, "이 장비가 낼 수 있는 크기 — 하중·토크·에너지."),
-    ("range", "시험 범위", 20, "온도·속도·주파수처럼 어디부터 어디까지 되는가."),
+    ("capacity", "용량", 10, "장비가 낼 수 있는 크기(하중, 토크, 에너지)."),
+    ("range", "시험 범위", 20, "온도, 속도, 주파수 등 시험 가능한 범위."),
     (
         "space",
         "시험 공간·시편",
         30,
-        "무엇을 물릴 수 있나. 시편이 안 들어가면 나머지는 무의미하다.",
+        "물릴 수 있는 시편과 시험 공간.",
     ),
     (
         "accuracy",
         "정밀도·계측",
         40,
-        "분해능·강성·정확도 등급. 규격이 요구하는 급을 맞추는지 보는 자리.",
+        "분해능, 강성, 정확도 등급. 규격이 요구하는 등급 충족 여부 확인용.",
     ),
-    ("installation", "설치 조건", 50, "전원·치수·무게. 장비를 들이기 전에 답해야 하는 것."),
-    ("configuration", "구성", 60, "구동 방식·스테이션 수·소프트웨어."),
+    ("installation", "설치 조건", 50, "전원, 치수, 무게. 장비 도입 전 확인 필요 항목."),
+    ("configuration", "구성", 60, "구동 방식, 스테이션 수, 소프트웨어."),
 ]
 
 #: (key, label, 그룹, kind, 차원, 단위, 검색축 조건 키, 반영 방향, 순서, 도움말)
@@ -516,7 +525,7 @@ SPEC_DEFINITIONS: list[
         "force",
         "max",
         10,
-        "사양서의 최대 하중. 이 값은 시험 조건으로 따라 들어가 검색에 쓰인다.",
+        "사양서의 최대 하중. 시험 조건으로 반영되어 검색에 사용됨.",
     ),
     ("dynamic_force", "동적 하중", "capacity", "number", "force", "kN", None, "max", 20, None),
     ("static_force", "정적 하중", "capacity", "number", "force", "kN", None, "max", 30, None),
@@ -542,7 +551,7 @@ SPEC_DEFINITIONS: list[
         "impact_energy",
         "max",
         50,
-        "진자·낙하 해머가 가진 에너지.",
+        "진자, 낙하 해머가 가진 에너지.",
     ),
     (
         "test_load_series",
@@ -554,7 +563,7 @@ SPEC_DEFINITIONS: list[
         "force",
         "max",
         60,
-        "경도계가 고를 수 있는 하중의 양끝. 낱개 목록은 비고에 남는다.",
+        "경도계가 고를 수 있는 하중의 최솟값과 최댓값. 개별 하중 목록은 비고에 기록됨.",
     ),
     (
         "frequency_range",
@@ -579,7 +588,7 @@ SPEC_DEFINITIONS: list[
         "temperature",
         "max",
         10,
-        "챔버·퍼니스를 달았을 때 낼 수 있는 범위. 본체 운전 온도와 다르다.",
+        "챔버, 퍼니스 장착 시 낼 수 있는 범위. 본체 운전 온도와 다름.",
     ),
     (
         "heating_rate",
@@ -640,8 +649,8 @@ SPEC_DEFINITIONS: list[
         None,
         "max",
         70,
-        "검색축(항온조)과 잇지 않는다. 참거짓은 범위 비교가 성립하지 않아 "
-        "시험 항목으로 옮길 수 없고, 옮긴 척하면 검색이 조용히 틀린다.",
+        "검색축(항온조)과 연결하지 않음. 참/거짓 값은 범위 비교가 성립하지 않아 시험 항목에 "
+        "반영되지 않음.",
     ),
     # --- 시험 공간·시편 -------------------------------------------------------
     (
@@ -654,7 +663,7 @@ SPEC_DEFINITIONS: list[
         None,
         "max",
         10,
-        "그립 사이에 남는 높이. 시편과 지그가 여기 안 들어가면 하중은 의미가 없다.",
+        "그립 사이에 남는 높이. 시편과 지그가 들어가야 시험 가능.",
     ),
     (
         "horizontal_test_space",
@@ -727,7 +736,7 @@ SPEC_DEFINITIONS: list[
         None,
         "max",
         80,
-        "경도계에서 시편을 얼마나 깊이 밀어 넣을 수 있나.",
+        "경도계에서 시편을 밀어 넣을 수 있는 깊이.",
     ),
     # --- 정밀도·계측 ----------------------------------------------------------
     (
@@ -740,7 +749,7 @@ SPEC_DEFINITIONS: list[
         None,
         "min",
         10,
-        "작을수록 좋은 값이라 바닥으로 읽는다.",
+        "작을수록 좋은 값이므로 하한으로 처리됨.",
     ),
     (
         "frame_stiffness",
@@ -752,7 +761,7 @@ SPEC_DEFINITIONS: list[
         None,
         "max",
         20,
-        "무른 프레임은 시편 대신 프레임이 늘어난다 — 탄성계수 측정에서 갈린다.",
+        "강성이 낮으면 시편 대신 프레임이 변형됨. 탄성계수 측정 결과에 영향.",
     ),
     (
         "data_rate",
@@ -776,8 +785,8 @@ SPEC_DEFINITIONS: list[
         None,
         "max",
         40,
-        "「±0.5% of reading down to 1/1000 of load cell capacity」 처럼 조건절이 붙는다. "
-        "숫자 칸에 넣게 하면 사람은 조건절을 버리고, 그러면 그 값은 거짓이 된다.",
+        "조건절이 붙는 값(예: ±0.5% of reading down to 1/1000 of load cell capacity). "
+        "조건절을 빼지 않고 문장 그대로 입력.",
     ),
     (
         "accuracy_class",
@@ -789,7 +798,7 @@ SPEC_DEFINITIONS: list[
         None,
         "max",
         50,
-        "ISO 7500-1 Class 0.5 · ASTM E83 Class B-1 처럼 규격이 매긴 급.",
+        "규격이 정한 등급(예: ISO 7500-1 Class 0.5, ASTM E83 Class B-1).",
     ),
     # --- 설치 조건 ------------------------------------------------------------
     (
@@ -802,7 +811,7 @@ SPEC_DEFINITIONS: list[
         None,
         "max",
         10,
-        "「1PH 220 VAC 50/60 Hz」 처럼 상·전압·주파수가 한 문장으로 적힌다.",
+        "상, 전압, 주파수를 한 문장으로 입력(예: 1PH 220 VAC 50/60 Hz).",
     ),
     (
         "power_consumption",
@@ -814,8 +823,8 @@ SPEC_DEFINITIONS: list[
         None,
         "max",
         20,
-        "카탈로그가 VA·kVA 로 적은 것은 역률을 모르면 W 로 못 바꾼다 — 그때는 "
-        "원문을 비고에 적는다.",
+        "카탈로그에 VA, kVA로 적힌 값은 역률을 모르면 W로 환산 불가. 이 경우 원문을 비고에 "
+        "입력.",
     ),
     (
         "dimension_width",
@@ -863,7 +872,7 @@ SPEC_DEFINITIONS: list[
         None,
         "max",
         60,
-        "바닥 하중과 반입 경로를 정한다. 카탈로그에 가장 흔하게 적힌 값이다.",
+        "바닥 하중과 반입 경로 결정에 사용. 카탈로그에 가장 흔히 적힌 값.",
     ),
     (
         "operating_temperature",
@@ -875,7 +884,7 @@ SPEC_DEFINITIONS: list[
         None,
         "max",
         70,
-        "**시험 온도가 아니다.** 장비 자체가 놓일 방의 온도다.",
+        "장비 자체가 놓일 공간의 온도(시험 온도 아님).",
     ),
     (
         "operating_humidity",
@@ -900,8 +909,8 @@ SPEC_DEFINITIONS: list[
         None,
         "max",
         10,
-        "같은 하중이라도 구동이 다르면 할 수 있는 시험이 다르다 — 피로는 "
-        "전기기계식으로 안 된다.",
+        "같은 하중이라도 구동 방식에 따라 가능한 시험이 다름(예: 피로 시험은 전기기계식으로 "
+        "불가).",
     ),
     (
         "test_stations",
@@ -913,7 +922,7 @@ SPEC_DEFINITIONS: list[
         None,
         "max",
         20,
-        "한 대에 몇 개를 동시에 거나. 크리프처럼 오래 거는 시험에서 처리량을 정한다.",
+        "한 대에서 동시에 걸 수 있는 시편 수. 크리프처럼 장시간 시험의 처리량을 결정.",
     ),
     (
         "software",
@@ -959,6 +968,8 @@ class ReferenceCounts(NamedTuple):
     converted_values: int = 0
     #: 보유 장비의 정식 속성 중 새로 심은 수.
     attributes: int = 0
+    #: 옛 판 그대로이던 안내 글을 지금 글로 바꾼 수(`refresh_seed_texts`).
+    refreshed_texts: int = 0
 
 
 _NUMBER = re.compile(r"-?\d+(?:\.\d+)?")
@@ -978,7 +989,7 @@ EQUIPMENT_ATTRIBUTES: tuple[tuple[str, str, str, str, str, int, str | None], ...
         "장비 용도",
         "text",
         "",
-        "이 장비로 무엇을 하나 — 한두 문장.",
+        "장비로 하는 일. 한두 문장으로 입력.",
         1,
         None,
     ),
@@ -987,7 +998,7 @@ EQUIPMENT_ATTRIBUTES: tuple[tuple[str, str, str, str, str, int, str | None], ...
         "투자 연도",
         "number",
         "",
-        "예산이 집행된 해. 도입일(실제 들어온 날)과 다를 수 있다.",
+        "예산이 집행된 연도. 도입일(실제 반입일)과 다를 수 있음.",
         2,
         None,
     ),
@@ -996,7 +1007,7 @@ EQUIPMENT_ATTRIBUTES: tuple[tuple[str, str, str, str, str, int, str | None], ...
         "장비 예약 URL",
         "text",
         "",
-        "예약 시스템의 주소. http 로 시작하면 화면이 링크로 그린다.",
+        "예약 시스템 주소. http로 시작하면 링크로 표시됨.",
         3,
         None,
     ),
@@ -1013,8 +1024,8 @@ EQUIPMENT_ATTRIBUTES: tuple[tuple[str, str, str, str, str, int, str | None], ...
         "장비 자료 발췌",
         "text",
         "",
-        "장비 자료(사양서·매뉴얼)에서 뽑은 글. 의미 검색이 이 글까지 읽습니다 — "
-        "AI 가 채우는 칸이고, 원문 전체가 아니라 쓸 만한 대목만 간추려 적습니다.",
+        "장비 자료(사양서, 매뉴얼)에서 발췌한 글. 의미 검색 대상에 포함됨. AI가 채우는 "
+        "칸이며, 원문 전체가 아닌 필요한 대목만 요약해 입력.",
         4,
         None,
     ),
@@ -1029,7 +1040,7 @@ EQUIPMENT_ATTRIBUTES: tuple[tuple[str, str, str, str, str, int, str | None], ...
         "사용이유",
         "text",
         "",
-        "이 장비를 왜 쓰는가 · 왜 들였는가. 「장비 용도」(무엇을 하나)와 다른 칸입니다.",
+        "장비를 쓰는 이유, 도입한 이유. 장비 용도(하는 일)와 별개 항목.",
         5,
         None,
     ),
@@ -1042,8 +1053,8 @@ EQUIPMENT_ATTRIBUTES: tuple[tuple[str, str, str, str, str, int, str | None], ...
         "소재 종류",
         "term",
         "",
-        "이 장비로 다루는 소재. 「소재」 축에서 고른다 — 없으면 온톨로지에서 값을 더하고, "
-        "같은 것의 다른 이름(STS304 · SUS304)은 별칭으로 붙인다.",
+        "장비로 다루는 소재. 소재 축에서 선택. 값이 없으면 온톨로지에서 추가하고, 같은 소재의 "
+        "다른 이름(STS304, SUS304)은 별칭으로 등록.",
         6,
         "material",
     ),
@@ -1069,7 +1080,7 @@ RELIABILITY_ATTRIBUTES: tuple[
         "",
         None,
         "reliability_test_type",
-        "환경·기계·전기처럼 이 시험이 어느 갈래인가.",
+        "환경, 기계, 전기 등 시험의 갈래.",
         1,
     ),
     (
@@ -1089,8 +1100,7 @@ RELIABILITY_ATTRIBUTES: tuple[
         "",
         None,
         None,
-        "이 시험이 따르는 공인 규격(ASTM·IEC·KS …). 규격 사전에서 고른다 — 글자로 적으면 "
-        "「IEC 60068-2-14」 와 「IEC60068-2-14」 가 갈린다.",
+        "시험이 따르는 공인 규격(ASTM, IEC, KS 등). 규격 사전에서 선택.",
         3,
     ),
     (
@@ -1100,7 +1110,7 @@ RELIABILITY_ATTRIBUTES: tuple[
         "",
         None,
         "reliability_category",
-        "사내 시험을 묶는 분류. 없으면 온톨로지에서 값을 더한다.",
+        "사내 시험을 묶는 분류. 값이 없으면 온톨로지에서 추가.",
         3,
     ),
     (
@@ -1110,9 +1120,9 @@ RELIABILITY_ATTRIBUTES: tuple[
         "",
         None,
         None,
-        "이 시험이 적힌 **사내 규격서**를 목록에서 고른다 — 사이드바 「카탈로그 → 사내 "
-        "규격서」 에서 등록하고 원본 파일을 올린다. 공개 규격(ASTM·ISO·KS)은 위의 "
-        "「참조 규격」 이고 다른 사전이다.",
+        "시험이 적힌 사내 규격서를 목록에서 선택. 사내 규격서는 사이드바 카탈로그 → 사내 "
+        "규격서에서 등록하고 원본 파일 업로드. 공개 규격(ASTM, ISO, KS)은 별도 사전인 참조 "
+        "규격 칸에서 선택.",
         4,
     ),
     (
@@ -1122,7 +1132,7 @@ RELIABILITY_ATTRIBUTES: tuple[
         "",
         None,
         "document_type",
-        "규격서·지침서·작업표준처럼 이 문서가 어느 갈래인가.",
+        "규격서, 지침서, 작업표준 등 문서의 갈래.",
         5,
     ),
     (
@@ -1132,7 +1142,7 @@ RELIABILITY_ATTRIBUTES: tuple[
         "",
         None,
         None,
-        "무엇을 시험하나 — 완제품·모듈·부품·시편 중 무엇이고 어느 상태인가.",
+        "시험 대상(완제품, 모듈, 부품, 시편 중 무엇인지)과 그 상태.",
         9,
     ),
     (
@@ -1142,8 +1152,8 @@ RELIABILITY_ATTRIBUTES: tuple[
         "",
         None,
         None,
-        "이 시험에 쓰는 장비와 비품. **어느 장비로 되는지는 서버가 조건으로 찾는다** "
-        "— 여기는 지그·치구처럼 조건으로 안 잡히는 것을 적는 자리다.",
+        "시험에 쓰는 장비와 비품. 가능한 장비는 서버가 조건으로 조회함. 지그, 치구처럼 "
+        "조건으로 표현되지 않는 것을 입력.",
         10,
     ),
     (
@@ -1153,7 +1163,7 @@ RELIABILITY_ATTRIBUTES: tuple[
         "개",
         None,
         None,
-        "한 번 돌릴 때의 시료 수. 등급·단계마다 다르면 「등급별 수량」 에 적는다.",
+        "1회 시험의 시료 수. 등급, 단계마다 다르면 등급별 수량에 입력.",
         11,
     ),
     (
@@ -1163,9 +1173,8 @@ RELIABILITY_ATTRIBUTES: tuple[
         "",
         None,
         None,
-        "위 조건 칸으로 안 잡히는 것 — 사이클 수·유지 시간·승온 속도·분위기 가스 등. "
-        "**여기 적은 것은 장비 판정에 안 쓰인다**(글자라서). 판정에 쓰려면 조건 칸을 "
-        "하나 더 만든다.",
+        "조건 칸으로 표현되지 않는 조건(분위기 가스, 시편 전처리 등). "
+        "여기 입력한 내용은 장비 판정에 사용되지 않음. 판정에 사용하려면 조건 칸 추가 필요.",
         12,
     ),
     (
@@ -1175,7 +1184,7 @@ RELIABILITY_ATTRIBUTES: tuple[
         "",
         None,
         None,
-        "순서대로 무엇을 하나. 프로파일이 있으면 단계별로.",
+        "시험 순서. 프로파일이 있으면 단계별로 입력.",
         13,
     ),
     (
@@ -1185,7 +1194,7 @@ RELIABILITY_ATTRIBUTES: tuple[
         "",
         None,
         None,
-        "어떤 방식으로 재나 — 절차와 달리 「무엇을 어떻게 측정하는가」 다.",
+        "측정 방식. 절차와 달리 무엇을 어떻게 측정하는지 기술.",
         14,
     ),
     (
@@ -1195,7 +1204,7 @@ RELIABILITY_ATTRIBUTES: tuple[
         "",
         None,
         None,
-        "무엇을 합격으로 보나. 수치 기준이면 값과 단위를 같이 적는다.",
+        "합격 판정 기준. 수치 기준이면 값과 단위를 함께 입력.",
         15,
     ),
     (
@@ -1205,7 +1214,7 @@ RELIABILITY_ATTRIBUTES: tuple[
         "",
         None,
         None,
-        "안전·취급·해석에서 놓치면 안 되는 것.",
+        "안전, 취급, 해석에서 놓치면 안 되는 사항.",
         16,
     ),
     (
@@ -1215,8 +1224,8 @@ RELIABILITY_ATTRIBUTES: tuple[
         "개",
         None,
         None,
-        "등급마다 몇 개인가 — 「A등급 4 · B등급 4」. 이름과 숫자를 짝으로 적는다. "
-        "**이름 없는 숫자는 못 읽는다**: 「4」 만 남으면 그것이 A등급인지 알 수 없다.",
+        "등급별 시료 수(예: A등급 4 · B등급 4). 이름과 숫자를 짝으로 입력. 이름 없는 숫자는 "
+        "입력 불가.",
         17,
     ),
     (
@@ -1226,8 +1235,8 @@ RELIABILITY_ATTRIBUTES: tuple[
         "개",
         None,
         None,
-        "단계마다 몇 개인가 — 「1단계 8 · 2단계 4」. 등급과 단계가 함께 갈리면 "
-        "「적용 사양 매트릭스」 를 쓴다.",
+        "단계별 시료 수(예: 1단계 8 · 2단계 4). 등급과 단계가 함께 나뉘면 적용 사양 매트릭스 "
+        "사용.",
         18,
     ),
     (
@@ -1237,8 +1246,8 @@ RELIABILITY_ATTRIBUTES: tuple[
         "개",
         None,
         None,
-        "사양마다 등급·단계가 따로 정해질 때 — 사양 한 줄에 그 사양의 짝들을 적는다. "
-        "「사양 A: A등급 4 · B등급 2」.",
+        "사양마다 등급, 단계가 따로 정해질 때 사용. 사양 한 줄에 해당 사양의 짝을 입력(예: "
+        "사양 A: A등급 4 · B등급 2).",
         19,
     ),
 )
@@ -1289,6 +1298,14 @@ def _converge_reliability_attributes(db: Session) -> int:
     return changed
 
 
+#: 조건 축마다 하나씩 서는 신뢰성 속성(`reliability_cond_*`)의 안내 — 전부 같은 글이다.
+#: 상수로 둔 것은 `seed_texts` 가 옛 글을 이 글로 바꿀 때 가리켜야 해서다.
+CONDITION_ATTRIBUTE_HELP = (
+    "최소, 최대 중 하나만 입력 가능. 비운 쪽은 제한 없음으로 처리됨. 숫자 없이 "
+    "비고만 입력하면 장비 판정에 사용되지 않음."
+)
+
+
 def _condition_attributes(
     db: Session,
 ) -> list[tuple[str, str, str, str, str | None, str | None, str, int]]:
@@ -1307,8 +1324,7 @@ def _condition_attributes(
                 key.unit,
                 key.key,
                 None,
-                "최소·최대 중 **하나만 적어도 된다** — 비운 쪽은 「제한 없음」 이다. "
-                "숫자 없이 비고만 적으면 사람은 읽지만 장비 판정에는 안 쓰인다.",
+                CONDITION_ATTRIBUTE_HELP,
                 order,
             )
         )
@@ -1473,6 +1489,83 @@ def converge_spec_definitions(db: Session) -> tuple[int, int]:
     return linked, converted
 
 
+def refresh_seed_texts(db: Session) -> int:
+    """설치가 심은 안내 글을 지금 판의 글로 바꾼다 — **옛 판 그대로인 것만.**
+
+    시드는 없는 행만 심으므로 글을 고쳐도 설치된 DB 에는 안 들어간다. 덮어쓰면 화면에서
+    사람이 고친 글이 사라지므로, DB 의 글이 `seed_texts.RETIRED` 의 옛 글과 **똑같을 때만**
+    바꾼다. 두 번 돌려도 같다.
+    """
+    changed = 0
+
+    def renewed(kind: str, key: str, stored: str | None, now: str | None) -> str | None:
+        nonlocal changed
+        if not stored or not now or stored == now:
+            return None
+        if stored not in RETIRED.get(kind, {}).get(key, ()):
+            return None
+        changed += 1
+        return now
+
+    axes = {row[0]: row[6] for row in AXES}
+    for axis in db.scalars(select(Vocabulary).where(Vocabulary.slug.in_(axes))):
+        text = renewed("axis", axis.slug, axis.description, axes[axis.slug])
+        if text:
+            axis.description = text
+        fields = {one["key"]: one.get("help") for one in ATTRIBUTE_SCHEMAS.get(axis.slug, [])}
+        if not fields or not axis.attribute_schema:
+            continue
+        rebuilt: list[dict[str, str]] = []
+        touched = False
+        for field in axis.attribute_schema:
+            key = str(field.get("key"))
+            help_text = renewed(
+                "axis_field", f"{axis.slug}.{key}", field.get("help"), fields.get(key)
+            )
+            if help_text:
+                field = {**field, "help": help_text}
+                touched = True
+            rebuilt.append(field)
+        if touched:
+            # JSON 칸은 안을 고쳐도 바뀐 줄로 안 친다 — 새 목록으로 갈아 끼운다.
+            axis.attribute_schema = rebuilt
+
+    conditions = {row[0]: row[7] for row in CONDITIONS}
+    for condition in db.scalars(select(ConditionKey).where(ConditionKey.key.in_(conditions))):
+        text = renewed("condition", condition.key, condition.help, conditions[condition.key])
+        if text:
+            condition.help = text
+
+    groups = {row[0]: row[3] for row in SPEC_GROUPS}
+    for group in db.scalars(select(SpecGroup).where(SpecGroup.slug.in_(groups))):
+        text = renewed("spec_group", group.slug, group.description, groups[group.slug])
+        if text:
+            group.description = text
+
+    definitions = {row[0]: row[9] for row in SPEC_DEFINITIONS}
+    for spec in db.scalars(select(SpecDefinition).where(SpecDefinition.key.in_(definitions))):
+        text = renewed("spec_definition", spec.key, spec.help, definitions[spec.key])
+        if text:
+            spec.help = text
+
+    attributes = {row[0]: row[6] for row in RELIABILITY_ATTRIBUTES}
+    attributes.update({row[0]: row[4] for row in EQUIPMENT_ATTRIBUTES})
+    for attribute in db.scalars(select(AttributeDefinition)):
+        if attribute.key.startswith("reliability_cond_"):
+            text = renewed(
+                "condition_attribute", "*", attribute.help, CONDITION_ATTRIBUTE_HELP
+            )
+        elif attribute.key in attributes:
+            text = renewed(
+                "attribute", attribute.key, attribute.help, attributes[attribute.key]
+            )
+        else:
+            continue
+        if text:
+            attribute.help = text
+    return changed
+
+
 def ensure_reference_data(db: Session) -> ReferenceCounts:
     """없는 축·조건·사양 정의만 만들고, 있는 정의는 축 연결이 비었으면 이어 준다."""
     known_axes = set(db.scalars(select(Vocabulary.slug)))
@@ -1604,6 +1697,7 @@ def ensure_reference_data(db: Session) -> ReferenceCounts:
     added_attributes = ensure_equipment_attributes(db) + ensure_reliability_attributes(db)
     _converge_reliability_attributes(db)
     linked, converted = converge_spec_definitions(db)
+    refreshed = refresh_seed_texts(db)
 
     db.commit()
     return ReferenceCounts(
@@ -1614,4 +1708,5 @@ def ensure_reference_data(db: Session) -> ReferenceCounts:
         linked,
         converted,
         added_attributes,
+        refreshed,
     )

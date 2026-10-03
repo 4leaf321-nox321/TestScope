@@ -114,7 +114,7 @@ export const NAV_GROUPS: NavGroup[] = [
         icon: Gauge,
         to: '/reliability-tests',
         expands: 'reliability-divisions',
-        summary: '부서마다 수행하는 신뢰성 시험을 한 표로. 아래에서 부서를 골라 하나씩 본다.',
+        summary: '부서별 수행 신뢰성 시험 전체 표. 아래에서 부서 선택 시 부서별 조회.',
       },
       {
         // **실물이다.** 카탈로그의 모델을 가리켜 만든 개체 — 자산번호·자리·상태·

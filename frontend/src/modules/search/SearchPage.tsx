@@ -226,7 +226,7 @@ export default function SearchPage() {
     <div className="space-y-6">
       <PageHeader
         title="장비 검색"
-        description="시험 항목과 조건을 주면, 그것이 수행 가능 장비와 보유 위치를 찾습니다."
+        description="시험 항목과 조건 기준 수행 가능 장비 및 보유 위치 검색."
       />
 
       <div className="space-y-4 rounded-md border p-4">
@@ -235,7 +235,7 @@ export default function SearchPage() {
             <Label htmlFor="property">
               물성으로 검색
               <span className="text-muted-foreground ml-2 font-normal">
-                「인장강도」 처럼 — 그것을 내는 시험 항목 전부로 찾습니다
+                예: 인장강도. 해당 물성을 내는 시험 항목 전체로 검색
               </span>
             </Label>
             <SearchablePicker
@@ -249,13 +249,13 @@ export default function SearchPage() {
               onChange={setProperty}
               placeholder="물성 (선택)"
               detailTitle="물성 항목"
-              detailHint="시험 항목이 이어진 물성만 — 나머지는 「물성 항목」 화면에서 잇습니다"
+              detailHint="시험 항목이 연결된 물성만 표시. 나머지는 ‘물성 항목’ 화면에서 연결"
               className="w-72"
             />
           </div>
           {property && (
             <Button variant="ghost" size="sm" onClick={() => setProperty('')}>
-              물성 전개
+              물성 선택 해제
             </Button>
           )}
         </div>
@@ -265,7 +265,7 @@ export default function SearchPage() {
             <Label htmlFor="item-filter">
               시험 항목
               <span className="text-muted-foreground ml-2 font-normal">
-                {sortedItems.length}종 · 하나를 고르거나 비워 두면 전체
+                {sortedItems.length}종 · 하나 선택, 미선택 시 전체
               </span>
             </Label>
             <Input
@@ -296,8 +296,8 @@ export default function SearchPage() {
                 className={chipClass(testItem === one.id, one.usage_count === 0)}
                 title={
                   one.usage_count === 0
-                    ? '이 항목을 하는 계열이 카탈로그에 없습니다 — 결과가 비어 있을 수 있습니다'
-                    : `${one.usage_count}군데서 쓰입니다`
+                    ? '이 항목을 하는 계열이 카탈로그에 없음. 결과가 비어 있을 수 있음'
+                    : `${one.usage_count}곳에서 사용 중`
                 }
               >
                 {one.value}
@@ -305,7 +305,7 @@ export default function SearchPage() {
             ))}
             {shownItems.length === 0 && (
               <p className="text-muted-foreground text-sm">
-                그 말과 조건에 맞는 시험 항목이 없습니다.
+                입력어와 일치하는 시험 항목 없음.
               </p>
             )}
           </div>
@@ -339,7 +339,7 @@ export default function SearchPage() {
             {axesUndecided && (
               // **말한다.** 조용히 열두 개를 다 내면 사람은 뭘 채워야 하는지 모른다.
               <p className="text-muted-foreground text-xs">
-                이 시험의 검색 조건이 아직 안 정해져 조건을 전부 보입니다 —{' '}
+                이 시험의 검색 조건이 아직 안 정해져 전체 조건 표시.{' '}
                 <Link
                   to={
                     testItem

@@ -72,6 +72,6 @@ describe('상단 바의 부서', () => {
 
   it('소속이 없으면 그렇게 말한다', async () => {
     await show([])
-    expect(screen.getByText('소속된 부서가 없습니다')).toBeTruthy()
+    expect(screen.getByText('소속 부서 없음')).toBeTruthy()
   })
 })

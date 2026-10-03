@@ -77,7 +77,7 @@ _TABLE_KINDS: tuple[_Kind, ...] = (
         "catalog",
         ("코드", "판", "제목", "소속 시험 항목", "제정기관", "상태", "후속 판", "요구 조건"),
         "/methods",
-        "규격 문서. 시험 항목에 소속되고 계열이 인용한다. 시스템 관리자 · 반입.",
+        "규격 문서. 시험 항목에 소속, 계열이 인용. 시스템 관리자 · 반입.",
         attribute_target="method",
     ),
     _Kind(
@@ -128,9 +128,9 @@ _AXIS_PATHS = {
     "property": "/properties",
 }
 _AXIS_NOTES = {
-    "test_item": "장비가 할 수 있는 측정. 사슬의 허브 — 물성·규격·계열·보유 장비가 가리킨다.",
+    "test_item": "장비가 할 수 있는 측정. 사슬의 허브(물성·규격·계열·보유 장비가 참조).",
     "property": "시험으로 얻는 물성. 물성 기준 검색의 출발점.",
-    "equipment_category": "장비 분류 — 군 → 유형 트리.",
+    "equipment_category": "장비 분류. 군 → 유형 트리.",
     "manufacturer": "제조사.",
     "site": "거점(사업장·동).",
     "standard_body": "규격 제정기관.",

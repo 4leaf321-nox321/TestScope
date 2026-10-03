@@ -116,7 +116,7 @@ def _mount_spa(app: FastAPI, settings: Settings) -> None:
         if full_path.startswith("api/"):
             raise NotFound(
                 "TSC-COMMON-0404",
-                "존재하지 않는 엔드포인트입니다.",
+                "존재하지 않는 엔드포인트.",
                 details={"path": f"/{full_path}"},
             )
         # index.html 은 캐시하지 않는다. 배포 후 사용자가 옛 index 를 들고 있으면

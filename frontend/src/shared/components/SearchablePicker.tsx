@@ -86,7 +86,7 @@ export function SearchablePicker({
   value,
   onChange,
   placeholder = '선택',
-  searchPlaceholder = '이름의 일부를 입력하십시오',
+  searchPlaceholder = '이름의 일부 입력',
   detailTitle,
   detailHint,
   id,
@@ -160,7 +160,7 @@ export function SearchablePicker({
           <ul className="h-64 overflow-y-auto py-1">
             {shown.length === 0 && (
               <li className="text-muted-foreground px-3 py-6 text-center text-sm">
-                검색 결과가 없습니다.
+                검색 결과 없음.
               </li>
             )}
             {shown.map((one) => (
@@ -196,7 +196,7 @@ export function SearchablePicker({
             <DialogHeader>
               <DialogTitle>{detailTitle}</DialogTitle>
               <DialogDescription>
-                {detailHint ?? '전체 목록입니다. 골라서 닫으면 위 칸에 들어갑니다.'}
+                {detailHint ?? '전체 목록. 선택 시 위 칸에 입력됨.'}
               </DialogDescription>
             </DialogHeader>
 
@@ -214,7 +214,7 @@ export function SearchablePicker({
             <ul className="grid max-h-[52vh] grid-cols-1 gap-x-4 overflow-y-auto sm:grid-cols-2">
               {inDetail.length === 0 && (
                 <li className="text-muted-foreground col-span-full py-10 text-center text-sm">
-                  검색 결과가 없습니다.
+                  검색 결과 없음.
                 </li>
               )}
               {inDetail.map((one) => (

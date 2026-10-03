@@ -40,7 +40,7 @@ def _can_edit(db: Session, user: User, workspace_id: uuid.UUID) -> bool:
 def get(db: Session, document_id: uuid.UUID) -> SpecDocument:
     row = db.get(SpecDocument, document_id)
     if row is None or row.deleted_at is not None:
-        raise NotFound("TSC-DOCS-0001", "사내 규격서를 찾을 수 없습니다.")
+        raise NotFound("TSC-DOCS-0001", "사내 규격서를 찾을 수 없음.")
     return row
 
 
@@ -151,7 +151,7 @@ def _check_code_free(
     if clash is not None:
         raise Conflict(
             "TSC-DOCS-0003",
-            f"이 부서에 같은 번호의 규격서가 있습니다: {code}",
+            f"이 부서에 같은 번호의 규격서 있음: {code}",
             details={"id": str(clash.id)},
         )
 
@@ -238,7 +238,7 @@ def delete(db: Session, user: User, document_id: uuid.UUID) -> None:
     if linked:
         raise Conflict(
             "TSC-DOCS-0005",
-            f"이 규격서를 가리키는 신뢰성 시험이 {linked}건 있습니다 — 먼저 끊어 주십시오.",
+            f"이 규격서를 참조하는 신뢰성 시험 {linked}건 있음. 연결 해제 후 삭제 가능.",
             details={"linked_test_count": linked},
         )
     row.deleted_at = datetime.now(UTC)
@@ -314,7 +314,7 @@ def _stale_count(db: Session, document_id: uuid.UUID, revision_id: uuid.UUID) ->
 def revision_of(db: Session, revision_id: uuid.UUID) -> SpecDocumentRevision:
     row = db.get(SpecDocumentRevision, revision_id)
     if row is None:
-        raise NotFound("TSC-DOCS-0008", "그 규격서 판을 찾을 수 없습니다.")
+        raise NotFound("TSC-DOCS-0008", "해당 규격서 판을 찾을 수 없음.")
     return row
 
 
@@ -336,7 +336,7 @@ def add_revision(
     require_editable(db, user, document_id)
     label = clean(str(payload["label"]))
     if not label:
-        raise AppError("TSC-DOCS-0006", "판 이름을 적어 주십시오.")
+        raise AppError("TSC-DOCS-0006", "판 이름 입력 필요.")
     clash = db.scalar(
         select(SpecDocumentRevision).where(
             SpecDocumentRevision.document_id == document_id,
@@ -344,7 +344,7 @@ def add_revision(
         )
     )
     if clash is not None:
-        raise Conflict("TSC-DOCS-0007", f"이미 있는 판입니다: {clash.label}")
+        raise Conflict("TSC-DOCS-0007", f"이미 있는 판: {clash.label}")
     order = payload.get("sort_order")
     if order is None:
         # 비우면 **지금 있는 것 다음 자리.** 날짜만으로는 못 가른다 — 날짜 없는 개정이 있다.
@@ -404,6 +404,6 @@ def mark_reviewed(
     if revision_id is not None:
         found = db.get(SpecDocumentRevision, revision_id)
         if found is None:
-            raise NotFound("TSC-DOCS-0008", "그 개정을 찾을 수 없습니다.")
+            raise NotFound("TSC-DOCS-0008", "해당 개정을 찾을 수 없음.")
     test.reviewed_revision_id = revision_id
     db.commit()

@@ -98,7 +98,7 @@ def account_approved(db: Session, user: User, workspace: Workspace) -> None:
         db,
         user_id=user.id,
         kind=services.ACCOUNT_APPROVED,
-        title="가입이 승인되었습니다",
+        title="가입 승인 완료",
         body=f"소속 부서: {workspace.name}",
         link="/",
         dedupe_key=f"{services.ACCOUNT_APPROVED}:{user.id}",
@@ -118,7 +118,7 @@ def equipment_status_changed(
             kind=services.EQUIPMENT_STATUS_CHANGED,
             title=f"{equipment.asset_no} {equipment.name}: "
             f"{STATUS_LABEL.get(before, before)} → {STATUS_LABEL.get(after, after)}",
-            body=f"{actor.display_name or actor.email} 이(가) 바꿈",
+            body=f"변경자: {actor.display_name or actor.email}",
             link=f"/equipment/{equipment.id}",
         )
 

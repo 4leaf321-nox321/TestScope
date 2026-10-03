@@ -80,7 +80,7 @@ def refresh(
 ) -> LoginResponse:
     raw = request.cookies.get(get_settings().refresh_cookie_name)
     if not raw:
-        raise AppError("TSC-AUTH-0003", "세션이 없습니다. 로그인해 주십시오.", status=401)
+        raise AppError("TSC-AUTH-0003", "세션 없음. 로그인 필요.", status=401)
 
     user, access, expires_in, new_raw = services.rotate_refresh(
         db, raw, request.headers.get("user-agent")

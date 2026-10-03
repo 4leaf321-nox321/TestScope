@@ -155,7 +155,7 @@ describe('보유 장비 목록', () => {
     empty = true
     await open('/equipment?calibration=missing')
     expect(screen.getByPlaceholderText('자산번호')).toBeTruthy()
-    expect(screen.getByText(/필터에 맞는 장비가 없습니다/)).toBeTruthy()
+    expect(screen.getByText(/필터에 맞는 장비 없음/)).toBeTruthy()
   })
 
   it('거르는 줄의 칸 수가 머리글과 같다 — 어긋나면 열이 통째로 밀린다', async () => {

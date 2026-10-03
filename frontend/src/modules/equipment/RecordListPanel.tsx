@@ -147,7 +147,7 @@ export function RecordListPanel({ kind, currentId }: { kind: Kind; currentId: st
             {loading
               ? '찾는 중…'
               : total > rows.length
-                ? `${total}건 중 ${rows.length}건 — 좁혀서 찾으십시오`
+                ? `${total}건 중 ${rows.length}건. 검색어로 좁혀야 함`
                 : `${total}건`}
           </p>
         </div>
@@ -178,12 +178,12 @@ export function RecordListPanel({ kind, currentId }: { kind: Kind; currentId: st
             })}
           </ul>
           {!loading && rows.length === 0 && (
-            <p className="text-muted-foreground p-3 text-xs">검색 결과가 없습니다.</p>
+            <p className="text-muted-foreground p-3 text-xs">검색 결과 없음.</p>
           )}
           {missing && (
             // 거르기가 지금 보는 것을 밀어냈다. 말 안 하면 「목록에 없다」 로 읽힌다.
             <p className="text-muted-foreground border-t p-3 text-xs">
-              지금 보고 있는 항목은 현재 필터에 해당하지 않습니다.
+              보고 있는 항목은 현재 필터에 해당하지 않음.
             </p>
           )}
         </div>

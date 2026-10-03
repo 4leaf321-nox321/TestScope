@@ -83,10 +83,10 @@ describe('ModelSpecPanel', () => {
     // 표는 AI 가 넣은 줄 하나뿐이다 — 사람 값·기록 전 값에 달면 표가 뜻을 잃는다.
     const marks = screen.getAllByText('AI')
     expect(marks).toHaveLength(1)
-    expect(marks[0].getAttribute('title')).toContain('Claude 백필 (홍길동) 가 넣었습니다')
+    expect(marks[0].getAttribute('title')).toContain('입력: Claude 백필 (홍길동)')
 
     const values = screen.getAllByText('30 kg')
-    expect(values[1].getAttribute('title')).toBe('김철수 가 적었습니다')
+    expect(values[1].getAttribute('title')).toBe('입력: 김철수')
     // 기록 전에 적힌 값은 말하지 않는다 — 모르는 것을 「사람」 이라고 적으면 거짓말이다.
     expect(values[2].getAttribute('title')).toBeNull()
   })

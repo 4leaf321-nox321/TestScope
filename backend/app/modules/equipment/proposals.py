@@ -113,11 +113,11 @@ def add(
     )
     model_text = clean(str(payload.get("model_text") or ""))
     if not model_text:
-        raise AppError("TSC-EQUIPMENT-0040", "요청할 모델명을 적어 주십시오.")
+        raise AppError("TSC-EQUIPMENT-0040", "요청할 모델명 입력 필요.")
     maker_text = clean(str(payload.get("maker_text") or "")) or None
     key = proposal_key(maker_text, model_text)
     if not key:
-        raise AppError("TSC-EQUIPMENT-0040", "요청할 모델명을 적어 주십시오.")
+        raise AppError("TSC-EQUIPMENT-0040", "요청할 모델명 입력 필요.")
 
     found = db.scalar(
         select(EquipmentModelProposal).where(
@@ -200,15 +200,14 @@ def decide(db: Session, user: User, payload: dict[str, Any]) -> dict[str, Any]:
     if not user.is_system_admin:
         raise Forbidden(
             "TSC-EQUIPMENT-0041",
-            "카탈로그 기종은 시스템 관리자가 세웁니다 — 기종을 고르면 그 계열의 시험 항목이"
-            " 복사되고 조건 판정이 그 사양을 씁니다.",
+            "카탈로그 기종 등록은 시스템 관리자 전용.",
         )
     chosen = [name for name in ("model_id", "series_id", "reject") if payload.get(name)]
     if len(chosen) != 1:
         raise AppError(
             "TSC-EQUIPMENT-0044",
-            "무엇으로 정할지 하나만 말해 주십시오 — model_id(이미 있는 기종에 잇기) · "
-            "series_id+name(계열에 세우기) · reject(카탈로그에 올릴 것이 아님).",
+            "결정 방식은 하나만 지정 필요: model_id(기존 기종에 연결) · "
+            "series_id+name(계열에 기종 등록) · reject(카탈로그 등록 대상 아님).",
             details={"given": chosen},
         )
     key = str(payload["normalized"]).strip()
@@ -221,14 +220,14 @@ def decide(db: Session, user: User, payload: dict[str, Any]) -> dict[str, Any]:
         )
     )
     if not rows:
-        raise NotFound("TSC-EQUIPMENT-0042", "그 기종 등록 요청을 찾을 수 없습니다.")
+        raise NotFound("TSC-EQUIPMENT-0042", "해당 기종 등록 요청을 찾을 수 없음.")
 
     model: EquipmentModel | None = None
     status = "rejected"
     if payload.get("model_id"):
         model = db.get(EquipmentModel, uuid.UUID(str(payload["model_id"])))
         if model is None or model.deleted_at is not None:
-            raise NotFound("TSC-EQUIPMENT-0042", "그 기종을 찾을 수 없습니다.")
+            raise NotFound("TSC-EQUIPMENT-0042", "해당 기종을 찾을 수 없음.")
         status = "linked"
     elif payload.get("series_id"):
         model = _create_model(db, user, payload)
@@ -284,8 +283,8 @@ def _create_model(db: Session, user: User, payload: dict[str, Any]) -> Equipment
     series_id = uuid.UUID(str(payload["series_id"]))
     series = db.get(EquipmentSeries, series_id)
     if series is None or series.deleted_at is not None:
-        raise NotFound("TSC-EQUIPMENT-0042", "그 계열을 찾을 수 없습니다.")
+        raise NotFound("TSC-EQUIPMENT-0042", "해당 계열을 찾을 수 없음.")
     name = clean(str(payload.get("name") or ""))
     if not name:
-        raise AppError("TSC-EQUIPMENT-0040", "세울 기종의 이름을 적어 주십시오.")
+        raise AppError("TSC-EQUIPMENT-0040", "등록할 기종 이름 입력 필요.")
     return catalog.create_model(db, user, {"series_id": series_id, "name": name})

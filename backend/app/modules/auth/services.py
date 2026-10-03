@@ -23,7 +23,7 @@ from app.modules.workspaces.models import Workspace, WorkspaceMember
 from app.shared import audit
 from app.shared.errors import AppError, Forbidden, NotFound
 
-_INVALID_LOGIN = "이메일 또는 비밀번호가 올바르지 않습니다."
+_INVALID_LOGIN = "이메일 또는 비밀번호가 올바르지 않음."
 
 
 def _now() -> datetime:
@@ -37,14 +37,14 @@ def ensure_can_sign_in(user: User) -> None:
     계정" 이라고만 하면 관리자에게 무엇을 요청해야 할지 알 수 없다.
     """
     if user.deleted_at is not None:
-        raise Forbidden("TSC-AUTH-0002", "삭제된 계정입니다. 관리자에게 문의하십시오.")
+        raise Forbidden("TSC-AUTH-0002", "삭제된 계정. 관리자 문의 필요.")
     if user.status == "pending":
         raise Forbidden(
             "TSC-AUTH-0008",
-            "가입 승인 대기 중입니다. 관리자가 승인하면 로그인할 수 있습니다.",
+            "가입 승인 대기 중. 관리자 승인 후 로그인 가능.",
         )
     if user.status != "active":
-        raise Forbidden("TSC-AUTH-0002", "정지된 계정입니다. 관리자에게 문의하십시오.")
+        raise Forbidden("TSC-AUTH-0002", "정지된 계정. 관리자 문의 필요.")
 
 
 # --- 로그인 -----------------------------------------------------------------
@@ -153,9 +153,7 @@ def rotate_refresh(
         select(RefreshToken).where(RefreshToken.token_hash == security.hash_token(raw))
     )
     if token is None:
-        raise AppError(
-            "TSC-AUTH-0003", "세션이 만료되었습니다. 다시 로그인해 주십시오.", status=401
-        )
+        raise AppError("TSC-AUTH-0003", "세션 만료. 다시 로그인 필요.", status=401)
 
     if token.revoked_at is not None:
         # 회전 직후의 옛 값인가 — 같은 브라우저의 **동시 갱신**이다.
@@ -178,19 +176,17 @@ def rotate_refresh(
             revoke_all_for_user(db, token.user_id)
             raise AppError(
                 "TSC-AUTH-0005",
-                "세션이 무효화되었습니다. 다시 로그인해 주십시오.",
+                "세션 무효화됨. 다시 로그인 필요.",
                 status=401,
                 details={"reason": "reuse_of_revoked_token"},
             )
 
     if token.expires_at <= _now():
-        raise AppError(
-            "TSC-AUTH-0003", "세션이 만료되었습니다. 다시 로그인해 주십시오.", status=401
-        )
+        raise AppError("TSC-AUTH-0003", "세션 만료. 다시 로그인 필요.", status=401)
 
     user = db.get(User, token.user_id)
     if user is None:
-        raise Forbidden("TSC-AUTH-0002", "삭제된 계정입니다. 관리자에게 문의하십시오.")
+        raise Forbidden("TSC-AUTH-0002", "삭제된 계정. 관리자 문의 필요.")
     ensure_can_sign_in(user)
 
     settings = get_settings()
@@ -234,9 +230,9 @@ def revoke_all_for_user(db: Session, user_id: uuid.UUID) -> None:
 
 def change_password(db: Session, user: User, current: str, new: str) -> None:
     if not security.verify_password(current, user.password_hash):
-        raise AppError("TSC-AUTH-0004", "현재 비밀번호가 올바르지 않습니다.", status=400)
+        raise AppError("TSC-AUTH-0004", "현재 비밀번호가 올바르지 않음.", status=400)
     if current == new:
-        raise AppError("TSC-AUTH-0006", "이전과 다른 비밀번호를 사용하십시오.", status=400)
+        raise AppError("TSC-AUTH-0006", "이전과 다른 비밀번호 사용 필요.", status=400)
 
     user.password_hash = security.hash_password(new)
     user.must_change_password = False
@@ -309,7 +305,7 @@ def create_pat(
     if unknown:
         raise AppError(
             "TSC-AUTH-0107",
-            f"모르는 범위입니다: {', '.join(unknown)}",
+            f"알 수 없는 범위: {', '.join(unknown)}",
             status=400,
             details={"known": list(PAT_SCOPES)},
         )
@@ -341,7 +337,7 @@ def list_pats(db: Session, user: User) -> list[PatOut]:
 def revoke_pat(db: Session, user: User, pat_id: uuid.UUID) -> None:
     pat = db.get(PersonalAccessToken, pat_id)
     if pat is None or pat.user_id != user.id:
-        raise NotFound("TSC-AUTH-0007", "토큰을 찾을 수 없습니다.")
+        raise NotFound("TSC-AUTH-0007", "토큰을 찾을 수 없음.")
     if pat.revoked_at is None:
         pat.revoked_at = _now()
         db.commit()

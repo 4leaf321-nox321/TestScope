@@ -128,15 +128,13 @@ export function Header({ onToggleSidebar, workspaceSlug }: HeaderProps) {
             className="h-8 max-w-64 border-0 shadow-none"
             // **무엇이 바뀌는지 적는다.** 상단에 있으니 「지금 이 부서 안에 있다」 로
             // 읽히는데, 실제로 따르는 화면은 둘뿐이다 — 누르기 전에 알아야 한다.
-            title="부서 홈과 부서 멤버 화면이 이 부서의 것으로 바뀝니다. 장비·시험 목록은 부서와 무관하게 전부 보입니다."
+            title="부서 홈과 부서 멤버 화면만 이 부서 기준으로 전환됨. 장비·시험 목록은 부서와 무관하게 전체 표시."
             aria-label="부서 홈·멤버를 볼 부서"
           >
             <SelectValue placeholder={workspaceSlug} />
           </SelectTrigger>
           <SelectContent>
-            <p className="text-muted-foreground px-2 py-1.5 text-xs">
-              부서 홈·멤버 화면이 바뀝니다
-            </p>
+            <p className="text-muted-foreground px-2 py-1.5 text-xs">부서 홈·멤버 화면 전환</p>
             {memberships.map((one) => (
               <SelectItem key={one.slug} value={one.slug}>
                 {one.path}
@@ -149,7 +147,7 @@ export function Header({ onToggleSidebar, workspaceSlug }: HeaderProps) {
           {memberships[0].path}
         </span>
       ) : (
-        <span className="text-muted-foreground text-sm">소속된 부서가 없습니다</span>
+        <span className="text-muted-foreground text-sm">소속 부서 없음</span>
       )}
 
       {current?.role === 'manager' && (

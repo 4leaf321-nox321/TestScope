@@ -84,7 +84,7 @@ export default function MethodsPage() {
       <PageHeader
         back={useBackFromReference()}
         title="시험법·규격"
-        description="규격이 요구하는 조건을 적어 두면, 검색이 그 숫자를 그대로 물어 줍니다."
+        description="규격의 요구 조건 입력 시 검색에 해당 수치가 그대로 적용됨."
         actions={
           isAnyManager(user) ? (
             <div className="flex flex-wrap gap-2">
@@ -122,7 +122,7 @@ export default function MethodsPage() {
             checked={includeSuperseded}
             onChange={(event) => setIncludeSuperseded(event.target.checked)}
           />
-          대체된 판도 보기
+          대체된 판 포함
         </label>
         {/* 거르기는 주소에 산다 — 홈의 「남은 일」 과 같은 조건이라 링크로 올 수 있다. */}
         <div className="flex flex-wrap gap-1 text-sm">
@@ -145,14 +145,14 @@ export default function MethodsPage() {
             variant={testItem === 'none' ? 'default' : 'outline'}
             onClick={() => toggle('test_item', 'none')}
           >
-            시험 항목 안 정해진 것
+            시험 항목 미지정
           </Button>
           <Button
             size="sm"
             variant={cited === 'none' ? 'default' : 'outline'}
             onClick={() => toggle('cited', 'none')}
           >
-            어느 계열에도 안 이어진 것
+            연결된 계열 없음
           </Button>
         </div>
       </div>
@@ -162,29 +162,29 @@ export default function MethodsPage() {
           <p className="text-sm">
             {used === 'owned' && (
               <>
-                <strong>보유 장비의 시험 항목이 실제로 가리키는 규격만</strong> 보고 있습니다.
-                464 는 카탈로그가 인용한 수이고, 우리가 하는 시험의 규격은 이것입니다 — 요구
-                조건은 여기부터 채웁니다.{' '}
+                <strong>보유 장비의 시험 항목이 실제로 참조하는 규격만</strong> 표시 중. 464는
+                카탈로그 인용 수이며, 실제 수행 시험의 규격은 이 목록. 요구 조건은 여기부터
+                입력.{' '}
               </>
             )}
             {requirement === 'none' && (
               <>
-                <strong>요구 조건이 안 적힌 규격만</strong> 보고 있습니다. 조건이 없으면 검색이
-                그 규격으로 장비를 좁히지 못하고, 사람이 매번 직접 입력해야 합니다.
+                <strong>요구 조건 미입력 규격만</strong> 표시 중. 조건이 없으면 검색에서 이
+                규격으로 장비를 좁힐 수 없어 매번 직접 입력 필요.
               </>
             )}
             {testItem === 'none' && (
               <>
-                <strong>시험 항목 미지정 규격만</strong> 보고 있습니다. 카탈로그가 인용했는데
-                시험이 여럿인 계열이라 반입이 못 정한 것입니다 — 상세에서 시험 항목을 정하면
-                인용한 계열에 바로 붙습니다.
+                <strong>시험 항목 미지정 규격만</strong> 표시 중. 카탈로그 인용은 있으나 시험이
+                여럿인 계열이라 반입 시 미결정. 상세에서 시험 항목 지정 시 인용 계열에 바로
+                연결됨.
               </>
             )}
             {cited === 'none' && (
               <>
-                <strong>어느 계열의 시험 항목에도 안 이어진 규격만</strong> 보고 있습니다.
-                「시험 항목 미지정」 이 있으면 끊긴 연결이고, 없으면 카탈로그에 이 시험을 하는
-                계열이 없는 것입니다.
+                <strong>어느 계열의 시험 항목에도 연결되지 않은 규격만</strong> 표시 중. ‘시험
+                항목 미지정’이 있으면 끊긴 연결, 없으면 카탈로그에 이 시험을 수행하는 계열
+                없음.
               </>
             )}
           </p>
@@ -198,8 +198,8 @@ export default function MethodsPage() {
 
       {page.data && page.data.items.length === 0 ? (
         <EmptyState
-          title="시험법이 없습니다"
-          hint="규격을 등록해 두면 장비 시험 항목에 그 규격을 걸 수 있고, 검색이 규격의 요구 조건을 자동으로 채웁니다."
+          title="시험법 없음"
+          hint="규격 등록 시 장비 시험 항목에 연결 가능. 검색 시 규격의 요구 조건이 자동 입력됨."
         />
       ) : (
         <Table>
@@ -235,7 +235,7 @@ export default function MethodsPage() {
                       to={`/methods/${one.id}`}
                       className="text-amber-600 underline decoration-dotted underline-offset-2"
                     >
-                      안 정해짐
+                      미지정
                     </Link>
                   )}
                 </TableCell>

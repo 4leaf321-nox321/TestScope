@@ -232,8 +232,8 @@ function ColumnFilter({
            * 조건에 맞은 것이다. 그 수를 함께 적어 두면 그 자리에서 알 수 있다.
            */}
           <p className="text-muted-foreground text-xs">
-            조건에 맞는 항목만 표시됩니다. 이 속성에 값이 입력된 항목은 전사 기준{' '}
-            {definition.value_count}건입니다.
+            조건에 맞는 항목만 표시. 이 속성에 값이 입력된 항목: 전사 기준{' '}
+            {definition.value_count}건.
           </p>
           <div className="flex items-end gap-1">
             {/* 창 안의 창은 열고 닫는 길이 얽힌다 — 연산 고르기는 **제 것**으로 둔다. */}
@@ -358,7 +358,7 @@ export function AttributeBodyCells({
                       // 값 없이 비고만 — **값으로 안 센다**(「값 없음」 에 걸린다).
                       <span
                         className="text-muted-foreground italic"
-                        title="값 없이 비고만 적힌 항목입니다"
+                        title="값 없이 비고만 입력된 항목"
                       >
                         {item.note}
                       </span>
@@ -367,7 +367,7 @@ export function AttributeBodyCells({
                       // 초안은 표시·수집만 — 검색 판정에 안 쓰인다는 것을 읽는 사람이 알아야 한다.
                       <span
                         className="text-muted-foreground ml-1 text-xs"
-                        title="초안 속성 — 시스템 관리자가 정식으로 올리기 전입니다"
+                        title="초안 속성(시스템 관리자의 정식 등록 전)"
                       >
                         초안
                       </span>

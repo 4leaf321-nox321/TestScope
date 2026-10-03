@@ -216,7 +216,7 @@ def test_승인_대기와_정지는_403_이다(
     안다."""
     pending = _person(db, workspace, status="pending")
     suspended = _person(db, workspace, status="suspended")
-    for person, word in ((pending, "승인 대기"), (suspended, "쓸 수 없는")):
+    for person, word in ((pending, "승인 대기"), (suspended, "사용할 수 없는")):
         got = _post(client, SSO, person.email)
         assert got.status_code == 403, got.text
         assert got.json()["error"]["code"] == "TSC-AUTH-0206"

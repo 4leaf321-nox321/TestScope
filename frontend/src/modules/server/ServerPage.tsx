@@ -57,29 +57,29 @@ interface ServerStatus {
 }
 
 function semanticLine(one: ServerStatus['semantic']): string {
-  if (one.backend === 'off') return '꺼짐 (.env 의 EMBEDDING_BACKEND) — 검색은 이름·별칭으로만'
+  if (one.backend === 'off') return '꺼짐 (.env의 EMBEDDING_BACKEND). 이름·별칭으로만 검색'
   if (!one.extension)
-    return `엔진 ${one.backend} · pgvector 없음 — install_pgvector.ps1 로 넣는다`
+    return `엔진 ${one.backend} · pgvector 없음. install_pgvector.ps1로 설치 필요`
   if (!one.table)
-    return `엔진 ${one.backend} · 표 없음 — 다음 배포(ensure_semantic_schema)가 만든다`
-  if (!one.engine_ready) return `엔진 ${one.backend} 응답 없음 — ${one.engine_note ?? ''}`
+    return `엔진 ${one.backend} · 표 없음. 다음 배포(ensure_semantic_schema) 시 생성`
+  if (!one.engine_ready) return `엔진 ${one.backend} 응답 없음: ${one.engine_note ?? ''}`
   const kinds = Object.entries(one.kinds)
     .map(([kind, count]) => `${kind} ${count}`)
     .join(' · ')
-  return `${one.backend} · 색인 ${one.chunks}개` + (kinds ? ` (${kinds})` : ' — 워커가 채운다')
+  return `${one.backend} · 색인 ${one.chunks}개` + (kinds ? ` (${kinds})` : ' (워커가 채움)')
 }
 
 /** 색인 작업의 상태 한 줄. **지금 도는 중인지**가 첫 물음이라 그것부터 말한다. */
 function reindexLine(one: ServerStatus['semantic']): string {
-  if (!one.reindex_status) return '색인 작업 없음 — 반입 뒤 또는 하루 한 번 워커가 넣는다'
+  if (!one.reindex_status) return '색인 작업 없음. 반입 후 또는 하루 1회 워커가 등록'
   const when = one.reindex_at ? shownDateTime(one.reindex_at) : ''
   switch (one.reindex_status) {
     case 'running':
-      return `색인 진행 중 (${when} 시작) — 새로고침하면 색인 수가 는다`
+      return `색인 진행 중 (${when} 시작). 새로고침 시 색인 수 갱신`
     case 'queued':
-      return `색인 대기 중 (${when} 등록) — 워커(TestScope-Worker)가 떠 있으면 곧 시작`
+      return `색인 대기 중 (${when} 등록). 워커(TestScope-Worker) 실행 중이면 곧 시작`
     case 'failed':
-      return `마지막 색인 실패 (${when}) — ${one.reindex_error ?? ''}`
+      return `마지막 색인 실패 (${when}): ${one.reindex_error ?? ''}`
     default:
       return `마지막 색인 완료 ${when}`
   }
@@ -99,15 +99,15 @@ export default function ServerPage() {
 
   return (
     <div className="space-y-6">
-      <PageHeader title="서버" description="이 설치의 상태입니다." />
+      <PageHeader title="서버" description="현재 설치 상태." />
 
       {/* **뒤처져 있으면 여기서 말한다.** 안 그러면 사람은 그 사실을 엉뚱한
           화면의 500 으로 만나고, 거기엔 원인이 안 적힌다. */}
       {one.schema_behind && (
         <div className="border-destructive/40 bg-destructive/5 text-destructive rounded-md border p-3 text-sm">
-          데이터베이스가 코드보다 뒤처져 있습니다 ({one.schema_current} → {one.schema_head}).
-          서버에서 <span className="font-mono">alembic upgrade head</span> 를 돌리십시오.
-          그전까지는 새 칸을 읽는 화면이 오류를 냅니다.
+          데이터베이스가 코드보다 이전 버전임 ({one.schema_current} → {one.schema_head}).
+          서버에서 <span className="font-mono">alembic upgrade head</span> 실행 필요. 실행
+          전까지 새 칸을 읽는 화면에서 오류 발생.
         </div>
       )}
 
@@ -116,10 +116,10 @@ export default function ServerPage() {
       {one.catalog.available && (one.catalog.never || one.catalog.behind) && (
         <div className="border-destructive/40 bg-destructive/5 text-destructive rounded-md border p-3 text-sm">
           {one.catalog.never
-            ? '카탈로그가 아직 반입되지 않았습니다.'
-            : `카탈로그 반입이 정본보다 뒤져 있습니다 (반입 ${shownDateTime(one.catalog.imported_at)} · 객체 ${one.catalog.imported_objects ?? '?'} → 정본 ${one.catalog.objects}).`}{' '}
-          서버에서 <span className="font-mono">python scripts\import_catalog.py</span> 를
-          돌리십시오.
+            ? '카탈로그 미반입.'
+            : `카탈로그 반입이 정본보다 이전 상태임 (반입 ${shownDateTime(one.catalog.imported_at)} · 객체 ${one.catalog.imported_objects ?? '?'} → 정본 ${one.catalog.objects}).`}{' '}
+          서버에서 <span className="font-mono">python scripts\import_catalog.py</span> 실행
+          필요.
         </div>
       )}
 
@@ -148,7 +148,7 @@ export default function ServerPage() {
           <dt className="text-muted-foreground text-xs">카탈로그</dt>
           <dd className="text-sm">
             {!one.catalog.available
-              ? '정본 파일 없음 — 이 설치에서는 반입할 수 없습니다'
+              ? '정본 파일 없음. 이 설치에서는 반입 불가'
               : one.catalog.never
                 ? `아직 반입 안 함 (정본 객체 ${one.catalog.objects})`
                 : `${shownDateTime(one.catalog.imported_at)} 반입 · 객체 ${one.catalog.imported_objects ?? '?'}` +
@@ -185,7 +185,7 @@ export default function ServerPage() {
             {one.jobs.queued > 0 && one.jobs.running === 0 && (
               <span className="text-muted-foreground">
                 {' '}
-                — 워커(TestScope-Worker)가 떠 있나 확인
+                · 워커(TestScope-Worker) 실행 여부 확인 필요
               </span>
             )}
           </dd>
@@ -202,7 +202,7 @@ export default function ServerPage() {
       </dl>
 
       <section className="space-y-3">
-        <h2 className="text-base font-semibold">쌓인 것</h2>
+        <h2 className="text-base font-semibold">누적 건수</h2>
         <ul className="grid gap-3 sm:grid-cols-3 lg:grid-cols-5">
           {one.counts.map((count) => (
             <li key={count.label} className="rounded-md border p-4">

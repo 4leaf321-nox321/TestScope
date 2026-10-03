@@ -32,7 +32,7 @@ from app.shared.text import clean, compare_key
 def get_vocabulary(db: Session, slug: str) -> Vocabulary:
     found = db.scalar(select(Vocabulary).where(Vocabulary.slug == slug))
     if found is None:
-        raise NotFound("TSC-VOCAB-0001", f"온톨로지 축을 찾을 수 없습니다: {slug}")
+        raise NotFound("TSC-VOCAB-0001", f"온톨로지 축을 찾을 수 없음: {slug}")
     return found
 
 
@@ -117,11 +117,11 @@ def create_vocabulary(db: Session, *, payload: dict[str, Any]) -> Vocabulary:
     """
     slug = clean(str(payload["slug"]))
     if db.scalar(select(Vocabulary).where(Vocabulary.slug == slug)) is not None:
-        raise Conflict("TSC-VOCAB-0012", f"이미 있는 축입니다: {slug}")
+        raise Conflict("TSC-VOCAB-0012", f"이미 있는 축: {slug}")
     parent = payload.get("parent_slug")
     if parent and db.scalar(select(Vocabulary).where(Vocabulary.slug == parent)) is None:
         # 없는 축을 부모로 걸면 계층 화면이 빈 가지를 그린다 — 여기서 막는다.
-        raise AppError("TSC-VOCAB-0013", f"부모 축을 찾을 수 없습니다: {parent}", status=422)
+        raise AppError("TSC-VOCAB-0013", f"부모 축을 찾을 수 없음: {parent}", status=422)
     row = Vocabulary(
         slug=slug,
         label=clean(str(payload["label"])),
@@ -150,7 +150,7 @@ def update_vocabulary(db: Session, *, slug: str, changes: dict[str, Any]) -> Voc
     if "attribute_schema" in changes and changes["attribute_schema"] is not None:
         keys = [one["key"] for one in changes["attribute_schema"]]
         if len(keys) != len(set(keys)):
-            raise AppError("TSC-VOCAB-0010", "속성 칸의 키가 겹칩니다.", status=400)
+            raise AppError("TSC-VOCAB-0010", "속성 칸의 키 중복.", status=400)
         row.attribute_schema = changes["attribute_schema"]
     db.commit()
     db.refresh(row)
@@ -275,7 +275,7 @@ def create_term(
     if vocabulary.entry_policy == "closed" and not is_admin:
         raise AppError(
             "TSC-VOCAB-0002",
-            f"{vocabulary.label}은 관리자만 값을 추가할 수 있습니다.",
+            f"{vocabulary.label}: 관리자만 값 추가 가능.",
             status=403,
         )
 
@@ -285,7 +285,7 @@ def create_term(
     if existing is not None:
         raise Conflict(
             "TSC-VOCAB-0003",
-            f"이미 있는 값입니다: {existing.value}",
+            f"이미 있는 값: {existing.value}",
             details={"term_id": str(existing.id), "value": existing.value},
         )
     _require_free_code(db, vocabulary.id, clean(code) if code else None, exclude=None)
@@ -320,7 +320,7 @@ def _require_free_code(
     if clash is not None:
         raise Conflict(
             "TSC-VOCAB-0016",
-            f"그 코드는 이미 「{clash.value}」 이 씁니다.",
+            f"이미 {clash.value}에서 사용 중인 코드.",
             details={"term_id": str(clash.id), "value": clash.value},
         )
 
@@ -328,7 +328,7 @@ def _require_free_code(
 def get_term(db: Session, term_id: uuid.UUID) -> VocabularyTerm:
     term = db.get(VocabularyTerm, term_id)
     if term is None:
-        raise NotFound("TSC-VOCAB-0004", "값을 찾을 수 없습니다.")
+        raise NotFound("TSC-VOCAB-0004", "값을 찾을 수 없음.")
     return term
 
 
@@ -351,7 +351,7 @@ def update_term(
         if key != term.normalized:
             clash = _find_by_key(db, term.vocabulary_id, key)
             if clash is not None and clash.id != term.id:
-                raise Conflict("TSC-VOCAB-0003", f"이미 있는 값입니다: {clash.value}")
+                raise Conflict("TSC-VOCAB-0003", f"이미 있는 값: {clash.value}")
             # **이름 변경은 감사에 남긴다.** 이 값을 가리키는 장비 수십 대의 표시가
             # 한꺼번에 바뀌는 일이고, 나중에 "왜 이름이 달라졌지" 를 물을 자리가
             # 여기밖에 없다.
@@ -392,7 +392,7 @@ def add_alias(db: Session, *, term_id: uuid.UUID, value: str) -> VocabularyTerm:
     if existing is not None:
         raise Conflict(
             "TSC-VOCAB-0005",
-            f"그 표기는 이미 {existing.value}을(를) 가리킵니다.",
+            f"이미 {existing.value}을(를) 가리키는 표기.",
         )
 
     db.add(
@@ -416,7 +416,7 @@ def remove_alias(db: Session, *, term_id: uuid.UUID, value: str) -> VocabularyTe
         )
     )
     if alias is None:
-        raise NotFound("TSC-VOCAB-0011", "그 표기가 없습니다.")
+        raise NotFound("TSC-VOCAB-0011", "해당 표기 없음.")
     db.delete(alias)
     db.commit()
     db.refresh(term)
@@ -482,9 +482,9 @@ def merge_terms(
     source = get_term(db, source_id)
     target = get_term(db, target_id)
     if source.id == target.id:
-        raise AppError("TSC-VOCAB-0006", "같은 값끼리는 합칠 수 없습니다.", status=400)
+        raise AppError("TSC-VOCAB-0006", "같은 값끼리는 병합 불가.", status=400)
     if source.vocabulary_id != target.vocabulary_id:
-        raise AppError("TSC-VOCAB-0007", "다른 축의 값끼리는 합칠 수 없습니다.", status=400)
+        raise AppError("TSC-VOCAB-0007", "다른 축의 값끼리는 병합 불가.", status=400)
 
     vocabulary = db.get(Vocabulary, source.vocabulary_id)
     moved = _repoint_references(db, vocabulary, source, target) if vocabulary else 0

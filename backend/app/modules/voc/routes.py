@@ -98,7 +98,7 @@ def list_items(
         if status not in VOC_STATUSES:
             raise AppError(
                 "TSC-VOC-0001",
-                f"모르는 상태입니다: {status}",
+                f"알 수 없는 상태: {status}",
                 status=400,
                 details={"statuses": list(VOC_STATUSES)},
             )
@@ -189,7 +189,7 @@ def move_item(
     if to not in VOC_STATUSES:
         raise AppError(
             "TSC-VOC-0001",
-            f"모르는 상태입니다: {to}",
+            f"알 수 없는 상태: {to}",
             status=400,
             details={"statuses": list(VOC_STATUSES)},
         )
@@ -198,22 +198,21 @@ def move_item(
     if to == item.status:
         # 댓글 — 상태는 그대로다. 빈 댓글은 안 받는다(아무 말도 안 하는 줄이 쌓인다).
         if note is None:
-            raise AppError("TSC-VOC-0002", "할 말을 적어 주십시오.", status=400)
+            raise AppError("TSC-VOC-0002", "내용 입력 필요.", status=400)
     else:
         allowed = _moves(item, user)
         if to not in allowed:
             raise AppError(
                 "TSC-VOC-0003",
-                f"「{VOC_STATUS_LABELS[item.status]}」 에서 "
-                f"「{VOC_STATUS_LABELS[to]}」 로는 옮길 수 없습니다.",
+                f"상태 변경 불가: {VOC_STATUS_LABELS[item.status]} → {VOC_STATUS_LABELS[to]}.",
                 status=403,
                 details={"can_move": allowed},
             )
         if to in NOTE_REQUIRED and note is None:
             raise AppError(
                 "TSC-VOC-0004",
-                f"「{VOC_STATUS_LABELS[to]}」 로 옮길 때는 무엇을 했는지"
-                "(또는 왜 안 하는지) 적어야 합니다.",
+                f"{VOC_STATUS_LABELS[to]} 상태로 변경 시 처리 내용"
+                "(또는 처리하지 않는 사유) 입력 필요.",
                 status=400,
             )
 

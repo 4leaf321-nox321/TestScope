@@ -139,18 +139,18 @@ def list_definitions(
 def get_definition(db: Session, definition_id: uuid.UUID) -> AttributeDefinition:
     row = db.get(AttributeDefinition, definition_id)
     if row is None:
-        raise NotFound("TSC-ATTR-0001", "속성 정의를 찾을 수 없습니다.")
+        raise NotFound("TSC-ATTR-0001", "속성 정의를 찾을 수 없음.")
     return row
 
 
 def _check_target(target: str) -> None:
     if target not in ATTRIBUTE_TARGETS:
-        raise AppError("TSC-ATTR-0002", f"모르는 대상입니다: {target}")
+        raise AppError("TSC-ATTR-0002", f"알 수 없는 대상: {target}")
 
 
 def _check_kind(kind: str) -> None:
     if kind not in ATTRIBUTE_KINDS:
-        raise AppError("TSC-ATTR-0003", f"모르는 종류입니다: {kind}")
+        raise AppError("TSC-ATTR-0003", f"알 수 없는 종류: {kind}")
 
 
 def _find_by_label(
@@ -173,13 +173,13 @@ def _check_axes(db: Session, kind: str, payload: dict[str, Any]) -> None:
     if kind == "condition":
         key_id = payload.get("condition_key_id")
         if key_id is None or db.get(ConditionKey, key_id) is None:
-            raise AppError("TSC-ATTR-0004", "조건 종류는 검색 조건 축을 골라야 합니다.")
+            raise AppError("TSC-ATTR-0004", "조건 종류는 검색 조건 축 선택 필요.")
     if kind == "term":
         vocabulary_id = payload.get("vocabulary_id")
         if vocabulary_id is None or db.get(Vocabulary, vocabulary_id) is None:
-            raise AppError("TSC-ATTR-0004", "온톨로지 종류는 어느 축인지 골라야 합니다.")
+            raise AppError("TSC-ATTR-0004", "온톨로지 종류는 축 선택 필요.")
     if kind == "choice" and not [c for c in payload.get("choices") or [] if clean(c)]:
-        raise AppError("TSC-ATTR-0004", "선택 종류는 선택지를 하나 이상 적어야 합니다.")
+        raise AppError("TSC-ATTR-0004", "선택 종류는 선택지를 하나 이상 입력해야 함.")
 
 
 def _auto_key() -> str:
@@ -195,7 +195,7 @@ def _check_key_shape(key: str) -> None:
     if _KEY_SHAPE.match(key) is None:
         raise AppError(
             "TSC-ATTR-0009",
-            f"key 「{key}」 는 못 씁니다 — 영문·숫자·_ . - 만 됩니다(거르기 주소에 실립니다).",
+            f"사용할 수 없는 key: {key}. 영문·숫자·_ . -만 사용 가능(필터 주소에 포함됨).",
         )
 
 
@@ -204,7 +204,7 @@ def _check_key_free(db: Session, key: str, *, except_id: uuid.UUID | None) -> No
     if except_id is not None:
         stmt = stmt.where(AttributeDefinition.id != except_id)
     if db.scalar(stmt) is not None:
-        raise Conflict("TSC-ATTR-0005", f"같은 key 의 속성이 있습니다: {key}")
+        raise Conflict("TSC-ATTR-0005", f"같은 key의 속성이 있음: {key}")
 
 
 def create_definition(db: Session, user: User, payload: dict[str, Any]) -> AttributeDefinition:
@@ -216,12 +216,12 @@ def create_definition(db: Session, user: User, payload: dict[str, Any]) -> Attri
     _check_kind(kind)
     status = str(payload.get("status") or "standard")
     if status not in ATTRIBUTE_STATUSES:
-        raise AppError("TSC-ATTR-0003", f"모르는 상태입니다: {status}")
+        raise AppError("TSC-ATTR-0003", f"알 수 없는 상태: {status}")
     label = clean(str(payload["label"]))
     if not label:
-        raise AppError("TSC-ATTR-0006", "이름을 적어 주십시오.")
+        raise AppError("TSC-ATTR-0006", "이름 입력 필요.")
     if _find_by_label(db, target, label) is not None:
-        raise Conflict("TSC-ATTR-0007", f"같은 이름의 속성이 있습니다: {label}")
+        raise Conflict("TSC-ATTR-0007", f"같은 이름의 속성이 있음: {label}")
     _check_axes(db, kind, payload)
     key = clean(str(payload.get("key") or "")) or _auto_key()
     _check_key_shape(key)
@@ -288,9 +288,9 @@ def update_definition(
     if "label" in changes:
         label = clean(str(changes["label"]))
         if not label:
-            raise AppError("TSC-ATTR-0006", "이름을 적어 주십시오.")
+            raise AppError("TSC-ATTR-0006", "이름 입력 필요.")
         if _find_by_label(db, row.target, label, except_id=row.id) is not None:
-            raise Conflict("TSC-ATTR-0007", f"같은 이름의 속성이 있습니다: {label}")
+            raise Conflict("TSC-ATTR-0007", f"같은 이름의 속성이 있음: {label}")
         row.label = label
     if changes.get("key"):
         key = clean(str(changes["key"]))
@@ -303,7 +303,7 @@ def update_definition(
         if _value_counts(db, [row.id]).get(row.id, 0) > 0:
             raise Conflict(
                 "TSC-ATTR-0008",
-                "값이 적힌 속성의 종류는 바꿀 수 없습니다. 새 속성을 만들고 합치십시오.",
+                "값이 입력된 속성의 종류는 변경 불가. 새 속성을 만든 뒤 병합 필요.",
             )
         row.kind = kind
     if "unit" in changes:
@@ -319,7 +319,7 @@ def update_definition(
     if changes.get("status"):
         status = str(changes["status"])
         if status not in ATTRIBUTE_STATUSES:
-            raise AppError("TSC-ATTR-0003", f"모르는 상태입니다: {status}")
+            raise AppError("TSC-ATTR-0003", f"알 수 없는 상태: {status}")
         row.status = status
     if "is_required" in changes and changes["is_required"] is not None:
         row.is_required = bool(changes["is_required"])
@@ -355,15 +355,13 @@ def delete_definition(db: Session, definition_id: uuid.UUID) -> None:
     if _value_counts(db, [row.id]).get(row.id, 0) > 0:
         raise Conflict(
             "TSC-ATTR-0013",
-            "값이 적힌 속성은 지울 수 없습니다. 끄거나 다른 속성에 합치십시오.",
+            "값이 입력된 속성은 삭제 불가. 끄거나 다른 속성에 병합 필요.",
         )
     pointing = db.scalar(
         select(AttributeDefinition.id).where(AttributeDefinition.merged_into_id == row.id)
     )
     if pointing is not None:
-        raise Conflict(
-            "TSC-ATTR-0013", "다른 속성이 이 속성으로 합쳐져 있어 지울 수 없습니다."
-        )
+        raise Conflict("TSC-ATTR-0013", "다른 속성이 이 속성으로 병합되어 있어 삭제 불가.")
     db.delete(row)
     db.commit()
 
@@ -380,16 +378,16 @@ def merge_into(db: Session, source_id: uuid.UUID, target_id: uuid.UUID) -> Attri
     source = get_definition(db, source_id)
     target = get_definition(db, target_id)
     if source.id == target.id:
-        raise AppError("TSC-ATTR-0009", "같은 속성입니다.")
+        raise AppError("TSC-ATTR-0009", "같은 속성끼리는 병합 불가.")
     if source.target != target.target:
-        raise AppError("TSC-ATTR-0009", "붙는 대상이 다른 속성은 합칠 수 없습니다.")
+        raise AppError("TSC-ATTR-0009", "대상이 다른 속성은 병합 불가.")
     if source.kind != target.kind:
         raise Conflict(
             "TSC-ATTR-0009",
-            f"종류가 다른 속성은 합칠 수 없습니다: {source.kind} → {target.kind}",
+            f"종류가 다른 속성은 병합 불가: {source.kind} → {target.kind}",
         )
     if not target.is_active:
-        raise AppError("TSC-ATTR-0009", "꺼진 속성으로는 합칠 수 없습니다.")
+        raise AppError("TSC-ATTR-0009", "꺼진 속성으로는 병합 불가.")
     keep_unit(db, source, target.unit)
     column = _TARGET_COLUMN[source.target]
     held = {
@@ -427,7 +425,7 @@ def _ensure_draft(
     _check_kind(kind)
     if kind in ("condition", "term", "choice", "pairs", "matrix"):
         # 축·선택지·짝처럼 **모양이 있는** 종류는 초안으로 못 만든다 — 관리자가 정의부터.
-        raise AppError("TSC-ATTR-0010", f"{kind} 종류의 속성은 관리자가 먼저 정의합니다.")
+        raise AppError("TSC-ATTR-0010", f"{kind} 종류의 속성은 관리자가 먼저 정의해야 함.")
     row = AttributeDefinition(
         target=target,
         key=_auto_key(),
@@ -448,7 +446,7 @@ def _check_value_shape(
     kind = definition.kind
     label = definition.label
     if kind == "number" and item.num_value is None:
-        raise AppError("TSC-ATTR-0011", f"「{label}」 은 수치가 필요합니다.")
+        raise AppError("TSC-ATTR-0011", f"{label}: 수치 필요.")
     # **숫자 대신 말로 적을 수도 있다** — 「상온」 · 「규격에 따름」 · 「1축씩 3방향」.
     # 그런 줄은 사람이 읽고 장비 판정에는 안 실린다(capability 가 값 없는 조건을 「제한
     # 없음」 으로 넘긴다). 비고까지 비면 아무 말도 안 하는 줄이라 거절한다.
@@ -462,8 +460,7 @@ def _check_value_shape(
     ):
         raise AppError(
             "TSC-ATTR-0011",
-            f"「{label}」 은 최소·최대(또는 점 하나)를 적거나,"
-            " 숫자로 못 적으면 비고에 적으십시오.",
+            f"{label}: 최소·최대(또는 점 하나) 입력 필요. 숫자로 적을 수 없으면 비고에 입력.",
         )
     if (
         kind in ("range", "condition")
@@ -471,21 +468,21 @@ def _check_value_shape(
         and item.num_max is not None
         and item.num_min > item.num_max
     ):
-        raise AppError("TSC-ATTR-0011", f"「{label}」 의 최소가 최대보다 큽니다.")
+        raise AppError("TSC-ATTR-0011", f"{label}: 최소가 최대보다 큼.")
     if kind == "text" and not clean(item.text_value or ""):
-        raise AppError("TSC-ATTR-0011", f"「{label}」 은 글이 필요합니다.")
+        raise AppError("TSC-ATTR-0011", f"{label}: 글 입력 필요.")
     if kind == "choice":
         picked = clean(item.text_value or "")
         if picked not in (definition.choices or []):
             raise AppError(
                 "TSC-ATTR-0011",
-                f"「{label}」 은 선택지 중 하나여야 합니다.",
+                f"{label}: 선택지 중 하나여야 함.",
                 details={"choices": list(definition.choices or [])},
             )
     if kind == "boolean" and item.bool_value is None:
-        raise AppError("TSC-ATTR-0011", f"「{label}」 은 있음/없음이 필요합니다.")
+        raise AppError("TSC-ATTR-0011", f"{label}: 있음/없음 선택 필요.")
     if kind == "date" and item.date_value is None:
-        raise AppError("TSC-ATTR-0011", f"「{label}」 은 날짜가 필요합니다.")
+        raise AppError("TSC-ATTR-0011", f"{label}: 날짜 필요.")
     if kind == "term":
         # **맞는 값이 축에 없을 때 그 사실을 남길 자리가 있어야 한다.** 조건은 숫자를 비우고
         # 비고만 실어도 통과하는데 온톨로지 값은 400 이었다 — 그래서 옮겨 적는 쪽은 「축에
@@ -499,53 +496,53 @@ def _check_value_shape(
             if term is None or term.vocabulary_id != definition.vocabulary_id:
                 raise AppError(
                     "TSC-ATTR-0011",
-                    f"「{label}」 은 그 축의 온톨로지 값이어야 합니다 —"
-                    " 맞는 값이 없으면 비우고 비고(note)에 원문을 적으십시오.",
+                    f"{label}: 해당 축의 온톨로지 값이어야 함."
+                    " 맞는 값이 없으면 비우고 비고(note)에 원문 입력.",
                 )
     if kind == "method":
         method = db.get(TestMethod, item.method_id) if item.method_id else None
         if method is None or method.deleted_at is not None:
-            raise AppError("TSC-ATTR-0011", f"「{label}」 은 있는 규격이어야 합니다.")
+            raise AppError("TSC-ATTR-0011", f"{label}: 등록된 규격이어야 함.")
     if kind == "document":
         document = db.get(SpecDocument, item.document_id) if item.document_id else None
         if document is None or document.deleted_at is not None:
-            raise AppError("TSC-ATTR-0011", f"「{label}」 은 있는 사내 규격서여야 합니다.")
+            raise AppError("TSC-ATTR-0011", f"{label}: 등록된 사내 규격서여야 함.")
     if kind in ("pairs", "matrix"):
         _check_pairs_shape(kind, label, item.json_value)
 
 
-def _pair_rows(label: str, rows: Any, *, where: str) -> None:
+def _pair_rows(label: str, rows: Any) -> None:
     """짝 목록 한 벌 — 이름과 숫자가 둘 다 있어야 한다.
 
     **이름 없는 숫자는 못 읽는다.** 「4」 만 남으면 그것이 A등급인지 1단계인지 알 수 없고,
     그 값은 적어 둔 사람 말고는 아무도 못 쓴다.
     """
     if not isinstance(rows, list) or not rows:
-        raise AppError("TSC-ATTR-0011", f"「{label}」 {where} 줄이 하나는 필요합니다.")
+        raise AppError("TSC-ATTR-0011", f"{label}: 줄이 하나 이상 필요.")
     for one in rows:
         if not isinstance(one, dict):
-            raise AppError("TSC-ATTR-0011", f"「{label}」 {where} 줄의 모양이 아닙니다.")
+            raise AppError("TSC-ATTR-0011", f"{label}: 줄 형식이 올바르지 않음.")
         name = clean(str(one.get("label") or ""))
         value = one.get("value")
         if not name:
-            raise AppError("TSC-ATTR-0011", f"「{label}」 {where} 이름이 빈 줄이 있습니다.")
+            raise AppError("TSC-ATTR-0011", f"{label}: 이름이 빈 줄 있음.")
         if value is None or isinstance(value, bool) or not isinstance(value, (int, float)):
-            raise AppError("TSC-ATTR-0011", f"「{label}」 의 「{name}」 에 숫자가 필요합니다.")
+            raise AppError("TSC-ATTR-0011", f"{label}: {name} 값은 숫자여야 함.")
 
 
 def _check_pairs_shape(kind: str, label: str, rows: Any) -> None:
     if kind == "pairs":
-        _pair_rows(label, rows, where="에는")
+        _pair_rows(label, rows)
         return
     if not isinstance(rows, list) or not rows:
-        raise AppError("TSC-ATTR-0011", f"「{label}」 에는 줄이 하나는 필요합니다.")
+        raise AppError("TSC-ATTR-0011", f"{label}: 줄이 하나 이상 필요.")
     for one in rows:
         if not isinstance(one, dict):
-            raise AppError("TSC-ATTR-0011", f"「{label}」 줄의 모양이 아닙니다.")
+            raise AppError("TSC-ATTR-0011", f"{label}: 줄 형식이 올바르지 않음.")
         name = clean(str(one.get("label") or ""))
         if not name:
-            raise AppError("TSC-ATTR-0011", f"「{label}」 에 이름이 빈 사양이 있습니다.")
-        _pair_rows(f"{label} / {name}", one.get("entries"), where="에는")
+            raise AppError("TSC-ATTR-0011", f"{label}: 이름이 빈 사양 있음.")
+        _pair_rows(f"{label} / {name}", one.get("entries"))
 
 
 def set_values(
@@ -589,15 +586,13 @@ def set_values(
         if item.definition_id is not None:
             definition = get_definition(db, item.definition_id)
             if definition.target != target:
-                raise AppError(
-                    "TSC-ATTR-0012", f"「{definition.label}」 은 이 대상의 속성이 아닙니다."
-                )
+                raise AppError("TSC-ATTR-0012", f"{definition.label}: 이 대상의 속성이 아님.")
             if not definition.is_active:
-                raise AppError("TSC-ATTR-0012", f"「{definition.label}」 은 꺼진 속성입니다.")
+                raise AppError("TSC-ATTR-0012", f"{definition.label}: 꺼진 속성.")
         else:
             label = clean(item.new_label or "")
             if not label:
-                raise AppError("TSC-ATTR-0006", "속성 이름을 적어 주십시오.")
+                raise AppError("TSC-ATTR-0006", "속성 이름 입력 필요.")
             definition = _ensure_draft(db, user, target, label, item.new_kind)
         _check_value_shape(db, definition, item)
         numeric = definition.kind in _NUMERIC_KINDS
@@ -643,10 +638,10 @@ def set_values(
     if clashes:
         raise AppError(
             "TSC-ATTR-0013",
-            "같은 자리에 값이 두 번 왔습니다: "
+            "같은 자리에 값 중복: "
             + " · ".join(sorted(set(clashes)))
-            + ". 같은 칸을 여러 벌 적으려면 묶음(set_label)이나 차례(step_order)로"
-            " 가르십시오 — 안 가르면 한 줄만 남고 나머지는 사라집니다.",
+            + ". 같은 칸을 여러 벌 입력하려면 묶음(set_label)이나 차례(step_order)로"
+            " 구분 필요. 구분하지 않으면 한 줄만 남고 나머지는 삭제됨.",
             status=422,
             details={"duplicates": sorted(set(clashes))},
         )
@@ -720,11 +715,11 @@ def _mark_current(db: Session, test_id: uuid.UUID) -> None:
 def _where_text(label: str, value: AttributeValue) -> str:
     """「시험 온도」 · 「시험 온도(동작)」 · 「시험 온도(온도 사이클 2번째)」."""
     if not value.set_label and value.step_order is None:
-        return f"「{label}」"
+        return label
     inside = value.set_label or ""
     if value.step_order is not None:
         inside = f"{inside} {value.step_order}번째".strip()
-    return f"「{label}」({inside})"
+    return f"{label}({inside})"
 
 
 def display_of(

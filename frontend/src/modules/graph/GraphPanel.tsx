@@ -107,7 +107,7 @@ export function GraphPanel({ objectId }: GraphPanelProps) {
         <Button asChild size="sm" variant="outline">
           <Link to={`/graph?focus=${objectId}`}>
             <Waypoints className="mr-1 size-3.5" />
-            지식 그래프에서 넓게
+            지식 그래프에서 크게 보기
           </Link>
         </Button>
       </div>

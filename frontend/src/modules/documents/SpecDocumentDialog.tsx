@@ -122,8 +122,8 @@ export function SpecDocumentDialog({
         setPicked([])
         setError(
           new Error(
-            `문서는 저장됐지만 파일 ${failed.length}개가 안 올라갔습니다: ${failed.join(', ')}. ` +
-              `형식(${ACCEPT_WORDS})과 크기(100 MB)를 보고 다시 올려 주십시오.`,
+            `문서 저장 완료, 파일 ${failed.length}개 업로드 실패: ${failed.join(', ')}. ` +
+              `형식(${ACCEPT_WORDS})과 크기(100 MB) 확인 후 다시 업로드 필요.`,
           ),
         )
         return
@@ -143,8 +143,8 @@ export function SpecDocumentDialog({
           <DialogHeader>
             <DialogTitle>{editing ? '사내 규격서 수정' : '사내 규격서 등록'}</DialogTitle>
             <DialogDescription>
-              부서가 만든 시험 문서입니다. 공개 규격(ASTM·ISO·KS)은 「시험법·규격」 에
-              등록합니다. <strong>원본 파일을 여기서 같이 올립니다.</strong>
+              부서에서 작성한 시험 문서. 공개 규격(ASTM·ISO·KS)은 ‘시험법·규격’에 등록.{' '}
+              <strong>원본 파일도 여기서 함께 업로드.</strong>
             </DialogDescription>
           </DialogHeader>
 
@@ -155,14 +155,13 @@ export function SpecDocumentDialog({
                 id="doc-code"
                 value={code}
                 onChange={(event) => setCode(event.target.value)}
-                placeholder="MX-REL-012 (없으면 비웁니다)"
+                placeholder="MX-REL-012 (없으면 비워 둠)"
                 maxLength={100}
               />
               {/* **지어낸 번호가 더 나쁘다** — 문서관리 시스템의 번호인 줄 알고 찾으러 간다. */}
               <p className="text-muted-foreground text-xs">
-                문서관리 시스템의 번호를 그대로 적습니다. 같은 부서에 같은 번호는 하나이고,
-                번호가 없는 문서는 <strong>비워 두십시오</strong> — 지어낸 번호는 찾으러 간
-                사람을 헛걸음시킵니다.
+                문서관리 시스템의 번호를 그대로 입력. 같은 부서 안에서 번호 중복 불가. 번호가
+                없는 문서는 <strong>비워 둠</strong>(임의 번호 입력 금지).
               </p>
             </div>
             <div className="space-y-2">
@@ -177,8 +176,8 @@ export function SpecDocumentDialog({
               {/* **판을 고치는 것이 개정이다.** 줄을 새로 만들면 걸어 둔 시험 수십 건의
                   링크를 사람이 옮겨야 하고, 그러면 아무도 안 옮긴다. */}
               <p className="text-muted-foreground text-xs">
-                개정하면 이 칸을 고치고 새 파일을 더합니다. 줄을 새로 만들지 않아서 걸어 둔
-                시험의 링크가 끊기지 않습니다.
+                개정 시 이 칸을 수정하고 새 파일 추가. 새 문서를 만들지 않으므로 연결된 시험의
+                링크 유지.
               </p>
             </div>
             <div className="space-y-2">
@@ -190,9 +189,7 @@ export function SpecDocumentDialog({
                 placeholder="12-18"
                 maxLength={60}
               />
-              <p className="text-muted-foreground text-xs">
-                두꺼운 규격서에서 이 시험이 나온 쪽입니다.
-              </p>
+              <p className="text-muted-foreground text-xs">규격서에서 이 시험이 나온 쪽.</p>
             </div>
             <div className="space-y-2">
               <Label htmlFor="doc-source-path">원본 위치</Label>
@@ -204,7 +201,7 @@ export function SpecDocumentDialog({
                 maxLength={2000}
               />
               <p className="text-muted-foreground text-xs">
-                파일을 못 올리는 문서(대외비·용량)의 「어디 가면 있다」 입니다.
+                파일 업로드가 불가한 문서(대외비·용량)의 보관 위치.
               </p>
             </div>
             <div className="space-y-2 sm:col-span-2">
@@ -214,12 +211,11 @@ export function SpecDocumentDialog({
                   checked={isExcerpt}
                   onChange={(event) => setIsExcerpt(event.target.checked)}
                 />
-                발췌입니다 — 전문을 보지 않았습니다
+                발췌(전문 미확인)
               </label>
               {/* **안 보이면 읽는 사람은 이 문서를 다 반영한 줄 안다.** */}
               <p className="text-muted-foreground text-xs">
-                일부만 보고 옮겼으면 켜 두십시오. 줄에 표시되어, 읽는 사람이 나머지를 더 봐야
-                하는지 압니다.
+                일부만 보고 옮긴 경우 선택. 목록에 표시되어 나머지 확인 필요 여부를 알 수 있음.
               </p>
             </div>
             <div className="space-y-2 sm:col-span-2">
@@ -228,7 +224,7 @@ export function SpecDocumentDialog({
                 id="doc-title"
                 value={title}
                 onChange={(event) => setTitle(event.target.value)}
-                placeholder="신뢰성 시험 표준 — 환경 시험"
+                placeholder="신뢰성 시험 표준: 환경 시험"
                 required
                 maxLength={300}
               />
@@ -258,7 +254,7 @@ export function SpecDocumentDialog({
                 onChange={(event) => setNote(event.target.value)}
                 rows={3}
                 maxLength={4000}
-                placeholder="적용 범위·개정 사유처럼 목록에서 보이면 좋은 한두 줄."
+                placeholder="적용 범위·개정 사유 등 목록에 표시할 한두 줄"
               />
             </div>
           </div>
@@ -312,17 +308,17 @@ export function SpecDocumentDialog({
             </Button>
             <p className="text-muted-foreground text-xs">
               {editing
-                ? '여기서 고른 파일은 저장할 때 더해집니다. 이미 붙은 파일은 보기 창에서 지웁니다.'
-                : '저장하면 문서가 만들어지고 이어서 올라갑니다. 나중에 보기 창에서 더할 수도 있습니다.'}{' '}
-              {ACCEPT_WORDS}, 장당 100 MB 까지.
+                ? '여기서 고른 파일은 저장 시 추가됨. 기존 파일 삭제는 보기 창에서 가능.'
+                : '저장 시 문서 생성 후 이어서 업로드. 보기 창에서 나중에 추가도 가능.'}{' '}
+              {ACCEPT_WORDS}, 장당 최대 100 MB.
             </p>
             {/* **못 보여 준다고 먼저 말한다.** 올리고 나서 알면 「왜 안 열리지」 가 된다.
                 브라우저는 워드·한글을 못 그리고, MS·구글의 온라인 뷰어는 파일이 인터넷에
                 공개돼 있어야 해서 사내망에서는 원리상 못 쓴다. */}
             <p className="text-muted-foreground text-xs">
-              워드·엑셀·한글 문서는 <strong>화면에서 열리지 않고 내려받습니다</strong> —
-              사내망에서는 온라인 뷰어를 쓸 수 없습니다. 목록에서 찾을 글자(문서 번호·제목)를
-              위 칸에 적어 두십시오.
+              워드·엑셀·한글 문서는 <strong>화면에서 열리지 않고 내려받기만 가능</strong>
+              (사내망에서 온라인 뷰어 사용 불가). 목록 검색용 글자(문서 번호·제목)는 위 칸에
+              입력 필요.
             </p>
           </div>
 

@@ -280,7 +280,7 @@ export const SECTIONS: {
   },
   {
     title: '근거',
-    hint: '공인 규격도 사내 규격서도 **목록에서 고릅니다** — 글자로 적으면 같은 문서가 판마다 다른 값이 되어 「이 규격서를 쓰는 시험」 을 못 묶습니다.',
+    hint: '공인 규격과 사내 규격서 모두 목록에서 선택(직접 입력 시 같은 문서가 판마다 다른 값이 되어 규격서별로 시험을 묶을 수 없음).',
     keys: [
       'reliability_reference_method',
       'reliability_spec_document',
@@ -291,7 +291,7 @@ export const SECTIONS: {
     // 조건 칸은 **축마다 하나**라 열하나가 된다. 키로 적지 않고 종류로 모은다 —
     // 축이 늘면 칸도 따라 늘어야 하고, 그때 이 표를 고치는 것을 누가 잊는다.
     title: '시험 조건',
-    hint: '적은 수치가 그대로 「이 시험 돌릴 수 있는 장비」 판정이 됩니다. 한쪽만 적으면 「이상」·「이하」 이고, 숫자로 못 적는 것은 비고에 적습니다(그 줄은 판정에 안 쓰입니다).',
+    hint: '입력한 수치가 그대로 수행 가능 장비 판정에 사용됨. 한쪽만 입력 시 ‘이상’·‘이하’로 처리. 숫자로 표현할 수 없는 조건은 비고에 입력(해당 줄은 판정에 미사용).',
     keys: ['reliability_other_conditions'],
     conditions: true,
   },
@@ -772,7 +772,7 @@ function ConditionRows({
               <div className="mb-1.5 flex flex-wrap items-center gap-2">
                 <SetNameInput
                   value={name}
-                  placeholder="묶음 이름 — 동작 · 저장 · 주 · 불량 시"
+                  placeholder="묶음 이름: 동작 · 저장 · 주 · 불량 시"
                   onCommit={(next) => {
                     if (next === name || setNames.includes(next)) return
                     for (const row of mine) move(row.key, { setLabel: next })
@@ -787,7 +787,7 @@ function ConditionRows({
                 />
                 {name === '' && mine.length === 0 && (
                   <span className="text-muted-foreground text-xs">
-                    이름을 비워 두면 「이름 없는 한 벌」 입니다.
+                    이름을 비워 두면 ‘이름 없는 한 벌’로 처리.
                   </span>
                 )}
               </div>
@@ -821,7 +821,7 @@ function ConditionRows({
                   onChange={(id) => id && add(id, name)}
                   placeholder="조건 추가"
                   detailTitle="시험 조건"
-                  detailHint="여기 없는 축이 필요하면 관리자가 「검색 조건」 에 축을 더합니다."
+                  detailHint="필요한 축이 없으면 관리자가 ‘검색 조건’에 축 추가."
                 />
               </div>
             )}
@@ -863,8 +863,8 @@ function ConditionRows({
         )}
         <span className="text-muted-foreground text-xs">
           {grouping
-            ? '동작 -15 ~ 45 와 저장 -40 ~ 25 처럼 한 벌이 아닌 조건을 가릅니다. 프로파일은 묶음 안에서 차례로 적고, 몇 번 도는지는 「사이클 수」 를 차례 없이 적습니다.'
-            : '문서의 조건이 한 벌이 아니면(동작·저장, 주 조건과 예외, 프로파일) 묶음으로 가릅니다.'}
+            ? '동작 -15 ~ 45와 저장 -40 ~ 25처럼 한 벌이 아닌 조건을 구분. 프로파일은 묶음 안에서 차례대로 입력하고, 반복 횟수는 ‘사이클 수’에 차례 없이 입력.'
+            : '문서의 조건이 한 벌이 아니면(동작·저장, 주 조건과 예외, 프로파일) 묶음으로 구분.'}
         </span>
       </div>
     </div>
@@ -1017,7 +1017,7 @@ function ConditionRow({
         <Input
           value={value.note}
           onChange={(event) => onChange({ note: event.target.value })}
-          placeholder="비고 — 숫자로 못 적는 것 (상온 · 규격에 따름)"
+          placeholder="비고: 숫자로 표현할 수 없는 조건 (상온 · 규격에 따름)"
           aria-label={`${definition.label} 비고`}
           className="min-w-40 flex-1"
           maxLength={2000}
@@ -1042,7 +1042,7 @@ function ConditionRow({
         <Input
           value={value.sourceText}
           onChange={(event) => onChange({ sourceText: event.target.value })}
-          placeholder="문서 원문 — 적힌 그대로"
+          placeholder="문서 원문(적힌 그대로)"
           aria-label={`${definition.label} 원문`}
           className="min-w-48 flex-1"
           maxLength={4000}
@@ -1081,7 +1081,7 @@ function ConditionRow({
 function describeRange(value: StandardValue, unit: string): string {
   const suffix = unit ? ` ${unit}` : ''
   const where = value.setLabel
-    ? `「${value.setLabel}」${value.stepOrder === null ? '' : ` ${value.stepOrder}번째`} · `
+    ? `‘${value.setLabel}’${value.stepOrder === null ? '' : ` ${value.stepOrder}번째`} · `
     : ''
   // 점은 폭이 없다 — 그 값에서만 한다는 뜻이고, 사이 온도로 읽히면 안 된다.
   if (value.numValue !== null) return `${where}${value.numValue}${suffix} 한 점 (폭 없음)`
@@ -1090,8 +1090,8 @@ function describeRange(value: StandardValue, unit: string): string {
   }
   if (value.numMin !== null) return `${where}${value.numMin}${suffix} 이상 (최대는 제한 없음)`
   if (value.numMax !== null) return `${where}${value.numMax}${suffix} 이하 (최소는 제한 없음)`
-  if (value.note.trim()) return '숫자가 없어 장비 판정에는 안 쓰입니다 — 사람이 읽는 줄입니다.'
-  return '최소·최대 중 하나만 적어도 됩니다.'
+  if (value.note.trim()) return '숫자 없음. 장비 판정에 미사용(참고용 줄).'
+  return '최소·최대 중 하나만 입력해도 됨.'
 }
 
 /** 이 칸에 붙은 그림. **한 장도 없고 넣을 수도 없으면 아무것도 안 그린다** — 빈 자리가
@@ -1157,9 +1157,9 @@ function TermField({
       options={options}
       value={value ?? ''}
       onChange={(next) => onChange(next || null)}
-      placeholder={options.length > 0 ? '선택' : '값이 아직 없습니다'}
+      placeholder={options.length > 0 ? '선택' : '등록된 값 없음'}
       detailTitle={definition.label}
-      detailHint="온톨로지에서 고릅니다 — 없으면 관리자가 값을 더합니다."
+      detailHint="온톨로지에서 선택. 값이 없으면 관리자가 추가."
     />
   )
 }
@@ -1193,7 +1193,7 @@ function DocumentField({
       placeholder="규격서 선택"
       searchPlaceholder="문서 번호의 일부 (MX-REL)"
       detailTitle="사내 규격서"
-      detailHint="「사내 규격서」 화면에서 등록하고 원본 파일을 올립니다."
+      detailHint="‘사내 규격서’ 화면에서 등록 및 원본 파일 업로드."
     />
   )
 }
@@ -1224,7 +1224,7 @@ function MethodField({
       placeholder="규격 선택"
       searchPlaceholder="규격 번호의 일부 (ISO 6892)"
       detailTitle="규격"
-      detailHint="규격 사전에서 고릅니다 — 글자로 적으면 같은 규격이 둘로 갈립니다."
+      detailHint="규격 사전에서 선택(직접 입력 시 같은 규격이 둘로 나뉨)."
     />
   )
 }

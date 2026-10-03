@@ -807,7 +807,7 @@ export function GraphCanvas({
               variant="outline"
               className="bg-background/90 backdrop-blur"
               aria-label="PNG 저장"
-              title="현재 화면을 PNG 로 저장"
+              title="현재 화면을 PNG로 저장"
               disabled={!ready}
               onClick={exportPng}
             >
@@ -829,7 +829,7 @@ export function GraphCanvas({
                 <p className="mb-2 font-medium">조작법</p>
                 <dl className="grid grid-cols-[auto_1fr] gap-x-3 gap-y-1">
                   <dt className="text-muted-foreground">클릭</dt>
-                  <dd>선택 — 이웃만 밝게</dd>
+                  <dd>선택, 이웃만 강조</dd>
                   <dt className="text-muted-foreground">더블클릭</dt>
                   <dd>{onNodeDoubleClick ? '여기를 중심으로' : '—'}</dd>
                   <dt className="text-muted-foreground">드래그</dt>

@@ -295,7 +295,7 @@ def create_series(db: Session, actor: User, payload: dict[str, Any]) -> Equipmen
     if clash is not None:
         raise Conflict(
             "TSC-CATALOG-0010",
-            f"이미 있는 계열입니다: {clash.name}",
+            f"이미 있는 계열: {clash.name}",
             details={"series_id": str(clash.id), "name": clash.name},
         )
 
@@ -386,8 +386,8 @@ def delete_series(db: Session, series_id: uuid.UUID) -> None:
     if using:
         raise Conflict(
             "TSC-CATALOG-0011",
-            f"이 계열에 기종이 {using}개 있습니다. 먼저 기종을 정리하거나, "
-            f"지우는 대신 상태를 단종으로 바꾸십시오.",
+            f"이 계열에 기종 {using}개 있음. 기종을 먼저 정리하거나 "
+            f"삭제 대신 상태를 단종으로 변경 필요.",
         )
     row.deleted_at = datetime.now(UTC)
     db.commit()
@@ -402,9 +402,7 @@ def add_relation(
     host = get_series(db, series_id)
     part = get_series(db, payload["part_series_id"])
     if host.id == part.id:
-        raise AppError(
-            "TSC-CATALOG-0012", "자기 자신과는 관계를 맺을 수 없습니다.", status=400
-        )
+        raise AppError("TSC-CATALOG-0012", "자기 자신과는 관계 설정 불가.", status=400)
 
     clash = db.scalar(
         select(SeriesRelation).where(
@@ -414,7 +412,7 @@ def add_relation(
         )
     )
     if clash is not None:
-        raise Conflict("TSC-CATALOG-0013", "같은 관계가 이미 있습니다.")
+        raise Conflict("TSC-CATALOG-0013", "같은 관계가 이미 있음.")
 
     row = SeriesRelation(
         host_series_id=host.id,
@@ -430,7 +428,7 @@ def add_relation(
 def delete_relation(db: Session, series_id: uuid.UUID, relation_id: uuid.UUID) -> None:
     row = db.get(SeriesRelation, relation_id)
     if row is None or series_id not in (row.host_series_id, row.part_series_id):
-        raise NotFound("TSC-CATALOG-0014", "관계를 찾을 수 없습니다.")
+        raise NotFound("TSC-CATALOG-0014", "관계를 찾을 수 없음.")
     db.delete(row)
     db.commit()
 
@@ -447,7 +445,7 @@ def _method_id(db: Session, code: str | None) -> uuid.UUID | None:
         return answer.id
     raise AppError(
         "TSC-CATALOG-0018",
-        f"시험법 「{code}」 을(를) 하나로 정할 수 없습니다.",
+        f"시험법을 하나로 특정할 수 없음: {code}",
         status=400,
         details={
             "candidates": [
@@ -466,7 +464,7 @@ def add_test_item(
     if payload.get("test_item_term_id") is None:
         raise AppError(
             "TSC-CATALOG-0017",
-            "시험 항목이 필요합니다. test_item_term_id 나 test_item(이름)을 주십시오.",
+            "시험 항목 필요. test_item_term_id 또는 test_item(이름) 지정 필요.",
             status=400,
         )
     clash = db.scalar(
@@ -481,7 +479,7 @@ def add_test_item(
     if clash is not None:
         raise Conflict(
             "TSC-CATALOG-0004",
-            "같은 시험 항목·시험법의 시험 항목이 이미 있습니다. 그것을 고치십시오.",
+            "같은 시험 항목·시험법의 시험 항목이 이미 있음. 기존 항목 수정 필요.",
             details={"equipment_test_item_id": str(clash.id)},
         )
 
@@ -515,7 +513,7 @@ def delete_test_item(
     series = get_series(db, series_id)
     row = db.get(SeriesTestItem, equipment_test_item_id)
     if row is None or row.series_id != series.id:
-        raise NotFound("TSC-CATALOG-0005", "시험 항목을 찾을 수 없습니다.")
+        raise NotFound("TSC-CATALOG-0005", "시험 항목을 찾을 수 없음.")
     db.delete(row)
     db.commit()
 
@@ -535,19 +533,17 @@ def upsert_limit(
     series = get_series(db, series_id)
     test_item = db.get(SeriesTestItem, equipment_test_item_id)
     if test_item is None or test_item.series_id != series.id:
-        raise NotFound("TSC-CATALOG-0005", "시험 항목을 찾을 수 없습니다.")
+        raise NotFound("TSC-CATALOG-0005", "시험 항목을 찾을 수 없음.")
 
     key = db.get(ConditionKey, payload["condition_key_id"])
     if key is None:
-        raise NotFound("TSC-CATALOG-0006", "조건 정의를 찾을 수 없습니다.")
+        raise NotFound("TSC-CATALOG-0006", "조건 정의를 찾을 수 없음.")
 
     low, high = payload.get("min_value"), payload.get("max_value")
     if low is not None and high is not None and low > high:
         # **거꾸로 넣은 범위는 복사된 뒤 검색에서 아무것도 안 맞는다.** 조용히
         # 통과시키면 그 원인은 카탈로그가 아니라 장비 쪽에서 찾게 된다.
-        raise AppError(
-            "TSC-CATALOG-0007", f"{key.label}의 최소가 최대보다 큽니다.", status=400
-        )
+        raise AppError("TSC-CATALOG-0007", f"{key.label}: 최소가 최대보다 큼.", status=400)
 
     existing = db.scalar(
         select(SeriesTestCondition).where(
@@ -576,10 +572,10 @@ def delete_limit(
     series = get_series(db, series_id)
     test_item = db.get(SeriesTestItem, equipment_test_item_id)
     if test_item is None or test_item.series_id != series.id:
-        raise NotFound("TSC-CATALOG-0005", "시험 항목을 찾을 수 없습니다.")
+        raise NotFound("TSC-CATALOG-0005", "시험 항목을 찾을 수 없음.")
     target = db.get(SeriesTestCondition, limit_id)
     if target is None or target.series_test_item_id != test_item.id:
-        raise NotFound("TSC-CATALOG-0008", "조건을 찾을 수 없습니다.")
+        raise NotFound("TSC-CATALOG-0008", "조건을 찾을 수 없음.")
     db.delete(target)
     db.commit()
 

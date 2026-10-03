@@ -188,7 +188,7 @@ export function EquipmentFilters({
             }))}
             placeholder="분류 전체"
             detailTitle="장비 분류"
-            detailHint="지금 목록에 있는 분류만 나옵니다. 묶음을 고르면 그 아래 분류가 다 걸립니다."
+            detailHint="현재 목록에 있는 분류만 표시. 묶음 선택 시 하위 분류 전체 포함."
             className="w-full"
           />
         )}
@@ -205,7 +205,7 @@ export function EquipmentFilters({
           }))}
           placeholder="부서 전체"
           detailTitle="보유 부서"
-          detailHint="지금 목록에 장비가 있는 부서만 나옵니다."
+          detailHint="현재 목록에 장비가 있는 부서만 표시."
           className="w-full"
         />
       </td>
@@ -221,7 +221,7 @@ export function EquipmentFilters({
           }))}
           placeholder="거점 전체"
           detailTitle="보유 거점"
-          detailHint="지금 목록에 장비가 있는 거점만 나옵니다."
+          detailHint="현재 목록에 장비가 있는 거점만 표시."
           className="w-full"
         />
       </td>
@@ -294,7 +294,7 @@ export function EquipmentFilters({
             }))}
             placeholder="시험 항목 전체"
             detailTitle="시험 항목"
-            detailHint="우리 장비에 적혀 있는 항목만 나옵니다."
+            detailHint="보유 장비에 등록된 항목만 표시."
             className="w-full"
           />
         )}

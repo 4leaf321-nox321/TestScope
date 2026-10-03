@@ -170,7 +170,7 @@ def list_rows(
     if workspace_slug is not None:
         workspace = db.scalar(select(Workspace).where(Workspace.slug == workspace_slug))
         if workspace is None:
-            raise NotFound("TSC-TESTITEM-0012", "부서를 찾을 수 없습니다.")
+            raise NotFound("TSC-TESTITEM-0012", "부서를 찾을 수 없음.")
     terms = _terms(db)
     ids = [t.id for t in terms]
     counts = _counts(db, user, workspace=workspace)
@@ -200,7 +200,7 @@ def get_term(db: Session, term_id: uuid.UUID) -> VocabularyTerm:
     term = db.get(VocabularyTerm, term_id)
     axis = db.get(Vocabulary, term.vocabulary_id) if term else None
     if term is None or axis is None or axis.slug != "test_item":
-        raise NotFound("TSC-TESTITEM-0010", "시험 항목을 찾을 수 없습니다.")
+        raise NotFound("TSC-TESTITEM-0010", "시험 항목을 찾을 수 없음.")
     return term
 
 
@@ -365,7 +365,7 @@ def set_condition_keys(
     known = set(db.scalars(select(ConditionKey.id).where(ConditionKey.id.in_(wanted))))
     missing = wanted - known
     if missing:
-        raise NotFound("TSC-TESTITEM-0011", "조건 정의를 찾을 수 없습니다.")
+        raise NotFound("TSC-TESTITEM-0011", "조건 정의를 찾을 수 없음.")
     for row in db.scalars(
         select(TestItemConditionKey).where(TestItemConditionKey.test_item_term_id == term.id)
     ):

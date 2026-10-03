@@ -100,7 +100,7 @@ function ItemProposals({ testId }: { testId: string }) {
   if (listed.length === 0) return null
   return (
     <div className="mt-1 space-y-1 rounded-md border border-amber-300 p-2">
-      <p className="text-xs font-medium">축에서 못 찾아 제안으로 남긴 것</p>
+      <p className="text-xs font-medium">축에 없어 제안으로 남긴 항목</p>
       <ul className="space-y-0.5 text-sm">
         {listed.map((one) => (
           <li key={one.id} className="flex flex-wrap items-baseline gap-2">
@@ -111,7 +111,7 @@ function ItemProposals({ testId }: { testId: string }) {
                 ? '관리자 판단 대기'
                 : one.term_value
                   ? `→ ${one.term_value}`
-                  : '아니라고 정해짐'}
+                  : '반려됨'}
             </span>
           </li>
         ))}
@@ -278,7 +278,7 @@ export function ReliabilityTestViewDialog({
             <CandidateBadge row={test} />
           </DialogTitle>
           <DialogDescription>
-            {test.division_name} 가 수행하는 시험입니다. 고치려면 아래 「수정」 을 누르십시오.
+            {test.division_name} 수행 시험. 수정은 아래 ‘수정’ 버튼으로 가능.
           </DialogDescription>
         </DialogHeader>
 
@@ -341,7 +341,7 @@ export function ReliabilityTestViewDialog({
                             }
                             title={
                               item.equipment_count === 0
-                                ? '이 항목이 되는 장비가 이 부서에 없습니다'
+                                ? '이 부서에 이 항목 수행 가능 장비 없음'
                                 : undefined
                             }
                           >
@@ -383,7 +383,7 @@ export function ReliabilityTestViewDialog({
                             {row.label}
                             <SetTag row={row} />
                             {row.status === 'draft' && (
-                              <span title="초안 속성 — 검색·판정에는 안 쓰입니다">초안</span>
+                              <span title="초안 속성. 검색·판정에 사용되지 않음">초안</span>
                             )}
                           </dt>
                           <dd className="space-y-1">
@@ -427,8 +427,7 @@ export function ReliabilityTestViewDialog({
 
                 {grouped.length === 0 && !defs.loading && (
                   <p className="text-muted-foreground text-sm">
-                    적힌 항목이 없습니다. 시험 조건을 적어 두면 「수행 가능 장비」 가 답할 수
-                    있습니다.
+                    입력된 항목 없음. 시험 조건 입력 시 ‘수행 가능 장비’ 조회 가능.
                   </p>
                 )}
               </dl>

@@ -72,13 +72,13 @@ def list_spec_groups(db: Session) -> list[SpecGroupOut]:
 def get_spec_group(db: Session, group_id: uuid.UUID) -> SpecGroup:
     found = db.get(SpecGroup, group_id)
     if found is None:
-        raise NotFound("TSC-SPEC-0001", "사양 그룹을 찾을 수 없습니다.")
+        raise NotFound("TSC-SPEC-0001", "사양 그룹을 찾을 수 없음.")
     return found
 
 
 def create_spec_group(db: Session, *, payload: dict[str, Any]) -> SpecGroup:
     if db.scalar(select(SpecGroup).where(SpecGroup.slug == payload["slug"])) is not None:
-        raise Conflict("TSC-SPEC-0002", f"이미 있는 그룹 키입니다: {payload['slug']}")
+        raise Conflict("TSC-SPEC-0002", f"이미 있는 그룹 키: {payload['slug']}")
     row = SpecGroup(**payload)
     db.add(row)
     db.commit()
@@ -107,7 +107,7 @@ def delete_spec_group(db: Session, group_id: uuid.UUID) -> None:
     if using:
         raise Conflict(
             "TSC-SPEC-0003",
-            f"이 그룹에 사양이 {using}개 있습니다. 먼저 다른 그룹으로 옮기십시오.",
+            f"이 그룹에 사양 {using}개 있음. 먼저 다른 그룹으로 이동 필요.",
         )
     db.delete(row)
     db.commit()
@@ -222,7 +222,7 @@ def list_spec_definitions(
 def get_spec_definition(db: Session, definition_id: uuid.UUID) -> SpecDefinition:
     found = db.get(SpecDefinition, definition_id)
     if found is None:
-        raise NotFound("TSC-SPEC-0004", "사양 정의를 찾을 수 없습니다.")
+        raise NotFound("TSC-SPEC-0004", "사양 정의를 찾을 수 없음.")
     return found
 
 
@@ -238,9 +238,7 @@ def _set_definition_categories(
     for term_id in term_ids:
         term = db.get(VocabularyTerm, term_id)
         if term is None or term.vocabulary_id != axis.id:
-            raise AppError(
-                "TSC-SPEC-0005", "장비 분류 축의 값만 고를 수 있습니다.", status=400
-            )
+            raise AppError("TSC-SPEC-0005", "장비 분류 축의 값만 선택 가능.", status=400)
 
     for old in db.scalars(
         select(SpecDefinitionCategory).where(
@@ -258,7 +256,7 @@ def create_spec_definition(db: Session, *, payload: dict[str, Any]) -> SpecDefin
         db.scalar(select(SpecDefinition).where(SpecDefinition.key == payload["key"]))
         is not None
     ):
-        raise Conflict("TSC-SPEC-0006", f"이미 있는 사양 키입니다: {payload['key']}")
+        raise Conflict("TSC-SPEC-0006", f"이미 있는 사양 키: {payload['key']}")
     get_spec_group(db, payload["group_id"])
 
     term_ids: list[uuid.UUID] = payload.pop("category_term_ids", [])
@@ -296,7 +294,7 @@ def update_spec_definition(
     )
     stored = _stored_numbers(db, row.id)
     mode = unit_change.decide(
-        what=f"사양 「{row.label}」",
+        what=f"사양 {row.label}",
         before=unit_before,
         after=unit_after,
         counts={name: len(rows) for name, rows in stored.items()},
@@ -369,7 +367,7 @@ def delete_spec_definition(db: Session, definition_id: uuid.UUID) -> None:
     if using:
         raise Conflict(
             "TSC-SPEC-0007",
-            f"이 사양으로 적힌 값이 {using}개 있습니다. 지우는 대신 끄십시오.",
+            f"이 사양으로 적힌 값 {using}개 있음. 삭제 대신 비활성화 필요.",
         )
     db.delete(row)
     db.commit()

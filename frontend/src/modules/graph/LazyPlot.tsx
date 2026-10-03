@@ -79,8 +79,7 @@ export function LazyPlot({
   if (failed) {
     return (
       <p className="text-muted-foreground py-8 text-center text-sm">
-        차트 도구를 불러오지 못했습니다. 새로고침해 보고, 그래도 안 되면 관리자에게 알려
-        주십시오 — 데이터가 없는 것은 아닙니다.
+        차트 도구 불러오기 실패(데이터 없음 아님). 새로고침 후에도 같으면 관리자에게 문의 필요.
       </p>
     )
   }

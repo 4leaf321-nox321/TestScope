@@ -29,8 +29,8 @@ import { VOC_STATUS_LABELS, type VocEvent, vocApi } from '@/modules/voc/api'
 
 /** 한 줄이 무슨 일이었는지 — 등록 · 상태 변경 · 댓글. */
 function what(event: VocEvent): string {
-  if (event.from_status === null) return '냈습니다'
-  if (event.from_status === event.to_status) return '말을 보탰습니다'
+  if (event.from_status === null) return '최초 등록'
+  if (event.from_status === event.to_status) return '의견 추가'
   const from = VOC_STATUS_LABELS[event.from_status] ?? event.from_status
   const to = VOC_STATUS_LABELS[event.to_status] ?? event.to_status
   return `${from} → ${to}`
@@ -82,7 +82,7 @@ export default function VocDetailPage() {
             {shown.page_path && (
               // 접수 당시 보던 화면 — 재현의 실마리다.
               <p className="text-muted-foreground text-xs">
-                낸 화면:{' '}
+                등록 화면:{' '}
                 {shown.page_path.startsWith('/') ? (
                   <Link to={shown.page_path} className="underline">
                     {shown.page_path}
@@ -115,7 +115,7 @@ export default function VocDetailPage() {
                 <li key={one.id} className="border-l-2 pl-4">
                   <p className="text-sm">
                     <strong>{one.by_name ?? '알 수 없음'}</strong>
-                    <span className="text-muted-foreground"> — {what(one)}</span>
+                    <span className="text-muted-foreground"> · {what(one)}</span>
                     <span className="text-muted-foreground ml-2 text-xs">
                       {shownDate(one.at)}
                     </span>
@@ -131,7 +131,7 @@ export default function VocDetailPage() {
               value={note}
               onChange={(event) => setNote(event.target.value)}
               rows={3}
-              placeholder="무엇을 했는지(또는 무엇이 여전히 안 되는지) 적어 주십시오."
+              placeholder="조치 내용(또는 여전히 안 되는 내용) 입력"
             />
             <div className="flex flex-wrap gap-2">
               {/* **같은 상태로 보내는 것이 댓글이다.** 누구나 할 수 있다. */}
@@ -141,7 +141,7 @@ export default function VocDetailPage() {
                 disabled={busy || !note.trim()}
                 onClick={() => move(shown.status)}
               >
-                말 보태기
+                의견 추가
               </Button>
               {shown.can_move.map((to) => (
                 <Button
@@ -152,7 +152,7 @@ export default function VocDetailPage() {
                   // 「단추가 죽었다」 로 읽힌다.
                   title={
                     needsNote(to) && !note.trim()
-                      ? '이 단추는 무엇을 했는지(또는 왜 안 하는지) 적어야 눌립니다'
+                      ? '조치 내용(또는 조치하지 않는 이유) 입력 후 사용 가능'
                       : undefined
                   }
                   onClick={() => move(to)}
@@ -164,14 +164,13 @@ export default function VocDetailPage() {
             </div>
             {shown.can_move.length === 0 && (
               <p className="text-muted-foreground text-xs">
-                상태를 옮기는 것은 <strong>낸 사람과 관리자</strong>입니다. 말은 누구나 보탤 수
-                있습니다.
+                상태 변경은 <strong>등록자와 관리자</strong>만 가능. 의견 추가는 누구나 가능.
               </p>
             )}
             {shown.note_required.length > 0 && (
               <p className="text-muted-foreground text-xs">
-                <strong>*</strong> 표시된 단추는 말을 적어야 눌립니다 — 「해결」 만 찍힌 건은
-                무엇이 바뀌었는지 아무도 모릅니다.
+                <strong>*</strong> 표시 버튼은 내용 입력 필요. 내용 없이 ‘해결’만 기록되면 변경
+                사항 확인 불가.
               </p>
             )}
           </section>

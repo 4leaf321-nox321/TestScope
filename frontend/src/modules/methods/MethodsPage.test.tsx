@@ -102,7 +102,7 @@ describe('시험법 목록', () => {
     await open('/methods')
     // 「0」 만 보면 카탈로그에 없는 것으로 읽힌다 — 미정 3 이 있으면 끊긴 연결이다.
     expect(screen.getByText('(미정 3)')).toBeTruthy()
-    expect(screen.getByText('안 정해짐')).toBeTruthy()
+    expect(screen.getByText('미지정')).toBeTruthy()
   })
 })
 
@@ -116,7 +116,7 @@ describe('시험법 상세', () => {
 
   it('시험 항목을 정하는 자리가 있고, 고르기 전에는 못 누른다', async () => {
     await open('/methods/m1')
-    expect(screen.getByText('이 규격이 어느 시험의 것인지 정해 주십시오.')).toBeTruthy()
+    expect(screen.getByText('이 규격의 시험 항목 지정 필요.')).toBeTruthy()
     const button = screen.getByText('적용 규격으로 지정')
     // 고르기 전에는 못 누른다.
     expect((button as HTMLButtonElement).disabled).toBe(true)

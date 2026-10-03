@@ -64,15 +64,15 @@ export function AttachmentsDialog({
     <Dialog open={open} onOpenChange={(next) => !next && onClose()}>
       <DialogContent className="max-h-[85vh] overflow-y-auto sm:max-w-3xl">
         <DialogHeader>
-          <DialogTitle>{title} — 이미지</DialogTitle>
+          <DialogTitle>{title}: 이미지</DialogTitle>
           <DialogDescription>
-            연결된 항목별로 묶었습니다. 첨부와 삭제는 등록·수정 창에서 합니다.
+            연결된 항목별로 묶어 표시. 첨부·삭제는 등록·수정 창에서 가능.
           </DialogDescription>
         </DialogHeader>
 
         <ErrorNotice error={shots.error} />
         {groups.length === 0 && !shots.loading && (
-          <p className="text-muted-foreground text-sm">첨부된 이미지가 없습니다.</p>
+          <p className="text-muted-foreground text-sm">첨부된 이미지 없음.</p>
         )}
         <div className="space-y-4">
           {groups.map((group) => (

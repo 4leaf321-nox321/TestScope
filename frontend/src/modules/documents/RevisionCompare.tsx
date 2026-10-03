@@ -41,7 +41,7 @@ export function RevisionCompare({ revisions }: { revisions: SpecDocumentRevision
 
   return (
     <section className="space-y-2">
-      <h3 className="text-sm font-medium">판 견주기</h3>
+      <h3 className="text-sm font-medium">판 비교</h3>
       <div className="flex flex-wrap items-center gap-2">
         <Picker value={before} onChange={setBefore} rows={revisions} label="앞 판" />
         <span className="text-muted-foreground text-sm">→</span>
@@ -59,15 +59,15 @@ export function RevisionCompare({ revisions }: { revisions: SpecDocumentRevision
             {body.before.label}({body.before.test_count}건) → {body.after.label}(
             {body.after.test_count}건) · 그대로 {body.unchanged_count}건
           </p>
-          <Group title="더해진 시험" rows={body.added.map((one) => one.name)} />
+          <Group title="추가된 시험" rows={body.added.map((one) => one.name)} />
           <Group
-            title="없어진 시험"
+            title="제외된 시험"
             rows={body.removed.map((one) => one.name)}
-            hint="앞 판의 줄은 그대로 남습니다 — 뒤 판에 없다는 뜻입니다."
+            hint="앞 판의 항목은 그대로 유지. 뒤 판에 없다는 의미."
           />
           {body.changed.length > 0 && (
             <div className="space-y-1">
-              <p className="font-medium">조건이 바뀐 시험 {body.changed.length}건</p>
+              <p className="font-medium">조건이 변경된 시험 {body.changed.length}건</p>
               <ul className="space-y-1">
                 {body.changed.map((one) => (
                   <li key={one.after_id} className="rounded-md border p-2">
@@ -75,7 +75,7 @@ export function RevisionCompare({ revisions }: { revisions: SpecDocumentRevision
                     <ul className="text-muted-foreground space-y-0.5 text-xs">
                       {one.differences.map((row) => (
                         <li key={row.at}>
-                          {row.at} — {row.before ?? '(없음)'} → {row.after ?? '(없음)'}
+                          {row.at}: {row.before ?? '(없음)'} → {row.after ?? '(없음)'}
                         </li>
                       ))}
                     </ul>
@@ -88,9 +88,7 @@ export function RevisionCompare({ revisions }: { revisions: SpecDocumentRevision
             body.removed.length === 0 &&
             body.changed.length === 0 && (
               // **0 은 「안 봤다」 가 아니라 「볼 것이 없다」 다.** 그 둘을 구별해 말한다.
-              <p className="text-muted-foreground">
-                두 판의 시험이 같습니다 — 다시 볼 것이 없습니다.
-              </p>
+              <p className="text-muted-foreground">두 판의 시험 동일. 재검토 대상 없음.</p>
             )}
         </div>
       )}

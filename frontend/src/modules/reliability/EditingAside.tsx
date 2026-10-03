@@ -92,7 +92,7 @@ function Capable({
   if (termIds.length === 0) {
     return (
       <p className="text-muted-foreground text-xs">
-        적용 시험 항목을 고르면 「이 조건으로 돌릴 수 있는 장비」 를 여기서 셀 수 있습니다.
+        적용 시험 항목 선택 시 이 조건으로 수행 가능한 장비 수 확인 가능.
       </p>
     )
   }
@@ -100,7 +100,7 @@ function Capable({
   return (
     <section className="space-y-1">
       <div className="flex flex-wrap items-center gap-2">
-        <h3 className="text-sm font-medium">이 조건으로 돌릴 수 있는 장비</h3>
+        <h3 className="text-sm font-medium">이 조건으로 수행 가능한 장비</h3>
         <Button type="button" size="sm" variant="outline" disabled={busy} onClick={ask}>
           {answer ? '다시 세기' : '세어 보기'}
         </Button>
@@ -109,12 +109,10 @@ function Capable({
       {answer && (
         <div className="space-y-0.5 text-sm">
           {stale && (
-            <p className="text-xs text-amber-700">
-              조건이 바뀌었습니다 — 아래는 바뀌기 전 기준입니다.
-            </p>
+            <p className="text-xs text-amber-700">조건 변경됨. 아래는 변경 전 기준.</p>
           )}
           <p className="text-muted-foreground text-xs">
-            조건 {answer.conditions_asked}개로 물었습니다.
+            조건 {answer.conditions_asked}개로 조회.
           </p>
           <ul>
             {answer.items.map((one) => (
@@ -126,7 +124,7 @@ function Capable({
                 {one.unmet_count > 0 && (
                   <span className="text-muted-foreground text-xs">
                     {' '}
-                    · 조건이 안 맞아 빠진 장비 {one.unmet_count}대
+                    · 조건 불충족으로 제외된 장비 {one.unmet_count}대
                   </span>
                 )}
               </li>
@@ -135,7 +133,7 @@ function Capable({
           {answer.skipped.length > 0 && (
             // **조용히 빼지 않는다** — 뺀 줄 모르면 조건을 다 본 것처럼 읽힌다.
             <p className="text-xs text-amber-700">
-              물음에서 뺀 조건 {answer.skipped.length}개(단위를 못 바꿨습니다).
+              조회에서 제외된 조건 {answer.skipped.length}개(단위 변환 불가).
             </p>
           )}
         </div>
@@ -183,7 +181,7 @@ function Siblings({
       </ul>
       {/* **적용군이나 규격서를 적어 갈라야** 같은 이름이 들어간다. */}
       <p className="text-muted-foreground text-xs">
-        같은 이름이라도 적용군이나 규격서가 다르면 별개의 시험입니다 — 그 칸을 적어 가르십시오.
+        같은 이름이라도 적용군이나 규격서가 다르면 별개의 시험. 해당 칸 입력으로 구분 필요.
       </p>
     </section>
   )
@@ -196,7 +194,7 @@ function Paper({ documentId }: { documentId: string }) {
   if (!row) return null
   return (
     <section className="space-y-0.5">
-      <h3 className="text-sm font-medium">고른 규격서</h3>
+      <h3 className="text-sm font-medium">선택한 규격서</h3>
       <p className="text-sm">
         {[row.code, row.title].filter(Boolean).join(' ')}
         {row.revision && (
@@ -204,11 +202,10 @@ function Paper({ documentId }: { documentId: string }) {
         )}
       </p>
       <p className="text-muted-foreground text-xs">
-        {row.pages ? `본 자리 ${row.pages}` : '본 자리가 안 적혀 있습니다'} · 파일{' '}
-        {row.file_count}개
+        {row.pages ? `본 자리 ${row.pages}` : '본 자리 미기재'} · 파일 {row.file_count}개
         {row.is_excerpt && (
           // **전문을 안 본 채 옮긴 것은 그렇게 보여야 한다.**
-          <span className="ml-1 font-medium text-amber-700">발췌 — 전문이 아닙니다</span>
+          <span className="ml-1 font-medium text-amber-700">발췌(전문 아님)</span>
         )}
       </p>
       {row.source_path && (

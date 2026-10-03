@@ -339,7 +339,7 @@ describe('물성으로 검색', () => {
       body: { property_term_id: 'p1', test_item_term_id: null },
     })
     // 무엇으로 펼쳤는지 화면이 말한다 — 0 건일 때 「연결이 없다」 와 「장비가 없다」 를 가른다.
-    expect(screen.getByText(/으로 펼쳐/)).toBeTruthy()
+    expect(screen.getByText(/시험 항목으로 펼쳐 검색/)).toBeTruthy()
   })
 })
 
@@ -365,7 +365,7 @@ describe('카탈로그에서 찾기', () => {
     // 그리고 이미 갖고 있는지까지 한 줄에 있어야 한다.
     const offer = screen.getByRole('link', { name: '3119-608' })
     expect(offer.getAttribute('href')).toBe('/catalog/equipment-models/m9')
-    expect(screen.getByText(/-150 degC ~ 600 degC — 달면 됩니다/)).toBeTruthy()
+    expect(screen.getByText(/-150 degC ~ 600 degC: 장착 시 가능/)).toBeTruthy()
     expect(screen.getByText('· 보유 1대')).toBeTruthy()
   })
 })
@@ -375,10 +375,8 @@ describe('왜 모르는지, 왜 없는지', () => {
     await open()
     await act(async () => chip('인장').click())
     await act(async () => chip('검색').click())
-    expect(screen.getByText('이 시험을 하는 장비가 등록된 적이 없습니다')).toBeTruthy()
-    expect(screen.getByText(/카탈로그에는 이 시험을 하는 계열이/).textContent).toContain(
-      '12개',
-    )
+    expect(screen.getByText('이 시험을 하는 등록 장비 없음')).toBeTruthy()
+    expect(screen.getByText(/카탈로그에는 이 시험을 하는 계열/).textContent).toContain('12개')
     expect(screen.getByRole('link', { name: '기종 연결' }).getAttribute('href')).toBe(
       '/equipment?catalog=unlinked',
     )
@@ -391,7 +389,7 @@ describe('왜 모르는지, 왜 없는지', () => {
     await open()
     await act(async () => chip('압축').click())
     await act(async () => chip('검색').click())
-    expect(screen.getByText(/상한이 없어 「이상」 을 판정할 수 없습니다/)).toBeTruthy()
+    expect(screen.getByText(/상한이 없어 ‘이상’ 판정 불가/)).toBeTruthy()
     expect(screen.getByRole('link', { name: '값 입력' }).getAttribute('href')).toBe(
       '/equipment/q1',
     )

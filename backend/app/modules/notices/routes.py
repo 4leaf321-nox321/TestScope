@@ -104,7 +104,7 @@ def create_notice(
 def _get(db: Session, notice_id: uuid.UUID) -> Notice:
     notice = db.get(Notice, notice_id)
     if notice is None:
-        raise NotFound("TSC-NOTICES-0001", "공지를 찾을 수 없습니다.")
+        raise NotFound("TSC-NOTICES-0001", "공지를 찾을 수 없음.")
     return notice
 
 
@@ -143,7 +143,7 @@ def publish_notice(
     """
     notice = _get(db, notice_id)
     if notice.published_at is not None:
-        raise Conflict("TSC-NOTICES-0002", "이미 게시된 공지입니다.")
+        raise Conflict("TSC-NOTICES-0002", "이미 게시된 공지.")
     notice.published_at = datetime.now(UTC)
     db.commit()
     db.refresh(notice)
@@ -158,7 +158,7 @@ def mark_read(
 ) -> NoticeOut:
     notice = db.get(Notice, notice_id)
     if notice is None:
-        raise NotFound("TSC-NOTICES-0001", "공지를 찾을 수 없습니다.")
+        raise NotFound("TSC-NOTICES-0001", "공지를 찾을 수 없음.")
     existing = db.scalar(
         select(NoticeRead).where(
             NoticeRead.notice_id == notice.id, NoticeRead.user_id == user.id
@@ -178,6 +178,6 @@ def delete_notice(
 ) -> None:
     notice = db.get(Notice, notice_id)
     if notice is None:
-        raise NotFound("TSC-NOTICES-0001", "공지를 찾을 수 없습니다.")
+        raise NotFound("TSC-NOTICES-0001", "공지를 찾을 수 없음.")
     db.delete(notice)
     db.commit()

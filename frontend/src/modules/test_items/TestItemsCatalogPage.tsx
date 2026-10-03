@@ -101,7 +101,7 @@ export default function TestItemsCatalogPage() {
       <PageHeader
         back={useBackFromReference()}
         title="시험 항목"
-        description="어떤 시험이 어떤 물성을 내고, 어떤 규격을 따르고, 어떤 계열이 하고, 우리가 몇 대 가졌나 — 한 줄에. 0 이 곧 공백입니다."
+        description="시험 항목별 측정 물성, 적용 규격, 수행 가능 계열, 보유 대수를 한 줄에 표시. 0은 공백을 의미."
         actions={<NewTermButton slug="test_item" onCreated={() => rows.reload()} />}
       />
 
@@ -146,12 +146,8 @@ export default function TestItemsCatalogPage() {
 
       {rows.data && shown.length === 0 ? (
         <EmptyState
-          title="조건에 맞는 시험 항목이 없습니다"
-          hint={
-            gap
-              ? '이 공백은 다 채워졌습니다 — 필터를 해제해 보십시오.'
-              : '검색어를 바꿔 보십시오.'
-          }
+          title="조건에 맞는 시험 항목 없음"
+          hint={gap ? '이 공백은 모두 채워짐. 필터 해제 후 확인.' : '다른 검색어로 검색.'}
         />
       ) : (
         <Table>

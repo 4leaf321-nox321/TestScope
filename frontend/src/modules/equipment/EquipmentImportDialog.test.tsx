@@ -374,7 +374,7 @@ describe('없는 거점·분류 만들기', () => {
     await paste()
     // 「온톨로지에서 먼저 만드세요」 하고 멈추면 창을 닫고 나갔다 와야 하고,
     // 그 사이 표에서 고치던 것을 잃는다.
-    expect(screen.getByRole('button', { name: /거점 「3공장」 만들기/ })).toBeTruthy()
+    expect(screen.getByRole('button', { name: /거점 ‘3공장’ 만들기/ })).toBeTruthy()
   })
 
   it('누르면 축에 값을 만들고 다시 판정받는다', async () => {
@@ -496,7 +496,7 @@ describe('엑셀로 되가져가기', () => {
       copyButton().click()
     })
     // 말해 주지 않으면 눌렀는지도 모른다.
-    expect(copyButton().textContent).toMatch(/1줄 복사했습니다/)
+    expect(copyButton().textContent).toMatch(/1줄 복사 완료/)
   })
 })
 
@@ -524,7 +524,7 @@ describe('넣은 뒤', () => {
 
   /** 넣은 뒤 뜨는 알림 상자의 글자 전체. `<strong>` 이 섞여 쪼개지기 때문이다. */
   function banner(): string {
-    return screen.getByText(/처리했습니다/).closest('div')?.textContent ?? ''
+    return screen.getByText(/처리 완료/).closest('div')?.textContent ?? ''
   }
 
   async function pasteTwo() {
@@ -558,7 +558,7 @@ describe('넣은 뒤', () => {
     expect(document.querySelectorAll('tbody tr')).toHaveLength(1)
     expect(cell('자산번호').value).toBe('A-2')
     // `<strong>` 때문에 글자가 쪼개지므로 알림 상자 전체로 본다.
-    expect(banner()).toMatch(/1건.*처리했습니다/)
+    expect(banner()).toMatch(/1건.*처리 완료/)
   })
 
   it('남은 줄이 있다는 것을 말해 준다', async () => {
@@ -568,7 +568,7 @@ describe('넣은 뒤', () => {
       commitButton().click()
     })
     // 안 말하면 사람은 다 들어간 줄 안다.
-    expect(banner()).toMatch(/1줄.*표에 남아 있습니다/)
+    expect(banner()).toMatch(/1줄.*표에 남아 있음/)
   })
 
   it('다 들어가면 표를 비운다', async () => {
@@ -586,7 +586,7 @@ describe('넣은 뒤', () => {
       commitButton().click()
     })
     // 남은 것이 없으면 빈 표로 돌아간다 — 다음 대장을 붙일 자리다.
-    expect(screen.getByText(/처리했습니다/)).toBeTruthy()
+    expect(screen.getByText(/처리 완료/)).toBeTruthy()
     expect(cell('자산번호').value).toBe('')
   })
 })
@@ -755,7 +755,7 @@ describe('넣는 동안', () => {
       commitButton().click()
     })
     // **한 낱말로 뭉치면 넣는 10초 동안 화면이 거짓말한다.** 실제로 그랬다.
-    expect(screen.getByText(/넣는 중입니다/)).toBeTruthy()
+    expect(screen.getByText(/반입 중/)).toBeTruthy()
     expect(screen.queryByText('불러오는 중…')).toBeNull()
     const close = screen.getAllByRole('button').find((one) => one.textContent === '닫기')
     expect((close as HTMLButtonElement).disabled).toBe(true)
@@ -764,7 +764,7 @@ describe('넣는 동안', () => {
       release({ total: 3, ready: 3, problems: 0, created: 3, rows: [] })
       await held
     })
-    expect(screen.getByText(/처리했습니다/)).toBeTruthy()
+    expect(screen.getByText(/처리 완료/)).toBeTruthy()
   })
 
   it('오래 걸릴 것 같으면 넣기 전에 말한다', async () => {
@@ -781,6 +781,6 @@ describe('넣는 동안', () => {
     await open()
     await paste(['자산번호\t장비명', ...many.map((one) => `${one.asset_no}\t기`)].join('\n'))
     // 900대면 5초쯤. 말 안 하면 사람은 멈춘 줄 알고 창을 닫는다.
-    expect(commitButton().textContent).toMatch(/초쯤 걸립니다/)
+    expect(commitButton().textContent).toMatch(/초 소요/)
   })
 })

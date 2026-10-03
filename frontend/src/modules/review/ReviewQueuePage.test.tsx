@@ -105,7 +105,7 @@ describe('검토함 물음 화면', () => {
     expect((screen.getByLabelText(/정현·랜덤 진동/) as HTMLInputElement).checked).toBe(false)
     expect((screen.getByLabelText(/기계적 충격/) as HTMLInputElement).checked).toBe(true)
     // 의견이 하나뿐이면 그것이 다수라 미리 골라진다 — 다만 추천이 아니라 사람의 의견이다.
-    expect(screen.getByText('다수 의견으로 미리 골라 두었습니다.')).toBeTruthy()
+    expect(screen.getByText('다수 의견으로 미리 선택됨.')).toBeTruthy()
     expect(screen.getByText('이OO')).toBeTruthy()
   })
 

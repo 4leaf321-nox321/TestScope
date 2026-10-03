@@ -132,20 +132,20 @@ export default function EquipmentModelDetailPage() {
         <div>
           <h2 className="text-base font-semibold">계열의 시험 항목</h2>
           <p className="text-muted-foreground mt-1 text-sm">
-            <strong>무슨 시험이 되는지는 계열이 정합니다.</strong> 고치려면{' '}
+            <strong>가능한 시험은 계열에서 정함.</strong> 수정은{' '}
             <Link
               to={`/catalog/equipment-series/${one.series_id}`}
               className="underline underline-offset-2"
             >
               {one.series_name}
-            </Link>{' '}
-            에서 하십시오. 위 사양의 값이 조건을 좁힙니다.
+            </Link>
+            에서. 위 사양 값이 조건 범위를 좁힘.
           </p>
         </div>
         {one.test_items.length === 0 ? (
           <EmptyState
-            title="계열에 시험 항목이 없습니다"
-            hint="비워 두면 이 기종으로 장비를 등록해도 복사될 것이 없어, 매번 손으로 적게 됩니다."
+            title="계열에 시험 항목 없음"
+            hint="비워 두면 이 기종으로 장비를 등록해도 복사될 항목이 없어 매번 직접 입력해야 함."
           />
         ) : (
           <ul className="space-y-2 text-sm">
@@ -181,9 +181,7 @@ export default function EquipmentModelDetailPage() {
       <section className="space-y-3">
         <h2 className="text-base font-semibold">이 기종의 보유 장비</h2>
         {mine.length === 0 ? (
-          <p className="text-muted-foreground text-sm">
-            아직 이 기종으로 등록된 장비가 없습니다.
-          </p>
+          <p className="text-muted-foreground text-sm">이 기종으로 등록된 장비 없음.</p>
         ) : (
           <Table>
             <TableHeader>
@@ -216,8 +214,8 @@ export default function EquipmentModelDetailPage() {
         )}
         {unitsTotal > mine.length && (
           <p className="text-muted-foreground text-xs">
-            {unitsTotal}대 중 {mine.length}대만 보입니다 — 나머지는 보유 장비 목록에서 이
-            기종으로 거르십시오.
+            {unitsTotal}대 중 {mine.length}대만 표시. 나머지는 보유 장비 목록에서 이 기종으로
+            필터링하여 확인.
           </p>
         )}
       </section>

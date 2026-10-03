@@ -77,9 +77,9 @@ suite('수행 가능 장비', () => {
       </MemoryRouter>,
     )
 
-    await waitFor(() => expect(screen.getByText(/조건 2개로 물었습니다/)).toBeTruthy())
+    await waitFor(() => expect(screen.getByText(/조건 2개로 조회/)).toBeTruthy())
     // 뺀 조건은 **조용히 빠지지 않는다** — 다 본 것처럼 읽히면 「가능」 이 거짓이 된다.
-    expect(screen.getByText(/측정 주기 — 단위 「쇼어」/)).toBeTruthy()
+    expect(screen.getByText(/측정 주기: 단위 「쇼어」/)).toBeTruthy()
 
     expect(screen.getByText('광역 챔버')).toBeTruthy()
     expect(screen.getByText('신뢰성팀')).toBeTruthy()
@@ -87,7 +87,7 @@ suite('수행 가능 장비', () => {
     expect(screen.getByText('박용진')).toBeTruthy()
     expect(screen.getByText('가능')).toBeTruthy()
     expect(screen.getByText(/온도 125 degC 이상/)).toBeTruthy()
-    expect(screen.getByText(/조건이 안 맞아 빠진 장비 2대/)).toBeTruthy()
+    expect(screen.getByText(/조건 불충족으로 제외된 장비 2대/)).toBeTruthy()
   })
 
   it('0대의 이유를 가른다 — 조건이 안 맞는 것과 적힌 장비가 없는 것', async () => {
@@ -98,7 +98,7 @@ suite('수행 가능 장비', () => {
     )
 
     await waitFor(() => expect(screen.getByText('경도')).toBeTruthy())
-    expect(screen.getByText(/이 조건을 못 맞춥니다/)).toBeTruthy()
-    expect(screen.getByText(/이 시험 항목이 적힌 장비가 없습니다/)).toBeTruthy()
+    expect(screen.getByText(/이 항목 수행 장비는 있으나 조건 불충족/)).toBeTruthy()
+    expect(screen.getByText(/이 시험 항목이 등록된 장비 없음/)).toBeTruthy()
   })
 })

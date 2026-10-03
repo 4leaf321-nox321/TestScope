@@ -46,7 +46,7 @@ describe('카탈로그 원문', () => {
   it('사양이 비면 펼친 채로 열리고, 채우라고 말한다', () => {
     const { container } = render(<RawSpecs raw={materialtwin} empty />)
     expect(container.querySelector('details')?.open).toBe(true)
-    expect(screen.getByText(/사양이 하나도 안 적혀 있습니다/)).toBeTruthy()
+    expect(screen.getByText(/입력된 사양 없음/)).toBeTruthy()
   })
 
   it('사양이 있으면 접어 둔다 — 본문은 위 사양표다', () => {

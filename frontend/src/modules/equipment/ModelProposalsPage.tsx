@@ -63,15 +63,15 @@ export default function ModelProposalsPage() {
     <div className="space-y-6">
       <PageHeader
         title="기종 등록 요청"
-        description="장비를 등록하면서 카탈로그에서 못 찾은 기종입니다. 계열을 고르고 세우면, 그 기종을 요청한 장비 전부가 한 번에 이어집니다."
+        description="장비 등록 중 카탈로그에서 찾지 못한 기종. 계열 선택 후 등록하면 해당 기종을 요청한 장비 전부에 한 번에 연결됨."
       />
 
       <ErrorNotice error={error ?? groups.error ?? series.error} />
 
       {groups.data && rows.length === 0 ? (
         <EmptyState
-          title="검토할 요청이 없습니다"
-          hint="장비를 등록하면서 카탈로그에 없는 기종을 만나면 여기에 쌓입니다."
+          title="검토할 요청 없음"
+          hint="장비 등록 중 카탈로그에 없는 기종을 만나면 여기에 쌓임."
         />
       ) : (
         <ul className="space-y-3">
@@ -80,7 +80,7 @@ export default function ModelProposalsPage() {
               <div className="flex flex-wrap items-baseline gap-2">
                 <span className="text-base font-medium">{group.text}</span>
                 <span className="text-muted-foreground text-sm">
-                  장비 {group.count}대가 요청했습니다
+                  장비 {group.count}대 요청
                 </span>
               </div>
 
@@ -88,7 +88,7 @@ export default function ModelProposalsPage() {
                 {group.proposals.map((one) => (
                   <li key={one.id}>
                     {one.equipment_asset_no} {one.equipment_name}
-                    {one.text !== group.text && ` — 「${one.text}」 로 적힘`}
+                    {one.text !== group.text && ` · 표기: ${one.text}`}
                     {one.note && ` · ${one.note}`}
                   </li>
                 ))}
@@ -103,7 +103,7 @@ export default function ModelProposalsPage() {
                   onChange={(id) =>
                     setPicked((before) => ({ ...before, [group.normalized]: id }))
                   }
-                  placeholder="어느 계열에"
+                  placeholder="계열 선택"
                   detailTitle="장비 계열"
                   className="w-64"
                 />
@@ -144,8 +144,8 @@ export default function ModelProposalsPage() {
                   계열 이름을 섞지 않는다: 섞으면 `6800 68FM-300` 과 `68FM-300` 이 별개
                   기종으로 갈리고, 그 둘을 나중에 묶을 방법이 없다. */}
               <p className="text-muted-foreground text-xs">
-                기종 이름은 고칠 수 있습니다 — <strong>계열 이름을 섞지 마십시오.</strong>{' '}
-                「아니오」 는 요청을 닫고 장비는 미연결로 둡니다(자작 장비 등).
+                기종 이름 수정 가능. <strong>계열 이름 포함 금지.</strong> ‘아니오’는 요청을
+                닫고 장비를 미연결로 둠(자작 장비 등).
               </p>
             </li>
           ))}

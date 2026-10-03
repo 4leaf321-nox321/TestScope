@@ -27,18 +27,18 @@ logger = logging.getLogger(__name__)
 #: 스키마 검증 실패 종류 -> 사람이 읽는 말.
 #: pydantic 의 영어 메시지를 그대로 내보내면 화면에서 아무도 안 읽는다.
 _VALIDATION_MESSAGES = {
-    "missing": "값이 빠졌습니다",
-    "string_too_short": "값이 필요합니다",
-    "string_too_long": "너무 깁니다",
-    "string_pattern_mismatch": "쓸 수 없는 문자가 있습니다",
-    "int_parsing": "정수여야 합니다",
-    "float_parsing": "숫자여야 합니다",
-    "bool_parsing": "예/아니오 값이어야 합니다",
-    "value_error": "값이 올바르지 않습니다",
-    "greater_than_equal": "너무 작습니다",
-    "too_long": "너무 많습니다",
-    "too_short": "개수가 모자랍니다",
-    "less_than_equal": "너무 큽니다",
+    "missing": "값 누락",
+    "string_too_short": "값 필요",
+    "string_too_long": "길이 초과",
+    "string_pattern_mismatch": "사용할 수 없는 문자 포함",
+    "int_parsing": "정수여야 함",
+    "float_parsing": "숫자여야 함",
+    "bool_parsing": "예/아니오 값이어야 함",
+    "value_error": "값이 올바르지 않음",
+    "greater_than_equal": "값이 너무 작음",
+    "too_long": "개수 초과",
+    "too_short": "개수 부족",
+    "less_than_equal": "값이 너무 큼",
 }
 
 #: 한 번에 보여 줄 항목 수. 다 늘어놓으면 첫 줄부터 안 읽는다.
@@ -53,7 +53,7 @@ def describe_validation(errors: Sequence[Any]) -> str:
     하나**다.
     """
     if not errors:
-        return "요청 형식이 올바르지 않습니다."
+        return "요청 형식이 올바르지 않음."
 
     parts: list[str] = []
     for error in errors[:_MAX_VALIDATION_ITEMS]:
@@ -83,7 +83,7 @@ def describe_validation(errors: Sequence[Any]) -> str:
         if limit is not None and kind in ("too_long", "too_short"):
             reason = f"{reason} (최대 {limit}개)"
         label = where or "요청"
-        parts.append(f"{label} — {reason}")
+        parts.append(f"{label}: {reason}")
 
     more = len(errors) - len(parts)
     summary = " / ".join(parts)
@@ -164,7 +164,7 @@ def _body(code: str, message: str, details: dict[str, Any] | None = None) -> dic
 #: 405 가 나온다.** 이 문구를 보는 사람은 대개 "서버에 그 기능이 아직 없다" 를
 #: 겪는 중이다 — 그것을 말해 준다.
 _HTTP_MESSAGES = {
-    405: "이 주소는 그 방식의 요청을 받지 않습니다. 서버가 옛 버전일 수 있습니다.",
+    405: "이 주소에서 지원하지 않는 요청 방식. 서버가 이전 버전일 수 있음.",
 }
 
 
@@ -211,7 +211,7 @@ def register_error_handlers(app: FastAPI) -> None:
         어떤 메서드가 되는지 알 방법이 없어진다.
         """
         detail = exc.detail if isinstance(exc.detail, str) and exc.detail else ""
-        message = _HTTP_MESSAGES.get(exc.status_code) or detail or "요청을 처리할 수 없습니다."
+        message = _HTTP_MESSAGES.get(exc.status_code) or detail or "요청을 처리할 수 없음."
         log = logger.warning if exc.status_code < 500 else logger.error
         log("%s %s -> %s http: %s", request.method, request.url.path, exc.status_code, message)
         return JSONResponse(
@@ -229,6 +229,6 @@ def register_error_handlers(app: FastAPI) -> None:
             status_code=500,
             content=_body(
                 "TSC-COMMON-0500",
-                "서버 오류가 발생했습니다. 요청 ID를 관리자에게 알려주십시오.",
+                "서버 오류 발생. 요청 ID를 관리자에게 전달 필요.",
             ),
         )

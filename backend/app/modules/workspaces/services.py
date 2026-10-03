@@ -215,7 +215,7 @@ def create(
     division_code: str | None = None,
 ) -> Workspace:
     if db.scalar(select(Workspace).where(Workspace.slug == slug)) is not None:
-        raise Conflict("TSC-WORKSPACES-0004", f"이미 있는 부서 주소입니다: {slug}")
+        raise Conflict("TSC-WORKSPACES-0004", f"이미 있는 부서 주소: {slug}")
 
     parent = workspace_by_slug(db, parent_slug) if parent_slug else None
     # 형제 끝에 붙인다. 순서는 사람이 나중에 바꾼다.
@@ -287,7 +287,7 @@ def move(db: Session, *, slug: str, parent_slug: str | None) -> Workspace:
         if parent.id in _descendant_ids(db, workspace.id):
             raise AppError(
                 "TSC-WORKSPACES-0005",
-                "자기 자신이나 하위 부서 아래로는 옮길 수 없습니다.",
+                "자기 자신 또는 하위 부서 아래로 이동 불가.",
                 status=400,
             )
         workspace.parent_id = parent.id
@@ -344,7 +344,7 @@ def apply_tree(db: Session, *, items: list[dict[str, Any]], actor: User) -> list
             if walker == workspace.id:
                 raise AppError(
                     "TSC-WORKSPACES-0005",
-                    "자기 자신이나 하위 부서 아래로는 옮길 수 없습니다.",
+                    "자기 자신 또는 하위 부서 아래로 이동 불가.",
                     status=400,
                 )
             seen.add(walker)
@@ -609,7 +609,7 @@ def _check_target(source: Workspace, target: Workspace) -> None:
     if target.id == source.id:
         raise AppError(
             "TSC-WORKSPACES-0007",
-            "같은 부서로는 옮길 수 없습니다.",
+            "같은 부서로 이관 불가.",
             status=400,
         )
 
@@ -690,7 +690,7 @@ def delete(db: Session, *, slug: str, actor: User, reassign_to: str | None = Non
             )
             raise Conflict(
                 "TSC-WORKSPACES-0008",
-                f"옮기면 이름이 겹칩니다({detail}). 먼저 한쪽을 고치십시오.",
+                f"이관 시 이름 중복({detail}). 먼저 한쪽 수정 필요.",
                 details={"clashes": [one.model_dump() for one in clashes]},
             )
         moved = _reassign(db, source=workspace, target=target)
@@ -709,8 +709,7 @@ def delete(db: Session, *, slug: str, actor: User, reassign_to: str | None = Non
             detail = ", ".join(f"{one.label} {one.count}건" for one in blocking)
             raise Conflict(
                 "TSC-WORKSPACES-0006",
-                f"이 부서를 가리키는 것이 남아 있습니다({detail}). "
-                "먼저 옮기거나 정리하십시오.",
+                f"이 부서를 참조하는 항목이 남아 있음({detail}). 먼저 이관 또는 정리 필요.",
             )
     audit.record(
         db,
@@ -750,7 +749,7 @@ def members(db: Session, *, workspace: Workspace) -> list[MemberOut]:
 def _member_out(db: Session, member: WorkspaceMember) -> MemberOut:
     user = db.get(User, member.user_id)
     if user is None:  # pragma: no cover - FK 가 막는다
-        raise NotFound("TSC-WORKSPACES-0007", "계정을 찾을 수 없습니다.")
+        raise NotFound("TSC-WORKSPACES-0007", "계정을 찾을 수 없음.")
     return MemberOut(
         user_id=user.id,
         email=user.email,
@@ -763,15 +762,15 @@ def _member_out(db: Session, member: WorkspaceMember) -> MemberOut:
 
 def add_member(db: Session, *, workspace: Workspace, email: str, role: str) -> MemberOut:
     if role not in ROLES:
-        raise AppError("TSC-WORKSPACES-0008", f"모르는 역할입니다: {role}", status=400)
+        raise AppError("TSC-WORKSPACES-0008", f"알 수 없는 역할: {role}", status=400)
 
     user = db.scalar(select(User).where(User.email == email.strip().lower()))
     if user is None:
-        raise NotFound("TSC-WORKSPACES-0009", f"그 아이디의 계정이 없습니다: {email}")
+        raise NotFound("TSC-WORKSPACES-0009", f"해당 아이디의 계정 없음: {email}")
 
     existing = membership_of(db, workspace_id=workspace.id, user_id=user.id)
     if existing is not None:
-        raise Conflict("TSC-WORKSPACES-0010", "이미 이 부서의 멤버입니다.")
+        raise Conflict("TSC-WORKSPACES-0010", "이미 이 부서의 멤버임.")
 
     member = WorkspaceMember(workspace_id=workspace.id, user_id=user.id, role=role)
     db.add(member)
@@ -782,11 +781,11 @@ def add_member(db: Session, *, workspace: Workspace, email: str, role: str) -> M
 
 def set_role(db: Session, *, workspace: Workspace, user_id: uuid.UUID, role: str) -> MemberOut:
     if role not in ROLES:
-        raise AppError("TSC-WORKSPACES-0008", f"모르는 역할입니다: {role}", status=400)
+        raise AppError("TSC-WORKSPACES-0008", f"알 수 없는 역할: {role}", status=400)
 
     member = membership_of(db, workspace_id=workspace.id, user_id=user_id)
     if member is None:
-        raise NotFound("TSC-WORKSPACES-0011", "이 부서의 멤버가 아닙니다.")
+        raise NotFound("TSC-WORKSPACES-0011", "이 부서의 멤버가 아님.")
 
     # **마지막 관리자를 강등하지 않는다.** 그러면 그 부서는 아무도 못 고치는
     # 상태가 되고, 복구는 시스템 관리자를 찾아가는 길밖에 없다.
@@ -797,7 +796,7 @@ def set_role(db: Session, *, workspace: Workspace, user_id: uuid.UUID, role: str
     ):
         raise Conflict(
             "TSC-WORKSPACES-0012",
-            "부서의 마지막 관리자입니다. 다른 사람을 관리자로 올린 뒤에 바꾸십시오.",
+            "부서의 마지막 관리자. 다른 사람을 관리자로 지정한 뒤 변경 가능.",
         )
 
     member.role = role
@@ -823,11 +822,11 @@ def _manager_count(db: Session, workspace_id: uuid.UUID) -> int:
 def remove_member(db: Session, *, workspace: Workspace, user_id: uuid.UUID) -> None:
     member = membership_of(db, workspace_id=workspace.id, user_id=user_id)
     if member is None:
-        raise NotFound("TSC-WORKSPACES-0011", "이 부서의 멤버가 아닙니다.")
+        raise NotFound("TSC-WORKSPACES-0011", "이 부서의 멤버가 아님.")
     if member.role == "manager" and _manager_count(db, workspace.id) <= 1:
         raise Conflict(
             "TSC-WORKSPACES-0012",
-            "부서의 마지막 관리자입니다. 다른 사람을 관리자로 올린 뒤에 빼십시오.",
+            "부서의 마지막 관리자. 다른 사람을 관리자로 지정한 뒤 제외 가능.",
         )
     db.delete(member)
     db.commit()

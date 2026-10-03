@@ -101,7 +101,7 @@ def _delimiter(first: str) -> str:
 
 def _header_map(fields: Sequence[str] | None) -> dict[str, str]:
     if not fields:
-        raise AppError("TSC-IMPORT-0002", "머리글 줄이 없습니다.", status=400)
+        raise AppError("TSC-IMPORT-0002", "머리글 줄 없음.", status=400)
     known: dict[str, str] = {}
     for field, names in COLUMNS.items():
         for name in names:
@@ -115,8 +115,8 @@ def _header_map(fields: Sequence[str] | None) -> dict[str, str]:
     if missing:
         raise AppError(
             "TSC-IMPORT-0003",
-            f"머리글에 다음 열이 없습니다: {' · '.join(missing)}. "
-            f"엑셀에서 **머리글 줄까지 함께** 복사했는지 보십시오.",
+            f"머리글에 없는 열: {' · '.join(missing)}. "
+            f"엑셀에서 머리글 줄까지 함께 복사했는지 확인 필요.",
             status=400,
             details={"missing": missing},
         )
@@ -153,12 +153,12 @@ def _number(raw: str, unit: str, field: str, picked: _Picked) -> float | None:
         return None
     match = _NUMBER.match(text)
     if match is None:
-        picked.problems.append(f"{COLUMNS[field][0]}: 숫자가 아닙니다 ({text})")
+        picked.problems.append(f"{COLUMNS[field][0]}: 숫자가 아님({text})")
         return None
     rest = text[match.end() :].strip()
     if rest and _unit_key(rest) != _unit_key(unit):
         picked.problems.append(
-            f"{COLUMNS[field][0]}: 단위가 조건의 단위({unit or '없음'})와 다릅니다 ({text})"
+            f"{COLUMNS[field][0]}: 조건 단위({unit or '없음'})와 다른 단위({text})"
         )
         return None
     return float(match.group(0).replace(",", "."))
@@ -172,7 +172,7 @@ def _flag(raw: str, picked: _Picked) -> bool:
         return True
     if text in NO:
         return False
-    picked.problems.append(f"필수: 예/아니오로 적으십시오 ({clean(raw)})")
+    picked.problems.append(f"필수: 예/아니오로 입력 필요({clean(raw)})")
     return True
 
 
@@ -196,7 +196,7 @@ class _Lookup:
             ]
         if not rows:
             picked.problems.append(
-                f"규격: 등록된 규격이 아닙니다 ({code}{' ' + edition if edition else ''})"
+                f"규격: 등록되지 않은 규격({code}{' ' + edition if edition else ''})"
             )
             return None
         if len(rows) > 1:
@@ -205,8 +205,8 @@ class _Lookup:
             if len(current) == 1:
                 return current[0]
             picked.problems.append(
-                "규격: 판이 여럿입니다 "
-                f"({' · '.join(one.edition or '?' for one in rows)}) — 판 열에 적으십시오"
+                "규격: 판이 여럿"
+                f"({' · '.join(one.edition or '?' for one in rows)}). 판 열에 입력 필요"
             )
             return None
         return rows[0]
@@ -215,8 +215,8 @@ class _Lookup:
         found = self.keys.get(compare_key(name))
         if found is None:
             picked.problems.append(
-                f"조건: 조건 정의에 없습니다 ({name}) — "
-                "온톨로지의 조건 이름(하중 용량·시험 온도 …)으로 적으십시오"
+                f"조건: 조건 정의에 없음({name}). "
+                "온톨로지의 조건 이름(하중 용량·시험 온도 …)으로 입력 필요"
             )
         return found
 
@@ -225,14 +225,14 @@ def run(db: Session, user: User, text: str, *, dry_run: bool) -> RequirementImpo
     if len(text) > MAX_CHARS:
         raise AppError(
             "TSC-IMPORT-0004",
-            f"붙여넣은 내용이 너무 깁니다 ({len(text) // 1024}천 자). 나눠 올리십시오.",
+            f"붙여넣은 내용이 너무 김({len(text) // 1024}천 자). 나눠서 업로드 필요.",
             status=400,
         )
     body = text.replace("\r\n", "\n").replace("\r", "\n").strip("\n").lstrip("﻿")
     if not body.strip():
         raise AppError(
             "TSC-IMPORT-0006",
-            "붙여넣은 내용이 없습니다. 엑셀에서 **머리글 줄까지 함께** 복사하십시오.",
+            "붙여넣은 내용 없음. 엑셀에서 머리글 줄까지 함께 복사 필요.",
             status=400,
         )
     reader = csv.DictReader(io.StringIO(body), delimiter=_delimiter(body.split("\n", 1)[0]))
@@ -243,7 +243,7 @@ def run(db: Session, user: User, text: str, *, dry_run: bool) -> RequirementImpo
         if len(picked_rows) >= MAX_ROWS:
             raise AppError(
                 "TSC-IMPORT-0005",
-                f"한 번에 {MAX_ROWS}줄까지 받습니다. 나눠 붙여넣으십시오.",
+                f"한 번에 최대 {MAX_ROWS}줄까지 가능. 나눠서 붙여넣기 필요.",
                 status=400,
             )
         cells = {field: (values.get(column) or "") for field, column in header.items()}
@@ -263,9 +263,9 @@ def run(db: Session, user: User, text: str, *, dry_run: bool) -> RequirementImpo
         code = clean(cells.get("code", ""))
         condition = clean(cells.get("condition", ""))
         if not code:
-            picked.problems.append("규격: 비어 있습니다")
+            picked.problems.append("규격: 비어 있음")
         if not condition:
-            picked.problems.append("조건: 비어 있습니다")
+            picked.problems.append("조건: 비어 있음")
         if code:
             picked.method = look.method(code, clean(cells.get("edition", "")), picked)
         if condition:
@@ -274,16 +274,16 @@ def run(db: Session, user: User, text: str, *, dry_run: bool) -> RequirementImpo
             if picked.method.id not in editable:
                 editable[picked.method.id] = _can_edit(db, user, picked.method)
             if not editable[picked.method.id]:
-                picked.problems.append("규격: 이 규격을 고칠 권한이 없습니다")
+                picked.problems.append("규격: 이 규격의 수정 권한 없음")
         if picked.key is not None:
             unit = picked.key.unit
             if picked.key.kind == "choice":
                 picked.text_value = clean(cells.get("text", "")) or None
                 if picked.text_value is None:
-                    picked.problems.append("값: 고르는 조건은 「값」 열에 적습니다")
+                    picked.problems.append("값: 선택형 조건은 값 열에 입력")
                 elif picked.key.choices and picked.text_value not in picked.key.choices:
                     picked.problems.append(
-                        f"값: 고를 수 있는 값이 아닙니다 ({' · '.join(picked.key.choices)})"
+                        f"값: 선택지에 없는 값. 선택지: {' · '.join(picked.key.choices)}"
                     )
             else:
                 picked.min_value = _number(cells.get("min", ""), unit, "min", picked)
@@ -293,22 +293,20 @@ def run(db: Session, user: User, text: str, *, dry_run: bool) -> RequirementImpo
                     and picked.max_value is None
                     and not picked.problems
                 ):
-                    picked.problems.append(
-                        "최소·최대: 둘 다 비어 있습니다 — 하나는 적으십시오"
-                    )
+                    picked.problems.append("최소·최대: 둘 다 비어 있음. 하나 이상 입력 필요")
                 if (
                     picked.min_value is not None
                     and picked.max_value is not None
                     and picked.min_value > picked.max_value
                 ):
-                    picked.problems.append("최소·최대: 최소가 최대보다 큽니다")
+                    picked.problems.append("최소·최대: 최소가 최대보다 큼")
         picked.is_mandatory = _flag(cells.get("mandatory", ""), picked)
         picked.note = clean(cells.get("note", "")) or None
 
         if picked.method is not None and picked.key is not None:
             pair = (picked.method.id, picked.key.id)
             if pair in seen:
-                picked.problems.append(f"{seen[pair]}번째 줄과 같은 규격·조건입니다")
+                picked.problems.append(f"{seen[pair]}번째 줄과 규격·조건 중복")
             else:
                 seen[pair] = index
                 picked.replaces = (

@@ -96,7 +96,7 @@ describe('부서 정보 가져오기', () => {
       fireEvent.click(screen.getByRole('button', { name: '미리보기' }))
     })
     const apply = screen.getByRole('button', {
-      name: '가져올 것이 없습니다',
+      name: '가져올 항목 없음',
     }) as HTMLButtonElement
     expect(apply.disabled).toBe(true)
   })

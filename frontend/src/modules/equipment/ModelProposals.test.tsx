@@ -185,9 +185,9 @@ describe('기종 등록 요청 검토', () => {
   it('같은 기종이 한 줄로 서고 요청한 장비가 함께 보인다', async () => {
     await show()
     expect(screen.getByText('Instron 68FM-300')).toBeTruthy()
-    expect(screen.getByText(/장비 2대가 요청했습니다/)).toBeTruthy()
+    expect(screen.getByText(/장비 2대 요청/)).toBeTruthy()
     // 표기가 갈린 줄은 **원문을 그대로** 보여 준다 — 판단하는 사람이 라벨을 봐야 한다.
-    expect(screen.getByText(/「instron 68fm-300」 로 적힘/)).toBeTruthy()
+    expect(screen.getByText(/표기: instron 68fm-300/)).toBeTruthy()
     expect(screen.getByText(/6800 시리즈는 있는데 이 모델만 없음/)).toBeTruthy()
   })
 
@@ -200,7 +200,7 @@ describe('기종 등록 요청 검토', () => {
   it('계열을 고르고 세우면 그 묶음이 한 번에 정해진다', async () => {
     await show()
     await act(async () => {
-      fireEvent.click(screen.getByRole('button', { name: '어느 계열에' }))
+      fireEvent.click(screen.getByRole('button', { name: '계열 선택' }))
     })
     await act(async () => {
       screen.getAllByText('6800 시리즈')[0].click()

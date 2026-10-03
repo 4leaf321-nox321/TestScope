@@ -77,14 +77,14 @@ export default function NoticesPage() {
 
   return (
     <div className="mx-auto max-w-3xl space-y-6">
-      <PageHeader title="공지" description="시스템 안내와 점검 일정을 여기서 전합니다." />
+      <PageHeader title="공지" description="시스템 안내 및 점검 일정." />
 
       {admin && (
         <div className="space-y-3 rounded-md border p-4">
           {editing && (
             <p className="text-muted-foreground text-xs">
-              「{editing.title}」 을(를) 고치는 중입니다
-              {editing.published_at ? ' — 게시된 공지라 저장하면 바로 바뀝니다' : ' — 초안'}
+              ‘{editing.title}’ 수정 중
+              {editing.published_at ? ' (게시된 공지: 저장 시 즉시 반영)' : ' (초안)'}
             </p>
           )}
           <Input
@@ -141,7 +141,7 @@ export default function NoticesPage() {
       <ErrorNotice error={error ?? list.error} />
 
       {list.data && list.data.length === 0 ? (
-        <EmptyState title="공지가 없습니다" />
+        <EmptyState title="공지 없음" />
       ) : (
         <ul className="space-y-4">
           {(list.data ?? []).map((one) => (
@@ -166,7 +166,7 @@ export default function NoticesPage() {
               <div className="mt-2 flex items-center justify-between gap-2">
                 <p className="text-muted-foreground text-xs">
                   {one.author_name ?? '시스템'}
-                  {one.published_at ? '' : ' · 아직 아무에게도 안 보입니다'}
+                  {one.published_at ? '' : ' · 미게시(아무에게도 표시되지 않음)'}
                 </p>
                 {admin && (
                   <div className="flex gap-1">
@@ -185,7 +185,7 @@ export default function NoticesPage() {
                       size="sm"
                       variant="ghost"
                       onClick={() => {
-                        if (window.confirm(`「${one.title}」 공지를 지웁니다. 계속할까요?`)) {
+                        if (window.confirm(`‘${one.title}’ 공지를 삭제하시겠습니까?`)) {
                           void run(() => noticeApi.remove(one.id))
                         }
                       }}

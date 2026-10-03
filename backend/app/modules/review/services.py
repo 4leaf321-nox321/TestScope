@@ -100,9 +100,9 @@ QUEUES: dict[str, Queue] = {
     "method_test_items": Queue(
         "method_test_items",
         "규격의 시험 항목",
-        "카탈로그가 인용한 규격이 어느 시험의 것인지. 정하면 인용한 계열에 자동으로 붙는다. "
-        "**여러 개를 고를 수 있다** — 규격 하나가 시험 항목 둘을 덮는 일이 흔하다"
-        "(IEC 60529 는 IP 코드의 방진과 방수를 한 문서가 정의한다).",
+        "카탈로그가 인용한 규격이 어느 시험의 규격인지 결정. 결정하면 인용한 계열에 "
+        "자동 연결. 여러 개 선택 가능(규격 하나가 시험 항목 둘을 포함하는 경우가 많음. "
+        "예: IEC 60529는 IP 코드의 방진과 방수를 한 문서에서 정의).",
         # 하나만 고르게 두었던 것은 모델이 칸 하나였기 때문이다 — N:M 이 되면서 풀린다.
         True,
         "/methods/{id}",
@@ -110,74 +110,75 @@ QUEUES: dict[str, Queue] = {
     "test_item_axes": Queue(
         "test_item_axes",
         "시험 항목의 검색 조건",
-        "이 시험을 찾을 때 무슨 조건을 묻나. 안 정하면 조건 전부를 묻는다. 여러 개를 고른다.",
+        "이 시험으로 장비를 찾을 때 물을 조건. 정하지 않으면 모든 조건을 물음. 여러 개 선택.",
         True,
         "/catalog/test-items/{id}",
     ),
     "property_links": Queue(
         "property_links",
         "물성 연결 검토",
-        "이 시험으로 이 물성이 나오는 게 맞나. 아니면 연결을 끊는다.",
+        "이 시험으로 이 물성을 얻는지 확인. 아니면 연결 해제.",
         False,
         "/properties",
     ),
     "free_spec_definitions": Queue(
         "free_spec_definitions",
         "사양 정의 승격",
-        "여러 기종에 같은 이름으로 쌓인 「기종 고유 사양」 을 정식 사양 정의로 승격할지.",
+        "여러 기종에 같은 이름으로 쌓인 기종 고유 사양의 정식 사양 정의 승격 여부 결정.",
         False,
         "/catalog/equipment-models/{id}",
     ),
     "method_cleanup": Queue(
         "method_cleanup",
         "규격 목록 정리",
-        "규격군 이름만 인용된 것(「ASTM」 「IEC 60068」)은 지우고, 표기만 다른 것은 합친다.",
+        "규격군 이름만 인용된 것(ASTM, IEC 60068 등)은 삭제, 표기만 다른 것은 병합.",
         False,
         "/methods/{id}",
     ),
     "test_item_properties": Queue(
         "test_item_properties",
         "시험 항목의 측정 물성",
-        "물성이 하나도 안 이어진 시험 항목 — 이 시험으로 얻는 물성이 있으면 잇는다. 여러 개.",
+        "연결된 물성이 없는 시험 항목. 이 시험으로 얻는 물성이 있으면 연결. 여러 개 선택.",
         True,
         "/catalog/test-items/{id}",
     ),
     "condition_axes": Queue(
         "condition_axes",
         "신규 검색 조건",
-        "지금 검색 조건에 없어 검색이 못 답하는 것(점도·압력·파장 …)을 조건으로 세울지.",
+        "현재 검색 조건에 없어 검색으로 답할 수 없는 항목(점도·압력·파장 등)의 "
+        "조건 등록 여부 결정.",
         False,
         "/conditions",
     ),
     "series_standards": Queue(
         "series_standards",
         "계열 인용 규격 추가",
-        "제조사 웹·대리점·논문이 이 계열과 함께 적은 규격 — 카탈로그 PDF 에는 없던 것. "
-        "이 계열이 정말 하는 것만 고른다. 여러 개.",
+        "제조사 웹·대리점·논문이 이 계열과 함께 언급한 규격(카탈로그 PDF에는 없음). "
+        "이 계열이 실제로 수행하는 것만 선택. 여러 개 선택.",
         True,
         "/catalog/equipment-series/{id}",
     ),
     "series_test_items": Queue(
         "series_test_items",
         "계열 시험 항목 추가",
-        "논문이 이 기종으로 했다고 적은 시험, 제조사 페이지가 「이런 시험에 쓴다」 고 한 "
-        "시험 — 카탈로그에 없던 것. 인용문을 읽고 정말 하는 것만 고른다. 여러 개.",
+        "논문에서 이 기종으로 수행했다고 밝힌 시험, 제조사 페이지에서 용도로 언급한 "
+        "시험(카탈로그에는 없음). 인용문 확인 후 실제로 수행하는 것만 선택. 여러 개 선택.",
         True,
         "/catalog/equipment-series/{id}",
     ),
     "series_summary": Queue(
         "series_summary",
         "계열 소개문",
-        "제조사 페이지의 응용 문장 — 고른 것이 계열 소개 뒤에 붙는다. 무엇에 쓰는지 말하는 "
-        "문장만. 여러 개.",
+        "제조사 페이지의 응용 문장. 선택한 문장은 계열 소개 뒤에 추가됨. 용도를 설명하는 "
+        "문장만 선택. 여러 개 선택.",
         True,
         "/catalog/equipment-series/{id}",
     ),
     "attribute_drafts": Queue(
         "attribute_drafts",
         "초안 속성 정리",
-        "값을 적는 사람이 새 이름을 써서 생긴 초안 속성 — 같은 뜻인 속성에 합칠지, 정식으로 "
-        "올릴지, 아직 둘지. 초안은 온톨로지 밖이라 두면 검색·판정에 안 쓰인다.",
+        "값 입력 시 새 이름을 써서 생긴 초안 속성. 같은 뜻의 속성에 병합, 정식 승격, 보류 중 "
+        "결정. 초안은 온톨로지 밖이라 검색·판정에 쓰이지 않음.",
         False,
         "/attribute-definitions/reliability-test",
         local=True,
@@ -185,9 +186,9 @@ QUEUES: dict[str, Queue] = {
     "test_item_aliases": Queue(
         "test_item_aliases",
         "시험 항목의 별칭",
-        "이 시험을 부르는 다른 이름 — 영문 라벨의 조각, 이름의 조각, 이 시험의 규격 제목에 "
-        "되풀이되는 구절. 고른 것이 별칭이 되어 찾기(resolve)와 검토함의 제목 일치에 쓰인다. "
-        "여러 개. 후보에 없는 표기는 직접 적는다.",
+        "이 시험의 다른 이름(영문 라벨의 일부, 이름의 일부, 이 시험의 규격 제목에 반복되는 "
+        "구절). 선택한 표기는 별칭이 되어 찾기(resolve)와 검토함의 제목 일치에 사용됨. "
+        "여러 개 선택. 후보에 없는 표기는 직접 입력.",
         True,
         "/catalog/test-items/{id}",
     ),
@@ -196,23 +197,23 @@ QUEUES: dict[str, Queue] = {
 #: 고정 후보 — 물음이 예/아니오 꼴인 큐.
 YES_NO: dict[str, list[dict[str, Any]]] = {
     "property_links": [
-        {"code": "confirm", "label": "맞다 — 확인으로 올린다"},
-        {"code": "reject", "label": "아니다 — 연결을 끊는다"},
+        {"code": "confirm", "label": "맞음, 확인으로 올림"},
+        {"code": "reject", "label": "아님, 연결 해제"},
     ],
     "free_spec_definitions": [
-        {"code": "promote", "label": "정의로 올린다"},
-        {"code": "keep", "label": "기종만의 사양으로 둔다"},
+        {"code": "promote", "label": "정의로 승격"},
+        {"code": "keep", "label": "기종 고유 사양으로 유지"},
     ],
     "condition_axes": [
-        {"code": "create", "label": "조건을 만든다"},
-        {"code": "skip", "label": "만들지 않는다"},
+        {"code": "create", "label": "조건 생성"},
+        {"code": "skip", "label": "생성 안 함"},
     ],
 }
 
 
 def _require_admin(user: User) -> None:
     if not user.is_system_admin:
-        raise Forbidden("TSC-REVIEW-0001", "검토는 시스템 관리자만 합니다.")
+        raise Forbidden("TSC-REVIEW-0001", "검토 확정은 시스템 관리자 전용 작업.")
 
 
 def _axis_terms(db: Session, slug: str) -> dict[str, VocabularyTerm]:
@@ -315,7 +316,7 @@ def _context(base: str | None, filed_row: dict[str, Any] | None) -> str | None:
     「규격군 이름이라 특정 시험이 아니다」 처럼, 왜 추천을 안 붙였는지를 말한다."""
     hint = (filed_row or {}).get("hint")
     parts = [one for one in (base, hint) if one]
-    return " — ".join(parts) if parts else None
+    return ". ".join(parts) if parts else None
 
 
 def _free_label(label: str, source_key: str, unit: str) -> str:
@@ -428,7 +429,7 @@ def _refresh_method_test_items(
                 code = by_id[t].code if t in by_id else None
                 if code and code not in reasons:
                     reasons[code] = (
-                        f"인용한 계열 「{series_names.get(series_id, '')}」 가 하는 시험"
+                        f"인용한 계열 {series_names.get(series_id, '')}의 수행 시험"
                     )
         codes: list[str] = list(reasons)
         for code in (filed_row or {}).get("candidates") or []:
@@ -477,10 +478,10 @@ def _refresh_method_test_items(
                 assert term.code is not None
                 if term.code not in codes:
                     codes.append(term.code)
-                reasons.setdefault(term.code, f"규격 제목에 「{name}」 이 있음")
+                reasons.setdefault(term.code, f"규격 제목에 {name} 포함")
             if not recommended and len(matched) == 1:
                 recommended = matched[0][0].code
-                reason = f"규격 제목에 「{matched[0][1]}」 이 있음"
+                reason = f"규격 제목에 {matched[0][1]} 포함"
         candidates = _mark(
             [
                 {"code": code, "label": items[code].value, "reason": reasons.get(code)}
@@ -494,8 +495,8 @@ def _refresh_method_test_items(
             ("인용: " + " · ".join(n for n in names if n)) if names else None, filed_row
         )
         question = (
-            f"규격 「{method.code}」 는 어느 시험의 규격입니까? 정하면 이 규격을 인용한 계열 "
-            f"{len(cited)}개의 그 시험에 붙고, 이 규격 기준으로 장비를 찾을 수 있게 됩니다."
+            f"규격 {method.code}의 시험 항목 선택. 정하면 이 규격을 인용한 계열 "
+            f"{len(cited)}개의 해당 시험에 연결되고, 이 규격 기준으로 장비 검색 가능."
         )
         row = _upsert(
             db,
@@ -579,10 +580,9 @@ def _refresh_test_item_axes(
             context=_context(filed_row.get("context"), filed_row),
             candidates=candidates,
             question=(
-                f"「{term.value}」 이 되는 장비를 찾을 때 어떤 조건을 물어야 합니까? 고른 "
-                "조건만 검색 화면에 뜹니다(안 정하면 열두 조건을 전부 묻습니다). 여러 개를 "
-                "고르고, "
-                "조건이 필요 없는 시험이면 아무것도 고르지 않습니다."
+                f"{term.value} 수행 장비 검색 시 물을 조건 선택. 선택한 조건만 검색 화면에 "
+                "표시됨(정하지 않으면 열두 조건 전부 물음). 여러 개 선택 가능. "
+                "조건이 필요 없는 시험이면 선택하지 않음."
             ),
             facts=sheet.test_item_facts(term, with_conditions=True),
         )
@@ -633,8 +633,8 @@ def _refresh_property_links(
             subject_label=f"{item.value} → {prop.value}",
             context=_context(filed_row.get("context"), filed_row),
             question=(
-                f"「{item.value}」 시험으로 「{prop.value}」 이(가) 나옵니까? 맞으면 확인 "
-                "표시가 붙고, 아니면 연결이 지워져 물성으로 찾을 때 이 시험이 빠집니다."
+                f"{item.value} 시험으로 {prop.value} 물성을 얻는지 확인. 맞으면 확인 "
+                "표시, 아니면 연결 삭제(물성 검색에서 이 시험 제외)."
             ),
             facts=sheet.test_item_facts(item)
             + sheet.property_facts(prop, except_item=item.id),
@@ -698,7 +698,7 @@ def _refresh_free_spec_definitions(
             context=_context(
                 f"{payload['models']}개 기종 · 예: {sample.value_text[:60]}"
                 + (
-                    f" → 정의 「{spec.get('label')}」 ({spec.get('kind')}, {payload['unit']})"
+                    f" → 정의 {spec.get('label')} ({spec.get('kind')}, {payload['unit']})"
                     if spec
                     else ""
                 ),
@@ -711,9 +711,9 @@ def _refresh_free_spec_definitions(
             ),
             payload=payload,
             question=(
-                f"기종 {payload['models']}개에 「{sample.label}」 이라는 이름으로 적힌 사양을 "
-                "정식 사양 정의로 올립니까? 올리면 그 값들이 정의 아래로 옮겨 가고 "
-                "검색·비교가 됩니다."
+                f"기종 {payload['models']}개에 같은 이름({sample.label})으로 적힌 사양의 "
+                "정식 사양 정의 승격 여부 결정. 승격하면 값이 정의 아래로 옮겨지고 "
+                "검색·비교 가능."
             ),
             facts=_free_spec_facts(sheet, rows),
         )
@@ -775,14 +775,14 @@ def _refresh_method_cleanup(
             if row is not None and row.status in ("open", "skipped"):
                 _settle(db, row, ["delete"], "화면에서 정함")
             continue
-        candidates: list[dict[str, Any]] = [{"code": "keep", "label": "그대로 둔다"}]
+        candidates: list[dict[str, Any]] = [{"code": "keep", "label": "그대로 유지"}]
         for other in filed_row.get("merge_into") or []:
             target = methods.get(method_key(other))
             if target is not None and target.id != method.id:
                 candidates.append(
-                    {"code": f"merge:{target.code}", "label": f"「{target.code}」 로 합친다"}
+                    {"code": f"merge:{target.code}", "label": f"{target.code}에 병합"}
                 )
-        candidates.append({"code": "delete", "label": "목록에서 지운다"})
+        candidates.append({"code": "delete", "label": "목록에서 삭제"})
         cited = (
             db.scalar(
                 select(func.count())
@@ -854,9 +854,8 @@ def _refresh_test_item_properties(
             context=_context(filed_row.get("context"), filed_row),
             candidates=_mark(candidates, wanted, filed_row.get("reason")),
             question=(
-                f"「{term.value}」 시험으로 얻는 물성은 무엇입니까? 지금은 물성이 하나도 "
-                "이어져 있지 않아 물성으로 찾을 때 이 시험이 안 나옵니다. 합격/불합격만 내는 "
-                "시험이면 아무것도 고르지 않습니다."
+                f"{term.value} 시험으로 얻는 물성 선택. 현재 연결된 물성이 없어 물성 "
+                "검색에 이 시험이 나오지 않음. 합격/불합격만 내는 시험이면 선택하지 않음."
             ),
             facts=sheet.test_item_facts(term),
         )
@@ -891,7 +890,7 @@ def _refresh_condition_axes(db: Session, filed: dict[str, dict[str, Any]]) -> No
             "test_items": items,
         }
         context = (
-            f"{axis.get('label')} ({axis.get('unit')}) — 이을 사양 정의 {len(definitions)}"
+            f"{axis.get('label')} ({axis.get('unit')}) · 연결할 사양 정의 {len(definitions)}"
             f" · 물을 시험 항목 {len(items)}"
         )
         row = _upsert(
@@ -985,9 +984,9 @@ def _refresh_series_test_items(
             candidates=candidates,
             question=sheet.series_question(
                 series,
-                "아래 시험도 합니까? 논문이나 제조사 페이지가 그렇게 적었지만 카탈로그 PDF "
-                "에는 없던 것입니다. 인용문을 열어 읽고 정말 하는 것만 고르십시오 — 고르면 그 "
-                "시험이 이 계열에 붙습니다.",
+                "추가할 수행 시험 선택. 논문이나 제조사 페이지에 언급됐으나 카탈로그 PDF에는 "
+                "없던 시험. 인용문 확인 후 실제로 수행하는 것만 선택. 선택한 시험은 이 계열에 "
+                "연결됨.",
             ),
             facts=sheet.series_facts(series),
         )
@@ -1044,9 +1043,8 @@ def _refresh_series_summary(
             candidates=candidates,
             question=sheet.series_question(
                 series,
-                "소개에 아래 문장을 붙입니까? 제조사 페이지의 응용 문장입니다 — 무엇에 쓰는지 "
-                "말하는 문장만 고르고 마케팅 문구는 두십시오. 고른 문장이 지금 소개 뒤에 "
-                "붙습니다.",
+                "소개에 추가할 문장 선택. 제조사 페이지의 응용 문장. 용도를 설명하는 문장만 "
+                "선택하고 마케팅 문구는 제외. 선택한 문장은 현재 소개 뒤에 추가됨.",
             ),
             facts=sheet.series_facts(series),
         )
@@ -1119,10 +1117,9 @@ def _refresh_test_item_aliases(
             context=_context(None, filed_row),
             candidates=candidates,
             question=(
-                f"「{term.value}」 을 부르는 다른 이름으로 아래 표기를 별칭에 더합니까? "
-                "별칭은 찾기(resolve)가 이름보다 먼저 보는 것이라, AI 가 「thermal shock」 "
-                "으로 물어도 이 시험을 찾게 됩니다. 이 시험만 가리키는 표기만 고르고, 후보에 "
-                "없는 표기는 직접 적으십시오."
+                f"{term.value}의 별칭으로 추가할 표기 선택. 찾기(resolve)는 이름보다 "
+                "별칭을 먼저 확인하므로 AI가 thermal shock으로 물어도 이 시험을 찾음. "
+                "이 시험만 가리키는 표기만 선택. 후보에 없는 표기는 직접 입력."
             ),
             facts=sheet.test_item_facts(term),
         )
@@ -1218,11 +1215,11 @@ def _attribute_merge_candidates(
         out.append(
             {
                 "code": code,
-                "label": f"「{other.label}」 에 합친다 ({where})",
+                "label": f"{other.label}에 병합 ({where})",
                 "reason": (
-                    "띄어쓰기·대소문자를 지우면 이름이 같습니다."
+                    "띄어쓰기·대소문자를 제외하면 이름이 같음."
                     if same
-                    else "이름이 한쪽에 들어 있습니다 — 같은 칸인지 읽고 정하십시오."
+                    else "한쪽 이름이 다른 쪽에 포함됨. 같은 칸인지 확인 후 결정 필요."
                 ),
             }
         )
@@ -1304,15 +1301,15 @@ def _refresh_attribute_drafts(db: Session) -> None:
                 *merges,
                 {
                     "code": "standard",
-                    "label": "정식으로 올린다 — 이 이름으로 굳힌다",
+                    "label": "정식으로 승격, 이 이름으로 확정",
                     "reason": None,
                 },
                 {
                     "code": "keep",
-                    "label": "초안으로 둔다 — 더 모아 보고 정한다",
+                    "label": "초안으로 유지, 값을 더 모은 뒤 결정",
                     "reason": None,
                 },
-                {"code": "off", "label": "끈다 — 새 입력에서 안 뜨게", "reason": None},
+                {"code": "off", "label": "끄기, 새 입력에서 숨김", "reason": None},
             ],
             exact,
             None,
@@ -1330,9 +1327,9 @@ def _refresh_attribute_drafts(db: Session) -> None:
                 "link": ATTRIBUTE_TARGETS.get(draft.target, (draft.target, ""))[1],
             },
             question=(
-                f"「{draft.label}」 은 {target_label}에 {count}건 적힌 **초안** 속성입니다. "
-                "초안은 온톨로지 밖이라 검색·판정·색인 카드 어디에도 안 쓰입니다. 같은 뜻인 "
-                "속성이 이미 있으면 거기 합치고, 이 이름으로 굳힐 것이면 정식으로 올리십시오."
+                f"{draft.label}: {target_label}에 {count}건 적힌 초안 속성. "
+                "초안은 온톨로지 밖이라 검색·판정·색인 카드에 쓰이지 않음. 같은 뜻의 속성이 "
+                "있으면 병합, 이 이름으로 확정하려면 정식 승격."
             ),
             facts=_attribute_draft_facts(db, draft, count),
         )
@@ -1426,9 +1423,9 @@ def _refresh_series_standards(
             context=_context(None, filed_row),
             question=sheet.series_question(
                 series,
-                "아래 규격도 씁니까? 제조사 웹·대리점·논문이 이 계열과 함께 적었지만 카탈로그 "
-                "PDF 에는 없던 규격입니다. 출처를 열어 이 계열 얘기가 맞는지 보고 "
-                "고르십시오 — 고르면 그 규격이 이 계열에 붙습니다.",
+                "추가할 사용 규격 선택. 제조사 웹·대리점·논문이 이 계열과 함께 언급했으나 "
+                "카탈로그 PDF에는 없던 규격. 출처에서 이 계열에 관한 내용인지 확인 후 선택. "
+                "선택한 규격은 이 계열에 연결됨.",
             ),
             facts=sheet.series_facts(series),
             candidates=candidates,
@@ -1515,10 +1512,10 @@ def _apply(db: Session, row: ReviewProposal, choice: list[str], *, actor: User |
         items = _axis_terms(db, "test_item")
         unknown = [code for code in choice if code not in items]
         if unknown:
-            raise NotFound("TSC-REVIEW-0002", f"시험 항목 코드를 모릅니다: {unknown[0]}")
+            raise NotFound("TSC-REVIEW-0002", f"알 수 없는 시험 항목 코드: {unknown[0]}")
         method = db.get(TestMethod, row.subject_id) if row.subject_id else None
         if method is None:
-            raise NotFound("TSC-REVIEW-0003", "규격을 찾을 수 없습니다.")
+            raise NotFound("TSC-REVIEW-0003", "규격을 찾을 수 없음.")
         # **고른 것 전부를 건다.** 검토함은 처음부터 목록을 받고 있었는데 모델이 하나만
         # 담을 수 있어 첫 줄만 쓰였다 — IEC 60529 처럼 방진·방수를 둘 다 덮는 규격이
         # 그래서 한쪽을 잃었다.
@@ -1527,11 +1524,11 @@ def _apply(db: Session, row: ReviewProposal, choice: list[str], *, actor: User |
         promote_pending(db, method)
     elif queue == "test_item_axes":
         if row.subject_id is None:
-            raise NotFound("TSC-REVIEW-0003", "시험 항목을 찾을 수 없습니다.")
+            raise NotFound("TSC-REVIEW-0003", "시험 항목을 찾을 수 없음.")
         keys = {k.key: k for k in db.scalars(select(ConditionKey))}
         unknown = [code for code in choice if code not in keys]
         if unknown:
-            raise NotFound("TSC-REVIEW-0002", f"조건 키를 모릅니다: {', '.join(unknown)}")
+            raise NotFound("TSC-REVIEW-0002", f"알 수 없는 조건 키: {', '.join(unknown)}")
         have = set(
             db.scalars(
                 select(TestItemConditionKey.condition_key_id).where(
@@ -1557,12 +1554,14 @@ def _apply(db: Session, row: ReviewProposal, choice: list[str], *, actor: User |
         elif choice == ["reject"]:
             db.delete(link)
         else:
-            raise AppError("TSC-REVIEW-0004", "confirm 또는 reject 중 하나입니다.", status=400)
+            raise AppError(
+                "TSC-REVIEW-0004", "confirm 또는 reject 중 하나만 가능.", status=400
+            )
     elif queue == "free_spec_definitions":
         if choice == ["keep"]:
             return
         if choice != ["promote"]:
-            raise AppError("TSC-REVIEW-0004", "promote 또는 keep 중 하나입니다.", status=400)
+            raise AppError("TSC-REVIEW-0004", "promote 또는 keep 중 하나만 가능.", status=400)
         source_key, _, unit = row.subject_key.partition("|")
         stmt = select(ModelFreeSpec).where(ModelFreeSpec.source_key == source_key)
         if unit:
@@ -1574,7 +1573,7 @@ def _apply(db: Session, row: ReviewProposal, choice: list[str], *, actor: User |
         if not payload.get("key") or not payload.get("group_id"):
             raise AppError(
                 "TSC-REVIEW-0005",
-                "올릴 정의의 키와 그룹이 정본에 없습니다 — 기종 상세에서 직접 올리십시오.",
+                "승격할 정의의 키와 그룹이 정본에 없음. 기종 상세에서 직접 승격 필요.",
                 status=400,
             )
         model = db.get(EquipmentModel, sample.model_id)
@@ -1611,11 +1610,11 @@ def _apply(db: Session, row: ReviewProposal, choice: list[str], *, actor: User |
                 )
             )
             if into is None:
-                raise NotFound("TSC-REVIEW-0002", f"합칠 속성을 모릅니다: {code}")
+                raise NotFound("TSC-REVIEW-0002", f"알 수 없는 병합 대상 속성: {code}")
             # 합치는 규칙은 속성 쪽 하나다 — 값이 옮겨 가고 원래 것은 꺼진다.
             attributes.merge_into(db, draft.id, into.id)
         else:
-            raise AppError("TSC-REVIEW-0004", f"모르는 선택입니다: {code}", status=400)
+            raise AppError("TSC-REVIEW-0004", f"알 수 없는 선택: {code}", status=400)
     elif queue == "method_cleanup":
         method = db.get(TestMethod, row.subject_id) if row.subject_id else None
         if method is None or method.deleted_at is not None:
@@ -1634,8 +1633,8 @@ def _apply(db: Session, row: ReviewProposal, choice: list[str], *, actor: User |
             if used:
                 raise AppError(
                     "TSC-REVIEW-0012",
-                    f"보유 장비 시험 항목 {used}건이 이 규격을 걸고 있어 못 지웁니다"
-                    " — 합치거나 두십시오.",
+                    f"보유 장비 시험 항목 {used}건이 이 규격을 사용 중이라 삭제 불가."
+                    " 병합 또는 유지 필요.",
                     status=409,
                 )
             detach_citations(db, method.id)
@@ -1649,19 +1648,19 @@ def _apply(db: Session, row: ReviewProposal, choice: list[str], *, actor: User |
                 )
             )
             if target is None:
-                raise NotFound("TSC-REVIEW-0002", f"합칠 규격을 모릅니다: {target_code}")
+                raise NotFound("TSC-REVIEW-0002", f"알 수 없는 병합 대상 규격: {target_code}")
             merge_into(db, actor, method.id, target.id)
             return
         raise AppError(
-            "TSC-REVIEW-0004", "keep · delete · merge:<규격> 중 하나입니다.", status=400
+            "TSC-REVIEW-0004", "keep · delete · merge:<규격> 중 하나만 가능.", status=400
         )
     elif queue == "test_item_properties":
         if row.subject_id is None:
-            raise NotFound("TSC-REVIEW-0003", "시험 항목을 찾을 수 없습니다.")
+            raise NotFound("TSC-REVIEW-0003", "시험 항목을 찾을 수 없음.")
         props = _axis_terms(db, "property")
         unknown = [code for code in choice if code not in props]
         if unknown:
-            raise NotFound("TSC-REVIEW-0002", f"물성 코드를 모릅니다: {', '.join(unknown)}")
+            raise NotFound("TSC-REVIEW-0002", f"알 수 없는 물성 코드: {', '.join(unknown)}")
         have = set(
             db.scalars(
                 select(TestItemProperty.property_term_id).where(
@@ -1687,7 +1686,7 @@ def _apply(db: Session, row: ReviewProposal, choice: list[str], *, actor: User |
         if choice == ["skip"]:
             return
         if choice != ["create"]:
-            raise AppError("TSC-REVIEW-0004", "create 또는 skip 중 하나입니다.", status=400)
+            raise AppError("TSC-REVIEW-0004", "create 또는 skip 중 하나만 가능.", status=400)
         payload = row.payload or {}
         key = str(payload.get("key") or row.subject_key)
         if db.scalar(select(ConditionKey.id).where(ConditionKey.key == key)) is not None:
@@ -1722,11 +1721,11 @@ def _apply(db: Session, row: ReviewProposal, choice: list[str], *, actor: User |
     elif queue == "series_standards":
         series = db.get(EquipmentSeries, row.subject_id) if row.subject_id else None
         if series is None:
-            raise NotFound("TSC-REVIEW-0003", "계열을 찾을 수 없습니다.")
+            raise NotFound("TSC-REVIEW-0003", "계열을 찾을 수 없음.")
         offered = {one["code"]: one for one in row.candidates}
         unknown = [code for code in choice if code not in offered]
         if unknown:
-            raise NotFound("TSC-REVIEW-0002", f"후보에 없는 규격입니다: {', '.join(unknown)}")
+            raise NotFound("TSC-REVIEW-0002", f"후보에 없는 규격: {', '.join(unknown)}")
         for code in choice:
             label = str(offered[code].get("label") or "")
             # 라벨이 「코드 — 제목」 이면 제목을 새 시험법의 이름으로
@@ -1735,12 +1734,12 @@ def _apply(db: Session, row: ReviewProposal, choice: list[str], *, actor: User |
     elif queue == "series_test_items":
         series = db.get(EquipmentSeries, row.subject_id) if row.subject_id else None
         if series is None:
-            raise NotFound("TSC-REVIEW-0003", "계열을 찾을 수 없습니다.")
+            raise NotFound("TSC-REVIEW-0003", "계열을 찾을 수 없음.")
         items = _axis_terms(db, "test_item")
         unknown = [code for code in choice if code not in items]
         if unknown:
             raise NotFound(
-                "TSC-REVIEW-0002", f"시험 항목 코드를 모릅니다: {', '.join(unknown)}"
+                "TSC-REVIEW-0002", f"알 수 없는 시험 항목 코드: {', '.join(unknown)}"
             )
         have = set(
             db.scalars(
@@ -1774,10 +1773,10 @@ def _apply(db: Session, row: ReviewProposal, choice: list[str], *, actor: User |
                 promote_pending(db, method)
     elif queue == "test_item_aliases":
         if row.subject_id is None:
-            raise NotFound("TSC-REVIEW-0003", "시험 항목을 찾을 수 없습니다.")
+            raise NotFound("TSC-REVIEW-0003", "시험 항목을 찾을 수 없음.")
         term = db.get(VocabularyTerm, row.subject_id)
         if term is None:
-            raise NotFound("TSC-REVIEW-0003", "시험 항목을 찾을 수 없습니다.")
+            raise NotFound("TSC-REVIEW-0003", "시험 항목을 찾을 수 없음.")
         for value in choice:
             text_value = clean(str(value))
             if not text_value:
@@ -1794,8 +1793,8 @@ def _apply(db: Session, row: ReviewProposal, choice: list[str], *, actor: User |
                 other = db.get(VocabularyTerm, existing.term_id)
                 raise AppError(
                     "TSC-REVIEW-0010",
-                    f"「{text_value}」 은 이미 「{other.value if other else '?'}」 의 "
-                    "별칭입니다.",
+                    f"{text_value}은(는) 이미 {other.value if other else '?'}의 "
+                    "별칭으로 등록됨.",
                     status=409,
                 )
             clash = db.scalar(
@@ -1807,7 +1806,7 @@ def _apply(db: Session, row: ReviewProposal, choice: list[str], *, actor: User |
             if clash is not None and clash.id != term.id:
                 raise AppError(
                     "TSC-REVIEW-0010",
-                    f"「{text_value}」 은 시험 항목 「{clash.value}」 의 이름입니다.",
+                    f"{text_value}은(는) 시험 항목 {clash.value}의 이름으로 사용 중.",
                     status=409,
                 )
             if clash is None:
@@ -1823,11 +1822,11 @@ def _apply(db: Session, row: ReviewProposal, choice: list[str], *, actor: User |
     elif queue == "series_summary":
         series = db.get(EquipmentSeries, row.subject_id) if row.subject_id else None
         if series is None:
-            raise NotFound("TSC-REVIEW-0003", "계열을 찾을 수 없습니다.")
+            raise NotFound("TSC-REVIEW-0003", "계열을 찾을 수 없음.")
         by_code = {one["code"]: one["label"] for one in row.candidates}
         unknown = [code for code in choice if code not in by_code]
         if unknown:
-            raise NotFound("TSC-REVIEW-0002", f"후보에 없는 문장입니다: {', '.join(unknown)}")
+            raise NotFound("TSC-REVIEW-0002", f"후보에 없는 문장: {', '.join(unknown)}")
         summary = series.summary or ""
         for code in choice:
             sentence = by_code[code]
@@ -1836,7 +1835,7 @@ def _apply(db: Session, row: ReviewProposal, choice: list[str], *, actor: User |
             summary = (summary.rstrip() + "\n\n" if summary.strip() else "") + sentence
         series.summary = summary
     else:
-        raise NotFound("TSC-REVIEW-0006", f"모르는 검토함입니다: {queue}")
+        raise NotFound("TSC-REVIEW-0006", f"알 수 없는 검토함: {queue}")
 
 
 # --- 정본으로 되돌려 쓰기 ------------------------------------------------------------
@@ -1949,7 +1948,7 @@ def queues(db: Session) -> list[QueueOut]:
 def get_proposal(db: Session, proposal_id: uuid.UUID) -> ReviewProposal:
     row = db.get(ReviewProposal, proposal_id)
     if row is None:
-        raise NotFound("TSC-REVIEW-0007", "검토 항목을 찾을 수 없습니다.")
+        raise NotFound("TSC-REVIEW-0007", "검토 항목을 찾을 수 없음.")
     return row
 
 
@@ -2027,7 +2026,7 @@ def list_proposals(
     viewer_id: uuid.UUID | None = None,
 ) -> tuple[list[ProposalOut], int]:
     if queue not in QUEUES:
-        raise NotFound("TSC-REVIEW-0006", f"모르는 검토함입니다: {queue}")
+        raise NotFound("TSC-REVIEW-0006", f"알 수 없는 검토함: {queue}")
     base = select(ReviewProposal).where(ReviewProposal.queue == queue)
     if status == "voted":
         # 열린 것 중 의견이 모인 줄 — 확정할 사람이 먼저 보는 자리.
@@ -2054,9 +2053,9 @@ def vote(
     """
     row = get_proposal(db, proposal_id)
     if row.status in ("decided", "gone"):
-        raise AppError("TSC-REVIEW-0011", "닫힌 항목에는 의견을 낼 수 없습니다.", status=409)
+        raise AppError("TSC-REVIEW-0011", "닫힌 항목에는 의견 제출 불가.", status=409)
     if not QUEUES[row.queue].multi and len(choice) > 1:
-        raise AppError("TSC-REVIEW-0004", "하나만 고르는 물음입니다.", status=400)
+        raise AppError("TSC-REVIEW-0004", "하나만 선택 가능한 항목.", status=400)
     held = db.scalar(
         select(ReviewVote).where(
             ReviewVote.proposal_id == row.id, ReviewVote.user_id == user.id
@@ -2096,13 +2095,13 @@ def decide(
     if row.status == "decided":
         raise AppError(
             "TSC-REVIEW-0008",
-            "이미 결정된 항목입니다. 바꾸려면 먼저 다시 여십시오.",
+            "이미 결정된 항목. 변경하려면 먼저 다시 열기 필요.",
             status=409,
         )
     if row.status == "gone":
-        raise AppError("TSC-REVIEW-0009", "대상이 없어진 항목입니다.", status=409)
+        raise AppError("TSC-REVIEW-0009", "대상이 삭제된 항목.", status=409)
     if not QUEUES[row.queue].multi and len(choice) > 1:
-        raise AppError("TSC-REVIEW-0004", "하나만 고르는 물음입니다.", status=400)
+        raise AppError("TSC-REVIEW-0004", "하나만 선택 가능한 항목.", status=400)
     _apply(db, row, choice, actor=user)
     row.status = "decided"
     row.choice = choice
@@ -2175,7 +2174,7 @@ def decide_recommended(
             if row.queue != queue:
                 raise AppError(
                     "TSC-REVIEW-0013",
-                    "이 물음의 항목이 아닙니다.",
+                    "이 검토함의 항목이 아님.",
                     status=400,
                 )
             recommended = sorted(
@@ -2184,7 +2183,7 @@ def decide_recommended(
             if not recommended:
                 raise AppError(
                     "TSC-REVIEW-0014",
-                    "추천이 없는 항목입니다 — 하나씩 열어 골라 주십시오.",
+                    "추천이 없는 항목. 하나씩 열어 선택 필요.",
                     status=409,
                 )
             dissent = [
@@ -2195,8 +2194,7 @@ def decide_recommended(
             if dissent:
                 raise AppError(
                     "TSC-REVIEW-0015",
-                    f"추천과 다른 의견이 {len(dissent)}건 있습니다 — 의견을 보고 하나씩 정해 "
-                    "주십시오.",
+                    f"추천과 다른 의견 {len(dissent)}건 있음. 의견 확인 후 하나씩 결정 필요.",
                     status=409,
                 )
             decide(db, user, proposal_id, choice=recommended, note=said)
@@ -2214,7 +2212,7 @@ def skip(db: Session, user: User, proposal_id: uuid.UUID) -> ReviewProposal:
     _require_admin(user)
     row = get_proposal(db, proposal_id)
     if row.status in ("decided", "gone"):
-        raise AppError("TSC-REVIEW-0008", "이미 닫힌 항목입니다.", status=409)
+        raise AppError("TSC-REVIEW-0008", "이미 닫힌 항목.", status=409)
     row.status = "skipped" if row.status == "open" else "open"
     db.commit()
     db.refresh(row)
@@ -2231,7 +2229,7 @@ def reopen(db: Session, user: User, proposal_id: uuid.UUID) -> ReviewProposal:
     _require_admin(user)
     row = get_proposal(db, proposal_id)
     if row.status != "decided":
-        raise AppError("TSC-REVIEW-0010", "정한 항목만 다시 열 수 있습니다.", status=409)
+        raise AppError("TSC-REVIEW-0010", "결정된 항목만 다시 열기 가능.", status=409)
     audit.record(
         db,
         action=audit.REVIEW_REOPENED,
@@ -2247,7 +2245,7 @@ def reopen(db: Session, user: User, proposal_id: uuid.UUID) -> ReviewProposal:
         },
     )
     row.status = "open"
-    row.note = f"다시 열림 — 전에는 {row.decided_by_label} 이(가) {row.choice} 로 정함"
+    row.note = f"다시 열림. 이전 결정: {row.choice} ({row.decided_by_label})"
     row.choice = None
     row.followed = None
     row.decided_by_id = None

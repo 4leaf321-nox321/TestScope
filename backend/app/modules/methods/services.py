@@ -57,7 +57,7 @@ def visible(db: Session, user: User) -> Select[tuple[TestMethod]]:
 def get_method(db: Session, user: User, method_id: uuid.UUID) -> TestMethod:
     found = db.scalar(visible(db, user).where(TestMethod.id == method_id))
     if found is None:
-        raise NotFound("TSC-METHODS-0001", "시험법을 찾을 수 없습니다.")
+        raise NotFound("TSC-METHODS-0001", "시험법을 찾을 수 없음.")
     return found
 
 
@@ -411,7 +411,7 @@ def create(db: Session, user: User, payload: dict[str, Any]) -> TestMethod:
         )
     )
     if clash is not None:
-        raise Conflict("TSC-METHODS-0003", f"이미 등록된 규격입니다: {code} {edition or ''}")
+        raise Conflict("TSC-METHODS-0003", f"이미 등록된 규격: {code} {edition or ''}")
 
     owner = resolve_owner_workspace(
         db, user, payload.get("workspace_slug"), what=_WHAT, code=_CODE
@@ -496,7 +496,7 @@ def _refuse_machine_decision(db: Session, row: TestMethod) -> None:
     if pending is not None:
         raise Conflict(
             "TSC-METHODS-0007",
-            "이 규격은 검토함에 물음이 열려 있습니다 — 시험 항목은 사람이 검토함에서 정합니다",
+            "이 규격에 대한 검토함 질문이 열려 있음. 시험 항목은 검토함에서 사람이 결정.",
         )
 
 
@@ -576,8 +576,8 @@ def delete(db: Session, user: User, method_id: uuid.UUID) -> None:
     if using:
         raise Conflict(
             "TSC-METHODS-0004",
-            f"이 시험법을 거는 시험 항목이 {using}건 있습니다. "
-            f"지우는 대신 상태를 대체됨으로 바꾸십시오.",
+            f"이 시험법을 참조하는 시험 항목 {using}건 있음. "
+            f"삭제 대신 상태를 대체됨으로 변경 필요.",
         )
     row.deleted_at = datetime.now(UTC)
     db.commit()
@@ -611,7 +611,7 @@ def merge_into(
     source = db.get(TestMethod, source_id)
     target = db.get(TestMethod, target_id)
     if source is None or target is None or source.id == target.id:
-        raise NotFound("TSC-METHODS-0005", "합칠 규격을 찾을 수 없습니다.")
+        raise NotFound("TSC-METHODS-0005", "병합할 규격을 찾을 수 없음.")
     for link in db.scalars(
         select(SeriesTestItemMethod).where(SeriesTestItemMethod.method_id == source.id)
     ):
@@ -690,7 +690,7 @@ def upsert_requirement(
 
     key = db.get(ConditionKey, payload["condition_key_id"])
     if key is None:
-        raise NotFound("TSC-METHODS-0005", "조건 정의를 찾을 수 없습니다.")
+        raise NotFound("TSC-METHODS-0005", "조건 정의를 찾을 수 없음.")
 
     existing = db.scalar(
         select(MethodRequirement).where(
@@ -718,6 +718,6 @@ def delete_requirement(
     require_owner_edit(db, user, row.owner_workspace_id, what=_WHAT, code=_CODE)
     target = db.get(MethodRequirement, requirement_id)
     if target is None or target.method_id != row.id:
-        raise NotFound("TSC-METHODS-0006", "요구 조건을 찾을 수 없습니다.")
+        raise NotFound("TSC-METHODS-0006", "요구 조건을 찾을 수 없음.")
     db.delete(target)
     db.commit()

@@ -97,7 +97,7 @@ def test_없는_계정과_쉰_계정은_막는다(
     )
     # **외래키 500 이 아니라 400** — 500 은 「서버 오류」 로 읽혀서 제 오타를 못 본다.
     assert missing.status_code == 400, missing.text
-    assert "찾을 수 없습니다" in missing.json()["error"]["message"]
+    assert "찾을 수 없음" in missing.json()["error"]["message"]
 
     dead = client.patch(
         f"/api/equipment/{one['id']}",
@@ -106,7 +106,7 @@ def test_없는_계정과_쉰_계정은_막는다(
     )
     assert dead.status_code == 400, dead.text
     # **왜 막혔는지 말한다** — 「연락이 닿는 사람」 이 이 칸의 쓸모 전부다.
-    assert "쓰지 않는 계정" in dead.json()["error"]["message"]
+    assert "사용하지 않는 계정" in dead.json()["error"]["message"]
 
 
 def test_대장_반입으로_한_번에_채운다(
@@ -154,7 +154,7 @@ def test_대장_반입으로_한_번에_채운다(
         f"CT-{tag}-3,경도계,{team.name},{site['value']},3동,{kind['value']},겹치는이름-{tag}\n"
     )
     problems = [item["message"] for row in said["rows"] for item in row.get("problems", [])]
-    assert any("여럿입니다" in one for one in problems), said["rows"]
+    assert any("여럿(" in one for one in problems), said["rows"]
 
 
 def test_담당자가_비어_있는_장비를_찾는다(

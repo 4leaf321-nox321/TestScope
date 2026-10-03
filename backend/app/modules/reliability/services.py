@@ -567,7 +567,7 @@ def list_all(
 def get(db: Session, test_id: uuid.UUID) -> ReliabilityTest:
     row = db.get(ReliabilityTest, test_id)
     if row is None or row.deleted_at is not None:
-        raise NotFound("TSC-RELIABILITY-0001", "신뢰성 시험을 찾을 수 없습니다.")
+        raise NotFound("TSC-RELIABILITY-0001", "신뢰성 시험을 찾을 수 없음.")
     return row
 
 
@@ -578,7 +578,7 @@ def _check_test_item_terms(db: Session, term_ids: list[uuid.UUID]) -> None:
         return
     axis = db.scalar(select(Vocabulary).where(Vocabulary.slug == "test_item"))
     if axis is None:
-        raise AppError("TSC-RELIABILITY-0002", "시험 항목 축이 없습니다.")
+        raise AppError("TSC-RELIABILITY-0002", "시험 항목 축 없음.")
     valid = set(
         db.scalars(
             select(VocabularyTerm.id).where(
@@ -592,7 +592,7 @@ def _check_test_item_terms(db: Session, term_ids: list[uuid.UUID]) -> None:
     if missing:
         raise AppError(
             "TSC-RELIABILITY-0002",
-            "시험 항목이 아니거나 없는 값이 있습니다.",
+            "시험 항목이 아니거나 존재하지 않는 값 포함.",
             details={"term_ids": missing},
         )
 
@@ -684,7 +684,7 @@ def _checked_revision(db: Session, raw: Any) -> uuid.UUID | None:
         return None
     found = uuid.UUID(str(raw))
     if db.get(SpecDocumentRevision, found) is None:
-        raise NotFound("TSC-RELIABILITY-0016", "그 규격서 판을 찾을 수 없습니다.")
+        raise NotFound("TSC-RELIABILITY-0016", "해당 규격서 판을 찾을 수 없음.")
     return found
 
 
@@ -748,13 +748,13 @@ def _check_name_free(
         return
     group, document = scope
     parts = [label for label, filled in (("적용군", group), ("규격서", document)) if filled]
-    where = f"같은 {'·'.join(parts)}" if parts else "적용군도 규격서도 안 적힌 채"
+    where = f"같은 {'·'.join(parts)}" if parts else "적용군·규격서 미입력"
     raise Conflict(
         "TSC-RELIABILITY-0003",
-        f"이 사업부에 {where}로 같은 이름의 신뢰성 시험이 있습니다: {clash.name}"
+        f"같은 이름의 신뢰성 시험이 이 사업부에 이미 있음({where}): {clash.name}."
         + (
-            " — 별개의 시험이면 적용군이나 규격서를 적어 가르십시오."
-            " (다른 판이면 그 판을 적으십시오 — 판마다 줄이 섭니다.)"
+            " 별개의 시험이면 적용군 또는 규격서 입력 필요."
+            " 다른 판이면 판 입력 필요(판마다 별도 행으로 등록됨)."
             if not parts
             else ""
         ),
@@ -803,7 +803,7 @@ def division_by_code(db: Session, code: str) -> VocabularyTerm:
         else None
     )
     if found is None:
-        raise NotFound("TSC-RELIABILITY-0008", f"사업부를 찾을 수 없습니다: {code}")
+        raise NotFound("TSC-RELIABILITY-0008", f"사업부를 찾을 수 없음: {code}")
     return found
 
 
@@ -846,8 +846,8 @@ def _require_can_register(db: Session, user: User, division_term_id: uuid.UUID) 
     if division_term_id not in my_division_term_ids(db, user):
         raise Forbidden(
             "TSC-RELIABILITY-0007",
-            "이 사업부에 올릴 수 없습니다 — 내 소속 부서 중 관리자인 곳이 그 사업부에"
-            " 속해 있어야 합니다. 관리 → 부서 정보에서 부서의 사업부를 확인하십시오.",
+            "이 사업부에 등록 불가. 관리자로 소속된 부서 중 하나가 해당 사업부에 속해 있어야"
+            " 함. 관리 → 부서 정보에서 부서의 사업부 확인 필요.",
         )
 
 
@@ -856,7 +856,7 @@ def create(db: Session, user: User, payload: dict[str, Any]) -> ReliabilityTest:
     _require_can_register(db, user, division.id)
     name = str(payload["name"]).strip()
     if not name:
-        raise AppError("TSC-RELIABILITY-0004", "이름을 적어 주십시오.")
+        raise AppError("TSC-RELIABILITY-0004", "이름 입력 필요.")
     # **자리를 먼저 뽑는다.** 이름 검사가 속성보다 앞서므로, 보낼 값에서 적용군·규격서를
     # 읽어 함께 넘긴다 — 안 그러면 「가르는 근거」 가 아직 없는 채로 판정하게 된다.
     items = _attribute_items(payload.get("attributes"))
@@ -922,8 +922,8 @@ def _refuse_machine_edit(row: ReliabilityTest) -> None:
         return
     raise Conflict(
         "TSC-RELIABILITY-0005",
-        "확정된 신뢰성 시험은 기계 자격으로 못 고칩니다 — "
-        "사람이 화면에서 「다시 후보로」 를 누른 뒤에 고칠 수 있습니다.",
+        "확정된 신뢰성 시험은 기계 자격으로 수정 불가. "
+        "화면에서 다시 후보로 되돌린 뒤 수정 가능.",
         details={"test_id": str(row.id), "status": row.status},
     )
 
@@ -939,8 +939,7 @@ def require_editable(db: Session, user: User, test_id: uuid.UUID) -> None:
     if not _can_edit(db, user, row.division_term_id):
         raise Forbidden(
             "TSC-RELIABILITY-0007",
-            "이 사업부의 신뢰성 시험을 고칠 수 없습니다 — 그 사업부에 속한 부서의"
-            " 관리자여야 합니다.",
+            "이 사업부의 신뢰성 시험 수정 불가. 해당 사업부에 속한 부서의 관리자만 수정 가능.",
         )
     _refuse_machine_edit(row)
 
@@ -1031,7 +1030,7 @@ def update(
     if "name" in changes:
         name = str(changes["name"]).strip()
         if not name:
-            raise AppError("TSC-RELIABILITY-0004", "이름을 적어 주십시오.")
+            raise AppError("TSC-RELIABILITY-0004", "이름 입력 필요.")
         # 속성을 **함께** 보냈으면 그것이 새 자리다(적용군을 바꾸면서 이름을 바꾸는 일이
         # 실제로 있다). 안 보냈으면 지금 줄의 자리를 쓴다.
         scope = (
@@ -1095,7 +1094,7 @@ def _human_only(row: ReliabilityTest, what: str) -> None:
         "TSC-RELIABILITY-0006",
         # `what` 에 조사까지 실어 받는다 — 여기서 「는」 을 붙이면 받침에 따라 틀린다
         # (「확인는」). 한국어 조사는 앞말을 봐야 정해지므로 부르는 쪽이 준다.
-        f"{what} 사람이 화면에서 합니다 — 기계 자격으로는 못 합니다.",
+        f"{what} 화면에서만 수행 가능. 기계 자격(토큰, MCP)으로는 불가.",
         details={"test_id": str(row.id)},
     )
 
@@ -1149,7 +1148,7 @@ def reopen(
     반려가 사유를 받는 것과 같은 이유다.
     """
     row = get(db, test_id)
-    _human_only(row, "다시 후보로 여는 것은")
+    _human_only(row, "다시 후보로 되돌리기는")
     require_editable(db, user, test_id)
     if row.status == CANDIDATE:
         return row
@@ -1216,11 +1215,11 @@ def reject(db: Session, user: User, test_id: uuid.UUID, reason: str) -> None:
     if row.status != CANDIDATE:
         raise Conflict(
             "TSC-RELIABILITY-0009",
-            "확정된 시험은 반려할 수 없습니다 — 「다시 후보로」 를 거치십시오.",
+            "확정된 시험은 반려 불가. 먼저 다시 후보로 되돌려야 함.",
         )
     said = reason.strip()
     if not said:
-        raise AppError("TSC-RELIABILITY-0009", "반려 사유를 적어 주십시오.")
+        raise AppError("TSC-RELIABILITY-0009", "반려 사유 입력 필요.")
     _take_down(db, user, row, action=audit.RELIABILITY_TEST_REJECTED, reason=said)
     db.commit()
 
@@ -1249,11 +1248,11 @@ def bulk(
     있다 — 그때 감사에 「누가 열었나」 만 있으면 답할 수 없다.
     """
     if not ids:
-        raise AppError("TSC-RELIABILITY-0011", "고른 줄이 없습니다.")
+        raise AppError("TSC-RELIABILITY-0011", "선택한 행 없음.")
     if len(ids) > BULK_LIMIT:
         raise AppError(
             "TSC-RELIABILITY-0011",
-            f"한 번에 {BULK_LIMIT}건까지입니다 — {len(ids)}건을 골랐습니다. 나눠 누르십시오.",
+            f"한 번에 최대 {BULK_LIMIT}건. 선택 {len(ids)}건. 나누어 실행 필요.",
         )
     run = {
         "confirm": confirm,
@@ -1262,13 +1261,13 @@ def bulk(
         "reopen": reopen,
     }.get(action)
     if run is None:
-        raise AppError("TSC-RELIABILITY-0011", f"알 수 없는 동작입니다: {action}")
+        raise AppError("TSC-RELIABILITY-0011", f"알 수 없는 동작: {action}")
     # **사유를 먼저 본다.** 줄마다 거절하면 오백 줄이 같은 이유로 실패하고, 그 목록을
     # 읽는 사람은 무엇이 잘못됐는지 못 찾는다.
     said = (reason or "").strip()
     if action in ("reject", "reopen") and not said:
-        what = "반려" if action == "reject" else "다시 후보로 여는"
-        raise AppError("TSC-RELIABILITY-0011", f"{what} 사유를 적어 주십시오.")
+        what = "반려" if action == "reject" else "다시 후보로 되돌리기"
+        raise AppError("TSC-RELIABILITY-0011", f"{what} 사유 입력 필요.")
 
     done: list[str] = []
     failed: list[dict[str, str]] = []
@@ -1533,12 +1532,11 @@ def create_many(db: Session, user: User, payload: dict[str, Any]) -> dict[str, A
 
     tests: list[dict[str, Any]] = list(payload.get("tests") or [])
     if not tests:
-        raise AppError("TSC-RELIABILITY-0012", "올릴 줄이 없습니다.")
+        raise AppError("TSC-RELIABILITY-0012", "등록할 행 없음.")
     if len(tests) > BULK_LIMIT:
         raise AppError(
             "TSC-RELIABILITY-0012",
-            f"한 번에 {BULK_LIMIT}건까지입니다 — {len(tests)}건을 보냈습니다."
-            " 나눠 보내십시오.",
+            f"한 번에 최대 {BULK_LIMIT}건. 전송 {len(tests)}건. 나누어 전송 필요.",
         )
 
     document_id = payload.get("document_id")
@@ -1560,9 +1558,8 @@ def create_many(db: Session, user: User, payload: dict[str, Any]) -> dict[str, A
     ):
         raise AppError(
             "TSC-RELIABILITY-0016",
-            "규격서를 주면 판(document_revision_id)도 함께 주십시오 — 판이 없으면"
-            " 같은 자리에 쌓여 먼저 올린 값이 조용히 덮입니다."
-            " 규격서의 판 목록은 `GET /spec-documents/{id}` 에 있습니다.",
+            "규격서 지정 시 판(document_revision_id)도 필요. 판이 없으면 같은 자리에"
+            " 쌓여 먼저 올린 값을 덮어씀. 규격서의 판 목록: `GET /spec-documents/{id}`.",
         )
 
     created: list[ReliabilityTest] = []
@@ -1626,9 +1623,7 @@ def create_many(db: Session, user: User, payload: dict[str, Any]) -> dict[str, A
                 "action": action,
                 "changed": changed,
                 "reason": (
-                    "보낸 값이 지금 값과 같습니다 — 바뀐 것이 없습니다."
-                    if action == "skipped"
-                    else None
+                    "보낸 값이 현재 값과 같음. 변경 없음." if action == "skipped" else None
                 ),
             }
             for row, action, changed in merged
@@ -1693,7 +1688,7 @@ def compare_revisions(
     if left.document_id != right.document_id:
         raise AppError(
             "TSC-RELIABILITY-0017",
-            "다른 규격서의 판끼리는 못 견줍니다 — 견주려면 같은 문서의 두 판이어야 합니다.",
+            "다른 규격서의 판끼리는 비교 불가. 같은 문서의 두 판만 비교 가능.",
             status=400,
         )
     before, after = _values_at(db, left_id), _values_at(db, right_id)

@@ -171,7 +171,7 @@ export default function ReliabilityTestsPage() {
       <PageHeader
         back={useBackFromReference()}
         title="신뢰성 시험"
-        description="부서가 제품 개발·검증을 위해 수행하는 시험 전부 — 부서를 가로질러 한 표로. 등록·수정은 그 부서의 화면(사이드바 아래 부서 이름)에서 합니다."
+        description="전 부서의 제품 개발·검증 시험을 한 표로 조회. 등록·수정은 해당 부서 화면(사이드바 아래 부서 이름)에서 가능."
       />
 
       {/* 조건 속성으로 거르기 — 「-40 °C 이하로 내려가는 시험」 을 물을 수 있어야 조건을 적는다. */}
@@ -189,7 +189,7 @@ export default function ReliabilityTestsPage() {
         <Input
           value={query}
           onChange={(event) => setQuery(event.target.value)}
-          placeholder="검색 — 시험 · 목적 · 부서 · 시험 항목 · 속성 값"
+          placeholder="검색: 시험 · 목적 · 부서 · 시험 항목 · 속성 값"
           className="w-80"
         />
         {tests.data && (
@@ -224,8 +224,8 @@ export default function ReliabilityTestsPage() {
 
       {tests.data && rows.length === 0 && !filtered ? (
         <EmptyState
-          title="등록된 신뢰성 시험이 없습니다"
-          hint="사이드바 「신뢰성 시험」 아래의 부서 화면에서 그 부서의 관리자가 등록합니다. 부서가 안 보이면 「관리 → 부서 정보」 의 「신뢰성 시험」 표시를 켭니다."
+          title="등록된 신뢰성 시험 없음"
+          hint="사이드바 ‘신뢰성 시험’ 아래 부서 화면에서 해당 부서 관리자가 등록. 부서가 안 보이면 ‘관리 → 부서 정보’에서 ‘신뢰성 시험’ 표시 켜기 필요."
         />
       ) : (
         <Table viewport>
@@ -254,8 +254,8 @@ export default function ReliabilityTestsPage() {
               // 「눌렀더니 다 없어졌다」 로 보인다.
               <TableRow>
                 <TableCell colSpan={99} className="text-muted-foreground py-10 text-center">
-                  필터 조건에 해당하는 신뢰성 시험이 없습니다. 위의 조건을 하나씩 해제해
-                  보십시오 — 등록된 시험이 사라진 것은 아닙니다.
+                  필터 조건에 해당하는 신뢰성 시험 없음. 위 조건을 하나씩 해제해 확인 필요.
+                  등록된 시험은 그대로 있음.
                 </TableCell>
               </TableRow>
             )}
@@ -304,7 +304,7 @@ export default function ReliabilityTestsPage() {
                             className={`text-xs ${item.equipment_count === 0 ? 'text-amber-600' : 'text-muted-foreground'}`}
                             title={
                               item.equipment_count === 0
-                                ? '이 항목이 되는 장비가 그 부서에 없습니다'
+                                ? '해당 부서에 이 항목 수행 가능 장비 없음'
                                 : undefined
                             }
                           >

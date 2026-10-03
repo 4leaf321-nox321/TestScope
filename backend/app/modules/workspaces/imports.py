@@ -92,7 +92,7 @@ def parse(text: str) -> list[dict[str, str]]:
     if not body:
         raise AppError(
             "TSC-WORKSPACES-0020",
-            "비어 있습니다. 부서 정보 CSV 를 붙여넣으십시오.",
+            "입력 내용 없음. 부서 정보 CSV 붙여넣기 필요.",
             status=422,
         )
     first = body.splitlines()[0]
@@ -103,8 +103,8 @@ def parse(text: str) -> list[dict[str, str]]:
     if missing:
         raise AppError(
             "TSC-WORKSPACES-0020",
-            f"부서 정보 형식이 아닙니다 — {', '.join(missing)} 열이 없습니다. "
-            "ReportArchive 의 「부서 정보 내보내기」 파일을 머리글까지 붙여넣으십시오.",
+            f"부서 정보 형식이 아님. 누락된 열: {', '.join(missing)}. "
+            "ReportArchive의 부서 정보 내보내기 파일을 머리글까지 붙여넣기 필요.",
             status=422,
         )
     return [
@@ -177,25 +177,25 @@ def _judge(
 ) -> tuple[str, str]:
     """행 하나의 운명. `will_exist`·`seen` 을 갱신한다 — 뒤 행의 부모가 앞 행일 수 있다."""
     if not slug:
-        return "error", "주소(slug)가 비어 있습니다."
+        return "error", "주소(slug) 없음."
     if kind not in IMPORTED_KINDS:
         if kind in ("tf", "personal"):
-            return "skip_kind", "한시 조직(TF)·개인 공간은 조직도가 아니라 들이지 않습니다."
-        return "skip_kind", f"모르는 종류입니다: {kind}"
+            return "skip_kind", "한시 조직(TF)·개인 공간은 조직도가 아니므로 제외."
+        return "skip_kind", f"알 수 없는 종류: {kind}"
     if not re.fullmatch(SLUG_PATTERN, slug):
-        return "error", "주소(slug)가 규칙(소문자·숫자·하이픈, 2~50자)에 맞지 않습니다."
+        return "error", "주소(slug)가 규칙(소문자·숫자·하이픈, 2~50자)에 맞지 않음."
     if slug in seen:
-        return "error", "파일 안에 같은 주소가 두 번 있습니다."
+        return "error", "파일 안에 같은 주소 중복."
     seen.add(slug)
     if slug in existing:
         if update_existing:
-            return "update", "이름·설명·순서·보관 상태를 저쪽 값으로 덮습니다."
-        return "skip_exists", "이미 있는 부서라 그대로 둡니다(이름도 덮지 않습니다)."
+            return "update", "이름·설명·순서·보관 상태를 파일 값으로 덮어씀."
+        return "skip_exists", "이미 있는 부서로 유지(이름도 덮어쓰지 않음)."
     if parent and parent not in will_exist:
         return (
             "error",
-            f"상위 부서({parent})가 여기에도, 이 파일의 앞 행에도 없습니다. "
-            "TF 아래 행이거나 파일이 잘렸을 수 있습니다.",
+            f"상위 부서({parent})가 시스템과 이 파일의 앞 행 어디에도 없음. "
+            "TF 아래 행이거나 파일이 잘렸을 가능성 있음.",
         )
     will_exist.add(slug)
     return "create", ""

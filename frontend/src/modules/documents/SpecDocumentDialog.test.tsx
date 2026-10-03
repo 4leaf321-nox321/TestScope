@@ -100,7 +100,7 @@ describe('사내 규격서 등록', () => {
     expect(post).toHaveBeenCalledTimes(1)
     expect(saved).not.toHaveBeenCalled()
     expect(screen.getByText(/너무큰\.pdf/)).toBeTruthy()
-    expect(screen.getByText(/문서는 저장됐지만/)).toBeTruthy()
+    expect(screen.getByText(/문서 저장 완료, 파일/)).toBeTruthy()
   })
 
   it('고른 파일을 다시 뺄 수 있다', async () => {

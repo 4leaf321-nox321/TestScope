@@ -27,7 +27,7 @@ export default function ReviewPage() {
     <div className="space-y-6">
       <PageHeader
         title="검토함"
-        description="반입이 못 정한 것을 후보와 근거와 함께 세워 둡니다. 누구나 의견을 내고, 시스템 관리자가 확정하면 기존 규칙대로 적용됩니다."
+        description="반입 과정에서 정하지 못한 항목을 후보·근거와 함께 표시. 의견 제출은 누구나 가능, 시스템 관리자 확정 시 기존 규칙대로 적용."
         actions={
           isAdmin && (
             <Button
@@ -74,9 +74,7 @@ export default function ReviewPage() {
             <div className="mt-3">
               {one.open > 0 ? (
                 <Button asChild size="sm">
-                  <Link to={`/admin/review/${one.key}`}>
-                    {isAdmin ? '고르러 가기' : '의견 내러 가기'}
-                  </Link>
+                  <Link to={`/admin/review/${one.key}`}>{isAdmin ? '선택' : '의견 제출'}</Link>
                 </Button>
               ) : (
                 <Button asChild size="sm" variant="outline">
@@ -96,12 +94,12 @@ export default function ReviewPage() {
       <div className="rounded-md border p-4">
         <h2 className="text-base font-semibold">시험 항목 제안</h2>
         <p className="text-muted-foreground mt-1 text-sm">
-          AI 가 문서에서 읽었지만 시험 항목 축에 없던 말. 축은 닫혀 있어 AI 가 값을 못 더합니다
-          — 축에 세우거나 기존 값에 이으면 그 말을 낸 시험 전부에 한 번에 걸립니다.
+          AI가 문서에서 읽었으나 시험 항목 축에 없던 말. 축이 닫혀 있어 AI는 값 추가 불가. 축에
+          등록하거나 기존 값에 연결하면 해당 말을 낸 시험 전체에 일괄 반영됨.
         </p>
         <div className="mt-3">
           <Button asChild size="sm" variant="outline">
-            <Link to="/admin/item-proposals">보러 가기</Link>
+            <Link to="/admin/item-proposals">보기</Link>
           </Button>
         </div>
       </div>
@@ -114,21 +112,21 @@ export default function ReviewPage() {
       <div className="rounded-md border p-4">
         <h2 className="text-base font-semibold">기종 등록 요청</h2>
         <p className="text-muted-foreground mt-1 text-sm">
-          장비를 등록하면서 카탈로그에서 못 찾은 기종. 계열을 고르고 세우면 그 기종을 요청한
-          장비 전부가 한 번에 이어집니다 — 세워 놓고 장비를 하나씩 다시 열 필요가 없습니다.
+          장비 등록 시 카탈로그에서 찾지 못한 기종. 계열 선택 후 등록하면 해당 기종을 요청한
+          장비 전체가 일괄 연결됨(장비별 재편집 불필요).
         </p>
         <div className="mt-3">
           <Button asChild size="sm" variant="outline">
-            <Link to="/admin/model-proposals">보러 가기</Link>
+            <Link to="/admin/model-proposals">보기</Link>
           </Button>
         </div>
       </div>
 
       <p className="text-muted-foreground text-xs">
-        후보는 반입(카탈로그)과 정본의 추천(
-        <span className="font-mono">source/catalog/proposals</span>)에서 옵니다. 추천은 정답이
-        아닙니다 — 근거를 읽고, 아니면 직접 고르십시오. 의견은 모이기만 하고 데이터를 바꾸지
-        않습니다; 확정할 때 바뀝니다.
+        후보 출처: 반입(카탈로그)과 정본의 추천(
+        <span className="font-mono">source/catalog/proposals</span>). 추천은 정답이 아님. 근거
+        확인 후 맞지 않으면 직접 선택. 의견은 수집만 되며 데이터 변경 없음. 데이터는 확정 시
+        변경됨.
       </p>
     </div>
   )

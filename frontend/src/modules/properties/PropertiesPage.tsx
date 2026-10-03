@@ -75,7 +75,7 @@ type View = 'property' | 'item'
 const SOURCE_LABEL: Record<string, string> = {
   ontology: '카탈로그 원본',
   materialtwin: 'MaterialTwin',
-  manual: '손으로',
+  manual: '수동 입력',
 }
 
 /** 알 하나 — 연결 한 줄. 제안은 점선, 확인은 칠. `count` 는 반대편에 몇이 이어졌나. */
@@ -103,7 +103,7 @@ function LinkChip({
         suggested ? 'border-dashed text-muted-foreground' : 'bg-muted'
       }`}
       title={[
-        suggested ? '자동 제안 연결 — 아직 사람이 확인하지 않았습니다' : '확인된 연결',
+        suggested ? '자동 제안 연결(사람 확인 전)' : '확인된 연결',
         `출처: ${SOURCE_LABEL[link.source] ?? link.source}`,
         link.note ?? '',
       ]
@@ -378,7 +378,7 @@ export default function PropertiesPage() {
       <PageHeader
         back={useBackFromReference()}
         title="물성 항목"
-        description="어떤 시험으로 어떤 물성을 얻는지. 검색이 「인장강도 재는 장비」 를 이 표로 시험 항목으로 바꿉니다."
+        description="시험 항목별 측정 물성. 검색 시 이 표를 기준으로 ‘인장강도 측정 장비’ 같은 물성 검색어를 시험 항목으로 변환."
         actions={<NewTermButton slug="property" onCreated={() => properties.reload()} />}
       />
 
@@ -462,16 +462,15 @@ export default function PropertiesPage() {
             }}
           />
           {/* 검토하는 사람의 눈 — 다 확인하면 목록이 비고, 그것이 끝났다는 표시가 된다. */}
-          확인 안 한 것만
+          미확인 항목만
         </label>
       </div>
 
       {admin && suggested > 0 && (
         <div className="flex flex-wrap items-center gap-3 rounded-md border border-amber-300 bg-amber-50 p-3 text-sm dark:bg-amber-950/30">
           <p>
-            자동 제안 연결 <strong>{suggested}건</strong>을 아직 아무도 확인하지 않았습니다.
-            확인된 연결만이 「이 물성은 이 시험으로 나온다」 의 근거가 되고, 내보내기가
-            카탈로그에 싣는 값입니다.
+            자동 제안 연결 <strong>{suggested}건</strong> 미확인. 확인된 연결만 ‘이 물성은 이
+            시험으로 측정’의 근거가 되며, 내보내기 시 카탈로그에 포함됨.
           </p>
           {shownSuggested.length > 0 && (
             <Button size="sm" disabled={busy} onClick={() => void confirmMany(shownSuggested)}>
@@ -486,7 +485,7 @@ export default function PropertiesPage() {
       {undoable && (
         <div className="flex flex-wrap items-center gap-3 rounded-md border p-3 text-sm">
           <span>
-            <strong>{undoable.count}건</strong>을 확인으로 올렸습니다.
+            <strong>{undoable.count}건</strong> 확인 처리 완료.
           </span>
           {/* 되돌릴 길이 없으면 사람은 묶음 단추를 아예 안 누른다. */}
           <Button
@@ -508,12 +507,12 @@ export default function PropertiesPage() {
 
       {properties.data && (
         <p className="text-muted-foreground text-sm">
-          물성 {allProps.length}종 중 이어진 것 {linkedProps} · 시험 항목 {itemRows.length}종
-          중 이어진 것 {linkedItems}
+          물성 {allProps.length}종 중 연결 {linkedProps} · 시험 항목 {itemRows.length}종 중
+          연결 {linkedItems}
           {suggested > 0 && (
             <>
               {' '}
-              · <span className="text-amber-700">확인 안 한 제안 {suggested}</span>
+              · <span className="text-amber-700">미확인 제안 {suggested}</span>
             </>
           )}
           {focus && (
@@ -532,11 +531,11 @@ export default function PropertiesPage() {
 
       {properties.data && empty ? (
         <EmptyState
-          title={view === 'property' ? '물성이 없습니다' : '시험 항목이 없습니다'}
+          title={view === 'property' ? '물성 없음' : '시험 항목 없음'}
           hint={
             linkedOnly || manyOnly
-              ? '필터를 해제해 보십시오.'
-              : '카탈로그 반입(import_catalog.py)이 MaterialTwin 물성 271종과 연결을 심습니다.'
+              ? '필터 해제 후 확인.'
+              : '카탈로그 반입(import_catalog.py) 시 MaterialTwin 물성 271종과 연결이 등록됨.'
           }
         />
       ) : view === 'property' ? (
@@ -583,7 +582,7 @@ export default function PropertiesPage() {
                           ))}
                           {one.links.length === 0 && (
                             <span className="text-muted-foreground text-xs">
-                              이어진 시험 없음 — 이 물성으로는 아직 검색이 안 됩니다
+                              연결된 시험 없음(이 물성으로 검색 불가)
                             </span>
                           )}
                           {adder(
@@ -638,7 +637,7 @@ export default function PropertiesPage() {
                       ))}
                     {row.links.length === 0 && (
                       <span className="text-muted-foreground text-xs">
-                        내는 물성 없음 — 판정·곡선으로 끝나는 시험이거나 아직 안 이었습니다
+                        측정 물성 없음(판정·곡선으로 끝나는 시험 또는 미연결)
                       </span>
                     )}
                     {adder('item', row.id, new Set(row.links.map((l) => l.property.id)))}

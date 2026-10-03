@@ -66,7 +66,7 @@ describe('조건 축의 쓰임', () => {
     expect(screen.getByText('14건')).toBeTruthy()
     expect(screen.getByText(/-55 ~ 150 degC/)).toBeTruthy()
     // **칸만 꺼내 놓고 안 채운 것**이 보여야 「이만큼 쓰인다」 로 안 읽힌다.
-    expect(screen.getByText(/3건은 칸만 있고 값이 없습니다/)).toBeTruthy()
+    expect(screen.getByText(/3건은 칸만 있고 값 없음/)).toBeTruthy()
     // 구간은 없다 — 있으면 읽는 사람이 그 경계에 뜻이 있다고 믿는다.
     expect(screen.queryByText(/이하/)).toBeNull()
   })
@@ -103,7 +103,7 @@ describe('조건 축의 쓰임', () => {
     await show(
       answer({ definitions: [], test_count: 0, valued_count: 0, low: null, high: null }),
     )
-    expect(screen.getByText(/적는 칸이 아직 없습니다/)).toBeTruthy()
+    expect(screen.getByText(/적는 칸 없음/)).toBeTruthy()
     expect(screen.queryByRole('link', { name: /값으로 좁히기/ })).toBeNull()
   })
 

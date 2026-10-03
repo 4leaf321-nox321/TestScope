@@ -74,7 +74,7 @@ def my_division_term_ids(db: Session, user: User) -> set[uuid.UUID]:
 def workspace_by_slug(db: Session, slug: str) -> Workspace:
     workspace = db.scalar(select(Workspace).where(Workspace.slug == slug))
     if workspace is None:
-        raise NotFound("TSC-WORKSPACES-0001", f"부서를 찾을 수 없습니다: {slug}")
+        raise NotFound("TSC-WORKSPACES-0001", f"부서를 찾을 수 없음: {slug}")
     return workspace
 
 
@@ -94,7 +94,7 @@ def require_member(db: Session, *, workspace: Workspace, user: User) -> None:
     if user.is_system_admin:
         return
     if membership_of(db, workspace_id=workspace.id, user_id=user.id) is None:
-        raise Forbidden("TSC-WORKSPACES-0002", "이 부서에 접근할 권한이 없습니다.")
+        raise Forbidden("TSC-WORKSPACES-0002", "이 부서에 대한 접근 권한 없음.")
 
 
 def require_manager(db: Session, *, workspace: Workspace, user: User) -> None:
@@ -103,7 +103,7 @@ def require_manager(db: Session, *, workspace: Workspace, user: User) -> None:
         return
     membership = membership_of(db, workspace_id=workspace.id, user_id=user.id)
     if membership is None or membership.role != "manager":
-        raise Forbidden("TSC-WORKSPACES-0003", "부서 관리자만 할 수 있습니다.")
+        raise Forbidden("TSC-WORKSPACES-0003", "부서 관리자 전용 작업.")
 
 
 def my_workspace_ids(db: Session, user: User) -> list[uuid.UUID]:
@@ -170,7 +170,7 @@ def resolve_owner_workspace(
     if slug is None:
         if not user.is_system_admin:
             raise Forbidden(
-                code, f"전역 {what}은 시스템 관리자만 만들 수 있습니다. 부서를 고르십시오."
+                code, f"전역 {what}은(는) 시스템 관리자만 등록 가능. 부서 선택 필요."
             )
         return None
     workspace = workspace_by_slug(db, slug)
@@ -203,12 +203,11 @@ def require_owner_edit(
     if owner_workspace_id is None:
         raise Forbidden(
             code,
-            f"전역 {what}은 시스템 관리자만 고칠 수 있습니다. "
-            f"여러 부서가 함께 쓰기 때문입니다.",
+            f"전역 {what}은(는) 시스템 관리자만 수정 가능.",
         )
     workspace = db.get(Workspace, owner_workspace_id)
     if workspace is None:
-        raise NotFound(code, f"{what}의 소속 부서를 찾을 수 없습니다.")
+        raise NotFound(code, f"{what}의 소속 부서를 찾을 수 없음.")
     _require_role(db, workspace=workspace, user=user, role=role)
 
 
@@ -251,5 +250,5 @@ def visible_equipment_ids(db: Session, user: User) -> Select[tuple[uuid.UUID]]:
 def get_equipment(db: Session, user: User, equipment_id: uuid.UUID) -> Equipment:
     found = db.scalar(visible_equipment(db, user).where(Equipment.id == equipment_id))
     if found is None:
-        raise NotFound("TSC-EQUIPMENT-0001", "장비를 찾을 수 없습니다.")
+        raise NotFound("TSC-EQUIPMENT-0001", "장비를 찾을 수 없음.")
     return found

@@ -227,9 +227,9 @@ export default function EquipmentDetailPage() {
             onChanged={() => files.reload()}
           />
           <p className="text-muted-foreground text-xs">
-            사양서·매뉴얼·성적서. 한 개에 100 MB 까지, PDF·오피스 문서·이미지를 받습니다.
-            <strong> AI 가 이 자료를 읽어 「장비 자료 발췌」 속성에 간추려 적으면</strong> 의미
-            검색이 그 글까지 읽습니다 — 낱말이 안 겹치는 물음으로도 이 장비가 걸립니다.
+            사양서·매뉴얼·성적서. 파일당 최대 100 MB, PDF·오피스 문서·이미지 지원. AI가 이
+            자료를 읽고 ‘장비 자료 발췌’ 속성에 요약하면 의미 검색 대상에 포함됨(검색어와
+            낱말이 겹치지 않아도 이 장비 검색 가능).
           </p>
         </TabsContent>
       </Tabs>

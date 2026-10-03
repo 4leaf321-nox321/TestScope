@@ -28,9 +28,9 @@ import { vocabularyApi } from '@/modules/vocabulary/api'
 import type { Term } from '@/modules/vocabulary/api'
 
 const DETACH_LABEL: Record<string, string> = {
-  delete: '연결 줄을 지웁니다',
-  null: '칸을 비웁니다',
-  none: '필수 항목 — 이동만 가능합니다',
+  delete: '연결 줄 삭제',
+  null: '칸 비움',
+  none: '필수 항목: 이동만 가능',
 }
 
 export function TermReferences({
@@ -76,7 +76,7 @@ export function TermReferences({
         <p className="text-sm font-medium">참조 내역</p>
         {groups.data && (
           <span className="text-muted-foreground text-xs">
-            {total === 0 ? '이 값을 참조하는 항목이 없습니다' : `${total}건`}
+            {total === 0 ? '이 값을 참조하는 항목 없음' : `${total}건`}
           </span>
         )}
       </div>
@@ -131,7 +131,7 @@ export function TermReferences({
                         disabled={busy}
                         onClick={() =>
                           window.confirm(
-                            `「${row.label}」 에서 이 값을 뗍니다 — ${DETACH_LABEL[group.detach]}. 계속할까요?`,
+                            `‘${row.label}’에서 이 값 해제(${DETACH_LABEL[group.detach]}). 계속하시겠습니까?`,
                           ) &&
                           void run(() =>
                             vocabularyApi.detachReference(term.id, group.key, row.id),

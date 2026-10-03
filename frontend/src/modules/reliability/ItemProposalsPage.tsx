@@ -56,15 +56,15 @@ export default function ItemProposalsPage() {
     <div className="space-y-6">
       <PageHeader
         title="시험 항목 제안"
-        description="AI 가 문서에서 읽었지만 시험 항목 축에 없던 말입니다. 축에 세우거나 기존 값에 이으면, 그 말을 낸 시험 전부에 한 번에 걸립니다."
+        description="AI가 문서에서 읽었으나 시험 항목 축에 없는 말. 축에 추가하거나 기존 값에 연결하면 그 말이 나온 시험 전체에 일괄 적용."
       />
 
       <ErrorNotice error={error ?? groups.error} />
 
       {groups.data && rows.length === 0 ? (
         <EmptyState
-          title="검토할 제안이 없습니다"
-          hint="AI 가 시험을 올리면서 축에 없는 말을 만나면 여기에 쌓입니다."
+          title="검토할 제안 없음"
+          hint="AI가 시험 등록 중 축에 없는 말을 만나면 여기에 쌓임."
         />
       ) : (
         <ul className="space-y-3">
@@ -73,7 +73,7 @@ export default function ItemProposalsPage() {
               <div className="flex flex-wrap items-baseline gap-2">
                 <span className="text-base font-medium">{group.text}</span>
                 <span className="text-muted-foreground text-sm">
-                  시험 {group.count}건에서 나왔습니다
+                  시험 {group.count}건에서 나옴
                 </span>
               </div>
 
@@ -81,7 +81,7 @@ export default function ItemProposalsPage() {
                 {group.proposals.map((one) => (
                   <li key={one.id}>
                     {one.reliability_test_name}
-                    {one.text !== group.text && ` — 「${one.text}」 로 적힘`}
+                    {one.text !== group.text && ` (원문: ${one.text})`}
                     {one.note && ` · ${one.note}`}
                   </li>
                 ))}
@@ -131,8 +131,8 @@ export default function ItemProposalsPage() {
               {/* **원문을 고쳐 세울 수 있게 둔다** — 「염수분무(5%)」 는 문서의 말이지
                   축의 값이 아니다. 다만 무엇을 고쳤는지는 위의 원문 줄에 남는다. */}
               <p className="text-muted-foreground text-xs">
-                축에 세울 이름은 고칠 수 있습니다 — 문서의 말이 곧 축의 값은 아닙니다.
-                「아니오」 는 제안을 닫고 시험 항목을 안 겁니다.
+                축에 세울 이름 수정 가능(문서의 말이 곧 축의 값은 아님). ‘아니오’: 제안을 닫고
+                시험 항목은 연결하지 않음.
               </p>
             </li>
           ))}

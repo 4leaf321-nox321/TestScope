@@ -92,7 +92,7 @@ describe('속성 값 편집', () => {
     fireEvent.click(screen.getByRole('button', { name: '새 속성' }))
     const input = screen.getByLabelText('습도 값')
     fireEvent.change(input, { target: { value: '85 %' } })
-    expect(screen.getByText(/수치로 읽었습니다 · 단위 %/)).toBeTruthy()
+    expect(screen.getByText(/인식된 종류: 수치 · 단위 %/)).toBeTruthy()
 
     const payload = toPayload(latest)
     // 비어 있는 「시험 온도」 줄은 빠지고 습도만 간다.

@@ -93,7 +93,7 @@ function Thumb({
       <div
         className={`bg-muted text-muted-foreground flex ${look.box} items-center justify-center rounded-md border text-xs`}
       >
-        못 읽음
+        불러오기 실패
       </div>
     )
   }
@@ -181,11 +181,7 @@ export function AttachmentStrip({
     // **골라 두기.** 첨부는 대상 id 를 요구하지만, 「저장하고 다시 열어 붙이기」 를
     // 시키면 대개 만들기까지만 하고 그림은 안 올라온다 — 골라 두면 저장한 쪽이 이어 올린다.
     if (!onStage) {
-      return (
-        <p className="text-muted-foreground text-xs">
-          저장한 뒤에 이미지를 첨부할 수 있습니다.
-        </p>
-      )
+      return <p className="text-muted-foreground text-xs">저장 후 이미지 첨부 가능.</p>
     }
     return (
       <div className="space-y-1">
@@ -210,7 +206,7 @@ export function AttachmentStrip({
         </Button>
         {staged.length > 0 && (
           <p className="text-muted-foreground text-xs">
-            저장할 때 올립니다: {staged.join(', ')}
+            저장 시 업로드 예정: {staged.join(', ')}
           </p>
         )}
       </div>
@@ -309,8 +305,8 @@ export function AttachmentStrip({
           </Button>
           {rows.length === 0 && (
             <p className="text-muted-foreground text-xs">
-              {ACCEPT_WORDS}, 장당 100 MB 까지. **설명을 적어 두십시오** — AI 는 이미지를 못
-              보고 그 글자만 읽습니다.
+              {ACCEPT_WORDS}, 장당 최대 100 MB. 설명 입력 필요(AI는 이미지가 아닌 설명 글자만
+              읽음).
             </p>
           )}
         </>

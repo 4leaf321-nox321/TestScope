@@ -235,6 +235,6 @@ describe('지식 그래프', () => {
       expect(screen.getByRole('button', { name: /여기서 확장 \(\+2\)/ })).toBeTruthy(),
     )
     expect(screen.getByText('수행 가능 계열')).toBeTruthy()
-    expect(screen.getByText(/일부만 실었습니다/)).toBeTruthy()
+    expect(screen.getByText(/일부만 표시됨/)).toBeTruthy()
   })
 })

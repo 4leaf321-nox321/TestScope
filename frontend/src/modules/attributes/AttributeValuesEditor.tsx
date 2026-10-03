@@ -496,7 +496,7 @@ export function AttributeValuesEditor({
                     {isDraft && (
                       <span
                         className="text-muted-foreground ml-1 text-xs"
-                        title="정식 속성이 아닙니다. 표시·수집만 되고 검색 판정에는 안 쓰입니다."
+                        title="정식 속성 아님. 표시·수집만 되며 검색 판정에 미사용."
                       >
                         초안
                       </span>
@@ -546,8 +546,8 @@ export function AttributeValuesEditor({
                 </div>
                 {isNumeric(row.kind) && !row.kindLocked && row.raw && (
                   <p className="text-muted-foreground mt-1 text-xs">
-                    {KIND_LABEL[row.kind]}로 읽었습니다
-                    {row.unit ? ` · 단위 ${row.unit}` : ''}. 아니면 종류를 바꾸십시오.
+                    인식된 종류: {KIND_LABEL[row.kind]}
+                    {row.unit ? ` · 단위 ${row.unit}` : ''}. 다르면 종류 변경 필요.
                   </p>
                 )}
               </li>
@@ -566,7 +566,7 @@ export function AttributeValuesEditor({
           }}
           placeholder="속성 선택"
           detailTitle="속성 전부"
-          detailHint="정식 속성이 먼저, 누가 이미 쓴 초안이 건수와 함께 다음입니다."
+          detailHint="정식 속성 우선, 이어서 기존 초안(사용 건수 포함) 표시."
           className="w-56"
         />
         <span className="text-muted-foreground text-xs">없으면</span>
@@ -600,8 +600,8 @@ export function AttributeValuesEditor({
         </p>
       )}
       <p className="text-muted-foreground text-xs">
-        새 속성은 초안으로 남고, 시스템 관리자가 「공통」 의 속성 정의에서 정식으로 올립니다.
-        값은 「85 degC」 「-40 ~ 125 degC」 「2026-03-01」 처럼 치면 종류를 알아봅니다.
+        새 속성은 초안으로 남으며, 시스템 관리자가 ‘공통’의 속성 정의에서 정식 등록. 값은 ‘85
+        degC’, ‘-40 ~ 125 degC’, ‘2026-03-01’ 형식으로 입력 시 종류 자동 인식.
       </p>
     </div>
   )

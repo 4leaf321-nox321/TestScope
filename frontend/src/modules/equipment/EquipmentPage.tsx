@@ -161,7 +161,7 @@ export default function EquipmentPage() {
       <PageHeader
         back={useBackFromReference()}
         title="보유 장비"
-        description="자산번호·이름으로 찾습니다. 시험 항목이 0 인 장비는 검색에 걸리지 않습니다."
+        description="자산번호·이름으로 검색. 시험 항목이 0건인 장비는 검색되지 않음."
         actions={
           // **볼 수 있는 것만 보여 준다.** 눌러야 403 을 아는 단추는 할 수 있는
           // 일을 알려 주지 못한다. 판정은 서버가 다시 한다.
@@ -194,7 +194,7 @@ export default function EquipmentPage() {
           둘이 되고, 둘은 반드시 어긋난다. */}
       {activeCount(filters) > 0 && (
         <div className="text-muted-foreground flex items-center gap-2 text-sm">
-          <span>{activeCount(filters)}개 조건으로 걸렀습니다</span>
+          <span>{activeCount(filters)}개 조건 적용 중</span>
           <Button
             size="sm"
             variant="outline"
@@ -225,7 +225,11 @@ export default function EquipmentPage() {
             disabled={busy}
             onClick={() => {
               // **지운 것은 목록에서 사라진다.** 한 번 묻고, 몇 대인지 함께 적는다.
-              if (window.confirm(`${picked.ids.length}대를 내립니다. 되돌릴 수 없습니다.`)) {
+              if (
+                window.confirm(
+                  `${picked.ids.length}대 내리기. 되돌릴 수 없음. 계속하시겠습니까?`,
+                )
+              ) {
                 void removePicked()
               }
             }}
@@ -239,10 +243,7 @@ export default function EquipmentPage() {
           방금 건 조건이 화면에서 없어져서, 무엇을 풀어야 할지가 안 보인다.
           정말 한 대도 없을 때만(거르기 없음) 안내로 갈음한다. */}
       {page.data && page.data.items.length === 0 && activeCount(filters) === 0 ? (
-        <EmptyState
-          title="장비가 없습니다"
-          hint="아직 등록된 장비가 없습니다. 부서 관리자가 등록할 수 있습니다."
-        />
+        <EmptyState title="장비 없음" hint="등록된 장비 없음. 부서 관리자가 등록 가능." />
       ) : (
         <div className="space-y-3">
           {/**
@@ -296,7 +297,7 @@ export default function EquipmentPage() {
               {page.data?.items.length === 0 && (
                 <TableRow className="hover:bg-transparent">
                   <TableCell colSpan={99} className="text-muted-foreground py-8 text-center">
-                    필터에 맞는 장비가 없습니다. 조건을 해제해 보십시오.
+                    필터에 맞는 장비 없음. 조건 해제 후 다시 확인.
                   </TableCell>
                 </TableRow>
               )}

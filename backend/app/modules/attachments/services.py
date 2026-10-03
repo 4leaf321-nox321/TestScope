@@ -54,7 +54,7 @@ def _check_target(target: str) -> None:
     if target not in ATTACHMENT_TARGETS:
         raise AppError(
             "TSC-ATTACH-0001",
-            f"첨부를 붙일 수 없는 대상입니다: {target}",
+            f"첨부할 수 없는 대상: {target}",
             details={"targets": list(ATTACHMENT_TARGETS)},
         )
 
@@ -79,11 +79,11 @@ def require_can_edit(db: Session, user: User, *, target: str, object_id: uuid.UU
 
         row = db.get(TestMethod, object_id)
         if row is None or row.deleted_at is not None:
-            raise NotFound("TSC-METHODS-0001", "규격을 찾을 수 없습니다.")
+            raise NotFound("TSC-METHODS-0001", "규격을 찾을 수 없음.")
         if not user.is_system_admin:
             raise Forbidden(
                 "TSC-ATTACH-0006",
-                "공개 규격의 원문은 시스템 관리자만 올리고 지웁니다.",
+                "공개 규격 원문의 업로드·삭제는 시스템 관리자 전용.",
             )
     elif target == "spec_document":
         # 사내 규격서는 **그 부서**가 만들고 고친다 — 시스템 관리자를 거치게 하면
@@ -163,17 +163,17 @@ def add(
     if resolved is None:
         raise AppError(
             "TSC-ATTACH-0002",
-            f"받을 수 없는 형식입니다: {content_type or '(모름)'}",
+            f"지원하지 않는 형식: {content_type or '(알 수 없음)'}",
             details={"allowed": sorted(ALLOWED_EXTENSIONS)},
             status=422,
         )
     if not data:
-        raise AppError("TSC-ATTACH-0003", "빈 파일입니다.", status=422)
+        raise AppError("TSC-ATTACH-0003", "빈 파일.", status=422)
     if len(data) > MAX_BYTES:
         raise AppError(
             "TSC-ATTACH-0004",
-            f"한 장에 {MAX_BYTES // 1024 // 1024} MB 까지입니다 "
-            f"(올린 것은 {len(data) / 1024 / 1024:.1f} MB).",
+            f"파일당 최대 {MAX_BYTES // 1024 // 1024} MB까지 가능"
+            f"(업로드한 파일: {len(data) / 1024 / 1024:.1f} MB).",
             status=422,
         )
     if definition_id is not None:
@@ -181,7 +181,7 @@ def add(
         if definition is None or definition.target != target:
             raise AppError(
                 "TSC-ATTACH-0005",
-                "그 칸은 이 대상의 칸이 아닙니다.",
+                "이 대상에 속하지 않는 칸.",
                 status=422,
             )
 
@@ -226,7 +226,7 @@ def _check_definition(db: Session, definition_id: Any, target: str) -> None:
         return
     definition = db.get(AttributeDefinition, definition_id)
     if definition is None or definition.target != target:
-        raise AppError("TSC-ATTACH-0005", "그 칸은 이 대상의 칸이 아닙니다.", status=422)
+        raise AppError("TSC-ATTACH-0005", "이 대상에 속하지 않는 칸.", status=422)
 
 
 def attach_existing(
@@ -461,17 +461,17 @@ def extract_images(db: Session, user: User, *, source: Attachment) -> dict[str, 
     require_can_edit(db, user, target=source.target, object_id=source.object_id)
     stored = db.get(StoredFile, source.file_id)
     if stored is None:
-        raise NotFound("TSC-ATTACH-0007", "파일 기록이 없습니다.")
+        raise NotFound("TSC-ATTACH-0007", "파일 기록 없음.")
     full = get_settings().filestore_dir / stored.path
     if not full.exists():
-        raise NotFound("TSC-ATTACH-0008", "파일이 파일스토어에 없습니다.")
+        raise NotFound("TSC-ATTACH-0008", "파일스토어에 파일 없음.")
 
     try:
         archive = zipfile.ZipFile(BytesIO(full.read_bytes()))
     except zipfile.BadZipFile as exc:
         raise AppError(
             "TSC-ATTACH-0009",
-            "이 파일에서는 그림을 꺼낼 수 없습니다 — 워드·파워포인트·엑셀만 됩니다.",
+            "이 파일에서는 그림 추출 불가. 워드·파워포인트·엑셀만 가능.",
             status=422,
         ) from exc
 
@@ -529,7 +529,7 @@ def extract_images(db: Session, user: User, *, source: Attachment) -> dict[str, 
 def get(db: Session, attachment_id: uuid.UUID) -> Attachment:
     row = db.get(Attachment, attachment_id)
     if row is None:
-        raise NotFound("TSC-ATTACH-0006", "첨부를 찾을 수 없습니다.")
+        raise NotFound("TSC-ATTACH-0006", "첨부를 찾을 수 없음.")
     return row
 
 
@@ -557,9 +557,7 @@ def update(
         if definition_id is not None:
             definition = db.get(AttributeDefinition, definition_id)
             if definition is None or definition.target != row.target:
-                raise AppError(
-                    "TSC-ATTACH-0005", "그 칸은 이 대상의 칸이 아닙니다.", status=422
-                )
+                raise AppError("TSC-ATTACH-0005", "이 대상에 속하지 않는 칸.", status=422)
         row.definition_id = definition_id
     if "sort_order" in changes and changes["sort_order"] is not None:
         row.sort_order = int(changes["sort_order"])
@@ -613,14 +611,14 @@ def bytes_of(db: Session, row: Attachment) -> tuple[bytes, str, str]:
     """내려받을 것 — (바이트, 형식, 이름). 파일이 없으면 404 로 말한다."""
     stored = db.get(StoredFile, row.file_id)
     if stored is None:
-        raise NotFound("TSC-ATTACH-0007", "파일 기록이 없습니다.")
+        raise NotFound("TSC-ATTACH-0007", "파일 기록 없음.")
     full = get_settings().filestore_dir / stored.path
     if not full.exists():
         # **DB 에는 있는데 파일이 없다.** 복구가 반쪽이었거나 사람이 지운 것이다 —
         # 빈 바이트를 주면 깨진 그림으로 보이고, 그때 원인을 못 찾는다.
         raise NotFound(
             "TSC-ATTACH-0008",
-            "파일이 파일스토어에 없습니다 — 백업 복구가 DB 만 된 것일 수 있습니다.",
+            "파일스토어에 파일 없음. 백업 복구 시 DB만 복구되었을 수 있음.",
         )
     return full.read_bytes(), stored.content_type, row.original_name
 

@@ -105,7 +105,7 @@ export function DocumentRevisions({
             </div>
           </div>
           <div className="space-y-1">
-            <Label htmlFor="rev-summary">무엇이 바뀌었나</Label>
+            <Label htmlFor="rev-summary">변경 내용</Label>
             <Textarea
               id="rev-summary"
               value={summary}
@@ -116,8 +116,8 @@ export function DocumentRevisions({
             />
             {/* **이 한 줄이 재검토의 범위를 정한다.** */}
             <p className="text-muted-foreground text-xs">
-              「오타 수정」 이면 딸린 시험을 다시 볼 이유가 없고, 「시험 온도 상향」 이면 전부
-              다시 봐야 합니다 — 그 판단을 여기 적힌 말로 합니다.
+              연결된 시험의 재검토 여부 판단 기준. 예: ‘오타 수정’은 재검토 불필요, ‘시험 온도
+              상향’은 전부 재검토 필요.
             </p>
           </div>
           <div className="flex gap-2">
@@ -152,13 +152,13 @@ export function DocumentRevisions({
                 {one.stale_test_count > 0 && (
                   // **남은 일이 여기 보인다.** 안 보이면 개정은 쌓이고 확인은 안 된다.
                   <span className="text-destructive text-xs font-medium">
-                    이 개정을 아직 안 본 시험 {one.stale_test_count}건
+                    이 개정 미확인 시험 {one.stale_test_count}건
                   </span>
                 )}
                 {one.submitted_via && (
                   <span
                     className="text-muted-foreground text-xs"
-                    title={`${one.submitted_via} 가 올렸습니다`}
+                    title={`등록: ${one.submitted_via}`}
                   >
                     AI
                   </span>
@@ -168,8 +168,7 @@ export function DocumentRevisions({
                 <p className="text-muted-foreground whitespace-pre-line">{one.summary}</p>
               ) : (
                 <p className="text-muted-foreground text-xs">
-                  무엇이 바뀌었는지가 안 적혀 있습니다 — 딸린 시험을 다시 볼지 정할 근거가
-                  없습니다.
+                  변경 내용 미기재. 연결된 시험의 재검토 여부 판단 근거 없음.
                 </p>
               )}
             </li>

@@ -96,8 +96,8 @@ export function EquipmentSpecPanel({
       setReflected(
         result.condition_label
           ? result.reflected
-            ? `${result.condition_label} 조건을 이 장비의 시험 항목에 반영했습니다.`
-            : `${result.condition_label} 조건은 손으로 적어 둔 값이 있어 그대로 두었습니다.`
+            ? `${result.condition_label} 조건을 이 장비의 시험 항목에 반영 완료.`
+            : `${result.condition_label} 조건은 직접 입력한 값이 있어 변경하지 않음.`
           : null,
       )
       sheet.reload()
@@ -128,11 +128,11 @@ export function EquipmentSpecPanel({
   if (data.groups.length === 0) {
     return (
       <EmptyState
-        title="적힌 사양이 없습니다"
+        title="입력된 사양 없음"
         hint={
           data.model_id
-            ? '이 기종에 아직 사양이 안 적혔습니다. 기종 화면에서 사양서 값을 채우거나, 여기서 실측을 적으십시오.'
-            : '카탈로그에 연결되지 않은 장비입니다. 기종을 연결하면 사양서 값이 따라옵니다.'
+            ? '이 기종에 입력된 사양 없음. 기종 화면에서 사양서 값을 입력하거나 여기서 실측값 입력.'
+            : '카탈로그에 연결되지 않은 장비. 기종을 연결하면 사양서 값이 함께 표시됨.'
         }
       />
     )
@@ -141,9 +141,9 @@ export function EquipmentSpecPanel({
   return (
     <div className="space-y-6">
       <p className="text-muted-foreground text-sm">
-        사양서 값 위에 <strong>이 장비의 실측값</strong>을 덮습니다. 덮은 칸은 둘 다 보이고,
-        검색 조건에 이어진 사양은 이 장비의 시험 조건이 됩니다.
-        {data.override_count > 0 && ` 지금 ${data.override_count}칸이 실측입니다.`}
+        사양서 값 위에 <strong>이 장비의 실측값</strong>을 덮어씀. 덮어쓴 칸은 두 값 모두
+        표시되고, 검색 조건에 연결된 사양은 이 장비의 시험 조건이 됨.
+        {data.override_count > 0 && ` 현재 실측 ${data.override_count}칸.`}
       </p>
 
       <ErrorNotice error={error} />
@@ -270,7 +270,7 @@ export function EquipmentSpecPanel({
                           </div>
                         )}
                         <div className="space-y-1">
-                          <Label htmlFor={`when-${item.definition_id}`}>잰 날</Label>
+                          <Label htmlFor={`when-${item.definition_id}`}>측정일</Label>
                           {/* **날짜를 묻는다.** 3년 전 실측은 사양서보다 나을 것이
                               없고, 날짜가 없으면 그것을 판단할 수 없다. */}
                           <Input
@@ -291,7 +291,7 @@ export function EquipmentSpecPanel({
                           onChange={(event) =>
                             setDraft({ ...draft, note: event.target.value })
                           }
-                          placeholder="어떻게 쟀는지 · 어떤 조건에서인지"
+                          placeholder="측정 방법 · 측정 조건"
                         />
                       </div>
                       <div className="flex gap-2">

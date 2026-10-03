@@ -118,13 +118,13 @@ def list_conditions(db: Session, *, include_inactive: bool) -> list[ConditionKey
 def get_condition(db: Session, condition_id: uuid.UUID) -> ConditionKey:
     found = db.get(ConditionKey, condition_id)
     if found is None:
-        raise NotFound("TSC-VOCAB-0008", "조건 정의를 찾을 수 없습니다.")
+        raise NotFound("TSC-VOCAB-0008", "조건 정의를 찾을 수 없음.")
     return found
 
 
 def create_condition(db: Session, *, payload: dict[str, Any]) -> ConditionKey:
     if db.scalar(select(ConditionKey).where(ConditionKey.key == payload["key"])) is not None:
-        raise Conflict("TSC-VOCAB-0009", f"이미 있는 조건 키입니다: {payload['key']}")
+        raise Conflict("TSC-VOCAB-0009", f"이미 있는 조건 키: {payload['key']}")
     row = ConditionKey(**payload)
     db.add(row)
     db.commit()
@@ -160,7 +160,7 @@ def update_condition(
     )
     stored = _stored_limits(db, row.id)
     mode = unit_change.decide(
-        what=f"조건 축 「{row.label}」",
+        what=f"조건 축 {row.label}",
         before=unit_before,
         after=unit_after,
         counts={name: len(rows) for name, rows in stored.items()},

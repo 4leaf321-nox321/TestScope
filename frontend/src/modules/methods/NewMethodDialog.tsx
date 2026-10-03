@@ -87,9 +87,7 @@ export function NewMethodDialog({
         <form onSubmit={submit} className="space-y-4">
           <DialogHeader>
             <DialogTitle>시험법 등록</DialogTitle>
-            <DialogDescription>
-              요구 조건은 등록한 뒤 상세 화면에서 적습니다.
-            </DialogDescription>
+            <DialogDescription>요구 조건은 등록 후 상세 화면에서 입력.</DialogDescription>
           </DialogHeader>
 
           <div className="grid gap-4 sm:grid-cols-2">

@@ -70,7 +70,7 @@ export default function SpecDocumentsPage() {
     <div className="space-y-6">
       <PageHeader
         title="사내 규격서"
-        description="부서가 만든 시험 문서입니다. 공개 규격(ASTM·ISO·KS)은 「시험법·규격」 에 있습니다. 신뢰성 시험의 「규격서」 칸이 여기 문서를 가리킵니다."
+        description="부서에서 작성한 시험 문서. 공개 규격(ASTM·ISO·KS)은 ‘시험법·규격’에서 관리. 신뢰성 시험의 ‘규격서’ 칸이 여기 문서를 참조."
         actions={
           canAdd && (
             <Button onClick={() => setCreating(true)}>
@@ -85,12 +85,12 @@ export default function SpecDocumentsPage() {
         <Input
           value={query}
           onChange={(event) => setQuery(event.target.value)}
-          placeholder="찾기 — 번호 · 제목 · 부서"
+          placeholder="찾기: 번호 · 제목 · 부서"
           className="w-80"
         />
         {documents.data && (
           <p className="text-muted-foreground text-sm">
-            규격서 {rows.length}건{needle && ` · 걸린 것 ${shown.length}건`}
+            규격서 {rows.length}건{needle && ` · 검색 결과 ${shown.length}건`}
           </p>
         )}
       </div>
@@ -99,11 +99,11 @@ export default function SpecDocumentsPage() {
 
       {documents.data && rows.length === 0 ? (
         <EmptyState
-          title="등록된 사내 규격서가 없습니다"
+          title="등록된 사내 규격서 없음"
           hint={
             canAdd
-              ? '위의 「규격서 등록」 으로 문서 번호를 만들고, 그 안에 원본 파일을 올립니다.'
-              : '부서 관리자 또는 시스템 관리자가 등록합니다.'
+              ? '위의 ‘규격서 등록’으로 문서 번호 생성 후 원본 파일 업로드.'
+              : '등록 권한: 부서 관리자 또는 시스템 관리자.'
           }
         />
       ) : (
@@ -115,7 +115,7 @@ export default function SpecDocumentsPage() {
               <TableHead>판</TableHead>
               <TableHead>부서</TableHead>
               <TableHead className="hidden md:table-cell">파일</TableHead>
-              <TableHead className="hidden md:table-cell">거는 시험</TableHead>
+              <TableHead className="hidden md:table-cell">연결된 시험</TableHead>
               <TableHead className="w-24" />
             </TableRow>
           </TableHeader>
@@ -211,11 +211,11 @@ export default function SpecDocumentsPage() {
 
       <ConfirmDialog
         open={removing !== null}
-        title="사내 규격서를 삭제합니다"
+        title="사내 규격서 삭제"
         description={
           <>
-            <strong>{removing?.code}</strong> 을 목록에서 삭제합니다. 데이터는 보존되며 변경
-            이력에 남습니다. 거는 신뢰성 시험이 있으면 삭제되지 않습니다.
+            <strong>{removing?.code}</strong>을(를) 목록에서 삭제. 데이터는 보존되며 변경
+            이력에 남음. 연결된 신뢰성 시험이 있으면 삭제 불가.
           </>
         }
         confirmLabel="삭제"

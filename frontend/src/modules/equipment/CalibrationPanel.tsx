@@ -115,7 +115,7 @@ export function CalibrationPanel({
               }))}
               placeholder="기관 선택"
               detailTitle="교정 기관"
-              detailHint="없는 기관은 온톨로지 화면에서 더합니다."
+              detailHint="없는 기관은 온톨로지 화면에서 추가."
               className="w-56"
             />
           </div>
@@ -127,8 +127,8 @@ export function CalibrationPanel({
 
       {list.data && list.data.length === 0 ? (
         <EmptyState
-          title="교정 기록이 없습니다"
-          hint="교정 기록이 없으면 이 장비의 값이 지금 믿을 만한지 아무도 답할 수 없습니다."
+          title="교정 기록 없음"
+          hint="교정 기록이 없으면 이 장비 값의 현재 신뢰성 확인 불가."
         />
       ) : (
         <Table>

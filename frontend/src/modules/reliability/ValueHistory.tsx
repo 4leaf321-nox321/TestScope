@@ -44,7 +44,7 @@ export function ValueHistory({ testId }: { testId: string }) {
   if (slots.length === 0) {
     return (
       <p className="text-muted-foreground text-xs">
-        판마다 달라진 값이 없습니다 — 지금 값이 곧 처음 값입니다.
+        판별로 달라진 값 없음. 지금 값이 처음 값과 같음.
       </p>
     )
   }
@@ -52,8 +52,7 @@ export function ValueHistory({ testId }: { testId: string }) {
   return (
     <div className="space-y-2">
       <p className="text-muted-foreground text-xs">
-        판마다 값이 달라진 자리입니다. <strong>지금 값</strong>은 최신판의 것이고, 아래는 그
-        앞의 판입니다.
+        판별로 값이 달라진 항목. <strong>지금 값</strong>은 최신판 값, 아래는 이전 판 값.
       </p>
       <ul className="space-y-2">
         {slots.map(([where, mine]) => (

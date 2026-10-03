@@ -36,21 +36,21 @@ import type { ReliabilityTest } from '@/modules/reliability/api'
 
 /** 판정의 우리말. **안 되는 것은 아예 안 온다** — 여기 있는 것은 전부 후보다. */
 const VERDICTS: Record<string, { label: string; tone: string; hint: string }> = {
-  match: { label: '가능', tone: 'text-emerald-600', hint: '물은 조건이 전부 충족됩니다' },
+  match: { label: '가능', tone: 'text-emerald-600', hint: '조회 조건 모두 충족' },
   accessory: {
     label: '부속 필요',
     tone: 'text-sky-600',
-    hint: '챔버·노를 달면 되는 조건이 있습니다 — 줄에 어느 기종인지와 보유 대수가 적힙니다',
+    hint: '챔버·노 장착 시 충족되는 조건 있음. 해당 기종과 보유 대수는 줄마다 표시',
   },
   partial: {
     label: '일부 모름',
     tone: 'text-amber-600',
-    hint: '일부 조건이 이 장비에 안 적혀 있습니다 — 안 된다는 뜻이 아닙니다',
+    hint: '일부 조건이 이 장비에 미기재. 불가를 뜻하지 않음',
   },
   unknown: {
     label: '모름',
     tone: 'text-muted-foreground',
-    hint: '물은 조건이 이 장비에 하나도 안 적혀 있습니다',
+    hint: '조회 조건 전부 이 장비에 미기재',
   },
 }
 
@@ -68,10 +68,10 @@ export function CapabilityDialog({
     <Dialog open onOpenChange={(open) => (open ? undefined : onClose())}>
       <DialogContent className="max-h-[85vh] overflow-y-auto sm:max-w-4xl">
         <DialogHeader>
-          <DialogTitle>{test.name} — 수행 가능 장비</DialogTitle>
+          <DialogTitle>{test.name}: 수행 가능 장비</DialogTitle>
           <DialogDescription>
-            이 시험의 조건 속성을 그대로 검색 조건으로 옮겨 시험 항목마다 장비를 봅니다. 부서로
-            좁히지 않습니다 — 옆 부서에 있으면 빌리러 갑니다.
+            이 시험의 조건 속성을 검색 조건으로 사용한 시험 항목별 장비 조회. 부서 제한
+            없음(다른 부서 장비 포함).
           </DialogDescription>
         </DialogHeader>
 
@@ -87,8 +87,8 @@ export function CapabilityDialog({
           <div className="space-y-6">
             <p className="text-muted-foreground text-sm">
               {data.conditions_asked === 0
-                ? '조건 속성이 없어 시험 항목만으로 봅니다 — 조건을 적으면 여기서 더 좁혀집니다.'
-                : `조건 ${data.conditions_asked}개로 물었습니다 (범위 하나는 위·아래 두 물음입니다).`}
+                ? '조건 속성 없음. 시험 항목만으로 조회. 조건 입력 시 결과가 더 좁혀짐.'
+                : `조건 ${data.conditions_asked}개로 조회 (범위 하나는 위·아래 두 조건으로 계산).`}
             </p>
 
             {/**
@@ -101,7 +101,7 @@ export function CapabilityDialog({
              */}
             {(data.sets ?? []).length > 0 && (
               <div className="space-y-2 rounded-md border p-3">
-                <p className="text-sm font-medium">조건 묶음별로 보면</p>
+                <p className="text-sm font-medium">조건 묶음별 결과</p>
                 <ul className="space-y-1 text-sm">
                   {(data.sets ?? []).map((one) => (
                     <li key={one.set_label ?? '(기본)'} className="flex flex-wrap gap-x-2">
@@ -116,8 +116,8 @@ export function CapabilityDialog({
                   ))}
                 </ul>
                 <p className="text-muted-foreground text-xs">
-                  아래 표는 <strong>모든 묶음을 한꺼번에</strong> 만족하는 장비입니다 — 예외
-                  경로까지 이 시험을 통째로 돌릴 장비입니다.
+                  아래 표: <strong>모든 묶음을 동시에</strong> 만족하는 장비. 예외 경로까지
+                  포함해 이 시험 전체 수행 가능.
                 </p>
               </div>
             )}
@@ -127,11 +127,11 @@ export function CapabilityDialog({
               <div className="flex gap-2 rounded-md border border-amber-300 p-3 text-sm">
                 <AlertTriangle className="mt-0.5 size-4 shrink-0 text-amber-600" />
                 <div className="space-y-1">
-                  <p className="font-medium">물음에서 뺀 조건이 있습니다</p>
+                  <p className="font-medium">조회에서 제외된 조건 있음</p>
                   <ul className="text-muted-foreground space-y-0.5">
                     {data.skipped.map((one) => (
                       <li key={one.label}>
-                        {one.label} — {one.reason}
+                        {one.label}: {one.reason}
                       </li>
                     ))}
                   </ul>
@@ -141,8 +141,8 @@ export function CapabilityDialog({
 
             {data.items.length === 0 ? (
               <EmptyState
-                title="적용 시험 항목이 없습니다"
-                hint="시험 항목을 정해야 장비로 이어집니다 — 「수정」 에서 고르십시오."
+                title="적용 시험 항목 없음"
+                hint="시험 항목 지정 후 장비 조회 가능. ‘수정’에서 선택."
               />
             ) : (
               data.items.map((item) => (
@@ -158,7 +158,7 @@ export function CapabilityDialog({
                       {item.total}대
                       {item.total > item.hits.length ? ` (앞 ${item.hits.length}대)` : ''}
                       {item.unmet_count > 0
-                        ? ` · 조건이 안 맞아 빠진 장비 ${item.unmet_count}대`
+                        ? ` · 조건 불충족으로 제외된 장비 ${item.unmet_count}대`
                         : ''}
                     </span>
                   </div>
@@ -166,8 +166,8 @@ export function CapabilityDialog({
                   {item.hits.length === 0 ? (
                     <p className="text-muted-foreground rounded-md border border-dashed p-3 text-sm">
                       {item.unmet_count > 0
-                        ? '이 항목이 되는 장비는 있지만 이 조건을 못 맞춥니다 — 조건을 넓히거나 밖에서 맡깁니다.'
-                        : '이 시험 항목이 적힌 장비가 없습니다. 장비에 시험 항목을 적어야 검색에 걸립니다.'}
+                        ? '이 항목 수행 장비는 있으나 조건 불충족. 조건 완화 또는 외부 의뢰 필요.'
+                        : '이 시험 항목이 등록된 장비 없음. 장비에 시험 항목 입력 시 검색 가능.'}
                     </p>
                   ) : (
                     <Table>
@@ -234,7 +234,7 @@ export function CapabilityDialog({
                                             적으면 사람은 카탈로그를 뒤지러 간다. */}
                                         {one.accessory && (
                                           <span className="text-sky-700">
-                                            {` — ${one.accessory.model_name} ${one.accessory.condition_range}`}
+                                            {`: ${one.accessory.model_name} ${one.accessory.condition_range}`}
                                             {one.accessory.owned_units > 0
                                               ? ` · 보유 ${one.accessory.owned_units}대`
                                               : ' · 미보유'}

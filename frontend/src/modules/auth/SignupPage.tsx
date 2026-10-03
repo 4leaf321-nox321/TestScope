@@ -65,10 +65,9 @@ export default function SignupPage() {
     return (
       <div className="flex min-h-svh items-center justify-center p-6">
         <div className="w-full max-w-sm space-y-4 text-center">
-          <h1 className="text-xl font-semibold">신청이 접수되었습니다</h1>
+          <h1 className="text-xl font-semibold">신청 접수 완료</h1>
           <p className="text-muted-foreground text-sm">
-            관리자가 승인하면 로그인할 수 있습니다. 메일 통보는 없으니 담당자에게 직접 알려
-            주십시오.
+            관리자 승인 후 로그인 가능. 메일 통보가 없으므로 담당자에게 직접 연락 필요.
           </p>
           <Button onClick={() => navigate('/login')} className="w-full">
             로그인 화면으로
@@ -83,9 +82,7 @@ export default function SignupPage() {
       <form onSubmit={submit} className="w-full max-w-sm space-y-5">
         <div>
           <h1 className="text-2xl font-semibold tracking-tight">가입 신청</h1>
-          <p className="text-muted-foreground mt-1 text-sm">
-            관리자 승인 뒤에 로그인할 수 있습니다.
-          </p>
+          <p className="text-muted-foreground mt-1 text-sm">관리자 승인 후 로그인 가능.</p>
         </div>
 
         <div className="space-y-2">
@@ -125,7 +122,7 @@ export default function SignupPage() {
               보여 주면 신청자가 어느 쪽인지 고를 수 없다. */}
           <Select value={workspace} onValueChange={setWorkspace}>
             <SelectTrigger id="workspace">
-              <SelectValue placeholder="부서를 고르십시오" />
+              <SelectValue placeholder="부서 선택" />
             </SelectTrigger>
             <SelectContent>
               {(options.data ?? []).map((one) => (

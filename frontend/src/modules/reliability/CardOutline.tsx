@@ -68,7 +68,7 @@ export function CardOutline({
                       onClick={() => goTo(kid.anchor)}
                       // **채워진 칸을 굵게 하지 않는다** — 안 채운 칸을 흐리게 한다.
                       // 굵게 하면 「중요한 칸」 으로 읽히는데, 그런 뜻이 아니다.
-                      title={kid.filled ? undefined : '아직 안 적음'}
+                      title={kid.filled ? undefined : '미입력'}
                     >
                       {kid.label}
                     </button>

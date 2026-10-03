@@ -63,8 +63,8 @@ export default function AccountsAdminPage() {
         title="계정"
         description={
           filtered
-            ? '승인 대기 중인 계정만 보고 있습니다. 홈의 「처리 필요 항목」 에서 왔습니다.'
-            : '가입 승인과 권한을 다룹니다. 부서 멤버 관리는 부서 화면에서 합니다.'
+            ? '승인 대기 계정만 표시 중. 홈의 ‘처리 필요 항목’에서 이동함.'
+            : '가입 승인 및 권한 관리. 부서 멤버 관리는 부서 화면에서 진행.'
         }
       />
 
@@ -72,15 +72,14 @@ export default function AccountsAdminPage() {
           콘솔뿐이고, 그때는 화면에서 할 수 있는 것이 하나도 없다. */}
       {summary.data && onlyOneAdmin && (
         <div className="rounded-md border border-amber-500/40 bg-amber-500/5 p-3 text-sm">
-          활성 시스템 관리자가 1명입니다. 그 계정이 잠기면 서버 콘솔로만 복구할 수 있습니다 —
-          한 명 더 지정해 두십시오.
+          활성 시스템 관리자 1명. 해당 계정이 잠기면 서버 콘솔로만 복구 가능. 추가 지정 필요.
         </div>
       )}
 
       {issued && (
         <div className="rounded-md border border-amber-500/40 bg-amber-500/5 p-3 text-sm">
           <p className="font-medium">
-            {issued.email} 의 임시 비밀번호입니다. 지금 전달하십시오 — 다시 볼 수 없습니다.
+            {issued.email}의 임시 비밀번호. 지금 전달 필요(다시 볼 수 없음).
           </p>
           <p className="mt-1 font-mono text-xs">{issued.password}</p>
         </div>
@@ -141,7 +140,7 @@ export default function AccountsAdminPage() {
                       onClick={() => {
                         // **사유를 반드시 받는다.** 메일이 없어 통보가 앱 안에서만
                         // 되므로, 안 적으면 신청한 사람은 이유를 영영 모른다.
-                        const note = window.prompt('거절 사유를 적어 주십시오')
+                        const note = window.prompt('거절 사유 입력')
                         if (note) act(() => accountApi.reject(one.id, note))
                       }}
                     >
@@ -177,7 +176,7 @@ export default function AccountsAdminPage() {
                       disabled={one.is_system_admin && onlyOneAdmin}
                       title={
                         one.is_system_admin && onlyOneAdmin
-                          ? '마지막 시스템 관리자입니다. 다른 사람을 먼저 지정하십시오.'
+                          ? '마지막 시스템 관리자. 다른 관리자 먼저 지정 필요.'
                           : undefined
                       }
                       onClick={() => {
@@ -185,8 +184,8 @@ export default function AccountsAdminPage() {
                         // 권한을 넓히는 쪽이라 한 번 묻는다. 무엇이 열리는지 함께 적는다 —
                         // 「관리자」 라는 말만으로는 어디까지인지 사람마다 다르게 읽는다.
                         const asked = grant
-                          ? `${one.display_name}(${one.email}) 을(를) 시스템 관리자로 지정합니다.\n\n카탈로그·온톨로지·계정·부서·서버 설정을 모두 고칠 수 있게 됩니다.`
-                          : `${one.display_name}(${one.email}) 의 시스템 관리자 권한을 해제합니다.`
+                          ? `${one.display_name}(${one.email})을(를) 시스템 관리자로 지정하시겠습니까?\n\n카탈로그·온톨로지·계정·부서·서버 설정 전체 수정 권한이 부여됨.`
+                          : `${one.display_name}(${one.email})의 시스템 관리자 권한을 해제하시겠습니까?`
                         if (window.confirm(asked)) {
                           act(() => accountApi.setSystemAdmin(one.id, grant))
                         }

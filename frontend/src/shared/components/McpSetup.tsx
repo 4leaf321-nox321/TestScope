@@ -118,14 +118,14 @@ NODE_OPTIONS = "--use-system-ca"`
       <p className="text-muted-foreground text-xs">
         {token ? (
           <>
-            방금 발급한 토큰이 아래 설정에 <strong>채워져 있습니다.</strong> 쓰는 도구를 골라
-            복사하세요 — 이 값은 화면을 벗어나면 다시 못 봅니다.
+            방금 발급한 토큰이 아래 설정에 <strong>입력됨.</strong> 사용 도구 선택 후 복사. 이
+            값은 화면을 벗어나면 다시 볼 수 없음.
           </>
         ) : (
           <>
-            아래는 <strong>예시 형식</strong>입니다. 토큰 자리에{' '}
-            <code className="font-mono">{TOKEN_PLACEHOLDER}</code> 가 들어가 있고, 위에서
-            토큰을 발급하면 그 자리에 실제 값이 채워집니다.
+            아래는 <strong>예시 형식</strong>. 토큰 자리에{' '}
+            <code className="font-mono">{TOKEN_PLACEHOLDER}</code> 표시. 위에서 토큰 발급 시
+            실제 값으로 채워짐.
           </>
         )}
       </p>
@@ -140,35 +140,35 @@ NODE_OPTIONS = "--use-system-ca"`
 
         <TabsContent value="claude-code" className="space-y-2">
           <p className="text-muted-foreground text-xs">
-            터미널에 그대로 붙여 넣습니다. HTTP 를 직접 받으므로 별도 프로그램이 필요 없습니다.
+            터미널에 그대로 붙여 넣기. HTTP 직접 연결 방식이라 별도 프로그램 불필요.
           </p>
           <CopyBlock text={claudeCode} label="명령" />
         </TabsContent>
 
         <TabsContent value="desktop" className="space-y-2">
           <p className="text-muted-foreground text-xs">
-            설정 → 개발자 → 「설정 편집」으로{' '}
-            <code className="font-mono">claude_desktop_config.json</code> 을 열고, 아래 항목을{' '}
+            설정 → 개발자 → ‘설정 편집’에서{' '}
+            <code className="font-mono">claude_desktop_config.json</code> 열기. 아래 항목을{' '}
             <code className="font-mono">{'"mcpServers": { }'}</code> 중괄호{' '}
-            <strong>안에</strong> 붙여 넣은 뒤 다시 시작합니다. 이미 다른 항목이 있으면 사이에
-            쉼표를 넣으세요.
+            <strong>안에</strong> 붙여 넣은 후 재시작. 다른 항목이 이미 있으면 사이에 쉼표
+            추가.
           </p>
           <CopyBlock text={desktop} label="항목" />
         </TabsContent>
 
         <TabsContent value="codex" className="space-y-2">
           <p className="text-muted-foreground text-xs">
-            <code className="font-mono">~/.codex/config.toml</code> 에 아래를 더한 뒤 Codex 를
-            다시 시작합니다.
+            <code className="font-mono">~/.codex/config.toml</code>에 아래 내용 추가 후 Codex
+            재시작.
           </p>
           <CopyBlock text={codex} label="설정" />
         </TabsContent>
 
         <TabsContent value="gemini" className="space-y-2">
           <p className="text-muted-foreground text-xs">
-            <code className="font-mono">~/.gemini/settings.json</code> 의{' '}
+            <code className="font-mono">~/.gemini/settings.json</code>의{' '}
             <code className="font-mono">{'"mcpServers": { }'}</code> 중괄호{' '}
-            <strong>안에</strong> 붙여 넣은 뒤 다시 시작합니다.
+            <strong>안에</strong> 붙여 넣은 후 재시작.
           </p>
           <CopyBlock text={gemini} label="항목" />
         </TabsContent>
@@ -178,24 +178,23 @@ NODE_OPTIONS = "--use-system-ca"`
           여기에 숫자 주소를 **예로 적지 않는다** — 릴리스 포장이 번들에서 그 글자를
           찾으면 떨어진다(`scripts/ci/package_deploy.ps1`). 시험이 그것을 막는다. */}
       <p className="text-muted-foreground text-xs">
-        주소는 지금 보고 있는 서버(<code className="font-mono">{url}</code>)로 짐작한 것입니다
-        — MCP 서버가 다른 기계나 포트에서 돌면 그 부분을 고치세요. 고친 주소는{' '}
+        주소는 현재 접속한 서버(<code className="font-mono">{url}</code>) 기준 추정값. MCP
+        서버가 다른 기계나 포트에서 실행 중이면 해당 부분 수정 필요. 수정한 주소는{' '}
         <strong>포트까지 그대로</strong> 서버의{' '}
-        <code className="font-mono">MCP_ALLOWED_HOSTS</code> 에 있어야 합니다. 서버는 Host 를{' '}
-        <strong>글자로</strong> 견주므로, 같은 기계라도{' '}
-        <code className="font-mono">localhost</code> 로 붙는 것과 숫자 주소로 붙는 것은 서로
-        다른 글자입니다 — 목록에 없는 쪽으로 붙으면 <strong>421</strong> 이 옵니다. Claude Code
-        를 뺀 셋은 <strong>Node.js</strong> 가 있어야 합니다(
-        <code className="font-mono">npx</code> 를 씁니다).
+        <code className="font-mono">MCP_ALLOWED_HOSTS</code>에 있어야 함. 서버는 Host를{' '}
+        <strong>글자 그대로</strong> 비교하므로, 같은 기계라도{' '}
+        <code className="font-mono">localhost</code> 접속과 숫자 주소 접속은 서로 다른 값으로
+        처리됨. 목록에 없는 주소로 접속하면 <strong>421</strong> 응답. Claude Code 외 세 도구는{' '}
+        <strong>Node.js</strong> 필요(<code className="font-mono">npx</code> 사용).
       </p>
 
       {/* 막는 자리가 둘이라, 토큰으로 못 푸는 403 이 있다. 이 화면이 바로 사람이
           「토큰을 다시 만들러」 오는 자리이므로 여기서 가른다(`mcp_server/README`). */}
       <p className="text-muted-foreground text-xs">
-        붙인 뒤 403 이 오면 <strong>다시 발급하기 전에 코드를 보세요.</strong>{' '}
-        <code className="font-mono">TSC-AUTH-0106</code> 은 토큰에 범위가 없는 것이라 다시
-        발급하면 되지만, <code className="font-mono">TSC-AUTH-0103</code> 은 그 일을 할 자격이
-        없는 것이라 다시 발급해도 똑같습니다.
+        연결 후 403 응답 시 <strong>재발급 전에 오류 코드 확인 필요.</strong>{' '}
+        <code className="font-mono">TSC-AUTH-0106</code>은 토큰에 범위가 없는 경우로 재발급 시
+        해결됨. <code className="font-mono">TSC-AUTH-0103</code>은 해당 작업 권한이 없는 경우로
+        재발급해도 동일함.
       </p>
     </div>
   )

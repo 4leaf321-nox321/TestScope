@@ -121,7 +121,7 @@ export default function MethodDetailPage() {
           {/* **여럿일 수 있다** — IEC 60529 는 방진과 방수를 한 문서가 정의한다. */}
           <dd className="text-sm">
             {one.test_items.length === 0 ? (
-              <span className="text-amber-600">안 정해짐</span>
+              <span className="text-amber-600">미지정</span>
             ) : (
               one.test_items.map((item) => item.value).join(' · ')
             )}
@@ -145,7 +145,7 @@ export default function MethodDetailPage() {
           <dt className="text-muted-foreground text-xs">수행 가능 장비</dt>
           <dd className="text-sm">
             {one.equipment_count === 0 ? (
-              <span className="text-amber-600">없음 — 현재 수행 불가한 시험입니다</span>
+              <span className="text-amber-600">없음(현재 수행 불가)</span>
             ) : (
               `${one.equipment_count}대`
             )}
@@ -158,10 +158,10 @@ export default function MethodDetailPage() {
       {one.test_items.length === 0 && one.can_edit && (
         <div className="space-y-2 rounded-md border border-amber-300 bg-amber-50 p-4 dark:bg-amber-950/30">
           <p className="text-sm">
-            <strong>이 규격이 어느 시험의 것인지 정해 주십시오.</strong>
+            <strong>이 규격의 시험 항목 지정 필요.</strong>
             {one.pending_series_count > 0
-              ? ` 인용한 계열 ${one.pending_series_count}개가 정하는 순간 이 규격에 붙습니다.`
-              : ' 정해 두면 계열의 시험 항목에 이 규격을 걸 수 있습니다.'}
+              ? ` 지정 즉시 인용 계열 ${one.pending_series_count}개가 이 규격에 연결됨.`
+              : ' 지정 시 계열의 시험 항목에 이 규격 연결 가능.'}
           </p>
           <div className="flex flex-wrap items-center gap-2">
             <Select value={pickingItem} onValueChange={setPickingItem}>
@@ -208,7 +208,7 @@ export default function MethodDetailPage() {
         />
         {(documents.data ?? []).length === 0 && !user?.is_system_admin && (
           <p className="text-muted-foreground text-sm">
-            올라온 규격서가 없습니다. 시스템 관리자가 올립니다.
+            업로드된 규격서 없음. 업로드 권한: 시스템 관리자.
           </p>
         )}
       </section>
@@ -230,8 +230,8 @@ export default function MethodDetailPage() {
         <h2 className="text-base font-semibold">인용한 계열</h2>
         {one.cited_series.length === 0 ? (
           <p className="text-muted-foreground text-sm">
-            이 규격을 인용한 카탈로그 계열이 없습니다 — 카탈로그에 이 시험을 하는 계열이
-            없거나, 아직 반입하지 않은 것입니다.
+            이 규격을 인용한 카탈로그 계열 없음. 카탈로그에 이 시험을 수행하는 계열이 없거나
+            아직 반입 전.
           </p>
         ) : (
           <ul className="flex flex-wrap gap-2 text-sm">
@@ -258,8 +258,8 @@ export default function MethodDetailPage() {
 
         {one.requirements.length === 0 ? (
           <EmptyState
-            title="요구 조건이 없습니다"
-            hint="조건을 적어 두면 검색이 이 숫자를 그대로 물어 줍니다. 규격서를 펴 놓고 옮겨 적을 필요가 없어집니다."
+            title="요구 조건 없음"
+            hint="조건 입력 시 검색에 이 수치가 그대로 적용됨."
           />
         ) : (
           <Table>

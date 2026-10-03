@@ -65,10 +65,10 @@ def term_references(db: Session, term_id: uuid.UUID) -> list[ReferenceGroupOut]:
 def _reference_row(db: Session, term: VocabularyTerm, kind_key: str, row_id: uuid.UUID) -> Any:
     kind = BY_KEY.get(kind_key)
     if kind is None:
-        raise NotFound("TSC-VOCAB-0012", f"모르는 쓰임 종류입니다: {kind_key}")
+        raise NotFound("TSC-VOCAB-0012", f"알 수 없는 쓰임 종류: {kind_key}")
     row = db.get(kind.model, row_id)
     if row is None or getattr(row, kind.column.key) != term.id:
-        raise NotFound("TSC-VOCAB-0013", "그 줄이 이 값을 가리키고 있지 않습니다.")
+        raise NotFound("TSC-VOCAB-0013", "해당 행은 이 값을 가리키지 않음.")
     return kind, row
 
 
@@ -90,7 +90,7 @@ def detach_reference(
     else:
         raise AppError(
             "TSC-VOCAB-0014",
-            f"{kind.label}은(는) 비울 수 없는 칸입니다. 다른 값으로 옮기십시오.",
+            f"{kind.label}은(는) 비울 수 없는 칸. 다른 값으로 이동 필요.",
             status=400,
         )
     audit.record(
@@ -122,14 +122,14 @@ def reassign_reference(
     term = get_term(db, term_id)
     target = get_term(db, target_term_id)
     if target.vocabulary_id != term.vocabulary_id:
-        raise AppError("TSC-VOCAB-0007", "다른 축의 값으로는 옮길 수 없습니다.", status=400)
+        raise AppError("TSC-VOCAB-0007", "다른 축의 값으로 이동 불가.", status=400)
     if target.id == term.id:
-        raise AppError("TSC-VOCAB-0006", "같은 값입니다.", status=400)
+        raise AppError("TSC-VOCAB-0006", "같은 값.", status=400)
     kind, row = _reference_row(db, term, kind_key, row_id)
     label, _ = kind.describe(db, row)
     if _twin_exists(db, kind.model, kind.column, row, target.id):
         if kind.detach != "delete":
-            raise Conflict("TSC-VOCAB-0015", f"옮긴 자리에 같은 줄이 이미 있습니다: {label}")
+            raise Conflict("TSC-VOCAB-0015", f"이동할 자리에 같은 행이 이미 있음: {label}")
         db.delete(row)
     else:
         setattr(row, kind.column.key, target.id)

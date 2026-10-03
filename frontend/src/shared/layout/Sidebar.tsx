@@ -90,7 +90,7 @@ function ExpandableItem({ item, onNavigate }: { item: NavItem; onNavigate?: () =
           {/* **비면 이유를 말한다.** 아무것도 안 그리면 손잡이가 고장난 것처럼 보인다. */}
           {children.data && rows.length === 0 && (
             <li className="text-muted-foreground/70 px-2 py-1 text-xs">
-              사업부가 없습니다 — 「관리 → 온톨로지」 의 사업부 축에서 더합니다
+              사업부 없음. ‘관리 → 온톨로지’의 사업부 축에서 추가
             </li>
           )}
           {rows.map((one) => (
@@ -98,7 +98,7 @@ function ExpandableItem({ item, onNavigate }: { item: NavItem; onNavigate?: () =
               <NavLink
                 to={reliabilityHref(one.code)}
                 onClick={onNavigate}
-                title={one.can_register ? `${one.name} — 등록할 수 있습니다` : one.name}
+                title={one.can_register ? `${one.name} (등록 가능)` : one.name}
                 className={({ isActive }) =>
                   cn(ITEM_CLASS, 'py-1', isActive ? ACTIVE_CLASS : IDLE_CLASS)
                 }
@@ -154,9 +154,9 @@ function SidebarBody({ workspaceSlug, onNavigate }: Omit<SidebarProps, 'collapse
               className={cn('ml-1.5 font-mono', stale && 'font-semibold text-amber-600')}
               title={
                 stale
-                  ? `이 화면은 ${__APP_VERSION__} 인데 서버는 ${release} 입니다. ` +
-                    '다른 서버에 붙어 있을 수 있습니다.'
-                  : '지금 도는 서버의 버전입니다'
+                  ? `화면 버전 ${__APP_VERSION__}, 서버 버전 ${release}. ` +
+                    '다른 서버에 연결되었을 가능성 있음.'
+                  : '현재 실행 중인 서버 버전'
               }
             >
               {/* **버전 글자는 제 노드에 둔다.** 배지를 형제로 붙이면 글자가

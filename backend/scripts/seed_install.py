@@ -56,6 +56,7 @@ def main() -> int:
                 f" · 검색축 이음 {counts.linked_definitions}개"
                 f", 문장→구간 {counts.converted_values}건"
                 f", 보유 장비 속성 {counts.attributes}개"
+                f", 안내 글 갱신 {counts.refreshed_texts}건"
             )
         else:
             print("온톨로지: 이미 갖춰져 있습니다")

@@ -52,9 +52,7 @@ export default function LoginPage() {
       <form onSubmit={submit} className="w-full max-w-sm space-y-5">
         <div>
           <h1 className="text-2xl font-semibold tracking-tight">TestScope</h1>
-          <p className="text-muted-foreground mt-1 text-sm">
-            우리 조직이 무슨 시험을 할 수 있나
-          </p>
+          <p className="text-muted-foreground mt-1 text-sm">우리 조직의 시험 가능 범위 조회</p>
         </div>
 
         <div className="space-y-2">
@@ -89,7 +87,7 @@ export default function LoginPage() {
         </Button>
 
         <p className="text-muted-foreground text-center text-sm">
-          계정이 없나요?{' '}
+          계정이 없으면{' '}
           <Link to="/signup" className="hover:text-foreground underline">
             가입 신청
           </Link>

@@ -549,7 +549,7 @@ def test_같은_판을_다시_올리면_무엇을_덮었는지_말한다(
     same = put(95)["merged"]
     assert same[0]["action"] == "skipped"
     assert same[0]["changed"] == []
-    assert "같습니다" in same[0]["reason"]
+    assert "같음" in same[0]["reason"]
     assert len(audited()) == 1
 
 

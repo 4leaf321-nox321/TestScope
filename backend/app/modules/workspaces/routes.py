@@ -55,9 +55,7 @@ def list_workspaces(
     db: Session = Depends(get_db),
 ) -> list[WorkspaceOut]:
     if all_workspaces and not user.is_system_admin:
-        raise Forbidden(
-            "TSC-WORKSPACES-0013", "전체 부서 목록은 시스템 관리자만 볼 수 있습니다."
-        )
+        raise Forbidden("TSC-WORKSPACES-0013", "전체 부서 목록은 시스템 관리자만 조회 가능.")
     return services.list_for(db, user, all_workspaces=all_workspaces)
 
 
@@ -126,7 +124,7 @@ def import_workspaces(
             db.rollback()
             raise Conflict(
                 "TSC-WORKSPACES-0021",
-                "같은 순간에 다른 관리자가 부서를 만들고 있습니다. 다시 시도해 주십시오.",
+                "다른 관리자가 동시에 부서를 생성 중. 다시 시도 필요.",
             ) from exc
     return WorkspaceImportResult(
         rows=[

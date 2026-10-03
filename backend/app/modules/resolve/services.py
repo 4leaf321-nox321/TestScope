@@ -217,13 +217,13 @@ def _resolve_term(db: Session, text: str, axis: str | None, limit: int) -> Resol
     if not axis:
         raise AppError(
             "TSC-RESOLVE-0001",
-            "온톨로지 값을 찾으려면 축(axis)이 필요합니다.",
+            "온톨로지 값 검색에는 축(axis) 지정 필요.",
             status=400,
             details={"axis": "manufacturer · equipment_category · test_item · site"},
         )
     vocabulary = db.scalar(select(Vocabulary).where(Vocabulary.slug == axis))
     if vocabulary is None:
-        raise AppError("TSC-RESOLVE-0002", f"없는 축입니다: {axis}", status=400)
+        raise AppError("TSC-RESOLVE-0002", f"존재하지 않는 축: {axis}", status=400)
 
     key = compare_key(text)
     exact = db.scalar(
@@ -321,7 +321,7 @@ def _workspace_id(db: Session, slug: str | None) -> uuid.UUID | None:
         return None
     row = db.scalar(select(Workspace).where(Workspace.slug == slug))
     if row is None:
-        raise AppError("TSC-RESOLVE-0004", f"없는 부서입니다: {slug}", status=400)
+        raise AppError("TSC-RESOLVE-0004", f"존재하지 않는 부서: {slug}", status=400)
     return row.id
 
 
@@ -540,7 +540,7 @@ def resolve(
     if kind == "equipment":
         if user is None:  # pragma: no cover - 라우터는 늘 사람을 준다
             raise AppError(
-                "TSC-RESOLVE-0005", "보유 장비는 보는 사람이 있어야 찾습니다.", status=400
+                "TSC-RESOLVE-0005", "보유 장비 검색에는 사용자 정보 필요.", status=400
             )
         return _resolve_equipment(db, user, text, workspace, limit)
     if kind == "workspace":
@@ -565,8 +565,8 @@ def resolve_term_id(
         return answer.id
     raise AppError(
         "TSC-RESOLVE-0003",
-        f"{field}: 「{text}」 을(를) 하나로 정할 수 없습니다. id 로 주거나 "
-        f"온톨로지에서 먼저 만드십시오.",
+        f"{field}: {text}을(를) 하나로 특정할 수 없음. id로 지정하거나 "
+        f"온톨로지에 먼저 등록 필요.",
         status=400,
         details={
             "field": field,

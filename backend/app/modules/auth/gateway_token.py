@@ -121,24 +121,22 @@ def gate(request: Request) -> None:
     allowed = {ip.strip() for ip in settings.heax_sso_allowed_ips.split(",") if ip.strip()}
     if allowed and _client_ip(request) not in allowed:
         logger.warning("auth/sso: 허용되지 않은 IP %s", _client_ip(request))
-        raise Forbidden("TSC-AUTH-0201", "허용되지 않은 위치입니다.")
+        raise Forbidden("TSC-AUTH-0201", "허용되지 않은 위치.")
     given = (request.headers.get(HEADER_SECRET) or "").strip().encode("utf-8")
     expected = settings.heax_sso_secret.strip().encode("utf-8")
     if not hmac.compare_digest(given, expected):
         logger.warning("auth/sso: 비밀 불일치 (%s)", _client_ip(request))
-        raise AppError("TSC-AUTH-0202", "게이트웨이 비밀이 맞지 않습니다.", status=401)
+        raise AppError("TSC-AUTH-0202", "게이트웨이 비밀 불일치.", status=401)
 
 
 def _email(request: Request) -> str:
     """헤더의 이메일 — 없으면 400, 형식이 아니면 401. 소문자로 돌려준다."""
     email = (request.headers.get(HEADER_EMAIL) or "").strip().lower()
     if not email:
-        raise AppError("TSC-AUTH-0203", "X-Heax-User-Email 이 필요합니다.", status=400)
+        raise AppError("TSC-AUTH-0203", "X-Heax-User-Email 필요.", status=400)
     if not _EMAIL_RE.match(email):
         logger.warning("auth/sso: 이메일 형식 아님 (%s)", _client_ip(request))
-        raise AppError(
-            "TSC-AUTH-0204", "X-Heax-User-Email 이 이메일 형식이 아닙니다.", status=401
-        )
+        raise AppError("TSC-AUTH-0204", "X-Heax-User-Email이 이메일 형식이 아님.", status=401)
     return email
 
 
@@ -156,14 +154,14 @@ def _user(db: Session, email: str) -> User:
     if user is None:
         raise Forbidden(
             "TSC-AUTH-0205",
-            "TestScope 에 그 이메일의 계정이 없습니다 — TestScope 에서 가입하고 승인을 "
-            "받은 뒤 다시 시도하십시오. 포털에서 계정을 만들어 주지 않습니다.",
+            "TestScope에 해당 이메일의 계정 없음. TestScope 가입 및 승인 후 다시 시도 "
+            "필요. 포털에서는 계정을 만들지 않음.",
         )
     if user.deleted_at is not None or user.status != "active":
-        why = "승인 대기 중" if user.status == "pending" else "쓸 수 없는 상태"
+        why = "승인 대기 중" if user.status == "pending" else "사용할 수 없는 상태"
         raise Forbidden(
             "TSC-AUTH-0206",
-            f"TestScope 계정이 {why}입니다 — TestScope 관리자에게 문의하십시오.",
+            f"TestScope 계정 상태: {why}. TestScope 관리자 문의 필요.",
         )
     return user
 

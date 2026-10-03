@@ -83,7 +83,7 @@ export default function SpecDefinitionsPage() {
       <PageHeader
         back={{ to: '/admin/ontology?kind=model', label: '온톨로지' }}
         title="장비 기종 사양"
-        description="장비 모델에 적을 수 있는 칸입니다. 적용 분류를 비워 두면 모든 장비에 뜹니다 — 전원·무게처럼 분류를 가리지 않는 것이 실제로 많습니다."
+        description="장비 모델에 입력 가능한 칸. 적용 분류를 비우면 모든 장비에 표시됨(전원·무게 등 분류 무관 항목)."
       />
 
       {canEdit && (
@@ -261,8 +261,8 @@ export default function SpecDefinitionsPage() {
                   if (mine === theirs || (probe !== null && !isError(probe))) return null
                   return (
                     <p className="text-destructive mt-1 text-xs">
-                      단위 {mine || '없음'} ↔ {theirs || '없음'} 을 못 맞춥니다 — 이 사양은
-                      검색에 안 실립니다
+                      단위 {mine || '없음'} ↔ {theirs || '없음'} 환산 불가. 이 사양은 검색에서
+                      제외됨
                     </p>
                   )
                 })()}
@@ -294,8 +294,8 @@ export default function SpecDefinitionsPage() {
 
       {/* 조건 정의를 못 찾은 사람이 여기서 헤매지 않게 길을 적어 둔다. */}
       <p className="text-muted-foreground text-xs">
-        검색 조건에 잇는 것은 지금 {conditions.data?.length ?? 0}개 조건 중에서 고릅니다. 새
-        축이 필요하면 「시험 항목 검색 조건」 에서 먼저 만드십시오.
+        검색 조건 연결은 현재 {conditions.data?.length ?? 0}개 조건 중에서 선택. 새 축이
+        필요하면 ‘시험 항목 검색 조건’에서 먼저 생성 필요.
       </p>
     </div>
   )

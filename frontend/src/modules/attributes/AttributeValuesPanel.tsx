@@ -27,7 +27,7 @@ import type {
 export function AttributeValuesList({ values }: { values: AttributeValue[] }) {
   // 응답 스키마가 기본값 [] 라 없을 수 없지만, 오래된 응답을 그린 화면이 죽지는 않게.
   if (!values || values.length === 0) {
-    return <p className="text-muted-foreground text-sm">적힌 속성이 없습니다.</p>
+    return <p className="text-muted-foreground text-sm">입력된 속성 없음.</p>
   }
   return (
     <dl className="grid grid-cols-1 gap-x-6 gap-y-2 sm:grid-cols-2">
@@ -48,7 +48,7 @@ export function AttributeValuesList({ values }: { values: AttributeValue[] }) {
             {one.status === 'draft' && (
               <span
                 className="ml-1"
-                title="초안 속성 — 시스템 관리자가 정식으로 올리기 전입니다. 표시·수집만 됩니다."
+                title="초안 속성(시스템 관리자의 정식 등록 전). 표시·수집만 됨."
               >
                 · 초안
               </span>

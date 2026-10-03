@@ -30,7 +30,7 @@ export async function copyText(text: string): Promise<void> {
     box.select()
     box.setSelectionRange(0, text.length) // iOS 는 select() 만으로는 안 잡힌다
     if (!document.execCommand('copy')) {
-      throw new Error('복사를 브라우저가 거절했습니다')
+      throw new Error('브라우저가 복사를 거절함')
     }
   } finally {
     document.body.removeChild(box)

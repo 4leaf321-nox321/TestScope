@@ -168,8 +168,8 @@ export function TermEditorDialog({
             {usage > 0 && (
               <>
                 {' '}
-                · <strong>{usage}군데</strong>서 쓰입니다 — 이름을 바꾸면 그곳 전부의 표시가
-                바뀝니다.
+                · <strong>{usage}곳</strong>에서 사용 중. 이름 변경 시 사용처 전체의 표시가
+                바뀜.
               </>
             )}
           </DialogDescription>
@@ -191,7 +191,7 @@ export function TermEditorDialog({
                 id="term-code"
                 value={code}
                 onChange={(event) => setCode(event.target.value)}
-                placeholder="코드가 거는 이름 — 바꾸면 반입·검색이 못 찾습니다"
+                placeholder="코드가 참조하는 이름. 변경 시 반입·검색에서 찾지 못함"
                 className="font-mono"
               />
             </div>
@@ -236,7 +236,7 @@ export function TermEditorDialog({
                           [field.key]: event.target.value,
                         }))
                       }
-                      placeholder={field.kind === 'list' ? '쉼표로 나눕니다' : undefined}
+                      placeholder={field.kind === 'list' ? '쉼표로 구분' : undefined}
                     />
                   </div>
                 ))}
@@ -289,7 +289,7 @@ export function TermEditorDialog({
               <Input
                 value={alias}
                 onChange={(event) => setAlias(event.target.value)}
-                placeholder="이 값을 부르는 다른 이름 — UTM · 만능시험기"
+                placeholder="이 값의 다른 이름 (예: UTM · 만능시험기)"
                 className="max-w-xs"
               />
               <Button
@@ -314,8 +314,8 @@ export function TermEditorDialog({
           <div className="space-y-2 rounded-md border p-3">
             <p className="text-sm font-medium">다른 값으로 합치기</p>
             <p className="text-muted-foreground text-xs">
-              이 값을 가리키던 것 전부가 대상으로 옮겨 가고, 이 이름은 대상의 표기로 남습니다.
-              되돌릴 수 없습니다.
+              이 값을 가리키던 항목 전체가 대상으로 이동하고, 이 이름은 대상의 표기로 남음.
+              되돌릴 수 없음.
             </p>
             <div className="flex flex-wrap gap-2">
               <SearchablePicker
@@ -334,7 +334,7 @@ export function TermEditorDialog({
                 disabled={!mergeInto || busy || !term}
                 onClick={() =>
                   term &&
-                  window.confirm(`「${term.value}」 을(를) 합치고 지웁니다. 계속할까요?`) &&
+                  window.confirm(`‘${term.value}’ 병합 후 삭제. 계속하시겠습니까?`) &&
                   void run(() => vocabularyApi.mergeTerm(term.id, mergeInto), { close: true })
                 }
               >

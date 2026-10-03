@@ -132,9 +132,9 @@ describe('검토함 — 추천대로 한꺼번에', () => {
     expect(box('ASTM 같은의견').disabled).toBe(false)
 
     expect(box('ASTM 추천없음').disabled).toBe(true)
-    expect(box('ASTM 추천없음').title).toMatch(/추천이 없는/)
+    expect(box('ASTM 추천없음').title).toMatch(/추천 없는/)
     expect(box('ASTM 다른의견').disabled).toBe(true)
-    expect(box('ASTM 다른의견').title).toMatch(/다른 의견이 1건/)
+    expect(box('ASTM 다른의견').title).toMatch(/다른 의견 1건/)
   })
 
   it('「추천 있는 줄 고르기」 는 고를 수 있는 줄만 고른다', async () => {
@@ -181,7 +181,7 @@ describe('검토함 — 추천대로 한꺼번에', () => {
     // 정한 줄은 빠지고,
     expect(screen.queryByText('ASTM 합의')).toBeNull()
     // 돌아온 줄은 **이유와 함께** 남는다.
-    expect(screen.getByText('1건은 확정하지 않았습니다')).toBeTruthy()
+    expect(screen.getByText('1건 미확정')).toBeTruthy()
     expect(screen.getByText(/추천과 다른 의견이 1건 있습니다/)).toBeTruthy()
   })
 

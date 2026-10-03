@@ -53,7 +53,7 @@ export default function MembersPage() {
     <div className="space-y-6">
       <PageHeader
         title="부서 멤버"
-        description="관리자는 이 부서의 장비와 멤버를 고칠 수 있습니다."
+        description="부서 관리자는 이 부서의 장비와 멤버 수정 가능."
       />
 
       <form

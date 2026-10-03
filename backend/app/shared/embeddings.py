@@ -98,14 +98,14 @@ def _ollama(texts: list[str], dim: int) -> list[list[float]]:
         answer.raise_for_status()
         made = answer.json().get("embeddings")
     except httpx.HTTPError as failed:
-        raise EmbeddingError(f"임베딩 엔진에 닿지 못했습니다({base}): {failed}") from failed
+        raise EmbeddingError(f"임베딩 엔진 연결 실패({base}): {failed}") from failed
     if not made or len(made) != len(texts):
-        raise EmbeddingError("엔진이 요청한 수만큼 벡터를 주지 않았습니다.")
+        raise EmbeddingError("엔진이 반환한 벡터 수가 요청과 다름.")
     for one in made:
         if len(one) != dim:
             raise EmbeddingError(
-                f"차원이 다릅니다 — 모델은 {len(one)}, 설정(EMBEDDING_DIM)은 {dim}. "
-                "설정을 모델에 맞추고 색인을 다시 만드십시오."
+                f"차원 불일치: 모델 {len(one)}, 설정(EMBEDDING_DIM) {dim}. "
+                "설정을 모델에 맞춘 뒤 색인 재생성 필요."
             )
     return [list(one) for one in made]
 
@@ -116,7 +116,7 @@ def embed(texts: list[str]) -> list[list[float]]:
         return []
     chosen = backend()
     if chosen == "off":
-        raise EmbeddingError("의미 검색이 꺼져 있습니다(EMBEDDING_BACKEND=off).")
+        raise EmbeddingError("의미 검색 꺼짐(EMBEDDING_BACKEND=off).")
     dim = dimension()
     if chosen == "mock":
         return [_mock_vector(one, dim) for one in texts]
@@ -131,9 +131,9 @@ def health() -> dict[str, object]:
     """지금 쓸 수 있나. 관리자 「서버」 화면이 「의미 검색 꺼짐」 을 말할 수 있게."""
     chosen = backend()
     if chosen == "off":
-        return {"backend": chosen, "ready": False, "note": "꺼져 있습니다."}
+        return {"backend": chosen, "ready": False, "note": "꺼짐."}
     if chosen == "mock":
-        return {"backend": chosen, "ready": True, "note": "가짜 벡터입니다 — 시험용."}
+        return {"backend": chosen, "ready": True, "note": "가짜 벡터(시험용)."}
     try:
         embed_one("확인")
     except EmbeddingError as failed:

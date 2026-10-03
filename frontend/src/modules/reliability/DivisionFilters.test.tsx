@@ -217,7 +217,7 @@ describe('사업부 화면의 속성 조건', () => {
       )
     })
     // **해야 할 일이 다르다** — 「등록하십시오」 를 읽은 사람은 이미 있는 것을 또 만든다.
-    expect(screen.getByText(/필터 조건에 해당하는 신뢰성 시험이 없습니다/)).toBeTruthy()
+    expect(screen.getByText(/필터 조건에 해당하는 신뢰성 시험 없음/)).toBeTruthy()
     // **표는 남는다** — 머리글이 사라지면 어느 열에 무엇이 걸렸는지 볼 수도 풀 수도 없다.
     expect(screen.getByLabelText('목적 필터')).toBeTruthy()
   })

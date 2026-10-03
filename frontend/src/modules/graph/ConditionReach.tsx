@@ -39,7 +39,7 @@ export function ConditionReach({ nodeId }: { nodeId: string }) {
   if (found.definitions.length === 0) {
     return (
       <p className="text-muted-foreground text-xs">
-        신뢰성 시험에 이 조건을 적는 칸이 아직 없습니다 — 「공통 → 속성 정의」 에서 만듭니다.
+        신뢰성 시험에 이 조건을 적는 칸 없음. ‘관리 → 온톨로지’의 속성 정의에서 생성.
       </p>
     )
   }
@@ -63,7 +63,7 @@ export function ConditionReach({ nodeId }: { nodeId: string }) {
             // 읽힌다.
             <span className="text-muted-foreground">
               {' '}
-              · {found.test_count - found.valued_count}건은 칸만 있고 값이 없습니다
+              · {found.test_count - found.valued_count}건은 칸만 있고 값 없음
             </span>
           )}
         </dd>
@@ -83,7 +83,7 @@ export function ConditionReach({ nodeId }: { nodeId: string }) {
         // 수(칩의 숫자)보다 많을 수 있다(범위로 적은 시험도 든다).
         <div className="space-y-1">
           <p className="text-muted-foreground text-xs">
-            자주 적힌 값 — 누르면 그 값이 드는 시험
+            자주 적힌 값 (클릭 시 해당 값이 포함된 시험 조회)
           </p>
           <div className="flex flex-wrap gap-1">
             {found.common_values.map((one) => {
@@ -115,8 +115,8 @@ export function ConditionReach({ nodeId }: { nodeId: string }) {
       {found.unconvertible_count > 0 && (
         // **조용히 빼면 「그만큼만 쓰인다」 로 읽힌다.**
         <p className="text-xs text-amber-700">
-          단위를 못 바꿔 범위에서 빠진 시험 {found.unconvertible_count}건 — 위 범위가 전부가
-          아닙니다.
+          단위 환산 불가로 범위에서 빠진 시험 {found.unconvertible_count}건. 위 범위는 전체가
+          아님.
         </p>
       )}
 
@@ -128,9 +128,9 @@ export function ConditionReach({ nodeId }: { nodeId: string }) {
       </Button>
       {/* 여기서 구간을 미리 안 나누는 이유를 읽는 사람에게도 말해 둔다. */}
       <p className="text-muted-foreground text-xs">
-        구간은 미리 나누지 않습니다 — 위 「자주 적힌 값」 이 실제 시험이 쓰는 경계입니다. 다른
-        값은 단추로 이 조건이 적힌 시험에 가서 <code>{'>='}</code>·<code>{'<='}</code> 로
-        좁힙니다.
+        구간은 미리 나누지 않음. 위 ‘자주 적힌 값’이 실제 시험에서 쓰는 경계. 다른 값은
+        버튼으로 이 조건이 적힌 시험 목록에 가서 <code>{'>='}</code>·<code>{'<='}</code>로
+        필터링.
       </p>
     </div>
   )

@@ -81,7 +81,7 @@ describe('가이드', () => {
 
   it('없는 쪽을 열면 길을 알려 준다 — 빈 화면은 고장으로 읽힌다', async () => {
     await show('/guide/없는쪽')
-    expect(screen.getByText(/그런 가이드 쪽이 없습니다/)).toBeTruthy()
+    expect(screen.getByText(/해당 가이드 쪽 없음/)).toBeTruthy()
     expect(screen.getByRole('link', { name: '처음으로' })).toBeTruthy()
   })
 })

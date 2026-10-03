@@ -166,7 +166,7 @@ export default function AttributeDefinitionsPage() {
                     act(() => attributeApi.update(row.id, { status: 'standard' }))
                   }
                 >
-                  정식으로
+                  정식 전환
                 </Button>
                 <Button
                   size="sm"
@@ -188,7 +188,7 @@ export default function AttributeDefinitionsPage() {
                   act(() => attributeApi.update(row.id, { is_required: !row.is_required }))
                 }
               >
-                {row.is_required ? '필수 해제' : '필수로'}
+                {row.is_required ? '필수 해제' : '필수 지정'}
               </Button>
             )}
             {row.is_active && !row.merged_into_id && (
@@ -245,7 +245,7 @@ export default function AttributeDefinitionsPage() {
       <PageHeader
         back={{ to: `/admin/ontology?kind=${HUB_KIND[target]}`, label: '온톨로지' }}
         title={`${TARGET_LABEL[target]} 속성 정의`}
-        description={`${TARGET_LABEL[target]}에 붙는 속성(고정 칸이 아닌 정보)입니다. 정식 속성은 검색·색인에 쓰이고, 초안은 값을 적은 사람이 새 이름을 쓴 것 — 건수를 보고 정식으로 올리거나 합칩니다.`}
+        description={`${TARGET_LABEL[target]}에 붙는 속성(고정 칸이 아닌 정보). 정식 속성은 검색·색인에 사용. 초안은 값 입력자가 새 이름으로 만든 속성이며, 건수를 보고 정식 전환 또는 병합.`}
       />
 
       {canEdit && (
@@ -317,7 +317,7 @@ export default function AttributeDefinitionsPage() {
           {kind === 'choice' && (
             <div className="space-y-1">
               <label className="text-xs" htmlFor="attr-choices">
-                선택지 (| 로 나눔)
+                선택지 (|로 구분)
               </label>
               <Input
                 id="attr-choices"
@@ -368,7 +368,7 @@ export default function AttributeDefinitionsPage() {
               checked={asDraft}
               onChange={(event) => setAsDraft(event.target.checked)}
             />
-            초안으로 (조사 중인 후보를 미리 세움)
+            초안으로 등록 (조사 중인 후보)
           </label>
           <Button type="submit">속성 등록</Button>
         </form>
@@ -380,7 +380,7 @@ export default function AttributeDefinitionsPage() {
         <h2 className="text-sm font-semibold">정식 {standard.length}</h2>
         {standard.length === 0 ? (
           <p className="text-muted-foreground text-sm">
-            아직 정식 속성이 없습니다. 초안을 올리거나 위에서 새로 만듭니다.
+            정식 속성 없음. 초안을 정식 전환하거나 위에서 새로 등록.
           </p>
         ) : (
           <Table>
@@ -393,11 +393,11 @@ export default function AttributeDefinitionsPage() {
       <section className="space-y-2">
         <h2 className="text-sm font-semibold">초안 {drafts.length}</h2>
         <p className="text-muted-foreground text-xs">
-          값을 적은 사람이 새 이름으로 쓴 속성입니다. 표시·수집만 되고 검색 판정·색인에는 안
-          쓰입니다. 같은 뜻이 여럿이면 하나로 합치고, 쓸 것이면 정식으로 올립니다.
+          값 입력자가 새 이름으로 만든 속성. 표시·수집만 되며 검색 판정·색인에 미사용. 같은
+          뜻이 여럿이면 하나로 병합하고, 사용할 속성은 정식 전환.
         </p>
         {drafts.length === 0 ? (
-          <p className="text-muted-foreground text-sm">초안이 없습니다.</p>
+          <p className="text-muted-foreground text-sm">초안 없음.</p>
         ) : (
           <Table>
             {header}
@@ -409,7 +409,7 @@ export default function AttributeDefinitionsPage() {
       {inactive.length > 0 && (
         <section className="space-y-2">
           <h2 className="text-muted-foreground text-sm font-semibold">
-            꺼짐 {inactive.length}
+            비활성 {inactive.length}
           </h2>
           <Table>
             {header}
@@ -421,8 +421,8 @@ export default function AttributeDefinitionsPage() {
       {merging && (
         <div className="flex flex-wrap items-center gap-2 rounded-md border p-4">
           <span className="text-sm">
-            <b>{merging.label}</b> ({merging.value_count}건) 을 어디로 합칠까요? 종류가 같은
-            것만 — {kindOf(merging)}.
+            <b>{merging.label}</b> ({merging.value_count}건) 병합 대상 선택. 같은 종류만 가능:{' '}
+            {kindOf(merging)}.
           </span>
           <Select value={mergeTarget} onValueChange={setMergeTarget}>
             <SelectTrigger className="w-56" aria-label="합칠 속성">

@@ -193,7 +193,7 @@ export const router = createBrowserRouter([
               <Placeholder
                 title="존재하지 않는 페이지"
                 phase="—"
-                description="주소를 확인해 주십시오."
+                description="주소 확인 필요."
               />
             ),
           },

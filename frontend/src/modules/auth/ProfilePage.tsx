@@ -139,7 +139,7 @@ export default function ProfilePage() {
           />
           {/* **아이디는 여기서 못 바꾼다.** 로그인 식별자라 본인이 바꾸면 감사
               기록이 가리키는 대상이 흔들린다 — 그것은 관리자의 일이다. */}
-          <p className="text-muted-foreground text-xs">아이디는 관리자만 바꿀 수 있습니다.</p>
+          <p className="text-muted-foreground text-xs">아이디 변경은 관리자만 가능.</p>
         </div>
         <Button type="submit" disabled={busy}>
           {busy ? '저장 중…' : '저장'}
@@ -152,8 +152,8 @@ export default function ProfilePage() {
         <div>
           <h2 className="text-base font-semibold">액세스 토큰</h2>
           <p className="text-muted-foreground mt-1 text-sm">
-            장비 PC 나 스크립트가 이 시스템의 API 를 부를 때 쓰는 자격입니다. 사람 세션과 달리
-            만료가 길고, 안 쓰면 지웁니다.
+            장비 PC나 스크립트가 이 시스템의 API를 호출할 때 쓰는 자격 증명. 사람 세션보다
+            만료가 길며, 사용하지 않으면 폐기 필요.
           </p>
         </div>
 
@@ -161,7 +161,7 @@ export default function ProfilePage() {
           <div className="rounded-md border border-amber-500/40 bg-amber-500/5 p-3 text-sm">
             {/* **여기서 한 번만 보인다.** 다시 볼 수 없다는 것을 말하지 않으면
                 사람은 창을 닫고 나서 다시 찾는다. */}
-            <p className="font-medium">지금 복사해 두십시오. 다시 볼 수 없습니다.</p>
+            <p className="font-medium">지금 복사 필요. 다시 볼 수 없음.</p>
             <p className="mt-1 font-mono text-xs break-all">{issued}</p>
           </div>
         )}
@@ -183,8 +183,8 @@ export default function ProfilePage() {
           <fieldset className="space-y-2">
             <legend className="text-sm font-medium">이 토큰으로 할 수 있는 일</legend>
             <p className="text-muted-foreground text-xs">
-              읽기는 항상 포함됩니다. <strong>발급한 뒤에는 넓힐 수 없습니다</strong> —
-              넓히려면 새로 발급하고 옛 토큰을 폐기합니다.
+              읽기 범위는 항상 포함됨. <strong>발급 후에는 범위 확장 불가</strong>. 확장하려면
+              새로 발급 후 기존 토큰 폐기.
             </p>
             {WRITE_SCOPES.map((scope) => (
               <label
@@ -211,7 +211,7 @@ export default function ProfilePage() {
             ))}
             {/* 어느 범위로도 안 열리는 것이 있다 — 고르고 나서 알면 늦다. */}
             <p className="text-muted-foreground text-xs">
-              계정 관리와 서버 설정은 어느 범위로도 열리지 않습니다.
+              계정 관리와 서버 설정은 어떤 범위로도 허용되지 않음.
             </p>
           </fieldset>
         </form>
@@ -256,9 +256,9 @@ export default function ProfilePage() {
         <div>
           <h2 className="text-base font-semibold">AI 도구에 등록하기</h2>
           <p className="text-muted-foreground mt-1 text-sm">
-            Claude·Codex·Gemini 에 이 시스템을 붙이면 그 도구가 장비와 시험을 직접 찾습니다.
-            권한은 <strong>붙인 토큰의 것</strong>입니다 — 공용 자격은 없으므로, 쓰는 사람
-            수만큼 연결이 생겨도 각자 자기 것만 봅니다.
+            Claude·Codex·Gemini에 이 시스템을 연결하면 해당 도구가 장비와 시험을 직접 검색.
+            권한은 <strong>연결한 토큰의 권한</strong>과 동일. 공용 자격 증명은 없으며,
+            사용자마다 각자의 토큰 권한으로만 조회.
           </p>
         </div>
         <McpSetup token={issued} />

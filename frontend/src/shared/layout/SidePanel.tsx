@@ -59,7 +59,7 @@ export function LeftPanelProvider({ children }: { children: ReactNode }) {
 /** 상단 바가 쓴다. 패널이 없으면 `label` 이 `null` 이라 단추를 감춘다. */
 export function useLeftPanel(): LeftPanelState {
   const value = useContext(Ctx)
-  if (!value) throw new Error('LeftPanelProvider 안에서만 쓸 수 있습니다.')
+  if (!value) throw new Error('LeftPanelProvider 내부에서만 사용 가능.')
   return value
 }
 

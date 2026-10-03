@@ -142,12 +142,12 @@ async def upload_with_ticket(
     if who is None:
         raise AppError(
             "TSC-ATTACH-0010",
-            "업로드 티켓이 유효하지 않거나 만료되었습니다(5분). 다시 받으십시오.",
+            "업로드 티켓이 유효하지 않거나 만료됨(5분). 다시 발급 필요.",
             status=401,
         )
     user = db.get(User, who)
     if user is None or user.status != "active":
-        raise AppError("TSC-ATTACH-0011", "티켓의 주인을 찾을 수 없습니다.", status=401)
+        raise AppError("TSC-ATTACH-0011", "티켓 소유자를 찾을 수 없음.", status=401)
 
     # **한계까지만 읽는다** — 통째로 읽고 재면 1 GB 가 먼저 메모리에 올라간다.
     data = b""

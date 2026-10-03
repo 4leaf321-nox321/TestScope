@@ -105,8 +105,8 @@ export function MembershipsDialog({
         <DialogHeader>
           <DialogTitle>{account?.display_name} 소속</DialogTitle>
           <DialogDescription>
-            여기 적힌 것이 <strong>곧 소속</strong>입니다 — 뺀 부서는 지워집니다. 대표 소속은
-            서버가 따라 옮깁니다(뺀 곳이 대표였으면 남은 첫 부서로, 남은 것이 없으면 비움).
+            아래 목록이 <strong>소속 전체</strong>. 뺀 부서의 소속은 삭제됨. 대표 소속은 서버가
+            자동 조정(뺀 곳이 대표였으면 남은 첫 부서로, 남은 부서가 없으면 비움).
           </DialogDescription>
         </DialogHeader>
 
@@ -115,7 +115,7 @@ export function MembershipsDialog({
             <p className="text-muted-foreground text-sm">읽는 중…</p>
           ) : rows.length === 0 ? (
             <p className="text-muted-foreground text-sm">
-              소속이 없습니다 — 이대로 저장하면 이 사람은 갈 부서가 없습니다.
+              소속 없음. 이대로 저장하면 이 계정은 소속 부서 없음 상태가 됨.
             </p>
           ) : (
             <ul className="space-y-2">

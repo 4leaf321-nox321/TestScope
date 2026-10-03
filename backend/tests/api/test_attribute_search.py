@@ -550,14 +550,14 @@ def test_빈_결과는_왜_비었는지_조건마다_말한다(
 
     # 1. 아무도 안 적음 — 조건이 아니라 값이 없는 것.
     none = diagnose(f"samples_{tag}>=1")[f"samples_{tag}"]
-    assert none["with_value"] == 0 and "값이 적힌 것이 없습니다" in none["hint"]
+    assert none["with_value"] == 0 and "값이 입력된 대상 없음" in none["hint"]
 
     # 2. 조건이 좁음 — 값은 있는데(단위 못 바꾼 것 빼고 2건) 200 이상은 없다.
     narrow = diagnose(f"temp_{tag}>=200")[f"temp_{tag}"]
     assert narrow["with_value"] == 3 and narrow["matched"] == 0
-    assert "조건을 넓혀" in narrow["hint"]
+    assert "조건 범위 확대" in narrow["hint"]
     # 3. 단위를 못 바꿈 — 「쇼어」 는 온도가 아니다. 조용히 빠지지 않고 수로 나온다.
-    assert narrow["unconvertible"] == 1 and "못 바꿔 뺀 값이 1건" in narrow["hint"]
+    assert narrow["unconvertible"] == 1 and "제외한 값 1건" in narrow["hint"]
 
     # 4. 조건끼리 겹쳐 비었음 — 하나씩은 걸리는데 함께 걸면 없다.
     both = diagnose(f"temp_{tag}<=-40", f"hours_{tag}>=2000")

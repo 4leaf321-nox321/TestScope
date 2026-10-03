@@ -157,3 +157,46 @@ def test_반입은_낱개_목록을_구간과_비고로_담는다() -> None:
         "num_max": 3000,
         "note": None,
     }
+
+
+def test_옛_시드_글만_지금_글로_바꾸고_사람이_고친_글은_둔다(db: Session) -> None:
+    """시드는 없는 행만 심으므로 글을 고쳐도 설치된 DB 에는 안 들어간다(2026-10-04 문구 정리).
+    옛 글 **그대로**인 것만 바꾸고, 사람이 고친 글은 안 건드린다."""
+    from app.modules.attributes.models import AttributeDefinition
+    from app.modules.vocabulary.models import Vocabulary
+    from app.modules.vocabulary.reference import (
+        AXES,
+        CONDITION_ATTRIBUTE_HELP,
+        CONDITIONS,
+        refresh_seed_texts,
+    )
+    from app.modules.vocabulary.seed_texts import RETIRED
+
+    slug, olds = next(iter(RETIRED["axis"].items()))
+    axis = db.scalar(select(Vocabulary).where(Vocabulary.slug == slug))
+    assert axis is not None
+    key = next(iter(RETIRED["condition"]))
+    condition = db.scalar(select(ConditionKey).where(ConditionKey.key == key))
+    assert condition is not None
+    per_condition = db.scalar(
+        select(AttributeDefinition).where(AttributeDefinition.key.like("reliability_cond_%"))
+    )
+    assert per_condition is not None
+
+    axis.description = olds[0]
+    condition.help = "사람이 고친 글"
+    per_condition.help = RETIRED["condition_attribute"]["*"][0]
+    db.commit()
+    try:
+        assert refresh_seed_texts(db) >= 2
+        db.commit()
+        for row in (axis, condition, per_condition):
+            db.refresh(row)
+        assert axis.description == next(row[6] for row in AXES if row[0] == slug)
+        assert per_condition.help == CONDITION_ATTRIBUTE_HELP
+        assert condition.help == "사람이 고친 글"
+        # 멱등 — 바꿀 옛 글이 더 없다.
+        assert refresh_seed_texts(db) == 0
+    finally:
+        condition.help = next(row[7] for row in CONDITIONS if row[0] == key)
+        db.commit()

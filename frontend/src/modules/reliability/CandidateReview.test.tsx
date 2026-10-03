@@ -62,7 +62,7 @@ describe('검토 띠', () => {
     const changed = vi.fn()
     render(<ReviewBanner row={row()} onChanged={changed} />)
 
-    expect(screen.getByText(/아직 확인 전인 후보입니다/)).toBeTruthy()
+    expect(screen.getByText(/확인 전 후보/)).toBeTruthy()
     // **누가 올렸나.** 감사까지 뒤지게 하면 안 묻고 그냥 누른다.
     expect(screen.getByText(/mcp-박용진/)).toBeTruthy()
 
@@ -83,7 +83,7 @@ describe('검토 띠', () => {
       />,
     )
     expect(screen.getByText(/박용진 확인/)).toBeTruthy()
-    expect(screen.queryByText(/아직 확인 전인 후보입니다/)).toBeNull()
+    expect(screen.queryByText(/확인 전 후보/)).toBeNull()
 
     await userEvent.click(screen.getByRole('button', { name: /후보로 되돌리기/ }))
     expect(post).toHaveBeenCalledWith('/reliability-tests/r1/reopen', {})
@@ -91,7 +91,7 @@ describe('검토 띠', () => {
 
   it('못 고치는 사람에게는 확인 단추가 없다 — 후보라는 사실은 보인다', () => {
     render(<ReviewBanner row={row({ can_edit: false })} onChanged={() => {}} />)
-    expect(screen.getByText(/아직 확인 전인 후보입니다/)).toBeTruthy()
+    expect(screen.getByText(/확인 전 후보/)).toBeTruthy()
     expect(screen.queryByRole('button', { name: /내용 확인/ })).toBeNull()
   })
 

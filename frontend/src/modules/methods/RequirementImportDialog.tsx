@@ -72,9 +72,9 @@ export function RequirementImportDialog({
         <DialogHeader>
           <DialogTitle>요구 조건 일괄 등록</DialogTitle>
           <DialogDescription>
-            규격서를 보고 엑셀에 적은 표를 <strong>머리글 줄까지 함께</strong> 복사해
-            붙여넣으십시오. 열: 규격 · 판 · 조건 · 최소 · 최대 · 값 · 필수 · 비고. 값은 조건의
-            단위(kN · °C)로 적습니다 — 단위를 같이 적어도 됩니다.
+            규격서를 보고 엑셀에 작성한 표를 <strong>머리글 줄까지 함께</strong> 복사해
+            붙여넣기. 열: 규격 · 판 · 조건 · 최소 · 최대 · 값 · 필수 · 비고. 값은 조건의
+            단위(kN · °C)로 입력(단위 함께 입력 가능).
           </DialogDescription>
         </DialogHeader>
 
@@ -90,7 +90,7 @@ export function RequirementImportDialog({
               양식 다운로드
             </Button>
             <span className="text-muted-foreground text-xs">
-              보기 줄은 실제 규격(ISO 6892-1)의 값입니다.
+              예시 줄은 실제 규격(ISO 6892-1)의 값.
             </span>
           </div>
           <Textarea
@@ -115,14 +115,14 @@ export function RequirementImportDialog({
               <p className="text-sm">
                 {put ? (
                   <>
-                    <strong>넣었습니다.</strong> 새로 {result.summary.created} · 덮어씀{' '}
+                    <strong>등록 완료.</strong> 신규 {result.summary.created} · 덮어씀{' '}
                     {result.summary.replaced}
                     {result.summary.problems > 0 &&
-                      ` · 못 넣은 줄 ${result.summary.problems} (아래에 남아 있습니다)`}
+                      ` · 등록 실패 줄 ${result.summary.problems} (아래에 표시)`}
                   </>
                 ) : (
                   <>
-                    {result.summary.total}줄 중 넣을 수 있는 줄{' '}
+                    {result.summary.total}줄 중 등록 가능 줄{' '}
                     <strong>{result.summary.ready}</strong>
                     {result.summary.problems > 0 && (
                       <>
@@ -130,7 +130,7 @@ export function RequirementImportDialog({
                         <strong className="text-destructive">{result.summary.problems}</strong>
                       </>
                     )}
-                    . 아직 아무것도 저장하지 않았습니다.
+                    . 아직 저장되지 않음.
                   </>
                 )}
               </p>
@@ -177,11 +177,11 @@ export function RequirementImportDialog({
                               ))}
                             </ul>
                           ) : row.imported ? (
-                            '넣음'
+                            '등록됨'
                           ) : row.replaces ? (
-                            <span className="text-amber-700">이미 있는 조건을 덮어씁니다</span>
+                            <span className="text-amber-700">기존 조건 덮어씀</span>
                           ) : (
-                            '넣을 수 있음'
+                            '등록 가능'
                           )}
                         </td>
                       </tr>
@@ -216,7 +216,7 @@ export function RequirementImportDialog({
                 disabled={busy !== null || !result || result.summary.ready === 0}
               >
                 {busy === 'put' && <Loader2 className="size-4 animate-spin" />}
-                {result ? `${result.summary.ready}줄 넣기` : '넣기'}
+                {result ? `${result.summary.ready}줄 등록` : '등록'}
               </Button>
             </>
           )}

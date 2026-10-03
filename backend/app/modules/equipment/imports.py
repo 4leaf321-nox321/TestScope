@@ -250,7 +250,7 @@ def _header_map(
     새 줄이 섞여 있으면 그 줄은 줄마다 빈 칸 검사로 걸린다.
     """
     if not fields:
-        raise AppError("TSC-IMPORT-0002", "머리글 줄이 없습니다.", status=400)
+        raise AppError("TSC-IMPORT-0002", "머리글 줄 없음.", status=400)
     known: dict[str, str] = {}
     for field, names in COLUMNS.items():
         for name in names:
@@ -265,8 +265,8 @@ def _header_map(
     if missing:
         raise AppError(
             "TSC-IMPORT-0003",
-            f"머리글에 다음 열이 없습니다: {' · '.join(missing)}. "
-            f"엑셀에서 **머리글 줄까지 함께** 복사했는지 보십시오.",
+            f"머리글에 없는 열: {' · '.join(missing)}. "
+            f"엑셀에서 머리글 줄까지 함께 복사했는지 확인 필요.",
             status=400,
             details={"missing": missing},
         )
@@ -387,13 +387,13 @@ class Lookup:
             if len(alive) == 1:
                 self.contacts[body.lower()] = (alive[0].id, "")
             elif not found:
-                self.contacts[body.lower()] = (None, f"「{text}」 계정을 찾을 수 없습니다")
+                self.contacts[body.lower()] = (None, f"계정을 찾을 수 없음({text})")
             elif not alive:
-                self.contacts[body.lower()] = (None, f"「{text}」 은 쓰지 않는 계정입니다")
+                self.contacts[body.lower()] = (None, f"사용하지 않는 계정({text})")
             else:
                 self.contacts[body.lower()] = (
                     None,
-                    f"「{text}」 가 여럿입니다 ({len(alive)}명) — 이메일로 적어 주십시오",
+                    f"같은 이름의 계정이 여럿({text}, {len(alive)}명). 이메일로 입력 필요",
                 )
         contact_id, said = self.contacts[body.lower()]
         if said:
@@ -415,7 +415,7 @@ class Lookup:
             return None
         slug = self.workspaces.get(body)
         if slug is None:
-            problems.add("workspace", f"「{text}」 를 찾을 수 없습니다")
+            problems.add("workspace", f"찾을 수 없음({text})")
             return None
         if slug in self.workspace_problem:
             said = self.workspace_problem[slug]
@@ -450,13 +450,13 @@ class Lookup:
             can = axis in self.open_axis
             problems.add(
                 field,
-                f"「{text}」 가 온톨로지에 없습니다"
-                + ("" if can else ". 온톨로지에서 먼저 만드십시오"),
+                f"온톨로지에 없는 값({text})"
+                + ("" if can else ". 온톨로지에서 먼저 등록 필요"),
                 make_axis=axis if can else None,
                 make_value=body if can else None,
             )
         else:
-            problems.add(field, f"「{text}」 가 여럿입니다 ({len(found)}개)")
+            problems.add(field, f"같은 이름의 값이 여럿({text}, {len(found)}개)")
         return None
 
     def model(self, text: str, problems: Problems) -> Any:
@@ -484,8 +484,8 @@ class Lookup:
                 )
                 self.models[body] = (
                     None,
-                    f"「{text}」 을(를) 하나로 정할 수 없습니다"
-                    + (f" (비슷한 것: {names})" if names else " (카탈로그에 없습니다)"),
+                    f"하나로 특정할 수 없음({text})"
+                    + (f". 비슷한 기종: {names}" if names else ". 카탈로그에 없음"),
                 )
         found, said = self.models[body]
         if said:
@@ -501,7 +501,7 @@ def _flag(text: str, field: str, problems: Problems) -> bool | None:
         return True
     if word in NO:
         return False
-    problems.add(field, f"「{text}」 는 예/아니오로 읽을 수 없습니다")
+    problems.add(field, f"예/아니오로 읽을 수 없는 값({text})")
     return None
 
 
@@ -514,7 +514,7 @@ def _date(text: str, field: str, problems: Problems) -> date | None:
     try:
         return date.fromisoformat(body)
     except ValueError:
-        problems.add(field, f"「{text}」 는 날짜가 아닙니다 (2024-03-15 처럼)")
+        problems.add(field, f"날짜가 아님({text}). 예: 2024-03-15")
         return None
 
 
@@ -524,7 +524,7 @@ def _int(text: str, field: str, problems: Problems) -> int | None:
     try:
         return int(float(text.strip()))
     except ValueError:
-        problems.add(field, f"「{text}」 는 숫자가 아닙니다")
+        problems.add(field, f"숫자가 아님({text})")
         return None
 
 
@@ -540,7 +540,7 @@ def _row_payload(
     if not updating:
         for field in REQUIRED:
             if not clean(values.get(field, "")):
-                problems.add(field, "비어 있습니다")
+                problems.add(field, "비어 있음")
 
     model_id = look.model(values.get("model", ""), problems)
     category_term_id = look.term(
@@ -554,7 +554,7 @@ def _row_payload(
     ):
         # 기종을 안 골랐으면 분류가 필수다 — 무슨 종류인지 모르는 장비는 검색에서
         # 통째로 빠진다.
-        problems.add("category", "기종을 안 적었으면 장비유형은 필수입니다")
+        problems.add("category", "기종이 없으면 장비유형 필수")
 
     status_text = clean(values.get("status", ""))
     # **상태 칸이 비었으면 `unknown` 이다** — 「가동」 으로 채우면 대장이 말한 적 없는
@@ -562,7 +562,7 @@ def _row_payload(
     # 사실 자체가 정보라서 적을 자리를 뒀다(2026-10-01).
     status = STATUS_WORDS.get(status_text, status_text) or "unknown"
     if status not in EQUIPMENT_STATUSES:
-        problems.add("status", f"「{status_text}」 는 모르는 상태입니다")
+        problems.add("status", f"알 수 없는 상태({status_text})")
         status = "unknown"
 
     shared = _flag(values.get("shared_use", ""), "shared_use", problems)
@@ -575,7 +575,7 @@ def _row_payload(
     if calibrated and months is None:
         # 주기가 없으면 차기일을 계산할 수 없고, 그러면 「곧 만료」 목록이 이 장비를
         # 영원히 안 부른다.
-        problems.add("calibration_interval_months", "교정 대상이면 주기(개월)를 적어야 합니다")
+        problems.add("calibration_interval_months", "교정 대상이면 주기(개월) 입력 필요")
 
     return {
         "asset_no": clean(values.get("asset_no", "")),
@@ -690,12 +690,12 @@ def _update_plan(
         if owner is not None and owner.slug != payload["workspace_slug"]:
             problems.add(
                 "workspace",
-                "반입으로는 부서를 옮길 수 없습니다. 상세 화면에서 이관하십시오",
+                "반입으로는 부서 이관 불가. 상세 화면에서 이관 필요",
             )
     if clean(picked.get("model", "")) and payload.get("model_id") != existing.model_id:
         problems.add(
             "model",
-            "반입으로는 기종을 바꿀 수 없습니다. 상세 화면에서 바꾸십시오",
+            "반입으로는 기종 변경 불가. 상세 화면에서 변경 필요",
         )
 
     changes: dict[str, Any] = {}
@@ -732,7 +732,7 @@ def run(
     if len(text) > MAX_CHARS:
         raise AppError(
             "TSC-IMPORT-0004",
-            f"붙여넣은 내용이 너무 깁니다 ({len(text) // 1024}천 자). 나눠 올리십시오.",
+            f"붙여넣은 내용이 너무 김({len(text) // 1024}천 자). 나눠서 업로드 필요.",
             status=400,
         )
     body = text.replace("\r\n", "\n").replace("\r", "\n").strip("\n")
@@ -741,7 +741,7 @@ def run(
     if not body.strip():
         raise AppError(
             "TSC-IMPORT-0006",
-            "붙여넣은 내용이 없습니다. 엑셀에서 **머리글 줄까지 함께** 복사하십시오.",
+            "붙여넣은 내용 없음. 엑셀에서 머리글 줄까지 함께 복사 필요.",
             status=400,
         )
 
@@ -755,7 +755,7 @@ def run(
         if len(picked_rows) >= MAX_ROWS:
             raise AppError(
                 "TSC-IMPORT-0005",
-                f"한 번에 {MAX_ROWS}줄까지 받습니다. 나눠 붙여넣으십시오.",
+                f"한 번에 최대 {MAX_ROWS}줄까지 가능. 나눠서 붙여넣기 필요.",
                 status=400,
             )
         picked = {field: (values.get(column) or "") for field, column in header.items()}
@@ -799,9 +799,9 @@ def run(
         if asset_no:
             if asset_no in seen:
                 # 한 칸에 못 붙이는 문제다 — 어느 줄이 원본인지가 요점이다.
-                problems.add(None, f"자산번호가 {seen[asset_no]}번째 줄과 겹칩니다")
+                problems.add(None, f"자산번호가 {seen[asset_no]}번째 줄과 중복")
             elif existing is not None and not update_existing:
-                problems.add("asset_no", "이미 등록된 장비입니다")
+                problems.add("asset_no", "이미 등록된 장비")
             elif existing is not None:
                 plan, shown = _update_plan(db, user, existing, picked, payload, problems)
                 seen[asset_no] = index

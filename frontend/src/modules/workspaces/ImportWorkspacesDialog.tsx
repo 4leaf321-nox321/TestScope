@@ -125,9 +125,9 @@ export function ImportWorkspacesDialog({
         <DialogHeader>
           <DialogTitle>ReportArchive 부서 정보 가져오기</DialogTitle>
           <DialogDescription>
-            ReportArchive 의 「부서 정보 내보내기」 파일(부서정보.csv)을 메모장이나 엑셀에서
-            열어 전체를 복사해 붙여넣습니다 — 머리글 줄까지. 이미 있는 부서는 건드리지
-            않습니다. 공개 정책(external_view_default)은 다른 물음이라 옮기지 않습니다.
+            ReportArchive의 ‘부서 정보 내보내기’ 파일(부서정보.csv)을 메모장이나 엑셀에서 열어
+            머리글 줄까지 전체 복사 후 붙여넣기. 이미 있는 부서는 변경하지 않음. 공개
+            정책(external_view_default)은 가져오지 않음.
           </DialogDescription>
         </DialogHeader>
 
@@ -228,8 +228,8 @@ export function ImportWorkspacesDialog({
             </div>
             {!done && shown.errors > 0 && (
               <p className="text-xs text-amber-700">
-                오류 줄은 건너뛰고 나머지만 들어옵니다. 파일을 손으로 고치기보다 ReportArchive
-                쪽을 고쳐 다시 내보내는 편이 안전합니다 — 두 시스템의 주소가 갈리지 않게.
+                오류 줄은 건너뛰고 나머지만 반영됨. 두 시스템의 주소가 어긋나지 않도록 파일
+                직접 수정보다 ReportArchive에서 수정 후 다시 내보내기 권장.
               </p>
             )}
           </div>
@@ -264,7 +264,7 @@ export function ImportWorkspacesDialog({
               disabled={busy || willChange === 0}
             >
               {busy && <Loader2 className="size-4 animate-spin" />}
-              {willChange > 0 ? `${willChange}개 가져오기` : '가져올 것이 없습니다'}
+              {willChange > 0 ? `${willChange}개 가져오기` : '가져올 항목 없음'}
             </Button>
           )}
         </DialogFooter>

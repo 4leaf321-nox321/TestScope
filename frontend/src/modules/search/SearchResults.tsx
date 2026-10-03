@@ -30,7 +30,7 @@ function Accessory({ offer }: { offer: AccessoryOffer }) {
       >
         {offer.model_name}
       </Link>
-      {` (${offer.series_name}) ${offer.condition_range} — 달면 됩니다`}
+      {` (${offer.series_name}) ${offer.condition_range}: 장착 시 가능`}
       {offer.owned_units > 0 && (
         <strong className="text-emerald-700"> · 보유 {offer.owned_units}대</strong>
       )}
@@ -44,13 +44,13 @@ function whyUnknown(reason: string | null | undefined, scope: 'owned' | 'catalog
   const where = scope === 'owned' ? '장비 조건에' : '기종 사양에'
   switch (reason) {
     case 'missing':
-      return `${where} 이 조건이 안 적혀 있습니다 — 적으면 판정됩니다`
+      return `${where} 이 조건 미기재. 입력 시 판정 가능`
     case 'no_range':
-      return `${where} 범위가 비어 있습니다`
+      return `${where} 범위 미기재`
     case 'no_max':
-      return `${where} 상한이 없어 「이상」 을 판정할 수 없습니다 — 상한을 적으십시오`
+      return `${where} 상한이 없어 ‘이상’ 판정 불가. 상한 입력 필요`
     case 'no_min':
-      return `${where} 하한이 없어 「이하」 를 판정할 수 없습니다 — 하한을 적으십시오`
+      return `${where} 하한이 없어 ‘이하’ 판정 불가. 하한 입력 필요`
     default:
       return ''
   }
@@ -63,25 +63,25 @@ function Diagnosis({ result }: { result: SearchResponse }) {
     <ul className="mt-1 list-disc space-y-0.5 pl-5 text-left">
       {d && d.equipment_with_item === 0 ? (
         <li>
-          이 시험 항목이 적힌 보유 장비가 <strong>0대</strong>입니다 — 조건이 좁은 것이 아니라
-          아무도 이 시험을 등록하지 않았습니다.
+          이 시험 항목이 등록된 보유 장비 <strong>0대</strong>. 조건 문제가 아닌 시험 미등록
+          상태.
         </li>
       ) : (
         <li>
-          조건에 걸려 빠진 시험 항목이 <strong>{result.unmet_count}건</strong> 있습니다
-          {d && ` (이 시험을 적은 장비 ${d.equipment_with_item}대 중)`}. 조건을 넓혀 보십시오.
+          조건에 걸려 빠진 시험 항목 <strong>{result.unmet_count}건</strong>
+          {d && ` (이 시험을 등록한 장비 ${d.equipment_with_item}대 중)`}. 조건 범위 확대 필요.
         </li>
       )}
       {d && d.catalog_series_with_item > 0 && (
         <li>
-          카탈로그에는 이 시험을 하는 계열이 <strong>{d.catalog_series_with_item}개</strong>{' '}
-          있습니다 — 위의 「카탈로그에서」 로 찾으면 어떤 기종이 되는지 나옵니다.
+          카탈로그에는 이 시험을 하는 계열 <strong>{d.catalog_series_with_item}개</strong>{' '}
+          있음. 위의 ‘카탈로그에서’ 검색으로 가능 기종 확인 가능.
         </li>
       )}
       {d && d.unlinked_equipment > 0 && (
         <li>
-          기종에 안 이어진 장비가 <strong>{d.unlinked_equipment}대</strong> 있습니다 — 그
-          장비들은 카탈로그의 시험 항목을 못 받아 검색에 안 걸립니다.{' '}
+          기종 미연결 장비 <strong>{d.unlinked_equipment}대</strong>. 카탈로그의 시험 항목을
+          받지 못해 검색에서 제외됨.{' '}
           <Link to="/equipment?catalog=unlinked" className="underline">
             기종 연결
           </Link>
@@ -89,8 +89,7 @@ function Diagnosis({ result }: { result: SearchResponse }) {
       )}
       {result.unregistered_equipment > 0 && (
         <li>
-          시험 항목이 하나도 안 적힌 장비가 <strong>{result.unregistered_equipment}대</strong>{' '}
-          있습니다.{' '}
+          시험 항목 미등록 장비 <strong>{result.unregistered_equipment}대</strong>.{' '}
           <Link to="/equipment?test_item=none" className="underline">
             시험 항목 입력
           </Link>
@@ -105,21 +104,21 @@ export function CatalogResult({ result }: { result: CatalogSearchResponse }) {
   const expanded =
     result.expanded_test_items.length > 0 ? (
       <p className="text-muted-foreground text-sm">
-        물성을 시험 항목 <strong>{result.expanded_test_items.join(' · ')}</strong> 으로 펼쳐
-        찾았습니다.
+        물성을 시험 항목으로 펼쳐 검색:{' '}
+        <strong>{result.expanded_test_items.join(' · ')}</strong>
       </p>
     ) : null
 
   if (result.hits.length === 0) {
     return (
       <EmptyState
-        title="조건에 맞는 기종이 카탈로그에 없습니다"
+        title="조건에 맞는 카탈로그 기종 없음"
         hint={
           <>
             {expanded}
-            조건에 걸려 빠진 기종이 {result.unmet_models}종 있습니다.
+            조건에 걸려 빠진 기종 {result.unmet_models}종.
             {result.unmet_models === 0 &&
-              ' 이 시험 항목을 하는 계열이 카탈로그에 없거나, 기종에 사양이 안 적혀 있습니다.'}
+              ' 이 시험 항목을 하는 계열이 카탈로그에 없거나 기종 사양 미기재 상태.'}
           </>
         }
         action={
@@ -177,16 +176,15 @@ export function CatalogResult({ result }: { result: CatalogSearchResponse }) {
                   <span className="text-muted-foreground flex flex-wrap gap-x-3 text-xs">
                     {model.conditions.map((one) => (
                       <span key={one.condition_key_id}>
-                        {one.condition_label} {one.condition_range ?? '안 적힘'}
+                        {one.condition_label} {one.condition_range ?? '미기재'}
                         {one.verdict === 'accessory' && !one.accessory && ' (부속)'}
                         {one.accessory && (
                           <>
-                            {' — '}
+                            {': '}
                             <Accessory offer={one.accessory} />
                           </>
                         )}
-                        {one.verdict === 'unknown' &&
-                          ` — ${whyUnknown(one.reason, 'catalog')}`}
+                        {one.verdict === 'unknown' && `: ${whyUnknown(one.reason, 'catalog')}`}
                       </span>
                     ))}
                   </span>
@@ -204,8 +202,8 @@ export function SearchResult({ result }: { result: SearchResponse }) {
   const expanded =
     result.expanded_test_items.length > 0 ? (
       <p className="text-muted-foreground text-sm">
-        물성을 시험 항목 <strong>{result.expanded_test_items.join(' · ')}</strong> 으로 펼쳐
-        찾았습니다.
+        물성을 시험 항목으로 펼쳐 검색:{' '}
+        <strong>{result.expanded_test_items.join(' · ')}</strong>
       </p>
     ) : null
 
@@ -214,8 +212,8 @@ export function SearchResult({ result }: { result: SearchResponse }) {
       <EmptyState
         title={
           result.diagnosis && result.diagnosis.equipment_with_item === 0
-            ? '이 시험을 하는 장비가 등록된 적이 없습니다'
-            : '조건에 맞는 장비가 없습니다'
+            ? '이 시험을 하는 등록 장비 없음'
+            : '조건에 맞는 장비 없음'
         }
         hint={
           <>
@@ -241,7 +239,7 @@ export function SearchResult({ result }: { result: SearchResponse }) {
       <p className="text-muted-foreground text-sm">
         {result.total}건. 조건에 걸려 빠진 시험 항목 {result.unmet_count}건.
         {result.unregistered_equipment > 0 && (
-          <> 시험 항목 미등록 장비 {result.unregistered_equipment}대는 검색에 안 걸립니다.</>
+          <> 시험 항목 미등록 장비 {result.unregistered_equipment}대는 검색에서 제외됨.</>
         )}
       </p>
 

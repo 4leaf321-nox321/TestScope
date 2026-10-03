@@ -50,9 +50,9 @@ def decide(
         where = " · ".join(f"{name} {count}줄" for name, count in counts.items() if count)
         raise Conflict(
             ask_code,
-            f"{what}의 단위를 「{old}」 에서 「{new}」 로 바꾸면 저장된 값 {total}줄"
-            f"({where})의 뜻이 바뀝니다. 숫자를 새 단위로 환산하려면"
-            ' stored_values="convert", 숫자가 원래 새 단위였다면 "keep" 을 함께 보내십시오.',
+            f"{what}의 단위를 {old}에서 {new}(으)로 바꾸면 저장된 값 {total}줄"
+            f"({where})의 의미가 바뀜. 숫자를 새 단위로 환산하려면"
+            ' stored_values="convert", 숫자가 원래 새 단위였다면 "keep"을 함께 전송 필요.',
             details={"before": before, "after": after, "stored": counts},
         )
     if stored_values == "keep":
@@ -60,8 +60,8 @@ def decide(
     if convert(1.0, before, after) is None:
         raise Conflict(
             cannot_code,
-            f"「{old}」 를 「{new}」 로 환산할 수 없습니다(표에 없는 단위이거나 차원이"
-            ' 다릅니다). 숫자가 원래 새 단위였다면 stored_values="keep" 으로 보내십시오.',
+            f"{old}에서 {new}(으)로 환산 불가(표에 없는 단위이거나 차원이"
+            ' 다름). 숫자가 원래 새 단위였다면 stored_values="keep"으로 전송 필요.',
             details={"before": before, "after": after},
         )
     return "convert"

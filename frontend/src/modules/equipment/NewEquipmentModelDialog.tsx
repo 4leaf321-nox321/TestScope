@@ -89,8 +89,8 @@ export function NewEquipmentModelDialog({
           <DialogHeader>
             <DialogTitle>장비 기종 등록</DialogTitle>
             <DialogDescription>
-              수치 사양은 등록한 뒤 상세 화면에서 적습니다. 검색 조건에 이어진 사양은 이
-              기종으로 등록하는 보유 장비의 시험 조건이 됩니다.
+              수치 사양은 등록 후 상세 화면에서 입력. 검색 조건에 연결된 사양은 이 기종으로
+              등록하는 보유 장비의 시험 조건이 됨.
             </DialogDescription>
           </DialogHeader>
 
@@ -105,7 +105,7 @@ export function NewEquipmentModelDialog({
                 onChange={(id) => setSeries(id)}
               />
               <p className="text-muted-foreground text-xs">
-                없으면 계열을 먼저 만듭니다. 단품이라도 기종 하나짜리 계열로 둡니다.
+                계열이 없으면 먼저 등록 필요. 단품도 기종 하나인 계열로 등록.
               </p>
             </div>
           )}
@@ -120,7 +120,7 @@ export function NewEquipmentModelDialog({
               required
             />
             <p className="text-muted-foreground text-xs">
-              계열 이름은 위 칸이 갖습니다. 이름에 같이 적지 마십시오.
+              계열 이름은 위 칸에 입력. 기종명에 포함 금지.
             </p>
           </div>
 

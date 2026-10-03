@@ -36,7 +36,7 @@ export default function GuidePage() {
     <div className="space-y-6">
       <PageHeader
         title="가이드"
-        description="이 틀이 어떻게 엮여 있고, 어느 칸이 무엇을 바꾸는가."
+        description="데이터 구조와 연결 관계, 각 항목이 영향을 주는 범위."
       />
 
       <div className="flex flex-col gap-6 lg:flex-row">
@@ -67,7 +67,7 @@ export default function GuidePage() {
             // **주소를 고쳐 들어온 사람에게 길을 준다.** 빈 화면만 두면 가이드가
             // 고장 난 것으로 읽힌다.
             <p className="text-muted-foreground text-sm">
-              그런 가이드 쪽이 없습니다.{' '}
+              해당 가이드 쪽 없음.{' '}
               <Link to="/guide" className="underline">
                 처음으로
               </Link>

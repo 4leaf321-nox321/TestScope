@@ -80,7 +80,7 @@ describe('이미지 줄', () => {
         />,
       )
     })
-    expect(screen.getByText(/저장한 뒤에/)).toBeTruthy()
+    expect(screen.getByText(/저장 후 이미지 첨부 가능/)).toBeTruthy()
     expect(screen.queryByText('이미지 첨부')).toBeNull()
   })
 
@@ -182,7 +182,7 @@ describe('이미지 줄', () => {
 
     // **누른 사람은 파일을 원한다** — 바이트는 그때 받는다.
     expect(fetchBlobUrl).toHaveBeenCalledTimes(1)
-    expect(screen.getByText(/브라우저는 이 형식을 못 그립니다/)).toBeTruthy()
+    expect(screen.getByText(/브라우저에서 표시할 수 없는 형식/)).toBeTruthy()
     expect(screen.getByRole('link', { name: /내려받기/ })).toBeTruthy()
     expect(document.querySelector('img')).toBeNull()
   })

@@ -232,7 +232,7 @@ export function ModelPicker({
                     <button
                       type="button"
                       className="text-muted-foreground hover:bg-muted hover:text-foreground shrink-0 px-2 py-2 text-xs"
-                      title={`${one.series_name} 의 기종만 보기`}
+                      title={`${one.series_name} 기종만 보기`}
                       onClick={() => narrow(one.series_id, one.series_name)}
                     >
                       {one.series_name}
@@ -245,10 +245,10 @@ export function ModelPicker({
           {(mode === 'series' && !series ? seriesRows : rows).length === 0 && (
             <li className="text-muted-foreground px-3 py-6 text-center text-sm">
               {series && !query
-                ? '이 계열에 기종이 없습니다. 계열 화면에서 먼저 기종을 만드십시오.'
+                ? '이 계열에 기종 없음. 계열 화면에서 기종 먼저 등록 필요.'
                 : query
-                  ? '검색 결과가 없습니다. 카탈로그에 없으면 비워 두고 나중에 이을 수 있습니다.'
-                  : '이름의 일부를 입력하십시오.'}
+                  ? '검색 결과 없음. 카탈로그에 없으면 비워 두고 나중에 연결 가능.'
+                  : '이름 일부 입력.'}
             </li>
           )}
         </ul>
@@ -262,7 +262,7 @@ export function ModelPicker({
             if (all === 0) return ' '
             // **덜 받았으면 그렇게 적는다.** 왕복 상한에 걸린 경우뿐이다 — 조용히
             // 끊는 것이 이 화면의 머리 주석이 말하는 그 사고다.
-            if (all > shown) return `${all}건 중 ${shown}건만 받았습니다. 검색어로 좁히십시오.`
+            if (all > shown) return `${all}건 중 ${shown}건만 불러옴. 검색어로 좁혀야 함.`
             return browsing ? `계열 ${all}건` : `기종 ${all}건`
           })()}
         </p>

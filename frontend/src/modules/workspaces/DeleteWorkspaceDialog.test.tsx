@@ -75,7 +75,7 @@ describe('부서 지우기 창', () => {
 
   it('가진 것이 없으면 그냥 지운다', async () => {
     await open([])
-    expect(screen.getByText(/그냥 지울 수 있습니다/)).toBeTruthy()
+    expect(screen.getByText(/바로 삭제 가능/)).toBeTruthy()
     const button = screen.getByRole('button', { name: /지우기/ }) as HTMLButtonElement
     expect(button.disabled).toBe(false)
 

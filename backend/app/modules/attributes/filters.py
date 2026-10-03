@@ -132,9 +132,7 @@ def _number(raw: str, label: str) -> float:
     try:
         return float(raw.strip())
     except ValueError:
-        raise AppError(
-            "TSC-ATTR-0120", f"「{label}」 는 수치 속성입니다. 숫자로 물어 주십시오."
-        ) from None
+        raise AppError("TSC-ATTR-0120", f"{label}: 수치 속성. 숫자로 입력 필요.") from None
 
 
 def _date(raw: str, label: str) -> date:
@@ -142,7 +140,7 @@ def _date(raw: str, label: str) -> date:
         return date.fromisoformat(raw.strip())
     except ValueError:
         raise AppError(
-            "TSC-ATTR-0121", f"「{label}」 는 날짜 속성입니다. 2024-05-01 꼴로 물어 주십시오."
+            "TSC-ATTR-0121", f"{label}: 날짜 속성. 2024-05-01 형식으로 입력 필요."
         ) from None
 
 
@@ -152,15 +150,14 @@ def parse(db: Session, target: str, raw_filters: list[str]) -> list[AttributeFil
     if not raw_filters:
         return []
     if len(raw_filters) > MAX_FILTERS:
-        raise AppError("TSC-ATTR-0122", f"속성 조건은 한 번에 {MAX_FILTERS}개까지입니다.")
+        raise AppError("TSC-ATTR-0122", f"속성 조건은 한 번에 최대 {MAX_FILTERS}개.")
     out: list[AttributeFilter] = []
     for one in raw_filters:
         matched = _PATTERN.match(one.strip())
         if matched is None:
             raise AppError(
                 "TSC-ATTR-0123",
-                f"속성 조건 「{one}」 를 못 읽었습니다."
-                f" 「키{'·'.join(_OPS)}값」 꼴로 적어 주십시오.",
+                f"읽을 수 없는 속성 조건: {one}. 입력 형식: 키{'·'.join(_OPS)}값.",
             )
         key = matched.group("key")
         definition = db.scalar(
@@ -169,7 +166,7 @@ def parse(db: Session, target: str, raw_filters: list[str]) -> list[AttributeFil
             )
         )
         if definition is None:
-            raise AppError("TSC-ATTR-0124", f"「{key}」 라는 속성이 이 대상에 없습니다.")
+            raise AppError("TSC-ATTR-0124", f"이 대상에 없는 속성: {key}")
         picked = (matched.group("set") or "").strip()
         out.append(
             AttributeFilter(
@@ -201,7 +198,7 @@ def _numeric_match(one: AttributeFilter, bottom: float | None, top: float | None
         return not (reaches_up and reaches_down)
     raise AppError(
         "TSC-ATTR-0125",
-        f"「{one.definition.label}」 는 수치 속성이라 「포함」 으로 못 묻습니다.",
+        f"{one.definition.label}: 수치 속성이라 포함(~) 조건 사용 불가.",
     )
 
 
@@ -327,7 +324,7 @@ def _value_predicate(one: AttributeFilter) -> Any:
         if one.op == "~":
             raise AppError(
                 "TSC-ATTR-0125",
-                f"「{one.definition.label}」 는 날짜 속성이라 「포함」 으로 못 묻습니다.",
+                f"{one.definition.label}: 날짜 속성이라 포함(~) 조건 사용 불가.",
             )
         return by_op[one.op]
     if kind == "term":
@@ -426,7 +423,7 @@ def _base_ids(target: str) -> Select[tuple[uuid.UUID]]:
         return select(EquipmentSeries.id).where(EquipmentSeries.deleted_at.is_(None))
     if target == "method":
         return select(TestMethod.id).where(TestMethod.deleted_at.is_(None))
-    raise AppError("TSC-ATTR-0126", f"모르는 대상입니다: {target}")
+    raise AppError("TSC-ATTR-0126", f"알 수 없는 대상: {target}")
 
 
 def _hint(one: AttributeFilter, with_value: int, unconvertible: int, matched: int) -> str:
@@ -435,30 +432,26 @@ def _hint(one: AttributeFilter, with_value: int, unconvertible: int, matched: in
         # **읽는 방향이 반대다.** 다른 연산은 「적힌 값이 없다」 가 곧 0건의 이유지만,
         # `!*` 는 그때 오히려 전부가 걸린다. 갈라 두지 않으면 정반대로 말한다.
         if matched == 0:
-            return f"「{label}」 을 안 적은 것이 없습니다 — 걸린 것이 모두 적어 두었습니다."
-        return f"이 조건만으로는 {matched}건이 걸립니다 — 다른 조건과 함께 걸어서 비었습니다."
+            return f"{label}: 값이 비어 있는 대상 없음. 조회된 대상 모두 값 입력됨."
+        return f"이 조건만으로는 {matched}건 조회됨. 다른 조건과 함께 적용되어 결과 없음."
     if one.op == "*" and with_value == 0:
-        return f"「{label}」 에 값이 적힌 것이 없습니다 — 아직 아무도 안 적었습니다."
+        return f"{label}: 값이 입력된 대상 없음. 아직 아무도 입력하지 않음."
     if with_value == 0:
-        return (
-            f"「{label}」 에 값이 적힌 것이 없습니다 — 조건이 아니라 적힌 값이 없는 것입니다."
-        )
+        return f"{label}: 값이 입력된 대상 없음. 조건 문제가 아니라 입력된 값이 없음."
     parts: list[str] = []
     if unconvertible:
         parts.append(
-            f"단위를 「{one.definition.unit or '정의 단위'}」 로 못 바꿔 뺀 값이 "
-            f"{unconvertible}건 있습니다"
+            f"단위를 {one.definition.unit or '정의 단위'}(으)로 환산하지 못해 "
+            f"제외한 값 {unconvertible}건"
         )
     if matched == 0:
-        parts.append(
-            f"값은 {with_value}건 있지만 이 조건에 든 것이 없습니다 — 조건을 넓혀 보십시오"
-        )
+        parts.append(f"값은 {with_value}건 있으나 조건에 맞는 값 없음. 조건 범위 확대 필요")
     else:
         parts.append(
-            f"이 조건만으로는 {matched}건이 걸립니다 — 다른 조건과 함께 걸어서 비었습니다"
+            f"이 조건만으로는 {matched}건 조회됨. 다른 조건과 함께 적용되어 결과 없음"
         )
     if one.definition.status == "draft":
-        parts.append("초안 속성이라 값이 사람마다 다르게 적혔을 수 있습니다")
+        parts.append("초안 속성이라 사람마다 값을 다르게 입력했을 수 있음")
     return ". ".join(parts) + "."
 
 

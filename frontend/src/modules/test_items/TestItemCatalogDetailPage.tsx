@@ -125,7 +125,7 @@ export default function TestItemCatalogDetailPage() {
           <h2 className="text-base font-semibold">검색 조건</h2>
           {one.condition_keys.length === 0 ? (
             <span className="text-sm text-amber-600">
-              아직 안 정해짐 — 검색이 이 시험에 어떤 조건을 물어야 하는지 모릅니다
+              미지정(검색 시 이 시험에 적용할 조건을 알 수 없음)
             </span>
           ) : (
             <span className="text-sm">
@@ -159,7 +159,7 @@ export default function TestItemCatalogDetailPage() {
           <h2 className="text-base font-semibold">측정 물성</h2>
           <span className="text-muted-foreground text-sm">
             {one.properties.length}
-            {suggested.length > 0 && ` · 확인 안 한 제안 ${suggested.length}`}
+            {suggested.length > 0 && ` · 미확인 제안 ${suggested.length}`}
           </span>
           {admin && suggested.length > 0 && (
             <Button
@@ -172,7 +172,7 @@ export default function TestItemCatalogDetailPage() {
                     suggested.map((link) => link.link_id),
                     'confirmed',
                   )
-                  setMessage(`${got.changed}건을 확인으로 올렸습니다.`)
+                  setMessage(`${got.changed}건 확인 처리 완료.`)
                   item.reload()
                 } catch (caught) {
                   setError(caught instanceof Error ? caught : new Error('알 수 없는 오류'))
@@ -180,18 +180,17 @@ export default function TestItemCatalogDetailPage() {
               }}
             >
               <Check className="size-3.5" />
-              {suggested.length}개 다 확인
+              {suggested.length}개 모두 확인
             </Button>
           )}
         </div>
         {one.properties.length === 0 ? (
           <p className="text-sm text-amber-600">
-            이어진 물성이 없습니다 — 판정·곡선으로 끝나는 시험이면 정상이고, 물성을 내는
-            시험이면{' '}
+            연결된 물성 없음. 판정·곡선으로 끝나는 시험이면 정상, 물성을 측정하는 시험이면{' '}
             <Link to="/properties" className="underline">
               물성 항목
             </Link>
-            에서 잇습니다.
+            에서 연결.
           </p>
         ) : (
           <ul className="flex flex-wrap gap-1">
@@ -222,11 +221,11 @@ export default function TestItemCatalogDetailPage() {
         </h2>
         {one.methods.length === 0 ? (
           <p className="text-sm text-amber-600">
-            적용 규격으로 정해진 것이 없습니다.{' '}
+            지정된 적용 규격 없음.{' '}
             <Link to="/methods?test_item=none" className="underline">
               시험 항목 미지정 규격
             </Link>
-            에 이 시험의 것이 있을 수 있습니다.
+            에 이 시험의 규격이 있을 수 있음.
           </p>
         ) : (
           <Table>
@@ -273,8 +272,8 @@ export default function TestItemCatalogDetailPage() {
         </h2>
         {one.series.length === 0 ? (
           <p className="text-sm text-amber-600">
-            이 시험을 한다고 적힌 계열이 카탈로그에 없습니다 — 그 장비가 카탈로그에 없거나,
-            계열의 시험 항목에 아직 안 적힌 것입니다.
+            이 시험을 수행하는 계열이 카탈로그에 없음. 해당 장비가 카탈로그에 없거나 계열의
+            시험 항목에 아직 미등록.
           </p>
         ) : (
           <Table>
@@ -325,8 +324,8 @@ export default function TestItemCatalogDetailPage() {
         </h2>
         {one.equipment.length === 0 ? (
           <p className="text-sm text-amber-600">
-            이 시험이 적힌 보유 장비가 없습니다 — 현재 수행 불가한 시험입니다.
-            {one.series.length > 0 && ' 위 계열의 기종을 사면 됩니다.'}
+            이 시험이 등록된 보유 장비 없음(현재 수행 불가).
+            {one.series.length > 0 && ' 위 계열의 기종 구매 시 수행 가능.'}
           </p>
         ) : (
           <Table>

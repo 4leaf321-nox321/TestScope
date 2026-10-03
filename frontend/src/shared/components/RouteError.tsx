@@ -58,11 +58,11 @@ export function RouteError() {
   return (
     <div className="mx-auto max-w-lg space-y-4 p-8">
       <h1 className="text-lg font-semibold">
-        {stale ? '화면이 새 버전으로 바뀌었습니다' : '화면을 그리지 못했습니다'}
+        {stale ? '화면 새 버전 배포됨' : '화면 표시 실패'}
       </h1>
       <p className="text-muted-foreground text-sm">
         {stale
-          ? '새로고침하면 됩니다. 자동으로 한 번 시도했는데도 이 화면이면, 서버가 새 파일을 아직 못 주는 것이라 잠시 뒤 다시 여십시오.'
+          ? '새로고침 필요. 자동 새로고침 1회 후에도 이 화면이면 서버가 새 파일을 아직 제공하지 못하는 상태임. 잠시 후 다시 열기.'
           : message}
       </p>
       <div className="flex gap-2">

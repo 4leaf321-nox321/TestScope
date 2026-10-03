@@ -141,7 +141,7 @@ const MS_PER_UNIT = 6
  *  도움이 안 되면서 읽을 것만 늘린다. */
 function spent(count: number): string {
   const seconds = Math.round((count * MS_PER_UNIT) / 1000)
-  return seconds >= 3 ? ` (${seconds}초쯤 걸립니다)` : ''
+  return seconds >= 3 ? ` (약 ${seconds}초 소요)` : ''
 }
 
 /** 붙여넣은 글자를 격자로 나눈다.
@@ -496,7 +496,7 @@ export function EquipmentImportDialog({
         new ApiError(0, {
           error: {
             code: 'TSC-CLIENT-0002',
-            message: `복사하지 못했습니다: ${(thrown as Error).message}`,
+            message: `복사 실패: ${(thrown as Error).message}`,
           },
         }),
       )
@@ -540,8 +540,8 @@ export function EquipmentImportDialog({
         <DialogHeader>
           <DialogTitle>장비 일괄 반입</DialogTitle>
           <DialogDescription>
-            엑셀에서 <strong>머리글 줄까지 함께</strong> 복사해 아래 표에 붙여넣으십시오
-            (Ctrl+V). 틀린 칸은 표에서 바로 고칠 수 있습니다.
+            엑셀에서 <strong>머리글 줄까지 함께</strong> 복사해 아래 표에 붙여넣기(Ctrl+V).
+            틀린 칸은 표에서 바로 수정 가능.
           </DialogDescription>
         </DialogHeader>
 
@@ -570,7 +570,7 @@ export function EquipmentImportDialog({
               disabled={phase === 'putting' || sending.length === 0}
             >
               <Copy className="size-4" />
-              {copied === null ? '표 복사' : `${copied}줄 복사했습니다`}
+              {copied === null ? '표 복사' : `${copied}줄 복사 완료`}
             </Button>
             <Button variant="outline" size="sm" onClick={reset} disabled={phase !== 'idle'}>
               초기화
@@ -592,8 +592,8 @@ export function EquipmentImportDialog({
               </Button>
             )}
             <span className="text-muted-foreground text-xs">
-              부서·거점·장비유형·기종은 <strong>이름으로</strong> 적습니다. 온톨로지에 없는
-              거점·분류는 여기서 만들어지지 않습니다.
+              부서·거점·장비유형·기종은 <strong>이름으로</strong> 입력. 온톨로지에 없는
+              거점·분류는 자동 생성되지 않음.
             </span>
           </div>
 
@@ -602,7 +602,7 @@ export function EquipmentImportDialog({
           {makeable.length > 0 && (
             // **창을 안 떠나고 만든다.** 나갔다 오면 표에서 고치던 것을 잃는다.
             <div className="flex flex-wrap items-center gap-2 rounded-md border border-amber-300 bg-amber-50 p-2 text-sm">
-              <span>온톨로지에 없는 값 {makeable.length}개 —</span>
+              <span>온톨로지에 없는 값 {makeable.length}개:</span>
               {makeable.map((one) => (
                 <Button
                   key={`${one.axis}:${one.value}`}
@@ -612,7 +612,7 @@ export function EquipmentImportDialog({
                   onClick={() => void make(one.axis, one.value)}
                 >
                   <Plus className="size-4" />
-                  {one.label} 「{one.value}」 만들기
+                  {one.label} ‘{one.value}’ 만들기
                 </Button>
               ))}
             </div>
@@ -620,13 +620,13 @@ export function EquipmentImportDialog({
 
           {done !== null && (
             <div className="rounded-md border border-emerald-300 bg-emerald-50 p-3 text-sm">
-              <strong>{done}</strong>건을 처리했습니다.
+              <strong>{done}</strong>건 처리 완료.
               {sending.length > 0 && (
                 // **남은 줄이 표에 그대로 있다.** 안 말하면 사람은 다 들어간 줄 안다.
                 <>
                   {' '}
-                  못 넣은 <strong>{sending.length}줄</strong>이 표에 남아 있습니다 — 고쳐서
-                  다시 누르십시오.
+                  넣지 못한 <strong>{sending.length}줄</strong>은 표에 남아 있음. 수정 후 다시
+                  넣기 필요.
                 </>
               )}
             </div>
@@ -645,8 +645,8 @@ export function EquipmentImportDialog({
 
           {tooMany && (
             <p className="text-muted-foreground text-xs">
-              {rows.length}줄이라 <strong>오류 행만</strong> 그렸습니다 — 표가 너무 크면 타이핑
-              한 번에 멈춥니다. 나머지 {rows.length - bad.length}줄은 그대로 들어갑니다.
+              {rows.length}줄로 표가 커서 <strong>오류 행만</strong> 표시(표가 너무 크면 입력
+              시 멈춤). 나머지 {rows.length - bad.length}줄은 그대로 반입됨.
             </p>
           )}
 
@@ -661,9 +661,8 @@ export function EquipmentImportDialog({
               <span className="flex items-center gap-2">
                 <Loader2 className="size-4 animate-spin" />
                 <span>
-                  <strong>{summary?.ready ?? 0}대</strong>를 넣는 중입니다
-                  {spent(summary?.ready ?? 0)}. <strong>창을 닫지 마십시오</strong> — 도중에
-                  끊기면 아무것도 안 들어갑니다.
+                  <strong>{summary?.ready ?? 0}대</strong> 반입 중{spent(summary?.ready ?? 0)}.{' '}
+                  <strong>창 닫기 금지.</strong> 도중에 끊기면 아무것도 반입되지 않음.
                 </span>
               </span>
             )}
@@ -717,10 +716,10 @@ export function EquipmentImportDialog({
                   // 막지 않는다 — 자작 장비나 카탈로그에 없는 것이 실제로 있다.
                   // 다만 그 장비들이 **검색에 안 걸린다**는 사실은 넣기 전에 안다.
                   <span className="text-amber-700">
-                    기종 미연결 <strong>{unlinked}</strong> — 시험 항목이 0 건이 되고,{' '}
-                    <strong>0 건이면 검색에 걸리지 않습니다.</strong> 카탈로그에 없는 기종이면{' '}
-                    <strong>모델명</strong> 칸에 적어 두십시오. 넣은 뒤 홈의 「카탈로그에 안
-                    이어진 장비」 에서 다시 찾을 수 있습니다.
+                    기종 미연결 <strong>{unlinked}</strong>: 시험 항목 0건,{' '}
+                    <strong>검색되지 않음.</strong> 카탈로그에 없는 기종은{' '}
+                    <strong>모델명</strong> 칸에 입력. 반입 후 홈의 ‘카탈로그에 안 이어진
+                    장비’에서 다시 확인 가능.
                   </span>
                 )}
               </>

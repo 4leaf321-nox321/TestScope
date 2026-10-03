@@ -48,9 +48,9 @@ function writtenBy(item: {
 }): string | undefined {
   const who = item.updated_by_name ? ` (${item.updated_by_name})` : ''
   if (item.origin === 'agent')
-    return `${item.updated_via ?? 'AI'}${who} 가 넣었습니다 — AI 가 넣은 값은 AI 가 고칠 수 있고, 사람이 고치면 다시 잠깁니다`
-  if (item.origin === 'manual') return `${item.updated_by_name ?? '사람'} 가 적었습니다`
-  if (item.origin === 'catalog') return '카탈로그 반입이 넣었습니다'
+    return `입력: ${item.updated_via ?? 'AI'}${who}. AI가 넣은 값은 AI가 수정 가능하며, 사람이 수정하면 다시 잠김`
+  if (item.origin === 'manual') return `입력: ${item.updated_by_name ?? '사람'}`
+  if (item.origin === 'catalog') return '입력: 카탈로그 반입'
   return undefined
 }
 
@@ -159,14 +159,14 @@ function ValueFields({
           value={draft.num_min ?? ''}
           onChange={(value) => set('num_min', value)}
           unit={unit}
-          placeholder={`최소${unit ? ` (${unit})` : ''} — 비우면 제한 없음`}
+          placeholder={`최소${unit ? ` (${unit})` : ''}, 비우면 제한 없음`}
           className="w-56"
         />
         <NumberField
           value={draft.num_max ?? ''}
           onChange={(value) => set('num_max', value)}
           unit={unit}
-          placeholder={`최대${unit ? ` (${unit})` : ''} — 비우면 제한 없음`}
+          placeholder={`최대${unit ? ` (${unit})` : ''}, 비우면 제한 없음`}
           className="w-56"
         />
       </>
@@ -178,7 +178,7 @@ function ValueFields({
         value={draft.num_value ?? ''}
         onChange={(value) => set('num_value', value)}
         unit={unit}
-        placeholder={unit ? `값 (${unit}) — 「4000 cP」 처럼 원문 단위로 쳐도 됩니다` : '값'}
+        placeholder={unit ? `값 (${unit}), 원문 단위로 입력 가능(예: 4000 cP)` : '값'}
         className="w-64"
       />
     )
@@ -223,7 +223,7 @@ function ValueFields({
     <Input
       value={draft.text_value ?? ''}
       onChange={(event) => set('text_value', event.target.value)}
-      placeholder="원문 그대로 적습니다"
+      placeholder="원문 그대로 입력"
       className="w-96"
     />
   )
@@ -270,15 +270,15 @@ export function ModelSpecPanel({
       // **둘을 말해 준다.** 이 값이 검색에 쓰이는지, 이미 등록된 장비는 어떻게
       // 되는지 — 둘 다 모르면 사람은 바뀌었다고 믿고, 그 믿음은 검색 결과가
       // 어긋난 날에야 깨진다.
-      const parts = [`${chosen.label} 저장.`]
+      const parts = [`${chosen.label} 저장 완료.`]
       if (result.search_axis) {
         parts.push(
-          `「${result.search_axis}」 검색 조건이라, 앞으로 이 기종으로 등록하는 장비의 시험 조건이 됩니다.`,
+          `‘${result.search_axis}’ 검색 조건이므로 이후 이 기종으로 등록하는 장비의 시험 조건이 됨.`,
         )
       }
       if (result.existing_units > 0) {
         parts.push(
-          `이미 등록된 ${result.existing_units}대에는 반영되지 않습니다 — 개체의 값은 개체가 갖습니다.`,
+          `이미 등록된 ${result.existing_units}대에는 반영되지 않음(개체 값은 개체별로 유지).`,
         )
       }
       setMessage(parts.join(' '))
@@ -307,9 +307,8 @@ export function ModelSpecPanel({
       <div>
         <h2 className="text-base font-semibold">사양</h2>
         <p className="text-muted-foreground mt-1 text-sm">
-          제조사 카탈로그의 값입니다. <strong>검색 조건에 이어진 사양</strong>(하중 용량·시험
-          온도 등)은 이 기종으로 보유 장비를 등록할 때 시험 조건이 됩니다 — 같은 숫자를 두 번
-          적지 않기 위해서입니다.
+          제조사 카탈로그 값. <strong>검색 조건에 연결된 사양</strong>(하중 용량·시험 온도
+          등)은 이 기종으로 보유 장비를 등록할 때 시험 조건이 됨.
         </p>
       </div>
 
@@ -320,9 +319,9 @@ export function ModelSpecPanel({
         <p className="text-sm text-amber-700">
           {/* **「조건 미상」 의 출처가 여기다.** 사양이 없으면 검색이 이 기종을 판정하지 못하고,
               사람은 되는지 안 되는지를 못 본다 — 891 중 224 가 이 상태다. */}
-          <strong>아직 적힌 사양이 없습니다.</strong> 그래서 검색은 이 기종을 「조건 미상」
-          으로 답합니다. 아래에서 칸을 골라, 이 쪽 맨 아래 <strong>「카탈로그 원문」</strong>{' '}
-          에 적힌 값을 한 칸씩 옮겨 적으십시오.
+          <strong>입력된 사양 없음.</strong> 검색 결과에서 이 기종은 ‘조건 미상’으로 표시됨.
+          아래에서 칸을 골라 이 화면 맨 아래 <strong>카탈로그 원문</strong>의 값을 한 칸씩 옮겨
+          입력.
         </p>
       ) : (
         <div className="space-y-4">
@@ -358,15 +357,15 @@ export function ModelSpecPanel({
                         // 모름이라 하지」 가 된다.
                         <span
                           className="text-destructive rounded bg-red-500/10 px-1.5 py-0.5 text-xs"
-                          title="이 사양은 검색 조건에 이어져 있지만 단위를 조건의 단위로 못 바꿔 검색에 안 실립니다. 「장비 기종 사양」 에서 단위나 축을 고치십시오."
+                          title="검색 조건에 연결된 사양이지만 단위를 조건 단위로 변환할 수 없어 검색에 반영되지 않음. ‘장비 기종 사양’에서 단위 또는 축 수정 필요."
                         >
-                          단위 안 맞음 · 검색에 안 실림
+                          단위 불일치 · 검색 미반영
                         </span>
                       )}
                       {item.requires_accessory && (
                         <span
                           className="rounded bg-amber-500/10 px-1.5 py-0.5 text-xs text-amber-700"
-                          title="옵션 부속(챔버·노)이 있어야 나오는 값 — 이 기종으로 등록한 장비의 조건에 그대로 따라가고, 검색이 「부속 있으면」 으로 답합니다."
+                          title="옵션 부속(챔버·노)이 있어야 나오는 값. 이 기종으로 등록한 장비의 조건에 그대로 복사되며, 검색 결과는 ‘부속 있으면’으로 표시됨."
                         >
                           부속 필요
                         </span>
@@ -423,8 +422,8 @@ export function ModelSpecPanel({
               }}
               placeholder="사양 추가"
               searchPlaceholder="하중 · 온도 · 무게 …"
-              detailTitle="적을 수 있는 사양"
-              detailHint="이 기종의 분류에 붙는 사양과 공통 사양입니다. 「검색 조건」 이 붙은 것은 값이 이 기종으로 등록하는 장비의 시험 조건이 됩니다."
+              detailTitle="입력 가능한 사양"
+              detailHint="이 기종의 분류에 속한 사양과 공통 사양. ‘검색 조건’ 표시가 있는 사양은 값이 이 기종으로 등록하는 장비의 시험 조건이 됨."
             />
             {chosen && <ValueFields definition={chosen} draft={draft} setDraft={setDraft} />}
             {/* 못 바꾸는 단위가 남아 있으면 저장을 막는다 — 그대로 저장하면 숫자만
@@ -443,7 +442,7 @@ export function ModelSpecPanel({
                 <Input
                   value={draft.note ?? ''}
                   onChange={(event) => setDraft({ ...draft, note: event.target.value })}
-                  placeholder="비고 — 「챔버 장착 시」 처럼 값이 언제 성립하는지"
+                  placeholder="비고: 값이 성립하는 조건(예: 챔버 장착 시)"
                   className="w-96"
                 />
                 {/* 비고에 「챔버 장착 시」 라고 적어도 검색은 글자를 못 읽는다 — 표시로 둬야

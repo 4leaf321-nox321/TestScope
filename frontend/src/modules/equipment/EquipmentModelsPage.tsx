@@ -55,9 +55,9 @@ import { NewEquipmentModelDialog } from '@/modules/equipment/NewEquipmentModelDi
 /** 홈의 「남은 일」 이 거는 필터. 그 줄을 눌러 온 사람에게 **왜 이 목록인지**를
  *  말해 준다 — 안 말하면 목록이 짧은 것을 오류로 읽는다. */
 const ISSUE_NOTE: Record<string, string> = {
-  none: '사양이 하나도 안 적힌 기종입니다. 비워 두면 이 기종으로 등록하는 장비가 조건 없이 복사되고, 검색은 그것을 「조건 미상」 으로 답합니다.',
+  none: '사양이 입력되지 않은 기종. 비워 두면 이 기종으로 등록하는 장비가 조건 없이 복사되고, 검색 결과는 ‘조건 미상’으로 표시됨.',
   uncertain:
-    '반입이 원본 카탈로그의 표를 잘못 읽었을 수 있다고 표시한 기종입니다. 원본을 열어 확인한 뒤 비고의 표시를 지우십시오.',
+    '반입 시 원본 카탈로그 표를 잘못 읽었을 가능성이 표시된 기종. 원본 확인 후 비고의 표시 삭제 필요.',
 }
 
 /**
@@ -151,7 +151,7 @@ export default function EquipmentModelsPage() {
       <PageHeader
         back={useBackFromReference()}
         title="장비 기종"
-        description="보유 장비는 여기서 기종을 골라 만듭니다. 무슨 시험이 되는지는 그 기종이 속한 계열이 정합니다."
+        description="보유 장비 등록 시 고르는 기종 목록. 가능한 시험은 기종이 속한 계열이 정함."
         actions={
           // 전사 공용이라 시스템 관리자만 고친다 — 한 부서가 고치면 다른 부서가
           // 가리키던 모델의 뜻이 바뀐다.
@@ -168,7 +168,7 @@ export default function EquipmentModelsPage() {
           목록이 짧은 것을 오류로 읽는다. 푸는 자리는 그 열 밑에도 있다. */}
       {filters.spec && (
         <div className="bg-muted/50 rounded-md border p-3">
-          <p className="text-sm">{ISSUE_NOTE[filters.spec] ?? '걸러진 목록입니다.'}</p>
+          <p className="text-sm">{ISSUE_NOTE[filters.spec] ?? '필터 적용된 목록.'}</p>
         </div>
       )}
 
@@ -176,7 +176,7 @@ export default function EquipmentModelsPage() {
           둘이 되고, 둘은 반드시 어긋난다. */}
       {activeCount(filters) > 0 && (
         <div className="text-muted-foreground flex items-center gap-2 text-sm">
-          <span>{activeCount(filters)}개 조건으로 걸렀습니다</span>
+          <span>{activeCount(filters)}개 조건 적용 중</span>
           <Button
             size="sm"
             variant="outline"
@@ -197,8 +197,8 @@ export default function EquipmentModelsPage() {
           방금 건 조건이 화면에서 없어져서, 무엇을 풀어야 할지가 안 보인다. */}
       {page.data && page.data.items.length === 0 && activeCount(filters) === 0 ? (
         <EmptyState
-          title="기종이 없습니다"
-          hint="기종을 등록해 두면 같은 장비를 여러 대 들일 때 사양을 한 번만 적으면 됩니다."
+          title="기종 없음"
+          hint="기종을 등록하면 같은 장비를 여러 대 들일 때 사양을 한 번만 입력하면 됨."
         />
       ) : (
         <div className="space-y-3">
@@ -226,7 +226,7 @@ export default function EquipmentModelsPage() {
               {page.data?.items.length === 0 && (
                 <TableRow className="hover:bg-transparent">
                   <TableCell colSpan={6} className="text-muted-foreground py-8 text-center">
-                    필터에 맞는 기종이 없습니다. 조건을 해제해 보십시오.
+                    필터에 맞는 기종 없음. 조건 해제 후 다시 확인.
                   </TableCell>
                 </TableRow>
               )}
@@ -306,8 +306,8 @@ export default function EquipmentModelsPage() {
           {page.data && !page.data.done && (
             // **덜 받았으면 말한다.** 쪽 넘김이 없으니 이 줄이 유일한 경고다.
             <p className="text-muted-foreground px-1 py-2 text-xs">
-              기종 {page.data.total}건 중 {page.data.items.length}건만 받았습니다 — 조건으로
-              좁히십시오.
+              기종 {page.data.total}건 중 {page.data.items.length}건만 불러옴. 조건으로 좁혀야
+              함.
             </p>
           )}
         </div>

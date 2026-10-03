@@ -143,20 +143,18 @@ export function DeleteWorkspaceDialog({
         <DialogHeader>
           <DialogTitle>{target?.name} 부서 지우기</DialogTitle>
           <DialogDescription>
-            되돌릴 수 없습니다. <strong>보관(사용 → 보관)</strong> 은 자료를 남기고 새 활동만
-            막습니다 — 조직이 없어진 것이 아니라면 그쪽이 맞습니다.
+            되돌릴 수 없음. <strong>보관(사용 → 보관)</strong>은 자료를 남기고 새 활동만 차단.
+            조직이 없어진 경우가 아니면 보관 권장.
           </DialogDescription>
         </DialogHeader>
 
         <div className="space-y-4">
           <section className="space-y-1">
-            <p className="text-sm font-medium">이 부서가 가진 것</p>
+            <p className="text-sm font-medium">이 부서 소속 자료</p>
             {refs === null ? (
-              <p className="text-muted-foreground text-sm">세는 중…</p>
+              <p className="text-muted-foreground text-sm">집계 중…</p>
             ) : refs.length === 0 ? (
-              <p className="text-muted-foreground text-sm">
-                없습니다 — 그냥 지울 수 있습니다.
-              </p>
+              <p className="text-muted-foreground text-sm">없음. 바로 삭제 가능.</p>
             ) : (
               <ul className="text-sm">
                 {refs.map((one) => (
@@ -174,7 +172,7 @@ export function DeleteWorkspaceDialog({
           </section>
 
           <section className="space-y-2">
-            <Label htmlFor="reassign-to">어디로 옮길까</Label>
+            <Label htmlFor="reassign-to">이관 대상</Label>
             <Select value={to} onValueChange={setTo}>
               <SelectTrigger id="reassign-to">
                 <SelectValue />
@@ -192,32 +190,32 @@ export function DeleteWorkspaceDialog({
             </Select>
             {to === NONE && blocking.length > 0 && (
               <p className="text-muted-foreground text-xs">
-                옮길 곳을 정해야 지울 수 있습니다 — 위의 것들이 이 부서를 가리키고 있습니다.
+                옮길 곳을 정해야 삭제 가능. 위 항목이 이 부서를 참조 중.
               </p>
             )}
           </section>
 
           {to !== NONE && preview === null && (
             // **답이 오기 전에는 못 누른다.** 「누르기 전에 답한다」 가 이 창의 약속이다.
-            <p className="text-muted-foreground text-sm">옮길 것을 세는 중…</p>
+            <p className="text-muted-foreground text-sm">이관 항목 집계 중…</p>
           )}
 
           {preview && (
             <section className="space-y-2 rounded-md border p-3">
               <p className="text-sm">
-                <strong>{preview.target_name}</strong> 으로 옮깁니다
+                이관 대상: <strong>{preview.target_name}</strong>
               </p>
               {preview.lifts_target && (
                 // **두 단짜리 개편이다.** 본부를 없애고 그 아래 팀으로 합치면 그 팀이
                 // 한 단 올라가고 형제들이 그 밑으로 들어간다 — 모르고 누르면 안 된다.
                 <p className="text-sm">
-                  <strong>{preview.target_name}</strong> 이(가){' '}
+                  <strong>{preview.target_name}</strong>이(가){' '}
                   {preview.target_new_parent_name ?? '맨 위'} 아래로 올라가고, 나머지 하위
-                  부서가 그 아래로 들어갑니다.
+                  부서는 그 아래로 이동.
                 </p>
               )}
               {preview.moves.length === 0 ? (
-                <p className="text-muted-foreground text-sm">옮길 것이 없습니다.</p>
+                <p className="text-muted-foreground text-sm">옮길 항목 없음.</p>
               ) : (
                 <ul className="text-sm">
                   {preview.moves.map((one) => (
@@ -233,7 +231,7 @@ export function DeleteWorkspaceDialog({
                 <div className="space-y-1 border-t pt-2">
                   <p className="text-destructive flex items-center gap-1 text-sm font-medium">
                     <AlertTriangle className="size-4" />
-                    이름이 겹쳐서 그대로는 못 옮깁니다
+                    이름 중복으로 이관 불가
                   </p>
                   {clashes.map((one) => (
                     <p key={one.table} className="text-xs">
@@ -245,7 +243,7 @@ export function DeleteWorkspaceDialog({
                     </p>
                   ))}
                   <p className="text-muted-foreground text-xs">
-                    한쪽 이름을 먼저 고치십시오 — 둘 중 무엇을 남길지는 사람이 정할 일입니다.
+                    한쪽 이름을 먼저 수정 필요(어느 쪽을 남길지는 직접 결정).
                   </p>
                 </div>
               )}

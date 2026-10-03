@@ -1128,7 +1128,7 @@ def test_계열에_시험을_더하고_소개_문장을_붙인다(
     # 지금 소개는 근거 자료의 「소개」 줄로 — 물음은 무엇을 붙일지 묻는 완전한 문장이다.
     facts = {one["label"]: one["value"] for one in srow["facts"]}
     assert facts["소개"].startswith("제조사 소개.")
-    assert srow["question"] and "소개에 아래 문장을 붙입니까" in srow["question"]
+    assert srow["question"] and "소개에 추가할 문장" in srow["question"]
     picked = client.post(
         f"/api/review/series_summary/{srow['id']}/decide",
         json={"choice": ["s1"]},
@@ -1326,7 +1326,7 @@ def test_초안_속성은_합치거나_정식으로_올린다(
     # 이름이 같은 정식 속성 하나 → 그것이 추천. 근거가 줄에 적힌다.
     picked = [one for one in same["candidates"] if one["recommended"]]
     assert [one["code"] for one in picked] == [f"merge:temp_{tag}"]
-    assert "이름이 같습니다" in (picked[0]["reason"] or "")
+    assert "이름이 같음" in (picked[0]["reason"] or "")
     # 근거 자료 — 어디 붙는지 · 종류 · 몇 건 · 값의 예.
     facts = {one["label"]: one["value"] for one in same["facts"]}
     assert facts["붙는 곳"] == "신뢰성 시험" and facts["적힌 값"] == "1건"

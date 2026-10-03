@@ -78,7 +78,7 @@ export function SpecDocumentViewDialog({
             // **파일 없는 규격서는 번호일 뿐이다.** 그 사실을 읽는 사람이 알아야 한다.
             <p className="text-amber-600 flex items-center gap-1.5 text-sm">
               <AlertTriangle className="size-3.5" />
-              올라온 파일이 없습니다. {document.workspace_name} 관리자가 올립니다.
+              업로드된 파일 없음. 업로드 권한: {document.workspace_name} 관리자.
             </p>
           )}
           <AttachmentStrip
@@ -107,7 +107,7 @@ export function SpecDocumentViewDialog({
 
         {document.linked_test_count > 0 && (
           <p className="text-muted-foreground text-xs">
-            이 규격서를 가리키는 시험이 있으면 규격서를 지울 수 없습니다 — 먼저 끊어야 합니다.
+            이 규격서를 참조하는 시험이 있으면 삭제 불가. 먼저 연결 해제 필요.
           </p>
         )}
 

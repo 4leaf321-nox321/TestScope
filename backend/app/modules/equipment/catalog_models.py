@@ -391,8 +391,8 @@ def _series_of(db: Session, payload: dict[str, Any]) -> EquipmentSeries:
             return get_series(db, answer.id)
         raise AppError(
             "TSC-CATALOG-0015",
-            f"계열 「{payload['series']}」 을(를) 하나로 정할 수 없습니다. "
-            f"series_id 로 주거나 계열을 먼저 만드십시오.",
+            f"계열을 하나로 특정할 수 없음: {payload['series']}. "
+            f"series_id 지정 또는 계열 먼저 등록 필요.",
             status=400,
             details={
                 "candidates": [
@@ -402,7 +402,7 @@ def _series_of(db: Session, payload: dict[str, Any]) -> EquipmentSeries:
         )
     raise AppError(
         "TSC-CATALOG-0016",
-        "계열이 필요합니다. 단품이면 기종 하나짜리 계열을 먼저 만드십시오.",
+        "계열 필요. 단품이면 기종 하나짜리 계열을 먼저 등록해야 함.",
         status=400,
     )
 
@@ -420,7 +420,7 @@ def create_model(db: Session, actor: User, payload: dict[str, Any]) -> Equipment
     if clash is not None:
         raise Conflict(
             "TSC-CATALOG-0002",
-            f"이 계열에 이미 있는 기종입니다: {clash.name}",
+            f"이 계열에 이미 있는 기종: {clash.name}",
             details={"model_id": str(clash.id), "name": clash.name},
         )
 
@@ -485,8 +485,8 @@ def delete_model(db: Session, model_id: uuid.UUID) -> None:
     if using:
         raise Conflict(
             "TSC-CATALOG-0003",
-            f"이 기종을 가리키는 보유 장비가 {using}대 있습니다. "
-            f"지우는 대신 상태를 단종으로 바꾸십시오.",
+            f"이 기종을 참조하는 보유 장비 {using}대 있음. "
+            f"삭제 대신 상태를 단종으로 변경 필요.",
         )
     row.deleted_at = datetime.now(UTC)
     db.commit()

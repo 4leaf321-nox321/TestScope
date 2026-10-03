@@ -86,8 +86,8 @@ function AxisEditor({
             <span className="text-muted-foreground text-xs">
               ·{' '}
               {axis.entry_policy === 'closed'
-                ? '닫힘 — 관리자만 값을 더함'
-                : '열림 — 누구나 값을 더함'}
+                ? '닫힘: 관리자만 값 추가'
+                : '열림: 누구나 값 추가'}
               {axis.parent_slug && ` · 상위 축 ${axis.parent_slug}`}
             </span>
           </p>
@@ -123,8 +123,8 @@ function AxisEditor({
               <SelectValue />
             </SelectTrigger>
             <SelectContent>
-              <SelectItem value="open">열림 — 누구나 더한다</SelectItem>
-              <SelectItem value="closed">닫힘 — 시스템 관리자만</SelectItem>
+              <SelectItem value="open">열림: 누구나 추가</SelectItem>
+              <SelectItem value="closed">닫힘: 시스템 관리자만</SelectItem>
             </SelectContent>
           </Select>
         </div>
@@ -136,7 +136,7 @@ function AxisEditor({
           value={description}
           onChange={(event) => setDescription(event.target.value)}
           rows={2}
-          placeholder="고르는 사람이 축의 뜻을 모르면 비슷한 축 둘 중 아무 데나 값을 넣습니다."
+          placeholder="축의 뜻 설명 (비슷한 축과 구분되도록)"
         />
       </div>
 
@@ -155,8 +155,8 @@ function AxisEditor({
         </div>
         {fields.length === 0 && (
           <p className="text-muted-foreground text-xs">
-            없음. 물성처럼 값마다 기호·단위 같은 것이 붙으면 여기 칸을 정합니다 — 그러면 값
-            편집 창이 그 칸을 그립니다.
+            없음. 물성처럼 값마다 기호·단위 등이 붙는 경우 여기서 칸 정의. 정의한 칸은 값 편집
+            창에 표시됨.
           </p>
         )}
         {fields.map((field, index) => (
@@ -340,7 +340,7 @@ export function AxisPanel({ slug, canEdit }: { slug: string; canEdit: boolean })
           <Input
             value={query}
             onChange={(event) => setQuery(event.target.value)}
-            placeholder="찾기 — 이름 · 코드 · 표기"
+            placeholder="검색: 이름 · 코드 · 표기"
             className="ml-auto w-56"
           />
         </div>

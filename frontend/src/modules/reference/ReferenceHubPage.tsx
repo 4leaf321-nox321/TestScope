@@ -28,9 +28,9 @@ import type { ObjectKind } from '@/modules/reference/api'
 import { AxisPanel } from '@/modules/vocabulary/VocabularyAdminPage'
 
 const LAYERS: { key: string; label: string }[] = [
-  { key: 'catalog', label: '카탈로그 — 전사 공용 객체' },
-  { key: 'operations', label: '사내 운영 — 부서가 적는 것' },
-  { key: 'vocabulary', label: '이름 사전 — 분류 이름의 목록' },
+  { key: 'catalog', label: '카탈로그: 전사 공용 객체' },
+  { key: 'operations', label: '사내 운영: 부서 입력 항목' },
+  { key: 'vocabulary', label: '이름 사전: 분류 이름 목록' },
 ]
 
 /** 왼쪽 목록 — AxisList 와 같은 모양. 층으로 묶고, 건수를 함께 그린다. */
@@ -106,8 +106,7 @@ function KindPanel({ kind }: { kind: ObjectKind }) {
       <section className="space-y-1">
         <h3 className="text-sm font-medium">고정 칸</h3>
         <p className="text-muted-foreground text-xs">
-          코드가 참조하거나 모든 {kind.label}에 항상 있어야 하는 것 — 화면에서 더하거나 뺄 수
-          없다.
+          코드가 참조하거나 모든 {kind.label}에 항상 있어야 하는 칸. 화면에서 추가·삭제 불가.
         </p>
         <ul className="flex flex-wrap gap-1.5">
           {kind.fixed_fields.map((field) => (
@@ -136,14 +135,14 @@ function KindPanel({ kind }: { kind: ObjectKind }) {
             )}
             <span className="text-muted-foreground ml-2 text-xs">
               {kind.defined_kind === '속성' &&
-                '값을 적는 사람이 새 이름으로 쓰면 초안이 생기고, 관리자가 정식으로 올립니다.'}
+                '값 입력자가 새 이름을 쓰면 초안 생성, 관리자가 정식 항목으로 승격.'}
               {kind.defined_kind === '사양' &&
-                '사양서의 칸. 검색 조건 축에 이은 사양은 검색에 반영됩니다.'}
+                '사양서의 칸. 검색 조건 축에 연결된 사양은 검색에 반영됨.'}
             </span>
           </p>
         ) : (
           // **없음은 없음이라고 말한다.** 빈 칸이면 「아직 안 읽힌 것」 과 구별이 안 된다.
-          <p className="text-muted-foreground text-sm">고정 칸만 있습니다.</p>
+          <p className="text-muted-foreground text-sm">고정 칸만 있음.</p>
         )}
       </section>
     </div>
@@ -170,7 +169,7 @@ export default function ReferenceHubPage() {
     <div className="space-y-6">
       <PageHeader
         title="온톨로지"
-        description="이 시스템이 다루는 객체 종류 전부 — 왼쪽에서 고르면 그 종류의 칸과 값이 보입니다. 이름 사전의 축은 여기서 값을 등록·편집하고(시스템 관리자), 자기 표를 가진 객체는 목록·정의 화면으로 이어집니다."
+        description="이 시스템이 다루는 객체 종류 전체. 왼쪽에서 선택 시 해당 종류의 칸과 값 표시. 이름 사전의 축은 여기서 값 등록·편집(시스템 관리자), 자체 표를 가진 객체는 목록·정의 화면으로 연결."
       />
       <ErrorNotice error={kinds.error} />
 

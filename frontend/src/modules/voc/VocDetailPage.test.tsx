@@ -94,8 +94,8 @@ describe('VOC 한 건', () => {
 
   it('흐름이 시간 순으로 그려진다 — 등록도 한 줄이다', async () => {
     await show()
-    expect(screen.getByText(/냈습니다/)).toBeTruthy()
-    expect(screen.getByText(/말을 보탰습니다/)).toBeTruthy()
+    expect(screen.getByText(/최초 등록/)).toBeTruthy()
+    expect(screen.getByText(/· 의견 추가/)).toBeTruthy()
     expect(screen.getByText('저도 같은 증상입니다')).toBeTruthy()
   })
 
@@ -109,7 +109,7 @@ describe('VOC 한 건', () => {
 
   it('옮길 데가 없으면 왜 없는지 말한다 — 빈 자리는 고장으로 읽힌다', async () => {
     await show({ can_move: [], note_required: [] })
-    expect(screen.getByText(/상태를 옮기는 것은/)).toBeTruthy()
+    expect(screen.getByText(/상태 변경은/)).toBeTruthy()
   })
 
   it('말이 필요한 단추는 적기 전에는 안 눌린다', async () => {
@@ -119,7 +119,7 @@ describe('VOC 한 건', () => {
     expect(resolve).toBeDisabled()
 
     await act(async () => {
-      fireEvent.change(screen.getByPlaceholderText(/무엇을 했는지/), {
+      fireEvent.change(screen.getByPlaceholderText(/조치 내용/), {
         target: { value: '권한 검사를 고쳤습니다' },
       })
     })
@@ -129,12 +129,12 @@ describe('VOC 한 건', () => {
   it('「말 보태기」 는 지금 상태를 그대로 보낸다 — 그것이 댓글이다', async () => {
     await show()
     await act(async () => {
-      fireEvent.change(screen.getByPlaceholderText(/무엇을 했는지/), {
+      fireEvent.change(screen.getByPlaceholderText(/조치 내용/), {
         target: { value: '저도 그렇습니다' },
       })
     })
     await act(async () => {
-      fireEvent.click(screen.getByRole('button', { name: '말 보태기' }))
+      fireEvent.click(screen.getByRole('button', { name: '의견 추가' }))
     })
     expect(post).toHaveBeenCalledWith('/voc/v-1/move', {
       to_status: 'open',

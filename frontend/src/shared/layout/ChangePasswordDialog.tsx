@@ -42,7 +42,7 @@ export function ChangePasswordDialog({
     // **한 번 더 받는 이유**: 서버는 새 비밀번호가 무엇이었는지 모른다. 오타로
     // 바꾸면 그 사람은 아무도 모르는 값으로 잠기고, 복구는 관리자뿐이다.
     if (next !== again) {
-      setError(new Error('새 비밀번호가 서로 다릅니다.'))
+      setError(new Error('새 비밀번호 불일치.'))
       return
     }
     setBusy(true)
@@ -70,7 +70,7 @@ export function ChangePasswordDialog({
           <DialogHeader>
             <DialogTitle>비밀번호 변경</DialogTitle>
             <DialogDescription>
-              바꾸면 다른 기기의 로그인이 모두 끊깁니다. 다시 로그인해 주십시오.
+              변경 시 다른 기기의 로그인도 모두 해제됨. 변경 후 다시 로그인 필요.
             </DialogDescription>
           </DialogHeader>
 

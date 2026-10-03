@@ -125,13 +125,13 @@ describe('물성 항목', () => {
     expect(suggested?.className).toContain('border-dashed')
     expect(confirmed?.className).not.toContain('border-dashed')
     // 제안이 몇 개 남았는지 머리에서 센다 — 확인이 할 일이라는 것을 화면이 말한다.
-    expect(screen.getByText(/확인 안 한 제안 1/)).toBeTruthy()
+    expect(screen.getByText(/미확인 제안 1/)).toBeTruthy()
   })
 
   it('이어진 것이 없는 물성도 보이고 그렇다고 말한다', async () => {
     await open()
     expect(screen.getByText('밴드갭')).toBeTruthy()
-    expect(screen.getByText(/이어진 시험 없음/)).toBeTruthy()
+    expect(screen.getByText(/연결된 시험 없음/)).toBeTruthy()
     // 도메인별로 묶인다 — 「기계」 와 「전기」 가 한 표에 섞이지 않는다.
     expect(screen.getByText('기계')).toBeTruthy()
     expect(screen.getByText('전기')).toBeTruthy()
@@ -157,7 +157,7 @@ describe('물성 항목', () => {
     expect(row?.textContent).toContain('×2')
     // 물성을 안 내는 시험도 보이고 그렇다고 말한다.
     expect(screen.getByText('DMA (동적기계)').closest('tr')?.textContent).toContain(
-      '내는 물성 없음',
+      '측정 물성 없음',
     )
 
     // 알을 누르면 물성 쪽 그 줄 하나로 간다.
@@ -244,7 +244,7 @@ describe('묶어서 확인', () => {
     admin = true
     await open()
     await act(async () => {
-      fireEvent.click(screen.getByLabelText('확인 안 한 것만'))
+      fireEvent.click(screen.getByLabelText('미확인 항목만'))
     })
     // 「밴드갭」 은 제안이 없어 빠진다 — 남은 것이 할 일이고, 비면 끝난 것이다.
     expect(screen.queryByText('밴드갭')).toBeNull()

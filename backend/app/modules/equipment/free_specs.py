@@ -83,7 +83,7 @@ def list_out(db: Session, model_id: uuid.UUID) -> list[FreeSpecOut]:
 def _get(db: Session, model: EquipmentModel, free_id: uuid.UUID) -> ModelFreeSpec:
     row = db.get(ModelFreeSpec, free_id)
     if row is None or row.model_id != model.id:
-        raise NotFound("TSC-SPEC-0020", "이 기종의 사양을 찾을 수 없습니다.")
+        raise NotFound("TSC-SPEC-0020", "이 기종의 사양을 찾을 수 없음.")
     return row
 
 
@@ -165,10 +165,10 @@ def promote(
     row = _get(db, model, free_id)
     key = payload["key"]
     if db.scalar(select(SpecDefinition).where(SpecDefinition.key == key)) is not None:
-        raise Conflict("TSC-SPEC-0021", f"사양 정의 키 「{key}」 가 이미 있습니다.")
+        raise Conflict("TSC-SPEC-0021", f"이미 있는 사양 정의 키: {key}")
     group = db.get(SpecGroup, payload["group_id"])
     if group is None:
-        raise NotFound("TSC-SPEC-0022", "사양 그룹을 찾을 수 없습니다.")
+        raise NotFound("TSC-SPEC-0022", "사양 그룹을 찾을 수 없음.")
     kind = payload["kind"]
     unit = clean(payload.get("unit") or "")
 
@@ -182,9 +182,9 @@ def promote(
         display_unit=unit,
         sort_order=900,
         help=(
-            f"「기종 고유 사양」 에서 승격 — 원본 키 `{row.source_key}`."
+            f"기종 고유 사양에서 승격(원본 키 `{row.source_key}`)."
             if row.source_key
-            else "「기종 고유 사양」 에서 승격."
+            else "기종 고유 사양에서 승격."
         ),
     )
     db.add(definition)
@@ -228,8 +228,8 @@ def promote(
         db.rollback()
         raise AppError(
             "TSC-SPEC-0023",
-            f"「{row.value_text}」 를 {kind} 로 읽을 수 없습니다. 값을 숫자로 고치거나 종류를"
-            " 「글자」 로 하십시오.",
+            f"{kind}(으)로 읽을 수 없는 값: {row.value_text}. "
+            "값을 숫자로 고치거나 종류를 글자로 변경 필요.",
             status=400,
         )
     db.commit()
