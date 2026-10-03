@@ -257,7 +257,7 @@ export default function EquipmentPage() {
             <TableHeader>
               <TableRow>
                 {canCreate && (
-                  <TableHead className="w-8">
+                  <TableHead className="w-8" data-col="pick">
                     <input
                       type="checkbox"
                       aria-label="보이는 줄 전부 고르기"
@@ -269,26 +269,33 @@ export default function EquipmentPage() {
                     />
                   </TableHead>
                 )}
-                <TableHead>자산번호</TableHead>
-                <TableHead>이름</TableHead>
-                <TableHead>분류</TableHead>
-                <TableHead>보유</TableHead>
-                <TableHead>위치</TableHead>
-                <TableHead>상태</TableHead>
-                <TableHead className="min-w-40">상태 근거</TableHead>
-                <TableHead>담당자</TableHead>
-                <TableHead>시험 항목</TableHead>
-                <TableHead>교정 예정</TableHead>
+                <TableHead data-col="asset_no">자산번호</TableHead>
+                <TableHead data-col="name">이름</TableHead>
+                <TableHead data-col="category">분류</TableHead>
+                <TableHead data-col="workspace">보유</TableHead>
+                {/* **「위치」 만 적으면 거점이 안 보인다.** 칸에는 거점 · 상세위치가 함께 들고,
+                    거르기도 거점으로 한다 — 이름이 그것을 말해야 「거점이 없다」 로 안 읽힌다. */}
+                <TableHead data-col="site">거점 · 위치</TableHead>
+                <TableHead data-col="status">상태</TableHead>
+                <TableHead data-col="status_reason" className="min-w-40">
+                  상태 근거
+                </TableHead>
+                <TableHead data-col="contact">담당자</TableHead>
+                <TableHead data-col="test_item">시험 항목</TableHead>
+                <TableHead data-col="calibration">교정 예정</TableHead>
               </TableRow>
               {/* **머리글 바로 아래.** 어느 열을 거르고 있는지가 그 열 밑에 보인다. */}
               <TableRow className="hover:bg-transparent">
+                {/* **고르기 열의 자리를 비워 둔다.** 안 두면 거르기 칸이 전부 한 칸씩 왼쪽으로
+                    밀린다 — 자산번호 거르기가 체크박스 밑에, 거점 거르기가 「보유」 밑에 섰다. */}
+                {canCreate && <td data-col="pick" />}
                 <EquipmentFilters value={typed} onChange={setTyped} />
               </TableRow>
             </TableHeader>
             <TableBody>
               {page.data?.items.length === 0 && (
                 <TableRow className="hover:bg-transparent">
-                  <TableCell colSpan={8} className="text-muted-foreground py-8 text-center">
+                  <TableCell colSpan={99} className="text-muted-foreground py-8 text-center">
                     필터에 맞는 장비가 없습니다. 조건을 해제해 보십시오.
                   </TableCell>
                 </TableRow>
@@ -302,7 +309,7 @@ export default function EquipmentPage() {
                   }
                 >
                   {canCreate && (
-                    <TableCell onClick={(event) => event.stopPropagation()}>
+                    <TableCell data-col="pick" onClick={(event) => event.stopPropagation()}>
                       <input
                         type="checkbox"
                         aria-label={`${one.asset_no} 고르기`}
@@ -311,17 +318,17 @@ export default function EquipmentPage() {
                       />
                     </TableCell>
                   )}
-                  <TableCell className="font-mono text-xs">
+                  <TableCell data-col="asset_no" className="font-mono text-xs">
                     <Link to={`/equipment/${one.id}`} className="hover:underline">
                       {one.asset_no}
                     </Link>
                   </TableCell>
-                  <TableCell>
+                  <TableCell data-col="name">
                     <Link to={`/equipment/${one.id}`} className="hover:underline">
                       {one.name}
                     </Link>
                   </TableCell>
-                  <TableCell>
+                  <TableCell data-col="category">
                     {one.category ?? '—'}
                     {one.model_name ? (
                       <p className="text-muted-foreground text-xs">
@@ -336,7 +343,7 @@ export default function EquipmentPage() {
                       )
                     )}
                   </TableCell>
-                  <TableCell>
+                  <TableCell data-col="workspace">
                     {one.workspace_name ?? '—'}
                     {/* **공용은 부서를 대신하지 않는다** — 관리 부서는 그대로 있고,
                       이 표시는 「빌릴 수 있나」 에 답한다. */}
@@ -346,16 +353,16 @@ export default function EquipmentPage() {
                       </Badge>
                     )}
                   </TableCell>
-                  <TableCell>
+                  <TableCell data-col="site">
                     {[one.site, one.location].filter(Boolean).join(' · ') || '—'}
                   </TableCell>
-                  <TableCell>
+                  <TableCell data-col="status">
                     <StatusBadge kind="equipment" value={one.status} />
                   </TableCell>
                   {/* **왜 그 상태인가.** 고장·유휴·폐기는 그 이유가 있어야 할 일이
                       정해진다 — 「무엇이 고장인가」 「언제까지 유휴인가」 「왜 버렸나」.
                       가동·입고는 이유를 물을 것이 없으므로 빈 칸을 흠으로 안 적는다. */}
-                  <TableCell className="min-w-40 text-sm">
+                  <TableCell data-col="status_reason" className="min-w-40 text-sm">
                     {one.status_reason ? (
                       <span className="whitespace-pre-line">{one.status_reason}</span>
                     ) : NEEDS_REASON.has(one.status) ? (
@@ -366,10 +373,10 @@ export default function EquipmentPage() {
                   </TableCell>
                   {/* **찾은 다음에 연락할 사람.** 비어 있으면 검색은 절반만 한 것이라,
                       빈 칸을 빈 칸으로 안 둔다 — 295대가 그렇게 비어 있었다. */}
-                  <TableCell className="text-sm">
+                  <TableCell data-col="contact" className="text-sm">
                     {one.contact_name ?? <span className="text-amber-600">미지정</span>}
                   </TableCell>
-                  <TableCell>
+                  <TableCell data-col="test_item">
                     {/* **이 표에서 가장 중요한 칸이다.** 「우리가 무슨 시험을 할 수
                       있나」 가 이 시스템이 존재하는 이유고, 그 답이 여기 있다.
                       비어 있으면 그 장비는 검색에 절대 안 걸린다. */}
@@ -390,7 +397,7 @@ export default function EquipmentPage() {
                       </span>
                     )}
                   </TableCell>
-                  <TableCell className="text-sm">
+                  <TableCell data-col="calibration" className="text-sm">
                     {/* **셋을 구별해 말한다.** 대상이 아닌 장비와 빠뜨린 장비가 같아
                       보이면, 빠뜨린 것은 영영 안 채워진다. */}
                     {!one.calibration_required ? (

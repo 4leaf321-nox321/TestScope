@@ -148,7 +148,7 @@ export function EquipmentFilters({
       {/* **자산번호와 이름을 따로 친다.** 현장에서는 라벨의 번호를 치고, 회의에서는
           이름을 친다 — 한 칸으로 합치면 번호를 치는 사람이 이름에 걸린 줄을 함께 보게
           되고, 그 줄들이 찾는 것을 가린다. */}
-      <td className="p-1">
+      <td className="p-1" data-col="asset_no">
         <Input
           value={value.assetNo}
           onChange={(event) => set({ assetNo: event.target.value })}
@@ -156,7 +156,7 @@ export function EquipmentFilters({
           className="h-8 text-xs"
         />
       </td>
-      <td className="p-1">
+      <td className="p-1" data-col="name">
         <Input
           value={value.name}
           onChange={(event) => set({ name: event.target.value })}
@@ -164,7 +164,7 @@ export function EquipmentFilters({
           className="h-8 text-xs"
         />
       </td>
-      <td className="p-1">
+      <td className="p-1" data-col="category">
         {/* **카탈로그에 안 이어진 장비만.** 「미연결」 표시가 이 열에 붙으므로 거르기도
             여기 둔다. 기종이 없으면 시험 항목이 0 건이고, 0 건이면 검색에 안 걸린다. */}
         {value.catalog === 'unlinked' ? (
@@ -193,7 +193,7 @@ export function EquipmentFilters({
           />
         )}
       </td>
-      <td className="p-1">
+      <td className="p-1" data-col="workspace">
         {/* **부서도 수백이 된다.** 조직도를 통째로 들이면 드롭다운으로는 못 찾는다. */}
         <SearchablePicker
           value={value.workspace}
@@ -209,7 +209,7 @@ export function EquipmentFilters({
           className="w-full"
         />
       </td>
-      <td className="p-1">
+      <td className="p-1" data-col="site">
         {/* 거점도 마찬가지다 — 공장·연구소·현장이 늘면 금세 수십을 넘는다. */}
         <SearchablePicker
           value={value.siteTermId}
@@ -225,7 +225,7 @@ export function EquipmentFilters({
           className="w-full"
         />
       </td>
-      <td className="p-1">
+      <td className="p-1" data-col="status">
         <Pick
           value={value.status}
           onChange={(next) => set({ status: next })}
@@ -233,7 +233,44 @@ export function EquipmentFilters({
           options={statuses}
         />
       </td>
-      <td className="p-1">
+      <td className="p-1" data-col="status_reason">
+        {/**
+         * 상태 열 다음 칸 — **머리글과 수도 순서도 같아야** 열이 안 밀린다. 이 주석이
+         * 있는데도 한 번 어긋났다(시험 항목이 이 칸 앞에 와 있었다, 2026-10-03) — 그래서
+         * 칸마다 `data-col` 을 달고 시험이 머리글과 대조한다.
+         *
+         * **둘을 함께 둔다.** 「폐기인데 근거가 없다」 가 이 칸을 만든 물음이라 「미입력」
+         * 은 눌러서 물을 수 있어야 하고, 「제어보드」 로 근거만 뒤지는 일도 실제로 있다 —
+         * 위의 찾기 칸은 자산번호와 이름만 보므로 글자 쪽을 없애면 그 길이 사라진다.
+         */}
+        <div className="flex flex-col gap-1">
+          <Pick
+            value={value.statusReason === 'none' ? 'none' : ''}
+            onChange={(next) => set({ statusReason: next })}
+            placeholder="근거 전체"
+            options={[{ value: 'none', label: '근거 미입력' }]}
+          />
+          {value.statusReason !== 'none' && (
+            <Input
+              value={value.statusReason}
+              onChange={(event) => set({ statusReason: event.target.value })}
+              placeholder="근거에 든 글자"
+              className="w-full"
+            />
+          )}
+        </div>
+      </td>
+      <td className="p-1" data-col="contact">
+        {/* **담당자 열의 칸.** 「없음」 만 고를 수 있으면 된다 — 사람 이름으로 거르는 것은
+            위의 찾기 칸이 이미 하고(이름·자산번호), 여기서 묻는 것은 「비어 있는 것」 이다. */}
+        <Pick
+          value={value.contact}
+          onChange={(next) => set({ contact: next })}
+          placeholder="담당자 전체"
+          options={[{ value: 'none', label: '담당자 없음' }]}
+        />
+      </td>
+      <td className="p-1" data-col="test_item">
         {/* 87종. 여기도 치면서 찾는다. */}
         {/* 시험 항목이 **없는** 장비만 보는 중이면 그 사실을 먼저 말한다 — 피커에는
             고를 값이 없어서, 안 적어 두면 빈 목록의 이유가 화면에 없다. */}
@@ -262,42 +299,7 @@ export function EquipmentFilters({
           />
         )}
       </td>
-      <td className="p-1">
-        {/**
-         * 상태 열 다음 칸 — **머리글과 수가 같아야** 열이 안 밀린다.
-         *
-         * **둘을 함께 둔다.** 「폐기인데 근거가 없다」 가 이 칸을 만든 물음이라 「미입력」
-         * 은 눌러서 물을 수 있어야 하고, 「제어보드」 로 근거만 뒤지는 일도 실제로 있다 —
-         * 위의 찾기 칸은 자산번호와 이름만 보므로 글자 쪽을 없애면 그 길이 사라진다.
-         */}
-        <div className="flex flex-col gap-1">
-          <Pick
-            value={value.statusReason === 'none' ? 'none' : ''}
-            onChange={(next) => set({ statusReason: next })}
-            placeholder="근거 전체"
-            options={[{ value: 'none', label: '근거 미입력' }]}
-          />
-          {value.statusReason !== 'none' && (
-            <Input
-              value={value.statusReason}
-              onChange={(event) => set({ statusReason: event.target.value })}
-              placeholder="근거에 든 글자"
-              className="w-full"
-            />
-          )}
-        </div>
-      </td>
-      <td className="p-1">
-        {/* **담당자 열의 칸.** 「없음」 만 고를 수 있으면 된다 — 사람 이름으로 거르는 것은
-            위의 찾기 칸이 이미 하고(이름·자산번호), 여기서 묻는 것은 「비어 있는 것」 이다. */}
-        <Pick
-          value={value.contact}
-          onChange={(next) => set({ contact: next })}
-          placeholder="담당자 전체"
-          options={[{ value: 'none', label: '담당자 없음' }]}
-        />
-      </td>
-      <td className="p-1">
+      <td className="p-1" data-col="calibration">
         <Pick
           value={value.calibration}
           onChange={(next) => set({ calibration: next })}
