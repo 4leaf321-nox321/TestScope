@@ -90,6 +90,14 @@ NODE_TYPES: tuple[NodeType, ...] = (
     NodeType("reliability_test", "신뢰성 시험", "operations", "gauge", None, None, 110),
     NodeType("workspace", "부서", "operations", "building-2", None, None, 120),
     NodeType("site", "거점", "vocabulary", "map-pin", "site", None, 130),
+    # **사업부.** `run_by` 선이 처음부터 여기를 가리켰는데 **종류 선언이 없었다**(2026-10-03).
+    # 구조 그림은 종류 이름을 노드 id 로 쓰므로, 선언 없는 종류를 가리키는 선은 **없는 노드를
+    # 가리키는 링크**가 된다 — d3-force 가 `node not found: division` 으로 던지고 그 순간
+    # 레이아웃 전체가 죽는다. 선 하나가 그물 전체를 안 그리게 만들었다.
+    #
+    # 고치는 길이 둘이었다: 선을 빼거나 종류를 세우거나. **세우는 쪽이 맞다** — 「어느 사업부가
+    # 무슨 시험을 하나」 는 이 그래프가 답해야 하는 물음이고, 사업부는 실제로 있는 축이다.
+    NodeType("division", "사업부", "operations", "network", "division", None, 115),
 )
 NODE_TYPE_BY_SLUG: dict[str, NodeType] = {one.slug: one for one in NODE_TYPES}
 

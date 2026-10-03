@@ -35,6 +35,7 @@ import { attributeApi } from '@/modules/attributes/api'
 import type { AttributeValue } from '@/modules/attributes/api'
 import { SECTIONS, anchorOf } from '@/modules/attributes/StandardAttributeFields'
 import { CandidateBadge, ReviewBanner } from '@/modules/reliability/CandidateReview'
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/shared/components/ui/tabs'
 import { ValueHistory } from '@/modules/reliability/ValueHistory'
 import { reliabilityApi } from '@/modules/reliability/api'
 import { CardOutline } from '@/modules/reliability/CardOutline'
@@ -284,146 +285,167 @@ export function ReliabilityTestViewDialog({
         <ReviewBanner row={test} onChanged={(next) => onChanged?.(next)} />
         <ErrorNotice error={defs.error ?? shots.error} />
 
-        {/* 왼쪽 목차 + 오른쪽 본문 — 수정 창과 같은 모양이다. */}
-        <div className="flex gap-6">
-          <CardOutline items={outline} />
-          <dl className="min-w-0 flex-1 space-y-5">
-            {test.purpose && (
-              <div id={anchorOf('section', '목적')} className="scroll-mt-4 space-y-1">
-                <dt className="text-muted-foreground text-xs font-medium">목적</dt>
-                <dd className="text-sm whitespace-pre-line">{test.purpose}</dd>
-              </div>
-            )}
+        {/**
+         * **이력을 탭으로 가른다.**
+         *
+         * 판별 이력은 자리(칸·묶음·차례)마다 판을 늘어세우므로, 칸이 스물이면 그만큼
+         * 길어진다. 그것을 카드 아래에 이어 두니 창의 대부분이 이력이 되고, 정작 읽으려고
+         * 연 목적·시험 구분은 위쪽 한 줌에 밀렸다(2026-10-03).
+         *
+         * 접어 두는 것(`<details>`)으로는 부족하다 — 접힌 것은 안 읽히고, 이력은 「이 개정에서
+         * 무엇이 바뀌었나」 라는 **제 물음**을 가진 자리다. 물음이 다르면 탭이 맞다.
+         */}
+        <Tabs defaultValue="card">
+          <TabsList>
+            <TabsTrigger value="card">내용</TabsTrigger>
+            <TabsTrigger value="history">
+              이력
+              {test.document_revision_label && (
+                <span className="text-muted-foreground ml-1.5 text-xs font-normal">
+                  지금 판 {test.document_revision_label}
+                </span>
+              )}
+            </TabsTrigger>
+          </TabsList>
 
-            <div id={anchorOf('section', '적용 시험 항목')} className="scroll-mt-4 space-y-1">
-              <dt className="text-muted-foreground text-xs font-medium">적용 시험 항목</dt>
-              <dd className="flex flex-wrap gap-1.5 text-sm">
-                {test.test_items.length === 0 ? (
-                  // 「장비 없음」 이 아니라 「안 정함」 — 둘은 해야 할 일이 다르다.
-                  <span className="text-muted-foreground">시험 항목 미지정</span>
-                ) : (
-                  test.test_items.map((item) => (
-                    <span key={item.term_id} className="bg-muted rounded-md px-2 py-0.5">
-                      {item.value}
-                      <span
-                        className={
-                          item.equipment_count === 0
-                            ? 'text-amber-600 ml-1 text-xs'
-                            : 'text-muted-foreground ml-1 text-xs'
-                        }
-                        title={
-                          item.equipment_count === 0
-                            ? '이 항목이 되는 장비가 이 부서에 없습니다'
-                            : undefined
-                        }
-                      >
-                        {item.equipment_count}대
-                      </span>
-                    </span>
-                  ))
+          <TabsContent value="card">
+            {/* 왼쪽 목차 + 오른쪽 본문 — 수정 창과 같은 모양이다. */}
+            <div className="flex gap-6">
+              <CardOutline items={outline} />
+              <dl className="min-w-0 flex-1 space-y-5">
+                {test.purpose && (
+                  <div id={anchorOf('section', '목적')} className="scroll-mt-4 space-y-1">
+                    <dt className="text-muted-foreground text-xs font-medium">목적</dt>
+                    <dd className="text-sm whitespace-pre-line">{test.purpose}</dd>
+                  </div>
                 )}
-              </dd>
-              <ItemProposals testId={test.id} />
-            </div>
 
-            {grouped.map((section) => (
-              <section
-                key={section.title}
-                id={anchorOf('section', section.title)}
-                className="scroll-mt-4 space-y-2"
-              >
-                <h3 className="border-b pb-1 text-sm font-medium">{section.title}</h3>
-                <div className="grid gap-x-8 gap-y-3 md:grid-cols-2">
-                  {section.rows.map((row, at) => (
-                    <div
-                      key={`${row.definition_id}-${row.set_label ?? ''}-${row.step_order ?? ''}`}
-                      // 같은 칸이 묶음마다 서므로 **자리는 첫 줄만 갖는다** — 같은 id 가 둘이면
-                      // 목차가 어디로 가는지 브라우저가 정한다.
-                      id={
-                        section.rows.findIndex(
-                          (one) => one.definition_id === row.definition_id,
-                        ) === at
-                          ? anchorOf(
-                              'field',
-                              keyOf.get(row.definition_id) ?? row.definition_id,
-                            )
-                          : undefined
-                      }
-                      className={`scroll-mt-4 space-y-1 ${isWide(row) ? 'md:col-span-2' : ''}`}
-                    >
-                      <dt className="text-muted-foreground flex items-center gap-1 text-xs font-medium">
-                        {row.label}
-                        <SetTag row={row} />
-                        {row.status === 'draft' && (
-                          <span title="초안 속성 — 검색·판정에는 안 쓰입니다">초안</span>
-                        )}
-                      </dt>
-                      <dd className="space-y-1">
-                        <Value row={row} />
-                        {row.note && (
-                          <p className="text-muted-foreground text-xs whitespace-pre-line">
-                            {row.note}
-                          </p>
-                        )}
-                        {/* 이 칸에 붙은 그림 — **읽는 사람의 것이다.** 넣고 지우는 것은 수정 창. */}
-                        {(byField.get(row.definition_id) ?? []).length > 0 && (
-                          <AttachmentStrip
-                            target="reliability_test"
-                            objectId={test.id}
-                            rows={byField.get(row.definition_id) ?? []}
-                            canEdit={false}
-                            size="lg"
-                            onChanged={() => shots.reload()}
-                          />
-                        )}
-                      </dd>
-                    </div>
-                  ))}
+                <div
+                  id={anchorOf('section', '적용 시험 항목')}
+                  className="scroll-mt-4 space-y-1"
+                >
+                  <dt className="text-muted-foreground text-xs font-medium">적용 시험 항목</dt>
+                  <dd className="flex flex-wrap gap-1.5 text-sm">
+                    {test.test_items.length === 0 ? (
+                      // 「장비 없음」 이 아니라 「안 정함」 — 둘은 해야 할 일이 다르다.
+                      <span className="text-muted-foreground">시험 항목 미지정</span>
+                    ) : (
+                      test.test_items.map((item) => (
+                        <span key={item.term_id} className="bg-muted rounded-md px-2 py-0.5">
+                          {item.value}
+                          <span
+                            className={
+                              item.equipment_count === 0
+                                ? 'text-amber-600 ml-1 text-xs'
+                                : 'text-muted-foreground ml-1 text-xs'
+                            }
+                            title={
+                              item.equipment_count === 0
+                                ? '이 항목이 되는 장비가 이 부서에 없습니다'
+                                : undefined
+                            }
+                          >
+                            {item.equipment_count}대
+                          </span>
+                        </span>
+                      ))
+                    )}
+                  </dd>
+                  <ItemProposals testId={test.id} />
                 </div>
-              </section>
-            ))}
 
-            {orphans.map((group) => (
-              <section key={group.title} className="space-y-2">
-                <h3 className="border-b pb-1 text-sm font-medium">{group.title}</h3>
-                <AttachmentStrip
-                  target="reliability_test"
-                  objectId={test.id}
-                  rows={group.rows}
-                  canEdit={false}
-                  size="lg"
-                  onChanged={() => shots.reload()}
-                />
-              </section>
-            ))}
+                {grouped.map((section) => (
+                  <section
+                    key={section.title}
+                    id={anchorOf('section', section.title)}
+                    className="scroll-mt-4 space-y-2"
+                  >
+                    <h3 className="border-b pb-1 text-sm font-medium">{section.title}</h3>
+                    <div className="grid gap-x-8 gap-y-3 md:grid-cols-2">
+                      {section.rows.map((row, at) => (
+                        <div
+                          key={`${row.definition_id}-${row.set_label ?? ''}-${row.step_order ?? ''}`}
+                          // 같은 칸이 묶음마다 서므로 **자리는 첫 줄만 갖는다** — 같은 id 가 둘이면
+                          // 목차가 어디로 가는지 브라우저가 정한다.
+                          id={
+                            section.rows.findIndex(
+                              (one) => one.definition_id === row.definition_id,
+                            ) === at
+                              ? anchorOf(
+                                  'field',
+                                  keyOf.get(row.definition_id) ?? row.definition_id,
+                                )
+                              : undefined
+                          }
+                          className={`scroll-mt-4 space-y-1 ${isWide(row) ? 'md:col-span-2' : ''}`}
+                        >
+                          <dt className="text-muted-foreground flex items-center gap-1 text-xs font-medium">
+                            {row.label}
+                            <SetTag row={row} />
+                            {row.status === 'draft' && (
+                              <span title="초안 속성 — 검색·판정에는 안 쓰입니다">초안</span>
+                            )}
+                          </dt>
+                          <dd className="space-y-1">
+                            <Value row={row} />
+                            {row.note && (
+                              <p className="text-muted-foreground text-xs whitespace-pre-line">
+                                {row.note}
+                              </p>
+                            )}
+                            {/* 이 칸에 붙은 그림 — **읽는 사람의 것이다.** 넣고 지우는 것은 수정 창. */}
+                            {(byField.get(row.definition_id) ?? []).length > 0 && (
+                              <AttachmentStrip
+                                target="reliability_test"
+                                objectId={test.id}
+                                rows={byField.get(row.definition_id) ?? []}
+                                canEdit={false}
+                                size="lg"
+                                onChanged={() => shots.reload()}
+                              />
+                            )}
+                          </dd>
+                        </div>
+                      ))}
+                    </div>
+                  </section>
+                ))}
 
-            {grouped.length === 0 && !defs.loading && (
-              <p className="text-muted-foreground text-sm">
-                적힌 항목이 없습니다. 시험 조건을 적어 두면 「수행 가능 장비」 가 답할 수
-                있습니다.
-              </p>
-            )}
-          </dl>
+                {orphans.map((group) => (
+                  <section key={group.title} className="space-y-2">
+                    <h3 className="border-b pb-1 text-sm font-medium">{group.title}</h3>
+                    <AttachmentStrip
+                      target="reliability_test"
+                      objectId={test.id}
+                      rows={group.rows}
+                      canEdit={false}
+                      size="lg"
+                      onChanged={() => shots.reload()}
+                    />
+                  </section>
+                ))}
+
+                {grouped.length === 0 && !defs.loading && (
+                  <p className="text-muted-foreground text-sm">
+                    적힌 항목이 없습니다. 시험 조건을 적어 두면 「수행 가능 장비」 가 답할 수
+                    있습니다.
+                  </p>
+                )}
+              </dl>
+            </div>
+          </TabsContent>
 
           {/**
            * **화면은 최신판을 보여 주고, 과거 판은 여기서 본다.**
            *
-           * 위 카드가 지금 값만 보여 주는 것은 옳지만(85 와 95 가 나란히 서면 어느 것이
+           * 카드가 지금 값만 보여 주는 것은 옳지만(85 와 95 가 나란히 서면 어느 것이
            * 조건인지 안 보인다), 그러면 「개정 14에서는 얼마였나」 를 볼 길이 없어진다 —
            * 그 물음이 곧 「이 개정에서 무엇이 바뀌었나」 다.
            */}
-          <section className="space-y-2">
-            <h3 className="border-b pb-1 text-sm font-medium">
-              판별 이력
-              {test.document_revision_label && (
-                <span className="text-muted-foreground ml-2 text-xs font-normal">
-                  지금 판 {test.document_revision_label}
-                </span>
-              )}
-            </h3>
+          <TabsContent value="history">
             <ValueHistory testId={test.id} />
-          </section>
-        </div>
+          </TabsContent>
+        </Tabs>
 
         <DialogFooter>
           {test.can_edit && onEdit && (

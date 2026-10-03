@@ -10,10 +10,13 @@
  * 4. 짝(등급별 수량)은 표로 펴진다.
  * 5. 고칠 수 없는 사람에게는 「수정」 이 없다. 그래도 **카드는 읽힌다** — 그것이 이 창이
  *    생긴 이유다.
+ * 6. **판별 이력은 제 탭에 있다.** 카드 아래에 이어 두니 창의 대부분이 이력이 되고, 읽으려고
+ *    연 목적·시험 구분이 위쪽 한 줌에 밀렸다.
  */
 
 import { afterEach, describe, expect, it, vi } from 'vitest'
-import { act, render, screen } from '@testing-library/react'
+import { act, render, screen, waitFor } from '@testing-library/react'
+import userEvent from '@testing-library/user-event'
 
 const DEFS = [
   { id: 'd-type', key: 'reliability_type', label: '유형', kind: 'term', status: 'standard' },
@@ -54,6 +57,13 @@ const { reliabilityApi } = await import('@/modules/reliability/api')
 type ReliabilityTest = Awaited<ReturnType<typeof reliabilityApi.read>>
 
 const PROCEDURE = '1. 상온에서 안정화한다.\n2. 85 degC 로 올린다.'
+
+/** 이력을 부른 주소들 — 안 보이는 탭을 미리 받지 않는지 본다. */
+function asked(): string[] {
+  return get.mock.calls
+    .map(([path]) => String(path))
+    .filter((one) => one.includes('value-history'))
+}
 
 function test(over: Partial<ReliabilityTest> = {}): ReliabilityTest {
   return {
@@ -183,6 +193,26 @@ describe('보기 창', () => {
     expect(screen.queryByRole('button', { name: '수정' })).toBeNull()
     expect(screen.getByText(/장기 보관 시 열화 확인/)).toBeTruthy()
     expect(screen.getByText('항온항습(습열)')).toBeTruthy()
+  })
+
+  it('판별 이력은 기본 탭에 없다 — 열면 카드가 창을 다 쓴다', async () => {
+    await show(test())
+    // 탭이 둘 — 「내용」 이 기본.
+    expect(screen.getByRole('tab', { name: '내용' })).toHaveAttribute('data-state', 'active')
+    expect(screen.getByRole('tab', { name: /이력/ })).toHaveAttribute('data-state', 'inactive')
+    // 카드는 보이고,
+    expect(screen.getByText('장기 보관 시 열화 확인')).toBeTruthy()
+    // **이력은 안 불린다** — 안 보이는 탭을 미리 받아 두면 창을 열 때마다 헛왕복이다.
+    expect(asked()).toEqual([])
+  })
+
+  it('이력 탭을 누르면 그때 받는다', async () => {
+    await show(test())
+    // **`fireEvent.click` 으로는 안 바뀐다** — Radix 의 탭은 포인터 차례(mousedown…)를
+    // 보므로 합성 클릭 하나로는 안 열린다. 사람이 누르는 것과 같은 차례를 내보낸다.
+    await userEvent.click(screen.getByRole('tab', { name: /이력/ }))
+    // `useResource` 는 다음 틱에 부른다 — 누른 직후에 재면 아직 비어 있다.
+    await waitFor(() => expect(asked()).toEqual(['/reliability-tests/r1/value-history']))
   })
 
   it('닫혀 있으면 아무것도 안 그린다', async () => {
