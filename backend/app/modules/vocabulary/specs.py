@@ -100,8 +100,15 @@ class SpecDefinition(Base):
     dimension: Mapped[str] = mapped_column(String(30), default="", server_default="")
     si_unit: Mapped[str] = mapped_column(String(20), default="", server_default="")
     display_unit: Mapped[str] = mapped_column(String(20), default="", server_default="")
-    """**저장 단위와 표시 단위를 나눈다.** 조건 정의와 같은 규칙이다 — 실무가 kN 으로
-    말하는데 저장만 N 이면 화면마다 환산이 끼고, 그러면 언젠가 한쪽만 고쳐진다."""
+    """값은 `unit`(display_unit, 없으면 si_unit)으로 담긴다. 조건 축과 같은 규칙이다 —
+    실무가 kN 으로 말하는데 저장만 N 이면 화면마다 환산이 끼고, 그러면 언젠가 한쪽만
+    고쳐진다."""
+
+    @property
+    def unit(self) -> str:
+        """값이 적히는 단위 — display_unit, 없으면 si_unit(`ConditionKey.unit` 과 같은
+        규칙). 검색축으로 옮길 때 이 단위에서 축의 단위로 환산한다(`specs.to_axis`)."""
+        return self.display_unit or self.si_unit
 
     choices: Mapped[list[str]] = mapped_column(JSONB, default=list, server_default="[]")
 

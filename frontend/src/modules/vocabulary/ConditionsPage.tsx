@@ -54,7 +54,7 @@ export default function ConditionsPage() {
       <PageHeader
         back={{ to: '/admin/ontology?kind=axis:test_item', label: '온톨로지' }}
         title="시험 항목 검색 조건"
-        description="온도·하중·주파수처럼 장비의 시험 조건과 규격의 요구 조건이 함께 쓰는 칸입니다. 값은 언제나 저장 단위로 담깁니다."
+        description="온도·하중·주파수처럼 장비의 시험 조건과 규격의 요구 조건이 함께 쓰는 칸입니다. 값은 언제나 표시 단위로 담기고 판정됩니다(비어 있으면 SI 단위)."
       />
 
       {canEdit && (
@@ -124,8 +124,8 @@ export default function ConditionsPage() {
             <TableHead>화면 이름</TableHead>
             <TableHead>키</TableHead>
             <TableHead>종류</TableHead>
-            <TableHead>저장 단위</TableHead>
-            <TableHead>표시 단위</TableHead>
+            <TableHead>SI 단위</TableHead>
+            <TableHead>표시 단위(저장·판정)</TableHead>
             <TableHead className="text-right">참조</TableHead>
             <TableHead className="text-right">사용</TableHead>
           </TableRow>

@@ -17,8 +17,9 @@
 
 ## 못 옮기는 조건은 버리지 않고 말한다
 
-단위를 축의 SI 로 못 바꾸면(표에 없는 단위, 차원이 다른 짝) 그 조건은 **빼고 그렇다고
-적는다**(`skipped`). 조용히 빼면 화면은 조건 넷을 다 본 것처럼 「가능」 이라고 답한다.
+단위를 축의 단위(`ConditionKey.unit`)로 못 바꾸면(표에 없는 단위, 차원이 다른 짝) 그
+조건은 **빼고 그렇다고 적는다**(`skipped`). 조용히 빼면 화면은 조건 넷을 다 본 것처럼
+「가능」 이라고 답한다.
 """
 
 from __future__ import annotations
@@ -49,11 +50,18 @@ from app.shared.units import convert
 MAX_HITS_PER_ITEM = 20
 
 
-def _si(value: float | None, unit: str, key: ConditionKey) -> float | None:
-    """속성에 적힌 단위를 축의 SI 로. 못 바꾸면 None — 지어서 옮기지 않는다(ADR 0003)."""
+def _axis(value: float | None, unit: str, key: ConditionKey) -> float | None:
+    """속성에 적힌 단위를 **축의 단위**(`key.unit`)로. 못 바꾸면 None — 지어서 옮기지
+    않는다(ADR 0003).
+
+    축의 `si_unit` 이 아니다. 장비 조건·판정 글자·검색 화면이 전부 `unit`(display_unit,
+    없으면 si_unit)을 쓰는데 여기만 si_unit 으로 옮겨서, 낙하 높이 152 cm 가 1.52(m)가
+    되어 「1.52 cm 에서」 로 찍히고 0~100 cm 장비를 통과했다(2026-10-03). 두 단위가 같은
+    열여섯 축에서는 안 드러나던 일이다.
+    """
     if value is None:
         return None
-    return convert(value, unit or key.si_unit, key.si_unit)
+    return convert(value, unit or key.unit, key.unit)
 
 
 #: 「묶음을 가리지 않는다」 를 나타내는 표식. `None` 은 **이름 없는 묶음**이라 쓸 수 없다.
@@ -109,9 +117,9 @@ def _conditions(
     skipped: list[SkippedConditionOut] = []
     for value, definition, key in rows:
         unit = value.unit or definition.unit
-        low = _si(value.num_min, unit, key)
-        high = _si(value.num_max, unit, key)
-        point = _si(value.num_value, unit, key)
+        low = _axis(value.num_min, unit, key)
+        high = _axis(value.num_max, unit, key)
+        point = _axis(value.num_value, unit, key)
         wrote = any(one is not None for one in (value.num_min, value.num_max, value.num_value))
         if not wrote:
             # 값이 안 적힌 조건은 「제한 없음」 이다. 물을 것이 없다.
@@ -120,7 +128,7 @@ def _conditions(
             skipped.append(
                 SkippedConditionOut(
                     label=definition.label,
-                    reason=f"단위 「{unit}」 를 {key.label} 의 {key.si_unit} 로 못 바꿉니다.",
+                    reason=f"단위 「{unit}」 를 {key.label} 의 {key.unit} 로 못 바꿉니다.",
                 )
             )
             continue
@@ -215,7 +223,7 @@ def preview(
     지금은 저장한 뒤 따로 열어야 보인다. 그래서 「95 °C 로 올리면 돌릴 장비가 0대」 를
     저장하고 나서 안다 — 돌릴 수 없는 조건을 적어 둔 시험이 그렇게 생긴다.
 
-    **단위 환산은 서버가 한다.** 화면이 SI 로 바꿔 보내게 하면 그 환산이 두 벌이 되고,
+    **단위 환산은 서버가 한다.** 화면이 축 단위로 바꿔 보내게 하면 그 환산이 두 벌이 되고,
     두 벌은 갈라진다(`_conditions` 와 같은 길을 쓴다).
     """
     queries: list[ConditionQuery] = []
@@ -232,8 +240,8 @@ def preview(
         if key is None:
             continue
         unit = item.unit or definition.unit
-        low, high = _si(item.num_min, unit, key), _si(item.num_max, unit, key)
-        point = _si(item.num_value, unit, key)
+        low, high = _axis(item.num_min, unit, key), _axis(item.num_max, unit, key)
+        point = _axis(item.num_value, unit, key)
         wrote = any(one is not None for one in (item.num_min, item.num_max, item.num_value))
         if not wrote:
             continue
@@ -241,7 +249,7 @@ def preview(
             skipped.append(
                 SkippedConditionOut(
                     label=definition.label,
-                    reason=f"단위 「{unit}」 를 {key.label} 의 {key.si_unit} 로 못 바꿉니다.",
+                    reason=f"단위 「{unit}」 를 {key.label} 의 {key.unit} 로 못 바꿉니다.",
                 )
             )
             continue

@@ -113,10 +113,12 @@ class EquipmentTestCondition(Base):
     JSONB 한 칸에 넣으면 검색이 "80도가 이 장비의 온도 구간 안에 드나" 를 SQL 로
     물을 수 없다. 인덱스도 못 탄다. 조건 수는 장비당 서넛이라 표가 커질 걱정은 없다.
 
-    ## 값은 SI 로 담는다
+    ## 값은 축의 단위로 담는다
 
-    MethodRequirement 와 **같은 단위여야** 요구와 시험 항목을 직접 비교할 수 있다.
-    한쪽만 화면 단위면 그 비교는 조용히 세 자릿수 틀린다.
+    `ConditionKey.unit`(display_unit, 없으면 si_unit) — MethodRequirement·검색 물음과
+    **같은 단위여야** 요구와 시험 항목을 직접 비교할 수 있다. 한쪽만 다른 단위면 그
+    비교는 조용히 세 자릿수 틀린다. 화면과 MCP 는 그 단위의 숫자를 그대로 보내고,
+    서버는 안 바꾼다.
     """
 
     __tablename__ = "equipment_test_conditions"

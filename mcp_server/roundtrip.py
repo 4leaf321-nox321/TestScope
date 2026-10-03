@@ -468,7 +468,8 @@ async def _write_chain(ctx: _Ctx) -> int:
         if force is not None:
             step(
                 "set_requirement",
-                await server.set_requirement(ctx, method["id"], force["id"], min_value=20000),
+                # 하중 축의 단위는 kN 이다 — 20 kN 은 20 이지 20000 이 아니다.
+                await server.set_requirement(ctx, method["id"], force["id"], min_value=20),
                 ["min_value"],
             )
         expect_refusal(

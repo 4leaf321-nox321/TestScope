@@ -62,6 +62,7 @@ def condition_out(db: Session, row: ConditionKey) -> ConditionKeyOut:
         dimension=row.dimension,
         si_unit=row.si_unit,
         display_unit=row.display_unit,
+        unit=row.unit,
         choices=row.choices,
         help=row.help,
         sort_order=row.sort_order,
@@ -169,7 +170,7 @@ def condition_reach(db: Session, condition_key_id: uuid.UUID) -> ConditionReachO
         return ConditionReachOut(
             condition_key_id=key.id,
             label=key.label,
-            display_unit=key.display_unit,
+            display_unit=key.unit,
             definitions=[],
             test_count=0,
             valued_count=0,
@@ -205,8 +206,8 @@ def condition_reach(db: Session, condition_key_id: uuid.UUID) -> ConditionReachO
         numbers = [one for one in (point, bottom, top) if one is not None]
         if not numbers:
             continue
-        source = wrote_unit or definition_unit or key.display_unit
-        moved = [convert(one, source, key.display_unit) for one in numbers]
+        source = wrote_unit or definition_unit or key.unit
+        moved = [convert(one, source, key.unit) for one in numbers]
         if any(one is None for one in moved):
             # **못 바꾼 값은 범위에 안 넣는다.** 틀린 자리에 놓느니 안 보이는 편이 낫고,
             # 몇 건이 그랬는지는 따로 센다 — 안 세면 「그만큼만 쓰인다」 로 읽힌다.
@@ -221,7 +222,7 @@ def condition_reach(db: Session, condition_key_id: uuid.UUID) -> ConditionReachO
     return ConditionReachOut(
         condition_key_id=key.id,
         label=key.label,
-        display_unit=key.display_unit,
+        display_unit=key.unit,
         definitions=[
             ConditionReachDefinitionOut(id=one.id, key=one.key, label=one.label)
             for one in definitions

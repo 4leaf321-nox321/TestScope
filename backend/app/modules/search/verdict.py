@@ -56,7 +56,7 @@ def _fmt(value: float | None, unit: str) -> str:
 
 
 def _asked(query: ConditionQuery, key: ConditionKey) -> str:
-    unit = key.display_unit or key.si_unit
+    unit = key.unit
     if query.at is not None:
         return f"{_fmt(query.at, unit)} 에서"
     if query.at_least is not None:
@@ -73,7 +73,7 @@ def _range_text(limit: Limit | None, key: ConditionKey) -> str | None:
         return None
     if limit.text_value:
         return limit.text_value
-    unit = key.display_unit or key.si_unit
+    unit = key.unit
     return f"{_fmt(limit.min_value, unit)} ~ {_fmt(limit.max_value, unit)}"
 
 

@@ -188,6 +188,9 @@ class ConditionKeyOut(BaseModel):
     dimension: str
     si_unit: str
     display_unit: str
+    unit: str
+    """**값을 보내고 받는 단위** — display_unit, 없으면 si_unit. 장비 조건·규격 요구·검색
+    물음이 전부 이 단위다. 둘 중 무엇인지 부르는 쪽이 고르게 두면 하나는 틀린다."""
     choices: list[str]
     help: str | None
     sort_order: int

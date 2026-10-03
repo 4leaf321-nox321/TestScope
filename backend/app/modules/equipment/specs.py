@@ -86,9 +86,7 @@ def _axis_unit_mismatch(db: Session, definition: SpecDefinition) -> bool:
     key = db.get(ConditionKey, definition.condition_key_id)
     if key is None:
         return False
-    return not compatible(
-        definition.display_unit or definition.si_unit, key.display_unit or key.si_unit
-    )
+    return not compatible(definition.unit, key.unit)
 
 
 def value_out(
@@ -197,6 +195,25 @@ def check_value(definition: SpecDefinition, payload: dict[str, Any]) -> None:
         raise AppError("TSC-SPEC-0008", f"{definition.label}: 값이 필요합니다.", status=400)
 
 
+def to_axis(
+    definition: SpecDefinition, key: ConditionKey, low: float | None, high: float | None
+) -> tuple[float | None, float | None] | None:
+    """사양 정의의 단위로 적힌 양끝을 **축의 단위**(`key.unit`)로. 못 맞추는 짝이면 None —
+    옮기면 틀린 값이 검색에 쓰인다.
+
+    기종 사양(`conditions_from_specs_bulk`)과 개체 실측(`equipment_specs._reflect`)이 같은
+    함수를 탄다. 실측 쪽에만 이 환산이 없어서 「시험력 500 gf」 실측이 하중 축에 500 kN
+    으로 설 수 있었다(2026-10-03) — 기종 쪽은 2026-09-12 에 고쳤는데 실측 쪽은 그때
+    같이 안 고쳐졌다.
+    """
+    if not compatible(definition.unit, key.unit):
+        return None
+    return (
+        convert(low, definition.unit, key.unit) if low is not None else None,
+        convert(high, definition.unit, key.unit) if high is not None else None,
+    )
+
+
 def conditions_from_specs(
     db: Session, model_id: uuid.UUID
 ) -> dict[uuid.UUID, tuple[float | None, float | None, str, bool]]:
@@ -282,13 +299,11 @@ def conditions_from_specs_bulk(
             continue
         if low is None and high is None:
             continue
-        from_unit = definition.display_unit or definition.si_unit
-        to_unit = key.display_unit or key.si_unit
-        if not compatible(from_unit, to_unit):
+        moved = to_axis(definition, key, low, high)
+        if moved is None:
             # 단위를 못 맞추는 짝 — 옮기면 틀린 값이 검색에 쓰인다. 건너뛴다.
             continue
-        low = convert(low, from_unit, to_unit) if low is not None else None
-        high = convert(high, from_unit, to_unit) if high is not None else None
+        low, high = moved
         assert definition.condition_key_id is not None  # 위 where 절이 보장한다
         key_id = definition.condition_key_id
         mine = out.setdefault(value.model_id, {})

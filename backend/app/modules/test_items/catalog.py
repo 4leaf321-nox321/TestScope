@@ -349,9 +349,7 @@ def detail(db: Session, user: User, term_id: uuid.UUID) -> TestItemCatalogOut:
         series=series,
         equipment=equipment,
         condition_keys=[
-            TestItemConditionKeyOut(
-                id=k.id, key=k.key, label=k.label, unit=k.display_unit or k.si_unit
-            )
+            TestItemConditionKeyOut(id=k.id, key=k.key, label=k.label, unit=k.unit)
             for k in axes
         ],
         can_edit=user.is_system_admin,

@@ -501,8 +501,9 @@ async def search_test_items(
     """**「80도에서 20 kN 이상 인장 되는 장비 있나」 에 답한다.**
 
     `conditions` 는 조건마다 하나씩, **셋 중 하나만** 채운다:
-    `{"condition_key_id": …, "at": 353.15}` (그 값에서 되나) ·
-    `{"…", "at_least": 20}` (그 이상) · `{"…", "at_most": …}`.
+    `{"condition_key_id": …, "at": 80}` (그 값에서 되나) ·
+    `{"…", "at_least": 20}` (그 이상) · `{"…", "at_most": …}`. 값은 **그 축의 `unit`**
+    (`list_conditions` 가 축마다 준다 — 온도 degC · 하중 kN · 낙하 높이 cm)으로 적는다.
 
     조건 키 id 는 `list_conditions()` 가 준다. 시험 항목 id 는 `resolve` 로 찾는다.
     **어떤 조건을 물어야 하는지는 시험 항목이 정한다** — `get_test_item` 의
@@ -665,7 +666,8 @@ async def search_properties(
 async def list_conditions(ctx: Context) -> dict[str, Any]:
     """검색이 묻는 조건 축들 — 온도·하중·속도·주파수·시편 두께·습도·항온조.
 
-    각 조건의 `si_unit` 과 `display_unit` 이 함께 온다. **값은 저장 단위로 보낸다.**
+    축마다 `unit` 이 온다 — **값을 보내고 받는 단위**다(온도 degC · 하중 kN · 낙하 높이 cm).
+    `si_unit`·`display_unit` 은 참고다: `unit` 은 display_unit, 없으면 si_unit 이다.
     """
     return _listed(await _get(ctx, "/condition-keys"), "conditions")
 
@@ -1377,13 +1379,14 @@ async def set_test_condition(
 
     조건 축은 `list_conditions` 가 준다.
 
-    ## 값은 **저장 단위(SI)** 로 준다 — 서버가 안 바꾼다
+    ## 값은 **그 축의 `unit`** 으로 준다 — 서버가 안 바꾼다
 
-    `list_conditions` 의 `si_unit` 이 그 단위다(N·K·m·s·Hz). `display_unit` 은 사람에게
-    보여 줄 때 쓰는 실무 단위(kN·degC·mm)라, 그것으로 보내면 **자릿수가 셋 틀린다** —
-    20 kN 을 20 으로 보내면 20 N 으로 저장되고, 그 장비는 검색에서 조용히 빠진다.
+    `list_conditions` 의 `unit` 이 그 단위다(하중 kN · 온도 degC · 낙하 높이 cm). `si_unit`
+    이 아니다 — 낙하 높이의 si_unit 은 m 지만 값은 cm 로 담긴다. 다른 단위로 보내면
+    **자릿수가 틀린다**: 152 cm 를 1.52 로 보내면 1.52 cm 짜리 장비가 되어 검색에서 조용히
+    빠진다.
 
-    환산은 부르는 쪽이 한다: 20 kN 이면 `max_value=20000`, 80 degC 면 `353.15`.
+    환산은 부르는 쪽이 한다: 1.5 m 낙하면 `max_value=150`, 20 kN 이면 `20`.
 
     ## 비운 쪽은 「제한 없음」 이다
 
@@ -1732,9 +1735,10 @@ async def set_requirement(
     """규격의 **요구 조건 한 줄** — 규격서를 읽다 조건 하나를 발견했을 때. 표로 여럿이면
     `import_requirements`.
 
-    `condition_key_id` 는 `list_conditions` 가 준다. **값은 그 축의 `si_unit` 으로** —
-    `list_conditions` 가 축마다 알려 준다(하중 축은 kN 이라 20 kN 이면 20 이다; 축의 단위를
-    지어내지 말고 읽어라). 같은 조건이 이미 있으면 덮어쓴다. **한쪽을 비울 수 있다**:
+    `condition_key_id` 는 `list_conditions` 가 준다. **값은 그 축의 `unit` 으로** —
+    `list_conditions` 가 축마다 알려 준다(하중 축은 kN 이라 20 kN 이면 20, 낙하 높이는 cm 라
+    1.5 m 면 150; 축의 단위를 지어내지 말고 읽어라). 같은 조건이 이미 있으면 덮어쓴다.
+    **한쪽을 비울 수 있다**:
     「20 kN 이상」 은 min 만 있고 max 는 None 이다 — 0 으로 채우면 상한이 0 인 것과 구별되지
     않는다.
 
@@ -2088,12 +2092,12 @@ async def create_condition_key(
 
     ## 단위를 틀리면 조용히 틀린 답이 나온다
 
-    `si_unit` 은 **저장 단위**, `display_unit` 은 화면이 쓰는 실무 단위다. 하중은
-    `si_unit="kN"`, 온도는 `si_unit="degC"` 처럼 이 저장소가 실제로 쓰는 값을 따른다 —
-    `list_conditions` 로 옆 축이 무엇을 쓰는지 보고 맞춰라. `dimension` 이 같은 축끼리만
-    환산이 성립한다(temperature · force · length · time · frequency).
+    값이 담기는 단위는 **`display_unit`**(비면 `si_unit`)이다 — 응답의 `unit` 이 그것이다.
+    `display_unit` 은 실무 단위(kN · degC · cm), `si_unit` 은 그 차원의 기준 단위(낙하 높이면
+    m)로 적되 `dimension` 이 같아야 환산이 성립한다(temperature · force · length · time ·
+    frequency). `list_conditions` 로 옆 축이 무엇을 쓰는지 보고 맞춰라.
 
-    **만든 뒤 `si_unit` 은 못 바꾸는 것으로 여겨라.** 고치는 API 는 있지만, 그 순간 이미
+    **만든 뒤 `display_unit` 은 못 바꾸는 것으로 여겨라.** 고치는 API 는 있지만, 그 순간 이미
     저장된 숫자 전부가 다른 값이 된다.
 
     `kind` 는 `range`(구간 — 대부분) · `choice`(고른 값, `choices` 필요) · `boolean`.

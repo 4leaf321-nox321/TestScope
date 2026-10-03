@@ -1251,7 +1251,7 @@ def _condition_attributes(
                 f"reliability_cond_{key.key}",
                 key.label,
                 "condition",
-                key.display_unit or key.si_unit,
+                key.unit,
                 key.key,
                 None,
                 "최소·최대 중 **하나만 적어도 된다** — 비운 쪽은 「제한 없음」 이다. "

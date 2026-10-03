@@ -138,7 +138,7 @@ def lookup(db: Session, user: User, wanted: dict[str, set[uuid.UUID]]) -> dict[s
                     key.label,
                     key.key,
                     "active" if key.is_active else "inactive",
-                    key.display_unit or key.si_unit or None,
+                    key.unit or None,
                 )
         elif type_slug == "method":
             for m in db.scalars(

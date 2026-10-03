@@ -2555,7 +2555,7 @@ export interface paths {
          * @description **아직 저장하지 않은 조건**으로 장비를 본다 — 적으면서 보는 자리.
          *
          *     지금은 저장한 뒤 따로 열어야 보여서, 「95 °C 로 올리면 돌릴 장비가 0대」 를 저장하고
-         *     나서 안다. 단위 환산은 서버가 한다 — 화면이 SI 로 바꿔 보내면 그 환산이 두 벌이 된다.
+         *     나서 안다. 단위 환산은 서버가 한다 — 화면이 축 단위로 바꿔 보내면 그 환산이 두 벌이 된다.
          *
          *     **`/{test_id}` 보다 먼저 선언한다.**
          */
@@ -2704,7 +2704,7 @@ export interface paths {
          * @description **이 시험을 돌릴 수 있는 장비.** 조건 속성(`kind="condition"`)을 그대로 검색 조건으로
          *     옮겨 시험 항목마다 장비를 판정한다 — 판정 규칙은 장비 찾기와 같은 것 하나다.
          *
-         *     범위 속성 하나는 물음 둘이 된다(위로 얼마까지 · 아래로 얼마까지). 단위를 축의 SI 로
+         *     범위 속성 하나는 물음 둘이 된다(위로 얼마까지 · 아래로 얼마까지). 단위를 축의 단위로
          *     못 바꾸는 조건은 빼고 `skipped` 에 이유를 적는다 — 조용히 빼면 조건을 다 본 것처럼
          *     「가능」 으로 읽힌다.
          *
@@ -4759,6 +4759,8 @@ export interface components {
             si_unit: string;
             /** Display Unit */
             display_unit: string;
+            /** Unit */
+            unit: string;
             /** Choices */
             choices: string[];
             /** Help */
@@ -4815,7 +4817,9 @@ export interface components {
          * @description 조건 하나에 대한 물음.
          *
          *     **셋 중 하나만 채운다.** 여러 개를 채우면 서로 다른 물음이 한 줄에 섞인다.
-         *     값은 SI 로 보낸다 — 화면이 조건 정의의 si_unit 을 보고 환산한다.
+         *     값은 **그 축의 단위**(`ConditionKey.unit` — display_unit, 없으면 si_unit)로 보낸다.
+         *     화면은 그 단위로 받은 숫자를 그대로 보내고, 다른 단위로 적힌 값(신뢰성 조건 속성)은
+         *     서버가 환산해 만든다(`reliability/capability.py`).
          */
         ConditionQuery: {
             /**
@@ -6234,9 +6238,9 @@ export interface components {
          * LimitUpsertRequest
          * @description 조건 한 칸의 범위를 넣거나 덮어쓴다.
          *
-         *     **값은 화면 단위로 받고 서버가 SI 로 바꾸지 않는다** — 프론트가 조건 정의의
-         *     si_unit 을 보고 이미 환산해 보낸다. 환산을 두 곳에서 하면 언젠가 한쪽만
-         *     고쳐지고, 그때 저장된 숫자가 조용히 세 자릿수 틀린다.
+         *     **값은 축의 단위(`ConditionKey.unit`)로 받고 서버가 바꾸지 않는다** — 화면도 MCP 도
+         *     그 단위의 숫자를 그대로 보낸다. 환산을 두 곳에서 하면 언젠가 한쪽만 고쳐지고, 그때
+         *     저장된 숫자가 조용히 세 자릿수 틀린다.
          */
         LimitUpsertRequest: {
             /**

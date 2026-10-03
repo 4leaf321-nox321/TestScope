@@ -250,11 +250,19 @@ class ConditionKey(Base):
     또 어떤 장비는 Temp 로 적히고 — 그러면 그 셋은 서로 다른 조건이 되어 검색이
     조용히 절반만 답한다.
 
-    ## 단위는 저장과 표시를 나눈다
+    ## 축의 단위는 하나다 — `unit`
 
-    값은 **언제나 SI 로 담는다**(si_unit). 사람이 kN 으로 적어도 저장은 N 이다.
-    화면이 실무 단위(display_unit)로 바꿔 보여 준다 — 섞어 담으면 20 이 20 N 인지
-    20 kN 인지 알 수 없고, 그 둘은 자릿수가 셋 다르다.
+    장비 조건·계열 조건·규격 요구·검색 물음·판정 글자가 **전부 같은 단위**다 —
+    `display_unit` 이 있으면 그것, 없으면 `si_unit`(`unit` 프로퍼티). 다른 단위로 적힌
+    값(신뢰성 시험의 조건 속성 「152 cm」·「1.5 m」, 사양 정의 「시험력 gf」)은 서버가 이
+    단위로 환산해 넘긴다(`shared/units.py`). 섞어 담으면 20 이 20 N 인지 20 kN 인지 알 수
+    없고, 그 둘은 자릿수가 셋 다르다.
+
+    전에는 「SI(si_unit)로 담고 화면이 환산한다」 고 적혀 있었다. 그렇게 한 자리는 신뢰성
+    판정 하나뿐이었고 화면·사양 투영·판정 글자는 모두 display_unit 을 썼다 — 열여섯 축은
+    두 단위가 같아 안 드러났고, 낙하 높이(m · cm)에서 152 cm 가 「1.52 cm 에서」 가 되어
+    드러났다(2026-10-03). 규칙을 실제 쓰임에 맞췄다: 단위는 하나고, 환산은 다른 단위로
+    적힌 값이 **들어오는 자리**에서만 한다.
 
     ## 축이 아니라 표인 이유
 
@@ -277,9 +285,18 @@ class ConditionKey(Base):
     """무엇의 크기인가 — temperature · force · length · time · frequency.
     같은 차원끼리만 환산이 성립한다. 검색이 단위를 바꿔 받을 때 이것을 본다."""
     si_unit: Mapped[str] = mapped_column(String(20), default="", server_default="")
-    """**저장 단위.** K · N · m · s · Hz."""
+    """차원의 기준 단위. m · s · Pa. **값은 이 단위로 담기지 않는다** — `unit` 을 보라.
+    `display_unit` 이 비어 있을 때만 그 자리를 대신한다(kN · degC 처럼 둘이 같은 축이
+    대부분이다)."""
     display_unit: Mapped[str] = mapped_column(String(20), default="", server_default="")
-    """화면이 쓰는 실무 단위. degC · kN · mm."""
+    """실무 단위. degC · kN · cm. 있으면 이것이 곧 저장·판정 단위다."""
+
+    @property
+    def unit(self) -> str:
+        """**이 축의 단위** — 저장·검색·판정·표시가 모두 쓰는 하나. display_unit 이 있으면
+        그것, 없으면 si_unit. 코드가 `display_unit or si_unit` 을 열두 군데 따로 적고
+        있었고, 한 군데(신뢰성 판정)만 si_unit 을 써서 152 cm 가 1.52 cm 가 됐다."""
+        return self.display_unit or self.si_unit
 
     choices: Mapped[list[str]] = mapped_column(JSONB, default=list, server_default="[]")
     """kind 가 choice 일 때 고를 수 있는 값. 비어 있으면 아무 문자나 받는 것과 같다."""

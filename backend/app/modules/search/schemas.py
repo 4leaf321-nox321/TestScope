@@ -20,7 +20,9 @@ class ConditionQuery(Request):
     """조건 하나에 대한 물음.
 
     **셋 중 하나만 채운다.** 여러 개를 채우면 서로 다른 물음이 한 줄에 섞인다.
-    값은 SI 로 보낸다 — 화면이 조건 정의의 si_unit 을 보고 환산한다.
+    값은 **그 축의 단위**(`ConditionKey.unit` — display_unit, 없으면 si_unit)로 보낸다.
+    화면은 그 단위로 받은 숫자를 그대로 보내고, 다른 단위로 적힌 값(신뢰성 조건 속성)은
+    서버가 환산해 만든다(`reliability/capability.py`).
     """
 
     condition_key_id: uuid.UUID

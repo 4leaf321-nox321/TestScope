@@ -152,9 +152,9 @@ class EquipmentTestItemUpdateRequest(Request):
 class LimitUpsertRequest(Request):
     """조건 한 칸의 범위를 넣거나 덮어쓴다.
 
-    **값은 화면 단위로 받고 서버가 SI 로 바꾸지 않는다** — 프론트가 조건 정의의
-    si_unit 을 보고 이미 환산해 보낸다. 환산을 두 곳에서 하면 언젠가 한쪽만
-    고쳐지고, 그때 저장된 숫자가 조용히 세 자릿수 틀린다.
+    **값은 축의 단위(`ConditionKey.unit`)로 받고 서버가 바꾸지 않는다** — 화면도 MCP 도
+    그 단위의 숫자를 그대로 보낸다. 환산을 두 곳에서 하면 언젠가 한쪽만 고쳐지고, 그때
+    저장된 숫자가 조용히 세 자릿수 틀린다.
     """
 
     condition_key_id: uuid.UUID

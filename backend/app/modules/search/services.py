@@ -173,7 +173,7 @@ def search(db: Session, user: User, request: SearchRequest) -> SearchResponse:
                 ConditionMatch(
                     condition_key_id=key.id,
                     condition_label=key.label,
-                    display_unit=key.display_unit or key.si_unit,
+                    display_unit=key.unit,
                     verdict=verdict_one,
                     asked=_asked(query, key),
                     condition_range=_range_text(limit, key),

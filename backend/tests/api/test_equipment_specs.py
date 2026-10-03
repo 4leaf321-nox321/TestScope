@@ -14,6 +14,7 @@ from __future__ import annotations
 import uuid
 from typing import Any
 
+import pytest
 from fastapi.testclient import TestClient
 
 from tests.api.conftest import Signed, site_id
@@ -159,6 +160,55 @@ def test_실측은_이_장비의_시험_항목_조건을_갱신한다(client: Te
     assert limits, test_items.text
     # 사양서 250 이 아니라 우리가 잰 300 이다.
     assert limits[0]["max_value"] == 300
+
+
+def test_실측의_단위가_축과_다르면_축의_단위로_옮겨_조건이_된다(
+    client: TestClient, admin: Signed
+) -> None:
+    """「시험력 10~500 gf」 실측은 하중 축(kN)에 0.0001~0.0049 kN 으로 선다.
+
+    기종 사양은 그렇게 옮기고 있었는데(`conditions_from_specs_bulk`, 2026-09-12) 실측 쪽에는
+    그 환산이 없어서 500 gf 가 500 kN 조건이 될 수 있었다 — 10만 배 틀린 자신 있는 오답.
+    """
+    equipment_id, _, definitions = _catalog_unit(client, admin)
+    # 단위가 축(kN)과 다른 정의 — 운영의 「시험력(마이크로) gf」 와 같은 모양이다.
+    groups = client.get("/api/spec-groups", headers=admin.headers).json()
+    micro = client.post(
+        "/api/spec-definitions",
+        json={
+            "key": f"micro_load_{uuid.uuid4().hex[:6]}",
+            "label": "시험력(마이크로)",
+            "group_id": groups[0]["id"],
+            "kind": "range",
+            "dimension": "force",
+            "si_unit": "gf",
+            "display_unit": "gf",
+            "condition_key_id": definitions["force_capacity"]["condition_key_id"],
+        },
+        headers=admin.headers,
+    )
+    assert micro.status_code == 201, micro.text
+    saved = client.put(
+        f"/api/equipment/{equipment_id}/specs",
+        json={"definition_id": micro.json()["id"], "num_min": 10, "num_max": 500},
+        headers=admin.headers,
+    )
+    assert saved.status_code == 200, saved.text
+    assert saved.json()["condition_label"] == "하중 용량"
+
+    test_items = client.get(
+        f"/api/equipment-test-items?equipment_id={equipment_id}", headers=admin.headers
+    )
+    limits = [
+        limit
+        for test_item in test_items.json()
+        for limit in test_item["limits"]
+        if limit["condition_key"] == "force"
+    ]
+    assert limits, test_items.text
+    gf_in_kn = 0.00980665 / 1000
+    assert limits[0]["min_value"] == pytest.approx(10 * gf_in_kn)
+    assert limits[0]["max_value"] == pytest.approx(500 * gf_in_kn)
 
 
 def test_손으로_고쳐_둔_조건은_안_덮는다(client: TestClient, admin: Signed) -> None:

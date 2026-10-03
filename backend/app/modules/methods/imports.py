@@ -276,7 +276,7 @@ def run(db: Session, user: User, text: str, *, dry_run: bool) -> RequirementImpo
             if not editable[picked.method.id]:
                 picked.problems.append("규격: 이 규격을 고칠 권한이 없습니다")
         if picked.key is not None:
-            unit = picked.key.display_unit or picked.key.si_unit
+            unit = picked.key.unit
             if picked.key.kind == "choice":
                 picked.text_value = clean(cells.get("text", "")) or None
                 if picked.text_value is None:

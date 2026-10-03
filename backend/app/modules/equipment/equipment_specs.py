@@ -167,13 +167,15 @@ def sheet(db: Session, equipment: Equipment) -> EquipmentSpecSheetOut:
 
 
 def _as_condition(
-    definition: SpecDefinition, row: EquipmentSpecValue
+    definition: SpecDefinition, key: ConditionKey, row: EquipmentSpecValue
 ) -> tuple[float | None, float | None] | None:
     """이 값이 검색 조건의 어느 끝인가. 기종 사양과 **같은 규칙**이다.
 
     구간은 양끝을 그대로 쓰고, 수치 하나는 `reflect_as` 가 정한다 — 최대하중은
     천장이고 분해능은 바닥이다. 고른 값·문장·참거짓은 범위 비교가 성립하지 않아
-    조건으로 안 옮긴다.
+    조건으로 안 옮긴다. 단위는 정의의 것에서 **축의 것으로 옮긴다**(`specs.to_axis`) —
+    기종 사양은 그렇게 하고 있었는데 여기는 숫자를 그대로 넘겨서, 시험력 500 gf 실측이
+    하중 축에 500 kN 으로 설 수 있었다. 못 옮기는 짝이면 조건으로 안 간다.
     """
     if definition.kind == "range":
         low, high = row.num_min, row.num_max
@@ -184,7 +186,7 @@ def _as_condition(
         return None
     if low is None and high is None:
         return None
-    return low, high
+    return specs.to_axis(definition, key, low, high)
 
 
 def _reflect(
@@ -198,7 +200,10 @@ def _reflect(
     """
     if definition.condition_key_id is None:
         return False
-    bounds = _as_condition(definition, row)
+    key = db.get(ConditionKey, definition.condition_key_id)
+    if key is None:
+        return False
+    bounds = _as_condition(definition, key, row)
     if bounds is None:
         return False
     low, high = bounds

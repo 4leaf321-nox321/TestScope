@@ -10,8 +10,9 @@ from __future__ import annotations
 import uuid
 
 from app.modules.search.schemas import ConditionQuery
-from app.modules.search.verdict import _verdict
+from app.modules.search.verdict import _asked, _range_text, _verdict
 from app.modules.test_items.models import EquipmentTestCondition
+from app.modules.vocabulary.models import ConditionKey
 
 #: 어느 조건이냐는 판정에 안 쓰인다 — 값만 본다.
 KEY = uuid.uuid4()
@@ -56,3 +57,20 @@ def test_양쪽이_다_비면_모름이다() -> None:
     모든 조건을 만족하는 것으로 나온다."""
     query = ConditionQuery(condition_key_id=KEY, at=80)
     assert _verdict(query, limit(None, None)) == "unknown"
+
+
+def test_물음과_장비_범위는_축의_단위로_말한다() -> None:
+    """si_unit 이 m 인 축이라도 값은 cm(display_unit)로 담겨 있다 — 글자도 cm 다.
+
+    판정이 m 로 옮긴 1.52 를 cm 로 적던 것이 「1.52 cm 에서」 다(2026-10-03). 글자를 만드는
+    쪽은 늘 `unit` 을 썼고, 값을 만드는 쪽이 따라오지 않았다 — 둘이 같은 이름을 보게 했다.
+    """
+    key = ConditionKey(key="drop_height", label="낙하 높이", si_unit="m", display_unit="cm")
+    assert key.unit == "cm"
+    assert _asked(ConditionQuery(condition_key_id=KEY, at=152), key) == "152 cm 에서"
+    assert _range_text(limit(0, 200), key) == "0 cm ~ 200 cm"
+
+    # si_unit 이 비어도 display_unit 이 있으면 그것이 단위다 — 사이클 수(「」 · 「회」).
+    bare = ConditionKey(key="cycles", label="사이클 수", si_unit="", display_unit="회")
+    assert bare.unit == "회"
+    assert _asked(ConditionQuery(condition_key_id=KEY, at_least=24), bare) == "24 회 이상"
