@@ -113,6 +113,67 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/api/auth/sso": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /**
+         * Gateway Issue
+         * @description HWAX 게이트웨이가 **그 사람의 읽기 전용 토큰**을 받아 간다. 꺼져 있으면 404, 비밀이
+         *     틀리면 401, 그 사람을 들여보낼 수 없으면 403 — 404 는 「창구 꺼짐」 전용이다.
+         */
+        post: operations["gateway_issue_api_auth_sso_post"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/auth/sso/verify": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /**
+         * Gateway Verify
+         * @description 비밀만 확인한다(204 / 401) — 설정이 맞는지 볼 때. 아무것도 만들지 않는다.
+         */
+        post: operations["gateway_verify_api_auth_sso_verify_post"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/auth/sso/revoke": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /**
+         * Gateway Revoke
+         * @description 그 사람·그 client 의 위임 토큰을 폐기한다. 폐기할 것이 없어도 200 이다.
+         */
+        post: operations["gateway_revoke_api_auth_sso_revoke_post"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/api/auth/tokens": {
         parameters: {
             query?: never;
@@ -6022,6 +6083,42 @@ export interface components {
             /** Source Page */
             source_page?: number | null;
         };
+        /** GatewayRevokeOut */
+        GatewayRevokeOut: {
+            /**
+             * Ok
+             * @default true
+             */
+            ok: boolean;
+            /** Revoked */
+            revoked: number;
+        };
+        /**
+         * GatewayTokenData
+         * @description HWAX 위임 창구가 내주는 토큰 — 포털 요청서(`ra-request.md`)의 봉투 그대로.
+         */
+        GatewayTokenData: {
+            /** Access Token */
+            access_token: string;
+            /**
+             * Token Type
+             * @default bearer
+             */
+            token_type: string;
+            /** Expires In */
+            expires_in: number;
+            /** Needs Workspace */
+            needs_workspace: boolean;
+        };
+        /** GatewayTokenOut */
+        GatewayTokenOut: {
+            /**
+             * Success
+             * @default true
+             */
+            success: boolean;
+            data: components["schemas"]["GatewayTokenData"];
+        };
         /** HTTPValidationError */
         HTTPValidationError: {
             /** Detail */
@@ -9437,6 +9534,64 @@ export interface operations {
                 };
                 content: {
                     "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    gateway_issue_api_auth_sso_post: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["GatewayTokenOut"];
+                };
+            };
+        };
+    };
+    gateway_verify_api_auth_sso_verify_post: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            204: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    gateway_revoke_api_auth_sso_revoke_post: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["GatewayRevokeOut"];
                 };
             };
         };

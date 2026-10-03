@@ -71,6 +71,10 @@ claude mcp add --transport http testscope http://10.240.25.85:8022/mcp \
 **토큰은 클라이언트 설정 파일에 평문으로 남는다** — MCP 클라이언트 공통 성질이라 막을 수
 없으니 수명을 짧게 주고, 사람이 바뀌거나 PC 를 옮기면 그 자리에서 폐기한다.
 
+**HWAX 포털에서 붙는 사람은 토큰을 안 만든다.** 게이트웨이가 공유 비밀로 그 사람의 읽기
+전용 토큰을 받아 간다(`POST /api/auth/sso`, 백엔드 `HEAX_SSO_SECRET`) — 켜는 순서와 확인은
+배포.md 「HWAX 포털에서 붙게 하려면」. SSO 가 아니고 계정도 안 만든다(`auth/gateway_token.py`).
+
 전송은 평문 HTTP 다. 사내망 밖으로 낼 것이면 앞에 TLS 리버스 프록시를 두고, 그 프록시가
 보내는 Host 를 `MCP_ALLOWED_HOSTS` 에 적는다.
 

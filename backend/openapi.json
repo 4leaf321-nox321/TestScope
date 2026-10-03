@@ -201,6 +201,65 @@
         }
       }
     },
+    "/api/auth/sso": {
+      "post": {
+        "tags": [
+          "auth"
+        ],
+        "summary": "Gateway Issue",
+        "description": "HWAX 게이트웨이가 **그 사람의 읽기 전용 토큰**을 받아 간다. 꺼져 있으면 404, 비밀이\n틀리면 401, 그 사람을 들여보낼 수 없으면 403 — 404 는 「창구 꺼짐」 전용이다.",
+        "operationId": "gateway_issue_api_auth_sso_post",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GatewayTokenOut"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/auth/sso/verify": {
+      "post": {
+        "tags": [
+          "auth"
+        ],
+        "summary": "Gateway Verify",
+        "description": "비밀만 확인한다(204 / 401) — 설정이 맞는지 볼 때. 아무것도 만들지 않는다.",
+        "operationId": "gateway_verify_api_auth_sso_verify_post",
+        "responses": {
+          "204": {
+            "description": "Successful Response"
+          }
+        }
+      }
+    },
+    "/api/auth/sso/revoke": {
+      "post": {
+        "tags": [
+          "auth"
+        ],
+        "summary": "Gateway Revoke",
+        "description": "그 사람·그 client 의 위임 토큰을 폐기한다. 폐기할 것이 없어도 200 이다.",
+        "operationId": "gateway_revoke_api_auth_sso_revoke_post",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GatewayRevokeOut"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/api/auth/tokens": {
       "get": {
         "tags": [
@@ -17892,6 +17951,70 @@
           "value_text"
         ],
         "title": "FreeSpecUpsertRequest"
+      },
+      "GatewayRevokeOut": {
+        "properties": {
+          "ok": {
+            "type": "boolean",
+            "title": "Ok",
+            "default": true
+          },
+          "revoked": {
+            "type": "integer",
+            "title": "Revoked"
+          }
+        },
+        "type": "object",
+        "required": [
+          "revoked"
+        ],
+        "title": "GatewayRevokeOut"
+      },
+      "GatewayTokenData": {
+        "properties": {
+          "access_token": {
+            "type": "string",
+            "title": "Access Token"
+          },
+          "token_type": {
+            "type": "string",
+            "title": "Token Type",
+            "default": "bearer"
+          },
+          "expires_in": {
+            "type": "integer",
+            "title": "Expires In"
+          },
+          "needs_workspace": {
+            "type": "boolean",
+            "title": "Needs Workspace"
+          }
+        },
+        "type": "object",
+        "required": [
+          "access_token",
+          "expires_in",
+          "needs_workspace"
+        ],
+        "title": "GatewayTokenData",
+        "description": "HWAX 위임 창구가 내주는 토큰 — 포털 요청서(`ra-request.md`)의 봉투 그대로."
+      },
+      "GatewayTokenOut": {
+        "properties": {
+          "success": {
+            "type": "boolean",
+            "title": "Success",
+            "default": true
+          },
+          "data": {
+            "$ref": "#/components/schemas/GatewayTokenData"
+          }
+        },
+        "type": "object",
+        "required": [
+          "data"
+        ],
+        "title": "GatewayTokenOut"
       },
       "HTTPValidationError": {
         "properties": {

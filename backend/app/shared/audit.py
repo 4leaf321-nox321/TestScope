@@ -111,6 +111,10 @@ RELIABILITY_TEST_REJECTED = "reliability_test.rejected"
 RELIABILITY_TEST_REOPENED = "reliability_test.reopened"
 """확정된 시험을 **다시 후보로** 열었다. 그 순간부터 AI 가 다시 고칠 수 있게 되므로,
 누가 그 문을 열었는지가 남아야 한다."""
+PAT_ISSUED_FOR_GATEWAY = "pat.issued_for_gateway"
+"""HWAX 포털 게이트웨이가 공유 비밀로 **그 사람의 읽기 전용 토큰**을 받아 갔다. 사람이
+화면에서 발급한 것과 갈라야 한다 — 「이 토큰 누가 만들었어」 에 「포털이, 이 IP 에서,
+이 사람 명의로」 가 답이어야 하고, 직전 토큰을 몇 개 폐기했는지도 여기 남는다."""
 
 
 def diff(before: dict[str, Any], after: dict[str, Any]) -> dict[str, Any]:

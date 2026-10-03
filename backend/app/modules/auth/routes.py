@@ -18,9 +18,12 @@ from sqlalchemy.orm import Session
 from app.config import get_settings
 from app.database import get_db
 from app.modules.accounts.models import User
-from app.modules.auth import services
+from app.modules.auth import gateway_token, services
 from app.modules.auth.schemas import (
     ChangePasswordRequest,
+    GatewayRevokeOut,
+    GatewayTokenData,
+    GatewayTokenOut,
     LoginRequest,
     LoginResponse,
     PatCreateRequest,
@@ -128,6 +131,34 @@ def change_password(
     services.change_password(db, user, payload.current_password, payload.new_password)
     # 모든 세션을 끊었으므로 이 브라우저의 쿠키도 함께 버린다.
     _clear_refresh_cookie(response)
+
+
+# --- HWAX 포털 게이트웨이의 사람별 위임 ------------------------------------------
+#
+# 셋 다 **인증 의존성을 안 지난다** — 자격은 공유 비밀(`X-Heax-Gateway-Secret`)이고, 그
+# 판정은 `gateway_token.gate` 가 한다. 왜 SSO 가 아닌지·왜 계정을 안 만드는지·왜 읽기
+# 전용인지는 그 모듈 머리에 있다.
+
+
+@router.post("/sso", response_model=GatewayTokenOut)
+def gateway_issue(request: Request, db: Session = Depends(get_db)) -> GatewayTokenOut:
+    """HWAX 게이트웨이가 **그 사람의 읽기 전용 토큰**을 받아 간다. 꺼져 있으면 404, 비밀이
+    틀리면 401, 그 사람을 들여보낼 수 없으면 403 — 404 는 「창구 꺼짐」 전용이다."""
+    gateway_token.gate(request)
+    return GatewayTokenOut(data=GatewayTokenData(**gateway_token.issue(db, request)))
+
+
+@router.post("/sso/verify", status_code=204)
+def gateway_verify(request: Request) -> None:
+    """비밀만 확인한다(204 / 401) — 설정이 맞는지 볼 때. 아무것도 만들지 않는다."""
+    gateway_token.gate(request)
+
+
+@router.post("/sso/revoke", response_model=GatewayRevokeOut)
+def gateway_revoke(request: Request, db: Session = Depends(get_db)) -> GatewayRevokeOut:
+    """그 사람·그 client 의 위임 토큰을 폐기한다. 폐기할 것이 없어도 200 이다."""
+    gateway_token.gate(request)
+    return GatewayRevokeOut(revoked=gateway_token.revoke(db, request))
 
 
 # --- PAT — 장비 연계 스크립트용 자격 증명 -------------------------------------

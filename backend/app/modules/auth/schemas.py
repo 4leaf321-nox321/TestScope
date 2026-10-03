@@ -112,3 +112,26 @@ class PatCreateResponse(BaseModel):
     token: str
     """평문은 이 응답에서 한 번만 나온다. 다시 볼 수 없다."""
     pat: PatOut
+
+
+class GatewayTokenData(BaseModel):
+    """HWAX 위임 창구가 내주는 토큰 — 포털 요청서(`ra-request.md`)의 봉투 그대로."""
+
+    access_token: str
+    """`tsc_pat_…` 평문. 게이트웨이가 12시간 캐시한다 — 다시 볼 수 없다."""
+    token_type: str = "bearer"
+    expires_in: int
+    """초. 게이트웨이는 이보다 2분 먼저 버리고 다시 받는다."""
+    needs_workspace: bool
+    """아직 대표 부서가 없는 사람. 참고용 — 지금 소비자는 안 읽는다."""
+
+
+class GatewayTokenOut(BaseModel):
+    success: bool = True
+    data: GatewayTokenData
+
+
+class GatewayRevokeOut(BaseModel):
+    ok: bool = True
+    revoked: int
+    """폐기한 수. 사람이 없거나 토큰이 없어도 0 — 폐기할 것이 없을 뿐이다."""
