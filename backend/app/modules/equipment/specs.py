@@ -23,6 +23,7 @@ from typing import Any
 from sqlalchemy import func, select
 from sqlalchemy.orm import Session
 
+from app.modules.accounts.models import User
 from app.modules.equipment.models import (
     Equipment,
     EquipmentModel,
@@ -122,7 +123,17 @@ def value_out(
         source_path=source.path if source else None,
         source_page=row.source_page,
         updated_at=row.updated_at,
+        origin=row.origin,
+        updated_via=row.updated_via,
+        updated_by_name=_name(db, row.updated_by_id),
     )
+
+
+def _name(db: Session, user_id: uuid.UUID | None) -> str | None:
+    if user_id is None:
+        return None
+    user = db.get(User, user_id)
+    return user.display_name if user else None
 
 
 def sheet(db: Session, model: EquipmentModel) -> ModelSpecSheetOut:
@@ -332,33 +343,47 @@ def _held_text(row: ModelSpecValue) -> str:
     return "(빈 값)"
 
 
+#: 기계 자격이 못 덮는 값이 **누구의 것인지** — 거절할 때 함께 말한다. 「사람이 고쳐 둔 값일
+#: 수 있다」 와 「사람이 적은 값이다」 는 부르는 쪽이 할 일이 다르다.
+_ORIGIN_TEXT = {
+    "manual": "사람이 적은 값",
+    "catalog": "카탈로그 반입이 넣은 값",
+}
+_UNKNOWN_ORIGIN = "누가 넣었는지 기록이 없는 값(기록 전에 적힘)"
+
+
 def _refuse_machine_replace(
     row: ModelSpecValue, definition: SpecDefinition, *, replace: bool
 ) -> None:
-    """**기계 자격은 있는 값을 조용히 못 덮는다.** 빈 자리를 채우는 것은 그대로 된다.
+    """**기계 자격은 기계가 넣은 값만 말없이 고친다.** 빈 자리를 채우는 것은 그대로 된다.
 
     반입이 지키는 규칙과 같다(`catalog_import/values.py`: 「이미 있으면 안 덮는다 — 손으로
     고쳐 둔 것이 사양서보다 정확하다」). 이 경로에만 그 규칙이 없어서, AI 가 사양을 채우다
-    사람이 운영에서 고쳐 둔 값을 사양서 값으로 되돌릴 수 있었다.
+    사람이 운영에서 고쳐 둔 값을 사양서 값으로 되돌릴 수 있었다(v0.47.0 에서 막았다).
 
-    **누가 넣었는지로 가르지 않는다.** 그 칸이 없고, 넣으려 해도 이미 들어가 있는 값들은
-    반입이 넣은 것과 사람이 고친 것이 구별되지 않는다 — 그 구별을 지금 만들 수는 없으므로
-    「있는 값」 전부를 한 번 물어보게 한다. 사람 세션은 안 막는다: 화면에서 고치는 사람은
-    지금 값을 보고 있다.
+    그때는 누가 넣었는지 적는 칸이 없어서 **있는 값 전부**를 막았다 — AI 는 제가 방금 넣은
+    오타 하나도 `replace` 없이는 못 고쳤다. 이제 `origin` 으로 가른다: AI 가 넣은 값(`agent`)은
+    그대로 고치고, 사람(`manual`) · 반입(`catalog`) · 기록 전(비어 있음) 값은 `replace` 를 함께
+    보내야 덮는다. 사람 세션은 안 막는다: 화면에서 고치는 사람은 지금 값을 보고 있다.
     """
-    if get_actor_token() is None or replace:
+    if get_actor_token() is None or replace or row.origin == "agent":
         return
+    whose = _ORIGIN_TEXT.get(row.origin or "", _UNKNOWN_ORIGIN)
     raise Conflict(
         "TSC-SPEC-0014",
-        f"{definition.label}에 이미 값이 있습니다({_held_text(row)}). "
-        "사람이 고쳐 둔 값일 수 있어 기계 자격으로는 덮지 않습니다 — "
+        f"{definition.label}에 이미 값이 있습니다({_held_text(row)} — {whose}). "
+        "기계 자격으로는 AI 가 넣지 않은 값을 덮지 않습니다 — "
         "정말 바꿀 것이면 replace 를 함께 보내고, 아니면 사람에게 물으십시오.",
-        details={"definition": definition.label, "held": _held_text(row)},
+        details={
+            "definition": definition.label,
+            "held": _held_text(row),
+            "origin": row.origin,
+        },
     )
 
 
 def upsert(
-    db: Session, model: EquipmentModel, payload: dict[str, Any]
+    db: Session, model: EquipmentModel, payload: dict[str, Any], *, actor: User
 ) -> tuple[ModelSpecValueOut, str | None, int]:
     """사양 값 하나를 넣거나 덮어쓴다. (값, 이어진 검색축 이름, 이미 등록된 대수).
 
@@ -381,8 +406,10 @@ def upsert(
     되돌릴 수** 있었다. 실제로 그런 일이 있었다: 두 기종의 단위환산을 사람이 운영에서
     직접 했다(2026-10-03).
 
-    그래서 기계 자격으로 **값이 이미 있는 자리**를 고치려면 `replace=True` 를 함께 보내야
-    한다. 빈 자리를 채우는 것은 그대로 된다 — 백필이 하는 일은 그것이다.
+    그래서 기계 자격으로 **AI 가 넣지 않은 값**을 고치려면 `replace=True` 를 함께 보내야
+    한다(`origin`). 빈 자리를 채우는 것과 AI 가 넣은 값을 고치는 것은 그대로 된다 — 백필이
+    하는 일은 그것이다. 누가 적었는지는 값마다 남는다(`origin` · `updated_by_id` ·
+    `updated_via`).
 
     사람 세션은 안 막는다. 화면에서 고치는 사람은 지금 값을 보고 있다.
     """
@@ -421,6 +448,10 @@ def upsert(
     row.requires_accessory = bool(payload.get("requires_accessory"))
     row.source_id = payload.get("source_id")
     row.source_page = payload.get("source_page")
+    token = get_actor_token()
+    row.origin = "agent" if token else "manual"
+    row.updated_by_id = actor.id
+    row.updated_via = token
     db.commit()
     db.refresh(row)
 

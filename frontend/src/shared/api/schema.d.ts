@@ -6703,6 +6703,12 @@ export interface components {
              * Format: date-time
              */
             updated_at: string;
+            /** Origin */
+            origin?: string | null;
+            /** Updated Via */
+            updated_via?: string | null;
+            /** Updated By Name */
+            updated_by_name?: string | null;
         };
         /**
          * ModelSpecValueUpsertRequest

@@ -840,7 +840,7 @@ def promote_free_spec(
 def upsert_model_spec(
     model_id: uuid.UUID,
     payload: ModelSpecValueUpsertRequest,
-    _: User = Depends(require_system_admin),
+    admin: User = Depends(require_system_admin),
     db: Session = Depends(get_db),
 ) -> ModelSpecSaveResult:
     """사양 한 칸을 넣거나 덮어쓴다.
@@ -857,7 +857,7 @@ def upsert_model_spec(
     반영되지 않는다.
     """
     value, axis, units = specs.upsert(
-        db, catalog.get_model(db, model_id), payload.model_dump()
+        db, catalog.get_model(db, model_id), payload.model_dump(), actor=admin
     )
     return ModelSpecSaveResult(value=value, search_axis=axis, existing_units=units)
 

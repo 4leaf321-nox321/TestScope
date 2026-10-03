@@ -39,6 +39,21 @@ import { specApi } from '@/modules/equipment/api'
 import { convertValue, isError } from '@/shared/units'
 import { shownSpecValue } from '@/modules/equipment/specValue'
 
+/** 이 값을 누가 적었나 — 마우스를 올리면 보인다. 기록 전에 적힌 값(`origin` 없음)은 말하지
+ *  않는다: 모르는 것을 「사람」 이라고 적으면 거짓말이 된다. */
+function writtenBy(item: {
+  origin?: string | null
+  updated_via?: string | null
+  updated_by_name?: string | null
+}): string | undefined {
+  const who = item.updated_by_name ? ` (${item.updated_by_name})` : ''
+  if (item.origin === 'agent')
+    return `${item.updated_via ?? 'AI'}${who} 가 넣었습니다 — AI 가 넣은 값은 AI 가 고칠 수 있고, 사람이 고치면 다시 잠깁니다`
+  if (item.origin === 'manual') return `${item.updated_by_name ?? '사람'} 가 적었습니다`
+  if (item.origin === 'catalog') return '카탈로그 반입이 넣었습니다'
+  return undefined
+}
+
 /** 빈 문자열은 안 보낸 것과 같다 — 숫자 칸의 0 과 구별해야 한다.
  *
  *  단위가 붙어 있으면(「4000 cP」) 그 칸의 단위로 바꾼다. 못 바꾸는 것은 저장 전에
@@ -327,7 +342,17 @@ export function ModelSpecPanel({
                       )}
                     </dt>
                     <dd className="flex flex-wrap items-baseline gap-2">
-                      <span>{shownSpecValue(item)}</span>
+                      <span title={writtenBy(item)}>{shownSpecValue(item)}</span>
+                      {item.origin === 'agent' && (
+                        // **누가 넣었나.** AI 가 넣은 값은 AI 가 replace 없이 고치고, 사람이
+                        // 고치면 다시 잠긴다 — 어느 값이 열려 있는지가 여기서 보여야 한다.
+                        <span
+                          className="text-muted-foreground text-xs"
+                          title={writtenBy(item)}
+                        >
+                          AI
+                        </span>
+                      )}
                       {item.axis_unit_mismatch && (
                         // 검색축에 이었는데 단위를 못 맞춘다 — 조용히 빠지면 「검색축인데 왜
                         // 모름이라 하지」 가 된다.

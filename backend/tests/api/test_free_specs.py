@@ -139,6 +139,8 @@ def test_정의로_세우면_같은_키의_다른_기종도_함께_옮긴다(
     sheet = client.get(f"/api/equipment-models/{first['id']}/specs", headers=admin.headers)
     values = [one for group in sheet.json()["groups"] for one in group["items"]]
     assert values[0]["num_min"] == 0 and values[0]["num_max"] == 152
+    # 누가 넣었는지도 따라간다 — 반입 줄은 반입 값이 되어 기계가 replace 없이 못 덮는다.
+    assert values[0]["origin"] == "catalog"
     sheet = client.get(f"/api/equipment-models/{second['id']}/specs", headers=admin.headers)
     values = [one for group in sheet.json()["groups"] for one in group["items"]]
     assert values[0]["num_min"] is None and values[0]["num_max"] == 203
@@ -184,3 +186,25 @@ def test_이_줄조차_못_읽으면_정의를_안_남긴다(client: TestClient,
     assert refused.status_code == 400, refused.text
     definitions = client.get("/api/spec-definitions", headers=admin.headers).json()
     assert key not in {one["key"] for one in definitions}
+
+
+def test_기계가_붙인_고유_사양은_agent_로_남는다(client: TestClient, admin: Signed) -> None:
+    """「정의로 세우기」 가 이 표시를 사양 값으로 옮긴다 — 여기서 manual 로 찍히면 AI 가 적은
+    값이 사람 값처럼 잠겨, AI 가 제 오타를 못 고친다."""
+    token = client.post(
+        "/api/auth/tokens",
+        json={
+            "name": f"고유-백필-{uuid.uuid4().hex[:6]}",
+            "scopes": ["read", "catalog:write"],
+        },
+        headers=admin.headers,
+    )
+    assert token.status_code == 201, token.text
+    model = _model(client, admin)
+    made = client.post(
+        f"/api/equipment-models/{model['id']}/free-specs",
+        json={"label": "스핀들 종류", "value_text": "LV 4종"},
+        headers={"Authorization": f"Bearer {token.json()['token']}"},
+    )
+    assert made.status_code == 201, made.text
+    assert made.json()["origin"] == "agent"

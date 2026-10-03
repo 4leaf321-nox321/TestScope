@@ -666,6 +666,21 @@ class ModelSpecValue(Base):
     )
     source_page: Mapped[int | None] = mapped_column(Integer, nullable=True)
 
+    origin: Mapped[str | None] = mapped_column(String(10), nullable=True)
+    """**누가 넣었나** — `manual`(사람) · `agent`(AI — 개인 토큰) · `catalog`(반입).
+
+    기계 자격은 `agent` 값만 말없이 고친다(`specs._refuse_machine_replace`). 사람이 운영에서
+    고쳐 둔 값을 AI 가 사양서 값으로 되돌리면 그 사람은 고친 것이 사라진 줄도 모르고, 반입
+    값을 고치면 DB 가 정본(카탈로그)과 조용히 어긋난다. **비어 있으면 이 칸이 생기기 전(0051)에
+    적힌 값**이다 — 반입이 넣었는지 사람이 고쳤는지 가를 근거가 없어 사람 값처럼 지킨다."""
+    updated_by_id: Mapped[uuid.UUID | None] = mapped_column(
+        PgUUID(as_uuid=True), ForeignKey("users.id", ondelete="SET NULL"), nullable=True
+    )
+    """마지막으로 값을 적은 계정 — 사람이거나 그 토큰의 주인. 반입은 비어 있다."""
+    updated_via: Mapped[str | None] = mapped_column(String(100), nullable=True)
+    """기계 자격이면 그 토큰의 이름(다른 표의 `submitted_via` 와 같은 뜻). 한 사람의
+    「Claude 백필」 과 「Codex」 가 여기서 갈린다."""
+
     created_at: Mapped[datetime] = mapped_column(
         DateTime(timezone=True), server_default=func.now(), nullable=False
     )
@@ -727,7 +742,8 @@ class ModelFreeSpec(Base):
     origin: Mapped[str] = mapped_column(
         String(10), default="manual", server_default="manual", nullable=False
     )
-    """`catalog`(반입) · `manual`(사람)."""
+    """`catalog`(반입) · `manual`(사람) · `agent`(AI — 개인 토큰). 「정의로 세우기」 가 이 값을
+    사양 값의 `origin` 으로 그대로 옮긴다 — 거기서 기계가 고칠 수 있는 값인지가 갈린다."""
     source_id: Mapped[uuid.UUID | None] = mapped_column(
         PgUUID(as_uuid=True),
         ForeignKey("spec_sources.id", ondelete="SET NULL"),

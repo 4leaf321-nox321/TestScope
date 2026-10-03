@@ -183,6 +183,8 @@ def _put_spec(
         ModelSpecValue(
             model_id=model.id,
             definition_id=definition.id,
+            # 기계 자격이 replace 없이 못 덮는 값이다 — 정본과 어긋나지 않게.
+            origin="catalog",
             note=note,
             requires_accessory=accessory,
             source_id=source.id if source else None,

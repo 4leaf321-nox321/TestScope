@@ -642,8 +642,9 @@ async def _write_chain(ctx: _Ctx) -> int:
                         bad += 1
                         print("  실패 기종을 이었는데 catalog_linked 가 거짓입니다")
 
-                    # 8-2-c. **있는 값은 기계가 못 덮는다.** 사람이 운영에서 고쳐 둔 값을
-                    # AI 가 사양서 값으로 되돌리는 일을 막는다. 빈 자리는 그대로 채운다.
+                    # 8-2-c. **AI 가 넣은 값은 AI 가 고친다.** 사람 · 반입 값을 못 덮는 쪽은
+                    # pytest(`test_spec_overwrite.py`)가 본다 — 이 사슬은 토큰 하나로만 돌아서
+                    # 사람이 적은 값을 만들 길이 없다(CI 의 DB 에는 반입 값도 없다).
                     shown = await server.list_spec_definitions(ctx)
                     number = next(
                         (
@@ -665,15 +666,19 @@ async def _write_chain(ctx: _Ctx) -> int:
                             ),
                             ["search_axis"],
                         )
-                        # 있는 자리는 **조용히 못 덮는다.** 사람이 운영에서 고쳐 둔 값일 수
-                        # 있어서, 409 로 거절하고 지금 값을 함께 준다.
-                        refused = await server.set_spec(
-                            ctx, picked["id"], number["id"], num_value=300
+                        # 제가 넣은 값은 replace 없이 고친다 — 누가 넣었는지(`origin`)가
+                        # 남기 때문이다. 오타 하나에 사람을 부르게 하면 백필이 멈춘다.
+                        fixed = step(
+                            "set_spec(AI 가 넣은 값)",
+                            await server.set_spec(
+                                ctx, picked["id"], number["id"], num_value=300
+                            ),
+                            ["search_axis"],
                         )
-                        print(f"    ok set_spec(있는 값)              {_short(refused, 70)}")
-                        if "TSC-SPEC-0014" not in str(refused):
+                        origin = (fixed or {}).get("value", {}).get("origin")
+                        if fixed is not None and origin != "agent":
                             bad += 1
-                            print("  실패 있는 값을 기계 자격으로 덮었습니다")
+                            print(f"  실패 AI 가 넣은 값의 origin 이 agent 가 아닙니다: {origin}")
                         # 길을 막는 것이 아니라 **의도를 적게** 하는 것이다.
                         again = step(
                             "set_spec(replace)",

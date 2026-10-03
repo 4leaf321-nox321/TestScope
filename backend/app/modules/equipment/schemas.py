@@ -991,6 +991,13 @@ class ModelSpecValueOut(BaseModel):
     source_path: str | None
     source_page: int | None
     updated_at: datetime
+    origin: str | None = None
+    """누가 넣었나 — `manual`(사람) · `agent`(AI 토큰) · `catalog`(반입). 비어 있으면 그것을
+    적기 전(0051)의 값이다. **기계 자격은 `agent` 값만 `replace` 없이 고친다.**"""
+    updated_via: str | None = None
+    """AI 가 넣었으면 그 토큰 이름."""
+    updated_by_name: str | None = None
+    """마지막으로 적은 사람(토큰이면 그 주인)."""
 
 
 class ModelSpecGroupOut(BaseModel):

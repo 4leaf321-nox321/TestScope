@@ -28,6 +28,7 @@ from app.modules.equipment.schemas import FreeSpecOut, FreeSpecPromoteResult
 from app.modules.equipment.specs import category_of
 from app.modules.vocabulary.specs import SpecDefinition, SpecDefinitionCategory, SpecGroup
 from app.shared.errors import AppError, Conflict, NotFound
+from app.shared.request_context import get_actor_token
 from app.shared.text import clean
 
 _NUMBER = re.compile(r"^[-+]?\d+(?:\.\d+)?(?:[eE][-+]?\d+)?$")
@@ -93,7 +94,9 @@ def add(db: Session, model: EquipmentModel, payload: dict[str, Any]) -> ModelFre
         value_text=clean(payload["value_text"]),
         unit=clean(payload["unit"]) or None if payload.get("unit") else None,
         note=payload.get("note") or None,
-        origin="manual",
+        # 기계 자격이면 agent — 「정의로 세우기」 가 이것을 사양 값의 origin 으로 옮기므로,
+        # 여기서 manual 로 찍히면 AI 가 적은 값이 사람 값처럼 잠긴다.
+        origin="agent" if get_actor_token() else "manual",
         source_id=payload.get("source_id"),
         source_page=payload.get("source_page"),
     )
@@ -211,6 +214,7 @@ def promote(
             ModelSpecValue(
                 model_id=one.model_id,
                 definition_id=definition.id,
+                origin=one.origin,
                 note=one.note,
                 source_id=one.source_id,
                 source_page=one.source_page,
