@@ -1,4 +1,9 @@
-"""공지 라우터 — 읽기는 누구나, 쓰기는 시스템 관리자."""
+"""공지 라우터 — 읽기는 누구나, 쓰기는 시스템 관리자.
+
+**초안 → 게시가 두 걸음이다.** 반쯤 쓴 공지를 저장해 둘 자리가 없으면 사람은 완성될 때까지
+창을 열어 두거나(그러다 닫히면 날아간다) 메모장에 쓴다. 그리고 게시는 **따로 누른다** —
+고치다가 저장 단추 하나로 전사에 나가면, 그 단추를 누를 때마다 망설이게 된다.
+"""
 
 from __future__ import annotations
 
@@ -12,9 +17,9 @@ from sqlalchemy.orm import Session
 from app.database import get_db
 from app.modules.accounts.models import User
 from app.modules.notices.models import Notice, NoticeRead
-from app.modules.notices.schemas import NoticeOut, NoticeWriteRequest
+from app.modules.notices.schemas import NoticeOut, NoticeUpdateRequest, NoticeWriteRequest
 from app.shared.auth import current_user, require_system_admin
-from app.shared.errors import NotFound
+from app.shared.errors import Conflict, NotFound
 
 router = APIRouter(prefix="/notices", tags=["notices"])
 
@@ -91,6 +96,55 @@ def create_notice(
         author_id=admin.id,
     )
     db.add(notice)
+    db.commit()
+    db.refresh(notice)
+    return _out(db, notice, admin)
+
+
+def _get(db: Session, notice_id: uuid.UUID) -> Notice:
+    notice = db.get(Notice, notice_id)
+    if notice is None:
+        raise NotFound("TSC-NOTICES-0001", "공지를 찾을 수 없습니다.")
+    return notice
+
+
+@router.patch("/{notice_id}", response_model=NoticeOut)
+def update_notice(
+    notice_id: uuid.UUID,
+    payload: NoticeUpdateRequest,
+    admin: User = Depends(require_system_admin),
+    db: Session = Depends(get_db),
+) -> NoticeOut:
+    """공지를 고친다 — 초안이든 게시된 것이든. **게시 여부는 안 바꾼다**(`/publish` 가 한다).
+
+    게시된 팝업을 고쳐도 **이미 읽은 사람에게 다시 뜨지 않는다.** 크게 바뀌었으면 새 공지로
+    내는 편이 맞다 — 읽음을 지우면 오타 하나 고칠 때마다 전사에 팝업이 다시 뜬다.
+    """
+    notice = _get(db, notice_id)
+    for field, value in payload.model_dump(exclude_unset=True).items():
+        if field in ("title", "body", "level", "is_popup") and value is None:
+            continue  # 비울 수 없는 칸 — None 은 「안 바꿈」 이다.
+        setattr(notice, field, value)
+    db.commit()
+    db.refresh(notice)
+    return _out(db, notice, admin)
+
+
+@router.post("/{notice_id}/publish", response_model=NoticeOut)
+def publish_notice(
+    notice_id: uuid.UUID,
+    admin: User = Depends(require_system_admin),
+    db: Session = Depends(get_db),
+) -> NoticeOut:
+    """초안을 **게시한다** — 그 순간부터 모두에게 보이고, 팝업이면 스스로 뜬다.
+
+    이미 게시된 것은 409 다. 다시 누른다고 게시 시각을 지금으로 옮기면 「언제 알렸나」 가
+    바뀐다 — 그 시각은 「공지했는데 왜 몰랐어」 에 답하는 근거다.
+    """
+    notice = _get(db, notice_id)
+    if notice.published_at is not None:
+        raise Conflict("TSC-NOTICES-0002", "이미 게시된 공지입니다.")
+    notice.published_at = datetime.now(UTC)
     db.commit()
     db.refresh(notice)
     return _out(db, notice, admin)

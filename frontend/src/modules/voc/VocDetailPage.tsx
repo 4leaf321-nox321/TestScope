@@ -23,6 +23,8 @@ import { Button } from '@/shared/components/ui/button'
 import { Textarea } from '@/shared/components/ui/textarea'
 import { useResource } from '@/shared/hooks/useResource'
 import { shownDate } from '@/shared/lib/datetime'
+import { AttachmentStrip } from '@/modules/attachments/AttachmentStrip'
+import { attachmentApi } from '@/modules/attachments/api'
 import { VOC_STATUS_LABELS, type VocEvent, vocApi } from '@/modules/voc/api'
 
 /** 한 줄이 무슨 일이었는지 — 등록 · 상태 변경 · 댓글. */
@@ -40,6 +42,7 @@ export default function VocDetailPage() {
   const [busy, setBusy] = useState(false)
   const [error, setError] = useState<Error | null>(null)
   const item = useResource(() => vocApi.get(id), [id])
+  const files = useResource(() => attachmentApi.list('voc', id), [id])
 
   async function move(to: string) {
     setBusy(true)
@@ -88,6 +91,20 @@ export default function VocDetailPage() {
                   <span className="font-mono">{shown.page_path}</span>
                 )}
               </p>
+            )}
+            {/* **근거는 그 건에 붙는다** — 화면 갈무리 한 장이 「저장이 안 된다」 는 글
+                열 줄보다 빨리 재현된다. 붙이고 지우는 것은 낸 사람과 관리자(서버가 말해
+                준다), 보는 것은 누구나. */}
+            {(shown.can_attach || (files.data ?? []).length > 0) && (
+              <AttachmentStrip
+                target="voc"
+                objectId={shown.id}
+                rows={files.data ?? []}
+                canEdit={shown.can_attach}
+                size="lg"
+                label="화면 갈무리 · 자료 첨부"
+                onChanged={() => files.reload()}
+              />
             )}
           </div>
 

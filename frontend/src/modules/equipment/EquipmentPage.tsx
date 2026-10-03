@@ -333,9 +333,13 @@ export default function EquipmentPage() {
                     {one.model_name ? (
                       <p className="text-muted-foreground text-xs">
                         {[one.series_name, one.model_name].filter(Boolean).join(' · ')}
-                        {/* 카탈로그에 안 이어진 모델명은 **검색이 안 보는 글자**다.
-                          그 사실을 안 적으면 사람은 이어진 줄 안다. */}
-                        {!one.catalog_linked && ' · 카탈로그 미연결'}
+                        {/* 카탈로그에 안 이어진 모델명은 **검색이 안 보는 글자**다. 그 사실을
+                          안 적으면 사람은 이어진 줄 안다 — 그래서 글자가 없는 줄과 **같은
+                          색**으로 단다. 전에는 회색으로 붙어서, 더 속이는 쪽(글자가 있어 이어진
+                          줄처럼 읽히는 쪽)이 덜 눈에 띄었다. 미연결은 미연결이다. */}
+                        {!one.catalog_linked && (
+                          <span className="text-amber-600"> · 카탈로그 미연결</span>
+                        )}
                       </p>
                     ) : (
                       !one.catalog_linked && (

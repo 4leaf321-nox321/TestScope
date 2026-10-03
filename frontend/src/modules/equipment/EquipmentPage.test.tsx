@@ -22,6 +22,12 @@ let empty = false
  * 2026-10-02). 부를 때마다 새 줄을 만든다.
  */
 let status = 'operational'
+/** 카탈로그에 이어졌나와 모델 글자 — 미연결 표시를 보는 시험만 바꾼다. */
+let catalog: {
+  model_name: string | null
+  series_name: string | null
+  catalog_linked: boolean
+} = { model_name: null, series_name: null, catalog_linked: true }
 
 /** 한 대라도 있어야 표가 그려진다 — 한 대도 없는 회사는 거르기를 볼 일이 없다. */
 const ONE = {
@@ -61,7 +67,7 @@ vi.mock('@/shared/api/client', () => ({
       if (url.startsWith('/equipment')) {
         return empty
           ? { items: [], total: 0, limit: 50, offset: 0 }
-          : { items: [{ ...ONE, status }], total: 1, limit: 50, offset: 0 }
+          : { items: [{ ...ONE, status, ...catalog }], total: 1, limit: 50, offset: 0 }
       }
       return []
     }),
@@ -111,6 +117,7 @@ beforeEach(() => {
   calls.length = 0
   empty = false
   status = 'operational'
+  catalog = { model_name: null, series_name: null, catalog_linked: true }
 })
 
 describe('보유 장비 목록', () => {
@@ -202,6 +209,21 @@ describe('보유 장비 목록', () => {
     // 전부에 칠하면 그 표시가 아무 뜻도 없어진다.
     await open()
     expect(screen.queryByText('미입력')).toBeNull()
+  })
+
+  it('모델 글자가 있어도 미연결이면 같은 색으로 단다', async () => {
+    // 글자가 있으면 사람은 이어진 줄로 읽는다 — 그 글자는 검색이 안 본다. 회색으로 붙이면
+    // 더 속이는 쪽이 덜 눈에 띈다.
+    catalog = { model_name: '68FM-300', series_name: null, catalog_linked: false }
+    await open()
+    const mark = screen.getByText(/카탈로그 미연결/)
+    expect(mark.className).toContain('text-amber-600')
+  })
+
+  it('모델 글자가 없어도 미연결이면 같은 색이다', async () => {
+    catalog = { model_name: null, series_name: null, catalog_linked: false }
+    await open()
+    expect(screen.getByText('카탈로그 미연결').className).toContain('text-amber-600')
   })
 
   it('폐기인데 근거가 없으면 칠한다', async () => {

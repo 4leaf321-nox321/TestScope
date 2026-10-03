@@ -144,6 +144,11 @@ def _describe_attribute_value(db: Session, row: Any) -> tuple[str, str | None]:
     어느 시험의 것인지 몰라 뗄지 말지를 정할 수 없다."""
     definition = db.get(AttributeDefinition, row.definition_id)
     label = definition.label if definition else "(속성 없음)"
+    if row.equipment_id:
+        # 장비의 속성(「소재 종류」)도 온톨로지 값을 가리킨다 — 시험만 보면 「대상 없음」 이
+        # 된다.
+        name, href = _equipment(db, row.equipment_id)
+        return f"{name} — {label}", href
     test = (
         db.get(ReliabilityTest, row.reliability_test_id) if row.reliability_test_id else None
     )
@@ -376,6 +381,15 @@ REFERENCE_KINDS: tuple[ReferenceKind, ...] = (
         "document_type_value",
         "document_type",
         "신뢰성 시험의 문서 유형",
+        AttributeValue,
+        AttributeValue.term_id,
+        "delete",
+        _describe_attribute_value,
+    ),
+    ReferenceKind(
+        "material_value",
+        "material",
+        "장비의 소재 종류",
         AttributeValue,
         AttributeValue.term_id,
         "delete",

@@ -34,3 +34,14 @@ class NoticeWriteRequest(Request):
     publish: bool = True
     """false 면 초안으로 둔다. 급한 공지를 반쯤 쓰다 저장하는 일이 실제로 있다."""
     expires_at: datetime | None = None
+
+
+class NoticeUpdateRequest(Request):
+    """고치기 — **안 보낸 칸은 안 바꾼다**(`exclude_unset`). 게시는 따로 한다(`/publish`):
+    고치다가 저장 단추 하나로 전사에 나가면 그 단추가 무섭다."""
+
+    title: str | None = Field(default=None, min_length=1, max_length=200)
+    body: str | None = Field(default=None, min_length=1)
+    level: str | None = Field(default=None, pattern="^(info|warning|urgent)$")
+    is_popup: bool | None = None
+    expires_at: datetime | None = None

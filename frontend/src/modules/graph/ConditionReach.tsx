@@ -6,10 +6,11 @@
  * 그걸 못 한다고 읽었다 — 실제로는 검색(`attr`)이 답하는 물음인데 그 경계가 화면 어디에도
  * 없었다.
  *
- * **구간을 안 나눈다.** 온도를 「-40 이하 / -40~85 / 85 이상」 으로 가르는 근거가 없고
+ * **구간을 미리 안 나눈다.** 온도를 「-40 이하 / -40~85 / 85 이상」 으로 가르는 근거가 없고
  * 축마다 다르다(VSWR 과 낙하 높이를 같은 규칙으로 못 나눈다). 임의로 나눈 구간은 없는
  * 것보다 나쁘다 — 읽는 사람이 그 경계에 뜻이 있다고 믿는다. 쓰다 보면 자연스러운 경계가
- * 드러나고, 그때 넣으면 된다. 순서가 반대면 아무도 안 쓰는 구간이 화면에 굳는다.
+ * 드러난다 — 그래서 **실제로 적힌 값**을 많이 적힌 것부터 보여 준다(`common_values`).
+ * 「85 °C 120건」 이 곧 그 경계이고, 아무도 안 쓰는 구간이 화면에 굳지 않는다.
  */
 
 import { Link } from 'react-router-dom'
@@ -77,6 +78,40 @@ export function ConditionReach({ nodeId }: { nodeId: string }) {
         )}
       </dl>
 
+      {found.common_values.length > 0 && (
+        // **쓰임이 드러낸 경계.** 누르면 그 값이 범위에 **드는** 시험으로 간다 — 그대로 적은
+        // 수(칩의 숫자)보다 많을 수 있다(범위로 적은 시험도 든다).
+        <div className="space-y-1">
+          <p className="text-muted-foreground text-xs">
+            자주 적힌 값 — 누르면 그 값이 드는 시험
+          </p>
+          <div className="flex flex-wrap gap-1">
+            {found.common_values.map((one) => {
+              const shown = (
+                <>
+                  {fmt(one.value)}
+                  {found.display_unit ? ` ${found.display_unit}` : ''}
+                  <span className="text-muted-foreground"> · {one.count}건</span>
+                </>
+              )
+              return one.attr ? (
+                <Link
+                  key={one.value}
+                  to={`/reliability-tests?attr=${encodeURIComponent(one.attr)}`}
+                  className="hover:bg-muted rounded-full border px-2 py-0.5 text-xs"
+                >
+                  {shown}
+                </Link>
+              ) : (
+                <span key={one.value} className="rounded-full border px-2 py-0.5 text-xs">
+                  {shown}
+                </span>
+              )
+            })}
+          </div>
+        </div>
+      )}
+
       {found.unconvertible_count > 0 && (
         // **조용히 빼면 「그만큼만 쓰인다」 로 읽힌다.**
         <p className="text-xs text-amber-700">
@@ -91,11 +126,11 @@ export function ConditionReach({ nodeId }: { nodeId: string }) {
           값으로 좁히기
         </Link>
       </Button>
-      {/* 여기서 구간을 안 나누는 이유를 읽는 사람에게도 말해 둔다. */}
+      {/* 여기서 구간을 미리 안 나누는 이유를 읽는 사람에게도 말해 둔다. */}
       <p className="text-muted-foreground text-xs">
-        그래프는 「어느 축을 거는가」 까지 답합니다. 「값이 얼마인가」 는 검색이 답합니다 — 위
-        단추가 이 조건이 적힌 시험으로 데려가고, 거기서 <code>{'>='}</code>·<code>{'<='}</code>{' '}
-        로 좁힙니다.
+        구간은 미리 나누지 않습니다 — 위 「자주 적힌 값」 이 실제 시험이 쓰는 경계입니다. 다른
+        값은 단추로 이 조건이 적힌 시험에 가서 <code>{'>='}</code>·<code>{'<='}</code> 로
+        좁힙니다.
       </p>
     </div>
   )

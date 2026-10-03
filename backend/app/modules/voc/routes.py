@@ -18,6 +18,7 @@ from sqlalchemy.orm import Session
 
 from app.database import get_db
 from app.modules.accounts.models import User
+from app.modules.voc import services
 from app.modules.voc.models import (
     ADMIN_MOVES,
     AUTHOR_MOVES,
@@ -35,7 +36,7 @@ from app.modules.voc.schemas import (
     VocMoveRequest,
 )
 from app.shared.auth import current_user
-from app.shared.errors import AppError, NotFound
+from app.shared.errors import AppError
 from app.shared.pagination import MAX_LIMIT, Page, clamp_limit
 
 router = APIRouter(prefix="/voc", tags=["voc"])
@@ -235,10 +236,7 @@ def move_item(
 
 
 def _get(db: Session, item_id: uuid.UUID) -> VocItem:
-    item = db.get(VocItem, item_id)
-    if item is None:
-        raise NotFound("TSC-VOC-0005", "그 VOC 를 찾을 수 없습니다.")
-    return item
+    return services.get_item(db, item_id)
 
 
 def _detail(db: Session, item: VocItem, user: User) -> VocDetailOut:
@@ -270,4 +268,5 @@ def _detail(db: Session, item: VocItem, user: User) -> VocDetailOut:
         ],
         can_move=can,
         note_required=[one for one in can if one in NOTE_REQUIRED],
+        can_attach=services.can_attach(item, user),
     )

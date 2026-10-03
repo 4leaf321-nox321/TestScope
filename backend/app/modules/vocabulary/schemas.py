@@ -154,12 +154,26 @@ class ConditionReachDefinitionOut(BaseModel):
     label: str
 
 
+class ConditionReachValueOut(BaseModel):
+    """실제로 **적힌** 값 하나와 그 값을 적은 시험 수 — 쓰임이 드러낸 경계."""
+
+    value: float
+    """축의 단위(`display_unit`)로."""
+    count: int
+    """그 값을 **그대로 적은** 시험 수(점으로든 범위의 끝으로든). 그 값이 범위 안에 **드는**
+    시험은 더 많을 수 있다 — `attr` 로 넘기면 그 목록이 온다."""
+    attr: str | None
+    """목록의 `attr` 에 그대로 실을 물음(`<key>=<값>`) — 그 값이 범위에 드는 시험. 이 축에
+    걸린 칸이 둘 이상이면 비어 있다: `attr` 여럿은 「모두 만족」 이라 엉뚱한 답이 된다."""
+
+
 class ConditionReachOut(BaseModel):
     """이 조건 축이 신뢰성 시험에서 **얼마나, 어디까지** 쓰이나.
 
-    **구간을 안 나눈다.** 온도를 「-40 이하 / -40~85 / 85 이상」 으로 가르는 근거가 없고
+    **구간을 미리 안 나눈다.** 온도를 「-40 이하 / -40~85 / 85 이상」 으로 가르는 근거가 없고
     축마다 다르다 — 임의로 나눈 구간은 없는 것보다 나쁘다(읽는 사람이 그 경계에 뜻이
-    있다고 믿는다). 몇 건이고 어디까지 쓰이나만 답하고, 좁히는 것은 검색으로 넘긴다.
+    있다고 믿는다). 대신 **실제로 적힌 값**을 센다(`common_values`) — 경계는 쓰임이 드러낸다.
+    좁히는 것은 검색으로 넘긴다.
     """
 
     condition_key_id: uuid.UUID
@@ -176,6 +190,10 @@ class ConditionReachOut(BaseModel):
     low: float | None
     """적힌 값의 최소(표시 단위). 값이 하나도 없으면 비어 있다."""
     high: float | None
+    common_values: list[ConditionReachValueOut] = []
+    """**자주 적힌 값** — 많이 적힌 것부터 열둘까지. 「85 °C 120건 · -40 °C 80건」 처럼 실제
+    시험이 쓰는 점이 곧 자연스러운 경계다. 미리 나눈 구간과 달리 아무도 안 쓰는 경계가
+    화면에 굳지 않는다."""
 
 
 class ConditionKeyOut(BaseModel):

@@ -51,6 +51,19 @@ DEFAULT_TERMS: dict[str, list[tuple[str, str]]] = {
         ("sr", "SR"),
         ("cs", "CS"),
     ],
+    # **소재는 대분류만 심는다.** 칸(장비의 「소재 종류」)이 이 축의 값을 고르게 하는데, 값
+    # 고르기는 있는 값만 보여 준다 — 비어 있으면 칸을 만들어 놓고 아무도 못 쓴다. SUS304 ·
+    # PC+ABS 같은 세부는 쓰는 사람이 더한다(열린 축). 세부까지 심으면 회사가 안 쓰는 이름이
+    # 목록을 채운다.
+    "material": [
+        ("metal", "금속"),
+        ("plastic", "플라스틱"),
+        ("rubber", "고무·엘라스토머"),
+        ("composite", "복합재"),
+        ("ceramic", "세라믹"),
+        ("glass", "유리"),
+        ("textile", "섬유"),
+    ],
 }
 
 AXES: list[tuple[str, str, str, str, str | None, int, str]] = [
@@ -174,6 +187,20 @@ AXES: list[tuple[str, str, str, str, str | None, int, str]] = [
         57,
         "사내 시험을 묶는 분류. 유형(환경·기계 …)보다 위이거나 옆인 갈래로, 회사마다 다르다 "
         "— 그래서 값을 코드로 심지 않고 축으로 연다.",
+    ),
+    # **보유 장비의 축이다**(`common` 이 아니다). 지금 가리키는 것은 장비의 「소재 종류」
+    # 하나뿐이고, `common` 은 여러 층이 함께 가리키는 것만 둔다(AGENTS.md). 시험·물성이
+    # 소재를 가리키기 시작하면 그때 올린다.
+    (
+        "material",
+        "소재",
+        "equipment",
+        "open",
+        None,
+        58,
+        "금속·플라스틱·고무처럼 무엇으로 만든 것인가. 장비의 「소재 종류」(이 장비로 다루는 "
+        "소재)가 이 축을 가리킨다 — 글로 적으면 SUS304 · STS304 · 스테인리스304 가 갈려 "
+        "아무도 못 거른다. 같은 것의 다른 이름은 값을 늘리지 말고 별칭으로 붙인다.",
     ),
 ]
 
@@ -944,9 +971,17 @@ _NUMBER = re.compile(r"-?\d+(?:\.\d+)?")
 #: 도입일과 다른 물음(예산 집행 연도)이라 따로 둔다. 없을 때만 심는다 — 관리자가 끄거나 이름을
 #: 바꾼 것을 설치가 되돌리면 안 된다.
 #:
-#:   (key, label, kind, unit, help, sort_order)
-EQUIPMENT_ATTRIBUTES: tuple[tuple[str, str, str, str, str, int], ...] = (
-    ("equipment_purpose", "장비 용도", "text", "", "이 장비로 무엇을 하나 — 한두 문장.", 1),
+#:   (key, label, kind, unit, help, sort_order, 온톨로지 축 slug)
+EQUIPMENT_ATTRIBUTES: tuple[tuple[str, str, str, str, str, int, str | None], ...] = (
+    (
+        "equipment_purpose",
+        "장비 용도",
+        "text",
+        "",
+        "이 장비로 무엇을 하나 — 한두 문장.",
+        1,
+        None,
+    ),
     (
         "investment_year",
         "투자 연도",
@@ -954,6 +989,7 @@ EQUIPMENT_ATTRIBUTES: tuple[tuple[str, str, str, str, str, int], ...] = (
         "",
         "예산이 집행된 해. 도입일(실제 들어온 날)과 다를 수 있다.",
         2,
+        None,
     ),
     (
         "reservation_url",
@@ -962,6 +998,7 @@ EQUIPMENT_ATTRIBUTES: tuple[tuple[str, str, str, str, str, int], ...] = (
         "",
         "예약 시스템의 주소. http 로 시작하면 화면이 링크로 그린다.",
         3,
+        None,
     ),
     # **AI 가 채우는 칸.** 장비에 붙인 자료(사양서·매뉴얼 PDF)에서 뽑은 글을 여기 적으면
     # 의미 검색의 카드에 함께 실려 임베딩된다(`shared/semantic.py` 의 `_standard_attributes`
@@ -979,6 +1016,7 @@ EQUIPMENT_ATTRIBUTES: tuple[tuple[str, str, str, str, str, int], ...] = (
         "장비 자료(사양서·매뉴얼)에서 뽑은 글. 의미 검색이 이 글까지 읽습니다 — "
         "AI 가 채우는 칸이고, 원문 전체가 아니라 쓸 만한 대목만 간추려 적습니다.",
         4,
+        None,
     ),
     # **「장비 용도」 와 다른 칸이다.** 용도는 「무엇을 하나」, 이것은 「왜 쓰나·왜 들였나」 다
     # — 투자 연도와 짝이 된다. 두 칸을 나란히 두는 것은 그 둘을 한 칸에 적으면 둘 중 하나가
@@ -993,6 +1031,21 @@ EQUIPMENT_ATTRIBUTES: tuple[tuple[str, str, str, str, str, int], ...] = (
         "",
         "이 장비를 왜 쓰는가 · 왜 들였는가. 「장비 용도」(무엇을 하나)와 다른 칸입니다.",
         5,
+        None,
+    ),
+    # **소재 종류는 글이 아니라 온톨로지 값이다**(사용자가 정함, 2026-10-02 「소재는 나중에
+    # 온톨로지로」). 글로 두면 SUS304 · STS304 · 스테인리스304 가 다 들어와 아무도 못 거른다.
+    # 한 칸에 한 값이다(적용군과 같다) — 여러 소재를 다루면 가장 주된 것을 고르거나 묶음을
+    # 단다.
+    (
+        "equipment_material",
+        "소재 종류",
+        "term",
+        "",
+        "이 장비로 다루는 소재. 「소재」 축에서 고른다 — 없으면 온톨로지에서 값을 더하고, "
+        "같은 것의 다른 이름(STS304 · SUS304)은 별칭으로 붙인다.",
+        6,
+        "material",
     ),
 )
 
@@ -1323,11 +1376,19 @@ def ensure_reliability_attributes(db: Session) -> int:
 
 
 def ensure_equipment_attributes(db: Session) -> int:
-    """보유 장비의 정식 속성을 심는다 — key 로 찾아 없는 것만."""
+    """보유 장비의 정식 속성을 심는다 — key 로 찾아 없는 것만.
+
+    온톨로지 값을 고르는 칸(`term`)은 축이 있어야 선다 — 축을 못 찾으면 **안 심는다**(정식
+    칸이 축 없이 서면 아무것도 못 고르는 칸이 된다). 축은 `ensure_reference_data` 가 먼저
+    심는다.
+    """
     known = set(db.scalars(select(AttributeDefinition.key)))
+    axes = {slug: vid for vid, slug in db.execute(select(Vocabulary.id, Vocabulary.slug))}
     added = 0
-    for key, label, kind, unit, help_text, order in EQUIPMENT_ATTRIBUTES:
+    for key, label, kind, unit, help_text, order, axis_slug in EQUIPMENT_ATTRIBUTES:
         if key in known:
+            continue
+        if axis_slug is not None and axis_slug not in axes:
             continue
         db.add(
             AttributeDefinition(
@@ -1339,6 +1400,7 @@ def ensure_equipment_attributes(db: Session) -> int:
                 status="standard",
                 help=help_text,
                 sort_order=order,
+                vocabulary_id=axes[axis_slug] if axis_slug else None,
             )
         )
         added += 1

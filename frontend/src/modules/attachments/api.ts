@@ -21,6 +21,9 @@ export type AttachmentTarget =
   /** 장비마다 사양서·매뉴얼·성적서가 따로 온다. 못 붙이면 공유 폴더에 두고 대장에는
    *  경로를 적게 되는데, 그 경로는 반년이면 깨진다. */
   | 'equipment'
+  /** VOC 를 낸 사람의 근거(화면 갈무리 · 로그). 글로만 적으면 보는 쪽이 같은 화면을 다시
+   *  만들어야 하고, 대개 못 만든다. */
+  | 'voc'
 
 export const attachmentApi = {
   list: (target: AttachmentTarget, objectId: string) =>

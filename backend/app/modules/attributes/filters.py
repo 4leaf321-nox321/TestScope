@@ -284,8 +284,19 @@ def _numeric_row(
     point = convert(num, source, unit) if num is not None else None
     if num is not None and point is None:
         return None  # 못 바꾸는 단위 — 지어서 옮기지 않는다.
-    bottom = point if point is not None else convert(low, source, unit) if low else None
-    top = point if point is not None else convert(high, source, unit) if high else None
+    # **0 도 끝이다.** `if low` 로 물으면 0 이 거짓이라 「0 ~ 100 °C」 가 「제한 없음 ~ 100」
+    # 이 되어 `<=-20` 에 걸렸고, 「-40 ~ 0 °C」 는 `>=50` 에 걸렸다 — 영하·0 °C 조건이
+    # 흔한 축(온도)에서 자신 있게 틀린 답이다.
+    bottom = (
+        point if point is not None else convert(low, source, unit) if low is not None else None
+    )
+    top = (
+        point
+        if point is not None
+        else convert(high, source, unit)
+        if high is not None
+        else None
+    )
     if bottom is None and top is None and point is None:
         return None if (low is not None or high is not None) else False
     return _numeric_match(one, bottom, top)

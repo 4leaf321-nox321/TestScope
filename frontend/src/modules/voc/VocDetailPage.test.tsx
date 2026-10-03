@@ -61,8 +61,11 @@ const ITEM = {
   note_required: ['resolved'],
 }
 
-async function show(over: Partial<typeof ITEM> = {}) {
-  get.mockResolvedValue({ ...ITEM, ...over })
+async function show(over: Partial<typeof ITEM> & { can_attach?: boolean } = {}) {
+  // 첨부 목록도 GET 이다 — 한 값으로 다 답하면 첨부 칸이 VOC 한 건을 목록으로 읽는다.
+  get.mockImplementation(async (url: string) =>
+    url.startsWith('/attachments') ? [] : { ...ITEM, can_attach: false, ...over },
+  )
   post.mockResolvedValue({ ...ITEM, ...over })
   await act(async () => {
     render(
@@ -78,6 +81,17 @@ async function show(over: Partial<typeof ITEM> = {}) {
 afterEach(() => vi.clearAllMocks())
 
 describe('VOC 한 건', () => {
+  it('자료는 붙일 수 있는 사람에게만 올리는 단추가 선다 — 서버가 말해 준다', async () => {
+    await show({ can_attach: true })
+    expect(screen.getByText(/화면 갈무리 · 자료 첨부/)).toBeTruthy()
+    expect(get).toHaveBeenCalledWith('/attachments?target=voc&object_id=v-1')
+  })
+
+  it('붙일 수 없고 붙은 것도 없으면 첨부 칸을 안 그린다', async () => {
+    await show({ can_attach: false })
+    expect(screen.queryByText(/화면 갈무리 · 자료 첨부/)).toBeNull()
+  })
+
   it('흐름이 시간 순으로 그려진다 — 등록도 한 줄이다', async () => {
     await show()
     expect(screen.getByText(/냈습니다/)).toBeTruthy()

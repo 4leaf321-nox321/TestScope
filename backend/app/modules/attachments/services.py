@@ -106,6 +106,12 @@ def require_can_edit(db: Session, user: User, *, target: str, object_id: uuid.UU
             code="TSC-EQUIPMENT",
             role="member",
         )
+    elif target == "voc":
+        # **낸 사람과 관리자.** 말은 누구나 보태지만 자료는 그 건의 것이다 — 남이 붙인 그림을
+        # 지울 수 있으면 낸 사람의 근거가 사라진다.
+        from app.modules.voc import services as voc
+
+        voc.require_attachable(db, user, object_id)
 
 
 def _resolve_type(content_type: str, filename: str) -> str | None:

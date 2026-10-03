@@ -15,6 +15,8 @@
    「고쳐졌다는데 여전히 안 된다」 가 어디에도 안 남는다.
 5. 아무나 상태를 못 옮긴다 — 그리고 **못 옮긴다는 것을 화면이 미리 안다**(`can_move`).
 6. 같은 상태로 보내면 **댓글**이다. 그건 누구나.
+7. **자료(화면 갈무리)는 낸 사람과 관리자가 붙이고 지운다** — 보는 것은 누구나. 그리고 붙일
+   수 있는지를 화면이 미리 안다(`can_attach`).
 """
 
 from __future__ import annotations
@@ -29,6 +31,7 @@ from app.modules.accounts.models import User
 from app.modules.auth import security
 from app.modules.workspaces.models import Workspace, WorkspaceMember
 from tests.api.conftest import Signed
+from tests.api.test_attachments import _png
 
 
 def _member(client: TestClient, db: Session, workspace: Workspace) -> Signed:
@@ -203,3 +206,43 @@ def test_기본_목록은_끝난_건을_빼고_내_것만도_본다(
 
     only_mine = client.get("/api/voc", params={"mine": True}, headers=one.headers).json()
     assert {row["id"] for row in only_mine["items"]} == {mine["id"]}
+
+
+def test_자료는_낸_사람과_관리자가_붙이고_누구나_본다(
+    client: TestClient, admin: Signed, db: Session, workspace: Workspace
+) -> None:
+    """화면 갈무리 한 장이 「저장이 안 된다」 는 글 열 줄보다 빨리 재현된다. 그런데 남이 붙인
+    그림을 지울 수 있으면 낸 사람의 근거가 사라진다."""
+    author = _member(client, db, workspace)
+    other = _member(client, db, workspace)
+    item = _file(client, author, f"저장이 안 됩니다-{uuid.uuid4().hex[:6]}")
+
+    def put(who: Signed) -> Any:
+        return client.post(
+            "/api/attachments",
+            data={"target": "voc", "object_id": item["id"]},
+            files={"file": ("화면.png", _png(), "image/png")},
+            headers=who.headers,
+        )
+
+    # 화면이 미리 안다 — 낸 사람은 붙일 수 있고, 남은 못 붙인다.
+    assert client.get(f"/api/voc/{item['id']}", headers=author.headers).json()["can_attach"]
+    assert not client.get(f"/api/voc/{item['id']}", headers=other.headers).json()["can_attach"]
+
+    mine = put(author)
+    assert mine.status_code == 201, mine.text
+    refused = put(other)
+    assert refused.status_code == 403, refused.text
+    assert refused.json()["error"]["code"] == "TSC-VOC-0006"
+    assert put(admin).status_code == 201
+
+    # 보는 것은 누구나 — 게시판이다.
+    seen = client.get(
+        f"/api/attachments?target=voc&object_id={item['id']}", headers=other.headers
+    )
+    assert seen.status_code == 200, seen.text
+    assert len(seen.json()) == 2
+
+    # 남이 지울 수도 없다.
+    gone = client.delete(f"/api/attachments/{mine.json()['id']}", headers=other.headers)
+    assert gone.status_code == 403, gone.text

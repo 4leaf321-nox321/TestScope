@@ -7,7 +7,8 @@
  * 여기서 지키는 것:
  *
  * 1. 몇 건이고 어디까지 쓰이나를 말한다.
- * 2. **구간을 안 나눈다** — 임의 경계는 없는 것보다 나쁘다.
+ * 2. **구간을 미리 안 나눈다** — 임의 경계는 없는 것보다 나쁘다. 대신 실제로 적힌 값을
+ *    보여 주고, 누르면 그 값이 드는 시험으로 간다.
  * 3. 좁히는 자리로 **넘긴다**(`attr` 은 축 id 가 아니라 칸의 key 를 받는다).
  * 4. 조용히 빼지 않는다 — 단위를 못 바꿔 범위에서 빠진 수를 말한다.
  */
@@ -36,6 +37,7 @@ function answer(over: Record<string, unknown> = {}) {
     unconvertible_count: 0,
     low: -55,
     high: 150,
+    common_values: [] as { value: number; count: number; attr: string | null }[],
     ...over,
   }
 }
@@ -73,6 +75,23 @@ describe('조건 축의 쓰임', () => {
     await show(answer())
     const link = screen.getByRole('link', { name: /값으로 좁히기/ })
     expect(link.getAttribute('href')).toBe('/reliability-tests?attr=reliability_temperature*')
+  })
+
+  it('자주 적힌 값을 칩으로 — 누르면 그 값이 드는 시험으로 간다', async () => {
+    await show(
+      answer({
+        common_values: [
+          { value: 85, count: 120, attr: 'reliability_temperature=85' },
+          { value: -40, count: 80, attr: null },
+        ],
+      }),
+    )
+    const chip = screen.getByRole('link', { name: /85 degC · 120건/ })
+    expect(chip.getAttribute('href')).toBe(
+      `/reliability-tests?attr=${encodeURIComponent('reliability_temperature=85')}`,
+    )
+    // 넘길 물음이 없으면(칸이 여럿) 글자만 — 엉뚱한 목록으로 데려가지 않는다.
+    expect(screen.getByText(/-40 degC/).closest('a')).toBeNull()
   })
 
   it('단위를 못 바꿔 빠진 것을 말한다 — 조용히 빼지 않는다', async () => {

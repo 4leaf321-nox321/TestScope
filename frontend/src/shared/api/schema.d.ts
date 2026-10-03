@@ -3453,23 +3453,6 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/api/notices/{notice_id}/read": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        get?: never;
-        put?: never;
-        /** Mark Read */
-        post: operations["mark_read_api_notices__notice_id__read_post"];
-        delete?: never;
-        options?: never;
-        head?: never;
-        patch?: never;
-        trace?: never;
-    };
     "/api/notices/{notice_id}": {
         parameters: {
             query?: never;
@@ -3482,6 +3465,53 @@ export interface paths {
         post?: never;
         /** Delete Notice */
         delete: operations["delete_notice_api_notices__notice_id__delete"];
+        options?: never;
+        head?: never;
+        /**
+         * Update Notice
+         * @description 공지를 고친다 — 초안이든 게시된 것이든. **게시 여부는 안 바꾼다**(`/publish` 가 한다).
+         *
+         *     게시된 팝업을 고쳐도 **이미 읽은 사람에게 다시 뜨지 않는다.** 크게 바뀌었으면 새 공지로
+         *     내는 편이 맞다 — 읽음을 지우면 오타 하나 고칠 때마다 전사에 팝업이 다시 뜬다.
+         */
+        patch: operations["update_notice_api_notices__notice_id__patch"];
+        trace?: never;
+    };
+    "/api/notices/{notice_id}/publish": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /**
+         * Publish Notice
+         * @description 초안을 **게시한다** — 그 순간부터 모두에게 보이고, 팝업이면 스스로 뜬다.
+         *
+         *     이미 게시된 것은 409 다. 다시 누른다고 게시 시각을 지금으로 옮기면 「언제 알렸나」 가
+         *     바뀐다 — 그 시각은 「공지했는데 왜 몰랐어」 에 답하는 근거다.
+         */
+        post: operations["publish_notice_api_notices__notice_id__publish_post"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/notices/{notice_id}/read": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /** Mark Read */
+        post: operations["mark_read_api_notices__notice_id__read_post"];
+        delete?: never;
         options?: never;
         head?: never;
         patch?: never;
@@ -4860,9 +4890,10 @@ export interface components {
          * ConditionReachOut
          * @description 이 조건 축이 신뢰성 시험에서 **얼마나, 어디까지** 쓰이나.
          *
-         *     **구간을 안 나눈다.** 온도를 「-40 이하 / -40~85 / 85 이상」 으로 가르는 근거가 없고
+         *     **구간을 미리 안 나눈다.** 온도를 「-40 이하 / -40~85 / 85 이상」 으로 가르는 근거가 없고
          *     축마다 다르다 — 임의로 나눈 구간은 없는 것보다 나쁘다(읽는 사람이 그 경계에 뜻이
-         *     있다고 믿는다). 몇 건이고 어디까지 쓰이나만 답하고, 좁히는 것은 검색으로 넘긴다.
+         *     있다고 믿는다). 대신 **실제로 적힌 값**을 센다(`common_values`) — 경계는 쓰임이 드러낸다.
+         *     좁히는 것은 검색으로 넘긴다.
          */
         ConditionReachOut: {
             /**
@@ -4886,6 +4917,23 @@ export interface components {
             low: number | null;
             /** High */
             high: number | null;
+            /**
+             * Common Values
+             * @default []
+             */
+            common_values: components["schemas"]["ConditionReachValueOut"][];
+        };
+        /**
+         * ConditionReachValueOut
+         * @description 실제로 **적힌** 값 하나와 그 값을 적은 시험 수 — 쓰임이 드러낸 경계.
+         */
+        ConditionReachValueOut: {
+            /** Value */
+            value: number;
+            /** Count */
+            count: number;
+            /** Attr */
+            attr: string | null;
         };
         /**
          * CreateAccountRequest
@@ -6850,6 +6898,23 @@ export interface components {
              * Format: date-time
              */
             created_at: string;
+        };
+        /**
+         * NoticeUpdateRequest
+         * @description 고치기 — **안 보낸 칸은 안 바꾼다**(`exclude_unset`). 게시는 따로 한다(`/publish`):
+         *     고치다가 저장 단추 하나로 전사에 나가면 그 단추가 무섭다.
+         */
+        NoticeUpdateRequest: {
+            /** Title */
+            title?: string | null;
+            /** Body */
+            body?: string | null;
+            /** Level */
+            level?: string | null;
+            /** Is Popup */
+            is_popup?: boolean | null;
+            /** Expires At */
+            expires_at?: string | null;
         };
         /** NoticeWriteRequest */
         NoticeWriteRequest: {
@@ -8932,6 +8997,11 @@ export interface components {
             can_move: string[];
             /** Note Required */
             note_required: string[];
+            /**
+             * Can Attach
+             * @default false
+             */
+            can_attach: boolean;
         };
         /** VocEventOut */
         VocEventOut: {
@@ -15791,7 +15861,71 @@ export interface operations {
             };
         };
     };
-    mark_read_api_notices__notice_id__read_post: {
+    delete_notice_api_notices__notice_id__delete: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                notice_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            204: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    update_notice_api_notices__notice_id__patch: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                notice_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["NoticeUpdateRequest"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["NoticeOut"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    publish_notice_api_notices__notice_id__publish_post: {
         parameters: {
             query?: never;
             header?: never;
@@ -15822,7 +15956,7 @@ export interface operations {
             };
         };
     };
-    delete_notice_api_notices__notice_id__delete: {
+    mark_read_api_notices__notice_id__read_post: {
         parameters: {
             query?: never;
             header?: never;
@@ -15834,11 +15968,13 @@ export interface operations {
         requestBody?: never;
         responses: {
             /** @description Successful Response */
-            204: {
+            200: {
                 headers: {
                     [name: string]: unknown;
                 };
-                content?: never;
+                content: {
+                    "application/json": components["schemas"]["NoticeOut"];
+                };
             };
             /** @description Validation Error */
             422: {

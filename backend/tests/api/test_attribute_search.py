@@ -319,6 +319,57 @@ def test_시험_목록도_조건_속성으로_거른다(
     assert {one["name"] for one in hot.json()["items"]} == {f"열충격-{tag}"}
 
 
+def test_0_도_범위의_끝이다(
+    client: TestClient, admin: Signed, condition_ids: dict[str, str]
+) -> None:
+    """「0 ~ 100 °C」 의 아래 끝은 0 이지 「제한 없음」 이 아니다.
+
+    `if low` 로 끝을 읽던 때는 0 이 거짓이라 빈 끝이 됐다 — 「0 ~ 100」 이 `<=-20` 에,
+    「-40 ~ 0」 이 `>=50` 에 걸렸다. 영하·0 °C 조건이 흔한 온도 축에서 자신 있게 틀린 답이다.
+    """
+    tag = uuid.uuid4().hex[:6]
+    temperature = _definition(
+        client,
+        admin,
+        target="reliability_test",
+        label=f"영점 온도-{tag}",
+        key=f"zero_{tag}",
+        kind="condition",
+        unit="degC",
+        condition_key_id=condition_ids["temperature"],
+        status="standard",
+    )
+    for name, low, high in ((f"상온부터-{tag}", 0, 100), (f"영하까지-{tag}", -40, 0)):
+        made = client.post(
+            "/api/reliability-tests",
+            json={
+                "division_code": "mx",
+                "name": name,
+                "attributes": [
+                    {
+                        "definition_id": temperature["id"],
+                        "num_min": low,
+                        "num_max": high,
+                        "unit": "degC",
+                    }
+                ],
+            },
+            headers=admin.headers,
+        )
+        assert made.status_code == 201, made.text
+
+    def names(attr: str) -> set[str]:
+        got = client.get(
+            "/api/reliability-tests", params={"attr": attr}, headers=admin.headers
+        )
+        assert got.status_code == 200, got.text
+        return {one["name"] for one in got.json()["items"]}
+
+    assert names(f"zero_{tag}<=-20") == {f"영하까지-{tag}"}
+    assert names(f"zero_{tag}>=50") == {f"상온부터-{tag}"}
+    assert names(f"zero_{tag}=0") == {f"상온부터-{tag}", f"영하까지-{tag}"}
+
+
 def test_값을_안_적은_줄을_찾는다(
     client: TestClient, admin: Signed, condition_ids: dict[str, str]
 ) -> None:

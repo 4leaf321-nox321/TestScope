@@ -98,6 +98,10 @@ NODE_TYPES: tuple[NodeType, ...] = (
     # 고치는 길이 둘이었다: 선을 빼거나 종류를 세우거나. **세우는 쪽이 맞다** — 「어느 사업부가
     # 무슨 시험을 하나」 는 이 그래프가 답해야 하는 물음이고, 사업부는 실제로 있는 축이다.
     NodeType("division", "사업부", "operations", "network", "division", None, 115),
+    # **소재.** 장비의 「소재 종류」 가 이 축을 가리킨다 — 종류를 세워야 「금속을 다루는
+    # 장비」 가 그래프의 이웃으로 선다(속성 선은 값의 축으로 종류를 정하고, 종류가 없는 축의
+    # 값은 뺀다).
+    NodeType("material", "소재", "vocabulary", "layers", "material", None, 135),
 )
 NODE_TYPE_BY_SLUG: dict[str, NodeType] = {one.slug: one for one in NODE_TYPES}
 
