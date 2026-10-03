@@ -2,7 +2,7 @@
   "name": "testscope-frontend",
   "private": true,
   "//": "이 version 이 곧 릴리스 번호다. 백엔드가 /api/health 로 이 값을 돌려준다.",
-  "version": "0.47.1",
+  "version": "0.48.0",
   "type": "module",
   "scripts": {
     "dev": "vite",
@@ -31,7 +31,9 @@
     "react": "^19.2.8",
     "react-dom": "^19.2.8",
     "react-force-graph-2d": "^1.29.1",
+    "react-markdown": "^10.1.0",
     "react-router-dom": "^7.18.2",
+    "remark-gfm": "^4.0.1",
     "shadcn": "^4.18.0",
     "tailwind-merge": "^3.6.0",
     "tailwindcss": "^4.3.3",

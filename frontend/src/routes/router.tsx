@@ -29,6 +29,7 @@ import { DEFAULT_WORKSPACE, pendingItems } from '@/shared/layout/navigation'
  */
 const AccountsAdminPage = lazy(() => import('@/modules/accounts/AccountsAdminPage'))
 const AuditPage = lazy(() => import('@/modules/audit/AuditPage'))
+const GuidePage = lazy(() => import('@/modules/guide/GuidePage'))
 const ConditionsPage = lazy(() => import('@/modules/vocabulary/ConditionsPage'))
 const SpecDefinitionsPage = lazy(() => import('@/modules/vocabulary/SpecDefinitionsPage'))
 const AttributeDefinitionsPage = lazy(
@@ -148,6 +149,9 @@ export const router = createBrowserRouter([
 
           // 공통
           { path: 'notices', element: <NoticesPage /> },
+          // 「무엇이 무엇과 엮이나」 — 쪽마다 주소가 있어야 링크로 가리킬 수 있다.
+          { path: 'guide', element: <GuidePage /> },
+          { path: 'guide/:slug', element: <GuidePage /> },
           { path: 'spec-documents', element: <SpecDocumentsPage /> },
           // 예전 주소 — 쓰던 주소가 죽으면 안 된다. `?kind=` 까지 실어 보낸다.
           { path: 'reference', element: <ReferenceRedirect /> },

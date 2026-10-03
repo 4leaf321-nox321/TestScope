@@ -8,6 +8,7 @@
 import {
   Atom,
   Bell,
+  BookOpen,
   Boxes,
   Building2,
   CheckSquare,
@@ -204,6 +205,13 @@ export const NAV_GROUPS: NavGroup[] = [
   {
     title: '공통',
     items: [
+      {
+        // **맨 위에 둔다.** 「이게 뭐랑 엮였지」 를 물을 사람은 대개 여기 처음 온
+        // 사람이고, 그 사람이 사이드바를 끝까지 읽지는 않는다.
+        label: '가이드',
+        icon: BookOpen,
+        to: '/guide',
+      },
       { label: '공지', icon: Megaphone, to: '/notices' },
       {
         // **온톨로지가 「무엇이 있나」 라면 지식 그래프는 「무엇이 무엇과 이어지나」.** 구조(종류와
