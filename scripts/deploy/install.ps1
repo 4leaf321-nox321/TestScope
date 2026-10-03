@@ -140,7 +140,12 @@ if (Test-Path $envFile) {
         "LOG_DIR=$dataPath\logs",
         "FILESTORE_DIR=$dataPath\filestore",
         '# https 로 서비스하면 true 로 올린다',
-        'REFRESH_COOKIE_SECURE=false'
+        'REFRESH_COOKIE_SECURE=false',
+        '',
+        '# HWAX 포털 연결 (선택) — 비면 꺼짐. 켜는 순서와 확인은 배포.md 「HWAX 포털에서 붙게 하려면」.',
+        '# 비밀은 포털 운영자가 만들어 전달한다(자동 생성 안 함). 운영에서는 ALLOWED_IPS 를 꼭 채운다.',
+        'HEAX_SSO_SECRET=',
+        'HEAX_SSO_ALLOWED_IPS='
     )
     # **BOM 없이 쓴다.** PowerShell 5.1 의 `Set-Content -Encoding utf8` 은 BOM 을
     # 붙이는데, 그러면 첫 줄 키가 조용히 무시된다(app/config.py 주석 참조). 읽는
