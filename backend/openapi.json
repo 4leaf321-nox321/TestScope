@@ -13990,6 +13990,21 @@
               }
             ],
             "title": "Is Active"
+          },
+          "stored_values": {
+            "anyOf": [
+              {
+                "type": "string",
+                "enum": [
+                  "convert",
+                  "keep"
+                ]
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Stored Values"
           }
         },
         "additionalProperties": false,
@@ -23663,6 +23678,21 @@
               }
             ],
             "title": "Category Term Ids"
+          },
+          "stored_values": {
+            "anyOf": [
+              {
+                "type": "string",
+                "enum": [
+                  "convert",
+                  "keep"
+                ]
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Stored Values"
           }
         },
         "additionalProperties": false,

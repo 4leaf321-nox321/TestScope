@@ -7,7 +7,7 @@ from __future__ import annotations
 
 import pytest
 
-from app.shared.units import compatible, convert, normalize_unit
+from app.shared.units import compatible, convert, normalize_unit, same_unit
 
 
 def test_같은_차원은_곱해서_옮긴다() -> None:
@@ -38,3 +38,17 @@ def test_못_바꾸면_None_이다() -> None:
     assert compatible("ShoreA", "kN") is False
     # 둘 다 비어 있으면 같은 것이다(단위 없는 축).
     assert compatible("", "") is True
+
+
+def test_표기만_다른_단위는_같은_단위다() -> None:
+    """단위 이름을 고칠 때 **숫자를 그대로 둬도 되는 짝**. 0점이 다른 짝은 눈금이 같아도
+    아니다 — degC 를 K 로 「표기만」 바꾸면 25 °C 가 25 K 가 된다."""
+    assert same_unit("°C", "degC")
+    assert same_unit("N·m", "Nm")
+    assert same_unit("%", "pct")
+    assert same_unit("degC/s", "K/s")  # 온도 차이의 속도는 눈금이 같다
+    assert same_unit("", "")
+    assert not same_unit("cm", "m")
+    assert not same_unit("degC", "K")
+    assert not same_unit("cm", "")
+    assert not same_unit("회", "")

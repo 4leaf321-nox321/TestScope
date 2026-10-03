@@ -10,7 +10,7 @@ import re
 import uuid
 from typing import Any
 
-from sqlalchemy import func, select
+from sqlalchemy import func, or_, select
 from sqlalchemy.orm import Session
 
 from app.modules.accounts.models import User
@@ -32,6 +32,7 @@ from app.modules.vocabulary.models import ConditionKey, Vocabulary, VocabularyTe
 from app.shared.attribute_text import display_attribute
 from app.shared.errors import AppError, Conflict, NotFound
 from app.shared.text import clean
+from app.shared.units import same_unit
 
 #: 어느 대상의 값이 어느 열에 붙나. 새 대상은 여기 한 줄.
 _TARGET_COLUMN = {
@@ -246,6 +247,35 @@ def create_definition(db: Session, user: User, payload: dict[str, Any]) -> Attri
     return row
 
 
+def keep_unit(db: Session, definition: AttributeDefinition, unit: str) -> int:
+    """정의의 단위가 `unit` 으로 바뀌기 전에, **단위 없이 적힌 값에 지금 단위를 적어 둔다.**
+    적어 둔 값 수를 돌려준다.
+
+    값의 단위 칸이 비어 있으면 정의의 단위로 읽힌다. 그래서 정의를 cm 에서 m 로 고치거나
+    m 인 속성에 합치는 순간 152 가 152 m 가 된다 — 숫자는 그대로인데 뜻이 바뀌고, 그것을
+    알리는 곳이 없다. 고치기 전의 단위를 그 값들에 적으면 숫자도 뜻도 그대로다. 조건 축
+    (`vocabulary/unit_change.py`)처럼 묻지 않는 이유가 이것이다 — 값마다 단위 칸이 있어 지킬
+    수 있다.
+    """
+    if not definition.unit or same_unit(definition.unit, unit):
+        return 0
+    stamped = 0
+    for value in db.scalars(
+        select(AttributeValue).where(
+            AttributeValue.definition_id == definition.id,
+            AttributeValue.unit == "",
+            or_(
+                AttributeValue.num_value.is_not(None),
+                AttributeValue.num_min.is_not(None),
+                AttributeValue.num_max.is_not(None),
+            ),
+        )
+    ):
+        value.unit = definition.unit
+        stamped += 1
+    return stamped
+
+
 def update_definition(
     db: Session, definition_id: uuid.UUID, changes: dict[str, Any]
 ) -> AttributeDefinition:
@@ -277,7 +307,9 @@ def update_definition(
             )
         row.kind = kind
     if "unit" in changes:
-        row.unit = clean(str(changes["unit"] or ""))
+        unit = clean(str(changes["unit"] or ""))
+        keep_unit(db, row, unit)
+        row.unit = unit
     if "choices" in changes and changes["choices"] is not None:
         row.choices = [clean(c) for c in changes["choices"] if clean(c)]
     if "condition_key_id" in changes:
@@ -341,7 +373,9 @@ def merge_into(db: Session, source_id: uuid.UUID, target_id: uuid.UUID) -> Attri
 
     종류가 같아야 한다. 문장 초안을 수치 항목에 합치면 값이 안 읽히기 때문이다. 같은 대상에
     두 값이 다 있으면 남는 쪽 값을 두고 옮기는 쪽을 버린다 — 정식(또는 남기려는 쪽)이 더
-    낫다고 본다. 단위는 값에 있으므로 환산하지 않고 옮긴다.
+    낫다고 본다. 단위는 값에 있으므로 환산하지 않고 옮긴다 — **단위 칸이 빈 값은 옮기기 전에
+    옮기는 쪽의 단위를 적어 둔다**(`keep_unit`). 안 그러면 cm 속성의 152 가 m 속성으로 가서
+    152 m 가 된다.
     """
     source = get_definition(db, source_id)
     target = get_definition(db, target_id)
@@ -356,6 +390,7 @@ def merge_into(db: Session, source_id: uuid.UUID, target_id: uuid.UUID) -> Attri
         )
     if not target.is_active:
         raise AppError("TSC-ATTR-0009", "꺼진 속성으로는 합칠 수 없습니다.")
+    keep_unit(db, source, target.unit)
     column = _TARGET_COLUMN[source.target]
     held = {
         object_id

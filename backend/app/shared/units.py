@@ -112,3 +112,12 @@ def convert(value: float, from_unit: str, to_unit: str) -> float | None:
 def compatible(from_unit: str, to_unit: str) -> bool:
     """같은 단위이거나 환산할 수 있나. 둘 다 비어 있으면 같은 것으로 본다."""
     return convert(1.0, from_unit, to_unit) is not None
+
+
+def same_unit(from_unit: str, to_unit: str) -> bool:
+    """**표기만 다른 같은 단위**인가 — °C · degC, N·m · Nm, % · pct. 숫자를 안 바꾸고 이름만
+    고쳐도 되는 짝이다. 0점이 다른 짝(degC · K)은 눈금이 같아도 같은 단위가 아니다."""
+    zero, one = convert(0.0, from_unit, to_unit), convert(1.0, from_unit, to_unit)
+    if zero is None or one is None:
+        return False
+    return abs(zero) < 1e-9 and abs(one - 1.0) < 1e-9

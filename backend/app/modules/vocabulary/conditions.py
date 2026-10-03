@@ -8,7 +8,7 @@ from __future__ import annotations
 import uuid
 from typing import Any
 
-from sqlalchemy import func, select
+from sqlalchemy import func, or_, select
 from sqlalchemy.orm import Session
 
 from app.modules.accounts.models import User
@@ -17,7 +17,9 @@ from app.modules.methods.models import MethodRequirement
 from app.modules.reliability.models import ReliabilityTest
 from app.modules.test_items.models import (
     EquipmentTestCondition,
+    SeriesTestCondition,
 )
+from app.modules.vocabulary import unit_change
 from app.modules.vocabulary.models import (
     ConditionKey,
 )
@@ -50,7 +52,40 @@ def _condition_usage(db: Session, condition_key_id: uuid.UUID) -> int:
         )
         or 0
     )
-    return limits + requirements
+    # 계열 조건도 이 축의 단위로 숫자를 담는다. 빠져 있어서 「사용 0」 인 축의 단위를 고치면
+    # 카탈로그 계열의 조건이 조용히 다른 뜻이 됐다.
+    series = (
+        db.scalar(
+            select(func.count())
+            .select_from(SeriesTestCondition)
+            .where(SeriesTestCondition.condition_key_id == condition_key_id)
+        )
+        or 0
+    )
+    return limits + requirements + series
+
+
+def _stored_limits(db: Session, condition_key_id: uuid.UUID) -> dict[str, list[Any]]:
+    """이 축의 단위로 **숫자가 담긴** 줄 — 장비 조건 · 계열 조건 · 규격 요구.
+
+    단위를 고칠 때 셋을 같이 옮긴다. 하나라도 빠지면 그 표만 옛 단위로 남고, 검색이 셋을
+    서로 견주므로 그 차이는 엉뚱한 판정으로만 드러난다. 글자 조건(고른 값)은 단위와 상관없다.
+    """
+    out: dict[str, list[Any]] = {}
+    for name, table in (
+        ("장비 조건", EquipmentTestCondition),
+        ("계열 조건", SeriesTestCondition),
+        ("규격 요구", MethodRequirement),
+    ):
+        out[name] = list(
+            db.scalars(
+                select(table).where(
+                    table.condition_key_id == condition_key_id,
+                    or_(table.min_value.is_not(None), table.max_value.is_not(None)),
+                )
+            )
+        )
+    return out
 
 
 def condition_out(db: Session, row: ConditionKey) -> ConditionKeyOut:
@@ -101,11 +136,13 @@ def update_condition(
 ) -> ConditionKey:
     """조건 정의를 고친다.
 
-    **단위를 바꾸는 것은 되돌릴 수 없는 부류다.** kN 을 N 으로 고치는 순간, 이미
-    저장된 숫자 전부가 다른 값이 된다 — 그때 무엇이 바뀌었는지 물을 자리가 감사
-    기록밖에 없다. key 는 아예 못 바꾼다: 코드와 검색이 그 이름을 걸고 있다.
+    **단위를 바꾸면 이미 저장된 숫자 전부의 뜻이 바뀐다** — kN 을 N 으로 고치는 순간 20 이
+    20 N 이 된다. 그래서 숫자가 있으면 어떻게 할지(`stored_values`: convert · keep)를 말하게
+    하고, 안 말하면 409 로 어느 표에 몇 줄인지 준다(`unit_change`). 그 선택도 감사에 남는다.
+    key 는 아예 못 바꾼다: 코드와 검색이 그 이름을 걸고 있다.
     """
     row = get_condition(db, condition_id)
+    stored_values = changes.pop("stored_values", None)
     before = {
         "si_unit": row.si_unit,
         "display_unit": row.display_unit,
@@ -113,10 +150,32 @@ def update_condition(
         "is_active": row.is_active,
     }
 
+    # **고치기 전에 묻는다.** 바꿔 놓고 거절하면 세션에 반쯤 고친 줄이 남는다.
+    unit_before = row.unit
+    display = changes.get("display_unit")
+    si = changes.get("si_unit")
+    unit_after = (row.display_unit if display is None else display) or (
+        row.si_unit if si is None else si
+    )
+    stored = _stored_limits(db, row.id)
+    mode = unit_change.decide(
+        what=f"조건 축 「{row.label}」",
+        before=unit_before,
+        after=unit_after,
+        counts={name: len(rows) for name, rows in stored.items()},
+        stored_values=stored_values,
+        ask_code="TSC-VOCAB-0017",
+        cannot_code="TSC-VOCAB-0018",
+    )
+    if mode == "convert":
+        for rows in stored.values():
+            for one in rows:
+                one.min_value = unit_change.moved(one.min_value, unit_before, unit_after)
+                one.max_value = unit_change.moved(one.max_value, unit_before, unit_after)
+
     for field, value in changes.items():
         if value is not None:
             setattr(row, field, value)
-
     after = {
         "si_unit": row.si_unit,
         "display_unit": row.display_unit,
@@ -124,6 +183,11 @@ def update_condition(
         "is_active": row.is_active,
     }
     diff = audit.diff(before, after)
+    if mode is not None:
+        diff["stored_values"] = {
+            "before": None,
+            "after": f"{mode} · {sum(len(rows) for rows in stored.values())}줄",
+        }
     if diff:
         audit.record(
             db,

@@ -8,13 +8,15 @@ from __future__ import annotations
 import uuid
 from typing import Any
 
-from sqlalchemy import func, select
+from sqlalchemy import func, or_, select
 from sqlalchemy.orm import Session
 
 from app.modules.accounts.models import User
 from app.modules.equipment.models import (
+    EquipmentSpecValue,
     ModelSpecValue,
 )
+from app.modules.vocabulary import unit_change
 from app.modules.vocabulary.models import (
     ConditionKey,
     VocabularyTerm,
@@ -126,14 +128,40 @@ def _definition_categories(db: Session, definition_id: uuid.UUID) -> list[Vocabu
 
 
 def _definition_usage(db: Session, definition_id: uuid.UUID) -> int:
-    return (
-        db.scalar(
-            select(func.count())
-            .select_from(ModelSpecValue)
-            .where(ModelSpecValue.definition_id == definition_id)
+    """이 정의로 적힌 값 — 기종 사양과 **개체 실측**. 실측이 빠져 있어서, 실측만 있는 정의를
+    지우면 409 대신 FK(RESTRICT) 오류 500 이 났고, 그 단위를 고치면 실측이 조용히 다른 뜻이
+    됐다."""
+    total = 0
+    for table in (ModelSpecValue, EquipmentSpecValue):
+        total += (
+            db.scalar(
+                select(func.count())
+                .select_from(table)
+                .where(table.definition_id == definition_id)
+            )
+            or 0
         )
-        or 0
-    )
+    return total
+
+
+def _stored_numbers(db: Session, definition_id: uuid.UUID) -> dict[str, list[Any]]:
+    """이 정의의 단위로 **숫자가 담긴** 값 — 기종 사양 · 개체 실측. 단위를 고칠 때 둘을 같이
+    옮긴다. 고른 값·문장·참거짓은 단위와 상관없다."""
+    out: dict[str, list[Any]] = {}
+    for name, table in (("기종 사양", ModelSpecValue), ("개체 실측", EquipmentSpecValue)):
+        out[name] = list(
+            db.scalars(
+                select(table).where(
+                    table.definition_id == definition_id,
+                    or_(
+                        table.num_value.is_not(None),
+                        table.num_min.is_not(None),
+                        table.num_max.is_not(None),
+                    ),
+                )
+            )
+        )
+    return out
 
 
 def definition_out(db: Session, row: SpecDefinition) -> SpecDefinitionOut:
@@ -252,10 +280,37 @@ def update_spec_definition(
     값이 어느 칸에 담겼는지를 정한다 — number 를 text 로 바꾸면 이미 저장된 숫자가
     읽히지 않는 칸에 남는다. 바꾸려면 새로 만들고 옛것을 끈다.
 
-    단위를 바꾸는 것은 조건 정의와 같은 부류다. 이미 저장된 숫자 전부의 뜻이 바뀌니
-    감사 기록에 남긴다.
+    단위를 바꾸는 것은 조건 정의와 같은 부류다 — 이미 저장된 숫자 전부의 뜻이 바뀐다. 숫자가
+    있으면 어떻게 할지(`stored_values`: convert · keep)를 말하게 하고, 안 말하면 409 로 몇
+    줄인지 준다(`unit_change`). 그 선택도 감사에 남는다.
     """
     row = get_spec_definition(db, definition_id)
+    stored_values = changes.pop("stored_values", None)
+
+    # **고치기 전에 묻는다.** 바꿔 놓고 거절하면 세션에 반쯤 고친 줄이 남는다.
+    unit_before = row.unit
+    display = changes.get("display_unit")
+    si = changes.get("si_unit")
+    unit_after = (row.display_unit if display is None else display) or (
+        row.si_unit if si is None else si
+    )
+    stored = _stored_numbers(db, row.id)
+    mode = unit_change.decide(
+        what=f"사양 「{row.label}」",
+        before=unit_before,
+        after=unit_after,
+        counts={name: len(rows) for name, rows in stored.items()},
+        stored_values=stored_values,
+        ask_code="TSC-SPEC-0024",
+        cannot_code="TSC-SPEC-0025",
+    )
+    if mode == "convert":
+        for rows in stored.values():
+            for one in rows:
+                one.num_value = unit_change.moved(one.num_value, unit_before, unit_after)
+                one.num_min = unit_change.moved(one.num_min, unit_before, unit_after)
+                one.num_max = unit_change.moved(one.num_max, unit_before, unit_after)
+
     before = {
         "si_unit": row.si_unit,
         "display_unit": row.display_unit,
@@ -286,6 +341,11 @@ def update_spec_definition(
         "is_active": row.is_active,
     }
     diff = audit.diff(before, after)
+    if mode is not None:
+        diff["stored_values"] = {
+            "before": None,
+            "after": f"{mode} · {sum(len(rows) for rows in stored.values())}줄",
+        }
     if diff:
         audit.record(
             db,

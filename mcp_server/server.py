@@ -2097,8 +2097,8 @@ async def create_condition_key(
     m)로 적되 `dimension` 이 같아야 환산이 성립한다(temperature · force · length · time ·
     frequency). `list_conditions` 로 옆 축이 무엇을 쓰는지 보고 맞춰라.
 
-    **만든 뒤 `display_unit` 은 못 바꾸는 것으로 여겨라.** 고치는 API 는 있지만, 그 순간 이미
-    저장된 숫자 전부가 다른 값이 된다.
+    **만든 뒤 `display_unit` 은 못 바꾸는 것으로 여겨라.** 고치는 API 는 숫자가 이미 있으면
+    거절하고 환산할지(convert) 그대로 둘지(keep) 묻는다 — 둘 다 사람이 정할 일이다.
 
     `kind` 는 `range`(구간 — 대부분) · `choice`(고른 값, `choices` 필요) · `boolean`.
 

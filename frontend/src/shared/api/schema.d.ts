@@ -4790,6 +4790,8 @@ export interface components {
             sort_order?: number | null;
             /** Is Active */
             is_active?: boolean | null;
+            /** Stored Values */
+            stored_values?: ("convert" | "keep") | null;
         };
         /** ConditionMatch */
         ConditionMatch: {
@@ -8165,6 +8167,8 @@ export interface components {
             is_active?: boolean | null;
             /** Category Term Ids */
             category_term_ids?: string[] | null;
+            /** Stored Values */
+            stored_values?: ("convert" | "keep") | null;
         };
         /** SpecDocumentCreateRequest */
         SpecDocumentCreateRequest: {

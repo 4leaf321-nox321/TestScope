@@ -4,7 +4,7 @@ from __future__ import annotations
 
 import uuid
 from datetime import datetime
-from typing import Any
+from typing import Any, Literal
 
 from pydantic import BaseModel, ConfigDict, Field
 
@@ -222,6 +222,11 @@ class ConditionKeyUpdateRequest(Request):
     help: str | None = None
     sort_order: int | None = None
     is_active: bool | None = None
+    stored_values: Literal["convert", "keep"] | None = None
+    """**단위를 바꿀 때 저장된 숫자를 어떻게 할지.** 숫자가 있는데 안 보내면 409 로 몇 줄인지
+    알려 준다. `convert` 는 숫자를 새 단위로 환산하고(152 cm → 1.52 m), `keep` 은 그대로
+    둔다(「단위 이름이 틀렸고 숫자는 원래 새 단위였다」). 표기만 바꾸는 것(°C → degC)은
+    안 묻는다."""
 
 
 # --- 사양 정의 ---------------------------------------------------------------
@@ -318,3 +323,8 @@ class SpecDefinitionUpdateRequest(Request):
     category_term_ids: list[uuid.UUID] | None = None
     """**보내면 통째로 바꾼다.** 빈 목록은 "공통으로 되돌린다" 이다 — 그래서 안
     보내는 것과 구별해야 한다."""
+    stored_values: Literal["convert", "keep"] | None = None
+    """**단위를 바꿀 때 저장된 숫자를 어떻게 할지.** 숫자가 있는데 안 보내면 409 로 몇 줄인지
+    알려 준다. `convert` 는 숫자를 새 단위로 환산하고(152 cm → 1.52 m), `keep` 은 그대로
+    둔다(「단위 이름이 틀렸고 숫자는 원래 새 단위였다」). 표기만 바꾸는 것(°C → degC)은
+    안 묻는다."""
