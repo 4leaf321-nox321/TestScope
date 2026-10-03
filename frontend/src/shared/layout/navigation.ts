@@ -18,6 +18,7 @@ import {
   Home,
   ListChecks,
   Megaphone,
+  MessageSquare,
   Package,
   ScrollText,
   Search,
@@ -213,6 +214,13 @@ export const NAV_GROUPS: NavGroup[] = [
         to: '/guide',
       },
       { label: '공지', icon: Megaphone, to: '/notices' },
+      {
+        // **공지 바로 아래.** 공지가 「우리가 하는 말」 이면 VOC 는 「우리가 듣는 말」 이고,
+        // 둘이 떨어져 있으면 듣는 쪽을 아무도 못 찾는다.
+        label: 'VOC',
+        icon: MessageSquare,
+        to: '/voc',
+      },
       {
         // **온톨로지가 「무엇이 있나」 라면 지식 그래프는 「무엇이 무엇과 이어지나」.** 구조(종류와
         // 관계 종류)와 탐색(하나의 주변) — StandardPlatform 의 것을 옮겨 왔다. 「전부」 를 그리는

@@ -36,6 +36,7 @@ from app.modules.review import routes as review_routes
 from app.modules.search import routes as search_routes
 from app.modules.server import routes as server_routes
 from app.modules.test_items import routes as capabilities_routes
+from app.modules.voc import routes as voc_routes
 from app.modules.vocabulary import routes as vocabulary_routes
 from app.modules.workspaces import routes as workspaces_routes
 from app.schema_version import warn_if_behind
@@ -85,6 +86,7 @@ def _api_router() -> APIRouter:
     router.include_router(reference_routes.router)
     router.include_router(graph_routes.router)
     router.include_router(notices_routes.router)
+    router.include_router(voc_routes.router)
     router.include_router(notifications_routes.router)
     router.include_router(audit_routes.router)
     router.include_router(server_routes.router)

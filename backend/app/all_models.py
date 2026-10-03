@@ -49,6 +49,7 @@ from app.modules.test_items.models import (
     SeriesTestItemMethod,
     TestItemConditionKey,
 )
+from app.modules.voc.models import VocEvent, VocItem
 from app.modules.vocabulary.models import (
     ConditionKey,
     Vocabulary,
@@ -109,6 +110,8 @@ __all__ = [
     "TestMethod",
     "TestMethodItem",
     "User",
+    "VocEvent",
+    "VocItem",
     "Vocabulary",
     "VocabularyAlias",
     "VocabularyTerm",

@@ -3401,6 +3401,80 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/api/voc": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * List Items
+         * @description VOC 목록. **기본은 아직 끝나지 않은 것**(종료·반려 제외).
+         *
+         *     `status=all` 이면 전부, `status=<코드>` 면 그것만. `mine=true` 면 내가 낸 것만 —
+         *     「내가 낸 그거 어떻게 됐지」 가 가장 흔한 물음이다.
+         */
+        get: operations["list_items_api_voc_get"];
+        put?: never;
+        /**
+         * Create Item
+         * @description 한 건을 낸다.
+         *
+         *     **등록도 이벤트로 남는다** — 흐름의 첫 줄이 비면 언제 낸 것인지가 카드 머리에만 있고,
+         *     그러면 읽는 눈이 두 군데를 오간다.
+         */
+        post: operations["create_item_api_voc_post"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/voc/{item_id}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** Get Item */
+        get: operations["get_item_api_voc__item_id__get"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/voc/{item_id}/move": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /**
+         * Move Item
+         * @description 상태를 옮기거나 말을 보탠다.
+         *
+         *     **지금 상태를 그대로 보내면 댓글이다** — 누구나 할 수 있다. 다른 상태로 보내는 것은
+         *     관리자와 낸 사람이 각자 갈 수 있는 곳만.
+         *
+         *     `resolved`·`rejected`·`open`(다시 열기)으로 옮길 때는 **말이 있어야 한다.** 「해결」 만
+         *     찍힌 건은 무엇이 바뀌었는지 아무도 모르고, 이유 없는 「반려」 는 낸 사람이 같은 것을
+         *     다시 낼 수밖에 없다.
+         */
+        post: operations["move_item_api_voc__item_id__move_post"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/api/notifications": {
         parameters: {
             query?: never;
@@ -6773,6 +6847,17 @@ export interface components {
             /** Offset */
             offset: number;
         };
+        /** Page[VocItemOut] */
+        Page_VocItemOut_: {
+            /** Items */
+            items: components["schemas"]["VocItemOut"][];
+            /** Total */
+            total: number;
+            /** Limit */
+            limit: number;
+            /** Offset */
+            offset: number;
+        };
         /** PatCreateRequest */
         PatCreateRequest: {
             /** Name */
@@ -8619,6 +8704,116 @@ export interface components {
             input?: unknown;
             /** Context */
             ctx?: Record<string, never>;
+        };
+        /** VocCreateRequest */
+        VocCreateRequest: {
+            /** Title */
+            title: string;
+            /** Body */
+            body: string;
+            /** Page Path */
+            page_path?: string | null;
+        };
+        /** VocDetailOut */
+        VocDetailOut: {
+            /**
+             * Id
+             * Format: uuid
+             */
+            id: string;
+            /** Seq */
+            seq: number;
+            /** Title */
+            title: string;
+            /** Status */
+            status: string;
+            /** Status Label */
+            status_label: string;
+            /** Created By Name */
+            created_by_name: string | null;
+            /**
+             * Created At
+             * Format: date-time
+             */
+            created_at: string;
+            /**
+             * Status At
+             * Format: date-time
+             */
+            status_at: string;
+            /** Comment Count */
+            comment_count: number;
+            /** Body */
+            body: string;
+            /** Page Path */
+            page_path: string | null;
+            /** Events */
+            events: components["schemas"]["VocEventOut"][];
+            /** Can Move */
+            can_move: string[];
+            /** Note Required */
+            note_required: string[];
+        };
+        /** VocEventOut */
+        VocEventOut: {
+            /**
+             * Id
+             * Format: uuid
+             */
+            id: string;
+            /**
+             * At
+             * Format: date-time
+             */
+            at: string;
+            /** By Name */
+            by_name: string | null;
+            /** From Status */
+            from_status: string | null;
+            /** To Status */
+            to_status: string;
+            /** Note */
+            note: string | null;
+        };
+        /** VocItemOut */
+        VocItemOut: {
+            /**
+             * Id
+             * Format: uuid
+             */
+            id: string;
+            /** Seq */
+            seq: number;
+            /** Title */
+            title: string;
+            /** Status */
+            status: string;
+            /** Status Label */
+            status_label: string;
+            /** Created By Name */
+            created_by_name: string | null;
+            /**
+             * Created At
+             * Format: date-time
+             */
+            created_at: string;
+            /**
+             * Status At
+             * Format: date-time
+             */
+            status_at: string;
+            /** Comment Count */
+            comment_count: number;
+        };
+        /**
+         * VocMoveRequest
+         * @description 상태를 옮기거나(`to_status`), 말만 보태거나(지금 상태를 그대로 보낸다).
+         */
+        VocMoveRequest: {
+            /** To Status */
+            to_status: string;
+            /** Note */
+            note?: string | null;
         };
         /**
          * VocabularyCreateRequest
@@ -15372,6 +15567,139 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content?: never;
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    list_items_api_voc_get: {
+        parameters: {
+            query?: {
+                status?: string | null;
+                mine?: boolean;
+                limit?: number;
+                offset?: number;
+            };
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["Page_VocItemOut_"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    create_item_api_voc_post: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["VocCreateRequest"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            201: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["VocDetailOut"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    get_item_api_voc__item_id__get: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                item_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["VocDetailOut"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    move_item_api_voc__item_id__move_post: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                item_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["VocMoveRequest"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["VocDetailOut"];
+                };
             };
             /** @description Validation Error */
             422: {
