@@ -234,11 +234,15 @@ class TestItemProposalRequest(Request):
 
 
 class TestItemProposalDecision(Request):
-    """정하기 — 기존 값에 잇거나(`term_id`), 축에 세우거나(`new_value`), 아니라고 하거나."""
+    """정하기 — 기존 값에 잇거나(`term_id`), 축에 세우거나(`new_value`), 아니라고 하거나
+    (`reject`). **셋 중 하나만.**"""
 
     normalized: str = Field(min_length=1, max_length=200)
     term_id: uuid.UUID | None = None
     new_value: str | None = Field(default=None, min_length=1, max_length=200)
+    reject: bool = False
+    """아니라고 한다. 빈 본문을 거절로 읽으면 인자를 빠뜨린 호출(AI 가 term_id 를 잊은 것)이
+    조용히 요청을 닫는다 — 기종 등록 요청과 같은 규칙이다."""
 
 
 class RevisionBriefOut(BaseModel):

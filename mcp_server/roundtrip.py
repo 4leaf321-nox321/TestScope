@@ -122,6 +122,12 @@ async def _write_chain(ctx: _Ctx) -> int:
     if temperature is None:
         print("  실패 조건축 temperature 가 없습니다 — seed_install.py 를 먼저 돌리세요.")
         return 1
+    # 시험 항목의 검색 축. **경로가 토큰 범위 표에 빠져 있어 늘 403 이던 도구다**
+    # (2026-10-04) — 여기서 진짜 토큰으로 한 번 부른다.
+    step(
+        "set_test_item_axes",
+        await server.set_test_item_axes(ctx, term["id"], [temperature["id"]]),
+    )
     definition = step(
         "create_attribute_definition",
         await server.create_attribute_definition(
@@ -497,6 +503,20 @@ async def _write_chain(ctx: _Ctx) -> int:
             ["code"],
         )
         if paper is not None:
+            # 전용 도구가 없던 수정 — `update_record` 가 `kind` 로 길을 고른다(2026-10-04).
+            renamed = step(
+                "update_record(spec_document)",
+                await server.update_record(
+                    ctx,
+                    "spec_document",
+                    {"document_id": paper["id"]},
+                    {"note": "MCP확인 수정"},
+                ),
+                ["note"],
+            )
+            if renamed is not None and renamed.get("note") != "MCP확인 수정":
+                bad += 1
+                print("  실패 update_record 가 보낸 칸을 안 바꿨습니다")
             # **규격서를 줬으면 판도 줘야 한다**(0049). 판 없이 올리면 같은 자리에 쌓여
             # 뒤엣것이 앞엣것을 조용히 덮는다 — 운영에서 36건이 그렇게 사라졌다.
             edition = step(
@@ -777,6 +797,58 @@ async def _write_chain(ctx: _Ctx) -> int:
         ):
             bad += 1
             print("  실패 AI 가 낸 연결이 제안이 아닙니다")
+
+    # 10. 시험 항목 요청 — 남기고, 보고, 정한다(2026-10-04). 정하는 길이 화면에만 있으면
+    # AI 는 남긴 요청이 어떻게 됐는지조차 못 본다.
+    wording = f"MCP확인 요청-{tag}"
+    asked_item = step(
+        "propose_test_item",
+        await server.propose_test_item(ctx, test["id"], wording, note="왕복 확인"),
+    )
+    if asked_item is not None:
+        groups = step("list_test_item_requests", await server.list_test_item_requests(ctx))
+        mine = next(
+            (one for one in (groups or {}).get("groups", []) if one.get("text") == wording),
+            None,
+        )
+        if mine is None:
+            bad += 1
+            print("  실패 남긴 요청이 목록에 없습니다")
+        else:
+            expect_refusal(
+                "decide_test_item_request(빈 결정) -> 거절",
+                await server.decide_test_item_request(ctx, mine["normalized"]),
+            )
+            step(
+                "decide_test_item_request(연결)",
+                await server.decide_test_item_request(
+                    ctx, mine["normalized"], term_id=term["id"]
+                ),
+            )
+
+    # 11. 만들고 지우기 — 지우기는 confirm 없이 부르면 대상만 돌려줘야 한다.
+    group = step(
+        "create_record(spec_group)",
+        await server.create_record(
+            ctx, "spec_group", {"slug": f"mcp_check_{tag}", "label": f"MCP확인 그룹-{tag}"}
+        ),
+        ["slug"],
+    )
+    if group is not None:
+        looked_first = step(
+            "delete_record(미리 보기)",
+            await server.delete_record(ctx, "spec_group", {"group_id": group["id"]}),
+            ["preview", "will"],
+        )
+        if looked_first is not None and looked_first.get("preview") is not True:
+            bad += 1
+            print("  실패 confirm 없이 불렀는데 지웠습니다")
+        step(
+            "delete_record(confirm)",
+            await server.delete_record(
+                ctx, "spec_group", {"group_id": group["id"]}, confirm=True
+            ),
+        )
     return 1 if bad else 0
 
 

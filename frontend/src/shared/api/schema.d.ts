@@ -8778,7 +8778,8 @@ export interface components {
         };
         /**
          * TestItemProposalDecision
-         * @description 정하기 — 기존 값에 잇거나(`term_id`), 축에 세우거나(`new_value`), 아니라고 하거나.
+         * @description 정하기 — 기존 값에 잇거나(`term_id`), 축에 세우거나(`new_value`), 아니라고 하거나
+         *     (`reject`). **셋 중 하나만.**
          */
         TestItemProposalDecision: {
             /** Normalized */
@@ -8787,6 +8788,11 @@ export interface components {
             term_id?: string | null;
             /** New Value */
             new_value?: string | null;
+            /**
+             * Reject
+             * @default false
+             */
+            reject: boolean;
         };
         /**
          * TestItemProposalGroupOut

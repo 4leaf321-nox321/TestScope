@@ -48,6 +48,9 @@ _WRITE_SCOPES: tuple[tuple[str, str], ...] = (
     ("/api/vocabularies", "catalog:write"),
     ("/api/methods", "catalog:write"),
     ("/api/test-item-properties", "catalog:write"),
+    # 시험 항목의 검색 축(`set_test_item_axes`). 표에 없어서 MCP 도구가 늘 403 이었다 —
+    # 경로 몇 개만 눌러 보던 시험이 못 잡았다(아래 시험이 이제 쓰기 도구 전부를 본다).
+    ("/api/test-items", "catalog:write"),
     ("/api/equipment", "equipment:write"),
     ("/api/equipment-test-items", "equipment:write"),
     # 부서가 등록하는 시험 절차 — 장비와 같은 「부서 것」 이라 같은 범위다.

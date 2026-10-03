@@ -34,6 +34,9 @@ WRITE_PREFIXES = (
     "extract_",
     # 요청을 정하는 것 — 장비가 기종에 이어지고 요청이 닫힌다.
     "decide_",
+    # 계열 잇기(`link_series`)가 `@mcp.tool()` 로 달려 읽기 전용 프로필에도 실렸다.
+    "link_",
+    "delete_",
 )
 
 
@@ -471,9 +474,17 @@ def test_도구_목록이_조용히_불어나지_않는다() -> None:
     정해졌고, AI 는 무엇이 남았는지조차 못 봤다. 정하는 API 는 이미 시스템 관리자 토큰에 열려
     있었으므로(기종 만들기·잇기와 같은 자격) 새 권한을 연 것이 아니다. 대신 정하기의 빈 본문을
     「아니오」 로 읽던 것을 400 으로 바꿨다 — 인자를 빠뜨린 AI 가 조용히 요청을 닫지 않게.
+
+    89 -> 94 (2026-10-04): `delete_record` · `update_record` · `create_record` ·
+    `list_test_item_requests` · `decide_test_item_request`. **역할이 허락하는 일을 MCP 로도
+    할 수 있게** — API 로는 열려 있는데 도구가 없던 고치기·지우기가 마흔일곱 자리였다(계열·
+    기종 삭제, 사양 정의 만들기, 규격서 고치기 등). 하나씩 도구로 만들면 마흔 개가 늘어나므로
+    `kind` 로 고르는 셋으로 묶었다. 자격은 여전히 서버가 가른다 — 도구는 길만 안다. 지우기는
+    `confirm` 없이 부르면 대상만 돌려준다(사람에게 묻는 단계를 건너뛰지 못하게). 시험 항목
+    요청은 기종 요청과 같은 이유로 보고 정하는 길을 열었다.
     """
     tools = _tools()
-    assert len(tools) <= 89, f"도구가 {len(tools)}개입니다 — 묶거나 상한을 다시 정하세요"
+    assert len(tools) <= 94, f"도구가 {len(tools)}개입니다 — 묶거나 상한을 다시 정하세요"
     for tool in tools:
         doc = ast.get_docstring(tool) or ""
         assert len(doc) <= 1600, (
@@ -624,3 +635,33 @@ def test_server_가_import_하는_옆_모듈은_배포_패키지에도_담긴다
             f"server.py 가 {name} 을 import 하는데 package_deploy.ps1 이 안 담습니다 —"
             f" 담지 않으면 운영 MCP 서비스가 ImportError 로 죽습니다."
         )
+
+
+def test_쓰기_도구가_부르는_경로는_모두_범위_표에_있다() -> None:
+    """범위 표(`shared/auth._WRITE_SCOPES`)에 없는 경로는 **어느 토큰으로도 403** 이다.
+
+    `set_test_item_axes` 가 그랬다 — `/api/test-items` 가 표에 없어서 도구가 늘 403 을 받았고,
+    경로 몇 개만 눌러 보던 시험(`test_agent_surface`)은 그것을 못 잡았다. 그래서 여기서
+    **쓰기 도구 전부**의 경로를 표에 대어 본다. 도구가 부르는 길을 글자로 읽으므로 서버를
+    띄우지 않아도 된다.
+    """
+    import re
+    import sys
+
+    sys.path.insert(0, str(SERVER.parents[1] / "backend"))
+    from app.shared.auth import _needed_scope
+
+    source = SERVER.read_text(encoding="utf-8")
+    missing: list[str] = []
+    checked = 0
+    for tool in _tools():
+        if _decorated(tool) != "writes":
+            continue
+        segment = ast.get_source_segment(source, tool) or ""
+        for method, path in re.findall(r'"(POST|PUT|PATCH|DELETE)",\s*f?"([^"]+)"', segment):
+            checked += 1
+            concrete = "/api" + re.sub(r"\{[^}]+\}", "x", path)
+            if _needed_scope(concrete) is None:
+                missing.append(f"{tool.name}: {method} {path}")
+    assert checked > 30, f"쓰기 경로를 {checked}개밖에 못 읽었습니다 — 읽는 방식을 보세요"
+    assert not missing, "범위 표에 없는 경로(토큰으로 늘 403): " + " · ".join(missing)

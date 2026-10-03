@@ -154,8 +154,9 @@ def groups(db: Session, *, include_decided: bool = False) -> list[TestItemPropos
 def decide(db: Session, user: User, payload: dict[str, Any]) -> dict[str, Any]:
     """제안 한 묶음을 정한다 — **시스템 관리자만.**
 
-    `term_id` 를 주면 기존 값에 잇고, `new_value` 를 주면 축에 값을 세운 뒤 잇는다. 둘 다
-    없으면 아니라고 한 것이다(`rejected`).
+    `term_id` 를 주면 기존 값에 잇고, `new_value` 를 주면 축에 값을 세운 뒤 잇고, `reject`
+    면 아니라고 한 것이다(`rejected`). **셋 중 하나만** 받는다 — 빈 본문을 거절로 읽던 때는
+    인자를 빠뜨린 호출이 조용히 요청을 닫았다(기종 등록 요청과 같은 규칙).
 
     이은 값은 **그 제안을 낸 시험들에 한꺼번에 걸린다** — 스무 건을 스무 번 여는 것이
     이 기능이 없앤 일이다.
@@ -165,6 +166,14 @@ def decide(db: Session, user: User, payload: dict[str, Any]) -> dict[str, Any]:
             "TSC-RELIABILITY-0014",
             "시험 항목 축은 시스템 관리자가 세웁니다 — 검색의 첫 축이라 값이 갈리면"
             " 그 뒤로 아무도 못 찾습니다.",
+        )
+    chosen = [name for name in ("term_id", "new_value", "reject") if payload.get(name)]
+    if len(chosen) != 1:
+        raise AppError(
+            "TSC-RELIABILITY-0018",
+            "결정 방식 하나 지정 필요: term_id(기존 값 연결) · new_value(새 값 등록)"
+            " · reject(거절).",
+            details={"given": chosen},
         )
     key = proposal_key(str(payload["normalized"]))
     rows = list(

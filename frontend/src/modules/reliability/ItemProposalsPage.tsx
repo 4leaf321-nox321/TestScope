@@ -34,7 +34,7 @@ export default function ItemProposalsPage() {
 
   async function decide(
     normalized: string,
-    body: { term_id?: string | null; new_value?: string | null },
+    body: { term_id?: string | null; new_value?: string | null; reject?: boolean },
   ) {
     setBusy(normalized)
     setError(null)
@@ -123,7 +123,7 @@ export default function ItemProposalsPage() {
                   size="sm"
                   variant="outline"
                   disabled={busy === group.normalized}
-                  onClick={() => void decide(group.normalized, {})}
+                  onClick={() => void decide(group.normalized, { reject: true })}
                 >
                   아니오
                 </Button>

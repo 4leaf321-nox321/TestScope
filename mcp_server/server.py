@@ -25,6 +25,7 @@ MatNexus 의 MCP 서버를 본떴다. 그쪽에서 실측으로 얻은 것 넷�
 from __future__ import annotations
 
 import os
+import re
 import time
 from pathlib import Path
 from typing import Any
@@ -125,6 +126,8 @@ ROUTING = """무엇을 물었나 -> 여기서 시작한다 (자세한 것은 그
   무엇이 무엇과 이어지나        graph_search -> graph_node
   사람이 정할 것이 뭐가 남았나   list_review_queues (확정은 사람이 화면에서)
   카탈로그에 없다는 기종 요청   list_model_requests -> decide_model_request (사람 확인 뒤)
+  축에 없다는 시험 항목 요청    list_test_item_requests -> decide_test_item_request
+  전용 도구 없는 수정·삭제·생성  update_record · delete_record(확인 뒤 confirm) · create_record
   어디부터 채우나              list_pending_work"""
 
 mcp = MCPServer(
@@ -808,7 +811,7 @@ async def add_test_item(
     )
 
 
-@mcp.tool()
+@writes
 async def link_series(
     ctx: Context, series_id: str, part_series_id: str, relation: str, note: str | None = None
 ) -> dict[str, Any]:
@@ -2928,6 +2931,55 @@ async def propose_test_item(
     )
 
 
+@mcp.tool()
+async def list_test_item_requests(
+    ctx: Context, include_decided: bool = False
+) -> dict[str, Any]:
+    """시험 항목 축에 없다고 올라온 요청 목록. 같은 표기끼리 묶음, 건수가 큰 순서.
+
+    묶음마다 `normalized`(정할 때 쓰는 열쇠) · `text` · `count` · `proposals`(요청한 시험과
+    원문) 포함. 결정은 `decide_test_item_request`(시스템 관리자).
+    """
+    return _listed(
+        await _get(
+            ctx,
+            "/reliability-tests/item-proposals",
+            params={"include_decided": "true" if include_decided else "false"},
+        ),
+        "groups",
+    )
+
+
+@writes
+async def decide_test_item_request(
+    ctx: Context,
+    normalized: str,
+    term_id: str | None = None,
+    new_value: str | None = None,
+    reject: bool = False,
+) -> dict[str, Any]:
+    """시험 항목 요청 한 묶음의 결정. 연결 · 신규 등록 · 거절 중 하나만. 시스템 관리자 전용.
+
+    `term_id`(기존 시험 항목에 연결, `resolve(kind="term", axis="test_item")` 로 확인) ·
+    `new_value`(시험 항목 축에 새 값 등록) · `reject=True`(시험 항목 아님). 셋 다 없으면 400.
+    결정 결과는 그 표기를 요청한 신뢰성 시험 전부에 일괄 적용.
+
+    **결정 전 사용자 확인 필수.** 시험 항목은 검색의 첫 축이라 값이 갈리면 이후 검색 누락.
+    비슷한 값이 있으면 신규 등록 대신 연결. `reject` 는 사용자가 거절을 지시한 경우만.
+    """
+    return await _send(
+        ctx,
+        "POST",
+        "/reliability-tests/item-proposals/decide",
+        {
+            "normalized": normalized,
+            "term_id": term_id,
+            "new_value": new_value,
+            "reject": reject,
+        },
+    )
+
+
 @writes
 async def propose_equipment_model(
     ctx: Context,
@@ -3152,6 +3204,185 @@ async def create_attribute_definition(
             "status": status,
         },
     )
+
+
+# ── 일반 — 전용 도구가 없는 고치기 · 지우기 · 만들기 ─────────────────────────────
+
+
+async def _by_kind(
+    ctx: Context,
+    table: dict[str, tuple[str, str]],
+    kind: str,
+    ids: dict[str, str] | None,
+    body: dict[str, Any] | None = None,
+    *,
+    preview: bool = False,
+) -> dict[str, Any]:
+    """`kind` 표에서 메서드·경로를 고르고 `ids` 로 경로를 채워 부른다.
+
+    경로에 안 쓰인 `ids` 의 칸은 질의로 간다(표기 떼기의 `value`). **자격은 서버가 가른다**
+    — 이 표는 길만 안다(얇은 프록시, AGENTS.md). 그래서 역할마다 다른 표를 두지 않는다:
+    부서 멤버가 계열을 지우려 하면 서버의 403 이 그대로 간다.
+    """
+    if kind not in table:
+        return {"error": f"알 수 없는 kind: {kind}", "kinds": sorted(table)}
+    method, template = table[kind]
+    given = {key: str(value) for key, value in (ids or {}).items() if value}
+    names = re.findall(r"\{(\w+)\}", template)
+    lacking = [name for name in names if name not in given]
+    if lacking:
+        return {"error": f"{kind}: ids 누락({', '.join(lacking)})", "needs": names}
+    path = template.format(**{name: given[name] for name in names})
+    params = {key: value for key, value in given.items() if key not in names} or None
+    if preview:
+        return {
+            "preview": True,
+            "will": f"{method} {path}",
+            "kind": kind,
+            "ids": given,
+            "next": "대상을 사용자에게 제시하고 확인을 받은 뒤 confirm=True 로 재호출.",
+        }
+    result = await _send(ctx, method, path, body, params=params)
+    return result if isinstance(result, dict) else {"result": result}
+
+
+@writes
+async def delete_record(
+    ctx: Context, kind: str, ids: dict[str, str], confirm: bool = False
+) -> dict[str, Any]:
+    """기록 하나의 삭제. confirm 없이 호출하면 삭제 없이 대상만 반환. 자격 판단은 서버.
+
+    kind · ids · 자격:
+
+        reliability_test     test_id  (확인 전 후보만. 확정 건은 기계 자격으로 삭제 불가)
+        equipment            equipment_id  (그 부서 관리자)
+        equipment_test_item  equipment_test_item_id  (그 부서 멤버)
+        test_condition       equipment_test_item_id · limit_id  (그 부서 멤버)
+        equipment_spec       equipment_id · definition_id  (장비 실측값, 그 부서 멤버)
+        spec_document        document_id  (그 부서 관리자)
+        attachment           attachment_id  (붙은 대상의 수정 자격)
+        method · requirement method_id · requirement_id  (공개 규격은 시스템 관리자,
+                             사내 시험법은 그 부서 관리자)
+        이하 시스템 관리자:
+        series · series_test_item · series_condition · series_relation
+                             series_id · series_test_item_id · limit_id · relation_id
+        model · model_spec · free_spec   model_id · definition_id · free_spec_id
+        attribute_definition · spec_definition   definition_id
+        spec_group           group_id
+        property_link        link_id
+        term_alias           term_id · value
+
+    **삭제 전 사용자 확인 필수.** confirm 없이 호출해 대상을 받고, 사용자에게 제시해 확인을
+    받은 뒤 confirm=True 로 재호출. 사용 중인 정의·값은 서버가 409 로 거절. 그때는 사용 중지
+    (update_record) 또는 사용자에게 인계. 신뢰성 시험 확정·반려, 검토함 확정은 사람 전용.
+    """
+    table = {
+        "reliability_test": ("DELETE", "/reliability-tests/{test_id}"),
+        "equipment": ("DELETE", "/equipment/{equipment_id}"),
+        "equipment_test_item": ("DELETE", "/equipment-test-items/{equipment_test_item_id}"),
+        "test_condition": (
+            "DELETE",
+            "/equipment-test-items/{equipment_test_item_id}/limits/{limit_id}",
+        ),
+        "equipment_spec": ("DELETE", "/equipment/{equipment_id}/specs/{definition_id}"),
+        "spec_document": ("DELETE", "/spec-documents/{document_id}"),
+        "attachment": ("DELETE", "/attachments/{attachment_id}"),
+        "method": ("DELETE", "/methods/{method_id}"),
+        "requirement": ("DELETE", "/methods/{method_id}/requirements/{requirement_id}"),
+        "series": ("DELETE", "/equipment-series/{series_id}"),
+        "series_test_item": (
+            "DELETE",
+            "/equipment-series/{series_id}/test-items/{series_test_item_id}",
+        ),
+        "series_condition": (
+            "DELETE",
+            "/equipment-series/{series_id}/test-items/{series_test_item_id}/limits/{limit_id}",
+        ),
+        "series_relation": ("DELETE", "/equipment-series/{series_id}/relations/{relation_id}"),
+        "model": ("DELETE", "/equipment-models/{model_id}"),
+        "model_spec": ("DELETE", "/equipment-models/{model_id}/specs/{definition_id}"),
+        "free_spec": ("DELETE", "/equipment-models/{model_id}/free-specs/{free_spec_id}"),
+        "attribute_definition": ("DELETE", "/attribute-definitions/{definition_id}"),
+        "spec_definition": ("DELETE", "/spec-definitions/{definition_id}"),
+        "spec_group": ("DELETE", "/spec-groups/{group_id}"),
+        "property_link": ("DELETE", "/test-item-properties/{link_id}"),
+        "term_alias": ("DELETE", "/vocabularies/terms/{term_id}/aliases"),
+    }
+    return await _by_kind(ctx, table, kind, ids, preview=not confirm)
+
+
+@writes
+async def update_record(
+    ctx: Context, kind: str, ids: dict[str, str], fields: dict[str, Any]
+) -> dict[str, Any]:
+    """기록 하나의 수정. 보낸 칸만 변경. 장비·신뢰성 시험·축·값은 전용 update_* 도구 사용.
+
+    kind · ids · 자격:
+
+        equipment_test_item   equipment_test_item_id  (그 부서 멤버)
+        spec_document         document_id  (그 부서 관리자)
+        attachment            attachment_id  (설명 등, 붙은 대상의 수정 자격)
+        method                method_id  (공개 규격은 시스템 관리자,
+                              사내 시험법은 그 부서 관리자)
+        이하 시스템 관리자:
+        series · model       series_id · model_id
+        free_spec            model_id · free_spec_id
+        condition_key        condition_key_id  (단위 변경 시 fields 에 stored_values 필요)
+        spec_definition      definition_id
+        spec_group           group_id
+        attribute_definition definition_id  (fields={"merge_into": "<id>"} 이면 그 정의로 병합)
+        property_link        link_id
+
+    칸 이름은 화면·API 스키마와 동일. 모르는 칸은 서버가 422 로 반환하므로 추측으로 채우지
+    말고 오류의 칸 목록 확인. 삭제는 delete_record, 전용 생성 도구가 없는 것은 create_record.
+    """
+    table = {
+        "equipment_test_item": ("PATCH", "/equipment-test-items/{equipment_test_item_id}"),
+        "spec_document": ("PATCH", "/spec-documents/{document_id}"),
+        "attachment": ("PATCH", "/attachments/{attachment_id}"),
+        "method": ("PATCH", "/methods/{method_id}"),
+        "series": ("PATCH", "/equipment-series/{series_id}"),
+        "model": ("PATCH", "/equipment-models/{model_id}"),
+        "free_spec": ("PUT", "/equipment-models/{model_id}/free-specs/{free_spec_id}"),
+        "condition_key": ("PATCH", "/condition-keys/{condition_key_id}"),
+        "spec_definition": ("PATCH", "/spec-definitions/{definition_id}"),
+        "spec_group": ("PATCH", "/spec-groups/{group_id}"),
+        "attribute_definition": ("PATCH", "/attribute-definitions/{definition_id}"),
+        "attribute_definition_merge": ("POST", "/attribute-definitions/{definition_id}/merge"),
+        "property_link": ("PATCH", "/test-item-properties/{link_id}"),
+    }
+    if kind == "attribute_definition" and "merge_into" in fields:
+        return await _by_kind(
+            ctx, table, "attribute_definition_merge", ids, {"target_id": fields["merge_into"]}
+        )
+    return await _by_kind(ctx, table, kind, ids, fields)
+
+
+@writes
+async def create_record(
+    ctx: Context, kind: str, fields: dict[str, Any], ids: dict[str, str] | None = None
+) -> dict[str, Any]:
+    """전용 생성 도구가 없는 것의 생성. 사양 정의 · 사양 그룹 · 계열 조건. 시스템 관리자 전용.
+
+        spec_definition   fields: key · label · group_id · kind · dimension · si_unit ·
+                          display_unit · condition_key_id · help
+        spec_group        fields: slug · label · description
+        series_condition  ids: series_id · series_test_item_id
+                          fields: condition_key_id · min_value · max_value · text_value · note
+                          (같은 조건이 있으면 덮어씀)
+
+    **사양 정의 생성 전 list_spec_definitions 로 중복 확인.** 같은 뜻의 칸이 둘이면 기종마다
+    다른 칸에 기록되어 검색 결과가 절반만 나옴. 값의 단위는 축 단위(list_conditions 의 unit).
+    """
+    table = {
+        "spec_definition": ("POST", "/spec-definitions"),
+        "spec_group": ("POST", "/spec-groups"),
+        "series_condition": (
+            "PUT",
+            "/equipment-series/{series_id}/test-items/{series_test_item_id}/limits",
+        ),
+    }
+    return await _by_kind(ctx, table, kind, ids, fields)
 
 
 # ── 검토함 — 사람이 정할 것 (읽기) ────────────────────────────────────────────

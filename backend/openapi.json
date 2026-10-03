@@ -25453,6 +25453,11 @@
               }
             ],
             "title": "New Value"
+          },
+          "reject": {
+            "type": "boolean",
+            "title": "Reject",
+            "default": false
           }
         },
         "additionalProperties": false,
@@ -25461,7 +25466,7 @@
           "normalized"
         ],
         "title": "TestItemProposalDecision",
-        "description": "정하기 — 기존 값에 잇거나(`term_id`), 축에 세우거나(`new_value`), 아니라고 하거나."
+        "description": "정하기 — 기존 값에 잇거나(`term_id`), 축에 세우거나(`new_value`), 아니라고 하거나\n(`reject`). **셋 중 하나만.**"
       },
       "TestItemProposalGroupOut": {
         "properties": {

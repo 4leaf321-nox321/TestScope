@@ -319,6 +319,16 @@ def test_축에_없는_시험_항목은_제안으로_쌓이고_한_번에_걸린
     )
     assert refused.status_code == 403, refused.text
 
+    # **아무것도 안 고르면 400** — 빈 본문을 거절로 읽던 때는 인자를 빠뜨린 호출이 조용히
+    # 요청을 닫았다. 요청은 그대로 열려 있다.
+    silent = client.post(
+        "/api/reliability-tests/item-proposals/decide",
+        json={"normalized": mine_group["normalized"]},
+        headers=admin.headers,
+    )
+    assert silent.status_code == 400, silent.text
+    assert silent.json()["error"]["code"] == "TSC-RELIABILITY-0018"
+
     # 시스템 관리자가 한 번 정하면 **두 시험에 함께 걸린다.**
     decided = client.post(
         "/api/reliability-tests/item-proposals/decide",

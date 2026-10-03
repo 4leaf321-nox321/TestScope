@@ -165,11 +165,13 @@ export const reliabilityApi = {
   /** 같은 말끼리 모은 제안 목록 — 건수가 큰 것이 먼저. 관리자가 한 번 정하면 그 말을
    *  낸 시험 전부에 걸린다. */
   proposalGroups: () => api.get<TestItemProposalGroup[]>('/reliability-tests/item-proposals'),
-  /** 제안 한 묶음을 정한다 — **시스템 관리자만.** */
+  /** 제안 한 묶음을 정한다 — **시스템 관리자만.** `term_id` · `new_value` · `reject` 중
+   *  하나만(아무것도 없으면 400). */
   decideProposal: (body: {
     normalized: string
     term_id?: string | null
     new_value?: string | null
+    reject?: boolean
   }) => api.post<Record<string, unknown>>('/reliability-tests/item-proposals/decide', body),
   /** 이 시험을 **어느 개정까지 봤다**고 적는다. 비우면 표를 도로 붙인다. 사람만 한다. */
   markReviewed: (id: string, revisionId: string | null) =>
