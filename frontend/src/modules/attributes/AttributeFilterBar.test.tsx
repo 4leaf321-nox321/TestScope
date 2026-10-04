@@ -45,7 +45,7 @@ vi.mock('@/shared/api/client', () => ({
               with_value: 0,
               unconvertible: 0,
               matched: 0,
-              hint: '「시험 온도」 에 값이 적힌 것이 없습니다 — 조건이 아니라 적힌 값이 없는 것입니다.',
+              hint: '시험 온도: 값이 입력된 대상 없음. 조건 문제가 아니라 입력된 값이 없음.',
             },
           ]
         : DEFINITIONS,
@@ -87,7 +87,7 @@ suite('속성 필터 칸', () => {
         empty
       />,
     )
-    await waitFor(() => expect(screen.getByText(/값이 적힌 것이 없습니다/)).toBeTruthy())
+    await waitFor(() => expect(screen.getByText(/값이 입력된 대상 없음/)).toBeTruthy())
   })
 
   it('모르는 키는 삼키지 않고 글자 그대로 보여 준다', () => {

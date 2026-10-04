@@ -154,7 +154,11 @@ describe('검토함 — 추천대로 한꺼번에', () => {
       done: ['p-ok'],
       // 그사이 누가 다른 의견을 냈다 — 서버가 돌려보낸다.
       failed: [
-        { id: 'p-agree', code: 'TSC-REVIEW-0015', message: '추천과 다른 의견이 1건 있습니다' },
+        {
+          id: 'p-agree',
+          code: 'TSC-REVIEW-0015',
+          message: '추천과 다른 의견 1건 있음. 의견 확인 후 하나씩 결정 필요.',
+        },
       ],
     }
     await open()
@@ -182,7 +186,7 @@ describe('검토함 — 추천대로 한꺼번에', () => {
     expect(screen.queryByText('ASTM 합의')).toBeNull()
     // 돌아온 줄은 **이유와 함께** 남는다.
     expect(screen.getByText('1건 미확정')).toBeTruthy()
-    expect(screen.getByText(/추천과 다른 의견이 1건 있습니다/)).toBeTruthy()
+    expect(screen.getByText(/추천과 다른 의견 1건 있음/)).toBeTruthy()
   })
 
   it('관리자가 아니면 고르는 칸이 없다', async () => {

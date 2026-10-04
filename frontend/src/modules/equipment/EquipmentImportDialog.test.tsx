@@ -240,7 +240,7 @@ describe('틀린 칸', () => {
       rows: [
         row({
           cells: { asset_no: 'A-1', name: '만능기', site: '없는거점', note: '' },
-          problems: [{ field: 'site', message: '거점: 「없는거점」 가 온톨로지에 없습니다' }],
+          problems: [{ field: 'site', message: '거점: 온톨로지에 없는 값(없는거점)' }],
         }),
       ],
     }
@@ -250,7 +250,7 @@ describe('틀린 칸', () => {
     const bad = cell('거점')
     // 줄 단위로만 말하면 열여덟 칸 중 어디를 고칠지 사람이 되짚어야 한다.
     expect(bad.className).toMatch(/red/)
-    expect(bad.title).toMatch(/온톨로지에 없습니다/)
+    expect(bad.title).toMatch(/온톨로지에 없는 값/)
     // 멀쩡한 칸은 안 칠한다 — 다 붉으면 아무것도 안 가리킨 것과 같다.
     expect(cell('장비명').className).not.toMatch(/red/)
   })
@@ -261,11 +261,11 @@ describe('틀린 칸', () => {
       ready: 0,
       problems: 1,
       created: 0,
-      rows: [row({ problems: [{ field: null, message: '자산번호가 2번째 줄과 겹칩니다' }] })],
+      rows: [row({ problems: [{ field: null, message: '자산번호가 2번째 줄과 중복' }] })],
     }
     await open()
     await paste()
-    expect(screen.getByText(/2번째 줄과 겹칩니다/)).toBeTruthy()
+    expect(screen.getByText(/2번째 줄과 중복/)).toBeTruthy()
   })
 
   it('문제가 있으면 넣는 단추가 안 눌린다', async () => {
@@ -274,7 +274,9 @@ describe('틀린 칸', () => {
       ready: 0,
       problems: 1,
       created: 0,
-      rows: [row({ problems: [{ field: 'site', message: '거점: 없습니다' }] })],
+      rows: [
+        row({ problems: [{ field: 'site', message: '거점: 온톨로지에 없는 값(본사)' }] }),
+      ],
     }
     await open()
     await paste()
@@ -293,7 +295,7 @@ describe('표에서 고치기', () => {
       rows: [
         row({
           cells: { asset_no: 'A-1', name: '만능기', site: '없는거점', note: '' },
-          problems: [{ field: 'site', message: '거점: 없습니다' }],
+          problems: [{ field: 'site', message: '거점: 온톨로지에 없는 값(본사)' }],
         }),
       ],
     }
@@ -359,7 +361,7 @@ describe('없는 거점·분류 만들기', () => {
         problems: [
           {
             field: 'site',
-            message: `거점: 「${value}」 가 온톨로지에 없습니다`,
+            message: `거점: 온톨로지에 없는 값(${value})`,
             make_axis: 'site',
             make_value: value,
           },
@@ -419,7 +421,7 @@ describe('없는 거점·분류 만들기', () => {
       rows: [
         row({
           problems: [
-            { field: 'model', message: '기종: 하나로 정할 수 없습니다', make_axis: null },
+            { field: 'model', message: '기종: 하나로 특정할 수 없음(68FM)', make_axis: null },
           ],
         }),
       ],
@@ -459,7 +461,7 @@ describe('엑셀로 되가져가기', () => {
       created: 0,
       rows: [
         row({
-          problems: [{ field: 'site', message: '거점: 「없는거점」 가 온톨로지에 없습니다' }],
+          problems: [{ field: 'site', message: '거점: 온톨로지에 없는 값(없는거점)' }],
         }),
       ],
     }
@@ -469,7 +471,7 @@ describe('엑셀로 되가져가기', () => {
       copyButton().click()
     })
     // 값만 돌려주면 무엇이 틀렸는지가 화면 안에만 남고, 그러면 되가져가는 뜻이 없다.
-    expect(copied[0]).toContain('온톨로지에 없습니다')
+    expect(copied[0]).toContain('온톨로지에 없는 값')
   })
 
   it('빈 줄은 안 내보낸다', async () => {
@@ -517,7 +519,7 @@ describe('넣은 뒤', () => {
       row({
         cells: { asset_no: 'A-2', name: '충격기', site: '없는거점', note: '' },
         imported: false,
-        problems: [{ field: 'site', message: '거점: 없습니다' }],
+        problems: [{ field: 'site', message: '거점: 온톨로지에 없는 값(본사)' }],
       }),
     ],
   })

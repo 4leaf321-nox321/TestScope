@@ -15,7 +15,7 @@ import type { Capability, ReliabilityTest } from '@/modules/reliability/api'
 const ANSWER: Capability = {
   test_id: 't1',
   conditions_asked: 2,
-  skipped: [{ label: '측정 주기', reason: '단위 「쇼어」 를 온도의 degC 로 못 바꿉니다.' }],
+  skipped: [{ label: '측정 주기', reason: '단위 쇼어에서 시험 온도 단위(degC)로 변환 불가.' }],
   // 묶음이 한 벌이면 비어 있다 — 같은 표를 두 번 그릴 이유가 없다.
   sets: [],
   items: [
@@ -79,7 +79,7 @@ suite('수행 가능 장비', () => {
 
     await waitFor(() => expect(screen.getByText(/조건 2개로 조회/)).toBeTruthy())
     // 뺀 조건은 **조용히 빠지지 않는다** — 다 본 것처럼 읽히면 「가능」 이 거짓이 된다.
-    expect(screen.getByText(/측정 주기: 단위 「쇼어」/)).toBeTruthy()
+    expect(screen.getByText(/측정 주기: 단위 쇼어에서/)).toBeTruthy()
 
     expect(screen.getByText('광역 챔버')).toBeTruthy()
     expect(screen.getByText('신뢰성팀')).toBeTruthy()

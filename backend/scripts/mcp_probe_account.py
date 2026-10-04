@@ -20,17 +20,25 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 
-from sqlalchemy import delete, select
+from sqlalchemy import delete, or_, select
+from sqlalchemy.orm import Session
 
 import app.all_models  # noqa: F401  (DB 를 만지는 스크립트는 반드시 이것을 읽는다)
 from _console import survive_cp949
 from app.config import get_settings
 from app.database import SessionLocal
 from app.modules.accounts.models import User
+from app.modules.attachments.models import Attachment
 from app.modules.attributes.models import AttributeDefinition, AttributeValue
 from app.modules.auth import security
 from app.modules.auth.models import PersonalAccessToken
-from app.modules.equipment.models import Equipment, EquipmentModelProposal
+from app.modules.documents.models import SpecDocument
+from app.modules.equipment.models import (
+    Equipment,
+    EquipmentModel,
+    EquipmentModelProposal,
+    EquipmentSeries,
+)
 from app.modules.methods.models import MethodRequirement, TestMethod
 from app.modules.properties.models import TestItemProperty
 from app.modules.reliability.models import ReliabilityTest, ReliabilityTestItem
@@ -46,6 +54,12 @@ NAME = "MCP 확인용(임시)"
 #: 왕복이 만드는 것에 붙는 표. 지울 때 이것으로 찾는다.
 TAG = "MCP확인"
 METHOD_TAG = "MCP "
+#: 이름에 「MCP확인」 을 못 넣는 것들 — 규격서 코드와 계열·기종 이름. 왕복이 이 꼴로 만든다.
+DOCUMENT_TAG = "MCP-DOC-"
+SERIES_TAG = "MCP계열-"
+MODEL_TAG = "MCP기종-"
+#: 왕복이 올리는 파일 — 워드 한 벌과 그 안에서 꺼낸 그림(`word/media/a.png`).
+UPLOADED_NAMES = (f"{TAG}%", "a.png", "word/media/%")
 
 
 def _refuse_production() -> None:
@@ -91,6 +105,55 @@ def mint() -> int:
         db.close()
 
 
+def _catalog_and_documents(db: Session) -> list[str]:
+    """왕복이 만든 규격서 · 계열 · 기종과, 지운 시험에 붙어 있던 첨부.
+
+    전에는 이것들을 안 지워서 **개발 DB 에 가짜 계열 19 · 기종 19 · 규격서 45 · 대상 없는 첨부
+    150 이 쌓였다**(2026-10-04 실측). CI 는 매번 빈 DB 라 안 보이고, 개발 화면에서만 진짜
+    카탈로그처럼 섞여 보인다. 장비를 먼저 지운 뒤에 부른다 — 기종은 장비가 가리킨다(RESTRICT).
+    """
+    gone: list[str] = []
+    for paper in db.scalars(
+        select(SpecDocument).where(SpecDocument.code.like(f"{DOCUMENT_TAG}%"))
+    ):
+        db.execute(delete(AttributeValue).where(AttributeValue.ref_document_id == paper.id))
+        db.execute(
+            delete(Attachment).where(
+                Attachment.target == "spec_document", Attachment.object_id == paper.id
+            )
+        )
+        db.delete(paper)  # 판(revisions)은 CASCADE
+        gone.append(f"규격서 {paper.code}")
+    lines = list(
+        db.scalars(select(EquipmentSeries).where(EquipmentSeries.name.like(f"{SERIES_TAG}%")))
+    )
+    for model in db.scalars(
+        select(EquipmentModel).where(
+            EquipmentModel.name.like(f"{MODEL_TAG}%")
+            | EquipmentModel.series_id.in_([one.id for one in lines])
+        )
+    ):
+        db.delete(model)  # 사양 값 · 고유 사양은 CASCADE
+        gone.append(f"기종 {model.name}")
+    db.flush()
+    for line in lines:
+        db.delete(line)  # 시험 항목 · 관계 · 속성 값은 CASCADE
+        gone.append(f"계열 {line.name}")
+    # 전에 쌓인 것 — 시험은 지워졌는데 첨부 줄만 남은 것. **왕복이 올린 이름만** 본다.
+    orphans = db.execute(
+        delete(Attachment).where(
+            Attachment.target == "reliability_test",
+            ~select(ReliabilityTest.id)
+            .where(ReliabilityTest.id == Attachment.object_id)
+            .exists(),
+            or_(*(Attachment.original_name.like(one) for one in UPLOADED_NAMES)),
+        )
+    ).rowcount
+    if orphans:
+        gone.append(f"대상 없는 첨부 {orphans}건")
+    return gone
+
+
 def cleanup() -> int:
     db = SessionLocal()
     gone: list[str] = []
@@ -104,6 +167,12 @@ def cleanup() -> int:
             db.execute(
                 delete(ReliabilityTestItem).where(
                     ReliabilityTestItem.reliability_test_id == test.id
+                )
+            )
+            # 첨부는 대상을 FK 로 안 잇는다(대상이 여러 표라서) — 시험을 지워도 줄이 남는다.
+            db.execute(
+                delete(Attachment).where(
+                    Attachment.target == "reliability_test", Attachment.object_id == test.id
                 )
             )
             db.delete(test)
@@ -153,6 +222,8 @@ def cleanup() -> int:
             )
             db.delete(unit)
             gone.append(f"장비 {unit.asset_no} {unit.name}")
+        db.flush()
+        gone += _catalog_and_documents(db)
         # **먼저 밀어 넣는다.** 한 트랜잭션에 두면 users 를 먼저 지우려 들고, 그 값을 만든
         # 사람이 이 계정이라 FK 에 걸려 전체가 되돌아간다 — 아무것도 안 지워진다.
         db.flush()

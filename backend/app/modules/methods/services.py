@@ -477,12 +477,13 @@ def set_test_items(db: Session, method_id: uuid.UUID, term_ids: list[uuid.UUID])
 
 
 def _refuse_machine_decision(db: Session, row: TestMethod) -> None:
-    """검토함에 열린 물음이 있는 규격의 시험 항목은 **기계 자격으로 못 정한다.**
+    """검토함에 열린 물음이 있는 규격의 시험 항목은 **기계 자격으로 직접 못 정한다.**
 
-    검토함의 확정은 범위 표에 없어 AI 가 못 누르는데, 규격의 시험 항목을 직접 고치는 길은
-    열려 있었다 — 그 길로 가면 결과는 확정과 같다(인용한 계열에 붙고, 검토함 줄만 open 으로
-    남는다). 실측: 「검토함 첫 줄 추천대로 확정해줘」 에 AI 가 정확히 이 우회로를 썼다
-    (2026-09-20 측정, q22). 사람 세션은 막지 않는다 — 그 사람의 권한이 이미 한계다.
+    규격의 시험 항목을 직접 고치는 길로 가면 결과는 확정과 같은데(인용한 계열에 붙는다)
+    **검토함 줄만 open 으로 남는다** — 정한 기록도, 추천을 따랐는지도 안 남는다. 실측:
+    「검토함 첫 줄 추천대로 확정해줘」 에 AI 가 정확히 이 우회로를 썼다(2026-09-20, q22).
+    시스템 관리자의 토큰은 이제 검토함에서 정할 수 있으므로(2026-10-04) 그 길로 보낸다.
+    사람 세션은 막지 않는다 — 그 사람의 권한이 이미 한계다.
     """
     if get_actor_token() is None:
         return
@@ -496,7 +497,8 @@ def _refuse_machine_decision(db: Session, row: TestMethod) -> None:
     if pending is not None:
         raise Conflict(
             "TSC-METHODS-0007",
-            "이 규격에 대한 검토함 질문이 열려 있음. 시험 항목은 검토함에서 사람이 결정.",
+            "이 규격에 대한 검토함 질문이 열려 있음. "
+            "시험 항목은 검토함에서 결정(decide_review_item).",
         )
 
 

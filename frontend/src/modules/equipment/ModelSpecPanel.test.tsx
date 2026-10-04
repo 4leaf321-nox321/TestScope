@@ -47,6 +47,7 @@ vi.mock('@/shared/api/client', () => ({
           model_id: 'm1',
           groups: [
             {
+              group_id: 'g1',
               slug: 'general',
               label: '일반',
               items: [

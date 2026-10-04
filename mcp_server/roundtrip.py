@@ -217,6 +217,16 @@ async def _write_chain(ctx: _Ctx) -> int:
         print(f"  실패 0건인데 진단이 안 붙었습니다: {_short(diagnosis, 80)}")
     elif isinstance(diagnosis, list):
         print(f"       진단: {diagnosis[0]['hint']}")
+    # 전사 목록은 확정만 준다. 방금 올린 것은 후보라 0건이고, **후보가 있다는 말이 붙어야**
+    # 한다 — 안 붙으면 AI 가 사업부마다 다시 부른다(2026-10-04 측정).
+    company = step(
+        "list_reliability_tests(전사, 후보만)",
+        await server.list_reliability_tests(ctx, name=test["name"]),
+        ["count", "next"],
+    )
+    if company is not None and "status" not in str(company.get("next", "")):
+        bad += 1
+        print("  실패 전사 0건인데 후보 안내가 안 붙었습니다")
 
     # 5. 판정 · 6. 그래프 · 7. 고치기.
     step(
@@ -849,6 +859,22 @@ async def _write_chain(ctx: _Ctx) -> int:
                 ctx, "spec_group", {"group_id": group["id"]}, confirm=True
             ),
         )
+
+    # 12. 검토함 — 시스템 관리자의 토큰으로 정하는 길(2026-10-04). **개발 DB 의 진짜 줄은 안
+    # 건드린다**: 없는 줄을 골라 「없음」 이 오는지 본다. 범위·자격에서 막히면 403 이 온다.
+    nowhere = str(uuid.uuid4())
+    missing = await server.decide_review_item(
+        ctx, "attribute_drafts", nowhere, action="decide", choice=[]
+    )
+    reached = "TSC-REVIEW" in str(missing.get("error", ""))
+    bad += not reached
+    label = "decide_review_item(없는 줄)"
+    print(f"  {'  ok' if reached else '실패'} {label:34s} {_short(missing, 70)}")
+    bulk = await server.decide_review_recommended(ctx, "attribute_drafts", [nowhere])
+    settled = "error" not in bulk and len(bulk.get("failed", [])) == 1
+    bad += not settled
+    label = "decide_review_recommended(없는 줄)"
+    print(f"  {'  ok' if settled else '실패'} {label:34s} {_short(bulk, 70)}")
     return 1 if bad else 0
 
 

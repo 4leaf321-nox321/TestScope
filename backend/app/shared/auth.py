@@ -64,6 +64,11 @@ _WRITE_SCOPES: tuple[tuple[str, str], ...] = (
     # 첨부는 **붙는 대상의 것**이다 — 지금은 신뢰성 시험뿐이라 그 범위를 쓴다.
     # 대상이 늘면(장비 사진·교정 성적서) 경로를 가르는 것이 아니라 이 한 줄을 다시 본다.
     ("/api/attachments", "equipment:write"),
+    # **검토함 — 시스템 관리자의 토큰이면 MCP 로도 정한다**(2026-10-04, 사용자 결정). 전에는 이
+    # 표에 없어서 기계 자격으로 아예 막았다(「고른 것이 곧 정본이니 사람이 화면에서」). 고른
+    # 것이 카탈로그를 바꾸므로 카탈로그 범위를 쓴다. 확정 자격(시스템 관리자)은 그대로 서버가
+    # 보고, 누가 MCP 로 정했는지가 줄(`decided_by_label`)과 감사에 남는다.
+    ("/api/review", "catalog:write"),
 )
 
 _SAFE_METHODS = frozenset({"GET", "HEAD", "OPTIONS"})

@@ -109,37 +109,36 @@ GUIDE_PATH = Path(__file__).parent / "guide" / "GUIDE.md"
 #: 데 실패하면 그 다음 행동이 통째로 틀린다. 그래서 「무엇을 물었나」 로 들어가는 문을
 #: 하나 둔다. 이 글은 도구 목록과 함께 **항상** 실리므로 짧아야 한다 — 줄마다 첫 도구
 #: 하나씩이고, 나머지는 그 도구의 설명과 get_guide(주제) 가 말한다.
-ROUTING = """무엇을 물었나 -> 여기서 시작한다 (자세한 것은 그 도구의 설명과 get_guide):
+ROUTING = """물음별 첫 도구 (상세는 각 도구 설명과 get_guide):
 
-  이 시험 되는 장비 있나      search_test_items   (물성으로 물으면 search_properties 먼저)
-  이 규격/조건으로 되나        search_test_items(conditions=…) · list_conditions
-  말로만 아는 것을 찾기         resolve · search_semantic · graph_search
-  이름 하나를 id 로            resolve (계열·기종·값·규격·시험·장비·부서 전부)
-  우리 부서 시험 절차           list_reliability_tests · test_capability
-  장비 대장 넣기               import_equipment (한 대면 register_equipment)
-  장비 한 대 고치기            get_equipment · update_equipment · add_equipment_test_item
-  교정 언제였나/언제 만료     get_calibrations · list_calibrations_due
-  규격이 없다/조건을 적자      resolve(method) -> create_method · set_requirement
-  계열/기종/사양 채우기         search_series · search_models · get_specs · set_spec
-  이 값을 어디 적나            list_reference · list_axes · list_terms
-  무슨 칸을 적을 수 있나        list_attribute_definitions
-  무엇이 무엇과 이어지나        graph_search -> graph_node
-  사람이 정할 것이 뭐가 남았나   list_review_queues (확정은 사람이 화면에서)
-  카탈로그에 없다는 기종 요청   list_model_requests -> decide_model_request (사람 확인 뒤)
-  축에 없다는 시험 항목 요청    list_test_item_requests -> decide_test_item_request
-  전용 도구 없는 수정·삭제·생성  update_record · delete_record(확인 뒤 confirm) · create_record
-  어디부터 채우나              list_pending_work"""
+  이 시험이 가능한 보유 장비     search_test_items   (물성으로 물으면 search_properties 먼저)
+  이 규격/조건으로 가능 여부     search_test_items(conditions=…) · list_conditions
+  말로만 아는 대상 찾기          resolve · search_semantic · graph_search
+  이름 하나를 id로               resolve (계열·기종·값·규격·시험·장비·부서 전부)
+  우리 부서 시험 절차            list_reliability_tests · test_capability
+  장비 대장 반입                 import_equipment (한 대면 register_equipment)
+  장비 한 대 수정                get_equipment · update_equipment · add_equipment_test_item
+  교정 이력/만료 시점            get_calibrations · list_calibrations_due
+  규격 없음/조건 기록            resolve(method) -> create_method · set_requirement
+  계열/기종/사양 채우기          search_series · search_models · get_specs · set_spec
+  값을 적을 자리                 list_reference · list_axes · list_terms
+  기재 가능한 칸                 list_attribute_definitions
+  대상 간 연결 관계              graph_search -> graph_node
+  검토함 미결 조회·결정          list_review_items -> decide_review_item (지시 후)
+  카탈로그에 없는 기종 요청      list_model_requests -> decide_model_request (사람 확인 후)
+  축에 없는 시험 항목 요청       list_test_item_requests -> decide_test_item_request
+  전용 도구 없는 수정·삭제·생성  update_record · delete_record(확인 후 confirm) · create_record
+  채울 곳 우선순위               list_pending_work"""
 
 mcp = MCPServer(
     name="testscope",
     instructions=(
-        "TestScope 시험 장비 지도. 「이 시험이 수행 가능 장비가 우리 조직에 있나」 에"
-        " 답한다. 카탈로그는 계열(무슨 시험이 되나)과 기종(어디까지 되나) 두 층이고,"
-        " 보유 장비는 기종을 가리킨다. 규약 둘이 모든 도구에 걸린다 — **만들기 전에"
-        " resolve 로 찾는다**, **모르면 비운다**(지어낸 값은 검색이 「됩니다」 로"
-        " 답한다), **응답의 next 가 「이것이 답이다」 면 멈춘다**(거점별·장비별로 다시"
-        " 부르거나 사양을 열어 재확인하지 않는다 — 판정은 서버가 했다). 처음이면"
-        " get_guide() 를 읽어라.\n\n" + ROUTING
+        "TestScope 시험 장비 지도. 이 시험을 수행할 장비가 조직에 있는지에 대한 답."
+        " 카탈로그는 계열(가능한 시험)과 기종(가능 범위) 두 층이며, 보유 장비는 기종을"
+        " 가리킴. 모든 도구 공통 규약: **만들기 전 resolve로 확인 필수**, **모르면 비워"
+        " 둠**(지어낸 값이 있으면 검색이 가능으로 답함), **응답의 `next`가 `이것이 답`으로"
+        " 시작하면 멈춤**(거점별·장비별 재호출, 사양 재확인 금지. 판정은 서버가 완료)."
+        " 처음이면 get_guide() 먼저 읽기.\n\n" + ROUTING
     ),
 )
 
@@ -214,7 +213,7 @@ def _failed(got: httpx.Response) -> dict[str, Any]:
     try:
         body = got.json()["error"]
     except Exception:
-        return {"error": f"요청이 실패했습니다(HTTP {got.status_code})."}
+        return {"error": f"요청 실패(HTTP {got.status_code})."}
     out: dict[str, Any] = {"error": f"{body.get('message')} ({body.get('code')})"}
     if body.get("details"):
         out["details"] = body["details"]
@@ -242,14 +241,14 @@ def _auth_error(got: httpx.Response) -> dict[str, Any] | None:
         said = ""
     if got.status_code == 401:
         hint = (
-            "인증에 실패했습니다. TestScope 화면의 「내 정보 → 토큰」 에서 발급한"
-            " 개인 토큰을 Authorization 헤더로 등록했는지 확인하세요."
+            "인증 실패. TestScope 화면의 내 정보 → 토큰에서 발급한 개인 토큰을"
+            " Authorization 헤더로 등록했는지 확인 필요."
         )
     else:
         hint = (
-            "권한이 없습니다 — 계정 권한이 모자라거나, 토큰에 그 범위가 없거나,"
-            " 그 자리에 올릴 수 없는 것입니다(남의 사업부 · 확정된 줄). 범위는 카탈로그가"
-            " catalog:write, 장비·규격서·신뢰성 시험이 equipment:write 입니다."
+            "권한 없음. 원인은 계정 권한 부족, 토큰 범위 부족, 등록 불가 대상(남의 사업부 ·"
+            " 확정된 줄) 중 하나. 필요 범위: 카탈로그는 catalog:write, 장비·규격서·신뢰성"
+            " 시험은 equipment:write."
         )
     out: dict[str, Any] = {"error": f"{said} {hint}".strip() if said else hint}
     if details:
@@ -268,7 +267,7 @@ async def _get(ctx: Context, path: str, params: dict[str, Any] | None = None) ->
         async with httpx.AsyncClient(base_url=API_BASE, timeout=30.0) as client:
             got = await client.get(path, params=clean, headers=_headers(ctx))
     except httpx.RequestError as failed:
-        return {"error": f"백엔드에 닿지 못했습니다({API_BASE}): {failed}"}
+        return {"error": f"백엔드 연결 실패({API_BASE}): {failed}"}
     problem = _auth_error(got)
     if problem is not None:
         return problem
@@ -295,7 +294,7 @@ async def _send(
                 method, path, json=body or {}, params=params, headers=_headers(ctx)
             )
     except httpx.RequestError as failed:
-        return {"error": f"백엔드에 닿지 못했습니다({API_BASE}): {failed}"}
+        return {"error": f"백엔드 연결 실패({API_BASE}): {failed}"}
     problem = _auth_error(got)
     if problem is not None:
         return problem
@@ -367,7 +366,7 @@ def _guide_text() -> str:
     try:
         return GUIDE_PATH.read_text(encoding="utf-8")
     except OSError as failed:
-        return f"안내를 읽지 못했습니다({GUIDE_PATH}): {failed}"
+        return f"안내를 읽지 못함({GUIDE_PATH}): {failed}"
 
 
 def _sections(text: str) -> list[tuple[str, str]]:
@@ -410,17 +409,17 @@ def _matches(topic: str, title: str) -> bool:
 
 @mcp.tool()
 def get_guide(topic: str | None = None) -> str:
-    """**무엇을 하기 전에 이것을 먼저 읽어라.** 그다음엔 필요한 대목만.
+    """TestScope 사용 안내. **작업 전 먼저 읽기 필수**, 이후에는 필요한 대목만 조회.
 
-    `topic` 없이 부르면 머리말(이 시스템이 답하는 물음 · 세 층 · 규약 넷)과 **대목의
-    목록**이 온다. 대목 이름의 한 조각을 `topic` 으로 주면 그 대목만 온다 —
-    `get_guide("장비 등록")` · `get_guide("온톨로지")` · `get_guide("권한")`.
+    `topic` 없이 호출하면 머리말(이 시스템이 답하는 물음 · 세 층 · 규약 넷)과 **대목 목록**
+    반환. 대목 이름의 한 조각을 `topic`으로 주면 그 대목만 반환: `get_guide("장비 등록")` ·
+    `get_guide("온톨로지")` · `get_guide("권한")`.
 
-    통째로 받고 싶으면 `topic="전부"`. 안내는 길어서(수천 자) 매번 다 받으면 정작
-    도구를 부를 자리가 줄어든다 — 그래서 대목으로 나눠 준다.
+    전체는 `topic="전부"`. 안내가 수천 자라 매번 전체를 받으면 도구 호출 여유가 줄어듦(대목
+    단위 조회 권장).
 
-    서버가 파일을 매 호출 읽으므로 안내를 고치면 재시작 없이 반영된다 — 클라이언트
-    쪽에 복사해 두면 고쳐도 옛 사본을 쓰는 사람에게는 전달되지 않는다.
+    서버가 매 호출 파일을 읽으므로 안내 수정은 재시작 없이 반영됨. 클라이언트 쪽 사본은 수정이
+    반영되지 않으므로 사본 보관 금지.
     """
     text = _guide_text()
     if text.startswith("안내를 읽지"):
@@ -433,13 +432,13 @@ def get_guide(topic: str | None = None) -> str:
         if found:
             return "\n\n".join(found)
         titles = " · ".join(title for title, _ in sections if title)
-        return f"「{topic}」 라는 대목이 없습니다. 있는 대목: {titles}"
+        return f"'{topic}' 대목 없음. 있는 대목: {titles}"
     # 머리말 + 대목 목록 — 어디를 더 읽을지 고르는 데 필요한 만큼만.
     head = sections[0][1] if sections and not sections[0][0] else ""
     intro = [body for title, body in sections if title in ("층이 셋이다", "규약 넷")]
     titles = "\n".join(f"  {title}" for title, _ in sections if title)
     return "\n\n".join(
-        [head, *intro, f'더 읽을 대목 — get_guide("이름의 한 조각"):\n{titles}']
+        [head, *intro, f'다른 대목은 get_guide("이름의 한 조각")로 조회:\n{titles}']
     )
 
 
@@ -455,24 +454,24 @@ async def resolve(
     maker: str | None = None,
     workspace: str | None = None,
 ) -> dict[str, Any]:
-    """이름 하나를 id 로. **만들거나 고치기 전에 반드시 부른다.**
+    """이름 하나를 id로 확정. **생성·수정 전 호출 필수.**
 
-    `kind` — `series` · `model` · `term`(+`axis`) · `method` · `reliability_test` ·
-    `equipment` · `workspace`. `term` 의 축은 manufacturer · equipment_category ·
-    test_item · property · site · standard_body 이고, 별칭까지 찾는다(「Rp0.2」 로 쳐도 된다).
+    `kind`: `series` · `model` · `term`(+`axis`) · `method` · `reliability_test` · `equipment`
+    · `workspace`. `term`의 축은 manufacturer · equipment_category · test_item · property ·
+    site · standard_body. 별칭까지 검색(`Rp0.2`로 입력해도 됨).
 
-    응답의 `match` 가 셋이다.
+    응답의 `match` 세 가지:
 
-        exact       하나로 정해졌다. `id` 를 그대로 쓴다
-        candidates  여럿이다. **고르지 말고 사람에게 묻는다**
-        none        없다. 새로 만들거나 비워 둔다 — **지어내지 않는다**
+        exact       하나로 확정. `id`를 그대로 사용
+        candidates  여럿. **임의 선택 금지, 사람에게 확인**
+        none        없음. 새로 만들거나 비워 둠. 지어내기 금지
 
-    **부서가 가진 것은 이름이 겹친다.** 「고온고습 1000h」 는 거의 모든 부서에 하나씩
-    있으므로 이름이 같아도 둘이면 `candidates` 다 — `workspace`(slug)를 함께 주면 하나로
-    줄어든다. slug 를 모르면 `resolve(kind="workspace", …)` 로 먼저 찾는다. 장비는
-    자산번호가 유일해서 그것만 exact 이고, 이름은 대개 여럿이다.
+    부서 소유 대상은 이름이 겹침. 고온고습 1000h는 거의 모든 부서에 하나씩 있어 이름이 같아도
+    `candidates`. `workspace`(slug)를 함께 주면 하나로 좁혀짐. slug를 모르면
+    `resolve(kind="workspace", …)`로 먼저 조회. 장비는 자산번호만 유일해 exact, 이름은 대개
+    여럿.
 
-    못 찾은 것은 실패가 아니다. `hint` 에 다음에 할 일이 한 줄로 적혀 있다.
+    못 찾음은 실패가 아님. `hint`에 다음 할 일 한 줄 기재.
     """
     return await _send(
         ctx,
@@ -502,47 +501,44 @@ async def search_test_items(
     include_unavailable: bool = False,
     limit: int = SEARCH_HITS,
 ) -> dict[str, Any]:
-    """**「80도에서 20 kN 이상 인장 되는 장비 있나」 에 답한다.**
+    """보유 장비 중 조건을 만족하는 장비 검색(예: 80도에서 20 kN 이상 인장 가능 장비).
 
-    `conditions` 는 조건마다 하나씩, **셋 중 하나만** 채운다:
-    `{"condition_key_id": …, "at": 80}` (그 값에서 되나) ·
-    `{"…", "at_least": 20}` (그 이상) · `{"…", "at_most": …}`. 값은 **그 축의 `unit`**
-    (`list_conditions` 가 축마다 준다 — 온도 degC · 하중 kN · 낙하 높이 cm)으로 적는다.
+    `conditions`는 조건마다 하나, **셋 중 하나만** 지정: `{"condition_key_id": …, "at": 80}`(그
+    값에서 가능) · `{"…", "at_least": 20}`(그 이상) · `{"…", "at_most": …}`. 값은 그 축의
+    `unit`으로 기재(`list_conditions`가 축마다 제공: 온도 degC · 하중 kN · 낙하 높이 cm).
 
-    조건 키 id 는 `list_conditions()` 가 준다. 시험 항목 id 는 `resolve` 로 찾는다.
-    **어떤 조건을 물어야 하는지는 시험 항목이 정한다** — `get_test_item` 의
-    `condition_keys` 가 그 시험에 뜻이 있는 축(인장 → 하중·속도·온도)이다. 그 축 밖의 조건
-    (인장에 습도)을 붙이면 대개 `unknown` 만 늘어난다. 축이 비어 있으면 아직 안 정해진
-    것이니, 조건을 물을 때 그렇다고 말하라.
-    **물성으로 물으면** `property_term_id` 를 준다(`search_properties` 가 id 를 준다) —
-    서버가 그 물성을 내는 시험 항목 전부로 펼쳐 찾고, 응답의 `expanded_test_items` 에
-    무엇으로 펼쳤는지 적어 준다. 그것이 비어 있으면 결과 0 건은 「장비가 없다」 가 아니라
-    「그 물성에 이어진 시험 항목이 없다」 다.
+    조건 키 id는 `list_conditions()`, 시험 항목 id는 `resolve`로 조회. 물을 조건은 시험 항목이
+    결정: `get_test_item`의 `condition_keys`가 그 시험에 뜻이 있는 축(인장 → 하중·속도·온도).
+    축 밖 조건(인장에 습도)은 대개 `unknown`만 늘림. 축이 비어 있으면 미정 상태이므로 조건 질의
+    시 그 사실을 함께 전달.
 
-    ## 판정을 셋으로 읽어라
+    물성으로 물으면 `property_term_id` 지정(id는 `search_properties`). 서버가 그 물성을 내는
+    시험 항목 전부로 펼쳐 검색하고 `expanded_test_items`에 펼친 내역 기재. 이것이 비어 있으면
+    0건의 뜻은 장비 없음이 아니라 그 물성에 이어진 시험 항목 없음.
 
-        met        된다
-        accessory  **부속(챔버·노)을 달면 된다** — 「됨」 으로 옮기지 마라
-        unmet      안 된다
-        unknown    **모른다** — 그 장비에 그 조건이 안 적혀 있다
+    ## 판정
 
-    `accessory` 조건의 `accessory` 칸이 **무엇을 달면 되는지** 짚어 준다(부속 기종·범위·
-    보유 대수). 보유가 0 이 아니면 사는 이야기가 아니다 — 부속을 다시 뒤지지 마라, 답에 있다.
+        met        가능
+        accessory  부속(챔버·노) 장착 시 가능. 가능(met)으로 옮기기 금지
+        unmet      불가
+        unknown    모름. 그 장비에 그 조건이 기록되지 않음
 
-    **unknown 을 met 으로 옮기지 마라.** 「그 장비에 그 조건이 적혀 있지 않다」 고 그대로
-    말하라 — `reason` 이 왜 모르는지를 준다. 채우려면 `set_test_condition` 이다.
+    `accessory` 조건의 `accessory` 칸에 장착할 부속(부속 기종·범위·보유 대수) 기재. 보유가 0이
+    아니면 구매 대상 아님. 부속 재조회 불필요(답에 포함).
 
-    결과가 비면 `diagnosis` 를 읽어라: `equipment_with_item` 이 0 이면 조건이 좁은 것이
-    아니라 그 시험을 등록한 장비가 없는 것이고, `catalog_series_with_item` 이 0 이 아니면
-    `search_catalog` 로 「사면 되는 것」 을 찾을 수 있으며, `unlinked_equipment` 는 기종에 안
-    이어져 검색에 안 걸리는 장비 수다.
+    **unknown을 met으로 옮기기 금지.** 그 장비에 그 조건이 기록되지 않았다고 그대로 전달.
+    이유는 `reason`, 채우는 도구는 `set_test_condition`.
 
-    **이 응답이 답이다.** 줄마다 거점·부서·위치·담당자가 이미 있다 — 거점별로 다시 부르거나
-    장비마다 사양을 열어 재확인하지 마라(판정은 서버가 사양을 보고 한 것이다).
+    결과가 비면 `diagnosis` 확인: `equipment_with_item`이 0이면 조건이 좁은 것이 아니라 그
+    시험을 등록한 장비 없음. `catalog_series_with_item`이 0이 아니면 `search_catalog`로 구매
+    후보 조회 가능. `unlinked_equipment`는 기종 미연결로 검색에 안 걸리는 장비 수.
 
-    줄은 확실한 것(match)이 먼저다. `total` 이 `shown` 보다 크면 나머지는 **나열하지 말고**
-    `by_verdict`(판정별 수)로 요약하라 — 「match 3대, 모름 40대」. 전부 봐야 할 때만 `limit`
-    을 올린다(최대 50).
+    **이 응답이 최종 답.** 줄마다 거점·부서·위치·담당자 포함. 거점별 재호출, 장비별 사양 재확인
+    금지(판정은 서버가 사양 기준으로 완료).
+
+    확실한 것(match)이 먼저 정렬. `total`이 `shown`보다 크면 나머지는 나열 대신
+    `by_verdict`(판정별 수)로 요약(예: match 3대, 모름 40대). 전체가 필요할 때만 `limit`
+    상향(최대 50).
     """
     found = await _send(
         ctx,
@@ -562,12 +558,12 @@ async def search_test_items(
     return _then(
         found,
         (
-            "0건이다 — diagnosis 를 그대로 말하라. 사면 되는 것은 search_catalog 한 번이고,"
-            " 다른 이름·거점·장비로 다시 뒤지지 마라."
+            "0건. diagnosis를 그대로 전달. 구매 후보는 search_catalog 한 번이며,"
+            " 다른 이름·거점·장비로 재검색 금지."
             if empty
-            else "이것이 답이다. 확실한 것(match)이 먼저이고 줄마다 거점·부서·위치·담당자가"
-            " 있다. 나머지는 by_verdict 로 요약하라 — 거점별로 다시 부르거나 장비마다 사양을"
-            " 열어 재확인하지 마라(판정은 서버가 사양을 보고 한 것이다)."
+            else "이것이 답. 확실한 것(match)이 먼저이며 줄마다 거점·부서·위치·담당자 포함."
+            " 나머지는 by_verdict로 요약. 거점별 재호출, 장비별 사양 재확인 금지(판정은"
+            " 서버가 사양 기준으로 완료)."
         ),
     )
 
@@ -581,18 +577,18 @@ async def search_catalog(
     conditions: list[dict[str, Any]] | None = None,
     limit: int = SEARCH_HITS,
 ) -> dict[str, Any]:
-    """**「이 시험을 하려면 어떤 기종이 되나 / 사야 하나」** — 카탈로그에서 찾는다.
+    """카탈로그 기종 검색: 이 시험이 가능한 기종, 구매 후보 조회.
 
-    `search_test_items` 가 **우리가 가진 것**을 답할 때 이것은 **세상에 있는 것**을 답한다.
-    같은 물음(시험 항목 · 물성 · 규격 · 조건)을 받는다. 가진 것이 없다고 답하기 전에 이것을
-    한 번 더 물어라 — 그다음 물음은 늘 「그러면 무엇을 사나」 다.
+    `search_test_items`는 보유 장비, 이 도구는 카탈로그 전체(보유 여부 무관)를 답함. 같은
+    물음(시험 항목 · 물성 · 규격 · 조건)을 받음. 보유 장비가 없다고 답하기 전 한 번 더
+    조회(다음 물음은 늘 무엇을 사야 하는가).
 
-    답은 계열마다 **기종 단위**다(계열 봉투 0.5~600 kN 은 답이 못 된다). 기종마다
-    `verdict`(match · accessory · partial · unknown)와 `owned_units`(이미 등록된 보유 대수)가
-    온다. **owned_units 가 0 이 아니면 사기 전에 그 장비를 먼저 말하라.** `accessory` 는
-    **챔버·노를 달면 되는 것**이고, 그 조건 줄의 `accessory` 칸이 어느 부속 기종을 얼마까지
-    쓰는지와 그것의 보유 대수를 짚어 준다 — 본체와 부속을 따로 세어 말하라. `unmet_models` 는
-    조건에 걸려 빠진 기종 수다 — 0 건일 때 「없어서」 와 「조건이 좁아서」 를 가른다.
+    답은 계열별 기종 단위(계열 범위 0.5~600 kN은 답이 아님). 기종마다 `verdict`(match ·
+    accessory · partial · unknown)와 `owned_units`(이미 등록된 보유 대수) 포함. **owned_units가
+    0이 아니면 구매보다 그 장비를 먼저 안내.** `accessory`는 챔버·노 장착 시 가능이며, 그 조건
+    줄의 `accessory` 칸에 쓸 부속 기종, 가능 범위, 그 부속의 보유 대수 기재. 본체와 부속은 따로
+    세어 전달. `unmet_models`는 조건 미달로 빠진 기종 수(0건일 때 기종 없음과 조건이 좁음을
+    구분).
     """
     found = await _send(
         ctx,
@@ -608,9 +604,9 @@ async def search_catalog(
     found = _trim_hits(found, max(1, min(limit, SEARCH_HITS_MAX)))
     return _then(
         found,
-        "이것이 답이다. 줄마다 판정과 보유 대수(owned_units)가 있으니 기종마다 장비를 다시"
-        " 찾거나 사양을 열지 마라. 보유 대수가 0 이 아니면 사기 전에 그 장비부터 말하고,"
-        " total 이 shown 보다 크면 나머지는 by_verdict 로 요약하라.",
+        "이것이 답. 줄마다 판정과 보유 대수(owned_units) 포함. 기종별 장비 재검색, 사양"
+        " 열람 금지. 보유 대수가 0이 아니면 구매보다 그 장비를 먼저 안내. total이 shown보다"
+        " 크면 나머지는 by_verdict로 요약.",
     )
 
 
@@ -618,20 +614,20 @@ async def search_catalog(
 async def search_semantic(
     ctx: Context, q: str, kind: list[str] | None = None, limit: int = 10
 ) -> dict[str, Any]:
-    """**글자가 안 겹쳐도 뜻이 가까운 것** — 자유 문장으로 물을 때의 첫 손잡이.
+    """의미 검색: 글자가 겹치지 않아도 뜻이 가까운 대상 조회. 자유 문장 질문의 첫 도구.
 
-    「HAST」 「thermal shock」 「얇은 판 잡아당길 때 쓰는 규격」 「-40~150도 왔다갔다 하는
-    챔버」 처럼 사람 말 그대로 넣는다. 돌아오는 것은 **후보**다 — 시험 항목·물성·계열·기종·
-    규격·보유 장비·신뢰성 시험 중 뜻이 가까운 것들과 유사도(`score`, bge-m3 실측으로 0.5 위가
-    맞는 것, 0.4 안팎은 우연). 벡터가 장비를 직접 답하지 않는다: 시험 항목이 정해지면
-    `search_test_items(test_item_term_id=…)` 로 조건을 붙여 장비를 찾고, 이름이 하나로
-    정해졌는지는 `resolve` 가 말한다 — `resolve` 도 글자로 못 찾으면 이 결과를 후보로 준다.
+    사람 말 그대로 입력(예: `HAST`, `thermal shock`, `얇은 판 잡아당길 때 쓰는 규격`,
+    `-40~150도 왔다갔다 하는 챔버`). 반환은 **후보**: 시험 항목·물성·계열·기종·규격·보유
+    장비·신뢰성 시험 중 뜻이 가까운 것과 유사도(`score`; bge-m3 실측 기준 0.5 이상이 적중, 0.4
+    안팎은 우연). 장비를 직접 답하지 않음: 시험 항목이 정해지면
+    `search_test_items(test_item_term_id=…)`에 조건을 붙여 장비 조회. 이름 확정 여부는
+    `resolve`가 판단(`resolve`도 글자로 못 찾으면 이 결과를 후보로 제시).
 
-    `kind` 로 종류를 거른다 — `test_item` · `property` · `series` · `model` · `method` ·
-    `equipment` · `reliability_test`. 보유 장비는 이 토큰의 사람이 볼 수 있는 것만 온다.
+    `kind`로 종류 필터: `test_item` · `property` · `series` · `model` · `method` · `equipment`
+    · `reliability_test`. 보유 장비는 토큰 소유자가 볼 수 있는 것만 반환.
 
-    `available=false` 면 부품(pgvector·Ollama)이 없는 설치다 — 오류가 아니다. 그때는
-    `search_properties`·`resolve`·`search_series(q=…)` 처럼 이름으로 찾는 도구를 쓴다.
+    `available=false`는 부품(pgvector·Ollama)이 없는 설치이며 오류 아님. 이때는 이름 기반
+    도구(`search_properties` · `resolve` · `search_series(q=…)`) 사용.
     """
     return _listed(
         await _get(ctx, "/search/semantic", {"q": q, "kind": kind, "limit": limit}),
@@ -643,22 +639,22 @@ async def search_semantic(
 async def search_properties(
     ctx: Context, q: str | None = None, linked_only: bool = True
 ) -> dict[str, Any]:
-    """물성으로 묻기 전에 — **「인장강도」 가 어느 시험 항목으로 나오나.**
+    """물성(예: 인장강도)을 내는 시험 항목 조회. 물성으로 장비를 묻기 전 사용.
 
-    사람은 「인장 되는 장비」 가 아니라 「인장강도 재는 장비」 라고 묻는다. 이 도구가 그
-    물성(온톨로지 축 `property`, code 가 `mechanical.tensile_strength` 같은 MaterialTwin
-    키)과 그것을 내는 시험 항목들(`links`)을 준다 — **N:M** 이다. 유리전이온도는
-    DSC·DMA·TMA 셋에서 나오고, 인장은 강도·항복·영률·연신율을 낸다.
+    사람은 인장 가능 장비가 아니라 인장강도 측정 장비로 물음. 이 도구가 그 물성(온톨로지 축
+    `property`, code는 `mechanical.tensile_strength` 같은 MaterialTwin 키)과 그것을 내는 시험
+    항목(`links`)을 반환. 관계는 N:M: 유리전이온도는 DSC·DMA·TMA 셋에서 나오고, 인장은
+    강도·항복·영률·연신율을 냄.
 
-    받은 물성의 `id` 를 `search_test_items(property_term_id=…)` 에 넣으면 서버가 그 시험
-    항목 전부로 펼쳐 찾는다. 시험 항목 하나로 좁히려면 `links[].test_item_term_id` 를
-    `test_item_term_id` 로 함께 준다.
+    받은 물성 `id`를 `search_test_items(property_term_id=…)`에 넣으면 서버가 그 시험 항목
+    전부로 펼쳐 검색. 시험 항목 하나로 좁히려면 `links[].test_item_term_id`를
+    `test_item_term_id`로 함께 지정.
 
-    `linked_only=True`(기본)면 시험 항목이 이어진 물성만 온다. 이어진 것이 없는 물성은
-    검색해도 늘 비므로, 그것을 「장비가 없다」 로 옮기지 마라 — 「아직 연결이 없다」 다.
+    `linked_only=True`(기본)면 시험 항목이 이어진 물성만 반환. 연결 없는 물성은 검색 결과가 늘
+    비므로 **장비 없음으로 옮기기 금지**(아직 연결 없음으로 전달).
 
-    `links[].status` 가 `suggested` 면 기계가 제안한 연결이고 사람이 아직 확인하지
-    않았다. 그대로 써도 되지만, 답할 때 그렇다고 말하라.
+    `links[].status`가 `suggested`면 기계 제안 연결로 사람 미확인. 사용은 가능하나 답할 때 그
+    사실 명시.
     """
     return _listed(
         await _get(ctx, "/properties", {"q": q, "include_unlinked": not linked_only}),
@@ -668,10 +664,10 @@ async def search_properties(
 
 @mcp.tool()
 async def list_conditions(ctx: Context) -> dict[str, Any]:
-    """검색이 묻는 조건 축들 — 온도·하중·속도·주파수·시편 두께·습도·항온조.
+    """검색 조건 축 목록: 온도·하중·속도·주파수·시편 두께·습도·항온조.
 
-    축마다 `unit` 이 온다 — **값을 보내고 받는 단위**다(온도 degC · 하중 kN · 낙하 높이 cm).
-    `si_unit`·`display_unit` 은 참고다: `unit` 은 display_unit, 없으면 si_unit 이다.
+    축마다 `unit` 포함: **값을 보내고 받는 단위**(온도 degC · 하중 kN · 낙하 높이 cm).
+    `si_unit`·`display_unit`은 참고용이며, `unit`은 display_unit, 없으면 si_unit.
     """
     return _listed(await _get(ctx, "/condition-keys"), "conditions")
 
@@ -681,15 +677,15 @@ async def list_conditions(ctx: Context) -> dict[str, Any]:
 
 @mcp.tool()
 async def list_workspaces(ctx: Context) -> dict[str, Any]:
-    """부서 목록 — slug · 이름 · 조직도 경로(「개발본부 / 재료시험팀」).
+    """부서 목록: slug · 이름 · 조직도 경로(예: 개발본부 / 재료시험팀).
 
-    장비·규격서를 올리는 도구가 요구하는 것은 이름이 아니라 **slug** 다(`register_equipment`
-    의 `workspace_slug`). 이 목록 없이 이름으로 짐작해 넣으면 대개 404 이거나 남의 부서다.
-    **같은 이름의 팀이 본부마다 있을 수 있다** — 경로(`path`)로 가른다. 이름 하나만 알면
-    `resolve(kind="workspace", …)` 가 더 빠르다.
+    장비·규격서 등록 도구는 이름이 아니라 **slug**를 요구(`register_equipment`의
+    `workspace_slug`). 이 목록 없이 이름으로 짐작하면 대개 404 또는 남의 부서. 같은 이름의 팀이
+    본부마다 있을 수 있으므로 경로(`path`)로 구분. 이름 하나만 알면 `resolve(kind="workspace",
+    …)`가 더 빠름.
 
-    **신뢰성 시험은 부서가 아니라 사업부에 속한다** — 거기에는 이 목록이 아니라
-    `list_divisions` 의 사업부 코드를 쓴다.
+    **신뢰성 시험은 부서가 아니라 사업부 소속**: 이 목록 대신 `list_divisions`의 사업부 코드
+    사용.
     """
     return _listed(await _get(ctx, "/workspaces/options"), "workspaces")
 
@@ -705,21 +701,20 @@ async def search_series(
     category_term_id: str | None = None,
     limit: int = 20,
 ) -> dict[str, Any]:
-    """계열을 찾아 훑는다. `kind` 는 `main`(본체) · `accessory`(부속) · 빈 문자열(전체).
+    """계열 목록 조회. `kind`: `main`(본체) · `accessory`(부속) · 빈 문자열(전체).
 
-    **하나로 정하려면 `resolve` 를 쓴다.** 이 도구는 「무엇이 있나」 를 볼 때다.
+    **하나로 확정할 때는 `resolve` 사용.** 이 도구는 어떤 계열이 있는지 훑을 때 사용.
 
-    `category_term_id` 로 분류를 좁힌다(`resolve(axis="equipment_category", …)`). 분류는
-    군/유형 두 층이라 **군(「정적 기계 시험기」)을 주면 아래 유형 전부**가 걸린다 —
-    「기계 시험기 전부」 를 보려고 유형 여덟을 하나씩 부르지 않아도 된다.
+    `category_term_id`로 분류 좁히기(`resolve(axis="equipment_category", …)`). 분류는 군/유형
+    두 층이라 군(예: 정적 기계 시험기)을 주면 하위 유형 전부 포함. 기계 시험기 전체를 보려고
+    유형 여덟 개를 하나씩 호출할 필요 없음.
 
-    ## 여기 오는 것은 요약이다
+    ## 요약 응답
 
-    시험 항목은 **개수**(`test_item_count`)로만 온다. 무슨 시험이 되는지와 조건 수치는
-    `get_series` 가 준다 — 목록에 다 실으면 한 쪽이 191 KB 다.
+    시험 항목은 개수(`test_item_count`)만 반환. 가능한 시험과 조건 수치는 `get_series`가
+    제공(목록에 전부 실으면 한 쪽이 191 KB).
 
-    그러니 **`test_item_count` 가 0 이 아닌 것을 「조건을 모른다」 고 답하지 마라.**
-    아직 안 물어본 것이다.
+    **`test_item_count`가 0이 아니면 조건을 모른다고 답하기 금지.** 아직 조회하지 않은 상태.
     """
     return await _get(
         ctx,
@@ -735,11 +730,10 @@ async def search_series(
 
 @mcp.tool()
 async def get_series(ctx: Context, series_id: str) -> dict[str, Any]:
-    """계열 하나 — 무슨 시험이 되나(test_items) · 어느 부속이 붙나(relations) ·
-    기종이 몇 개인가 · 우리가 몇 대 가졌나.
+    """계열 하나의 상세: 가능 시험(test_items) · 호환 부속(relations) · 기종 수 · 보유 대수.
 
-    사양을 채우려면 여기서 `category_term_id` 를 얻어 `list_spec_definitions` 에
-    넘긴다 — 분류를 주면 그 분류의 칸과 공통 칸이 함께 온다.
+    사양을 채우려면 여기서 `category_term_id`를 얻어 `list_spec_definitions`에 전달. 분류를
+    주면 그 분류의 칸과 공통 칸이 함께 반환.
     """
     return await _get(ctx, f"/equipment-series/{series_id}")
 
@@ -754,16 +748,15 @@ async def create_series(
     kind: str = "main",
     summary: str | None = None,
 ) -> dict[str, Any]:
-    """계열을 만든다. **먼저 `resolve(kind="series", …)` 로 찾아라.**
+    """계열 생성. **먼저 `resolve(kind="series", …)`로 조회 필수.**
 
-    같은 계열이 두 줄로 갈리면 보유 장비가 어느 쪽을 가리켰는지에 따라 검색 결과가
-    나뉜다. 이미 있으면 409 와 함께 `details.series_id` 가 온다 — **409 는 실패가
-    아니라 답이다.** 그 id 를 쓰면 된다.
+    같은 계열이 두 줄로 갈리면 보유 장비가 어느 쪽을 가리키는지에 따라 검색 결과가 나뉨. 이미
+    있으면 409와 `details.series_id` 반환: 409는 실패가 아니라 답이며 그 id를 사용.
 
-    `maker`·`category` 는 이름으로 준다. 온톨로지에 **하나로 정해질 때만** 받고,
-    없으면 거절한다 — 오타가 새 제조사가 되면 그 계열은 목록에서 혼자 선다.
+    `maker`·`category`는 이름으로 지정. 온톨로지에서 하나로 확정될 때만 받고 아니면 거절(오타가
+    새 제조사가 되면 그 계열이 목록에서 고립됨).
 
-    챔버·퍼니스·신율계 같은 부속도 계열이다(`kind="accessory"`).
+    챔버·퍼니스·신율계 같은 부속도 계열(`kind="accessory"`).
     """
     return await _send(
         ctx,
@@ -789,14 +782,13 @@ async def add_test_item(
     method_code: str | None = None,
     note: str | None = None,
 ) -> dict[str, Any]:
-    """이 계열이 무슨 시험을 하나. **조건 수치는 여기 적지 않는다.**
+    """계열에 가능 시험 항목 추가. **조건 수치는 여기 기재 금지.**
 
-    여기 적는 조건은 계열 전체가 만족하는 것뿐이고, 기종마다 갈리는 값은 그 기종의
-    사양(`set_spec`)에 적으면 보유 장비를 만들 때 합쳐진다 — 한 계열 안에서 하중이
-    중앙값 60배 갈리기 때문이다.
+    여기 적는 조건은 계열 전체가 만족하는 것뿐. 기종마다 갈리는 값은 그 기종의
+    사양(`set_spec`)에 기재하며 보유 장비 생성 시 합쳐짐(한 계열 안에서 하중이 중앙값 60배까지
+    갈림).
 
-    시험 항목은 **닫힌 축**이다. 없는 이름은 안 받는다 — 오타가 값이 되면 그 계열의
-    장비는 영영 검색에 안 걸린다.
+    시험 항목은 닫힌 축: 없는 이름은 거절(오타가 값이 되면 그 계열 장비가 검색에서 영구 누락).
     """
     return await _send(
         ctx,
@@ -815,13 +807,13 @@ async def add_test_item(
 async def link_series(
     ctx: Context, series_id: str, part_series_id: str, relation: str, note: str | None = None
 ) -> dict[str, Any]:
-    """계열끼리 잇는다 — 부속 호환·계보.
+    """계열 간 연결: 부속 호환·계보.
 
-    `relation` 은 원본 카탈로그가 쓰는 이름 그대로다: `compatible_accessory` ·
-    `fits_on` · `requires` · `extends_temperature` · `successor_of` · `same_family_as`.
+    `relation`은 원본 카탈로그 이름 그대로: `compatible_accessory` · `fits_on` · `requires` ·
+    `extends_temperature` · `successor_of` · `same_family_as`.
 
-    **`extends_temperature` 에는 note 를 적어라** — 「-150 ~ +600 °C」 처럼 무엇이
-    어떻게 바뀌는지가 그 칸에만 남는다.
+    **`extends_temperature`에는 note 기재 필수**(예: -150 ~ +600 °C). 무엇이 어떻게 바뀌는지는
+    그 칸에만 남음.
     """
     return await _send(
         ctx,
@@ -842,27 +834,25 @@ async def search_models(
     series: str | None = None,
     limit: int = 20,
 ) -> dict[str, Any]:
-    """기종을 찾아 훑는다. **보유 장비가 가리키는 것이 이 기종이다.**
+    """기종 목록 조회. **보유 장비가 가리키는 대상이 기종.**
 
-    ## 계열로 먼저 좁혀라
+    ## 계열로 먼저 좁히기
 
-    사람이 아는 것은 대개 **계열까지**다 — 「인스트론 6800 시리즈」 는 알아도
-    `68FM-300` 은 라벨을 봐야 안다. 계열을 알면 `series`(이름) 나 `series_id` 로
-    좁혀서 **그 계열의 기종을 전부** 받아라. 그래야 라벨과 대조할 수 있다.
+    사람이 아는 것은 대개 계열까지(인스트론 6800 시리즈는 알아도 `68FM-300`은 라벨을 봐야 앎).
+    계열을 알면 `series`(이름)나 `series_id`로 좁혀 그 계열의 기종 전부를 받아 라벨과 대조.
 
-    `series` 이름이 하나로 안 정해지면 후보를 돌려준다 — 그때는 `resolve` 로 정하고
-    `series_id` 로 다시 부른다.
+    `series` 이름이 하나로 확정되지 않으면 후보 반환. 이때 `resolve`로 확정 후 `series_id`로
+    재호출.
 
-    `q` 만 주면 기종명·계열명·제조사를 다 뒤진다. 하나로 정하려면 `resolve` 를 쓴다.
+    `q`만 주면 기종명·계열명·제조사 전체 검색. 하나로 확정할 때는 `resolve` 사용.
 
-    ## 여기 오는 것은 요약이다
+    ## 요약 응답
 
-    시험 항목은 **이름만** 오고(`test_items`), 사양은 그 기종을 가르는 대표 두어 칸
-    (`headline_specs`)만 온다. 조건 수치와 사양 전부는 `get_model` ·
-    `get_model_specs` 가 준다.
+    시험 항목은 이름만(`test_items`), 사양은 기종을 가르는 대표 두어 칸(`headline_specs`)만
+    반환. 조건 수치와 사양 전체는 `get_model` · `get_specs`가 제공.
 
-    **안 온 것을 「없다」 고 답하지 마라.** `spec_count` 가 실제로 몇 칸 적혔는지를
-    말해 주므로, 그 수가 0 이 아니면 값은 있고 아직 안 물어본 것이다.
+    **반환되지 않은 값을 없다고 답하기 금지.** `spec_count`가 실제 기재된 칸 수이므로 0이
+    아니면 값은 있고 아직 조회하지 않은 상태.
     """
     if series_id is None and series:
         answer = await _send(
@@ -872,7 +862,7 @@ async def search_models(
             return answer
         if answer.get("match") != "exact":
             return {
-                "error": f"계열 「{series}」 을(를) 하나로 정할 수 없습니다.",
+                "error": f"계열 '{series}'을(를) 하나로 확정할 수 없음.",
                 "match": answer.get("match"),
                 "candidates": answer.get("candidates", []),
                 "hint": answer.get("hint"),
@@ -895,17 +885,16 @@ async def create_model(
     form_factor_term_id: str | None = None,
     summary: str | None = None,
 ) -> dict[str, Any]:
-    """기종을 만든다. **계열이 먼저 있어야 한다.**
+    """기종 생성. **계열이 먼저 있어야 함.**
 
-    계열은 id 나 이름으로 준다. 이름이 하나로 정해지지 않으면 거절하고 후보를
-    돌려준다 — **비슷한 계열에 끼워 넣지 마라.** 단품이라도 기종 하나짜리 계열을
-    먼저 만든다.
+    계열은 id나 이름으로 지정. 이름이 하나로 확정되지 않으면 거절하고 후보 반환. **비슷한
+    계열에 끼워 넣기 금지.** 단품이라도 기종 하나짜리 계열을 먼저 생성.
 
-    기종명에 계열 이름을 섞지 마라. `6800 68FM-300` 과 `68FM-300` 이 별개 기종으로
-    갈리고, 그 둘을 나중에 묶을 방법이 없다.
+    기종명에 계열 이름 혼합 금지: `6800 68FM-300`과 `68FM-300`이 별개 기종으로 갈리고 나중에
+    묶을 방법이 없음.
 
-    형태(`form_factor_term_id`)는 **축의 값 id** 다 — `resolve(kind="term",
-    axis="form_factor", name="탁상형")`. 자유 문자열이 아니다.
+    형태(`form_factor_term_id`)는 축의 값 id: `resolve(kind="term", axis="form_factor",
+    text="탁상형")`. 자유 문자열 아님.
     """
     return await _send(
         ctx,
@@ -926,14 +915,13 @@ async def create_model(
 async def list_spec_definitions(
     ctx: Context, category_term_id: str | None = None
 ) -> dict[str, Any]:
-    """이 기종에 **적을 수 있는 칸**들. 분류를 주면 그 분류의 것과 공통이 함께 온다.
+    """기종에 **기재 가능한 사양 칸** 목록. 분류를 주면 그 분류의 칸과 공통 칸을 함께 반환.
 
-    `kind` 가 값의 모양을 정한다: `number`(수치 하나) · `range`(구간) · `choice` ·
-    `boolean` · `text`. `condition_key_id` 가 채워진 사양은 **검색축**이라, 그 값이
-    보유 장비의 시험 조건이 된다.
+    `kind`가 값의 형태를 결정: `number`(수치 하나) · `range`(구간) · `choice` · `boolean` ·
+    `text`. `condition_key_id`가 채워진 사양은 검색축이며 그 값이 보유 장비의 시험 조건이 됨.
 
-    **없는 사양은 만들지 말고 보류하라.** 정의를 늘리는 것은 사람의 판단이다 —
-    원본에 사양 키가 562종 있는데 76%가 단 한 곳에만 나온다.
+    **없는 사양은 만들지 말고 보류.** 정의 추가는 사람의 판단(원본 사양 키 562종 중 76%가 단 한
+    곳에만 등장).
     """
     return _listed(
         await _get(ctx, "/spec-definitions", {"category_term_id": category_term_id}),
@@ -943,27 +931,25 @@ async def list_spec_definitions(
 
 @mcp.tool()
 async def get_specs(ctx: Context, model_id: str) -> dict[str, Any]:
-    """이 기종에 **적힌** 사양. 빈 칸은 `list_spec_definitions` 가 준다.
+    """기종에 **기재된** 사양. 빈 칸 목록은 `list_spec_definitions`가 제공.
 
-    둘을 겹쳐 봐야 「무엇이 아직 안 적혔나」 가 보인다 — 여기에 빈 칸까지 실으면
-    한 기종을 볼 때마다 수백 줄이 오간다.
+    둘을 겹쳐 봐야 미기재 칸이 보임(빈 칸까지 실으면 기종마다 수백 줄).
 
-    **정의가 없는 값은 여기 안 온다.** 카탈로그 원문 전체는 `get_model` 의
-    `raw_specs` 에 있다 — 사양을 채우기 전에 그것을 먼저 읽어라.
+    **정의 없는 값은 여기 없음.** 카탈로그 원문 전체는 `get_model`의 `raw_specs`. 사양을 채우기
+    전 원문 먼저 확인.
     """
     return await _get(ctx, f"/equipment-models/{model_id}/specs")
 
 
 @mcp.tool()
 async def get_model(ctx: Context, model_id: str) -> dict[str, Any]:
-    """기종 하나 — 계열·분류·보유 대수, 그리고 **카탈로그 원문**(`raw_specs`).
+    """기종 하나: 계열·분류·보유 대수와 **카탈로그 원문**(`raw_specs`).
 
-    원문은 제조사 카탈로그에 적힌 그대로다. 정의가 있는 칸만 사양표(`get_specs`)에
-    들어가고, 정의가 없는 것은 여기에만 있다 — 원본에 950종 넘는 키가 있고 대부분이
-    한 카탈로그에만 나온다.
+    원문은 제조사 카탈로그 기재 그대로. 정의가 있는 칸만 사양표(`get_specs`)에 들어가고 정의
+    없는 값은 여기에만 있음(원본 키 950종 이상, 대부분 한 카탈로그에만 등장).
 
-    **사양을 채울 때 이것을 먼저 읽어라.** 원문에 값이 있는데 사양표가 비어 있으면,
-    그 값에 맞는 정의가 아직 없다는 뜻이다. 그때는 지어내지 말고 사람에게 알려라.
+    **사양을 채울 때 먼저 확인.** 원문에 값이 있는데 사양표가 비어 있으면 맞는 정의가 아직
+    없다는 뜻. 이때 지어내지 말고 사람에게 알림.
     """
     return await _get(ctx, f"/equipment-models/{model_id}")
 
@@ -984,31 +970,30 @@ async def set_spec(
     source_page: int | None = None,
     replace: bool = False,
 ) -> dict[str, Any]:
-    """사양 한 칸을 넣는다. **정의의 종류에 맞는 칸만 채운다.**
+    """기종 사양 한 칸 입력. **정의의 종류에 맞는 칸만 채움.**
 
         number   num_value
-        range    num_min · num_max   (한쪽을 비우면 「제한 없음」 — 0 이 아니다)
-        choice   text_value          (정의의 choices 안에 있어야 한다)
+        range    num_min · num_max   (한쪽을 비우면 제한 없음, 0 아님)
+        choice   text_value          (정의의 choices 안의 값만)
         boolean  bool_value
-        text     text_value          (원문 그대로. 조건절을 버리지 마라)
+        text     text_value          (원문 그대로, 조건절 유지)
 
-    틀린 칸에 담긴 값은 저장은 되지만 화면이 못 그린다.
+    틀린 칸에 담긴 값은 저장은 되나 화면 표시 불가.
 
-    **비고를 아끼지 마라.** 「챔버 장착 시」 처럼 값이 언제 성립하는지가 비고에만
-    남는다. 카탈로그가 조건을 달아 적은 것을 버리면 값만 남고 뜻이 사라진다.
+    비고를 충분히 기재: 값의 성립 조건(예: 챔버 장착 시)은 비고에만 남음. 카탈로그가 조건을
+    달아 적은 값에서 조건을 버리면 뜻이 사라짐.
 
-    **옵션 부속 기준이면 `requires_accessory=True`.** 카탈로그가 「-180~320 °C」 를 항온조
-    옵션으로 적으면 그것은 본체 값이 아니다. 비고에만 적으면 검색은 글자를 못 읽고 「됨」
-    이라고 답한다 — 표시로 둬야 검색이 「부속 있으면」 으로 가른다.
+    옵션 부속 기준 값이면 `requires_accessory=True`. 카탈로그가 -180~320 °C를 항온조 옵션으로
+    적었다면 본체 값이 아님. 비고에만 적으면 검색이 글자를 읽지 못해 가능으로 답함. 표시해야
+    검색이 부속 있으면 가능(`accessory`)으로 구분.
 
-    **네(AI)가 넣지 않은 값은 조용히 못 덮는다.** 사람 · 반입 · 기록 전 값이면 409 로 거절하고
-    지금 값과 누구의 것인지(`origin`)를 함께 돌려준다. 그 값을 **사람에게 보여 주고 물어라.**
-    사양서가 다르다고 사람이 말하면 `replace=True`. 빈 자리를 채우는 것과 AI 가 넣은 값
-    (`origin="agent"`)을 고치는 것은 그대로 된다 — 백필이 하는 일은 그것이다.
+    **AI가 넣지 않은 값은 조용히 덮어쓰기 불가.** 사람 · 반입 · 기록 전 값이면 409로 거절하고
+    현재 값과 출처(`origin`)를 반환. 그 값을 사람에게 보여 주고 확인. 사람이 사양서가 다르다고
+    하면 `replace=True`. 빈 칸 채우기와 AI가 넣은 값(`origin="agent"`) 수정은 그대로 진행(백필
+    용도).
 
-    응답의 `search_axis` 가 채워져 있으면 이 값은 앞으로 이 기종으로 등록하는 장비의
-    시험 조건이 된다. `existing_units` 는 **이미 등록된 대수**이고 그들에게는
-    반영되지 않는다 — 개체의 값은 개체가 갖는다.
+    응답의 `search_axis`가 채워져 있으면 이 값은 이후 이 기종으로 등록하는 장비의 시험 조건이
+    됨. `existing_units`는 이미 등록된 대수이며 그 장비에는 미반영(개체의 값은 개체 소유).
     """
     return await _send(
         ctx,
@@ -1032,8 +1017,10 @@ async def set_spec(
 
 @mcp.tool()
 async def list_spec_sources(ctx: Context, q: str | None = None) -> dict[str, Any]:
-    """사양값의 출처가 될 제조사 문서들. **값을 적을 때 출처를 함께 대라** —
-    반년 뒤 「이 300 kN 어디서 나왔나」 를 물을 사람은 반드시 있다."""
+    """사양값 출처가 될 제조사 문서 목록.
+
+    **값을 적을 때 출처 함께 기재 필수**(반년 뒤 이 300 kN의 근거를 묻는 경우 대비).
+    """
     return await _get(ctx, "/spec-sources", {"q": q, "limit": MAX_LIMIT})
 
 
@@ -1049,27 +1036,26 @@ async def search_equipment(
     attr: list[str] | None = None,
     limit: int = 20,
 ) -> dict[str, Any]:
-    """우리가 가진 장비. 각 줄에 **시험 항목**과 계열·기종이 함께 온다.
+    """보유 장비 목록. 줄마다 시험 항목과 계열·기종 포함.
 
-    `test_items` 가 비어 있으면 그 장비는 **검색에 절대 안 걸린다** — 시험 항목이 안
-    적혀 있다는 뜻이다.
+    `test_items`가 비어 있으면 시험 항목 미기재로 **검색에 절대 안 걸림.**
 
-    `attr` 은 **적어 둔 속성 값으로 거른다** — 여러 개면 모두 만족해야 한다.
-    왼쪽은 `list_attribute_definitions(target="equipment")` 가 주는 `key` 다(이름이
-    아니다 — 이름은 관리자가 고치면 바뀌고, 그때 저장해 둔 물음이 조용히 빈 답을 낸다).
+    `attr`은 기재된 속성 값으로 필터. 여러 개면 모두 만족해야 함. 왼쪽은
+    `list_attribute_definitions(target="equipment")`의 `key`(이름 아님: 관리자가 이름을 바꾸면
+    저장해 둔 물음이 조용히 빈 답을 냄).
 
         ["invest_year>=2020"]   수치 · 날짜
         ["purpose~고온"]         문장 포함
-        ["reserve_url*"]        값이 적혀 있기만 하면
-        ["reserve_url!*"]       **안 적힌 것** — 채워야 할 칸을 찾는다
-        ["holder!=3동"]          같지 않다
+        ["reserve_url*"]        값이 기재되어 있기만 하면
+        ["reserve_url!*"]       미기재(채울 칸 찾기)
+        ["holder!=3동"]          같지 않음
 
-    `!*` 는 `!=` 와 다르다: `!=` 는 *적혀 있는데* 그 값이 아닌 것이고, `!*` 는 **줄 자체가
-    없는 것**이다. 「무엇이 안 적혔나」 를 물을 때는 목록을 받아 세지 말고 이것을 써라.
+    `!*`와 `!=`는 다름: `!=`는 *기재되어 있으나* 그 값이 아닌 것, `!*`는 줄 자체가 없는 것.
+    미기재 항목을 물을 때는 목록을 받아 세지 말고 이 조건 사용.
 
-    **조건으로 「되는 장비」 를 찾는 것은 이것이 아니다** — 그것은
-    `search_test_items(conditions=…)` 다. 여기는 「적어 둔 칸의 값」 으로 거르는 자리라,
-    온도 범위 같은 **능력**은 안 본다(능력은 사양이고, 사양은 기종에 있다).
+    **조건으로 가능한 장비를 찾는 도구는 이것이 아님**: `search_test_items(conditions=…)` 사용.
+    여기는 기재된 칸 값으로 거르는 곳이라 온도 범위 같은 능력은 보지 않음(능력은 사양이며
+    사양은 기종에 있음).
     """
     return await _get(
         ctx,
@@ -1086,10 +1072,10 @@ async def search_equipment(
 
 @mcp.tool()
 async def get_equipment(ctx: Context, equipment_id: str) -> dict[str, Any]:
-    """보유 장비 한 대 — 자산번호·자리·상태·담당자, 그리고 어느 기종인가.
+    """보유 장비 한 대: 자산번호·위치·상태·담당자와 연결 기종.
 
-    `test_items` 가 비어 있으면 **검색에 절대 안 걸린다.** `series_name` 이 비어
-    있으면 카탈로그에 아직 안 이어진 장비다.
+    `test_items`가 비어 있으면 **검색에 절대 안 걸림.** `series_name`이 비어 있으면 카탈로그
+    미연결 장비.
     """
     return await _get(ctx, f"/equipment/{equipment_id}")
 
@@ -1101,45 +1087,44 @@ async def import_equipment(
     dry_run: bool = True,
     update_existing: bool = False,
 ) -> dict[str, Any]:
-    """부서 대장을 **통째로** 넣는다. 한 대씩 `register_equipment` 를 300번 부르지 마라.
+    """부서 장비 대장 **일괄** 반입. `register_equipment`를 한 대씩 300번 호출 금지.
 
-    `text` 는 엑셀에서 복사한 것 그대로다 — 탭이나 쉼표로 나뉜 표, **첫 줄이 머리글**.
-    머리글은 한국어다(`import_columns` 가 받아 주는 이름을 준다):
+    `text`는 엑셀에서 복사한 그대로: 탭 또는 쉼표로 나뉜 표, 첫 줄은 머리글. 머리글은
+    한국어(허용 이름은 `import_columns`가 제공):
 
         자산번호  장비명  보유부서  거점  설치위치  기종  장비유형  제조번호  상태
         상태근거  담당자  …
 
-    **담당자는 이메일로 적는다.** 이름으로도 받지만 동명이인이면 그 줄이 거절된다 — 골라
-    넣으면 그 장비의 연락처가 남의 것이 되고, 틀린 것을 아무도 모른다. `update_existing`
-    과 함께 쓰면 **비어 있는 담당자를 한 번에 채우는** 길이다(자산번호와 담당자 두 열만
-    있는 표로도 된다).
+    담당자는 이메일로 기재. 이름도 받지만 동명이인이면 그 줄 거절(임의로 고르면 연락처가 남의
+    것이 되고 아무도 모름). `update_existing`과 함께 쓰면 비어 있는 담당자를 일괄 채우는
+    방법(자산번호와 담당자 두 열만 있는 표도 가능).
 
-    부서·거점·장비유형·기종은 **이름**으로 적는다. 하나로 정해지지 않으면 그 줄이
-    거절되고 후보가 온다 — **고르지 말고 사람에게 물어라.** 비슷한 기종에 끼워 넣으면
-    그 장비의 하중·온도가 남의 것이 되고, 검색은 그 남의 수치로 「됩니다」 라고 답한다.
+    부서·거점·장비유형·기종은 이름으로 기재. 하나로 확정되지 않으면 그 줄은 거절되고 후보 반환:
+    **임의 선택 금지, 사람에게 확인.** 비슷한 기종에 끼워 넣으면 그 장비의 하중·온도가 남의
+    것이 되고 검색이 그 수치로 가능이라 답함.
 
-    ## 두 번 부른다
+    ## 두 번 호출
 
-    `dry_run=True`(기본)는 **아무것도 저장하지 않고** 줄마다 판정을 돌려준다. 줄마다
-    `problems` 가 비어 있으면 넣을 수 있고, 있으면 어느 칸(`field`)이 왜 틀렸는지가
-    적혀 있다. 그것을 사람에게 보여 주고 확인받은 뒤 `dry_run=False` 로 다시 보낸다.
+    `dry_run=True`(기본)는 저장 없이 줄마다 판정 반환. `problems`가 비어 있으면 반입 가능,
+    있으면 틀린 칸(`field`)과 이유 기재. 그 결과를 사람에게 보여 주고 확인받은 뒤
+    `dry_run=False`로 재전송.
 
-    **넣을 수 있는 줄은 넣고, 못 넣은 줄은 `imported=False` 로 남는다.** 못 넣은 줄만
-    고쳐서 다시 보내면 된다 — 들어간 줄을 또 보내면 「이미 등록된 장비」 로 거절된다.
+    반입 가능한 줄은 반입되고 실패한 줄은 `imported=False`로 남음. 실패한 줄만 고쳐 재전송(이미
+    들어간 줄을 다시 보내면 이미 등록된 장비로 거절).
 
     ## 이미 등록된 자산번호
 
-    기본은 거절이다. `update_existing=True` 면 **적힌 칸만** 갱신한다 — 빈 칸은 안
-    건드리고, 부서와 기종은 안 바꾼다. 미리보기가 줄마다 `changes` 로 전후를 돌려주니
-    **그것을 사람에게 보여 주고 나서** 넣어라. 30대의 위치가 조용히 바뀌는 일은 없어야 한다.
+    기본은 거절. `update_existing=True`면 기재된 칸만 갱신(빈 칸은 유지, 부서와 기종은 변경 안
+    함). 미리보기가 줄마다 `changes`로 전후 값을 반환하므로 **사람에게 보여 준 뒤 반입**(30대의
+    위치가 확인 없이 바뀌는 일 방지).
 
-    ## 기종이 카탈로그에 없으면
+    ## 기종이 카탈로그에 없을 때
 
-    기종을 만들지 마라(시스템 관리자만 만들고, 사양 없는 기종은 검색을 망친다). 기종
-    칸을 비우고 **모델명 칸에 적어 둔다.** 그 장비는 시험 항목이 0 건이라 검색에 안 걸리지만
-    홈의 「카탈로그에 안 이어진 장비」 에 남아 나중에 잇는다.
+    기종 생성 금지(시스템 관리자 전용이며, 사양 없는 기종은 검색을 망침). 기종 칸을 비우고
+    모델명 칸에 기재. 그 장비는 시험 항목 0건이라 검색에 안 걸리지만 홈의 카탈로그에 안 이어진
+    장비 목록에 남아 나중에 연결.
 
-    한 번에 2000줄까지다.
+    한 번에 최대 2000줄.
     """
     return await _send(
         ctx,
@@ -1152,8 +1137,10 @@ async def import_equipment(
 
 @mcp.tool()
 async def import_columns(ctx: Context) -> dict[str, Any]:
-    """`import_equipment` 가 받는 열. 머리글에 어떤 이름을 쓸 수 있는지(별칭 포함)와
-    어느 열이 필수인지를 준다 — 대장을 만들기 전에 한 번 본다."""
+    """`import_equipment`가 받는 열 목록. 대장 작성 전 한 번 확인.
+
+    머리글에 쓸 수 있는 이름(별칭 포함)과 필수 열 여부 제공.
+    """
     return _listed(await _get(ctx, "/equipment/import/columns"), "columns")
 
 
@@ -1180,63 +1167,57 @@ async def register_equipment(
     model_text: str | None = None,
     note: str | None = None,
 ) -> dict[str, Any]:
-    """보유 장비 한 대를 등록한다.
+    """보유 장비 한 대 등록.
 
-    **기종을 고르면 그 계열의 시험 항목이 이 장비로 복사되고, 조건은 그 기종의 사양에서
-    온다.** 상속이 아니라 복사라, 그 뒤로는 이 장비가 진실이다 — 챔버를 뗀 대는
-    여기서 고친다.
+    기종을 고르면 그 계열의 시험 항목이 이 장비로 복사되고 조건은 그 기종의 사양에서 옴. 상속이
+    아니라 복사라 이후로는 이 장비의 값이 기준(챔버를 뗀 장비는 여기서 수정).
 
-    ## 기종을 고르는 순서
+    ## 기종 선택 순서
 
-    **계열부터 좁혀라.** `search_models(series="인스트론 6800 시리즈")` 로 라벨과
-    대조한다 — 기종명만으로 찾으면 비슷한 이름의 다른 계열 것을 집는다.
+    계열부터 좁히기. `search_models(series="인스트론 6800 시리즈")`로 라벨과 대조(기종명만으로
+    찾으면 비슷한 이름의 다른 계열 기종을 집음).
 
-    ## 못 찾았으면 비워라
+    ## 못 찾으면 비움
 
-    카탈로그에 없는 기종이면 `model_id` 를 **비운 채로 등록하라.** 비슷한 기종을
-    골라 넣지 마라 — 그 순간 그 장비의 하중·온도가 남의 것이 된다.
+    카탈로그에 없는 기종이면 **`model_id`를 비운 채 등록.** 비슷한 기종 선택 금지(그 장비의
+    하중·온도가 남의 것이 됨).
 
-    라벨의 글자는 `maker_text` · `model_text` 에 **그대로** 적고, 등록한 뒤에
-    **`propose_equipment_model` 을 불러라.** 그 두 칸은 표시용이라 아무도 일감으로 안
-    센다 — 요청으로 남겨야 기종이 세워질 때 이 장비가 **자동으로 이어진다.**
+    라벨 글자는 `maker_text` · `model_text`에 그대로 기재하고, 등록 후
+    `propose_equipment_model` 호출. 두 칸은 표시용이라 아무도 일감으로 세지 않음. 요청으로
+    남겨야 기종이 등록될 때 이 장비가 자동 연결됨.
 
-    자산번호가 이미 있으면 409 다. **덮어쓰지 않는다** — 같은 번호의 다른 장비일
-    수도 있고, 그때 덮으면 있던 이력이 사라진다.
+    자산번호가 이미 있으면 409. 덮어쓰지 않음(같은 번호의 다른 장비일 수 있고, 덮으면 기존 이력
+    소실).
 
-    ## 등록으로 끝이 아니다
+    ## 등록 후 할 일
 
-    기종을 골랐으면 계열의 시험 항목이 복사된다. **비웠으면 0 건이고, 0 건이면 검색에
-    절대 안 걸린다** — 이어서 `add_equipment_test_item` 으로 채워라.
+    기종을 골랐으면 계열의 시험 항목이 복사됨. **비웠으면 0건이고 0건이면 검색에 절대 안
+    걸림**: 이어서 `add_equipment_test_item`으로 채움.
 
-    상태가 `operational` 이 아니면 **`status_reason` 에 왜 그런지를 적어라**(「제어보드 고장,
-    부품 대기」). 비고에 적지 마라 — 비고에는 온갖 것이 함께 적혀서 아무도 그것을 상태의
-    근거로 안 읽는다.
+    상태가 `operational`이 아니면 `status_reason`에 사유 기재(예: 제어보드 고장, 부품 대기).
+    비고 기재 금지(비고는 여러 내용이 섞여 상태 근거로 읽히지 않음).
 
-    ## 비울 수 없는 것
+    ## 필수 항목
 
-    보유 부서·거점(`site_term_id`)·상세위치(`location`), 그리고 **무슨 종류인가.**
-    어디 있고 무슨 종류인지 모르는 장비는 찾아도 소용이 없다.
+    보유 부서·거점(`site_term_id`)·상세위치(`location`), 그리고 장비 종류. 위치와 종류를 모르는
+    장비는 찾아도 쓸모없음.
 
-    종류는 기종을 고르면 따라온다(계열이 갖는다). 기종을 못 찾아 비웠다면
-    `category_term_id` 를 직접 골라라 — `resolve(axis="equipment_category", …)` 로
-    찾는다. 둘 다 없으면 400 이다.
+    종류는 기종을 고르면 따라옴(계열 소유). 기종을 못 찾아 비웠다면 `category_term_id`를 직접
+    지정(`resolve(axis="equipment_category", …)`로 조회). 둘 다 없으면 400.
 
-    미연결 장비의 제조사·모델명은 `maker_text`·`model_text` 에 적는다. **표시용이라
-    검색이 안 본다** — 그래서 기종을 찾는 편이 언제나 낫다. 나중에 기종에 연결하면
-    서버가 이 두 칸을 비운다.
+    미연결 장비의 제조사·모델명은 `maker_text`·`model_text`에 기재. 표시용이라 검색이 보지
+    않음(기종을 찾는 편이 항상 나음). 나중에 기종에 연결하면 서버가 이 두 칸을 비움.
 
     ## 상태
 
-    아홉이다 — `incoming` · `operational` · `stopped` · `idle` · `maintenance` ·
-    `repair` · `retired` · `struck` · `unknown`. **모르면 지어내지 마라**: 고르기
-    어려우면 `unknown` 미기재가 정직한 답이다. 뜻과 검색이 세는 넷은
-    `get_guide("보유 장비")`.
+    아홉 가지: `incoming` · `operational` · `stopped` · `idle` · `maintenance` · `repair` ·
+    `retired` · `struck` · `unknown`. 모르면 지어내기 금지: 고르기 어려우면 `unknown`(미기재)이
+    정직한 답. 뜻과 검색이 세는 네 가지는 `get_guide("보유 장비")`.
 
     ## 교정
 
-    `calibration_required` 가 참이면 `calibration_interval_months` 를 함께 줘야 한다.
-    주기가 없으면 차기일을 계산할 수 없고, 그러면 「곧 만료」 목록이 이 장비를 영원히
-    안 부른다. **모르면 대상 여부를 비워 두고 사람에게 물어라.**
+    `calibration_required`가 참이면 `calibration_interval_months`도 필수. 주기가 없으면 차기일
+    계산 불가, 곧 만료 목록에서 영구 누락. 모르면 대상 여부를 비워 두고 사람에게 확인.
     """
     return await _send(
         ctx,
@@ -1268,11 +1249,11 @@ async def register_equipment(
 
 @mcp.tool()
 async def get_equipment_specs(ctx: Context, equipment_id: str) -> dict[str, Any]:
-    """이 **장비 한 대**의 사양 — 카탈로그 값과 실측이 한 줄에 함께 온다.
+    """**장비 한 대**의 사양: 카탈로그 값과 실측값을 한 줄에 함께 반환.
 
-    기종 사양(`get_specs`)은 「제조사가 그렇게 적었다」 이고, 여기 `measured` 는
-    「우리가 이 대를 재 보니 그렇더라」 다. **둘 다 보고 답하라** — 실측이 있으면
-    그쪽이 이 장비의 진실이고, 없으면 카탈로그 값은 이 대를 재 본 값이 아니다.
+    기종 사양(`get_specs`)은 제조사 기재값, 여기 `measured`는 이 장비의 실측값. **둘 다 보고
+    답변**: 실측이 있으면 그것이 이 장비의 기준이고, 없으면 카탈로그 값은 이 장비를 잰 값이
+    아님.
     """
     return await _get(ctx, f"/equipment/{equipment_id}/specs")
 
@@ -1292,20 +1273,19 @@ async def set_equipment_spec(
     source_id: str | None = None,
     source_page: int | None = None,
 ) -> dict[str, Any]:
-    """이 장비의 **실측** 사양 한 칸을 적는다 — 카탈로그 값 위에 덮는다.
+    """장비 한 대의 **실측** 사양 한 칸 기록. 카탈로그 값 위에 덮어씀.
 
-    **기종 사양과 헷갈리지 마라.** `set_spec` 은 그 기종을 쓰는 모든 장비의 기준이
-    되고, 이것은 이 한 대의 값이다. 우리가 잰 값·성적서에 적힌 이 대의 값은 여기다.
+    **기종 사양과 혼동 금지.** `set_spec`은 그 기종을 쓰는 모든 장비의 기준이고, 이 도구는 이
+    한 대의 값. 직접 잰 값, 성적서에 적힌 이 장비의 값은 여기에 기록.
 
-    정의의 종류에 맞는 칸만 채운다 — 수치는 `num_value`, 구간은 `num_min`/`num_max`,
-    고른 값과 문장은 `text_value`, 참거짓은 `bool_value`.
+    정의의 종류에 맞는 칸만 채움: 수치 `num_value`, 구간 `num_min`/`num_max`, 선택값·문장
+    `text_value`, 참거짓 `bool_value`.
 
-    **언제 잰 값인지 적어라**(`measured_on`). 3년 전 실측은 사양서보다 나을 것이
-    없고, 날짜가 없으면 사람이 그것을 판단할 수 없다.
+    측정일(`measured_on`) 기재. 3년 전 실측은 사양서보다 나을 것이 없고, 날짜가 없으면 사람이
+    판단 불가.
 
-    응답의 `reflected` 가 참이면 이 장비의 시험 조건이 함께 갱신됐다는 뜻이다.
-    거짓이면 그 조건은 **사람이 손으로 적어 둔 것**이라 안 덮었다 — 덮고 싶으면
-    사람에게 물어라.
+    응답의 `reflected`가 참이면 이 장비의 시험 조건도 함께 갱신됨. 거짓이면 그 조건은 사람이
+    직접 기재한 값이라 덮지 않음(덮으려면 사람에게 확인).
     """
     return await _send(
         ctx,
@@ -1335,24 +1315,24 @@ async def add_equipment_test_item(
     confidence: str = "catalog",
     note: str | None = None,
 ) -> dict[str, Any]:
-    """이 **장비**가 하는 시험 항목 하나를 더한다.
+    """**장비**의 시험 항목 하나 추가.
 
-    ## 언제 쓰나 — 안 쓰면 그 장비는 영영 안 걸린다
+    ## 사용 시점 (누락 시 그 장비는 검색에서 영구 누락)
 
-    기종을 골라 등록하면 계열의 시험 항목이 복사되므로 대개 이것을 부를 일이 없다.
-    그런데 **카탈로그에 없어서 `model_id` 를 비운 채 등록한 장비는 시험 항목이 0 건**
-    이고, 0 건이면 검색에 절대 안 걸린다. 그런 장비를 만들었으면 여기서 채워라.
+    기종을 골라 등록하면 계열의 시험 항목이 복사되므로 대개 호출 불필요. 단 **카탈로그에 없어
+    `model_id`를 비운 채 등록한 장비는 시험 항목 0건**이고, 0건이면 검색에 절대 안 걸림. 그런
+    장비를 만들었으면 여기서 채움.
 
-    `confidence` 는 그 값을 어디까지 믿을 수 있나다:
+    `confidence`는 값의 신뢰 수준:
 
-        catalog   사양서에서 온 값. **해 본 것이 아니다**(기본)
-        verified  실제로 돌려 봤다
-        limited   되기는 하는데 조건이 붙는다 — 그 조건을 note 에 적어라
+        catalog   사양서에서 온 값. 실제 수행 아님(기본)
+        verified  실제로 수행해 봄
+        limited   가능하나 조건이 붙음. 그 조건을 note에 기재
 
-    **`verified` 를 함부로 쓰지 마라.** 사양서를 옮긴 것이라면 그것은 `catalog` 다.
+    **`verified` 남용 금지.** 사양서를 옮긴 값이면 `catalog`.
 
-    시험 항목은 **닫힌 축**이라 없는 값은 만들어지지 않는다(거절된다). `resolve` 로
-    먼저 찾아라 — 그것이 맞다: 오타가 값이 되면 그 장비는 영영 검색에 안 걸린다.
+    시험 항목은 닫힌 축이라 없는 값은 생성되지 않음(거절). `resolve`로 먼저 조회(오타가 값이
+    되면 그 장비가 검색에서 영구 누락).
     """
     return await _send(
         ctx,
@@ -1379,33 +1359,32 @@ async def set_test_condition(
     note: str | None = None,
     requires_accessory: bool = False,
 ) -> dict[str, Any]:
-    """그 시험 항목이 **어디까지 되나**를 적는다. 조건 한 칸은 덮어쓰기다.
+    """시험 항목의 **가능 범위**(조건 한 칸) 기록. 조건 한 칸은 덮어쓰기.
 
-    조건 축은 `list_conditions` 가 준다.
+    조건 축은 `list_conditions`가 제공.
 
-    ## 값은 **그 축의 `unit`** 으로 준다 — 서버가 안 바꾼다
+    ## 값은 그 축의 `unit`으로, 서버는 환산하지 않음
 
-    `list_conditions` 의 `unit` 이 그 단위다(하중 kN · 온도 degC · 낙하 높이 cm). `si_unit`
-    이 아니다 — 낙하 높이의 si_unit 은 m 지만 값은 cm 로 담긴다. 다른 단위로 보내면
-    **자릿수가 틀린다**: 152 cm 를 1.52 로 보내면 1.52 cm 짜리 장비가 되어 검색에서 조용히
-    빠진다.
+    `list_conditions`의 `unit`이 그 단위(하중 kN · 온도 degC · 낙하 높이 cm). `si_unit` 아님:
+    낙하 높이의 si_unit은 m이지만 값은 cm로 저장. 다른 단위로 보내면 **자릿수가 틀림**: 152
+    cm를 1.52로 보내면 1.52 cm짜리 장비가 되어 검색에서 조용히 누락.
 
-    환산은 부르는 쪽이 한다: 1.5 m 낙하면 `max_value=150`, 20 kN 이면 `20`.
+    환산은 호출하는 쪽 몫: 1.5 m 낙하면 `max_value=150`, 20 kN이면 `20`.
 
-    ## 비운 쪽은 「제한 없음」 이다
+    ## 비운 쪽은 제한 없음
 
-    0 으로 채우지 마라. 하한이 0 인 장비와 구별되지 않고, 검색이 그 차이로 갈린다.
-    「20 kN 까지」 는 `max_value=20` 이고 `min_value` 는 비운다.
+    0으로 채우기 금지(하한이 0인 장비와 구별되지 않고 검색이 그 차이로 갈림). 20 kN까지는
+    `max_value=20`, `min_value`는 비움.
 
-    ## 모르면 적지 마라
+    ## 모르면 기재 금지
 
-    안 적힌 조건은 검색이 `unknown` 으로 답한다 — 그것이 맞는 답이다. 지어낸 숫자는
-    「가능합니다」 가 되어, 그 답을 믿고 일정을 짠 사람이 막힌다.
+    미기재 조건은 검색이 `unknown`으로 답하며 그것이 맞는 답. 지어낸 숫자는 가능으로 답하게
+    되어, 그 답을 믿고 일정을 짠 사람이 막힘.
 
     ## 부속이 있어야 나오는 범위면 `requires_accessory=True`
 
-    챔버·노 옵션 기준 온도가 그렇다. 검색이 「됨」 대신 「부속 있으면」(`accessory`)으로
-    답한다. 그 대에 부속이 실제로 있으면 False 로 다시 저장한다.
+    챔버·노 옵션 기준 온도가 해당. 검색이 가능 대신 부속 있으면 가능(`accessory`)으로 답함. 그
+    장비에 부속이 실제로 있으면 False로 재저장.
     """
     return await _send(
         ctx,
@@ -1438,34 +1417,32 @@ async def update_equipment(
     retired_on: str | None = None,
     note: str | None = None,
 ) -> dict[str, Any]:
-    """보유 장비 한 대를 고친다. **안 보낸 칸은 안 바뀐다.**
+    """보유 장비 한 대 수정. **보내지 않은 칸은 변경 없음.**
 
-    **기종 연결은 `model_id`.** 카탈로그 미연결 장비를 기종에 잇는 자리다 — 그 전에는
-    화면에서만 됐다. `search_models` 로 찾아 **라벨의 모델명과 글자로 맞을 때만** 잇는다:
-    비슷한 기종을 고르면 그 장비의 하중·온도가 남의 것이 되고, 조건으로 장비를 찾는 화면이
-    그 수치로 답한다. 못 찾으면 잇지 말고 `propose_equipment_model` 로 요청을 남긴다.
-    이으면 개체가 적어 둔 분류·제조사·모델명은 서버가 비우고, **시험 항목은 다시 복사되지
-    않는다** — 이미 이 장비의 것이 된 값을 사양서로 덮지 않는다.
+    기종 연결은 `model_id`(카탈로그 미연결 장비를 기종에 잇는 곳). `search_models`로 찾아
+    **라벨의 모델명과 글자로 일치할 때만** 연결: 비슷한 기종을 고르면 그 장비의 하중·온도가
+    남의 것이 되고 조건 검색 화면이 그 수치로 답함. 못 찾으면 연결하지 말고
+    `propose_equipment_model`로 요청 등록. 연결하면 개체에 적힌 분류·제조사·모델명은 서버가
+    비우고, 시험 항목은 다시 복사되지 않음(이미 이 장비의 값이 된 것을 사양서로 덮지 않음).
 
-    상태는 아홉이다: `incoming` 입고 · `operational` 가동 · `stopped` 미가동 ·
-    `idle` 미사용 · `maintenance` 점검·교정 · `repair` 고장 수리중 · `retired` 폐기 ·
-    `struck` 취소선 · `unknown` 미기재.
+    상태 아홉 가지: `incoming` 입고 · `operational` 가동 · `stopped` 미가동 · `idle` 미사용 ·
+    `maintenance` 점검·교정 · `repair` 고장 수리중 · `retired` 폐기 · `struck` 취소선 ·
+    `unknown` 미기재.
 
-    검색이 「쓸 수 있다」 로 세는 것은 **`operational`·`idle`·`stopped`·`unknown`** 넷이다 —
-    안 쓰고 있다는 것은 못 쓴다는 뜻이 아니다. 고장·점검·입고·폐기·취소선은 빠진다.
+    검색이 사용 가능으로 세는 것은 `operational`·`idle`·`stopped`·`unknown` 네 가지(미사용이
+    사용 불가를 뜻하지 않음). 고장·점검·입고·폐기·취소선은 제외.
 
-    **폐기일은 상태가 `retired` 일 때만** 받는다. 되돌리면 서버가 비운다.
+    폐기일은 상태가 `retired`일 때만 받음. 상태를 되돌리면 서버가 비움.
 
-    `status_reason` 은 **왜 그 상태인가**다 — 「제어보드 고장, 부품 대기」. 상태를 바꿀 때는
-    같이 보내라: 안 보내면 서버가 비운다. 근거는 상태에 붙는 것이지 장비에 붙는 것이
-    아니어서, 고친 장비에 옛 고장 사유가 남으면 목록이 그것을 그대로 그린다.
+    `status_reason`은 그 상태의 사유(예: 제어보드 고장, 부품 대기). 상태를 바꿀 때 함께 전송:
+    보내지 않으면 서버가 비움(사유는 상태에 붙는 값이라, 고친 장비에 옛 고장 사유가 남으면
+    목록에 그대로 표시됨).
 
-    보유 부서·거점·상세위치는 **비울 수 없다** — 어디 있는지 모르는 장비는 찾아도
-    소용이 없다. 부서 이관은 양쪽 다 관리자여야 해서 이 도구로는 안 한다.
+    보유 부서·거점·상세위치는 비울 수 없음(위치를 모르는 장비는 찾아도 쓸모없음). 부서 이관은
+    양쪽 관리자 권한이 필요해 이 도구로는 불가.
 
-    `contact_user_id` 는 **찾은 다음에 연락할 사람**이다. 없는 계정이나 쉰 계정은 400 이다
-    — 사람을 찾으려면 `get_workspace` 의 구성원을 보거나, 여러 대를 한 번에 채울 때는
-    대장 반입(`import_equipment`)의 **「담당자」 열**에 이메일을 적는 쪽이 빠르다.
+    `contact_user_id`는 장비를 찾은 뒤 연락할 사람. 없는 계정이나 비활성 계정은 400. 계정 id를
+    조회하는 도구는 없음: 담당자는 대장 반입(`import_equipment`)의 `담당자` 열에 이메일로 입력.
     """
     body = {
         "model_id": model_id,
@@ -1492,12 +1469,12 @@ async def update_equipment(
 
 @mcp.tool()
 async def list_model_requests(ctx: Context, include_decided: bool = False) -> dict[str, Any]:
-    """**카탈로그에 없다고 올라온 기종 요청들** — 같은 말끼리 묶어, 건수가 큰 것부터.
+    """카탈로그에 없다고 올라온 기종 요청 목록. 같은 표기끼리 묶음, 건수가 큰 순서.
 
-    묶음마다 `normalized`(정할 때 쓰는 열쇠) · `text`(대표 표기) · `count` · `proposals`(어느
-    장비가 무엇을 적었나, 왜 못 찾았나)가 온다. 다섯 부서가 같은 기종을 요청했으면 카탈로그에
-    있어야 할 기종이 거의 확실하고, 한 번 정하면 다섯 대가 함께 이어진다. 한 번 나온 것은
-    자작 장비일 수 있다. 정하는 것은 `decide_model_request`.
+    묶음마다 `normalized`(결정 시 쓰는 키) · `text`(대표 표기) · `count` · `proposals`(장비별
+    기재 내용과 못 찾은 이유) 포함. 다섯 부서가 같은 기종을 요청했으면 카탈로그에 있어야 할
+    기종일 가능성이 높고, 한 번 결정하면 다섯 대가 함께 연결됨. 한 번만 나온 요청은 자작 장비일
+    수 있음. 결정은 `decide_model_request`.
     """
     return _listed(
         await _get(
@@ -1518,18 +1495,18 @@ async def decide_model_request(
     name: str | None = None,
     reject: bool = False,
 ) -> dict[str, Any]:
-    """기종 요청 한 묶음을 정한다 — 잇기 · 세우기 · 아니오 중 **하나만**. 시스템 관리자.
+    """기종 요청 한 묶음 결정: 연결 · 신규 기종 등록 · 거절 중 하나만. 시스템 관리자 전용.
 
-    `model_id`(이미 있는 기종 — `resolve(kind="model")`·`search_models` 로 찾는다) ·
-    `series_id`+`name`(그 계열에 기종을 세운다; **이름에 계열 이름을 섞지 마라** — 섞으면
-    `6800 68FM-300` 과 `68FM-300` 이 별개 기종이 된다) · `reject=True`(자작 장비처럼 카탈로그에
-    올릴 것이 아님). 아무것도 안 주면 400 이다. 정하면 **요청한 장비들이 한꺼번에 그 기종에
-    이어진다** — 한 대가 막혀도 나머지는 잇고, 막힌 줄은 `failed` 로 온다.
+    `model_id`(기존 기종, `resolve(kind="model")`·`search_models`로 조회) ·
+    `series_id`+`name`(그 계열에 기종 신규 등록. 이름에 계열 이름 혼합 금지: 섞으면 `6800
+    68FM-300`과 `68FM-300`이 별개 기종이 됨) · `reject=True`(자작 장비처럼 카탈로그 대상이
+    아님). 아무것도 없으면 400. 결정하면 요청한 장비들이 일괄로 그 기종에 연결됨. 한 대가
+    막혀도 나머지는 연결되고, 막힌 줄은 `failed`로 반환.
 
-    **사람에게 보여 주고 정하라.** 기종을 고르면 그 계열의 시험 항목이 장비에 복사되고 조건
-    판정이 그 기종의 사양을 쓴다 — 비슷한 기종으로 때우면 그 장비의 하중·온도가 남의 것이
-    되고, 그 오답은 조용하다. 확신이 없으면 정하지 말고 두어라(요청은 남는다). `reject` 는
-    사람이 아니라고 말했을 때만. 시스템 관리자의 토큰이 아니면 403(TSC-EQUIPMENT-0041)이다.
+    **결정 전 사람에게 보여 주고 확인 필수.** 기종을 고르면 그 계열의 시험 항목이 장비에
+    복사되고 조건 판정이 그 기종 사양을 씀: 비슷한 기종으로 대체하면 그 장비의 하중·온도가 남의
+    것이 되고 오답이 드러나지 않음. 확신이 없으면 결정하지 않고 둠(요청은 유지). `reject`는
+    사람이 거절을 지시한 경우만. 시스템 관리자 토큰이 아니면 403(TSC-EQUIPMENT-0041).
     """
     return await _send(
         ctx,
@@ -1547,21 +1524,20 @@ async def decide_model_request(
 
 @mcp.tool()
 async def get_calibrations(ctx: Context, equipment_id: str) -> dict[str, Any]:
-    """이 장비의 **교정 이력** — 언제, 누가(기관), 결과, 차기일. 최근 것이 먼저.
+    """장비의 **교정 이력**: 일자, 기관, 결과, 차기일. 최신순.
 
-    「마지막 교정이 언제였나」 「지금 유효한가」 의 답. 이력이 비어 있는데 장비가 교정
-    대상(`calibration_required`)이면 그것은 「모른다」 가 아니라 **채워야 할 자리**다 —
-    그렇게 말하라.
+    마지막 교정일, 현재 유효 여부에 대한 답. 이력이 비어 있는데 장비가 교정
+    대상(`calibration_required`)이면 모름이 아니라 **채워야 할 항목**으로 전달.
     """
     return _listed(await _get(ctx, f"/equipment/{equipment_id}/calibrations"), "calibrations")
 
 
 @mcp.tool()
 async def list_calibrations_due(ctx: Context) -> dict[str, Any]:
-    """곧 만료되거나 **이미 지난** 교정 — 전사, 내가 볼 수 있는 장비.
+    """곧 만료되거나 **이미 지난** 교정 목록. 전사 범위, 조회 권한 있는 장비만.
 
-    지난 것을 빼지 않는다. 빼면 만료된 장비가 조용히 계속 쓰이고, 그것으로 낸 값은
-    나중에 통째로 못 믿게 된다. 「이달 교정 받아야 할 장비」 를 물으면 여기서 시작한다.
+    지난 것도 포함(빼면 만료 장비가 계속 쓰이고 그 장비로 낸 값 전체를 신뢰할 수 없게 됨). 이달
+    교정 대상 장비를 물으면 여기서 시작.
     """
     return _listed(await _get(ctx, "/server/calibrations-due"), "due")
 
@@ -1576,19 +1552,17 @@ async def add_calibration(
     provider_term_id: str | None = None,
     note: str | None = None,
 ) -> dict[str, Any]:
-    """교정 이력 한 줄을 더한다. 날짜는 `YYYY-MM-DD`.
+    """교정 이력 한 줄 추가. 날짜는 `YYYY-MM-DD`.
 
-    **성적서에 적힌 차기일(`next_due_on`)이 있으면 반드시 넣어라.** 기관이 정한 날이
-    진실이고, 없으면 시스템이 교정 주기로 계산해 보여 준다 — 계산값은 그렇다고 표시되지만
-    성적서가 있는데 안 넣으면 그 표시가 거짓이 된다.
+    **성적서에 차기일(`next_due_on`)이 있으면 반드시 입력.** 기관이 정한 날이 기준이며, 없으면
+    시스템이 교정 주기로 계산해 표시(계산값 표시가 붙지만, 성적서가 있는데 안 넣으면 그 표시가
+    틀린 정보가 됨).
 
-    교정 기관은 **축의 값**이다(`resolve(axis="calibration_provider", …)`). 자유 문자열로
-    두면 같은 기관이 「한국계량측정협회」 와 「(주)한국계량측정협회」 로 갈리고, 그 둘은
-    서로 다른 기관이 된다.
+    교정 기관은 축의 값(`resolve(axis="calibration_provider", …)`). 자유 문자열이면 같은 기관이
+    한국계량측정협회와 (주)한국계량측정협회로 갈려 서로 다른 기관이 됨.
 
-    이력을 넣어도 그 장비가 **교정 대상으로 표시돼 있지 않으면** 「곧 만료」 목록에는
-    안 뜬다 — `update_equipment(calibration_required=True, calibration_interval_months=…)`
-    를 함께 불러라.
+    이력을 넣어도 장비가 교정 대상으로 표시되지 않았으면 곧 만료 목록에 안 뜸:
+    `update_equipment(calibration_required=True, calibration_interval_months=…)`를 함께 호출.
     """
     return await _send(
         ctx,
@@ -1606,25 +1580,24 @@ async def add_calibration(
 
 @mcp.tool()
 async def get_catalog_state(ctx: Context) -> dict[str, Any]:
-    """카탈로그가 **정본보다 뒤졌나.** 「카탈로그에 없다」 고 답하기 전에 이것을 본다.
+    """카탈로그가 **정본보다 뒤처졌는지** 확인. 카탈로그에 없다고 답하기 전 확인.
 
-    반입은 사람이 돌리고 배포는 파일만 새로 놓는다. `behind` 가 참이면 이 설치의
-    카탈로그는 정본(`objects` 객체)보다 오래된 것(`imported_objects` 객체, `imported_at`)이라
-    「없다」 는 답이 「아직 안 들어왔다」 일 수 있다 — 그렇게 말하고, 관리자에게
-    `scripts/import_catalog.py` 를 돌리라고 하라. `never` 는 한 번도 반입 안 한 설치다.
+    반입은 사람이 실행하고 배포는 파일만 교체. `behind`가 참이면 이 설치의 카탈로그는
+    정본(`objects` 객체)보다 오래된 것(`imported_objects` 객체, `imported_at`)이라 없다는 답이
+    아직 반입 전일 수 있음. 그 사실을 전달하고 관리자에게 `scripts/import_catalog.py` 실행
+    요청. `never`는 한 번도 반입하지 않은 설치.
     """
     return await _get(ctx, "/server/catalog")
 
 
 @mcp.tool()
 async def list_pending_work(ctx: Context) -> dict[str, Any]:
-    """**채울 자리.** 우리가 가진 것 중 비어 있는 것만 센다.
+    """**채울 곳 목록.** 보유 자원 중 비어 있는 것만 집계.
 
-    시험 항목이 안 적힌 장비 · 사양이 안 적힌 보유 기종 · 시험 항목이 안 적힌 보유 계열 ·
-    원본 확인이 필요한 기종 · 교정 기한이 지난 장비.
+    시험 항목 미기재 장비 · 사양 미기재 보유 기종 · 시험 항목 미기재 보유 계열 · 원본 확인이
+    필요한 기종 · 교정 기한이 지난 장비.
 
-    **여기부터 채워라.** 카탈로그 전체를 채우려 들면 끝이 없어 보여서 아무도
-    시작하지 않는다.
+    카탈로그 전체가 아니라 **여기부터 채움**(전체를 채우려 하면 끝이 없어 시작 자체가 안 됨).
     """
     return _listed(await _get(ctx, "/server/maintenance"), "items")
 
@@ -1634,20 +1607,20 @@ async def list_pending_work(ctx: Context) -> dict[str, Any]:
 
 @mcp.tool()
 async def list_test_items(ctx: Context, gap: str | None = None) -> dict[str, Any]:
-    """**시험 항목 96종, 한 줄에 사슬 전체의 수.** 0 이 곧 공백이다.
+    """**시험 항목 96종, 줄마다 사슬 전체의 연결 수.** 0이 곧 공백.
 
         물성  ⇄  시험 항목  →  규격  →  계열/기종  →  보유 장비
 
     줄마다 `properties_total`(그중 `properties_confirmed`) · `methods_total`(그중
-    `methods_with_requirements`) · `series_count` / `model_count` · `equipment_count`(내가
-    볼 수 있는 보유 장비) · `condition_keys`(검색축 라벨) 가 온다.
+    `methods_with_requirements`) · `series_count` / `model_count` · `equipment_count`(조회 권한
+    있는 보유 장비) · `condition_keys`(검색축 라벨) 포함.
 
-    `gap` 으로 공백만 거른다: `properties`(물성 없음) · `methods`(규격 없음) · `series`(되는
-    계열 없음) · `equipment`(보유 장비 없음) · `axes`(검색축 없음). 각각 채우는 사람이
-    다르다 — 물성은 재료 쪽, 규격은 시험실, 검색축은 시스템 관리자.
+    `gap`으로 공백만 필터: `properties`(물성 없음) · `methods`(규격 없음) · `series`(가능 계열
+    없음) · `equipment`(보유 장비 없음) · `axes`(검색축 없음). 채우는 주체가 각각 다름: 물성은
+    재료 쪽, 규격은 시험실, 검색축은 시스템 관리자.
 
-    「이 시험 우리가 할 수 있나」 는 `equipment_count` 가 답하고, 「사면 되나」 는
-    `series_count` 가 답한다. 둘 다 0 이면 그 장비가 카탈로그에도 없는 것이다.
+    이 시험의 수행 가능 여부는 `equipment_count`, 구매로 가능한지는 `series_count`가 답함. 둘
+    다 0이면 카탈로그에도 그 장비가 없음.
     """
     rows = await _get(ctx, "/test-items")
     if isinstance(rows, list) and gap:
@@ -1659,22 +1632,22 @@ async def list_test_items(ctx: Context, gap: str | None = None) -> dict[str, Any
             "axes": lambda r: not r.get("condition_keys"),
         }
         if gap not in gaps:
-            return {"error": f"gap 은 {' · '.join(gaps)} 중 하나입니다"}
+            return {"error": f"gap은 {' · '.join(gaps)} 중 하나여야 함"}
         rows = [r for r in rows if gaps[gap](r)]
     return _listed(rows, "test_items")
 
 
 @mcp.tool()
 async def get_test_item(ctx: Context, test_item_term_id: str) -> dict[str, Any]:
-    """시험 항목 하나 — **측정 물성 · 규격 · 되는 계열 · 보유 장비 · 검색축**을 한 자리에.
+    """시험 항목 하나: **측정 물성 · 규격 · 가능 계열 · 보유 장비 · 검색축** 일괄 조회.
 
-    `condition_keys` 가 이 시험에 뜻이 있는 조건 축이다(인장 → 하중·속도·온도). 검색에
-    조건을 붙일 때 이것을 먼저 보라 — 축 밖의 조건은 대개 `unknown` 만 늘린다. 비어
-    있으면 아직 안 정해진 것이다(`set_test_item_axes` 로 정한다, 시스템 관리자).
+    `condition_keys`가 이 시험에 뜻이 있는 조건 축(인장 → 하중·속도·온도). 검색에 조건을 붙이기
+    전 먼저 확인(축 밖 조건은 대개 `unknown`만 늘림). 비어 있으면 미정(`set_test_item_axes`로
+    지정, 시스템 관리자).
 
-    `properties[].status` 가 `suggested` 면 기계의 제안이다. `methods` 는 이 시험의
-    규격으로 정해진 것이고, `series[].method_codes` 는 그 계열이 이 시험에 인용한 규격이다.
-    `equipment` 는 내가 볼 수 있는 보유 장비만이다.
+    `properties[].status`가 `suggested`면 기계 제안. `methods`는 이 시험의 규격으로 정해진 것,
+    `series[].method_codes`는 그 계열이 이 시험에 인용한 규격. `equipment`는 조회 권한 있는
+    보유 장비만.
     """
     return await _get(ctx, f"/test-items/{test_item_term_id}")
 
@@ -1683,11 +1656,11 @@ async def get_test_item(ctx: Context, test_item_term_id: str) -> dict[str, Any]:
 async def set_test_item_axes(
     ctx: Context, test_item_term_id: str, condition_key_ids: list[str]
 ) -> dict[str, Any]:
-    """시험 항목에 **뜻이 있는 조건 축**을 정한다(통째로 바꾼다). 시스템 관리자.
+    """시험 항목에 **뜻이 있는 조건 축** 지정(전체 교체). 시스템 관리자 전용.
 
-    인장은 하중·속도·온도, 챔버는 온도·습도. 카탈로그가 갖고 있지 않은 지식이라 사람이
-    정한다 — **AI 가 짐작으로 정하지 마라.** 사람이 「인장은 하중·속도·온도」 라고 말했을
-    때만 옮겨 적어라. 조건 키 id 는 `list_conditions()` 가 준다.
+    인장은 하중·속도·온도, 챔버는 온도·습도. 카탈로그에 없는 지식이라 사람이 정함: **AI
+    짐작으로 지정 금지.** 사람이 축을 말했을 때만 그대로 기록(예: 인장은 하중·속도·온도). 조건
+    키 id는 `list_conditions()`가 제공.
     """
     return await _send(
         ctx,
@@ -1711,18 +1684,18 @@ async def list_methods(
     include_superseded: bool = False,
     limit: int = 50,
 ) -> dict[str, Any]:
-    """규격 목록 — **못 하는 시험과 끊긴 연결을 가른다.**
+    """규격 목록. **수행 불가 시험과 연결 끊김을 구분.**
 
-    줄마다 `test_item`(이 규격이 무슨 시험의 것인지) · `series_count`(이어진 계열) ·
-    `pending_series_count`(인용은 했는데 시험 항목이 안 정해져 못 이어진 계열) ·
-    `equipment_count`(수행 가능 장비) · `requirements`(요구 조건) 가 온다.
+    줄마다 `test_item`(규격이 속한 시험) · `series_count`(연결된 계열) ·
+    `pending_series_count`(인용했으나 시험 항목 미정으로 미연결된 계열) ·
+    `equipment_count`(수행 가능 장비) · `requirements`(요구 조건) 포함.
 
-    **`series_count` 가 0 인데 `pending_series_count` 가 0 이 아니면 못 하는 시험이 아니라
-    끊긴 연결이다** — `set_method_test_items` 로 시험 항목을 정하면 붙는다.
+    **`series_count`가 0이고 `pending_series_count`가 0이 아니면 수행 불가가 아니라 연결
+    끊김**: `set_method_test_items`로 시험 항목을 정하면 연결됨.
 
-    거르기: `test_item` 은 값 id 또는 `none`(안 정해진 것만) · `requirement=none`(요구
-    조건 없는 것만) · `cited=none`(어느 계열에도 안 이어진 것만) · `used=owned`(보유 장비가
-    실제로 가리키는 것만 — 요구 조건은 여기부터 채운다).
+    필터: `test_item`은 값 id 또는 `none`(미정만) · `requirement=none`(요구 조건 없는 것만) ·
+    `cited=none`(어느 계열에도 미연결만) · `used=owned`(보유 장비가 실제로 가리키는 것만. 요구
+    조건은 여기부터 채움).
     """
     return await _get(
         ctx,
@@ -1749,21 +1722,20 @@ async def create_method(
     body_term_id: str | None = None,
     summary: str | None = None,
 ) -> dict[str, Any]:
-    """규격 하나를 등록한다. **먼저 `resolve(kind="method", text=code)` 로 찾아라.**
+    """규격 등록. **먼저 `resolve(kind="method", text=code)`로 조회 필수.**
 
-    규격 번호는 표기가 갈린다(「JIS B 0601」/「JIS B0601」) — 서버가 공백을 지워 견주므로
-    이미 있으면 409 가 오고, 그것은 실패가 아니라 답이다(그 id 를 쓴다).
+    규격 번호는 표기가 갈림(JIS B 0601 / JIS B0601). 서버가 공백을 제거해 비교하므로 이미
+    있으면 409. 409는 실패가 아니라 답(그 id 사용).
 
-    `edition` 은 판(「2019」 「Ed.3」). 같은 규격의 다른 판은 **다른 줄**이다 — 요구 조건이
-    판마다 바뀐다.
+    `edition`은 판(예: 2019, Ed.3). 같은 규격의 다른 판은 별도 줄(요구 조건이 판마다 바뀜).
 
-    `test_item_term_ids` 는 이 규격이 어느 시험의 것인지 — **목록이다**(`resolve(kind="term",
-    axis="test_item")`). 규격 하나가 시험 항목 여럿을 덮는 일이 흔하다: IEC 60529 는 IP 코드의
-    1자리(방진)와 2자리(방수)를 한 문서가 정의하고, MIL-STD-810 은 방법 번호마다 다른 시험이다.
-    **하나만 적으면 나머지 항목에서 이 규격이 안 보인다.**
+    `test_item_term_ids`는 이 규격이 속한 시험 항목 목록(`resolve(kind="term",
+    axis="test_item")`). 규격 하나가 여러 시험 항목을 덮는 경우가 흔함: IEC 60529는 IP 코드의
+    1자리(방진)와 2자리(방수)를 한 문서가 정의하고, MIL-STD-810은 방법 번호마다 다른 시험.
+    **하나만 적으면 나머지 항목에서 이 규격이 보이지 않음.**
 
-    `body_term_id` 는 제정기관(`axis="standard_body"`). **모르면 비운다** — 항목 미정 규격은
-    검토함이 사람에게 묻는다. 전사 공용으로 만들어진다.
+    `body_term_id`는 제정기관(`axis="standard_body"`). 모르면 비움(항목 미정 규격은 검토함이
+    사람에게 질의). 전사 공용으로 생성됨.
     """
     return await _send(
         ctx,
@@ -1791,18 +1763,16 @@ async def set_requirement(
     is_mandatory: bool = True,
     note: str | None = None,
 ) -> dict[str, Any]:
-    """규격의 **요구 조건 한 줄** — 규격서를 읽다 조건 하나를 발견했을 때. 표로 여럿이면
-    `import_requirements`.
+    """규격의 **요구 조건 한 줄** 기록. 여러 줄을 표로 넣을 때는 `import_requirements`.
 
-    `condition_key_id` 는 `list_conditions` 가 준다. **값은 그 축의 `unit` 으로** —
-    `list_conditions` 가 축마다 알려 준다(하중 축은 kN 이라 20 kN 이면 20, 낙하 높이는 cm 라
-    1.5 m 면 150; 축의 단위를 지어내지 말고 읽어라). 같은 조건이 이미 있으면 덮어쓴다.
-    **한쪽을 비울 수 있다**:
-    「20 kN 이상」 은 min 만 있고 max 는 None 이다 — 0 으로 채우면 상한이 0 인 것과 구별되지
-    않는다.
+    규격서를 읽다 조건 하나를 발견했을 때 사용. `condition_key_id`는 `list_conditions`가 제공.
+    **값은 그 축의 `unit`으로 기재**(`list_conditions`가 축마다 제공. 하중 축은 kN이라 20
+    kN이면 20, 낙하 높이는 cm라 1.5 m면 150. 축 단위를 지어내지 말고 확인). 같은 조건이 이미
+    있으면 덮어씀. 한쪽을 비울 수 있음: 20 kN 이상은 min만 있고 max는 None(0으로 채우면 상한
+    0과 구별 불가).
 
-    이 조건이 곧 검색 물음이 된다(`search_test_items(method_id=…)`). 그래서 규격서에 적힌
-    것만 적고, 관례로 아는 값은 `note` 에 그렇다고 적는다.
+    이 조건이 곧 검색 물음이 됨(`search_test_items(method_id=…)`). 규격서에 적힌 것만 기재하고,
+    관례로 아는 값은 `note`에 그 사실을 명시.
     """
     return await _send(
         ctx,
@@ -1823,21 +1793,23 @@ async def set_requirement(
 async def set_method_test_items(
     ctx: Context, method_id: str, test_item_term_ids: list[str]
 ) -> dict[str, Any]:
-    """규격에 **시험 항목을 정한다 — 여럿을 받는다.** 정하는 순간 그 규격을 항목 미정으로
-    인용해 둔 계열의 그 시험 항목에 자동으로 붙는다 — 사람이 계열마다 다시 잇지 않는다.
+    """규격의 **시험 항목 지정(여러 개 가능).** 인용 계열에 자동 연결.
 
-    **보낸 것으로 통째로 바뀐다.** 하나를 더하려면 지금 있는 것(`get_method` 의
-    `test_items`)에 더해서 전부 보낸다 — 빠뜨리면 조용히 끊긴다.
+    정하는 즉시 그 규격을 항목 미정으로 인용한 계열의 해당 시험 항목에 자동 연결(계열마다 다시
+    잇지 않음).
 
-    규격 하나가 시험 항목 여럿을 덮는 일이 흔하다: IEC 60529 는 IP 코드의 1자리(방진)와
-    2자리(방수)를 한 문서가 정의하고, MIL-STD-810 은 방법 번호마다 다른 시험이다.
+    **보낸 목록으로 전체 교체.** 하나를 더하려면 현재 목록(`get_method`의 `test_items`)에 더해
+    전부 전송(누락 시 연결이 조용히 끊김).
 
-    **지어서 정하지 마라.** ASTM D638 이 인장이라는 것은 규격 번호를 아는 사람의 판단이다.
-    모르면 `get_method` 의 `cited_series`(어느 계열이 인용했나)를 보고 사람에게 물어라.
+    규격 하나가 여러 시험 항목을 덮는 경우가 흔함: IEC 60529는 IP 코드의 1자리(방진)와
+    2자리(방수)를 한 문서가 정의하고, MIL-STD-810은 방법 번호마다 다른 시험.
 
-    **검토함에 물음이 열려 있는 규격은 여기서 정하지 않는다** — 검토함의 확정은 사람이
-    화면에서 하고, 이 도구로 같은 결과를 내면 확정을 우회한 것이다(서버가 409 로 막는다).
-    「검토함 첫 줄 확정해줘」 에는 「화면에서 하시라」 고 답한다.
+    추측으로 지정 금지. ASTM D638이 인장이라는 판단은 규격 번호를 아는 사람의 몫. 모르면
+    `get_method`의 `cited_series`(인용 계열)를 보고 사람에게 확인.
+
+    검토함에 질문이 열려 있는 규격은 여기서 지정 불가: 같은 결과를 내도 검토함 줄이 열린 채
+    남음(서버가 409로 차단). 검토함 첫 줄 확정 같은 요청은 `decide_review_item`으로(시스템
+    관리자).
     """
     return await _send(
         ctx, "PATCH", f"/methods/{method_id}", {"test_item_term_ids": test_item_term_ids}
@@ -1846,31 +1818,32 @@ async def set_method_test_items(
 
 @mcp.tool()
 async def get_method(ctx: Context, method_id: str) -> dict[str, Any]:
-    """규격 하나 — 시험 항목 · 요구 조건 · **인용한 계열**(`cited_series`, `pending` 이면 어느
-    시험 항목의 것인지 미정) · 수행 가능 장비 수.
+    """규격 하나: 시험 항목 · 요구 조건 · **인용 계열**(`cited_series`) · 수행 가능 장비 수.
 
-    **규격서 원문이 붙어 있는지는 `list_attachments(target="method", …)` 가 안다.**
-    요구 조건이 비어 있는 규격이 대부분이라(601 중 598), 원문이 있으면 사람에게 그것을
-    읽고 채워 달라고 말할 수 있다.
+    `cited_series`의 줄이 `pending`이면 어느 시험 항목의 인용인지 미정.
 
-    `test_items` 는 **목록이다** — 규격 하나가 여럿을 덮는다(IEC 60529 는 방진·방수 둘 다).
-    비어 있으면 아직 안 정한 것이고, 그 규격은 계열의 시험 항목에 못 붙는다."""
+    **규격서 원문 첨부 여부는 `list_attachments(target="method", …)`로 확인.** 요구 조건이 빈
+    규격이 대부분(601 중 598)이라, 원문이 있으면 사람에게 원문을 읽고 채워 달라고 요청 가능.
+
+    `test_items`는 목록: 규격 하나가 여럿을 덮음(IEC 60529는 방진·방수 둘 다). 비어 있으면
+    미정이며 그 규격은 계열의 시험 항목에 연결되지 않음.
+    """
     return await _get(ctx, f"/methods/{method_id}")
 
 
 @writes
 async def import_requirements(ctx: Context, text: str, dry_run: bool = True) -> dict[str, Any]:
-    """규격의 **요구 조건을 표로** 넣는다 — 규격서를 보고 적은 것을 통째로.
+    """규격 **요구 조건 표** 일괄 반입(규격서를 보고 작성한 표).
 
-    `text` 는 머리글 줄까지 있는 표(탭 또는 쉼표): 열은 규격 · 판 · 조건 · 최소 · 최대 ·
-    값 · 필수 · 비고. 값은 조건의 단위(kN · °C)로 적되 단위를 같이 적어도 된다 —
-    **다른 단위면 거절한다**(20 N 을 kN 으로 들이면 천 배 틀린다).
+    `text`는 머리글 줄을 포함한 표(탭 또는 쉼표). 열: 규격 · 판 · 조건 · 최소 · 최대 · 값 ·
+    필수 · 비고. 값은 조건의 단위(kN · °C)로 기재, 단위를 함께 적어도 됨. 다른 단위면 거절(20
+    N을 kN으로 받으면 천 배 오차).
 
-    `dry_run=True`(기본)면 저장하지 않고 줄마다 판정만 준다. 사람이 확인한 뒤 같은 글자로
-    `dry_run=False`. 같은 규격·조건이 이미 있으면 `replaces` 로 미리 말한다.
+    `dry_run=True`(기본)면 저장 없이 줄마다 판정만 반환. 사람이 확인한 뒤 같은 내용으로
+    `dry_run=False`. 같은 규격·조건이 이미 있으면 `replaces`로 미리 알림.
 
-    **값을 지어내지 마라.** 이 도구는 사람이 규격서를 보고 적은 표를 옮기는 길이다. 틀린
-    조건은 빈 조건보다 나쁘다 — 검색이 자신 있게 틀린 답을 낸다.
+    **값 지어내기 금지.** 사람이 규격서를 보고 작성한 표를 옮기는 용도. 틀린 조건은 빈 조건보다
+    나쁨(검색이 확신을 갖고 틀린 답을 냄).
     """
     return await _send(
         ctx,
@@ -1888,15 +1861,14 @@ async def import_requirements(ctx: Context, text: str, dry_run: bool = True) -> 
 async def suggest_property_link(
     ctx: Context, test_item_term_id: str, property_term_id: str, note: str | None = None
 ) -> dict[str, Any]:
-    """시험 항목 → 물성 연결을 **제안**한다. 확인이 아니다.
+    """시험 항목 → 물성 연결 **제안**(확인 아님).
 
-    「인장에서 항복강도가 나온다」 처럼 규격·문헌을 읽고 알게 된 연결을 적는 자리다. 들어가는
-    상태는 언제나 `suggested`, 출처는 `agent` — **AI 가 알아서 확인하지 않는다.** 확인은
-    「사람이 봤다」 는 뜻이고 카탈로그 정본에 실리므로, 사람이 물성 화면이나
-    `confirm_property_links` 로 한다.
+    규격·문헌을 읽고 알게 된 연결을 기록(예: 인장에서 항복강도가 나옴). 상태는 항상
+    `suggested`, 출처는 `agent`. **AI의 자체 확인 금지.** 확인은 사람이 검토했다는 뜻이며
+    카탈로그 정본에 실리므로 사람이 물성 화면이나 `confirm_property_links`로 수행.
 
-    둘 다 id 다(`resolve(kind="term", axis="test_item"|"property")`). 이미 이어져 있으면 409.
-    `note` 에는 덧붙는 조건(「신율계 필요」)이나 근거(규격 번호)를 적는다.
+    둘 다 id(`resolve(kind="term", axis="test_item"|"property")`). 이미 연결되어 있으면 409.
+    `note`에는 부가 조건(예: 신율계 필요)이나 근거(규격 번호) 기재.
     """
     return await _send(
         ctx,
@@ -1916,14 +1888,14 @@ async def suggest_property_link(
 async def confirm_property_links(
     ctx: Context, link_ids: list[str], status: str = "confirmed"
 ) -> dict[str, Any]:
-    """물성↔시험 항목 제안을 **묶어서 확인**하거나(`confirmed`) 되돌린다(`suggested`).
+    """물성↔시험 항목 제안 **일괄 확인**(`confirmed`) 또는 되돌리기(`suggested`).
 
-    사람이 「인장이 내는 것은 이 다섯 개, 맞다」 고 했을 때 그 줄의 `link_id` 들을 한 번에
-    올린다(`search_properties` 의 `links[].id`, 또는 `get_test_item` 의
-    `properties[].link_id`). 이미 그 상태인 것은 안 세고 `changed` 로 실제 바뀐 수를 준다.
+    사람이 인장이 내는 물성 다섯 개가 맞다고 했을 때 해당 줄의 `link_id`를 한 번에
+    전송(`search_properties`의 `links[].id` 또는 `get_test_item`의 `properties[].link_id`).
+    이미 그 상태인 것은 세지 않고 실제 바뀐 수를 `changed`로 반환.
 
-    **AI 가 알아서 확인하지 마라.** 확인은 「사람이 봤다」 는 뜻이고, 내보내기가 카탈로그
-    정본에 싣는 값이다. 사람이 말한 것만 옮겨라.
+    **AI의 자체 확인 금지.** 확인은 사람이 검토했다는 뜻이며 내보내기가 카탈로그 정본에 싣는
+    값. 사람이 말한 것만 기록.
     """
     return await _send(
         ctx, "PATCH", "/test-item-properties/bulk", {"link_ids": link_ids, "status": status}
@@ -1944,12 +1916,12 @@ async def add_free_spec(
     source_id: str | None = None,
     source_page: int | None = None,
 ) -> dict[str, Any]:
-    """**이 기종만의 사양** 한 줄 — 정의 없이 이름·값·단위로 붙인다.
+    """**기종 고유 사양** 한 줄: 정의 없이 이름·값·단위로 추가.
 
-    `list_spec_definitions` 에 맞는 칸이 없을 때 여기 둔다(카탈로그 키 950종 중 803종이 한
-    기종에만 나온다 — 그것을 정의로 세우면 「사양 추가」 목록이 못 쓰게 된다). 값은 글자
-    그대로(「LV 4종」 「0 ~ 600」). 같은 이름이 여러 기종에 쌓이면 `promote_free_spec` 으로
-    정의로 올린다. `get_model` 의 `free_specs` 가 있는 줄을 준다.
+    `list_spec_definitions`에 맞는 칸이 없을 때 사용(카탈로그 키 950종 중 803종이 한 기종에만
+    등장. 전부 정의로 세우면 사양 추가 목록이 쓸모없어짐). 값은 원문 그대로(예: LV 4종, 0 ~
+    600). 같은 이름이 여러 기종에 쌓이면 `promote_free_spec`으로 정의 승격. 기존 줄은
+    `get_model`의 `free_specs`.
     """
     return await _send(
         ctx,
@@ -1978,15 +1950,15 @@ async def promote_free_spec(
     unit: str = "",
     apply_same_key: bool = True,
 ) -> dict[str, Any]:
-    """이 기종만의 사양을 **정의로 세운다.** 시스템 관리자.
+    """기종 고유 사양을 **정의로 승격.** 시스템 관리자 전용.
 
-    `key`(소문자·밑줄, 만든 뒤 못 바꿈) · `label` · `group_id`(`/spec-groups`) · `kind`
-    (`range` · `number` · `text` · `boolean`) · `unit` 을 사람이 정한다 — **이름을 기계가
-    지어내면 그것이 진실이 된다.** 정의는 그 기종의 분류에 붙고, `apply_same_key` 면 같은
-    원본 키를 가진 다른 기종의 줄도 함께 옮긴다. 수치로 못 읽는 줄(「약 300」)은 그대로
-    남고 `left` 로 센다.
+    `key`(소문자·밑줄, 생성 후 변경 불가) · `label` · `group_id`(`/spec-groups`) ·
+    `kind`(`range` · `number` · `text` · `boolean`) · `unit`은 사람이 결정: **이름을 기계가
+    지어내면 그대로 정본이 됨.** 정의는 그 기종의 분류에 붙고, `apply_same_key`면 같은 원본
+    키를 가진 다른 기종의 줄도 함께 이동. 수치로 못 읽는 줄(예: 약 300)은 그대로 남고 `left`로
+    집계.
 
-    `get_model` 의 `free_specs[].same_key_models` 가 0 이 아닐 때가 올릴 때다.
+    승격 시점: `get_model`의 `free_specs[].same_key_models`가 0이 아닐 때.
     """
     return await _send(
         ctx,
@@ -2008,23 +1980,22 @@ async def promote_free_spec(
 
 @mcp.tool()
 async def list_reference(ctx: Context) -> dict[str, Any]:
-    """**이 시스템의 온톨로지가 무엇인가** — 객체 종류마다 한 줄.
+    """**시스템 온톨로지 개요**: 객체 종류마다 한 줄.
 
-    종류(시험 항목·물성·장비 계열·기종·보유 장비·신뢰성 시험 …)마다 저장 방식(축의 값인지
-    제 표를 가진 객체인지) · 건수 · 고정 칸 · 관리자가 정의한 칸(검색 조건·사양·속성)이 온다.
-    **무엇을 어디에 적어야 하는지 모를 때 여기부터 본다** — 「이 값은 축에 더하는 것인가,
-    객체로 만드는 것인가」 의 답이 여기 있다.
+    종류(시험 항목·물성·장비 계열·기종·보유 장비·신뢰성 시험 …)마다 저장 방식(축의 값인지, 자체
+    표를 가진 객체인지) · 건수 · 고정 칸 · 관리자 정의 칸(검색 조건·사양·속성) 포함. **무엇을
+    어디에 적을지 모를 때 여기부터 확인**: 축에 값을 더할지, 객체로 만들지에 대한 답이 있음.
     """
     return _listed(await _get(ctx, "/reference/overview"), "kinds")
 
 
 @mcp.tool()
 async def list_axes(ctx: Context) -> dict[str, Any]:
-    """온톨로지 **축**의 목록 — slug · 이름 · 소속 · 값 수 · 등록 정책.
+    """온톨로지 **축** 목록: slug · 이름 · 소속 · 값 수 · 등록 정책.
 
-    `entry_policy` 가 `open` 이면 값은 **누구나 더한다**(`create_term`). `closed` 면 시스템
-    관리자만 — 제정기관·조건처럼 뜻이 계약인 축이다. 값이 0인 축은 아직 아무도 안 채운
-    축이고, 거기에 값을 넣으면 그 축을 쓰는 화면이 그날부터 답을 한다.
+    `entry_policy`가 `open`이면 누구나 값 추가 가능(`create_term`). `closed`면 시스템 관리자
+    전용(제정기관·조건처럼 뜻이 계약인 축). 값이 0인 축은 아직 아무도 채우지 않은 축이며, 값을
+    넣으면 그 축을 쓰는 화면이 그때부터 답을 냄.
     """
     return _listed(await _get(ctx, "/vocabularies"), "axes")
 
@@ -2033,12 +2004,12 @@ async def list_axes(ctx: Context) -> dict[str, Any]:
 async def list_terms(
     ctx: Context, axis: str, q: str | None = None, include_deprecated: bool = False
 ) -> dict[str, Any]:
-    """한 축의 값 — 이름 · 코드 · 별칭 · 상위 값 · 상태.
+    """한 축의 값 목록: 이름 · 코드 · 별칭 · 상위 값 · 상태.
 
-    `axis` 는 `list_axes` 의 slug(`test_item` · `property` · `site` ·
-    `equipment_category` · `maker` · `standard_body` …). **값을 만들기 전에 이걸로
-    찾는다** — 같은 뜻의 값이 이미 있는데 새로 만들면 검색이 절반만 답한다. 이름이
-    갈릴 것 같으면 `resolve(kind="term", axis=…)` 가 별칭까지 본다.
+    `axis`는 `list_axes`의 slug(`test_item` · `property` · `site` · `equipment_category` ·
+    `maker` · `standard_body` …). **값 생성 전 이 도구로 조회 필수**(같은 뜻의 값이 있는데 새로
+    만들면 검색이 절반만 답함). 표기가 갈릴 것 같으면 `resolve(kind="term", axis=…)`가 별칭까지
+    조회.
     """
     return _listed(
         await _get(
@@ -2061,28 +2032,26 @@ async def create_axis(
     parent_slug: str | None = None,
     attribute_schema: list[dict[str, Any]] | None = None,
 ) -> dict[str, Any]:
-    """온톨로지 **축**을 새로 세운다. 시스템 관리자. **웬만하면 만들지 마라.**
+    """온톨로지 **축** 신규 생성. 시스템 관리자 전용. **가급적 생성 자제.**
 
-    **먼저 `list_axes` 로 본다.** 뜻이 닿는 축이 있으면 그 축에 값을 더하는 것(`create_term`)
-    이 맞다. 축이 둘로 갈리면 값도 둘로 갈리고, 합치는 길이 없다 — 값 병합(`merge_terms`)은
-    같은 축 안에서만 된다. 「불량 모드」 와 「불량 유형」 이 따로 서면 그대로 굳는다.
+    **먼저 `list_axes`로 확인.** 뜻이 닿는 축이 있으면 그 축에 값을 추가(`create_term`). 축이
+    둘로 갈리면 값도 갈리고 합칠 방법이 없음(값 병합 `merge_terms`는 같은 축 안에서만 가능).
+    예: 불량 모드와 불량 유형이 따로 서면 그대로 굳음.
 
-    **여기서 만든 축은 서랍일 뿐이다.** 기존 축(`manufacturer` 같은)은 화면과 코드가 그
-    slug 를 걸고 있어서 값이 쓰인다. 새 축에는 그런 자리가 없으므로 검색·판정·반입 어디에도
-    저절로 끼지 않는다 — 값을 담아 두고 사람이 보는 목록이 된다. 그래도 **뜻이 다른 값을
-    남의 축에 넣는 것보다는 낫다**(제정기관 축에 회사 이름이 들어가는 일이 실제로 있다).
+    여기서 만든 축은 보관용일 뿐. 기존 축(`manufacturer` 등)은 화면과 코드가 slug를 참조해 값이
+    쓰임. 새 축은 그런 참조가 없어 검색·판정·반입 어디에도 자동 반영되지 않고, 값을 담아 사람이
+    보는 목록이 됨. 그래도 뜻이 다른 값을 남의 축에 넣는 것보다는 나음(제정기관 축에 회사
+    이름이 들어간 실제 사례 있음).
 
-    `domain` 은 화면이 묶는 자리 — `equipment` · `catalog` · `method` · `common`.
-    `entry_policy` 가 `closed` 면 값도 시스템 관리자만 더한다.
+    `domain`은 화면의 묶음 단위: `equipment` · `catalog` · `method` · `common`.
+    `entry_policy`가 `closed`면 값도 시스템 관리자만 추가.
 
-    `attribute_schema` 는 **이 축의 값이 갖는 칸**이다(물성 값의 기호·단위처럼):
-    `[{"key": "symbol", "label": "기호", "kind": "text"}]` — `kind` 는 `text`·`number`·`list`.
-    **축에 한 번 적는다** — 값마다 물으면 같은 답을 수백 번 저장하는 셈이다. 나중에 고치는
-    것은 `update_axis`.
+    `attribute_schema`는 이 축의 값이 갖는 칸(물성 값의 기호·단위 등): `[{"key": "symbol",
+    "label": "기호", "kind": "text"}]`. `kind`는 `text`·`number`·`list`. 축에 한 번만
+    정의(값마다 정의하면 같은 내용을 수백 번 저장). 수정은 `update_axis`.
 
-    **이 설치에만 산다.** 설치 시드(`ensure_reference_data`)가 심는 축이 정본이라, 여기서
-    만든 축은 새로 설치하는 서버에 안 생긴다. 계속 쓸 축이면 사람이 시드에 더해야 한다고
-    말해 줘라.
+    이 설치에만 존재. 설치 시드(`ensure_reference_data`)가 심는 축이 정본이라 여기서 만든 축은
+    새 설치 서버에 생기지 않음. 계속 쓸 축이면 사람이 시드에 추가해야 한다고 안내.
     """
     return await _send(
         ctx,
@@ -2109,16 +2078,16 @@ async def update_axis(
     entry_policy: str | None = None,
     attribute_schema: list[dict[str, Any]] | None = None,
 ) -> dict[str, Any]:
-    """축의 **이름·설명·정책·값이 갖는 칸**을 고친다. 시스템 관리자. 안 보낸 것은 그대로.
+    """축의 **이름·설명·정책·값의 칸** 수정. 시스템 관리자 전용. 보내지 않은 항목은 유지.
 
-    **`slug` 와 소속은 못 바꾼다** — 코드가 그 이름을 걸고 있다.
+    `slug`와 소속은 변경 불가(코드가 그 이름을 참조).
 
-    `attribute_schema` 는 **통째로 갈린다.** 칸 하나를 더하려면 `list_axes` 로 지금 있는
-    것을 받아 **전부** 보낸다 — 빠뜨린 칸은 정의에서 사라지고, 그러면 화면이 그 칸을 안
-    그린다(값에 적힌 내용은 남는다. 「그 밖의 속성」 으로 보인다).
+    **`attribute_schema`는 전체 교체.** 칸 하나를 더하려면 `list_axes`로 현재 칸을 받아 전부
+    전송: 빠진 칸은 정의에서 사라지고 화면이 그 칸을 그리지 않음(값에 적힌 내용은 남아 그 밖의
+    속성으로 표시).
 
-    `entry_policy` 를 `open` -> `closed` 로 잠그는 일은 실제로 있다(값이 흩어지기 시작한
-    축). 반대로 여는 것도 되지만, 검색의 첫 축이면 오타가 값이 된다.
+    `entry_policy`를 `open` -> `closed`로 잠그는 경우 있음(값이 흩어지기 시작한 축). 반대로
+    여는 것도 가능하나, 검색의 첫 축이면 오타가 값이 됨.
     """
     body: dict[str, Any] = {}
     if label is not None:
@@ -2144,27 +2113,27 @@ async def create_condition_key(
     choices: list[str] | None = None,
     help: str | None = None,
 ) -> dict[str, Any]:
-    """**검색 조건 축**을 새로 만든다(온도·하중처럼 판정에 쓰이는 칸). 시스템 관리자.
+    """**검색 조건 축** 신규 생성(온도·하중처럼 판정에 쓰는 칸). 시스템 관리자 전용.
 
-    **먼저 `list_conditions` 로 본다.** 같은 뜻의 축이 있으면 그것을 쓴다 — 「시험 온도」 와
-    「온도」 가 따로 서면 장비마다 다른 축에 적히고, 검색은 그때부터 절반만 답한다.
+    **먼저 `list_conditions`로 확인.** 같은 뜻의 축이 있으면 그것을 사용(시험 온도와 온도가
+    따로 서면 장비마다 다른 축에 기록되고 검색이 절반만 답함).
 
-    ## 단위를 틀리면 조용히 틀린 답이 나온다
+    ## 단위 오류는 조용히 틀린 답을 냄
 
-    값이 담기는 단위는 **`display_unit`**(비면 `si_unit`)이다 — 응답의 `unit` 이 그것이다.
-    `display_unit` 은 실무 단위(kN · degC · cm), `si_unit` 은 그 차원의 기준 단위(낙하 높이면
-    m)로 적되 `dimension` 이 같아야 환산이 성립한다(temperature · force · length · time ·
-    frequency). `list_conditions` 로 옆 축이 무엇을 쓰는지 보고 맞춰라.
+    값의 저장 단위는 `display_unit`(비면 `si_unit`)이며 응답의 `unit`이 그것. `display_unit`은
+    실무 단위(kN · degC · cm), `si_unit`은 그 차원의 기준 단위(낙하 높이면 m). `dimension`이
+    같아야 환산 성립(temperature · force · length · time · frequency). `list_conditions`로 인접
+    축의 단위를 보고 맞춤.
 
-    **만든 뒤 `display_unit` 은 못 바꾸는 것으로 여겨라.** 고치는 API 는 숫자가 이미 있으면
-    거절하고 환산할지(convert) 그대로 둘지(keep) 묻는다 — 둘 다 사람이 정할 일이다.
+    **생성 후 `display_unit`은 변경 불가로 간주.** 수정 API는 숫자가 이미 있으면 거절하고
+    환산(convert) 또는 유지(keep)를 묻는데, 둘 다 사람이 정할 일.
 
-    `kind` 는 `range`(구간 — 대부분) · `choice`(고른 값, `choices` 필요) · `boolean`.
+    `kind`: `range`(구간, 대부분) · `choice`(선택값, `choices` 필요) · `boolean`.
 
-    ## 만든 다음이 중요하다
+    ## 생성 후 할 일
 
-    축만 만들면 아무 일도 안 일어난다. **시험 항목에 걸어야**(`set_test_item_axes`) 그
-    시험을 물을 때 조건으로 뜨고, 장비·기종에 값이 적혀야 판정이 된다.
+    축만 만들면 아무 효과 없음. 시험 항목에 연결해야(`set_test_item_axes`) 그 시험 질의 시
+    조건으로 표시되고, 장비·기종에 값이 기재되어야 판정 가능.
     """
     return await _send(
         ctx,
@@ -2192,27 +2161,26 @@ async def create_term(
     parent_term_id: str | None = None,
     attributes: dict[str, Any] | None = None,
 ) -> dict[str, Any]:
-    """온톨로지 값 하나를 더한다. **만들기 전에 반드시 찾는다.**
+    """온톨로지 값 하나 추가. **생성 전 조회 필수.**
 
-    `resolve(kind="term", axis=…, name=…)` 나 `list_terms` 로 먼저 보고, 같은 뜻의 값이
-    있으면 **그것을 쓴다**. 이미 있는 이름이면 409 가 오는데 그것은 실패가 아니라 답이다
-    — 별칭까지 보고 막으므로, 409 가 오면 그 값의 id 를 쓰면 된다.
+    `resolve(kind="term", axis=…, text=…)`나 `list_terms`로 먼저 확인하고, 같은 뜻의 값이
+    있으면 그 값 사용. 이미 있는 이름이면 409. 409는 실패가 아니라 답(별칭까지 보고 막으므로
+    409면 그 값의 id 사용).
 
-    **`resolve` 가 `candidates` 를 주면 만들지도, 별칭으로 잇지도 말고 사람에게 묻는다.**
-    「크리프」 가 「크리프 파단」 의 후보로 잡혔을 때 그것을 별칭으로 붙이면 다른 시험이
-    한 이름이 된다 — 실측에서 AI 가 정확히 그렇게 했다. 같은 것인지는 사람만 안다.
+    **`resolve`가 `candidates`를 주면 생성도, 별칭 연결도 하지 말고 사람에게 확인.** 크리프가
+    크리프 파단의 후보로 잡혔을 때 별칭으로 붙이면 다른 시험이 한 이름이 됨(실측에서 AI가
+    실제로 그렇게 함). 같은 것인지는 사람만 판단 가능.
 
-    `code` 는 정본·반입이 거는 이름이다(시험 항목의 `tensile` 처럼). **모르면 비운다** —
-    지어내면 다음 반입이 다른 코드로 같은 값을 또 만든다. `parent_term_id` 는 계층이
-    있는 축(장비 분류의 군 → 유형)에서만.
+    `code`는 정본·반입이 참조하는 이름(시험 항목의 `tensile` 등). 모르면 비움(지어내면 다음
+    반입이 다른 코드로 같은 값을 또 생성). `parent_term_id`는 계층이 있는 축(장비 분류의 군 →
+    유형)에서만.
 
-    `entry_policy` 가 `closed` 인 축(제정기관·조건 …)은 시스템 관리자만 더할 수 있다 —
-    거절되면 사람에게 넘긴다.
+    `entry_policy`가 `closed`인 축(제정기관·조건 …)은 시스템 관리자만 추가 가능. 거절되면
+    사람에게 인계.
 
-    `attributes` 는 **그 축이 정한 칸**을 채운다(`list_axes` 의 `attribute_schema` 가
-    무슨 칸인지 말한다): 물성이면 `{"symbol": "σ", "unit": "MPa"}`. 스키마에 없는 키를
-    넣어도 지워지지는 않지만 화면이 「그 밖의 속성」 으로 밀어 둔다 — **칸 이름을 지어내지
-    말고 스키마를 먼저 봐라.** 모르는 칸은 비운다.
+    `attributes`는 그 축이 정한 칸을 채움(`list_axes`의 `attribute_schema`가 칸 정의): 물성이면
+    `{"symbol": "σ", "unit": "MPa"}`. 스키마에 없는 키는 지워지지는 않지만 화면이 그 밖의
+    속성으로 밀어 둠. 칸 이름 지어내기 금지, 스키마 먼저 확인. 모르는 칸은 비움.
     """
     return await _send(
         ctx,
@@ -2236,15 +2204,15 @@ async def update_term(
     status: str | None = None,
     attributes: dict[str, Any] | None = None,
 ) -> dict[str, Any]:
-    """온톨로지 값을 고친다. **안 보낸 칸은 그대로.**
+    """온톨로지 값 수정. **보내지 않은 칸은 유지.**
 
-    **이름을 바꾸는 것은 그 값을 쓰는 모든 화면의 글자를 바꾸는 일이다.** 오타를 고치는
-    것이라면 맞다. 뜻이 다른 값이면 고치지 말고 새로 만들어라 — 「인장」 을 「고온 인장」 으로
-    고치면 그 값을 쓰던 장비 전부가 조용히 다른 시험을 하는 장비가 된다.
+    **이름 변경은 그 값을 쓰는 모든 화면의 글자를 바꾸는 일.** 오타 수정이면 가능. 뜻이 다른
+    값이면 수정하지 말고 새로 생성(인장을 고온 인장으로 고치면 그 값을 쓰던 장비 전부가 조용히
+    다른 시험 장비가 됨).
 
-    `attributes` 는 **보낸 키만 바뀐다**(축의 `attribute_schema` 가 무슨 칸인지 말한다).
-    `status` 는 `active` · `deprecated` — **폐기해도 지워지지 않는다.** 쓰던 곳은 그대로
-    남고 새로 고를 때만 안 보인다. 값을 합치려면 `merge_terms` 다.
+    `attributes`는 보낸 키만 변경(축의 `attribute_schema`가 칸 정의). `status`는 `active` ·
+    `deprecated`. 폐기해도 삭제되지 않음: 쓰던 곳은 그대로 남고 새로 고를 때만 숨겨짐. 값
+    병합은 `merge_terms`.
     """
     body: dict[str, Any] = {}
     if value is not None:
@@ -2260,28 +2228,27 @@ async def update_term(
 
 @writes
 async def add_term_alias(ctx: Context, term_id: str, value: str) -> dict[str, Any]:
-    """온톨로지 값에 **다른 이름**을 붙인다. 시스템 관리자.
+    """온톨로지 값에 **다른 이름(별칭)** 추가. 시스템 관리자 전용.
 
-    별칭은 찾기(`resolve`)가 이름보다 먼저 보는 것이라, 「thermal shock」 으로 물어도
-    「열충격」 을 찾게 만든다. **사람이 「이 표기는 저 값이다」 라고 말했을 때만** 붙인다 —
-    `resolve` 가 후보로 잡아 줬다는 이유로 붙이지 않는다(후보는 「비슷하다」 지 「같다」 가
-    아니다). **같은 축의 다른 값이 쓰는 표기는 못 붙인다**(409) — 그러면
-    한 이름이 두 값을 가리켜 찾기가 갈린다. 실제로 갈려 들어온 표기만 붙이고, 있을 법한
-    표기를 지어 붙이지 않는다.
+    별칭은 `resolve`가 이름보다 먼저 보는 항목이라, thermal shock으로 물어도 열충격을 찾게 됨.
+    **사람이 이 표기가 그 값이라고 말했을 때만** 추가. `resolve`가 후보로 제시했다는 이유로
+    추가 금지(후보는 비슷함이지 같음이 아님). 같은 축의 다른 값이 쓰는 표기는 추가 불가(409. 한
+    이름이 두 값을 가리켜 검색이 갈림). 실제로 갈려 들어온 표기만 추가하고, 있을 법한 표기를
+    지어 붙이지 않음.
     """
     return await _send(ctx, "POST", f"/vocabularies/terms/{term_id}/aliases", {"value": value})
 
 
 @writes
 async def merge_terms(ctx: Context, term_id: str, into_term_id: str) -> dict[str, Any]:
-    """같은 뜻으로 갈린 값 둘을 하나로. 시스템 관리자.
+    """같은 뜻으로 갈린 두 값을 하나로 병합. 시스템 관리자 전용.
 
-    `term_id` 의 쓰임이 `into_term_id` 로 옮겨 가고, 원래 이름은 **별칭으로 남는다** —
-    지우지 않는 이유는 같은 오타가 또 들어오는 것을 막기 위해서다.
+    `term_id`의 쓰임이 `into_term_id`로 이동하고 원래 이름은 별칭으로 남음(같은 오타의 재유입
+    방지).
 
-    **사람이 「이 둘은 같은 것」 이라고 말했을 때만** 부른다. 비슷해 보인다는 이유로 합치면
-    (「인장」 과 「고온 인장」) 서로 다른 시험이 한 줄이 되고, 그 뒤로는 갈랐던 사실조차
-    안 남는다. 먼저 `get_term_references` 로 무엇이 옮겨 가는지 보여 주고 확인받는다.
+    **사람이 두 값이 같다고 말했을 때만** 호출. 비슷해 보인다는 이유로 합치면(인장과 고온 인장)
+    다른 시험이 한 줄이 되고 갈랐던 흔적도 사라짐. 먼저 `get_term_references`로 이동 대상을
+    보여 주고 확인받음.
     """
     return await _send(
         ctx, "POST", f"/vocabularies/terms/{term_id}/merge", {"target_term_id": into_term_id}
@@ -2293,9 +2260,11 @@ async def merge_terms(ctx: Context, term_id: str, into_term_id: str) -> dict[str
 
 @mcp.tool()
 async def get_term_references(ctx: Context, term_id: str) -> dict[str, Any]:
-    """온톨로지 값 하나가 **어디에 쓰이나** — 계열·기종·장비·규격·물성 연결 등, 종류마다
-    수와 줄. 값을 지우거나 합치기 전에 본다: 쓰이는 값은 못 지우고, 쓰임을 풀거나 다른
-    값으로 옮긴 뒤에 지운다(`detach_term_reference`)."""
+    """온톨로지 값 하나의 **사용처**: 계열·기종·장비·규격·물성 연결 등 종류별 수와 줄.
+
+    값 삭제·병합 전 확인. 사용 중인 값은 삭제 불가: 쓰임을 풀거나 다른 값으로 옮긴 뒤
+    삭제(`detach_term_reference`).
+    """
     return _listed(await _get(ctx, f"/vocabularies/terms/{term_id}/references"), "groups")
 
 
@@ -2307,11 +2276,11 @@ async def detach_term_reference(
     row_id: str,
     reassign_to_term_id: str | None = None,
 ) -> dict[str, Any]:
-    """온톨로지 값의 쓰임 하나를 **풀거나 다른 값으로 옮긴다.** 시스템 관리자.
+    """온톨로지 값의 쓰임 하나를 **해제하거나 다른 값으로 이동.** 시스템 관리자 전용.
 
-    `kind` 와 `row_id` 는 `get_term_references` 가 준다. `reassign_to_term_id` 를 주면
-    그 값으로 옮기고, 안 주면 푼다(종류에 따라 비우거나 지운다 — 응답의 `detach` 가 말한다).
-    **사람이 「이 장비의 분류를 저것으로 바꿔라」 고 했을 때만** 쓴다.
+    `kind`와 `row_id`는 `get_term_references`가 제공. `reassign_to_term_id`를 주면 그 값으로
+    이동, 안 주면 해제(종류에 따라 비우거나 삭제. 응답의 `detach`에 명시). **사람이 그 변경을
+    지시했을 때만** 사용(예: 이 장비의 분류를 저것으로 변경).
     """
     if reassign_to_term_id:
         return await _send(
@@ -2330,14 +2299,14 @@ async def detach_term_reference(
 
 @mcp.tool()
 async def list_divisions(ctx: Context) -> dict[str, Any]:
-    """사업부 목록 — 신뢰성 시험이 **사는 자리**다.
+    """사업부 목록. 신뢰성 시험의 **소속 단위**.
 
-    줄마다 `code`(`mx`·`vd`… — 코드가 거는 키라 이름이 바뀌어도 안 깨진다) · `name` ·
-    `can_register`(내 토큰의 주인이 여기 올릴 수 있나)가 온다.
+    줄마다 `code`(`mx`·`vd`…. 코드가 키라 이름이 바뀌어도 유지) · `name` · `can_register`(토큰
+    소유자의 등록 가능 여부) 포함.
 
-    **올리기 전에 부른다.** `can_register` 가 false 인 사업부에 `create_reliability_test`
-    를 걸면 403 이 온다 — 그 403 은 「범위가 없다」 로 읽혀서, 사람은 토큰을 다시 만들러
-    간다. 실제로는 그 사람의 부서가 그 사업부에 속하지 않은 것이다.
+    **등록 전 호출 필수.** `can_register`가 false인 사업부에 `create_reliability_test`를
+    호출하면 403. 이 403은 범위 부족으로 오해되어 토큰을 재발급하게 되지만, 실제 원인은 그
+    사람의 부서가 그 사업부 소속이 아닌 것.
     """
     return _listed(await _get(ctx, "/reliability-tests/divisions"), "divisions")
 
@@ -2357,44 +2326,43 @@ async def list_reliability_tests(
     limit: int = 50,
     offset: int = 0,
 ) -> dict[str, Any]:
-    """**사업부**가 수행하는 신뢰성 시험(고온고습 1000h · 열충격 500 cycle …).
+    """**사업부**가 수행하는 신뢰성 시험 목록(고온고습 1000h · 열충격 500 cycle …).
 
-    「시험 항목」(장비가 하는 측정 — 인장·경도)과 **다른 층**이다: 신뢰성 시험 하나가 시험
-    항목 하나 이상을 써서 돌고, 그 항목이 장비로 이어진다. `division` 에 사업부 코드
-    (`mx`·`vd`… — `list_divisions`)를 주면 그 사업부 것만, 안 주면 전사 전부.
+    시험 항목(장비가 하는 측정: 인장·경도)과 다른 층: 신뢰성 시험 하나가 시험 항목 하나 이상을
+    쓰고, 그 항목이 장비로 이어짐. `division`에 사업부 코드(`mx`·`vd`…, `list_divisions`)를
+    주면 그 사업부만, 생략하면 전사.
 
-    **부서(팀)가 아니라 사업부다.** 줄마다 적용 시험 항목과 **그 항목이 되는 그 사업부
-    장비 수**가 온다. 0 이면 시험은 정했는데 돌릴 장비가 그 사업부에 없다는 뜻이다.
+    부서(팀)가 아니라 사업부 단위. 줄마다 적용 시험 항목과 그 항목이 가능한 그 사업부 장비 수
+    포함. 0이면 시험은 정했으나 돌릴 장비가 그 사업부에 없음.
 
-    `attr` 은 속성 값 조건이다 — 왼쪽은 `list_attribute_definitions` 가 주는 `key` 다
-    (`["temp_x>=100"]`). 여러 개면 **모두** 만족해야 한다. `key*` 는 적혀 있기만 하면,
-    **`key!*` 는 안 적힌 것**이다 — 「조건을 안 적은 시험」 이 곧 장비 판정에서 빠지는
-    줄이라, 채울 자리를 찾을 때 쓴다(`!=` 는 *적혀 있는데* 다른 값인 것이라 다르다).
+    `attr`은 속성 값 조건: 왼쪽은 `list_attribute_definitions`의 `key`(`["temp_x>=100"]`). 여러
+    개면 모두 만족. `key*`는 기재되어 있기만 하면, `key!*`는 미기재. 조건 미기재 시험은 장비
+    판정에서 빠지므로 채울 곳 찾기에 사용(`!=`는 *기재되어 있으나* 다른 값이라 다름).
 
-    **조건 묶음을 지정하려면 `key@묶음`** 이다(`["temp_x@주>=80"]`). 안 쓰면 묶음을 안
-    가린다 — 한 줄이라도 닿으면 걸리므로, 주 조건 70 °C·불량 시 90 °C 인 시험이
-    `temp_x>=80` 에 걸린다. 「주 조건이 80 이상」 을 물을 때만 `@` 를 쓴다.
+    조건 묶음 지정은 `key@묶음`(`["temp_x@주>=80"]`). 생략하면 묶음 구분 없이 한 줄이라도
+    닿으면 걸림: 주 조건 70 °C·불량 시 90 °C인 시험이 `temp_x>=80`에 걸림. 주 조건이 80
+    이상인지 물을 때만 `@` 사용.
 
-    속성 아닌 칸도 거른다 — `name`·`purpose`(든 글자), `test_item`(시험 항목 이름).
-    셋 중 둘은 **`"none"` 으로 안 적힌 것**을 묻는다: `purpose="none"` 은 목적이 빈 줄,
-    `test_item="none"` 은 시험 항목을 하나도 안 정한 줄. `equipment="none"` 은 **그
-    사업부에 돌릴 장비가 한 대도 없는 줄**이다 — 「미지정」 과 다르다: 앞은 항목을 이었는데
-    그 항목이 되는 장비가 없는 것이고, 뒤는 항목을 아직 안 이은 것이다.
+    속성 외 칸 필터: `name`·`purpose`(포함 글자), `test_item`(시험 항목 이름). 셋 중 둘은
+    `"none"`으로 미기재를 조회: `purpose="none"`은 목적이 빈 줄, `test_item="none"`은 시험
+    항목이 하나도 없는 줄. `equipment="none"`은 그 사업부에 돌릴 장비가 한 대도 없는 줄.
+    미지정과 다름: 앞은 항목은 이었으나 가능한 장비가 없는 것, 뒤는 항목 미연결.
 
-    **기본은 최신판만 온다.** 판마다 줄이 서므로(개정 14의 열충격과 18의 열충격은 다른
-    줄이다) 안 가리면 목록이 판 수만큼 부푼다. 지난 판까지 보려면 `include_superseded=True`,
-    그 판만 보려면 `revision` 이다.
+    기본은 최신판만. 판마다 줄이 서므로(개정 14의 열충격과 18의 열충격은 별도 줄) 구분하지
+    않으면 목록이 판 수만큼 늘어남. 지난 판 포함은 `include_superseded=True`, 특정 판만은
+    `revision`.
 
-    **쪽으로 끊어 온다** — `count` 는 조건에 맞는 전체 수, `shown` 은 이번에 받은 줄 수다.
-    한 사업부에 1784건이 있으므로 **전부 받아 세지 말고 `count` 를 읽어라.**
+    페이지 단위 반환: `count`는 조건에 맞는 전체 수, `shown`은 이번에 받은 줄 수. 한 사업부에
+    1784건이 있으므로 **전부 받아 세지 말고 `count` 사용.**
 
-    조건을 걸었는데 0건이면 `diagnosis` 가 함께 온다 — 조건마다 값이 적힌 수 · 단위 못
-    바꾼 수 · 그 조건 하나로 걸리는 수와 한 줄. **「그런 시험 없습니다」 로 뭉개지 말고 그
-    줄을 그대로 말하라.** 가장 흔한 실제는 「아무도 안 적었다」 다.
+    조건을 걸었는데 0건이면 `diagnosis` 동봉: 조건별 값 기재 수 · 단위 변환 실패 수 · 그 조건
+    하나로 걸리는 수와 요약 한 줄. 그런 시험 없음으로 뭉개지 말고 그 줄을 그대로 전달. 가장
+    흔한 실제 원인은 아무도 기재하지 않음.
 
-    줄마다 `status` 가 온다 — `candidate`(후보) · `confirmed`(확정). **후보는 AI 가 올리고
-    아직 사람이 확인 안 한 것이다:** 그것을 근거로 「이 부서는 이 시험을 합니다」 라고 말하지
-    마라. 전사 목록에는 확정된 것만 온다.
+    줄마다 `status`: `candidate`(후보) · `confirmed`(확정). **후보는 AI가 올리고 사람이 아직
+    확인하지 않은 것**: 이를 근거로 이 부서가 이 시험을 수행한다고 말하기 금지. `status` 생략
+    시 전사는 확정만, 사업부 지정 시 후보 포함. 전사로 후보까지 보려면 `status="all"` 한 번
+    (사업부마다 반복 호출 불필요).
     """
     got = await _get(
         ctx,
@@ -2424,6 +2392,20 @@ async def list_reliability_tests(
         }
     else:
         found = _listed(got, "tests")
+    if division is None and status is None and found.get("count") == 0:
+        # 전사는 확정만 준다. 확정이 0이면 AI 는 사업부마다 다시 불러 후보를 찾는다(측정
+        # 2026-10-04: q13 18회 · q15 21회). 후보 수를 세어 한 번에 보는 길을 알려 준다.
+        waiting = await _get(
+            ctx,
+            "/reliability-tests",
+            {"status": "candidate", "attr": attr, "name": name, "limit": 1},
+        )
+        pending = waiting.get("total", 0) if isinstance(waiting, dict) else 0
+        if pending:
+            found["next"] = (
+                f"전사 확정 0건. 확인 전 후보 {pending}건 있음: 같은 조건에 `status=\"all\"`로"
+                " 한 번 조회(사업부별 반복 호출 불필요). 후보는 확정이 아님."
+            )
     if attr and found.get("count") == 0:
         # 빈 목록만 돌려주면 AI 는 「없다」 로 옮긴다. 진단은 서버가 세고 서버가 말한다 —
         # 화면도 같은 엔드포인트를 쓴다.
@@ -2437,32 +2419,30 @@ async def list_reliability_tests(
 
 @mcp.tool()
 async def get_reliability_test(ctx: Context, test_id: str) -> dict[str, Any]:
-    """신뢰성 시험 하나 — 목적 · 적용 시험 항목 · 속성 값 전부.
+    """신뢰성 시험 하나: 목적 · 적용 시험 항목 · 속성 값 전체.
 
-    속성의 `status` 가 `draft` 면 **초안**이다: 표시와 수집만 하고 검색·판정·색인 카드에는
-    안 들어간다. 초안 값을 근거로 「이 조건으로 검색됩니다」 라고 말하지 마라.
+    속성의 `status`가 `draft`면 **초안**: 표시와 수집만 하고 검색·판정·색인 카드에는 미포함.
+    초안 값을 근거로 이 조건으로 검색된다고 말하기 금지.
     """
     return await _get(ctx, f"/reliability-tests/{test_id}")
 
 
 @writes
 async def create_upload_ticket(ctx: Context, local_path: str | None = None) -> dict[str, Any]:
-    """**PC 의 파일을 서버로 바로 올릴** 준비물 — 5분짜리 티켓과 그대로 실행할 `curl`.
+    """**PC 파일을 서버로 직접 업로드**하는 준비물: 5분 유효 티켓과 그대로 실행할 `curl`.
 
-    **바이트가 너를 안 거친다.** 50 MB 짜리 규격서를 base64 로 실어 나르면 대화가 통째로
-    그것에 먹힌다 — 그래서 파일은 셸에서 곧장 간다. 진짜 토큰을 셸에 적지 않는 이유도
-    같다: 그 글자는 오래 사는 자격이고 기록에 남는다. 티켓은 5분 살고 **올리기 말고는
-    아무것도 못 한다.**
+    **파일 바이트는 AI를 거치지 않음.** 50 MB 규격서를 base64로 나르면 대화가 그것으로 가득
+    차므로 파일은 셸에서 직접 전송. 실제 토큰을 셸에 적지 않는 이유도 동일(오래 유효한 자격이며
+    기록에 남음). 티켓은 5분 유효, 업로드 외 기능 없음.
 
-    돌려주는 `curl` 에 `<대상>` 자리를 채워 실행하면 `{id, …}` 가 나온다. 그 id 가
-    첨부의 id 이고, 워드·파워포인트면 `extract_document_images` 에 넘긴다.
+    반환된 `curl`의 `<대상>` 자리를 채워 실행하면 `{id, …}` 출력. 그 id가 첨부 id이며,
+    워드·파워포인트면 `extract_document_images`에 전달.
 
-    `target` 은 `spec_document` · `reliability_test` · `method` · `equipment` 다. 장비에는
-    그 장비의 사양서·매뉴얼·성적서를 붙인다 — 붙인 뒤 읽은 것을 간추려
-    `set_equipment_attributes` 의 「장비 자료 발췌」 에 적으면 의미 검색이 그 글까지 읽는다.
+    `target`은 `spec_document` · `reliability_test` · `method` · `equipment`. 장비에는 그
+    장비의 사양서·매뉴얼·성적서를 첨부: 첨부 후 읽은 내용을 요약해 `set_equipment_attributes`의
+    장비 자료 발췌 칸에 적으면 의미 검색이 그 글까지 읽음.
 
-    사람에게는 **명령을 그대로 보여 주고 실행해 달라고 말한다** — 네가 셸을 가진 자리면
-    직접 돌려도 된다.
+    사람에게는 명령을 그대로 보여 주고 실행 요청. 셸을 가진 환경이면 직접 실행 가능.
     """
     got = await _send(ctx, "POST", "/attachments/upload-ticket", {})
     if isinstance(got, dict) and got.get("error"):
@@ -2484,25 +2464,25 @@ async def create_upload_ticket(ctx: Context, local_path: str | None = None) -> d
             f"-H 'X-Upload-Ticket: {ticket}' --data-binary @{shlex.quote(where)}"
         ),
         "next": (
-            "이 명령을 셸에서 실행하면 첨부 id 가 나온다. 워드·파워포인트면"
-            " extract_document_images 로 그림을 낱장으로 꺼낸다."
+            "셸에서 이 명령을 실행하면 첨부 id 출력. 워드·파워포인트면"
+            " extract_document_images로 그림을 낱장 추출."
         ),
     }
 
 
 @writes
 async def extract_document_images(ctx: Context, attachment_id: str) -> dict[str, Any]:
-    """올려 둔 **워드·파워포인트에서 그림을 낱장으로** 꺼낸다 — 서버가 zip 으로 푼다.
+    """업로드한 **워드·파워포인트에서 그림을 낱장으로** 추출(서버가 zip으로 해제).
 
-    규격서 한 벌에 그림이 서른 장 들어 있는 일이 흔하다. 문서를 통째로 올린 뒤 이것을
-    부르면 낱장 첨부가 되어 문서와 **같은 자리**에 선다. 바이트는 서버 안에서만 움직인다.
+    규격서 한 벌에 그림 서른 장이 흔함. 문서를 통째로 올린 뒤 호출하면 낱장 첨부가 되어 문서와
+    같은 위치에 생성. 바이트는 서버 안에서만 이동.
 
-    **줄마다 `caption` 이 붙어 온다** — 문서에서 그 그림 자리의 제목과 글이다
-    (「3.2 열충격 — 온습도 프로파일」). **너는 그림을 못 보므로 그 글자가 유일한 단서다.**
-    그것으로 어느 시험의 것인지 정하고 `attach_references` 로 **한 번에** 건다.
+    줄마다 `caption` 포함: 문서에서 그 그림 위치의 제목과 글(예: 3.2 열충격, 온습도 프로파일).
+    **AI는 그림을 볼 수 없으므로 이 글자가 유일한 단서.** 이것으로 어느 시험의 그림인지 정하고
+    `attach_references`로 한 번에 연결.
 
-    같은 그림이 여러 쪽에 나오면(머리글 로고) 한 번만 꺼낸다. 못 꺼낸 것은
-    `skipped_*` 로 세어서 말한다 — 조용히 빠지면 사람이 못 알아챈다.
+    같은 그림이 여러 쪽에 나오면(머리글 로고) 한 번만 추출. 추출 실패분은 `skipped_*`로 집계해
+    전달(누락이 조용하면 사람이 알아채지 못함).
     """
     return await _send(ctx, "POST", f"/attachments/{attachment_id}/extract-images", {})
 
@@ -2511,23 +2491,22 @@ async def extract_document_images(ctx: Context, attachment_id: str) -> dict[str,
 async def attach_references(
     ctx: Context, items: list[dict[str, Any]], dry_run: bool = True
 ) -> dict[str, Any]:
-    """이미 올라온 그림들을 **한 번에 제자리로.** 바이트는 안 움직인다.
+    """업로드된 그림 여러 장을 **한 번에 대상에 연결.** 바이트 이동 없음.
 
-    규격서 한 벌에서 그림이 서른 장 나오고, 그것을 시험 서른 건에 나눠 건다 — 한 장씩
-    부르면 서른 번이고, 중간에 끊기면 어디까지 갔는지 알기 어렵다. 줄 하나가 한 장이다:
+    규격서 한 벌에서 나온 그림 서른 장을 시험 서른 건에 나눠 연결하는 용도(한 장씩 호출하면
+    서른 번이고 중간에 끊기면 진행 위치 파악이 어려움). 줄 하나가 한 장:
 
         {"attachment_id": "…", "target": "reliability_test", "object_id": "…",
          "definition_id": "…(어느 칸에. 없으면 카드 전체)", "caption": "…(없으면 원본 것)"}
 
-    **기본은 미리보기다**(`dry_run=true`) — 판정만 하고 아무것도 안 건다. 서른 장을
-    엉뚱한 시험에 걸어 놓고 되돌리는 것보다 표로 먼저 보는 편이 싸다. 사람에게 그 표를
-    보이고, 확인받으면 같은 것을 `dry_run=false` 로 다시 보낸다.
+    **기본은 미리보기**(`dry_run=true`): 판정만 하고 연결하지 않음. 사람에게 표를 보여 확인받은
+    뒤 같은 내용을 `dry_run=false`로 재전송(서른 장을 잘못 건 뒤 되돌리는 것보다 비용이 적음).
 
-    줄마다 따로 판정한다 — 한 줄이 막혀도 나머지는 걸리고, **못 건 줄은 이유와 함께**
-    돌아온다. 거는 것은 전부 되거나 전부 안 된다.
+    판정은 줄마다 별도: 한 줄이 막혀도 나머지는 연결되고, 실패한 줄은 이유와 함께 반환. 연결
+    실행은 전부 성공 또는 전부 실패.
 
-    어느 그림이 어느 시험의 것인지는 `extract_document_images` 가 준 `caption` 으로
-    정한다 — **너는 그림을 못 본다.** 설명이 빈 그림은 짐작해서 걸지 말고 사람에게 물어라.
+    어느 그림이 어느 시험의 것인지는 `extract_document_images`가 준 `caption`으로 판단(AI는
+    그림을 볼 수 없음). 설명이 빈 그림은 짐작으로 연결하지 말고 사람에게 확인.
     """
     return await _send(
         ctx,
@@ -2542,26 +2521,26 @@ async def attach_references(
 async def list_spec_documents(
     ctx: Context, workspace: str | None = None, q: str | None = None
 ) -> dict[str, Any]:
-    """**사내 규격서** — 부서가 만든 시험 문서(MX-REL-012 「환경 시험 표준」).
+    """**사내 규격서** 목록: 부서가 만든 시험 문서(예: MX-REL-012 환경 시험 표준).
 
-    공개 규격(`list_methods` — ASTM·ISO·KS 601건)과 **다른 표다.** 공개 규격은 밖에서
-    만들어 전사가 인용하는 것이고, 사내 규격서는 부서가 만들고 부서가 고치며 밖에서는
-    존재조차 모른다 — 섞어 세면 「우리가 인용하는 공개 규격」 이 전부 틀어진다.
+    공개 규격(`list_methods`, ASTM·ISO·KS 601건)과 별개의 표. 공개 규격은 외부에서 만들어
+    전사가 인용하는 것, 사내 규격서는 부서가 만들고 고치며 외부에서는 존재를 모름(섞어 세면
+    인용 중인 공개 규격 집계가 틀어짐).
 
-    줄마다 `code`(문서 번호 — 사람이 쓰는 이름) · `title` · `revision`(판) · `file_count`
-    (붙은 원본 수) · `linked_test_count`(이 문서를 가리키는 신뢰성 시험 수)가 온다.
-    `file_count` 가 0 이면 번호만 있고 원본이 없는 문서다.
+    줄마다 `code`(문서 번호, 사람이 쓰는 이름) · `title` · `revision`(판) · `file_count`(첨부
+    원본 수) · `linked_test_count`(이 문서를 가리키는 신뢰성 시험 수) 포함. `file_count`가
+    0이면 번호만 있고 원본 없음.
 
-    **판은 줄을 나누지 않는다.** 개정하면 `revision` 을 고치고 파일을 더하므로, 「Rev.2 를
-    새로 만들까요」 가 아니라 「그 문서의 판을 올리고 파일을 더하십시오」 가 맞는 답이다.
+    판은 줄을 나누지 않음. 개정 시 `revision`을 고치고 파일을 추가하므로, Rev.2 신규 생성이
+    아니라 그 문서의 판 상향과 파일 추가가 맞는 답.
 
-    **id 는 `resolve(kind="spec_document", text="MX-REL-012", workspace=…)` 로 정한다** —
-    부서를 가로지르면 번호가 겹칠 수 있고, 거기서 첫 줄을 집으면 남의 부서 문서를 시험에
-    건다. 그 id 가 신뢰성 시험의 「규격서」 칸(`document_id`)과 첨부 목록
-    (`list_attachments(target="spec_document")`)에 그대로 들어간다.
+    **id는 `resolve(kind="spec_document", text="MX-REL-012", workspace=…)`로 확정**: 부서 간에
+    번호가 겹칠 수 있어 첫 줄을 집으면 남의 부서 문서를 시험에 연결하게 됨. 그 id가 신뢰성
+    시험의 규격서 칸(`document_id`)과 첨부 목록(`list_attachments(target="spec_document")`)에
+    그대로 사용됨.
 
-    **원문은 못 읽는다**(첨부는 파일 이름과 설명까지만 준다). 한글·워드로 올라온 것이 많고,
-    붙어 있다는 사실과 이름까지만 안다 — 안의 조건을 말하면 지어내는 것이다.
+    **원문 읽기 불가**(첨부는 파일 이름과 설명까지만 제공). 한글·워드 파일이 많고 첨부 사실과
+    이름까지만 알 수 있음: 안의 조건을 말하면 지어내는 것.
     """
     return _listed(
         await _get(ctx, "/spec-documents", {"workspace": workspace, "q": q}),
@@ -2582,27 +2561,26 @@ async def create_spec_document(
     source_path: str | None = None,
     note: str | None = None,
 ) -> dict[str, Any]:
-    """사내 규격서 하나를 등록한다 — **시험의 출처가 될 문서.**
+    """사내 규격서 하나 등록: **시험의 출처가 될 문서.**
 
-    **먼저 `resolve(kind="spec_document", text=code, workspace=…)` 로 있는지 본다.** 같은
-    부서에 같은 번호는 하나이고, 이미 있으면 그것을 쓰면 된다 — 번호만 달리 적어 둘을
-    만들면 그 뒤로 어느 쪽이 정본인지 아무도 모른다.
+    **먼저 `resolve(kind="spec_document", text=code, workspace=…)`로 존재 여부 확인.** 같은
+    부서에 같은 번호는 하나뿐이며 이미 있으면 그것을 사용(번호만 달리 적어 둘을 만들면 어느
+    쪽이 정본인지 알 수 없게 됨).
 
-    **이 줄에는 네가 올렸다는 표가 남는다**(`submitted_via`). 사람이 등록한 것과 구별되어야
-    검토하는 사람이 무엇을 더 봐야 하는지 안다 — 그러니 **문서에 적힌 그대로** 넣어라.
-    번호·제목을 다듬거나 지어내면 그 표가 있어도 소용없다.
+    이 줄에는 AI가 올렸다는 표시가 남음(`submitted_via`). 사람이 등록한 것과 구별되어야
+    검토자가 더 볼 곳을 앎: **문서에 적힌 그대로** 입력. 번호·제목을 다듬거나 지어내면 표시가
+    있어도 소용없음.
 
-    만든 뒤 원본 파일을 붙인다: `create_upload_ticket` → 티켓으로 올리기 →
-    `attach_references(target="spec_document", …)`. 파일 없는 규격서는 번호만 있는 껍데기라,
-    값이 틀렸을 때 되짚을 자리가 못 된다.
+    생성 후 원본 파일 첨부: `create_upload_ticket` → 티켓으로 업로드 →
+    `attach_references(target="spec_document", …)`. 파일 없는 규격서는 번호만 있는 껍데기라
+    값이 틀렸을 때 추적 근거가 못 됨.
 
-    그리고 그 문서를 **시험의 「규격서」 칸에 건다**(`document_id`) — 그래야 시험에서
-    원본으로 한 번에 간다.
+    이어서 그 문서를 시험의 규격서 칸(`document_id`)에 연결(시험에서 원본으로 바로 이동 가능).
 
-    **번호가 없으면 비워라.** 번호 없는 사내 문서가 실제로 있다 — 지어낸 번호는 문서관리
-    시스템의 번호인 줄 알고 누가 찾으러 간다. 대신 `pages`(본 자리 「12-18」),
-    `is_excerpt`(전문을 안 봤으면 참), `source_path`(원본이 있는 사내 경로·URL)를 채워라.
-    이 셋을 비고 문장에 섞어 넣으면 검색도 추적도 안 된다.
+    번호가 없으면 비움. 번호 없는 사내 문서가 실제로 있음(지어낸 번호는 문서관리 시스템 번호로
+    오인되어 누군가 찾으러 감). 대신 `pages`(참조 쪽, 예: 12-18), `is_excerpt`(전문 미확인 시
+    참), `source_path`(원본의 사내 경로·URL)를 채움. 이 셋을 비고 문장에 섞으면 검색도 추적도
+    불가.
     """
     return _then(
         await _send(
@@ -2620,35 +2598,33 @@ async def create_spec_document(
                 "note": note,
             },
         ),
-        "규격서를 등록했습니다. 원본 파일을 붙이고, 시험의 「규격서」 칸에 거십시오.",
+        "규격서 등록 완료. 다음: 원본 파일 첨부, 시험의 규격서 칸(`document_id`)에 연결.",
     )
 
 @mcp.tool()
 async def list_attachments(ctx: Context, target: str, object_id: str) -> dict[str, Any]:
-    """붙은 **그림과 첨부**의 목록 — 무엇이 어느 칸에 붙어 있나.
+    """붙은 **그림과 첨부** 목록: 무엇이 어느 칸에 붙어 있는지.
 
-    `target` 은 `reliability_test` · `method` · `spec_document` · `equipment` 넷이다. 줄마다
-    `caption` · `definition_label`(어느 칸에 붙었나, 비면 카드 전체) · 형식 · 크기가 온다.
+    `target`은 `reliability_test` · `method` · `spec_document` · `equipment` 넷. 줄마다
+    `caption` · `definition_label`(붙은 칸, 비면 카드 전체) · 형식 · 크기 포함.
 
-    **원문이 붙는 자리는 둘이고 서로 다른 표다.** `method` 는 공개 규격(ASTM·ISO·KS)의
-    원문이고, `spec_document` 는 **사내 규격서**다(`list_spec_documents`). 어느 신뢰성
-    시험의 문서를 찾으려면 그 시험의 「참조 규격」 이 가리키는 `method_id`, 또는 「규격서」
-    가 가리키는 `document_id` 로 이 도구를 부른다.
+    원문이 붙는 곳은 둘이며 서로 다른 표. `method`는 공개 규격(ASTM·ISO·KS)의 원문,
+    `spec_document`는 사내 규격서(`list_spec_documents`). 신뢰성 시험의 문서를 찾으려면 그
+    시험의 참조 규격 칸이 가리키는 `method_id`, 또는 규격서 칸이 가리키는 `document_id`로 호출.
 
-    **너는 그림을 못 본다.** 읽을 수 있는 것은 `caption` 뿐이다 — 설명이 비어 있으면 그
-    그림은 너에게 없는 것과 같으니, 「그림 3장이 있고 설명은 없습니다」 라고 그대로 말하고
-    **내용을 짐작하지 마라.** 「시편 장착 방향」 이라고 적힌 그림을 보고 방향을 말하는 것도
-    짐작이다 — 적힌 글자까지만 옮긴다.
+    **AI는 그림을 볼 수 없음.** 읽을 수 있는 것은 `caption`뿐: 설명이 비어 있으면 없는 것과
+    같으므로 그림 3장이 있고 설명은 없다고 그대로 전달하고 내용 짐작 금지. 시편 장착 방향이라고
+    적힌 그림을 보고 방향을 말하는 것도 짐작(적힌 글자까지만 전달).
 
-    **PDF 의 본문도 못 읽는다.** 규격서가 붙어 있다는 사실과 파일 이름·설명까지만 안다 —
-    「ASTM E8 원문이 있습니다」 는 되지만 그 안의 요구 조건을 말하면 지어내는 것이다.
+    **PDF 본문도 읽기 불가.** 규격서 첨부 사실과 파일 이름·설명까지만 알 수 있음: ASTM E8
+    원문이 있다는 말은 가능하나 그 안의 요구 조건을 말하면 지어내는 것.
 
-    **올린 파일을 서버에서 되받아 읽는 길은 없다.** 장비 자료를 간추려
-    `set_equipment_attributes` 의 「장비 자료 발췌」 에 적으려면, 올리기 **전에** 네가 가진
-    그 파일을 읽어라 — 올리고 나서 서버에 물으면 파일 이름밖에 못 받는다.
+    업로드한 파일을 서버에서 되받아 읽는 방법은 없음. 장비 자료를 요약해
+    `set_equipment_attributes`의 장비 자료 발췌 칸에 적으려면 업로드 전에 가진 파일을 읽어야
+    함(업로드 후 서버에 물으면 파일 이름만 받음).
 
-    사람에게 보이려면 화면의 그 시험이나 규격을 열라고 말한다. 파일 주소(`url`)는 자격이
-    있어야 열리므로 그대로 건네도 브라우저에서 안 열린다.
+    사람에게 보이려면 화면에서 그 시험이나 규격을 열도록 안내. 파일 주소(`url`)는 자격이 있어야
+    열리므로 그대로 건네도 브라우저에서 열리지 않음.
     """
     return _listed(
         await _get(ctx, "/attachments", {"target": target, "object_id": object_id}),
@@ -2666,46 +2642,46 @@ async def create_reliability_test(
     test_item_term_ids: list[str] | None = None,
     attributes: list[dict[str, Any]] | None = None,
 ) -> dict[str, Any]:
-    """신뢰성 시험 하나를 **후보로** 올린다. **그 사업부에 속한 부서의 관리자**(또는 시스템
-    관리자)만. 사업부 코드는 `list_divisions` 가 준다 — `can_register` 가 true 인 것만 된다.
+    """신뢰성 시험 하나를 **후보로** 등록. 그 사업부 소속 부서 관리자(또는 시스템 관리자) 전용.
 
-    **네가 올린 것은 바로 쓰이지 않는다.** 신뢰성 시험은 값 하나가 틀리면 그 조건으로 장비를
-    고르고 그 장비로 보고서가 나간다 — 그래서 사람이 화면에서 읽고 확인해야 확정이다. 그때까지
-    전사 목록에도 안 나온다. 사용자에게 「등록했습니다」 가 아니라 **「후보로 올렸습니다,
-    확인이 필요합니다」** 라고 말하라.
+    사업부 코드는 `list_divisions`가 제공(`can_register`가 true인 것만 가능).
 
-    그러니 **모르는 칸은 비워 두고 무엇을 못 채웠는지 말하라.** 그럴듯하게 채워 넣으면
-    검토하는 사람이 그것을 못 가려낸다 — 빈 칸은 눈에 띄지만 그럴듯한 오답은 안 띈다.
+    **AI가 올린 시험은 바로 쓰이지 않음.** 값 하나가 틀리면 그 조건으로 장비를 고르고 보고서가
+    나가므로, 사람이 화면에서 읽고 확인해야 확정. 그 전에는 전사 목록에도 미표시. 사용자에게
+    등록 완료가 아니라 후보 등록, 확인 필요로 전달.
 
-    먼저 `resolve(kind="reliability_test", text=…, workspace=…)` 로 **같은 시험이 이미
-    있는지** 본다. 부서마다 같은 이름이 있는 표라, 안 보고 만들면 한 부서에 「고온고습
-    1000h」 가 둘이 되고 그 뒤로는 어느 쪽이 정본인지 아무도 모른다.
+    **모르는 칸은 비우고 못 채운 칸을 알림.** 그럴듯하게 채우면 검토자가 가려내지 못함(빈 칸은
+    눈에 띄지만 그럴듯한 오답은 안 띔).
 
-    `test_item_term_ids` 는 이 시험이 쓰는 **시험 항목**의 값 id 다 — `resolve(kind="term",
-    axis="test_item", name=…)` 로 찾는다. **모르면 비운다**: 비슷한 항목을 끼워 넣으면 그
-    시험이 엉뚱한 장비로 이어지고, 검색은 그 장비로 「됩니다」 라고 답한다.
+    먼저 `resolve(kind="reliability_test", text=…, workspace=…)`로 같은 시험의 존재 여부 확인.
+    부서마다 같은 이름이 있는 표라, 확인 없이 만들면 한 부서에 고온고습 1000h가 둘이 되고
+    정본을 알 수 없게 됨.
 
-    **같은 시험의 다른 판이면 이것을 부르지 마라** — 여기서는 409 다. 적재는
-    `create_reliability_tests`(묶음)가 접어 준다.
+    `test_item_term_ids`는 이 시험이 쓰는 시험 항목의 값 id(`resolve(kind="term",
+    axis="test_item", text=…)`). 모르면 비움: 비슷한 항목을 넣으면 엉뚱한 장비로 이어지고
+    검색이 그 장비로 가능이라 답함.
 
-    `attributes` 는 칸 하나가 한 줄이고 **칸의 종류마다 채우는 자리가 다르다** — 모양과
-    id 얻는 길은 `get_guide("신뢰성 시험")` 에 표로 있다. 종류와 다른 값을 보내면 **그
-    값은 조용히 버려진다** — 먼저 `list_attribute_definitions` 로 `kind` 를 본다.
+    같은 시험의 다른 판이면 호출 금지(여기서는 409). 판 적재는
+    `create_reliability_tests`(묶음)가 처리.
 
-    **새 이름을 만들기 전에 정의 목록을 본다.** `new_label` 로 적으면 초안이 새로 생기고,
-    초안은 온톨로지 밖이라 검색·판정에 안 쓰인다.
+    `attributes`는 칸 하나가 한 줄이며 칸 종류마다 채우는 자리가 다름: 형태와 id 조회 방법은
+    `get_guide("신뢰성 시험")`의 표. 종류와 다른 값은 조용히 버려짐: 먼저
+    `list_attribute_definitions`로 `kind` 확인.
 
-    **조건 속성(`kind="condition"`)은 그대로 장비 판정이 된다** — -40~125 degC 로 적어 두면
-    `test_capability` 가 그 온도를 내는 장비만 답한다. 그래서 조건은 문장이 아니라 수치다.
-    폭이 없는 한 점은 `num_value` 다 — **점 넷을 -40 ~ 85 구간으로 뭉치지 마라**: 그것은
-    사이 아무 온도나 된다는 뜻이고, 문서는 그런 말을 한 적이 없다.
+    새 이름 생성 전 정의 목록 확인. `new_label`로 적으면 초안이 생기고, 초안은 온톨로지 밖이라
+    검색·판정에 미사용.
 
-    **조건이 한 벌이 아니면 묶음으로 가른다**(`set_label`·`step_order`). 동작 -15 ~ 45 와
-    저장 -40 ~ 25 를 뭉개면 -40 ~ 45 라는 **문서에 없는 조건**이 생긴다. 주 조건과 예외,
-    프로파일의 차례도 같은 자리다 — 모양은 가이드의 「조건 묶음」.
+    조건 속성(`kind="condition"`)은 그대로 장비 판정에 사용: -40~125 degC로 적으면
+    `test_capability`가 그 온도를 내는 장비만 답함. 조건은 문장이 아니라 수치. 폭이 없는 한
+    점은 `num_value`. 점 넷을 -40 ~ 85 구간으로 뭉치기 금지(사이 아무 온도나 된다는 뜻이 되며
+    문서에 없는 말).
 
-    **확실하지 않으면 비우고 `note` 를 실어라.** 값을 비우는 것과 아무 말 없이 비우는
-    것은 다르다 — 전자는 「아직 모른다」 이고 후자는 「없다」 로 읽힌다.
+    조건이 한 벌이 아니면 묶음으로 구분(`set_label`·`step_order`). 동작 -15 ~ 45와 저장 -40 ~
+    25를 뭉치면 -40 ~ 45라는 문서에 없는 조건이 생김. 주 조건과 예외, 프로파일 순서도 같은
+    방식(형태는 가이드의 조건 묶음 대목).
+
+    확실하지 않으면 비우고 `note` 기재. 메모 없이 비우면 없음으로, 메모와 함께 비우면 아직
+    모름으로 읽힘.
     """
     return _then(
         await _send(
@@ -2721,9 +2697,9 @@ async def create_reliability_test(
                 "attributes": attributes or [],
             },
         ),
-        "후보로 올라갔다. 사람이 부서 화면에서 확인해야 확정이고, 그때까지 전사 목록에 안"
-        " 나온다. 「등록 완료」 가 아니라 「후보로 올렸으니 확인해 달라」 고 말하고, 못 채운"
-        " 칸이 있으면 무엇인지 함께 말하라. 확인은 네가 못 한다 — 사람이 화면에서 한다.",
+        "후보로 등록됨. 사람이 부서 화면에서 확인해야 확정이며 그 전에는 전사 목록에 미표시."
+        " 등록 완료가 아니라 후보 등록 후 확인 필요로 안내하고, 못 채운 칸이 있으면 함께"
+        " 알림. 확인은 AI 불가(사람이 화면에서 수행).",
     )
 
 
@@ -2735,34 +2711,32 @@ async def create_reliability_tests(
     document_id: str | None = None,
     document_revision_id: str | None = None,
 ) -> dict[str, Any]:
-    """**문서 하나에서 뽑은 시험들을 한 번에** 올린다 — 줄마다 결과가 온다.
+    """**문서 하나에서 추출한 신뢰성 시험 여러 건 일괄 등록.** 줄마다 결과 반환.
 
-    규격서 한 권에서 시험 스무 건을 뽑았으면 `create_reliability_test` 를 스무 번 부르지
-    말고 이것을 한 번 불러라. 스무 번 부르다 열 번째에서 끊기면 **앞의 아홉은 들어가 있고
-    뒤의 열은 없는데**, 다시 부르면 아홉이 이름 겹침으로 막힌다 — 그 오류를 보고 사람은
-    「안 올라갔나」 라고 읽는다.
+    규격서 한 권에서 스무 건을 뽑았으면 `create_reliability_test`를 스무 번 호출하지 말고 이
+    도구를 한 번 호출. 스무 번 호출 중 열 번째에서 끊기면 앞의 아홉은 들어가고 뒤의 열은 없는
+    상태가 되고, 재호출 시 아홉이 이름 중복으로 막혀 사람이 등록 실패로 오해함.
 
-    `tests` 의 한 줄은 `{"name": …, "purpose": …, "test_item_term_ids": [...],
-    "attributes": [...]}` 다 — `create_reliability_test` 의 같은 칸이고, `division_code`
-    만 묶음이 갖는다. 한 번에 500건까지.
+    `tests`의 한 줄: `{"name": …, "purpose": …, "test_item_term_ids": [...], "attributes":
+    [...]}`. `create_reliability_test`와 같은 칸이며 `division_code`만 묶음 단위. 한 번에 최대
+    500건.
 
-    **`document_id` 를 줘라**(`resolve(kind="spec_document", text="MX-REL-012",
-    workspace=…)`). 줄마다 「규격서」 칸에 걸려, 사람이 **문서 단위로 모아 검토**한다 —
-    한 문서에서 나온 줄은 같은 실수를 함께 하고, 함께 봐야 그것이 보인다. 줄이 제
-    `attributes` 에 규격서를 이미 적었으면 그것을 안 덮는다.
+    `document_id` 지정(`resolve(kind="spec_document", text="MX-REL-012", workspace=…)`). 줄마다
+    규격서 칸에 연결되어 사람이 문서 단위로 검토 가능(한 문서에서 나온 줄은 같은 실수를
+    공유하므로 함께 봐야 드러남). 줄의 `attributes`에 규격서가 이미 있으면 덮지 않음.
 
-    **규격서를 줬으면 `document_revision_id` 도 줘야 한다**(안 주면 400). 판마다 줄이
-    서므로 개정 14를 올린 뒤 18을 올릴 때는 이 칸만 바꿔 같은 이름을 다시 보내라 — 18은
-    14의 줄에 안 붙고 **새 줄로 선다**(14의 값은 그 줄에 그대로 남는다). 목록은 최신판만
-    보여 주므로 줄이 부풀지 않는다. 판 목록은 `get_spec_document` 의 `revisions` 가 준다.
+    **규격서를 주면 `document_revision_id`도 필수**(없으면 400). 판마다 줄이 생기므로 개정 14를
+    올린 뒤 18을 올릴 때는 이 칸만 바꿔 같은 이름으로 재전송: 18은 14의 줄에 붙지 않고 새 줄로
+    생성(14의 값은 그 줄에 유지). 목록은 최신판만 보여 줘 줄이 늘어나지 않음. 판 목록은
+    `list_spec_documents`의 `revisions`.
 
-    판 없이 올리면 같은 자리에 쌓여 **뒤엣것이 앞엣것을 조용히 덮는다** — 운영에서 그렇게
-    36건의 값이 사라졌다(2026-10-01).
+    판 없이 올리면 같은 자리에 쌓여 뒤의 값이 앞의 값을 조용히 덮음(운영에서 36건 값 소실,
+    2026-10-01).
 
-    답이 셋이다 — `created`(새 줄), `merged`(**같은 판을 다시 올린 것**), `failed`(막힌
-    줄과 왜). **셋 다 읽고 말하라.** `merged` 의 줄에는 `action` 이 있다: `updated` 면
-    `changed` 에 **덮어쓴 칸 이름**이 오고(그 칸의 옛 값은 이 판에서 사라졌다), `skipped`
-    면 바뀐 것이 없다. 「올렸습니다」 만 말하지 말고 덮은 칸을 그대로 말하라.
+    응답 세 가지: `created`(새 줄), `merged`(같은 판 재업로드), `failed`(막힌 줄과 이유). **셋
+    모두 읽고 전달.** `merged` 줄의 `action`: `updated`면 `changed`에 덮어쓴 칸 이름(그 칸의 옛
+    값은 이 판에서 소실), `skipped`면 변경 없음. 등록 완료만 말하지 말고 덮어쓴 칸을 그대로
+    전달.
     """
     return _then(
         await _send(
@@ -2776,10 +2750,10 @@ async def create_reliability_tests(
                 "tests": tests,
             },
         ),
-        "줄마다 결과가 왔다. **`created`·`merged`·`failed` 를 함께 말하라** — 들어간 줄만"
-        " 말하면 접힌 줄도 막힌 줄도 아무도 안 본다. `merged` 는 **같은 판을 다시 올린**"
-        " 것이고, 줄의 `changed` 에 덮어쓴 칸이 온다 — 그 칸의 옛 값은 사라졌으므로 그대로"
-        " 말하라. 새로 만든 줄은 후보이고, 사람이 화면에서 문서 단위로 확인해야 확정이다.",
+        "줄별 결과 반환됨. **`created`·`merged`·`failed` 모두 전달 필수**(등록된 줄만"
+        " 말하면 병합·실패 줄이 누락됨). `merged`는 같은 판 재업로드이며 줄의 `changed`에"
+        " 덮어쓴 칸 기재: 그 칸의 옛 값은 소실되었으므로 그대로 전달. 새 줄은 후보이며"
+        " 사람이 화면에서 문서 단위로 확인해야 확정.",
     )
 
 
@@ -2792,20 +2766,20 @@ async def update_reliability_test(
     test_item_term_ids: list[str] | None = None,
     attributes: list[dict[str, Any]] | None = None,
 ) -> dict[str, Any]:
-    """신뢰성 시험을 고친다. **안 보낸 칸은 그대로.**
+    """신뢰성 시험 수정. **보내지 않은 칸은 유지.**
 
-    **확정된 시험은 못 고친다**(409 `TSC-RELIABILITY-0005`). 사람이 내용을 읽고 확인한
-    것이라, 내용이 바뀌려면 그 확인이 먼저 풀려야 한다 — 사용자에게 화면에서 「다시 후보로」
-    를 눌러 달라고 말하라. **네가 푸는 길은 없다.** 고칠 수 있는 것은 아직 후보인 시험이다.
+    **확정된 시험은 수정 불가**(409 `TSC-RELIABILITY-0005`). 사람이 내용을 확인한 것이라
+    수정하려면 확인부터 해제해야 함: 사용자에게 화면의 다시 후보로 버튼을 눌러 달라고 요청.
+    AI가 해제하는 방법은 없음. 수정 가능한 것은 후보 상태 시험.
 
-    `test_id` 는 `resolve(kind="reliability_test", …)` 로 정한다 — 목록에서 이름만 보고
-    고르면 같은 이름의 **다른 부서 시험**을 고치게 된다.
+    `test_id`는 `resolve(kind="reliability_test", …)`로 확정(이름만 보고 고르면 같은 이름의
+    다른 부서 시험을 수정하게 됨).
 
-    `test_item_term_ids` 와 `attributes` 는 보내면 **통째로 바뀐다** — 하나를 더하려면 지금
-    있는 것(`get_reliability_test`)에 더해서 **전부** 보낸다. 빠뜨리면 조용히 지워진다.
+    `test_item_term_ids`와 `attributes`는 보내면 전체 교체: 하나를 더하려면 현재
+    값(`get_reliability_test`)에 더해 전부 전송(누락분은 조용히 삭제).
 
-    **칸 몇 개만 고칠 것이면 `set_reliability_attributes` 를 써라.** 그쪽은 읽어서 겹치는
-    줄만 갈아 끼운다 — 스물두 칸을 다시 적다 하나를 빠뜨리는 일이 여기서 실제로 난다.
+    칸 몇 개만 고칠 때는 `set_reliability_attributes` 사용. 그 도구는 현재 값을 읽어 겹치는
+    줄만 교체(스물두 칸을 다시 적다 하나를 빠뜨리는 사고가 실제로 발생).
     """
     body: dict[str, Any] = {}
     if name is not None:
@@ -2823,27 +2797,26 @@ async def update_reliability_test(
 async def set_reliability_attributes(
     ctx: Context, test_id: str, attributes: list[dict[str, Any]]
 ) -> dict[str, Any]:
-    """신뢰성 시험의 **칸 몇 개만** 고친다 — 나머지는 그대로 둔다.
+    """신뢰성 시험의 **칸 몇 개만** 수정. 나머지는 유지.
 
-    `update_reliability_test(attributes=…)` 는 목록을 **통째로 갈아 끼운다.** 카드에 칸이
-    스물 넘게 서는데, 온도 하나를 고치려고 스물둘을 다시 보내다 하나를 빠뜨리면 그 값은
-    조용히 사라진다 — 지운 기억이 없으니 아무도 못 찾는다. 여기서는 지금 있는 것을 읽어
-    **`definition_id` 가 같은 줄만 갈아 끼우고** 나머지는 그대로 보낸다.
+    `update_reliability_test(attributes=…)`는 목록을 전체 교체. 카드에 칸이 스물 넘게 있어 온도
+    하나를 고치려 스물둘을 다시 보내다 하나를 빠뜨리면 그 값은 조용히 사라짐(아무도 못 찾음).
+    이 도구는 현재 값을 읽어 `definition_id`가 같은 줄만 교체하고 나머지는 그대로 전송.
 
-    줄의 모양은 `create_reliability_test` 와 같다(구간·수치·문장·불리언·날짜·term·method·
-    document·pairs·matrix). 없던 칸이면 새로 붙고, `new_label` 로 주면 초안이 생긴다.
+    줄 형태는 `create_reliability_test`와
+    동일(구간·수치·문장·불리언·날짜·term·method·document·pairs·matrix). 없던 칸이면 새로 추가,
+    `new_label`로 주면 초안 생성.
 
-    **묶음이 있으면 `set_label`·`step_order` 까지 같아야 같은 줄이다.** 동작과 저장은 같은
-    「시험 온도」 두 줄이라, 묶음을 안 적고 보내면 그 둘이 아니라 **세 번째 줄**이 생긴다 —
-    먼저 읽어서 지금 어떤 묶음이 있는지 보고, 고칠 줄의 묶음을 그대로 실어라.
+    **묶음이 있으면 `set_label`·`step_order`까지 같아야 같은 줄.** 동작과 저장은 같은 시험 온도
+    두 줄이라, 묶음 없이 보내면 그 둘이 아니라 세 번째 줄이 생김. 먼저 읽어 현재 묶음을
+    확인하고 고칠 줄의 묶음을 그대로 포함.
 
-    **지우려면 그렇게 말한다** — `{"definition_id": "…", "remove": true}`. 빈 값을 보내는
-    것으로는 안 지워진다(빈 문자열과 「안 적음」 은 다르다). 묶음이 있는 줄은 묶음까지
-    같아야 지워진다.
+    삭제는 명시적으로: `{"definition_id": "…", "remove": true}`. 빈 값 전송으로는 삭제되지
+    않음(빈 문자열과 미기재는 다름). 묶음이 있는 줄은 묶음까지 같아야 삭제됨.
 
-    확정된 시험은 못 고친다(409) — 사람이 화면에서 「다시 후보로」 를 눌러야 한다.
-    **여러 건이면 목록에서 체크해 한 번에 풀 수 있다**(사유를 적는다). 그러니 막힌 줄이
-    여럿이면 하나씩 풀어 달라고 하지 말고, **그 목록을 세어 한 번에 풀어 달라**고 하라.
+    확정된 시험은 수정 불가(409): 사람이 화면에서 다시 후보로 버튼을 눌러야 함. 여러 건은
+    목록에서 체크해 한 번에 해제 가능(사유 기재). 막힌 줄이 여럿이면 하나씩이 아니라 건수를
+    세어 일괄 해제 요청.
     """
     now = await _get(ctx, f"/reliability-tests/{test_id}")
     if isinstance(now, dict) and now.get("error"):
@@ -2857,8 +2830,8 @@ async def set_reliability_attributes(
             f"/reliability-tests/{test_id}",
             {"attributes": merge(now.get("attributes", []), attributes)},
         ),
-        "보낸 칸만 바뀌었고 나머지는 그대로다. 고친 칸이 조건(`kind=\"condition\"`)이면"
-        " 장비 판정이 따라 바뀐다 — `test_capability` 로 다시 보고 말하라.",
+        "보낸 칸만 변경, 나머지는 유지. 고친 칸이 조건(`kind=\"condition\"`)이면"
+        " 장비 판정도 바뀜: `test_capability`로 재확인 후 전달.",
     )
 
 
@@ -2866,25 +2839,25 @@ async def set_reliability_attributes(
 async def set_equipment_attributes(
     ctx: Context, equipment_id: str, attributes: list[dict[str, Any]]
 ) -> dict[str, Any]:
-    """보유 장비의 **칸 몇 개만** 고친다 — 나머지는 그대로 둔다.
+    """보유 장비의 **칸 몇 개만** 수정. 나머지는 유지.
 
-    `update_equipment` 에는 속성 칸이 없고, 장비의 `attributes` 를 통째로 보내면 안 보낸
-    칸이 조용히 사라진다. 여기서는 지금 있는 것을 읽어 **`definition_id` 가 같은 줄만**
-    갈아 끼운다. 줄의 모양은 신뢰성 시험과 같다(`set_reliability_attributes`).
+    `update_equipment`에는 속성 칸이 없고, 장비 `attributes`를 통째로 보내면 보내지 않은 칸이
+    조용히 사라짐. 이 도구는 현재 값을 읽어 `definition_id`가 같은 줄만 교체. 줄 형태는 신뢰성
+    시험과 동일(`set_reliability_attributes`).
 
     ## 장비 자료 발췌(`equipment_document_digest`)
 
-    **이 칸이 네 자리다.** 장비에 붙은 사양서·매뉴얼에서 읽은 것을 간추려 여기 적으면,
-    의미 검색의 장비 카드에 함께 실려 임베딩된다 — 그러면 「얇은 판 잡아당기는 장비」
-    처럼 낱말이 하나도 안 겹치는 물음으로도 그 장비가 걸린다.
+    **AI가 채우는 칸.** 장비에 첨부된 사양서·매뉴얼에서 읽은 내용을 요약해 적으면 의미 검색의
+    장비 카드에 함께 임베딩됨: 얇은 판 잡아당기는 장비처럼 낱말이 겹치지 않는 질문으로도 그
+    장비가 검색됨.
 
-    원문을 통째로 넣지 마라. 카드가 길수록 조각이 늘고, 조각이 늘수록 한 조각의 뜻이
-    흐려져 **오히려 덜 걸린다.** 무엇을 재는 장비인지·어느 범위인지·무엇이 딸렸는지를
-    몇 문장으로 적어라. 지어내지 마라 — 자료에 없는 수치를 적으면 그 수치로 검색이 답한다.
+    원문 통째 입력 금지(카드가 길수록 조각이 늘고 조각마다 뜻이 흐려져 오히려 덜 검색됨). 측정
+    대상·범위·딸린 부속을 몇 문장으로 기재. 지어내기 금지(자료에 없는 수치를 적으면 그 수치로
+    검색이 답함).
 
-    자료를 먼저 붙이려면 `create_upload_ticket` 으로 `target=equipment` 에 올린다.
+    자료를 먼저 첨부하려면 `create_upload_ticket`으로 `target=equipment`에 업로드.
 
-    **지우려면** `{"definition_id": "…", "remove": true}`. 빈 값으로는 안 지워진다.
+    삭제는 `{"definition_id": "…", "remove": true}`. 빈 값으로는 삭제되지 않음.
     """
     now = await _get(ctx, f"/equipment/{equipment_id}")
     if isinstance(now, dict) and now.get("error"):
@@ -2903,21 +2876,20 @@ async def set_equipment_attributes(
 async def propose_test_item(
     ctx: Context, test_id: str, text: str, note: str | None = None
 ) -> dict[str, Any]:
-    """시험 항목 축에 **맞는 값이 없다**는 것을 남긴다.
+    """시험 항목 축에 **맞는 값이 없음**을 요청으로 기록.
 
-    시험 항목 축은 닫혀 있어 네가 값을 못 더한다 — 검색의 첫 축이라 오타 하나가 값이 되면
-    그 뒤로 아무도 못 찾기 때문이고, 그것은 옳다. 그런데 **말할 자리가 없어서** 지금까지는
-    그냥 비웠고, 빈 칸은 「없다」 로 읽혔다.
+    시험 항목 축은 닫혀 있어 AI가 값을 추가할 수 없음(검색의 첫 축이라 오타 하나가 값이 되면
+    이후 아무도 못 찾음). 요청 없이 비우면 빈 칸이 해당 없음으로 읽힘.
 
-    `text` 는 **문서에 적힌 그대로**다(「염수분무(5%)」). 고쳐 쓰거나 비슷한 축 값으로
-    바꾸지 마라 — 판단하는 사람이 원문을 봐야 정할 수 있다. `note` 에는 왜 못 찾았는지를
-    적어라(「염수 분무는 있는데 농도별 구분이 없음」).
+    `text`는 **문서에 적힌 그대로**(예: 염수분무(5%)). 고쳐 쓰거나 비슷한 축 값으로 바꾸지
+    않음(판단자가 원문을 봐야 결정 가능). `note`에는 못 찾은 이유 기재(예: 염수 분무는 있으나
+    농도별 구분이 없음).
 
-    같은 말이 여러 시험에서 나오면 한 줄로 모인다. 관리자가 한 번 정하면 그 말을 낸 시험
-    **전부**에 걸리므로, 스무 건이면 스무 번 부르는 것이 맞다.
+    같은 표기가 여러 시험에서 나오면 한 줄로 모임. 관리자가 한 번 정하면 그 표기를 낸 시험
+    전부에 연결되므로, 스무 건이면 스무 번 호출이 맞음.
 
-    **비슷한 값으로 때우지 마라.** 「인장」 이 없다고 「굽힘」 을 넣으면 그 시험이 엉뚱한
-    장비로 이어지고, 검색은 그 장비로 「됩니다」 라고 답한다.
+    **비슷한 값으로 대체 금지.** 인장이 없다고 굽힘을 넣으면 그 시험이 엉뚱한 장비로 이어지고
+    검색이 그 장비로 가능이라 답함.
     """
     return _then(
         await _send(
@@ -2926,8 +2898,8 @@ async def propose_test_item(
             "/reliability-tests/item-proposals",
             {"reliability_test_id": test_id, "text": text, "note": note},
         ),
-        "제안으로 올라갔다. **시험 항목은 아직 안 걸렸다** — 관리자가 정해야 걸린다."
-        " 사용자에게 「시험 항목을 못 찾아 제안으로 남겼다」 고 그대로 말하라.",
+        "요청 등록됨. **시험 항목은 아직 미연결**(관리자 결정 후 연결). 사용자에게 시험"
+        " 항목을 못 찾아 요청으로 남겼다고 그대로 전달.",
     )
 
 
@@ -2960,12 +2932,12 @@ async def decide_test_item_request(
 ) -> dict[str, Any]:
     """시험 항목 요청 한 묶음의 결정. 연결 · 신규 등록 · 거절 중 하나만. 시스템 관리자 전용.
 
-    `term_id`(기존 시험 항목에 연결, `resolve(kind="term", axis="test_item")` 로 확인) ·
+    `term_id`(기존 시험 항목에 연결, `resolve(kind="term", axis="test_item")`로 확인) ·
     `new_value`(시험 항목 축에 새 값 등록) · `reject=True`(시험 항목 아님). 셋 다 없으면 400.
     결정 결과는 그 표기를 요청한 신뢰성 시험 전부에 일괄 적용.
 
     **결정 전 사용자 확인 필수.** 시험 항목은 검색의 첫 축이라 값이 갈리면 이후 검색 누락.
-    비슷한 값이 있으면 신규 등록 대신 연결. `reject` 는 사용자가 거절을 지시한 경우만.
+    비슷한 값이 있으면 신규 등록 대신 연결. `reject`는 사용자가 거절을 지시한 경우만.
     """
     return await _send(
         ctx,
@@ -2988,27 +2960,23 @@ async def propose_equipment_model(
     maker_text: str | None = None,
     note: str | None = None,
 ) -> dict[str, Any]:
-    """카탈로그에 **그 기종이 없다**는 것을 남긴다.
+    """카탈로그에 **그 기종이 없음**을 요청으로 기록.
 
-    카탈로그 기종은 시스템 관리자만 세운다 — 기종을 고르면 그 계열의 시험 항목이 그 장비로
-    복사되고 조건 판정이 그 기종의 사양을 쓴다. 네가 세운 기종은 **잘못된 답의 근거**가 되고,
-    그 답은 조용하다. 그래서 못 세우는 것은 옳다.
+    카탈로그 기종은 시스템 관리자만 등록(기종을 고르면 그 계열의 시험 항목이 장비로 복사되고
+    조건 판정이 그 기종 사양을 씀). AI가 만든 기종은 잘못된 답의 근거가 되고 그 오답은 드러나지
+    않음. 요청 없이 비우면 빈 칸이 아직 안 채운 것으로 읽힘(할 일이 다름).
 
-    그런데 **말할 자리가 없어서** 지금까지는 그냥 비웠고, 빈 칸은 「아직 안 채운 것」 으로
-    읽혔다. 그 둘은 할 일이 다르다.
+    `model_text`는 **라벨에 적힌 그대로**(`68FM-300`). 고쳐 쓰거나 비슷한 기종 이름으로 바꾸지
+    않음(판단자가 그 글자를 봐야 계열 결정 가능). `maker_text`에 제조사, `note`에 못 찾은 이유
+    기재(예: 6800 시리즈는 있으나 이 모델만 없음).
 
-    `model_text` 는 **라벨에 적힌 그대로**다(`68FM-300`). 고쳐 쓰거나 비슷한 기종 이름으로
-    바꾸지 마라 — 판단하는 사람이 그 글자를 봐야 어느 계열인지 정할 수 있다. `maker_text` 에
-    제조사를, `note` 에 왜 못 찾았는지를 적어라(「6800 시리즈는 있는데 이 모델만 없음」).
+    `register_equipment`로 등록한 뒤 호출(요청은 그 장비에 연결).
 
-    **`register_equipment` 로 등록한 다음에 부른다** — 요청은 그 장비에 붙는다.
+    같은 기종을 여러 장비가 요청하면 한 줄로 모임. 관리자가 한 번 정하면 요청한 장비 전부가
+    연결되므로 열 대면 열 번 호출이 맞음. 같은 장비의 같은 요청 중복도 허용.
 
-    같은 기종을 여러 장비가 요청하면 한 줄로 모인다. 관리자가 한 번 정하면 그 기종을 요청한
-    장비 **전부**가 이어지므로, 열 대면 열 번 부르는 것이 맞다. 같은 장비에 같은 요청을 두
-    번 내도 막히지 않는다.
-
-    **비슷한 기종으로 때우지 마라.** 카탈로그에 있는 다른 기종을 골라 넣으면 그 장비의
-    하중·온도가 남의 것이 되고, 조건으로 장비를 찾는 화면이 그 수치로 「됩니다」 라고 답한다.
+    **비슷한 기종으로 대체 금지.** 카탈로그의 다른 기종을 고르면 그 장비의 하중·온도가 남의
+    것이 되고 조건 검색 화면이 그 수치로 가능이라 답함.
     """
     return _then(
         await _send(
@@ -3017,8 +2985,8 @@ async def propose_equipment_model(
             f"/equipment/{equipment_id}/model-proposals",
             {"model_text": model_text, "maker_text": maker_text, "note": note},
         ),
-        "요청으로 올라갔다. **기종은 아직 안 걸렸다** — 관리자가 카탈로그에 세워야 걸린다."
-        " 사용자에게 「카탈로그에서 기종을 못 찾아 등록 요청으로 남겼다」 고 그대로 말하라.",
+        "요청 등록됨. **기종은 아직 미연결**(관리자가 카탈로그에 등록해야 연결). 사용자에게"
+        " 카탈로그에서 기종을 못 찾아 등록 요청으로 남겼다고 그대로 전달.",
     )
 
 
@@ -3030,20 +2998,19 @@ async def add_spec_document_revision(
     issued_on: str | None = None,
     summary: str | None = None,
 ) -> dict[str, Any]:
-    """규격서에 **개정 한 줄**을 쌓는다.
+    """규격서에 **개정 한 줄** 추가.
 
-    `revision` 글자 하나로는 「이 시험은 개정 18에서 신설」 을 못 적는다. 개정을 줄로 쌓아야
-    시험이 어느 판에서 들어왔는지, 사람이 어느 판까지 확인했는지를 가리킬 수 있다.
+    `revision` 글자 하나로는 개정 18에서 신설 같은 사실을 기록할 수 없음. 개정을 줄로 쌓아야
+    시험이 들어온 판과 사람이 확인한 판을 가리킬 수 있음.
 
-    `label` 은 문서가 적은 그대로다 — 「18」 · 「Rev.3」 · 「2024-05」.
+    `label`은 문서 표기 그대로(예: 18, Rev.3, 2024-05).
 
-    **`summary` 를 비우지 마라.** 무엇이 바뀌었는지가 **재검토의 범위를 정한다** —
-    「오타 수정」 이면 딸린 시험을 다시 볼 이유가 없고, 「시험 온도 상향」 이면 전부 다시
-    봐야 한다. 그 판단을 사람이 하는데, 줄에 아무 말이 없으면 판단할 것이 없다.
+    **`summary` 비우기 금지.** 변경 내용이 재검토 범위를 결정: 오타 수정이면 딸린 시험 재검토
+    불필요, 시험 온도 상향이면 전부 재검토. 판단은 사람이 하며, 줄에 설명이 없으면 판단 근거가
+    없음.
 
-    개정을 쌓아도 **딸린 시험은 확정인 채로 남는다.** 수십 건이 한꺼번에 후보로 내려가면
-    그날 일이 멈추기 때문이고, 대신 「이 개정을 아직 안 봤다」 는 표가 붙는다. **그 표를
-    떼는 것은 사람의 일이다** — 네가 못 한다.
+    개정을 추가해도 딸린 시험은 확정 상태 유지(수십 건이 한꺼번에 후보로 내려가면 업무가 멈춤).
+    대신 이 개정 미확인 표시가 붙음. **표시 해제는 사람 전용**(AI 불가).
     """
     return _then(
         await _send(
@@ -3052,30 +3019,28 @@ async def add_spec_document_revision(
             f"/spec-documents/{document_id}/revisions",
             {"label": label, "issued_on": issued_on, "summary": summary},
         ),
-        "개정이 쌓였다. 딸린 시험은 확정인 채로 두고 「아직 안 본 시험」 표가 붙는다 —"
-        " 그 표를 떼는 것은 사람이 화면에서 한다. 몇 건이 걸렸는지 함께 말하라.",
+        "개정 추가됨. 딸린 시험은 확정 상태 유지, 이 개정 미확인 표시가 붙음(해제는 사람이"
+        " 화면에서 수행). 해당 시험 건수를 함께 전달.",
     )
 
 
 @mcp.tool()
 async def compare_revisions(ctx: Context, before: str, after: str) -> dict[str, Any]:
-    """같은 규격서의 **두 판을 견준다** — 더해진 시험 · 없어진 시험 · 조건이 바뀐 시험.
+    """같은 규격서의 **두 판 비교**: 추가된 시험 · 없어진 시험 · 조건이 바뀐 시험.
 
-    개정이 오면 딸린 수십 건 중 **무엇을 다시 봐야 하는지**가 문제다. 「전부 다시」 는 그날
-    일을 멈추고, 「아무것도 안 봄」 은 바뀐 조건을 놓친다.
+    개정 시 딸린 수십 건 중 재검토 대상 선별 용도(전부 재검토는 업무를 멈추고, 아무것도 안 보면
+    바뀐 조건을 놓침).
 
-    `changed[].differences` 가 **어디가 어떻게** 바뀌었는지를 한 줄로 준다(85 degC 이상 ->
-    95 degC 이상). **그것을 그대로 옮겨라** — 「N건 바뀜」 으로 접으면 사람이 다시 열어
-    봐야 하고, 그 수고를 없애려고 만든 답이다.
+    `changed[].differences`가 변경 위치와 내용을 한 줄로 제공(85 degC 이상 -> 95 degC 이상).
+    **그대로 전달**: N건 바뀜으로 요약하면 사람이 다시 열어 봐야 함.
 
-    `unchanged_count` 가 크면 개정의 범위가 좁다는 뜻이다 — 그 사실도 함께 말하라.
+    `unchanged_count`가 크면 개정 범위가 좁다는 뜻이며 그 사실도 함께 전달.
 
-    시험은 한 줄이고 판은 값에 붙으므로, 이 비교는 **한 줄 안의 두 시점**을 견주는 일이다 —
-    `changed` 의 `before_id` 와 `after_id` 는 같은 시험이다. 「더해짐」 은 뒤 판에서 처음
-    값이 적힌 시험이고, 「없어짐」 은 앞 판에는 있었는데 뒤 판이 손대지 않은 시험이다
-    (지워진 것이 아니다).
+    시험은 한 줄이고 판은 값에 붙으므로 이 비교는 한 줄 안의 두 시점 비교: `changed`의
+    `before_id`와 `after_id`는 같은 시험. 추가됨은 뒤 판에서 처음 값이 기재된 시험, 없어짐은 앞
+    판에는 있었으나 뒤 판이 손대지 않은 시험(삭제 아님).
 
-    판 id 는 `get_spec_document` 의 `revisions` 가 준다. 다른 문서의 판끼리는 못 견준다.
+    판 id는 `list_spec_documents`의 `revisions`가 제공. 다른 문서의 판끼리는 비교 불가.
     """
     return await _get(
         ctx, "/reliability-tests/revision-compare", {"before": before, "after": after}
@@ -3084,30 +3049,29 @@ async def compare_revisions(ctx: Context, before: str, after: str) -> dict[str, 
 
 @mcp.tool()
 async def test_capability(ctx: Context, test_id: str) -> dict[str, Any]:
-    """**이 시험을 돌릴 수 있는 장비.** 이 시스템이 답하려는 물음의 마지막 한 걸음.
+    """**이 시험을 수행할 수 있는 장비** 조회. 이 시스템이 답하는 물음의 마지막 단계.
 
-    `test_id` 는 `resolve(kind="reliability_test", …)` 가 준 것을 쓴다.
+    `test_id`는 `resolve(kind="reliability_test", …)`가 준 값 사용.
 
-    이 시험의 조건 속성이 그대로 검색 조건이 되어(범위 하나는 「위로 얼마까지」 와 「아래로
-    얼마까지」 두 물음이다) 시험 항목마다 장비를 판정한다. 부서로 안 좁힌다 — 옆 부서에
-    있으면 빌리러 간다.
+    이 시험의 조건 속성이 그대로 검색 조건이 되어(범위 하나는 상한·하한 두 물음) 시험 항목마다
+    장비를 판정. 부서로 좁히지 않음(옆 부서 장비도 대여 가능).
 
     읽는 법:
 
-    * `conditions_asked` — 실제로 물은 조건 수. 0 이면 조건 속성이 없어 **시험 항목만으로**
-      본 것이다. 그때의 「가능」 은 온도·하중을 안 본 답이므로 그렇게 말해야 한다.
-    * `skipped` — 단위를 못 옮겨 **뺀** 조건과 그 이유. 있으면 조건을 다 본 것이 아니다.
-    * `unmet_count` — 조건이 안 맞아 빠진 장비 수. 0대라는 답이 「그 항목이 되는 장비가
-      없어서」 인지 「조건이 안 맞아서」 인지를 이것이 가른다.
-    * 줄의 `verdict` — `match` 다 충족 · `accessory` **부속(챔버·노)을 달면 됨** · `partial`
-      일부는 **모른다** · `unknown` 전부 모른다. **`unknown` 을 「가능합니다」 로 옮기지 마라.**
-    * 조건 줄의 `accessory` 칸 — 무엇을 달면 되나(`model_name`), 얼마까지(`condition_range`),
-      **우리가 갖고 있나**(`owned_units`). 0 이 아니면 사는 이야기가 아니다.
+    * `conditions_asked`: 실제로 물은 조건 수. 0이면 조건 속성이 없어 시험 항목만으로 판정한
+      것. 이때의 가능은 온도·하중을 보지 않은 답이므로 그 사실을 전달.
+    * `skipped`: 단위 변환 실패로 제외한 조건과 이유. 있으면 조건을 다 본 것이 아님.
+    * `unmet_count`: 조건 미달로 빠진 장비 수. 0대의 원인이 항목 가능 장비 없음인지 조건
+      미달인지 구분.
+    * 줄의 `verdict`: `match` 전부 충족 · `accessory` 부속(챔버·노) 장착 시 가능 · `partial`
+      일부 모름 · `unknown` 전부 모름. **`unknown`을 가능으로 옮기기 금지.**
+    * 조건 줄의 `accessory` 칸: 장착할 부속(`model_name`), 가능 범위(`condition_range`), 보유
+      여부(`owned_units`). 0이 아니면 구매 대상 아님.
 
-    **0대면 그것이 답이다.** 「그 시험 항목이 적힌 장비가 없다」(unmet_count 0) 또는 「조건이
-    안 맞는다」(unmet_count > 0) 로 말하고 멈춰라 — 챔버·항온항습 같은 다른 이름으로 장비를
-    뒤지지 마라. 그 장비는 시험 항목이 안 적혀 있어 검색에 안 걸리는 것이고, 그것을 적는 일은
-    사람의 몫이다. 사면 되는 것은 `search_catalog` 한 번.
+    **0대면 그것이 답.** 그 시험 항목이 기재된 장비 없음(unmet_count 0) 또는 조건
+    미달(unmet_count > 0)로 전달하고 종료. 챔버·항온항습 같은 다른 이름으로 장비 재검색
+    금지(그런 장비는 시험 항목 미기재로 검색에 안 걸리며 기재는 사람의 몫). 구매 후보는
+    `search_catalog` 한 번.
     """
     found = await _get(ctx, f"/reliability-tests/{test_id}/equipment")
     total = (
@@ -3118,11 +3082,10 @@ async def test_capability(ctx: Context, test_id: str) -> dict[str, Any]:
     return _then(
         found,
         (
-            "0대다 — 이것이 답이다. unmet_count 로 이유(항목 안 적힘 / 조건 미달)를 말하고"
-            " 멈춰라. 다른 이름으로 장비를 뒤지지 말고, 사면 되는 것은 search_catalog 한 번."
+            "이것이 답(0대). unmet_count로 이유(항목 미기재 / 조건 미달)를 전달하고 종료."
+            " 다른 이름으로 장비 재검색 금지, 구매 후보는 search_catalog 한 번."
             if total == 0
-            else "이것이 답이다. 줄마다 부서·위치·담당자·판정이 있다 — 장비를 다시 검색하거나"
-            " 사양을 열어 재확인하지 마라."
+            else "이것이 답. 줄마다 부서·위치·담당자·판정 포함. 장비 재검색, 사양 재확인 금지."
         ),
     )
 
@@ -3134,17 +3097,17 @@ async def test_capability(ctx: Context, test_id: str) -> dict[str, Any]:
 async def list_attribute_definitions(
     ctx: Context, target: str, include_inactive: bool = False
 ) -> dict[str, Any]:
-    """어떤 객체에 **무슨 칸을 적을 수 있나** — 속성 정의 목록.
+    """객체별 **기재 가능한 칸** 목록(속성 정의).
 
-    `target` 은 `reliability_test` · `equipment` · `series` · `method`. 줄마다 `key`(거르기
-    조건에 쓰는 이름) · `label` · `kind` · `unit` · `status` · `value_count` 가 온다.
+    `target`: `reliability_test` · `equipment` · `series` · `method`. 줄마다 `key`(필터 조건에
+    쓰는 이름) · `label` · `kind` · `unit` · `status` · `value_count` 포함.
 
-    `status` 가 `standard` 면 정식이고 검색·판정·색인 카드에 들어간다. `draft` 는 **초안**
-    이다 — 값을 적는 사람이 새 이름을 써서 생긴 것이고 온톨로지 밖이다. 값을 적을 때는
-    **정식부터 찾아 쓰고**, 없을 때만 새 이름을 만든다.
+    `status`가 `standard`면 정식이며 검색·판정·색인 카드에 포함. `draft`는 초안: 값 입력자가 새
+    이름을 써서 생긴 것으로 온톨로지 밖. **값을 적을 때는 정식부터 찾아 사용**하고 없을 때만 새
+    이름 생성.
 
-    `kind` 가 `condition` 인 것은 검색축에 이어진 조건이다 — 그 칸에 수치를 적으면
-    `test_capability` 가 그 조건으로 장비를 판정한다.
+    `kind`가 `condition`이면 검색축에 이어진 조건: 그 칸에 수치를 적으면 `test_capability`가 그
+    조건으로 장비를 판정.
     """
     return _listed(
         await _get(
@@ -3172,21 +3135,20 @@ async def create_attribute_definition(
     choices: list[str] | None = None,
     status: str = "draft",
 ) -> dict[str, Any]:
-    """새 속성 칸을 정의한다. **시스템 관리자만**, 그리고 사람이 시켰을 때만.
+    """새 속성 칸 정의. **시스템 관리자 전용, 사람이 지시했을 때만.**
 
-    `kind` 는 number(수치) · range(구간) · text(문장) · boolean · date · choice(선택지) ·
-    condition(검색축에 이어진 조건) · term(온톨로지 값) · method(공개 규격) ·
-    document(사내 규격서) · pairs(이름별 수량) · matrix(사양 매트릭스). 조건은
-    `condition_key_id`(`list_conditions`), 온톨로지는 `vocabulary_id`, 선택은 `choices` 가
-    필요하다.
+    `kind`: number(수치) · range(구간) · text(문장) · boolean · date · choice(선택지) ·
+    condition(검색축에 이어진 조건) · term(온톨로지 값) · method(공개 규격) · document(사내
+    규격서) · pairs(이름별 수량) · matrix(사양 매트릭스). 조건은
+    `condition_key_id`(`list_conditions`), 온톨로지는 `vocabulary_id`, 선택은 `choices` 필요.
 
-    `key` 는 **거르기 조건에 그대로 실리는 이름**이라 영문·숫자·`_.-` 만 된다. 비우면 서버가
-    임의로 만든다 — 코드나 반입이 걸 이름이면 직접 준다.
+    `key`는 필터 조건에 그대로 쓰이는 이름이라 영문·숫자·`_.-`만 허용. 비우면 서버가 임의
+    생성(코드나 반입이 참조할 이름이면 직접 지정).
 
-    **먼저 `list_attribute_definitions` 로 본다.** 같은 뜻의 칸을 하나 더 만들면 값이 두
-    군데로 쌓이고, 그 뒤 어느 쪽이 맞는지 알 방법이 없다. `status="standard"` 로 바로
-    정식으로 세우는 것은 **사람이 그 이름으로 굳히기로 했을 때만** — 확신이 없으면
-    초안으로 두고 검토함의 「초안 속성 정리」 가 묻게 한다.
+    **먼저 `list_attribute_definitions`로 확인.** 같은 뜻의 칸을 하나 더 만들면 값이 두 곳에
+    쌓이고 어느 쪽이 맞는지 알 수 없게 됨. `status="standard"`로 바로 정식 생성은 사람이 그
+    이름으로 확정했을 때만. 확신이 없으면 초안으로 두고 검토함의 초안 속성 정리 대기열이
+    질의하게 함.
     """
     return await _send(
         ctx,
@@ -3240,7 +3202,7 @@ async def _by_kind(
             "will": f"{method} {path}",
             "kind": kind,
             "ids": given,
-            "next": "대상을 사용자에게 제시하고 확인을 받은 뒤 confirm=True 로 재호출.",
+            "next": "대상을 사용자에게 제시하고 확인을 받은 뒤 confirm=True로 재호출.",
         }
     result = await _send(ctx, method, path, body, params=params)
     return result if isinstance(result, dict) else {"result": result}
@@ -3273,7 +3235,7 @@ async def delete_record(
         term_alias           term_id · value
 
     **삭제 전 사용자 확인 필수.** confirm 없이 호출해 대상을 받고, 사용자에게 제시해 확인을
-    받은 뒤 confirm=True 로 재호출. 사용 중인 정의·값은 서버가 409 로 거절. 그때는 사용 중지
+    받은 뒤 confirm=True로 재호출. 사용 중인 정의·값은 서버가 409로 거절. 그때는 사용 중지
     (update_record) 또는 사용자에게 인계. 신뢰성 시험 확정·반려, 검토함 확정은 사람 전용.
     """
     table = {
@@ -3327,13 +3289,13 @@ async def update_record(
         이하 시스템 관리자:
         series · model       series_id · model_id
         free_spec            model_id · free_spec_id
-        condition_key        condition_key_id  (단위 변경 시 fields 에 stored_values 필요)
+        condition_key        condition_key_id  (단위 변경 시 fields에 stored_values 필요)
         spec_definition      definition_id
         spec_group           group_id
         attribute_definition definition_id  (fields={"merge_into": "<id>"} 이면 그 정의로 병합)
         property_link        link_id
 
-    칸 이름은 화면·API 스키마와 동일. 모르는 칸은 서버가 422 로 반환하므로 추측으로 채우지
+    칸 이름은 화면·API 스키마와 동일. 모르는 칸은 서버가 422로 반환하므로 추측으로 채우지
     말고 오류의 칸 목록 확인. 삭제는 delete_record, 전용 생성 도구가 없는 것은 create_record.
     """
     table = {
@@ -3371,8 +3333,8 @@ async def create_record(
                           fields: condition_key_id · min_value · max_value · text_value · note
                           (같은 조건이 있으면 덮어씀)
 
-    **사양 정의 생성 전 list_spec_definitions 로 중복 확인.** 같은 뜻의 칸이 둘이면 기종마다
-    다른 칸에 기록되어 검색 결과가 절반만 나옴. 값의 단위는 축 단위(list_conditions 의 unit).
+    **사양 정의 생성 전 list_spec_definitions로 중복 확인.** 같은 뜻의 칸이 둘이면 기종마다
+    다른 칸에 기록되어 검색 결과가 절반만 나옴. 값의 단위는 축 단위(list_conditions의 unit).
     """
     table = {
         "spec_definition": ("POST", "/spec-definitions"),
@@ -3385,16 +3347,16 @@ async def create_record(
     return await _by_kind(ctx, table, kind, ids, fields)
 
 
-# ── 검토함 — 사람이 정할 것 (읽기) ────────────────────────────────────────────
+# ── 검토함 — 보고 정하기 (정하기는 시스템 관리자) ──────────────────────────────
 
 
 @mcp.tool()
 async def list_review_queues(ctx: Context) -> dict[str, Any]:
-    """검토함의 물음별 남은 수 — 어느 물음이 얼마나 밀렸나.
+    """검토함의 물음별 남은 건수(어느 물음이 얼마나 밀렸는지).
 
-    반입이 못 정한 것(어느 시험의 규격인가 · 무슨 조건을 묻나 · 이 물성이 나오나 · 초안
-    속성을 합칠까)이 여기 쌓인다. **AI 는 정하지 않는다** — 확정은 사람이 화면에서 하고,
-    기계 자격으로는 아예 막혀 있다. 여기서 할 일은 **근거를 모아 사람 앞에 놓는 것**이다.
+    반입이 정하지 못한 항목(규격의 시험 항목 · 물을 조건 · 물성 산출 여부 · 초안 속성 병합)이
+    쌓이는 곳. 줄 조회는 `list_review_items`, 결정은 `decide_review_item`(시스템 관리자 토큰만,
+    사용자 지시 후).
     """
     return _listed(await _get(ctx, "/review"), "queues")
 
@@ -3403,17 +3365,89 @@ async def list_review_queues(ctx: Context) -> dict[str, Any]:
 async def list_review_items(
     ctx: Context, queue: str, status: str = "open", limit: int = 20, offset: int = 0
 ) -> dict[str, Any]:
-    """한 물음의 줄들 — 대상 · 물음 문장 · 근거 자료 · 후보 · 추천과 그 이유.
+    """한 물음의 줄 목록: 대상 · 물음 문장 · 근거 자료 · 후보 · 추천과 이유.
 
-    `queue` 는 `list_review_queues` 의 `key`. `status` 는 open · voted · decided · skipped ·
-    gone · all.
+    `queue`는 `list_review_queues`의 `key`. `status`: open · voted · decided · skipped · gone ·
+    all.
 
-    줄의 `question` 은 그 줄이 정확히 무엇을 묻는지 완전한 문장이고, `facts` 는 판단에
-    필요한 사실이다. **추천(`recommended`)은 정답이 아니다** — 근거(`reason`)를 함께 읽고,
-    사람에게 옮길 때도 둘을 같이 옮긴다. 확정은 사람이 화면에서 한다.
+    줄의 `question`은 그 줄이 묻는 내용을 담은 완전한 문장, `facts`는 판단에 필요한 사실.
+    **추천(`recommended`)은 정답이 아님**: 근거(`reason`)를 함께 읽고, 사람에게 전달할 때도
+    둘을 함께 전달. 결정은 `decide_review_item`.
     """
     return await _get(
         ctx, f"/review/{queue}", {"status": status, "limit": limit, "offset": offset}
+    )
+
+
+@writes
+async def decide_review_item(
+    ctx: Context,
+    queue: str,
+    proposal_id: str,
+    action: str = "decide",
+    choice: list[str] | None = None,
+    note: str | None = None,
+) -> dict[str, Any]:
+    """검토함 한 줄의 확정 · 의견 · 보류 · 다시 열기. 확정·보류·다시 열기는 시스템 관리자.
+
+    action:
+
+        decide   확정. choice 필수(후보의 code 목록, 빈 목록은 해당 없음). 카탈로그에 바로
+                 적용됨(규격의 시험 항목이면 인용 계열에 붙음 등)
+        vote     의견. 누구나 가능, 데이터 변경 없음
+        skip     보류 전환(다시 호출하면 해제)
+        reopen   결정 취소 후 다시 열기. 이미 적용된 변경은 되돌리지 않음
+
+    **확정은 사용자가 대상과 선택을 지시한 경우에만.** 지시가 분명하면(예: 추천대로) 그대로
+    확정. 모호하면 `list_review_items`의 question · facts · 후보 · 추천과 근거 · 다른
+    의견(votes)을 제시하고 선택을 받음. 추천은 정답이 아님. 줄에는 `이름(MCP)` 형식으로,
+    감사에는 토큰 이름이 기록됨. 여러 줄을 추천대로 확정하는 것은 `decide_review_recommended`.
+    규격의 시험 항목을 `set_method_test_items`로 직접 고치는 우회는 409(검토함에서 정함).
+    """
+    if action == "decide":
+        if choice is None:
+            return {"error": "decide에는 choice 필요(빈 목록은 해당 없음)."}
+        return await _send(
+            ctx,
+            "POST",
+            f"/review/{queue}/{proposal_id}/decide",
+            {"choice": choice, "note": note},
+        )
+    if action == "vote":
+        return await _send(
+            ctx,
+            "POST",
+            f"/review/{queue}/{proposal_id}/vote",
+            {"choice": choice or [], "note": note},
+        )
+    if action == "skip":
+        return await _send(ctx, "POST", f"/review/{queue}/{proposal_id}/skip")
+    if action == "reopen":
+        return await _send(ctx, "POST", f"/review/{queue}/{proposal_id}/reopen")
+    return {
+        "error": f"알 수 없는 action: {action}",
+        "actions": ["decide", "vote", "skip", "reopen"],
+    }
+
+
+@writes
+async def decide_review_recommended(
+    ctx: Context, queue: str, ids: list[str], note: str | None = None
+) -> dict[str, Any]:
+    """검토함 여러 줄을 줄마다의 추천대로 일괄 확정. 시스템 관리자. 줄마다 결과 반환.
+
+    추천이 없는 줄, 추천과 다른 의견이 있는 줄은 확정하지 않고 `failed`로 사유와 함께 반환
+    (하나씩 `decide_review_item`으로). 한 번에 최대 500줄. `note`는 감사에 남음(비우면
+    기본 문구 `추천대로 한꺼번에 확정`).
+
+    **사용자가 일괄 확정을 지시한 경우에만.** 대상 줄 수와 대표 줄(대상 · 추천 · 근거)을 먼저
+    제시하고 승인을 받은 뒤 호출. 확정하면 카탈로그에 바로 적용됨.
+    """
+    return await _send(
+        ctx,
+        "POST",
+        f"/review/{queue}/decide-recommended",
+        {"ids": ids, "note": note},
     )
 
 
@@ -3422,20 +3456,20 @@ async def list_review_items(
 
 @mcp.tool()
 async def graph_overview(ctx: Context) -> dict[str, Any]:
-    """이 저장소의 **구조** — 객체 종류와 관계 종류, 각각 실제 건수.
+    """저장소 **구조**: 객체 종류와 관계 종류, 각각의 실제 건수.
 
-    「이 시스템에 무엇이 들어 있고 무엇이 무엇과 이어지나」 를 한 번에 본다. 건수가 0인
-    관계는 정의만 있고 아직 아무도 안 이은 것이다 — 채울 자리가 어디인지 그것이 말한다.
+    시스템에 들어 있는 대상과 연결 관계를 한 번에 조회. 건수 0인 관계는 정의만 있고 아직
+    연결되지 않은 것(채울 곳 표시).
     """
     return await _get(ctx, "/graph/overview")
 
 
 @mcp.tool()
 async def graph_search(ctx: Context, q: str) -> dict[str, Any]:
-    """그래프의 시작점을 **종류를 가리지 않고** 찾는다 — 이름·코드·별칭·자산번호.
+    """그래프 시작점 검색(**종류 무관**): 이름·코드·별칭·자산번호.
 
-    돌려주는 `id` 가 `graph_neighbors` · `graph_node` 에 넣는 노드 id 다. 무엇을 물어야 할지
-    모를 때, 사람이 말한 이름 하나로 어느 종류의 무엇인지부터 가른다.
+    반환되는 `id`가 `graph_neighbors` · `graph_node`에 넣는 노드 id. 무엇을 물어야 할지 모를
+    때, 사람이 말한 이름 하나로 어느 종류의 무엇인지부터 판별.
     """
     return _listed(await _get(ctx, "/graph/search", {"q": q}), "hits")
 
@@ -3444,15 +3478,14 @@ async def graph_search(ctx: Context, q: str) -> dict[str, Any]:
 async def graph_neighbors(
     ctx: Context, node_id: str, depth: int = 1, fanout: int = 30, limit: int = 100
 ) -> dict[str, Any]:
-    """한 객체의 **이웃** — 무엇과 어떻게 이어져 있나.
+    """객체 하나의 **이웃**: 연결 대상과 관계.
 
-    `node_id` 는 `"<종류>:<uuid>"` 꼴이다(`test_item:…` · `series:…` · `method:…` ·
-    `equipment:…` · `reliability_test:…`). 종류 없이 uuid 만으로는 어느 표인지 모르므로
-    `graph_search` 가 준 id 를 그대로 쓴다.
+    `node_id`는 `"<종류>:<uuid>"` 형식(`test_item:…` · `series:…` · `method:…` · `equipment:…`
+    · `reliability_test:…`). uuid만으로는 표를 알 수 없으므로 `graph_search`가 준 id를 그대로
+    사용.
 
-    **서버가 상한을 강제한다.** 노드에 `truncated` 가 붙어 있으면 그 노드의 이웃이 다 온
-    것이 아니다(`degree` 가 실제 수) — 「이것이 전부입니다」 라고 말하지 말고, 더 봐야 하면
-    그 노드를 중심으로 다시 부른다.
+    **서버가 상한을 강제.** 노드에 `truncated`가 붙어 있으면 그 노드의 이웃이 다 온 것이
+    아님(`degree`가 실제 수). 전부라고 말하지 말고, 더 봐야 하면 그 노드를 중심으로 재호출.
     """
     return await _get(
         ctx,
@@ -3463,10 +3496,10 @@ async def graph_neighbors(
 
 @mcp.tool()
 async def graph_node(ctx: Context, node_id: str) -> dict[str, Any]:
-    """한 객체의 요약과 **관계 목록** — 어느 관계로 무엇과 이어져 있는지 이름까지.
+    """객체 하나의 요약과 **관계 목록**: 어떤 관계로 무엇과 이어졌는지 이름까지.
 
-    `related_total` 이 목록보다 크면 잘린 것이다. 상세 화면 주소(`detail_path`)가 함께 오니
-    사람에게 옮길 때 그 링크를 준다 — id 만 주면 사람은 그것으로 아무것도 못 한다.
+    `related_total`이 목록보다 크면 잘린 것. 상세 화면 주소(`detail_path`)가 함께 오므로
+    사람에게 전달할 때 그 링크 제공(id만으로는 사람이 활용 불가).
     """
     return await _get(ctx, "/graph/node", {"id": node_id})
 

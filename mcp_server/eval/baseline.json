@@ -1,12 +1,12 @@
 {
- "at": "2026-09-22T20:45:14",
+ "at": "2026-10-04T10:36:25",
  "marked": true,
  "answered": 28,
  "of": 28,
- "score": 136,
+ "score": 132,
  "possible": 140,
- "calls_total": 92,
- "empty_total": 8,
+ "calls_total": 110,
+ "empty_total": 14,
  "results": [
   {
    "id": "q01",
@@ -50,34 +50,33 @@
   {
    "id": "q03",
    "text": "ISO 6892-1 할 수 있는 장비 있나",
-   "calls": 7,
+   "calls": 5,
    "empty": 0,
    "trace": [
     "resolve",
-    "search_test_items",
     "get_method",
-    "list_conditions",
-    "get_test_item",
     "search_test_items",
-    "resolve"
+    "list_conditions",
+    "search_test_items"
    ],
    "checks": {
-    "호출 수": false,
+    "호출 수": true,
     "시작": true,
     "필수": true,
     "금지": true,
     "빈손": true
    },
-   "score": 4,
+   "score": 5,
    "max": 5
   },
   {
    "id": "q04",
    "text": "thermal shock 되는 장비",
-   "calls": 3,
+   "calls": 4,
    "empty": 1,
    "trace": [
     "resolve",
+    "search_semantic",
     "search_test_items",
     "search_catalog"
    ],
@@ -94,11 +93,13 @@
   {
    "id": "q05",
    "text": "인장 시험 하려면 어떤 기종을 사야 해?",
-   "calls": 3,
+   "calls": 5,
    "empty": 0,
    "trace": [
     "resolve",
+    "get_guide",
     "search_catalog",
+    "search_test_items",
     "get_test_item"
    ],
    "checks": {
@@ -114,22 +115,23 @@
   {
    "id": "q06",
    "text": "DEMO-UTM-001 장비 정보 보여줘",
-   "calls": 4,
+   "calls": 5,
    "empty": 0,
    "trace": [
     "resolve",
     "get_equipment",
     "get_equipment_specs",
-    "get_calibrations"
+    "get_calibrations",
+    "get_specs"
    ],
    "checks": {
-    "호출 수": true,
+    "호출 수": false,
     "시작": true,
     "필수": true,
     "금지": true,
     "빈손": true
    },
-   "score": 5,
+   "score": 4,
    "max": 5
   },
   {
@@ -158,7 +160,7 @@
    "empty": 0,
    "trace": [
     "list_calibrations_due",
-    "get_equipment"
+    "list_pending_work"
    ],
    "checks": {
     "호출 수": true,
@@ -190,11 +192,11 @@
   },
   {
    "id": "q10",
-   "text": "DX 부문에서 하는 신뢰성 시험 목록 보여줘",
+   "text": "MX 사업부에서 하는 신뢰성 시험 목록 보여줘",
    "calls": 3,
-   "empty": 0,
+   "empty": 1,
    "trace": [
-    "list_workspaces",
+    "list_divisions",
     "list_reliability_tests",
     "list_reliability_tests"
    ],
@@ -211,40 +213,39 @@
   {
    "id": "q11",
    "text": "고온고습 시험, 우리가 가진 장비로 돌릴 수 있어?",
-   "calls": 6,
-   "empty": 2,
+   "calls": 7,
+   "empty": 3,
    "trace": [
     "resolve",
     "search_semantic",
-    "get_reliability_test",
+    "list_reliability_tests",
+    "get_test_item",
     "search_test_items",
-    "test_capability",
-    "search_catalog"
+    "search_semantic",
+    "get_equipment"
    ],
    "checks": {
     "호출 수": true,
     "시작": true,
-    "필수": true,
+    "필수": false,
     "금지": true,
     "빈손": true
    },
-   "score": 5,
+   "score": 4,
    "max": 5
   },
   {
    "id": "q12",
-   "text": "DX 부문에 「열충격 500 cycle」 시험 등록해줘. 시험 항목은 열충격이고, 온도는 -40에서 125도야",
-   "calls": 8,
-   "empty": 2,
+   "text": "MX 사업부에 「열충격 500 cycle」 시험 등록해줘. 시험 항목은 열충격이고, 온도는 -40에서 125도야",
+   "calls": 6,
+   "empty": 1,
    "trace": [
+    "get_guide",
+    "list_divisions",
     "resolve",
     "resolve",
     "list_attribute_definitions",
-    "resolve",
-    "list_conditions",
-    "list_reliability_tests",
-    "create_reliability_test",
-    "test_capability"
+    "create_reliability_test"
    ],
    "checks": {
     "호출 수": true,
@@ -260,10 +261,10 @@
    "id": "q13",
    "text": "열충격 시험의 목적을 「기판 크랙 확인」 으로 바꿔줘",
    "calls": 4,
-   "empty": 1,
+   "empty": 2,
    "trace": [
     "resolve",
-    "get_reliability_test",
+    "list_reliability_tests",
     "search_semantic",
     "update_reliability_test"
    ],
@@ -272,20 +273,18 @@
     "시작": true,
     "필수": true,
     "금지": true,
-    "빈손": true
+    "빈손": false
    },
-   "score": 5,
+   "score": 4,
    "max": 5
   },
   {
    "id": "q14",
    "text": "신뢰성 시험에 적을 수 있는 칸이 뭐가 있어?",
-   "calls": 3,
+   "calls": 1,
    "empty": 0,
    "trace": [
-    "list_attribute_definitions",
-    "list_attribute_definitions",
-    "list_conditions"
+    "list_attribute_definitions"
    ],
    "checks": {
     "호출 수": true,
@@ -300,31 +299,34 @@
   {
    "id": "q15",
    "text": "시험 온도가 100도 이상인 신뢰성 시험만 보여줘",
-   "calls": 3,
+   "calls": 5,
    "empty": 1,
    "trace": [
     "list_attribute_definitions",
+    "list_divisions",
+    "list_reliability_tests",
     "list_reliability_tests",
     "list_reliability_tests"
    ],
    "checks": {
-    "호출 수": true,
+    "호출 수": false,
     "시작": true,
     "필수": true,
     "금지": true,
     "빈손": true
    },
-   "score": 5,
+   "score": 4,
    "max": 5
   },
   {
    "id": "q16",
    "text": "시험 항목에 「크리프」 추가해줘",
-   "calls": 2,
+   "calls": 3,
    "empty": 0,
    "trace": [
     "resolve",
-    "list_terms"
+    "list_terms",
+    "list_axes"
    ],
    "checks": {
     "호출 수": true,
@@ -339,32 +341,57 @@
   {
    "id": "q17",
    "text": "제조사 목록에 인스트론 있어?",
-   "calls": 3,
-   "empty": 1,
+   "calls": 4,
+   "empty": 2,
    "trace": [
     "resolve",
     "list_axes",
-    "resolve"
+    "list_terms",
+    "list_terms"
    ],
    "checks": {
     "호출 수": true,
     "시작": true,
     "필수": true,
     "금지": true,
-    "빈손": true
+    "빈손": false
    },
-   "score": 5,
+   "score": 4,
    "max": 5
   },
   {
    "id": "q18",
    "text": "기준정보에 뭐가 들어 있는지 한눈에 보여줘",
-   "calls": 3,
+   "calls": 6,
    "empty": 0,
    "trace": [
     "list_reference",
+    "graph_overview",
     "list_axes",
-    "list_conditions"
+    "list_conditions",
+    "get_catalog_state",
+    "list_pending_work"
+   ],
+   "checks": {
+    "호출 수": false,
+    "시작": true,
+    "필수": true,
+    "금지": true,
+    "빈손": true
+   },
+   "score": 4,
+   "max": 5
+  },
+  {
+   "id": "q19",
+   "text": "인장이 다른 것들과 어떻게 이어져 있는지 보여줘",
+   "calls": 4,
+   "empty": 0,
+   "trace": [
+    "graph_search",
+    "resolve",
+    "graph_node",
+    "get_test_item"
    ],
    "checks": {
     "호출 수": true,
@@ -374,26 +401,6 @@
     "빈손": true
    },
    "score": 5,
-   "max": 5
-  },
-  {
-   "id": "q19",
-   "text": "인장이 다른 것들과 어떻게 이어져 있는지 보여줘",
-   "calls": 3,
-   "empty": 0,
-   "trace": [
-    "resolve",
-    "graph_search",
-    "get_test_item"
-   ],
-   "checks": {
-    "호출 수": true,
-    "시작": true,
-    "필수": false,
-    "금지": true,
-    "빈손": true
-   },
-   "score": 4,
    "max": 5
   },
   {
@@ -404,8 +411,8 @@
    "trace": [
     "graph_overview",
     "list_reference",
-    "get_catalog_state",
-    "list_pending_work"
+    "list_pending_work",
+    "get_catalog_state"
    ],
    "checks": {
     "호출 수": false,
@@ -438,11 +445,12 @@
   {
    "id": "q22",
    "text": "검토함에서 규격의 시험 항목 첫 줄, 추천대로 확정해줘",
-   "calls": 2,
+   "calls": 3,
    "empty": 0,
    "trace": [
     "list_review_queues",
-    "list_review_items"
+    "list_review_items",
+    "decide_review_item"
    ],
    "checks": {
     "호출 수": true,
@@ -457,13 +465,22 @@
   {
    "id": "q23",
    "text": "지금 뭘 먼저 채워야 해?",
-   "calls": 4,
-   "empty": 0,
+   "calls": 13,
+   "empty": 3,
    "trace": [
     "list_pending_work",
     "list_review_queues",
+    "get_catalog_state",
     "list_calibrations_due",
-    "list_test_items"
+    "list_model_requests",
+    "list_test_items",
+    "graph_overview",
+    "search_test_items",
+    "list_reliability_tests",
+    "list_test_item_requests",
+    "search_equipment",
+    "list_review_items",
+    "list_review_items"
    ],
    "checks": {
     "호출 수": false,
@@ -478,13 +495,14 @@
   {
    "id": "q24",
    "text": "ASTM D638 규격 등록하고 하중 요구 조건 5 kN 이상으로 넣어줘",
-   "calls": 4,
+   "calls": 5,
    "empty": 0,
    "trace": [
     "resolve",
     "list_conditions",
     "get_method",
-    "set_requirement"
+    "set_requirement",
+    "search_test_items"
    ],
    "checks": {
     "호출 수": true,

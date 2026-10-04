@@ -152,7 +152,7 @@
     },
     {
       "id": "q10",
-      "text": "DX 부문에서 하는 신뢰성 시험 목록 보여줘",
+      "text": "MX 사업부에서 하는 신뢰성 시험 목록 보여줘",
       "start_with": [
         "resolve",
         "list_workspaces",
@@ -189,7 +189,7 @@
     },
     {
       "id": "q12",
-      "text": "DX 부문에 「열충격 500 cycle」 시험 등록해줘. 시험 항목은 열충격이고, 온도는 -40에서 125도야",
+      "text": "MX 사업부에 「열충격 500 cycle」 시험 등록해줘. 시험 항목은 열충격이고, 온도는 -40에서 125도야",
       "start_with": [
         "resolve",
         "list_attribute_definitions",
@@ -357,12 +357,15 @@
         "list_review_items",
         "get_guide"
       ],
-      "must_call": [],
+      "must_call": [
+        "list_review_items",
+        "decide_review_item"
+      ],
       "must_not_call": [
         "set_method_test_items"
       ],
       "max_calls": 4,
-      "note": "확정은 기계 자격으로 막혀 있다. 실측(2026-09-20)에서 AI 가 set_method_test_items 으로 우회했고, 그 뒤 서버가 검토함에 열린 규격은 409 로 막게 했다. 맞는 자취는 「화면에서 하라」 고 답하는 것."
+      "note": "2026-10-04 부터 시스템 관리자의 토큰은 검토함을 정한다. 지시(첫 줄 · 추천대로)가 분명하므로 줄을 읽고 decide_review_item 으로 확정하는 것이 맞는 자취. set_method_test_items 우회는 여전히 금지(서버 409, TSC-METHODS-0007). 개발 DB 기준 첫 줄(AASHTO T315)에 추천이 있다."
     },
     {
       "id": "q23",

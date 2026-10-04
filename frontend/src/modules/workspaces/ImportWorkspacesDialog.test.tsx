@@ -41,7 +41,7 @@ const PLAN = {
       name: '신제품 TF',
       parent_slug: 'rnd',
       action: 'skip_kind',
-      reason: '한시 조직(TF)·개인 공간은 조직도가 아니라 들이지 않습니다.',
+      reason: '한시 조직(TF)·개인 공간은 조직도가 아니므로 제외.',
     },
   ],
   created: 1,

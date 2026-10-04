@@ -1386,3 +1386,51 @@ def test_초안_속성은_합치거나_정식으로_올린다(
         one["subject_label"] for one in _rows(client, admin, "attribute_drafts", status="open")
     }
     assert not open_labels & {same["subject_label"], other["subject_label"]}
+
+
+def test_시스템_관리자의_토큰은_검토함에서_정하고_줄에_MCP_로_남는다(
+    client: TestClient, admin: Signed, db: Session, workspace: Any
+) -> None:
+    """**MCP 로 접속한 시스템 관리자도 검토함을 정한다**(2026-10-04, 사용자 결정).
+
+    정하는 규칙은 화면과 같다(같은 `decide`). 다른 것은 줄에 남는 이름 — 사람이 고른 것과
+    AI 가 사람 대신 고른 것을 검토함 화면에서 가를 수 있어야 한다. 멤버의 토큰은 범위를 다
+    줘도 자격에서 막힌다.
+    """
+    a_id, a = _item(client, admin, "인장")
+    b_id, _ = _item(client, admin, "압축")
+    method = _cited_method(client, admin, [a_id, b_id])
+    client.post("/api/review/refresh", headers=admin.headers)
+    row = next(
+        one
+        for one in _rows(client, admin, "method_test_items")
+        if one["subject_id"] == method["id"]
+    )
+
+    def token(who: Signed) -> dict[str, str]:
+        made = client.post(
+            "/api/auth/tokens",
+            json={"name": f"검토-{uuid.uuid4().hex[:6]}", "scopes": ["read", "catalog:write"]},
+            headers=who.headers,
+        )
+        assert made.status_code == 201, made.text
+        return {"Authorization": f"Bearer {made.json()['token']}", "X-Client": "mcp"}
+
+    expert = _member(client, db, workspace)
+    refused = client.post(
+        f"/api/review/method_test_items/{row['id']}/decide",
+        json={"choice": [a]},
+        headers=token(expert),
+    )
+    assert refused.status_code == 403
+    assert refused.json()["error"]["code"] == "TSC-AUTH-0103"
+
+    decided = client.post(
+        f"/api/review/method_test_items/{row['id']}/decide",
+        json={"choice": [a], "note": "MCP 로 확정"},
+        headers=token(admin),
+    )
+    assert decided.status_code == 200, decided.text
+    assert decided.json()["status"] == "decided"
+    assert decided.json()["decided_by"].endswith("(MCP)")
+    assert _items(db, uuid.UUID(method["id"])) == [a_id]

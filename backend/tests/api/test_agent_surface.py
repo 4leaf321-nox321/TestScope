@@ -83,8 +83,8 @@ def test_새_도구가_쓰는_경로도_범위_안이다(client: TestClient, adm
 
     범위 표(`shared/auth._WRITE_SCOPES`)에 없는 경로는 어느 범위로도 못 쓴다 — 그것이
     규칙이고, 그래서 새 도구가 조용히 403 을 받는 일이 생긴다. MCP 도구가 실제로 부르는
-    경로를 여기서 한 번 눌러 본다: 온톨로지 값·신뢰성 시험·속성 정의는 되고, 검토함의
-    확정은 **안 되는 것이 맞다**(고른 것이 곧 카탈로그 정본이라 사람이 화면에서 한다).
+    경로를 여기서 한 번 눌러 본다: 온톨로지 값·신뢰성 시험·속성 정의, 그리고 검토함의 확정
+    (시스템 관리자의 카탈로그 범위, 2026-10-04)까지.
     """
     read_only = _token(client, admin, ["read"])
     catalog = _token(client, admin, ["read", "catalog:write"])
@@ -175,14 +175,22 @@ def test_새_도구가_쓰는_경로도_범위_안이다(client: TestClient, adm
         reading = client.get(path, params=params, headers=read_only)
         assert reading.status_code == 200, f"{path}: {reading.text}"
 
-    # **검토함의 확정은 기계 자격으로 안 연다.** 버그가 아니라 결정이다.
-    blocked = client.post(
+    # **검토함의 확정은 시스템 관리자의 카탈로그 범위 토큰으로 열린다**(2026-10-04). 없는 줄을
+    # 고르면 범위·자격이 아니라 「없음」 이 와야 한다 — 403 이면 길이 막힌 것이다.
+    missing = client.post(
         f"/api/review/attribute_drafts/{uuid.uuid4()}/decide",
         json={"choice": ["keep"]},
         headers=catalog,
     )
-    assert blocked.status_code == 403
-    assert blocked.json()["error"]["code"] == "TSC-AUTH-0105"
+    assert missing.status_code == 404, missing.text
+    # 범위가 모자라면 여전히 막힌다.
+    narrow = client.post(
+        f"/api/review/attribute_drafts/{uuid.uuid4()}/decide",
+        json={"choice": ["keep"]},
+        headers=equipment,
+    )
+    assert narrow.status_code == 403
+    assert narrow.json()["error"]["code"] == "TSC-AUTH-0106"
 
 
 def _resolve(client: TestClient, headers: dict[str, str], **body: object) -> dict[str, Any]:

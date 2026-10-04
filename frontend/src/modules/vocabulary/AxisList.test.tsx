@@ -13,8 +13,22 @@ import { AxisList } from '@/modules/vocabulary/AxisList'
 import type { Vocabulary } from '@/modules/vocabulary/api'
 
 const AXES = [
-  { slug: 'test_item', label: '시험 항목', term_count: 87, description: '무엇을 재는가' },
-  { slug: 'manufacturer', label: '제조사', term_count: 0, description: null },
+  {
+    slug: 'test_item',
+    label: '시험 항목',
+    domain: 'common',
+    domain_label: '공통',
+    term_count: 87,
+    description: '측정 대상',
+  },
+  {
+    slug: 'manufacturer',
+    label: '제조사',
+    domain: 'equipment',
+    domain_label: '장비',
+    term_count: 0,
+    description: null,
+  },
 ] as unknown as Vocabulary[]
 
 describe('AxisList', () => {

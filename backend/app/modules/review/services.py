@@ -73,6 +73,7 @@ from app.modules.vocabulary.specs import SpecDefinition, SpecGroup
 from app.shared import audit
 from app.shared.attribute_text import display_attribute
 from app.shared.errors import AppError, Forbidden, NotFound
+from app.shared.request_context import get_actor_token
 from app.shared.text import clean, compare_key, method_key
 
 #: 정본의 후보·결정 파일이 사는 곳. 반입 스크립트의 카탈로그 뿌리와 같다.
@@ -2108,7 +2109,11 @@ def decide(
     row.followed = _followed(row.candidates, choice)
     row.note = note
     row.decided_by_id = user.id
-    row.decided_by_label = user.display_name or user.email
+    # **MCP 로 정한 것은 줄에서도 보인다** — 감사에는 토큰 이름이 남지만, 검토함 화면은 이
+    # 글자만 보여 준다. 사람이 고른 것과 AI 가 사람 대신 고른 것을 화면에서 가를 수 있어야
+    # 한다.
+    by = user.display_name or user.email
+    row.decided_by_label = f"{by}(MCP)" if get_actor_token() else by
     row.decided_at = datetime.now(UTC)
     audit.record(
         db,

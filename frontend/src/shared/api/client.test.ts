@@ -33,7 +33,7 @@ describe('오류 응답', () => {
         reply(409, {
           error: {
             code: 'TSC-EQUIPMENT-0003',
-            message: '이미 등록된 자산번호입니다: UTM-001',
+            message: '이미 등록된 자산번호: UTM-001',
             request_id: 'abc123',
             details: { asset_no: 'UTM-001' },
           },
