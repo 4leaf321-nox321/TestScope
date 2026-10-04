@@ -672,3 +672,43 @@ def test_쓰기_도구가_부르는_경로는_모두_범위_표에_있다() -> N
                 missing.append(f"{tool.name}: {method} {path}")
     assert checked > 30, f"쓰기 경로를 {checked}개밖에 못 읽었습니다 — 읽는 방식을 보세요"
     assert not missing, "범위 표에 없는 경로(토큰으로 늘 403): " + " · ".join(missing)
+
+
+#: 도구 이름처럼 생겼지만 **도구가 아닌 것** — 칸 · 인자 · 스크립트 이름. 여기에 더할
+#: 때는 그것이 정말 도구가 아닌지(없는 도구를 가리키는 오타가 아닌지) 한 번 본다.
+NOT_TOOLS = {
+    "import_catalog",  # 반입 스크립트(`scripts/import_catalog.py`)
+    "link_id",  # update_record · delete_record 의 ids 칸
+    "merge_into",  # update_record(attribute_definition) 의 fields 칸
+    "search_axis",  # set_spec 응답 칸
+    "set_label",  # 신뢰성 시험 속성의 묶음 칸
+    "update_existing",  # import_equipment 인자
+}
+
+
+def test_설명과_길잡이가_가리키는_도구가_실재한다() -> None:
+    """**설명이 없는 도구를 가리키면 AI 는 그 이름을 부르고 실패한다.**
+
+    도구 이름을 바꾸거나 합칠 때 다른 도구의 설명 · 길잡이(ROUTING) · 안내서(GUIDE.md)에 옛
+    이름이 남는다. 문체를 바꾸며 셋을 찾았다(`get_workspace` · `get_spec_document` ·
+    `get_model_specs`, 2026-10-04) — 그 셋은 아무 시험에도 안 걸린 채 설명 속에 있었다.
+    """
+    import re
+
+    source = SERVER.read_text(encoding="utf-8")
+    tools = _tools()
+    names = {tool.name for tool in tools}
+    start = source.index('ROUTING = """')
+    texts = [ast.get_docstring(tool) or "" for tool in tools]
+    texts.append(source[start : source.index('"""', start + len('ROUTING = """'))])
+    texts.append((SERVER.parent / "guide" / "GUIDE.md").read_text(encoding="utf-8"))
+    verbs = (
+        "get|list|search|create|set|add|update|register|import|merge|promote|detach|"
+        "confirm|suggest|propose|attach|extract|decide|link|delete|graph|compare"
+    )
+    pattern = re.compile(rf"(?<![\w.])((?:{verbs})_[a-z0-9_]+)")
+    mentioned = {one for text in texts for one in pattern.findall(text)}
+    missing = sorted(mentioned - names - NOT_TOOLS)
+    assert not missing, f"없는 도구를 가리킨다: {missing}"
+    stale = sorted(NOT_TOOLS & names)
+    assert not stale, f"도구가 된 이름이 NOT_TOOLS 에 남았다: {stale}"

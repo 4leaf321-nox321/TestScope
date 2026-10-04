@@ -135,9 +135,7 @@ def _guard_production_secrets(settings: Settings) -> None:
     if settings.app_env != "production":
         return
     if settings.jwt_secret == Settings.model_fields["jwt_secret"].default:
-        raise RuntimeError(
-            "JWT_SECRET 이 기본값입니다. .env 에 난수 값을 넣고 다시 시작하십시오."
-        )
+        raise RuntimeError("JWT_SECRET이 기본값. .env에 난수 값을 넣고 다시 시작 필요.")
 
 
 def create_app() -> FastAPI:

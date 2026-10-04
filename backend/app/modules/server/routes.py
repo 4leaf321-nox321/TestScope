@@ -23,10 +23,13 @@ from app.modules.equipment.models import (
     Equipment,
     EquipmentCalibration,
     EquipmentModel,
+    EquipmentModelProposal,
     EquipmentSeries,
     ModelSpecValue,
 )
 from app.modules.methods.models import MethodRequirement, TestMethod, TestMethodItem
+from app.modules.reliability.models import ReliabilityTest, TestItemProposal
+from app.modules.review.models import ReviewProposal
 from app.modules.server import catalog_state
 from app.modules.server.schemas import (
     CalibrationDueOut,
@@ -44,8 +47,10 @@ from app.modules.test_items.models import (
     SeriesTestItemMethod,
 )
 from app.modules.vocabulary.models import VocabularyTerm
+from app.modules.workspaces.models import Workspace
 from app.shared import embeddings, semantic
 from app.shared.auth import current_user, require_system_admin
+from app.shared.permissions import my_division_term_ids
 
 router = APIRouter(prefix="/server", tags=["server"])
 
@@ -417,6 +422,76 @@ def maintenance(
                     count=pending,
                     link="/admin/accounts?status=pending",
                     severity="warning",
+                )
+            )
+
+        # **사람이 정할 것** — 검토함 · 시험 항목 요청 · 기종 등록 요청. 여기 안 세우면
+        # 「지금 뭘 먼저 할까」 에 답하려고 화면 셋(AI 는 도구 셋 이상)을 따로 열어야 한다
+        # (측정 2026-10-04: q23 이 13회 불렀다). 요청은 같은 말끼리 한 번에 정하므로
+        # **묶음 수**로 센다.
+        reviews = _count(db, ReviewProposal, ReviewProposal.status == "open")
+        if reviews:
+            items.append(
+                MaintenanceItemOut(
+                    key="review_open",
+                    label="검토함 미결 항목",
+                    count=reviews,
+                    link="/admin/review",
+                    severity="info",
+                )
+            )
+        for key, label, model, link in (
+            (
+                "test_item_requests_open",
+                "시험 항목 요청 미결정",
+                TestItemProposal,
+                "/admin/item-proposals",
+            ),
+            (
+                "model_requests_open",
+                "기종 등록 요청 미결정",
+                EquipmentModelProposal,
+                "/admin/model-proposals",
+            ),
+        ):
+            groups = (
+                db.scalar(
+                    select(func.count(func.distinct(model.normalized))).where(
+                        model.status == "open"
+                    )
+                )
+                or 0
+            )
+            if groups:
+                items.append(
+                    MaintenanceItemOut(
+                        key=key, label=label, count=groups, link=link, severity="info"
+                    )
+                )
+
+    # **확인을 기다리는 신뢰성 시험(후보).** 확인하는 사람(그 사업부의 부서 관리자 · 시스템
+    # 관리자)에게만 — 멤버에게 보여 주면 할 수 없는 일이 남은 일로 선다.
+    divisions = None if user.is_system_admin else my_division_term_ids(db, user)
+    if divisions is None or divisions:
+        conditions: list[ColumnElement[bool]] = [
+            ReliabilityTest.status == "candidate",
+            ReliabilityTest.deleted_at.is_(None),
+        ]
+        if divisions is not None:
+            conditions.append(ReliabilityTest.division_term_id.in_(divisions))
+        waiting = _count(db, ReliabilityTest, *conditions)
+        if waiting:
+            home = (
+                db.get(Workspace, user.home_workspace_id) if user.home_workspace_id else None
+            )
+            items.append(
+                MaintenanceItemOut(
+                    key="reliability_candidates",
+                    label="확인 대기 신뢰성 시험(후보)",
+                    count=waiting,
+                    # 후보는 부서 화면에서 확인한다 — 전사 목록은 확정만 보여 준다.
+                    link=f"/reliability-tests/{home.slug}" if home else "/reliability-tests",
+                    severity="info",
                 )
             )
 

@@ -24,6 +24,7 @@ from sqlalchemy import func, select
 from sqlalchemy.orm import Session
 
 from app.modules.attributes.models import AttributeDefinition, AttributeValue
+from app.modules.vocabulary.catalog_specs import CATALOG_SPEC_DEFINITIONS
 from app.modules.vocabulary.models import ConditionKey, Vocabulary, VocabularyTerm
 from app.modules.vocabulary.seed_texts import RETIRED
 from app.modules.vocabulary.specs import SpecDefinition, SpecGroup
@@ -1542,7 +1543,8 @@ def refresh_seed_texts(db: Session) -> int:
         if text:
             group.description = text
 
-    definitions = {row[0]: row[9] for row in SPEC_DEFINITIONS}
+    # 카탈로그 반입이 심는 정의(`catalog_specs`)도 같은 표에 산다 — 그쪽도 없는 것만 심는다.
+    definitions = {row[0]: row[9] for row in (*CATALOG_SPEC_DEFINITIONS, *SPEC_DEFINITIONS)}
     for spec in db.scalars(select(SpecDefinition).where(SpecDefinition.key.in_(definitions))):
         text = renewed("spec_definition", spec.key, spec.help, definitions[spec.key])
         if text:

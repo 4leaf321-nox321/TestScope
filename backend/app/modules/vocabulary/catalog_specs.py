@@ -237,8 +237,8 @@ CATALOG_SPEC_DEFINITIONS: list[
         "force",
         "max",
         15,
-        "카탈로그가 고를 수 있는 정격을 여럿 적어 온 것. **확정값이 아니다** — "
-        "그 기종을 산 부서는 그중 하나만 갖는다. 실측을 적으면 그쪽이 이긴다.",
+        "카탈로그에 선택 가능한 정격이 여럿 기재된 경우. 확정값 아님(구매 부서는 그중 하나만 "
+        "보유). 실측값 입력 시 실측값 우선.",
     ),
     (
         "upper_test_space_force",
@@ -250,8 +250,8 @@ CATALOG_SPEC_DEFINITIONS: list[
         None,
         "max",
         16,
-        "이중 시험공간 장비의 위쪽 방 하중. **하중 용량과 다르다** — 저하중 시험을 "
-        "위에서 하는 구성이라, 이 값이 3 kN 이어도 아래쪽은 300 kN 일 수 있다.",
+        "이중 시험공간 장비의 위쪽 시험공간 하중. 하중 용량과 다름(위쪽은 저하중 시험용 "
+        "구성). 이 값이 3 kN이어도 아래쪽은 300 kN일 수 있음.",
     ),
     (
         "cv_range_low",
@@ -275,8 +275,7 @@ CATALOG_SPEC_DEFINITIONS: list[
         None,
         "max",
         401,
-        "전자부하는 레인지를 두 벌로 갖는다. 합쳐 적으면 레인지마다 분해능이 다르다는 "
-        "사실이 사라진다.",
+        "전자부하의 레인지는 두 벌. 합쳐 입력하면 레인지별 분해능 차이 정보가 사라짐.",
     ),
     (
         "cp_range_low",
@@ -360,8 +359,7 @@ CATALOG_SPEC_DEFINITIONS: list[
         None,
         "max",
         410,
-        "비접촉 신율계가 한 번에 보는 길이. **표점 거리와 다르다** — 시야 안에서 "
-        "표점을 잡는다.",
+        "비접촉 신율계가 한 번에 보는 길이. 표점 거리와 다름(표점은 시야 안에서 설정).",
     ),
     (
         "min_gauge_length",
@@ -373,7 +371,7 @@ CATALOG_SPEC_DEFINITIONS: list[
         None,
         "min",
         411,
-        "이보다 짧은 표점은 못 잡는다. **바닥이다** — 작을수록 좋다.",
+        "이보다 짧은 표점은 설정 불가. 작을수록 좋은 값이므로 하한으로 처리됨.",
     ),
     (
         "measuring_range",
@@ -397,8 +395,8 @@ CATALOG_SPEC_DEFINITIONS: list[
         None,
         "max",
         420,
-        "시편을 넣은 뒤 설정 온도로 돌아오는 데 걸리는 시간. 열충격 챔버를 고를 때 "
-        "실제로 묻는 값이다.",
+        "시편 투입 후 설정 온도로 복귀하는 데 걸리는 시간. "
+        "열충격 챔버 선정 시 주로 확인하는 값.",
     ),
     (
         "recovery_specimen_mass",
@@ -410,7 +408,7 @@ CATALOG_SPEC_DEFINITIONS: list[
         None,
         "max",
         421,
-        "회복 시간을 잰 조건. 이것 없이 회복 시간만 보면 비교가 안 된다.",
+        "회복 시간 측정 조건. 이 값 없이 회복 시간만으로는 비교 불가.",
     ),
     (
         "noise_level",
@@ -422,7 +420,7 @@ CATALOG_SPEC_DEFINITIONS: list[
         None,
         "max",
         422,
-        "설치 자리를 정할 때 걸린다 — 사무실 옆에 못 두는 장비가 있다.",
+        "설치 위치 선정 시 고려 대상. 사무실 옆에 둘 수 없는 장비 있음.",
     ),
     (
         "piston_speed",
@@ -446,7 +444,7 @@ CATALOG_SPEC_DEFINITIONS: list[
         None,
         "max",
         431,
-        "고를 수 있는 배럴 구성. 시편이 들어가는지가 여기서 갈린다.",
+        "선택 가능한 배럴 구성. 시편 투입 가능 여부가 이 값으로 결정됨.",
     ),
     (
         "pressure_transducer_range",
@@ -471,8 +469,8 @@ CATALOG_SPEC_DEFINITIONS: list[
         "force",
         "max",
         110,
-        "마이크로 비커스가 고르는 하중의 양끝. 낱개 목록은 비고에 남는다. "
-        "gf 인데 축은 kN — 이을 때 환산한다.",
+        "마이크로 비커스가 고를 수 있는 하중의 최솟값과 최댓값. 개별 하중 목록은 비고에 "
+        "기록됨. 단위는 gf, 축은 kN(연결 시 환산).",
     ),
     (
         "indentation_force",
@@ -496,7 +494,7 @@ CATALOG_SPEC_DEFINITIONS: list[
         None,
         "max",
         130,
-        "**최대 하중과 다르다.** 전속으로 돌리면 낼 수 있는 하중이 줄어드는 장비가 있다.",
+        "최대 하중과 다름. 최고 속도 운전 시 낼 수 있는 하중이 줄어드는 장비 있음.",
     ),
     ("melt_load", "MFI 하중", "capacity", "range", "mass", "kg", None, "max", 140, None),
     (
@@ -522,7 +520,7 @@ CATALOG_SPEC_DEFINITIONS: list[
         None,
         "max",
         110,
-        "MFI 시험기의 배럴 온도. **시험 온도와 다른 칸이다.**",
+        "MFI 시험기의 배럴 온도. 시험 온도와 별도 항목.",
     ),
     (
         "cooling_rate",
@@ -546,7 +544,7 @@ CATALOG_SPEC_DEFINITIONS: list[
         None,
         "max",
         130,
-        "**최고 속도와 다르다.** 하중을 다 걸면 느려지는 장비가 있다.",
+        "최고 속도와 다름. 최대 하중을 걸면 속도가 느려지는 장비 있음.",
     ),
     (
         "rotation_angle",
@@ -583,7 +581,7 @@ CATALOG_SPEC_DEFINITIONS: list[
         None,
         "min",
         170,
-        "**작을수록 좋은 값**이라 바닥으로 읽는다.",
+        "작을수록 좋은 값이므로 하한으로 처리됨.",
     ),
     (
         "current_range",
@@ -717,7 +715,7 @@ CATALOG_SPEC_DEFINITIONS: list[
         None,
         "min",
         110,
-        "**작을수록 좋은 값**이라 바닥으로 읽는다.",
+        "작을수록 좋은 값이므로 하한으로 처리됨.",
     ),
     (
         "displacement_range",
@@ -741,8 +739,8 @@ CATALOG_SPEC_DEFINITIONS: list[
         None,
         "max",
         130,
-        "「0.1 % Full Scale @ 16 bit」 처럼 조건절이 붙는다. 숫자 칸에 넣게 하면 "
-        "사람은 조건절을 버리고, 그러면 그 값은 거짓이 된다.",
+        "조건절이 붙는 값(예: 0.1 % Full Scale @ 16 bit). 조건절을 빼면 틀린 값이 되므로 "
+        "조건절까지 함께 입력.",
     ),
     (
         "hardness_scales",
@@ -754,7 +752,7 @@ CATALOG_SPEC_DEFINITIONS: list[
         None,
         "max",
         140,
-        "HRC·HV·Shore A 처럼 이 장비가 낼 수 있는 척도들. 열여섯 대에 적혀 있다.",
+        "이 장비가 측정 가능한 경도 척도(예: HRC·HV·Shore A). 16대에 기재됨.",
     ),
     # --- 설치 조건 ------------------------------------------------------------
     (
@@ -767,7 +765,7 @@ CATALOG_SPEC_DEFINITIONS: list[
         None,
         "max",
         110,
-        "**소비 전력과 다르다.** 역률을 모르면 W 로 못 바꾼다 — 그래서 칸을 나눈다.",
+        "소비 전력과 다름. 역률 없이는 W로 환산 불가(별도 항목으로 구분).",
     ),
     # --- 구성 ----------------------------------------------------------------
     (
@@ -792,8 +790,8 @@ CATALOG_SPEC_DEFINITIONS: list[
         None,
         "max",
         120,
-        "백색광 간섭계·접촉식 프로브처럼 무엇으로 재나. 같은 값을 재도 원리가 다르면 "
-        "쓸 수 있는 규격이 다르다.",
+        "측정 방식(예: 백색광 간섭계·접촉식 프로브). 같은 값을 재도 원리가 다르면 적용 "
+        "가능한 규격이 다름.",
     ),
     (
         "cooling_method",
@@ -821,7 +819,7 @@ CATALOG_SPEC_DEFINITIONS: list[
         None,
         "max",
         160,
-        "그립 사이 거리. 시편 물림 길이를 정한다.",
+        "그립 사이 거리. 시편 물림 길이를 결정함.",
     ),
     (
         "compression_plate",
@@ -845,7 +843,7 @@ CATALOG_SPEC_DEFINITIONS: list[
         None,
         "max",
         180,
-        "**규격이 지정하는 값이다.** 3점 굽힘은 지지 간격이 결과를 바꾼다.",
+        "규격이 지정하는 값. 3점 굽힘은 지지 간격에 따라 결과가 달라짐.",
     ),
     (
         "inner_width",
@@ -857,8 +855,8 @@ CATALOG_SPEC_DEFINITIONS: list[
         None,
         "max",
         190,
-        "챔버 안쪽 치수. **바깥 치수와 다른 물음에 답한다** — 바깥은 「자리가 나나」 "
-        "이고 안쪽은 「시편이 들어가나」 다.",
+        "챔버 안쪽 치수. 바깥 치수와 용도가 다름(바깥: 설치 공간 확보 여부, 안쪽: 시편 수용 "
+        "여부).",
     ),
     ("inner_depth", "내부 깊이", "space", "number", "length", "mm", None, "max", 200, None),
     ("inner_height", "내부 높이", "space", "number", "length", "mm", None, "max", 210, None),
@@ -896,7 +894,7 @@ CATALOG_SPEC_DEFINITIONS: list[
         None,
         "max",
         140,
-        "ACW·DCW·IR 처럼 한 대가 겸하는 시험들. 카탈로그가 낱개로 늘어놓는다.",
+        "한 대가 겸하는 시험 목록(예: ACW·DCW·IR). 카탈로그에 개별 항목으로 나열됨.",
     ),
 ]
 

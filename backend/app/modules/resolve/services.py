@@ -80,7 +80,7 @@ def _answer(
             id=exact.id,
             label=exact.label,
             candidates=[exact],
-            hint="하나로 정해졌습니다. 이 id 를 그대로 쓰십시오.",
+            hint="하나로 확정됨. 이 id를 그대로 사용.",
         )
     if not candidates:
         return ResolveResponse(
@@ -90,8 +90,7 @@ def _answer(
             candidates=[],
             # **지어내지 마라**가 핵심이다. 없는 것을 만들지, 비워 둘지는 부르는
             # 쪽의 판단이지만, 비슷한 이름을 골라 넣는 것만은 아니다.
-            hint="찾지 못했습니다. 새로 만들거나 비워 두십시오 — 비슷한 이름을 "
-            "골라 넣지 마십시오.",
+            hint="찾지 못함. 새로 만들거나 비워 둠. 비슷한 이름으로 대체 금지.",
         )
     if len(candidates) == 1:
         return ResolveResponse(
@@ -99,15 +98,14 @@ def _answer(
             id=None,
             label=None,
             candidates=list(candidates),
-            hint="후보가 하나입니다. 맞는지 확인한 뒤 그 id 를 쓰십시오 — "
-            "이름의 일부가 우연히 겹쳤을 수 있습니다.",
+            hint="후보 하나. 맞는지 확인 후 그 id 사용(이름 일부가 우연히 겹쳤을 수 있음).",
         )
     return ResolveResponse(
         match="candidates",
         id=None,
         label=None,
         candidates=list(candidates),
-        hint=f"후보가 {len(candidates)}개입니다. 고르지 말고 사람에게 물으십시오.",
+        hint=f"후보 {len(candidates)}개. 임의로 고르지 말고 사람에게 확인.",
     )
 
 
@@ -251,7 +249,7 @@ def _resolve_term(db: Session, text: str, axis: str | None, limit: int) -> Resol
                 ResolveCandidate(
                     id=term.id,
                     label=term.value,
-                    detail=f"별칭 「{alias.value}」",
+                    detail=f"별칭: {alias.value}",
                     why=_ALIAS,
                 ),
                 [],

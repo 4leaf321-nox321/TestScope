@@ -516,3 +516,67 @@ def test_기종_피커는_서버가_거른다(client: TestClient, admin: Signed)
     mine = client.get(f"/api/equipment?model_id={made['id']}", headers=admin.headers)
     assert mine.status_code == 200, mine.text
     assert mine.json()["total"] == 1
+
+
+def test_남은_일에_사람이_정할_것과_확인_대기_후보가_선다(
+    client: TestClient, admin: Signed, db: Session, workspace: Workspace
+) -> None:
+    """**「지금 뭘 먼저 할까」 는 한 자리가 답한다**(2026-10-04).
+
+    검토함 · 요청 · 확인 대기 후보가 남은 일에 없어서, 사람은 화면 셋을, AI 는 도구 열세 개를
+    열어 보고서야 답했다. 요청은 같은 말끼리 한 번에 정하므로 묶음 수로 센다.
+    """
+
+    def counts(headers: dict[str, str]) -> dict[str, int]:
+        response = client.get("/api/server/maintenance", headers=headers)
+        assert response.status_code == 200, response.text
+        return {row["key"]: row["count"] for row in response.json()}
+
+    before = counts(admin.headers)
+    made = client.post(
+        "/api/auth/tokens",
+        json={"name": f"남은일-{uuid.uuid4().hex[:6]}", "scopes": ["read", "equipment:write"]},
+        headers=admin.headers,
+    )
+    assert made.status_code == 201, made.text
+    machine = {"Authorization": f"Bearer {made.json()['token']}", "X-Client": "mcp"}
+
+    tag = uuid.uuid4().hex[:6]
+    test = client.post(
+        "/api/reliability-tests",
+        json={"division_code": "vd", "name": f"남은 일 확인-{tag}"},
+        headers=machine,
+    )
+    assert test.status_code == 201, test.text
+    assert test.json()["status"] == "candidate"
+    for text in (f"요청 {tag}", f"요청{tag}"):  # 표기만 다른 둘 — 한 묶음이다
+        asked = client.post(
+            "/api/reliability-tests/item-proposals",
+            json={"reliability_test_id": test.json()["id"], "text": text},
+            headers=machine,
+        )
+        assert asked.status_code == 201, asked.text
+
+    after = counts(admin.headers)
+    for key in ("reliability_candidates", "test_item_requests_open"):
+        assert after.get(key, 0) == before.get(key, 0) + 1, key
+
+    # 멤버에게는 안 선다 — 할 수 없는 일이 남은 일로 서면 그 목록을 안 읽게 된다.
+    email = f"plain-{uuid.uuid4().hex[:8]}@testscope.local"
+    user = User(
+        email=email,
+        password_hash=security.hash_password("member-password"),
+        display_name="멤버",
+        status="active",
+        home_workspace_id=workspace.id,
+    )
+    db.add(user)
+    db.flush()
+    db.add(WorkspaceMember(workspace_id=workspace.id, user_id=user.id, role="member"))
+    db.commit()
+    signed = client.post(
+        "/api/auth/login", json={"email": email, "password": "member-password"}
+    ).json()["access_token"]
+    seen = counts({"Authorization": f"Bearer {signed}"})
+    assert "test_item_requests_open" not in seen
+    assert "review_open" not in seen

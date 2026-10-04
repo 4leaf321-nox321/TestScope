@@ -302,7 +302,7 @@ def test_부서의_것도_이름으로_하나로_정한다(
 
     # 없는 이름은 none — **지어내지 말라**는 안내가 함께 온다.
     empty = _resolve(client, admin.headers, kind="reliability_test", text=f"없는시험-{tag}")
-    assert empty["match"] == "none" and "비슷한 이름을" in empty["hint"]
+    assert empty["match"] == "none" and "비슷한 이름" in empty["hint"]
 
     # 없는 부서로 좁히면 조용히 무시하지 않고 거절한다 — 무시하면 전사 결과를 부서
     # 결과로 오해한다.

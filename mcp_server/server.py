@@ -128,7 +128,7 @@ ROUTING = """물음별 첫 도구 (상세는 각 도구 설명과 get_guide):
   카탈로그에 없는 기종 요청      list_model_requests -> decide_model_request (사람 확인 후)
   축에 없는 시험 항목 요청       list_test_item_requests -> decide_test_item_request
   전용 도구 없는 수정·삭제·생성  update_record · delete_record(확인 후 confirm) · create_record
-  채울 곳 우선순위               list_pending_work"""
+  남은 일·우선순위               list_pending_work"""
 
 mcp = MCPServer(
     name="testscope",
@@ -1592,12 +1592,14 @@ async def get_catalog_state(ctx: Context) -> dict[str, Any]:
 
 @mcp.tool()
 async def list_pending_work(ctx: Context) -> dict[str, Any]:
-    """**채울 곳 목록.** 보유 자원 중 비어 있는 것만 집계.
+    """**남은 일 목록.** 채울 곳과 사람이 정할 것을 한 번에 집계(0건 항목은 생략).
 
-    시험 항목 미기재 장비 · 사양 미기재 보유 기종 · 시험 항목 미기재 보유 계열 · 원본 확인이
-    필요한 기종 · 교정 기한이 지난 장비.
+    채울 곳: 시험 항목 미기재 장비 · 사양 미기재 보유 기종 · 시험 항목 미기재 보유 계열 · 원본
+    확인이 필요한 기종 · 교정 기한이 지난 장비. 정할 것: 확인 대기 신뢰성 시험(후보, 확인
+    권한자에게만) · 시스템 관리자에게는 검토함 미결 · 시험 항목 요청 · 기종 등록 요청(묶음 수).
 
-    카탈로그 전체가 아니라 **여기부터 채움**(전체를 채우려 하면 끝이 없어 시작 자체가 안 됨).
+    **이것이 답**: 항목마다 수와 화면 주소(`link`) 포함. 각 목록 도구를 따로 다시 부를 필요
+    없음(사용자가 특정 항목을 물을 때만). 카탈로그 전체가 아니라 보유 자원 기준.
     """
     return _listed(await _get(ctx, "/server/maintenance"), "items")
 

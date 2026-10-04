@@ -20,13 +20,14 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 
-from sqlalchemy import func, select
+from sqlalchemy import delete, func, select
 from sqlalchemy.orm import Session
 
 import app.all_models  # noqa: F401  (DB 를 만지는 스크립트는 반드시 이것을 읽는다)
 from _console import survive_cp949
 from app.database import SessionLocal
 from app.modules.accounts.models import User
+from app.modules.attributes.models import AttributeDefinition, AttributeValue
 from app.modules.equipment.catalog import copy_test_items_to
 from app.modules.equipment.models import (
     Equipment,
@@ -35,6 +36,9 @@ from app.modules.equipment.models import (
     EquipmentSeries,
 )
 from app.modules.methods.models import MethodRequirement, TestMethod
+from app.modules.reliability import services as reliability
+from app.modules.reliability.models import ReliabilityTest, ReliabilityTestItem
+from app.modules.reliability.schemas import ReliabilityTestCreateRequest
 from app.modules.test_items.models import (
     EquipmentTestItem,
     SeriesTestCondition,
@@ -130,6 +134,70 @@ CAPABILITIES: list[
 ]
 
 #: (규격 번호, 판, 제목, 시험 항목, 기관, {조건 키: (최소, 최대)})
+#: 데모 신뢰성 시험 — **확정된 것**이다. 사람 자격으로 등록하면 확정으로 선다.
+#:
+#: 개발 DB 에 확정된 시험이 하나도 없으면 전사 목록(확정만 보여 준다)이 늘 비고, 화면 확인도
+#: AI 측정도 그 빈 목록을 기준으로 돌게 된다 — 측정(2026-10-04)에서 AI 가 사업부 여덟 개를
+#: 하나씩 다시 부른 원인이 그것이었다. 열충격은 **일부러 뺐다**: 측정 물음 q12 가 열충격
+#: 시험을 만들고 q13 이 그것을 고치는데, 데모에 열충격이 있으면 q13 이 둘 중 무엇인지 묻는다.
+#:
+#: (사업부 코드, 이름, 목적, 시험 항목, {속성 key: (최소, 최대)})
+DEMO_TESTS: list[tuple[str, str, str, str, dict[str, tuple[float | None, float | None]]]] = [
+    (
+        "mx",
+        "고온고습 1000h",
+        "고온고습 환경에서 기능·외관 열화 확인",
+        "항온항습(습열)",
+        {
+            "reliability_temperature": (85, 85),
+            "reliability_humidity": (85, 85),
+            "reliability_cond_duration": (1000, 1000),
+        },
+    ),
+    (
+        "mx",
+        "HAST 130도 96h",
+        "고가속 습열로 패키지 흡습·부식 가속 확인",
+        "고가속 습열(HAST)",
+        {
+            "reliability_temperature": (130, 130),
+            "reliability_humidity": (85, 85),
+            "reliability_cond_duration": (96, 96),
+        },
+    ),
+    (
+        "mx",
+        "랜덤 진동 3축 2h",
+        "운송 진동에 의한 체결부 풀림·파손 확인",
+        "정현·랜덤 진동",
+        {
+            "reliability_frequency": (10, 2000),
+            "reliability_cond_duration": (2, 2),
+        },
+    ),
+    (
+        "mx",
+        "자유 낙하 1.2 m 26회",
+        "사용 중 낙하에 의한 외관·기능 손상 확인",
+        "낙하·텀블",
+        {
+            "reliability_cond_drop_height": (120, 120),
+            "reliability_cond_cycles": (26, 26),
+        },
+    ),
+    (
+        "mx",
+        "염수 분무 48h",
+        "외장 도금·도장의 내식성 확인",
+        "염수분무·복합부식",
+        {
+            "reliability_temperature": (35, 35),
+            "reliability_cond_salt_concentration": (5, 5),
+            "reliability_cond_duration": (48, 48),
+        },
+    ),
+]
+
 METHODS: list[tuple[str, str, str, str, str, dict[str, tuple[float | None, float | None]]]] = [
     (
         "ASTM E8/E8M",
@@ -234,6 +302,57 @@ def _conditions(db: Session) -> dict[str, ConditionKey]:
     return {row.key: row for row in db.scalars(select(ConditionKey))}
 
 
+def _demo_tests(db: Session) -> list[ReliabilityTest]:
+    """데모 표에 있는 이름의 신뢰성 시험 — 지울 때 이것으로 찾는다."""
+    names = [name for _, name, *_ in DEMO_TESTS]
+    return list(
+        db.scalars(
+            select(ReliabilityTest).where(
+                ReliabilityTest.name.in_(names), ReliabilityTest.deleted_at.is_(None)
+            )
+        )
+    )
+
+
+def _seed_reliability(db: Session, actor: User) -> int:
+    """데모 신뢰성 시험을 **서비스로** 만든다 — 화면과 같은 검사(이름 · 시험 항목 · 속성)를
+    지난다. 이미 있는 이름은 건너뛴다. 사람 자격이라 확정으로 선다."""
+    have = {test.name for test in _demo_tests(db)}
+    definitions = {
+        row.key: row.id
+        for row in db.scalars(
+            select(AttributeDefinition).where(AttributeDefinition.target == "reliability_test")
+        )
+    }
+    made = 0
+    for division, name, purpose, item, values in DEMO_TESTS:
+        if name in have:
+            continue
+        term = db.scalar(
+            select(VocabularyTerm)
+            .join(Vocabulary, Vocabulary.id == VocabularyTerm.vocabulary_id)
+            .where(Vocabulary.slug == "test_item", VocabularyTerm.value == item)
+        )
+        if term is None:
+            print(f"  건너뜀: 시험 항목 {item} 없음 ({name})")
+            continue
+        attributes = [
+            {"definition_id": definitions[key], "num_min": low, "num_max": high}
+            for key, (low, high) in values.items()
+            if key in definitions
+        ]
+        payload = ReliabilityTestCreateRequest(
+            division_code=division,
+            name=name,
+            purpose=purpose,
+            test_item_term_ids=[term.id],
+            attributes=attributes,
+        ).model_dump()
+        reliability.create(db, actor, payload)
+        made += 1
+    return made
+
+
 def purge(db: Session) -> int:
     """데모가 만든 장비와 그 아래 것들을 지운다. 온톨로지 값은 남긴다 —
     운영에서 이미 쓰고 있을 수 있고, 그것을 지우면 가리키던 것이 끊긴다."""
@@ -242,6 +361,14 @@ def purge(db: Session) -> int:
         db.delete(row)  # 시험 항목·교정은 CASCADE 로 함께 간다
     for method in db.scalars(select(TestMethod).where(TestMethod.summary == "데모 데이터")):
         db.delete(method)
+    for test in _demo_tests(db):
+        db.execute(delete(AttributeValue).where(AttributeValue.reliability_test_id == test.id))
+        db.execute(
+            delete(ReliabilityTestItem).where(
+                ReliabilityTestItem.reliability_test_id == test.id
+            )
+        )
+        db.delete(test)
     # 장비를 먼저 지운 뒤라야 모델을 지울 수 있다(RESTRICT).
     for model in db.scalars(
         select(EquipmentModel).where(EquipmentModel.summary == "데모 데이터")
@@ -449,9 +576,11 @@ def main() -> int:
             )
             or 0
         )
+        tests = _seed_reliability(db, actor)
         print(
             f"데모: 장비 {made}대, 카탈로그 사양 시험 항목 {specs}건 "
             f"-> 복사된 장비의 시험 항목 {copied_count}건, 시험법 {len(methods)}건"
+            f", 신뢰성 시험 {tests}건"
         )
         return 0
     finally:
