@@ -186,6 +186,9 @@ def promote(
             if row.source_key
             else "기종 고유 사양에서 승격."
         ),
+        # **반입에게 알린다** — 다음 반입이 이 키를 다시 「이 기종만의 사양」 으로 들이지 않고
+        # 이 정의에 넣게(`catalog_import.definitions._alias_targets`).
+        source_keys=[row.source_key] if row.source_key else [],
     )
     db.add(definition)
     db.flush()

@@ -358,3 +358,49 @@ def test_수치_하나에_비고를_붙인_꼴도_값으로_들인다(db: Sessio
     row = _held(db, model, definition)
     assert row.num_value == 300.0
     assert row.note == "본체만"
+
+
+def test_승격_정의의_종류는_반입_값뿐일_때만_데이터에_맞춘다(db: Session) -> None:
+    """종류는 처음 세울 때의 값 모양으로 정해져 그 뒤로 안 바뀌었다 — 나중 객체가 구간으로
+    적어도 「글」 로 남아 수치 검색에 안 쓰였다. 값이 전부 반입 값이면 맞추고, 사람 값이 있으면
+    둔다."""
+    from app.modules.vocabulary.specs import SpecGroup
+    from catalog_import.definitions import (  # type: ignore[import-not-found]
+        KIND_ALIGNED,
+        _align_kind,
+    )
+
+    group = db.scalar(select(SpecGroup).limit(1))
+    assert group is not None
+    model = _model(db)
+
+    def promoted(origin: str) -> SpecDefinition:
+        made = SpecDefinition(
+            key=f"aligned_{uuid.uuid4().hex[:6]}",
+            label="승격분",
+            group_id=group.id,
+            kind="text",
+            help="제조사 카탈로그 2건에서 쓰인 사양(`x_mm`).",
+        )
+        db.add(made)
+        db.flush()
+        db.add(
+            ModelSpecValue(
+                model_id=model.id, definition_id=made.id, text_value="5 ~ 10", origin=origin
+            )
+        )
+        db.flush()
+        return made
+
+    only_import = promoted("catalog")
+    hand_touched = promoted("manual")
+    KIND_ALIGNED.clear()
+
+    _align_kind(db, {"key": only_import.key, "kind": "range"})
+    _align_kind(db, {"key": hand_touched.key, "kind": "range"})
+
+    assert only_import.kind == "range"
+    assert hand_touched.kind == "text", "사람이 손댄 값이 있는 정의의 종류를 바꿨다"
+    aligned = list(KIND_ALIGNED)
+    assert aligned == [only_import.key]
+    db.rollback()

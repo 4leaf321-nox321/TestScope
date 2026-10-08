@@ -208,3 +208,75 @@ def test_기계가_붙인_고유_사양은_agent_로_남는다(client: TestClien
     )
     assert made.status_code == 201, made.text
     assert made.json()["origin"] == "agent"
+
+
+def test_정의로_세운_키는_다음_반입이_다시_고유_사양으로_안_들인다(
+    client: TestClient, admin: Signed
+) -> None:
+    """정의로 세우면 그 줄은 지워지고 값이 정의로 간다. 반입이 그 원본 키가 정의가 된 것을
+    모르면 다음 반입에서 그 키를 다시 「이 기종만의 사양」 으로 들여 **같은 값이 두 자리에
+    산다**(2026-10-08). 정의가 원본 키를 들고 있고(`source_keys`), 반입은 그 키를 정의로
+    넣는다.
+    """
+    import sys
+    from pathlib import Path
+
+    from sqlalchemy import select
+
+    from app.database import SessionLocal
+    from app.modules.equipment.models import EquipmentModel, ModelFreeSpec
+    from app.modules.vocabulary.specs import SpecDefinition
+
+    sys.path.insert(0, str(Path(__file__).resolve().parents[2] / "scripts"))
+    from catalog_import import values  # type: ignore[import-not-found]
+    from catalog_import.definitions import (  # type: ignore[import-not-found]
+        raised_source_keys,
+    )
+
+    key = f"stroke_raised_{uuid.uuid4().hex[:6]}"
+    model = _model(client, admin)
+    free_id = _seed_same_key(model["id"], key, "0 ~ 152")
+    groups = client.get("/api/spec-groups", headers=admin.headers).json()
+    promoted = client.post(
+        f"/api/equipment-models/{model['id']}/free-specs/{free_id}/promote",
+        json={
+            "key": key,
+            "label": "가진 변위",
+            "group_id": groups[0]["id"],
+            "kind": "range",
+            "unit": "mm",
+        },
+        headers=admin.headers,
+    )
+    assert promoted.status_code == 200, promoted.text
+
+    db = SessionLocal()
+    try:
+        definition = db.scalar(select(SpecDefinition).where(SpecDefinition.key == key))
+        assert definition is not None and definition.source_keys == [key]
+        row = db.get(EquipmentModel, uuid.UUID(model["id"]))
+        assert row is not None
+        aliases = raised_source_keys(db)
+        assert aliases[key] == (key, 1.0)
+
+        # 다음 반입 — 원본은 여전히 그 키로 그 값을 말한다.
+        values._REFRESH.clear()
+        values._import_specs(
+            db, row, {key: "0 ~ 152"}, {key: definition}, None, {}, aliases, {}
+        )
+        values.finish_refresh(db)
+        db.commit()
+
+        again = db.scalars(
+            select(ModelFreeSpec).where(
+                ModelFreeSpec.model_id == row.id, ModelFreeSpec.source_key == key
+            )
+        ).all()
+        assert again == [], "정의로 세운 키가 다시 「이 기종만의 사양」 으로 들어왔다"
+    finally:
+        db.close()
+
+    sheet = client.get(f"/api/equipment-models/{model['id']}/specs", headers=admin.headers)
+    items = [one for group in sheet.json()["groups"] for one in group["items"]]
+    moved = [one for one in items if one["key"] == key]
+    assert len(moved) == 1 and moved[0]["num_min"] == 0 and moved[0]["num_max"] == 152

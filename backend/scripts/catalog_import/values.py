@@ -13,6 +13,7 @@ from sqlalchemy import select
 from sqlalchemy.orm import Session
 
 import app.all_models  # noqa: F401  (DB 를 만지는 스크립트는 반드시 이것을 읽는다)
+from app.modules.equipment.free_specs import _fields_for
 from app.modules.equipment.models import (
     EquipmentModel,
     ModelFreeSpec,
@@ -105,6 +106,16 @@ def _value_fields(
     **틀린 칸에 담긴 값은 조용히 사라진다.** 구간 사양에 수치만 넣으면 저장은 되지만
     화면은 아무것도 못 그리고, 그때 사람은 "반입이 안 됐다" 고 말한다.
     """
+    if isinstance(raw, str) and definition.kind in ("number", "range"):
+        # **글자로 적힌 수**(「0 ~ 152」 · 「203」)는 「정의로 세우기」 와 같은 규칙으로
+        # 읽는다. 다르게 읽으면 세운 정의의 값을 반입이 못 읽어 「정본에서 빠짐」 으로 지운다.
+        parsed = _fields_for(definition.kind, raw)
+        if parsed is None:
+            return None
+        return {
+            **{name: one * factor for name, one in parsed.items() if one is not None},
+            "note": None,
+        }
     low, high, note = _numbers(raw, factor)
 
     if definition.kind == "range":

@@ -111,6 +111,9 @@ class SpecDefinition(Base):
         return self.display_unit or self.si_unit
 
     choices: Mapped[list[str]] = mapped_column(JSONB, default=list, server_default="[]")
+    source_keys: Mapped[list[str]] = mapped_column(JSONB, default=list, server_default="[]")
+    """이 정의로 들어오는 **반입 원본 키**(`stroke_mm_pk_pk`). 「정의로 세우기」 가 적는다 —
+    안 적으면 반입이 그 키를 다시 「이 기종만의 사양」 으로 들여 같은 값이 두 자리에 산다."""
 
     condition_key_id: Mapped[uuid.UUID | None] = mapped_column(
         PgUUID(as_uuid=True),

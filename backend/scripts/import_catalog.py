@@ -42,6 +42,7 @@ from app.modules.accounts.models import User
 from app.modules.review import services as review
 from app.modules.server import catalog_state
 from app.shared.audit import record
+from catalog_import import definitions as definitions_step
 from catalog_import import terms as terms_step
 from catalog_import import values as values_step
 from catalog_import.definitions import step_definitions, step_headlines
@@ -149,6 +150,12 @@ def main() -> int:
             f"  기종 새로 {models} · 사양값 새로 {values}"
             f" · 이 기종만의 사양 새로 {values_step._FREE_MADE}"
         )
+        if definitions_step.KIND_ALIGNED:
+            # 반입이 승격한 정의 중 값이 전부 반입 값인 것만 — 사람이 손댄 정의는 그대로.
+            print(
+                f"  정의 종류를 데이터에 맞춤 {len(definitions_step.KIND_ALIGNED)}"
+                f" ({', '.join(definitions_step.KIND_ALIGNED[:8])})"
+            )
         if refreshed or dropped:
             # 반입이 넣고 아무도 안 고친 값만 정본을 따른다 — 사람·AI 가 고친 값은 그대로.
             print(f"  반입 값을 정본에 맞춤 {refreshed} · 정본에서 빠져 지움 {dropped}")

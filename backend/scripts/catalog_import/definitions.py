@@ -13,6 +13,7 @@ from sqlalchemy import select
 from sqlalchemy.orm import Session
 
 import app.all_models  # noqa: F401  (DB 를 만지는 스크립트는 반드시 이것을 읽는다)
+from app.modules.equipment.models import ModelSpecValue
 from app.modules.vocabulary.catalog_specs import (
     CATALOG_SPEC_DEFINITIONS,
     CATEGORY_SPREAD,
@@ -46,6 +47,16 @@ from catalog_import.source import (
 )
 
 
+def raised_source_keys(db: Session) -> dict[str, tuple[str, float]]:
+    """「정의로 세우기」 로 정의가 된 반입 원본 키 -> (정의 key, 배율 1). 값은 세울 때와 같은
+    단위 그대로라 배율은 1 이다."""
+    out: dict[str, tuple[str, float]] = {}
+    for key, keys in db.execute(select(SpecDefinition.key, SpecDefinition.source_keys)):
+        for source_key in keys or []:
+            out.setdefault(source_key, (key, 1.0))
+    return out
+
+
 def _alias_targets(db: Session, cat: Catalog) -> dict[str, tuple[str, float]]:
     """온톨로지의 별칭·단위 변형을 **우리 정의 이름**으로 옮긴다.
 
@@ -61,6 +72,11 @@ def _alias_targets(db: Session, cat: Catalog) -> dict[str, tuple[str, float]]:
             out[source_key] = (target[0], factor * target[1])
         elif base in promoted:
             out[source_key] = (promoted[base], factor)
+    # **사람이 정의로 세운 원본 키**(`SpecDefinition.source_keys`). 손 짝표 · 온톨로지가
+    # 먼저고, 그 둘이 모르는 키만 여기로 간다.
+    for source_key, target in raised_source_keys(db).items():
+        if source_key not in out and source_key not in SOURCE_SPEC_MAP:
+            out[source_key] = target
     return out
 
 
@@ -188,6 +204,43 @@ def _definition_key(source_key: str, unit: str) -> str:
     return (name or source_key.lower())[:60]
 
 
+#: 이번 반입에서 데이터 모양에 맞춰 종류를 바꾼 승격 정의 key.
+KIND_ALIGNED: list[str] = []
+#: 반입이 승격한 정의의 도움말 머리 — 손으로 만든 정의와 가르는 표지다.
+PROMOTED_HELP = "제조사 카탈로그 "
+
+
+def _align_kind(db: Session, row: dict[str, Any]) -> None:
+    """반입이 승격한 정의의 종류를 **지금 데이터의 모양**에 맞춘다.
+
+    종류는 정의를 처음 세울 때 그때의 값 모양으로 정해지고 그 뒤로 안 바뀌었다. 나중에
+    들어온 객체가 같은 키를 구간으로 적으면 정의는 「글」 이나 「수치」 로 남아, 그 값이 수치
+    검색에 안 쓰이거나 한쪽 끝만 남았다(2026-10-08, 11개). **값이 전부 반입이 넣고 아무도 안
+    고친 것일 때만** 바꾼다 — 그러면 같은 반입이 값을 새 종류로 다시 쓴다
+    (`values._refresh_spec`). 사람이 손댄 값이 하나라도 있으면 그 사람의 칸 해석을 깨지 않게
+    그대로 둔다.
+    """
+    definition = db.scalar(select(SpecDefinition).where(SpecDefinition.key == row["key"]))
+    if definition is None or definition.kind == row["kind"]:
+        return
+    if not (definition.help or "").startswith(PROMOTED_HELP):
+        return
+    touched = db.scalar(
+        select(ModelSpecValue.id)
+        .where(
+            ModelSpecValue.definition_id == definition.id,
+            (ModelSpecValue.origin.is_(None))
+            | (ModelSpecValue.origin != "catalog")
+            | (ModelSpecValue.updated_by_id.is_not(None)),
+        )
+        .limit(1)
+    )
+    if touched is not None:
+        return
+    definition.kind = row["kind"]
+    KIND_ALIGNED.append(definition.key)
+
+
 def step_definitions(
     db: Session, cat: Catalog, categories: dict[str, VocabularyTerm]
 ) -> tuple[int, list[tuple[int, str]]]:
@@ -277,6 +330,7 @@ def step_definitions(
     promoted = 0
     for row in _promotable(cat):
         if row["key"] in known:
+            _align_kind(db, row)
             continue
         # 축 연결은 한 표(`SPEC_DEFINITION_LINKS`)가 정한다 — 승격분도 거기 있으면 잇는다.
         # 차원이 같다고 잇지는 않는다: 「공급 전압」 은 전원 사양이지 시험 능력이 아니다.
