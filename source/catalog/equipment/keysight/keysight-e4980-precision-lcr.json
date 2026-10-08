@@ -1,0 +1,101 @@
+{
+  "id": "keysight-e4980-precision-lcr",
+  "kind": "equipment_series",
+  "name": "Keysight E4980 Precision LCR Meters (E4980A / E4980AL / E4980B / E4980BL)",
+  "name_ko": "키사이트 E4980 정밀 LCR 미터",
+  "manufacturer": "keysight",
+  "brand": "E4980",
+  "category": "network_lcr_analyzer",
+  "form_factor": "benchtop",
+  "description": "부품·재료의 R&D 와 생산 시험용 탁상형 정밀 LCR 미터. E4980A·E4980B 는 20 Hz~2 MHz(4자리 분해능), 기본 확도 0.05%, 측정 시간 5.6 ms, 옵션 001 로 시험 신호 20 Vrms 와 DC 바이어스 강화. E4980AL·E4980BL 은 20 Hz~300 kHz/500 kHz/1 MHz 중 주파수를 골라 사는 저가형이다. E4980AL 은 단종되어 E4980BL 로 대체되었다. 201점 리스트 스윕, LAN·USB·GPIB.",
+  "test_items": [],
+  "limits": {
+    "frequency_Hz": {
+      "min": 20,
+      "max": 2000000,
+      "note": "E4980A/B 20 Hz to 2 MHz. E4980AL/BL 20 Hz to 300 kHz/500 kHz/1 MHz"
+    },
+    "measurement_time_s": {
+      "max": 0.0056,
+      "note": "원문 5.6 ms(E4980A/B)"
+    }
+  },
+  "models": [
+    {
+      "model": "E4980A",
+      "specs": {
+        "frequency_Hz": {
+          "min": 20,
+          "max": 2000000
+        },
+        "accuracy": "기본 확도 0.05%",
+        "test_signal_level": "20 Vrms(Option 001)",
+        "measurement_time_s": 0.0056,
+        "interfaces": "LAN, USB, GPIB"
+      }
+    },
+    {
+      "model": "E4980B",
+      "specs": {
+        "frequency_Hz": {
+          "min": 20,
+          "max": 2000000
+        },
+        "accuracy": "기본 확도 0.05%",
+        "test_signal_level": "20 Vrms(Option 001)",
+        "measurement_time_s": 0.0056,
+        "interfaces": "LAN, USB, GPIB"
+      }
+    },
+    {
+      "model": "E4980AL",
+      "specs": {
+        "frequency_Hz": {
+          "min": 20,
+          "max": 1000000,
+          "note": "주파수 선택 300 kHz / 500 kHz / 1 MHz"
+        },
+        "accuracy": "기본 확도 0.05%",
+        "test_signal_level": "100 uV~2 Vrms, 1 uA~20 mA",
+        "interfaces": "LAN, USB, GPIB"
+      },
+      "note": "단종. 후속 E4980BL. DC 바이어스 1.5/2 V, 자동 레벨 제어, DC 저항 측정, 주파수 업그레이드 가능"
+    },
+    {
+      "model": "E4980BL",
+      "specs": {
+        "frequency_Hz": {
+          "min": 20,
+          "max": 1000000,
+          "note": "주파수 선택 300 kHz / 500 kHz / 1 MHz"
+        }
+      },
+      "note": "주파수 범위는 제조사 페이지 제목·요약(검색 결과) 값. E4980A 페이지가 'lower price with 300 kHz / 500 kHz / 1 MHz frequencies' 로 소개"
+    }
+  ],
+  "features": [
+    "201점 리스트 스윕",
+    "저·고임피던스 레인지 모두에서 빠른 측정",
+    "Option 001: 시험 신호 20 Vrms·DC 바이어스 강화",
+    "LAN·USB·GPIB"
+  ],
+  "sources": [
+    {
+      "url": "https://www.keysight.com/us/en/product/E4980A/precision-lcr-meter-20-hz-to-2-mhz.html",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지. 20 Hz to 2 MHz, 0.05%, 20 Vrms(Option 001), 5.6 ms, 201점 리스트 스윕, LAN·USB·GPIB. E4980BL 언급"
+    },
+    {
+      "url": "https://www.keysight.com/us/en/product/E4980B/precision-lcr-meter-up-to-2mhz.html",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지. 20 Hz to 2 MHz, 0.05%, 20 Vrms(Option 001), 5.6 ms, LAN·USB·GPIB"
+    },
+    {
+      "url": "https://www.keysight.com/us/en/product/E4980AL/precision-lcr-meter-20-hz-300-khz-500-khz-1-mhz.html",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지. Discontinued, 후속 E4980BL. 20 Hz to 300 kHz/500 kHz/1 MHz, 0.05%, 100 uV to 2 Vrms, 1 uA to 20 mA, DC bias 1.5/2 V"
+    }
+  ],
+  "confidence": "limited",
+  "notes": "임피던스 측정 범위 수치는 페이지에 없음. 측정 시간 5.6 ms 의 조건은 페이지에 없음."
+}

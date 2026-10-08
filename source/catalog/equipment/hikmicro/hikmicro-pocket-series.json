@@ -1,0 +1,110 @@
+{
+  "id": "hikmicro-pocket-series",
+  "kind": "equipment_series",
+  "name": "HIKMICRO Pocket Series Thermal Camera",
+  "name_ko": "하이크마이크로 Pocket 시리즈 열화상 카메라",
+  "manufacturer": "hikmicro",
+  "brand": "Pocket",
+  "category": "thermal_imager",
+  "form_factor": "handheld",
+  "description": "주머니 크기의 휴대 열화상 카메라 계열. Pocket2 는 256 × 192, NETD <40 mK, -20 ~ 150 · 100 ~ 400 °C, PocketE 는 96 × 96, NETD <50 mK, -20 ~ 150 · 100 ~ 350 °C. 7.5 ~ 14 µm, 25 Hz.",
+  "test_items": [
+    "thermography"
+  ],
+  "measurands": [
+    "surface_temperature",
+    "temperature_distribution",
+    "hotspot_location"
+  ],
+  "limits": {
+    "temperature_degC": {
+      "min": -20,
+      "max": 400
+    },
+    "ir_resolution_pixels": {
+      "min": 9216,
+      "max": 49152
+    },
+    "thermal_sensitivity_degC": {
+      "min": 0.04,
+      "max": 0.05,
+      "note": "원문 mK @ 25 °C, F#1.0"
+    }
+  },
+  "models": [
+    {
+      "model": "Pocket2",
+      "specs": {
+        "detector_pixels": "256 × 192",
+        "ir_resolution_pixels": 49152,
+        "thermal_sensitivity_degC": 0.04,
+        "temperature_degC": {
+          "min": -20,
+          "max": 400
+        },
+        "accuracy": "Max (±2 °C, ±2 %), 주위 15 ~ 35 °C · 대상 0 °C 이상",
+        "wavelength_nm": {
+          "min": 7500,
+          "max": 14000
+        },
+        "frame_rate_fps": 25,
+        "field_of_view_deg": "50° × 37.2°",
+        "pixel_pitch_um": 12,
+        "weight_kg": {
+          "value": 0.218,
+          "note": "Approx. 218 g"
+        }
+      },
+      "note": "레인지 -20 ~ 150 / 100 ~ 400 °C(웹 페이지. PDF 는 측정 범위 -20 ~ 400 °C 만 적음). PDF: 초점 거리 3.5 mm, F1.1, IFOV 3.43 mrad, 가시 카메라 8 MP, 3.5\" 터치 LCD, 내장 16 GB, IP54, 운전 온도 -10 ~ 50 °C"
+    },
+    {
+      "model": "PocketE",
+      "specs": {
+        "detector_pixels": "96 × 96",
+        "ir_resolution_pixels": 9216,
+        "thermal_sensitivity_degC": 0.05,
+        "temperature_degC": {
+          "min": -20,
+          "max": 350
+        },
+        "accuracy": "Max (±2 °C, ±2 %)",
+        "wavelength_nm": {
+          "min": 7500,
+          "max": 14000
+        },
+        "frame_rate_fps": 25,
+        "field_of_view_deg": "50° × 50°"
+      },
+      "note": "레인지 -20 ~ 150 / 100 ~ 350 °C"
+    }
+  ],
+  "relations": [
+    {
+      "type": "performs",
+      "target": "thermography"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://www.hikmicrotech.com/en_us/industrial-products/pocket-thermal-camera/",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지(HTML). Pocket2"
+    },
+    {
+      "url": "https://www.hikmicrotech.com/en/industrial-products/pockete-portable-thermal-camera/",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지(HTML). PocketE"
+    },
+    {
+      "file": "hikmicro/12c0e181d0b34d5aba4d9531c2f7d2fb.pdf",
+      "pages": [
+        1,
+        2,
+        3
+      ],
+      "note": "제조사 기종 데이터시트 PDF(Pocket2 한 기종)"
+    }
+  ],
+  "confidence": "limited",
+  "notes": "PDF 로 확인: Pocket2 의 화소 · NETD · 측정 범위 · 확도 · 7.5 ~ 14 µm · 25 Hz · 시야(화소 간격 12 µm 과 무게 218 g 을 더함) / 웹 값 그대로: PocketE 전체, Pocket2 의 두 레인지 구분(PDF 는 Pocket2 데이터시트뿐)."
+}

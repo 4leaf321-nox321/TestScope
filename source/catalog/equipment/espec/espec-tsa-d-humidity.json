@@ -1,0 +1,99 @@
+{
+  "id": "espec-tsa-d-humidity",
+  "kind": "equipment_series",
+  "name": "ESPEC Air to Air Thermal Shock Chambers with Humidity (TSA-103D-W / TSA-203D-W)",
+  "name_ko": "에스펙 습도 부가형 기상식 열충격 챔버",
+  "manufacturer": "espec",
+  "brand": "TSA",
+  "category": "thermal_shock_chamber",
+  "drive": "thermal",
+  "form_factor": "floor",
+  "description": "열 사이클과 결로(dew) 사이클을 한 장비에서 하는 기상식 열충격 챔버. 열 사이클 고온 +70~+150 °C·저온 -70~+10 °C, 결로 사이클 고온 -10~+100 °C·저온 -40~+10 °C, 습도 변동 ±5 %rh. 시편 바스켓 하중 5 kg.",
+  "test_items": [
+    "thermal_shock",
+    "damp_heat"
+  ],
+  "limits": {
+    "high_temp_degC": {
+      "min": 70,
+      "max": 150,
+      "note": "열 사이클. 결로 사이클 -10~+100 °C"
+    },
+    "low_temp_degC": {
+      "min": -70,
+      "max": 10,
+      "note": "열 사이클. 결로 사이클 -40~+10 °C"
+    },
+    "humidity_fluctuation_pct": {
+      "max": 5,
+      "note": "±5 %rh"
+    }
+  },
+  "models": [
+    {
+      "model": "TSA-103D-W",
+      "specs": {
+        "high_temp_degC": {
+          "min": 70,
+          "max": 150
+        },
+        "low_temp_degC": {
+          "min": -70,
+          "max": 10
+        },
+        "recovery_time_min": {
+          "max": 10,
+          "note": "열 사이클, 양방향"
+        },
+        "load_kg": {
+          "max": 5,
+          "note": "시편 바스켓"
+        },
+        "inner_mm": "W650×H460×D370",
+        "footprint_mm": "W1670×H1900×D1570"
+      }
+    },
+    {
+      "model": "TSA-203D-W",
+      "specs": {
+        "high_temp_degC": {
+          "min": 70,
+          "max": 150
+        },
+        "low_temp_degC": {
+          "min": -70,
+          "max": 10
+        },
+        "recovery_time_min": {
+          "max": 16,
+          "note": "열 사이클, 양방향"
+        },
+        "load_kg": {
+          "max": 5,
+          "note": "시편 바스켓"
+        },
+        "inner_mm": "W650×H460×D670",
+        "footprint_mm": "W1670×H1900×D1870"
+      }
+    }
+  ],
+  "relations": [
+    {
+      "type": "same_family_as",
+      "target": "espec-tsa-thermal-shock"
+    },
+    {
+      "type": "simulates_environment",
+      "target": "environment-thermal-shock"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://www.espec.co.jp/english/products/env-test/tsatemp/",
+      "retrieved": "2026-10-08",
+      "note": "제조사 영문 페이지 사양표(두 기종)"
+    }
+  ],
+  "confidence": "limited",
+  "notes": "결로 사이클이 있어 test_items 에 damp_heat 을 함께 걸었다. 습도 설정 범위 자체는 페이지에 없고 변동 폭만 있다."
+}

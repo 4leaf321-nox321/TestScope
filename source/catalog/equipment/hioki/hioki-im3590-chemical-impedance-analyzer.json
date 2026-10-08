@@ -1,0 +1,40 @@
+{
+  "id": "hioki-im3590-chemical-impedance-analyzer",
+  "kind": "equipment_series",
+  "name": "Hioki Chemical Impedance Analyzer IM3590",
+  "name_ko": "히오키 화학 임피던스 분석기 IM3590",
+  "manufacturer": "hioki",
+  "brand": "IM",
+  "category": "network_lcr_analyzer",
+  "form_factor": "benchtop",
+  "description": "1 mHz~200 kHz 화학 임피던스 분석기. 목록 페이지 값: 확도 ±0.05%, 측정 시간 2 ms.",
+  "test_items": [],
+  "limits": {
+    "frequency_Hz": {
+      "min": 0.001,
+      "max": 200000
+    }
+  },
+  "models": [
+    {
+      "model": "IM3590",
+      "specs": {
+        "frequency_Hz": {
+          "min": 0.001,
+          "max": 200000
+        },
+        "accuracy": "±0.05%",
+        "measurement_time_s": 0.002
+      }
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://www.hioki.com/global/products/lcr-meters/3-ghz",
+      "retrieved": "2026-10-08",
+      "note": "제조사 'Impedance Analyzers, up to 3 GHz' 목록 페이지. CHEMICAL IMPEDANCE ANALYZER IM3590 1 mHz to 200 kHz, ±0.05%, 2 ms"
+    }
+  ],
+  "confidence": "limited",
+  "notes": "목록 페이지 값만 적음. 제품 상세 페이지(/global/products/lcr-meters/3-ghz/id_5982)는 이번에 열지 않음."
+}

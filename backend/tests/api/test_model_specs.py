@@ -15,6 +15,7 @@ from typing import Any
 
 import pytest
 from fastapi.testclient import TestClient
+from sqlalchemy import select
 
 from tests.api.conftest import Signed, site_id
 
@@ -521,3 +522,116 @@ def test_단위가_다른_사양은_환산해서_조건이_되고_못_맞추면_
     ).json()
     value = next(one for group in sheet["groups"] for one in group["items"])
     assert value["axis_unit_mismatch"] is True
+
+
+def test_축에_나중에_이은_사양은_등록된_장비의_빈_조건만_채운다(
+    client: TestClient,
+    admin: Signed,
+    db: Any,
+    term_factory: Callable[[str, str], str],
+) -> None:
+    """**사양 정의를 검색축에 나중에 이으면 이미 등록된 장비만 그 축이 빈다**(2026-10-08).
+
+    조건은 등록할 때 복사된다(ADR 0004). `fill_missing_conditions` 가 빈 축만 채운다 —
+    실측이 있으면 실측으로, 없으면 기종 사양으로. 두 번 돌려도 같다.
+    """
+    from app.modules.equipment.equipment_specs import fill_missing_conditions
+    from app.modules.equipment.models import Equipment
+    from app.modules.vocabulary.models import ConditionKey
+    from app.modules.vocabulary.specs import SpecDefinition
+
+    tag = uuid.uuid4().hex[:6]
+    groups = {
+        row["slug"]: row["id"]
+        for row in client.get("/api/spec-groups", headers=admin.headers).json()
+    }
+    made = client.post(
+        "/api/spec-definitions",
+        json={
+            "key": f"fill_force_{tag}",
+            "label": f"나중 하중-{tag}",
+            "group_id": groups["capacity"],
+            "kind": "number",
+            "dimension": "force",
+            "si_unit": "kN",
+            "display_unit": "kN",
+        },
+        headers=admin.headers,
+    )
+    assert made.status_code == 201, made.text
+    definition_id = made.json()["id"]
+
+    model = _model(client, admin)
+    item = term_factory("test_item", f"인장-{tag}")
+    assert (
+        client.post(
+            f"/api/equipment-series/{model['series_id']}/test-items",
+            json={"test_item_term_id": item},
+            headers=admin.headers,
+        ).status_code
+        == 201
+    )
+    assert (
+        _put_spec(
+            client, admin, model["id"], definition_id=definition_id, num_value=300
+        ).status_code
+        == 200
+    )
+
+    def register(name: str) -> str:
+        unit = client.post(
+            "/api/equipment",
+            json={
+                "asset_no": f"FIL-{uuid.uuid4().hex[:6]}",
+                "site_term_id": site_id(client, admin),
+                "location": "3동 201호",
+                "name": name,
+                "workspace_slug": admin.workspace,
+                "model_id": model["id"],
+            },
+            headers=admin.headers,
+        )
+        assert unit.status_code == 201, unit.text
+        return str(unit.json()["id"])
+
+    plain = register("사양만 있는 장비")
+    measured = register("실측이 있는 장비")
+    saved = client.put(
+        f"/api/equipment/{measured}/specs",
+        json={"definition_id": definition_id, "num_value": 250, "measured_on": "2026-09-01"},
+        headers=admin.headers,
+    )
+    assert saved.status_code == 200, saved.text
+
+    def force(unit_id: str) -> dict[str, Any] | None:
+        rows = client.get(
+            f"/api/equipment-test-items?equipment_id={unit_id}", headers=admin.headers
+        ).json()
+        return next(
+            (one for one in rows[0]["limits"] if one["condition_key"] == "force"), None
+        )
+
+    # 아직 축에 안 이어졌으니 둘 다 하중 조건이 없다.
+    assert force(plain) is None and force(measured) is None
+
+    # 정의를 하중 축에 잇는다 — 배포의 따라잡기(`converge_spec_definitions`)가 하는 일.
+    row = db.get(SpecDefinition, uuid.UUID(definition_id))
+    row.condition_key_id = db.scalar(
+        select(ConditionKey.id).where(ConditionKey.key == "force")
+    )
+    db.commit()
+
+    for unit_id in (plain, measured):
+        assert fill_missing_conditions(db, db.get(Equipment, uuid.UUID(unit_id)))
+    db.commit()
+    by_spec, by_measure = force(plain), force(measured)
+    assert by_spec is not None and by_measure is not None
+    assert (by_spec["max_value"], by_spec["note"]) == (300, f"사양 나중 하중-{tag}에서 따옴")
+    assert (by_measure["max_value"], by_measure["note"]) == (
+        250,
+        f"실측 나중 하중-{tag}에서 따옴",
+    )
+
+    # 두 번째에는 채울 것이 없다 — 있는 조건은 안 건드린다.
+    for unit_id in (plain, measured):
+        assert fill_missing_conditions(db, db.get(Equipment, uuid.UUID(unit_id))) == []

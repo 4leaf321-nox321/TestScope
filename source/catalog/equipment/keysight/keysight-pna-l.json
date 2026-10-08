@@ -1,0 +1,128 @@
+{
+  "id": "keysight-pna-l",
+  "kind": "equipment_series",
+  "name": "Keysight PNA-L Microwave Network Analyzers (N5231B / N5232B / N5234B / N5235B / N5239B)",
+  "name_ko": "키사이트 PNA-L 마이크로파 네트워크 분석기",
+  "manufacturer": "keysight",
+  "brand": "PNA-L",
+  "category": "network_lcr_analyzer",
+  "form_factor": "benchtop",
+  "description": "XN5 등급 벡터 네트워크 분석기. 신호원 1개로 수동 부품과 단순 능동 소자의 기본 S-파라미터를 측정하고, 비용에 민감한 마이크로파 생산 시험·신호 무결성·재료 특성 측정에 쓴다. 상한은 기종별 8.5/13.5/20/43.5/50 GHz.",
+  "test_items": [],
+  "limits": {
+    "frequency_Hz": {
+      "min": 300000,
+      "max": 50000000000,
+      "note": "원문 300 kHz to 8.5/13.5/20 GHz, 10 MHz to 43.5/50 GHz"
+    },
+    "rf_port_count": {
+      "values": [
+        2,
+        4
+      ]
+    }
+  },
+  "models": [
+    {
+      "model": "N5239B",
+      "specs": {
+        "frequency_Hz": {
+          "min": 300000,
+          "max": 8500000000
+        },
+        "rf_port_count": 2
+      }
+    },
+    {
+      "model": "N5231B",
+      "specs": {
+        "frequency_Hz": {
+          "min": 300000,
+          "max": 13500000000
+        },
+        "rf_port_count": {
+          "values": [
+            2,
+            4
+          ]
+        }
+      }
+    },
+    {
+      "model": "N5232B",
+      "specs": {
+        "frequency_Hz": {
+          "min": 300000,
+          "max": 20000000000
+        },
+        "rf_port_count": {
+          "values": [
+            2,
+            4
+          ]
+        }
+      }
+    },
+    {
+      "model": "N5234B",
+      "specs": {
+        "frequency_Hz": {
+          "min": 10000000,
+          "max": 43500000000,
+          "note": "제품명에는 300 kHz Minimum frequency"
+        },
+        "rf_port_count": 2
+      }
+    },
+    {
+      "model": "N5235B",
+      "specs": {
+        "frequency_Hz": {
+          "min": 10000000,
+          "max": 50000000000
+        },
+        "rf_port_count": 2
+      }
+    }
+  ],
+  "features": [
+    "신호원 1개",
+    "멀티터치 화면",
+    "신호 무결성·재료 특성 측정 지원(N5232B 페이지)"
+  ],
+  "relations": [
+    {
+      "type": "same_family_as",
+      "target": "keysight-pna"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://www.keysight.com/us/en/product/N5239B/pna-l-microwave-network-analyzer-8-5-ghz.html",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지. 300 kHz to 8.5 GHz, 2포트, 신호원 1"
+    },
+    {
+      "url": "https://www.keysight.com/us/en/product/N5231B/pna-l-microwave-network-analyzer-13-5-ghz.html",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지. 300 kHz to 13.5 GHz, 2·4 포트, 신호원 1"
+    },
+    {
+      "url": "https://www.keysight.com/us/en/product/N5232B/pna-l-microwave-network-analyzer-20-ghz.html",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지. 300 kHz to 20 GHz, 2·4 포트, 신호원 1. N5231B·N5234B·N5235B·N5239B 언급"
+    },
+    {
+      "url": "https://www.keysight.com/us/en/product/N5234B/pna-l-microwave-network-analyzer-43-5-ghz.html",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지. 10 MHz to 43.5 GHz(제품명 300 kHz Minimum frequency), 2포트, 신호원 1"
+    },
+    {
+      "url": "https://www.keysight.com/us/en/product/N5235B/pna-l-microwave-network-analyzer-50-ghz.html",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지. 10 MHz to 50 GHz, 2포트, 신호원 1"
+    }
+  ],
+  "confidence": "limited",
+  "notes": "동적 범위·출력 전력은 기종 페이지에 없음."
+}

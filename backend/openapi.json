@@ -5473,6 +5473,199 @@
         }
       }
     },
+    "/api/equipment-models/gaps": {
+      "get": {
+        "tags": [
+          "catalog"
+        ],
+        "summary": "List Catalog Gaps",
+        "description": "**카탈로그 보강 목록** — 미연결 장비를 왜 미연결인지로 가른다. 시스템 관리자 전용.\n\n같은 기종 있음(`exact`) · 비슷한 기종 있음(`similar`) · 계열만 있음(`series_only`) ·\n카탈로그에 없음(`not_in_catalog`) · 모델명 없음(`no_model`) · 카탈로그 대상 아님\n(`excluded`, 관리자가 아니오 한 것). 묶는 열쇠는 기종 등록 요청과 같다.\n\n요약 · 분류별 표는 거르지 않고, 묶음 목록만 `case` · `category_term_id` · `q` 로 거른다.\n`/{model_id}` 보다 **먼저 선언한다.**",
+        "operationId": "list_catalog_gaps_api_equipment_models_gaps_get",
+        "parameters": [
+          {
+            "name": "case",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string",
+                  "pattern": "^(exact|similar|series_only|not_in_catalog|no_model|excluded)$"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Case"
+            }
+          },
+          {
+            "name": "category_term_id",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string",
+                  "format": "uuid"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Category Term Id"
+            }
+          },
+          {
+            "name": "q",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string",
+                  "maxLength": 200
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Q"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CatalogGapsOut"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/equipment-models/gaps/export": {
+      "get": {
+        "tags": [
+          "catalog"
+        ],
+        "summary": "Export Catalog Gaps",
+        "description": "보강 목록 전체(CSV) — **제조사 사양서 조사의 출발점.** 자산번호를 전부 싣는다.\n\n조사한 것은 카탈로그 정본(`source/catalog`)에 넣고 반입한다. 그다음 이 목록에서 연결한다.",
+        "operationId": "export_catalog_gaps_api_equipment_models_gaps_export_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/equipment-models/gaps/requests": {
+      "post": {
+        "tags": [
+          "catalog"
+        ],
+        "summary": "Request Catalog Gaps",
+        "description": "묶음들을 **기종 등록 요청으로 올린다.** 정하는 일은 기종 등록 요청 화면이 한다.\n\n모델명이 없는 묶음은 건너뛰고(`skipped`), 이미 열린 요청은 다시 안 만든다.",
+        "operationId": "request_catalog_gaps_api_equipment_models_gaps_requests_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CatalogGapRequestsRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "additionalProperties": true,
+                  "type": "object",
+                  "title": "Response Request Catalog Gaps Api Equipment Models Gaps Requests Post"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/equipment-models/gaps/resolve": {
+      "post": {
+        "tags": [
+          "catalog"
+        ],
+        "summary": "Resolve Catalog Gap",
+        "description": "한 묶음을 정한다 — 요청을 만든 뒤 바로 그 요청을 정한다(기종 등록 요청과 같은 규칙).\n\n`model_id` · `series_id`+`name` · `reject` 중 **하나만.** 정한 기종이 묶음의 장비 전부에\n걸리고, 막힌 줄은 `failed` 로 온다.",
+        "operationId": "resolve_catalog_gap_api_equipment_models_gaps_resolve_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CatalogGapResolveRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "additionalProperties": true,
+                  "type": "object",
+                  "title": "Response Resolve Catalog Gap Api Equipment Models Gaps Resolve Post"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/api/equipment-models/{model_id}": {
       "get": {
         "tags": [
@@ -13493,6 +13686,375 @@
         ],
         "title": "CatalogFilterOptionsOut",
         "description": "카탈로그 목록(계열·기종)의 열마다 고를 수 있는 값들.\n\n**목록에 실제로 있는 값만 준다.** 온톨로지 전체를 펼치면 제조사 축 수백 종 중\n79종만 카탈로그에 쓰이고, 나머지는 골라도 0 건인 선택지가 된다 — 한 번 겪으면\n사람은 거르기를 안 믿는다.\n\n계열과 기종이 한 모양을 쓴다. 두 목록이 거르는 축(제조사·분류)이 같은 것이라,\n모양을 갈라 두면 한쪽만 고쳐지는 날이 온다."
+      },
+      "CatalogGapCandidateOut": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Id"
+          },
+          "label": {
+            "type": "string",
+            "title": "Label"
+          },
+          "detail": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Detail"
+          },
+          "score": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Score"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "label"
+        ],
+        "title": "CatalogGapCandidateOut",
+        "description": "후보 기종 또는 후보 계열. **후보일 뿐이다** — 사람이 같은지 보고 고른다."
+      },
+      "CatalogGapCategoryOut": {
+        "properties": {
+          "category": {
+            "type": "string",
+            "title": "Category"
+          },
+          "category_term_id": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "uuid"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Category Term Id"
+          },
+          "in_catalog": {
+            "type": "boolean",
+            "title": "In Catalog"
+          },
+          "total": {
+            "type": "integer",
+            "title": "Total"
+          },
+          "by_case": {
+            "additionalProperties": {
+              "type": "integer"
+            },
+            "type": "object",
+            "title": "By Case"
+          }
+        },
+        "type": "object",
+        "required": [
+          "category",
+          "category_term_id",
+          "in_catalog",
+          "total",
+          "by_case"
+        ],
+        "title": "CatalogGapCategoryOut",
+        "description": "분류 하나의 미연결 대수를 경우별로."
+      },
+      "CatalogGapGroupOut": {
+        "properties": {
+          "key": {
+            "type": "string",
+            "title": "Key"
+          },
+          "case": {
+            "type": "string",
+            "title": "Case"
+          },
+          "case_label": {
+            "type": "string",
+            "title": "Case Label"
+          },
+          "maker_text": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Maker Text"
+          },
+          "model_text": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Model Text"
+          },
+          "maker_known": {
+            "type": "boolean",
+            "title": "Maker Known"
+          },
+          "count": {
+            "type": "integer",
+            "title": "Count"
+          },
+          "categories": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Categories"
+          },
+          "departments": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Departments"
+          },
+          "units": {
+            "items": {
+              "$ref": "#/components/schemas/CatalogGapUnitOut"
+            },
+            "type": "array",
+            "title": "Units"
+          },
+          "models": {
+            "items": {
+              "$ref": "#/components/schemas/CatalogGapCandidateOut"
+            },
+            "type": "array",
+            "title": "Models"
+          },
+          "series": {
+            "items": {
+              "$ref": "#/components/schemas/CatalogGapCandidateOut"
+            },
+            "type": "array",
+            "title": "Series"
+          },
+          "open_requests": {
+            "type": "integer",
+            "title": "Open Requests"
+          }
+        },
+        "type": "object",
+        "required": [
+          "key",
+          "case",
+          "case_label",
+          "maker_text",
+          "model_text",
+          "maker_known",
+          "count",
+          "categories",
+          "departments",
+          "units",
+          "models",
+          "series",
+          "open_requests"
+        ],
+        "title": "CatalogGapGroupOut",
+        "description": "같은 제조사 + 모델명 표기의 미연결 장비 묶음 — 기종 등록 요청과 **같은 열쇠**다."
+      },
+      "CatalogGapRequestsRequest": {
+        "properties": {
+          "keys": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "maxItems": 500,
+            "minItems": 1,
+            "title": "Keys"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "keys"
+        ],
+        "title": "CatalogGapRequestsRequest",
+        "description": "묶음들을 기종 등록 요청으로 올린다."
+      },
+      "CatalogGapResolveRequest": {
+        "properties": {
+          "key": {
+            "type": "string",
+            "maxLength": 400,
+            "minLength": 1,
+            "title": "Key"
+          },
+          "model_id": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "uuid"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Model Id"
+          },
+          "series_id": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "uuid"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Series Id"
+          },
+          "name": {
+            "anyOf": [
+              {
+                "type": "string",
+                "maxLength": 150,
+                "minLength": 1
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Name"
+          },
+          "reject": {
+            "type": "boolean",
+            "title": "Reject",
+            "default": false
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "key"
+        ],
+        "title": "CatalogGapResolveRequest",
+        "description": "한 묶음을 정한다 — 연결(`model_id`) · 계열에 세우기(`series_id`+`name`) ·\n아니오(`reject`). **셋 중 하나만**(기종 등록 요청 정하기와 같은 규칙)."
+      },
+      "CatalogGapUnitOut": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Id"
+          },
+          "asset_no": {
+            "type": "string",
+            "title": "Asset No"
+          },
+          "name": {
+            "type": "string",
+            "title": "Name"
+          },
+          "workspace": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Workspace"
+          },
+          "category": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Category"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "asset_no",
+          "name",
+          "workspace",
+          "category"
+        ],
+        "title": "CatalogGapUnitOut",
+        "description": "보강 목록 한 묶음에 든 장비 한 대."
+      },
+      "CatalogGapsOut": {
+        "properties": {
+          "units": {
+            "type": "integer",
+            "title": "Units"
+          },
+          "by_case": {
+            "additionalProperties": {
+              "type": "integer"
+            },
+            "type": "object",
+            "title": "By Case"
+          },
+          "case_labels": {
+            "additionalProperties": {
+              "type": "string"
+            },
+            "type": "object",
+            "title": "Case Labels"
+          },
+          "by_category": {
+            "items": {
+              "$ref": "#/components/schemas/CatalogGapCategoryOut"
+            },
+            "type": "array",
+            "title": "By Category"
+          },
+          "groups_total": {
+            "type": "integer",
+            "title": "Groups Total"
+          },
+          "groups": {
+            "items": {
+              "$ref": "#/components/schemas/CatalogGapGroupOut"
+            },
+            "type": "array",
+            "title": "Groups"
+          }
+        },
+        "type": "object",
+        "required": [
+          "units",
+          "by_case",
+          "case_labels",
+          "by_category",
+          "groups_total",
+          "groups"
+        ],
+        "title": "CatalogGapsOut",
+        "description": "카탈로그 보강 목록. 요약과 분류별 표는 **거르지 않은 전체**다."
       },
       "CatalogHit": {
         "properties": {

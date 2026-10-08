@@ -1,0 +1,66 @@
+{
+  "id": "helmut-fischer-dualscope-fmp100-h-fmp150",
+  "kind": "equipment_series",
+  "name": "Helmut Fischer DUALSCOPE FMP100 / DUALSCOPE H FMP150",
+  "name_ko": "헬무트 피셔 DUALSCOPE FMP100 · H FMP150 도막 두께계",
+  "manufacturer": "helmut-fischer",
+  "brand": "DUALSCOPE",
+  "category": "coating_surface_test",
+  "form_factor": "handheld",
+  "description": "품질 보증용 고급 휴대형 도막 두께계. DUALSCOPE FMP100 은 자기 유도법과 와전류법을 한 장비에 묶어 강 위 도막과 비철 금속 위 절연 도막을 장비를 바꾸지 않고 재고, H FMP150 은 여기에 자기법(magnetic method)을 더해 두꺼운 금속 도금 · 니켈층 · 듀플렉스 도막까지 다룬다. 프로브 · 기재 자동 인식, 터치스크린, 수천 개 측정값 저장, USB 전송, 소리 한계값 감시를 갖춘다. 측정 범위는 도막-기재 조합과 프로브에 따른다.",
+  "test_items": [
+    "coating_thickness"
+  ],
+  "measurands": [
+    "coating_thickness"
+  ],
+  "materials": [
+    "non-magnetic coatings on steel",
+    "insulating coatings on non-ferrous metals",
+    "duplex coatings",
+    "nickel layers"
+  ],
+  "models": [
+    {
+      "model": "DUALSCOPE FMP100",
+      "specs": {
+        "principle": "자기 유도법 + 와전류법"
+      }
+    },
+    {
+      "model": "DUALSCOPE H FMP150",
+      "specs": {
+        "principle": "자기 유도법 + 자기법 + 와전류법"
+      }
+    }
+  ],
+  "options": [
+    {
+      "name": "Fischer DataCenter IP",
+      "note": "검사 계획 소프트웨어(유료)"
+    }
+  ],
+  "relations": [
+    {
+      "type": "performs",
+      "target": "coating_thickness"
+    },
+    {
+      "type": "same_family_as",
+      "target": "helmut-fischer-dmp10-40-series"
+    },
+    {
+      "type": "same_family_as",
+      "target": "helmut-fischer-fischerscope-xray"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://www.helmut-fischer.com/products/tactile-measuring-devices/dualscope-fmp100-and-h-fmp150",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지. 측정 범위 수치는 '도막-기재 조합과 프로브에 따름' 으로만 적힘"
+    }
+  ],
+  "notes": "측정 범위 · 정확도 수치와 시험 규격이 페이지에 없다.",
+  "confidence": "limited"
+}

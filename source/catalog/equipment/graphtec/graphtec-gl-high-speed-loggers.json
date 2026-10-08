@@ -1,0 +1,67 @@
+{
+  "id": "graphtec-gl-high-speed-loggers",
+  "kind": "equipment_series",
+  "name": "Graphtec High-Speed Data Loggers GL980 / GL2000 / GL7000",
+  "name_ko": "그래프텍 고속 데이터 로거 GL980 · GL2000 · GL7000",
+  "manufacturer": "graphtec",
+  "category": "dmm_daq",
+  "description": "1 MS/s(1 μs) 고속 데이터 로거 계열. GL2000 은 4채널 일체형(전압·온도 고속 동시 측정), GL980 은 8채널 일체형(채널 간 절연), GL7000 은 모듈 최대 10개를 잇는 모듈형(2~112채널, 최대 2000채널 확장).",
+  "test_items": [],
+  "limits": {
+    "data_rate_Hz": {
+      "max": 1000000,
+      "note": "1 MS/s(1 μs)"
+    },
+    "channels": {
+      "min": 2,
+      "max": 2000,
+      "note": "GL7000 확장 시 최대 2000ch"
+    }
+  },
+  "models": [
+    {
+      "model": "GL2000",
+      "specs": {
+        "channels": 4,
+        "data_rate_Hz": 1000000
+      },
+      "note": "일체형, 전압·온도 고속 동시 측정"
+    },
+    {
+      "model": "GL980",
+      "specs": {
+        "channels": 8,
+        "data_rate_Hz": 1000000
+      },
+      "note": "일체형, 채널 간 절연"
+    },
+    {
+      "model": "GL7000",
+      "form_factor": "modular",
+      "specs": {
+        "channels": {
+          "min": 2,
+          "max": 112,
+          "note": "최대 2000ch 확장"
+        },
+        "data_rate_Hz": 1000000
+      },
+      "note": "모듈형, 모듈 최대 10개"
+    }
+  ],
+  "relations": [
+    {
+      "type": "same_family_as",
+      "target": "graphtec-midi-logger"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://graphteciwatsu.com/en/product/logger/",
+      "retrieved": "2026-10-08",
+      "note": "제조사(GRAPHTEC IWATSU Test Instruments) 데이터 로거 목록 페이지. GL2000 4ch 1 MS/s, GL980 8ch 1 MS/s, GL7000 2–112ch(expandable to 2000ch) 1 MS/s"
+    }
+  ],
+  "confidence": "limited",
+  "notes": "목록 페이지 값만 적음. 기종 상세 페이지는 열지 않음."
+}

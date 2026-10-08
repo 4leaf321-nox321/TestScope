@@ -1,0 +1,110 @@
+{
+  "id": "nikon-smz25-smz18",
+  "kind": "equipment_series",
+  "name": "Nikon SMZ25 / SMZ18 Research Stereo Microscopes",
+  "name_ko": "니콘 SMZ25·SMZ18 연구용 실체 현미경",
+  "manufacturer": "nikon",
+  "brand": "SMZ",
+  "category": "optical_microscope",
+  "subcategory": "stereo_microscope",
+  "form_factor": "benchtop",
+  "description": "줌에 따라 두 광축 간격을 바꾸는 Perfect Zoom System 의 연구용 실체 현미경. SMZ25 는 전동 줌 25:1(0.63–15.75X), 10X 접안 기준 총 배율 3.15–315X. SMZ18 은 수동 줌 18:1(0.75–13.5X), 3.75–270X. 대물렌즈 P2-SHR Plan Apo 0.5X·1X·1.6X·2X 공용. 명시야·에피 형광·간이 편광·암시야·경사 조명.",
+  "test_items": [
+    "microscopy"
+  ],
+  "limits": {
+    "zoom_ratio": {
+      "values": [
+        25,
+        18
+      ]
+    },
+    "magnification": {
+      "min": 3.15,
+      "max": 315,
+      "note": "10X 접안 기준, 대물렌즈에 따라 다름"
+    },
+    "working_distance_mm": {
+      "min": 20,
+      "max": 71,
+      "note": "대물렌즈 2X 20 mm ~ 0.5X 71 mm"
+    },
+    "field_of_view_mm": {
+      "max": 70,
+      "note": "최대 시야 SMZ25 70 mm, SMZ18 59 mm(SHR Plan Apo 0.5x, C-W10xB)"
+    },
+    "optical_resolution_lp_mm": {
+      "max": 1100,
+      "note": "SHR Plan Apo 2x 최대 줌에서 관측값 1100 LP/mm"
+    }
+  },
+  "models": [
+    {
+      "model": "SMZ25",
+      "specs": {
+        "zoom_ratio": 25,
+        "magnification": {
+          "min": 3.15,
+          "max": 315
+        },
+        "objectives": "P2-SHR Plan Apo 2X(NA 0.312, WD 20 mm), 1.6X(0.25, 30), 1X(0.156, 60), 0.5X(0.078, 71). 2X 는 물 깊이 0～3 mm 보정환 포함",
+        "observation_methods": "BF, epi-FL, 간이 편광, DF, 경사 조명",
+        "weight_kg": 32,
+        "field_of_view_mm": {
+          "max": 70,
+          "note": "SHR Plan Apo 0.5x, C-W10xB"
+        },
+        "optical_resolution_lp_mm": {
+          "max": 1100,
+          "note": "관측값, SHR Plan Apo 2x 최대 줌(15.75x)"
+        }
+      },
+      "note": "전동 줌 0.63–15.75X. P2-MFU 전동 초점 유닛(위 96 mm/아래 4 mm). 무게는 전동 부속 포함. 소비 전력 약 30 W(전동 형광 구성)"
+    },
+    {
+      "model": "SMZ18",
+      "specs": {
+        "zoom_ratio": 18,
+        "magnification": {
+          "min": 3.75,
+          "max": 270
+        },
+        "objectives": "P2-SHR Plan Apo 2X(NA 0.3, WD 20 mm), 1.6X(0.24, 30), 1X(0.15, 60), 0.5X(0.075, 71). 2X 는 물 깊이 0～3 mm 보정환 포함",
+        "observation_methods": "BF, epi-FL, 간이 편광, DF, 경사 조명",
+        "weight_kg": 30,
+        "field_of_view_mm": {
+          "max": 59,
+          "note": "SHR Plan Apo 0.5x, C-W10xB"
+        }
+      },
+      "note": "수동 줌 0.75–13.5X. P2-FU 초점 유닛(위 97 mm/아래 5 mm). 클릭 정지 0.75/1/2/3/4/5/6/8/10/12/13.5x. 소비 전력 약 10 W(형광 구성)"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://www.microscope.healthcare.nikon.com/en_EU/products/stereomicroscopes-macroscopes/smz25-smz18/specifications",
+      "retrieved": "2026-10-08",
+      "note": "제조사 사양 페이지(HTML, Nikon 헬스케어 현미경 사이트)"
+    },
+    {
+      "file": "nikon/stereomicroscope_smz25-18_2ce-mpgh-10.pdf",
+      "pages": [
+        2,
+        3,
+        6,
+        7
+      ],
+      "note": "SMZ25/18 브로슈어 2CE-MPGH-10(2024-10) — 요약 표, 분해능, 대물렌즈, 사양 표"
+    },
+    {
+      "file": "nikon/stereo-microscopes-en.pdf",
+      "pages": [
+        3,
+        13
+      ],
+      "note": "Nikon 실체 현미경 종합 카탈로그(2021-12) — SMZ25/18 요약 표·사양"
+    }
+  ],
+  "confidence": "catalog",
+  "notes": "PDF 로 확인: 줌 비·줌 범위·총 배율·대물렌즈 NA/WD·관찰법·초점 유닛·무게. 최대 시야(70 / 59 mm)와 분해능 1100 LP/mm(관측값) 더함 — 이전에는 사양 페이지에 분해능이 없어 비웠음."
+}

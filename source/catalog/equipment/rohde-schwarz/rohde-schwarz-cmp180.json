@@ -1,0 +1,105 @@
+{
+  "id": "rohde-schwarz-cmp180",
+  "kind": "equipment_series",
+  "name": "R&S CMP180 Radio Communication Tester",
+  "name_ko": "로데슈바르츠 CMP180 무선통신 테스터",
+  "manufacturer": "rohde-schwarz",
+  "brand": "CMP",
+  "category": "radio_communication_tester",
+  "form_factor": "rack",
+  "description": "Wi-Fi 6E·Wi-Fi 7·Wi-Fi 8·5G NR FR1 기기를 개발·검증·생산에서 시험하는 VSA/VSG 단일 박스 테스터. 주파수 최대 8 GHz, 대역폭 최대 500 MHz 이고, 독립 RF 채널 최대 2개(2x VSA/2x VSG)와 RF 포트 2x8 을 갖춘다. NR FR1·WLAN 고차 true MIMO, OTA 측정용 고출력, 자체 정렬(self-alignment)을 지원한다. 19인치 2 RU 크기다. CMP180 두 대를 묶은 CMPflexx 는 4x VSA·4x VSG·4x8 RF 포트가 된다.",
+  "test_items": [],
+  "limits": {
+    "frequency_Hz": {
+      "max": 8000000000,
+      "note": "원문 RF frequency up to 8 GHz(브로슈어·제품 페이지). 하한은 둘 다 적지 않는다"
+    },
+    "bandwidth_Hz": {
+      "max": 500000000,
+      "note": "원문 up to 500 MHz bandwidth(브로슈어·제품 페이지)"
+    },
+    "channels": {
+      "max": 2,
+      "note": "독립 RF 채널 2개(분석기 2·발생기 2, 2 HU 19\" 에 채널당 1 HU). CMPflexx(2대 결합) 시 분석기 4·발생기 4"
+    },
+    "rf_port_count": {
+      "max": 16,
+      "note": "브로슈어: 채널마다 RF 포트 8개, 합계 16. CMPflexx(2대 결합) 시 4x8"
+    },
+    "radio_standards": {
+      "values": [
+        "Wi-Fi 6E (802.11ax)",
+        "Wi-Fi 7 (802.11be)",
+        "Wi-Fi 8 (802.11bn)",
+        "5G NR FR1",
+        "LTE-A",
+        "WCDMA/HSPA+",
+        "GSM/GPRS/EGPRS",
+        "eMTC",
+        "NB-IoT",
+        "C-V2X",
+        "CDMA2000 1xRTT",
+        "WLAN IEEE 802.11a/b/g/n/ac/ax/be",
+        "Bluetooth BR/EDR/LE",
+        "LP-IoT",
+        "IEEE 802.15.4 (Zigbee)",
+        "LoRa",
+        "SigFox",
+        "GNSS"
+      ],
+      "note": "Wi-Fi 6E/7/8·5G NR FR1 은 제품 페이지 문구, 나머지는 브로슈어(2023) 기술 표. Wi-Fi 8 은 브로슈어에 없고 제품 페이지에만 있다"
+    }
+  },
+  "models": [
+    {
+      "model": "CMP180",
+      "specs": {
+        "frequency_Hz": {
+          "max": 8000000000
+        },
+        "bandwidth_Hz": 500000000,
+        "channels": 2,
+        "rf_port_count": 16,
+        "radio_standards": "Wi-Fi 6E, Wi-Fi 7, Wi-Fi 8, 5G NR FR1"
+      },
+      "note": "rf_ports 16 은 페이지의 2x8 을 합친 값"
+    }
+  ],
+  "features": [
+    "2x VSA·2x VSG·RF 포트 2x8 단일 박스",
+    "NR FR1·WLAN 고차 true MIMO",
+    "OTA 측정용 고출력",
+    "자체 정렬(self-alignment)",
+    "EVM 성능(원문 Class-leading EVM performance)",
+    "CMPflexx 로 2대 결합"
+  ],
+  "relations": [
+    {
+      "type": "same_family_as",
+      "target": "rohde-schwarz-cmp200"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://www.rohde-schwarz.com/us/products/test-and-measurement/wireless-tester-rf-analyzer-generator/cmp180-radio-communication-tester_63493-1081280.html",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지. Key facts(8 GHz, 500 MHz, 2x VSA/VSG, 2x8 포트, 2 RU 19인치)"
+    },
+    {
+      "url": "https://www.rohde-schwarz.com/us/products/test-and-measurement/wireless-tester-rf-analyzer-generator_255191.html",
+      "retrieved": "2026-10-08",
+      "note": "제조사 RF 분석기·발생기 목록 페이지. 같은 수치 재확인"
+    },
+    {
+      "file": "rohde-schwarz/cmp180_bro_en_3609-7348-12_v0500.pdf",
+      "pages": [
+        2,
+        3,
+        4
+      ],
+      "note": "제조사 브로슈어(v05.00, 2023). Key facts(8 GHz, 500 MHz, VSA·VSG 2개, RF 포트 2x8, 2 HU 19\"), CMPflexx, 지원 기술 표"
+    }
+  ],
+  "confidence": "catalog",
+  "notes": "PDF 로 확인: 주파수 상한 8 GHz, 대역폭 500 MHz, 분석기·발생기 2개, RF 포트 16, 2 HU 19\", CMPflexx 구성, 지원 기술. 출력 레벨 범위·주파수 하한은 브로슈어에도 없다. form_factor 는 「2 HU × 19\"」 로 rack 을 골랐다."
+}

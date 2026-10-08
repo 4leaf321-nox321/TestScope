@@ -529,7 +529,7 @@ CATALOG_SPEC_DEFINITIONS: list[
         "range",
         "temperature_rate",
         "K/min",
-        None,
+        "ramp_rate",
         "max",
         120,
         None,

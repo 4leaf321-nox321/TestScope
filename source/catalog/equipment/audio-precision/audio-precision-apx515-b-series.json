@@ -1,0 +1,93 @@
+{
+  "id": "audio-precision-apx515-b-series",
+  "kind": "equipment_model",
+  "name": "Audio Precision APx515 B Series Audio Analyzer",
+  "name_ko": "오디오프리시전 APx515 B 오디오 분석기",
+  "manufacturer": "audio-precision",
+  "brand": "APx",
+  "category": "audio_analyzer",
+  "form_factor": "benchtop",
+  "description": "생산 시험과 입문급 연구개발용 오디오 분석기. 생성기 정현 2.0 Hz~80.1 kHz, 평형 최대 16.00 Vrms, 주파수 정확도 3 ppm. 잔류 THD+N 은 20 kHz 대역에서 –102 dB + 2.0 µV(1 kHz 전형 <–106 dB), 분석기 대역 >90 kHz, 잔류 입력 잡음 1.4 µV, 최대 FFT 1024K 점, 최대 입력 125 Vpk. AES3 XLR·S/PDIF BNC·TOSLINK 디지털 입출력을 기본으로 갖춘다.",
+  "test_items": [
+    "audio_performance"
+  ],
+  "measurands": [
+    "thd_n",
+    "frequency_response",
+    "snr"
+  ],
+  "limits": {
+    "frequency_Hz": {
+      "min": 2,
+      "max": 80100,
+      "note": "생성기 정현 주파수 범위"
+    },
+    "analog_output_voltage_Vrms": {
+      "max": 16.0,
+      "note": "평형 최대 진폭"
+    },
+    "residual_thd_n_dB": {
+      "max": -102,
+      "note": "20 kHz BW, –102 dB + 2.0 µV. 1 kHz 전형 <–106 dB"
+    },
+    "bandwidth_Hz": {
+      "min": 90000,
+      "note": "원문 >90 kHz"
+    },
+    "residual_noise_uV": {
+      "max": 1.4,
+      "note": "20 kHz BW"
+    },
+    "digital_sample_rate_Hz": {
+      "min": 27000,
+      "max": 200000,
+      "note": "출력 27~200 kS/s, 광 27~108 kS/s"
+    }
+  },
+  "models": [
+    {
+      "model": "APx515 B Series",
+      "specs": {
+        "frequency_Hz": {
+          "min": 2,
+          "max": 80100
+        },
+        "analog_output_voltage_Vrms": 16.0,
+        "residual_thd_n_dB": -102,
+        "residual_noise_uV": 1.4,
+        "interfaces": "AES3/AES-EBU 평형 XLR, S/PDIF 불평형 BNC, TOSLINK 광"
+      },
+      "note": "페이지 표기 APx515B Series. 평탄도 ±0.010 dB(5 Hz~20 kHz)"
+    }
+  ],
+  "features": [
+    "최대 FFT 1024K 점",
+    "최대 정격 입력 125 Vpk",
+    "평탄도 ±0.010 dB (5 Hz~20 kHz)"
+  ],
+  "options": [
+    "ASIO 인터페이스",
+    "음향 응답(acoustic response)",
+    "고속 시험(high-speed test)",
+    "고급 측정 라이브러리"
+  ],
+  "relations": [
+    {
+      "type": "performs",
+      "target": "audio_performance"
+    },
+    {
+      "type": "same_family_as",
+      "target": "audio-precision-apx52x-b-series"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://www.audioprecision.com/analyzers-accessories/apx515",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지. 생성기·분석기·디지털 입출력 사양"
+    }
+  ],
+  "confidence": "limited",
+  "notes": "아날로그 채널 수는 페이지 요약에서 확인하지 못했다."
+}

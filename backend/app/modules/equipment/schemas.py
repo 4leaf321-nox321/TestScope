@@ -1222,3 +1222,88 @@ class EquipmentModelProposalDecision(Request):
     """**아니라고 한다**(자작 장비처럼 카탈로그에 올릴 것이 아님). 전에는 `model_id` 도
     `series_id` 도 안 보내면 「아니오」 로 읽었는데, 그러면 인자를 빠뜨린 호출이 조용히 요청을
     닫는다 — 요청한 부서는 왜 거절됐는지 모른다. 이제 말해야 닫힌다."""
+
+
+class CatalogGapUnitOut(BaseModel):
+    """보강 목록 한 묶음에 든 장비 한 대."""
+
+    id: uuid.UUID
+    asset_no: str
+    name: str
+    workspace: str | None
+    category: str | None
+    """「상위 > 하위」 분류 경로."""
+
+
+class CatalogGapCandidateOut(BaseModel):
+    """후보 기종 또는 후보 계열. **후보일 뿐이다** — 사람이 같은지 보고 고른다."""
+
+    id: uuid.UUID
+    label: str
+    detail: str | None = None
+    """기종이면 계열 이름, 계열이면 제조사."""
+    score: float | None = None
+    """이름의 닮음(0~1). 1 이면 같은 이름이다. 계열 후보에는 없다."""
+
+
+class CatalogGapGroupOut(BaseModel):
+    """같은 제조사 + 모델명 표기의 미연결 장비 묶음 — 기종 등록 요청과 **같은 열쇠**다."""
+
+    key: str
+    """묶음 열쇠. 모델명이 있으면 기종 요청의 `normalized` 와 같다."""
+    case: str
+    """`exact` · `similar` · `series_only` · `not_in_catalog` · `no_model` · `excluded`."""
+    case_label: str
+    maker_text: str | None
+    model_text: str | None
+    maker_known: bool
+    """제조사 표기를 카탈로그 제조사로 알아봤나. 모르면 제조사부터 정본에 없다."""
+    count: int
+    categories: list[str]
+    departments: list[str]
+    units: list[CatalogGapUnitOut]
+    """서른 대까지. 전부는 CSV 에 있다."""
+    models: list[CatalogGapCandidateOut]
+    series: list[CatalogGapCandidateOut]
+    open_requests: int
+    """이미 기종 등록 요청이 열린 장비 수."""
+
+
+class CatalogGapCategoryOut(BaseModel):
+    """분류 하나의 미연결 대수를 경우별로."""
+
+    category: str
+    category_term_id: uuid.UUID | None
+    in_catalog: bool
+    """카탈로그 정본에 있는 분류인가. **아니면 분류부터 정본에 없다** — 운영에서 손으로 세운
+    분류에는 정본의 객체가 하나도 못 붙으니, 기종을 찾기 전에 분류를 정본에 넣어야 한다."""
+    total: int
+    by_case: dict[str, int]
+
+
+class CatalogGapsOut(BaseModel):
+    """카탈로그 보강 목록. 요약과 분류별 표는 **거르지 않은 전체**다."""
+
+    units: int
+    by_case: dict[str, int]
+    case_labels: dict[str, str]
+    by_category: list[CatalogGapCategoryOut]
+    groups_total: int
+    groups: list[CatalogGapGroupOut]
+
+
+class CatalogGapRequestsRequest(Request):
+    """묶음들을 기종 등록 요청으로 올린다."""
+
+    keys: list[str] = Field(min_length=1, max_length=500)
+
+
+class CatalogGapResolveRequest(Request):
+    """한 묶음을 정한다 — 연결(`model_id`) · 계열에 세우기(`series_id`+`name`) ·
+    아니오(`reject`). **셋 중 하나만**(기종 등록 요청 정하기와 같은 규칙)."""
+
+    key: str = Field(min_length=1, max_length=400)
+    model_id: uuid.UUID | None = None
+    series_id: uuid.UUID | None = None
+    name: str | None = Field(default=None, min_length=1, max_length=150)
+    reject: bool = False

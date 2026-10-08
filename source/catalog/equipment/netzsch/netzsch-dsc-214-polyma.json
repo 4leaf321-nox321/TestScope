@@ -1,0 +1,85 @@
+{
+  "id": "netzsch-dsc-214-polyma",
+  "kind": "equipment_series",
+  "name": "NETZSCH DSC 214 Polyma Differential Scanning Calorimeter",
+  "name_ko": "네취 DSC 214 Polyma 시차주사열량계",
+  "manufacturer": "netzsch",
+  "category": "dsc",
+  "description": "고분자용 DSC. -170~600 °C. 제조사 사이트에서 단종(legacy) 제품 목록에 있다.",
+  "test_items": [
+    "dsc"
+  ],
+  "measurands": [
+    "thermal.glass_transition",
+    "thermal.melting_point",
+    "thermal.specific_heat",
+    "thermal.latent_heat_fusion"
+  ],
+  "measurands_by_item": {
+    "dsc": [
+      "thermal.glass_transition",
+      "thermal.melting_point",
+      "thermal.specific_heat",
+      "thermal.latent_heat_fusion"
+    ]
+  },
+  "limits": {
+    "temperature_degC": {
+      "min": -170,
+      "max": 600,
+      "note": "냉각 장치에 따라: 압축공기 RT~600 °C, IC40 -40~600 °C, IC70 -70~600 °C, LN2 자동 제어 -170~600 °C"
+    },
+    "heating_rate_K_min": {
+      "min": 0.001,
+      "max": 500,
+      "note": "승·냉각 0.001~500 K/min, 최대 속도는 온도에 따라"
+    }
+  },
+  "models": [
+    {
+      "model": "DSC 214 Polyma",
+      "specs": {
+        "temperature_degC": {
+          "min": -170,
+          "max": 600,
+          "note": "냉각 장치에 따라: 압축공기 RT~600 °C, IC40 -40~600 °C, IC70 -70~600 °C, LN2 자동 제어 -170~600 °C"
+        },
+        "heating_rate_K_min": {
+          "min": 0.001,
+          "max": 500,
+          "note": "승·냉각 0.001~500 K/min, 최대 속도는 온도에 따라"
+        },
+        "cooling_rate_K_min": {
+          "max": 500,
+          "note": "최대 속도는 온도에 따라"
+        },
+        "heat_flow_resolution_uW": {
+          "value": 0.1,
+          "note": "Resolution(technical) 0.1 µW"
+        }
+      },
+      "note": "인듐 응답비 >100 mW/K(10 mg, 10 K/min, 질소 기준), 엔탈피 정밀도 인듐 ±0.1 %·대부분 시료 ±0.05~0.2 %. 비열·온도 변조 선택, 가스 3종 전환 내장(MFC 3종 선택), 자동 시료기(ASC) 최대 20 시료·기준(선택)"
+    }
+  ],
+  "relations": [
+    {
+      "type": "same_family_as",
+      "target": "netzsch-dsc-300-caliris"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://analyzing-testing.netzsch.com/en/footer/legacy-products/dsc-214-polyma",
+      "retrieved": "2026-10-08",
+      "note": "제조사 페이지가 자동 조회를 막아(HTTP 403/406) 직접 열지 못함. 값은 웹 검색 엔진이 이 페이지에서 뽑은 발췌로만 확인했다 — 값마다 uncertain. -170~600 °C. 주소가 legacy-products 아래에 있다"
+    },
+    {
+      "file": "netzsch/key_technical_data_en_dsc_214_polyma.pdf",
+      "pages": [
+        1
+      ]
+    }
+  ],
+  "confidence": "catalog",
+  "notes": "PDF 로 확인: 온도 범위(웹 발췌와 같음)·승냉각 속도·분해능·엔탈피 정밀도·냉각 장치별 범위(기술 사양서 1쪽, NGB 0422)."
+}

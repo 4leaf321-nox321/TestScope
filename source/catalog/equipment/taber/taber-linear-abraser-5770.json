@@ -1,0 +1,81 @@
+{
+  "id": "taber-linear-abraser-5770",
+  "kind": "equipment_model",
+  "name": "Taber Linear Abraser Model 5770",
+  "name_ko": "테이버 리니어 마모시험기 5770",
+  "manufacturer": "taber",
+  "category": "abrasion_tester",
+  "form_factor": "benchtop",
+  "description": "수평 왕복 암 끝의 자유 부동(free-floating) 공구(Wearaser 등)로 크고 작은 · 곡면 제품을 직접 문지르는 직선 왕복 마모 시험기. 속도 2~75 cycles/min(프리셋 8단), 행정 0.2~4.0 in 중 11단, 기본 하중 350 g · 최대 약 2,100 g(경량 부속으로 60 g 까지), 최대 50,000 사이클 프로그램, 습식 · 건식 시험을 한다.",
+  "test_items": [
+    "abrasion"
+  ],
+  "measurands": [
+    "cycles_to_failure",
+    "mass_loss"
+  ],
+  "materials": [
+    "coatings",
+    "printed surfaces",
+    "plastics",
+    "displays"
+  ],
+  "limits": {
+    "cycle_rate_cpm": {
+      "min": 2,
+      "max": 75
+    },
+    "stroke_mm": {
+      "min": 5.08,
+      "max": 101.6,
+      "note": "원문 0.2~4.0 in, 11단"
+    },
+    "load_g": {
+      "min": 60,
+      "max": 2100,
+      "note": "기본 350 g, 최대 약 2,100 g, 선택 경량 부속으로 60 g"
+    }
+  },
+  "models": [
+    {
+      "model": "5770",
+      "specs": {
+        "cycle_rate_cpm": {
+          "min": 2,
+          "max": 75,
+          "note": "프리셋 8단"
+        },
+        "stroke_mm": {
+          "min": 5.08,
+          "max": 101.6,
+          "note": "원문 0.2~4.0 in, 11단"
+        },
+        "load_g": {
+          "min": 60,
+          "max": 2100,
+          "note": "기본 350 g"
+        }
+      },
+      "note": "구성품: Wearaser 콜릿, 250 g 추 3개, CS-10 · H-18 Wearaser, 레이저 정렬 가이드; 최대 사이클: 50000"
+    }
+  ],
+  "relations": [
+    {
+      "type": "performs",
+      "target": "abrasion"
+    },
+    {
+      "type": "same_family_as",
+      "target": "taber-reciprocating-abraser-5900"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://www.taberindustries.com/linear-abraser",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지(Model 5770)"
+    }
+  ],
+  "notes": "이전 기종 5750 은 현행 페이지에 없어 넣지 않았다. 시험 규격 목록은 페이지 요약에 나오지 않았다.",
+  "confidence": "limited"
+}

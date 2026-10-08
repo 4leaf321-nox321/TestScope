@@ -252,6 +252,151 @@ Bareiss 4 · Testometric 3 · Anton Paar 3 · EMCO-TEST 2 · Taber·Micromeritic
 - 검토함에는 올리지 않았다. 부속 객체는 값이 아니라 **연결(어느 계열에 붙나)** 이 판단거리인데, 그 판단은
   `relations[].note` 로 드러나 있으니 정본을 고치는 쪽이 낫다.
 
+**15차 — 빈 장비 분류 셋 (2026-10-08).** 시험 항목은 있는데 장비가 하나도 없던 셋을 채웠다:
+저기압·고도 챔버 4 객체(Thermotron FA · ESPEC EV · Weiss SkyEvent · CSZ CA), 방수(IPX) 시험 설비
+6 객체(iTS SPK · iTS 실내형 · iTS 침수조 · LIB IPX9K · Weiss WaterEvent · ESPEC ER), 부품 반복 동작
+수명 시험기 5 객체(YUASA 폴딩 · 면판 굽힘 · 푸시/삽발, Aikoh SR 스위치 · CBL 코드 굽힘). 기종 66.
+
+- **전부 `confidence: limited` 이고 출처가 `url` 이다.** 제조사 제품 페이지에서 읽었고, 일부 값은
+  제조사 사양도 PDF 에서 읽었지만 그 PDF 는 아직 `pdf/` 에 없다 — 출처 `note` 에 「원본 PDF 는
+  저장소에 아직 없음(내려받아 대조 필요)」 로 적었다. 내려받아 `sources[].file` 을 달면 `catalog`
+  로 올린다. 받을 PDF 목록은 `pending_pdfs.json`(제조사 URL · 저장할 이름 · 인용한 객체)이다.
+- 제조사 넷을 더했다: `its-gmbh` · `lib-industry` · `yuasa-system` · `aikoh`(101 -> 105).
+- 조건 키 18 종(측정)과 17 종(서술)을 등록했다. `chamber_pressure_kPa` · `altitude_m` 은 TestScope
+  기압 · 고도 축에 이어진다(`SPEC_DEFINITION_LINKS`). `flow_rate_L_min` 은 기존 정의 `flow_rate`(글)와
+  이름이 겹쳐 `spray_flow_L_min` 으로, `turntable_rpm` 은 단위 꼬리를 떼면 `turntable` 만 남아
+  `turntable_speed_rpm` 으로 이름을 바꿨다. `ipx_levels` 는 글 한 줄로 적는다 — 목록이나
+  `{values}` 로 두면 반입이 수치 구간으로 읽는다.
+- 같은 규격의 지역판 표기(`DIN EN 60529` · `EN 60068-2-18`)는 국제판으로 모았다 — 반입이 다른
+  시험법으로 세우지 않게.
+- **반입이 통째로 죽고 있었다.** 규격의 시험 항목이 표(`TestMethodItem`, 2026-09-24)로 바뀐 뒤에도
+  `catalog_import/methods.py` · `series.py` 가 옛 칸 `test_methods.test_item_term_id` 를 보고 있어서,
+  시험법이 하나라도 있는 DB 에서는 `AttributeError` 로 멈췄다. 표를 보게 고쳤고 시험을 달았다
+  (`test_catalog_import_keeps_edits.py`).
+- 아직 빈 곳: 커넥터 삽발 전용(하중 측정 + 횟수) 시험기는 사양표를 공개한 제조사를 못 찾았다.
+  ESPEC 고도 챔버는 압력값 없이 고도(ft)만 있어 기압 조건에는 「모름」 으로 답한다.
+
+**16차 — 운영 미연결 장비의 분류 (2026-10-08).** 운영 TestScope 에서 카탈로그에 안 이어진 장비가
+분류마다 남았다(사용자 보고: 전자계측 · 광학 · 재료 분석 · 치수 측정 · 환경 · EMC · 부속 · 기계
+재료 · 음향 · 진동 · 부품 검사 · 마모 · 도막). 그중 **정본에 분류부터 없던 것** 13 개를 더했다
+(125 -> 138). 운영에서 손으로 만든 분류라, 그 이름의 다른 표기를 `aliases` 로 적었다 — 반입이
+코드 · 이름으로 못 찾으면 별칭으로 찾아 **운영의 그 값에 코드를 붙인다**(같은 분류가 두 줄로 서지
+않게, `catalog_import/terms.py`).
+
+| 분류 id | 이름 | 상위 |
+|---|---|---|
+| `electronic_measurement` | 전자계측장비 | (최상위) |
+| `radio_communication_tester` · `signal_generator` · `network_lcr_analyzer` · `dmm_daq` · `oscilloscope` | 무선통신 테스터 · 신호발생기 · VNA/LCR · DMM/DAQ · 오실로스코프 | 전자계측장비 |
+| `dimensional_metrology` | 치수·형상 측정장비 | (최상위) |
+| `coordinate_measuring_machine` · `thickness_displacement_gauge` | 3차원 측정기 · 두께·변위 측정기 | 치수·형상 측정장비 |
+| `high_speed_swir_camera` | 고속·SWIR 카메라 | 광학·디스플레이 측정장비 |
+| `optical_microscope` | 광학 현미경 | 재료 분석 장비 |
+| `dic_strain_measurement` · `force_pressure_sensor` | 스트레인 DIC · 힘·압력 센서 | 부속 장치 |
+
+- **운영의 분류 이름을 정확히 모른 채 적었다**(사용자 보고의 표기 기준). 운영 화면 「카탈로그
+  보강」 의 분류별 현황에서 「정본에 분류 없음」 으로 남는 분류가 있으면, 그 이름을 해당 분류의
+  `aliases` 에 더하고 다시 반입한다. 그 표시가 없어지면 맞춰진 것이다.
+- 이 분류들의 장비 객체는 17차에서 채웠다. 그 뒤에 남는 미연결은 아래 「보강 목록에서 시작하기」
+  순서로 채운다.
+
+**17차 — 운영 미연결 장비 종류 전반 (2026-10-08).** 운영 장비의 모델명을 알 수 없어(운영 CSV 를
+받을 수 없음), 사용자가 말한 장비 종류마다 **국내 기업 연구소에서 흔히 쓰는 제조사의 대표 계열**을
+제조사 웹 사양으로 넓게 채웠다. 계열 안 기종은 대장에 적히는 기종명 그대로 가능한 한 전부 적었다.
+**473 객체 · 기종 2,247**(461 -> 934 객체).
+
+| 묶음 | 객체 | 분류 |
+|---|---|---|
+| 무선통신 테스터 · 신호발생기 | 43 | `radio_communication_tester` · `signal_generator` |
+| VNA · LCR · DMM · DAQ | 45 | `network_lcr_analyzer` · `dmm_daq` |
+| 오실로스코프 | 55 | `oscilloscope` |
+| 고속 · SWIR 카메라 · 색채휘도계 · 분광복사계 · 열화상 | 54 | `high_speed_swir_camera` · `display_color_analyzer` · `imaging_colorimeter` · `spectroradiometer` · `thermal_imager` |
+| 4점 탐침 · 현미경 · DIC · 힘/압력 | 52 | `electrical_property_tester` · `optical_microscope` · `optical_profilometer` · `dic_strain_measurement` · `force_pressure_sensor` · `force_tester` |
+| 3차원 측정기 · 두께/변위 | 29 | `coordinate_measuring_machine` · `thickness_displacement_gauge` |
+| 항온항습 · 열충격 · 내후성 · ESD · 차폐실 | 35 | `climatic_chamber` · `thermal_shock_chamber` · `weathering_tester` · `esd_simulator` · `shielded_enclosure` |
+| 피로 · 열분석 · 만능시험기 | 57 | 피로 · 열분석 · UTM 하위 분류 |
+| 음향 · 진동 · 충격 · 낙하 | 59 | `audio_analyzer` · `head_torso_simulator` · `acoustic_measurement` · `vibration_shaker` · `shock_test_machine` · `drop_tester` · `mechanical_dynamics` |
+| X-ray · 본드 · SAM · 솔더링성 · 마찰/마모 · 도막 | 44 | `electronics_inspection` · `tribology` · `coating_surface_test` 하위 분류 |
+
+- **전부 `confidence: limited`, 출처는 제조사 HTML 페이지(조회 2026-10-08).** PDF 는 하나도 받지 않았다
+  — PDF 에만 있는 값은 비우고 그 주소를 `pending_pdfs.json` 에 더했다(275 건). 제조사 사이트가 자동
+  조회를 막아(403 · 406 · 429) **검색 엔진 발췌로만 읽은 값**은 값마다 `uncertain: true` 다: Phantom ·
+  InfraTec · testo · HBM, Mettler Toledo · TA · Netzsch · Instron 의 18 객체. 대리점 페이지를 쓴 곳은
+  출처 `note` 에 적었다(CRYSTA-Plus M · Jandel · BINDER KMF · Haefely ONYX 16 · 3ctest · Keysight
+  구세대 오실로스코프 기종 목록 · Rigol 미국 법인).
+- 기존 계열에 기종명을 보태는 `supplements` 객체가 있다: ESPEC SU/SH 벤치탑, Thermotron SE-S, Lansmont
+  충격 · 낙하, ZwickRoell Vibrophore, Instron 8800, TA Discovery DSC — 기존 객체가 기종을 계열 한
+  줄로만 적어 대장의 「SH-242」 같은 기종명에 안 이어지던 것이다.
+- 제조사 84 를 더했다(105 -> 189). 대장에 남는 옛 사명 · 약칭은 `manufacturers.json` 의 `aliases` 에
+  적었다(Olympus -> `evident`, Topcon -> `techno-optis`, Phantom -> `vision-research`, Mitsubishi
+  Chemical -> `nittoseiko-analytech`, R&S, B&K, LeCroy …). **반입이 제조사의 `name` · `name_ko` ·
+  `aliases` 를 별칭으로 넣는다**(`catalog_import/terms.py` 의 `step_maker_aliases`) — 그전에는 제조사
+  값이 원본 id(`konica-minolta`)뿐이라 대장의 「Konica Minolta」 「코니카미놀타」 가 이름으로 안 맞았다.
+  다른 제조사의 값과 같은 이름은 넣지 않는다(「Agilent」 는 따로 서 있다 — 옛 Agilent 계측기는 카탈로그
+  보강 목록이 다른 제조사의 같은 기종 번호로 찾아 「비슷한 기종」 후보로 보여 준다).
+- 사양 키 77 종을 등록했다. 묶음끼리 같은 뜻은 한 키로 맞췄고(`rf_output_level_dBm` · `rf_port_count`
+  · `adc_resolution_bit` · `sample_rate_Sa_s` …), 정의 이름이 기존 정의와 겹치는 것은 새 이름으로
+  바꿨다(`resolution_bits` -> `dac_resolution_bit`, `repeatability_um` -> `measuring_repeatability_um`,
+  `sensitivity_mV_Pa` -> `mic_sensitivity_mV_Pa`, `scan_rate_ch_s` -> `channel_scan_rate_ch_s` 등). 그동안
+  등록 없이 쓰이던 키 일부가 함께 등록되어 미등재 기준선이 918 -> 903 으로 내려갔다.
+- 계측기(오실로스코프 · 신호발생기 · VNA · DMM 등)는 `test_items: []` 다. 시험 항목 축이 신뢰성 시험의
+  목록이라 맞는 항목이 없다 — 억지로 붙이지 않았다.
+- **못 채운 곳**: Hexagon CMM · B&K(HBK) 소음계 · LDS 가진기 · m+p · Nordson DAGE 4000 계열은 사이트가
+  자동 조회를 막았다. FARO · Mitutoyo STRATO-Apex · Shimadzu TMA-60/TGA-50 은 사양이 PDF 에만 있다.
+  한국 제조사(대경테크 UTM · 유니텍 · R&B · 항온항습 제조사들)는 공개 사양 페이지를 못 찾았다(제이오텍만
+  넣었다). 차폐실은 dB 와 주파수가 함께 공개된 Albatross 하나뿐이다.
+- 값이 페이지끼리 엇갈린 곳은 두 값을 `note` 에 남기고 `uncertain` 을 달았다(SMBV100B 최대 출력,
+  Vibrophore 1000 kN 주파수, Photron SA-X2 프레임 속도, testo 872s 해상도 등). PDF 를 받으면 그것으로 정한다.
+
+**17차 이어서 — 사양서 PDF 대조 (2026-10-08).** 15 · 17차에서 「PDF 에만 있음」 으로 적어 둔
+`pending_pdfs.json` 293 건을 사용자 허락을 받아 내려받았다(`tools_fetch_pdf.py`). **218 건을 받았고**
+75 건은 못 받았다 — 제조사가 PDF 대신 HTML 을 돌려주거나(Keysight 22 건 · Phantom · Admesy 등) 입력
+양식을 거쳐야 하는 주소다. 못 받은 것은 `pending_pdfs.json` 의 `pending` 에 `last_error` 와 함께 남았고,
+받은 것은 `fetched` 로 옮겼다(사람이 브라우저로 받아 `pdf_직접/` 에 두면 된다).
+
+- 받은 PDF 의 추출 텍스트로 객체 150 개를 대조했다. **PDF 가 웹 요약을 이긴다** — 값 940 곳을 고치거나
+  채웠고(그중 웹 값이 틀렸던 것: Photron SA-Z/SA-X2 프레임 속도, R&S SMBV100B · SMB100B · SMCV100B 보증
+  최대 출력, PNA-X N5244B 주파수 하한, PerkinElmer DSC 9 온도 하한, Linseis L62 · L81, AIT CMT-SR 면저항
+  상한(웹 오타), Mark-10 분해능, Evident DSX1000 배율 등), 사양서에만 있는 기종 110 개를 더했다.
+  **110 객체가 `catalog` 로 올라갔고** 40 개는 일부 기종만 확인돼 `limited` 로 남았다(남긴 이유는 각
+  객체 `notes`).
+- 추출 텍스트에서 표의 열 · 행이 섞여 어느 기종의 값인지 확실하지 않은 칸은 **넣지 않고** `notes` 에
+  적었다. 텍스트가 없는 PDF(스캔 · 이미지 · 외형도 · 글꼴 인코딩: Aikoh 외형도, YUASA 사양서, iTS 브로슈어,
+  Waygate S Neo, Linseis STA L82 · UDSC L64)는 원본 출처로만 달았다(값은 웹 기준).
+- `tools_fetch_pdf.py` 를 둘 고쳤다: 한국어 Windows 의 curl 오류 문구(cp949) 때문에 일괄 받기가 통째로
+  멈추던 것, 파일 이름에 점이 있으면(`ess-2000ax_ed1.02.pdf`) 텍스트를 다른 이름으로 써서 `--check` 와
+  어긋나던 것(`text_paths` 한 곳으로 모음).
+- `limits.ipx_levels` 는 `{"note": "IPX1 · IPX2 …"}` 꼴로 통일했다 — 글 한 줄은 스키마(`range`)에 어긋나고,
+  `{values: [문자]}` 는 반입이 구간 값으로 읽어 정의가 잘못 선다.
+- **반입이 바뀌었다(ADR 0005 보탬).** ① 반입이 넣고 아무도 안 고친 사양 값은 정본을 따라 갱신되고, 정본에서
+  빠진 것은 지워진다(사람 · AI 가 고친 값, 「정의로 세우기」 로 옮긴 값은 그대로). 이것이 없으면 위의 대조
+  결과가 이미 반입한 운영 DB 에 안 들어간다. ② 기종 사양의 `{"value": 수, "note": …}` 꼴을 수 하나로 읽는다 —
+  오늘 조사 · 대조가 이 꼴을 900 곳 넘게 썼는데 반입이 못 읽어 **값이 조용히 빠지고 있었다**. ③ 원문 보존
+  (`raw_specs` · `raw_limits`)도 정본을 따르고, 같은 기종 · 계열이 한 반입에서 여러 번 나와도 한 번만 쓴다
+  (반입을 두 번 돌려도 바뀌는 것이 없게).
+
+### 보강 목록에서 시작하기
+
+운영의 「카탈로그 보강」(관리 메뉴, `/admin/catalog-gaps`)이 미연결 장비를 사유별로 가른다 —
+같은 기종 있음 · 비슷한 기종 있음 · 계열만 있음 · 카탈로그에 없음 · 모델명 없음 · 대상 아님.
+**정본에 손을 대는 것은 「카탈로그에 없음」 과 「계열만 있음」 뿐이다.** 나머지는 화면에서 끝난다
+(연결 · 계열에 기종 등록 · 모델명 입력).
+
+1. 화면에서 **CSV 내려받기**. 묶음마다 사유 · 제조사 · 모델명(대장 표기) · 대수 · 분류 · 부서 ·
+   후보 · 자산번호 전부가 있다. 대수가 큰 묶음부터 한다.
+2. 「카탈로그에 없음」 묶음의 제조사 사양서를 찾는다. 대장 표기는 대리점 이름이 제조사 칸에
+   들어가 있거나 모델명에 옵션이 붙어 있을 수 있다 — 사양서의 기종명으로 적는다.
+3. `equipment/<제조사>/<객체>.json` 을 쓴다(`schema.json`). 제조사가 없으면 `manufacturers.json`
+   에, 분류가 없으면 `categories.json` 에 먼저 넣는다. 사양 키가 새것이면 `condition_keys.json`.
+   웹 페이지에서 읽은 값은 `confidence: limited`, PDF 를 받아 `sources[].file` 을 달면 `catalog`.
+4. `python build_graph.py` 로 검증 → `backend/scripts/import_catalog.py --dry-run` → 반입.
+5. 화면으로 돌아가면 그 묶음이 「같은 기종 있음」 으로 바뀌어 있다. 확인하고 **연결**한다 —
+   묶음의 장비 전부가 한 번에 이어지고, 기종 등록 요청과 변경 이력에 기록이 남는다.
+
+「계열만 있음」 은 화면에서 그 계열에 기종 이름만 세우면 장비가 이어지지만, 그 기종에는 사양이
+없다(검색 조건이 「모름」). 사양서가 있으면 같은 순서로 정본 객체의 `models[]` 에 기종을 더해
+반입하는 편이 낫다 — 반입은 계열을 제조사 + 계열 이름으로, 기종을 그 계열 안의 기종 이름으로
+찾아 **빈 사양만** 채운다(이름이 한 글자라도 다르면 새로 선다).
+
 ## 표 값 검증 (3단계)
 
 텍스트 추출이 표의 열을 흩뜨리면 값이 뒤바뀐다. 그런 곳은 **원본 쪽을 PNG 로 렌더링해

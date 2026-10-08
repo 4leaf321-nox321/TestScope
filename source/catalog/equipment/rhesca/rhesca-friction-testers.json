@@ -1,0 +1,148 @@
+{
+  "id": "rhesca-friction-testers",
+  "kind": "equipment_series",
+  "name": "RHESCA Friction & Wear Testers (Friction Player FPR2200 / Oscillation Sliding Tester OST3000)",
+  "name_ko": "레스카 마찰 · 마모 시험기 (FPR2200 · OST3000)",
+  "manufacturer": "rhesca",
+  "category": "tribometer",
+  "form_factor": "benchtop",
+  "description": "마찰계수 변화로 표면 손상과 내마모성을 수치화하는 시험기 두 종. Friction Player FPR2200 은 핀온디스크형으로 무게추 하중 50~3000 g, 마찰력 검출 0.25~5000 g, 회전 0.1~600 rpm(왕복 모드 0.1~24 rpm), 측정 반경 1~50 mm, 선속도 0.01~3141 mm/s 이고 가열 · 직선 왕복 · 습도 옵션이 있다. Oscillation Sliding Tester OST3000 은 하중을 단계적으로 올리며 진동 미끄럼으로 피로 마모에 의한 계면 파괴를 보며 하중 최대 2000 N, 미끄럼 거리 0.2~10 mm, 구동 최대 50 Hz(행정 1 mm 이하), 시료대 상온~200 °C, 마모흔 자동 관찰 카메라를 갖춘다.",
+  "test_items": [
+    "friction_wear_tribo"
+  ],
+  "measurands": [
+    "friction_coefficient",
+    "wear_resistance"
+  ],
+  "materials": [
+    "coatings",
+    "thin films",
+    "metals",
+    "polymers"
+  ],
+  "limits": {
+    "force_N": {
+      "min": 0.49,
+      "max": 2000,
+      "note": "FPR2200 원문 50~3000 g(무게추), OST3000 최대 2000 N"
+    },
+    "friction_force_mN": {
+      "min": 2.45,
+      "max": 2000000,
+      "note": "FPR2200 원문 0.25~5000 g, OST3000 최대 2000 N"
+    },
+    "rotation_rpm": {
+      "min": 0.1,
+      "max": 600,
+      "note": "FPR2200"
+    },
+    "sliding_speed_m_s": {
+      "min": 1e-05,
+      "max": 3.141,
+      "note": "FPR2200 원문 선속도 0.01~3141 mm/s"
+    },
+    "frequency_Hz": {
+      "max": 50,
+      "note": "OST3000 행정 1 mm 이하 50 Hz, 1 mm 초과 10 Hz"
+    },
+    "temperature_degC": {
+      "max": 200,
+      "note": "FPR2200 가열 옵션 상온~200 °C(건식), OST3000 시료대 상온~200 °C",
+      "requires_accessory": true
+    },
+    "humidity_pct": {
+      "min": 20,
+      "max": 80,
+      "note": "FPR2200 습도 제어 옵션, OST3000 은 습도 검출"
+    }
+  },
+  "models": [
+    {
+      "model": "FPR2200",
+      "variant": "Friction Player",
+      "specs": {
+        "load_g": {
+          "min": 50,
+          "max": 3000,
+          "note": "무게추"
+        },
+        "friction_force_mN": {
+          "min": 2.45,
+          "max": 49033,
+          "note": "원문 0.25~5000 g, 분해능 1/20000"
+        },
+        "rotation_rpm": {
+          "min": 0.1,
+          "max": 600,
+          "note": "회전 모드. 왕복 모드 0.1~24 rpm"
+        },
+        "sliding_speed_m_s": {
+          "min": 1e-05,
+          "max": 3.141,
+          "note": "원문 0.01~3141 mm/s"
+        },
+        "footprint_mm": "440 × 605 × 605 (W × D × H)",
+        "weight_kg": 54,
+        "power": "AC100V, 7A (가열 옵션 포함)"
+      },
+      "note": "측정 반경 1~50 mm; 가열: 옵션 상온~200 °C(건식) / 상온~130 °C(용액 셀), ±2 °C; 왕복 유닛: 옵션 행정 1~30 mm, 0.1~200 cycles/min, 상온~200 °C; 습도: 옵션 20~80 %RH, ±5 %RH; 샘플링 간격: 1 · 10 · 50 · 100 · 500 ms, 1 · 5 · 10 · 30 s"
+    },
+    {
+      "model": "OST3000",
+      "variant": "Oscillation Sliding Tester",
+      "specs": {
+        "force_N": {
+          "max": 2000,
+          "note": "Z축 하중, ±1 % 또는 ±5 N 중 큰 값"
+        },
+        "friction_force_mN": {
+          "max": 2000000,
+          "note": "원문 최대 2000 N, ±0.5 %FS (50 N 센서 시 ±0.25 N)"
+        },
+        "stroke_mm": {
+          "min": 0.2,
+          "max": 10,
+          "note": "미끄럼 거리(수동 설정). 이동 범위 50 mm"
+        },
+        "frequency_Hz": {
+          "max": 50,
+          "note": "행정 1 mm 이하 50 Hz, 1 mm 초과 10 Hz"
+        },
+        "temperature_degC": {
+          "max": 200,
+          "note": "시료대 상온~200 °C"
+        },
+        "humidity_pct": {
+          "min": 20,
+          "max": 80,
+          "note": "습도 검출"
+        }
+      },
+      "note": "카메라: 시료 관찰 0.7 × 0.95 mm(5M 컬러 CMOS), 스타일러스 관찰 1.0 × 1.3 mm(1.6M), 자동 초점 2 mm"
+    }
+  ],
+  "relations": [
+    {
+      "type": "performs",
+      "target": "friction_wear_tribo"
+    },
+    {
+      "type": "same_family_as",
+      "target": "rhesca-scratch-testers"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://www.rhesca.co.jp/product/friction-player-fpr2200/",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지(FPR2200, 일본어)"
+    },
+    {
+      "url": "https://www.rhesca.co.jp/product/oscillation-sliding-tester-ost3000/",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지(OST3000, 일본어)"
+    }
+  ],
+  "notes": "g 단위 하중 · 마찰력을 N 으로 바꿀 때 1 gf = 9.80665 mN 을 썼다. OST3000 의 외형 · 무게는 페이지에 없다.",
+  "confidence": "limited"
+}

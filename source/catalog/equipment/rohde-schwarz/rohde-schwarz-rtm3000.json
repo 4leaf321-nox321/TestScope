@@ -1,0 +1,109 @@
+{
+  "id": "rohde-schwarz-rtm3000",
+  "kind": "equipment_series",
+  "name": "R&S RTM3000 Oscilloscope",
+  "name_ko": "로데슈바르츠 RTM3000 오실로스코프",
+  "manufacturer": "rohde-schwarz",
+  "brand": "RTM",
+  "category": "oscilloscope",
+  "subcategory": "mixed_signal_oscilloscope",
+  "form_factor": "benchtop",
+  "description": "100 MHz~1 GHz 대역의 2·4채널 오실로스코프 계열임. 10 bit ADC, 5 Gsample/s, 채널당 40 Msample(인터리브 80 Msample, 옵션 세그먼트 400 Msample), 옵션 16 디지털 채널, 10.1 inch 정전식 터치 화면. 대역폭은 옵션 키로 정해짐.",
+  "test_items": [],
+  "limits": {
+    "bandwidth_Hz": {
+      "min": 100000000,
+      "max": 1000000000
+    },
+    "sample_rate_Sa_s": {
+      "max": 5000000000
+    },
+    "record_length_pts": {
+      "max": 80000000,
+      "min": 40000000,
+      "note": "원문 40 Msample per channel, 80 Msample interleaved, 세그먼트 400 Msample(RTM-K15)"
+    },
+    "channels": {
+      "values": [
+        2,
+        4
+      ]
+    },
+    "logic_channel_count": {
+      "values": [
+        16
+      ],
+      "note": "옵션"
+    },
+    "adc_resolution_bit": {
+      "values": [
+        10
+      ]
+    },
+    "display_size_in": {
+      "values": [
+        10.1
+      ]
+    }
+  },
+  "models": [
+    {
+      "model": "RTM3002",
+      "specs": {
+        "bandwidth_Hz": {
+          "min": 100000000,
+          "max": 1000000000,
+          "note": "기본 100 MHz. RTM-B222/B223/B225/B2210(2채널)·RTM-B242/B243/B245/B2410(4채널) 옵션으로 200·350·500 MHz·1 GHz"
+        },
+        "channels": 2,
+        "logic_channel_count": 16,
+        "sample_rate_Sa_s": 5000000000,
+        "record_length_pts": 80000000,
+        "adc_resolution_bit": 10,
+        "display_size_in": 10.1
+      }
+    },
+    {
+      "model": "RTM3004",
+      "specs": {
+        "bandwidth_Hz": {
+          "min": 100000000,
+          "max": 1000000000,
+          "note": "기본 100 MHz. RTM-B222/B223/B225/B2210(2채널)·RTM-B242/B243/B245/B2410(4채널) 옵션으로 200·350·500 MHz·1 GHz"
+        },
+        "channels": 4,
+        "logic_channel_count": 16,
+        "sample_rate_Sa_s": 5000000000,
+        "record_length_pts": 80000000,
+        "adc_resolution_bit": 10,
+        "display_size_in": 10.1
+      }
+    }
+  ],
+  "options": [
+    {
+      "name": "RTM-B222·B223·B225·B2210",
+      "note": "RTM3002 대역폭 200·350·500 MHz·1 GHz"
+    },
+    {
+      "name": "RTM-B242·B243·B245·B2410",
+      "note": "RTM3004 대역폭 200·350·500 MHz·1 GHz"
+    },
+    {
+      "name": "RTM-K15",
+      "note": "세그먼트 메모리 400 Msample"
+    },
+    {
+      "name": "RTM-B6",
+      "note": "파형 발생기"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://www.rohde-schwarz.com/us/products/test-and-measurement/oscilloscopes/rs-rtm3000-oscilloscope_63493-427459.html",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지. 기종 R&S®RTM3002·RTM3004 와 대역폭 옵션(RTM-B222 … RTM-B2410), \"40 Msample\"/\"80 Msample\"(interleaved)/\"400 Msample\"(RTM-K15), \"5 Gsample/s\", \"10-bit\", 10.1\", MSO 16 digital channels"
+    }
+  ],
+  "confidence": "limited"
+}

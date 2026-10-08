@@ -1,0 +1,114 @@
+{
+  "id": "lansmont-model-15-23-shock-test-systems",
+  "kind": "equipment_series",
+  "name": "Lansmont Model 15 / Model 23 Shock Test Systems",
+  "name_ko": "랜스몬트 Model 15·Model 23 충격 시험 시스템",
+  "manufacturer": "lansmont",
+  "category": "shock_test_machine",
+  "drive": "free_fall_pneumatic",
+  "form_factor": "floor",
+  "description": "소형·경량 전자 부품과 기기의 JEDEC 시험용 소형 충격 시험기. 테이블 23×23 cm, 최대 탑재 36 kg, 최대 가속도 5,000 g(이중 질량 충격 증폭기 옵션으로 10,000 g 이상), 반정현 최소 펄스 0.25 ms, 속도 변화 7.3~9.7 m/s. 반정현이 기본이고 옵션 프로그래머로 사다리꼴·톱니 펄스를 낸다. 전동 호이스트로 올리고 놓는다. 질소 1000~2000 psi 가 필요하다.",
+  "test_items": [
+    "mechanical_shock"
+  ],
+  "measurands": [
+    "peak_acceleration",
+    "shock_response_spectrum"
+  ],
+  "materials": [
+    "electronic components",
+    "small devices"
+  ],
+  "standards": {
+    "compliance": [],
+    "test_methods": [
+      "JEDEC (페이지 문구: JEDEC-compliant testing)"
+    ]
+  },
+  "limits": {
+    "acceleration_g": {
+      "max": 10000,
+      "note": "표준 5,000 g, 이중 질량 충격 증폭기 옵션 10,000 g+"
+    },
+    "pulse_duration_ms": {
+      "min": 0.25,
+      "note": "반정현 최소"
+    },
+    "velocity_change_m_s": {
+      "min": 7.3,
+      "max": 9.7
+    },
+    "payload_kg": {
+      "max": 36
+    },
+    "table_size_mm": {
+      "values": [
+        230
+      ]
+    }
+  },
+  "models": [
+    {
+      "model": "Model 15",
+      "specs": {
+        "table_size_mm": [
+          230,
+          230
+        ],
+        "payload_kg": 36,
+        "acceleration_g": 5000
+      },
+      "note": "페이지가 두 기종을 한 사양으로 묶어 적음"
+    },
+    {
+      "model": "Model 23",
+      "specs": {
+        "table_size_mm": [
+          230,
+          230
+        ],
+        "payload_kg": 36,
+        "acceleration_g": 5000,
+        "pulse_duration_ms": {
+          "min": 0.25
+        },
+        "velocity_change_m_s": {
+          "min": 7.3,
+          "max": 9.7
+        },
+        "height_mm": {
+          "min": 2440,
+          "max": 3050
+        }
+      },
+      "note": "높이 244~305 cm, 폭 53 cm, 깊이 61 cm"
+    }
+  ],
+  "pulse_waveforms": [
+    "반정현(Half Sine) — 표준",
+    "사다리꼴 — 옵션 프로그래머",
+    "톱니(terminal peak sawtooth) — 옵션 프로그래머"
+  ],
+  "power_requirements": "기계 200~240 VAC/3Φ 또는 380~480 VAC/3Φ, 제어기 100~120 VAC/1Φ 또는 200~240 VAC/1Φ",
+  "relations": [
+    {
+      "type": "performs",
+      "target": "mechanical_shock"
+    },
+    {
+      "type": "same_family_as",
+      "target": "lansmont-shock-test-systems",
+      "note": "P16/30 은 Model 23 을 바탕으로 한 고에너지판"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://www.lansmont.com/products/shock-testers/model-15-23",
+      "retrieved": "2026-10-08",
+      "note": "제조사 Model 15/23 페이지"
+    }
+  ],
+  "confidence": "limited",
+  "notes": "Model 15 와 Model 23 의 차이는 페이지에 없다.",
+  "utilities": "질소 1000~2000 psi, 프로그래머 옵션용 공장 공기 90 psi"
+}

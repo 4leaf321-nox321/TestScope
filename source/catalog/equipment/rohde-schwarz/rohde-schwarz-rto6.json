@@ -1,0 +1,87 @@
+{
+  "id": "rohde-schwarz-rto6",
+  "kind": "equipment_series",
+  "name": "R&S RTO6 Oscilloscope",
+  "name_ko": "로데슈바르츠 RTO6 오실로스코프",
+  "manufacturer": "rohde-schwarz",
+  "brand": "RTO",
+  "category": "oscilloscope",
+  "subcategory": "mixed_signal_oscilloscope",
+  "form_factor": "benchtop",
+  "description": "600 MHz~6 GHz 대역의 4채널 오실로스코프 계열임. 최대 20 Gsample/s, 4채널 200 Mpoints(최대 2 Gpts), 16 bit 시스템 구조, 옵션 16 디지털 채널, 15.6 inch(1920×1080) 정전식 터치 화면. 대역폭은 옵션 키(RTO6-B90~B96)로 정해짐.",
+  "test_items": [],
+  "limits": {
+    "bandwidth_Hz": {
+      "min": 600000000,
+      "max": 6000000000
+    },
+    "sample_rate_Sa_s": {
+      "max": 20000000000
+    },
+    "record_length_pts": {
+      "min": 200000000,
+      "max": 2000000000
+    },
+    "channels": {
+      "values": [
+        4
+      ]
+    },
+    "logic_channel_count": {
+      "values": [
+        16
+      ],
+      "note": "MSO 옵션 RTO6-B1"
+    },
+    "display_size_in": {
+      "values": [
+        15.6
+      ]
+    }
+  },
+  "models": [
+    {
+      "model": "RTO64",
+      "specs": {
+        "bandwidth_Hz": {
+          "min": 600000000,
+          "max": 6000000000,
+          "note": "원문 600 MHz to 6 GHz (RTO6-B90 ~ B96 대역폭 옵션)"
+        },
+        "channels": 4,
+        "logic_channel_count": 16,
+        "sample_rate_Sa_s": 20000000000,
+        "record_length_pts": {
+          "min": 200000000,
+          "max": 2000000000,
+          "note": "원문 200 Mpoints on 4 channels(표준), 2 Gpts 최대"
+        },
+        "display_size_in": 15.6
+      },
+      "note": "원문 16-bit system architecture, ENOB 9.4"
+    }
+  ],
+  "options": [
+    {
+      "name": "RTO6-B1",
+      "note": "혼합 신호(16 디지털 채널)"
+    },
+    {
+      "name": "RTO6-B90~B96",
+      "note": "대역폭 600 MHz~6 GHz"
+    },
+    {
+      "name": "RTO6-B104·B110",
+      "note": "메모리 업그레이드"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://www.rohde-schwarz.com/us/products/test-and-measurement/oscilloscopes/rs-rto6-oscilloscope_63493-1079745.html",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지. R&S®RTO64, 대역폭 옵션 RTO6-B90~B96(600 MHz~6 GHz), up to 20 Gsample/s, 2 Gpts, 200 Mpoints on 4 channels, 16-bit system architecture, 15.6\""
+    }
+  ],
+  "confidence": "limited",
+  "notes": "ADC 비트 수는 페이지에 「16-bit system architecture」 로만 있어 vertical_resolution_bit 를 비움."
+}

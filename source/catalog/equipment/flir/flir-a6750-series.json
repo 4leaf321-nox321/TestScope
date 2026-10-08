@@ -1,0 +1,163 @@
+{
+  "id": "flir-a6750-series",
+  "kind": "equipment_series",
+  "name": "FLIR A6750 / A6751 / A6752 / A6753 MWIR Science Camera",
+  "name_ko": "플리어 A6750 냉각형 MWIR 연구용 열화상 카메라",
+  "manufacturer": "flir",
+  "brand": "Science",
+  "category": "thermal_imager",
+  "subcategory": "cooled_mwir",
+  "form_factor": "camera",
+  "description": "InSb 검출기를 냉각해 쓰는 연구용 중적외(MWIR) 열화상 카메라 계열. 640 × 512, 화소 15 µm, 열 감도 22 ~ 27 mK(대표값). 분광 범위 A6750 · A6752 1.0 ~ 5.0 µm, A6751 · A6753 3.0 ~ 5.0 µm. 전 화면 0.0015 ~ 125 Hz 프로그래머블, 적분 시간 480 ns 부터. 측정 범위 -20 ~ 300 °C(A6750) 또는 -20 ~ 350 °C, Gigabit Ethernet · SDI 출력.",
+  "test_items": [
+    "thermography"
+  ],
+  "measurands": [
+    "surface_temperature",
+    "temperature_distribution",
+    "hotspot_location"
+  ],
+  "limits": {
+    "temperature_degC": {
+      "min": -20,
+      "max": 350,
+      "note": "표준 교정 범위. A6750 은 300 °C 까지"
+    },
+    "ir_resolution_pixels": {
+      "max": 327680,
+      "note": "640 × 512"
+    },
+    "thermal_sensitivity_degC": {
+      "min": 0.022,
+      "max": 0.027,
+      "note": "원문 mK(typical)"
+    },
+    "wavelength_nm": {
+      "min": 1000,
+      "max": 5000,
+      "note": "원문 1.0 ~ 5.0 µm / 3.0 ~ 5.0 µm"
+    },
+    "frame_rate_fps": {
+      "min": 0.0015,
+      "max": 125,
+      "note": "전 화면 프로그래머블, 원문 Hz"
+    },
+    "min_exposure_time_s": {
+      "min": 4.8e-07,
+      "note": "적분 시간 480 ns ~ 전 프레임"
+    }
+  },
+  "models": [
+    {
+      "model": "A6750",
+      "specs": {
+        "detector": "FLIR indium antimonide (InSb)",
+        "detector_pixels": "640 × 512",
+        "ir_resolution_pixels": 327680,
+        "pixel_pitch_um": 15,
+        "thermal_sensitivity_degC": 0.027,
+        "wavelength_nm": {
+          "min": 1000,
+          "max": 5000
+        },
+        "frame_rate_fps": 125,
+        "min_exposure_time_s": 4.8e-07,
+        "temperature_degC": {
+          "min": -20,
+          "max": 300
+        },
+        "interfaces": "Gigabit Ethernet, SDI, RS-232",
+        "weight_kg": 2.3
+      },
+      "note": "f/2.5. NETD 27 mK(typical)"
+    },
+    {
+      "model": "A6751",
+      "specs": {
+        "detector": "FLIR indium antimonide (InSb)",
+        "detector_pixels": "640 × 512",
+        "ir_resolution_pixels": 327680,
+        "pixel_pitch_um": 15,
+        "thermal_sensitivity_degC": 0.022,
+        "wavelength_nm": {
+          "min": 3000,
+          "max": 5000
+        },
+        "frame_rate_fps": 125,
+        "min_exposure_time_s": 4.8e-07,
+        "temperature_degC": {
+          "min": -20,
+          "max": 350
+        },
+        "interfaces": "Gigabit Ethernet, SDI, RS-232",
+        "weight_kg": 2.3
+      },
+      "note": "f/2.5. NETD 22 mK(typical)"
+    },
+    {
+      "model": "A6752",
+      "specs": {
+        "detector": "FLIR indium antimonide (InSb)",
+        "detector_pixels": "640 × 512",
+        "ir_resolution_pixels": 327680,
+        "pixel_pitch_um": 15,
+        "thermal_sensitivity_degC": 0.027,
+        "wavelength_nm": {
+          "min": 1000,
+          "max": 5000
+        },
+        "frame_rate_fps": 125,
+        "min_exposure_time_s": 4.8e-07,
+        "temperature_degC": {
+          "min": -20,
+          "max": 350
+        },
+        "interfaces": "Gigabit Ethernet, SDI, RS-232",
+        "weight_kg": 2.3
+      },
+      "note": "NETD 27 mK(typical). f 수는 페이지에 미기재"
+    },
+    {
+      "model": "A6753",
+      "specs": {
+        "detector": "FLIR indium antimonide (InSb)",
+        "detector_pixels": "640 × 512",
+        "ir_resolution_pixels": 327680,
+        "pixel_pitch_um": 15,
+        "thermal_sensitivity_degC": 0.022,
+        "wavelength_nm": {
+          "min": 3000,
+          "max": 5000
+        },
+        "frame_rate_fps": 125,
+        "min_exposure_time_s": 4.8e-07,
+        "temperature_degC": {
+          "min": -20,
+          "max": 350
+        },
+        "interfaces": "Gigabit Ethernet, SDI, RS-232",
+        "weight_kg": 2.3
+      },
+      "note": "NETD 22 mK(typical). f 수는 페이지에 미기재"
+    }
+  ],
+  "relations": [
+    {
+      "type": "performs",
+      "target": "thermography"
+    },
+    {
+      "type": "same_family_as",
+      "target": "flir-x-series-science"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://www.flir.com/products/a6750-mwir/",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지(HTML)"
+    }
+  ],
+  "confidence": "limited",
+  "notes": "무게는 렌즈 제외. 이전 A6700sc 계열은 이 페이지에 없음."
+}

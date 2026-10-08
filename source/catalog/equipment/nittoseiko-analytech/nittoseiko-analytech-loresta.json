@@ -1,0 +1,202 @@
+{
+  "id": "nittoseiko-analytech-loresta",
+  "kind": "equipment_series",
+  "name": "Loresta Low-Resistivity Meters (Loresta-GX II MCP-T710 / GX MCP-T700 / FX MCP-T380) and MCP-S330 Mapping System",
+  "name_ko": "로레스타 저저항률계(닛토세이코 아날리테크, 구 미쓰비시화학 아날리테크)",
+  "manufacturer": "nittoseiko-analytech",
+  "brand": "Loresta",
+  "category": "electrical_property_tester",
+  "subcategory": "four_point_probe",
+  "form_factor": "benchtop",
+  "description": "정전류 인가 4단자·4탐침법으로 도전성 플라스틱·도막·박막의 저항, 표면저항률(Ω/□), 체적저항률(Ω·cm)을 재는 저저항률계 계열. 현행 고급형 Loresta-GXII MCP-T710 은 10⁻⁴～10⁷ Ω(전기종 GX MCP-T700 은 10⁻³～10⁷ Ω), 인가 전류 1 A～0.1 μA 8단, 7.5인치 터치 패널, USB 메모리 출력. 간이형 Loresta-FX MCP-T380 은 10⁻²～10⁶ Ω, AA 전지 4개로도 쓴다. 탐침은 시료에 맞춰 고른다(직렬 4탐침 ASR·ESR·LSR 핀 간격 5 mm, PSR·QR 1.5 mm, NSCR 1.0 mm, AR 10 mm 등). JIS K 7194 대응. MCP-S330 은 300 mm 각 시료까지 표면·체적저항률을 자동 매핑하는 소형 시스템이다.",
+  "test_items": [
+    "electrical_transport"
+  ],
+  "measurands": [
+    "electrical.surface_resistivity",
+    "electrical.resistivity_volume"
+  ],
+  "materials": [
+    "conductive plastics",
+    "conductive coatings",
+    "thin films",
+    "conductive rubber"
+  ],
+  "standards": {
+    "compliance": [],
+    "test_methods": [
+      "JIS K 7194"
+    ]
+  },
+  "limits": {
+    "resistance_ohm": {
+      "min": 0.0001,
+      "max": 10000000.0,
+      "note": "MCP-T710 10⁻⁴～10⁷ Ω, MCP-T700 10⁻³～10⁷ Ω, MCP-T380 10⁻²～10⁶ Ω"
+    },
+    "current_A": {
+      "min": 1e-07,
+      "max": 1,
+      "note": "MCP-T710 인가 전류 1A, 100mA, 10mA, 1mA, 100μA, 10μA, 1μA, 0.1μA(레인지별)"
+    },
+    "probe_spacing_mm": {
+      "values": [
+        1.0,
+        1.5,
+        2.5,
+        5,
+        10
+      ],
+      "note": "ASR·ESR·LSR 5 mm, PSR·QR 1.5 mm, NSCR 1.0 mm, AR 10 mm(2탐침), BSR 2.5 mm(FX 페이지), BR 가변"
+    },
+    "sample_size_mm": {
+      "max": 300,
+      "note": "MCP-S330 매핑 시스템 300 mm 각 시료까지"
+    }
+  },
+  "models": [
+    {
+      "model": "MCP-T710",
+      "variant": "Loresta-GXII",
+      "specs": {
+        "resistance_ohm": {
+          "min": 0.0001,
+          "max": 10000000.0
+        },
+        "current_A": {
+          "values": [
+            1,
+            0.1,
+            0.01,
+            0.001,
+            0.0001,
+            1e-05,
+            1e-06,
+            1e-07
+          ]
+        },
+        "accuracy": "±(0.5%+3dgt)～±(2.0%+20dgt)(레인지·인가 전류별)",
+        "principle": "정전류 인가 방식 / 4탐침 방식",
+        "interfaces": "USB 메모리",
+        "footprint_mm": [
+          320,
+          285,
+          110
+        ],
+        "weight_kg": 2.4,
+        "probe_spacing_mm": {
+          "values": [
+            1.0,
+            1.5,
+            5,
+            10
+          ]
+        }
+      },
+      "note": "7.5인치 컬러 TFT 터치 패널, AC85–264V. GXII 용 탐침(ASR, ESR, LSR, PSR, QR, BSR, NSCR, AR, BR)은 GX 탐침과 호환되지 않음. 덮개를 열면 높이 200 mm"
+    },
+    {
+      "model": "MCP-T700",
+      "variant": "Loresta-GX",
+      "specs": {
+        "resistance_ohm": {
+          "min": 0.001,
+          "max": 10000000.0
+        }
+      },
+      "note": "MCP-T710 의 전기종. 측정 범위는 MCP-T710 페이지의 비교 문장(GX 10⁻³～10⁷ Ω)에서 가져옴. 그 밖의 사양은 확인하지 못함"
+    },
+    {
+      "model": "MCP-T380",
+      "variant": "Loresta-FX",
+      "specs": {
+        "resistance_ohm": {
+          "min": 0.01,
+          "max": 1000000.0
+        },
+        "principle": "4단자 4탐침법, 정전류 인가 방식",
+        "probe_spacing_mm": {
+          "values": [
+            1.5,
+            2.5,
+            5
+          ]
+        }
+      },
+      "form_factor": "portable",
+      "note": "간이형 저저항률계. 직렬 4탐침 ASR(RMH501) 과 AC 어댑터가 표준, 시판 니켈수소 AA 전지 4개로도 동작. 자동 홀드·타이머, PC 출력용 데이터 로거 소프트웨어(별매)"
+    },
+    {
+      "model": "MCP-T370",
+      "variant": "Loresta-AX",
+      "uncertain": true,
+      "note": "현재 제조사 제품 목록에 없는 이전 기종. 기종명은 의뢰서 기준이며, 판매 대리점(DKSH) 부품 목록에 Loresta-AX 영문 사용설명서가 있어 이름만 확인함. 사양 미확인"
+    },
+    {
+      "model": "MCP-S330",
+      "specs": {
+        "resistance_ohm": {
+          "min": 0.0001,
+          "max": 10000000.0
+        },
+        "sample_size_mm": {
+          "max": 300
+        }
+      },
+      "note": "저저항률 자동 측정 시스템(소형 매핑 시스템). 표면저항률·체적저항률, 다수 시료 연속 측정, 3D 그래프 출력. 스테이지 이동량·외형은 페이지에 없음"
+    }
+  ],
+  "options": [
+    {
+      "name": "ASR 탐침(RMH501)",
+      "note": "표준 직렬 4탐침, 핀 간격 5 mm"
+    },
+    {
+      "name": "ESR 탐침(RMH502)",
+      "note": "불균일 시료용, 5 mm"
+    },
+    {
+      "name": "LSR 탐침(RMH503)",
+      "note": "연질 시료용, 5 mm"
+    },
+    {
+      "name": "PSR 탐침(RMH504)",
+      "note": "소형 시료·박막용, 1.5 mm"
+    },
+    {
+      "name": "BSR 탐침(RMH506)",
+      "note": "대형 시료용, 2.5 mm, 저항률 측정 불가(FX 페이지)"
+    },
+    {
+      "name": "AR/BR 2탐침(RMH508/509)"
+    },
+    {
+      "name": "NSCR 탐침",
+      "note": "GXII 용, 1.0 mm"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://www.n-analytech.co.jp/instrument/resistivity-meters/entry-1201.html",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지(일본어 HTML, n-analytech.co.jp) Loresta-GXII MCP-T710. 전기종 MCP-T700 과의 비교 포함"
+    },
+    {
+      "url": "https://www.n-analytech.co.jp/instrument/resistivity-meters/entry-1320.html",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지(일본어 HTML, n-analytech.co.jp) Loresta-FX MCP-T380"
+    },
+    {
+      "url": "https://www.n-analytech.co.jp/instrument/resistivity-meters/entry-1065.html",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지(일본어 HTML, n-analytech.co.jp) MCP-S330 소형 매핑 시스템"
+    },
+    {
+      "url": "https://labshop.dksh.com.au/shop/p/nittoseiko-analytech-instruction-manual-for-loresta-ax-english-zrlaxme-tecpim000960382",
+      "retrieved": "2026-10-08",
+      "note": "판매 대리점(DKSH) 부품 페이지. Loresta-AX 의 존재만 확인(웹 검색 결과 제목). 페이지를 직접 열지는 않음"
+    }
+  ],
+  "confidence": "limited",
+  "notes": "제조사는 미쓰비시화학 아날리테크(Mitsubishi Chemical Analytech)에서 닛토세이코 아날리테크로 이름이 바뀌었다 — 대장에는 「미쓰비시」 로 적혀 있을 수 있다. 자동 분체 저항 측정 시스템 MCP-PD600 은 분체용이라 이 객체에 넣지 않음."
+}

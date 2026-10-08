@@ -12,7 +12,7 @@ from sqlalchemy.orm import Session
 
 import app.all_models  # noqa: F401  (DB 를 만지는 스크립트는 반드시 이것을 읽는다)
 from app.modules.accounts.models import User
-from app.modules.methods.models import TestMethod
+from app.modules.methods.models import TestMethod, TestMethodItem
 from app.modules.test_items.models import (
     SeriesPendingMethod,
 )
@@ -107,8 +107,18 @@ def step_methods(
         if found is not None:
             # **빈 칸만 채운다.** 있는 값은 안 덮는다 — 사람이 고른 항목이 더 낫다. 하지만
             # 비어 있던 285 건은 「이 규격이 무슨 시험인가」 를 아무도 안 채우던 자리다.
-            if found.test_item_term_id is None and item_id and item_id in items:
-                found.test_item_term_id = items[item_id].id
+            #
+            # 규격의 시험 항목은 **표**(`TestMethodItem`)다 — 규격 하나가 여럿을 덮는다
+            # (2026-09-24). 칸 하나를 보던 코드가 남아 반입이 통째로 죽고 있었다(2026-10-08).
+            if (
+                item_id
+                and item_id in items
+                and db.scalar(
+                    select(TestMethodItem.id).where(TestMethodItem.method_id == found.id)
+                )
+                is None
+            ):
+                db.add(TestMethodItem(method_id=found.id, test_item_term_id=items[item_id].id))
                 filled += 1
             if found.title == found.code and method_key(code) in titles:
                 found.title = titles[method_key(code)]
@@ -123,15 +133,19 @@ def step_methods(
         found = TestMethod(
             code=code,
             title=titles.get(method_key(code), code),
-            test_item_term_id=item.id if item else None,
             body_term_id=body.id if body else None,
             summary="제조사 카탈로그에서 인용",
             created_by_id=actor.id if actor else None,
         )
         db.add(found)
         db.flush()
+        if item is not None:
+            db.add(TestMethodItem(method_id=found.id, test_item_term_id=item.id))
+            db.flush()
         methods[code] = found
         known[method_key(code)] = found
+    # 다음 단계(계열)가 규격의 시험 항목을 표에서 읽는다 — 세션이 저절로 내보내지 않는다.
+    db.flush()
     if filled:
         print(f"  시험 항목이 비어 있던 시험법 {filled}건에 항목을 채웠습니다")
     if titled:
@@ -151,7 +165,7 @@ def step_promote_pending(db: Session) -> int:
     for method in db.scalars(
         select(TestMethod)
         .join(SeriesPendingMethod, SeriesPendingMethod.method_id == TestMethod.id)
-        .where(TestMethod.test_item_term_id.is_not(None))
+        .join(TestMethodItem, TestMethodItem.method_id == TestMethod.id)
         .distinct()
     ):
         moved += promote_pending(db, method)

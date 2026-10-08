@@ -1,0 +1,126 @@
+{
+  "id": "comet-yxlon-ux",
+  "kind": "equipment_series",
+  "name": "Comet Yxlon UX20 / UX50",
+  "name_ko": "코멧 익스론 UX20 · UX50 X-ray · CT 검사 장비",
+  "manufacturer": "comet-yxlon",
+  "brand": "UX",
+  "category": "xray_inspection",
+  "form_factor": "floor",
+  "description": "주조품 등 큰 부품의 2D 투시(DR)와 3D CT 를 한 캐비닛에서 하는 X-ray 검사 장비. UX20 은 160~225 kV 미니포커스(옵션 225 kV 메조포커스)에 평판 검출기 2323 HB(179 µm) 또는 4343 DXi(139 µm)를 달고 5축 매니퓰레이터로 최대 100 kg 시료를 다룬다. UX50 은 450 kV 미니포커스에 평판 검출기 4343 N 과/또는 라인 검출기 CTScan 3 를 달아 복셀 55 µm 까지, 지름 600 mm · 100 kg 시료를 다룬다.",
+  "test_items": [
+    "xray_void_inspection"
+  ],
+  "measurands": [
+    "internal_geometry",
+    "porosity"
+  ],
+  "limits": {
+    "tube_voltage_kV": {
+      "min": 160,
+      "max": 450,
+      "note": "UX20 160~225 kV(미니포커스, 옵션 225 kV 메조포커스), UX50 450 kV 미니포커스"
+    },
+    "pixel_pitch_um": {
+      "values": [
+        139,
+        179
+      ],
+      "note": "UX20 검출기. UX50 검출기 화소 피치는 페이지에 없음"
+    },
+    "voxel_size_um": {
+      "min": 55,
+      "note": "UX50"
+    },
+    "sample_weight_kg": {
+      "max": 100
+    },
+    "specimen_diameter_mm": {
+      "max": 600,
+      "note": "UX50"
+    },
+    "specimen_height_mm": {
+      "max": 850,
+      "note": "UX50 평판 검출기 구성. 라인 검출기 구성은 800 mm"
+    },
+    "inspection_area_mm": {
+      "max": 1100,
+      "note": "UX20 2D(DR) 검사 영역 4343 DXi 800 × 1100 mm, 2323 HB 710 × 1090 mm"
+    },
+    "oblique_view_angle_deg": {
+      "max": 55,
+      "note": "UX20 ±55° (central beam 45°)"
+    }
+  },
+  "models": [
+    {
+      "model": "UX20",
+      "specs": {
+        "xray_source": "160~225 kV 미니포커스, 옵션 225 kV 메조포커스",
+        "tube_voltage_kV": {
+          "min": 160,
+          "max": 225
+        },
+        "detector": "평판 검출기 2323 HB (1280 × 1280 px, 179 µm) 또는 4343 DXi (3072 × 3072 px, 139 µm)",
+        "sample_weight_kg": 100,
+        "footprint_mm": "2250 × 1770 × 2350 (W × D × H)",
+        "oblique_view_angle_deg": 55
+      },
+      "note": "2D 검사 영역(mm): 2323 HB 710 × 1090 / 4343 DXi 800 × 1100; CT 검사 영역(mm): 2323 HB 190 × 165 / 4343 DXi 340 × 280 (ScanExtend 시 315 × 1085 / 540 × 1100); 매니퓰레이터: 5축"
+    },
+    {
+      "model": "UX50",
+      "specs": {
+        "xray_source": "450 kV 미니포커스",
+        "tube_voltage_kV": 450,
+        "detector": "평판 검출기 4343 N 과/또는 라인 검출기 CTScan 3",
+        "voxel_size_um": {
+          "min": 55
+        },
+        "specimen_diameter_mm": {
+          "max": 600
+        },
+        "specimen_height_mm": {
+          "max": 850,
+          "note": "라인 검출기 구성 800 mm"
+        },
+        "sample_weight_kg": 100,
+        "footprint_mm": "평판 2620 × 1945 × 2560 / 라인 2620 × 2585 × 2775 (W × D × H)"
+      },
+      "note": "CT 검사 영역(mm): 평판 570 × 850 / 라인 600 × 800; 2D 검사 영역(mm): 520 × 850"
+    }
+  ],
+  "features": [
+    "Cone-beam CT · QuickScan · QualityScan · FlexCenter · ZoomScan · SpeedMode · ScanExtend (UX20)",
+    "단일 또는 이중 검출기 구성(UX50)"
+  ],
+  "relations": [
+    {
+      "type": "performs",
+      "target": "xray_void_inspection"
+    },
+    {
+      "type": "same_family_as",
+      "target": "comet-yxlon-ff-ct"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://yxlon.comet.tech/en/products/ux20",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지(UX20)"
+    },
+    {
+      "url": "https://yxlon.comet.tech/en/products/ux50",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지(UX50). 무게·검출기 화소 피치는 페이지에 없음"
+    },
+    {
+      "url": "https://yxlon.comet.tech/en/product-range-en",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품군 목록 페이지. 계열별 대표 사양 한 줄"
+    }
+  ],
+  "notes": "튜브 출력(W) · 초점 크기는 두 기종 모두 페이지에 없다.",
+  "confidence": "limited"
+}

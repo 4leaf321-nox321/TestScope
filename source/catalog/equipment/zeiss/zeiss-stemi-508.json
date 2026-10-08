@@ -1,0 +1,119 @@
+{
+  "id": "zeiss-stemi-508",
+  "kind": "equipment_model",
+  "name": "ZEISS Stemi 508 Greenough Stereo Microscope",
+  "name_ko": "자이스 Stemi 508 실체 현미경",
+  "manufacturer": "zeiss",
+  "brand": "Stemi",
+  "category": "optical_microscope",
+  "subcategory": "stereo_microscope",
+  "form_factor": "benchtop",
+  "description": "그리노우(Greenough)형 실체 현미경. 8:1 아포크로맷 줌(0.63～5.0, 연속 또는 클릭 스톱 재현 모드), 교환식 전면 광학계와 접안렌즈로 1.9×～250×(사양서; 웹 페이지는 2×～250×), 시야 최대 122.7 mm, 자유 작동 거리 35～287 mm, 최대 분해능 450 lp/mm, 35° 관찰 각. 본체는 Stemi 508(쌍안)·Stemi 508 doc(사진 포트 100 % 전환)·Stemi 508 trino(50/50 분할).",
+  "test_items": [
+    "microscopy"
+  ],
+  "limits": {
+    "zoom_ratio": {
+      "values": [
+        8
+      ],
+      "note": "줌 0.63～5.0"
+    },
+    "magnification": {
+      "min": 1.9,
+      "max": 250,
+      "note": "교환식 접안·전면 광학계 포함 총 배율(PDF 21쪽 사양 표). 기본 구성(접안 10x, 전면 광학계 없음) 6.3～50. PDF 3쪽 개요와 웹 페이지는 어림값 2～250"
+    },
+    "field_of_view_mm": {
+      "max": 122.7,
+      "note": "최대 물체 시야 지름(PDF 21쪽). 기본 구성 36.8 mm. PDF 3쪽 개요와 웹 페이지는 122 mm"
+    },
+    "working_distance_mm": {
+      "min": 35,
+      "max": 287,
+      "note": "자유 작동 거리, 전면 광학계에 따라(기본 구성 92 mm)"
+    },
+    "optical_resolution_lp_mm": {
+      "max": 450,
+      "note": "교환식 광학계 포함 최대 450 lp/mm(분해능 2.2 µm), 기본 구성 225 lp/mm(4.4 µm)"
+    }
+  },
+  "models": [
+    {
+      "model": "Stemi 508",
+      "specs": {
+        "zoom_ratio": 8,
+        "magnification": {
+          "min": 1.9,
+          "max": 250
+        },
+        "field_of_view_mm": {
+          "max": 122.7
+        },
+        "working_distance_mm": {
+          "min": 35,
+          "max": 287
+        },
+        "optical_resolution_lp_mm": {
+          "max": 450
+        }
+      },
+      "note": "쌍안 본체(접안 10x/23 포함). 줌 클릭 정지 10곳(0.65～5), 관찰 각 35°, 눈 사이 거리 55～75 mm, 최대 시야수 23 mm"
+    },
+    {
+      "model": "Stemi 508 doc",
+      "specs": {
+        "zoom_ratio": 8,
+        "magnification": {
+          "min": 1.9,
+          "max": 250
+        },
+        "field_of_view_mm": {
+          "max": 122.7
+        },
+        "working_distance_mm": {
+          "min": 35,
+          "max": 287
+        }
+      },
+      "note": "사진 포트(오른쪽 광로와 카메라 100 % 전환), 60N C-마운트 카메라 어댑터 0.5x 포함"
+    },
+    {
+      "model": "Stemi 508 trino",
+      "specs": {
+        "zoom_ratio": 8,
+        "magnification": {
+          "min": 1.9,
+          "max": 250
+        },
+        "field_of_view_mm": {
+          "max": 122.7
+        },
+        "working_distance_mm": {
+          "min": 35,
+          "max": 287
+        }
+      },
+      "note": "사진 포트(오른쪽 광로와 카메라 50/50 % 고정 분할), 60N C-마운트 카메라 어댑터 0.5x 포함"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://www.zeiss.com/microscopy/en/products/light-microscopes/stereo-and-zoom-microscopes/stemi-508.html",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지(HTML, zeiss.com) Stemi 508"
+    },
+    {
+      "file": "zeiss/en_product-info_stemi-508.pdf",
+      "pages": [
+        3,
+        16,
+        20,
+        21
+      ],
+      "note": "Stemi 508 제품 정보 Version 2.3 — 개요, 구성, 배율·시야 표, 광학 사양. 21쪽 기본 구성 표는 추출 텍스트에서 값이 이름보다 한 줄 앞서 찍혀 순서로 맞춤"
+    }
+  ],
+  "confidence": "catalog",
+  "notes": "하위 기종 Stemi 305 는 이 페이지와 PDF 사양 표에 없어 넣지 않음(PDF 에는 Stemi 305/508 공용 스탠드·조명 목록만). PDF 로 확인: 8:1 줌, 작동 거리 상한 287 mm, 35° 관찰 각. PDF 로 바로잡음: 총 배율 하한 1.9×(웹 2×), 최대 시야 122.7 mm(웹 122 mm). 더함: 작동 거리 하한 35 mm, 분해능 450 lp/mm, 본체 Stemi 508 doc·trino."
+}

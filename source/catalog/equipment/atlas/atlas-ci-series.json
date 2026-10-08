@@ -1,0 +1,154 @@
+{
+  "id": "atlas-ci-series",
+  "kind": "equipment_series",
+  "name": "Atlas Ci Series Weather-Ometer (Ci5000 / Ci5000E / Ci4400 / Ci4000 / Ci3000)",
+  "name_ko": "아틀라스 Ci 시리즈 웨더오미터(수랭식 제논 아크)",
+  "manufacturer": "atlas",
+  "brand": "Weather-Ometer",
+  "category": "weathering_tester",
+  "form_factor": "floor",
+  "description": "수랭식 제논 아크 램프의 경사 시편대형 촉진 내후성 시험기. 340 nm·420 nm·300–400 nm 조사 강도 직접 설정·제어, BPT/BST·챔버 공기 온도·상대습도 직접 제어, 시편·랙 분무. 램프 4500 W(Ci3000)·6500 W(Ci4400·Ci4000)·12000 W(Ci5000), 노출 면적 2,188~11,000 cm².",
+  "test_items": [
+    "accelerated_weathering"
+  ],
+  "materials": [
+    "automotive parts",
+    "textiles",
+    "paints",
+    "coatings",
+    "plastics"
+  ],
+  "limits": {
+    "irradiance_control_nm": {
+      "values": [
+        340,
+        420,
+        "300-400"
+      ]
+    },
+    "exposure_area_cm2": {
+      "min": 2188,
+      "max": 11000
+    },
+    "lamp_power_W": {
+      "min": 4500,
+      "max": 12000
+    }
+  },
+  "models": [
+    {
+      "model": "Ci5000",
+      "specs": {
+        "lamp_power_W": 12000,
+        "exposure_area_cm2": 11000
+      },
+      "note": "수랭식 12000 W 제논 아크. 3단 경사 시편대. 원문 11,000 cm² (1,705 in²)"
+    },
+    {
+      "model": "Ci5000E",
+      "note": "전자 산업용 개량형. 기종 페이지에 수치 사양이 없다",
+      "uncertain": true
+    },
+    {
+      "model": "Ci4400",
+      "specs": {
+        "lamp_power_W": 6500,
+        "exposure_area_cm2": 8599,
+        "irradiance_W_m2": {
+          "min": 23,
+          "max": 169,
+          "note": "300–400 nm, 필터 조합별 최소~최대(브로슈어 3쪽 표). 340 nm 0.17~1.69, 420 nm 0.56~2.99 W/(m²·nm). 2 Sun 이상 가능"
+        },
+        "humidity_pct": {
+          "min": 10,
+          "max": 75,
+          "note": "원문 10% RH to 75% RH in light cycles; Up to 100% in dark cycles(램프 출력·챔버 온도·실험실 조건에 따름, 브로슈어 7쪽)"
+        },
+        "footprint_mm": "W1041×D1717×H1952 (41.0×67.6×76.9 in)",
+        "weight_kg": 665,
+        "power_kW": {
+          "max": 13.8,
+          "note": "200~240 VAC 3상 3선 56 A 13.8 kW, 340~415 VAC 3상 4선 55 A 13.2 kW"
+        }
+      },
+      "note": "수랭식 6500 W(밀봉 램프). 3단 경사 회전 시편대(분리형 섹션). 브로슈어 11쪽 Total Exposure Area 1333 in² (8599 cm²). 웹 기종 페이지는 7,300 cm² (1,130 in²)로 적음(브로슈어 4쪽은 Ci4000 보다 시편 용량이 10 % 넘게 크다고만 적음). 사전 프로그램 시험법 14개, 사용자 프로그램 12개, 15인치 터치 화면"
+    },
+    {
+      "model": "Ci4000",
+      "specs": {
+        "lamp_power_W": 6500,
+        "exposure_area_cm2": 6500
+      },
+      "note": "단종. 수랭식 6500 W. 원문 6,500 cm² (1,008 in²)"
+    },
+    {
+      "model": "Ci3000",
+      "variant": "Weather-Ometer / Fade-Ometer",
+      "specs": {
+        "lamp_power_W": 4500,
+        "exposure_area_cm2": {
+          "min": 2188,
+          "max": 3450,
+          "note": "1단 2,188 cm² (339 in²), 2단 3,450 cm² (535 in²)"
+        }
+      },
+      "note": "수랭식 4500 W. 시편·랙 분무는 Weather-Ometer 판만. 기본 시험법 Weather-Ometer 14개·Fade-Ometer 6개. 13\" 터치 화면"
+    }
+  ],
+  "relations": [
+    {
+      "type": "simulates_environment",
+      "target": "environment-solar-radiation"
+    },
+    {
+      "type": "same_family_as",
+      "target": "atlas-xenotest"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://www.atlas-mts.com/products/standard-instruments/xenon-arc-weathering-test/ci-series",
+      "retrieved": "2026-10-08",
+      "note": "제조사 Ci 시리즈 목록"
+    },
+    {
+      "url": "https://www.atlas-mts.com/products/standard-instruments/xenon-arc-weathering-test/ci-series/ci5000",
+      "retrieved": "2026-10-08",
+      "note": "제조사 Ci5000 페이지"
+    },
+    {
+      "url": "https://www.atlas-mts.com/products/standard-instruments/xenon-arc-weathering-test/ci-series/ci5000e",
+      "retrieved": "2026-10-08",
+      "note": "제조사 Ci5000E 페이지(수치 없음)"
+    },
+    {
+      "url": "https://www.atlas-mts.com/products/standard-instruments/xenon-arc-weathering-test/ci-series/ci4400",
+      "retrieved": "2026-10-08",
+      "note": "제조사 Ci4400 페이지"
+    },
+    {
+      "url": "https://www.atlas-mts.com/products/standard-instruments/xenon-arc-weathering-test/ci-series/ci4000",
+      "retrieved": "2026-10-08",
+      "note": "제조사 Ci4000 페이지(단종 표기)"
+    },
+    {
+      "url": "https://www.atlas-mts.com/products/standard-instruments/xenon-arc-weathering-test/ci-series/ci3000",
+      "retrieved": "2026-10-08",
+      "note": "제조사 Ci3000 페이지"
+    },
+    {
+      "file": "atlas/atlas-ci4400-brochure-english-2023-05.pdf",
+      "pages": [
+        3,
+        4,
+        6,
+        7,
+        10,
+        11
+      ],
+      "note": "Ci4400 브로슈어(Pub. No. 56352883, 05/23). 3쪽 필터별 조사 강도 범위 표, 4쪽 시편 용량, 6쪽 조사 제어 파장, 7쪽 습도, 10쪽 표준 기능·규격 목록, 11쪽 치수·전기·물·무게"
+    }
+  ],
+  "confidence": "limited",
+  "notes": "BPT/BST·챔버 온도의 수치 범위는 기종 페이지와 Ci4400 브로슈어 어디에도 없어 비웠다(습도는 Ci4400 브로슈어 7쪽 값만 넣음). 과제에 적힌 'Ci3000+' 표기는 현행 페이지에 없고 'Ci3000 Weather-Ometer/Fade-Ometer' 로 적혀 있다. PDF 로 확인: Ci4400 램프 6500 W·조사 제어 파장(340·420·300–400 nm) / PDF 로 바꿈: Ci4400 노출 면적 7,300 → 8,599 cm² / 웹 값 그대로: Ci5000·Ci5000E·Ci4000·Ci3000 전부. Ci4400 브로슈어 10쪽 규격 목록은 standards 칸에 옮기지 않음."
+}

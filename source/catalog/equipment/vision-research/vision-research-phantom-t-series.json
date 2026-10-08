@@ -1,0 +1,60 @@
+{
+  "id": "vision-research-phantom-t-series",
+  "kind": "equipment_series",
+  "name": "Phantom T-Series",
+  "name_ko": "팬텀 T 시리즈 고속 카메라",
+  "manufacturer": "vision-research",
+  "brand": "Phantom",
+  "category": "high_speed_swir_camera",
+  "subcategory": "high_speed_camera",
+  "form_factor": "camera",
+  "description": "Phantom 의 고해상도·고속 T 시리즈. T4040 은 4.2 Mpx 전 화소에서 9,350 fps, 화소를 줄이면 440,000 fps. T2410 은 1 Mpx 에서 24,000 fps 이상, 1,280 × 32 에서 525,000 fps.",
+  "test_items": [],
+  "limits": {
+    "frame_rate_fps": {
+      "min": 9350,
+      "max": 24000,
+      "note": "T4040 4.2 Mpx / T2410 1 Mpx",
+      "uncertain": true
+    },
+    "max_frame_rate_fps": {
+      "max": 525000,
+      "note": "T2410 @ 1,280 × 32",
+      "uncertain": true
+    }
+  },
+  "models": [
+    {
+      "model": "T4040",
+      "specs": {
+        "frame_rate_fps": 9350,
+        "max_frame_rate_fps": 440000
+      },
+      "note": "4.2 Mpx 전 화소",
+      "uncertain": true
+    },
+    {
+      "model": "T2410",
+      "specs": {
+        "frame_rate_fps": 24000,
+        "max_frame_rate_fps": 525000
+      },
+      "note": "원문 over 24,000 fps at 1-Mpx resolution, 525,000 fps @ 1,280 × 32",
+      "uncertain": true
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://www.phantomhighspeed.com/products/cameras/tseries/t4040",
+      "retrieved": "2026-10-08",
+      "note": "제조사 사이트가 직접 조회를 막아(HTTP 403) 검색 엔진의 제조사 페이지 발췌로 읽음. 값 전부 uncertain"
+    },
+    {
+      "url": "https://www.phantomhighspeed.com/products/cameras/tseries/t2410",
+      "retrieved": "2026-10-08",
+      "note": "제조사 사이트가 직접 조회를 막아(HTTP 403) 검색 엔진의 제조사 페이지 발췌로 읽음. 값 전부 uncertain"
+    }
+  ],
+  "confidence": "limited",
+  "notes": "같은 T 시리즈의 다른 기종(T1340 등)은 검색 결과에 나오지 않아 넣지 않았다."
+}

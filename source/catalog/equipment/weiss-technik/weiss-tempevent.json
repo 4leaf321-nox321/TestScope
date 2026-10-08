@@ -1,0 +1,83 @@
+{
+  "id": "weiss-tempevent",
+  "kind": "equipment_series",
+  "name": "Weiss Technik TempEvent Reach-In Temperature Test Chambers (ESS)",
+  "name_ko": "바이스 테크닉 TempEvent 리치인 급속 온도 시험 챔버(ESS)",
+  "manufacturer": "weiss-technik",
+  "brand": "TempEvent",
+  "category": "climatic_chamber",
+  "drive": "thermal",
+  "form_factor": "floor",
+  "description": "환경 스트레스 스크리닝(ESS)용 리치인 온도 시험 챔버. -70~+180 °C, 온도 변화 10~25 K/min, +20 °C 에서 최대 8000 W 발열 보상. 냉매 R449A/R23(R469A).",
+  "test_items": [
+    "temperature_cycling"
+  ],
+  "limits": {
+    "temperature_degC": {
+      "min": -70,
+      "max": 180,
+      "note": "T/270/70/10-25 행 기준"
+    },
+    "heating_rate_K_min": {
+      "min": 10,
+      "max": 25,
+      "note": "페이지 '10 ... 25 K/min'(승온·강온 구분 없이 적힘)"
+    },
+    "cooling_rate_K_min": {
+      "min": 10,
+      "max": 25,
+      "note": "페이지 '10 ... 25 K/min'"
+    }
+  },
+  "models": [
+    {
+      "model": "T/270/70/10-25",
+      "specs": {
+        "chamber_volume_L": 268,
+        "temperature_degC": {
+          "min": -70,
+          "max": 180
+        },
+        "heating_rate_K_min": {
+          "min": 10,
+          "max": 25
+        },
+        "cooling_rate_K_min": {
+          "min": 10,
+          "max": 25
+        },
+        "inner_mm": "H750×W580×D615",
+        "footprint_mm": "H1950×W895×D2322",
+        "power": "3/N/PE AC 400 V ±10 % 50 Hz",
+        "refrigerant": "R449A / R23 (R469A)"
+      },
+      "note": "페이지 기술 데이터 표에서 값이 보인 행"
+    },
+    {
+      "model": "T/480/70/11-25",
+      "note": "기종 선택 목록의 이름. 값은 보이지 않았다"
+    },
+    {
+      "model": "T/800/70/10-25",
+      "note": "기종 선택 목록의 이름. 값은 보이지 않았다"
+    },
+    {
+      "model": "T/1300/70/10-25",
+      "note": "기종 선택 목록의 이름. 값은 보이지 않았다"
+    }
+  ],
+  "relations": [
+    {
+      "type": "same_family_as",
+      "target": "weiss-climeevent"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://www.weiss-technik.com/environmental-simulation/en/products/detail/reach-in-temperature-and-climate-test-chamber-ess~gp62370",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지. 기종 선택 목록 4개와 T/270/70/10-25 행, 전원·발열 보상·냉매"
+    }
+  ],
+  "confidence": "limited"
+}

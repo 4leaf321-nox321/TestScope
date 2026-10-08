@@ -1,0 +1,148 @@
+{
+  "id": "anritsu-mt8870a",
+  "kind": "equipment_series",
+  "name": "Anritsu Universal Wireless Test Set MT8870A",
+  "name_ko": "안리쓰 MT8870A 범용 무선 시험 세트",
+  "manufacturer": "anritsu",
+  "category": "radio_communication_tester",
+  "description": "셀룰러·WLAN·Bluetooth·GNSS 등 여러 무선 표준을 재는 시험 세트. 한 섀시에 측정 유닛(MU887000A·MU887001A·MU887002A)을 최대 4개 넣어 각자 독립 제어하고 DUT 최대 4대를 동시에 잰다. 유닛마다 벡터 신호 발생기·분석기를 내장한다. MU887000A/MU887001A 는 10 MHz~3.8 GHz(옵션 6 GHz)·160 MHz, MU887002A 는 400 MHz~6 GHz·200 MHz(-007 옵션 시 상한 7.3 GHz)이고, 변조 신호 최대 출력은 0 dBm 이다.",
+  "test_items": [],
+  "limits": {
+    "frequency_Hz": {
+      "min": 10000000,
+      "max": 7300000000,
+      "note": "브로슈어: MU887000A/MU887001A 10 MHz~3.8 GHz(표준), -001 옵션으로 6.0 GHz. MU887002A 400 MHz~6.0 GHz, -007 옵션으로 시험 포트 5~12 상한 7.3 GHz. 웹 페이지는 MU887000A/01A 를 10 MHz~6 GHz 로 적는다(6 GHz 는 옵션)"
+    },
+    "bandwidth_Hz": {
+      "max": 200000000,
+      "note": "SG 변조·SA 분석 대역폭: MU887000A/MU887001A 160 MHz, MU887002A 200 MHz(표준)"
+    },
+    "rf_output_level_dBm": {
+      "min": -130,
+      "max": 0,
+      "note": "브로슈어 SG 설정 범위: MU887002A -130~0 dBm(보증 상한 -5 dBm ≤3.8 GHz, -8 dBm >3.8 GHz, 변조파 RMS), MU887000A 포트 1·2 -130~-10 dBm(≤3.8 GHz)/-18 dBm(>3.8 GHz), 포트 3·4 -120~0 dBm/-8 dBm. 원문 0 dBm maximum output for modulated signals"
+    },
+    "channels": {
+      "max": 4,
+      "note": "MT8870A 슬롯 4개(시험 모듈 최대 4개, 각자 독립 제어, DUT 최대 4대 동시 측정), MT8872A 슬롯 2개"
+    },
+    "rf_port_count": {
+      "max": 24,
+      "note": "브로슈어: MU887002A 는 TRX 기능 2개 × RF 시험 포트 12개 = 모듈당 24, MU887000A/MU887001A 는 모듈당 4. 웹 페이지는 「MU887002A 유닛당 안테나 커넥터 최대 12」"
+    },
+    "radio_standards": {
+      "values": [
+        "5G NR Sub-6 GHz",
+        "LTE/LTE-Advanced",
+        "LTE-V2X",
+        "NB-IoT",
+        "Cat-M",
+        "W-CDMA/HSPA",
+        "TD-SCDMA",
+        "GSM/EDGE",
+        "CDMA2000/1xEV-DO",
+        "WLAN 802.11b/g/a/n/ac/ax/p/be",
+        "Bluetooth",
+        "ZigBee",
+        "Z-Wave",
+        "GPS/Galileo/GLONASS/BeiDou/QZSS",
+        "DVB-H",
+        "ISDB-T/ISDB-Tmm"
+      ],
+      "note": "제품 페이지 문구"
+    }
+  },
+  "models": [
+    {
+      "model": "MT8870A",
+      "specs": {
+        "frequency_Hz": {
+          "min": 10000000,
+          "max": 7300000000,
+          "note": "장착 모듈에 따라 다름(MU887000A/01A 10 MHz~3.8 GHz·옵션 6 GHz, MU887002A 400 MHz~6 GHz·옵션 7.3 GHz)"
+        },
+        "rf_output_level_dBm": {
+          "min": -130,
+          "max": 0,
+          "note": "모듈 SG 설정 범위. 변조 신호 최대 0 dBm"
+        },
+        "channels": 4,
+        "interfaces": "Ethernet(1000BASE-T), GPIB(MT8870A-001)"
+      },
+      "note": "섀시(슬롯 4개). 측정 유닛은 options 참조"
+    },
+    {
+      "model": "MT8872A",
+      "specs": {
+        "channels": 2,
+        "frequency_Hz": {
+          "min": 10000000,
+          "max": 7300000000,
+          "note": "장착 모듈에 따라 다름. 브로슈어는 MU887002A 를 MT8870A 와 같이 쓴다고 적는다"
+        },
+        "rf_output_level_dBm": {
+          "min": -130,
+          "max": 0,
+          "note": "모듈 SG 설정 범위"
+        },
+        "interfaces": "Ethernet(1000BASE-T), GPIB(MT8872A-001)"
+      },
+      "note": "2슬롯 소형 섀시(폭 250 mm, 19인치 랙 미만 공간용). MT8870A 와 완전 호환, 시험 모듈 공유"
+    }
+  ],
+  "features": [
+    "측정 유닛 최대 4개, 독립 제어, DUT 4대 동시 측정",
+    "벡터 신호 발생기·분석기 내장",
+    "오디오 분석기·발생기(MU887000A/MU887001A)",
+    "유닛별 독립 CPU(MU887002A)",
+    "분배기 없이 같은 신호 동시 출력"
+  ],
+  "options": [
+    {
+      "name": "MU887000A",
+      "note": "측정 유닛. 10 MHz~3.8 GHz(-001 옵션으로 6 GHz), 160 MHz, 오디오 분석기·발생기(-002 옵션), RF 시험 포트 4개"
+    },
+    {
+      "name": "MU887001A",
+      "note": "측정 유닛. 10 MHz~3.8 GHz(-001 옵션으로 6 GHz), 160 MHz, 오디오 분석기·발생기(-002 옵션), RF 시험 포트 4개"
+    },
+    {
+      "name": "MU887002A",
+      "note": "측정 유닛. 400 MHz~6 GHz, 200 MHz, TRX 기능 2개 × RF 시험 포트 12개, 유닛별 독립 CPU"
+    },
+    {
+      "name": "MU887002A-007",
+      "note": "시험 포트 5~12 상한 7.3 GHz 확장"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://www.anritsu.com/en-us/test-measurement/products/mt8870a",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지. 유닛별 주파수·대역폭, 최대 출력 0 dBm, 유닛 수, 안테나 커넥터, 지원 표준"
+    },
+    {
+      "file": "anritsu/dwl009783.pdf",
+      "pages": [
+        1,
+        3,
+        5,
+        6,
+        8,
+        9,
+        12,
+        13,
+        43,
+        44,
+        45,
+        46,
+        47,
+        49,
+        50
+      ],
+      "note": "제조사 브로슈어(MT8870A/MT8872A). 모듈별 주파수·대역폭·SG 출력 레벨, 슬롯 수, RF 시험 포트, 지원 표준, 인터페이스"
+    }
+  ],
+  "confidence": "catalog",
+  "notes": "PDF 로 확인: 모듈별 주파수·대역폭·출력 레벨, 슬롯 수, RF 시험 포트 수, 지원 표준, MT8872A(2슬롯) 사양. 웹 페이지의 MU887000A/01A 「10 MHz~6 GHz」 는 브로슈어상 표준 3.8 GHz, 6 GHz 는 -001 옵션이라 options 비고를 고쳤다."
+}

@@ -1,0 +1,87 @@
+{
+  "id": "konica-minolta-cl-500a",
+  "kind": "equipment_series",
+  "name": "Konica Minolta CL-500A Illuminance Spectrophotometer",
+  "name_ko": "코니카미놀타 CL-500A 분광 조도계",
+  "manufacturer": "konica-minolta",
+  "brand": "CL",
+  "category": "spectroradiometer",
+  "form_factor": "handheld",
+  "description": "광원의 분광 분포·조도·색도를 재는 휴대형 분광 조도계. 측정 파장 360 ~ 780 nm, 출력 간격 1 nm, 반치폭 약 10 nm. 조도 0.1 ~ 100,000 lx, 조도 확도 ±2 % ±1 digit, 색도 확도 ±0.0015(10 ~ 100,000 lx). 측정 시간은 Super Fast 약 0.2 s, Fast 약 0.5 s, Slow 약 2.5 s.",
+  "test_items": [
+    "photometry_colorimetry"
+  ],
+  "measurands": [
+    "spectral_irradiance",
+    "illuminance",
+    "chromaticity",
+    "correlated_color_temperature"
+  ],
+  "materials": [
+    "LED lighting",
+    "light sources"
+  ],
+  "limits": {
+    "wavelength_nm": {
+      "min": 360,
+      "max": 780
+    },
+    "illuminance_lx": {
+      "min": 0.1,
+      "max": 100000
+    }
+  },
+  "models": [
+    {
+      "model": "CL-500A",
+      "specs": {
+        "wavelength_nm": {
+          "min": 360,
+          "max": 780
+        },
+        "wavelength_resolution_nm": 1,
+        "spectral_bandwidth_nm": 10,
+        "illuminance_lx": {
+          "min": 0.1,
+          "max": 100000
+        },
+        "chromaticity_accuracy_xy": 0.0015,
+        "measurement_time_s": {
+          "min": 0.2,
+          "max": 27,
+          "note": "Super Fast 약 0.2 s(PC 연결), Fast 약 0.5 s, Slow 약 2.5 s, 자동 노출(고확도) 약 0.5 ~ 27 s. 웹 페이지는 0.2 ~ 2.5 s(Super Fast ~ Slow)"
+        },
+        "interfaces": "USB 2.0",
+        "weight_kg": 0.35,
+        "accuracy": "Ev ±2 % ±1 digit, xy ±0.0015(10 ~ 100,000 lx) · ±0.002(5 ~ 10 lx), 표준광원 A, 자동 노출 모드",
+        "repeatability_pct": {
+          "value": 0.5,
+          "note": "Ev 0.5 % + 1 digit(2σ). xy 0.0005(500 ~ 100,000 lx), 0.001(100 ~ 500), 0.002(30 ~ 100), 0.004(5 ~ 30 lx)"
+        }
+      },
+      "note": "반치폭 원문 Approx. 10 nm. 파장 정밀도 ±0.3 nm. 색도 확도 ±0.0015(10 ~ 100,000 lx), ±0.002(5 ~ 10 lx), 표준광원 A. JIS C 1609-1:2006 AA 급, DIN 5032-7 B 급"
+    }
+  ],
+  "relations": [
+    {
+      "type": "performs",
+      "target": "photometry_colorimetry"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://sensing.konicaminolta.us/us/products/cl-500a-illuminance-spectrophotometer/",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지(HTML)"
+    },
+    {
+      "file": "konica-minolta/cl-500a_catalog_eng_compressed.pdf",
+      "pages": [
+        4
+      ],
+      "note": "제조사 카탈로그 PDF 주요 사양"
+    }
+  ],
+  "confidence": "catalog",
+  "notes": "PDF 로 확인: 파장 범위 · 출력 간격 · 반치폭 · 측정 범위 · 확도 · 측정 시간 · 인터페이스 · 무게 전부(자동 노출 모드 측정 시간과 반복도를 더함)."
+}

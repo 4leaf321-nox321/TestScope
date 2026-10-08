@@ -1,0 +1,331 @@
+{
+  "id": "linseis-sta",
+  "kind": "equipment_series",
+  "name": "LINSEIS STA simultaneous thermal analyzers (STA L81 / L82 / HP L84 / HP L85 / STA/TGA L86 / STA/DIL L80)",
+  "name_ko": "린세이스 STA 동시열분석기 계열",
+  "manufacturer": "linseis",
+  "category": "sta",
+  "description": "TG-DSC/TG-DTA 동시열분석기 계열. STA L81 은 -150~2400 °C(노 12종, 센서 22종), STA L82 는 실온~1100 °C 탁상형(42/90 시료 로봇), STA HP L84·HP L85 는 150 bar 고압형, STA/TGA L86 은 저울 두 가지(0.01 / 0.1 µg)의 적응형, STA/DIL L80 은 열분석과 딜라토메트리를 한 플랫폼에서 한다. MS·FTIR·GC-MS 발생 가스 분석 연결.",
+  "test_items": [
+    "tga",
+    "dsc",
+    "dilatometry"
+  ],
+  "measurands": [
+    "thermal.decomposition_temp",
+    "thermal.char_residue",
+    "thermal.glass_transition",
+    "thermal.melting_point",
+    "thermal.specific_heat"
+  ],
+  "measurands_by_item": {
+    "tga": [
+      "thermal.decomposition_temp",
+      "thermal.char_residue"
+    ],
+    "dsc": [
+      "thermal.glass_transition",
+      "thermal.melting_point",
+      "thermal.specific_heat"
+    ],
+    "dilatometry": [
+      "thermal.expansion_linear"
+    ]
+  },
+  "limits": {
+    "temperature_degC": {
+      "min": -150,
+      "max": 2800,
+      "note": "STA/DIL L80 은 2800 °C, 그 외 2400 °C 까지(노에 따라)"
+    },
+    "pressure_bar": {
+      "max": 150,
+      "note": "HP 형"
+    }
+  },
+  "models": [
+    {
+      "model": "STA L81",
+      "specs": {
+        "temperature_degC": {
+          "min": -150,
+          "max": 2400,
+          "note": "-150 °C~500/700/1000 °C, RT~1000/1400/1750/2000/2400 °C(사양서). 웹 노 표에는 흑연 RT–2800 °C(L81/20/G/2800, 파이로미터)도 있다"
+        },
+        "heating_rate_K_min": {
+          "min": 0.01,
+          "max": 100,
+          "note": "노에 따라. 요청 시 0.001 K/min 부터"
+        },
+        "balance_resolution_ug": {
+          "values": [
+            0.01,
+            0.02,
+            0.1
+          ],
+          "note": "저울 1 / 2 / 3"
+        },
+        "pressure_bar": {
+          "max": 5,
+          "note": "선택"
+        },
+        "temperature_precision_degC": 0.001,
+        "sample_mass_mg": {
+          "values": [
+            5000,
+            25000,
+            35000
+          ],
+          "note": "시료 무게 5 g / 25 g / 35 g(저울 1 / 2 / 3)"
+        },
+        "dynamic_weighing_range_mg": {
+          "values": [
+            2500,
+            20000
+          ],
+          "note": "질량 변화 측정 범위 ±2500 mg(저울 1·2) / ±20000 mg(저울 3)"
+        },
+        "heat_flow_resolution_uW": {
+          "values": [
+            0.3,
+            0.4,
+            1,
+            1.2
+          ],
+          "note": "DSC 분해능 0.3 / 0.4 / 1 / 1.2 µW(센서 E/K/S/B). 열량 감도 약 4 / 6 / 17.6 / 22.5 µW"
+        },
+        "dta_range_uV": {
+          "values": [
+            250,
+            2500
+          ],
+          "note": "DTA 분해능 0.03 nV, 감도 1.5 µV/mW"
+        }
+      },
+      "note": "온도 정밀도 0.001 °C, 진공 10⁻⁵ mbar(펌프에 따라), 시료 로봇 42 위치(선택), 저울이 무게를 자동으로 읽는다. 센서 — TG, TG-DTA, TG-DSC(E/K/S/B/C, C 는 DTA 만)"
+    },
+    {
+      "model": "STA L82",
+      "specs": {
+        "temperature_degC": {
+          "min": 20,
+          "max": 1100,
+          "note": "RT to 1100 °C"
+        },
+        "heating_rate_K_min": {
+          "min": 0.01,
+          "max": 100
+        },
+        "balance_resolution_ug": 0.1,
+        "temperature_precision_degC": 0.001,
+        "heat_flow_resolution_uW": {
+          "min": 0.3,
+          "max": 1.2,
+          "note": "DSC resolution 0.3 – 1.2 µW"
+        },
+        "pressure_bar": {
+          "max": 5,
+          "note": "선택"
+        }
+      },
+      "note": "42 또는 90 위치 시료 로봇(선택), 진공 10⁻² mbar(선택)"
+    },
+    {
+      "model": "STA HP L84",
+      "specs": {
+        "temperature_degC": {
+          "values": [
+            1100,
+            1400,
+            1800
+          ],
+          "note": "RT up to 1100 / 1400 / 1800 °C"
+        },
+        "pressure_bar": {
+          "max": 150
+        },
+        "balance_resolution_ug": 0.1,
+        "temperature_precision_degC": 0.05,
+        "dynamic_weighing_range_mg": {
+          "values": [
+            25,
+            2500,
+            35000
+          ],
+          "note": "TG 측정 범위 25 / 2500 mg 또는 35000 mg(두 저울 열)"
+        },
+        "heat_flow_resolution_uW": {
+          "values": [
+            0.3,
+            0.4,
+            1
+          ],
+          "note": "DSC resolution 0.3 / 0.4 / 1 µW"
+        }
+      },
+      "note": "고압 TG-DSC. 진공 10⁻⁴ mbar, 최대 150 bar(맞춤 가능). DSC 열량 감도 약 4 / 6 / 17.6 / 22.5 µW, DTA 분해능 0.03 nV, DTA 범위 250 / 2500 µV"
+    },
+    {
+      "model": "STA HP L85",
+      "specs": {
+        "temperature_degC": {
+          "min": 20,
+          "max": 1200,
+          "note": "RT up to 1200 °C"
+        },
+        "pressure_bar": {
+          "max": 150
+        },
+        "balance_resolution_ug": 0.1,
+        "temperature_precision_degC": 0.05,
+        "dynamic_weighing_range_mg": {
+          "values": [
+            25,
+            2500,
+            35000
+          ],
+          "note": "TG 측정 범위 25 / 2500 mg 또는 35000 mg"
+        },
+        "heat_flow_resolution_uW": {
+          "values": [
+            0.3,
+            0.4,
+            1
+          ]
+        }
+      },
+      "note": "고압 열천칭. 진공 10⁻⁴ mbar, 최대 150 bar"
+    },
+    {
+      "model": "STA/TGA L86",
+      "specs": {
+        "temperature_degC": {
+          "min": -150,
+          "max": 2400,
+          "note": "-150 °C~500/700/1000 °C, RT~1000/1400/1600/1750/2000/2400 °C"
+        },
+        "heating_rate_K_min": {
+          "min": 0.01,
+          "max": 100
+        },
+        "temperature_precision_degC": 0.001,
+        "balance_resolution_ug": {
+          "values": [
+            0.01,
+            0.1
+          ],
+          "note": "저울 1 / 2"
+        },
+        "dynamic_weighing_range_mg": {
+          "value": 2500,
+          "note": "±2500 mg (저울 용량 5 g / 50 g)"
+        },
+        "heat_flow_resolution_uW": {
+          "values": [
+            0.3,
+            0.4,
+            1,
+            1.2
+          ]
+        },
+        "pressure_bar": {
+          "max": 5,
+          "note": "선택"
+        }
+      },
+      "note": "진공 10⁻² mbar(펌프에 따라). DSC 센서 E/K/S/B/C(C 는 DTA 만)"
+    },
+    {
+      "model": "STA/DIL L80",
+      "specs": {
+        "temperature_degC": {
+          "min": 20,
+          "max": 2800,
+          "note": "RT to 2800 °C"
+        },
+        "heating_rate_K_min": {
+          "min": 0.001,
+          "max": 100,
+          "note": "노에 따라"
+        },
+        "displacement_um": {
+          "values": [
+            2500,
+            25000
+          ],
+          "note": "DIL 측정 범위 ±2,500 µm(LVDT) / ±25,000 µm(광학 엔코더)"
+        },
+        "displacement_resolution_nm": {
+          "value": 10,
+          "note": "DIL resolution up to 0.01 µm"
+        },
+        "force_N": {
+          "min": 0.01,
+          "max": 5,
+          "note": "접촉력 10 mN~5 N"
+        },
+        "specimen_diameter_mm": {
+          "max": 20
+        },
+        "sample_length_mm": {
+          "max": 50
+        }
+      },
+      "note": "TG·DSC·DTA·TG-DSC·TG-DTA 와 딜라토메트리를 한 플랫폼에서. 소결 속도 제어(RCS) 포함"
+    }
+  ],
+  "relations": [
+    {
+      "type": "same_family_as",
+      "target": "linseis-tga"
+    },
+    {
+      "type": "same_family_as",
+      "target": "linseis-dil-l75-l76"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://www.linseis.com/en/instruments/thermal-analysis/simultaneous-thermal-analyzer-tga-dsc/sta-l81/",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지(HTML) 본문·표를 직접 읽음. Specifications 목록·노 표"
+    },
+    {
+      "url": "https://www.linseis.com/en/instruments/thermal-analysis/simultaneous-thermal-analyzer-tga-dsc/sta-l82/",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지(HTML) 본문·표를 직접 읽음"
+    },
+    {
+      "url": "https://www.linseis.com/en/instruments/thermal-analysis/simultaneous-thermal-analyzer-tga-dsc/sta-hp-l84/",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지(HTML) 본문·표를 직접 읽음. 기종 표"
+    },
+    {
+      "url": "https://www.linseis.com/en/instruments/thermal-analysis/simultaneous-thermal-analyzer-tga-dsc/sta-hp-l85/",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지(HTML) 본문·표를 직접 읽음. 기종 표"
+    },
+    {
+      "url": "https://www.linseis.com/en/instruments/thermal-analysis/simultaneous-thermal-analyzer-tga-dsc/sta-tga-l86/",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지(HTML) 본문·표를 직접 읽음. 기종 표·노 표"
+    },
+    {
+      "url": "https://www.linseis.com/en/instruments/thermal-analysis/simultaneous-thermal-analyzer-tga-dsc/sta-dil-l80/",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지(HTML) 본문·표를 직접 읽음"
+    },
+    {
+      "file": "linseis/speicifactions-sta-l81.pdf",
+      "pages": [
+        1
+      ]
+    },
+    {
+      "file": "linseis/specifications-sta-l82_11_25.pdf",
+      "note": "제조사 원본 문서. 스캔 이미지라 텍스트가 없음 — 값 대조에는 못 씀(값은 웹 출처 기준)"
+    }
+  ],
+  "confidence": "limited",
+  "notes": "실온(RT) 하한은 20 °C 로 적고 note 에 원문을 남겼다. dilatometry 는 STA/DIL L80 에만 해당한다. PDF 로 확인: STA L81 행(온도 범위·승온 속도·저울 분해능·시료 무게·측정 범위·DSC 분해능·DTA 범위, 사양서 1쪽). 웹 값 그대로: STA L82 · HP L84 · HP L85 · STA/TGA L86 · STA/DIL L80 — STA L82 사양서(specifications-sta-l82_11_25)는 추출 텍스트가 비어 있어 대조하지 못했다."
+}

@@ -1,0 +1,99 @@
+{
+  "id": "lansmont-shock-test-systems-web",
+  "kind": "equipment_series",
+  "name": "Lansmont Performance Series Shock Test Systems (P23 / P30 / P40 / P55 / P65-81 / P95-115 / P122)",
+  "manufacturer": "lansmont",
+  "brand": "Performance Series",
+  "category": "shock_test_machine",
+  "drive": "free_fall_pneumatic",
+  "form_factor": "floor",
+  "description": "현행 제조사 웹 목록의 Performance 충격 시험기 기종(P16/30·P30/45·P60/122)을 기존 계열 객체에 보탠다. P16/30 은 Model 23 바탕의 고에너지판(23×23 cm, 50 kg), P30/45 는 40×40 cm·75 kg, 둘 다 5,000 g(옵션 10,000 g)·속도 변화 6.7~16.8 m/s. P60/122 는 Model 65/81 의 고성능판으로 65×81 cm, 1,000 g, 자유낙하 680 kg·6.1~7.6 m/s / 가속 227 kg·7.6~15.2 m/s.",
+  "test_items": [
+    "mechanical_shock"
+  ],
+  "measurands": [
+    "peak_acceleration",
+    "shock_response_spectrum"
+  ],
+  "models": [
+    {
+      "model": "P16/30",
+      "specs": {
+        "table_size_mm": [
+          230,
+          230
+        ],
+        "payload_kg": 50,
+        "acceleration_g": 5000,
+        "velocity_change_m_s": {
+          "min": 6.7,
+          "max": 16.8
+        }
+      },
+      "note": "옵션 10,000 g. Model 23 바탕"
+    },
+    {
+      "model": "P30/45",
+      "specs": {
+        "table_size_mm": [
+          400,
+          400
+        ],
+        "payload_kg": 75,
+        "acceleration_g": 5000,
+        "velocity_change_m_s": {
+          "min": 6.7,
+          "max": 16.8
+        }
+      },
+      "note": "옵션 10,000 g"
+    },
+    {
+      "model": "P60/122",
+      "specs": {
+        "table_size_mm": [
+          650,
+          810
+        ],
+        "payload_kg": 680,
+        "acceleration_g": 1000,
+        "velocity_change_m_s": {
+          "min": 6.1,
+          "max": 15.2
+        }
+      },
+      "note": "자유낙하 680 kg·6.1~7.6 m/s, 가속 227 kg·7.6~15.2 m/s. Model 65/81 의 고성능판"
+    }
+  ],
+  "pulse_waveforms": [
+    "반정현",
+    "사다리꼴",
+    "톱니(terminal peak sawtooth)"
+  ],
+  "relations": [
+    {
+      "type": "performs",
+      "target": "mechanical_shock"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://www.lansmont.com/products/shock-testers/p1630",
+      "retrieved": "2026-10-08",
+      "note": "제조사 P16/30 페이지"
+    },
+    {
+      "url": "https://www.lansmont.com/products/shock-testers/p3045",
+      "retrieved": "2026-10-08",
+      "note": "제조사 P30/45 페이지"
+    },
+    {
+      "url": "https://www.lansmont.com/products/shock-testers/p60122",
+      "retrieved": "2026-10-08",
+      "note": "제조사 P60/122 페이지"
+    }
+  ],
+  "confidence": "limited",
+  "notes": "기존 객체(PDF 기준)는 P23·P30·P40·P55·P65/81·P95/115·P122 로 적었고 현행 웹 목록은 P16/30·P30/45·P55·P60/122 로 적는다. 같은 기계의 이름이 바뀐 것인지(예: P23 ↔ P16/30, P40 ↔ P30/45 — 테이블·탑재가 같다) 사람이 판단해야 한다. 그래서 새 계열로 세우지 않고 보탬(supplements)으로 두었다.",
+  "supplements": "lansmont-shock-test-systems"
+}

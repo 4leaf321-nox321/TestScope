@@ -1,0 +1,97 @@
+{
+  "id": "keyence-vl-700",
+  "kind": "equipment_series",
+  "name": "VL-700 Series 3D Scanner CMM",
+  "name_ko": "키엔스 VL-700 3D 스캐너형 3차원 측정기",
+  "manufacturer": "keyence",
+  "category": "coordinate_measuring_machine",
+  "form_factor": "benchtop",
+  "description": "청색 LED 패턴 투영으로 시편 전체를 900만 점 컬러 텍스처 메시로 스캔하는 3D 스캐너형 측정기 계열임. 측정 유닛 VL-770 은 저배율 ø300 × H200 mm, 고배율 ø70 × H50 mm 범위를 측정 정확도 ±10 µm(ISO 10360-8 참고), 반복 정밀도 2 µm(σ)로 재고, 전동 XYθ 스테이지 VL-750(회전 360°, 틸트 45°, 적재 50 kg)와 조합함. 측정 결과를 STEP 으로 내보냄. 계열 전 기종이 단종이며 후속은 VL-800 계열.",
+  "test_items": [],
+  "standards": {
+    "compliance": [
+      "ISO 10360-8"
+    ],
+    "test_methods": []
+  },
+  "limits": {
+    "measuring_repeatability_um": {
+      "note": "원문 2 µm (σ), 23 °C ±1 °C",
+      "values": [
+        2
+      ]
+    },
+    "table_load_kg": {
+      "max": 50,
+      "note": "VL-750 스테이지"
+    }
+  },
+  "models": [
+    {
+      "model": "VL-770",
+      "variant": "측정 유닛(단종, 후속 VL-870)",
+      "specs": {
+        "accuracy": "±10 µm",
+        "measuring_repeatability_um": 2,
+        "field_of_view_mm": {
+          "values": [
+            300,
+            200
+          ],
+          "note": "저배율 ø300 × H 200 mm, 고배율 ø70 × H 50 mm"
+        },
+        "weight_kg": {
+          "value": 19.6,
+          "note": "측정 유닛만"
+        }
+      },
+      "note": "측정 광원 청색 LED, 텍스처 광원 RGB LED."
+    },
+    {
+      "model": "VL-750",
+      "variant": "스테이지(전동 XYθ, 단종, 후속 VL-850)",
+      "specs": {
+        "stage_travel_mm": {
+          "values": [
+            200
+          ],
+          "note": "이동 범위 ø200 mm, 상판 ø500 mm, 360° 무한 회전, 틸트 최대 45°"
+        },
+        "table_load_kg": 50,
+        "weight_kg": {
+          "value": 26,
+          "note": "스테이지만. 컨트롤러 3.7 kg, 차광 커버 5.5 kg"
+        }
+      }
+    },
+    {
+      "model": "VL-730",
+      "variant": "스테이지(전동 θ)",
+      "note": "기종명은 제조사 기종 페이지 제목에서 확인. 사양은 읽지 않음"
+    },
+    {
+      "model": "VL-700",
+      "variant": "컨트롤러(단종, 후속 VL-800)",
+      "note": "단종 사실은 검색 결과 요약과 VL-770 페이지에서 읽음"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://www.keyence.com/products/3d-measure/3d-scanner/vl-700/models/vl-770",
+      "retrieved": "2026-10-08",
+      "note": "제조사 기종 페이지(사양표, 단종 표시)"
+    },
+    {
+      "url": "https://www.keyence.com/products/3d-measure/3d-scanner/vl-700/models/vl-750",
+      "retrieved": "2026-10-08",
+      "note": "제조사 기종 페이지(사양표, 단종 표시)"
+    },
+    {
+      "url": "https://www.keyence.com/products/3d-measure/3d-scanner/vl-700/models/vl-700/",
+      "retrieved": "2026-10-08",
+      "note": "컨트롤러 기종 페이지 주소(검색 결과로만 확인, 열람 안 함)"
+    }
+  ],
+  "confidence": "limited",
+  "notes": "범주 note: 3D 스캐너(구조광)지만 제조사가 '3D Scanner CMM' 으로 부르고 ISO 10360-8 기준 정확도를 적어 3차원 측정기 분류에 둠. 단종 계열이지만 운영 장비로 남아 있을 수 있어 넣음."
+}

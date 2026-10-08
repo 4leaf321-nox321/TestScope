@@ -1,0 +1,119 @@
+{
+  "id": "binder-kmf",
+  "kind": "equipment_series",
+  "name": "BINDER KMF Constant Climate Chambers with Expanded Temperature/Humidity Range (KMF 115 / KMF 240 / KMF 720)",
+  "name_ko": "바인더 KMF 확장 온습도 범위 항온항습 챔버",
+  "manufacturer": "binder",
+  "brand": "KMF",
+  "category": "climatic_chamber",
+  "drive": "thermal",
+  "form_factor": "floor",
+  "description": "온도 -10~+100 °C, 습도 10~98 %RH 를 거는 항온항습 챔버. 내용적 102·247·700 L 세 크기로 구성된다. 시편에 온습도 조건을 거는 장비이지 물성을 재는 장비가 아니다.",
+  "test_items": [
+    "damp_heat"
+  ],
+  "materials": [],
+  "limits": {
+    "temperature_degC": {
+      "min": -10,
+      "max": 100
+    },
+    "humidity_pct": {
+      "min": 10,
+      "max": 98
+    },
+    "chamber_volume_L": {
+      "min": 102,
+      "max": 700,
+      "values": [
+        102,
+        247,
+        700
+      ]
+    }
+  },
+  "models": [
+    {
+      "model": "KMF 115",
+      "specs": {
+        "temperature_degC": {
+          "min": -10,
+          "max": 100
+        },
+        "humidity_pct": {
+          "min": 10,
+          "max": 98
+        },
+        "chamber_volume_L": 102,
+        "inner_mm": {
+          "note": "600 x 483 x 351 mm (대리점 페이지 'Internal dimensions' 표기 그대로, W·H·D 순서 미표기)"
+        },
+        "footprint_mm": {
+          "note": "880 x 1050 x 650 mm (대리점 페이지 'Housing dimensions' 표기 그대로)"
+        },
+        "weight_kg": 128
+      }
+    },
+    {
+      "model": "KMF 240",
+      "specs": {
+        "temperature_degC": {
+          "min": -10,
+          "max": 100
+        },
+        "humidity_pct": {
+          "min": 10,
+          "max": 98
+        },
+        "chamber_volume_L": 247,
+        "inner_mm": {
+          "note": "650 x 785 x 485 mm (대리점 페이지 'Internal dimensions' 표기 그대로, W·H·D 순서 미표기)"
+        },
+        "footprint_mm": {
+          "note": "930 x 1465 x 800 mm (대리점 페이지 'Housing dimensions' 표기 그대로)"
+        },
+        "weight_kg": 189
+      }
+    },
+    {
+      "model": "KMF 720",
+      "specs": {
+        "temperature_degC": {
+          "min": -10,
+          "max": 100
+        },
+        "humidity_pct": {
+          "min": 10,
+          "max": 98
+        },
+        "chamber_volume_L": 700,
+        "inner_mm": {
+          "note": "973 x 1250 x 576 mm (대리점 페이지 'Internal dimensions' 표기 그대로, W·H·D 순서 미표기)"
+        },
+        "footprint_mm": {
+          "note": "1250 x 1925 x 890 mm (대리점 페이지 'Housing dimensions' 표기 그대로)"
+        },
+        "weight_kg": 306
+      }
+    }
+  ],
+  "relations": [
+    {
+      "type": "simulates_environment",
+      "target": "environment-damp-heat"
+    },
+    {
+      "type": "same_family_as",
+      "target": "binder-mkf"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://technology-products.dksh.com/product/binder-kmf-expanded-temperature-humidity/",
+      "retrieved": "2026-10-08",
+      "note": "대리점(DKSH) 제품 페이지. 기종별 온도·습도 범위, 내용적, 내부·외형 치수, 무게. 제조사 BINDER 의 KMF 제품 페이지(int-en·uk-en·us-en /product/kmf-115, kmf-240)는 이날 조회에서 'A non-recoverable error occured' 오류 페이지만 돌려 대리점 페이지를 썼다"
+    }
+  ],
+  "confidence": "limited",
+  "notes": "승온·강온 속도, 온도 변동·편차, 열 보상, 전원은 읽은 페이지에 없어 비웠다(검색 요약에 KMF 240 의 승온 0.8 K/min 등이 보였지만 원문 페이지를 열지 못해 넣지 않음). 치수 문자열은 대리점 표기 순서 그대로라 inner_mm 를 값이 아닌 note 로만 적었다."
+}

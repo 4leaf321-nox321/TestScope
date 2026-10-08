@@ -1,0 +1,65 @@
+{
+  "id": "ta-instruments-discovery-tma-450",
+  "kind": "equipment_series",
+  "name": "TA Instruments Discovery TMA 450 / TMA 450 RH Thermomechanical Analyzers",
+  "name_ko": "TA 인스트루먼트 Discovery TMA 450 열기계분석기",
+  "manufacturer": "ta-instruments",
+  "category": "tma",
+  "description": "Discovery 계열 TMA. -150~1000 °C, 힘 0.001~2 N. TMA 450 RH 는 습도 제어형.",
+  "test_items": [
+    "tma"
+  ],
+  "measurands": [
+    "thermal.expansion_linear",
+    "thermal.glass_transition"
+  ],
+  "measurands_by_item": {
+    "tma": [
+      "thermal.expansion_linear",
+      "thermal.glass_transition"
+    ]
+  },
+  "limits": {
+    "temperature_degC": {
+      "min": -150,
+      "max": 1000,
+      "uncertain": true
+    }
+  },
+  "models": [
+    {
+      "model": "TMA 450",
+      "variant": "Discovery TMA 450",
+      "specs": {
+        "temperature_degC": {
+          "min": -150,
+          "max": 1000,
+          "uncertain": true
+        },
+        "force_N": {
+          "min": 0.001,
+          "max": 2,
+          "uncertain": true
+        }
+      }
+    },
+    {
+      "model": "TMA 450 RH",
+      "note": "습도 제어형. 사양 미확인",
+      "uncertain": true
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://www.tainstruments.com/tma-450/",
+      "retrieved": "2026-10-08",
+      "note": "제조사 페이지가 자동 조회를 막아(HTTP 403/406) 직접 열지 못함. 값은 웹 검색 엔진이 이 페이지에서 뽑은 발췌로만 확인했다 — 값마다 uncertain. -150~1000 °C, 힘 0.001~2 N"
+    },
+    {
+      "url": "https://www.tainstruments.com/tma-450-rh/",
+      "retrieved": "2026-10-08",
+      "note": "제조사 페이지가 자동 조회를 막아(HTTP 403/406) 직접 열지 못함. 값은 웹 검색 엔진이 이 페이지에서 뽑은 발췌로만 확인했다 — 값마다 uncertain. 습도 제어형 제품 페이지 이름만 확인"
+    }
+  ],
+  "confidence": "limited"
+}

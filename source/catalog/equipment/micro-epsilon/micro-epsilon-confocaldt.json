@@ -1,0 +1,345 @@
+{
+  "id": "micro-epsilon-confocaldt",
+  "kind": "equipment_series",
+  "name": "confocalDT Confocal Chromatic Sensor System (IFS2405 sensors, IFC/IFD controllers)",
+  "name_ko": "마이크로엡실론 confocalDT 공초점 크로마틱 변위·두께 센서",
+  "manufacturer": "micro-epsilon",
+  "category": "thickness_displacement_gauge",
+  "description": "백색광의 파장별 초점 위치로 거리를 재는 공초점 크로마틱(confocal chromatic) 센서 체계임. 범용 센서 IFS2405 는 측정 범위 0.3~30 mm, 직선성 최대 < ±0.09 µm, 분해능 최대 < 2 nm 이며 확산·반사·투명 재질의 거리와 한쪽 면 두께를 잼. 컨트롤러는 IFC2411/2412(8 kHz), IFC2416/2417(25 kHz), IFC2465/66(30 kHz) 와 컨트롤러 일체형 IFD2410/2415(25 kHz) 가 있음.",
+  "test_items": [],
+  "limits": {
+    "displacement_mm": {
+      "min": 0.3,
+      "max": 30,
+      "note": "IFS2405 측정 범위 0.3~30 mm(PDF p.2·4)"
+    },
+    "linearity_um": {
+      "min": 0.09,
+      "note": "원문 Linearity (displacement and distance) < ±0.09 µm(IFS2405-0.3, PDF p.2). 두께 직선성은 < ±0.18 µm"
+    },
+    "position_resolution_nm": {
+      "min": 2,
+      "note": "원문 Resolution static < 2 nm(IFS2405-0.3, 2,048값 평균 1 kHz, PDF p.2). dynamic < 18 nm"
+    },
+    "data_rate_Hz": {
+      "max": 30000,
+      "note": "IFC2465/66 30 kHz(웹 목록 페이지 값, PDF 에 컨트롤러 사양 없음)"
+    },
+    "measurement_distance_mm": {
+      "min": 6,
+      "max": 220,
+      "note": "원문 Start of measuring range approx. 6 mm(IFS2405-0.3) ~ 220 mm(IFS2405-28)"
+    },
+    "spot_size_um": {
+      "min": 6,
+      "max": 60,
+      "note": "원문 Light spot diameter 6 µm(IFS2405-0.3) ~ 60 µm(IFS2405-28)"
+    }
+  },
+  "models": [
+    {
+      "model": "IFS2405-0.3",
+      "variant": "범용 공초점 센서",
+      "specs": {
+        "displacement_mm": {
+          "value": 0.3,
+          "note": "원문 Measuring range 0.3 mm"
+        },
+        "measurement_distance_mm": {
+          "value": 6,
+          "note": "원문 Start of measuring range approx. 6 mm"
+        },
+        "position_resolution_nm": {
+          "value": 2,
+          "note": "원문 Resolution static < 2 nm, dynamic < 18 nm"
+        },
+        "linearity_um": {
+          "value": 0.09,
+          "note": "원문 Linearity displacement and distance < ±0.09 µm, thickness < ±0.18 µm"
+        },
+        "spot_size_um": {
+          "value": 6,
+          "note": "원문 Light spot diameter 6 µm"
+        }
+      }
+    },
+    {
+      "model": "IFS2405-1",
+      "variant": "범용 공초점 센서",
+      "specs": {
+        "displacement_mm": {
+          "value": 1,
+          "note": "원문 Measuring range 1 mm"
+        },
+        "measurement_distance_mm": {
+          "value": 10,
+          "note": "원문 Start of measuring range approx. 10 mm"
+        },
+        "position_resolution_nm": {
+          "value": 4,
+          "note": "원문 Resolution static < 4 nm, dynamic < 38 nm"
+        },
+        "linearity_um": {
+          "value": 0.2,
+          "note": "원문 Linearity displacement and distance < ±0.2 µm, thickness < ±0.4 µm"
+        },
+        "spot_size_um": {
+          "value": 8,
+          "note": "원문 Light spot diameter 8 µm"
+        }
+      }
+    },
+    {
+      "model": "IFS2405-3",
+      "variant": "범용 공초점 센서",
+      "specs": {
+        "displacement_mm": {
+          "value": 3,
+          "note": "원문 Measuring range 3 mm"
+        },
+        "measurement_distance_mm": {
+          "value": 20,
+          "note": "원문 Start of measuring range approx. 20 mm"
+        },
+        "position_resolution_nm": {
+          "value": 8,
+          "note": "원문 Resolution static < 8 nm, dynamic < 80 nm"
+        },
+        "linearity_um": {
+          "value": 0.6,
+          "note": "원문 Linearity displacement and distance < ±0.6 µm, thickness < ±1.2 µm"
+        },
+        "spot_size_um": {
+          "value": 9,
+          "note": "원문 Light spot diameter 9 µm"
+        }
+      }
+    },
+    {
+      "model": "IFS2405-6",
+      "variant": "범용 공초점 센서",
+      "specs": {
+        "displacement_mm": {
+          "value": 6,
+          "note": "원문 Measuring range 6 mm"
+        },
+        "measurement_distance_mm": {
+          "value": 63,
+          "note": "원문 Start of measuring range approx. 63 mm"
+        },
+        "position_resolution_nm": {
+          "value": 17,
+          "note": "원문 Resolution static < 17 nm, dynamic < 190 nm"
+        },
+        "linearity_um": {
+          "value": 1.2,
+          "note": "원문 Linearity displacement and distance < ±1.2 µm, thickness < ±2.4 µm"
+        },
+        "spot_size_um": {
+          "value": 31,
+          "note": "원문 Light spot diameter 31 µm"
+        }
+      },
+      "note": "PDF p.2 표에서 IFS2405/90-6 과 분해능·직선성·스폿 칸을 같이 씀(병합 칸)"
+    },
+    {
+      "model": "IFS2405-10",
+      "variant": "범용 공초점 센서",
+      "specs": {
+        "displacement_mm": {
+          "value": 10,
+          "note": "원문 Measuring range 10 mm"
+        },
+        "measurement_distance_mm": {
+          "value": 50,
+          "note": "원문 Start of measuring range approx. 50 mm"
+        },
+        "position_resolution_nm": {
+          "value": 18,
+          "note": "원문 Resolution static < 18 nm, dynamic < 204 nm"
+        },
+        "linearity_um": {
+          "value": 1.5,
+          "note": "원문 Linearity displacement and distance < ±1.5 µm, thickness < ±3 µm"
+        },
+        "spot_size_um": {
+          "value": 16,
+          "note": "원문 Light spot diameter 16 µm"
+        }
+      }
+    },
+    {
+      "model": "IFS2405-28",
+      "variant": "범용 공초점 센서",
+      "specs": {
+        "displacement_mm": {
+          "value": 28,
+          "note": "원문 Measuring range 28 mm"
+        },
+        "measurement_distance_mm": {
+          "value": 220,
+          "note": "원문 Start of measuring range approx. 220 mm"
+        },
+        "position_resolution_nm": {
+          "value": 65,
+          "note": "원문 Resolution static < 65 nm, dynamic < 747 nm"
+        },
+        "linearity_um": {
+          "value": 5.6,
+          "note": "원문 Linearity displacement and distance < ±5.6 µm, thickness < ±11.2 µm"
+        },
+        "spot_size_um": {
+          "value": 60,
+          "note": "원문 Light spot diameter 60 µm"
+        }
+      }
+    },
+    {
+      "model": "IFS2405-28/VAC(001)",
+      "variant": "진공 대응형(IP40, 스테인리스 하우징)",
+      "specs": {
+        "displacement_mm": {
+          "value": 28,
+          "note": "원문 Measuring range 28 mm"
+        },
+        "measurement_distance_mm": {
+          "value": 220,
+          "note": "원문 Start of measuring range approx. 220 mm"
+        },
+        "position_resolution_nm": {
+          "value": 65,
+          "note": "원문 Resolution static < 65 nm, dynamic < 747 nm"
+        },
+        "linearity_um": {
+          "value": 5.6,
+          "note": "원문 Linearity displacement and distance < ±5.6 µm, thickness < ±11.2 µm"
+        },
+        "spot_size_um": {
+          "value": 60,
+          "note": "원문 Light spot diameter 60 µm"
+        }
+      },
+      "note": "PDF p.4 표에서 IFS2405-28 과 측정 범위·분해능·직선성·스폿 칸을 같이 씀(병합 칸). 무게 약 1.2 kg"
+    },
+    {
+      "model": "IFS2405-30",
+      "variant": "범용 공초점 센서",
+      "specs": {
+        "displacement_mm": {
+          "value": 30,
+          "note": "원문 Measuring range 30 mm"
+        },
+        "measurement_distance_mm": {
+          "value": 100,
+          "note": "원문 Start of measuring range approx. 100 mm"
+        },
+        "position_resolution_nm": {
+          "value": 47,
+          "note": "원문 Resolution static < 47 nm, dynamic < 530 nm"
+        },
+        "linearity_um": {
+          "value": 4.5,
+          "note": "원문 Linearity displacement and distance < ±4.5 µm, thickness < ±9 µm"
+        },
+        "spot_size_um": {
+          "value": 50,
+          "note": "원문 Light spot diameter 50 µm"
+        }
+      }
+    },
+    {
+      "model": "IFS2405/90-6",
+      "variant": "90° 빔 경로(좁은 공간 설치용)",
+      "specs": {
+        "displacement_mm": {
+          "value": 6,
+          "note": "원문 Measuring range 6 mm"
+        },
+        "measurement_distance_mm": {
+          "value": 41,
+          "note": "원문 Start of measuring range approx. 41 mm(센서 축에서 잰 값)"
+        },
+        "position_resolution_nm": {
+          "value": 17,
+          "note": "원문 Resolution static < 17 nm, dynamic < 190 nm"
+        },
+        "linearity_um": {
+          "value": 1.2,
+          "note": "원문 Linearity displacement and distance < ±1.2 µm, thickness < ±2.4 µm"
+        },
+        "spot_size_um": {
+          "value": 31,
+          "note": "원문 Light spot diameter 31 µm"
+        }
+      },
+      "note": "PDF p.2 표에서 IFS2405-6 과 분해능·직선성·스폿 칸을 같이 씀(병합 칸)"
+    },
+    {
+      "model": "IFC2411",
+      "variant": "소형 컨트롤러(양산 적용)",
+      "note": "공초점 센서 목록 페이지 값: 측정 속도 8 kHz"
+    },
+    {
+      "model": "IFC2412",
+      "variant": "소형 컨트롤러(양산 적용)",
+      "note": "공초점 센서 목록 페이지 값: 측정 속도 8 kHz"
+    },
+    {
+      "model": "IFC2416",
+      "variant": "고성능 컨트롤러",
+      "note": "공초점 센서 목록 페이지 값: 측정 속도 25 kHz"
+    },
+    {
+      "model": "IFC2417",
+      "variant": "고성능 컨트롤러",
+      "note": "공초점 센서 목록 페이지 값: 측정 속도 25 kHz"
+    },
+    {
+      "model": "IFC2465",
+      "variant": "고속·고정밀 컨트롤러",
+      "note": "공초점 센서 목록 페이지 값: 측정 속도 30 kHz, 직선성 0.1 µm, 측정 범위 0.3~10 mm 센서 대응"
+    },
+    {
+      "model": "IFC2466",
+      "variant": "고속·고정밀 컨트롤러",
+      "note": "공초점 센서 목록 페이지 값: 측정 속도 30 kHz, 직선성 0.1 µm, 측정 범위 0.3~10 mm 센서 대응"
+    },
+    {
+      "model": "IFD2410",
+      "variant": "컨트롤러 일체형 소형 센서",
+      "note": "공초점 센서 목록 페이지 값: 측정 범위 1 | 3 | 6 | 10 mm, 직선성 0.2 µm, 측정 속도 25 kHz"
+    },
+    {
+      "model": "IFD2415",
+      "variant": "컨트롤러 일체형 소형 센서",
+      "note": "공초점 센서 목록 페이지 값: 측정 범위 1 | 3 | 6 | 10 mm, 직선성 0.2 µm, 측정 속도 25 kHz"
+    },
+    {
+      "model": "IFS2407-HT",
+      "variant": "고온용 센서(IFS2407-xHT)",
+      "note": "목록 페이지 값: 측정 범위 0.8 | 2 | 4 mm, 직선성 < ±0.16 µm, 측정 속도 30 kHz. 정확한 기종명은 IFS2407-<범위>HT 꼴로 보이나 확인 요",
+      "uncertain": true
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://www.micro-epsilon.com/distance-sensors/confocal-sensors/sensors/universal-sensors/?sLang=en",
+      "retrieved": "2026-10-08",
+      "note": "제조사 IFS2405 범용 센서 페이지(기종 목록·직선성·분해능)"
+    },
+    {
+      "url": "https://www.micro-epsilon.com/distance-sensors/confocal-sensors/",
+      "retrieved": "2026-10-08",
+      "note": "제조사 공초점 센서·컨트롤러 목록 페이지(컨트롤러별 측정 속도·직선성)"
+    },
+    {
+      "file": "micro-epsilon/dax--confocaldt-ifs2405--en-us.pdf",
+      "pages": [
+        2,
+        4
+      ]
+    }
+  ],
+  "confidence": "catalog",
+  "notes": "PDF 로 확인: IFS2405 센서 전 기종의 측정 범위·측정 시작 거리·분해능·직선성·스폿(데이터시트 p.2·4), IFS2405-28/VAC(001) 추가. 웹 값 그대로: 컨트롤러(IFC24xx·IFD24xx) 측정 속도와 data_rate_Hz, IFS2407-HT(PDF 는 광섬유 대응표에 이름만 있음). 요청 목록의 컨트롤러 IFC2421/IFC2422 는 현재 제조사 목록 페이지에 없어 넣지 않음(skipped). PDF 의 램프 모듈 항목에는 IFC2421·IFC2422 가 이름으로 나옴. 두께 측정이 되나 test_items 의 coating_thickness(도금·코팅)와 뜻이 달라 비움."
+}

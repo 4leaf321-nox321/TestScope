@@ -1,0 +1,172 @@
+{
+  "id": "tinius-olsen-l-series",
+  "kind": "equipment_series",
+  "name": "Tinius Olsen L Series Universal Testing Machines (5KL / 10KL / 25KL / 50KL)",
+  "name_ko": "티니어스 올센 L 시리즈 만능시험기",
+  "manufacturer": "tinius-olsen",
+  "category": "universal_testing_machine",
+  "description": "인장·압축·굽힘·전단 시험용 L 시리즈. 최대 힘 5 / 10 / 25 / 50 kN. 공압 그립용 공기 분배 포트 내장, USB 로 PC(Horizon 소프트웨어) 연결, 로컬 조그 업·다운·정지 버튼, 잠금 핀식 그립·지그 장착, 측면 보호 스크린 지지 패널. 신율계·노·환경 챔버·안전 인클로저 선택.",
+  "test_items": [
+    "tensile",
+    "compression",
+    "flexure",
+    "shear"
+  ],
+  "measurands": [
+    "mechanical.tensile_strength",
+    "mechanical.yield_strength",
+    "mechanical.youngs_modulus",
+    "mechanical.elongation_at_break",
+    "mechanical.compressive_strength",
+    "mechanical.flexural_strength"
+  ],
+  "limits": {
+    "force_kN": {
+      "min": 5,
+      "max": 50,
+      "values": [
+        5,
+        10,
+        25,
+        50
+      ]
+    },
+    "crosshead_speed_mm_min": {
+      "min": 0.001,
+      "max": 1000,
+      "note": "50KL 은 최대 500 mm/min"
+    }
+  },
+  "models": [
+    {
+      "model": "5KL",
+      "specs": {
+        "force_kN": 5,
+        "crosshead_speed_mm_min": {
+          "min": 0.001,
+          "max": 1000
+        },
+        "throat_depth_mm": 115,
+        "crosshead_travel_mm": 750,
+        "footprint_mm": {
+          "H": 1140,
+          "W": 490,
+          "D": 360
+        },
+        "weight_kg": 60
+      },
+      "note": "원문 'Model 5KL', 최대 힘 5 kN / 1,000 lbf. 사양표에 기둥 간격 칸이 없고 목 깊이 115 mm 가 있다"
+    },
+    {
+      "model": "10KL",
+      "specs": {
+        "force_kN": 10,
+        "crosshead_speed_mm_min": {
+          "min": 0.001,
+          "max": 1000
+        },
+        "horizontal_test_space_mm": {
+          "value": 405,
+          "note": "기둥 사이 간격"
+        },
+        "crosshead_travel_mm": 1100,
+        "footprint_mm": {
+          "H": 1575,
+          "W": 650,
+          "D": 450
+        },
+        "weight_kg": 130
+      },
+      "note": "원문 'Model 10KL', 최대 힘 10 kN / 2,000 lbf"
+    },
+    {
+      "model": "25KL",
+      "specs": {
+        "force_kN": 25,
+        "crosshead_speed_mm_min": {
+          "min": 0.001,
+          "max": 1000
+        },
+        "horizontal_test_space_mm": {
+          "value": 405,
+          "note": "기둥 사이 간격"
+        },
+        "crosshead_travel_mm": 1100,
+        "footprint_mm": {
+          "H": 1575,
+          "W": 650,
+          "D": 450
+        },
+        "weight_kg": 130
+      },
+      "note": "원문 'Model 25KL', 최대 힘 25 kN / 5,000 lbf"
+    },
+    {
+      "model": "50KL",
+      "specs": {
+        "force_kN": 50,
+        "crosshead_speed_mm_min": {
+          "min": 0.001,
+          "max": 500
+        },
+        "horizontal_test_space_mm": {
+          "value": 405,
+          "note": "기둥 사이 간격"
+        },
+        "crosshead_travel_mm": 1075,
+        "footprint_mm": {
+          "H": 1620,
+          "W": 720,
+          "D": 500
+        },
+        "weight_kg": 190
+      },
+      "note": "원문 'Model 50KL', 최대 힘 50 kN / 11,000 lbf"
+    }
+  ],
+  "relations": [
+    {
+      "type": "same_family_as",
+      "target": "tinius-olsen-st-series"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://www.tiniusolsen.com/product/model-5kl/",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지(HTML) 본문·표를 직접 읽음. Features & Benefits"
+    },
+    {
+      "url": "https://www.tiniusolsen.com/product/model-10kl/",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지(HTML) 본문·표를 직접 읽음. Features & Benefits"
+    },
+    {
+      "url": "https://www.tiniusolsen.com/product/model-25kl/",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지(HTML) 본문·표를 직접 읽음. Features & Benefits"
+    },
+    {
+      "url": "https://www.tiniusolsen.com/product/model-50kl/",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지(HTML) 본문·표를 직접 읽음. Features & Benefits"
+    },
+    {
+      "url": "https://www.tiniusolsen.com/product-category/universal-testing-machines/l-series/",
+      "retrieved": "2026-10-08",
+      "note": "제조사 L 시리즈 분류 페이지(기종 목록)"
+    },
+    {
+      "file": "tinius-olsen/ls0000en07-l-series-brochure-a4-email.pdf",
+      "pages": [
+        2,
+        4
+      ]
+    }
+  ],
+  "confidence": "catalog",
+  "notes": "브로슈어 PDF 사양표(4쪽)로 시험 속도·기둥 간격·목 깊이·크로스헤드 이동량·치수(H×W×D)·무게를 채웠다. 표는 추출에서 열이 섞였으나 mm·in, kg·lbs 쌍이 서로 맞아 기종별로 가렸다. 하중 측정은 ASTM E4·ISO 7500-1·EN 10002-2, 변형 측정은 ASTM E83·ISO 9513·EN 10002-4 를 만족한다고 적혀 있다.",
+  "accuracy": {
+    "force": "±0.5 % of applied load, from 2–100 % of the loadcell capacity (Z beam loadcell)"
+  }
+}

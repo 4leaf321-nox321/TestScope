@@ -1,0 +1,86 @@
+{
+  "id": "anritsu-vectorstar-ms4640b",
+  "kind": "equipment_series",
+  "name": "Anritsu VectorStar MS4640B Series Vector Network Analyzers",
+  "name_ko": "안리쓰 VectorStar MS4640B 벡터 네트워크 분석기",
+  "manufacturer": "anritsu",
+  "brand": "VectorStar",
+  "category": "network_lcr_analyzer",
+  "form_factor": "benchtop",
+  "description": "한 장비로 70 kHz~70 GHz 를 덮는 고성능 2포트 VNA 계열. 기본 하한 10 MHz(옵션 70 kHz), 상한은 기종별 20/40/70 GHz. 동적 범위 최대 142 dB, 출력 최대 +14 dBm, 방향성 최대 50 dB. IMDView·PulseView·DifferentialView, 스펙트럼 분석·잡음 지수 옵션.",
+  "test_items": [],
+  "limits": {
+    "frequency_Hz": {
+      "min": 70000,
+      "max": 70000000000,
+      "note": "기본 10 MHz 부터, 옵션으로 70 kHz 부터. 상한 20/40/70 GHz"
+    },
+    "rf_port_count": {
+      "values": [
+        2
+      ]
+    },
+    "dynamic_range_dB": {
+      "max": 142,
+      "note": "원문 Up to 142 dB"
+    },
+    "rf_output_level_dBm": {
+      "max": 14,
+      "note": "원문 Up to +14 dBm"
+    }
+  },
+  "models": [
+    {
+      "model": "MS4642B",
+      "specs": {
+        "frequency_Hz": {
+          "min": 10000000,
+          "max": 20000000000,
+          "note": "옵션 70 kHz"
+        },
+        "rf_port_count": 2
+      },
+      "note": "K(m) 커넥터"
+    },
+    {
+      "model": "MS4644B",
+      "specs": {
+        "frequency_Hz": {
+          "min": 10000000,
+          "max": 40000000000,
+          "note": "옵션 70 kHz"
+        },
+        "rf_port_count": 2
+      },
+      "note": "K(m) 커넥터"
+    },
+    {
+      "model": "MS4647B",
+      "specs": {
+        "frequency_Hz": {
+          "min": 10000000,
+          "max": 70000000000,
+          "note": "옵션 70 kHz"
+        },
+        "rf_port_count": 2
+      },
+      "note": "V(m) 커넥터"
+    }
+  ],
+  "features": [
+    "IMDView 실시간 상호변조 왜곡 측정",
+    "PulseView 2.5 ns 펄스 분해능(동적 범위 100 dB)",
+    "DifferentialView 내부 이중 신호원 차동 측정",
+    "스펙트럼 분석기 옵션(49) 70 kHz~220 GHz",
+    "잡음 지수 측정 70 kHz~125 GHz"
+  ],
+  "sources": [
+    {
+      "url": "https://www.anritsu.com/en-us/test-measurement/products/ms4640b-series",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지. MS4642B/MS4644B/MS4647B 주파수, 2포트, Dynamic Range up to 142 dB, Output Power up to +14 dBm, Directivity up to 50 dB"
+    }
+  ],
+  "confidence": "limited",
+  "notes": "스펙트럼 분석 220 GHz·잡음 지수 125 GHz 는 확장 구성 기준 문구로 본체 상한(70 GHz)과 다름. MS4645B 는 페이지에 없음."
+}

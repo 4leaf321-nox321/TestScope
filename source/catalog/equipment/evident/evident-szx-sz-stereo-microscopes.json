@@ -1,0 +1,132 @@
+{
+  "id": "evident-szx-sz-stereo-microscopes",
+  "kind": "equipment_series",
+  "name": "Evident Stereo Microscopes (SZX16 / SZX10 / SZX7 / SZ61 / SZ51)",
+  "name_ko": "에비던트(구 올림푸스) 실체 현미경 SZX·SZ",
+  "manufacturer": "evident",
+  "category": "optical_microscope",
+  "subcategory": "stereo_microscope",
+  "form_factor": "benchtop",
+  "description": "산업·연구용 실체(스테레오) 현미경 계열. SZX16 은 줌 16.4:1(0.7x～11.5x), 이중 대물렌즈로 3.5x～230x, 최대 NA 0.3 에서 900 lp/mm, 아포크로맷 광학과 형광 관찰. SZX10 은 줌 10:1(0.63x～6.3x), 2X 대물렌즈로 600 lp/mm. SZX7 은 줌 7:1(0.8x～5.6x). 보급형 SZ61(6.7:1, 6.7x～45x)과 SZ51(5:1, 8x～40x)이 있다.",
+  "test_items": [
+    "microscopy"
+  ],
+  "limits": {
+    "zoom_ratio": {
+      "min": 5,
+      "max": 16.4
+    },
+    "magnification": {
+      "min": 3.5,
+      "max": 336,
+      "note": "SZX16 3.5x–230x, SZX10 ~6.3x–123x, SZX7 페이지 표기 4.0x–336x(목록 페이지는 10X 접안 기준 112x 까지), SZ61 6.7x–45x, SZ51 8x–40x"
+    },
+    "working_distance_mm": {
+      "min": 20,
+      "max": 171,
+      "note": "대물렌즈별"
+    },
+    "optical_resolution_lp_mm": {
+      "max": 900,
+      "note": "SZX16(NA 0.3)"
+    }
+  },
+  "models": [
+    {
+      "model": "SZX16",
+      "specs": {
+        "zoom_ratio": 16.4,
+        "magnification": {
+          "min": 3.5,
+          "max": 230
+        },
+        "optical_resolution_lp_mm": 900,
+        "working_distance_mm": {
+          "min": 20,
+          "max": 141
+        },
+        "objectives": "SDFPLFL0.3X(NA 0.045, WD 141), SDFPLAPO0.5XPF(0.075, 70.5), SDFPLAPO0.8X(0.12, 81), SDFPLAPO1XPF(0.15, 60), SDFPLAPO1.6XPF(0.24, 30), SDFPLAPO2XPFC(0.3, 20)",
+        "observation_methods": "명시야, 암시야, 경사, 편광, 형광(청/녹·자외 여기)"
+      },
+      "note": "줌 0.7x–11.5x(듀얼 터렛). 접안 FN 22/16/12.5/7"
+    },
+    {
+      "model": "SZX10",
+      "specs": {
+        "zoom_ratio": 10,
+        "magnification": {
+          "min": 6.3,
+          "max": 123
+        },
+        "optical_resolution_lp_mm": 600,
+        "working_distance_mm": {
+          "min": 33.5,
+          "max": 171
+        },
+        "objectives": "DFPL0.5X-4(NA 0.05, WD 171), DFPL0.75X-4(0.075, 116), DFPLAPO1X-4(0.1, 81), SZX-ACH1X(WD 90), DFPLAPO1.25X(0.125, 60), SZX-ACH1.25X-2(0.125, 68), DFPL1.5X-4(0.15, 45.5), DFPL2X-4(0.2, 33.5)"
+      },
+      "note": "줌 0.63x–6.3x. 600 lp/mm 는 2X 대물렌즈 기준. 페이지의 SZX-ACH1X NA 값(0.90)은 오기로 보여 옮기지 않음"
+    },
+    {
+      "model": "SZX7",
+      "specs": {
+        "zoom_ratio": 7,
+        "magnification": {
+          "min": 4,
+          "max": 336,
+          "uncertain": true,
+          "note": "제품 페이지 4.0x–336x, 목록 페이지는 10X 접안 기준 112x 까지"
+        },
+        "working_distance_mm": {
+          "min": 33.5,
+          "max": 171
+        }
+      },
+      "note": "줌 0.8x–5.6x. 대물렌즈 0.5X～2X(플랜 아크로맷·아포크로맷)"
+    },
+    {
+      "model": "SZ61",
+      "specs": {
+        "zoom_ratio": 6.7,
+        "magnification": {
+          "min": 6.7,
+          "max": 45
+        }
+      }
+    },
+    {
+      "model": "SZ51",
+      "specs": {
+        "zoom_ratio": 5,
+        "magnification": {
+          "min": 8,
+          "max": 40
+        }
+      }
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://evidentscientific.com/en/material-science-microscopes/industrial-stereo",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지(HTML, evidentscientific.com) 산업용 실체 현미경 목록(줌 비·배율 요약)"
+    },
+    {
+      "url": "https://evidentscientific.com/en/products/upright/szx16",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지(HTML, evidentscientific.com) SZX16"
+    },
+    {
+      "url": "https://evidentscientific.com/en/products/upright/szx10",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지(HTML, evidentscientific.com) SZX10"
+    },
+    {
+      "url": "https://evidentscientific.com/en/products/upright/szx7",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지(HTML, evidentscientific.com) SZX7"
+    }
+  ],
+  "confidence": "limited",
+  "notes": "SZ61·SZ51 은 목록 페이지의 줌 비·배율만 옮김. 매크로 줌 MVX10 은 넣지 않음."
+}

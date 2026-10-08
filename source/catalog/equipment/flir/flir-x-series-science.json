@@ -1,0 +1,247 @@
+{
+  "id": "flir-x-series-science",
+  "kind": "equipment_series",
+  "name": "FLIR X6980 / X8580 Series High-Speed Science Camera",
+  "name_ko": "플리어 X6980 · X8580 고속 연구용 열화상 카메라(단종)",
+  "manufacturer": "flir",
+  "brand": "Science",
+  "category": "thermal_imager",
+  "subcategory": "cooled_mwir",
+  "form_factor": "camera",
+  "description": "냉각 InSb 검출기의 고속 연구용 MWIR 열화상 카메라 계열로 모두 단종 표시. X6980 계열은 640 × 512(25 µm)에서 전 화면 최대 1,004 Hz, NETD 20 mK, 적분 270 ns 부터. X8580 계열은 1,280 × 1,024(12 µm)에서 최대 181 Hz, NETD 30 mK. 분광 1.5 ~ 5.0 µm 또는 3.0 ~ 5.0 µm, f/2.5 · f/4.1 판, 측정 -20 ~ 350 °C, 14-bit.",
+  "test_items": [
+    "thermography"
+  ],
+  "measurands": [
+    "surface_temperature",
+    "temperature_distribution",
+    "hotspot_location"
+  ],
+  "limits": {
+    "temperature_degC": {
+      "min": -20,
+      "max": 350,
+      "note": "표준 범위"
+    },
+    "ir_resolution_pixels": {
+      "min": 327680,
+      "max": 1310720
+    },
+    "thermal_sensitivity_degC": {
+      "min": 0.02,
+      "max": 0.03,
+      "note": "typical"
+    },
+    "wavelength_nm": {
+      "min": 1500,
+      "max": 5000,
+      "note": "원문 1.5 ~ 5.0 µm / 3.0 ~ 5.0 µm"
+    },
+    "frame_rate_fps": {
+      "min": 181,
+      "max": 1004,
+      "note": "전 화면 최대, 원문 Hz"
+    }
+  },
+  "models": [
+    {
+      "model": "X6980",
+      "specs": {
+        "detector": "FLIR indium antimonide (InSb)",
+        "detector_pixels": "640 × 512",
+        "ir_resolution_pixels": 327680,
+        "pixel_pitch_um": 25,
+        "thermal_sensitivity_degC": 0.02,
+        "wavelength_nm": {
+          "min": 1500,
+          "max": 5000
+        },
+        "frame_rate_fps": 1004,
+        "min_exposure_time_s": 2.7e-07,
+        "temperature_degC": {
+          "min": -20,
+          "max": 350
+        },
+        "adc_resolution_bit": 14,
+        "interfaces": "GigE Vision, Camera Link, CoaXPress 1.1"
+      },
+      "note": "f/2.5. 단종. 전 화면 0.0015 ~ 1,004 Hz, 적분 270 ns 부터, 내장 RAM 16 GB(26,000 프레임), 512 GB SSD"
+    },
+    {
+      "model": "X6981",
+      "specs": {
+        "detector": "FLIR indium antimonide (InSb)",
+        "detector_pixels": "640 × 512",
+        "ir_resolution_pixels": 327680,
+        "pixel_pitch_um": 25,
+        "thermal_sensitivity_degC": 0.02,
+        "wavelength_nm": {
+          "min": 3000,
+          "max": 5000
+        },
+        "frame_rate_fps": 1004,
+        "min_exposure_time_s": 2.7e-07,
+        "temperature_degC": {
+          "min": -20,
+          "max": 350
+        },
+        "adc_resolution_bit": 14,
+        "interfaces": "GigE Vision, Camera Link, CoaXPress 1.1"
+      },
+      "note": "f/2.5. 단종. 전 화면 0.0015 ~ 1,004 Hz, 적분 270 ns 부터, 내장 RAM 16 GB(26,000 프레임), 512 GB SSD"
+    },
+    {
+      "model": "X6982",
+      "specs": {
+        "detector": "FLIR indium antimonide (InSb)",
+        "detector_pixels": "640 × 512",
+        "ir_resolution_pixels": 327680,
+        "pixel_pitch_um": 25,
+        "thermal_sensitivity_degC": 0.02,
+        "wavelength_nm": {
+          "min": 1500,
+          "max": 5000
+        },
+        "frame_rate_fps": 1004,
+        "min_exposure_time_s": 2.7e-07,
+        "temperature_degC": {
+          "min": -20,
+          "max": 350
+        },
+        "adc_resolution_bit": 14,
+        "interfaces": "GigE Vision, Camera Link, CoaXPress 1.1"
+      },
+      "note": "f/4.1. 단종. 전 화면 0.0015 ~ 1,004 Hz, 적분 270 ns 부터, 내장 RAM 16 GB(26,000 프레임), 512 GB SSD"
+    },
+    {
+      "model": "X6983",
+      "specs": {
+        "detector": "FLIR indium antimonide (InSb)",
+        "detector_pixels": "640 × 512",
+        "ir_resolution_pixels": 327680,
+        "pixel_pitch_um": 25,
+        "thermal_sensitivity_degC": 0.02,
+        "wavelength_nm": {
+          "min": 3000,
+          "max": 5000
+        },
+        "frame_rate_fps": 1004,
+        "min_exposure_time_s": 2.7e-07,
+        "temperature_degC": {
+          "min": -20,
+          "max": 350
+        },
+        "adc_resolution_bit": 14,
+        "interfaces": "GigE Vision, Camera Link, CoaXPress 1.1"
+      },
+      "note": "f/4.1. 단종. 전 화면 0.0015 ~ 1,004 Hz, 적분 270 ns 부터, 내장 RAM 16 GB(26,000 프레임), 512 GB SSD"
+    },
+    {
+      "model": "X8580",
+      "specs": {
+        "detector": "FLIR indium antimonide (InSb)",
+        "detector_pixels": "1280 × 1024",
+        "ir_resolution_pixels": 1310720,
+        "pixel_pitch_um": 12,
+        "thermal_sensitivity_degC": 0.03,
+        "wavelength_nm": {
+          "min": 1500,
+          "max": 5000
+        },
+        "frame_rate_fps": 181,
+        "temperature_degC": {
+          "min": -20,
+          "max": 350
+        },
+        "adc_resolution_bit": 14,
+        "interfaces": "GigE Vision, Camera Link, CoaXPress 1.1, HDMI, SDI"
+      },
+      "note": "f/2.5. 단종. 전 화면 약 0.5 ~ 181 Hz"
+    },
+    {
+      "model": "X8581",
+      "specs": {
+        "detector": "FLIR indium antimonide (InSb)",
+        "detector_pixels": "1280 × 1024",
+        "ir_resolution_pixels": 1310720,
+        "pixel_pitch_um": 12,
+        "thermal_sensitivity_degC": 0.03,
+        "wavelength_nm": {
+          "min": 3000,
+          "max": 5000
+        },
+        "frame_rate_fps": 181,
+        "temperature_degC": {
+          "min": -20,
+          "max": 350
+        },
+        "adc_resolution_bit": 14,
+        "interfaces": "GigE Vision, Camera Link, CoaXPress 1.1, HDMI, SDI"
+      },
+      "note": "f/2.5. 단종. 전 화면 약 0.5 ~ 181 Hz"
+    },
+    {
+      "model": "X8582",
+      "specs": {
+        "detector": "FLIR indium antimonide (InSb)",
+        "detector_pixels": "1280 × 1024",
+        "ir_resolution_pixels": 1310720,
+        "pixel_pitch_um": 12,
+        "thermal_sensitivity_degC": 0.03,
+        "wavelength_nm": {
+          "min": 1500,
+          "max": 5000
+        },
+        "frame_rate_fps": 181,
+        "temperature_degC": {
+          "min": -20,
+          "max": 350
+        },
+        "adc_resolution_bit": 14,
+        "interfaces": "GigE Vision, Camera Link, CoaXPress 1.1, HDMI, SDI"
+      },
+      "note": "f/4.1. 단종. 전 화면 약 0.5 ~ 181 Hz"
+    },
+    {
+      "model": "X8583",
+      "specs": {
+        "detector": "FLIR indium antimonide (InSb)",
+        "detector_pixels": "1280 × 1024",
+        "ir_resolution_pixels": 1310720,
+        "pixel_pitch_um": 12,
+        "thermal_sensitivity_degC": 0.03,
+        "wavelength_nm": {
+          "min": 3000,
+          "max": 5000
+        },
+        "frame_rate_fps": 181,
+        "temperature_degC": {
+          "min": -20,
+          "max": 350
+        },
+        "adc_resolution_bit": 14,
+        "interfaces": "GigE Vision, Camera Link, CoaXPress 1.1, HDMI, SDI"
+      },
+      "note": "f/4.1. 단종. 전 화면 약 0.5 ~ 181 Hz"
+    }
+  ],
+  "relations": [
+    {
+      "type": "performs",
+      "target": "thermography"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://www.flir.com/products/x6980/",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지(HTML). 단종 표시"
+    },
+    {
+      "url": "https://www.flir.com/products/x8580/",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지(HTML). 단종 표시"
+    }
+  ],
+  "confidence": "limited"
+}

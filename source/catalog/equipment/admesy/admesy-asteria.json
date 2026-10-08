@@ -1,0 +1,68 @@
+{
+  "id": "admesy-asteria",
+  "kind": "equipment_series",
+  "name": "Admesy Asteria Flicker and Luminance / Illuminance Meter",
+  "name_ko": "애드메시 Asteria 플리커 · 휘도/조도계",
+  "manufacturer": "admesy",
+  "brand": "Asteria",
+  "category": "display_color_analyzer",
+  "form_factor": "probe",
+  "description": "빠른 샘플링으로 플리커와 휘도(또는 조도)를 재는 측정기 계열. 10 mm 렌즈 휘도계 판은 수광각 ±2.5°, 50 mm 거리에서 12 mm 스폿, 적분 모드 0.005 ~ 11,000 cd/m², 샘플링 모드 1 ~ 11,000 cd/m² 이고 초당 186,567 샘플로 플리커를 잰다. 코사인 보정기 · M8 광섬유 입력의 조도계 판이 있다.",
+  "test_items": [
+    "photometry_colorimetry"
+  ],
+  "measurands": [
+    "luminance",
+    "illuminance",
+    "flicker"
+  ],
+  "limits": {
+    "luminance_cd_m2": {
+      "min": 0.005,
+      "max": 11000,
+      "note": "10 mm 휘도계 판"
+    }
+  },
+  "models": [
+    {
+      "model": "Asteria Flicker and Luminance Meter 10 mm",
+      "specs": {
+        "spot_diameter_mm": 12,
+        "measurement_distance_mm": 50,
+        "acceptance_angle_deg": 2.5,
+        "luminance_cd_m2": {
+          "min": 0.005,
+          "max": 11000
+        }
+      },
+      "note": "적분 모드 0.005 ~ 11,000, 샘플링 모드 1 ~ 11,000 cd/m². 플리커 186,567 samples/s. 수광각 원문 5° (± 2.5). 광섬유+렌즈 구성도 있음"
+    },
+    {
+      "model": "Asteria Flicker and Illuminance Meter (Cosine Corrector)",
+      "note": "제조사 제품 목록에 이름만 확인"
+    },
+    {
+      "model": "Asteria Flicker and Illuminance Meter (M8 Fiber)",
+      "note": "제조사 제품 목록에 이름만 확인"
+    }
+  ],
+  "relations": [
+    {
+      "type": "performs",
+      "target": "photometry_colorimetry"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://www.admesy.com/products/asteria-luminance-meter-10mm/",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지(HTML)"
+    },
+    {
+      "url": "https://www.admesy.com/products/",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 목록(HTML). Asteria 3 기종 이름"
+    }
+  ],
+  "confidence": "limited"
+}

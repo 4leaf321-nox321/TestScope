@@ -1,0 +1,279 @@
+{
+  "id": "csz-ca-altitude-chambers",
+  "kind": "equipment_series",
+  "name": "CSZ CA(H) Altitude Chambers (CA-8 / CA-16 / CA-32 / CA-64)",
+  "name_ko": "CSZ(신시내티 서브제로) CA 고도 챔버",
+  "manufacturer": "csz",
+  "brand": "CA",
+  "category": "altitude_chamber",
+  "drive": "thermal",
+  "form_factor": "floor",
+  "description": "온도와 고도를 결합하고 습도를 옵션으로 더하는 바닥형 고도 시험 챔버임. 표준 100,000 ft(8.2 Torr), 옵션 175,000 ft(0.37 Torr)까지 고도를 모사함. 냉동 사양에 따라 최저 온도가 -34 °C(단단), -45 °C(Tundra), -50 °C(Tundra II), -68 °C(캐스케이드)로 달라지고 최고 온도는 180 °C 임. 습도 옵션 범위는 10~95 %RH. 대기압에서는 별도 온습도 챔버로도 쓰여 이중 용도를 내세움. 표준 크기는 CA-8·16·32·64(227~1812 L)이고 주문 크기도 가능함. 고도 설정값은 자동 제어되며 상승·하강 속도는 수동 조절 밸브로 조정하고 다이브 밸브로 급속 하강함. CSZ 는 Weiss Technik North America 의 제품 브랜드임.",
+  "test_items": [
+    "altitude_low_pressure",
+    "temperature_cycling",
+    "damp_heat"
+  ],
+  "measurands": [
+    "operating_altitude"
+  ],
+  "materials": [
+    "avionic components",
+    "electronic components and assemblies",
+    "sensors and control systems",
+    "batteries and power systems",
+    "sealed or pressure-sensitive products"
+  ],
+  "standards": {
+    "compliance": [],
+    "test_methods": [
+      "IEC 60068-2-13",
+      "MIL-STD-202",
+      "MIL-STD-810",
+      "MIL-STD-883"
+    ],
+    "test_methods_by_item": {
+      "altitude_low_pressure": [
+        "IEC 60068-2-13",
+        "MIL-STD-202",
+        "MIL-STD-810",
+        "MIL-STD-883"
+      ]
+    }
+  },
+  "limits": {
+    "chamber_pressure_kPa": {
+      "min": 1.09,
+      "note": "원문 표준 8.2 Torr(100,000 ft) 를 1 Torr = 0.133322 kPa 로 환산. 옵션 0.37 Torr(175,000 ft) = 0.049 kPa. 상한은 설치 장소 대기압(수치 미기재)"
+    },
+    "altitude_m": {
+      "max": 30480,
+      "note": "원문 표준 100,000 ft. 옵션 175,000 ft = 53,340 m. 설치 장소가 해발보다 크게 높을 때 해수면 조건을 모사하는 확장 범위도 옵션으로 적음"
+    },
+    "temperature_degC": {
+      "min": -68,
+      "max": 180,
+      "note": "최저 온도는 냉동 사양별: 단단 -34, Tundra -45, Tundra II -50, 캐스케이드 -68 °C(브로슈어 95002 6/26 4쪽, PDF 로 확인). 웹 제품 페이지는 캐스케이드 -70 °C(-94 °F)로 적어 두 공식 자료가 다름"
+    },
+    "humidity_pct": {
+      "min": 10,
+      "max": 95,
+      "requires_accessory": true,
+      "note": "습도는 옵션(CA(H)). 대기압에서 온습도 챔버로 쓸 때"
+    },
+    "chamber_volume_L": {
+      "min": 227,
+      "max": 1812,
+      "values": [
+        227,
+        453,
+        906,
+        1812
+      ],
+      "note": "8·16·32·64 cu ft. 주문 크기 가능"
+    }
+  },
+  "models": [
+    {
+      "model": "CA-8",
+      "variant": "CA 온도, CA(H) 습도 옵션",
+      "form_factor": "floor",
+      "specs": {
+        "chamber_volume_L": 227,
+        "inner_mm": "W610×D610×H610 (24×24×24 in)",
+        "footprint_mm": "W1470×D1750×H2260 (58×69×89 in)",
+        "temperature_degC": {
+          "min": -68,
+          "max": 180,
+          "note": "캐스케이드 기준. 단단 -34, Tundra -45, Tundra II -50 °C"
+        },
+        "humidity_pct": {
+          "min": 10,
+          "max": 95,
+          "note": "옵션"
+        },
+        "altitude_m": {
+          "max": 30480,
+          "note": "100,000 ft, 옵션 175,000 ft(53,340 m)"
+        },
+        "chamber_pressure_kPa": {
+          "min": 1.09,
+          "note": "8.2 Torr, 옵션 0.37 Torr(0.049 kPa)"
+        }
+      },
+      "note": "8 cu. ft."
+    },
+    {
+      "model": "CA-16",
+      "variant": "CA 온도, CA(H) 습도 옵션",
+      "form_factor": "floor",
+      "specs": {
+        "chamber_volume_L": 453,
+        "inner_mm": "W760×D760×H760 (30×30×30 in)",
+        "footprint_mm": "W1570×D1750×H2490 (62×69×98 in)",
+        "temperature_degC": {
+          "min": -68,
+          "max": 180,
+          "note": "캐스케이드 기준. 단단 -34, Tundra -45, Tundra II -50 °C"
+        },
+        "humidity_pct": {
+          "min": 10,
+          "max": 95,
+          "note": "옵션"
+        },
+        "altitude_m": {
+          "max": 30480,
+          "note": "100,000 ft, 옵션 175,000 ft(53,340 m)"
+        },
+        "chamber_pressure_kPa": {
+          "min": 1.09,
+          "note": "8.2 Torr, 옵션 0.37 Torr(0.049 kPa)"
+        }
+      },
+      "note": "16 cu. ft."
+    },
+    {
+      "model": "CA-32",
+      "variant": "CA 온도, CA(H) 습도 옵션",
+      "form_factor": "floor",
+      "specs": {
+        "chamber_volume_L": 906,
+        "inner_mm": "W970×D970×H970 (38×38×38 in)",
+        "footprint_mm": "W1910×D1750×H2670 (75×69×105 in)",
+        "temperature_degC": {
+          "min": -68,
+          "max": 180,
+          "note": "캐스케이드 기준. 단단 -34, Tundra -45, Tundra II -50 °C"
+        },
+        "humidity_pct": {
+          "min": 10,
+          "max": 95,
+          "note": "옵션"
+        },
+        "altitude_m": {
+          "max": 30480,
+          "note": "100,000 ft, 옵션 175,000 ft(53,340 m)"
+        },
+        "chamber_pressure_kPa": {
+          "min": 1.09,
+          "note": "8.2 Torr, 옵션 0.37 Torr(0.049 kPa)"
+        }
+      },
+      "note": "32 cu. ft."
+    },
+    {
+      "model": "CA-64",
+      "variant": "CA 온도, CA(H) 습도 옵션",
+      "form_factor": "floor",
+      "specs": {
+        "chamber_volume_L": 1812,
+        "inner_mm": "W1220×D1220×H1220 (48×48×48 in)",
+        "footprint_mm": "W2030×D2130×H2950 (80×84×116 in)",
+        "temperature_degC": {
+          "min": -68,
+          "max": 180,
+          "note": "캐스케이드 기준. 단단 -34, Tundra -45, Tundra II -50 °C"
+        },
+        "humidity_pct": {
+          "min": 10,
+          "max": 95,
+          "note": "옵션"
+        },
+        "altitude_m": {
+          "max": 30480,
+          "note": "100,000 ft, 옵션 175,000 ft(53,340 m)"
+        },
+        "chamber_pressure_kPa": {
+          "min": 1.09,
+          "note": "8.2 Torr, 옵션 0.37 Torr(0.049 kPa)"
+        }
+      },
+      "note": "64 cu. ft."
+    }
+  ],
+  "features": [
+    "EZT-570 터치스크린 컨트롤러(7인치, 옵션 10인치), 데이터 로깅, 이더넷 제어·감시, 이메일·문자 알람",
+    "CSZ Connect 소프트웨어, RS-232/RS-485(EIA-232/485) 통신",
+    "대용량 진공 펌프, 고도 설정값 자동 제어, 수동 조절 밸브로 상승·하강 속도 조정, 진동 차단용 진공 배관 유연 구간",
+    "다이브 밸브로 급속 하강",
+    "3인치(8 cm) 액세스 포트",
+    "용접 강재 프레임, 브러시드 스테인리스 내장",
+    "수냉 응축기, 오존 파괴 지수 0 냉매",
+    "압력 릴리프 장치, 고·저압 스위치, 압축기 과부하 보호",
+    "습도형: 고체 습도 센서, 습도 탈염 장치"
+  ],
+  "options": [
+    {
+      "name": "Extended altitude",
+      "note": "175,000 ft (0.37 Torr)"
+    },
+    {
+      "name": "Extended range for high-elevation sites",
+      "note": "설치 장소가 높을 때 해수면 조건 모사"
+    },
+    "Additional Access Ports",
+    "Stainless Steel Shelves",
+    "Custom-Size Chambers",
+    "IEEE-488 Computer Interface",
+    "Chart Recorders",
+    "EZ-View Software",
+    "Main Power Disconnect",
+    "Reverse Osmosis Humidity Water Filtration",
+    "Running Time Meter",
+    "Compliance to all Wiring Standards",
+    "Automatic Altitude Control Valve",
+    "Ultra High & Low Temperatures",
+    "Remote Refrigeration",
+    "Refrigeration Sound Deadening",
+    "Recirculation Humidity Water System",
+    "LN2/CO2 Boost Cooling",
+    "Dry Air Purge System"
+  ],
+  "relations": [
+    {
+      "type": "simulates_environment",
+      "target": "environment-low-pressure"
+    },
+    {
+      "type": "requires",
+      "target": "utility-cooling-water",
+      "note": "표준 사양에 수냉 응축기"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://sales.cszproducts.com/literature/CA-Literature.pdf",
+      "retrieved": "2026-10-08",
+      "note": "제조사 브로슈어 Altitude Chambers (95002 6/26, 8쪽). 2쪽 고도 범위, 3쪽 진공 계통·다이브 밸브, 4쪽 CA-8~64 사양표, 5쪽 표준·옵션 목록. 같은 문서를 저장소 PDF(csz/ca-altitude-chambers-literature.pdf)로 대조함"
+    },
+    {
+      "file": "csz/ca-altitude-chambers-literature.pdf",
+      "pages": [
+        2,
+        3,
+        4,
+        5
+      ],
+      "note": "제조사 브로슈어 Altitude Chambers (95002 6/26). 2쪽 고도 범위, 3쪽 진공 계통·다이브 밸브, 4쪽 CA-8~64 사양표, 5쪽 표준 기능·옵션 목록"
+    },
+    {
+      "url": "https://www.cszindustrial.com/Products/Altitude-Chambers/Altitude-Chambers.aspx",
+      "retrieved": "2026-10-08",
+      "note": "제품 페이지: CA(H) 크기·온도·습도·고도 표, 적용 규격, 표준 기능. 캐스케이드 하한 -70 °C 로 브로슈어와 다름"
+    },
+    {
+      "file": "csz/general-product-catalog.pdf",
+      "pages": [
+        14
+      ],
+      "note": "저장소에 이미 있는 2023-12 종합 카탈로그. 14쪽 CA-Series: 18~55 cu ft(510~1557 L), 캐스케이드 -68 °C, 습도 10~98 %RH(저습 5 %RH 옵션), 고도 100,000 ft(8.2 Torr) 표준 / 175,000 ft(.37 Torr) 옵션. 현행 브로슈어와 크기 구성이 다른 구판"
+    },
+    {
+      "url": "https://columbia.etesters.com/product/6EDA9A31-C106-4A03-A1F9-8A99326591E5/altitude-chambers/",
+      "retrieved": "2026-10-08",
+      "note": "2차 출처(유통 디렉터리 eTesters). 온도 제어 고도 65,000 ft(42 Torr), 온도 제어 없이 200,000 ft(.169 Torr), 대기압에서만 온습도 사이클. 제조사 현행 자료와 맞지 않아 limits 에 쓰지 않음"
+    }
+  ],
+  "confidence": "catalog",
+  "notes": "기압 kPa 값은 원문 Torr 의 환산값임. 고도 상승·하강 속도 수치는 제조사 자료에 없음(수동 조절 밸브로 조정한다고만 적음). 2023-12 종합 카탈로그의 CA-Series 18/37/55 cu ft 구성은 Weiss Technik North America EA/EAH 시리즈 브로슈어(WENVEA/JAN2017)의 18/37/55 cu ft(510/1048/1557 L) 와 같아 같은 계열의 이전 구성으로 보이나 확인하지 않음. 유통 페이지가 적은 온도 제어 상한 65,000 ft(42 Torr = 5.60 kPa)는 현행 제조사 자료에 없어 미검증으로 둠. PDF(csz/ca-altitude-chambers-literature.pdf 2~5쪽)로 확인: 용적, 내·외부 치수, 냉동 사양별 온도 범위, 습도 범위, 고도·기압 범위 전부."
+}

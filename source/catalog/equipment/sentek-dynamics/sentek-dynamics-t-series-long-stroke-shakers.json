@@ -1,0 +1,131 @@
+{
+  "id": "sentek-dynamics-t-series-long-stroke-shakers",
+  "kind": "equipment_series",
+  "name": "Sentek Dynamics T-Series Long Stroke Air-Cooled Shakers",
+  "name_ko": "센텍 다이나믹스 T 시리즈 롱 스트로크 공랭식 가진기",
+  "manufacturer": "sentek-dynamics",
+  "category": "vibration_shaker",
+  "drive": "electrodynamic",
+  "form_factor": "floor",
+  "description": "변위 100 mm 의 롱 스트로크 공랭식 가진기 세 기종. 정현 29.40/39.20/52.90 kN, 충격 58.80~105.80 kN, 5~2,300 Hz, 연속·충격 변위 100 mm, 속도 2.4 m/s, 가속도 60~80 g, 아마추어 340~445 mm, 탑재 500~800 kg.",
+  "test_items": [
+    "vibration_sine_random",
+    "mechanical_shock"
+  ],
+  "measurands": [
+    "resonance_frequency",
+    "transmissibility",
+    "fatigue_life"
+  ],
+  "limits": {
+    "force_kN": {
+      "min": 29.4,
+      "max": 52.9,
+      "note": "정현 피크"
+    },
+    "force_random_kN": {
+      "min": 29.4,
+      "max": 52.9,
+      "note": "랜덤 rms"
+    },
+    "force_shock_kN": {
+      "min": 58.8,
+      "max": 105.8,
+      "note": "충격(6 ms)"
+    },
+    "frequency_Hz": {
+      "min": 5,
+      "max": 2300
+    },
+    "displacement_mm": {
+      "values": [
+        100
+      ],
+      "note": "원문 Continuous Displacement. p-p 여부는 페이지에 없음"
+    },
+    "acceleration_g": {
+      "max": 80,
+      "note": "정현 피크 최대"
+    },
+    "payload_kg": {
+      "min": 500,
+      "max": 800,
+      "note": "최대 정적 탑재"
+    }
+  },
+  "models": [
+    {
+      "model": "T3034A",
+      "specs": {
+        "force_kN": 29.4,
+        "force_random_kN": 29.4,
+        "force_shock_kN": 58.8,
+        "frequency_Hz": {
+          "min": 5,
+          "max": 2200
+        },
+        "displacement_mm": 100,
+        "velocity_m_s": 2.4,
+        "acceleration_g": 60,
+        "armature_diameter_mm": 340,
+        "armature_mass_kg": 37.5,
+        "payload_kg": 500
+      }
+    },
+    {
+      "model": "T4044M",
+      "specs": {
+        "force_kN": 39.2,
+        "force_random_kN": 39.2,
+        "force_shock_kN": 78.4,
+        "frequency_Hz": {
+          "min": 5,
+          "max": 2200
+        },
+        "displacement_mm": 100,
+        "velocity_m_s": 2.4,
+        "acceleration_g": 80,
+        "armature_diameter_mm": 445,
+        "armature_mass_kg": 50,
+        "payload_kg": 500
+      }
+    },
+    {
+      "model": "T5444A",
+      "specs": {
+        "force_kN": 52.9,
+        "force_random_kN": 52.9,
+        "force_shock_kN": 105.8,
+        "frequency_Hz": {
+          "min": 5,
+          "max": 2300
+        },
+        "displacement_mm": 100,
+        "velocity_m_s": 2.4,
+        "acceleration_g": 80,
+        "armature_diameter_mm": 445,
+        "armature_mass_kg": 68,
+        "payload_kg": 800
+      },
+      "note": "랜덤 원문 52.90 (9,504) kN(lbf) — lbf 괄호값이 kN 과 맞지 않음"
+    }
+  ],
+  "features": [
+    "공랭식"
+  ],
+  "relations": [
+    {
+      "type": "performs",
+      "target": "vibration_sine_random"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://www.sentekdynamics.com/long-stroke-shaker",
+      "retrieved": "2026-10-08",
+      "note": "제조사 계열 페이지. 기종별 사양 표(kN·lbf, m/s²·g 병기)"
+    }
+  ],
+  "confidence": "limited",
+  "notes": "T5444A 랜덤 정격의 lbf 괄호값(9,504)이 kN 값과 맞지 않아 kN 값을 따랐다."
+}

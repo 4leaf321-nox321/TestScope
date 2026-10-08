@@ -1,0 +1,120 @@
+{
+  "id": "rigol-dg900-pro",
+  "kind": "equipment_series",
+  "name": "RIGOL DG900 Pro Series Function/Arbitrary Waveform Generators",
+  "name_ko": "리골 DG900 Pro 함수·임의파형 발생기",
+  "manufacturer": "rigol",
+  "brand": "DG900 Pro",
+  "category": "signal_generator",
+  "subcategory": "function_arbitrary_waveform",
+  "description": "2채널 함수·임의파형 발생기 계열. 최대 출력 주파수 70·150·200 MHz(DG902 Pro·DG912 Pro·DG922 Pro), 샘플 속도 1.25 GSa/s, 16비트, 임의파형 길이 16 Mpts(옵션 32 Mpts)다. 상승 시간 3 ns, 지터 200 ps(rms), 7인치 터치스크린, Type-C 전원, AM·FM·PM·ASK·FSK·PSK·PWM·SUM 변조, 파형 중첩 최대 20개, 시퀀스(64 이벤트·256 반복), 1 GHz 주파수 계수기를 갖춘다.",
+  "test_items": [],
+  "limits": {
+    "output_frequency_Hz": {
+      "max": 200000000,
+      "note": "최대 출력 주파수 70·150·200 MHz"
+    },
+    "channels": {
+      "values": [
+        2
+      ]
+    },
+    "sample_rate_Sa_s": {
+      "values": [
+        1250000000
+      ],
+      "note": "원문 1.25 GSa/s"
+    },
+    "dac_resolution_bit": {
+      "values": [
+        16
+      ]
+    },
+    "waveform_memory_pts": {
+      "values": [
+        16000000,
+        32000000
+      ],
+      "note": "16 Mpts, 옵션 32 Mpts"
+    }
+  },
+  "models": [
+    {
+      "model": "DG902 Pro",
+      "specs": {
+        "output_frequency_Hz": {
+          "max": 70000000
+        },
+        "channels": 2,
+        "sample_rate_Sa_s": 1250000000,
+        "dac_resolution_bit": 16,
+        "waveform_memory_pts": {
+          "values": [
+            16000000,
+            32000000
+          ]
+        }
+      }
+    },
+    {
+      "model": "DG912 Pro",
+      "specs": {
+        "output_frequency_Hz": {
+          "max": 150000000
+        },
+        "channels": 2,
+        "sample_rate_Sa_s": 1250000000,
+        "dac_resolution_bit": 16,
+        "waveform_memory_pts": {
+          "values": [
+            16000000,
+            32000000
+          ]
+        }
+      }
+    },
+    {
+      "model": "DG922 Pro",
+      "specs": {
+        "output_frequency_Hz": {
+          "max": 200000000
+        },
+        "channels": 2,
+        "sample_rate_Sa_s": 1250000000,
+        "dac_resolution_bit": 16,
+        "waveform_memory_pts": {
+          "values": [
+            16000000,
+            32000000
+          ]
+        }
+      }
+    }
+  ],
+  "features": [
+    "상승 시간 3 ns",
+    "지터 200 ps(rms), SiFi II",
+    "7인치 컬러 터치스크린",
+    "Type-C 전원 커넥터",
+    "AM·FM·PM·ASK·FSK·PSK·PWM·SUM 변조",
+    "파형 중첩 최대 20개",
+    "시퀀스 64 이벤트·256 반복",
+    "1 GHz 주파수 계수기"
+  ],
+  "relations": [
+    {
+      "type": "successor_of",
+      "target": "rigol-dg900",
+      "note": "DG900 페이지가 DG972 의 대체 기종으로 DG902 Pro 를 적는다"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://www.rigolna.com/products/waveform-generators/dg900-pro/",
+      "retrieved": "2026-10-08",
+      "note": "제조사 미국 법인 제품 페이지. 기종 표와 주요 기능"
+    }
+  ],
+  "confidence": "limited",
+  "notes": "진폭 범위는 페이지에 없다."
+}

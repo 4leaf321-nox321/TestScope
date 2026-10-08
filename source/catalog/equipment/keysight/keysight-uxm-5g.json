@@ -1,0 +1,127 @@
+{
+  "id": "keysight-uxm-5g",
+  "kind": "equipment_series",
+  "name": "Keysight UXM 5G Wireless Test Platform (E7515B / E7515P / E7515R / E7515W)",
+  "name_ko": "키사이트 UXM 5G 무선 시험 플랫폼",
+  "manufacturer": "keysight",
+  "brand": "UXM",
+  "category": "radio_communication_tester",
+  "description": "실제 망을 흉내 내어 5G NR·LTE·WLAN 단말을 시험하는 소프트웨어 정의 신호 시험 플랫폼. E7515B 는 5G NR 하향 8 CC·상향 4 CC(2x2), LTE 2 CC, NSA·SA 모드와 FR1·FR2(외부 확장) 대역에서 호를 맺고, 5G NR·LTE 내부 페이딩, 다중 도래각(AoA) 시험, 프로토콜·RF 특성 시험, OTA 시험을 지원한다. 같은 목록에 고대역폭형 E7515P, RedCap·IoT 용 E7515R, 5G NR·WLAN 연결성용 E7515W 가 있다.",
+  "test_items": [],
+  "limits": {
+    "frequency_Hz": {
+      "min": 380000000,
+      "max": 15000000000,
+      "note": "목록 페이지 최소 380 MHz, 최대 15 GHz(E7515B·E7515P). FR2 는 공용 인터페이스 장치·원격 무선 헤드로 확장"
+    },
+    "bandwidth_Hz": {
+      "max": 1600000000,
+      "note": "목록 페이지 Maximum bandwidth. E7515P 1600 MHz, 나머지 800 MHz. NR 집성 대역폭은 기종 note"
+    },
+    "rf_port_count": {
+      "values": [
+        4,
+        8
+      ],
+      "note": "E7515R 4개, 나머지 8개"
+    },
+    "radio_standards": {
+      "values": [
+        "5G NR",
+        "LTE",
+        "RedCap",
+        "NB-IoT",
+        "CAT-M",
+        "W-CDMA",
+        "GSM",
+        "C-V2X",
+        "WLAN"
+      ],
+      "note": "목록 페이지 Technology 항목"
+    }
+  },
+  "models": [
+    {
+      "model": "E7515B",
+      "specs": {
+        "frequency_Hz": {
+          "min": 380000000,
+          "max": 15000000000
+        },
+        "bandwidth_Hz": 800000000,
+        "rf_port_count": 8,
+        "radio_standards": "5G NR, LTE, RedCap, NB-IoT, CAT-M, W-CDMA, GSM, C-V2X, WLAN"
+      },
+      "note": "최대 NR 집성 대역폭 800 MHz. RF 포트 8 = DL+UL 4, DL 전용 4. 5G NR 하향 8 CC·상향 4 CC 2x2, LTE 2 CC"
+    },
+    {
+      "model": "E7515P",
+      "specs": {
+        "frequency_Hz": {
+          "min": 380000000,
+          "max": 15000000000
+        },
+        "bandwidth_Hz": 1600000000,
+        "rf_port_count": 8,
+        "radio_standards": "5G NR, LTE, RedCap, NB-IoT, CAT-M, W-CDMA, GSM, C-V2X, WLAN"
+      },
+      "note": "목록 페이지 이름 UXM 5G Wireless Test Platform(URL uxm-p). 최대 NR 집성 대역폭 1200 MHz. RF 포트 8 = DL+UL 8"
+    },
+    {
+      "model": "E7515R",
+      "specs": {
+        "frequency_Hz": {
+          "min": 380000000,
+          "max": 6000000000
+        },
+        "bandwidth_Hz": 800000000,
+        "rf_port_count": 4,
+        "radio_standards": "RedCap, NB-IoT, CAT-M, LTE"
+      },
+      "note": "목록 페이지 이름 UXM 5G Wireless Test Platform(URL uxm-r). 최대 NR 집성 대역폭 100 MHz. RF 포트 4 = DL 2, UL 2"
+    },
+    {
+      "model": "E7515W",
+      "specs": {
+        "frequency_Hz": {
+          "min": 380000000,
+          "max": 7125000000
+        },
+        "bandwidth_Hz": 800000000,
+        "rf_port_count": 8,
+        "radio_standards": "5G NR, WLAN"
+      },
+      "note": "목록 페이지 이름 UXM Wireless Connectivity Test Platform. 최대 NR 집성 대역폭 400 MHz. RF 포트 8 = DL+UL 8. 원문 최대 주파수 7.125 GHz"
+    }
+  ],
+  "features": [
+    "NSA·SA 5G 호 설정(FR1·FR2)",
+    "5G NR 하향 8 CC·상향 4 CC 2x2, LTE 2 CC(E7515B)",
+    "5G NR·LTE 내부 페이딩",
+    "다중 도래각(AoA) 시험",
+    "프로토콜 적합성·RF 특성 시험",
+    "OTA 시험 지원",
+    "공용 인터페이스 장치·원격 무선 헤드로 주파수 확장"
+  ],
+  "relations": [
+    {
+      "type": "successor_of",
+      "target": "keysight-e7515a-uxm",
+      "note": "E7515A 페이지가 대체 기종으로 E7515B 를 적는다"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://www.keysight.com/us/en/products/wireless-network-emulators.html",
+      "retrieved": "2026-10-08",
+      "note": "제조사 무선 시험 플랫폼 목록 페이지. 기종별 Technology, 최소·최대 주파수, 최대 대역폭, NR 집성 대역폭, RF 포트"
+    },
+    {
+      "url": "https://www.keysight.com/us/en/product/E7515B/uxm-5g-wireless-test-platform.html",
+      "retrieved": "2026-10-08",
+      "note": "제조사 E7515B 제품 페이지. 380 MHz~15 GHz, 800 MHz, 포트 구성, 기능"
+    }
+  ],
+  "confidence": "limited",
+  "notes": "출력 레벨 범위는 페이지에 없다. bandwidth_Hz 는 목록의 Maximum bandwidth 다."
+}

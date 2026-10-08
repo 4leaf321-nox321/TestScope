@@ -1,0 +1,142 @@
+{
+  "id": "keysight-infiniivision-1000x",
+  "kind": "equipment_series",
+  "name": "InfiniiVision 1000 X-Series Oscilloscopes",
+  "name_ko": "키사이트 InfiniiVision 1000 X 오실로스코프",
+  "manufacturer": "keysight",
+  "brand": "InfiniiVision",
+  "category": "oscilloscope",
+  "subcategory": "digital_storage_oscilloscope",
+  "form_factor": "benchtop",
+  "description": "50~200 MHz 대역의 보급형 2·4채널 디지털 오실로스코프 계열임. EDUX1052 는 50 MHz 교육용 기종, DSOX1202·DSOX1204 는 70 MHz 기본에 100·200 MHz 로 대역폭 업그레이드 가능. 이름 끝 G 기종은 파형 발생기 내장. 키사이트 현재 분류로는 XR1-class.",
+  "test_items": [],
+  "limits": {
+    "bandwidth_Hz": {
+      "min": 50000000,
+      "max": 200000000,
+      "note": "원문 50 MHz~70 MHz, DSOX1202G 는 100·200 MHz 업그레이드 가능"
+    },
+    "sample_rate_Sa_s": {
+      "min": 1000000000,
+      "max": 2000000000
+    },
+    "record_length_pts": {
+      "min": 200000,
+      "max": 2000000
+    },
+    "channels": {
+      "values": [
+        2,
+        4
+      ]
+    },
+    "adc_resolution_bit": {
+      "values": [
+        8
+      ]
+    },
+    "display_size_in": {
+      "values": [
+        7
+      ]
+    }
+  },
+  "models": [
+    {
+      "model": "EDUX1052A",
+      "specs": {
+        "bandwidth_Hz": 50000000,
+        "channels": 2,
+        "sample_rate_Sa_s": 1000000000,
+        "record_length_pts": 200000
+      },
+      "note": "원문 50 MHz · 1 GSa/s · 200 kpts (대리점 표기)"
+    },
+    {
+      "model": "EDUX1052G",
+      "specs": {
+        "bandwidth_Hz": 50000000,
+        "channels": 2,
+        "sample_rate_Sa_s": 1000000000,
+        "record_length_pts": 200000
+      },
+      "note": "원문 50 MHz · 1 GSa/s · 200 Kpts. 파형 발생기 내장"
+    },
+    {
+      "model": "DSOX1202A",
+      "specs": {
+        "bandwidth_Hz": 70000000,
+        "channels": 2,
+        "sample_rate_Sa_s": 2000000000,
+        "record_length_pts": 2000000
+      },
+      "note": "원문 70 MHz · 2 GSa/s · 2 Mpts (대리점 표기)"
+    },
+    {
+      "model": "DSOX1202G",
+      "specs": {
+        "bandwidth_Hz": {
+          "min": 70000000,
+          "max": 200000000,
+          "note": "원문 70 MHz (upgradeable to 100 or 200 MHz)"
+        },
+        "channels": 2,
+        "sample_rate_Sa_s": 2000000000,
+        "record_length_pts": 2000000,
+        "adc_resolution_bit": 8,
+        "display_size_in": 7
+      },
+      "note": "원문 2 GSa/s · 2 Mpts · 8 bits · 7 inch. 파형 발생기 내장"
+    },
+    {
+      "model": "DSOX1204A",
+      "specs": {
+        "bandwidth_Hz": 70000000,
+        "channels": 4,
+        "sample_rate_Sa_s": 2000000000,
+        "record_length_pts": 2000000
+      },
+      "note": "원문 70 MHz · 2 GSa/s · 2 Mpts (대리점 표기)"
+    },
+    {
+      "model": "DSOX1204G",
+      "specs": {
+        "bandwidth_Hz": 70000000,
+        "channels": 4,
+        "sample_rate_Sa_s": 2000000000,
+        "record_length_pts": 2000000,
+        "adc_resolution_bit": 8,
+        "display_size_in": 7
+      },
+      "note": "원문 70 MHz · 2 GSa/s · 2 Mpts · 8 bits · 7 inch. 파형 발생기 내장"
+    }
+  ],
+  "features": [
+    "G 기종 파형 발생기 내장",
+    "Bode 선도·마스크 시험·FFT·직렬 프로토콜 분석(DSOX1202G 페이지)"
+  ],
+  "sources": [
+    {
+      "url": "https://www.keysight.com/us/en/product/DSOX1202G/oscilloscope-70-100-200-mhz-2-analog-channels-waveform-generator.html",
+      "retrieved": "2026-10-08",
+      "note": "제조사 기종 페이지. 70 MHz(100·200 MHz 업그레이드), 2채널, 2 GSa/s, 2 Mpts, 8 bits, 7 inch, 200,000 waveforms/s"
+    },
+    {
+      "url": "https://www.keysight.com/us/en/product/DSOX1204G/",
+      "retrieved": "2026-10-08",
+      "note": "제조사 기종 페이지. 70 MHz, 4 Analog channels, 2 GSa/s, 2 Mpts, 8 bits, 7 inch"
+    },
+    {
+      "url": "https://www.keysight.com/us/en/product/EDUX1052G/",
+      "retrieved": "2026-10-08",
+      "note": "제조사 기종 페이지. 50 MHz, 2 Analog channels, 1 GSa/s, 200 Kpts"
+    },
+    {
+      "url": "https://www.batronix.com/shop/keysight/1000X.html",
+      "retrieved": "2026-10-08",
+      "note": "대리점(Batronix) 판매 목록 페이지. 키사이트 계열 페이지가 일반 분류 페이지(Essential/Advanced)로 넘어가 기종 목록을 얻지 못해, 기종 목록과 대리점 표기 사양을 여기서 확인함. A 기종 4종의 사양은 이 페이지 값"
+    }
+  ],
+  "confidence": "limited",
+  "notes": "DSOX1102A/G·EDUX1002A/G 등은 이번 조회 페이지에 없어 넣지 않음. 키사이트 문서는 MSO-X 3012T 처럼 하이픈을 넣어 적기도 하므로(3000T X 페이지 발췌) 대장 표기가 다를 수 있음."
+}

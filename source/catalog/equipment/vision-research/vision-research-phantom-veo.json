@@ -1,0 +1,109 @@
+{
+  "id": "vision-research-phantom-veo",
+  "kind": "equipment_series",
+  "name": "Phantom VEO Series",
+  "name_ko": "팬텀 VEO 고속 카메라",
+  "manufacturer": "vision-research",
+  "brand": "Phantom",
+  "category": "high_speed_swir_camera",
+  "subcategory": "high_speed_camera",
+  "form_factor": "camera",
+  "description": "Vision Research(AMETEK)의 Phantom 브랜드 중형 고속 카메라 계열. VEO 1310 은 1,280 × 960 에서 10,860 fps, VEO 1010 은 8,420 fps, VEO 710 은 1,280 × 800 에서 7,500 fps, VEO 410 은 5,200 fps. VEO 640 · 440 은 4 메가픽셀(2,560 × 1,600)에서 각각 1,400 fps 이상, 1,100 fps.",
+  "test_items": [],
+  "limits": {
+    "resolution_pixels": {
+      "max": 4096000,
+      "note": "VEO 640 · 440: 2,560 × 1,600",
+      "uncertain": true
+    },
+    "frame_rate_fps": {
+      "min": 1100,
+      "max": 10860,
+      "note": "최대 해상도 기준. VEO 1310 이 가장 빠름",
+      "uncertain": true
+    }
+  },
+  "models": [
+    {
+      "model": "VEO 1310",
+      "specs": {
+        "detector_pixels": "1280 × 960",
+        "resolution_pixels": 1228800,
+        "frame_rate_fps": 10860
+      },
+      "note": "12,900 fps @ 1,280 × 804, 14,350 fps @ 1,280 × 720",
+      "uncertain": true
+    },
+    {
+      "model": "VEO 1010",
+      "specs": {
+        "detector_pixels": "1280 × 960",
+        "resolution_pixels": 1228800,
+        "frame_rate_fps": 8420
+      },
+      "note": "640 × 480 에서 30,000 fps 이상",
+      "uncertain": true
+    },
+    {
+      "model": "VEO 710",
+      "specs": {
+        "detector_pixels": "1280 × 800",
+        "resolution_pixels": 1024000,
+        "frame_rate_fps": 7500
+      },
+      "uncertain": true
+    },
+    {
+      "model": "VEO 640",
+      "specs": {
+        "detector_pixels": "2560 × 1600",
+        "resolution_pixels": 4096000,
+        "frame_rate_fps": 1400
+      },
+      "note": "원문 over 1,400 frames-per-second at four megapixel resolution",
+      "uncertain": true
+    },
+    {
+      "model": "VEO 440",
+      "specs": {
+        "detector_pixels": "2560 × 1600",
+        "resolution_pixels": 4096000,
+        "frame_rate_fps": 1100
+      },
+      "uncertain": true
+    },
+    {
+      "model": "VEO 410",
+      "specs": {
+        "detector_pixels": "1280 × 800",
+        "resolution_pixels": 1024000,
+        "frame_rate_fps": 5200
+      },
+      "uncertain": true
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://www.phantomhighspeed.com/products/cameras/veo/veo1310",
+      "retrieved": "2026-10-08",
+      "note": "제조사 사이트가 직접 조회를 막아(HTTP 403) 검색 엔진의 제조사 페이지 발췌로 읽음. 값 전부 uncertain"
+    },
+    {
+      "url": "https://www.phantomhighspeed.com/products/cameras/veo/veo1010",
+      "retrieved": "2026-10-08",
+      "note": "제조사 사이트가 직접 조회를 막아(HTTP 403) 검색 엔진의 제조사 페이지 발췌로 읽음. 값 전부 uncertain"
+    },
+    {
+      "url": "https://www.phantomhighspeed.com/products/cameras/veo/veo640",
+      "retrieved": "2026-10-08",
+      "note": "제조사 사이트가 직접 조회를 막아(HTTP 403) 검색 엔진의 제조사 페이지 발췌로 읽음. 값 전부 uncertain"
+    },
+    {
+      "url": "https://www.phantomhighspeed.com/products/cameras/veo/veo440",
+      "retrieved": "2026-10-08",
+      "note": "제조사 사이트가 직접 조회를 막아(HTTP 403) 검색 엔진의 제조사 페이지 발췌로 읽음. 값 전부 uncertain. VEO 710 · 410 의 값은 어느 페이지 발췌인지 특정하지 못함"
+    }
+  ],
+  "confidence": "limited",
+  "notes": "화소 크기·감도·메모리·최소 노출은 데이터시트 PDF(대기)에만 있음. 제조사 사이트 HTML 을 직접 읽지 못해 신뢰도가 낮다."
+}

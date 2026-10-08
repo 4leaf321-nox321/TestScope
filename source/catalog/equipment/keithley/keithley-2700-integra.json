@@ -1,0 +1,120 @@
+{
+  "id": "keithley-2700-integra",
+  "kind": "equipment_series",
+  "name": "Keithley 2700 Multimeter/Data Acquisition/Switch Systems (Integra Series 2700 / 2701 / 2750)",
+  "name_ko": "키슬리 2700 Integra 멀티미터·데이터 수집 시스템",
+  "manufacturer": "keithley",
+  "brand": "Integra",
+  "category": "dmm_daq",
+  "description": "측정·스위칭·제어를 한 본체에 넣은 Integra 계열 멀티미터·데이터 수집 시스템. 2700 이 첫 기종이고 2750, 2701 순으로 빠르다. 단종되었고 제조사는 대체로 3700A 를 권한다.",
+  "test_items": [],
+  "models": [
+    {
+      "model": "2700",
+      "specs": {
+        "data_rate_Hz": {
+          "max": 378,
+          "note": "10 VDC 레인지 0.01 PLC 메모리 저장 378 rdg/s, 버스 전송 271. 1 PLC 에서 56 / 50"
+        },
+        "channels": {
+          "max": 80,
+          "note": "원문 No. of differential input channels 80(슬롯 2개, 매트릭스 교차점 96)",
+          "requires_accessory": true
+        },
+        "dmm_resolution_digits": {
+          "value": 6.5,
+          "note": "원문 True 6½-digit (22-bit) resolution"
+        },
+        "channel_scan_rate_ch_s": {
+          "max": 180,
+          "note": "원문 Scan-Rate (memory) 180/s, (bus) 145/s — 7710 모듈 DCV 스캔"
+        },
+        "interfaces": "GPIB, RS-232"
+      },
+      "note": "단종. 첫 기종. PDF 선택 안내 표(p.5): 슬롯 2, 메모리 55,000 rdgs, 크기 2U half-rack, 저항 분해능 100 µΩ, 최대 내부 트리거 2000/s · 외부 트리거 375/s"
+    },
+    {
+      "model": "2701",
+      "specs": {
+        "data_rate_Hz": {
+          "max": 2631,
+          "note": "10 VDC 레인지 0.01 PLC 메모리 저장 2631 rdg/s, 버스 전송 1639. 1 PLC 에서 59 / 59"
+        },
+        "channels": {
+          "max": 80,
+          "note": "원문 No. of differential input channels 80(슬롯 2개, 매트릭스 교차점 96)",
+          "requires_accessory": true
+        },
+        "dmm_resolution_digits": {
+          "value": 6.5,
+          "note": "원문 True 6½-digit (22-bit) resolution"
+        },
+        "channel_scan_rate_ch_s": {
+          "max": 500,
+          "note": "원문 Scan-Rate (memory) 500/s, (bus) 440/s — 7710 모듈 DCV 스캔"
+        },
+        "interfaces": "Ethernet, RS-232"
+      },
+      "note": "단종. 2750 보다 빠름. PDF 선택 안내 표(p.5): 슬롯 2, 메모리 450,000 rdgs, 크기 2U half-rack, 저항 분해능 100 µΩ, 최대 내부 트리거 2800/s · 외부 트리거 2000/s"
+    },
+    {
+      "model": "2750",
+      "specs": {
+        "data_rate_Hz": {
+          "max": 609,
+          "note": "10 VDC 레인지 0.01 PLC 메모리 저장 609 rdg/s, 버스 전송 444. 1 PLC 에서 57 / 55"
+        },
+        "channels": {
+          "max": 200,
+          "note": "원문 No. of differential input channels 200(슬롯 5개, 매트릭스 교차점 240)",
+          "requires_accessory": true
+        },
+        "dmm_resolution_digits": {
+          "value": 6.5,
+          "note": "원문 True 6½-digit (22-bit) resolution"
+        },
+        "channel_scan_rate_ch_s": {
+          "max": 230,
+          "note": "원문 Scan-Rate (memory) 230/s, (bus) 210/s — 7710 모듈 DCV 스캔"
+        },
+        "interfaces": "GPIB, RS-232"
+      },
+      "note": "단종. 2700 보다 빠름. PDF 선택 안내 표(p.5): 슬롯 5, 메모리 110,000 rdgs, 크기 2U full-rack(19\"), 저항 분해능 1 µΩ, 최대 내부 트리거 2000/s · 외부 트리거 375/s, 드라이 서킷 옴(20 mV 클램프)은 2750 만"
+    }
+  ],
+  "relations": [
+    {
+      "type": "same_family_as",
+      "target": "keithley-3700a",
+      "note": "제조사가 단종 대체로 3700A 를 권함"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://www.tek.com/en/products/keithley/data-acquisition-daq-systems/2700-multimeter-data-acquisition-switch-system",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지. 'This product has been discontinued', 대체 3700A. 사양 없음"
+    },
+    {
+      "url": "https://www.tek.com/en/support/faqs/specs-comparing-reading-rates-integra-mainframes",
+      "retrieved": "2026-10-08",
+      "note": "제조사 FAQ. 2700·2701·2750 판독 속도 비교(10 VDC 레인지, 1 PLC·0.01 PLC, 메모리·버스)"
+    },
+    {
+      "url": "https://www.tek.com/en/documents/product-selector-guide/model-2700-2701-2750-series-integra-series-modules-selector-guide",
+      "retrieved": "2026-10-08",
+      "note": "제조사 모듈 선택 안내 문서 제목(검색 결과로 확인). 열지 않음"
+    },
+    {
+      "file": "keithley/series2700daqsystemdatasheet.pdf",
+      "pages": [
+        1,
+        2,
+        5,
+        6
+      ]
+    }
+  ],
+  "confidence": "catalog",
+  "notes": "PDF(Integra Series 데이터시트)로 확인: 기종 2700 · 2701 · 2750, 차동 입력 채널 80 · 80 · 200, 슬롯 2 · 2 · 5, 6½자리(22 bit), 스캔 속도·메모리·통신(p.5 선택 안내 표, 행이 밀려 있어 순서로 맞춰 읽음). 웹 값 그대로: 기종별 data_rate_Hz(제조사 FAQ 의 10 VDC · 0.01 PLC 판독 속도). PDF 의 단일 채널 판독 속도 표(p.6)는 열이 섞여 기종별로 옮기지 않음(본문 p.1: 단일 채널 최대 3500 readings/s)."
+}

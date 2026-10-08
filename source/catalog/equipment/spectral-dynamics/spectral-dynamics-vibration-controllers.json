@@ -1,0 +1,107 @@
+{
+  "id": "spectral-dynamics-vibration-controllers",
+  "kind": "equipment_series",
+  "name": "Spectral Dynamics Vibration Controllers (PANTHER / Lynx / Puma / Jaguar)",
+  "name_ko": "스펙트럴 다이나믹스 진동 제어기",
+  "manufacturer": "spectral-dynamics",
+  "category": "mechanical_dynamics",
+  "form_factor": "rack",
+  "description": "진동 시험 제어기 계열. PANTHER 는 단축 MISO 제어기로 8~32채널(8채널 단위 확장), 24 bit ADC, >110 dB 동적 범위, 최대 262,144 샘플/s, 정현·랜덤·충격·정현 중첩 랜덤·랜덤 중첩 랜덤·충격 합성·도로 재현 시험을 돌린다. Lynx 는 노트북 크기의 4~16채널, Puma 는 최대 348채널·회전계 4, Jaguar 는 다축 MIMO 제어기로 입력 588·제어 98채널까지.",
+  "test_items": [
+    "vibration_sine_random",
+    "mechanical_shock"
+  ],
+  "measurands": [
+    "frequency_response_function",
+    "shock_response_spectrum"
+  ],
+  "limits": {
+    "channels": {
+      "min": 4,
+      "max": 588,
+      "note": "Lynx 4~16, PANTHER 8~32, Puma 최대 348, Jaguar 입력 최대 588"
+    },
+    "adc_resolution_bit": {
+      "values": [
+        24
+      ],
+      "note": "PANTHER"
+    },
+    "dynamic_range_dB": {
+      "min": 110,
+      "note": "PANTHER >110 dB"
+    },
+    "data_rate_Hz": {
+      "max": 262144,
+      "note": "PANTHER"
+    }
+  },
+  "models": [
+    {
+      "model": "PANTHER",
+      "specs": {
+        "channels": {
+          "min": 8,
+          "max": 32
+        },
+        "adc_resolution_bit": 24,
+        "dynamic_range_dB": 110,
+        "data_rate_Hz": 262144,
+        "interfaces": "Ethernet, USB, SDIO"
+      },
+      "note": "단축 MISO. 채널 간 위상 일치 약 0.01°. 동적 범위 원문 >110 dB"
+    },
+    {
+      "model": "Lynx",
+      "specs": {
+        "channels": {
+          "min": 4,
+          "max": 16
+        }
+      },
+      "note": "소형 단축 제어기"
+    },
+    {
+      "model": "Puma",
+      "specs": {
+        "channels": {
+          "max": 348
+        }
+      },
+      "note": "회전계 4"
+    },
+    {
+      "model": "Jaguar",
+      "specs": {
+        "channels": {
+          "max": 588
+        }
+      },
+      "note": "다축 MIMO, 제어 채널 98"
+    }
+  ],
+  "relations": [
+    {
+      "type": "performs",
+      "target": "vibration_sine_random"
+    },
+    {
+      "type": "compatible_accessory",
+      "target": "spectral-dynamics-air-cooled-shakers"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://www.spectraldynamics.com/",
+      "retrieved": "2026-10-08",
+      "note": "제조사 첫 페이지의 제품 목록(제어기 한 줄 설명)"
+    },
+    {
+      "url": "https://www.spectraldynamics.com/panther",
+      "retrieved": "2026-10-08",
+      "note": "PANTHER 제품 페이지"
+    }
+  ],
+  "confidence": "limited",
+  "notes": "가진기 없이는 시험을 못 하는 제어기라 분류를 상위 진동·충격(mechanical_dynamics)으로 두었다. 가진기(vibration_shaker)의 부속으로 볼 수도 있다."
+}

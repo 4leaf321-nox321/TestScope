@@ -1,0 +1,335 @@
+{
+  "id": "gras-kemar-45bb-45bc",
+  "kind": "equipment_series",
+  "name": "GRAS KEMAR Head & Torso Simulators (45BB / 45BC / 45BD)",
+  "name_ko": "GRAS KEMAR 인체 머리·몸통 모사기 (45BB · 45BC · 45BD)",
+  "manufacturer": "gras",
+  "brand": "KEMAR",
+  "category": "head_torso_simulator",
+  "form_factor": "fixture",
+  "description": "음파가 사람의 머리·몸통을 지나며 바뀌는 것을 모사하는 구성형 음향 연구 마네킹. 45BB 는 귀 시뮬레이터만, 45BC 는 입 시뮬레이터를 더한 계열이고, 용도별로 보청기·음질 녹음·이어폰·헤드폰·헤드셋·전화기 시험 구성(-1~-16)과 1채널/2채널, LEMO(200 V)/CCP(0 V) 연결이 나뉜다. 고주파 구성은 20 kHz, Hi-Res 구성은 50 kHz 까지 시험한다. 45BD AutoKEMAR 는 자동차 음향 시험용이다. ANSI S3.36·S3.25, IEC 60318-7 을 따른다. 45BB 기준 무게 11.45 kg, 운전 온도 –30~60 °C.",
+  "test_items": [
+    "audio_performance"
+  ],
+  "measurands": [
+    "frequency_response",
+    "sound_pressure_level",
+    "insertion_gain"
+  ],
+  "materials": [
+    "hearing aids",
+    "headphones",
+    "earphones",
+    "headsets",
+    "telephones",
+    "hearing protectors",
+    "vehicles"
+  ],
+  "standards": {
+    "compliance": [
+      "ANSI S3.36",
+      "ANSI S3.25",
+      "IEC 60318-7"
+    ],
+    "test_methods": []
+  },
+  "limits": {
+    "channels": {
+      "values": [
+        1,
+        2
+      ]
+    },
+    "frequency_Hz": {
+      "max": 50000,
+      "note": "구성 설명의 상한: 45BB-14 20 kHz, 45BB-16 50 kHz(Hi-Res). 다른 구성은 페이지에 수치 없음"
+    },
+    "weight_kg": {
+      "max": 11.45,
+      "note": "45BB 무게 11.45 kg"
+    },
+    "operating_temperature_degC": {
+      "min": -30,
+      "max": 60,
+      "note": "45BB"
+    }
+  },
+  "models": [
+    {
+      "model": "45BB",
+      "specs": {},
+      "note": "비구성 KEMAR(머리·토르소·목 연장 링·삼각대 어댑터)"
+    },
+    {
+      "model": "45BB-1",
+      "specs": {
+        "channels": 1,
+        "interfaces": "LEMO(200 V 외부 편극)"
+      },
+      "note": "보청기 시험. 오른쪽 귀에 IEC 60318-4 귀 시뮬레이터·외이도 연장"
+    },
+    {
+      "model": "45BB-2",
+      "specs": {
+        "channels": 1,
+        "interfaces": "CCP(0 V 프리폴라라이즈드)"
+      },
+      "note": "보청기 시험. 오른쪽 귀에 IEC 60318-4 귀 시뮬레이터·외이도 연장"
+    },
+    {
+      "model": "45BB-3",
+      "specs": {
+        "channels": 2,
+        "interfaces": "LEMO(200 V 외부 편극)"
+      },
+      "note": "음질 녹음. 1/2\" 마이크 내장"
+    },
+    {
+      "model": "45BB-4",
+      "specs": {
+        "channels": 2,
+        "interfaces": "CCP(0 V 프리폴라라이즈드)"
+      },
+      "note": "음질 녹음. 1/2\" 마이크 내장"
+    },
+    {
+      "model": "45BB-5",
+      "specs": {
+        "channels": 2,
+        "interfaces": "LEMO(200 V 외부 편극)"
+      },
+      "note": "이어폰·헤드폰 시험. 귀 시뮬레이터 내장"
+    },
+    {
+      "model": "45BB-6",
+      "specs": {
+        "channels": 2,
+        "interfaces": "CCP(0 V 프리폴라라이즈드)"
+      },
+      "note": "이어폰·헤드폰 시험. 귀 시뮬레이터 내장"
+    },
+    {
+      "model": "45BB-7",
+      "specs": {
+        "channels": 2,
+        "interfaces": "LEMO(200 V 외부 편극)"
+      },
+      "note": "양이 보청기 시험"
+    },
+    {
+      "model": "45BB-8",
+      "specs": {
+        "channels": 2,
+        "interfaces": "CCP(0 V 프리폴라라이즈드)"
+      },
+      "note": "양이 보청기 시험"
+    },
+    {
+      "model": "45BB-9",
+      "specs": {
+        "channels": 2,
+        "interfaces": "LEMO(200 V 외부 편극)"
+      },
+      "note": "인체계측 귓바퀴 + 외부 편극 귀 시뮬레이터, 이어폰·헤드폰 시험"
+    },
+    {
+      "model": "45BB-10",
+      "specs": {
+        "channels": 2,
+        "interfaces": "CCP(0 V 프리폴라라이즈드)"
+      },
+      "note": "인체계측 귓바퀴 + 프리폴라라이즈드 귀 시뮬레이터, 이어폰·헤드폰 시험"
+    },
+    {
+      "model": "45BB-11",
+      "specs": {
+        "channels": 1,
+        "interfaces": "LEMO(200 V 외부 편극)"
+      },
+      "note": "인체계측 귓바퀴 + 저잡음 귀 시뮬레이터(이어폰·헤드폰·인이어 청력 보호구)"
+    },
+    {
+      "model": "45BB-12",
+      "specs": {
+        "channels": 2,
+        "interfaces": "LEMO(200 V 외부 편극)"
+      },
+      "note": "인체계측 귓바퀴 + 저잡음 귀 시뮬레이터"
+    },
+    {
+      "model": "45BB-13",
+      "specs": {
+        "channels": 2,
+        "interfaces": "LEMO(200 V 외부 편극)"
+      },
+      "note": "인체계측 귓바퀴 + 외부 편극 고주파 귀 시뮬레이터"
+    },
+    {
+      "model": "45BB-14",
+      "specs": {
+        "channels": 2,
+        "interfaces": "CCP(0 V 프리폴라라이즈드)",
+        "frequency_Hz": {
+          "max": 20000
+        }
+      },
+      "note": "인체계측 귓바퀴 + 프리폴라라이즈드 고주파 귀 시뮬레이터, 20 kHz 까지"
+    },
+    {
+      "model": "45BB-15",
+      "specs": {
+        "channels": 2,
+        "interfaces": "LEMO(200 V 외부 편극)"
+      },
+      "note": "인체계측 귓바퀴 + 외부 편극 Hi-Res 귀 시뮬레이터"
+    },
+    {
+      "model": "45BB-16",
+      "specs": {
+        "channels": 2,
+        "interfaces": "CCP(0 V 프리폴라라이즈드)",
+        "frequency_Hz": {
+          "max": 50000
+        }
+      },
+      "note": "인체계측 귓바퀴 + 프리폴라라이즈드 Hi-Res 귀 시뮬레이터, 50 kHz 까지"
+    },
+    {
+      "model": "45BC",
+      "specs": {},
+      "note": "비구성 KEMAR + 입 시뮬레이터"
+    },
+    {
+      "model": "45BC-1",
+      "specs": {
+        "channels": 2,
+        "interfaces": "LEMO(200 V 외부 편극)"
+      },
+      "note": "입 시뮬레이터, 헤드셋 시험. 양쪽 귀 IEC 60318-4 귀 시뮬레이터·외이도 연장"
+    },
+    {
+      "model": "45BC-2",
+      "specs": {
+        "channels": 2,
+        "interfaces": "CCP(0 V 프리폴라라이즈드)"
+      },
+      "note": "입 시뮬레이터, 헤드셋 시험. 양쪽 귀 IEC 60318-4"
+    },
+    {
+      "model": "45BC-3",
+      "specs": {
+        "channels": 1,
+        "interfaces": "LEMO(200 V 외부 편극)"
+      },
+      "note": "입 시뮬레이터, 전화기 시험. 오른쪽 귀 IEC 60318-4"
+    },
+    {
+      "model": "45BC-4",
+      "specs": {
+        "channels": 1,
+        "interfaces": "CCP(0 V 프리폴라라이즈드)"
+      },
+      "note": "입 시뮬레이터, 전화기 시험. 오른쪽 귀 IEC 60318-4"
+    },
+    {
+      "model": "45BC-9",
+      "specs": {
+        "channels": 2,
+        "interfaces": "LEMO(200 V 외부 편극)"
+      },
+      "note": "입 시뮬레이터 + 인체계측 귓바퀴 + 외부 편극 IEC 60318-4 귀 시뮬레이터, 헤드셋 시험"
+    },
+    {
+      "model": "45BC-10",
+      "specs": {
+        "channels": 2,
+        "interfaces": "CCP(0 V 프리폴라라이즈드)"
+      },
+      "note": "입 시뮬레이터 + 인체계측 귓바퀴 + 프리폴라라이즈드 IEC 60318-4 귀 시뮬레이터"
+    },
+    {
+      "model": "45BC-11",
+      "specs": {
+        "channels": 1,
+        "interfaces": "LEMO(200 V 외부 편극)"
+      },
+      "note": "입 시뮬레이터 + 인체계측 귓바퀴 + 저잡음 귀 시뮬레이터, 헤드셋 시험"
+    },
+    {
+      "model": "45BC-12",
+      "specs": {
+        "channels": 2,
+        "interfaces": "LEMO(200 V 외부 편극)"
+      },
+      "note": "입 시뮬레이터 + 인체계측 귓바퀴 + 저잡음 귀 시뮬레이터, 양이 헤드셋 시험"
+    },
+    {
+      "model": "45BC-13",
+      "specs": {
+        "channels": 2,
+        "interfaces": "LEMO(200 V 외부 편극)"
+      },
+      "note": "입 시뮬레이터 + 외부 편극 고주파 귀 시뮬레이터"
+    },
+    {
+      "model": "45BC-14",
+      "specs": {
+        "channels": 2,
+        "interfaces": "CCP(0 V 프리폴라라이즈드)"
+      },
+      "note": "입 시뮬레이터 + 프리폴라라이즈드 고주파 귀 시뮬레이터"
+    },
+    {
+      "model": "45BC-15",
+      "specs": {
+        "channels": 2,
+        "interfaces": "LEMO(200 V 외부 편극)"
+      },
+      "note": "입 시뮬레이터 + 외부 편극 Hi-Res 귀 시뮬레이터"
+    },
+    {
+      "model": "45BC-16",
+      "specs": {
+        "channels": 2,
+        "interfaces": "CCP(0 V 프리폴라라이즈드)"
+      },
+      "note": "입 시뮬레이터 + 프리폴라라이즈드 Hi-Res 귀 시뮬레이터"
+    },
+    {
+      "model": "45BD",
+      "specs": {},
+      "note": "AutoKEMAR — 자동차 음향 시험용 KEMAR"
+    }
+  ],
+  "accessories": [
+    {
+      "name": "45EB",
+      "note": "KEMAR 용 이어버드 위치 고정 장치"
+    }
+  ],
+  "relations": [
+    {
+      "type": "performs",
+      "target": "audio_performance"
+    },
+    {
+      "type": "same_family_as",
+      "target": "bruel-kjaer-hats-5128",
+      "note": "같은 용도의 다른 제조사 HATS"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://www.grasacoustics.com/products/head-torso-simulators-kemar",
+      "retrieved": "2026-10-08",
+      "note": "제조사 KEMAR 목록 페이지. 기종명과 구성 설명"
+    },
+    {
+      "url": "https://www.grasacoustics.com/products/head-torso-simulators-kemar/product/733-45bb",
+      "retrieved": "2026-10-08",
+      "note": "45BB 페이지: 규격, 무게, 운전 온도·습도, 채널, 연결"
+    }
+  ],
+  "confidence": "limited",
+  "notes": "기종별 주파수 응답·귀 시뮬레이터 사양은 매뉴얼(man_45BB_45BC.pdf)에 있다고 페이지가 말한다. 무게 원문은 「11.45 k / 404」(kg/oz)."
+}

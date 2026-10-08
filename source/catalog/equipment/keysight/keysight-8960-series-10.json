@@ -1,0 +1,115 @@
+{
+  "id": "keysight-8960-series-10",
+  "kind": "equipment_series",
+  "name": "Keysight 8960 Series 10 Wireless Communications Test Set (E5515C / E5515E)",
+  "name_ko": "키사이트 8960 시리즈 10 무선통신 시험 세트",
+  "manufacturer": "keysight",
+  "brand": "8960",
+  "category": "radio_communication_tester",
+  "description": "단종(Obsolete)된 2G·3G 이동통신 단말 시험 세트. EU RoHS 지침(2011/65/EU) 미준수로 판매가 끝났고 제품 페이지에 대체 기종이 없다. 292~2700 MHz 로 상용 3GPP·3GPP2 대역을 덮고, 변조 시 출력 레벨 -110~-13 dBm 이다. GSM/GPRS/EGPRS/E-EDGE, W-CDMA/HSPA/HSPA+, cdma2000/1xEV-DO/eHRPD, TD-SCDMA 등을 시험한다. 소프트웨어로 기능을 올리고 GPIB 로 원격 제어한다.",
+  "test_items": [],
+  "limits": {
+    "frequency_Hz": {
+      "min": 292000000,
+      "max": 2700000000,
+      "note": "원문 292 to 2700 MHz"
+    },
+    "rf_output_level_dBm": {
+      "min": -110,
+      "max": -13,
+      "note": "원문 -110 to -13 dBm output level range with modulation"
+    },
+    "radio_standards": {
+      "values": [
+        "GSM/GPRS/EGPRS/E-EDGE",
+        "W-CDMA/HSPA/HSPA+",
+        "DC-HSDPA",
+        "cdma2000/1xEV-DO/eHRPD",
+        "TD-SCDMA/TD-HSDPA/TD-HSUPA",
+        "IS-95",
+        "TIA/EIA-136",
+        "AMPS"
+      ],
+      "note": "E5515C·E5515E 페이지 문구를 합침"
+    }
+  },
+  "models": [
+    {
+      "model": "E5515C",
+      "specs": {
+        "frequency_Hz": {
+          "min": 292000000,
+          "max": 2700000000
+        },
+        "rf_output_level_dBm": {
+          "min": -110,
+          "max": -13,
+          "note": "변조 시"
+        },
+        "radio_standards": "GSM/GPRS/EGPRS/E-EDGE, W-CDMA/HSPA/HSPA+, cdma2000/1xEV-DO/eHRPD, TD-SCDMA/TD-HSDPA/TD-HSUPA, IS-95, TIA/EIA-136, AMPS",
+        "interfaces": "GPIB(IEEE 488.2), LAN(RJ-45, 데이터용 LAN 2 100 Mbps)",
+        "display_size_in": {
+          "values": [
+            10.5
+          ],
+          "note": "원문 Display 26.7 cm"
+        }
+      },
+      "note": "단종(EU RoHS 미준수). VSWR <1.2:1(400~2000 MHz), 채널 전력 측정 정확도 ±1.0 dB. 기술 개요서: 옵션 002(GSM/GPRS/EGPRS 용 2nd RF 소스), 003(CDMA 계열 기지국 에뮬레이터), 004(N5106A PXB 용 디지털 버스), E5515CU-80E 로 E5515E 업그레이드"
+    },
+    {
+      "model": "E5515E",
+      "specs": {
+        "frequency_Hz": {
+          "min": 292000000,
+          "max": 2700000000
+        },
+        "rf_output_level_dBm": {
+          "min": -110,
+          "max": -13,
+          "note": "변조 시"
+        },
+        "radio_standards": "GSM/GPRS/EGPRS/E-EDGE, W-CDMA/HSPA/HSPA+/DC-HSDPA, cdma2000/1xEV-DO/eHRPD, TD-SCDMA",
+        "interfaces": "GPIB(IEEE 488.2), LAN(RJ-45, 데이터용 LAN 2 1000 Mbps)",
+        "display_size_in": {
+          "values": [
+            10.5
+          ],
+          "note": "원문 Display 26.7 cm"
+        }
+      },
+      "note": "단종(EU RoHS 미준수). 42 Mbps DC-HSDPA·HSDPA-MIMO, E6621A PXT 와 2G/3G/3.5G/LTE 핸드오버 시험. VSWR <1.2:1(400~2000 MHz). 기술 개요서: 2nd RF 소스·CDMA 기지국 에뮬레이터 내장, 옵션 004(디지털 버스)"
+    }
+  ],
+  "features": [
+    "292~2700 MHz(상용 3GPP·3GPP2 대역)",
+    "소프트웨어 업그레이드형",
+    "WTM 소프트웨어로 RF·파라미터 시험 자동화",
+    "GPIB 원격 제어"
+  ],
+  "sources": [
+    {
+      "url": "https://www.keysight.com/us/en/product/E5515C/8960-series-10-wireless-communications-test-set.html",
+      "retrieved": "2026-10-08",
+      "note": "제조사 E5515C 제품 페이지(Obsolete). 주파수, 지원 기술, 출력 레벨, VSWR, 채널 전력 정확도"
+    },
+    {
+      "url": "https://www.keysight.com/us/en/product/E5515E/8960-series-10-wireless-communications-test-set.html",
+      "retrieved": "2026-10-08",
+      "note": "제조사 E5515E 제품 페이지(Obsolete). 주파수, 지원 기술, 출력 레벨, DC-HSDPA"
+    },
+    {
+      "file": "keysight/5990-3238.pdf",
+      "pages": [
+        2,
+        3
+      ],
+      "note": "제조사 기술 개요서(E5515C/E Technical Overview, 2017). 플랫폼 옵션, GPIB·LAN, 화면, 일반 사양. 주파수·출력 레벨은 없다(소프트웨어 응용별 문서로 미룬다고 적힘)"
+    }
+  ],
+  "confidence": "limited",
+  "notes": "두 기종 모두 단종이며 페이지에 대체 기종이 없다. PDF 로 확인: GPIB·LAN 인터페이스, E5515E 의 42 Mbps DC-HSDPA·MIMO, 하드웨어 옵션, 화면 26.7 cm. 웹 값 그대로: 주파수 292~2700 MHz, 출력 레벨 -110~-13 dBm, 지원 표준, VSWR, 채널 전력 확도(기술 개요서는 「시험 성능 사양은 소프트웨어 응용 문서에 있다」 고만 적는다).",
+  "accuracy": {
+    "channel_power": "±1.0 dB (E5515C 페이지 문구 Channel power measurement accuracy)"
+  }
+}

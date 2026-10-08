@@ -1,0 +1,51 @@
+{
+  "id": "rion-na-28",
+  "kind": "equipment_model",
+  "name": "RION NA-28 Sound Level Meter (1/3 Octave Band Real-time Analyzer)",
+  "name_ko": "리온 NA-28 소음계(1/3 옥타브 실시간 분석기)",
+  "manufacturer": "rion",
+  "brand": "NA",
+  "category": "acoustic_measurement",
+  "form_factor": "handheld",
+  "description": "Class 1 소음계 겸 1/3 옥타브 실시간 분석기. 1/1 옥타브와 1/3 옥타브를 동시에 분석·표시하고 메모리 카드에 저장한다. NX-28FT FFT 분석 카드, NX-28BA 건축 음향 카드를 따로 더한다.",
+  "test_items": [],
+  "measurands": [
+    "sound_pressure_level",
+    "octave_band_spectrum"
+  ],
+  "standards": {
+    "compliance": [
+      "IEC 61672-1:2013",
+      "JIS C 1516:2020",
+      "JIS C 1509-1:2017"
+    ],
+    "test_methods": []
+  },
+  "models": [
+    {
+      "model": "NA-28",
+      "specs": {
+        "accuracy_class": "IEC 61672-1:2013 class 1"
+      }
+    }
+  ],
+  "options": [
+    "NX-28FT FFT 분석 카드",
+    "NX-28BA 건축 음향 카드"
+  ],
+  "relations": [
+    {
+      "type": "same_family_as",
+      "target": "rion-nl-sound-level-meters"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://rion-sv.com/products/NA-28.html",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지"
+    }
+  ],
+  "confidence": "limited",
+  "notes": "측정 범위·주파수 범위는 페이지에 없다."
+}

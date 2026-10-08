@@ -1,0 +1,106 @@
+{
+  "id": "keysight-mxg-n5185a-n5186a",
+  "kind": "equipment_series",
+  "name": "Keysight MXG Signal Generators (N5185A / N5186A)",
+  "name_ko": "키사이트 MXG 신호발생기(N5185A·N5186A)",
+  "manufacturer": "keysight",
+  "brand": "MXG",
+  "category": "signal_generator",
+  "subcategory": "rf_microwave",
+  "description": "MXG X-시리즈(N5181B·N5182B)를 대체하는 9 kHz~8.5 GHz 신호발생기. N5186A 는 최대 변조 대역폭 1 GHz 벡터형, N5185A 는 아날로그형이며 둘 다 출력 4개, 1 GHz 출력 25 dBm, 주파수 전환 800 µs 다. 1 GHz·20 kHz 오프셋 위상 잡음은 N5186A -147 dBc/Hz, N5185A -146 dBc/Hz 다.",
+  "test_items": [],
+  "limits": {
+    "output_frequency_Hz": {
+      "min": 9000,
+      "max": 8500000000,
+      "note": "원문 9 kHz to 8.5 GHz"
+    },
+    "bandwidth_Hz": {
+      "max": 1000000000,
+      "note": "N5186A 최대 변조 대역폭 1 GHz"
+    },
+    "rf_output_level_dBm": {
+      "max": 25,
+      "note": "1 GHz 에서 25 dBm"
+    },
+    "phase_noise_dBc_Hz": {
+      "values": [
+        -147,
+        -146
+      ],
+      "note": "1 GHz 반송파, 20 kHz 오프셋. N5186A -147, N5185A -146"
+    },
+    "channels": {
+      "max": 4,
+      "note": "목록 페이지 Number of outputs 4"
+    }
+  },
+  "models": [
+    {
+      "model": "N5186A",
+      "variant": "vector",
+      "specs": {
+        "output_frequency_Hz": {
+          "min": 9000,
+          "max": 8500000000
+        },
+        "bandwidth_Hz": 1000000000,
+        "rf_output_level_dBm": {
+          "max": 25,
+          "note": "1 GHz"
+        },
+        "phase_noise_dBc_Hz": {
+          "values": [
+            -147
+          ],
+          "note": "1 GHz 반송파, 20 kHz 오프셋"
+        },
+        "channels": 4
+      },
+      "note": "XG5-class. 고조파 -35 dBc(1 GHz), 주파수 전환 800 µs"
+    },
+    {
+      "model": "N5185A",
+      "variant": "analog",
+      "specs": {
+        "output_frequency_Hz": {
+          "min": 9000,
+          "max": 8500000000
+        },
+        "rf_output_level_dBm": {
+          "max": 25,
+          "note": "1 GHz"
+        },
+        "phase_noise_dBc_Hz": {
+          "values": [
+            -146
+          ],
+          "note": "1 GHz 반송파, 20 kHz 오프셋"
+        },
+        "channels": 4
+      },
+      "note": "고조파 -35 dBc(1 GHz), 주파수 전환 800 µs"
+    }
+  ],
+  "relations": [
+    {
+      "type": "successor_of",
+      "target": "keysight-mxg-x-series",
+      "note": "N5182B·N5181B 페이지가 각각 N5186A·N5185A 로 대체된다고 적는다"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://www.keysight.com/us/en/products/signal-sources/vector-signal-generators/expert-vector-signal-generators.html",
+      "retrieved": "2026-10-08",
+      "note": "제조사 Expert 벡터 신호발생기 목록. N5186A 사양"
+    },
+    {
+      "url": "https://www.keysight.com/us/en/products/signal-sources/analog-signal-generators/expert-analog-signal-generators.html",
+      "retrieved": "2026-10-08",
+      "note": "제조사 Expert 아날로그 신호발생기 목록. N5185A 사양"
+    }
+  ],
+  "confidence": "limited",
+  "notes": "목록 페이지 요약만 확인했다. 출력 4개가 최대값인지 고정값인지 페이지에서 가르지 못했다."
+}

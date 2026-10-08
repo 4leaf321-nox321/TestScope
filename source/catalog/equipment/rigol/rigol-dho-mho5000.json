@@ -1,0 +1,124 @@
+{
+  "id": "rigol-dho-mho5000",
+  "kind": "equipment_series",
+  "name": "DHO5000 / MHO5000 Series Digital Oscilloscope",
+  "name_ko": "리골 DHO5000·MHO5000 디지털 오실로스코프",
+  "manufacturer": "rigol",
+  "brand": "DHO/MHO",
+  "category": "oscilloscope",
+  "subcategory": "high_definition_oscilloscope",
+  "form_factor": "benchtop",
+  "description": "500 MHz·1 GHz 대역의 4·6·8채널 오실로스코프 계열임. 4 GSa/s, 500 Mpts, 1 Mwfms/s. MHO 기종은 16 디지털 채널, DHO 기종은 디지털 채널 없음.",
+  "test_items": [],
+  "limits": {
+    "bandwidth_Hz": {
+      "min": 500000000,
+      "max": 1000000000
+    },
+    "sample_rate_Sa_s": {
+      "max": 4000000000
+    },
+    "record_length_pts": {
+      "max": 500000000
+    },
+    "channels": {
+      "values": [
+        4,
+        6,
+        8
+      ]
+    },
+    "logic_channel_count": {
+      "values": [
+        16
+      ]
+    }
+  },
+  "models": [
+    {
+      "model": "DHO5054",
+      "specs": {
+        "bandwidth_Hz": 500000000,
+        "channels": 4,
+        "sample_rate_Sa_s": 4000000000,
+        "record_length_pts": 500000000
+      }
+    },
+    {
+      "model": "DHO5058",
+      "specs": {
+        "bandwidth_Hz": 500000000,
+        "channels": 8,
+        "sample_rate_Sa_s": 4000000000,
+        "record_length_pts": 500000000
+      }
+    },
+    {
+      "model": "DHO5104",
+      "specs": {
+        "bandwidth_Hz": 1000000000,
+        "channels": 4,
+        "sample_rate_Sa_s": 4000000000,
+        "record_length_pts": 500000000
+      }
+    },
+    {
+      "model": "DHO5108",
+      "specs": {
+        "bandwidth_Hz": 1000000000,
+        "channels": 8,
+        "sample_rate_Sa_s": 4000000000,
+        "record_length_pts": 500000000
+      }
+    },
+    {
+      "model": "MHO5054",
+      "specs": {
+        "bandwidth_Hz": 500000000,
+        "channels": 4,
+        "logic_channel_count": 16,
+        "sample_rate_Sa_s": 4000000000,
+        "record_length_pts": 500000000
+      }
+    },
+    {
+      "model": "MHO5056",
+      "specs": {
+        "bandwidth_Hz": 500000000,
+        "channels": 6,
+        "logic_channel_count": 16,
+        "sample_rate_Sa_s": 4000000000,
+        "record_length_pts": 500000000
+      }
+    },
+    {
+      "model": "MHO5104",
+      "specs": {
+        "bandwidth_Hz": 1000000000,
+        "channels": 4,
+        "logic_channel_count": 16,
+        "sample_rate_Sa_s": 4000000000,
+        "record_length_pts": 500000000
+      }
+    },
+    {
+      "model": "MHO5106",
+      "specs": {
+        "bandwidth_Hz": 1000000000,
+        "channels": 6,
+        "logic_channel_count": 16,
+        "sample_rate_Sa_s": 4000000000,
+        "record_length_pts": 500000000
+      }
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://www.rigolna.com/products/digital-oscilloscopes/dho-mho5000/",
+      "retrieved": "2026-10-08",
+      "note": "리골 북미 법인 사이트(rigolna.com)의 제품 페이지 기종 표. 원문 4 GSa/s, 500 Mpts, 1 Mwfms/s, Digital Channels N/A 또는 16"
+    }
+  ],
+  "confidence": "limited",
+  "notes": "수직 분해능은 기종 표에 없어 비움."
+}

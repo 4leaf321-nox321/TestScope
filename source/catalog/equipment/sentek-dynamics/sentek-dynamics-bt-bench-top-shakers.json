@@ -1,0 +1,208 @@
+{
+  "id": "sentek-dynamics-bt-bench-top-shakers",
+  "kind": "equipment_series",
+  "name": "Sentek Dynamics BT / BT-M Series Bench Top Shakers",
+  "name_ko": "센텍 다이나믹스 BT·BT-M 탁상형 가진기",
+  "manufacturer": "sentek-dynamics",
+  "category": "vibration_shaker",
+  "drive": "electrodynamic",
+  "form_factor": "benchtop",
+  "description": "탁상형 공랭식 소형 가진기. BT 계열(BT-20·100·250·440)은 정현 20~440 N, 0~15,000 Hz(BT-20·100 은 0.3~15,000 Hz), 연속 변위 5~20 mm, 최대 가속도 40~100 g, 최대 정적 탑재 0.45~2.5 kg. BT-M 계열은 같은 힘 등급의 모달 가진용으로 수동 공랭, 시스템 질량 4.1~11.8 kg.",
+  "test_items": [
+    "vibration_sine_random"
+  ],
+  "measurands": [
+    "resonance_frequency",
+    "modal_parameters"
+  ],
+  "materials": [
+    "sensors",
+    "small components",
+    "PCB"
+  ],
+  "limits": {
+    "force_N": {
+      "min": 20,
+      "max": 440,
+      "note": "정현 피크"
+    },
+    "frequency_Hz": {
+      "min": 0,
+      "max": 15000
+    },
+    "displacement_mm": {
+      "values": [
+        5,
+        20
+      ],
+      "note": "연속 변위"
+    },
+    "acceleration_g": {
+      "max": 100
+    },
+    "payload_kg": {
+      "max": 2.5
+    }
+  },
+  "models": [
+    {
+      "model": "BT-20",
+      "specs": {
+        "force_N": 20,
+        "force_random_kN": 0.0133,
+        "force_shock_kN": 0.04,
+        "frequency_Hz": {
+          "min": 0.3,
+          "max": 15000
+        },
+        "displacement_mm": 5,
+        "velocity_m_s": 1.0,
+        "acceleration_g": 40,
+        "armature_diameter_mm": 33,
+        "armature_mass_kg": 0.05,
+        "payload_kg": 0.45
+      },
+      "note": "충격 정격은 4 ms 기준. 수동 공랭(송풍기 없음)"
+    },
+    {
+      "model": "BT-100",
+      "specs": {
+        "force_N": 100,
+        "force_random_kN": 0.071,
+        "force_shock_kN": 0.117,
+        "frequency_Hz": {
+          "min": 0.3,
+          "max": 15000
+        },
+        "displacement_mm": 5,
+        "velocity_m_s": 1.0,
+        "acceleration_g": 60,
+        "armature_diameter_mm": 54,
+        "armature_mass_kg": 0.17,
+        "payload_kg": 1.5
+      },
+      "note": "충격 정격은 4 ms 기준. 수동 공랭(송풍기 없음)"
+    },
+    {
+      "model": "BT-250",
+      "specs": {
+        "force_N": 250,
+        "force_random_kN": 0.177,
+        "force_shock_kN": 0.35,
+        "frequency_Hz": {
+          "min": 0,
+          "max": 5000
+        },
+        "displacement_mm": 20,
+        "velocity_m_s": 1.6,
+        "acceleration_g": 100,
+        "armature_diameter_mm": 57,
+        "armature_mass_kg": 0.25,
+        "payload_kg": 2
+      },
+      "note": "충격 정격은 4 ms 기준. 송풍기 공랭"
+    },
+    {
+      "model": "BT-440",
+      "specs": {
+        "force_N": 440,
+        "force_random_kN": 0.311,
+        "force_shock_kN": 0.59,
+        "frequency_Hz": {
+          "min": 0,
+          "max": 5000
+        },
+        "displacement_mm": 20,
+        "velocity_m_s": 1.6,
+        "acceleration_g": 100,
+        "armature_diameter_mm": 57,
+        "armature_mass_kg": 0.45,
+        "payload_kg": 2.5
+      },
+      "note": "충격 정격은 4 ms 기준. 송풍기 공랭"
+    },
+    {
+      "model": "BT-20-M",
+      "specs": {
+        "force_N": 20,
+        "force_random_kN": 0.014,
+        "frequency_Hz": {
+          "min": 0,
+          "max": 1200
+        },
+        "displacement_mm": 5,
+        "velocity_m_s": 1.0,
+        "armature_mass_kg": 0.051,
+        "weight_kg": 4.1
+      },
+      "note": "모달 가진용(BT-M). 수동 공랭. weight_kg 는 시스템 질량"
+    },
+    {
+      "model": "BT-100-M",
+      "specs": {
+        "force_N": 100,
+        "force_random_kN": 0.071,
+        "frequency_Hz": {
+          "min": 0,
+          "max": 7500
+        },
+        "displacement_mm": 5,
+        "velocity_m_s": 1.2,
+        "armature_mass_kg": 0.17,
+        "weight_kg": 7.3
+      },
+      "note": "모달 가진용(BT-M). 수동 공랭. weight_kg 는 시스템 질량"
+    },
+    {
+      "model": "BT-250-M",
+      "specs": {
+        "force_N": 250,
+        "force_random_kN": 0.177,
+        "frequency_Hz": {
+          "min": 0,
+          "max": 5000
+        },
+        "displacement_mm": 20,
+        "velocity_m_s": 1.6,
+        "armature_mass_kg": 0.25,
+        "weight_kg": 11.5
+      },
+      "note": "모달 가진용(BT-M). 수동 공랭. weight_kg 는 시스템 질량"
+    },
+    {
+      "model": "BT-440-M",
+      "specs": {
+        "force_N": 440,
+        "force_random_kN": 0.311,
+        "frequency_Hz": {
+          "min": 0,
+          "max": 5000
+        },
+        "displacement_mm": 20,
+        "velocity_m_s": 1.6,
+        "armature_mass_kg": 0.45,
+        "weight_kg": 11.8
+      },
+      "note": "모달 가진용(BT-M). 수동 공랭. weight_kg 는 시스템 질량"
+    }
+  ],
+  "relations": [
+    {
+      "type": "performs",
+      "target": "vibration_sine_random"
+    },
+    {
+      "type": "same_family_as",
+      "target": "sentek-dynamics-l-series-shakers"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://www.sentekdynamics.com/bench-top-shakers",
+      "retrieved": "2026-10-08",
+      "note": "제조사 탁상형 가진기 페이지. BT·BT-M 사양 표"
+    }
+  ],
+  "confidence": "limited",
+  "notes": "랜덤·충격 힘은 원문 N 을 kN 키로 옮겼다(force_random_kN·force_shock_kN)."
+}

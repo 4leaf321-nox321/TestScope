@@ -1,0 +1,572 @@
+{
+  "id": "zwickroell-ltm",
+  "kind": "equipment_series",
+  "name": "ZwickRoell LTM electrodynamic testing machines (LTM 1 / 2 / 3 / 5 / 10, HR versions)",
+  "name_ko": "즈윅로엘 LTM 리니어모터 전기동력식 시험기",
+  "manufacturer": "zwickroell",
+  "category": "electrodynamic_fatigue",
+  "drive": "electrodynamic",
+  "description": "ZwickRoell 특허 리니어모터 구동의 전기동력식 시험기. 1·2·3·5·10 kN, 피스톤 스트로크 60 mm, 시험 주파수 최대 100 Hz(HR 형 120 Hz, 시험 조건에 따라). 오일·냉각수·압축공기가 필요 없고 조용해 의료(고관절·무릎·치과 임플란트) 시험에 쓰인다. 플라스틱·섬유복합재·금속 표준 시편의 피로·내구 시험과 준정적 시험도 한다. T 홈 플랫폼 기본, 크로스헤드 전동 조정·수동 클램프, 설정 모드 10 mm/s 감속(EN 60204-1). testControl II 10 kHz.",
+  "test_items": [
+    "fatigue",
+    "tensile",
+    "compression",
+    "flexure"
+  ],
+  "measurands": [
+    "mechanical.fatigue_strength"
+  ],
+  "standards": {
+    "compliance": [],
+    "test_methods": [
+      "ISO 18489",
+      "ASTM F2193",
+      "ISO 14801",
+      "ASTM F1798",
+      "ASTM F1717"
+    ]
+  },
+  "limits": {
+    "dynamic_force_kN": {
+      "min": 1,
+      "max": 10,
+      "values": [
+        1,
+        2,
+        3,
+        5,
+        10
+      ]
+    },
+    "frequency_Hz": {
+      "max": 120,
+      "note": "HR 형 120 Hz, 그 외 100 Hz"
+    },
+    "stroke_mm": {
+      "values": [
+        60
+      ]
+    },
+    "torque_Nm": {
+      "max": 100,
+      "note": "비틀림 형(T) 동적 토크: LTM 1/2/3 T 10/20/30, LTM 10 T 100 Nm"
+    },
+    "rotation_rpm": {
+      "max": 100,
+      "note": "비틀림 형(T)"
+    }
+  },
+  "models": [
+    {
+      "model": "LTM 1",
+      "specs": {
+        "dynamic_force_kN": 1,
+        "static_force_kN": 0.91,
+        "stroke_mm": 60,
+        "frequency_Hz": {
+          "max": 100
+        },
+        "velocity_m_s": {
+          "max": 1.5
+        },
+        "frame_stiffness_kN_mm": {
+          "value": 40,
+          "note": "크로스헤드 간격 500 mm 기준"
+        },
+        "weight_kg": 270,
+        "horizontal_test_space_mm": 460,
+        "vertical_test_space_mm": {
+          "value": 1040,
+          "note": "로드셀 없이 최대, 로드셀 포함 950 mm"
+        },
+        "item_no": "1053558",
+        "footprint_mm": {
+          "W": 665,
+          "D": 525,
+          "H": 1855,
+          "note": "시험기 최대 높이(A). 받침 포함 2504 mm"
+        },
+        "power": "230 V 1Ph 50/60 Hz, 3.5 kVA"
+      },
+      "note": "형식 표기 'LTM 1 + 400 mm'. 원문 Fmax 동적 ±1000 N, 정적 연속 ±910 N. 위치 정확도·반복도 ±2 µm"
+    },
+    {
+      "model": "LTM 1 HR",
+      "specs": {
+        "dynamic_force_kN": 1,
+        "static_force_kN": 0.91,
+        "stroke_mm": 60,
+        "frequency_Hz": {
+          "max": 120
+        },
+        "velocity_m_s": {
+          "max": 2
+        },
+        "frame_stiffness_kN_mm": {
+          "value": 40,
+          "note": "크로스헤드 간격 500 mm 기준"
+        },
+        "weight_kg": 270,
+        "horizontal_test_space_mm": 460,
+        "vertical_test_space_mm": {
+          "value": 1040,
+          "note": "로드셀 없이 최대, 로드셀 포함 950 mm"
+        },
+        "item_no": "3006626",
+        "footprint_mm": {
+          "W": 665,
+          "D": 525,
+          "H": 1855,
+          "note": "시험기 최대 높이(A). 받침 포함 2504 mm"
+        },
+        "power": "400 V 3Ph 50/60 Hz, 11 kVA"
+      },
+      "note": "형식 표기 'LTM 1 HR + 400 mm'. 원문 Fmax 동적 ±1000 N, 정적 연속 ±910 N. 위치 정확도·반복도 ±2 µm"
+    },
+    {
+      "model": "LTM 2",
+      "specs": {
+        "dynamic_force_kN": 2,
+        "static_force_kN": 1.4,
+        "stroke_mm": 60,
+        "frequency_Hz": {
+          "max": 100
+        },
+        "velocity_m_s": {
+          "max": 1
+        },
+        "frame_stiffness_kN_mm": {
+          "value": 40,
+          "note": "크로스헤드 간격 500 mm 기준"
+        },
+        "weight_kg": 270,
+        "horizontal_test_space_mm": 460,
+        "vertical_test_space_mm": {
+          "value": 1040,
+          "note": "로드셀 없이 최대, 로드셀 포함 950 mm"
+        },
+        "item_no": "1053560",
+        "footprint_mm": {
+          "W": 665,
+          "D": 525,
+          "H": 1935,
+          "note": "시험기 최대 높이(A). 받침 포함 2504 mm"
+        },
+        "power": "230 V 1Ph 50/60 Hz, 3.5 kVA"
+      },
+      "note": "형식 표기 'LTM 2 + 400 mm'. 원문 Fmax 동적 ±2000 N, 정적 연속 ±1400 N. 위치 정확도·반복도 ±2 µm"
+    },
+    {
+      "model": "LTM 2 HR",
+      "specs": {
+        "dynamic_force_kN": 2,
+        "static_force_kN": 1.4,
+        "stroke_mm": 60,
+        "frequency_Hz": {
+          "max": 120
+        },
+        "velocity_m_s": {
+          "max": 2
+        },
+        "frame_stiffness_kN_mm": {
+          "value": 40,
+          "note": "크로스헤드 간격 500 mm 기준"
+        },
+        "weight_kg": 270,
+        "horizontal_test_space_mm": 460,
+        "vertical_test_space_mm": {
+          "value": 1040,
+          "note": "로드셀 없이 최대, 로드셀 포함 950 mm"
+        },
+        "item_no": "3006628",
+        "footprint_mm": {
+          "W": 665,
+          "D": 525,
+          "H": 1855,
+          "note": "시험기 최대 높이(A). 받침 포함 2504 mm"
+        },
+        "power": "400 V 3Ph 50/60 Hz, 11 kVA"
+      },
+      "note": "형식 표기 'LTM 2 HR + 400 mm'. 원문 Fmax 동적 ±2000 N, 정적 연속 ±1400 N. 위치 정확도·반복도 ±2 µm"
+    },
+    {
+      "model": "LTM 3",
+      "specs": {
+        "dynamic_force_kN": 3,
+        "static_force_kN": 2.1,
+        "stroke_mm": 60,
+        "frequency_Hz": {
+          "max": 100
+        },
+        "velocity_m_s": {
+          "max": 1
+        },
+        "frame_stiffness_kN_mm": {
+          "value": 40,
+          "note": "크로스헤드 간격 500 mm 기준"
+        },
+        "weight_kg": 310,
+        "horizontal_test_space_mm": 460,
+        "vertical_test_space_mm": {
+          "value": 1040,
+          "note": "로드셀 없이 최대, 로드셀 포함 950 mm"
+        },
+        "item_no": "1053564",
+        "footprint_mm": {
+          "W": 665,
+          "D": 525,
+          "H": 1930,
+          "note": "시험기 최대 높이(A). 받침 포함 2590 mm"
+        },
+        "power": "230 V 1Ph 50/60 Hz, 3.5 kVA"
+      },
+      "note": "형식 표기 'LTM 3 + 170 mm'. 원문 Fmax 동적 ±3000 N, 정적 연속 ±2100 N. 위치 정확도·반복도 ±2 µm. 소음 최대 <63 dB(A), 전형 <46 dB(A). 로드셀 정확도 등급 0.5"
+    },
+    {
+      "model": "LTM 3 HR",
+      "specs": {
+        "dynamic_force_kN": 3,
+        "static_force_kN": 2.1,
+        "stroke_mm": 60,
+        "frequency_Hz": {
+          "max": 120
+        },
+        "velocity_m_s": {
+          "max": 1.5
+        },
+        "frame_stiffness_kN_mm": {
+          "value": 40,
+          "note": "크로스헤드 간격 500 mm 기준"
+        },
+        "weight_kg": 310,
+        "horizontal_test_space_mm": 460,
+        "vertical_test_space_mm": {
+          "value": 1040,
+          "note": "로드셀 없이 최대, 로드셀 포함 950 mm"
+        },
+        "item_no": "1058953",
+        "footprint_mm": {
+          "W": 665,
+          "D": 525,
+          "H": 1930,
+          "note": "시험기 최대 높이(A). 받침 포함 2590 mm"
+        },
+        "power": "400 V 3Ph 50/60 Hz, 11.1 kVA"
+      },
+      "note": "형식 표기 'LTM 3 HR + 170 mm'. 원문 Fmax 동적 ±3000 N, 정적 연속 ±2100 N. 위치 정확도·반복도 ±2 µm. 소음 최대 <63 dB(A), 전형 <46 dB(A). 로드셀 정확도 등급 0.5"
+    },
+    {
+      "model": "LTM 1 T",
+      "specs": {
+        "dynamic_force_kN": 1,
+        "static_force_kN": 0.7,
+        "torque_Nm": {
+          "value": 10,
+          "note": "동적 ±10 Nm, 정적 연속 ±7 Nm"
+        },
+        "rotation_rpm": {
+          "max": 100
+        },
+        "stroke_mm": 60,
+        "frequency_Hz": {
+          "max": 100
+        },
+        "velocity_m_s": {
+          "max": 2
+        },
+        "frame_stiffness_kN_mm": {
+          "value": 24,
+          "note": "크로스헤드 간격 1000 mm 기준"
+        },
+        "weight_kg": 510,
+        "horizontal_test_space_mm": 460,
+        "vertical_test_space_mm": {
+          "value": 1125,
+          "note": "최대(D). 로드셀 없이 1065, 로드셀 포함 905 mm"
+        },
+        "footprint_mm": {
+          "W": 800,
+          "D": 700,
+          "H": 2775,
+          "note": "시험기 최대 높이(A), 시험 프레임 1988 mm"
+        },
+        "power": "400 V 3Ph 50/60 Hz, 11 kVA",
+        "item_no": "3014181"
+      },
+      "note": "형식 표기 'LTM 1 T + 400 mm'. 원문 Fmax 동적 ±1000 N, 정적 연속 ±700 N. 축·비틀림·복합 시험, 받침(1055466)·보조 질량(1055467) 필수. 위치 정확도·반복도 ±2 µm, 소음 최대 <63 dB(A)"
+    },
+    {
+      "model": "LTM 2 T",
+      "specs": {
+        "dynamic_force_kN": 2,
+        "static_force_kN": 1.4,
+        "torque_Nm": {
+          "value": 20,
+          "note": "동적 ±20 Nm, 정적 연속 ±14 Nm"
+        },
+        "rotation_rpm": {
+          "max": 100
+        },
+        "stroke_mm": 60,
+        "frequency_Hz": {
+          "max": 100
+        },
+        "velocity_m_s": {
+          "max": 2
+        },
+        "frame_stiffness_kN_mm": {
+          "value": 24,
+          "note": "크로스헤드 간격 1000 mm 기준"
+        },
+        "weight_kg": 510,
+        "horizontal_test_space_mm": 460,
+        "vertical_test_space_mm": {
+          "value": 1125,
+          "note": "최대(D). 로드셀 없이 1065, 로드셀 포함 905 mm"
+        },
+        "footprint_mm": {
+          "W": 800,
+          "D": 700,
+          "H": 2775,
+          "note": "시험기 최대 높이(A), 시험 프레임 1988 mm"
+        },
+        "power": "400 V 3Ph 50/60 Hz, 11 kVA",
+        "item_no": "3014182"
+      },
+      "note": "형식 표기 'LTM 2 T + 400 mm'. 원문 Fmax 동적 ±2000 N, 정적 연속 ±1400 N. 축·비틀림·복합 시험, 받침(1055466)·보조 질량(1055467) 필수. 위치 정확도·반복도 ±2 µm, 소음 최대 <63 dB(A)"
+    },
+    {
+      "model": "LTM 3 T",
+      "specs": {
+        "dynamic_force_kN": 3,
+        "static_force_kN": 2.1,
+        "torque_Nm": {
+          "value": 30,
+          "note": "동적 ±30 Nm, 정적 연속 ±21 Nm"
+        },
+        "rotation_rpm": {
+          "max": 100
+        },
+        "stroke_mm": 60,
+        "frequency_Hz": {
+          "max": 100
+        },
+        "velocity_m_s": {
+          "max": 1.5
+        },
+        "frame_stiffness_kN_mm": {
+          "value": 24,
+          "note": "크로스헤드 간격 1000 mm 기준"
+        },
+        "weight_kg": 550,
+        "horizontal_test_space_mm": 460,
+        "vertical_test_space_mm": {
+          "value": 1125,
+          "note": "최대(D). 로드셀 없이 1065, 로드셀 포함 905 mm"
+        },
+        "footprint_mm": {
+          "W": 800,
+          "D": 700,
+          "H": 2775,
+          "note": "시험기 최대 높이(A), 시험 프레임 1988 mm"
+        },
+        "power": "400 V 3Ph 50/60 Hz, 11 kVA",
+        "item_no": "3014183"
+      },
+      "note": "형식 표기 'LTM 3 T + 400 mm'. 원문 Fmax 동적 ±3000 N, 정적 연속 ±2100 N. 축·비틀림·복합 시험, 받침(1055466)·보조 질량(1055467) 필수. 위치 정확도·반복도 ±2 µm, 소음 최대 <63 dB(A)"
+    },
+    {
+      "model": "LTM 5",
+      "specs": {
+        "dynamic_force_kN": 5,
+        "static_force_kN": 3.5,
+        "stroke_mm": 60,
+        "frequency_Hz": {
+          "max": 100
+        },
+        "velocity_m_s": {
+          "max": 1.5
+        },
+        "frame_stiffness_kN_mm": {
+          "value": 300,
+          "note": "크로스헤드 간격 1000 mm 기준"
+        },
+        "weight_kg": {
+          "value": 941,
+          "note": "941 (+250 mm 966) kg"
+        },
+        "horizontal_test_space_mm": 460,
+        "vertical_test_space_mm": {
+          "value": 1106,
+          "note": "최대 시험 공간(+250 mm 형 1356). 로드셀 없이 920(1170), 로드셀 포함 781(1031) mm"
+        },
+        "item_no": "1008107 / 3001848(+250 mm)",
+        "footprint_mm": {
+          "W": 860,
+          "D": 850,
+          "H": 2510,
+          "note": "시험기 최대 높이(A), +250 mm 형 2760 mm"
+        },
+        "power": "400 V 3Ph 50/60 Hz, 11.1 kVA"
+      },
+      "note": "원문 Fmax 동적 ±5 kN, 정적 연속 ±3.5 kN. +250 mm 형은 항온조를 쓸 때 필요"
+    },
+    {
+      "model": "LTM 10",
+      "specs": {
+        "dynamic_force_kN": 10,
+        "static_force_kN": 7,
+        "stroke_mm": 60,
+        "frequency_Hz": {
+          "max": 100
+        },
+        "velocity_m_s": {
+          "max": 1.0
+        },
+        "frame_stiffness_kN_mm": {
+          "value": 300,
+          "note": "크로스헤드 간격 1000 mm 기준"
+        },
+        "weight_kg": {
+          "value": 1040,
+          "note": "1040 (+250 mm 1065) kg"
+        },
+        "horizontal_test_space_mm": 460,
+        "vertical_test_space_mm": {
+          "value": 1106,
+          "note": "최대 시험 공간(+250 mm 형 1356). 로드셀 없이 920(1170), 로드셀 포함 781(1031) mm"
+        },
+        "item_no": "1008108 / 3001847(+250 mm)",
+        "footprint_mm": {
+          "W": 860,
+          "D": 850,
+          "H": 2715,
+          "note": "시험기 최대 높이(A), +250 mm 형 2965 mm"
+        },
+        "power": "400 V 3Ph 50/60 Hz, 22.17 kVA"
+      },
+      "note": "원문 Fmax 동적 ±10 kN, 정적 연속 ±7 kN. +250 mm 형은 항온조를 쓸 때 필요"
+    },
+    {
+      "model": "LTM 10 T",
+      "specs": {
+        "dynamic_force_kN": 10,
+        "static_force_kN": 7,
+        "torque_Nm": {
+          "value": 100,
+          "note": "동적 ±100 Nm, 정적 연속 ±70 Nm"
+        },
+        "rotation_rpm": {
+          "max": 100
+        },
+        "stroke_mm": 60,
+        "frequency_Hz": {
+          "max": 100
+        },
+        "velocity_m_s": {
+          "max": 1.0,
+          "note": "Standard 형 값. +250 mm 형 칸은 추출 텍스트에서 1.5 로 읽혀 확실하지 않다"
+        },
+        "frame_stiffness_kN_mm": {
+          "value": 300,
+          "note": "크로스헤드 간격 1000 mm 기준"
+        },
+        "weight_kg": {
+          "value": 1100,
+          "note": "+250 mm 형 1125 kg"
+        },
+        "horizontal_test_space_mm": 460,
+        "vertical_test_space_mm": {
+          "value": 983,
+          "note": "로드셀 없이 최대(+250 mm 형 1233), 로드셀 포함 830(1080) mm"
+        },
+        "footprint_mm": {
+          "W": 860,
+          "D": 850,
+          "H": 2919,
+          "note": "시험기 최대 높이(A), +250 mm 형 3169 mm"
+        },
+        "power": "400 V 3Ph 50/60 Hz, 22.17 kVA",
+        "item_no": "3011465 / 3011466(+250 mm)"
+      },
+      "note": "원문 Fmax 동적 ±10 kN, 정적 연속 ±7 kN. 위치 정확도·반복도 ±2 µm, 소음 최대 <68 dB(A). +250 mm 형은 항온조를 쓸 때 필요"
+    },
+    {
+      "model": "LTM 5 T",
+      "specs": {
+        "dynamic_force_kN": 5,
+        "stroke_mm": 60
+      },
+      "uncertain": true,
+      "note": "PDF(PI497) 제목·설치 조건(400 V, 11.1 kVA)·로드셀(5 kN / 50 Nm)에만 나오고 기술 데이터 표에 열이 없다"
+    }
+  ],
+  "features": [
+    "리니어모터 직접 구동(오일 없음, 정지 시 에너지 적음)",
+    "위치 정확도·반복도 ±2 µm",
+    "피스톤 로드 안의 동축 변위 측정",
+    "testXpert R(동적)·testXpert III(정적) 소프트웨어",
+    "소음: LTM 1·2 최대 <61 dB(A), 전형 <45 dB(A)"
+  ],
+  "relations": [
+    {
+      "type": "controlled_by",
+      "target": "zwickroell-testcontrol-ii-and-control-cube"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://www.zwickroell.com/products/dynamic-and-fatigue-testing-systems/ltm-electrodynamic-testing-machine/",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지(HTML) 본문·표를 직접 읽음. 개요·장점·기술 데이터 표(LTM 1/1 HR, 2/2 HR, 3/3 HR, 5/10). 각주 숫자는 떼고 옮겼다"
+    },
+    {
+      "file": "zwickroell/15_765_ltm1_and_ltm1hr_pi_en.pdf",
+      "pages": [
+        2,
+        3,
+        4
+      ]
+    },
+    {
+      "file": "zwickroell/15_761_ltm2_and_ltm2hr_pi_en.pdf",
+      "pages": [
+        3,
+        4
+      ]
+    },
+    {
+      "file": "zwickroell/15_745_ltm3_and_ltm3hr_pi_en.pdf",
+      "pages": [
+        3,
+        4
+      ]
+    },
+    {
+      "file": "zwickroell/15_969_ltm_5_and_ltm_10_electro_dynamic_testing_machine_en.pdf",
+      "pages": [
+        2,
+        3,
+        4
+      ]
+    },
+    {
+      "file": "zwickroell/15_496_ltm_1-3_torsion_pi_en.pdf",
+      "pages": [
+        1,
+        3,
+        5
+      ]
+    },
+    {
+      "file": "zwickroell/15_497_ltm_5_10_torsion_pi_en.pdf",
+      "pages": [
+        3,
+        4,
+        5
+      ]
+    }
+  ],
+  "confidence": "catalog",
+  "notes": "속도 범위 표는 '1 mm/min … 1.5 m/s'(형식별 1~2 m/s)처럼 읽힌다 — 최댓값만 velocity_m_s 에 넣었다. PDF(PI765·PI761·PI745·PI969)로 기종별 힘·스트로크·주파수·속도·강성·무게·시험 공간·품번을 모두 확인하고 외형·전원을 더했다. LTM 2 의 시험기 최대 높이(A)는 PDF 에 1935 mm(LTM 2 HR 1855 mm)로 적혀 있다. 비틀림 형(LTM 1/2/3 T, LTM 10 T)은 PDF(PI496·PI497)에서 기종으로 더했다. LTM 5 T 는 기술 데이터 열이 없어 uncertain 으로 두었다. 비틀림 형 표의 「Rotations 500」 행은 뜻이 확실하지 않아 넣지 않았다. test_items 에 torsion 은 넣지 않았다(분류 판단은 남긴다)."
+}

@@ -1,0 +1,147 @@
+{
+  "id": "lansmont-hs-hsx-high-speed-shock-test-systems",
+  "kind": "equipment_series",
+  "name": "Lansmont HS / HSX High Speed Shock Test Systems (HS15/50 / HSX15 / HSX30 / HSX30/122)",
+  "name_ko": "랜스몬트 HS·HSX 고속 충격 시험 시스템",
+  "manufacturer": "lansmont",
+  "category": "shock_test_machine",
+  "form_factor": "floor",
+  "description": "작은 시료에 큰 속도 변화를 주는 고속 충격 시험기. HS15/50 은 최대 10,000 g·속도 변화 36.6 m/s·최소 펄스 0.2 ms·탑재 113 kg, HSX15·HSX30 은 테이블 가속 부스트로 45.8 m/s 까지, HSX30/122 는 초대형 하중 프레임에 자유낙하 907 kg·가속 113 kg 탑재로 30.5 m/s. 옵션 프로그래머로 반정현·사다리꼴·톱니 펄스를 내고, 전동 호이스트·공압(오일 증폭) 브레이크·바닥과 분리된 현가식 반력 질량을 갖추며 TouchTest Shock 제어기로 운전한다.",
+  "test_items": [
+    "mechanical_shock"
+  ],
+  "measurands": [
+    "peak_acceleration",
+    "shock_response_spectrum"
+  ],
+  "materials": [
+    "electronic components",
+    "defense hardware",
+    "small assemblies"
+  ],
+  "limits": {
+    "acceleration_g": {
+      "max": 10000
+    },
+    "pulse_duration_ms": {
+      "min": 0.2
+    },
+    "velocity_change_m_s": {
+      "max": 45.8,
+      "note": "HS15/50 36.6, HSX15/HSX30 45.8, HSX30/122 30.5"
+    },
+    "payload_kg": {
+      "max": 907,
+      "note": "HSX30/122 자유낙하 907 kg(가속 113 kg, 시료 45 kg 까지)"
+    },
+    "table_size_mm": {
+      "min": 100,
+      "max": 600,
+      "note": "HSX15 의 15×10 cm 부터 HSX30/122 의 60×60 cm"
+    }
+  },
+  "models": [
+    {
+      "model": "HS15/50",
+      "specs": {
+        "acceleration_g": 10000,
+        "velocity_change_m_s": 36.6,
+        "pulse_duration_ms": {
+          "min": 0.2
+        },
+        "payload_kg": 113,
+        "table_size_mm": [
+          150,
+          500
+        ]
+      },
+      "note": "페이지가 HS15·HS50 을 함께 다룸. 시료 30×40.6 cm 까지"
+    },
+    {
+      "model": "HS15",
+      "specs": {
+        "acceleration_g": 10000
+      },
+      "note": "HS15/50 페이지에 기종명만",
+      "uncertain": true
+    },
+    {
+      "model": "HS50",
+      "specs": {
+        "acceleration_g": 10000
+      },
+      "note": "HS15/50 페이지에 기종명만",
+      "uncertain": true
+    },
+    {
+      "model": "HSX15",
+      "specs": {
+        "acceleration_g": 10000,
+        "velocity_change_m_s": 45.8,
+        "pulse_duration_ms": {
+          "min": 0.2
+        },
+        "payload_kg": 113
+      },
+      "note": "테이블 15×10 cm ~ 30×40.6 cm 범위(HSX15/HSX30 공통 표기)"
+    },
+    {
+      "model": "HSX30",
+      "specs": {
+        "acceleration_g": 10000,
+        "velocity_change_m_s": 45.8,
+        "pulse_duration_ms": {
+          "min": 0.2
+        },
+        "payload_kg": 113
+      }
+    },
+    {
+      "model": "HSX30/122",
+      "specs": {
+        "acceleration_g": 10000,
+        "velocity_change_m_s": 30.5,
+        "payload_kg": 907,
+        "table_size_mm": {
+          "min": 300,
+          "max": 600
+        }
+      },
+      "note": "자유낙하 907 kg, 가속 113 kg, 시료 45 kg 까지. 가속 부스트가 자유낙하 속도 변화를 두 배로"
+    }
+  ],
+  "pulse_waveforms": [
+    "반정현",
+    "사다리꼴",
+    "톱니(terminal peak sawtooth) — 옵션 프로그래머"
+  ],
+  "relations": [
+    {
+      "type": "performs",
+      "target": "mechanical_shock"
+    },
+    {
+      "type": "same_family_as",
+      "target": "lansmont-shock-test-systems"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://www.lansmont.com/products/shock-testers/hs1550",
+      "retrieved": "2026-10-08",
+      "note": "제조사 HS15/50 페이지"
+    },
+    {
+      "url": "https://www.lansmont.com/products/shock-testers/hsx15hsx30",
+      "retrieved": "2026-10-08",
+      "note": "제조사 HSX15/HSX30 페이지"
+    },
+    {
+      "url": "https://www.lansmont.com/products/shock-testers/hsx30122",
+      "retrieved": "2026-10-08",
+      "note": "제조사 HSX30/122 페이지"
+    }
+  ],
+  "confidence": "limited",
+  "notes": "속도 변화는 원문 ft/sec 와 m/sec 병기에서 m/s 값을 썼다."
+}

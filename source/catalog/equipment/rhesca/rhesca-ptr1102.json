@@ -1,0 +1,83 @@
+{
+  "id": "rhesca-ptr1102",
+  "kind": "equipment_model",
+  "name": "RHESCA Bonding Tester PTR1102",
+  "name_ko": "레스카 본딩 테스터 PTR1102",
+  "manufacturer": "rhesca",
+  "brand": "PTR",
+  "category": "bond_tester",
+  "form_factor": "benchtop",
+  "description": "반도체 와이어 본딩의 금선 인장 강도와 볼 전단 강도 등을 한 장비에서 재는 본딩 테스터. 인장 · 푸시 · 박리 시험 최대 20 kg, 전단 시험 최대 100 kg, 측정 정확도 ±0.2 %FS. 측정 속도는 인장 · 푸시 · 박리 0.001~5 mm/s, 전단 0.001~10 mm/s 이고 스테이지 이동은 X ±50 mm · Y ±50 mm · Z 최대 70 mm. 관찰 방향은 수직 45° · 수평 ±90° 가변.",
+  "test_items": [
+    "wire_bond_strength"
+  ],
+  "measurands": [
+    "pull_force",
+    "shear_force"
+  ],
+  "materials": [
+    "gold wire bonds",
+    "ball bonds",
+    "die attach"
+  ],
+  "limits": {
+    "pull_force_kgf": {
+      "max": 20,
+      "note": "인장 · 푸시 · 박리 시험 20 kg MAX"
+    },
+    "push_force_kgf": {
+      "max": 20
+    },
+    "shear_force_kgf": {
+      "max": 100
+    },
+    "measuring_speed_mm_s": {
+      "min": 0.001,
+      "max": 10,
+      "note": "인장 · 푸시 · 박리 0.001~5 mm/s, 전단 0.001~10 mm/s"
+    },
+    "stage_travel_mm": {
+      "max": 100,
+      "note": "X ±50 · Y ±50 mm, Z 최대 70 mm"
+    }
+  },
+  "models": [
+    {
+      "model": "PTR1102",
+      "specs": {
+        "pull_force_kgf": 20,
+        "push_force_kgf": 20,
+        "shear_force_kgf": 100,
+        "accuracy": "±0.2 %FS",
+        "measuring_speed_mm_s": "인장 · 푸시 · 박리 0.001~5 / 전단 0.001~10",
+        "stage_travel_mm": "X ±50 / Y ±50 / Z 최대 70"
+      },
+      "note": "관찰 방향: 수직 45°, 수평 ±90° 가변"
+    }
+  ],
+  "test_modes": [
+    "인장(Pull)",
+    "전단(Shear)",
+    "다이 전단(Die shear)",
+    "박리(Peel)"
+  ],
+  "relations": [
+    {
+      "type": "performs",
+      "target": "wire_bond_strength"
+    },
+    {
+      "type": "same_family_as",
+      "target": "rhesca-solder-wettability-testers"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://www.rhesca.co.jp/product/bonding-tester-ptr1102-2/",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지(일본어)"
+    }
+  ],
+  "notes": "외형 · 무게 · 전원은 페이지에 없다. 하중 단위는 원문 그대로 kg(kgf 로 읽음).",
+  "confidence": "limited"
+}

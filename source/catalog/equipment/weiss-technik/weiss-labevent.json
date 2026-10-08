@@ -1,0 +1,280 @@
+{
+  "id": "weiss-labevent",
+  "kind": "equipment_series",
+  "name": "Weiss Technik LabEvent Laboratory Temperature and Climate Test Chambers",
+  "name_ko": "바이스 테크닉 LabEvent 실험실용 온도·항온항습 시험 챔버",
+  "manufacturer": "weiss-technik",
+  "brand": "LabEvent",
+  "category": "climatic_chamber",
+  "drive": "thermal",
+  "form_factor": "benchtop",
+  "description": "연구·개발·품질관리용 소형 온도·항온항습 시험 챔버(벤치탑 포함). 계열 전체 -70~+180 °C, 시험 공간 16~210 L. 기후형은 10~95 %RH. 1단 냉동(-40 °C 까지)은 CO2(R744, GWP 1) 냉매를 쓴다. ESS 용 5·10 K/min 기종이 있다. WEBSeason 웹 인터페이스, 18 cm(7\") 터치 패널, USB·Ethernet 기본.",
+  "test_items": [
+    "damp_heat",
+    "temperature_cycling"
+  ],
+  "limits": {
+    "temperature_degC": {
+      "min": -70,
+      "max": 180,
+      "note": "벤치탑 페이지 '-70 °C to +180 °C'"
+    },
+    "humidity_pct": {
+      "min": 10,
+      "max": 95,
+      "note": "기후형만"
+    },
+    "chamber_volume_L": {
+      "min": 16,
+      "max": 210,
+      "note": "벤치탑 페이지 '16 to 210 litres'"
+    }
+  },
+  "models": [
+    {
+      "model": "LabEvent L C/34/40/6",
+      "variant": "climate · CO2 냉매(R744)",
+      "specs": {
+        "chamber_volume_L": 34,
+        "footprint_mm": "H1000×W661×D926",
+        "inner_mm": "H310×W350×D290",
+        "temperature_degC": {
+          "min": -40,
+          "max": 180
+        },
+        "humidity_pct": {
+          "min": 10,
+          "max": 95
+        },
+        "heating_rate_K_min": {
+          "max": 4
+        },
+        "cooling_rate_K_min": {
+          "max": 6
+        },
+        "refrigerant": "R744 (CO2)"
+      },
+      "note": "기후 기종 페이지 기술 데이터 표에서 값이 보인 행. 소음 56 dB(A)"
+    },
+    {
+      "model": "LabEvent L C/34/70/5",
+      "variant": "climate",
+      "note": "기후(온습도) 기종 선택 목록의 이름. 값은 페이지에서 보이지 않았다"
+    },
+    {
+      "model": "LabEvent L C/34/+10/8",
+      "variant": "climate · CO2 냉매(R744)",
+      "note": "기후(온습도) 기종 선택 목록의 이름. 값은 페이지에서 보이지 않았다"
+    },
+    {
+      "model": "LabEvent L C/64/+10/6",
+      "variant": "climate · CO2 냉매(R744)",
+      "note": "기후(온습도) 기종 선택 목록의 이름. 값은 페이지에서 보이지 않았다"
+    },
+    {
+      "model": "LabEvent L C/64/40/",
+      "variant": "climate · CO2 냉매(R744)",
+      "note": "페이지 목록에 'LabEvent L C/64/40/ (CO2)' 로 마지막 숫자가 비어 있는 그대로 적혀 있다",
+      "uncertain": true
+    },
+    {
+      "model": "LabEvent L C/64/70/3",
+      "variant": "climate",
+      "note": "기후(온습도) 기종 선택 목록의 이름. 값은 페이지에서 보이지 않았다"
+    },
+    {
+      "model": "LabEvent L C/100/+10/5",
+      "variant": "climate · CO2 냉매(R744)",
+      "note": "기후(온습도) 기종 선택 목록의 이름. 값은 페이지에서 보이지 않았다"
+    },
+    {
+      "model": "LabEvent L C/100/50/4",
+      "variant": "climate · CO2 냉매(R744)",
+      "note": "기후(온습도) 기종 선택 목록의 이름. 값은 페이지에서 보이지 않았다"
+    },
+    {
+      "model": "LabEvent L C/100/70/10",
+      "variant": "climate",
+      "note": "기후(온습도) 기종 선택 목록의 이름. 값은 페이지에서 보이지 않았다"
+    },
+    {
+      "model": "LabEvent L C/100/70/3",
+      "variant": "climate",
+      "note": "기후(온습도) 기종 선택 목록의 이름. 값은 페이지에서 보이지 않았다"
+    },
+    {
+      "model": "LabEvent L C/150/+10/4",
+      "variant": "climate · CO2 냉매(R744)",
+      "note": "기후(온습도) 기종 선택 목록의 이름. 값은 페이지에서 보이지 않았다"
+    },
+    {
+      "model": "LabEvent L C/150/50/3",
+      "variant": "climate · CO2 냉매(R744)",
+      "note": "기후(온습도) 기종 선택 목록의 이름. 값은 페이지에서 보이지 않았다"
+    },
+    {
+      "model": "LabEvent L C/150/70/10",
+      "variant": "climate",
+      "note": "기후(온습도) 기종 선택 목록의 이름. 값은 페이지에서 보이지 않았다"
+    },
+    {
+      "model": "LabEvent L C/150/70/3",
+      "variant": "climate",
+      "note": "기후(온습도) 기종 선택 목록의 이름. 값은 페이지에서 보이지 않았다"
+    },
+    {
+      "model": "LabEvent T/20/30/5",
+      "variant": "temperature · CO2 냉매(R744)",
+      "form_factor": "benchtop",
+      "specs": {
+        "chamber_volume_L": 16,
+        "footprint_mm": "H625×W470×D570",
+        "inner_mm": "H205×W310×D310",
+        "temperature_degC": {
+          "min": -30,
+          "max": 130
+        },
+        "cooling_rate_K_min": {
+          "max": 6
+        },
+        "heating_rate_K_min": {
+          "max": 5
+        },
+        "refrigerant": "R744 (CO2)"
+      },
+      "note": "온도 기종 페이지 기술 데이터 표에서 값이 보인 행. 소음 52 dB(A)"
+    },
+    {
+      "model": "LabEvent LT/34/70/5",
+      "variant": "temperature",
+      "form_factor": "benchtop",
+      "note": "온도 기종 선택 목록의 이름. 값은 페이지에서 보이지 않았다"
+    },
+    {
+      "model": "LabEvent LT/34/40/6",
+      "variant": "temperature · CO2 냉매(R744)",
+      "form_factor": "benchtop",
+      "note": "온도 기종 선택 목록의 이름. 값은 페이지에서 보이지 않았다"
+    },
+    {
+      "model": "LabEvent LT/64/40/4",
+      "variant": "temperature · CO2 냉매(R744)",
+      "form_factor": "benchtop",
+      "note": "온도 기종 선택 목록의 이름. 값은 페이지에서 보이지 않았다"
+    },
+    {
+      "model": "LabEvent LT/64/70/3",
+      "variant": "temperature",
+      "form_factor": "benchtop",
+      "note": "온도 기종 선택 목록의 이름. 값은 페이지에서 보이지 않았다"
+    },
+    {
+      "model": "LabEvent LT/100/50/4",
+      "variant": "temperature · CO2 냉매(R744)",
+      "form_factor": "benchtop",
+      "note": "온도 기종 선택 목록의 이름. 값은 페이지에서 보이지 않았다"
+    },
+    {
+      "model": "LabEvent LT/100/70/10",
+      "variant": "temperature",
+      "form_factor": "benchtop",
+      "note": "온도 기종 선택 목록의 이름. 값은 페이지에서 보이지 않았다"
+    },
+    {
+      "model": "LabEvent LT/100/70/3",
+      "variant": "temperature",
+      "form_factor": "benchtop",
+      "note": "온도 기종 선택 목록의 이름. 값은 페이지에서 보이지 않았다"
+    },
+    {
+      "model": "LabEvent LT/150/50/3",
+      "variant": "temperature · CO2 냉매(R744)",
+      "form_factor": "benchtop",
+      "note": "온도 기종 선택 목록의 이름. 값은 페이지에서 보이지 않았다"
+    },
+    {
+      "model": "LabEvent LT/150/70/10",
+      "variant": "temperature",
+      "form_factor": "benchtop",
+      "note": "온도 기종 선택 목록의 이름. 값은 페이지에서 보이지 않았다"
+    },
+    {
+      "model": "LabEvent LT/150/70/3",
+      "variant": "temperature",
+      "form_factor": "benchtop",
+      "note": "온도 기종 선택 목록의 이름. 값은 페이지에서 보이지 않았다"
+    },
+    {
+      "model": "LabEvent T/110/50/4",
+      "variant": "temperature · CO2 냉매(R744)",
+      "form_factor": "benchtop",
+      "note": "온도 기종 선택 목록의 이름. 값은 페이지에서 보이지 않았다"
+    },
+    {
+      "model": "LabEvent T/110/70/3",
+      "variant": "temperature",
+      "form_factor": "benchtop",
+      "note": "온도 기종 선택 목록의 이름. 값은 페이지에서 보이지 않았다. 기후 기종 페이지 목록에도 같은 이름이 있다"
+    },
+    {
+      "model": "LabEvent T/110/70/5",
+      "variant": "temperature",
+      "form_factor": "benchtop",
+      "note": "온도 기종 선택 목록의 이름. 값은 페이지에서 보이지 않았다. 기후 기종 페이지 목록에도 같은 이름이 있다"
+    },
+    {
+      "model": "LabEvent T/210/50/4",
+      "variant": "temperature · CO2 냉매(R744)",
+      "form_factor": "benchtop",
+      "note": "온도 기종 선택 목록의 이름. 값은 페이지에서 보이지 않았다"
+    },
+    {
+      "model": "LabEvent T/210/70/3",
+      "variant": "temperature",
+      "form_factor": "benchtop",
+      "note": "온도 기종 선택 목록의 이름. 값은 페이지에서 보이지 않았다. 기후 기종 페이지 목록에도 같은 이름이 있다"
+    },
+    {
+      "model": "LabEvent T/210/70/5",
+      "variant": "temperature",
+      "form_factor": "benchtop",
+      "note": "온도 기종 선택 목록의 이름. 값은 페이지에서 보이지 않았다. 기후 기종 페이지 목록에도 같은 이름이 있다"
+    }
+  ],
+  "features": [
+    "CO2(R744) 1단 냉동(-40 °C 까지)",
+    "WEBSeason 웹 인터페이스",
+    "18 cm(7\") 터치 패널",
+    "USB·Ethernet 기본",
+    "스테인리스 내장"
+  ],
+  "relations": [
+    {
+      "type": "simulates_environment",
+      "target": "environment-damp-heat"
+    },
+    {
+      "type": "same_family_as",
+      "target": "weiss-climeevent"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://www.weiss-technik.com/environmental-simulation/en/products/detail/laboratory-climate-test-chamber-labevent~gp61853",
+      "retrieved": "2026-10-08",
+      "note": "제조사 기후형 페이지. 기종 선택 목록과 L C/34/40/6 (CO2) 행"
+    },
+    {
+      "url": "https://www.weiss-technik.com/environmental-simulation/en/products/detail/laboratory-temperature-test-chamber-labevent~gp56568",
+      "retrieved": "2026-10-08",
+      "note": "제조사 온도형 페이지. 기종 선택 목록과 T/20/30/5 (CO2) 행"
+    },
+    {
+      "url": "https://www.weiss-technik.com/environmental-simulation/en/products/detail/labevent-benchtop-temperature-test-chambers-for-laboratory-and-product-testing~p12487",
+      "retrieved": "2026-10-08",
+      "note": "제조사 벤치탑 페이지. 계열 온도 범위 -70~+180 °C, 16~210 L"
+    }
+  ],
+  "confidence": "limited",
+  "notes": "페이지가 기종 선택에 따라 표를 바꾸는 구조라 값은 두 행만 읽었다. 기종명 숫자의 뜻은 페이지가 설명하지 않아 값으로 옮기지 않았다. 기종명 앞의 'LabEvent ' 는 페이지 표기 그대로 붙였다."
+}

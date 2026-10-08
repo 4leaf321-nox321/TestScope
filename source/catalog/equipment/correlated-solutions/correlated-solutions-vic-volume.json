@@ -1,0 +1,41 @@
+{
+  "id": "correlated-solutions-vic-volume",
+  "kind": "software",
+  "name": "Correlated Solutions VIC-Volume Digital Volume Correlation",
+  "name_ko": "코릴레이티드 솔루션스 VIC-Volume 체적 DIC(DVC)",
+  "manufacturer": "correlated-solutions",
+  "brand": "VIC-Volume",
+  "category": "dic_strain_measurement",
+  "subcategory": "digital_volume_correlation",
+  "description": "X선·CT 등 체적 영상의 슬라이스로 시편 내부 변형을 추적해 3차원 체적 변위·변형률(Exz, Eyz, Ezz 포함)을 얻는 소프트웨어. 복셀 기반 부분 체적 추적, 편향·보간 오차를 줄이는 비선형 최적화, FEA 검증용 전 영역 등고선 출력.",
+  "test_items": [
+    "compression",
+    "tensile"
+  ],
+  "measurands": [
+    "volumetric_displacement",
+    "volumetric_strain"
+  ],
+  "models": [
+    {
+      "model": "VIC-Volume",
+      "note": "입력: X-Ray, CT 스캐너 등 체적 영상. 수치 분해능은 웹 페이지·PDF 모두에 없음"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://www.correlatedsolutions.com/volume",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지(HTML, correlatedsolutions.com) VIC-Volume"
+    },
+    {
+      "file": "correlated-solutions/vic-volume_2026.pdf",
+      "pages": [
+        1
+      ],
+      "note": "VIC-Volume 기술 소개(2쪽). 기능·원리만 있고 수치 사양은 없음"
+    }
+  ],
+  "confidence": "catalog",
+  "notes": "PDF 로 확인: 설명·기능(AOI tweening, 반자동 초기 추정, 비선형 필터 최적화, Exz·Eyz·Ezz). 수치 사양은 제조사 PDF 에도 없어 객체에 수치 값이 없음."
+}

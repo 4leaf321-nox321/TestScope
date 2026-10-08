@@ -1,0 +1,328 @@
+{
+  "id": "keyence-gt2",
+  "kind": "equipment_series",
+  "name": "GT2 Series High-Accuracy Digital Contact Sensor",
+  "name_ko": "키엔스 GT2 고정밀 디지털 접촉식 변위 센서",
+  "manufacturer": "keyence",
+  "category": "thickness_displacement_gauge",
+  "description": "석영 유리 스케일을 CMOS 이미지 센서로 읽는 절대(absolute)식 접촉 변위 센서 계열임. 측정 범위 12·32·50 mm, 분해능 0.1~0.5 µm, 지시 정확도 1~3.5 µm(p-p), 샘플링 주기 1 ms(스타일러스형 4 ms). 표준·고정밀(K)·저측정력(KL)·에어 실린더(A)·스타일러스(P)·플랜지(F)형 헤드가 있음. 두께·높이·단차 검사에 씀.",
+  "test_items": [],
+  "limits": {
+    "displacement_mm": {
+      "min": 0,
+      "max": 50,
+      "note": "헤드별 측정 범위 12 / 32 / 50 mm"
+    },
+    "position_resolution_nm": {
+      "min": 100,
+      "max": 500,
+      "note": "원문 0.1 µm(K형) / 0.5 µm"
+    },
+    "stylus_force_mN": {
+      "min": 200,
+      "max": 3200,
+      "note": "원문 0.2 N(GT2-H12KL 상향) ~ 3.2 N(GT2-H50 하향)"
+    }
+  },
+  "models": [
+    {
+      "model": "GT2-H12",
+      "variant": "센서 헤드(표준)",
+      "specs": {
+        "displacement_mm": {
+          "min": 0,
+          "max": 12,
+          "note": "원문 Measuring range 12 mm"
+        },
+        "position_resolution_nm": {
+          "value": 500.0,
+          "note": "원문 Resolution 0.5 µm"
+        },
+        "accuracy": "2 µm (p-p) (원문 Indicated accuracy)",
+        "stylus_force_mN": {
+          "min": 800.0,
+          "max": 1000.0,
+          "note": "원문 측정력 0.8~1.0 N(설치 방향별)"
+        },
+        "sampling_cycle_us": {
+          "value": 1000,
+          "note": "원문 Sampling cycle 1 ms"
+        },
+        "weight_kg": {
+          "value": 0.095,
+          "note": "원문 Approx. 95 g(케이블 제외)"
+        }
+      },
+      "note": "측정력 하향 1.0 N / 측면 0.9 N / 상향 0.8 N(검색 결과 요약). 사용 온도 -10 ~ +55 °C."
+    },
+    {
+      "model": "GT2-H12K",
+      "variant": "센서 헤드 고정밀형",
+      "specs": {
+        "displacement_mm": {
+          "min": 0,
+          "max": 12,
+          "note": "원문 Measuring range 12 mm"
+        },
+        "position_resolution_nm": {
+          "value": 100.0,
+          "note": "원문 Resolution 0.1 µm"
+        },
+        "accuracy": "1 µm (p-p) (원문 Indicated accuracy)",
+        "stylus_force_mN": {
+          "min": 800.0,
+          "max": 1000.0,
+          "note": "원문 측정력 0.8~1.0 N(설치 방향별)"
+        },
+        "sampling_cycle_us": {
+          "value": 1000,
+          "note": "원문 Sampling cycle 1 ms"
+        },
+        "weight_kg": {
+          "value": 0.095,
+          "note": "원문 Approx. 95 g(케이블 제외)"
+        }
+      }
+    },
+    {
+      "model": "GT2-H12KL",
+      "variant": "센서 헤드 고정밀·저측정력형",
+      "specs": {
+        "displacement_mm": {
+          "min": 0,
+          "max": 12,
+          "note": "원문 Measuring range 12 mm"
+        },
+        "position_resolution_nm": {
+          "value": 100.0,
+          "note": "원문 Resolution 0.1 µm"
+        },
+        "accuracy": "1 µm (p-p) (원문 Indicated accuracy)",
+        "stylus_force_mN": {
+          "min": 200.0,
+          "max": 400.0,
+          "note": "원문 측정력 0.2~0.4 N(설치 방향별)"
+        },
+        "sampling_cycle_us": {
+          "value": 1000,
+          "note": "원문 Sampling cycle 1 ms"
+        },
+        "weight_kg": {
+          "value": 0.095,
+          "note": "원문 Approx. 95 g(케이블 제외)"
+        }
+      },
+      "note": "측정력 하향 0.4 N / 측면 0.3 N / 상향 0.2 N."
+    },
+    {
+      "model": "GT2-H32",
+      "variant": "센서 헤드(표준)",
+      "specs": {
+        "displacement_mm": {
+          "min": 0,
+          "max": 32,
+          "note": "원문 Measuring range 32 mm"
+        },
+        "position_resolution_nm": {
+          "value": 500.0,
+          "note": "원문 Resolution 0.5 µm"
+        },
+        "accuracy": "3 µm (p-p) (원문 Indicated accuracy)",
+        "stylus_force_mN": {
+          "min": 1500.0,
+          "max": 2100.0,
+          "note": "원문 측정력 1.5~2.1 N(설치 방향별)"
+        },
+        "sampling_cycle_us": {
+          "value": 1000,
+          "note": "원문 Sampling cycle 1 ms"
+        },
+        "weight_kg": {
+          "value": 0.27,
+          "note": "원문 Approx. 270 g(케이블 제외)"
+        }
+      }
+    },
+    {
+      "model": "GT2-H50",
+      "variant": "센서 헤드(표준)",
+      "specs": {
+        "displacement_mm": {
+          "min": 0,
+          "max": 50,
+          "note": "원문 Measuring range 50 mm"
+        },
+        "position_resolution_nm": {
+          "value": 500.0,
+          "note": "원문 Resolution 0.5 µm"
+        },
+        "accuracy": "3.5 µm (p-p) (원문 Indicated accuracy)",
+        "stylus_force_mN": {
+          "min": 2400.0,
+          "max": 3200.0,
+          "note": "원문 측정력 2.4~3.2 N(설치 방향별)"
+        },
+        "sampling_cycle_us": {
+          "value": 1000,
+          "note": "원문 Sampling cycle 1 ms"
+        },
+        "weight_kg": {
+          "value": 0.32,
+          "note": "원문 Approx. 320 g(케이블 제외)"
+        }
+      }
+    },
+    {
+      "model": "GT2-A12",
+      "variant": "센서 헤드 에어 실린더형",
+      "specs": {
+        "displacement_mm": {
+          "min": 0,
+          "max": 12,
+          "note": "원문 Measuring range 12 mm"
+        },
+        "position_resolution_nm": {
+          "value": 500.0,
+          "note": "원문 Resolution 0.5 µm"
+        },
+        "accuracy": "2 µm (p-p) (원문 Indicated accuracy)",
+        "stylus_force_mN": {
+          "min": 1000.0,
+          "max": 1200.0,
+          "note": "원문 측정력 1.0~1.2 N(설치 방향별)"
+        },
+        "sampling_cycle_us": {
+          "value": 1000,
+          "note": "원문 Sampling cycle 1 ms"
+        },
+        "weight_kg": {
+          "value": 0.145,
+          "note": "원문 Approx. 145 g(케이블 제외)"
+        }
+      },
+      "note": "건조 공기 0.25~0.5 MPa 로 구동. IP67."
+    },
+    {
+      "model": "GT2-A32",
+      "variant": "센서 헤드 에어 실린더형",
+      "specs": {
+        "displacement_mm": {
+          "min": 0,
+          "max": 32,
+          "note": "원문 Measuring range 32 mm"
+        },
+        "position_resolution_nm": {
+          "value": 500.0,
+          "note": "원문 Resolution 0.5 µm"
+        },
+        "accuracy": "3 µm (p-p) (원문 Indicated accuracy)",
+        "stylus_force_mN": {
+          "min": 1500.0,
+          "max": 2100.0,
+          "note": "원문 측정력 1.5~2.1 N(설치 방향별)"
+        },
+        "sampling_cycle_us": {
+          "value": 1000,
+          "note": "원문 Sampling cycle 1 ms"
+        },
+        "weight_kg": {
+          "value": 0.34,
+          "note": "원문 Approx. 340 g(케이블 제외)"
+        }
+      }
+    },
+    {
+      "model": "GT2-P12",
+      "variant": "스타일러스형 범용 센서 헤드",
+      "specs": {
+        "displacement_mm": {
+          "min": 0,
+          "max": 12,
+          "note": "원문 Measuring range 12 mm"
+        },
+        "position_resolution_nm": {
+          "value": 500.0,
+          "note": "원문 Resolution 0.5 µm"
+        },
+        "accuracy": "2 µm (p-p) (원문 Indicated accuracy)",
+        "stylus_force_mN": {
+          "min": 900.0,
+          "max": 1000.0,
+          "note": "원문 측정력 0.9~1.0 N(설치 방향별)"
+        },
+        "sampling_cycle_us": {
+          "value": 4000,
+          "note": "원문 Sampling cycle 4 ms"
+        },
+        "weight_kg": {
+          "value": 0.035,
+          "note": "원문 Approx. 35 g(케이블 제외)"
+        }
+      }
+    },
+    {
+      "model": "GT2-H12F",
+      "variant": "센서 헤드 플랜지형",
+      "note": "기종명은 제조사 기종 페이지 제목에서 확인. 사양은 읽지 않음"
+    },
+    {
+      "model": "GT2-H12KF",
+      "variant": "센서 헤드 고정밀형 · 플랜지형",
+      "note": "기종명은 제조사 기종 페이지 제목에서 확인. 사양은 읽지 않음"
+    },
+    {
+      "model": "GT2-H12KLF",
+      "variant": "센서 헤드 고정밀·저측정력형 · 플랜지형",
+      "note": "기종명은 제조사 기종 페이지 제목에서 확인. 사양은 읽지 않음"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://www.keyence.com/products/measure/contact-distance-lvdt/gt2/",
+      "retrieved": "2026-10-08",
+      "note": "제조사 계열 페이지(검색 결과로 확인)"
+    },
+    {
+      "url": "https://www.keyence.com/products/measure/contact-distance-lvdt/gt2/models/gt2-h12/",
+      "retrieved": "2026-10-08",
+      "note": "제조사 기종 페이지"
+    },
+    {
+      "url": "https://www.keyence.com/products/measure/contact-distance-lvdt/gt2/models/gt2-h12k/",
+      "retrieved": "2026-10-08",
+      "note": "제조사 기종 페이지"
+    },
+    {
+      "url": "https://www.keyence.com/products/measure/contact-distance-lvdt/gt2/models/gt2-h12kl/",
+      "retrieved": "2026-10-08",
+      "note": "제조사 기종 페이지"
+    },
+    {
+      "url": "https://www.keyence.com/products/measure/contact-distance-lvdt/gt2/models/gt2-h32/",
+      "retrieved": "2026-10-08",
+      "note": "제조사 기종 페이지"
+    },
+    {
+      "url": "https://www.keyence.com/products/measure/contact-distance-lvdt/gt2/models/gt2-h50/",
+      "retrieved": "2026-10-08",
+      "note": "제조사 기종 페이지"
+    },
+    {
+      "url": "https://www.keyence.com/products/measure/contact-distance-lvdt/gt2/models/gt2-a12/",
+      "retrieved": "2026-10-08",
+      "note": "제조사 기종 페이지"
+    },
+    {
+      "url": "https://www.keyence.com/products/measure/contact-distance-lvdt/gt2/models/gt2-a32/",
+      "retrieved": "2026-10-08",
+      "note": "제조사 기종 페이지"
+    },
+    {
+      "url": "https://www.keyence.com/products/measure/contact-distance-lvdt/gt2/models/gt2-p12/",
+      "retrieved": "2026-10-08",
+      "note": "제조사 기종 페이지"
+    }
+  ],
+  "confidence": "limited",
+  "notes": "GT2-H12 의 방향별 측정력은 검색 결과 요약에서 읽은 값이라 note 에만 둠. GT2-A50 등 다른 헤드가 있을 수 있으나 확인하지 못함."
+}

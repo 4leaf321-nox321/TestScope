@@ -1,0 +1,87 @@
+{
+  "id": "vision-research-phantom-tmx",
+  "kind": "equipment_series",
+  "name": "Phantom TMX Series",
+  "name_ko": "팬텀 TMX 초고속 카메라",
+  "manufacturer": "vision-research",
+  "brand": "Phantom",
+  "category": "high_speed_swir_camera",
+  "subcategory": "high_speed_camera",
+  "form_factor": "camera",
+  "description": "Phantom 의 이면조사(BSI) 센서 초고속 카메라 계열. 1 Mpx(1,280 × 800) 전 화소에서 TMX 7510 은 76,000 fps, TMX 6410 은 약 66,000 fps, TMX 5010 은 50,725 fps. FAST 옵션을 쓰면 화소를 줄여 최대 1.16M ~ 1.75M fps.",
+  "test_items": [],
+  "limits": {
+    "frame_rate_fps": {
+      "min": 50725,
+      "max": 76000,
+      "note": "1 Mpx 전 화소",
+      "uncertain": true
+    },
+    "max_frame_rate_fps": {
+      "max": 1750000,
+      "note": "TMX 7510 FAST 모드",
+      "uncertain": true
+    },
+    "min_exposure_time_s": {
+      "min": 9.5e-08,
+      "note": "TMX 6410 FAST 옵션 95 ns",
+      "uncertain": true
+    }
+  },
+  "models": [
+    {
+      "model": "TMX 7510",
+      "specs": {
+        "detector_pixels": "1280 × 800",
+        "resolution_pixels": 1024000,
+        "frame_rate_fps": 76000,
+        "max_frame_rate_fps": 1750000
+      },
+      "note": "표준 모드 화소 축소 744,000 fps 이상, FAST 모드 1.75M fps",
+      "uncertain": true
+    },
+    {
+      "model": "TMX 6410",
+      "specs": {
+        "frame_rate_fps": 66000,
+        "max_frame_rate_fps": 1500000,
+        "min_exposure_time_s": 9.5e-08
+      },
+      "note": "원문 nearly 66,000 fps at full 1 Mpx. FAST 옵션 1.5M fps, 최소 노출 95 ns",
+      "uncertain": true
+    },
+    {
+      "model": "TMX 5010",
+      "specs": {
+        "frame_rate_fps": 50725,
+        "max_frame_rate_fps": 1160000
+      },
+      "note": "1 Mpx 전 화소 50,725 fps, FAST 옵션 1.16M fps",
+      "uncertain": true
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://www.phantomhighspeed.com/products/cameras/tmx",
+      "retrieved": "2026-10-08",
+      "note": "제조사 사이트가 직접 조회를 막아(HTTP 403) 검색 엔진의 제조사 페이지 발췌로 읽음. 값 전부 uncertain"
+    },
+    {
+      "url": "https://www.phantomhighspeed.com/products/cameras/tmx/7510",
+      "retrieved": "2026-10-08",
+      "note": "제조사 사이트가 직접 조회를 막아(HTTP 403) 검색 엔진의 제조사 페이지 발췌로 읽음. 값 전부 uncertain"
+    },
+    {
+      "url": "https://www.phantomhighspeed.com/products/cameras/tmx/6410",
+      "retrieved": "2026-10-08",
+      "note": "제조사 사이트가 직접 조회를 막아(HTTP 403) 검색 엔진의 제조사 페이지 발췌로 읽음. 값 전부 uncertain"
+    },
+    {
+      "url": "https://www.phantomhighspeed.com/products/cameras/tmx/5010",
+      "retrieved": "2026-10-08",
+      "note": "제조사 사이트가 직접 조회를 막아(HTTP 403) 검색 엔진의 제조사 페이지 발췌로 읽음. 값 전부 uncertain"
+    }
+  ],
+  "confidence": "limited",
+  "notes": "TMX 6410 · 5010 의 해상도는 발췌에 '1 Mpx' 로만 나와 화소 수를 비웠다. UV 판(TMX UV 데이터시트)이 따로 있다."
+}

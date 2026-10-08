@@ -12,6 +12,7 @@ from app.database import get_db
 from app.modules.accounts.models import User
 from app.modules.equipment import (
     catalog,
+    catalog_gaps,
     equipment_specs,
     free_specs,
     imports,
@@ -23,6 +24,9 @@ from app.modules.equipment.schemas import (
     CalibrationCreateRequest,
     CalibrationOut,
     CatalogFilterOptionsOut,
+    CatalogGapRequestsRequest,
+    CatalogGapResolveRequest,
+    CatalogGapsOut,
     EquipmentBulkDeleteRequest,
     EquipmentBulkOut,
     EquipmentCreateRequest,
@@ -712,6 +716,75 @@ def decide_model_proposal(
     `failed` 로 돌려준다.
     """
     return proposals.decide(db, admin, payload.model_dump())
+
+
+@catalog_router.get("/gaps", response_model=CatalogGapsOut)
+def list_catalog_gaps(
+    case: str | None = Query(
+        default=None,
+        pattern="^(exact|similar|series_only|not_in_catalog|no_model|excluded)$",
+    ),
+    category_term_id: uuid.UUID | None = Query(default=None),
+    q: str | None = Query(default=None, max_length=200),
+    admin: User = Depends(current_user),
+    db: Session = Depends(get_db),
+) -> CatalogGapsOut:
+    """**카탈로그 보강 목록** — 미연결 장비를 왜 미연결인지로 가른다. 시스템 관리자 전용.
+
+    같은 기종 있음(`exact`) · 비슷한 기종 있음(`similar`) · 계열만 있음(`series_only`) ·
+    카탈로그에 없음(`not_in_catalog`) · 모델명 없음(`no_model`) · 카탈로그 대상 아님
+    (`excluded`, 관리자가 아니오 한 것). 묶는 열쇠는 기종 등록 요청과 같다.
+
+    요약 · 분류별 표는 거르지 않고, 묶음 목록만 `case` · `category_term_id` · `q` 로 거른다.
+    `/{model_id}` 보다 **먼저 선언한다.**
+    """
+    return catalog_gaps.diagnose(
+        db, admin, case=case, category_term_id=category_term_id, query=q
+    )
+
+
+@catalog_router.get("/gaps/export")
+def export_catalog_gaps(
+    admin: User = Depends(current_user), db: Session = Depends(get_db)
+) -> Response:
+    """보강 목록 전체(CSV) — **제조사 사양서 조사의 출발점.** 자산번호를 전부 싣는다.
+
+    조사한 것은 카탈로그 정본(`source/catalog`)에 넣고 반입한다. 그다음 이 목록에서 연결한다.
+    """
+    return Response(
+        content=catalog_gaps.to_csv(db, admin).encode("utf-8"),
+        media_type="text/csv; charset=utf-8",
+        headers={
+            "Content-Disposition": f'attachment; filename="{catalog_gaps.csv_filename()}"'
+        },
+    )
+
+
+@catalog_router.post("/gaps/requests")
+def request_catalog_gaps(
+    payload: CatalogGapRequestsRequest,
+    admin: User = Depends(current_user),
+    db: Session = Depends(get_db),
+) -> dict[str, Any]:
+    """묶음들을 **기종 등록 요청으로 올린다.** 정하는 일은 기종 등록 요청 화면이 한다.
+
+    모델명이 없는 묶음은 건너뛰고(`skipped`), 이미 열린 요청은 다시 안 만든다.
+    """
+    return catalog_gaps.request(db, admin, payload.keys)
+
+
+@catalog_router.post("/gaps/resolve")
+def resolve_catalog_gap(
+    payload: CatalogGapResolveRequest,
+    admin: User = Depends(current_user),
+    db: Session = Depends(get_db),
+) -> dict[str, Any]:
+    """한 묶음을 정한다 — 요청을 만든 뒤 바로 그 요청을 정한다(기종 등록 요청과 같은 규칙).
+
+    `model_id` · `series_id`+`name` · `reject` 중 **하나만.** 정한 기종이 묶음의 장비 전부에
+    걸리고, 막힌 줄은 `failed` 로 온다.
+    """
+    return catalog_gaps.resolve(db, admin, payload.model_dump())
 
 
 @catalog_router.post("", response_model=EquipmentModelOut, status_code=201)

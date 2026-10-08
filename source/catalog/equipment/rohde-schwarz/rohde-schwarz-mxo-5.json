@@ -1,0 +1,151 @@
+{
+  "id": "rohde-schwarz-mxo-5",
+  "kind": "equipment_series",
+  "name": "R&S MXO 5 Oscilloscope",
+  "name_ko": "로데슈바르츠 MXO 5 오실로스코프",
+  "manufacturer": "rohde-schwarz",
+  "brand": "MXO",
+  "category": "oscilloscope",
+  "subcategory": "mixed_signal_oscilloscope",
+  "form_factor": "benchtop",
+  "description": "100 MHz~2 GHz 대역의 4·8채널 오실로스코프 계열임. 12 bit ADC(HD 모드 18 bit 구조), 최대 5 Gsample/s, 표준 500 Mpoints(옵션 1 Gpoint), 옵션 16 디지털 채널, 15.6 inch 정전식 터치 화면, 4,500,000 wfms/s 초과 갱신율.",
+  "test_items": [],
+  "limits": {
+    "bandwidth_Hz": {
+      "min": 100000000,
+      "max": 2000000000
+    },
+    "channels": {
+      "values": [
+        4,
+        8
+      ]
+    },
+    "adc_resolution_bit": {
+      "values": [
+        12
+      ]
+    },
+    "display_size_in": {
+      "values": [
+        15.6
+      ]
+    },
+    "sample_rate_Sa_s": {
+      "max": 5000000000,
+      "note": "원문 max. 5 Gsample/s on 2 channels, max. 2.5 Gsample/s on 4 channels"
+    },
+    "record_length_pts": {
+      "min": 500000000,
+      "max": 1000000000,
+      "note": "원문 max. 500 Mpoints, Memory upgrade to 1Gpoint"
+    },
+    "logic_channel_count": {
+      "values": [
+        16
+      ],
+      "note": "MSO 옵션"
+    }
+  },
+  "models": [
+    {
+      "model": "MXO54-350",
+      "specs": {
+        "bandwidth_Hz": 350000000,
+        "channels": 4,
+        "adc_resolution_bit": 12,
+        "display_size_in": 15.6
+      }
+    },
+    {
+      "model": "MXO54-500",
+      "specs": {
+        "bandwidth_Hz": 500000000,
+        "channels": 4,
+        "adc_resolution_bit": 12,
+        "display_size_in": 15.6
+      }
+    },
+    {
+      "model": "MXO54-1000",
+      "specs": {
+        "bandwidth_Hz": 1000000000,
+        "channels": 4,
+        "adc_resolution_bit": 12,
+        "display_size_in": 15.6
+      }
+    },
+    {
+      "model": "MXO54-2000",
+      "specs": {
+        "bandwidth_Hz": 2000000000,
+        "channels": 4,
+        "adc_resolution_bit": 12,
+        "display_size_in": 15.6
+      }
+    },
+    {
+      "model": "MXO58-100",
+      "specs": {
+        "bandwidth_Hz": 100000000,
+        "channels": 8,
+        "adc_resolution_bit": 12,
+        "display_size_in": 15.6
+      }
+    },
+    {
+      "model": "MXO58-200",
+      "specs": {
+        "bandwidth_Hz": 200000000,
+        "channels": 8,
+        "adc_resolution_bit": 12,
+        "display_size_in": 15.6
+      }
+    },
+    {
+      "model": "MXO58-350",
+      "specs": {
+        "bandwidth_Hz": 350000000,
+        "channels": 8,
+        "adc_resolution_bit": 12,
+        "display_size_in": 15.6
+      }
+    },
+    {
+      "model": "MXO58-500",
+      "specs": {
+        "bandwidth_Hz": 500000000,
+        "channels": 8,
+        "adc_resolution_bit": 12,
+        "display_size_in": 15.6
+      }
+    },
+    {
+      "model": "MXO58-1000",
+      "specs": {
+        "bandwidth_Hz": 1000000000,
+        "channels": 8,
+        "adc_resolution_bit": 12,
+        "display_size_in": 15.6
+      }
+    },
+    {
+      "model": "MXO58-2000",
+      "specs": {
+        "bandwidth_Hz": 2000000000,
+        "channels": 8,
+        "adc_resolution_bit": 12,
+        "display_size_in": 15.6
+      }
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://www.rohde-schwarz.com/us/products/test-and-measurement/oscilloscopes/rs-mxo-5-oscilloscope_334228.html",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지. 기종 R&S®MXO54-350 … R&S®MXO58-2000, \"max. 5 Gsample/s on 2 channels, max. 2.5 Gsample/s on 4 channels\", \"max. 500 Mpoints with 4 active channels\", \"Memory upgrade to 1Gpoint\", 12-bit ADC, 16 digital(MSO 옵션), 15.6\""
+    }
+  ],
+  "confidence": "limited",
+  "notes": "같은 계열의 소형 기종 MXO 5C 는 넣지 않음."
+}

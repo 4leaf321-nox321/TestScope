@@ -1,0 +1,91 @@
+{
+  "id": "nittoseiko-analytech-hiresta-ux",
+  "kind": "equipment_model",
+  "name": "Hiresta-UX MCP-HT800 High Resistivity Meter",
+  "name_ko": "하이레스타-UX MCP-HT800 고저항률계",
+  "manufacturer": "nittoseiko-analytech",
+  "brand": "Hiresta",
+  "category": "electrical_property_tester",
+  "subcategory": "high_resistance_meter",
+  "form_factor": "benchtop",
+  "description": "정전압 인가·누설전류 측정 방식으로 절연성·대전방지 재료의 저항(10³～10¹⁴ Ω)과 표면·체적저항률을 재는 고저항률계. 인가 전압 1～1000 V 29단계(자동 스윕 가능), 7.5인치 컬러 터치 패널, USB 메모리 출력(측정 결과 2000건). 전용 탐침 URS, UR, UR-SS, UR-100, UA, J-box X형을 쓴다. JIS K 6911.",
+  "test_items": [
+    "electrical_transport"
+  ],
+  "measurands": [
+    "electrical.surface_resistivity",
+    "electrical.resistivity_volume"
+  ],
+  "materials": [
+    "insulating plastics",
+    "antistatic materials",
+    "films",
+    "rubber"
+  ],
+  "standards": {
+    "compliance": [],
+    "test_methods": [
+      "JIS K 6911"
+    ]
+  },
+  "limits": {
+    "resistance_ohm": {
+      "min": 1000,
+      "max": 100000000000000.0,
+      "note": "10³～10¹⁴ Ω"
+    },
+    "voltage_V": {
+      "min": 1,
+      "max": 1000,
+      "note": "29 단계 설정, 자동 스윕"
+    }
+  },
+  "models": [
+    {
+      "model": "MCP-HT800",
+      "variant": "Hiresta-UX",
+      "specs": {
+        "resistance_ohm": {
+          "min": 1000,
+          "max": 100000000000000.0
+        },
+        "voltage_V": {
+          "min": 1,
+          "max": 1000
+        },
+        "accuracy": "1-10V: 10³～10⁹Ω ±2%, 10¹⁰Ω ±3% / 20-400V: 10⁶～10¹⁰Ω ±2%, 10¹¹Ω ±3% / 500-900V: 10⁷～10¹⁰Ω ±2%, 10¹¹Ω ±3%, 10¹²Ω ±4% / 1000V: 10⁸～10¹⁰Ω ±2%, 10¹¹Ω ±3%, 10¹²Ω ±4%, 10¹³Ω ±5%, 10¹⁴Ω ±12%",
+        "principle": "정전압 인가 / 누설전류 측정 방식",
+        "interfaces": "USB 메모리",
+        "footprint_mm": [
+          330,
+          270,
+          113
+        ],
+        "weight_kg": 2.4
+      },
+      "note": "덮개를 열면 높이 215 mm. AC85–264V. 표준 부속: URS 탐침(MCP-HTP14), 탐침 체커(MCP-TRURS), 절연 장갑(MCP-GV)"
+    }
+  ],
+  "options": [
+    "URS 탐침",
+    "UR 탐침",
+    "UR-SS 탐침",
+    "UR-100 탐침",
+    "UA 탐침",
+    "J-box X형"
+  ],
+  "sources": [
+    {
+      "url": "https://www.n-analytech.co.jp/instrument/resistivity-meters/mcp-ht800.html",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지(일본어 HTML, n-analytech.co.jp) Hiresta-UX MCP-HT800"
+    },
+    {
+      "url": "https://pr.mono.ipros.com/mccat/product/detail/2000199209/",
+      "retrieved": "2026-10-08",
+      "note": "제조사가 올린 IPROS 제품 소개(같은 사양 재확인)"
+    }
+  ],
+  "confidence": "limited",
+  "notes": "구 미쓰비시화학 아날리테크 제품. 이전 기종(Hiresta-UP 등)은 제조사 현행 목록에 없어 넣지 않음."
+}

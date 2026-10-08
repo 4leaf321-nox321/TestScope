@@ -1,0 +1,108 @@
+{
+  "id": "ducom-tribometers",
+  "kind": "equipment_series",
+  "name": "Ducom Tribometers (Multi Capability Tribometer POD 4.0 / Universal Tester UNITEST)",
+  "name_ko": "듀콤 트라이보미터 (POD 4.0 · UNITEST)",
+  "manufacturer": "ducom",
+  "category": "tribometer",
+  "form_factor": "benchtop",
+  "description": "일반 트라이볼로지용 시험기 두 종. POD 4.0(다기능 핀/볼온디스크)은 0.1~5,000 rpm 회전과 무게추 0.25~200 N 하중(자동 하중 옵션)을 쓰고, 직선 왕복 · 블록온링 · 각 진동 모듈을 2분 안에 바꿔 단다. UNITEST 는 MicroForce · DecaForce · HectoForce · KiloForce 하중 헤드와 선형 · 회전 구동을 바꿔 다는 범용 플랫폼으로 −120~1,200 °C 환경, 1 · 2 · 3 · 6축 로드셀, 디지털 현미경 · 비접촉 3D 형상 측정을 갖춘다.",
+  "test_items": [
+    "friction_wear_tribo"
+  ],
+  "measurands": [
+    "friction_coefficient",
+    "wear_depth"
+  ],
+  "standards": {
+    "compliance": [],
+    "test_methods": [
+      "ASTM G99",
+      "ASTM G133",
+      "ASTM G77",
+      "ASTM G59",
+      "ASTM G102",
+      "DIN 50324",
+      "DIN ISO 7148-1",
+      "DIN ISO 7148-2"
+    ]
+  },
+  "limits": {
+    "force_N": {
+      "min": 0.25,
+      "max": 200,
+      "note": "POD 4.0 무게추 하중. UNITEST 하중 범위는 헤드 이름만 있고 수치 없음"
+    },
+    "rotation_rpm": {
+      "min": 0.1,
+      "max": 5000,
+      "note": "POD 4.0"
+    },
+    "temperature_degC": {
+      "min": -120,
+      "max": 1200,
+      "note": "UNITEST 저온 · 고온 환경",
+      "requires_accessory": true
+    }
+  },
+  "models": [
+    {
+      "model": "POD 4.0",
+      "variant": "Multi Capability Tribometer (Pin/Ball-on-Disk)",
+      "specs": {
+        "rotation_rpm": {
+          "min": 0.1,
+          "max": 5000
+        },
+        "force_N": {
+          "min": 0.25,
+          "max": 200,
+          "note": "무게추, 부품 교체 없이"
+        },
+        "loading": "표준 무게추, 자동(런인 · 램프 · 단계) 옵션"
+      },
+      "note": "모듈: 회전(표준) · 직선 왕복 · 블록온링 · 각 진동, 모듈 교체 2분 이내; 환경: 습도 · 저온/고온 · 윤활 · 트라이보 부식 모듈"
+    },
+    {
+      "model": "UNITEST",
+      "variant": "Universal Tester",
+      "specs": {
+        "temperature_degC": {
+          "min": -120,
+          "max": 1200
+        },
+        "loading": "MicroForce · DecaForce · HectoForce · KiloForce 하중 헤드"
+      },
+      "note": "센서: 1 · 2 · 3 · 6축 로드셀(스트레인게이지 · 정전용량 · 압전); 구동: Linear Micro · Linear Macro · Linear High Performance · Rotary 구동"
+    }
+  ],
+  "relations": [
+    {
+      "type": "performs",
+      "target": "friction_wear_tribo"
+    },
+    {
+      "type": "same_family_as",
+      "target": "ducom-lubricant-testers"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://www.ducom.com/multi-capability-tribometer-pin/ball-on-disk",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지(POD 4.0)"
+    },
+    {
+      "url": "https://www.ducom.com/universal-tester-unitest",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지(UNITEST)"
+    },
+    {
+      "url": "https://www.ducom.com/",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 목록"
+    }
+  ],
+  "notes": "POD 4.0 의 트랙 반경 · 마찰력 한계 · 외형은 페이지에 없다. 같은 목록의 진공 트라이보미터 VT 3.0 · 트윈 디스크 · BioTribometer 는 넣지 않았다.",
+  "confidence": "limited"
+}

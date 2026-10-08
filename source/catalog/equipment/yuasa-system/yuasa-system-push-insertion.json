@@ -1,0 +1,125 @@
+{
+  "id": "yuasa-system-push-insertion",
+  "kind": "equipment_series",
+  "name": "YUASA SYSTEM Push / Insertion-Extraction Endurance Test Jig (DMLHB-PP / DMLHP-PP)",
+  "name_ko": "유아사 시스템 누름·삽발 내구 시험 지그 (押下挿抜試験)",
+  "manufacturer": "yuasa-system",
+  "category": "component_life_tester",
+  "drive": "electromechanical",
+  "form_factor": "benchtop",
+  "description": "누름 버튼 스위치·리밋 스위치·커넥터·USB 메모리·SD 카드·카드 리더처럼 직선으로 누르거나 꽂고 빼는 부품의 반복 동작 내구 시험 지그임. 소형 탁상형 내구 시험기(DMLHB 직선 왕복 사양)의 출력축 끝 지그와 시료 고정 지그를 바꿔 누름 버튼 조작·삽발·레버 스위치 조작 시험에 대응함. 허용 밀고 당기는 힘 20 N, 출력축 스트로크 0~±60 mm, 동작 속도 10~120 왕복/분이며, XYZ 스테이지로 시료 위치를 맞춤. 삽입력·인발력을 재는 로드셀은 사양에 없어 힘 측정이 아니라 반복 동작 부여 장치임.",
+  "test_items": [
+    "mechanical_endurance"
+  ],
+  "measurands": [
+    "cycles_to_failure"
+  ],
+  "materials": [
+    "push-button switches",
+    "limit switches",
+    "connectors",
+    "USB memory",
+    "SD cards",
+    "card readers"
+  ],
+  "standards": {
+    "compliance": [],
+    "test_methods": []
+  },
+  "compliance_marks": [
+    "CE"
+  ],
+  "limits": {
+    "cycle_rate_cpm": {
+      "min": 10,
+      "max": 120,
+      "note": "원문 出力軸動作速度 10～120 往復/分 (사양도 PDF)"
+    },
+    "stroke_mm": {
+      "max": 60,
+      "note": "출력축 스트로크 0～±60 mm(한쪽 값, 사양도 PDF)"
+    },
+    "force_N": {
+      "max": 20,
+      "note": "허용 押し引き力 20 N(사양도 PDF). 구동 허용치이며 계측 하중이 아님"
+    }
+  },
+  "models": [
+    {
+      "model": "DMLHB-PP / DMLHP-PP",
+      "variant": "押下挿抜試験治具 (ET231S002-003)",
+      "form_factor": "benchtop",
+      "specs": {
+        "cycle_rate_cpm": {
+          "min": 10,
+          "max": 120,
+          "note": "원문 出力軸動作速度 10～120 往復/分"
+        },
+        "stroke_mm": {
+          "max": 60,
+          "note": "0～±60 mm"
+        },
+        "force_N": {
+          "max": 20,
+          "note": "許容押し引き力"
+        },
+        "stations": 1,
+        "weight_kg": 20,
+        "footprint_mm": {
+          "W": 655,
+          "D": 370
+        }
+      },
+      "note": "질량 약 20 kg 은 페이지의 조립 완성도 값. 나머지는 사양도 PDF(ET231S002-003, 2013-07-04 작성, 개정 C 2019-11-14 耐久試験機変更, DMLHB 기준): DMLHB 약 17.0·베이스 지그 약 5.0·시료 고정 지그 약 1.0·지그 커버 약 1.3 kg, 설치면 655 × 370 mm. 출력축 끝 M5 나사 깊이 10 mm, 끝 지그 질량 0.5 N 이하, 시료 질량 20 N 이하(시료 고정 지그 포함), 스테이지 조정 범위 X=+60±7·Y=±7·Z=+10 mm(읽기 정밀도 0.1 mm). DMLHP-PP 의 값은 따로 적혀 있지 않음"
+    }
+  ],
+  "features": [
+    "출력축 끝 지그·시료 고정 지그 교환으로 누름·삽발·레버 조작 시험 겸용",
+    "XYZ 미세 조정 스테이지(눈금 읽기 0.1 mm)",
+    "지그 커버 개폐 인터록(RS-1NO)",
+    "CE 마킹 적합(페이지 표기)"
+  ],
+  "options": [
+    {
+      "name": "구동부 선택 DMLHB / DMLHP",
+      "note": "DMLHB 심플 오퍼레이션형(최대 120 往復/分), DMLHP 위치 결정형(최대 90 往復/分, 임의 위치 사이 왕복). 구동부 페이지 문구"
+    },
+    {
+      "name": "시료 고정 지그",
+      "note": "사양도의 시료 고정 지그는 1 kg(10 N 상당) 예시. 시료가 지그·커버에 들어가지 않으면 별도 상담"
+    }
+  ],
+  "relations": [
+    {
+      "type": "same_family_as",
+      "target": "yuasa-system-folding"
+    },
+    {
+      "type": "same_family_as",
+      "target": "yuasa-system-face-plate-bending"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://www.yuasa-system.jp/test/s-pp",
+      "retrieved": "2026-10-08",
+      "note": "제품 페이지(제목 押下挿抜試験): 설명 문구, 시험 시료 예(押ボタンスイッチ・リミットスイッチ・コネクタ・USBメモリ・SDカード・カードリーダ), 약 20 kg, CE"
+    },
+    {
+      "url": "https://www.yuasa-system.jp/test/small",
+      "retrieved": "2026-10-08",
+      "note": "소형 탁상형 구동부 페이지: 120 往復/分(シンプルオペレーションタイプ)·90 往復/分(ポジショニングタイプ)"
+    },
+    {
+      "url": "https://www.yuasa-system.jp/pdf/DMLHB-PP.pdf",
+      "retrieved": "2026-10-08",
+      "note": "사양도 PDF 1쪽(ET231S002-003). 원본 PDF 는 받았으나 텍스트로 읽히지 않음(외형도 · 글꼴 인코딩) — 값은 이 웹 페이지 기준"
+    },
+    {
+      "file": "yuasa-system/dmlhb-pp.pdf",
+      "note": "제조사 원본 문서. 글꼴 인코딩 때문에 추출 텍스트에서 숫자가 빠짐 — 값 대조에는 못 씀(값은 웹 출처 기준)"
+    }
+  ],
+  "confidence": "limited",
+  "notes": "커넥터 삽발 전용기가 아니라 범용 직선 왕복 내구 지그임. 커넥터 삽입력·인발력을 재면서 수명 시험을 하는 전용기(로드셀 내장)는 이번 조사에서 공식 사양표를 갖춘 대형 제조사 제품을 찾지 못함. 제조사 id yuasa-system 은 신규 제안. 신규 spec 키: cycle_rate_cpm."
+}

@@ -1,0 +1,112 @@
+{
+  "id": "pva-tepla-sam",
+  "kind": "equipment_series",
+  "name": "PVA TePla Scanning Acoustic Microscopes (SAM Lab / SAM Auto Wafer / SAM Auto Tray / SAM Auto Panel)",
+  "name_ko": "PVA TePla 주사 초음파 현미경 (SAM Lab · SAM Auto 계열)",
+  "manufacturer": "pva-tepla",
+  "brand": "SAM",
+  "category": "acoustic_microscope",
+  "form_factor": "floor",
+  "description": "초음파로 접합 계면의 보이드 · 개재물 · 박리와 다층 구조 두께 변화를 찾는 주사 초음파 현미경 계열. SAM Lab 은 실험실용으로 최대 400 MHz 주파수(선택 주파수 대역 100~1000 MHz), 자동 초점을 가진 탐촉자 4개 어레이(마스터/슬레이브), 2축 리니어 모터 구동, 최소 화소 0.5 µm, 시료 최대 670 × 560 × 70 mm(또는 150 mm)를 갖는다. SAM Auto Wafer 는 8 · 12인치 웨이퍼 자동 반송(ISO 5 클린룸), SAM Auto Tray 는 JEDEC 트레이 인라인 처리, SAM Auto Panel 은 패널용 자동화 기종이다.",
+  "test_items": [
+    "acoustic_delamination"
+  ],
+  "measurands": [
+    "delamination_area",
+    "void_percentage"
+  ],
+  "materials": [
+    "wafers",
+    "semiconductor packages",
+    "bonded interfaces"
+  ],
+  "limits": {
+    "transducer_frequency_MHz": {
+      "max": 400,
+      "note": "SAM Lab: 'Frequencies up to 400 MHz, and selectable frequency ranges between 100 MHz and 1,000 MHz'"
+    },
+    "sample_size_mm": {
+      "max": 670,
+      "note": "SAM Lab 670 × 560 × 70 mm 또는 670 × 560 × 150 mm (W/L/H)"
+    },
+    "wafer_size_mm": {
+      "values": [
+        200,
+        300
+      ],
+      "note": "SAM Auto Wafer 원문 8-inch · 12-inch"
+    }
+  },
+  "models": [
+    {
+      "model": "SAM Lab",
+      "specs": {
+        "transducer_frequency_MHz": {
+          "max": 400
+        },
+        "sample_size_mm": "670 × 560 × 70 또는 670 × 560 × 150 (W/L/H)"
+      },
+      "note": "페이지 사진의 장비 표기는 'SAM 302 HD'; 탐촉자 구성: 탐촉자 4개 어레이, 각각 자동 초점(마스터/슬레이브); 주사 범위: x = 200 µm; y = 200 µm – 320 mm; z = 320 mm (원문 그대로); 최소 화소(µm): 0.5; ADC 샘플링: 1 / 2.5 / 5 / 7 GS/s; 구동: 2축 리니어 모터"
+    },
+    {
+      "model": "SAM Auto Wafer",
+      "specs": {
+        "wafer_size_mm": [
+          200,
+          300
+        ],
+        "transducer_frequency_MHz": {
+          "max": 400,
+          "note": "계열 목록 페이지 표기"
+        }
+      },
+      "note": "클린룸: ISO 5; 펄서 반복률: 최대 80 kHz (계열 목록 페이지 표기)"
+    },
+    {
+      "model": "SAM Auto Tray",
+      "note": "반송: JEDEC 트레이 인라인, 로봇 반송; 통신: SECS; 수조 관리: 공정수 탈기 · 전도도 감시 자동 교체"
+    },
+    {
+      "model": "SAM Auto Panel",
+      "note": "계열 목록 페이지에 이름만 있고 정량 사양 없음"
+    }
+  ],
+  "features": [
+    "다층 동시 검사 소프트웨어(SAM Auto Tray)",
+    "탐촉자 4개 동시 운용(SAM Lab)"
+  ],
+  "relations": [
+    {
+      "type": "performs",
+      "target": "acoustic_delamination"
+    },
+    {
+      "type": "same_family_as",
+      "target": "hitachi-power-solutions-finesat"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://www.pvatepla.com/products-technologies/wafer-inspection/scanning-acoustic-microscopy/sam-lab/",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지(SAM Lab)"
+    },
+    {
+      "url": "https://www.pvatepla.com/products-technologies/wafer-inspection/scanning-acoustic-microscopy/sam-auto-wafer/",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지(SAM Auto Wafer)"
+    },
+    {
+      "url": "https://www.pvatepla.com/products-technologies/wafer-inspection/scanning-acoustic-microscopy/sam-auto-tray/",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지(SAM Auto Tray)"
+    },
+    {
+      "url": "https://www.pvatepla.com/products-technologies/wafer-inspection/scanning-acoustic-microscopy/",
+      "retrieved": "2026-10-08",
+      "note": "제조사 계열 목록 페이지(SAM Auto Wafer 400 MHz · 80 kHz, SAM Auto Panel 이름)"
+    }
+  ],
+  "notes": "SAM 300 · SAM 400 · SAM 302 HD2 · SAM 502 HD2 같은 이전 기종명은 현행 제조사 페이지에 없다(SAM Lab 사진 표기 'SAM 302 HD' 만 확인). 대장에 옛 기종명이 있으면 이 계열에 잇되 사양은 비워 두어야 한다. SAM Lab 의 주사 범위 표기('x = 200 µm; y = 200 µm – 320 mm; z = 320 mm')는 원문이 어색해 값으로 옮기지 않았다.",
+  "confidence": "limited"
+}

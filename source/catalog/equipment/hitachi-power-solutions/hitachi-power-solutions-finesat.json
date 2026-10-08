@@ -1,0 +1,271 @@
+{
+  "id": "hitachi-power-solutions-finesat",
+  "kind": "equipment_series",
+  "name": "Hitachi Scanning Acoustic Tomograph FineSAT Series (FineSAT 7 / FineSAT V / FineSAT III / FineSAT HR / FineSAT Hybrid)",
+  "name_ko": "히타치 초음파 탐상 영상 장치 FineSAT 계열",
+  "manufacturer": "hitachi-power-solutions",
+  "brand": "FineSAT",
+  "category": "acoustic_microscope",
+  "form_factor": "floor",
+  "description": "초음파로 반도체 패키지 내부의 박리 · 보이드 · 크랙을 비파괴로 영상화하는 주사 초음파 영상 장치(SAT) 계열. 유효 행정은 모두 350 × 350 × 80 mm 이고, 탐촉자 주파수 상한과 주사 속도로 기종이 갈린다. FineSAT III(FS100Ⅲ · FS200Ⅲ · FS300Ⅲ)는 5~75 / 5~140 / 5~300 MHz · 1000 mm/s, FineSAT V(FSP8V · FSP12V)는 5~200 / 5~400 MHz · 2000 mm/s, FineSAT 7 은 5~400 MHz · 1200 mm/s 이다. FineSAT HR 은 FineSAT III 의 고분해능판, FineSAT Hybrid 는 단일 탐촉자에 25 · 50 · 75 MHz 어레이 탐촉자(16채널)를 더해 단면(B-scope) 실시간 표시를 5~10배 빠르게 한다.",
+  "test_items": [
+    "acoustic_delamination"
+  ],
+  "measurands": [
+    "delamination_area",
+    "void_percentage",
+    "crack_detection"
+  ],
+  "materials": [
+    "semiconductor packages",
+    "electronic components"
+  ],
+  "limits": {
+    "transducer_frequency_MHz": {
+      "min": 5,
+      "max": 400
+    },
+    "scan_range_mm": {
+      "max": 350,
+      "note": "유효 행정 350 × 350 × 80 mm (FineSAT 7 · V · III)"
+    },
+    "measuring_speed_mm_s": {
+      "max": 2000,
+      "note": "최대 주사 속도(공칭). FineSAT V 2000, FineSAT 7 1200, FineSAT III 1000"
+    }
+  },
+  "models": [
+    {
+      "model": "FineSAT 7",
+      "specs": {
+        "transducer_frequency_MHz": {
+          "min": 5,
+          "max": 400
+        },
+        "scan_range_mm": "350 × 350 × 80",
+        "measuring_speed_mm_s": {
+          "max": 1200
+        },
+        "footprint_mm": "1590 × 1360 × 950 (W × H × D)",
+        "weight_kg": 390,
+        "power": "AC 100~240 V / 6.25~15 A / 60 Hz"
+      },
+      "note": "최대 측정점 수: 표준 400,000,000 / GUIPC 옵션 2,000,000,000"
+    },
+    {
+      "model": "FSP8V",
+      "variant": "FineSAT V",
+      "specs": {
+        "scan_range_mm": "350 × 350 × 80",
+        "measuring_speed_mm_s": {
+          "max": 2000,
+          "note": "공칭값"
+        },
+        "footprint_mm": "1590 × 1300 × 940 (W × H × D, 문 닫음)",
+        "weight_kg": 470,
+        "power": "AC100V/15A, 50/60 Hz",
+        "transducer_frequency_MHz": {
+          "min": 5,
+          "max": 200
+        }
+      },
+      "note": "최대 측정점 수: 표준 400,000,000 / 옵션 2,000,000,000"
+    },
+    {
+      "model": "FSP12V",
+      "variant": "FineSAT V",
+      "specs": {
+        "scan_range_mm": "350 × 350 × 80",
+        "measuring_speed_mm_s": {
+          "max": 2000,
+          "note": "공칭값"
+        },
+        "footprint_mm": "1590 × 1300 × 940 (W × H × D, 문 닫음)",
+        "weight_kg": 470,
+        "power": "AC100V/15A, 50/60 Hz",
+        "transducer_frequency_MHz": {
+          "min": 5,
+          "max": 400
+        }
+      },
+      "note": "최대 측정점 수: 표준 400,000,000 / 옵션 2,000,000,000"
+    },
+    {
+      "model": "FS100Ⅲ",
+      "variant": "FineSAT III",
+      "specs": {
+        "scan_range_mm": "350 × 350 × 80 (X × Y × Z 유효 행정)",
+        "measuring_speed_mm_s": {
+          "max": 1000,
+          "note": "공칭값"
+        },
+        "footprint_mm": "1590 × 1340 × 940 (W × H × D)",
+        "weight_kg": 380,
+        "power": "AC100V/15A, 50/60 Hz",
+        "transducer_frequency_MHz": {
+          "min": 5,
+          "max": 75
+        }
+      },
+      "note": "ASCII 표기 FS100III"
+    },
+    {
+      "model": "FS200Ⅲ",
+      "variant": "FineSAT III",
+      "specs": {
+        "scan_range_mm": "350 × 350 × 80 (X × Y × Z 유효 행정)",
+        "measuring_speed_mm_s": {
+          "max": 1000,
+          "note": "공칭값"
+        },
+        "footprint_mm": "1590 × 1340 × 940 (W × H × D)",
+        "weight_kg": 380,
+        "power": "AC100V/15A, 50/60 Hz",
+        "transducer_frequency_MHz": {
+          "min": 5,
+          "max": 140
+        }
+      },
+      "note": "ASCII 표기 FS200III"
+    },
+    {
+      "model": "FS300Ⅲ",
+      "variant": "FineSAT III",
+      "specs": {
+        "scan_range_mm": "350 × 350 × 80 (X × Y × Z 유효 행정)",
+        "measuring_speed_mm_s": {
+          "max": 1000,
+          "note": "공칭값"
+        },
+        "footprint_mm": "1590 × 1340 × 940 (W × H × D)",
+        "weight_kg": 380,
+        "power": "AC100V/15A, 50/60 Hz",
+        "transducer_frequency_MHz": {
+          "min": 5,
+          "max": 300
+        }
+      },
+      "note": "ASCII 표기 FS300III"
+    },
+    {
+      "model": "FS100ⅢHR",
+      "variant": "FineSAT HR",
+      "specs": {
+        "transducer_frequency_MHz": {
+          "min": 5,
+          "max": 75
+        }
+      },
+      "note": "ASCII 표기 FS100IIIHR. 페이지에 탐촉자 주파수 외 사양 없음"
+    },
+    {
+      "model": "FS200ⅢHR",
+      "variant": "FineSAT HR",
+      "specs": {
+        "transducer_frequency_MHz": {
+          "min": 5,
+          "max": 140
+        }
+      },
+      "note": "ASCII 표기 FS200IIIHR"
+    },
+    {
+      "model": "FS300ⅢHR",
+      "variant": "FineSAT HR",
+      "specs": {
+        "transducer_frequency_MHz": {
+          "min": 5,
+          "max": 300
+        }
+      },
+      "note": "ASCII 표기 FS300IIIHR"
+    },
+    {
+      "model": "FS100ⅢHy",
+      "variant": "FineSAT Hybrid",
+      "specs": {
+        "transducer_frequency_MHz": {
+          "min": 5,
+          "max": 75,
+          "note": "단일 탐촉자. 어레이 탐촉자 25 · 50 · 75 MHz"
+        },
+        "channels": 16
+      },
+      "note": "ASCII 표기 FS100IIIHy; 전자 주사 게이트 수: 2"
+    },
+    {
+      "model": "FS200ⅢHy",
+      "variant": "FineSAT Hybrid",
+      "specs": {
+        "transducer_frequency_MHz": {
+          "min": 5,
+          "max": 140,
+          "note": "단일 탐촉자. 어레이 25 · 50 · 75 MHz"
+        },
+        "channels": 16
+      },
+      "note": "ASCII 표기 FS200IIIHy; 전자 주사 게이트 수: 2"
+    },
+    {
+      "model": "FS300ⅢHy",
+      "variant": "FineSAT Hybrid",
+      "specs": {
+        "transducer_frequency_MHz": {
+          "min": 5,
+          "max": 300,
+          "note": "단일 탐촉자. 어레이 25 · 50 · 75 MHz"
+        },
+        "channels": 16
+      },
+      "note": "ASCII 표기 FS300IIIHy; 전자 주사 게이트 수: 2"
+    }
+  ],
+  "features": [
+    "유효 행정 350 × 350 × 80 mm",
+    "FineSAT V 는 FineSAT III 보다 측정 시간 최대 25 % 단축을 내세움",
+    "Hybrid: 전자 주사로 B-scope 실시간 표시(측정 속도 약 5~10배)"
+  ],
+  "relations": [
+    {
+      "type": "performs",
+      "target": "acoustic_delamination"
+    },
+    {
+      "type": "same_family_as",
+      "target": "hitachi-power-solutions-array-sat"
+    },
+    {
+      "type": "same_family_as",
+      "target": "nordson-gen7-c-sam"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://www.hitachi-power-solutions.com/en/product-site/sat/products/finesat-7/index.html",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지(FineSAT 7)"
+    },
+    {
+      "url": "https://www.hitachi-power-solutions.com/en/product-site/sat/products/finesat-5/index.html",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지(FineSAT V: FSP8V · FSP12V)"
+    },
+    {
+      "url": "https://www.hitachi-power-solutions.com/en/product-site/sat/products/finesat-3/index.html",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지(FineSAT III: FS100Ⅲ · FS200Ⅲ · FS300Ⅲ)"
+    },
+    {
+      "url": "https://www.hitachi-power-solutions.com/en/product-site/sat/products/finesat-hr/index.html",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지(FineSAT HR). 탐촉자 주파수만 실림"
+    },
+    {
+      "url": "https://www.hitachi-power-solutions.com/en/product-site/sat/products/finesat-hybrid/index.html",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지(FineSAT Hybrid). 탐촉자 · 채널 수만 실림"
+    }
+  ],
+  "notes": "기종명의 'Ⅲ' 는 제조사 페이지의 로마 숫자 글자(U+2162) 그대로 두고 ASCII 표기를 note 에 적었다. FineSAT HR · Hybrid 의 행정 · 속도 · 외형은 페이지에 없다.",
+  "confidence": "limited"
+}

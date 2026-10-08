@@ -1,0 +1,121 @@
+{
+  "id": "evident-bx53m",
+  "kind": "equipment_series",
+  "name": "Evident BX53M Upright Materials Microscope (BX53MRF-S / BX53MTRF-S / BXFM)",
+  "name_ko": "에비던트(구 올림푸스) BX53M 정립 금속 현미경",
+  "manufacturer": "evident",
+  "brand": "BX3M",
+  "category": "optical_microscope",
+  "subcategory": "upright_metallurgical_microscope",
+  "form_factor": "benchtop",
+  "description": "재료·금속 조직 관찰용 정립 현미경. 반사 전용 BX53MRF-S 와 반사·투과 겸용 BX53MTRF-S, 큰 시료용 모듈 시스템 BXFM 이 있다. 명시야·암시야·미분간섭·편광·형광·적외·MIX 관찰. 총 배율 12.5X～1,500X. 시료 높이는 반사형 0～65 mm(스페이서 0～105 mm), 반사·투과형 0～35 mm(스페이서 0～75 mm). 스테이지 76×52, 100×100, 150×100 mm. 대물렌즈 1.25X～100X(MPLFLN, MPLFLN-BD, LMPLFLN-BD, MXPLFLN-BD, 편광 UPLFLN-P, LCD 용 LCPLFLN-LCD, IR 용 LMPLN).",
+  "test_items": [
+    "microscopy"
+  ],
+  "limits": {
+    "specimen_height_mm": {
+      "min": 0,
+      "max": 105,
+      "note": "반사형 0–65 mm(BX3M-ARMAD 사용 시 0–105 mm), 반사·투과형 0–35 mm(BX3M-ARMAD 사용 시 0–75 mm)"
+    },
+    "stage_travel_mm": {
+      "max": 150,
+      "note": "76×52, 100×100, 150×100 mm"
+    },
+    "magnification": {
+      "min": 12.5,
+      "max": 1500,
+      "note": "총 배율(PDF). 웹 페이지에는 대물렌즈 배율 1.25X～100X 만 있었음. BXFM-S 는 12.5X～1,000X"
+    }
+  },
+  "models": [
+    {
+      "model": "BX53MRF-S",
+      "specs": {
+        "specimen_height_mm": {
+          "min": 0,
+          "max": 65,
+          "note": "BX3M-ARMAD 사용 시 105 mm"
+        },
+        "magnification": {
+          "min": 12.5,
+          "max": 1500
+        },
+        "observation_methods": "BF, DF, DIC, POL, FL, IR, MIX(반사)",
+        "weight_kg": {
+          "values": [
+            15.8
+          ],
+          "note": "반사형 일반용 구성 약 15.8 kg(현미경 프레임 7.4 kg). 적외(IR) 구성 약 18.9 kg"
+        }
+      },
+      "note": "반사 조명 전용. 초점 스트로크 25 mm(미동 1회전 100 µm, 최소 눈금 1 µm)"
+    },
+    {
+      "model": "BX53MTRF-S",
+      "specs": {
+        "specimen_height_mm": {
+          "min": 0,
+          "max": 35,
+          "note": "BX3M-ARMAD 사용 시 75 mm"
+        },
+        "magnification": {
+          "min": 12.5,
+          "max": 1500
+        },
+        "observation_methods": "BF, DF, DIC, POL, FL, IR, MIX(반사·투과)",
+        "weight_kg": {
+          "values": [
+            18.3
+          ],
+          "note": "반사·투과형 일반용 구성 약 18.3 kg(현미경 프레임 7.6 kg). 편광 구성 약 16.2 kg"
+        }
+      },
+      "note": "반사·투과 겸용. 초점 스트로크 25 mm"
+    },
+    {
+      "model": "BXFM",
+      "specs": {
+        "magnification": {
+          "min": 12.5,
+          "max": 1500
+        }
+      },
+      "note": "큰 시료용 모듈 시스템(특수 조명·고정 마운트로 다른 장비에 통합). 초점 스트로크 30 mm(미동 1회전 200 µm, 최소 눈금 2 µm)"
+    },
+    {
+      "model": "BXFM-S",
+      "specs": {
+        "magnification": {
+          "min": 12.5,
+          "max": 1000
+        }
+      },
+      "note": "명시야용 저가·소형 초점 마운트(광학 벤치·스탠드·시스템 통합). 초점 스트로크 30 mm, 조명 BX-KMAS(백색 LED·100 W 할로겐, BF/DIC/KPO)"
+    }
+  ],
+  "options": [
+    "BX3M-ARMAD(키 큰 시료용 어댑터)",
+    "조명기 BX3M-RLAS-S, BX3M-URAS-S, BX3M-RLA-S, BX3M-KMA-S, U-KMAS",
+    "백색 LED, 100 W 할로겐(IR), 수은 램프(형광)"
+  ],
+  "sources": [
+    {
+      "url": "https://evidentscientific.com/en/products/upright/bx53m",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지(HTML, evidentscientific.com) BX53M"
+    },
+    {
+      "file": "evident/opticalmetrology_brochure_en_m1715e_2023_11_web.pdf",
+      "pages": [
+        7,
+        8,
+        9,
+        10
+      ],
+      "note": "Evident 광학 계측 종합 브로슈어 M1715E(2023-11) — BX53M 일반용·전용 사양, BXFM·BXFM-S 사양"
+    }
+  ],
+  "confidence": "catalog",
+  "notes": "구 올림푸스 제품. PDF 로 확인: 시료 높이, 스테이지 크기, 관찰법, 대물렌즈 세트, 초점 스트로크, 무게. 총 배율 12.5X～1,500X 를 더하고 limits.magnification 을 대물렌즈 배율에서 총 배율로 바꿈. 어댑터 이름은 PDF 표기 BX3M-ARMAD 로 바로잡음(웹 페이지 표기 BX53M-ARMAD). BX53M 은 PDF 에서 일반용 Entry·Standard·Advanced 와 전용 Fluorescence·Infrared·Polarization 구성으로 나뉘지만 별도 기종 번호가 아니어서 기종으로 세우지 않음. 프레임 번호 BX53MRF-S·BX53MTRF-S 는 웹 페이지 표기(PDF 에는 반사형·반사/투과형으로만 나옴)."
+}

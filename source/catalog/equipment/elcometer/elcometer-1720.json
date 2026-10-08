@@ -1,0 +1,82 @@
+{
+  "id": "elcometer-1720",
+  "kind": "equipment_model",
+  "name": "Elcometer 1720 Abrasion and Washability Tester",
+  "name_ko": "엘코미터 1720 마모 · 세척성 시험기",
+  "manufacturer": "elcometer",
+  "category": "abrasion_tester",
+  "form_factor": "benchtop",
+  "description": "도료 · 코팅 · 잉크 · 가죽 · 플라스틱 · 직물의 습식 · 건식 마모와 세척성(washability)을 보는 직선 왕복 시험기. 행정 10~300 mm, 캐리지 속도 10~65 cycles/min(ISO 설정 37 cycles/min 버튼), 사이클 카운터 1~32,760 을 갖는다. K1720M204 는 마모 시험기, K1720M304 는 액체 투입병 · 배액관을 더한 마모 · 세척성 시험기다.",
+  "test_items": [
+    "abrasion"
+  ],
+  "measurands": [
+    "cycles_to_failure",
+    "mass_loss"
+  ],
+  "materials": [
+    "paints",
+    "coatings",
+    "inks",
+    "leather",
+    "plastics",
+    "fabrics"
+  ],
+  "standards": {
+    "compliance": [],
+    "test_methods": [
+      "ASTM D2486",
+      "ASTM D3450",
+      "EN 13523-11",
+      "ISO 11998"
+    ]
+  },
+  "limits": {
+    "stroke_mm": {
+      "min": 10,
+      "max": 300
+    },
+    "cycle_rate_cpm": {
+      "min": 10,
+      "max": 65,
+      "note": "ISO 표준 설정 37 cycles/min"
+    }
+  },
+  "models": [
+    {
+      "model": "Elcometer 1720",
+      "specs": {
+        "stroke_mm": {
+          "min": 10,
+          "max": 300
+        },
+        "cycle_rate_cpm": {
+          "min": 10,
+          "max": 65
+        },
+        "footprint_mm": "550 × 460 × 320",
+        "weight_kg": 33
+      },
+      "note": "최대 사이클: 32760; 품번: K1720M204 (Abrasion Tester) / K1720M304 (Abrasion & Washability Tester)"
+    }
+  ],
+  "relations": [
+    {
+      "type": "performs",
+      "target": "abrasion"
+    },
+    {
+      "type": "same_family_as",
+      "target": "taber-linear-abraser-5770"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://www.elcometer.com/en/elcometer-1720-abrasion-and-washability-tester.html",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지"
+    }
+  ],
+  "notes": "페이지는 50 개가 넘는 규격을 든다고 쓰고 그중 ASTM D2486 · D3450 · EN 13523-11 · ISO 11998 을 이름으로 든다.",
+  "confidence": "limited"
+}

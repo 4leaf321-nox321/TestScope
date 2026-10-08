@@ -1,0 +1,140 @@
+{
+  "id": "elcometer-cross-hatch-adhesion-testers",
+  "kind": "equipment_series",
+  "name": "Elcometer Cross Hatch / Cross Cut Adhesion Testers (Elcometer 1542 / 107 / 1540)",
+  "name_ko": "엘코미터 크로스 해치 · 크로스 컷 부착력 시험기 (1542 · 107 · 1540)",
+  "manufacturer": "elcometer",
+  "category": "adhesion_tester",
+  "form_factor": "handheld",
+  "description": "도막에 격자 칼집을 내고 테이프로 떼어 박리 정도를 등급 판정하는 크로스컷 부착력 시험 공구 세 종. Elcometer 1542 는 평판 · 시험 패널용으로 칼날 간격 1 · 2 · 3 mm(각각 0~60 · 50~125 · 121~250 µm 도막)의 8면 회전 커터를 쓴다. Elcometer 107 은 손잡이형으로 6 × 1 · 11 × 1 · 11 × 1.5 · 6 × 2 · 6 × 3 mm 커터를 바꿔 달고, Elcometer 1540 은 1 mm 간격 11날로 50 µm 까지의 도막에 100칸 격자를 낸다.",
+  "test_items": [
+    "coating_adhesion"
+  ],
+  "measurands": [
+    "cross_cut_classification",
+    "adhesion_rating"
+  ],
+  "materials": [
+    "paints",
+    "coatings",
+    "test panels"
+  ],
+  "standards": {
+    "compliance": [],
+    "test_methods": [
+      "AS 3894.9",
+      "AS 1580.408.4",
+      "ASTM D3359",
+      "BS 3900-E6",
+      "ECCA T6",
+      "EN 13523-6",
+      "ISO 2409",
+      "ISO 16276-2",
+      "JIS K 5600-5-6",
+      "NF T30-038"
+    ]
+  },
+  "limits": {
+    "cut_spacing_mm": {
+      "values": [
+        1,
+        1.5,
+        2,
+        3
+      ]
+    },
+    "coating_thickness_um": {
+      "min": 0,
+      "max": 250,
+      "note": "칼날 간격별 적용 도막 두께. 3 mm 간격 121~250 µm"
+    },
+    "cross_cut_squares": {
+      "values": [
+        100
+      ],
+      "note": "1540 페이지가 100칸이라고 적음. 다른 커터의 칸 수는 페이지에 없음"
+    }
+  },
+  "models": [
+    {
+      "model": "Elcometer 1542",
+      "specs": {
+        "cut_spacing_mm": [
+          1,
+          2,
+          3
+        ],
+        "coating_thickness_um": {
+          "min": 0,
+          "max": 250,
+          "note": "원문 Cutter Type 6 x 1mm 0 - 60µm · 6 x 2mm 50 - 125µm · 6 x 3mm 121 - 250µm(PDF p.1)"
+        }
+      },
+      "note": "8면 커터 휠(한 면이 닳으면 돌려 씀), 패널 크기에 맞춰 가이드 휠 위치 조절. 평판 · 시험 패널용; 품번: 기본 키트 K1542M001 · K1542M002 · K1542M003, ISO 테이프 풀 키트 -I, ASTM 테이프 풀 키트 -A, 세 간격 고급 키트 K1542M204-I · K1542M204-A. PDF(1542 데이터시트 p.1)로 커터 간격·도막 두께·품번·규격 확인. 커터는 6날(6 x 1 · 6 x 2 · 6 x 3 mm), 교체 커터 휠 KT1542P001~P003"
+    },
+    {
+      "model": "Elcometer 107",
+      "specs": {
+        "cut_spacing_mm": [
+          1,
+          1.5,
+          2,
+          3
+        ],
+        "coating_thickness_um": {
+          "min": 0,
+          "max": 250,
+          "note": "6 × 1 mm 0~60 · 11 × 1 mm 0~50 · 11 × 1.5 mm 0~90(근사) · 6 × 2 mm 50~125 · 6 × 3 mm 121~250 µm"
+        }
+      },
+      "note": "4면 퀵체인지 커터, 손잡이형. 풀 키트에 ×6 확대경 · 브러시 · 테이프; 품번: F10713222-1 (6 × 1) / -2 (11 × 1) / -3 (11 × 1.5) / -4 (6 × 2) / -5 (6 × 3)"
+    },
+    {
+      "model": "Elcometer 1540",
+      "specs": {
+        "cut_spacing_mm": 1,
+        "coating_thickness_um": {
+          "max": 50
+        },
+        "cross_cut_squares": 100
+      },
+      "note": "테이퍼 11날, 강재. 판정 ISO 0~5 / ASTM 5B~0B; 품번: K0001540M001 (교정서 포함 K0001540M001C)"
+    }
+  ],
+  "relations": [
+    {
+      "type": "performs",
+      "target": "coating_adhesion"
+    },
+    {
+      "type": "same_family_as",
+      "target": "tqc-sheen-coating-test-kits"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://www.elcometer.com/en/elcometer-1542-cross-hatch-adhesion-tester.html",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지(1542). 데이터시트 PDF 는 열지 않음"
+    },
+    {
+      "url": "https://www.elcometer.com/en/coatings-inspection/all-coatings-inspection/adhesion-testers/elcometer-107-cross-hatch-cutter.html",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지(107)"
+    },
+    {
+      "url": "https://www.elcometer.com/en/coatings-inspection/all-coatings-inspection/adhesion-testers/elcometer-1540-cross-cut-adhesion-tester.html",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지(1540)"
+    },
+    {
+      "file": "elcometer/1542.pdf",
+      "pages": [
+        1,
+        2
+      ]
+    }
+  ],
+  "notes": "PDF 로 확인: Elcometer 1542 의 커터 간격 1 · 2 · 3 mm, 도막 두께 0~60 · 50~125 · 121~250 µm, 품번, 규격 목록(1542 데이터시트). 웹 값 그대로: Elcometer 107 · 1540(이 PDF 에 없음). 1540 페이지는 규격을 'ASTM D 3559-B' 로 적었는데 크로스컷 규격 ASTM D3359 의 오기로 보고 목록에는 ASTM D3359 로 적었다. 1542 · 107 은 'ASTM D 3359-B' 로 적혀 있다.",
+  "confidence": "limited"
+}

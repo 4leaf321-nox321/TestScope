@@ -1,0 +1,176 @@
+{
+  "id": "hikmicro-sp-series",
+  "kind": "equipment_series",
+  "name": "HIKMICRO SP Series Handheld Thermal Camera",
+  "name_ko": "하이크마이크로 SP 시리즈 열화상 카메라",
+  "manufacturer": "hikmicro",
+  "brand": "SP",
+  "category": "thermal_imager",
+  "form_factor": "handheld",
+  "description": "교환 렌즈를 쓰는 전문가용 휴대 열화상 카메라 계열. 해상도 480 × 360(SP40) ~ 1,280 × 1,024(SP120H), NETD <30 mK(SP100H · SP120H <20 mK), 7.5 ~ 14 µm, 30 Hz. 'H' 판은 -40 ~ 150 · 0 ~ 650 · 300 ~ 2,200 °C 세 레인지, 기본 판은 -20 ~ 150 · 0 ~ 650 °C.",
+  "test_items": [
+    "thermography"
+  ],
+  "measurands": [
+    "surface_temperature",
+    "temperature_distribution",
+    "hotspot_location"
+  ],
+  "limits": {
+    "temperature_degC": {
+      "min": -40,
+      "max": 2200,
+      "note": "H 판 세 레인지"
+    },
+    "ir_resolution_pixels": {
+      "min": 172800,
+      "max": 1310720
+    },
+    "thermal_sensitivity_degC": {
+      "min": 0.02,
+      "max": 0.03,
+      "note": "원문 mK @ 30 °C, F#1.0"
+    },
+    "frame_rate_fps": {
+      "values": [
+        30
+      ],
+      "note": "원문 30 Hz"
+    }
+  },
+  "models": [
+    {
+      "model": "SP40",
+      "specs": {
+        "detector_pixels": "480 × 360",
+        "ir_resolution_pixels": 172800,
+        "thermal_sensitivity_degC": 0.03,
+        "temperature_degC": {
+          "min": -20,
+          "max": 650
+        },
+        "accuracy": "-20 ~ 0 °C ±2 °C, 0 ~ 100 °C ±1 °C, 100 ~ 150 °C ±1 %(레인지 1)",
+        "wavelength_nm": {
+          "min": 7500,
+          "max": 14000
+        },
+        "frame_rate_fps": 30,
+        "field_of_view_deg": "L6 6°×4.5° / L9 9°×6.8° / L19 18.7°×14° / L37 37.3°×27.8°"
+      }
+    },
+    {
+      "model": "SP40H",
+      "specs": {
+        "detector_pixels": "480 × 360",
+        "ir_resolution_pixels": 172800,
+        "thermal_sensitivity_degC": 0.03,
+        "temperature_degC": {
+          "min": -40,
+          "max": 2200
+        },
+        "accuracy": "-40 ~ 0 °C ±2 °C, 0 ~ 100 °C ±1 °C, 100 ~ 150 °C ±1 %(레인지 1)",
+        "wavelength_nm": {
+          "min": 7500,
+          "max": 14000
+        },
+        "frame_rate_fps": 30,
+        "field_of_view_deg": "L6 / L9 / L19 / L37"
+      }
+    },
+    {
+      "model": "SP60",
+      "specs": {
+        "detector_pixels": "640 × 480",
+        "ir_resolution_pixels": 307200,
+        "thermal_sensitivity_degC": 0.03,
+        "temperature_degC": {
+          "min": -20,
+          "max": 650
+        },
+        "accuracy": "-20 ~ 0 °C ±2 °C, 0 ~ 100 °C ±1 °C, 100 ~ 150 °C ±1 %(레인지 1)",
+        "wavelength_nm": {
+          "min": 7500,
+          "max": 14000
+        },
+        "frame_rate_fps": 30,
+        "field_of_view_deg": "L8 8°×6° / L12 12°×9° / L25 24.8°×18.7° / L50 50°×37.3°"
+      }
+    },
+    {
+      "model": "SP60H",
+      "specs": {
+        "detector_pixels": "640 × 480",
+        "ir_resolution_pixels": 307200,
+        "thermal_sensitivity_degC": 0.03,
+        "temperature_degC": {
+          "min": -40,
+          "max": 2200
+        },
+        "accuracy": "레인지 1 은 SP60 과 같음, 300 ~ 2,200 °C ±2 %",
+        "wavelength_nm": {
+          "min": 7500,
+          "max": 14000
+        },
+        "frame_rate_fps": 30,
+        "field_of_view_deg": "L8 / L12 / L25 / L50"
+      }
+    },
+    {
+      "model": "SP100H",
+      "specs": {
+        "detector_pixels": "1040 × 832",
+        "ir_resolution_pixels": 865280,
+        "thermal_sensitivity_degC": 0.02,
+        "temperature_degC": {
+          "min": -40,
+          "max": 2200
+        },
+        "wavelength_nm": {
+          "min": 7500,
+          "max": 14000
+        },
+        "frame_rate_fps": 30,
+        "field_of_view_deg": "L8 / L12 / L25 / L50"
+      }
+    },
+    {
+      "model": "SP120H",
+      "specs": {
+        "detector_pixels": "1280 × 1024",
+        "ir_resolution_pixels": 1310720,
+        "thermal_sensitivity_degC": 0.02,
+        "temperature_degC": {
+          "min": -40,
+          "max": 2200
+        },
+        "wavelength_nm": {
+          "min": 7500,
+          "max": 14000
+        },
+        "frame_rate_fps": 30,
+        "field_of_view_deg": "L8 / L12 / L25 / L50"
+      }
+    }
+  ],
+  "options": [
+    "교환 렌즈 L6 · L9 · L19 · L37(SP40 계열), L8 · L12 · L25 · L50(SP60 · SP100H · SP120H)"
+  ],
+  "relations": [
+    {
+      "type": "performs",
+      "target": "thermography"
+    },
+    {
+      "type": "same_family_as",
+      "target": "hikmicro-b-series"
+    }
+  ],
+  "sources": [
+    {
+      "url": "http://www.hikmicrotech.com/en/industrial-products/sp60-and-sp60h-series-handheld-thermal-imager/",
+      "retrieved": "2026-10-08",
+      "note": "제조사 계열 페이지(HTML). 여섯 기종 사양"
+    }
+  ],
+  "confidence": "limited"
+}

@@ -5,6 +5,7 @@
 
 from __future__ import annotations
 
+import math
 import uuid
 from typing import Any
 
@@ -51,6 +52,26 @@ def _model_note(row: dict[str, Any]) -> str | None:
     return "\n".join(parts) or None
 
 
+def _same_raw(held: Any, wanted: Any) -> bool:
+    """DB 에 든 원문과 정본의 원문이 같은가. **수는 값으로 견준다** — JSON 칸은 1e25 를 정수로
+    돌려줘서 그대로 견주면 같은 값이 매번 다르다고 나오고, 반입할 때마다 다시 쓴다."""
+    if isinstance(held, dict) and isinstance(wanted, dict):
+        return held.keys() == wanted.keys() and all(
+            _same_raw(held[key], wanted[key]) for key in held
+        )
+    if isinstance(held, list) and isinstance(wanted, list):
+        return len(held) == len(wanted) and all(map(_same_raw, held, wanted))
+    numbers = (int, float)
+    if (
+        isinstance(held, numbers)
+        and isinstance(wanted, numbers)
+        and not isinstance(held, bool)
+        and not isinstance(wanted, bool)
+    ):
+        return math.isclose(float(held), float(wanted), rel_tol=1e-12, abs_tol=0.0)
+    return bool(held == wanted)
+
+
 def step_models(
     db: Session,
     cat: Catalog,
@@ -77,6 +98,11 @@ def step_models(
     free_labels = _free_labels(cat)
     marker = "원본 확인 필요"
     models = values = flagged = kept = 0
+    # 원문은 반입만 쓰는 칸이라 정본을 그대로 따른다. 다만 같은 기종 · 계열이 한 반입에서
+    # 여러 번 나온다(구성별 기종 줄, 본 객체와 보탬 객체) — **다 모은 뒤 끝에 한 번만** 견줘
+    # 쓴다. 나올 때마다 쓰면 반입할 때마다 원문이 번갈아 앉는다.
+    raw_specs: dict[uuid.UUID, tuple[EquipmentModel, dict[str, Any]]] = {}
+    raw_limits: dict[uuid.UUID, tuple[EquipmentSeries, dict[str, Any]]] = {}
 
     for obj in cat.objects:
         parent = series[obj["id"]]
@@ -139,20 +165,20 @@ def step_models(
                 # MaterialTwin 원문(설명·주석·능력행)도 통째로. 사양 칸에 못 담은 시편
                 # 조건·정확도·범위가 전부 여기 있다 — 「기종에 있는 데이터는 모두」.
                 raw["materialtwin"] = row["materialtwin"]
-            if raw and not found.raw_specs:
-                found.raw_specs = raw
-                kept += 1
+            if raw:
+                seen = raw_specs.get(found.id, (found, {}))[1]
+                raw_specs[found.id] = (found, {**seen, **raw})
 
         limits = obj.get("limits") or {}
         if limits and len(made_here) == 1:
             values += _import_specs(
                 db, made_here[0], limits, definitions, source, promoted, aliases
             )
-        if limits and not parent.raw_limits:
-            kept += 1
+        if limits:
             # 봉투는 수치로 안 들이지만(ADR 0006) **원문은 남긴다** — 사람이 읽을
             # 값이고, 기종 사양이 빈 계열에서는 이것이 유일한 근거다.
-            parent.raw_limits = limits
+            seen_limits = raw_limits.get(parent.id, (parent, {}))[1]
+            raw_limits[parent.id] = (parent, {**seen_limits, **limits})
         if limits and len(made_here) > 1:
             envelope = " · ".join(
                 f"{key} {_as_text(raw)}" for key, raw in sorted(limits.items())
@@ -163,4 +189,17 @@ def step_models(
                     f"{block}\n{parent.spec_note}" if parent.spec_note else block
                 )
         db.flush()
+    for model_row, merged in raw_specs.values():
+        if not _same_raw(model_row.raw_specs, merged):
+            model_row.raw_specs = merged
+            kept += 1
+    for series_row, merged in raw_limits.values():
+        # 계열 단계가 보탠 MaterialTwin 원문(`_supplement_series`)은 사양표가 아니라 남긴다.
+        held = series_row.raw_limits or {}
+        if "materialtwin" in held and "materialtwin" not in merged:
+            merged = {**merged, "materialtwin": held["materialtwin"]}
+        if not _same_raw(series_row.raw_limits, merged):
+            series_row.raw_limits = merged
+            kept += 1
+    db.flush()
     return models, values, flagged, kept

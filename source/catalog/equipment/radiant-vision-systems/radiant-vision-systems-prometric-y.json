@@ -1,0 +1,135 @@
+{
+  "id": "radiant-vision-systems-prometric-y",
+  "kind": "equipment_series",
+  "name": "Radiant Vision Systems ProMetric Y Imaging Photometer",
+  "name_ko": "래디언트 ProMetric Y 이미징 휘도계",
+  "manufacturer": "radiant-vision-systems",
+  "brand": "ProMetric",
+  "category": "imaging_colorimeter",
+  "form_factor": "camera",
+  "description": "휘도만 재는 이미징 포토미터 계열. CMOS 16 MP(Y16-G) · 45 MP(Y45) · 61 MP(Y61), 휘도 검출 한계 0.0001 ~ 0.0005 cd/m² 부터 1,010 cd/m² 까지, 휘도 확도 ±3 %, 동적 범위 66 ~ 76 dB.",
+  "test_items": [
+    "photometry_colorimetry"
+  ],
+  "measurands": [
+    "luminance",
+    "uniformity",
+    "mura"
+  ],
+  "limits": {
+    "resolution_pixels": {
+      "min": 16105984,
+      "max": 61043840
+    },
+    "luminance_cd_m2": {
+      "min": 0.0001,
+      "max": 1010
+    },
+    "dynamic_range_dB": {
+      "min": 66,
+      "max": 76
+    }
+  },
+  "models": [
+    {
+      "model": "ProMetric Y16-G",
+      "specs": {
+        "detector": "CMOS",
+        "detector_pixels": "5312 × 3032",
+        "resolution_pixels": 16105984,
+        "dynamic_range_dB": 70,
+        "luminance_cd_m2": {
+          "min": 0.0005,
+          "max": 1010
+        },
+        "luminance_accuracy_pct": 3,
+        "repeatability_pct": {
+          "value": 0.03,
+          "note": "단기 반복도: 휘도(Y) · 조도 ±0.03 %(가상 검출기 100 × 100 화소)"
+        },
+        "field_of_view_deg": "35 mm 24 × 14°, 50 mm 17 × 10°, 100 mm macro 8 × 5°",
+        "measurement_time_s": {
+          "value": 0.5,
+          "note": "최소 측정 시간, 100 cd/m²"
+        },
+        "interfaces": "Ethernet 1000",
+        "weight_kg": 1.1
+      },
+      "note": "휘도 하한은 검출 한계(Limit of Detection). 렌즈 35, 50, 100 mm. 최소 휘도 0.0010 cd/m² @ SNR 60, 0.0015 @ SNR 100. 최대 1,010 cd/m² 는 ND 필터 사용. 86 × 86 × 170 mm, 운전 온도 5 ~ 35 °C"
+    },
+    {
+      "model": "ProMetric Y45",
+      "specs": {
+        "detector": "CMOS",
+        "detector_pixels": "8192 × 5460",
+        "resolution_pixels": 44728320,
+        "dynamic_range_dB": 66,
+        "luminance_cd_m2": {
+          "min": 0.0001,
+          "max": 1010
+        },
+        "luminance_accuracy_pct": 3,
+        "repeatability_pct": {
+          "value": 0.04,
+          "note": "단기 반복도: 휘도(Y) · 조도 ±0.04 %(가상 검출기 100 × 100 화소)"
+        },
+        "field_of_view_deg": "35 mm 40 × 27°, 50 mm 29 × 19°, 100 mm macro 15 × 10°, 200 mm 8 × 5°",
+        "measurement_time_s": {
+          "value": 0.7,
+          "note": "최소 측정 시간, 100 cd/m²"
+        },
+        "interfaces": "10 Gigabit Ethernet",
+        "weight_kg": 1.4
+      },
+      "note": "휘도 하한은 검출 한계(Limit of Detection). 렌즈 35, 50, 100, 200 mm. 최소 휘도 0.0002 cd/m² @ SNR 60, 0.0005 @ SNR 100. 최대 1,010 cd/m² 는 ND 필터 사용. 86 × 86 × 154 mm, 운전 온도 15 ~ 35 °C"
+    },
+    {
+      "model": "ProMetric Y61",
+      "specs": {
+        "detector": "CMOS",
+        "detector_pixels": "9568 × 6380",
+        "resolution_pixels": 61043840,
+        "dynamic_range_dB": 76,
+        "luminance_cd_m2": {
+          "min": 0.0005,
+          "max": 1010
+        },
+        "luminance_accuracy_pct": 3,
+        "repeatability_pct": {
+          "value": 0.02,
+          "note": "단기 반복도: 휘도(Y) · 조도 ±0.02 %(가상 검출기 100 × 100 화소)"
+        },
+        "field_of_view_deg": "35 mm 55 × 37°, 50 mm 40 × 28°, 100 mm macro 20 × 14°, 200 mm 11 × 7°",
+        "measurement_time_s": {
+          "value": 0.7,
+          "note": "최소 측정 시간, 100 cd/m²"
+        },
+        "interfaces": "10 Gigabit Ethernet",
+        "weight_kg": 1.2
+      },
+      "note": "휘도 하한은 검출 한계(Limit of Detection). 렌즈 35, 50, 100, 200 mm. 최소 휘도 0.0010 cd/m² @ SNR 60, 0.0015 @ SNR 100. 최대 1,010 cd/m² 는 ND 필터 사용. 86 × 86 × 170 mm, 운전 온도 5 ~ 35 °C"
+    }
+  ],
+  "relations": [
+    {
+      "type": "performs",
+      "target": "photometry_colorimetry"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://sensing.konicaminolta.us/us/products/prometric-y-imaging-colorimeters/",
+      "retrieved": "2026-10-08",
+      "note": "Konica Minolta Sensing 미주 사이트의 ProMetric Y 제품 페이지(HTML)"
+    },
+    {
+      "file": "radiant-vision-systems/radiant_spec_prometric-y_en.pdf",
+      "pages": [
+        2
+      ],
+      "note": "제조사 사양서 PDF(2022/09/30)"
+    }
+  ],
+  "confidence": "catalog",
+  "notes": "PDF 로 확인: 세 기종의 센서 · 화소 · 동적 범위 · 휘도 범위 · 확도 · 렌즈(반복도 · 시야 · 최소 측정 시간 · 통신 · 무게를 더함)."
+}

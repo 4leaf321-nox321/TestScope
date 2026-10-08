@@ -1,0 +1,83 @@
+{
+  "id": "audio-precision-apx517-b-series",
+  "kind": "equipment_model",
+  "name": "Audio Precision APx517 B Series Acoustic Analyzer",
+  "name_ko": "오디오프리시전 APx517 B 음향 분석기",
+  "manufacturer": "audio-precision",
+  "brand": "APx",
+  "category": "audio_analyzer",
+  "form_factor": "benchtop",
+  "description": "스피커·마이크·헤드폰·헤드셋과 스피커·마이크를 내장한 소비자 전자기기의 음향 연구개발·생산 시험용 분석기. 분석기(생성·수집)에 35 W 모노 파워 앰프(최대 17 Vrms, 2~8 Ω), 스테레오 헤드폰 앰프(최대 9 Vrms, 2~800 Ω @ 100 mW), 마이크 전원을 한 상자에 넣었다. 아날로그 입력은 BNC 불평형(최대 40 Vpk)과 48 V 팬텀 전원 XLR 평형, 입력 잔류 THD+N < –98 dB + 1.9 µV, 192 kHz 샘플레이트.",
+  "test_items": [
+    "audio_performance"
+  ],
+  "measurands": [
+    "frequency_response",
+    "thd_n"
+  ],
+  "materials": [
+    "speakers",
+    "microphones",
+    "headphones",
+    "headsets",
+    "consumer electronics"
+  ],
+  "limits": {
+    "analog_output_voltage_Vrms": {
+      "max": 17,
+      "note": "파워 앰프 최대 출력. 헤드폰 앰프는 9 Vrms"
+    },
+    "power_W": {
+      "max": 35,
+      "note": "파워 앰프 35 W(모노), 2~8 Ω"
+    },
+    "residual_thd_n_dB": {
+      "max": -98,
+      "note": "아날로그 입력 < –98 dB + 1.9 µV(20 kHz BW). 파워 앰프 < –80 dB + 35 µV, 헤드폰 앰프 < –84 dB + 15 µV"
+    },
+    "digital_sample_rate_Hz": {
+      "max": 192000,
+      "note": "원문 192 kHz SR (High-Res Audio Ready)"
+    }
+  },
+  "models": [
+    {
+      "model": "APx517 B Series",
+      "specs": {
+        "analog_output_voltage_Vrms": 17,
+        "power_W": 35,
+        "residual_thd_n_dB": -98,
+        "digital_sample_rate_Hz": 192000,
+        "interfaces": "BNC 불평형 입력(최대 40 Vpk), XLR 평형 입력(48 V 팬텀), 스피커 앰프 출력, 헤드폰 앰프 출력"
+      },
+      "note": "페이지 표기 APx517B Series. 임피던스 정확도 ≤1 %(저항 부하 4~16 Ω, 20 Hz~20 kHz)"
+    }
+  ],
+  "features": [
+    "35 W 모노 파워 앰프 내장",
+    "스테레오 헤드폰 앰프 내장",
+    "마이크 전원 내장",
+    "임피던스 측정(정확도 ≤1 %)"
+  ],
+  "options": [
+    "디지털 인터페이스 모듈"
+  ],
+  "relations": [
+    {
+      "type": "performs",
+      "target": "audio_performance"
+    },
+    {
+      "type": "same_family_as",
+      "target": "audio-precision-apx52x-b-series"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://www.audioprecision.com/analyzers-accessories/apx517",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지. 앰프·입력 사양"
+    }
+  ],
+  "confidence": "limited"
+}

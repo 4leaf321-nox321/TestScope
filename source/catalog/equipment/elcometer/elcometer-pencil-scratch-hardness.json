@@ -1,0 +1,150 @@
+{
+  "id": "elcometer-pencil-scratch-hardness",
+  "kind": "equipment_series",
+  "name": "Elcometer Pencil & Scratch Hardness Testers (Elcometer 501 / 3086 / 3092)",
+  "name_ko": "엘코미터 연필 · 스크래치 경도 시험기 (501 · 3086 · 3092)",
+  "manufacturer": "elcometer",
+  "category": "scratch_hardness_tester",
+  "form_factor": "handheld",
+  "description": "도막 경도를 연필 또는 초경 팁으로 긁어 판정하는 시험기 세 종. Elcometer 501 은 45° 일정 각도 · 7.5 N 으로 6B~6H 연필 14자루를 밀어 긋는 Wolff-Wilborn 연필 경도 시험기다. Elcometer 3086 은 내장 모터로 일정 속도 이동하며 0~10 N 고정력을 거는 전동 연필 경도 시험기(단종, 서비스만)로 전진(chip) · 후진(indentation) 두 방식을 한다. Elcometer 3092 Sclerometer 는 지름 0.75 mm 텅스텐 카바이드 팁에 스프링(0~3 · 0~10 · 0~20 · 0~30 N)으로 힘을 걸어 긋는 펜형 경도 시험기다.",
+  "test_items": [
+    "scratch_pencil_hardness"
+  ],
+  "measurands": [
+    "pencil_hardness_grade",
+    "scratch_hardness"
+  ],
+  "materials": [
+    "paints",
+    "coatings",
+    "laminates"
+  ],
+  "standards": {
+    "compliance": [],
+    "test_methods": [
+      "ASTM D3363",
+      "ECCA T4",
+      "EN 13523-4",
+      "ISO 15184",
+      "JIS K 5600-5-4",
+      "BS 3900-E19",
+      "AS 3894.4",
+      "EN 438-2",
+      "ISO 4586-2"
+    ]
+  },
+  "limits": {
+    "pencil_hardness_grade": {
+      "values": [
+        "6B",
+        "5B",
+        "4B",
+        "3B",
+        "2B",
+        "B",
+        "HB",
+        "F",
+        "H",
+        "2H",
+        "3H",
+        "4H",
+        "5H",
+        "6H"
+      ],
+      "note": "501 · 3086 의 연필 14자루. 순서척도라 min/max 대신 나열"
+    },
+    "pencil_angle_deg": {
+      "values": [
+        45
+      ],
+      "note": "501"
+    },
+    "pencil_load_g": {
+      "values": [
+        764.8
+      ],
+      "note": "501 원문 7.5 N (1.68 lbF)"
+    },
+    "load_N": {
+      "min": 0,
+      "max": 30,
+      "note": "3086 0~10 N, 3092 스프링 0~3 · 0~10 · 0~20 · 0~30 N"
+    }
+  },
+  "models": [
+    {
+      "model": "Elcometer 501",
+      "specs": {
+        "pencil_angle_deg": 45,
+        "pencil_load_g": {
+          "value": 764.8,
+          "note": "원문 7.5 N"
+        },
+        "pencil_hardness_grade": "6B~6H 14자루",
+        "footprint_mm": "130 × 130 × 50",
+        "weight_kg": 2.1
+      },
+      "note": "Wolff-Wilborn 시험. 위치 블록 · 연필깎이 2개 · 연마지 블록 포함; 품번: H501----1"
+    },
+    {
+      "model": "Elcometer 3086",
+      "specs": {
+        "load_N": {
+          "min": 0,
+          "max": 10,
+          "note": "원문 0~10 N (0~2.25 lbF), 사용자 설정 고정력"
+        },
+        "pencil_hardness_grade": "6H~6B 14 등급",
+        "footprint_mm": "280 × 140 × 240",
+        "weight_kg": 3.8
+      },
+      "note": "모터 정속 이동, 전진(chip) · 후진(indentation) 방식; 상태: 단종 — 서비스용"
+    },
+    {
+      "model": "Elcometer 3092",
+      "specs": {
+        "load_N": {
+          "min": 0,
+          "max": 30,
+          "note": "스프링 회색 0~3 · 빨강 0~10 · 파랑 0~20 · 초록 0~30 N(초록은 별매)"
+        },
+        "footprint_mm": "165 × 24 × 16",
+        "weight_kg": 0.37
+      },
+      "note": "Sclerometer Hardness Tester; 팁: 지름 0.75 mm 텅스텐 카바이드(옵션 0.5 · 1.0 mm, 다이아몬드 원추); 품번: K0003092M201"
+    }
+  ],
+  "relations": [
+    {
+      "type": "performs",
+      "target": "scratch_pencil_hardness"
+    },
+    {
+      "type": "same_family_as",
+      "target": "tqc-sheen-coating-test-kits"
+    },
+    {
+      "type": "same_family_as",
+      "target": "defelsko-positest-pt"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://www.elcometer.com/en/elcometer-501-pencil-hardness-tester-1.html",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지(501)"
+    },
+    {
+      "url": "https://www.elcometer.com/en/elcometer-3086-motorised-pencil-hardness-tester-discontinued",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지(3086, 단종 표시)"
+    },
+    {
+      "url": "https://www.elcometer.com/en/elcometer-3092-sclerometer-hardness-tester.html",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지(3092)"
+    }
+  ],
+  "notes": "501 의 7.5 N 은 기존 키 pencil_load_g 에 맞춰 764.8 g 으로 바꿨다. 같은 제조사의 3095 Buchholz(압입) · 3000 Clemen · 3025 Scratch/Shear 는 넣지 않았다.",
+  "confidence": "limited"
+}

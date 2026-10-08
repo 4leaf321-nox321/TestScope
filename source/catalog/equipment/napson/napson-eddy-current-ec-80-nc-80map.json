@@ -1,0 +1,130 @@
+{
+  "id": "napson-eddy-current-ec-80-nc-80map",
+  "kind": "equipment_series",
+  "name": "NAPSON EC-80 / EC-80P / NC-80MAP Non-Contact Eddy-Current Resistivity Meters",
+  "name_ko": "냅슨 EC-80·EC-80P·NC-80MAP 비접촉 와전류 저항 측정기",
+  "manufacturer": "napson",
+  "category": "electrical_property_tester",
+  "subcategory": "eddy_current_sheet_resistance",
+  "description": "와전류법으로 시료에 닿지 않고 면저항·저항률을 재는 측정기 계열. 탐침(Low·Middle·High·S-High)을 갈아 끼워 10 mΩ/sq～3 kΩ/sq 를 덮는다. EC-80 은 수동 탁상형(～8인치·～156×156 mm), EC-80P 는 휴대형(지름 20 mm 보다 크고 평평한 시료면 어디든, 태양전지 웨이퍼용 탐침 추가), NC-80MAP 은 반자동 다점 매핑형(2～8인치, 12인치 옵션, 가장자리 8 mm 부터 측정)이다.",
+  "test_items": [
+    "electrical_transport"
+  ],
+  "measurands": [
+    "electrical.surface_resistivity",
+    "electrical.resistivity_volume"
+  ],
+  "limits": {
+    "surface_resistivity_ohm_sq": {
+      "min": 0.01,
+      "max": 3000,
+      "note": "원문 10m～3kΩ/sq(탐침 전체 합). 탐침별 Low 0.01–0.5 Ω/□(0.001–0.05 Ω·cm), Middle 0.5–10 Ω/□(0.05–0.5 Ω·cm), High 10–1,000 Ω/□(0.5–60 Ω·cm), S-High 1,000–3,000 Ω/□(60–200 Ω·cm). 저항률은 두께 500 μm 기준"
+    },
+    "resistivity_ohm_cm": {
+      "min": 0.001,
+      "max": 200,
+      "note": "원문 1m～200Ω･cm(두께 500 μm 기준)"
+    },
+    "wafer_size_mm": {
+      "max": 300,
+      "note": "EC-80 ～8インチ, NC-80MAP 2～8インチ(12インチ 옵션)"
+    }
+  },
+  "models": [
+    {
+      "model": "EC-80",
+      "specs": {
+        "surface_resistivity_ohm_sq": {
+          "min": 0.01,
+          "max": 3000
+        },
+        "resistivity_ohm_cm": {
+          "min": 0.001,
+          "max": 200
+        },
+        "wafer_size_mm": {
+          "max": 200
+        },
+        "sample_size_mm": {
+          "max": 156
+        },
+        "footprint_mm": [
+          220,
+          325,
+          210
+        ],
+        "weight_kg": 6.5,
+        "principle": "비접촉 와전류법"
+      },
+      "form_factor": "benchtop",
+      "note": "수동형. 원문 W220×D325×H210mm, 약 6.5 kg"
+    },
+    {
+      "model": "EC-80P",
+      "specs": {
+        "surface_resistivity_ohm_sq": {
+          "min": 0.01,
+          "max": 3000
+        },
+        "resistivity_ohm_cm": {
+          "min": 0.001,
+          "max": 200
+        },
+        "footprint_mm": [
+          255,
+          275,
+          95
+        ],
+        "weight_kg": 4,
+        "principle": "비접촉 와전류법"
+      },
+      "form_factor": "portable",
+      "note": "휴대형. 시료는 지름 20 mm 초과·평면. 탐침 20 mmΦ×80 mm. Solar Wafer 탐침 5–500 Ω/□(0.2–15 Ω·cm) 추가"
+    },
+    {
+      "model": "NC-80MAP",
+      "specs": {
+        "surface_resistivity_ohm_sq": {
+          "min": 0.01,
+          "max": 3000
+        },
+        "resistivity_ohm_cm": {
+          "min": 0.001,
+          "max": 200
+        },
+        "wafer_size_mm": {
+          "min": 50,
+          "max": 300,
+          "note": "2～8インチ, 12インチ 옵션"
+        },
+        "footprint_mm": [
+          780,
+          580,
+          375
+        ],
+        "weight_kg": 70,
+        "principle": "비접촉 와전류법"
+      },
+      "note": "반자동 다점 매핑. 가장자리 8 mm 부터 측정. 원문 W780×D580×H375mm, 약 70 kg"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://www.napson.co.jp/products/noncontact/manual/product01/",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지 EC-80. 제조사 제품 페이지(일본어 HTML). 같은 페이지의 「電気抵抗測定の測定原理」 다운로드는 PDF 직링크가 아니라 신청 양식(form.napson.co.jp/form/form_download)이라 열지 않음"
+    },
+    {
+      "url": "https://www.napson.co.jp/products/noncontact/manual/product02/",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지 EC-80P(Portable)"
+    },
+    {
+      "url": "https://www.napson.co.jp/products/noncontact/semiauto/product01/",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지 NC-80MAP"
+    }
+  ],
+  "confidence": "limited",
+  "notes": "2인치=50 mm, 8인치=200 mm, 12인치=300 mm 로 적음. 같은 제조사의 전자동 비접촉 NC-6800·NC-2000FLA·NC-600MAP, 반자동 CRN-100, 수동 PVE-80 은 이번에 페이지를 열지 않아 넣지 않음."
+}

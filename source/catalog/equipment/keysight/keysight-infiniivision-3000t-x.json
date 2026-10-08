@@ -1,0 +1,265 @@
+{
+  "id": "keysight-infiniivision-3000t-x",
+  "kind": "equipment_series",
+  "name": "InfiniiVision 3000T X-Series Oscilloscopes",
+  "name_ko": "키사이트 InfiniiVision 3000T X 오실로스코프",
+  "manufacturer": "keysight",
+  "brand": "InfiniiVision",
+  "category": "oscilloscope",
+  "subcategory": "mixed_signal_oscilloscope",
+  "form_factor": "benchtop",
+  "description": "100 MHz~1 GHz 대역의 2·4채널 오실로스코프 계열(DSO·MSO 20종)임. 8.5 inch 정전식 터치 화면과 존(zone) 터치 트리거, 1,000,000 wfms/s 갱신율이 특징. MSOX 기종은 16 로직 채널 내장. 키사이트 기종 페이지에 단종(Discontinued) 표시가 있음.",
+  "test_items": [],
+  "limits": {
+    "bandwidth_Hz": {
+      "min": 100000000,
+      "max": 1000000000,
+      "note": "원문 100 MHz~1 GHz"
+    },
+    "sample_rate_Sa_s": {
+      "max": 5000000000,
+      "note": "원문 5 GSa/s interleaved, 2.5 GSa/s non-interleaved"
+    },
+    "channels": {
+      "values": [
+        2,
+        4
+      ]
+    },
+    "logic_channel_count": {
+      "values": [
+        16
+      ]
+    },
+    "display_size_in": {
+      "values": [
+        8.5
+      ]
+    },
+    "record_length_pts": {
+      "max": 4000000,
+      "note": "제조사 DSOX3054T 페이지 up to 4 Mpts. 대리점 목록은 기종에 따라 4 Mpts 또는 2 Mpts"
+    }
+  },
+  "models": [
+    {
+      "model": "DSOX3012T",
+      "specs": {
+        "bandwidth_Hz": 100000000,
+        "channels": 2,
+        "sample_rate_Sa_s": 5000000000
+      }
+    },
+    {
+      "model": "DSOX3014T",
+      "specs": {
+        "bandwidth_Hz": 100000000,
+        "channels": 4,
+        "sample_rate_Sa_s": 5000000000
+      }
+    },
+    {
+      "model": "DSOX3022T",
+      "specs": {
+        "bandwidth_Hz": 200000000,
+        "channels": 2,
+        "sample_rate_Sa_s": 5000000000
+      }
+    },
+    {
+      "model": "DSOX3024T",
+      "specs": {
+        "bandwidth_Hz": 200000000,
+        "channels": 4,
+        "sample_rate_Sa_s": 5000000000
+      }
+    },
+    {
+      "model": "DSOX3032T",
+      "specs": {
+        "bandwidth_Hz": 350000000,
+        "channels": 2,
+        "sample_rate_Sa_s": 5000000000
+      }
+    },
+    {
+      "model": "DSOX3034T",
+      "specs": {
+        "bandwidth_Hz": 350000000,
+        "channels": 4,
+        "sample_rate_Sa_s": 5000000000
+      }
+    },
+    {
+      "model": "DSOX3052T",
+      "specs": {
+        "bandwidth_Hz": 500000000,
+        "channels": 2,
+        "sample_rate_Sa_s": 5000000000
+      }
+    },
+    {
+      "model": "DSOX3054T",
+      "specs": {
+        "bandwidth_Hz": 500000000,
+        "channels": 4,
+        "sample_rate_Sa_s": 5000000000,
+        "display_size_in": 8.5
+      },
+      "note": "제조사 페이지: 500 MHz · 4 analog channels · up to 4 Mpts · 8.5-inch capacitive touch screen · 1,000,000 wfms/s. [Discontinued]"
+    },
+    {
+      "model": "DSOX3102T",
+      "specs": {
+        "bandwidth_Hz": 1000000000,
+        "channels": 2,
+        "sample_rate_Sa_s": 5000000000
+      }
+    },
+    {
+      "model": "DSOX3104T",
+      "specs": {
+        "bandwidth_Hz": 1000000000,
+        "channels": 4,
+        "sample_rate_Sa_s": 5000000000
+      }
+    },
+    {
+      "model": "MSOX3012T",
+      "variant": "mixed signal",
+      "specs": {
+        "bandwidth_Hz": 100000000,
+        "channels": 2,
+        "logic_channel_count": 16,
+        "sample_rate_Sa_s": 5000000000
+      }
+    },
+    {
+      "model": "MSOX3014T",
+      "variant": "mixed signal",
+      "specs": {
+        "bandwidth_Hz": 100000000,
+        "channels": 4,
+        "logic_channel_count": 16,
+        "sample_rate_Sa_s": 5000000000
+      }
+    },
+    {
+      "model": "MSOX3022T",
+      "variant": "mixed signal",
+      "specs": {
+        "bandwidth_Hz": 200000000,
+        "channels": 2,
+        "logic_channel_count": 16,
+        "sample_rate_Sa_s": 5000000000
+      }
+    },
+    {
+      "model": "MSOX3024T",
+      "variant": "mixed signal",
+      "specs": {
+        "bandwidth_Hz": 200000000,
+        "channels": 4,
+        "logic_channel_count": 16,
+        "sample_rate_Sa_s": 5000000000
+      }
+    },
+    {
+      "model": "MSOX3032T",
+      "variant": "mixed signal",
+      "specs": {
+        "bandwidth_Hz": 350000000,
+        "channels": 2,
+        "logic_channel_count": 16,
+        "sample_rate_Sa_s": 5000000000
+      }
+    },
+    {
+      "model": "MSOX3034T",
+      "variant": "mixed signal",
+      "specs": {
+        "bandwidth_Hz": 350000000,
+        "channels": 4,
+        "logic_channel_count": 16,
+        "sample_rate_Sa_s": 5000000000
+      }
+    },
+    {
+      "model": "MSOX3052T",
+      "variant": "mixed signal",
+      "specs": {
+        "bandwidth_Hz": 500000000,
+        "channels": 2,
+        "logic_channel_count": 16,
+        "sample_rate_Sa_s": 5000000000
+      }
+    },
+    {
+      "model": "MSOX3054T",
+      "variant": "mixed signal",
+      "specs": {
+        "bandwidth_Hz": 500000000,
+        "channels": 4,
+        "logic_channel_count": 16,
+        "sample_rate_Sa_s": 5000000000
+      }
+    },
+    {
+      "model": "MSOX3102T",
+      "variant": "mixed signal",
+      "specs": {
+        "bandwidth_Hz": 1000000000,
+        "channels": 2,
+        "logic_channel_count": 16,
+        "sample_rate_Sa_s": 5000000000
+      }
+    },
+    {
+      "model": "MSOX3104T",
+      "variant": "mixed signal",
+      "specs": {
+        "bandwidth_Hz": 1000000000,
+        "channels": 4,
+        "logic_channel_count": 16,
+        "sample_rate_Sa_s": 5000000000
+      }
+    }
+  ],
+  "features": [
+    "8.5 inch 정전식 터치 화면",
+    "존 터치 트리거",
+    "1,000,000 wfms/s 갱신율",
+    "MSOX 기종 16 로직 채널"
+  ],
+  "relations": [
+    {
+      "type": "same_family_as",
+      "target": "keysight-infiniivision-3000g-x",
+      "note": "같은 3000 계열의 G 세대(파형 발생기 내장)"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://www.keysight.com/us/en/product/DSOX3054T/",
+      "retrieved": "2026-10-08",
+      "note": "제조사 기종 페이지. \"DSOX3054T Oscilloscope: 500 MHz, 4 Analog Channels [Discontinued]\", 대체 기종 없음(No replacement found)"
+    },
+    {
+      "url": "https://www.keysight.com/us/en/support/DSOX3014T/oscilloscope-100-mhz-4-analog-channels.html",
+      "retrieved": "2026-10-08",
+      "note": "제조사 지원 페이지 제목(검색 결과): DSOX3014T Oscilloscope: 100 MHz, 4 Analog Channels [Discontinued]. 본문은 열지 않음"
+    },
+    {
+      "url": "https://www.keysight.com/in/en/products/oscilloscopes/infiniivision-2-4-channel-digital-oscilloscopes/infiniivision-3000t-x-series-oscilloscopes.html",
+      "retrieved": "2026-10-08",
+      "note": "검색 엔진에 색인된 키사이트 계열 페이지 발췌: 20 DSO and MSO models from 100 MHz - 1 GHz, 2-Channel + 16 Logic Channels MSO models MSO-X 3012T…3102T, 4-Channel + 16 Logic Channels MSO-X 3014T…3104T, 5 GSa/s interleaved / 2.5 GSa/s non-interleaved. 직접 조회하면 일반 분류 페이지로 넘어가 본문을 확인하지 못함"
+    },
+    {
+      "url": "https://www.batronix.com/shop/keysight/3000TX.html",
+      "retrieved": "2026-10-08",
+      "note": "대리점(Batronix) 판매 목록 페이지. 키사이트 계열 페이지가 일반 분류 페이지(Essential/Advanced)로 넘어가 기종 목록을 얻지 못해, 기종 목록과 대리점 표기 사양을 여기서 확인함. 기종별 \"2 channel oscilloscope with 100 MHz Bandwidth, 5 GSa/s sample rate, 4 Mpts memory depth\" 형식. MSOX3052T·3054T·3102T·3104T 는 Memory 2 Mpts 로 적음"
+    }
+  ],
+  "confidence": "limited",
+  "notes": "단종 표시는 DSOX3054T·DSOX3014T 두 기종에서만 확인. 제조사 문서는 MSO-X 3054T 처럼 하이픈을 넣어 적기도 하므로 대장 표기도 그럴 수 있음."
+}

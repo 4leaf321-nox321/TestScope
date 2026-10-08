@@ -1,0 +1,172 @@
+{
+  "id": "mark-10-series-7-force-gauges",
+  "kind": "equipment_series",
+  "name": "Mark-10 Series 7 Digital Force Gauges (M7-012 – M7-500)",
+  "name_ko": "마크텐 Series 7 디지털 포스 게이지",
+  "manufacturer": "mark-10",
+  "brand": "Series 7",
+  "category": "force_pressure_sensor",
+  "subcategory": "digital_force_gauge",
+  "form_factor": "handheld",
+  "description": "Mark-10 의 최상위 디지털 포스 게이지. 용량 0.5 N(0.12 lbF)～2500 N(500 lbF) 12기종, 정확도 ±0.1 % 풀스케일, 샘플링 14,000 Hz, 자동 데이터 출력 최대 250 Hz(사양서; 웹 페이지는 500 Hz). 고속 연속 수집 5,000 점(최대 14,000 Hz), 파단 검출, 1차·2차 피크.",
+  "test_items": [
+    "tensile",
+    "compression"
+  ],
+  "measurands": [
+    "force",
+    "peak_force"
+  ],
+  "limits": {
+    "force_N": {
+      "min": 0.5,
+      "max": 2500
+    },
+    "digital_sample_rate_Hz": {
+      "max": 14000,
+      "note": "14,000 Hz, 펄스 응답 최소 1/7,000 s(PDF 데이터시트)"
+    },
+    "data_rate_Hz": {
+      "max": 250,
+      "note": "PDF 데이터시트: USB/RS-232 자동 출력 최대 250 Hz(최대 230,400 baud). 웹 페이지는 데이터 출력 최대 500 Hz"
+    },
+    "operating_temperature_degC": {
+      "min": 4.4,
+      "max": 37.8,
+      "note": "원문 40 - 100°F, 최대 습도 96 %(결로 없음)"
+    }
+  },
+  "models": [
+    {
+      "model": "M7-012",
+      "specs": {
+        "force_N": 0.5,
+        "force_resolution": "0.00002 lbF / 0.0001 N",
+        "accuracy": "±0.1% of full scale",
+        "weight_kg": 0.45
+      }
+    },
+    {
+      "model": "M7-025",
+      "specs": {
+        "force_N": 1,
+        "force_resolution": "0.00005 lbF / 0.0002 N",
+        "accuracy": "±0.1% of full scale",
+        "weight_kg": 0.45
+      }
+    },
+    {
+      "model": "M7-05",
+      "specs": {
+        "force_N": 2.5,
+        "force_resolution": "0.0001 lbF / 0.0005 N",
+        "accuracy": "±0.1% of full scale",
+        "weight_kg": 0.45
+      }
+    },
+    {
+      "model": "M7-1",
+      "specs": {
+        "force_N": 5,
+        "force_resolution": "0.0002 lbF / 0.001 N",
+        "accuracy": "±0.1% of full scale",
+        "weight_kg": 0.45
+      }
+    },
+    {
+      "model": "M7-2",
+      "specs": {
+        "force_N": 10,
+        "force_resolution": "0.0005 lbF / 0.002 N",
+        "accuracy": "±0.1% of full scale",
+        "weight_kg": 0.45
+      }
+    },
+    {
+      "model": "M7-5",
+      "specs": {
+        "force_N": 25,
+        "force_resolution": "0.001 lbF / 0.005 N",
+        "accuracy": "±0.1% of full scale",
+        "weight_kg": 0.45
+      }
+    },
+    {
+      "model": "M7-10",
+      "specs": {
+        "force_N": 50,
+        "force_resolution": "0.002 lbF / 0.01 N",
+        "accuracy": "±0.1% of full scale",
+        "weight_kg": 0.45
+      }
+    },
+    {
+      "model": "M7-20",
+      "specs": {
+        "force_N": 100,
+        "force_resolution": "0.005 lbF / 0.02 N",
+        "accuracy": "±0.1% of full scale",
+        "weight_kg": 0.45
+      }
+    },
+    {
+      "model": "M7-50",
+      "specs": {
+        "force_N": 250,
+        "force_resolution": "0.01 lbF / 0.05 N",
+        "accuracy": "±0.1% of full scale",
+        "weight_kg": 0.45
+      }
+    },
+    {
+      "model": "M7-100",
+      "specs": {
+        "force_N": 500,
+        "force_resolution": "0.02 lbF / 0.1 N",
+        "accuracy": "±0.1% of full scale",
+        "weight_kg": 0.45
+      }
+    },
+    {
+      "model": "M7-200",
+      "specs": {
+        "force_N": 1000,
+        "force_resolution": "0.05 lbF / 0.2 N",
+        "accuracy": "±0.1% of full scale",
+        "weight_kg": 0.54
+      }
+    },
+    {
+      "model": "M7-500",
+      "specs": {
+        "force_N": 2500,
+        "force_resolution": "0.1 lbF / 0.5 N",
+        "accuracy": "±0.1% of full scale",
+        "weight_kg": 0.54
+      }
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://www.mark-10.com/products/force-gauges/series-7/",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지(HTML, mark-10.com) Series 7 기종 표"
+    },
+    {
+      "file": "mark-10/datasheetseries7.pdf",
+      "pages": [
+        1,
+        3,
+        4
+      ],
+      "note": "Series 7 데이터시트 32-1167 REV 0926 — 사양·용량×분해능 표"
+    }
+  ],
+  "confidence": "catalog",
+  "notes": "kgF 용량(M7-1 이상)은 페이지·PDF 에 있으나 N 만 옮김. PDF 로 확인: 12기종 용량·분해능, 정확도 ±0.1 % FS, 14,000 Hz, 과부하 200 %, 무게. 데이터 출력 상한은 PDF 의 자동 출력 250 Hz 로 바꿈(웹 페이지 500 Hz). 아날로그 출력 ±1 VDC(풀스케일 0.25 %).",
+  "accuracy": {
+    "force": "±0.1% of full scale",
+    "overload": "200% of full scale(110% 이상에서 「OVER」 표시)",
+    "load_cell_deflection": "풀스케일에서 0.25 mm(M7-012 는 0.13 mm)"
+  }
+}

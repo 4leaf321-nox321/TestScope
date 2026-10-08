@@ -1,0 +1,94 @@
+{
+  "id": "rtec-instruments-fbt-1000",
+  "kind": "equipment_model",
+  "name": "Rtec Instruments FBT-1000 Automated Four Ball Tester",
+  "name_ko": "알텍 인스트루먼츠 FBT-1000 자동 4구 시험기",
+  "manufacturer": "rtec-instruments",
+  "category": "tribometer",
+  "form_factor": "benchtop",
+  "description": "윤활유 · 그리스의 마모 방지성과 극압성을 4구(four ball)법으로 시험하는 자동 시험기. 무게추 없이 폐루프 하중 제어로 최대 8,000 N 또는 10,000 N(주문 시 선택), 최대 2,500 rpm, −35~200 °C(400 °C 업그레이드)에서 시험한다.",
+  "test_items": [
+    "friction_wear_tribo"
+  ],
+  "measurands": [
+    "wear_scar_diameter",
+    "weld_load",
+    "friction_coefficient"
+  ],
+  "materials": [
+    "lubricants",
+    "greases"
+  ],
+  "standards": {
+    "compliance": [],
+    "test_methods": [
+      "ASTM D2266",
+      "ASTM D4172",
+      "ASTM D2596",
+      "ASTM D2783",
+      "BS EN ISO 20623",
+      "BS ISO 26422",
+      "CEC L-45-A-99",
+      "DIN 51350",
+      "IP 239"
+    ]
+  },
+  "limits": {
+    "force_N": {
+      "max": 10000,
+      "note": "주문 시 8,000 N 또는 10,000 N 선택"
+    },
+    "rotation_rpm": {
+      "max": 2500
+    },
+    "temperature_degC": {
+      "min": -35,
+      "max": 200,
+      "note": "400 °C 업그레이드 있음"
+    }
+  },
+  "models": [
+    {
+      "model": "FBT-1000",
+      "specs": {
+        "force_N": {
+          "values": [
+            8000,
+            10000
+          ]
+        },
+        "rotation_rpm": {
+          "max": 2500
+        },
+        "temperature_degC": {
+          "min": -35,
+          "max": 200,
+          "note": "업그레이드 시 400 °C"
+        }
+      }
+    }
+  ],
+  "relations": [
+    {
+      "type": "performs",
+      "target": "friction_wear_tribo"
+    },
+    {
+      "type": "same_family_as",
+      "target": "rtec-instruments-mft"
+    },
+    {
+      "type": "same_family_as",
+      "target": "ducom-lubricant-testers"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://rtec-instruments.com/products/four-ball-tester-fbt-1000/",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지"
+    }
+  ],
+  "notes": "measurands 는 4구 시험법(ASTM D4172 · D2783)이 내는 값을 적은 것으로, 페이지는 '마모 방지 · 극압 · 마찰 특성' 이라고만 쓴다.",
+  "confidence": "limited"
+}

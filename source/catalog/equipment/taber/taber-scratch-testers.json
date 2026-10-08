@@ -1,0 +1,132 @@
+{
+  "id": "taber-scratch-testers",
+  "kind": "equipment_series",
+  "name": "Taber Scratch Testers (Multi-Finger Scratch/Mar Tester 710, Shear/Scratch Tester 550 / 551)",
+  "name_ko": "테이버 스크래치 시험기 (멀티핑거 710 · 시어/스크래치 550 · 551)",
+  "manufacturer": "taber",
+  "category": "scratch_hardness_tester",
+  "form_factor": "benchtop",
+  "description": "표면의 긁힘 · 마(mar) · 파임 저항을 보는 시험기 두 종. Multi-Finger Scratch/Mar Tester 710 은 독립 핑거 5개에 2~20 N 추를 따로 걸고 공압 구동 플랫폼을 직선으로 지나게 하며, 지름 1.0 mm 반구 스크래치 팁 · 7.0 mm 반구 마 팁(텅스텐 카바이드)을 쓴다. Shear/Scratch Tester 550 · 551 은 회전하는 시편(550 0.6 rpm, 551 5 rpm)에 저울대 하중 0~1000 g(옵션 1500 g, 0~50 g)으로 다이아몬드 공구를 눌러 긁는다.",
+  "test_items": [
+    "scratch_pencil_hardness"
+  ],
+  "measurands": [
+    "scratch_resistance",
+    "mar_resistance"
+  ],
+  "materials": [
+    "plastics",
+    "coatings",
+    "laminates",
+    "automotive interior parts"
+  ],
+  "limits": {
+    "load_N": {
+      "min": 2,
+      "max": 25,
+      "note": "710 표준 추 2~20 N, 옵션 25 N · 정밀 추 0.6 N"
+    },
+    "load_g": {
+      "min": 0,
+      "max": 1500,
+      "note": "550 · 551 저울대 0~500 g, 추 추가 500~1000 g, 옵션 고정 추 1500 g, 옵션 0~50 g"
+    },
+    "rotation_rpm": {
+      "values": [
+        0.6,
+        5
+      ],
+      "note": "550 0.6 rpm, 551 5 rpm"
+    },
+    "specimen_thickness_mm": {
+      "max": 22,
+      "note": "710 표준 22 mm(옵션 5 mm 스페이서), 550 · 551 은 12.7 mm"
+    }
+  },
+  "models": [
+    {
+      "model": "710",
+      "variant": "Multi-Finger Scratch/Mar Tester",
+      "specs": {
+        "load_N": {
+          "values": [
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            10,
+            15,
+            20
+          ],
+          "note": "표준 추 세트. 옵션 4 · 8 · 9 · 12 N 또는 8 · 13 · 18 N, 25 N, 정밀 0.6 N"
+        },
+        "specimen_thickness_mm": {
+          "max": 22
+        }
+      },
+      "note": "핑거: 독립 스플라인 핑거 5개; 팁: 1.0 mm 반구 스크래치 팁 5개, 7.0 mm 반구 마 팁 5개(텅스텐 카바이드). 옵션 원추 팁(WC 0.1 · 0.25 · 0.4 · 0.5 mm, 다이아몬드 90°); 구동: 공압 직선 플랫폼, 공기압으로 속도 조절"
+    },
+    {
+      "model": "550",
+      "variant": "Shear/Scratch Tester (115 V, 60 Hz)",
+      "specs": {
+        "rotation_rpm": 0.6,
+        "load_g": {
+          "min": 0,
+          "max": 1000
+        },
+        "specimen_thickness_mm": {
+          "max": 12.7
+        }
+      },
+      "note": "공구: S-20, 139-55 (3 mil 반경 원추 다이아몬드)"
+    },
+    {
+      "model": "551",
+      "variant": "Shear/Scratch Tester (230 V, 50 Hz)",
+      "specs": {
+        "rotation_rpm": 5,
+        "load_g": {
+          "min": 0,
+          "max": 1000
+        },
+        "specimen_thickness_mm": {
+          "max": 12.7
+        }
+      },
+      "note": "ISO · DIN · EN 등 유럽 시험 규격을 만족한다고 적힘; 공구: S-20, 139-56 (3.5 mil 반경 원추 다이아몬드)"
+    }
+  ],
+  "options": [
+    "다이아몬드 스크래치 공구 139-58",
+    "1.0 mm 반구 스크래치 팁",
+    "카바이드 스크래치 팁(EN 14565)",
+    "S-20-3 · S-20-4 텅스텐 카바이드"
+  ],
+  "relations": [
+    {
+      "type": "performs",
+      "target": "scratch_pencil_hardness"
+    },
+    {
+      "type": "same_family_as",
+      "target": "taber-reciprocating-abraser-5900"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://www.taberindustries.com/multi-finger-scratch-mar-tester",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지(Model 710)"
+    },
+    {
+      "url": "https://www.taberindustries.com/shear-scratch-tester",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지(Model 550 · 551)"
+    }
+  ],
+  "notes": "710 의 속도는 공기압으로 조절하며 수치가 없다. 550 · 551 의 개별 규격명은 페이지에 없다.",
+  "confidence": "limited"
+}

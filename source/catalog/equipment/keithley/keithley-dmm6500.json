@@ -1,0 +1,59 @@
+{
+  "id": "keithley-dmm6500",
+  "kind": "equipment_series",
+  "name": "Keithley DMM6500 6½-Digit Multimeter with Graphical Touchscreen",
+  "name_ko": "키슬리 DMM6500 6½자리 터치스크린 멀티미터",
+  "manufacturer": "keithley",
+  "brand": "DMM6500",
+  "category": "dmm_daq",
+  "form_factor": "benchtop",
+  "description": "그래픽 터치스크린 6½자리 탁상형 멀티미터. 측정 기능 15종(디지타이징·정전용량·온도 포함), 감도 100 nV·10 pA·1 µΩ. 1 MS/s 16비트 디지타이저, 최소 측정 구간 8.3 µs(60 Hz)·10 µs(50 Hz). 2000-SCAN 또는 2001-TCSCAN 스캔 카드로 최대 10채널까지 늘린다.",
+  "test_items": [],
+  "models": [
+    {
+      "model": "DMM6500",
+      "specs": {
+        "dmm_resolution_digits": 6.5,
+        "data_rate_Hz": 1000000,
+        "channels": {
+          "max": 10,
+          "note": "2000-SCAN 또는 2001-TCSCAN 스캔 카드 장착 시",
+          "requires_accessory": true
+        },
+        "interfaces": "LAN(LXI), USB 표준; GPIB, RS-232, TSP-Link 옵션"
+      },
+      "note": "data_rate_Hz 는 디지타이저 1 MS/s(16비트). DCV 확도·메모리는 페이지에 없음"
+    }
+  ],
+  "features": [
+    "그래픽 터치스크린",
+    "측정 기능 15종",
+    "감도 100 nV, 10 pA, 1 µΩ",
+    "1 MS/s 16비트 디지타이저"
+  ],
+  "options": [
+    {
+      "name": "2000-SCAN",
+      "note": "스캔 카드"
+    },
+    {
+      "name": "2001-TCSCAN",
+      "note": "열전대 스캔 카드"
+    }
+  ],
+  "relations": [
+    {
+      "type": "same_family_as",
+      "target": "keithley-daq6510"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://www.tek.com/en/products/keithley/digital-multimeter/dmm6500",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지. 6.5 Digit, 15 functions, 100 nV·10 pA·1 µΩ, 1 Msample/s 16 bits, 10 measurement channels with scan cards, LAN LXI·USB 표준, GPIB·RS-232·TSP-Link 옵션"
+    }
+  ],
+  "confidence": "limited",
+  "notes": "Fluke 8845A/8846A 단종 안내가 대체 기종으로 Keithley 2100 Series 와 DMM6500 을 권함."
+}

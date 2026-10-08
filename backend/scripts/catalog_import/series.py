@@ -18,7 +18,7 @@ from app.modules.equipment.models import (
     SeriesRelation,
     SpecSource,
 )
-from app.modules.methods.models import TestMethod
+from app.modules.methods.models import TestMethod, TestMethodItem
 from app.modules.test_items.models import (
     SeriesPendingMethod,
     SeriesTestItem,
@@ -142,6 +142,12 @@ def step_series(
     돌려주는 것: (계열, 새로 만든 시험 항목 수, 항목 미정으로 남긴 인용 수).
     """
     sources = {row.path: row for row in db.scalars(select(SpecSource))}
+    # 규격마다 정해진 시험 항목들 — 규격 하나가 여럿을 덮는다(`TestMethodItem`).
+    covers: dict[uuid.UUID, set[uuid.UUID]] = {}
+    for method_id, term_id in db.execute(
+        select(TestMethodItem.method_id, TestMethodItem.test_item_term_id)
+    ):
+        covers.setdefault(method_id, set()).add(term_id)
     made: dict[str, EquipmentSeries] = {}
     test_items = 0
     pending = 0
@@ -175,7 +181,7 @@ def step_series(
                 one
                 for one in codes
                 if methods.get(one) is not None
-                and (one in listed or methods[one].test_item_term_id == term.id)
+                and (one in listed or term.id in covers.get(methods[one].id, set()))
             ]
             test_item = db.scalar(
                 select(SeriesTestItem).where(
@@ -219,7 +225,7 @@ def step_series(
             method = methods.get(code)
             if method is None or code in linked_codes:
                 continue
-            if method.test_item_term_id is not None:
+            if covers.get(method.id):
                 # 항목은 정해졌는데 이 계열에 그 시험이 없다 — 온톨로지와 객체가 어긋난
                 # 것이라 미정이 아니다. 미정 표에 넣으면 「정하면 붙는다」 가 거짓이 된다.
                 continue

@@ -1,0 +1,49 @@
+{
+  "id": "leica-microsystems-dm2700-m",
+  "kind": "equipment_model",
+  "name": "Leica DM2700 M Upright Materials Microscope",
+  "name_ko": "라이카 DM2700 M 정립 재료 현미경",
+  "manufacturer": "leica-microsystems",
+  "category": "optical_microscope",
+  "subcategory": "upright_metallurgical_microscope",
+  "form_factor": "benchtop",
+  "description": "4500 K 고출력 LED 조명의 정립 재료 현미경(단종 보관 제품). 명시야·암시야·미분간섭·정성 편광·형광·경사 조명. 100×100 mm, 두께 80 mm 까지의 시료, N PLAN 아크로맷 5x～100x 와 약 40 mm 를 한눈에 보는 0.7x 매크로 대물렌즈, 시야수 22 mm. 3단(미·중·조동) 초점, 색 표시 조리개 보조(CCDA).",
+  "test_items": [
+    "microscopy"
+  ],
+  "limits": {
+    "sample_size_mm": {
+      "max": 100,
+      "note": "100×100 mm"
+    },
+    "specimen_height_mm": {
+      "max": 80,
+      "note": "두께 80 mm 까지"
+    },
+    "magnification": {
+      "min": 0.7,
+      "max": 100,
+      "note": "대물렌즈 배율"
+    }
+  },
+  "models": [
+    {
+      "model": "DM2700 M",
+      "specs": {
+        "observation_methods": "BF, DF, DIC, POL, FLUO, 경사 조명",
+        "specimen_height_mm": {
+          "max": 80
+        }
+      },
+      "note": "단종(Archived product)"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://www.leica-microsystems.com/products/light-microscopes/upright-microscopes/p/leica-dm2700-m/",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지(HTML, leica-microsystems.com) DM2700 M(보관 제품 페이지)"
+    }
+  ],
+  "confidence": "limited"
+}

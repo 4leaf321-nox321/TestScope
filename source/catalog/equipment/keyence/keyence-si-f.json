@@ -1,0 +1,141 @@
+{
+  "id": "keyence-si-f",
+  "kind": "equipment_series",
+  "name": "SI-F Series Micro-head Spectral-interference Laser Displacement Meter",
+  "name_ko": "키엔스 SI-F 분광 간섭 레이저 변위계",
+  "manufacturer": "keyence",
+  "category": "thickness_displacement_gauge",
+  "description": "분광 간섭(spectral interference) 방식으로 절대 거리를 재는 마이크로 헤드형 변위계 계열임. 광원은 적외 SLD(중심 파장 820 nm, Class 1). 측정 범위 0.05~1.1 mm(SI-F01·SI-F80), 스폿 ø20~40 µm, 직선성 ±0.3 µm, 샘플링 주기 200 µs. 두께 측정형(SI-F80)은 투명체 두께를, 장거리형(SI-F10)은 검출 거리 11.3~12.35 mm 에서 잼. 센서 헤드·분광 유닛·컨트롤러로 구성됨.",
+  "test_items": [],
+  "limits": {
+    "spot_size_um": {
+      "min": 20,
+      "max": 40
+    },
+    "linearity_um": {
+      "note": "원문 ±0.3 µm",
+      "values": [
+        0.3
+      ]
+    },
+    "sampling_cycle_us": {
+      "note": "원문 200 µs",
+      "values": [
+        200
+      ]
+    },
+    "laser_wavelength_nm": {
+      "note": "원문 Infrared SLD Central wavelength 820 nm",
+      "values": [
+        820
+      ]
+    }
+  },
+  "models": [
+    {
+      "model": "SI-F01",
+      "variant": "마이크로 헤드형",
+      "specs": {
+        "displacement_mm": {
+          "min": 0.05,
+          "max": 1.1,
+          "note": "원문 0.05 to 1.1 mm"
+        },
+        "spot_size_um": 20,
+        "linearity_um": 0.3,
+        "position_resolution_nm": {
+          "value": 250,
+          "note": "원문 Resolution 0.25 µm"
+        },
+        "sampling_cycle_us": 200
+      }
+    },
+    {
+      "model": "SI-F10",
+      "variant": "장거리형",
+      "specs": {
+        "displacement_mm": {
+          "min": 11.3,
+          "max": 12.35,
+          "note": "원문 11.3 to 12.35 mm"
+        },
+        "spot_size_um": 40,
+        "linearity_um": 0.3,
+        "sampling_cycle_us": 200
+      }
+    },
+    {
+      "model": "SI-F80",
+      "variant": "두께 측정형",
+      "specs": {
+        "displacement_mm": {
+          "min": 0.05,
+          "max": 1.1,
+          "note": "원문 측정 범위 0.05 to 1.1 mm, 검출 가능 거리 80 to 81.1 mm"
+        },
+        "measurement_distance_mm": {
+          "min": 80,
+          "max": 81.1
+        },
+        "spot_size_um": 20,
+        "linearity_um": 0.3,
+        "sampling_cycle_us": 200
+      }
+    },
+    {
+      "model": "SI-F80R",
+      "variant": "웨이퍼 두께 측정형",
+      "note": "별도 계열 페이지(si-f80r)의 기종. 사양은 읽지 않음",
+      "uncertain": true
+    },
+    {
+      "model": "SI-F01U",
+      "variant": "분광 유닛",
+      "note": "기종명은 제조사 기종 페이지 제목에서 확인"
+    },
+    {
+      "model": "SI-F10U",
+      "variant": "분광 유닛",
+      "note": "기종명은 제조사 기종 페이지 제목에서 확인"
+    },
+    {
+      "model": "SI-F80U",
+      "variant": "분광 유닛",
+      "note": "기종명은 제조사 기종 페이지 제목에서 확인"
+    },
+    {
+      "model": "SI-F80U3",
+      "variant": "분광 유닛(수출 규제 비대상)",
+      "note": "기종명은 제조사 기종 페이지 제목에서 확인"
+    },
+    {
+      "model": "SI-F1001V",
+      "variant": "메인 컨트롤러(내장형)",
+      "note": "분광 유닛 2대까지 연결, 표시 주기 10회/s"
+    },
+    {
+      "model": "SI-FA100",
+      "variant": "확장 컨트롤러",
+      "note": "분광 유닛 1대 연결"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://www.keyence.com/products/measure/spectral/si-f/specs/",
+      "retrieved": "2026-10-08",
+      "note": "제조사 계열 사양 페이지(SI-F01·SI-F10·SI-F80 헤드, 컨트롤러 SI-F1001V·SI-FA100)"
+    },
+    {
+      "url": "https://www.keyence.com/products/measure/spectral/si-f/models/si-f01/",
+      "retrieved": "2026-10-08",
+      "note": "제조사 기종 페이지(검색 결과로 확인한 주소)"
+    },
+    {
+      "url": "https://www.keyence.com/products/measure/spectral/si-f80r/models/si-f80r/",
+      "retrieved": "2026-10-08",
+      "note": "SI-F80R 기종 페이지 주소(검색 결과 제목으로만 확인, 열람 안 함)"
+    }
+  ],
+  "confidence": "limited",
+  "notes": "분해능 0.25 µm 는 사양 페이지 요약에서 SI-F01 값으로만 읽혀 다른 헤드에는 적지 않음."
+}

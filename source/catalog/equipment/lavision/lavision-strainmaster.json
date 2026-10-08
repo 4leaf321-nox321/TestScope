@@ -1,0 +1,255 @@
+{
+  "id": "lavision-strainmaster",
+  "kind": "equipment_series",
+  "name": "LaVision StrainMaster DIC / DVC Systems (Portable / Compact / Micro-DIC / High-Speed DIC / DVC)",
+  "name_ko": "라비전 StrainMaster DIC·DVC 시스템",
+  "manufacturer": "lavision",
+  "brand": "StrainMaster",
+  "category": "dic_strain_measurement",
+  "subcategory": "stereo_dic",
+  "form_factor": "portable",
+  "description": "자연 또는 도포 스페클 패턴으로 2D·스테레오 표면 변형과 변형률을 해석하는 DIC 시스템 계열(DaVis 소프트웨어). StrainMaster Portable 은 대개 2～25 MP 카메라(USB·CoaXPress·GigE; 웹 페이지는 2～50 MP, 22～180 Hz). Compact 는 2·5 MP 카메라 2대 일체형 머리, 작동 거리 25 cm 고정, 초점 거리 12·16 mm 의 4가지 형식(SMC 2M-280·2M-200·5M-180·5M-140). 소형 시편용 Micro-DIC 는 서브밀리미터 시야, High-Speed DIC 는 kHz 카메라(DaVis 지원 최대 300,000 fps). 디지털 체적 상관(DVC)은 X선 CT·MRI·OCT 체적 영상 안의 구조 패턴을 추적해 3차원 변형률을 얻는다.",
+  "test_items": [
+    "tensile",
+    "compression",
+    "fatigue"
+  ],
+  "measurands": [
+    "full_field_displacement",
+    "axial_strain",
+    "transverse_strain",
+    "poisson_ratio",
+    "shape_3d",
+    "volumetric_strain"
+  ],
+  "limits": {
+    "detector_megapixels": {
+      "min": 1,
+      "max": 25,
+      "note": "PDF: Portable 대개 2～25 MPx, 현미경·고속 구성 1～25 MPx. 웹 페이지는 Portable 2～50 MP"
+    },
+    "data_rate_Hz": {
+      "min": 22,
+      "max": 300000,
+      "note": "Portable 22～180 Hz(웹 페이지), Compact 최대 150 Hz, 고속 카메라 최대 300,000 fps(PDF, DaVis 지원)"
+    },
+    "field_of_view_mm": {
+      "min": 20,
+      "max": 2000,
+      "note": "DaVis 전형 측정 영역 20 mm ～ 2000 mm(PDF). Micro-DIC 는 서브밀리미터 시야"
+    },
+    "strain_resolution_microstrain": {
+      "values": [
+        50
+      ],
+      "note": "PDF: 최적 조건에서 변위 정확도 0.01 pixel 보다 좋고 변형 정밀도 50(µε, 기호가 추출에서 빠짐) 이하. 가상 게이지·신율계는 더 좋음"
+    }
+  },
+  "models": [
+    {
+      "model": "StrainMaster Portable",
+      "specs": {
+        "detector_megapixels": {
+          "min": 2,
+          "max": 25,
+          "note": "PDF 「Cameras (USB, coaXPress, GigE; typically 2 to 25 MPx)」. 웹 페이지는 2～50 MP"
+        },
+        "data_rate_Hz": {
+          "min": 22,
+          "max": 180,
+          "note": "모델별 — 웹 페이지 값(PDF 에 없음)"
+        }
+      },
+      "note": "2D 또는 3D(스테레오). 삼각대·1 m 레일·LED 2개·DCU 11(A/D 변환기 내장)·USB 3.0 카메라. 고온 시험 옵션(청색 LED·필터)"
+    },
+    {
+      "model": "StrainMaster Compact",
+      "specs": {
+        "detector_megapixels": {
+          "values": [
+            2,
+            5
+          ],
+          "note": "M-lite 2M(1936 × 1216), M-lite 5M(2464 × 2056) 카메라 2대"
+        },
+        "working_distance_mm": {
+          "values": [
+            250
+          ],
+          "note": "25 cm 고정(하우징 앞면 기준), 피사계 심도 약 2 cm"
+        },
+        "data_rate_Hz": {
+          "max": 150,
+          "note": "최대 해상도에서 2M 150 Hz(8 bit)·100 Hz(12 bit), 5M 75 Hz(8 bit)·50 Hz(12 bit). AOI 를 줄이면 빨라짐"
+        },
+        "field_of_view_mm": {
+          "min": 140,
+          "max": 280,
+          "note": "형식별 120 × 140 ~ 180 × 280 mm(작동 거리 25 cm)"
+        },
+        "operating_temperature_degC": {
+          "min": 10,
+          "max": 30
+        }
+      },
+      "note": "초점 거리 12 mm 또는 16 mm 판. 사전 교정된 스테레오 머리(195 × 200 × 60 mm, 수동 냉각), 백색 또는 청색 LED. 노출 시간 34 µs ~ 166 ms. 비디오 신율계 기능은 ISO 9513 class 0.5, ASTM E83 class B1 상당(최대 표점 거리)"
+    },
+    {
+      "model": "SMC 2M-280",
+      "specs": {
+        "detector_megapixels": {
+          "values": [
+            2
+          ],
+          "note": "2x M-lite 2M(1936 × 1216)"
+        },
+        "field_of_view_mm": {
+          "values": [
+            "180 × 280"
+          ]
+        },
+        "data_rate_Hz": {
+          "max": 150,
+          "note": "8 bit 150 Hz, 12 bit 100 Hz"
+        },
+        "working_distance_mm": {
+          "values": [
+            250
+          ]
+        }
+      },
+      "note": "StrainMaster Compact 형식. 렌즈 2x 12 mm, 유효 공간 분해능 142 µm/px"
+    },
+    {
+      "model": "SMC 2M-200",
+      "specs": {
+        "detector_megapixels": {
+          "values": [
+            2
+          ],
+          "note": "2x M-lite 2M(1936 × 1216)"
+        },
+        "field_of_view_mm": {
+          "values": [
+            "130 × 205"
+          ]
+        },
+        "data_rate_Hz": {
+          "max": 150,
+          "note": "8 bit 150 Hz, 12 bit 100 Hz"
+        },
+        "working_distance_mm": {
+          "values": [
+            250
+          ]
+        }
+      },
+      "note": "StrainMaster Compact 형식. 렌즈 2x 16 mm, 유효 공간 분해능 92 µm/px"
+    },
+    {
+      "model": "SMC 5M-180",
+      "specs": {
+        "detector_megapixels": {
+          "values": [
+            5
+          ],
+          "note": "2x M-lite 5M(2464 × 2056)"
+        },
+        "field_of_view_mm": {
+          "values": [
+            "150 × 180"
+          ]
+        },
+        "data_rate_Hz": {
+          "max": 75,
+          "note": "8 bit 75 Hz, 12 bit 50 Hz"
+        },
+        "working_distance_mm": {
+          "values": [
+            250
+          ]
+        }
+      },
+      "note": "StrainMaster Compact 형식. 렌즈 2x 12 mm, 유효 공간 분해능 74 µm/px"
+    },
+    {
+      "model": "SMC 5M-140",
+      "specs": {
+        "detector_megapixels": {
+          "values": [
+            5
+          ],
+          "note": "2x M-lite 5M(2464 × 2056)"
+        },
+        "field_of_view_mm": {
+          "values": [
+            "120 × 140"
+          ]
+        },
+        "data_rate_Hz": {
+          "max": 75,
+          "note": "8 bit 75 Hz, 12 bit 50 Hz"
+        },
+        "working_distance_mm": {
+          "values": [
+            250
+          ]
+        }
+      },
+      "note": "StrainMaster Compact 형식. 렌즈 2x 16 mm, 유효 공간 분해능 52 µm/px"
+    },
+    {
+      "model": "StrainMaster Micro-DIC",
+      "specs": {
+        "detector_megapixels": {
+          "min": 1,
+          "max": 25
+        }
+      },
+      "note": "서브밀리미터 시야(페이지 표기 Small Scale Micro-DIC Systems, PDF 표기 Microscopic DIC / DaVis Desktop PC - PTU - Micro-DIC). Zeiss V12 실체 현미경 등, 고배율 줌 렌즈 예 3.5x(작동 거리 341 mm) ~ 28x(37 mm). SEM 영상 가져오기 가능"
+    },
+    {
+      "model": "StrainMaster High-Speed DIC",
+      "specs": {
+        "data_rate_Hz": {
+          "max": 300000,
+          "note": "DaVis 가 지원하는 고속 카메라 최대 300,000 fps(PDF 9쪽). High-Speed DIC 쪽 원문은 「up to several 100 000 fps」"
+        }
+      },
+      "note": "kHz 고속 카메라(Phantom·Photron), PTU High-Speed 트리거, A/D 변환기 최대 1.25 MHz"
+    },
+    {
+      "model": "StrainMaster DVC",
+      "note": "디지털 체적 상관(소프트웨어). X-ray CT, MRI, OCT 체적 영상"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://www.lavision.de/en/products/strainmaster/index.php",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지(HTML, lavision.de) StrainMaster 개요(2D/3D, DVC)"
+    },
+    {
+      "url": "https://www.lavision.de/en/products/strainmaster/systems/index.php",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지(HTML, lavision.de) StrainMaster 시스템(Portable, Compact, Micro-DIC, High-Speed)"
+    },
+    {
+      "file": "lavision/download.php-4.pdf",
+      "pages": [
+        3,
+        5,
+        8,
+        9,
+        11,
+        14,
+        15,
+        17,
+        18
+      ],
+      "note": "StrainMaster 브로슈어(02/26) — 제품군, 정확도, DaVis, 구성, Compact 형식 표, Portable, High-Speed·Microscopic DIC"
+    }
+  ],
+  "confidence": "catalog",
+  "notes": "모델 이름은 페이지의 시스템 항목명에 「StrainMaster」 를 붙여 적음(Portable·Compact 는 페이지 표기 그대로). Compact 의 네 형식(SMC 2M-280·2M-200·5M-180·5M-140)은 PDF 표기 그대로 더함 — 형식 이름의 숫자가 시야 긴 변과 맞아 표의 행을 확인함. PDF 로 확인: Compact 카메라·작동 거리·렌즈, 카메라 화소 범위(Portable 상한 25 MPx 로 바로잡음), 고속 300,000 fps, DVC 입력(CT·OCT·MRI). 웹 값 그대로: Portable 22～180 Hz. PDF 는 제품군을 Compact·Portable·R&D 세 갈래로 나누며, Micro-DIC·High-Speed DIC 는 R&D 구성 예다."
+}

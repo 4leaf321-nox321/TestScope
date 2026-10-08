@@ -1,0 +1,139 @@
+{
+  "id": "hitachi-nexta-dsc",
+  "kind": "equipment_series",
+  "name": "Hitachi High-Tech NEXTA DSC200 / DSC600 Differential Scanning Calorimeters",
+  "name_ko": "히타치 하이테크 NEXTA DSC200·DSC600 시차주사열량계",
+  "manufacturer": "hitachi-high-tech",
+  "category": "dsc",
+  "brand": "NEXTA",
+  "form_factor": "benchtop",
+  "description": "중심 열흐름 열유속식 DSC. DSC200 은 일반 응용, DSC600 은 고감도·고분해능 연구용(열전대 3개). 온도 -150~725 °C, 승·냉각 0.01~100 °C/min, 온도 정밀도 ±0.01 °C, 정확도 ±0.05 °C, 열량 정밀도 ±0.05 %, 정확도 ±0.4 %, 기저선 안정도 ±5 µW. Real View 카메라(선택)로 측정 중 시료를 본다. 자동 시료기 최대 50 시료, 이중 냉각.",
+  "test_items": [
+    "dsc"
+  ],
+  "measurands": [
+    "thermal.glass_transition",
+    "thermal.melting_point",
+    "thermal.specific_heat",
+    "thermal.latent_heat_fusion"
+  ],
+  "measurands_by_item": {
+    "dsc": [
+      "thermal.glass_transition",
+      "thermal.melting_point",
+      "thermal.specific_heat",
+      "thermal.latent_heat_fusion"
+    ]
+  },
+  "standards": {
+    "compliance": [],
+    "test_methods": [
+      "ASTM E1269",
+      "ASTM E1641-16",
+      "ASTM E794-06",
+      "ASTM E793-06",
+      "ISO 11357-4",
+      "ISO 11358-3",
+      "ISO 11357-3",
+      "ISO 11357-2",
+      "ISO 22768"
+    ]
+  },
+  "limits": {
+    "temperature_degC": {
+      "min": -150,
+      "max": 725
+    },
+    "heating_rate_K_min": {
+      "min": 0.01,
+      "max": 100,
+      "note": "승·냉각 프로그램 속도"
+    }
+  },
+  "models": [
+    {
+      "model": "DSC200",
+      "specs": {
+        "temperature_degC": {
+          "min": -150,
+          "max": 725
+        },
+        "heating_rate_K_min": {
+          "min": 0.01,
+          "max": 100
+        },
+        "heat_flow_noise_uW_rms": {
+          "value": 0.1,
+          "note": "RMS noise 0.1 µW / sensitivity 0.2 µW"
+        },
+        "measurement_time_constant_s": {
+          "max": 6.5,
+          "note": "6.5 s or better"
+        },
+        "temperature_precision_degC": 0.01,
+        "accuracy_degC": 0.05
+      },
+      "note": "Heat flux with centric heat flow"
+    },
+    {
+      "model": "DSC600",
+      "specs": {
+        "temperature_degC": {
+          "min": -150,
+          "max": 725
+        },
+        "heating_rate_K_min": {
+          "min": 0.01,
+          "max": 100
+        },
+        "heat_flow_noise_uW_rms": {
+          "value": 0.05,
+          "note": "RMS noise 0.05 µW / sensitivity 0.1 µW"
+        },
+        "measurement_time_constant_s": {
+          "max": 3,
+          "note": "3 s or better"
+        },
+        "temperature_precision_degC": 0.01,
+        "accuracy_degC": 0.05
+      },
+      "note": "Heat flux with centric heat flow and 3 thermocouples"
+    }
+  ],
+  "accuracy": {
+    "temperature": "precision ±0.01 °C, accuracy ±0.05 °C",
+    "calorimetric": "precision ±0.05 %, accuracy ±0.4 %",
+    "baseline": "stability ±5 µW"
+  },
+  "options": [
+    {
+      "name": "Real View 카메라",
+      "note": "측정 중 시료 형상·색 변화를 타임스탬프와 함께 기록"
+    },
+    {
+      "name": "Real View 편광 미소 시료 관찰 장치",
+      "note": "20 MP 카메라, 디지털 50배, 화소 분해능 1.2 µm"
+    },
+    {
+      "name": "PDC-8 / PDC-8LED 광반응 열량 옵션",
+      "note": "Hg-Xe 램프 240–550 nm 최대 500 mW/cm² / LED 365·385·395·405 nm 최대 150 mW/cm², PDC 사용 시 실온~150 °C"
+    },
+    "자동 시료기(최대 50 시료)",
+    "데이터 입출력 소프트웨어 패키지(바코드)"
+  ],
+  "relations": [
+    {
+      "type": "same_family_as",
+      "target": "hitachi-nexta-sta"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://hha.hitachi-hightech.com/en/product-range/products/thermal-analyzer-series/differential-scanning-calorimeters-dsc-nexta-dsc600-and-nexta-dsc200",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지(HTML) 본문·표를 직접 읽음. 제품 비교표(DSC200/DSC600), 옵션(Real View, PDC-8/PDC-8LED)"
+    }
+  ],
+  "confidence": "limited",
+  "notes": "모든 고급 DSC 해석 모듈이 기본 포함이라고 적혀 있다."
+}

@@ -1,0 +1,177 @@
+{
+  "id": "malcom-wetting-testers",
+  "kind": "equipment_series",
+  "name": "Malcom Wetting Testers (Dip Wetting Tester SWB-2 / Solder-Paste Wetting Tester SP-2)",
+  "name_ko": "말콤 솔더 젖음성 시험기 (SWB-2 · SP-2)",
+  "manufacturer": "malcom",
+  "category": "solderability_tester",
+  "form_factor": "benchtop",
+  "description": "솔더 젖음성을 웨팅 밸런스법으로 재는 시험기 두 종. SWB-2(딥 웨팅 테스터)는 부품 리드를 솔더 조에 담가 젖음력을 재며 전자 천칭 센서(EBS) 범위 -30~30 mN, 정확도 ±0.05 mN, 분해능 0.01 mN, 침지 깊이 0.01~20.00 mm, 침지 속도 0.1~30 mm/s, 침지 시간 1~200 s, 솔더 조 상온~400 °C(마이크로 웨팅 밸런스법 320 °C)이다. SP-2(솔더 페이스트 웨팅 테스터)는 SMT 실장 · 리플로를 모사해 페이스트와 부품의 젖음성을 보며 하중 범위 -5.00~10.00 gf, 히터 상온~300 °C, N₂ 퍼지, 예열 · 승온 속도(표준 3 °C/s) · 최고 온도 · 유지 시간을 프로파일로 설정한다.",
+  "test_items": [
+    "solderability"
+  ],
+  "measurands": [
+    "wetting_force",
+    "wetting_time"
+  ],
+  "materials": [
+    "component leads",
+    "solder paste",
+    "SMD components"
+  ],
+  "standards": {
+    "compliance": [],
+    "test_methods": [
+      "JIS Z3198-4",
+      "JIS C 60068-2-54",
+      "JIS C 60068-2-69",
+      "JEITA ET-7411",
+      "ISO 9455-16",
+      "IEC 60068-2-54",
+      "IEC 60068-2-69",
+      "MIL-STD-883",
+      "J-STD-003",
+      "IPC-TM-650",
+      "JIS C 60068-2-83",
+      "JEITA ET-7404",
+      "IEC 60068-2-83"
+    ],
+    "test_methods_by_item": {
+      "solderability": [
+        "IEC 60068-2-54",
+        "IEC 60068-2-69",
+        "IEC 60068-2-83",
+        "J-STD-003",
+        "JIS Z3198-4"
+      ]
+    }
+  },
+  "limits": {
+    "wetting_force_mN": {
+      "min": -49.03,
+      "max": 98.07,
+      "note": "SWB-2 -30~30 mN. SP-2 원문 -5.00~10.00 gf 를 mN 으로 환산"
+    },
+    "temperature_degC": {
+      "max": 400,
+      "note": "SWB-2 솔더 조 상온~400 °C(마이크로 웨팅 밸런스법 320 °C). SP-2 히터 상온~300 °C"
+    },
+    "dip_depth_mm": {
+      "min": 0.01,
+      "max": 20,
+      "note": "SWB-2, 0.01 mm 단위"
+    },
+    "dip_speed_mm_s": {
+      "min": 0.1,
+      "max": 30,
+      "note": "SWB-2"
+    },
+    "test_time_s": {
+      "min": 1,
+      "max": 200,
+      "note": "SWB-2 침지 시간"
+    }
+  },
+  "models": [
+    {
+      "model": "SWB-2",
+      "variant": "Dip Wetting Tester (품번 93610)",
+      "specs": {
+        "principle": "전자 천칭 센서(EBS)",
+        "wetting_force_mN": {
+          "min": -30,
+          "max": 30
+        },
+        "accuracy": "±0.05 mN",
+        "force_resolution": "0.01 mN",
+        "test_time_s": {
+          "min": 1,
+          "max": 200
+        },
+        "dip_depth_mm": {
+          "min": 0.01,
+          "max": 20,
+          "note": "0.01 mm 단위"
+        },
+        "dip_speed_mm_s": {
+          "min": 0.1,
+          "max": 30
+        },
+        "temperature_degC": {
+          "max": 400,
+          "note": "솔더 조 상온~400 °C, 마이크로 웨팅 밸런스법 320 °C"
+        },
+        "power": "AC 100/115/220/240 V, 약 400 W",
+        "footprint_mm": "300 × 330 × 370 (W × D × H)",
+        "weight_kg": 16
+      },
+      "note": "온도 센서 범위(°C): 0~450 (정확도 ±3 °C)"
+    },
+    {
+      "model": "SP-2",
+      "variant": "Solder-Paste Wetting Tester (품번 92350)",
+      "specs": {
+        "principle": "전자 천칭 센서",
+        "wetting_force_mN": {
+          "min": -49.03,
+          "max": 98.07,
+          "note": "원문 -5.00 gf ~ 10.00 gf"
+        },
+        "accuracy": "±(10 mgf + 1 digit)",
+        "force_resolution": "<900 mgf: 0.001 gf / ≥900 mgf: 0.005 gf",
+        "temperature_degC": {
+          "max": 300,
+          "note": "히터 상온~300 °C, N₂ 퍼지"
+        },
+        "heating_rate_K_min": {
+          "values": [
+            180
+          ],
+          "note": "원문 '3 °C/sec standard' — 표준 승온 속도"
+        },
+        "power": "AC 100 V, 50/60 Hz, 700 W",
+        "footprint_mm": "400 × 347 × 510 (W × D × H)",
+        "weight_kg": 20
+      },
+      "note": "온도 센서 범위(°C): 0~300 (정확도 ±3 °C)"
+    }
+  ],
+  "test_modes": [
+    "웨팅 밸런스법(솔더 조)",
+    "마이크로 웨팅 밸런스법",
+    "솔더 페이스트 리플로 모사(SP-2)"
+  ],
+  "features": [
+    "SWB-2: 플럭스 도포(플럭스 온도 제어)부터 측정 끝까지 자동",
+    "SP-2: 열풍 · N₂ 퍼지로 리플로 프로파일 모사"
+  ],
+  "relations": [
+    {
+      "type": "performs",
+      "target": "solderability"
+    },
+    {
+      "type": "same_family_as",
+      "target": "rhesca-solder-wettability-testers"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://www.malcom.co.jp/en/electronics/products/detail/75",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지(SWB-2, 품번 93610)"
+    },
+    {
+      "url": "https://www.malcom.co.jp/en/electronics/products/detail/76",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지(SP-2, 품번 92350)"
+    },
+    {
+      "url": "https://www.malcom.co.jp/en/electronics/products/category/wettingtester",
+      "retrieved": "2026-10-08",
+      "note": "제조사 Wetting Tester 분류 페이지(두 기종 확인)"
+    }
+  ],
+  "notes": "SP-2 하중 범위는 gf 로 적혀 있어 mN 으로 바꿨다(1 gf = 9.80665 mN). 사용 설명서 PDF 는 열지 않았다.",
+  "confidence": "limited"
+}

@@ -1,0 +1,171 @@
+{
+  "id": "shimadzu-mmt",
+  "kind": "equipment_series",
+  "name": "Microservo MMT Series Magnetic Micro Testing System",
+  "name_ko": "시마즈 마이크로서보 MMT 시리즈 미소 피로시험기",
+  "manufacturer": "shimadzu",
+  "category": "electrodynamic_fatigue",
+  "drive": "electrodynamic",
+  "description": "깨끗한 환경에서 미소 재료·부품의 피로·내구 특성을 보는 소형 시험기. 시험력 ±10 N ~ ±500 N, 피스톤 스트로크 ±2 / ±10 mm, 100 Hz(MMT-11NV-2 는 60 Hz). 액추에이터를 위 또는 아래에 달 수 있다. 설치 공간 약 1000 × 500 × 1200 mm, 단상 100 V.",
+  "test_items": [
+    "fatigue"
+  ],
+  "measurands": [
+    "mechanical.fatigue_strength"
+  ],
+  "limits": {
+    "dynamic_force_kN": {
+      "min": 0.01,
+      "max": 0.5,
+      "values": [
+        0.01,
+        0.1,
+        0.25,
+        0.5
+      ],
+      "note": "원문 ±10 / ±100 / ±250 / ±500 N"
+    },
+    "frequency_Hz": {
+      "max": 100
+    },
+    "stroke_mm": {
+      "values": [
+        4,
+        20
+      ],
+      "note": "원문 ±2 / ±10 mm"
+    }
+  },
+  "models": [
+    {
+      "model": "MMT-500NV-10",
+      "specs": {
+        "dynamic_force_kN": 0.5,
+        "stroke_mm": 20,
+        "frequency_Hz": {
+          "max": 100
+        },
+        "weight_kg": 150,
+        "power": "1Ø 100 V 1 kVA",
+        "footprint_mm": {
+          "W": 1000,
+          "D": 500,
+          "H": 1200,
+          "note": "설치 공간 약 1000 × 500 × 1200 mm"
+        }
+      },
+      "note": "원문 시험력 ±500 N, 피스톤 스트로크 ±10 mm, cycle speed 100 Hz. 액추에이터 장착: 상부 또는 하부. 시험력 지시 정확도 지시값의 ±0.5 % 또는 최대 동적 시험력의 ±0.02 % 중 큰 값"
+    },
+    {
+      "model": "MMT-250NV-10",
+      "specs": {
+        "dynamic_force_kN": 0.25,
+        "stroke_mm": 20,
+        "frequency_Hz": {
+          "max": 100
+        },
+        "weight_kg": 120,
+        "power": "1Ø 100 V 1 kVA",
+        "footprint_mm": {
+          "W": 1000,
+          "D": 500,
+          "H": 1200,
+          "note": "설치 공간 약 1000 × 500 × 1200 mm"
+        }
+      },
+      "note": "원문 시험력 ±250 N, 피스톤 스트로크 ±10 mm, cycle speed 100 Hz. 액추에이터 장착: 상부 또는 하부. 시험력 지시 정확도 지시값의 ±0.5 % 또는 최대 동적 시험력의 ±0.02 % 중 큰 값"
+    },
+    {
+      "model": "MMT-101NV-10",
+      "specs": {
+        "dynamic_force_kN": 0.1,
+        "stroke_mm": 20,
+        "frequency_Hz": {
+          "max": 100
+        },
+        "weight_kg": 100,
+        "power": "1Ø 100 V 1 kVA",
+        "footprint_mm": {
+          "W": 1000,
+          "D": 500,
+          "H": 1200,
+          "note": "설치 공간 약 1000 × 500 × 1200 mm"
+        }
+      },
+      "note": "원문 시험력 ±100 N, 피스톤 스트로크 ±10 mm, cycle speed 100 Hz. 액추에이터 장착: 상부 또는 하부. 시험력 지시 정확도 지시값의 ±0.5 % 또는 최대 동적 시험력의 ±0.02 % 중 큰 값"
+    },
+    {
+      "model": "MMT-101NV-2",
+      "specs": {
+        "dynamic_force_kN": 0.1,
+        "stroke_mm": 4,
+        "frequency_Hz": {
+          "max": 100
+        },
+        "weight_kg": 100,
+        "power": "1Ø 100 V 1 kVA",
+        "footprint_mm": {
+          "W": 1000,
+          "D": 500,
+          "H": 1200,
+          "note": "설치 공간 약 1000 × 500 × 1200 mm"
+        }
+      },
+      "note": "원문 시험력 ±100 N, 피스톤 스트로크 ±2 mm, cycle speed 100 Hz. 액추에이터 장착: 상부 또는 하부. 시험력 지시 정확도 지시값의 ±0.5 % 또는 최대 동적 시험력의 ±0.02 % 중 큰 값"
+    },
+    {
+      "model": "MMT-11NV-2",
+      "specs": {
+        "dynamic_force_kN": 0.01,
+        "stroke_mm": 4,
+        "frequency_Hz": {
+          "max": 60
+        },
+        "weight_kg": 80,
+        "power": "1Ø 100 V 500 VA",
+        "footprint_mm": {
+          "W": 1000,
+          "D": 500,
+          "H": 1200,
+          "note": "설치 공간 약 1000 × 500 × 1200 mm"
+        }
+      },
+      "note": "원문 시험력 ±10 N, 피스톤 스트로크 ±2 mm, cycle speed 60 Hz. 액추에이터 장착: 하부. 시험력 지시 정확도 지시값의 ±1 % 또는 최대 동적 시험력의 ±0.02 % 중 큰 값"
+    }
+  ],
+  "accuracy": {
+    "stroke": "Within +1 % of indicated value or ±0.1 % of maximum stroke, whichever is greater"
+  },
+  "environment": {
+    "operating_temp_degC": [
+      10,
+      40
+    ],
+    "note": "온도 변동 ±5 °C 이내, 저습, 냉난방 직풍·직사광선·먼지·진동이 적은 곳"
+  },
+  "features": [
+    "Servo Controller 4830",
+    "제어 항목: 시험력·스트로크(옵션으로 2개 추가)",
+    "액추에이터 상부/하부 장착"
+  ],
+  "relations": [
+    {
+      "type": "same_family_as",
+      "target": "shimadzu-emt"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://www.shimadzu.com/an/products/materials-testing/fatigue-testingimpact-testing/micro-servo/spec.html",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지(HTML) 본문·표를 직접 읽음. 기종별 사양(시험력, 스트로크, cycle speed, 설치 공간, 무게, 전원, 설치 조건)"
+    },
+    {
+      "url": "https://www.shimadzu.com/an/products/materials-testing/fatigue-testingimpact-testing/micro-servo/index.html",
+      "retrieved": "2026-10-08",
+      "note": "제조사 개요 페이지. 부제 'Magnetic Micro Testing System', 100 Hz 고속 시험, Servo Controller 4830"
+    }
+  ],
+  "confidence": "limited",
+  "notes": "구동 방식은 페이지 부제 'Magnetic Micro Testing System' 과 '깨끗한 환경' 문구로 전자기 구동으로 분류했다 — 사양표에 구동 방식 행은 없다. 시험력은 kN 키로 옮겼다(±500 N → 0.5)."
+}

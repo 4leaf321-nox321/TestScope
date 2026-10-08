@@ -1,0 +1,166 @@
+{
+  "id": "flir-exx-series",
+  "kind": "equipment_series",
+  "name": "FLIR Exx-Series Advanced Thermal Imaging Camera (E54, E76, E86, E96)",
+  "name_ko": "플리어 Exx 시리즈 열화상 카메라",
+  "manufacturer": "flir",
+  "brand": "Exx-Series",
+  "category": "thermal_imager",
+  "form_factor": "handheld",
+  "description": "교환 렌즈를 쓰는 고급 휴대 열화상 카메라 계열. 해상도는 E54 · E76 320 × 240, E86 464 × 348, E96 640 × 480, 열 감도는 렌즈에 따라 <30 ~ <50 mK. 측정 범위는 -20 ~ 120 °C · 0 ~ 650 °C 이고 E86 · E96 은 300 ~ 1,500 °C 레인지가 더 있다(E76 은 옵션으로 300 ~ 1,000 °C). 7.5 ~ 14 µm, 30 Hz, 확도 ±2 °C 또는 ±2 %.",
+  "test_items": [
+    "thermography"
+  ],
+  "measurands": [
+    "surface_temperature",
+    "temperature_distribution",
+    "hotspot_location"
+  ],
+  "limits": {
+    "temperature_degC": {
+      "min": -20,
+      "max": 1500,
+      "note": "레인지 전환. E54 · E76 은 650 °C 까지(E76 옵션 1,000 °C)"
+    },
+    "ir_resolution_pixels": {
+      "min": 76800,
+      "max": 307200,
+      "note": "320 × 240 ~ 640 × 480"
+    },
+    "thermal_sensitivity_degC": {
+      "min": 0.03,
+      "max": 0.05,
+      "note": "렌즈별, 원문 mK @ 30 °C"
+    },
+    "wavelength_nm": {
+      "min": 7500,
+      "max": 14000,
+      "note": "원문 7.5 ~ 14 µm"
+    },
+    "frame_rate_fps": {
+      "values": [
+        30
+      ],
+      "note": "원문 30 Hz"
+    }
+  },
+  "models": [
+    {
+      "model": "E54",
+      "specs": {
+        "detector_pixels": "320 × 240",
+        "ir_resolution_pixels": 76800,
+        "thermal_sensitivity_degC": 0.04,
+        "temperature_degC": {
+          "min": -20,
+          "max": 650
+        },
+        "accuracy": "±2 °C 또는 읽음값의 ±2 %",
+        "wavelength_nm": {
+          "min": 7500,
+          "max": 14000
+        },
+        "frame_rate_fps": 30
+      },
+      "note": "NETD <40 mK @ 30 °C. 레인지 -20 ~ 120 / 0 ~ 650 °C"
+    },
+    {
+      "model": "E76",
+      "specs": {
+        "detector_pixels": "320 × 240",
+        "ir_resolution_pixels": 76800,
+        "thermal_sensitivity_degC": 0.03,
+        "temperature_degC": {
+          "min": -20,
+          "max": 650
+        },
+        "accuracy": "±2 °C 또는 읽음값의 ±2 %",
+        "wavelength_nm": {
+          "min": 7500,
+          "max": 14000
+        },
+        "frame_rate_fps": 30,
+        "field_of_view_deg": "42° × 32° / 24° × 18° / 14° × 10° / 80° × 63°"
+      },
+      "note": "NETD 42° <30, 24° <40, 14° <50, 80° <40 mK. 레인지 -20 ~ 120 / 0 ~ 650 °C, T199559 고온 옵션으로 300 ~ 1,000 °C"
+    },
+    {
+      "model": "E86",
+      "specs": {
+        "detector_pixels": "464 × 348",
+        "ir_resolution_pixels": 161472,
+        "thermal_sensitivity_degC": 0.03,
+        "temperature_degC": {
+          "min": -20,
+          "max": 1500
+        },
+        "accuracy": "±2 °C 또는 읽음값의 ±2 %",
+        "wavelength_nm": {
+          "min": 7500,
+          "max": 14000
+        },
+        "frame_rate_fps": 30,
+        "field_of_view_deg": "42° × 32° / 24° × 18° / 14° × 10° / 80° × 63°"
+      },
+      "note": "NETD 42° <30, 24° <40, 14° <50, 80° <40 mK. 레인지 -20 ~ 120 / 0 ~ 650 / 300 ~ 1,500 °C"
+    },
+    {
+      "model": "E96",
+      "specs": {
+        "detector_pixels": "640 × 480",
+        "ir_resolution_pixels": 307200,
+        "thermal_sensitivity_degC": 0.03,
+        "temperature_degC": {
+          "min": -20,
+          "max": 1500
+        },
+        "accuracy": "±2 °C 또는 읽음값의 ±2 %",
+        "wavelength_nm": {
+          "min": 7500,
+          "max": 14000
+        },
+        "frame_rate_fps": 30,
+        "field_of_view_deg": "42° × 32° / 24° × 18° / 14° × 10° / 80° × 63°"
+      },
+      "note": "NETD 42° <30, 24° <40, 14° <50, 80° <30 mK. 레인지 -20 ~ 120 / 0 ~ 650 / 300 ~ 1,500 °C"
+    }
+  ],
+  "options": [
+    "교환 렌즈 14° · 24° · 42° · 80°(E76 · E86 · E96)",
+    "E76 고온 옵션 T199559(300 ~ 1,000 °C)"
+  ],
+  "relations": [
+    {
+      "type": "performs",
+      "target": "thermography"
+    },
+    {
+      "type": "same_family_as",
+      "target": "flir-t500-series"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://www.flir.com/products/e54/",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지(HTML)"
+    },
+    {
+      "url": "https://www.flir.com/products/e76/",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지(HTML)"
+    },
+    {
+      "url": "https://www.flir.com/products/e86/",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지(HTML)"
+    },
+    {
+      "url": "https://www.flir.com/products/e96/",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지(HTML)"
+    }
+  ],
+  "confidence": "limited",
+  "notes": "무게와 E54 의 시야는 페이지에 없음."
+}

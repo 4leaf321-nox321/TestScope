@@ -1,0 +1,141 @@
+{
+  "id": "teledyne-lecroy-waverunner-8000hd",
+  "kind": "equipment_series",
+  "name": "WaveRunner 8000HD High Definition Oscilloscopes",
+  "name_ko": "텔레다인 르크로이 WaveRunner 8000HD 오실로스코프",
+  "manufacturer": "teledyne-lecroy",
+  "brand": "WaveRunner",
+  "category": "oscilloscope",
+  "subcategory": "high_definition_oscilloscope",
+  "form_factor": "benchtop",
+  "description": "350 MHz~2 GHz 대역의 8채널 12 bit 고분해능 오실로스코프 계열임. 10 GS/s, 최대 5 Gpts 메모리, 15.6 inch(1920×1080) 화면. 같은 플랫폼의 모터 드라이브 분석기 MDA 8000HD 기종을 함께 넣음.",
+  "test_items": [],
+  "limits": {
+    "bandwidth_Hz": {
+      "min": 350000000,
+      "max": 2000000000
+    },
+    "sample_rate_Sa_s": {
+      "max": 10000000000,
+      "note": "원문 10 GS/s"
+    },
+    "record_length_pts": {
+      "max": 5000000000,
+      "note": "원문 5 Gpts"
+    },
+    "channels": {
+      "values": [
+        8
+      ]
+    },
+    "adc_resolution_bit": {
+      "values": [
+        12
+      ]
+    },
+    "display_size_in": {
+      "values": [
+        15.6
+      ]
+    }
+  },
+  "models": [
+    {
+      "model": "WaveRunner 8038HD",
+      "specs": {
+        "bandwidth_Hz": 350000000,
+        "channels": 8,
+        "sample_rate_Sa_s": 10000000000,
+        "record_length_pts": 5000000000,
+        "adc_resolution_bit": 12,
+        "display_size_in": 15.6
+      }
+    },
+    {
+      "model": "WaveRunner 8058HD",
+      "specs": {
+        "bandwidth_Hz": 500000000,
+        "channels": 8,
+        "sample_rate_Sa_s": 10000000000,
+        "record_length_pts": 5000000000,
+        "adc_resolution_bit": 12,
+        "display_size_in": 15.6
+      }
+    },
+    {
+      "model": "WaveRunner 8108HD",
+      "specs": {
+        "bandwidth_Hz": 1000000000,
+        "channels": 8,
+        "sample_rate_Sa_s": 10000000000,
+        "record_length_pts": 5000000000,
+        "adc_resolution_bit": 12,
+        "display_size_in": 15.6
+      }
+    },
+    {
+      "model": "WaveRunner 8208HD",
+      "specs": {
+        "bandwidth_Hz": 2000000000,
+        "channels": 8,
+        "sample_rate_Sa_s": 10000000000,
+        "record_length_pts": 5000000000,
+        "adc_resolution_bit": 12,
+        "display_size_in": 15.6
+      }
+    },
+    {
+      "model": "MDA 8038HD",
+      "variant": "Motor Drive Analyzer",
+      "specs": {
+        "bandwidth_Hz": 350000000,
+        "channels": 8,
+        "sample_rate_Sa_s": 10000000000,
+        "record_length_pts": 5000000000,
+        "adc_resolution_bit": 12
+      }
+    },
+    {
+      "model": "MDA 8058HD",
+      "variant": "Motor Drive Analyzer",
+      "specs": {
+        "bandwidth_Hz": 500000000,
+        "channels": 8,
+        "sample_rate_Sa_s": 10000000000,
+        "record_length_pts": 5000000000,
+        "adc_resolution_bit": 12
+      }
+    },
+    {
+      "model": "MDA 8108HD",
+      "variant": "Motor Drive Analyzer",
+      "specs": {
+        "bandwidth_Hz": 1000000000,
+        "channels": 8,
+        "sample_rate_Sa_s": 10000000000,
+        "record_length_pts": 5000000000,
+        "adc_resolution_bit": 12
+      }
+    },
+    {
+      "model": "MDA 8208HD",
+      "variant": "Motor Drive Analyzer",
+      "specs": {
+        "bandwidth_Hz": 2000000000,
+        "channels": 8,
+        "sample_rate_Sa_s": 10000000000,
+        "record_length_pts": 5000000000,
+        "adc_resolution_bit": 12
+      }
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://www.teledynelecroy.com/wr8000hd/",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지 기종 표. 원문 Input Channels 8, Maximum Acquisition Memory 5 Gpts, 10 GS/s, 12 bits. 화면 15.6\" 1920 x 1080 은 개요"
+    }
+  ],
+  "confidence": "limited",
+  "notes": "대장에는 WS4024HD·WR8058HD 처럼 줄인 주문 코드로 적힐 수 있으나 이번 조회 페이지에서는 확인하지 못함. MDA 기종의 화면 크기는 페이지에서 따로 확인하지 않음."
+}

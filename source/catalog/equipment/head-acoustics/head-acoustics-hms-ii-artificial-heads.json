@@ -1,0 +1,214 @@
+{
+  "id": "head-acoustics-hms-ii-artificial-heads",
+  "kind": "equipment_series",
+  "name": "HEAD acoustics HMS II Artificial Heads (HMS II.3 / II.3 LN / II.3 LN HEC / II.3 ViBRIDGE / II.4 / II.5 / II.6 / II.7)",
+  "name_ko": "HEAD acoustics HMS II 인공 두상(측정용 HATS)",
+  "manufacturer": "head-acoustics",
+  "brand": "HMS",
+  "category": "head_torso_simulator",
+  "form_factor": "fixture",
+  "description": "통화·오디오 품질 측정용 풀밴드 인공 두상 계열. ITU-T P.58 형상의 머리·몸통에 귀 시뮬레이터와 2웨이 인공 입을 조합한다. 인공 귀 전송 범위는 3 Hz~20 kHz(HMS II.7 은 3.5 Hz~20 kHz), 인공 입은 50 Hz~20 kHz 의 등화 음성을 낸다. II.3 은 송·수신 겸용(오른쪽 귀 HIS R 표준, 왼쪽 HIS L 옵션), II.4 는 수신 전용(입 없음), II.5 는 송신 전용(귀 시뮬레이터 없음), II.6·II.7 은 자유음장 마이크를 단 원거리(far-to-the-ear) 측정용이다. LN 은 저잡음 귀 시뮬레이터, HEC 는 사람과 같은 외이도 형상(ITU-T type 4.4 귓바퀴)을 뜻한다.",
+  "test_items": [
+    "audio_performance"
+  ],
+  "measurands": [
+    "frequency_response",
+    "sound_pressure_level"
+  ],
+  "materials": [
+    "mobile phones",
+    "handsets",
+    "ANC headphones",
+    "headsets",
+    "smart speakers",
+    "hands-free systems",
+    "conference phones"
+  ],
+  "standards": {
+    "compliance": [
+      "ITU-T P.57",
+      "ITU-T P.58",
+      "IEC 60318-4"
+    ],
+    "test_methods": []
+  },
+  "limits": {
+    "frequency_Hz": {
+      "min": 3,
+      "max": 20000,
+      "note": "인공 귀 전송 범위. HMS II.7 은 3.5 Hz~20 kHz. 인공 입은 50 Hz~20 kHz"
+    },
+    "sound_pressure_level_dB": {
+      "min": 15.5,
+      "max": 148,
+      "note": "HMS II.7 자체 잡음 15.5 dBSPL(A)·상한 135 dBSPL, HMS II.3 LN HEC 자체 잡음 16 dBSPL(A)·최대 148 dBSPL"
+    },
+    "ear_simulators": {
+      "values": [
+        0,
+        1,
+        2
+      ],
+      "note": "II.5 기본 0, II.3·II.4 오른쪽 1(왼쪽 옵션), II.6·II.7 은 귀 시뮬레이터 대신 자유음장 마이크 2"
+    }
+  },
+  "models": [
+    {
+      "model": "HMS II.3",
+      "specs": {
+        "frequency_Hz": {
+          "min": 3,
+          "max": 20000
+        },
+        "ear_simulators": 1
+      },
+      "note": "근접(close-to-the-ear)·원거리 겸용. 오른쪽 귀 HIS R(폐쇄형 귀 시뮬레이터), 왼쪽 HIS L 옵션. 귓바퀴 ITU-T type 3.3 표준, type 4.4 선택. 인공 입 50 Hz~20 kHz"
+    },
+    {
+      "model": "HMS II.3 LN",
+      "specs": {},
+      "note": "목록 페이지 설명: Low-noise artificial head. 개별 페이지는 조회하지 않음",
+      "uncertain": true
+    },
+    {
+      "model": "HMS II.3 LN HEC",
+      "specs": {
+        "frequency_Hz": {
+          "min": 3,
+          "max": 20000
+        },
+        "sound_pressure_level_dB": {
+          "min": 16,
+          "max": 148
+        },
+        "ear_simulators": 1
+      },
+      "note": "저잡음 폐쇄형 귀 시뮬레이터 HIS R LN HEC(왼쪽 HIS L LN HEC 옵션), ITU-T type 4.4 귓바퀴. 자체 잡음 16 dBSPL(A), 최대 148 dBSPL. ITU-T P.57 저잡음 요구 만족"
+    },
+    {
+      "model": "HMS II.3 ViBRIDGE",
+      "specs": {},
+      "note": "목록 페이지 설명: Low-noise artificial head with bone conduction simulation of speech. 개별 페이지는 조회하지 않음",
+      "uncertain": true
+    },
+    {
+      "model": "HMS II.4",
+      "specs": {
+        "frequency_Hz": {
+          "min": 3,
+          "max": 20000
+        },
+        "ear_simulators": 1
+      },
+      "note": "수신 방향 전용(인공 입 없음). 오른쪽 HIS R, 왼쪽 HIS L 옵션, 저잡음(LN)·HEC 변형 선택"
+    },
+    {
+      "model": "HMS II.5",
+      "specs": {
+        "ear_simulators": 0
+      },
+      "note": "송신 방향 전용. 인공 입 50 Hz~20 kHz. 귀 시뮬레이터는 기본 없음(나중에 HIS 계열 장착 가능)"
+    },
+    {
+      "model": "HMS II.6",
+      "specs": {
+        "frequency_Hz": {
+          "min": 3,
+          "max": 20000
+        }
+      },
+      "note": "원거리 측정용. 저잡음 자유음장 마이크 2개, 단순 귓바퀴. 임피던스 모사가 없어 헤드폰·헤드셋·핸드셋 측정에는 맞지 않음"
+    },
+    {
+      "model": "HMS II.7",
+      "specs": {
+        "frequency_Hz": {
+          "min": 3.5,
+          "max": 20000
+        },
+        "sound_pressure_level_dB": {
+          "min": 15.5,
+          "max": 135
+        }
+      },
+      "note": "½\" 프리폴라라이즈드 자유음장 ICP 마이크 2개, 자체 잡음 15.5 dBSPL(A), 상한 135 dBSPL. 원거리 측정용"
+    }
+  ],
+  "features": [
+    "모듈형 귀 시뮬레이터·귓바퀴 교체",
+    "2웨이 인공 입(협대역~풀밴드)",
+    "ITU-T P.58 형상"
+  ],
+  "accessories": [
+    {
+      "name": "HMT III",
+      "note": "높이 조절 삼각대"
+    },
+    {
+      "name": "HTB VI",
+      "note": "토르소 박스"
+    },
+    {
+      "name": "AN-HMS",
+      "note": "인공 코(일부 기기 고정용)"
+    },
+    {
+      "name": "HHP IV · HHP III.2",
+      "note": "핸드셋 포지셔너(같은 목록 페이지)"
+    },
+    {
+      "name": "move°S",
+      "note": "HMS/HSU 머리 회전 업그레이드"
+    }
+  ],
+  "relations": [
+    {
+      "type": "performs",
+      "target": "audio_performance"
+    },
+    {
+      "type": "same_family_as",
+      "target": "bruel-kjaer-hats-5128",
+      "note": "같은 용도의 다른 제조사 HATS"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://www.head-acoustics.com/products/artificial-head-binaural-recording/",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 목록 페이지. 계열 기종명과 한 줄 설명"
+    },
+    {
+      "url": "https://www.head-acoustics.com/products/artificial-head-binaural-recording/hms-ii3/",
+      "retrieved": "2026-10-08",
+      "note": "HMS II.3 페이지: 전송 범위, 귀·귓바퀴 구성, 인공 입, 규격"
+    },
+    {
+      "url": "https://www.head-acoustics.com/products/artificial-head-binaural-recording/hms-ii3-ln-hec/",
+      "retrieved": "2026-10-08",
+      "note": "HMS II.3 LN HEC 페이지: 자체 잡음 16 dBSPL(A), 최대 148 dBSPL"
+    },
+    {
+      "url": "https://www.head-acoustics.com/products/artificial-head-binaural-recording/hms-ii4/",
+      "retrieved": "2026-10-08",
+      "note": "HMS II.4 페이지: 수신 전용"
+    },
+    {
+      "url": "https://www.head-acoustics.com/products/artificial-head-binaural-recording/hms-ii5/",
+      "retrieved": "2026-10-08",
+      "note": "HMS II.5 페이지: 송신 전용"
+    },
+    {
+      "url": "https://www.head-acoustics.com/products/artificial-head-binaural-recording/hms-ii6/",
+      "retrieved": "2026-10-08",
+      "note": "HMS II.6 페이지: 원거리 측정, 자유음장 마이크"
+    },
+    {
+      "url": "https://www.head-acoustics.com/products/artificial-head-binaural-recording/hms-ii7/",
+      "retrieved": "2026-10-08",
+      "note": "HMS II.7 페이지: ICP 마이크, 자체 잡음 15.5 dBSPL(A)"
+    }
+  ],
+  "confidence": "limited",
+  "notes": "요청 목록의 HMS III 는 현행 제조사 목록에 없다. 대장에 HMS III 가 있으면 별도 확인이 필요하다."
+}

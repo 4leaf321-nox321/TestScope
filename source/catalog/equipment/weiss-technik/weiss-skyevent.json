@@ -1,0 +1,324 @@
+{
+  "id": "weiss-skyevent",
+  "kind": "equipment_series",
+  "name": "Weiss Technik SkyEvent TA/TAH Thermal and Climatic Altitude Test Chambers",
+  "name_ko": "바이스 테크닉 SkyEvent TA/TAH 온도·온습도 고도 시험 챔버",
+  "manufacturer": "weiss-technik",
+  "brand": "SkyEvent",
+  "category": "altitude_chamber",
+  "drive": "thermal",
+  "form_factor": "floor",
+  "description": "항공기·헬리콥터·UAV 부품용 온도(TA)·온습도(TAH) 고도 시험 챔버임. 대기압에서 5 mbar(0.5 kPa)까지 감압하며 150 mbar(15 kPa, 45 000 ft 상당)까지는 온도를 제어함. 온도 범위 -70~+120 °C(옵션 +180 °C), 냉각·가열 변화율 2 °C/min, 10 mbar 까지 배기 시간 20분임. TAH 형 습도 15~95 %RH 는 대기압에서만 적용됨. 용적 220·500·1000·1500 L 네 크기로 구성되고 냉매는 R449A(GWP 1397)를 씀. 양산형이 RTCA DO-160G 와 MIL-STD-810G 의 주요 부분을 만족한다고 제조사가 밝힘. weisstechnik 과 vötschtechnik 두 브랜드로 공급됨.",
+  "test_items": [
+    "altitude_low_pressure",
+    "temperature_cycling",
+    "damp_heat"
+  ],
+  "measurands": [
+    "operating_altitude"
+  ],
+  "materials": [
+    "aircraft components",
+    "helicopter components",
+    "UAV components",
+    "avionics"
+  ],
+  "standards": {
+    "compliance": [],
+    "test_methods": [
+      "RTCA DO-160G",
+      "MIL-STD-810G"
+    ]
+  },
+  "limits": {
+    "chamber_pressure_kPa": {
+      "min": 0.5,
+      "note": "원문 'AP to 5 mbar'(대기압~5 mbar), 건조·청정·빈 시험공간 기준. 온도 제어는 대기압~150 mbar(15 kPa) 구간. 압력 안정도 ±3 mbar(±0.3 kPa)"
+    },
+    "altitude_m": {
+      "max": 13716,
+      "note": "브로슈어가 150 mbar 를 45 000 ft 에 대응시킴(1 ft = 0.3048 m 환산). 온도 제어가 되는 하한 기준이며 5 mbar 에 해당하는 고도는 문서에 없음. 제품 페이지도 '45.000 Fuß' 까지로 적음"
+    },
+    "temperature_degC": {
+      "min": -70,
+      "max": 120,
+      "note": "옵션 확장 시 +180 °C"
+    },
+    "humidity_pct": {
+      "min": 15,
+      "max": 95,
+      "note": "TAH 형만. 온도 +10~+95 °C, 이슬점 +5~+80 °C, 대기압에서만(탈염수·증류수 필수)"
+    },
+    "chamber_volume_L": {
+      "min": 220,
+      "max": 1500,
+      "values": [
+        220,
+        500,
+        1000,
+        1500
+      ]
+    },
+    "heating_rate_K_min": {
+      "max": 2,
+      "note": "IEC 60068-3-5 기준, 급기에서 측정. 네 크기 공통"
+    },
+    "cooling_rate_K_min": {
+      "max": 2,
+      "note": "IEC 60068-3-5 기준, 급기에서 측정. 네 크기 공통"
+    },
+    "power_kW": {
+      "min": 28,
+      "max": 52
+    }
+  },
+  "models": [
+    {
+      "model": "TA 220 / TAH 220",
+      "variant": "TA 온도, TAH 온습도",
+      "form_factor": "floor",
+      "specs": {
+        "chamber_volume_L": 220,
+        "inner_mm": "W700×D350×H900",
+        "footprint_mm": "W1250×D2400×H2400",
+        "temperature_degC": {
+          "min": -70,
+          "max": 120,
+          "note": "옵션 +180 °C"
+        },
+        "cooling_rate_K_min": 2,
+        "heating_rate_K_min": 2,
+        "temperature_fluctuation_degC": 0.5,
+        "chamber_pressure_kPa": {
+          "min": 0.5,
+          "note": "원문 'AP to 5 mbar'"
+        },
+        "temperature_control_min_pressure_kPa": 15,
+        "pumpdown_time_min": {
+          "max": 20,
+          "note": "대기압에서 10 mbar(1 kPa)까지, 건조·청정·빈 시험공간"
+        },
+        "altitude_m": {
+          "max": 13716,
+          "note": "150 mbar = 45 000 ft (온도 제어 하한)"
+        },
+        "humidity_pct": {
+          "min": 15,
+          "max": 95,
+          "note": "TAH 만, 대기압에서만, +10~+95 °C"
+        },
+        "power_kW": 28.0,
+        "power": "3/N/PE AC 400 V ±3% to ±10%, 50 Hz",
+        "refrigerant": "R449A (GWP 1397)"
+      }
+    },
+    {
+      "model": "TA 500 / TAH 500",
+      "variant": "TA 온도, TAH 온습도",
+      "form_factor": "floor",
+      "specs": {
+        "chamber_volume_L": 500,
+        "inner_mm": "W700×D800×H900",
+        "footprint_mm": "W1250×D2400×H2400",
+        "temperature_degC": {
+          "min": -70,
+          "max": 120,
+          "note": "옵션 +180 °C"
+        },
+        "cooling_rate_K_min": 2,
+        "heating_rate_K_min": 2,
+        "temperature_fluctuation_degC": 0.5,
+        "chamber_pressure_kPa": {
+          "min": 0.5,
+          "note": "원문 'AP to 5 mbar'"
+        },
+        "temperature_control_min_pressure_kPa": 15,
+        "pumpdown_time_min": {
+          "max": 20,
+          "note": "대기압에서 10 mbar(1 kPa)까지, 건조·청정·빈 시험공간"
+        },
+        "altitude_m": {
+          "max": 13716,
+          "note": "150 mbar = 45 000 ft (온도 제어 하한)"
+        },
+        "humidity_pct": {
+          "min": 15,
+          "max": 95,
+          "note": "TAH 만, 대기압에서만, +10~+95 °C"
+        },
+        "power_kW": 28.0,
+        "power": "3/N/PE AC 400 V ±3% to ±10%, 50 Hz",
+        "refrigerant": "R449A (GWP 1397)"
+      }
+    },
+    {
+      "model": "TA 1000 / TAH 1000",
+      "variant": "TA 온도, TAH 온습도",
+      "form_factor": "floor",
+      "specs": {
+        "chamber_volume_L": 1000,
+        "inner_mm": "W1000×D1000×H1000",
+        "footprint_mm": "W1550×D2600×H2400",
+        "temperature_degC": {
+          "min": -70,
+          "max": 120,
+          "note": "옵션 +180 °C"
+        },
+        "cooling_rate_K_min": 2,
+        "heating_rate_K_min": 2,
+        "temperature_fluctuation_degC": 0.5,
+        "chamber_pressure_kPa": {
+          "min": 0.5,
+          "note": "원문 'AP to 5 mbar'"
+        },
+        "temperature_control_min_pressure_kPa": 15,
+        "pumpdown_time_min": {
+          "max": 20,
+          "note": "대기압에서 10 mbar(1 kPa)까지, 건조·청정·빈 시험공간"
+        },
+        "altitude_m": {
+          "max": 13716,
+          "note": "150 mbar = 45 000 ft (온도 제어 하한)"
+        },
+        "humidity_pct": {
+          "min": 15,
+          "max": 95,
+          "note": "TAH 만, 대기압에서만, +10~+95 °C"
+        },
+        "power_kW": 52.0,
+        "power": "3/N/PE AC 400 V ±3% to ±10%, 50 Hz",
+        "refrigerant": "R449A (GWP 1397)"
+      }
+    },
+    {
+      "model": "TA 1500 / TAH 1500",
+      "variant": "TA 온도, TAH 온습도",
+      "form_factor": "floor",
+      "specs": {
+        "chamber_volume_L": 1500,
+        "inner_mm": "W1000×D1500×H1000",
+        "footprint_mm": "W1550×D3100×H2400",
+        "temperature_degC": {
+          "min": -70,
+          "max": 120,
+          "note": "옵션 +180 °C"
+        },
+        "cooling_rate_K_min": 2,
+        "heating_rate_K_min": 2,
+        "temperature_fluctuation_degC": 0.5,
+        "chamber_pressure_kPa": {
+          "min": 0.5,
+          "note": "원문 'AP to 5 mbar'"
+        },
+        "temperature_control_min_pressure_kPa": 15,
+        "pumpdown_time_min": {
+          "max": 20,
+          "note": "대기압에서 10 mbar(1 kPa)까지, 건조·청정·빈 시험공간"
+        },
+        "altitude_m": {
+          "max": 13716,
+          "note": "150 mbar = 45 000 ft (온도 제어 하한)"
+        },
+        "humidity_pct": {
+          "min": 15,
+          "max": 95,
+          "note": "TAH 만, 대기압에서만, +10~+95 °C"
+        },
+        "power_kW": 52.0,
+        "power": "3/N/PE AC 400 V ±3% to ±10%, 50 Hz",
+        "refrigerant": "R449A (GWP 1397)"
+      }
+    }
+  ],
+  "accuracy": {
+    "temperature_stability": "±0.5 °C",
+    "temperature_homogeneity": "±2 °C (표의 각주 2 는 DIN 45635 소음 측정에 관한 것이라 이 열과 맞지 않음, 각주 번호 오기로 보임)",
+    "pressure_stability": "±3 mbar",
+    "humidity_stability": "±3 ~ ±5 %RH (TAH)"
+  },
+  "utilities": "냉각수 최대 2.4 m³/h(220·500) / 4.0 m³/h(1000·1500), 냉각수 +28 °C·온도차 5 K 기준, 수온 +20~+28 °C. 전원 3/N/PE AC 400 V, 50 Hz(다른 전압은 옵션). 성능은 주위 +25 °C 기준",
+  "features": [
+    "대기압~150 mbar 구간 온도 제어",
+    "스테인리스 포트홀 2개(지름 50 또는 100 mm)",
+    "창과 조명",
+    "스위블 캐스터와 높이 조절 발",
+    "스테인리스 선반",
+    "이더넷·USB 로 시험·진단 정보 전송, SPIRALE VS 소프트웨어(정비 알림), S!MPATI",
+    "독립 센서로 저온·고온 보호",
+    "냉매 R449A (GWP 1397)",
+    "greenmode 에너지 절약",
+    "부식 방지 아연도 강판 외함"
+  ],
+  "options": [
+    "Additional shelves",
+    {
+      "name": "Extended temperature range",
+      "note": "+180 °C 까지"
+    },
+    {
+      "name": "Vacuum-tight portholes (ISO-K)",
+      "note": "추가 포트홀"
+    },
+    {
+      "name": "Analog recording channels",
+      "note": "Pt100, 열전대 등"
+    },
+    "Auxiliary contacts",
+    {
+      "name": "Other voltages",
+      "note": "요청 시"
+    },
+    {
+      "name": "Temperature Altitude Humidity combined test (special)",
+      "note": "결빙 시험, RTCA DO-160 Section 24 Cat B. 브로슈어 '특수 요구' 항목이라 양산형 사양인지 불명"
+    },
+    {
+      "name": "Rapid decompression (special)",
+      "note": "수백 mbar 를 수 초에 감압하는 별도 해법"
+    },
+    {
+      "name": "Battery test safety chambers (special)",
+      "note": "위험 배터리 시험용 안전 장치"
+    }
+  ],
+  "relations": [
+    {
+      "type": "simulates_environment",
+      "target": "environment-low-pressure"
+    },
+    {
+      "type": "requires",
+      "target": "utility-cooling-water"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://backend.weiss-technik.com/webapp/weisstechnik/multimedia-center/brochures/environmental-solution/SkyEvent/Weiss-Technik-SkyEvent-EN-1.pdf",
+      "retrieved": "2026-10-08",
+      "note": "제조사 브로슈어 WTF-SkyEvent-01.1E/PP 1.0/06 2017 (Weiss Technik France SAS 발행, 7쪽). 2쪽 소개·규격, 3쪽 기본 장비, 4쪽 옵션, 5쪽 성능표(8~9면)와 각주, 6쪽 특수 해법. 같은 문서를 저장소 PDF(weiss-technik/skyevent-brochure.pdf)로 대조함"
+    },
+    {
+      "file": "weiss-technik/skyevent-brochure.pdf",
+      "pages": [
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "note": "브로슈어 WTF-SkyEvent-01.1E/PP 1.0/06 2017. 2쪽 소개·규격, 3쪽 기본 장비, 4쪽 옵션, 5쪽 성능표와 각주, 6쪽 특수 해법"
+    },
+    {
+      "url": "https://www.weiss-technik.com/environmental-simulation/de/produkte/detail/hoehensimulationskammer-typ-skyevent~p3846",
+      "retrieved": "2026-10-08",
+      "note": "제품 페이지(독일어): 45.000 Fuß 까지 고도 모사, 압력·온도·습도 제어. 수치 사양표는 없음"
+    },
+    {
+      "url": "https://www.weiss-technik.com/en/multimedia-center-downloads/brochures?products=3577",
+      "retrieved": "2026-10-08",
+      "note": "제조사 멀티미디어 센터 브로슈어 목록(SkyEvent TA/TAH 브로슈어 링크 출처)"
+    }
+  ],
+  "confidence": "catalog",
+  "notes": "기압 kPa 값은 원문 mbar 를 1 mbar = 0.1 kPa 로 옮긴 값임. 고도 변화(감압) 속도는 배기 시간(10 mbar 까지 20분)만 있고 kPa/min 값은 없음. 같은 제조사의 Vakuum-Prüfschränke VTH/VCH(WT-D/WK-D)는 '≥ 400 mbar' 온도·감압 복합 시험을 적고 있으나 이 객체에 넣지 않음. PDF(weiss-technik/skyevent-brochure.pdf 5쪽 성능표)로 확인: 네 크기의 용적·치수·온도·변화율·안정도·균일도·압력 범위·배기 시간·습도·전력·냉각수 전부. 추출 텍스트에서 온도 하한의 음수 기호가 빠져 '70 to +120' 으로 보임."
+}

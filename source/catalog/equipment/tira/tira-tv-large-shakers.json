@@ -1,0 +1,442 @@
+{
+  "id": "tira-tv-large-shakers",
+  "kind": "equipment_series",
+  "name": "TIRA Vibration Test Systems 20 kN to 300 kN (TV 593xx / TV 594xx)",
+  "name_ko": "티라 대형 진동 시험 시스템 (20~300 kN)",
+  "manufacturer": "tira",
+  "category": "vibration_shaker",
+  "form_factor": "floor",
+  "description": "TIRA 표준 진동 시험 시스템 20~300 kN 대역. TV 59322~59335 는 아마추어 340/440/640 mm 를 고르는 22~35 kN 급, TV 59349 부터는 AIT 아마추어(480/590/840 mm)로 49.5~300 kN 까지 올라간다. 충격 정격 66~900 kN, 주파수 5~3,000 Hz(대형은 2,000~2,500 Hz), 최대 변위 50.8~76.2 mm p-p. 최대 탑재 질량 2,500 kg(TV 59430).",
+  "test_items": [
+    "vibration_sine_random",
+    "mechanical_shock"
+  ],
+  "measurands": [
+    "resonance_frequency",
+    "transmissibility",
+    "fatigue_life"
+  ],
+  "materials": [
+    "automotive components",
+    "batteries",
+    "aerospace components",
+    "large assemblies"
+  ],
+  "limits": {
+    "force_kN": {
+      "min": 22,
+      "max": 300,
+      "note": "정현 정격 피크"
+    },
+    "force_random_kN": {
+      "min": 17,
+      "max": 270
+    },
+    "force_shock_kN": {
+      "min": 66,
+      "max": 900
+    },
+    "frequency_Hz": {
+      "min": 5,
+      "max": 3000
+    },
+    "stroke_mm_pk_pk": {
+      "min": 50.8,
+      "max": 76.2
+    },
+    "acceleration_g": {
+      "max": 100,
+      "note": "정현 최대. 충격 최대 300 g"
+    },
+    "armature_diameter_mm": {
+      "values": [
+        340,
+        440,
+        480,
+        590,
+        640,
+        840
+      ]
+    },
+    "payload_kg": {
+      "max": 2500,
+      "note": "74~300 kN 페이지: payloads of up to 2500 kg. 기종별 값은 TV 59430 만"
+    }
+  },
+  "models": [
+    {
+      "model": "TV 59322",
+      "specs": {
+        "force_kN": 22,
+        "force_random_kN": 17,
+        "force_shock_kN": 66,
+        "frequency_Hz": {
+          "min": 5,
+          "max": 3000
+        },
+        "acceleration_g": 80.0,
+        "armature_diameter_mm": 340,
+        "stroke_mm_pk_pk": 63.5
+      },
+      "variant": "*-340",
+      "note": "원문 표기 TV 59322/*-340. 별표(*)는 페이지가 비워 둔 형식 기호"
+    },
+    {
+      "model": "TV 59322",
+      "specs": {
+        "force_kN": 22,
+        "force_random_kN": 17,
+        "force_shock_kN": 66,
+        "frequency_Hz": {
+          "min": 5,
+          "max": 3000
+        },
+        "acceleration_g": 80.0,
+        "armature_diameter_mm": 440,
+        "stroke_mm_pk_pk": 63.5
+      },
+      "variant": "*-440",
+      "note": "원문 표기 TV 59322/*-440. 별표(*)는 페이지가 비워 둔 형식 기호"
+    },
+    {
+      "model": "TV 59327",
+      "specs": {
+        "force_kN": 27,
+        "force_random_kN": 27,
+        "force_shock_kN": 80,
+        "frequency_Hz": {
+          "min": 5,
+          "max": 3000
+        },
+        "acceleration_g": 84.0,
+        "armature_diameter_mm": 340,
+        "stroke_mm_pk_pk": 50.8
+      },
+      "variant": "*-340",
+      "note": "원문 표기 TV 59327/*-340. 별표(*)는 페이지가 비워 둔 형식 기호"
+    },
+    {
+      "model": "TV 59327",
+      "specs": {
+        "force_kN": 27,
+        "force_random_kN": 27,
+        "force_shock_kN": 80,
+        "frequency_Hz": {
+          "min": 5,
+          "max": 3000
+        },
+        "acceleration_g": 79.0,
+        "armature_diameter_mm": 440,
+        "stroke_mm_pk_pk": 50.8
+      },
+      "variant": "*-440",
+      "note": "원문 표기 TV 59327/*-440. 별표(*)는 페이지가 비워 둔 형식 기호"
+    },
+    {
+      "model": "TV 59327",
+      "specs": {
+        "force_kN": 27,
+        "force_random_kN": 27,
+        "force_shock_kN": 80,
+        "frequency_Hz": {
+          "min": 5,
+          "max": 2000
+        },
+        "acceleration_g": 66.0,
+        "armature_diameter_mm": 640,
+        "stroke_mm_pk_pk": 50.8
+      },
+      "variant": "*-640",
+      "note": "원문 표기 TV 59327/*-640. 별표(*)는 페이지가 비워 둔 형식 기호"
+    },
+    {
+      "model": "TV 59335",
+      "specs": {
+        "force_kN": 35,
+        "force_random_kN": 32,
+        "force_shock_kN": 105,
+        "frequency_Hz": {
+          "min": 5,
+          "max": 3000
+        },
+        "acceleration_g": 100.0,
+        "armature_diameter_mm": 340,
+        "stroke_mm_pk_pk": 50.8
+      },
+      "variant": "*-340",
+      "note": "원문 표기 TV 59335/*-340. 별표(*)는 페이지가 비워 둔 형식 기호"
+    },
+    {
+      "model": "TV 59335",
+      "specs": {
+        "force_kN": 35,
+        "force_random_kN": 32,
+        "force_shock_kN": 105,
+        "frequency_Hz": {
+          "min": 5,
+          "max": 3000
+        },
+        "acceleration_g": 100.0,
+        "armature_diameter_mm": 440,
+        "stroke_mm_pk_pk": 50.8
+      },
+      "variant": "*-440",
+      "note": "원문 표기 TV 59335/*-440. 별표(*)는 페이지가 비워 둔 형식 기호"
+    },
+    {
+      "model": "TV 59335",
+      "specs": {
+        "force_kN": 35,
+        "force_random_kN": 32,
+        "force_shock_kN": 105,
+        "frequency_Hz": {
+          "min": 5,
+          "max": 2000
+        },
+        "acceleration_g": 70.0,
+        "armature_diameter_mm": 640,
+        "stroke_mm_pk_pk": 50.8
+      },
+      "variant": "*-640",
+      "note": "원문 표기 TV 59335/*-640. 별표(*)는 페이지가 비워 둔 형식 기호"
+    },
+    {
+      "model": "TV 59349/AIT-480",
+      "specs": {
+        "force_kN": 49.5,
+        "force_random_kN": 48,
+        "force_shock_kN": 148.5,
+        "frequency_Hz": {
+          "min": 5,
+          "max": 2500
+        },
+        "acceleration_g": 91.0,
+        "armature_diameter_mm": 480,
+        "stroke_mm_pk_pk": 63.5
+      }
+    },
+    {
+      "model": "TV 59356/AIT-480",
+      "specs": {
+        "force_kN": 56,
+        "force_random_kN": 56,
+        "force_shock_kN": 160,
+        "frequency_Hz": {
+          "min": 5,
+          "max": 2500
+        },
+        "acceleration_g": 100.0,
+        "armature_diameter_mm": 480,
+        "stroke_mm_pk_pk": 63.5
+      }
+    },
+    {
+      "model": "TV 59370/AIT-480",
+      "specs": {
+        "force_kN": 70,
+        "force_random_kN": 67,
+        "force_shock_kN": 210,
+        "frequency_Hz": {
+          "min": 5,
+          "max": 2500
+        },
+        "acceleration_g": 100.0,
+        "armature_diameter_mm": 480,
+        "stroke_mm_pk_pk": 63.5
+      }
+    },
+    {
+      "model": "TV 59374/AIT-480",
+      "specs": {
+        "force_kN": 74,
+        "force_random_kN": 74,
+        "force_shock_kN": 222,
+        "frequency_Hz": {
+          "min": 5,
+          "max": 2500
+        },
+        "acceleration_g": 99.0,
+        "armature_diameter_mm": 480,
+        "stroke_mm_pk_pk": {
+          "values": [
+            63.5,
+            76.2
+          ]
+        }
+      },
+      "note": "최대 가속도(정현/랜덤/충격) 99/90/300 g. 최대 변위 p-p 63.5 또는 76.2 mm(원문 63.5/76.2)"
+    },
+    {
+      "model": "TV 59389/AIT-480",
+      "specs": {
+        "force_kN": 89,
+        "force_random_kN": 89,
+        "force_shock_kN": 267,
+        "frequency_Hz": {
+          "min": 5,
+          "max": 2500
+        },
+        "acceleration_g": 100.0,
+        "armature_diameter_mm": 480,
+        "stroke_mm_pk_pk": {
+          "values": [
+            63.5,
+            76.2
+          ]
+        }
+      },
+      "note": "최대 가속도(정현/랜덤/충격) 100/90/300 g. 최대 변위 p-p 63.5 또는 76.2 mm(원문 63.5/76.2)"
+    },
+    {
+      "model": "TV 59410/AIT-480",
+      "specs": {
+        "force_kN": 100,
+        "force_random_kN": 89,
+        "force_shock_kN": 300,
+        "frequency_Hz": {
+          "min": 5,
+          "max": 2500
+        },
+        "acceleration_g": 100.0,
+        "armature_diameter_mm": 480,
+        "stroke_mm_pk_pk": {
+          "values": [
+            63.5,
+            76.2
+          ]
+        }
+      },
+      "note": "최대 가속도(정현/랜덤/충격) 100/90/300 g. 최대 변위 p-p 63.5 또는 76.2 mm(원문 63.5/76.2)"
+    },
+    {
+      "model": "TV 59412/AIT-480",
+      "specs": {
+        "force_kN": 125,
+        "force_random_kN": 110,
+        "force_shock_kN": 375,
+        "frequency_Hz": {
+          "min": 5,
+          "max": 2500
+        },
+        "acceleration_g": 100.0,
+        "armature_diameter_mm": 480,
+        "stroke_mm_pk_pk": {
+          "values": [
+            63.5,
+            76.2
+          ]
+        }
+      },
+      "note": "최대 가속도(정현/랜덤/충격) 100/90/300 g. 최대 변위 p-p 63.5 또는 76.2 mm(원문 63.5/76.2)"
+    },
+    {
+      "model": "TV 59413/AIT-590",
+      "specs": {
+        "force_kN": 130,
+        "force_random_kN": 130,
+        "force_shock_kN": 390,
+        "frequency_Hz": {
+          "min": 5,
+          "max": 2000
+        },
+        "acceleration_g": 100.0,
+        "armature_diameter_mm": 590,
+        "stroke_mm_pk_pk": {
+          "values": [
+            63.5,
+            76.2
+          ]
+        }
+      },
+      "note": "최대 가속도(정현/랜덤/충격) 100/75/300 g. 최대 변위 p-p 63.5 또는 76.2 mm(원문 63.5/76.2)"
+    },
+    {
+      "model": "TV 59416/AIT-590",
+      "specs": {
+        "force_kN": 168,
+        "force_random_kN": 168,
+        "force_shock_kN": 504,
+        "frequency_Hz": {
+          "min": 5,
+          "max": 2000
+        },
+        "acceleration_g": 100.0,
+        "armature_diameter_mm": 590,
+        "stroke_mm_pk_pk": {
+          "values": [
+            63.5,
+            76.2
+          ]
+        }
+      },
+      "note": "최대 가속도(정현/랜덤/충격) 100/75/300 g. 최대 변위 p-p 63.5 또는 76.2 mm(원문 63.5/76.2)"
+    },
+    {
+      "model": "TV 59420/AIT-590",
+      "specs": {
+        "force_kN": 200,
+        "force_random_kN": 168,
+        "force_shock_kN": 600,
+        "frequency_Hz": {
+          "min": 5,
+          "max": 2000
+        },
+        "acceleration_g": 100.0,
+        "armature_diameter_mm": 590,
+        "stroke_mm_pk_pk": {
+          "values": [
+            63.5,
+            76.2
+          ]
+        }
+      },
+      "note": "최대 가속도(정현/랜덤/충격) 100/75/300 g. 최대 변위 p-p 63.5 또는 76.2 mm(원문 63.5/76.2)"
+    },
+    {
+      "model": "TV 59430/AIT-840",
+      "specs": {
+        "force_kN": 300,
+        "force_random_kN": 270,
+        "force_shock_kN": 900,
+        "frequency_Hz": {
+          "min": 5,
+          "max": 2000
+        },
+        "acceleration_g": 70.0,
+        "armature_diameter_mm": 840,
+        "stroke_mm_pk_pk": {
+          "values": [
+            63.5,
+            76.2
+          ]
+        },
+        "payload_kg": 2500
+      },
+      "note": "최대 가속도(정현/랜덤/충격) 70/70/250 g. 최대 변위 p-p 63.5 또는 76.2 mm(원문 63.5/76.2)"
+    }
+  ],
+  "relations": [
+    {
+      "type": "performs",
+      "target": "vibration_sine_random"
+    },
+    {
+      "type": "same_family_as",
+      "target": "tira-tv-medium-shakers"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://www.tira-gmbh.de/en/vibration-test-systems/vibration-test-systems/standard-systems/vibration-test-systems-20-kn-to-70-kn/",
+      "retrieved": "2026-10-08",
+      "note": "제조사 표준 시스템 20 kN~70 kN 페이지. 기종별 정격 표"
+    },
+    {
+      "url": "https://www.tira-gmbh.de/en/vibration-test-systems/vibration-test-systems/standard-systems/vibration-test-systems-74-kn-to-300-kn/",
+      "retrieved": "2026-10-08",
+      "note": "제조사 표준 시스템 74 kN~300 kN 페이지. 기종별 정격 표"
+    }
+  ],
+  "confidence": "limited",
+  "notes": "20~70 kN 표의 가속도는 한 값만 있어 정현으로 보고 적었다. 최대 속도·아마추어 질량은 페이지에 없다."
+}

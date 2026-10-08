@@ -1,0 +1,101 @@
+{
+  "id": "keysight-ena-vna",
+  "kind": "equipment_series",
+  "name": "Keysight ENA Vector Network Analyzers (E5080B / E5063A / E5071C)",
+  "name_ko": "키사이트 ENA 벡터 네트워크 분석기",
+  "manufacturer": "keysight",
+  "brand": "ENA",
+  "category": "network_lcr_analyzer",
+  "form_factor": "benchtop",
+  "description": "ENA 이름의 탁상형 벡터 네트워크 분석기 계열. E5080B 는 2·4 포트에 주파수 옵션 9 kHz~4.5/6.5/9/14/20 GHz 또는 100 kHz~26.5/32/44/53 GHz, 동적 범위 140 dB, 최대 신호원 2개이며 DC 전원·바이어스 티·펄스 발생기·펄스 변조기를 내장해 수동 부품·증폭기·믹서·주파수 변환기 특성을 측정한다. E5063A 는 100 kHz~18 GHz 2포트 저가형으로 안테나·필터·케이블·커넥터 같은 수동 부품 시험용이다. E5071C 는 단종되어 E5080B 로 대체되었다.",
+  "test_items": [],
+  "limits": {
+    "frequency_Hz": {
+      "min": 9000,
+      "max": 53000000000,
+      "note": "E5080B 원문 9 kHz to 4.5/6.5/9/14/20 GHz 또는 100 kHz to 26.5/32/44/53 GHz(옵션). E5063A 100 kHz to 18 GHz"
+    },
+    "rf_port_count": {
+      "values": [
+        2,
+        4
+      ]
+    },
+    "dynamic_range_dB": {
+      "max": 140,
+      "note": "E5080B 페이지 값. E5063A·E5071C 는 페이지에 없음"
+    }
+  },
+  "models": [
+    {
+      "model": "E5080B",
+      "specs": {
+        "frequency_Hz": {
+          "min": 9000,
+          "max": 53000000000,
+          "note": "옵션별 상한 4.5/6.5/9/14/20 GHz(하한 9 kHz) 또는 26.5/32/44/53 GHz(하한 100 kHz)"
+        },
+        "rf_port_count": {
+          "values": [
+            2,
+            4
+          ]
+        },
+        "dynamic_range_dB": 140
+      },
+      "note": "최대 신호원 2개. DC 전원·바이어스 티·펄스 발생기·펄스 변조기 내장"
+    },
+    {
+      "model": "E5063A",
+      "specs": {
+        "frequency_Hz": {
+          "min": 100000,
+          "max": 18000000000,
+          "note": "구성 100 kHz~500 MHz, 100 kHz~18 GHz"
+        },
+        "rf_port_count": 2
+      },
+      "note": "신호원 1개, 50 Ω S-파라미터 시험 세트. 시간 영역 분석·PCB 시험 업그레이드 옵션"
+    },
+    {
+      "model": "E5071C",
+      "note": "단종(Obsolete). 제조사 페이지에 후속 기종 E5080B 로 적힘. 사양은 페이지에 없음"
+    }
+  ],
+  "features": [
+    "E5080B: DC 전원·바이어스 티·펄스 발생기·펄스 변조기 내장",
+    "E5080B: 스펙트럼 분석·믹서 측정·잡음 지수 분석 소프트웨어 옵션",
+    "E5063A: 시간 영역 분석·PCB 시험 업그레이드 옵션"
+  ],
+  "relations": [
+    {
+      "type": "same_family_as",
+      "target": "keysight-pna",
+      "note": "같은 제조사의 탁상형 VNA 계열"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://www.keysight.com/us/en/product/E5080B/ena-vector-network-analyzer.html",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지. 2·4 포트, 9 kHz to 4.5/6.5/9/14/20 GHz OR 100 kHz to 26.5/32/44/53 GHz, Dynamic range 140 dB, Maximum number of sources 2"
+    },
+    {
+      "url": "https://www.keysight.com/us/en/products/network-analyzers/ena-vector-network-analyzers.html",
+      "retrieved": "2026-10-08",
+      "note": "제조사 ENA 목록 페이지. E5080B 100 kHz to 26.5/32/44/53 GHz, 2·4 포트, 140 dB"
+    },
+    {
+      "url": "https://www.keysight.com/us/en/product/E5063A/ena-vector-network-analyzer.html",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지. 100 kHz to 18 GHz, 2 built-in ports, 1 maximum source, 구성 100 kHz to 500 MHz / 100 kHz to 18 GHz"
+    },
+    {
+      "url": "https://www.keysight.com/us/en/product/E5071C/ena-vector-network-analyzer.html",
+      "retrieved": "2026-10-08",
+      "note": "제조사 안내 페이지. Product Status Obsolete, 후속 E5080B. 사양은 적혀 있지 않음"
+    }
+  ],
+  "confidence": "limited",
+  "notes": "제조사가 ENA 로 묶는 세 기종을 한 객체로 둠. E5071C 는 단종 안내 페이지만 있어 기종 이름만 둠. E5080B 의 출력 전력·트레이스 잡음은 페이지에 없음. E5061B 등 다른 ENA 기종은 이번에 확인하지 않음."
+}

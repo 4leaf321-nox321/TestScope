@@ -1,0 +1,192 @@
+{
+  "id": "rhesca-solder-wettability-testers",
+  "kind": "equipment_series",
+  "name": "RHESCA Solder Wettability Testers (5200TN / 5200ZC / 5200Advanced / 6200Z)",
+  "name_ko": "레스카 솔더 젖음성 시험기 (5200TN · 5200ZC · 5200Advanced · 6200Z)",
+  "manufacturer": "rhesca",
+  "category": "solderability_tester",
+  "form_factor": "benchtop",
+  "description": "웨팅 밸런스법으로 부품과 솔더(용융 금속) 사이의 젖음 응력을 시간에 따라 재는 시험기 계열. 5200TN 은 솔더 조 평형법과 소구(small ball) 평형법을 모두 하며 검출 범위 ±10 mN · 50 mN, 상온~450 °C, 침지 깊이 0.01~20 mm, 침지 속도 0.1~30 mm/s 이다. 5200ZC 는 솔더 조 평형법에 특화한 저가형, 5200Advanced 는 0201 칩 부품용 초고감도 기종(1 mN 레인지에서 1 µN, 응답 10 ms, 침지 깊이 0.005 mm 부터)이다. 6200Z 는 판 · 봉재와 용융 금속의 젖음성을 상온~900 °C 불활성 가스 분위기에서 본다.",
+  "test_items": [
+    "solderability"
+  ],
+  "measurands": [
+    "wetting_force",
+    "wetting_time"
+  ],
+  "materials": [
+    "electronic components",
+    "chip components",
+    "solder",
+    "molten metals"
+  ],
+  "limits": {
+    "wetting_force_mN": {
+      "max": 50,
+      "note": "검출 범위 10 · 50 mN 전환(5200TN · 5200ZC · 6200Z), 5200Advanced 1 · 5 mN"
+    },
+    "temperature_degC": {
+      "max": 900,
+      "note": "6200Z 상온~900 °C. 5200TN · 5200ZC 450 °C, 5200Advanced 400 °C"
+    },
+    "dip_depth_mm": {
+      "min": 0.005,
+      "max": 28,
+      "note": "5200Advanced 0.005 mm 부터, 6200Z 28.0 mm 까지"
+    },
+    "dip_speed_mm_s": {
+      "min": 0.1,
+      "max": 30
+    }
+  },
+  "models": [
+    {
+      "model": "5200TN",
+      "specs": {
+        "wetting_force_mN": {
+          "values": [
+            10,
+            50
+          ],
+          "note": "검출 범위 ±10 mN, 50 mN"
+        },
+        "accuracy": "±0.1 %FS",
+        "temperature_degC": {
+          "max": 450,
+          "note": "상온~450 °C, ±2 °C (245 °C 설정 시)"
+        },
+        "test_time_s": "1~999 s, 1~999 min",
+        "dip_depth_mm": "0.01~1 mm (0.01 단위) / 1~20 mm (0.1 단위)",
+        "dip_speed_mm_s": "0.1~1 (0.1 단위) / 1~5 (0.5 단위) / 5~30 (5 단위)",
+        "stage_travel_mm": "X ±5 / Y ±5",
+        "sample_mass_kg": {
+          "max": 0.01,
+          "note": "원문 시료 질량 10 g"
+        },
+        "power": "AC 100~220 V ±10 %, 50/60 Hz, 600 W",
+        "footprint_mm": "522 × 527 × 556 (W × D × H)",
+        "weight_kg": 45
+      },
+      "note": "솔더 조: φ60 mm, 깊이 30 mm (옵션 60 mm)"
+    },
+    {
+      "model": "5200ZC",
+      "specs": {
+        "wetting_force_mN": {
+          "values": [
+            10,
+            50
+          ]
+        },
+        "dip_depth_mm": {
+          "min": 0.2,
+          "max": 20
+        },
+        "temperature_degC": {
+          "max": 450
+        },
+        "power": "AC 100~240 V"
+      },
+      "note": "솔더 조 평형법 전용. PC 연결 시 국제 규격 파형 해석"
+    },
+    {
+      "model": "5200Advanced",
+      "specs": {
+        "wetting_force_mN": {
+          "values": [
+            1,
+            5
+          ]
+        },
+        "force_resolution": "1 µN (1 mN 레인지)",
+        "response_time_ms": 10,
+        "dip_depth_mm": {
+          "min": 0.005,
+          "max": 1
+        },
+        "temperature_degC": {
+          "max": 400
+        },
+        "power": "AC 100~240 V"
+      },
+      "note": "소구 평형법 · 프로파일 가열법. 0201 크기 칩 부품용. 옵션 고속 카메라"
+    },
+    {
+      "model": "6200Z",
+      "specs": {
+        "wetting_force_mN": {
+          "values": [
+            10,
+            50
+          ]
+        },
+        "temperature_degC": {
+          "max": 900,
+          "note": "상온~900 °C, 900 ± 5 °C (PID)"
+        },
+        "dip_depth_mm": {
+          "min": 0.01,
+          "max": 28.0
+        },
+        "dip_speed_mm_s": {
+          "min": 0.1,
+          "max": 30.0
+        },
+        "test_time_s": "1~999 s, 1~9999 min",
+        "balance_resolution_ug": 2000,
+        "power": "AC 100~120 V ±10 %, 50/60 Hz, 2 kW (칠러 · 방진대 제외)",
+        "footprint_mm": "420 × 530 × 735 (W × D × H)",
+        "weight_kg": 77,
+        "operating_temperature_degC": {
+          "min": 5,
+          "max": 40
+        }
+      },
+      "note": "고온 젖음성 시험기. 전자 천칭 감도 2 mg; 분위기: 불활성 가스, 글로브 박스 내 진공 · 가스 치환; 노: 용융로 φ48 × H30 mm (최대 0.4 kg), 예열로 φ20 × H26.5 mm"
+    }
+  ],
+  "test_modes": [
+    "솔더 조 평형법",
+    "소구(솔더 볼) 평형법",
+    "프로파일 가열법(5200Advanced)"
+  ],
+  "relations": [
+    {
+      "type": "performs",
+      "target": "solderability"
+    },
+    {
+      "type": "same_family_as",
+      "target": "malcom-wetting-testers"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://www.rhesca.co.jp/product/5200tn/",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지(5200TN, 일본어)"
+    },
+    {
+      "url": "https://www.rhesca.co.jp/product/5200zc/",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지(5200ZC, 일본어)"
+    },
+    {
+      "url": "https://www.rhesca.co.jp/product/5200advanced/",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지(5200Advanced, 일본어)"
+    },
+    {
+      "url": "https://www.rhesca.co.jp/product/6200z/",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지(6200Z, 일본어)"
+    },
+    {
+      "url": "https://www.rhesca.co.jp/product/",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 목록"
+    }
+  ],
+  "notes": "6200Z 의 전자 천칭 감도 2 mg 은 balance_resolution_ug 2000 으로 옮겼다. 시험 규격은 페이지에 없다. 'SAT-5200' 이라는 기종명은 제조사 페이지에서 확인되지 않았다.",
+  "confidence": "limited"
+}

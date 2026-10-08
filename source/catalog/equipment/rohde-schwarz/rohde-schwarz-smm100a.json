@@ -1,0 +1,143 @@
+{
+  "id": "rohde-schwarz-smm100a",
+  "kind": "equipment_series",
+  "name": "R&S SMM100A Vector Signal Generator",
+  "name_ko": "로데슈바르츠 SMM100A 벡터 신호발생기",
+  "manufacturer": "rohde-schwarz",
+  "brand": "SMM",
+  "category": "signal_generator",
+  "subcategory": "vector_rf_microwave",
+  "description": "밀리미터파까지 다루는 중급 벡터 신호발생기. 100 kHz~44 GHz 를 주파수 옵션(6·7.5·12.75·20·31.8·44 GHz)으로 고르고, 내부 RF 변조 대역폭은 기본 120 MHz 에서 라이선스로 240 MHz·500 MHz·1 GHz·2 GHz 까지 늘린다. 1 GHz·20 kHz 오프셋 SSB 위상 잡음 < -129 dBc(typ. -134, SMM-B709 옵션 -139)다. 28 GHz 400 MHz 5G NR 신호 EVM < -45 dB, 320 MHz 802.11be 신호 EVM -53 dB 보다 좋다.",
+  "test_items": [],
+  "limits": {
+    "output_frequency_Hz": {
+      "min": 100000,
+      "max": 44000000000,
+      "note": "사양서 주파수 옵션: SMM-B1006 6 GHz, B1007 7.5 GHz, B1012 12.75 GHz, B1020 20 GHz, B1031 31.8 GHz, B1044/B1044N/B1044O 44 GHz, 모두 100 kHz 부터"
+    },
+    "bandwidth_Hz": {
+      "min": 120000000,
+      "max": 2000000000,
+      "note": "사양서 ARB RF 대역폭(최대 샘플 속도, 0.1 dB 롤오프): 기저대역 SMM-B9 표준 120 MHz, K523 240 MHz, K524 500 MHz, K525 1 GHz, K527 2 GHz. Key facts: Internal RF modulation bandwidth up to 2 GHz. 목록 페이지의 「내부 1 GHz·외부 2 GHz」 는 사양서와 다르다(내부 기저대역으로 2 GHz)"
+    },
+    "rf_output_level_dBm": {
+      "min": -120,
+      "max": 18,
+      "note": "사양서 Specified level range(PEP): -120~+18 dBm(3 MHz~20 GHz 기준, 대역·옵션에 따라 +17/+15/+12 dBm 등), 1 MHz 이하 +3·+8 dBm. 설정 범위 -145~+30 dBm. 목록 페이지 Level range +18~-120 dBm 과 같다"
+    },
+    "phase_noise_dBc_Hz": {
+      "values": [
+        -129
+      ],
+      "note": "1 GHz 반송파, 20 kHz 오프셋, 기본 성능 사양 < -129 dBc, typ. -134(사양서). SMM-B709 옵션 -139 는 제품 페이지 값 — 사양서 B709 표는 텍스트 추출에서 열이 섞여 20 kHz 값을 확인하지 못했다. 단위 dBc(1 Hz)"
+    },
+    "radio_standards": {
+      "values": [
+        "5G NR",
+        "Wi-Fi 8",
+        "LTE",
+        "WLAN",
+        "Bluetooth",
+        "NFC",
+        "LoRa",
+        "IEEE 802.15.4",
+        "GNSS",
+        "DVB",
+        "레이더·펄스 시퀀싱"
+      ],
+      "note": "제품 페이지 문구"
+    },
+    "waveform_memory_pts": {
+      "values": [
+        64000000,
+        512000000,
+        1000000000,
+        2000000000
+      ],
+      "note": "사양서 ARB 파형 길이: 표준 64 Msample(SMM-B9), K511 512 Msample, K511+K512 1 Gsample, +K513 2 Gsample"
+    }
+  },
+  "models": [
+    {
+      "model": "SMM100A",
+      "specs": {
+        "output_frequency_Hz": {
+          "min": 100000,
+          "max": 44000000000
+        },
+        "bandwidth_Hz": {
+          "min": 120000000,
+          "max": 2000000000,
+          "note": "ARB RF 대역폭. 표준 120 MHz, K527 로 2 GHz"
+        },
+        "rf_output_level_dBm": {
+          "min": -120,
+          "max": 18
+        },
+        "phase_noise_dBc_Hz": {
+          "values": [
+            -129
+          ],
+          "note": "1 GHz 반송파, 20 kHz 오프셋. 사양 < -129, typ. -134"
+        },
+        "waveform_memory_pts": {
+          "values": [
+            64000000,
+            512000000,
+            1000000000,
+            2000000000
+          ]
+        }
+      }
+    }
+  ],
+  "features": [
+    "EVM < -45 dB(28 GHz, 400 MHz 5G NR)",
+    "EVM -53 dB 보다 좋음(802.11be 320 MHz)",
+    "라이선스로 변조 대역폭 확장(240 MHz·500 MHz·1 GHz·2 GHz)"
+  ],
+  "options": [
+    {
+      "name": "SMM-B1006 / B1007 / B1012 / B1020 / B1031 / B1044",
+      "note": "주파수 옵션 6 / 7.5 / 12.75 / 20 / 31.8 / 44 GHz(사양서: 44 GHz 는 B1044N·B1044O 변형도 있다)"
+    },
+    {
+      "name": "SMM-B709",
+      "note": "저위상잡음 옵션(1 GHz·20 kHz 오프셋 -139 dBc)"
+    },
+    {
+      "name": "SMM-B9",
+      "note": "기저대역 발생기(ARB 64 Msample, RF 대역폭 120 MHz)"
+    },
+    {
+      "name": "SMM-K523 / K524 / K525 / K527",
+      "note": "ARB RF 대역폭 240 MHz / 500 MHz / 1 GHz / 2 GHz"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://www.rohde-schwarz.com/us/products/test-and-measurement/vector-signal-generators/rs-smm100a-vector-signal-generator_63493-834088.html",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지. 주파수 옵션, 변조 대역폭, 위상 잡음, EVM, 지원 표준"
+    },
+    {
+      "url": "https://www.rohde-schwarz.com/us/products/test-and-measurement/vector-signal-generators_333559.html",
+      "retrieved": "2026-10-08",
+      "note": "제조사 벡터 신호발생기 목록 페이지. 주파수, I/Q 변조 대역폭, 레벨 범위"
+    },
+    {
+      "file": "rohde-schwarz/smm100a_specs_en_3608-7680-22_v3100.pdf",
+      "pages": [
+        4,
+        6,
+        9,
+        14,
+        24,
+        30
+      ],
+      "note": "제조사 사양서(v31.00, 2026-06). Key facts, 주파수 옵션, 기저대역 하드웨어, 레벨 범위, 위상 잡음, I/Q 변조, ARB 파형 길이·RF 대역폭"
+    }
+  ],
+  "confidence": "catalog",
+  "notes": "PDF 로 확인: 주파수 옵션, 레벨 범위, 위상 잡음(기본), 변조 대역폭 120 MHz~2 GHz, ARB 메모리. 변조 대역폭 엇갈림(제품 페이지 2 GHz vs 목록 페이지 내부 1 GHz·외부 2 GHz)은 사양서로 정했다 — 내부 ARB 로 2 GHz(K527). B709 위상 잡음 -139 는 웹 값 그대로."
+}

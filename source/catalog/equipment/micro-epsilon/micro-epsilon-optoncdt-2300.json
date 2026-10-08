@@ -1,0 +1,472 @@
+{
+  "id": "micro-epsilon-optoncdt-2300",
+  "kind": "equipment_series",
+  "name": "optoNCDT 2300 High-Speed Laser Triangulation Sensor",
+  "name_ko": "마이크로엡실론 optoNCDT 2300 고속 레이저 변위 센서",
+  "manufacturer": "micro-epsilon",
+  "category": "thickness_displacement_gauge",
+  "description": "측정 속도를 49.14 kHz 까지 조정하는 고속 레이저 삼각측량 변위 센서 계열임. 측정 범위 2·5·10·20·50·100·200·300 mm, 직선성 0.6 µm 부터, 분해능 최대 0.03 µm. 표면 반사율 변화를 보정하는 Advanced RTSC 를 쓰고, Ethernet · EtherCAT · RS422 출력(PROFINET · EtherNet/IP 는 인터페이스 모듈로)을 지원함.",
+  "test_items": [],
+  "limits": {
+    "displacement_mm": {
+      "min": 2,
+      "max": 300,
+      "values": [
+        2,
+        5,
+        10,
+        20,
+        50,
+        100,
+        200,
+        300
+      ],
+      "note": "원문 Measuring range 2 | 5 | 10 | 20 | 50 | 100 | 200 | 300 mm(ILD2300 레이저 점, PDF p.4·5). 49.14 kHz 에서는 줄어든 범위(괄호 값)"
+    },
+    "linearity_um": {
+      "min": 0.6,
+      "note": "원문 Linearity < 0.6 µm(ILD2300-2, < 0.03 % FSO)"
+    },
+    "position_resolution_nm": {
+      "min": 30,
+      "note": "원문 Resolution 0.03 µm(ILD2300-2, 측정 속도 20 kHz)"
+    },
+    "data_rate_Hz": {
+      "max": 49140,
+      "note": "원문 Measuring rate 7 adjustable stages: 49.14 / 30 / 20 / 10 / 5 / 2.5 / 1.5 kHz. 49.14 kHz 에서는 측정 범위가 줄어듦"
+    },
+    "measurement_distance_mm": {
+      "min": 24,
+      "max": 550,
+      "note": "원문 Start of measuring range 24 mm(ILD2300-2) ~ 200 mm(ILD2300-300), ILD2310-50BL 은 550 mm"
+    },
+    "laser_wavelength_nm": {
+      "values": [
+        670,
+        405
+      ],
+      "note": "원문 670 nm(red, 표준) / 405 nm(blue violet, BL), < 1 mW, Class 2(옵션 3R)"
+    },
+    "operating_temperature_degC": {
+      "min": 0,
+      "max": 50,
+      "note": "원문 Operation 0 ... +50 °C (non-condensing)"
+    }
+  },
+  "models": [
+    {
+      "model": "ILD2300-2",
+      "specs": {
+        "displacement_mm": {
+          "value": 2,
+          "note": "원문 Measuring range 2 (2) mm — 괄호는 49.14 kHz 에서"
+        },
+        "measurement_distance_mm": {
+          "value": 24,
+          "note": "원문 Start of measuring range 24 (24) mm(중앙 25 mm, 끝 26 mm)"
+        },
+        "linearity_um": {
+          "value": 0.6,
+          "note": "원문 Linearity < 0.6 µm(< 0.03 % FSO)"
+        },
+        "position_resolution_nm": {
+          "value": 30.0,
+          "note": "원문 Resolution 0.03 µm(측정 속도 20 kHz)"
+        },
+        "data_rate_Hz": {
+          "value": 49140,
+          "note": "원문 Measuring rate max. 49.14 kHz(줄어든 범위)"
+        },
+        "spot_size_um": {
+          "value": 23,
+          "note": "원문 Light spot diameter MMR 23 x 23 µm"
+        }
+      },
+      "note": "레이저 점(Laser point) 표준형, 적색 670 nm. 기종명은 PDF p.4 표기 그대로"
+    },
+    {
+      "model": "ILD2300-5",
+      "specs": {
+        "displacement_mm": {
+          "value": 5,
+          "note": "원문 Measuring range 5 (2) mm — 괄호는 49.14 kHz 에서"
+        },
+        "measurement_distance_mm": {
+          "value": 24,
+          "note": "원문 Start of measuring range 24 (24) mm(중앙 26.5 mm, 끝 29 mm)"
+        },
+        "linearity_um": {
+          "value": 1.5,
+          "note": "원문 Linearity < 1.5 µm(< 0.03 % FSO)"
+        },
+        "position_resolution_nm": {
+          "value": 80.0,
+          "note": "원문 Resolution 0.08 µm(측정 속도 20 kHz)"
+        },
+        "data_rate_Hz": {
+          "value": 49140,
+          "note": "원문 Measuring rate max. 49.14 kHz(줄어든 범위)"
+        },
+        "spot_size_um": {
+          "value": 30,
+          "note": "원문 Light spot diameter MMR 30 x 30 µm"
+        }
+      },
+      "note": "레이저 점(Laser point) 표준형, 적색 670 nm. 기종명은 PDF p.4 표기 그대로"
+    },
+    {
+      "model": "ILD2300-10",
+      "specs": {
+        "displacement_mm": {
+          "value": 10,
+          "note": "원문 Measuring range 10 (5) mm — 괄호는 49.14 kHz 에서"
+        },
+        "measurement_distance_mm": {
+          "value": 30,
+          "note": "원문 Start of measuring range 30 (35) mm(중앙 35 mm, 끝 40 mm)"
+        },
+        "linearity_um": {
+          "value": 2,
+          "note": "원문 Linearity < 2 µm(< 0.02 % FSO)"
+        },
+        "position_resolution_nm": {
+          "value": 150.0,
+          "note": "원문 Resolution 0.15 µm(측정 속도 20 kHz)"
+        },
+        "data_rate_Hz": {
+          "value": 49140,
+          "note": "원문 Measuring rate max. 49.14 kHz(줄어든 범위)"
+        },
+        "spot_size_um": {
+          "value": 32,
+          "note": "원문 Light spot diameter MMR 32 x 45 µm"
+        }
+      },
+      "note": "레이저 점(Laser point) 표준형, 적색 670 nm. 기종명은 PDF p.4 표기 그대로"
+    },
+    {
+      "model": "ILD2300-20",
+      "specs": {
+        "displacement_mm": {
+          "value": 20,
+          "note": "원문 Measuring range 20 (10) mm — 괄호는 49.14 kHz 에서"
+        },
+        "measurement_distance_mm": {
+          "value": 40,
+          "note": "원문 Start of measuring range 40 (50) mm(중앙 50 mm, 끝 60 mm)"
+        },
+        "linearity_um": {
+          "value": 4,
+          "note": "원문 Linearity < 4 µm(< 0.02 % FSO)"
+        },
+        "position_resolution_nm": {
+          "value": 300.0,
+          "note": "원문 Resolution 0.3 µm(측정 속도 20 kHz)"
+        },
+        "data_rate_Hz": {
+          "value": 49140,
+          "note": "원문 Measuring rate max. 49.14 kHz(줄어든 범위)"
+        }
+      },
+      "note": "레이저 점(Laser point) 표준형, 적색 670 nm. 기종명은 PDF p.4 표기 그대로. 이 열은 텍스트 추출에서 위로 밀려 있어 행 순서로 읽음(SMR+측정 범위=EMR, 직선성=0.02 % FSO 로 맞음). 스폿은 행 대응이 불확실해 비움"
+    },
+    {
+      "model": "ILD2300-50",
+      "specs": {
+        "displacement_mm": {
+          "value": 50,
+          "note": "원문 Measuring range 50 (25) mm — 괄호는 49.14 kHz 에서"
+        },
+        "measurement_distance_mm": {
+          "value": 45,
+          "note": "원문 Start of measuring range 45 (70) mm(중앙 70 mm, 끝 95 mm)"
+        },
+        "linearity_um": {
+          "value": 10,
+          "note": "원문 Linearity < 10 µm(< 0.02 % FSO)"
+        },
+        "position_resolution_nm": {
+          "value": 800.0,
+          "note": "원문 Resolution 0.8 µm(측정 속도 20 kHz)"
+        },
+        "data_rate_Hz": {
+          "value": 49140,
+          "note": "원문 Measuring rate max. 49.14 kHz(줄어든 범위)"
+        },
+        "spot_size_um": {
+          "value": 70,
+          "note": "원문 Light spot diameter MMR 70 x 70 µm"
+        }
+      },
+      "note": "레이저 점(Laser point) 표준형, 적색 670 nm. 기종명은 PDF p.5 표기 그대로"
+    },
+    {
+      "model": "ILD2300-100",
+      "specs": {
+        "displacement_mm": {
+          "value": 100,
+          "note": "원문 Measuring range 100 (50) mm — 괄호는 49.14 kHz 에서"
+        },
+        "measurement_distance_mm": {
+          "value": 70,
+          "note": "원문 Start of measuring range 70 (120) mm(중앙 120 mm, 끝 170 mm)"
+        },
+        "linearity_um": {
+          "value": 20,
+          "note": "원문 Linearity < 20 µm(< 0.02 % FSO)"
+        },
+        "position_resolution_nm": {
+          "value": 1500.0,
+          "note": "원문 Resolution 1.5 µm(측정 속도 20 kHz)"
+        },
+        "data_rate_Hz": {
+          "value": 49140,
+          "note": "원문 Measuring rate max. 49.14 kHz(줄어든 범위)"
+        },
+        "spot_size_um": {
+          "value": 130,
+          "note": "원문 Light spot diameter MMR 130 µm"
+        }
+      },
+      "note": "레이저 점(Laser point) 표준형, 적색 670 nm. 기종명은 PDF p.5 표기 그대로"
+    },
+    {
+      "model": "ILD2300-200",
+      "specs": {
+        "displacement_mm": {
+          "value": 200,
+          "note": "원문 Measuring range 200 (100) mm — 괄호는 49.14 kHz 에서"
+        },
+        "measurement_distance_mm": {
+          "value": 130,
+          "note": "원문 Start of measuring range 130 (230) mm(중앙 230 mm, 끝 330 mm)"
+        },
+        "linearity_um": {
+          "value": 60,
+          "note": "원문 Linearity < 60 µm(< 0.03 % FSO)"
+        },
+        "position_resolution_nm": {
+          "value": 3000,
+          "note": "원문 Resolution 3 µm(측정 속도 20 kHz)"
+        },
+        "data_rate_Hz": {
+          "value": 49140,
+          "note": "원문 Measuring rate max. 49.14 kHz(줄어든 범위)"
+        },
+        "spot_size_um": {
+          "value": 1300,
+          "note": "원문 Light spot diameter MMR 1300 µm"
+        }
+      },
+      "note": "레이저 점(Laser point) 표준형, 적색 670 nm. 기종명은 PDF p.5 표기 그대로"
+    },
+    {
+      "model": "ILD2300-300",
+      "specs": {
+        "displacement_mm": {
+          "value": 300,
+          "note": "원문 Measuring range 300 (150) mm — 괄호는 49.14 kHz 에서"
+        },
+        "measurement_distance_mm": {
+          "value": 200,
+          "note": "원문 Start of measuring range 200 (350) mm(중앙 350 mm, 끝 500 mm)"
+        },
+        "linearity_um": {
+          "value": 90,
+          "note": "원문 Linearity < 90 µm(< 0.03 % FSO)"
+        },
+        "position_resolution_nm": {
+          "value": 4500.0,
+          "note": "원문 Resolution 4.5 µm(측정 속도 20 kHz)"
+        },
+        "data_rate_Hz": {
+          "value": 49140,
+          "note": "원문 Measuring rate max. 49.14 kHz(줄어든 범위)"
+        },
+        "spot_size_um": {
+          "value": 380,
+          "note": "원문 Light spot diameter MMR 380 x 380 µm"
+        }
+      },
+      "note": "레이저 점(Laser point) 표준형, 적색 670 nm. 기종명은 PDF p.5 표기 그대로"
+    },
+    {
+      "model": "ILD2300-2BL",
+      "variant": "청색 레이저(405 nm)",
+      "specs": {
+        "displacement_mm": {
+          "value": 2,
+          "note": "원문 Measuring range 2 (2) mm — 괄호는 49.14 kHz 에서"
+        },
+        "measurement_distance_mm": {
+          "value": 24,
+          "note": "원문 Start of measuring range 24 (24) mm(중앙 25 mm, 끝 26 mm)"
+        },
+        "linearity_um": {
+          "value": 0.6,
+          "note": "원문 Linearity < 0.6 µm(< 0.03 % FSO)"
+        },
+        "position_resolution_nm": {
+          "value": 30.0,
+          "note": "원문 Resolution 0.03 µm(측정 속도 20 kHz)"
+        },
+        "data_rate_Hz": {
+          "value": 49140,
+          "note": "원문 Measuring rate max. 49.14 kHz(줄어든 범위)"
+        },
+        "spot_size_um": {
+          "value": 20,
+          "note": "원문 Light spot diameter MMR 20 x 20 µm"
+        }
+      },
+      "note": "PDF p.5 Blue laser 표"
+    },
+    {
+      "model": "ILD2300-5BL",
+      "variant": "청색 레이저(405 nm)",
+      "specs": {
+        "displacement_mm": {
+          "value": 5,
+          "note": "원문 Measuring range 5 (2) mm — 괄호는 49.14 kHz 에서"
+        },
+        "measurement_distance_mm": {
+          "value": 24,
+          "note": "원문 Start of measuring range 24 (24) mm(중앙 26.5 mm, 끝 29 mm)"
+        },
+        "linearity_um": {
+          "value": 1.5,
+          "note": "원문 Linearity < 1.5 µm(< 0.03 % FSO)"
+        },
+        "position_resolution_nm": {
+          "value": 80.0,
+          "note": "원문 Resolution 0.08 µm(측정 속도 20 kHz)"
+        },
+        "data_rate_Hz": {
+          "value": 49140,
+          "note": "원문 Measuring rate max. 49.14 kHz(줄어든 범위)"
+        },
+        "spot_size_um": {
+          "value": 20,
+          "note": "원문 Light spot diameter MMR 20 x 20 µm"
+        }
+      },
+      "note": "PDF p.5 Blue laser 표"
+    },
+    {
+      "model": "ILD2300-10BL",
+      "variant": "청색 레이저(405 nm)",
+      "specs": {
+        "displacement_mm": {
+          "value": 10,
+          "note": "원문 Measuring range 10 (5) mm — 괄호는 49.14 kHz 에서"
+        },
+        "measurement_distance_mm": {
+          "value": 30,
+          "note": "원문 Start of measuring range 30 (35) mm(중앙 35 mm, 끝 40 mm)"
+        },
+        "linearity_um": {
+          "value": 2,
+          "note": "원문 Linearity < 2 µm(< 0.02 % FSO)"
+        },
+        "position_resolution_nm": {
+          "value": 150.0,
+          "note": "원문 Resolution 0.15 µm(측정 속도 20 kHz)"
+        },
+        "data_rate_Hz": {
+          "value": 49140,
+          "note": "원문 Measuring rate max. 49.14 kHz(줄어든 범위)"
+        },
+        "spot_size_um": {
+          "value": 32,
+          "note": "원문 Light spot diameter MMR 32 x 45 µm"
+        }
+      },
+      "note": "PDF p.5 Blue laser 표"
+    },
+    {
+      "model": "ILD2310-50BL",
+      "variant": "청색 레이저 · 긴 측정 거리(ILD2310 계열)",
+      "specs": {
+        "displacement_mm": {
+          "value": 50,
+          "note": "원문 Measuring range 50 (25) mm — 괄호는 49.14 kHz 에서"
+        },
+        "measurement_distance_mm": {
+          "value": 550,
+          "note": "원문 Start of measuring range 550 (575) mm(중앙 575 mm, 끝 600 mm)"
+        },
+        "linearity_um": {
+          "value": 40,
+          "note": "원문 Linearity < 40 µm(< 0.08 % FSO)"
+        },
+        "position_resolution_nm": {
+          "value": 7500.0,
+          "note": "원문 Resolution 7.5 µm(측정 속도 20 kHz)"
+        },
+        "data_rate_Hz": {
+          "value": 49140,
+          "note": "원문 Measuring rate max. 49.14 kHz(줄어든 범위)"
+        },
+        "spot_size_um": {
+          "value": 400,
+          "note": "원문 Light spot diameter MMR 400 ... 500 µm"
+        }
+      },
+      "note": "PDF p.5 Blue laser 표(2300BL 표 안에 있음). 이 열은 텍스트 추출에서 위로 밀려 있어 행 순서로 읽음(SMR+측정 범위=EMR, 직선성 40 µm=0.08 % FSO 로 맞음). 스폿 400~500 µm"
+    },
+    {
+      "model": "ILD2300-2DR",
+      "variant": "직접 반사(Direct Reflection)형",
+      "specs": {
+        "displacement_mm": {
+          "value": 2,
+          "note": "원문 Measuring range 2 mm(개요 표)"
+        },
+        "position_resolution_nm": {
+          "value": 30,
+          "note": "원문 개요 표 Repeatability 0.03 µm"
+        }
+      },
+      "note": "PDF p.3 개요 표(optoNCDT 2300-2DR)와 p.8 설치 표(ILD2300-2DR). 상세 사양표는 이 PDF 에 없음"
+    },
+    {
+      "model": "optoNCDT 2300LL",
+      "variant": "레이저 라인(Laser Line)형",
+      "specs": {
+        "displacement_mm": {
+          "min": 2,
+          "max": 50,
+          "note": "원문 Measuring range 2 - 50 mm(개요 표)"
+        },
+        "position_resolution_nm": {
+          "value": 100,
+          "note": "원문 개요 표 Repeatability 0.1 µm"
+        }
+      },
+      "note": "PDF p.3 개요 표 표기. 기종은 ILD2300-2LL · -10LL · -20LL · -50LL(p.11 보호 하우징 대응표). 기종별 상세 표는 이 PDF 에 없음"
+    }
+  ],
+  "features": [
+    "인터페이스: Ethernet, EtherCAT, RS422(PROFINET · EtherNet/IP 는 인터페이스 모듈)",
+    "Advanced RTSC 표면 보정"
+  ],
+  "sources": [
+    {
+      "url": "https://www.micro-epsilon.com/distance-sensors/laser-sensors/optoncdt-2300/",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지. 측정 범위·직선성·분해능·측정 속도·인터페이스"
+    },
+    {
+      "file": "micro-epsilon/dax--optoncdt-2300--en.pdf",
+      "pages": [
+        3,
+        4,
+        5,
+        8,
+        11
+      ]
+    }
+  ],
+  "confidence": "catalog",
+  "notes": "PDF 로 확인: ILD2300-2~-300 기종명·측정 범위·측정 시작 거리·직선성·분해능·스폿, 측정 속도 49.14 kHz, 파장, 운전 온도(데이터시트 p.4·5). 청색 레이저(BL) 4기종과 2300-2DR · 2300LL 을 PDF 로 더함. 개요 표의 'Repeatability' 칸 값은 상세 표의 Resolution 과 같아 position_resolution_nm 으로 받음. 같은 PDF 의 ILD2310-10/-20/-40/-50(긴 측정 거리 계열)은 사양표가 없어 넣지 않음."
+}

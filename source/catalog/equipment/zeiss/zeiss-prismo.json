@@ -1,0 +1,87 @@
+{
+  "id": "zeiss-prismo",
+  "kind": "equipment_series",
+  "name": "ZEISS PRISMO Family Bridge-Type CMM (PRISMO, PRISMO verity, PRISMO ultra, PRISMO fortis)",
+  "name_ko": "자이스 PRISMO 브리지형 3차원 측정기",
+  "manufacturer": "zeiss",
+  "category": "coordinate_measuring_machine",
+  "form_factor": "floor",
+  "description": "정밀 등급(precision class)의 브리지형 3차원 측정기 계열임. 범용 PRISMO(0.9 + L/350 µm), 신형 표준 PRISMO verity(0.7 + L/400 µm), 최고 정밀 PRISMO ultra(0.5 + L/500 µm), 생산 현장용 PRISMO fortis(22 °C 에서 0.7 + L/400 µm, 40 °C 에서 2.7 + L/80 µm 까지)의 네 기종. 크기(dm) 7/9/5 ~ 16/42/14(PRISMO ultra 는 7/10/5 ~ 16/30/10). 새 컨트롤러 C99m 으로 ROTOS 조도 센서와 LineScan 광학 센서를 씀.",
+  "test_items": [],
+  "limits": {
+    "measuring_range_x_mm": {
+      "min": 700,
+      "max": 1600,
+      "note": "원문 크기 7/9/5 – 16/42/14 dm"
+    },
+    "measuring_range_y_mm": {
+      "min": 900,
+      "max": 4200
+    },
+    "measuring_range_z_mm": {
+      "min": 500,
+      "max": 1400
+    }
+  },
+  "models": [
+    {
+      "model": "PRISMO",
+      "variant": "The all-rounder",
+      "specs": {
+        "length_measuring_error_mpe": "0.9 + L/350 µm"
+      }
+    },
+    {
+      "model": "PRISMO verity",
+      "variant": "The new standard",
+      "specs": {
+        "length_measuring_error_mpe": "0.7 + L/400 µm"
+      }
+    },
+    {
+      "model": "PRISMO ultra",
+      "variant": "PRISMO 계열 최고 정밀",
+      "specs": {
+        "length_measuring_error_mpe": "0.5 + L/500 µm",
+        "measuring_range_x_mm": {
+          "min": 700,
+          "max": 1600
+        },
+        "measuring_range_y_mm": {
+          "min": 1000,
+          "max": 3000
+        },
+        "measuring_range_z_mm": {
+          "min": 500,
+          "max": 1000
+        }
+      },
+      "note": "크기 7/10/5 – 16/30/10 dm"
+    },
+    {
+      "model": "PRISMO fortis",
+      "variant": "생산 환경용",
+      "specs": {
+        "length_measuring_error_mpe": "0.7 + L/400 µm (22 °C), 최대 2.7 + L/80 µm (40 °C)"
+      }
+    }
+  ],
+  "options": [
+    "ZEISS ROTOS 조도 센서(C99m 컨트롤러)",
+    "ZEISS LineScan 광학 센서(C99m 컨트롤러)"
+  ],
+  "sources": [
+    {
+      "url": "https://www.zeiss.com/metrology/en/systems/cmms/bridge-type-cmms/prismo-family.html",
+      "retrieved": "2026-10-08",
+      "note": "제조사 PRISMO 패밀리 페이지(기종별 MPE_E, 크기 범위, 센서)"
+    },
+    {
+      "url": "https://www.zeiss.com/metrology/en/systems/cmms/bridge-type-cmms/prismo-family/zeiss-prismo-fortis.html",
+      "retrieved": "2026-10-08",
+      "note": "PRISMO fortis 제품 페이지 주소(CMM 목록 페이지에서 확인, 열람 안 함)"
+    }
+  ],
+  "confidence": "limited",
+  "notes": "크기별 개별 기종명(예: PRISMO 7/10/6)은 페이지에 낱낱이 없어 넣지 않음. 크기 표기 dm 를 mm 로 바꿈."
+}

@@ -1,0 +1,104 @@
+{
+  "id": "photron-fastcam-mini-ux",
+  "kind": "equipment_series",
+  "name": "Photron FASTCAM Mini UX",
+  "name_ko": "포트론 FASTCAM Mini UX 고속 카메라",
+  "manufacturer": "photron",
+  "brand": "FASTCAM",
+  "category": "high_speed_swir_camera",
+  "subcategory": "high_speed_camera",
+  "form_factor": "camera",
+  "description": "1,280 × 1,024 화소, 화소 크기 10 µm CMOS 센서의 소형 고속 카메라 계열. 전 화소 프레임 속도는 UX50 2,000 fps, UX100 4,000 fps 이고, 화소를 줄이면 UX50 은 160,000 fps(1,280 × 8), UX100 은 800,000 fps(640 × 8) 까지 찍는다. 감도 흑백 ISO 10,000 / 컬러 ISO 5,000, 메모리 8·16·32 GB, Gigabit Ethernet.",
+  "test_items": [],
+  "limits": {
+    "resolution_pixels": {
+      "max": 1310720,
+      "note": "1,280 × 1,024"
+    },
+    "frame_rate_fps": {
+      "min": 2000,
+      "max": 4000,
+      "note": "전 화소 기준"
+    },
+    "max_frame_rate_fps": {
+      "max": 800000,
+      "note": "UX100 Type 800K, 640 × 8"
+    },
+    "pixel_pitch_um": {
+      "values": [
+        10
+      ]
+    },
+    "min_exposure_time_s": {
+      "min": 1.01e-06,
+      "note": "원문 3.9 µs to approximately 1.01 µs at maximum frame rates"
+    }
+  },
+  "models": [
+    {
+      "model": "Mini UX50",
+      "specs": {
+        "detector": "Proprietary advanced CMOS image sensor",
+        "detector_pixels": "1280 × 1024",
+        "resolution_pixels": 1310720,
+        "pixel_pitch_um": 10,
+        "adc_resolution_bit": 12,
+        "memory_GB": [
+          8,
+          16,
+          32
+        ],
+        "interfaces": "Gigabit Ethernet",
+        "weight_kg": 1.5,
+        "min_exposure_time_s": 1.01e-06,
+        "frame_rate_fps": 2000,
+        "max_frame_rate_fps": 160000
+      },
+      "note": "2,500 fps @ 1,280 × 800, 160,000 fps @ 1,280 × 8(Type 160K)"
+    },
+    {
+      "model": "Mini UX100",
+      "specs": {
+        "detector": "Proprietary advanced CMOS image sensor",
+        "detector_pixels": "1280 × 1024",
+        "resolution_pixels": 1310720,
+        "pixel_pitch_um": 10,
+        "adc_resolution_bit": 12,
+        "memory_GB": [
+          8,
+          16,
+          32
+        ],
+        "interfaces": "Gigabit Ethernet",
+        "weight_kg": 1.5,
+        "min_exposure_time_s": 1.01e-06,
+        "frame_rate_fps": 4000,
+        "max_frame_rate_fps": 800000
+      },
+      "note": "5,000 fps @ 1,280 × 1,000, 6,250 fps @ 1,280 × 800, 800,000 fps @ 640 × 8(Type 800K). Type 200K 는 640 × 8 에서 200,000 fps(PDF 사양표; 1 쪽 요약은 204,800 fps)"
+    }
+  ],
+  "features": [
+    "흑백 ISO 10,000 / 컬러 ISO 5,000",
+    "메모리 8·16·32 GB",
+    "Gigabit Ethernet"
+  ],
+  "sources": [
+    {
+      "url": "https://photron.com/fastcam-mini-ux/",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지(HTML). 기종별 해상도·프레임 속도·화소 크기·셔터·메모리, 크기 120 × 120 × 93 mm, 무게 1.5 kg"
+    },
+    {
+      "file": "photron/mini-ux-2025.pdf",
+      "pages": [
+        1,
+        2,
+        3
+      ],
+      "note": "제조사 데이터시트 PDF(2025)"
+    }
+  ],
+  "confidence": "catalog",
+  "notes": "PDF 로 확인: 두 기종의 해상도 · 화소 10 µm · 전 화소 · 최대 프레임 속도 · 셔터 3.9 µs(최대 속도에서 1.01 µs) · ADC · 메모리 · 인터페이스 · 무게 전부. PDF 의 운전 온도 0 ~ 40 °C 는 텍스트가 섞여 확실하지 않음(보관 -20 ~ 60 °C)."
+}

@@ -1,0 +1,88 @@
+{
+  "id": "napson-rt-70v",
+  "kind": "equipment_series",
+  "name": "NAPSON RT-70V Series 4-Point Probe Resistivity Meter",
+  "name_ko": "냅슨 RT-70V 수동 4탐침 저항률 측정기",
+  "manufacturer": "napson",
+  "category": "electrical_property_tester",
+  "subcategory": "four_point_probe",
+  "form_factor": "benchtop",
+  "description": "수동 접촉식 4탐침 저항률·면저항 측정기. 조그 다이얼 조작, 측정 레인지 자동 전환과 셀프 테스트, 측정 모드 4가지, 실리콘 두께·온도 보정을 갖춘다. 스테이지를 골라 붙이며(전동 RG-7C, 수동 RG-5, 유리·필름용 XY RG-7S, 핸디형 TS-7D) 원형 시료 ～300 mm(12인치), 사각 시료 약 730×920 mm 까지 다룬다.",
+  "test_items": [
+    "electrical_transport"
+  ],
+  "measurands": [
+    "electrical.surface_resistivity",
+    "electrical.resistivity_volume"
+  ],
+  "limits": {
+    "surface_resistivity_ohm_sq": {
+      "min": 0.005,
+      "max": 10000000.0,
+      "note": "원문 5m～10MΩ/sq"
+    },
+    "resistivity_ohm_cm": {
+      "min": 1e-06,
+      "max": 300000.0,
+      "note": "원문 1μ～300kΩ･cm"
+    },
+    "wafer_size_mm": {
+      "max": 300,
+      "note": "원형 ～300mm(12インチ)"
+    },
+    "sample_size_mm": {
+      "max": 920,
+      "note": "사각 ～730×920 mm 정도"
+    }
+  },
+  "models": [
+    {
+      "model": "RT-70V",
+      "specs": {
+        "surface_resistivity_ohm_sq": {
+          "min": 0.005,
+          "max": 10000000.0
+        },
+        "resistivity_ohm_cm": {
+          "min": 1e-06,
+          "max": 300000.0
+        },
+        "footprint_mm": [
+          250,
+          330,
+          130
+        ],
+        "weight_kg": 7,
+        "principle": "4탐침법"
+      },
+      "note": "원문 W250×D330×H130mm, 약 7 kg. 페이지는 「RT-70V シリーズ」 라 부르지만 기종명은 RT-70V 하나만 적힘"
+    }
+  ],
+  "options": [
+    {
+      "name": "RG-7C",
+      "note": "전동 스테이지"
+    },
+    {
+      "name": "RG-5",
+      "note": "수동 스테이지"
+    },
+    {
+      "name": "RG-7S",
+      "note": "유리·필름용 XY 스테이지"
+    },
+    {
+      "name": "TS-7D",
+      "note": "핸디형 탐침"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://www.napson.co.jp/products/contact/manual/product01/",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지 RT-70V. 제조사 제품 페이지(일본어 HTML). 같은 페이지의 「電気抵抗測定の測定原理」 다운로드는 PDF 직링크가 아니라 신청 양식(form.napson.co.jp/form/form_download)이라 열지 않음"
+    }
+  ],
+  "confidence": "limited",
+  "notes": "전류 범위·탐침 간격·정확도는 페이지에 없음."
+}

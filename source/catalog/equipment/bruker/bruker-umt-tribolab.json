@@ -1,0 +1,126 @@
+{
+  "id": "bruker-umt-tribolab",
+  "kind": "equipment_model",
+  "name": "Bruker UMT TriboLab",
+  "name_ko": "브루커 UMT TriboLab 트라이보미터",
+  "manufacturer": "bruker",
+  "brand": "UMT TriboLab",
+  "category": "tribometer",
+  "form_factor": "benchtop",
+  "description": "모듈식 범용 마찰 · 마모 시험기. 11종 센서로 1 mN~2 kN 하중을 덮고, 회전 최대 5,000 rpm(토크 100 rpm 에서 5 N·m, 5,000 rpm 에서 2.5 N·m), 왕복 최대 60 Hz, 가열 최대 1,200 °C(지역에 따라 다름) · 냉각 −40 °C(칠러 키트), 습도 5~85 %, 데이터 수집 최대 200 kHz(8 또는 16 채널 동기)를 낸다. 핀온디스크 · 볼온디스크 · 블록온링 · 왕복 마모 · 회전 마모 · 스크래치 · 압입 · 4구 · 인장/압축 · 구름-미끄럼 · 트라이보 부식 구성을 지원한다.",
+  "test_items": [
+    "friction_wear_tribo"
+  ],
+  "measurands": [
+    "friction_coefficient",
+    "wear_rate"
+  ],
+  "materials": [
+    "coatings",
+    "lubricants",
+    "metals",
+    "polymers"
+  ],
+  "standards": {
+    "compliance": [],
+    "test_methods": [
+      "ASTM G99",
+      "ASTM G132",
+      "ASTM G77",
+      "ASTM D4172",
+      "ASTM C1624"
+    ]
+  },
+  "limits": {
+    "force_N": {
+      "min": 0.001,
+      "max": 2000,
+      "note": "원문 1 milliNewton to 2 kiloNewtons"
+    },
+    "rotation_rpm": {
+      "max": 5000
+    },
+    "frequency_Hz": {
+      "max": 60,
+      "note": "왕복"
+    },
+    "torque_Nm": {
+      "max": 5,
+      "note": "100 rpm 에서 5 N·m, 5,000 rpm 에서 2.5 N·m"
+    },
+    "temperature_degC": {
+      "min": -40,
+      "max": 1200,
+      "note": "가열 최대 1,200 °C(지역별 공급 차이), 냉각 −40 °C 는 옵션 칠러 키트",
+      "requires_accessory": true
+    },
+    "humidity_pct": {
+      "min": 5,
+      "max": 85
+    },
+    "data_rate_Hz": {
+      "max": 200000
+    }
+  },
+  "models": [
+    {
+      "model": "UMT TriboLab",
+      "specs": {
+        "force_N": {
+          "min": 0.001,
+          "max": 2000
+        },
+        "rotation_rpm": {
+          "max": 5000
+        },
+        "frequency_Hz": {
+          "max": 60
+        },
+        "torque_Nm": {
+          "max": 5
+        },
+        "humidity_pct": {
+          "min": 5,
+          "max": 85
+        },
+        "data_rate_Hz": {
+          "max": 200000,
+          "note": "8 또는 16 채널 동기"
+        }
+      },
+      "note": "센서: 11종, 1 mN~2 kN, 'Gold Series' 선형 하중 센서 잡음 0.02 %"
+    }
+  ],
+  "test_modes": [
+    "핀온디스크",
+    "볼온디스크",
+    "블록온링",
+    "왕복 마모",
+    "회전 마모",
+    "스크래치",
+    "압입",
+    "4구",
+    "인장/압축",
+    "구름-미끄럼",
+    "트라이보 부식"
+  ],
+  "relations": [
+    {
+      "type": "performs",
+      "target": "friction_wear_tribo"
+    },
+    {
+      "type": "same_family_as",
+      "target": "bruker-hysitron-ti-950-triboindenter"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://www.bruker.com/en/products-and-solutions/test-and-measurement/tribometers-and-mechanical-testers/umt-tribolab.html",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지. 브로슈어 · 챔버 데이터시트는 등록 양식 뒤에 있어 열지 않음"
+    }
+  ],
+  "notes": "페이지는 'Nearly 40 ASTM methods' 를 지원한다고 쓰고 그중 G99 · G132 · G77 · D4172 · C1624 만 이름을 든다.",
+  "confidence": "limited"
+}

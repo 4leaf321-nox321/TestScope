@@ -1,0 +1,140 @@
+{
+  "id": "keysight-infiniivision-6000x",
+  "kind": "equipment_series",
+  "name": "InfiniiVision 6000 X-Series Oscilloscopes",
+  "name_ko": "키사이트 InfiniiVision 6000 X 오실로스코프",
+  "manufacturer": "keysight",
+  "brand": "InfiniiVision",
+  "category": "oscilloscope",
+  "subcategory": "mixed_signal_oscilloscope",
+  "form_factor": "benchtop",
+  "description": "1 GHz 기본, 업그레이드로 최대 6 GHz 까지 늘리는 2·4채널 오실로스코프 계열임. 20 GSa/s, 4 Mpts, 8 bit ADC, 12.1 inch 정전식 멀티터치 화면, 450,000 wfms/s 갱신율, 깊이 6 inch 의 얇은 본체. MSOX 기종은 16 디지털 채널. 키사이트 현재 분류로는 XR5-class.",
+  "test_items": [],
+  "limits": {
+    "bandwidth_Hz": {
+      "min": 1000000000,
+      "max": 6000000000,
+      "note": "기본 1 GHz, 업그레이드로 최대 6 GHz"
+    },
+    "sample_rate_Sa_s": {
+      "max": 20000000000
+    },
+    "record_length_pts": {
+      "max": 4000000
+    },
+    "channels": {
+      "values": [
+        2,
+        4
+      ]
+    },
+    "logic_channel_count": {
+      "values": [
+        16
+      ]
+    },
+    "adc_resolution_bit": {
+      "values": [
+        8
+      ]
+    },
+    "display_size_in": {
+      "values": [
+        12.1
+      ]
+    }
+  },
+  "models": [
+    {
+      "model": "DSOX6002A",
+      "specs": {
+        "bandwidth_Hz": {
+          "min": 1000000000,
+          "max": 6000000000,
+          "note": "원문 1 GHz to 6 GHz (구성에 따라)"
+        },
+        "channels": 2,
+        "sample_rate_Sa_s": 20000000000,
+        "display_size_in": 12.1
+      }
+    },
+    {
+      "model": "DSOX6004A",
+      "specs": {
+        "bandwidth_Hz": {
+          "min": 1000000000,
+          "max": 6000000000,
+          "note": "원문 1 GHz – 6 GHz (upgradeable)"
+        },
+        "channels": 4,
+        "sample_rate_Sa_s": 20000000000,
+        "record_length_pts": 4000000,
+        "adc_resolution_bit": 8,
+        "display_size_in": 12.1
+      },
+      "note": "원문 20 GSa/s · 4 Mpts · 8 bits · 12.1-inch · 450,000 waveforms/second"
+    },
+    {
+      "model": "MSOX6002A",
+      "variant": "mixed signal",
+      "specs": {
+        "bandwidth_Hz": {
+          "min": 1000000000,
+          "max": 6000000000,
+          "note": "원문 1 GHz maximum bandwidth (upgradeable to 6 GHz)"
+        },
+        "channels": 2,
+        "logic_channel_count": 16,
+        "sample_rate_Sa_s": 20000000000,
+        "record_length_pts": 4000000
+      }
+    },
+    {
+      "model": "MSOX6004A",
+      "variant": "mixed signal",
+      "specs": {
+        "bandwidth_Hz": {
+          "min": 1000000000,
+          "max": 6000000000,
+          "note": "원문 1–6 GHz (upgradeable)"
+        },
+        "channels": 4,
+        "logic_channel_count": 16,
+        "sample_rate_Sa_s": 20000000000,
+        "record_length_pts": 4000000,
+        "adc_resolution_bit": 8
+      },
+      "note": "원문 450,000 wfms/s update rate"
+    }
+  ],
+  "features": [
+    "12.1 inch 정전식 멀티터치 화면",
+    "존 트리거",
+    "지터 분석",
+    "음성 제어",
+    "깊이 6 inch 본체"
+  ],
+  "sources": [
+    {
+      "url": "https://www.keysight.com/us/en/product/DSOX6004A/",
+      "retrieved": "2026-10-08",
+      "note": "제조사 기종 페이지. XR5-class, 1 GHz, 4 Analog channels, 1–6 GHz upgradeable, 20 GSa/s, 4 Mpts, 8 bits, 12.1-inch, 450,000 waveforms/s"
+    },
+    {
+      "url": "https://www.keysight.com/us/en/product/DSOX6002A/",
+      "retrieved": "2026-10-08",
+      "note": "제조사 기종 페이지. 1 GHz, 2 Analog channels, 20 GSa/s, 12.1-inch"
+    },
+    {
+      "url": "https://www.keysight.com/us/en/product/MSOX6002A/",
+      "retrieved": "2026-10-08",
+      "note": "제조사 기종 페이지. 1 GHz(6 GHz 업그레이드), 2 analog + 16 digital, 20 GSa/s, 4 Mpts"
+    },
+    {
+      "url": "https://www.keysight.com/us/en/product/MSOX6004A/",
+      "retrieved": "2026-10-08",
+      "note": "제조사 기종 페이지. 1–6 GHz, 4 analog + 16 digital, 20 GSa/s, 4 Mpts, 8-bit"
+    }
+  ],
+  "confidence": "limited"
+}

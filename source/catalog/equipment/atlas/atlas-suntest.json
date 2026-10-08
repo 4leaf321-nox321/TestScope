@@ -1,0 +1,210 @@
+{
+  "id": "atlas-suntest",
+  "kind": "equipment_series",
+  "name": "Atlas SUNTEST Xenon Test Instruments (CPS / XLS / XXL / XXL-ST / XXL-FD)",
+  "name_ko": "아틀라스 SUNTEST 제논 내광·내후성 시험기",
+  "manufacturer": "atlas",
+  "brand": "SUNTEST",
+  "category": "weathering_tester",
+  "form_factor": "benchtop",
+  "description": "공랭식 제논 램프의 평판(수평) 시편대형 내광·내후성 시험기. CPS(1500 W, 560 cm²)·XLS(1700 W, 1170 cm²) 는 벤치탑, XXL·XXL-ST·XXL-FD 는 1700 W 램프 3개·약 3000 cm² 의 바닥형. 300–400 nm 30~65 W/m²(XXL-ST 30~80 W/m²).",
+  "test_items": [
+    "accelerated_weathering"
+  ],
+  "materials": [
+    "consumer goods",
+    "packaging",
+    "pharmaceuticals",
+    "automotive interior",
+    "plastics"
+  ],
+  "standards": {
+    "compliance": [],
+    "test_methods": [
+      "SAE J2412 (XXL-ST)",
+      "SAE J2527 (XXL-ST)",
+      "ISO 4892-1 (BST 센서)"
+    ]
+  },
+  "limits": {
+    "irradiance_W_m2": {
+      "min": 30,
+      "max": 80,
+      "note": "300–400 nm. 브로슈어 11쪽(필터별 표): Daylight 40~65, Window Glass 30~60 W/m². XXL-ST 상한 80 은 웹 페이지 값(브로슈어는 Extended UV 필터 340 nm 0.25~0.75 W/(m²·nm) 만 적음). 340 nm Daylight 0.34~0.62·Window 0.26~0.56 W/(m²·nm), 300–800 nm 250~765 W/m², 45~130 klx"
+    },
+    "black_panel_temperature_degC": {
+      "min": 25,
+      "max": 100,
+      "note": "브로슈어 11쪽: BST XXL+·XXL+ ST·XLS+·CPS+ 45~100, XXL+ FD 25~100 °C; BPT XXL+·XXL+ ST·XLS+ 45~95, XXL+ FD 25~95 °C, CPS+ 없음. 웹 CPS 페이지는 BST 35~100 °C(SunCool 없이)"
+    },
+    "exposure_area_cm2": {
+      "min": 560,
+      "max": 3000
+    }
+  },
+  "models": [
+    {
+      "model": "SUNTEST CPS",
+      "variant": "CPS+",
+      "form_factor": "benchtop",
+      "specs": {
+        "lamp_power_W": 1500,
+        "exposure_area_cm2": 560,
+        "irradiance_W_m2": {
+          "min": 30,
+          "max": 65,
+          "note": "300–400 nm. 브로슈어 11쪽 Daylight 40~65, Window Glass 30~60. 300–800 nm 은 250~765 W/m²"
+        },
+        "black_panel_temperature_degC": {
+          "min": 45,
+          "max": 100,
+          "note": "BST(브로슈어 11쪽 45~100 °C). 웹 CPS 페이지는 35~100 °C(SunCool 없이)"
+        },
+        "footprint_mm": "780 × 350 × 350 (브로슈어 11쪽 78 x 35 x 35 cm, W×D×H. 웹 페이지는 90 x 35 x 35 cm)"
+      },
+      "note": "노출 면적 28 × 20 cm. 페이지 제목은 'SUNTEST CPS' 이고 본문·영상에 'CPS+' 표기가 함께 나온다"
+    },
+    {
+      "model": "SUNTEST XLS",
+      "form_factor": "benchtop",
+      "specs": {
+        "lamp_power_W": 1700,
+        "exposure_area_cm2": 1170,
+        "irradiance_W_m2": {
+          "min": 30,
+          "max": 65,
+          "note": "300–400 nm. 340 nm 0.26~0.62 W/(m²·nm)(브로슈어 11쪽, 웹 페이지는 0.25~0.60), 300–800 nm 250~765, 45~130 klx"
+        },
+        "black_panel_temperature_degC": {
+          "min": 45,
+          "max": 100,
+          "note": "BST 45~100 °C, BPT 45~95 °C(브로슈어 11쪽)"
+        },
+        "footprint_mm": "900 × 540 × 620 (원문 90 x 54 x 62 cm)"
+      },
+      "note": "노출 면적 39 × 30 cm. CPS 의 두 배 면적, 3차원 시편용"
+    },
+    {
+      "model": "SUNTEST XXL",
+      "form_factor": "floor",
+      "specs": {
+        "lamp_power_W": 1700,
+        "exposure_area_cm2": 3000,
+        "irradiance_W_m2": {
+          "min": 30,
+          "max": 65,
+          "note": "300–400 nm. 340 nm 0.26~0.62 W/(m²·nm)(브로슈어 11쪽, 웹 페이지는 0.25~0.60)"
+        },
+        "black_panel_temperature_degC": {
+          "min": 45,
+          "max": 100,
+          "note": "BST 45~100 °C, BPT 45~95 °C(브로슈어 11쪽)"
+        },
+        "footprint_mm": "900 × 910 × 1720 (원문 90 x 91 x 172 cm)",
+        "temperature_degC": {
+          "max": 70,
+          "note": "챔버 공기 온도(CHT), 원문 up to 70 °C(브로슈어 11쪽)"
+        }
+      },
+      "note": "램프 3개. 노출 면적 79 × 39 cm, 5° 기울어진 시편면. 초음파 가습, 60 L 물탱크 시편 분무"
+    },
+    {
+      "model": "SUNTEST XXL-ST",
+      "form_factor": "floor",
+      "specs": {
+        "lamp_power_W": 1700,
+        "exposure_area_cm2": 2925,
+        "irradiance_W_m2": {
+          "min": 30,
+          "max": 80,
+          "note": "300–400 nm. 340 nm 0.25~0.75(Extended UV 필터, 브로슈어 11쪽). 상한 80 W/m² 는 웹 페이지 값"
+        },
+        "black_panel_temperature_degC": {
+          "min": 45,
+          "max": 100,
+          "note": "BST 45~100 °C, BPT 45~95 °C(브로슈어 11쪽). 웹 페이지는 BPT 최대 100 °C(광 단계)"
+        },
+        "temperature_degC": {
+          "max": 70,
+          "note": "챔버 공기 온도(CAT/CHT), 광 단계. 브로슈어 11쪽 up to 70 °C"
+        },
+        "footprint_mm": "900 × 910 × 1720 (원문 90 x 91 x 172 cm)"
+      },
+      "note": "램프 3개. 79 × 37 cm 타공 시험대(브로슈어 11쪽 2925 cm², 웹 페이지 2,923 cm²). 앞·뒤 분무, SAE J2412·J2527 사전 프로그램"
+    },
+    {
+      "model": "SUNTEST XXL-FD",
+      "form_factor": "floor",
+      "note": "소비재·식음료·포장재용 특화형(브로슈어 표기 XXL+ FD). 램프 3개, 노출 면적 79 × 39 cm, 시편 냉각용 칠러 탈착식(3쪽), StoreLight 필터 사용 가능(9쪽)",
+      "specs": {
+        "lamp_power_W": 1700,
+        "exposure_area_cm2": 3000,
+        "irradiance_W_m2": {
+          "min": 30,
+          "max": 65,
+          "note": "300–400 nm. 브로슈어 11쪽 Daylight 40~65, Window Glass 30~60"
+        },
+        "black_panel_temperature_degC": {
+          "min": 25,
+          "max": 100,
+          "note": "BST 25~100 °C, BPT 25~95 °C(브로슈어 11쪽)"
+        },
+        "temperature_degC": {
+          "max": 70,
+          "note": "챔버 공기 온도(CHT), 원문 up to 70 °C. 칠러로 광 단계 최저 CHT 15 °C(시험법·실험실 조건에 따름, 브로슈어 8쪽)"
+        },
+        "footprint_mm": "900 × 910 × 1720 (원문 90 x 91 x 172 cm)"
+      }
+    }
+  ],
+  "relations": [
+    {
+      "type": "simulates_environment",
+      "target": "environment-solar-radiation"
+    },
+    {
+      "type": "same_family_as",
+      "target": "atlas-xenotest"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://www.atlas-mts.com/products/standard-instruments/xenon-arc-weathering-test/suntest",
+      "retrieved": "2026-10-08",
+      "note": "제조사 SUNTEST 제품 목록"
+    },
+    {
+      "url": "https://www.atlas-mts.com/products/standard-instruments/xenon-arc-weathering-test/suntest/cps",
+      "retrieved": "2026-10-08",
+      "note": "제조사 SUNTEST CPS 페이지"
+    },
+    {
+      "url": "https://www.atlas-mts.com/products/standard-instruments/xenon-arc-weathering-test/suntest/xls",
+      "retrieved": "2026-10-08",
+      "note": "제조사 SUNTEST XLS 페이지"
+    },
+    {
+      "url": "https://www.atlas-mts.com/products/standard-instruments/xenon-arc-weathering-test/suntest/xxl",
+      "retrieved": "2026-10-08",
+      "note": "제조사 SUNTEST XXL 페이지"
+    },
+    {
+      "url": "https://www.atlas-mts.com/products/standard-instruments/xenon-arc-weathering-test/suntest/xxl-st",
+      "retrieved": "2026-10-08",
+      "note": "제조사 SUNTEST XXL-ST 페이지"
+    },
+    {
+      "file": "atlas/atlas-suntest-brochure-2024-02-en.pdf",
+      "pages": [
+        3,
+        7,
+        8,
+        9,
+        11
+      ],
+      "note": "SUNTEST 브로슈어(Pub. No. 56352260, 02/24). 3쪽 기종별 특징, 7쪽 램프·온도·습도, 8~9쪽 옵션 부속, 11쪽 기종 비교표"
+    }
+  ],
+  "confidence": "catalog",
+  "notes": "lamp_power_W 는 램프 1개 출력이다(XXL 계열은 3개). 'XLS+', 'XXL+' 같은 '+' 표기는 현행 페이지에 없고 CPS 페이지에만 'CPS+' 가 보인다. 2024-02 브로슈어는 전 기종을 CPS+·XLS+·XXL+·XXL+ FD·XXL+ ST 로 적음. 11쪽 비교표는 추출 텍스트에서 행 이름과 값 줄이 떨어져 있어, 값 줄 안의 다섯 열 순서(XXL+·FD·ST·XLS+·CPS+)와 단위로 행을 맞춤. PDF 로 바꿈: CPS 외형 폭 90 → 78 cm, CPS BST 하한 35 → 45 °C, XXL-ST 노출 면적 2923 → 2925 cm², XXL·XXL-ST BST 하한 45 °C 추가, XXL-FD 사양 채움. 웹 값 그대로: XXL-ST 300–400 nm 상한 80 W/m²."
+}

@@ -1,0 +1,117 @@
+{
+  "id": "testo-865s-872s",
+  "kind": "equipment_series",
+  "name": "testo 865s / 868s / 871s / 872s Thermal Imager",
+  "name_ko": "테스토 865s · 868s · 871s · 872s 열화상 카메라",
+  "manufacturer": "testo",
+  "category": "thermal_imager",
+  "form_factor": "handheld",
+  "description": "testo 의 보급 ~ 중급 휴대 열화상 카메라 계열. 적외 해상도 160 × 120(865s · 868s), 240 × 180(871s), 320 × 240(872s)이고 testo SuperResolution 으로 각각 4 배 화소의 영상을 만든다. 열 감도 <0.1 °C(865s), <0.08 °C(868s · 871s), <0.05 °C(872s). 868s 이상은 5 MP 디지털 카메라와 앱 연동, 872s 는 레이저 마커를 갖춘다.",
+  "test_items": [
+    "thermography"
+  ],
+  "measurands": [
+    "surface_temperature",
+    "temperature_distribution",
+    "hotspot_location"
+  ],
+  "limits": {
+    "ir_resolution_pixels": {
+      "min": 19200,
+      "max": 76800,
+      "note": "네이티브. SuperResolution 은 4 배"
+    },
+    "thermal_sensitivity_degC": {
+      "min": 0.05,
+      "max": 0.1
+    },
+    "temperature_degC": {
+      "min": -30,
+      "max": 650,
+      "note": "865s · 868s 검색 발췌 값만",
+      "uncertain": true
+    }
+  },
+  "models": [
+    {
+      "model": "testo 865s",
+      "specs": {
+        "detector_pixels": "160 × 120",
+        "ir_resolution_pixels": 19200,
+        "thermal_sensitivity_degC": 0.1,
+        "temperature_degC": {
+          "min": -20,
+          "max": 280
+        },
+        "wavelength_nm": {
+          "min": 7500,
+          "max": 14000
+        }
+      },
+      "note": "SuperResolution 320 × 240. 측정 범위 -20 ~ 280 °C 와 파장 7.5 ~ 14 µm 는 검색 발췌 값(uncertain). 주문 번호 0560 8650",
+      "uncertain": true
+    },
+    {
+      "model": "testo 868s",
+      "specs": {
+        "detector_pixels": "160 × 120",
+        "ir_resolution_pixels": 19200,
+        "thermal_sensitivity_degC": 0.08,
+        "temperature_degC": {
+          "min": -30,
+          "max": 650
+        }
+      },
+      "note": "SuperResolution 320 × 240. 측정 범위 -30 ~ 650 °C 는 검색 발췌 값(uncertain). 주문 번호 0560 8681",
+      "uncertain": true
+    },
+    {
+      "model": "testo 871s",
+      "specs": {
+        "detector_pixels": "240 × 180",
+        "ir_resolution_pixels": 43200,
+        "thermal_sensitivity_degC": 0.08
+      },
+      "note": "SuperResolution 480 × 360. 측정 범위 미확인"
+    },
+    {
+      "model": "testo 872s",
+      "specs": {
+        "detector_pixels": "320 × 240",
+        "ir_resolution_pixels": 76800,
+        "thermal_sensitivity_degC": 0.05
+      },
+      "note": "SuperResolution 640 × 480. 다른 testo 페이지 한 곳은 240 × 180 으로 적어 확인 필요. 주문 번호 0560 8721"
+    }
+  ],
+  "relations": [
+    {
+      "type": "performs",
+      "target": "thermography"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://portal.testo.com/en-US/products/products_thermal_imager_87x",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품군 페이지(HTML). 4 기종의 적외 해상도 · SuperResolution · NETD"
+    },
+    {
+      "url": "https://portal.testo.com/en-US/thermography/new-thermal-imager",
+      "retrieved": "2026-10-08",
+      "note": "제조사 소개 페이지(HTML). NETD 교차 확인(872s 해상도는 다르게 적힘)"
+    },
+    {
+      "url": "https://www.testo.com/en-US/testo-865s/p/0560-8650",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지. 조회가 막혀(HTTP 429) 검색 엔진이 보여 준 제조사 페이지 발췌로 읽음(페이지를 직접 열지 못함). 이 출처의 값은 uncertain"
+    },
+    {
+      "url": "https://www.testo.com/en-US/testo-868s/p/0560-8681",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지. 조회가 막혀(HTTP 429) 검색 엔진이 보여 준 제조사 페이지 발췌로 읽음(페이지를 직접 열지 못함). 이 출처의 값은 uncertain"
+    }
+  ],
+  "confidence": "limited",
+  "notes": "확도 · 프레임 속도 · 시야는 읽은 페이지에 없음. 제품 페이지(testo.com)가 조회 제한(429)으로 열리지 않았다."
+}

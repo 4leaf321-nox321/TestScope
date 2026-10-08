@@ -1,0 +1,182 @@
+{
+  "id": "hamamatsu-ingaas-cameras",
+  "kind": "equipment_series",
+  "name": "Hamamatsu InGaAs Cameras",
+  "name_ko": "하마마쓰 InGaAs 카메라",
+  "manufacturer": "hamamatsu",
+  "category": "high_speed_swir_camera",
+  "subcategory": "swir_camera",
+  "form_factor": "camera",
+  "description": "근적외(950 ~ 1,700 nm) 영역을 찍는 InGaAs 카메라 계열. QVGA(320 × 256) · VGA(640 × 512) 면 센서 카메라와 SXGA(1,280 × 1,024, 400 ~ 1,700 nm) 카메라, 1,024 화소 라인 스캔 카메라가 있다. 대부분 펠티어 냉각이고, C12741-11 은 -60 ~ -70 °C 까지 냉각하는 저잡음형.",
+  "test_items": [],
+  "limits": {
+    "resolution_pixels": {
+      "max": 1310720,
+      "note": "C16741-40U 1,280 × 1,024"
+    },
+    "wavelength_nm": {
+      "min": 400,
+      "max": 1700,
+      "note": "C16741-40U 400 ~ 1,700 nm, 나머지 950 ~ 1,700 nm"
+    },
+    "frame_rate_fps": {
+      "min": 7.2,
+      "max": 216.6,
+      "note": "면 센서 카메라 전 화소. 라인 스캔은 최대 40 kHz"
+    },
+    "pixel_pitch_um": {
+      "values": [
+        5,
+        12.5,
+        20
+      ]
+    }
+  },
+  "models": [
+    {
+      "model": "C12741-03-02",
+      "specs": {
+        "detector": "InGaAs area image sensor",
+        "detector_pixels": "640 × 512",
+        "resolution_pixels": 327680,
+        "pixel_pitch_um": 20,
+        "wavelength_nm": {
+          "min": 950,
+          "max": 1700
+        },
+        "frame_rate_fps": 59.774,
+        "adc_resolution_bit": 14,
+        "cooling": "Peltier cooling (+10 °C, forced-air)",
+        "interfaces": "USB 3.0",
+        "min_exposure_time_s": 0.0167,
+        "weight_kg": {
+          "value": 0.5,
+          "note": "PDF 외형도의 「Approx.」 값"
+        }
+      },
+      "note": "유효 면적 12.8 mm × 10.24 mm. 노출 16.7 ms ~ 1 s. 검색 요약은 'C12741-03' 으로 적기도 함"
+    },
+    {
+      "model": "C14041-10U-02",
+      "specs": {
+        "detector_pixels": "320 × 256",
+        "resolution_pixels": 81920,
+        "pixel_pitch_um": 20,
+        "wavelength_nm": {
+          "min": 950,
+          "max": 1700
+        },
+        "frame_rate_fps": 216.6,
+        "adc_resolution_bit": 14,
+        "cooling": "Peltier cooling (+10 °C, forced-air)",
+        "interfaces": "USB 3.0",
+        "min_exposure_time_s": 0.0001,
+        "weight_kg": {
+          "value": 0.5,
+          "note": "PDF 외형도의 「Approx.」 값"
+        }
+      },
+      "note": "216.6 frames/s(롤링 셔터) / 214.3 frames/s(글로벌 셔터). 노출 4.6 ms ~ 1 s(롤링), 100 µs ~ 1 s(글로벌)"
+    },
+    {
+      "model": "C16741-40U",
+      "specs": {
+        "detector_pixels": "1280 × 1024",
+        "resolution_pixels": 1310720,
+        "pixel_pitch_um": 5,
+        "wavelength_nm": {
+          "min": 400,
+          "max": 1700
+        },
+        "frame_rate_fps": 71.53,
+        "adc_resolution_bit": 12,
+        "cooling": "Peltier device + forced-air / natural-air",
+        "interfaces": "USB3.1 Gen 1",
+        "min_exposure_time_s": 2.046e-05,
+        "weight_kg": {
+          "value": 0.5,
+          "note": "PDF 외형도의 「Approx.」 값"
+        }
+      },
+      "note": "A/D 12 bit / 8 bit. 노출 20.46 µs ~ 1 s(13.09 µs 간격)"
+    },
+    {
+      "model": "C12741-11",
+      "specs": {
+        "detector_pixels": "640 × 512",
+        "resolution_pixels": 327680,
+        "pixel_pitch_um": 20,
+        "frame_rate_fps": 7.2,
+        "adc_resolution_bit": 16,
+        "cooling": "Peltier: -60 °C(forced-air) / -70 °C(water)",
+        "interfaces": "Camera Link base",
+        "min_exposure_time_s": 0.0001,
+        "weight_kg": {
+          "value": 3.4,
+          "note": "PDF 외형도의 「Approx.」 값"
+        }
+      },
+      "note": "저잡음 냉각형. 노출 138.5 ms ~ 10 s(롤링), 100 µs ~ 10 s(글로벌). 분광 감도 범위는 그래프로만 제시되어 숫자를 적지 않음"
+    },
+    {
+      "model": "C15333-10E04-02",
+      "variant": "line scan",
+      "specs": {
+        "detector": "InGaAs line sensor",
+        "detector_pixels": "1024 × 1",
+        "resolution_pixels": 1024,
+        "pixel_pitch_um": 12.5,
+        "wavelength_nm": {
+          "min": 950,
+          "max": 1700
+        },
+        "adc_resolution_bit": 14,
+        "interfaces": "Gigabit Ethernet",
+        "min_exposure_time_s": 2.1e-05,
+        "weight_kg": {
+          "value": 0.25,
+          "note": "PDF 외형도의 「Approx.」 값"
+        }
+      },
+      "note": "라인 스캔 카메라. 라인 속도 최대 40 kHz(내부), 20 kHz(에지 트리거). 노출 21 µs ~ 1 s"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://www.hamamatsu.com/jp/en/product/cameras/ingaas-cameras/C12741-03-02.html",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지(HTML). 관련 기종 링크로 계열 5 기종 확인"
+    },
+    {
+      "url": "https://www.hamamatsu.com/jp/en/product/cameras/ingaas-cameras/C14041-10U-02.html",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지(HTML)"
+    },
+    {
+      "url": "https://www.hamamatsu.com/us/en/product/cameras/ingaas-cameras/C16741-40U.html",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지(HTML)"
+    },
+    {
+      "url": "https://www.hamamatsu.com/jp/en/product/cameras/ingaas-cameras/C12741-11.html",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지(HTML)"
+    },
+    {
+      "url": "https://www.hamamatsu.com/jp/en/product/cameras/ingaas-cameras/C15333-10E04-02.html",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지(HTML)"
+    },
+    {
+      "file": "hamamatsu/scas0180e_ingaascamera.pdf",
+      "pages": [
+        2,
+        3,
+        4
+      ],
+      "note": "제조사 InGaAs 카메라 라인업 카탈로그 PDF(5 기종 사양표 · 외형도)"
+    }
+  ],
+  "confidence": "catalog",
+  "notes": "제조사 계열 목록 페이지(ingaas-cameras.html)는 목록이 스크립트로 불러와져 읽지 못했고, 제품 페이지의 관련 기종 링크로 5 기종을 모았다. PDF 로 확인: 5 기종의 화소 수 · 화소 크기 · 프레임(라인) 속도 · 디지털 출력 비트 · 노출 범위 · 냉각 온도 · 인터페이스(사양표 텍스트가 열이 섞였으나 기종별 고유 값이 웹 값과 같음)와 950 ~ 1,700 nm(본문), 외형도의 무게를 더함 / 웹 값 그대로: C16741-40U 의 400 ~ 1,700 nm(PDF 는 분광 감도 그래프로만 보임)."
+}

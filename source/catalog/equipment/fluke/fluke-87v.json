@@ -1,0 +1,44 @@
+{
+  "id": "fluke-87v",
+  "kind": "equipment_series",
+  "name": "Fluke 87V Industrial Multimeter",
+  "name_ko": "플루크 87V 산업용 멀티미터",
+  "manufacturer": "fluke",
+  "category": "dmm_daq",
+  "form_factor": "handheld",
+  "description": "True RMS 휴대형 산업용 멀티미터. 6000 카운트(고분해능 모드 19,999), DC 전압 1000 V ±(0.05%+1), AC 전압 1000 V ±(0.7%+2), 전류 10 A(30초 20 A), 저항 50 MΩ, 정전용량 9,999 µF, 주파수 200 kHz, 온도 -200.0~1090 °C. CAT III 1000 V·CAT IV 600 V.",
+  "test_items": [],
+  "models": [
+    {
+      "model": "87V",
+      "specs": {
+        "dmm_display_counts": 6000,
+        "voltage_V": {
+          "max": 1000,
+          "note": "DC ±(0.05%+1), AC ±(0.7%+2) True RMS"
+        },
+        "current_A": {
+          "max": 10,
+          "note": "20 A 는 30초 이내"
+        },
+        "resistance_ohm": {
+          "max": 50000000
+        },
+        "accuracy": "DC V ±(0.05% + 1), AC V ±(0.7% + 2)",
+        "weight_kg": 0.355
+      },
+      "note": "고분해능 모드 19,999 카운트. 정전용량 최대 9,999 µF, 주파수 최대 200 kHz, 온도 -200.0~1090 °C. 크기 201×98×52 mm(홀스터 포함), 무게 355 g(홀스터 포함 624 g). 배터리 약 400시간(백라이트 끔)"
+    }
+  ],
+  "compliance_marks": [
+    "EN 61010-1 1000 V CAT III, 600 V CAT IV"
+  ],
+  "sources": [
+    {
+      "url": "https://www.fluke.com/en-us/product/electrical-testing/digital-multimeters/fluke-87v",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지 사양표"
+    }
+  ],
+  "confidence": "limited"
+}

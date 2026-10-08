@@ -1,0 +1,292 @@
+{
+  "id": "mitutoyo-litematic-vl-50",
+  "kind": "equipment_series",
+  "name": "LITEMATIC VL-50 High-Resolution Digimatic Measuring Unit",
+  "name_ko": "미쓰토요 라이트매틱 VL-50 저측정력 고분해능 측정기",
+  "manufacturer": "mitutoyo",
+  "category": "thickness_displacement_gauge",
+  "form_factor": "benchtop",
+  "description": "전동 스핀들을 0.01 N 의 낮은 일정 측정력으로 내려 연한 시편의 두께·높이를 재는 고분해능 측정기 계열임. VL-50-B 는 측정 범위 0~50 mm, 지시 오차 (0.5 + L/100) µm, 반복 정밀도 σ 0.05 µm. 원점(ORIGIN) 설정, 3단·5단 공차 판정, 최대·최소(TIR) 표시, DIGIMATIC · RS-232C · I/O 출력을 갖춤.",
+  "test_items": [],
+  "limits": {
+    "displacement_mm": {
+      "min": 0,
+      "max": 50,
+      "note": "원문 Measuring Range 0-50mm (0 - 2 in), 스트로크 51.5 mm(Bulletin No.2066 p.5)"
+    },
+    "stylus_force_mN": {
+      "min": 10,
+      "max": 1000,
+      "note": "원문 Measuring force 0.01N / 0.15N / 1N(기종별)"
+    },
+    "displacement_resolution_nm": {
+      "min": 10,
+      "note": "원문 Resolution (selectable) 0.01/0.1/1.0 µm"
+    }
+  },
+  "models": [
+    {
+      "model": "LITEMATIC VL-50-B",
+      "variant": "주문 번호 318-221-10D(EU 전원 코드)",
+      "specs": {
+        "displacement_mm": {
+          "min": 0,
+          "max": 50,
+          "note": "원문 Measuring Range 0-50mm"
+        },
+        "displacement_resolution_nm": {
+          "values": [
+            10,
+            100,
+            1000
+          ],
+          "note": "원문 Resolution (selectable) 0.01/0.1/1.0 µm"
+        },
+        "accuracy": "(0.5 + L/100) µm, L = 측정 길이(mm), 20 ± 1 °C",
+        "measuring_repeatability_um": {
+          "value": 0.05,
+          "note": "원문 Repeatability σ = 0.05 µm(표준 측정자)"
+        },
+        "stylus_force_mN": {
+          "value": 10.0,
+          "note": "원문 Measuring force 0.01N (approx. 1gf)"
+        },
+        "measuring_speed_mm_s": {
+          "values": [
+            2,
+            4
+          ],
+          "note": "원문 Spindle feed measuring speed approx. 2 mm/s or 4 mm/s(파라미터 선택), quick feed approx. 8 mm/s"
+        },
+        "interfaces": "DIGIMATIC, RS-232C, I/O",
+        "weight_kg": {
+          "value": 19,
+          "note": "원문 Main unit mass 19 kg"
+        }
+      },
+      "note": "PDF(Bulletin No.2066 p.5) 주문 번호는 318-221A(미주판). 정확도 · 반복 정밀도는 표에서 6기종 공통 칸"
+    },
+    {
+      "model": "LITEMATIC VL-50-15-B",
+      "variant": "318-222A, 측정력 0.15 N",
+      "specs": {
+        "displacement_mm": {
+          "min": 0,
+          "max": 50,
+          "note": "원문 Measuring Range 0-50mm"
+        },
+        "displacement_resolution_nm": {
+          "values": [
+            10,
+            100,
+            1000
+          ],
+          "note": "원문 Resolution (selectable) 0.01/0.1/1.0 µm"
+        },
+        "accuracy": "(0.5 + L/100) µm, L = 측정 길이(mm), 20 ± 1 °C",
+        "measuring_repeatability_um": {
+          "value": 0.05,
+          "note": "원문 Repeatability σ = 0.05 µm(표준 측정자)"
+        },
+        "stylus_force_mN": {
+          "value": 150.0,
+          "note": "원문 Measuring force 0.15N (approx. 15.3gf)"
+        },
+        "measuring_speed_mm_s": {
+          "values": [
+            2,
+            4
+          ],
+          "note": "원문 Spindle feed measuring speed approx. 2 mm/s or 4 mm/s(파라미터 선택), quick feed approx. 8 mm/s"
+        },
+        "interfaces": "DIGIMATIC, RS-232C, I/O",
+        "weight_kg": {
+          "value": 19,
+          "note": "원문 Main unit mass 19 kg"
+        }
+      },
+      "note": "PDF(Bulletin No.2066 p.5) 사양표. 정확도 · 반복 정밀도는 6기종 공통 칸"
+    },
+    {
+      "model": "LITEMATIC VL-50-100-B",
+      "variant": "318-223A, 측정력 1 N",
+      "specs": {
+        "displacement_mm": {
+          "min": 0,
+          "max": 50,
+          "note": "원문 Measuring Range 0-50mm"
+        },
+        "displacement_resolution_nm": {
+          "values": [
+            10,
+            100,
+            1000
+          ],
+          "note": "원문 Resolution (selectable) 0.01/0.1/1.0 µm"
+        },
+        "accuracy": "(0.5 + L/100) µm, L = 측정 길이(mm), 20 ± 1 °C",
+        "measuring_repeatability_um": {
+          "value": 0.05,
+          "note": "원문 Repeatability σ = 0.05 µm(표준 측정자)"
+        },
+        "stylus_force_mN": {
+          "value": 1000,
+          "note": "원문 Measuring force 1N (approx. 102gf)"
+        },
+        "measuring_speed_mm_s": {
+          "values": [
+            2,
+            4
+          ],
+          "note": "원문 Spindle feed measuring speed approx. 2 mm/s or 4 mm/s(파라미터 선택), quick feed approx. 8 mm/s"
+        },
+        "interfaces": "DIGIMATIC, RS-232C, I/O",
+        "weight_kg": {
+          "value": 19,
+          "note": "원문 Main unit mass 19 kg"
+        }
+      },
+      "note": "PDF(Bulletin No.2066 p.5) 사양표. 정확도 · 반복 정밀도는 6기종 공통 칸"
+    },
+    {
+      "model": "LITEMATIC VL-50S-B",
+      "variant": "318-226A, 분리형(측정부·표시부 분리), 측정력 0.01 N",
+      "specs": {
+        "displacement_mm": {
+          "min": 0,
+          "max": 50,
+          "note": "원문 Measuring Range 0-50mm"
+        },
+        "displacement_resolution_nm": {
+          "values": [
+            10,
+            100,
+            1000
+          ],
+          "note": "원문 Resolution (selectable) 0.01/0.1/1.0 µm"
+        },
+        "accuracy": "(0.5 + L/100) µm, L = 측정 길이(mm), 20 ± 1 °C",
+        "measuring_repeatability_um": {
+          "value": 0.05,
+          "note": "원문 Repeatability σ = 0.05 µm(표준 측정자)"
+        },
+        "stylus_force_mN": {
+          "value": 10.0,
+          "note": "원문 Measuring force 0.01N (approx. 1gf)"
+        },
+        "measuring_speed_mm_s": {
+          "values": [
+            2,
+            4
+          ],
+          "note": "원문 Spindle feed measuring speed approx. 2 mm/s or 4 mm/s(파라미터 선택), quick feed approx. 8 mm/s"
+        },
+        "interfaces": "DIGIMATIC, RS-232C, I/O",
+        "weight_kg": {
+          "value": 6,
+          "note": "원문 Main unit mass 6 kg"
+        }
+      },
+      "note": "PDF(Bulletin No.2066 p.5) 사양표. 정확도 · 반복 정밀도는 6기종 공통 칸. 질량 6 kg 은 분리형 열에 적힘(전용 스탠드 957460 은 옵션)"
+    },
+    {
+      "model": "LITEMATIC VL-50S-15-B",
+      "variant": "318-227A, 분리형, 측정력 0.15 N",
+      "specs": {
+        "displacement_mm": {
+          "min": 0,
+          "max": 50,
+          "note": "원문 Measuring Range 0-50mm"
+        },
+        "displacement_resolution_nm": {
+          "values": [
+            10,
+            100,
+            1000
+          ],
+          "note": "원문 Resolution (selectable) 0.01/0.1/1.0 µm"
+        },
+        "accuracy": "(0.5 + L/100) µm, L = 측정 길이(mm), 20 ± 1 °C",
+        "measuring_repeatability_um": {
+          "value": 0.05,
+          "note": "원문 Repeatability σ = 0.05 µm(표준 측정자)"
+        },
+        "stylus_force_mN": {
+          "value": 150.0,
+          "note": "원문 Measuring force 0.15N (approx. 15.3gf)"
+        },
+        "measuring_speed_mm_s": {
+          "values": [
+            2,
+            4
+          ],
+          "note": "원문 Spindle feed measuring speed approx. 2 mm/s or 4 mm/s(파라미터 선택), quick feed approx. 8 mm/s"
+        },
+        "interfaces": "DIGIMATIC, RS-232C, I/O",
+        "weight_kg": {
+          "value": 6,
+          "note": "원문 Main unit mass 6 kg"
+        }
+      },
+      "note": "PDF(Bulletin No.2066 p.5) 사양표. 정확도 · 반복 정밀도는 6기종 공통 칸. 질량 6 kg 은 분리형 열에 적힘(전용 스탠드 957460 은 옵션)"
+    },
+    {
+      "model": "LITEMATIC VL-50S-100-B",
+      "variant": "318-228A, 분리형, 측정력 1 N",
+      "specs": {
+        "displacement_mm": {
+          "min": 0,
+          "max": 50,
+          "note": "원문 Measuring Range 0-50mm"
+        },
+        "displacement_resolution_nm": {
+          "values": [
+            10,
+            100,
+            1000
+          ],
+          "note": "원문 Resolution (selectable) 0.01/0.1/1.0 µm"
+        },
+        "accuracy": "(0.5 + L/100) µm, L = 측정 길이(mm), 20 ± 1 °C",
+        "measuring_repeatability_um": {
+          "value": 0.05,
+          "note": "원문 Repeatability σ = 0.05 µm(표준 측정자)"
+        },
+        "stylus_force_mN": {
+          "value": 1000,
+          "note": "원문 Measuring force 1N (approx. 102gf)"
+        },
+        "measuring_speed_mm_s": {
+          "values": [
+            2,
+            4
+          ],
+          "note": "원문 Spindle feed measuring speed approx. 2 mm/s or 4 mm/s(파라미터 선택), quick feed approx. 8 mm/s"
+        },
+        "interfaces": "DIGIMATIC, RS-232C, I/O",
+        "weight_kg": {
+          "value": 6,
+          "note": "원문 Main unit mass 6 kg"
+        }
+      },
+      "note": "PDF(Bulletin No.2066 p.5) 사양표. 정확도 · 반복 정밀도는 6기종 공통 칸. 질량 6 kg 은 분리형 열에 적힘(전용 스탠드 957460 은 옵션)"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://shop.mitutoyo.eu/web/mitutoyo/en/mitutoyo/01.05.08/Litematic%20VL-50-B/$catalogue/mitutoyoData/PR/318-221-10D/index.xhtml",
+      "retrieved": "2026-10-08",
+      "note": "제조사 유럽 판매 페이지(제품 사양)"
+    },
+    {
+      "file": "mitutoyo/2066_litematic.pdf",
+      "pages": [
+        1,
+        2,
+        5
+      ]
+    }
+  ],
+  "confidence": "catalog",
+  "notes": "PDF(Bulletin No.2066)로 확인: 측정 범위 0~50 mm, 지시 오차 (0.5 + L/100) µm, 반복 정밀도 σ 0.05 µm, 측정력 0.01 N, 분해능 0.01/0.1/1.0 µm 선택. 측정력 0.15 N · 1 N 변형과 분리형 VL-50S-B 계열을 PDF 기종명으로 더함. 사양표는 텍스트 추출에서 행이 섞여 있어 값 순서·주문 번호로 맞춰 읽음."
+}

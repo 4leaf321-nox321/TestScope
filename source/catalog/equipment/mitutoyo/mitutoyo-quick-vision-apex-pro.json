@@ -1,0 +1,202 @@
+{
+  "id": "mitutoyo-quick-vision-apex-pro",
+  "kind": "equipment_series",
+  "name": "Quick Vision Apex Pro CNC Vision Measuring System",
+  "name_ko": "미쓰토요 퀵비전 Apex Pro CNC 영상 측정기",
+  "manufacturer": "mitutoyo",
+  "category": "coordinate_measuring_machine",
+  "form_factor": "floor",
+  "description": "CNC 영상(비전) 측정기 계열(Series 363)임. 측정 범위 300 × 200 × 200 mm(302)부터 600 × 650 × 250 mm(606)까지, 스케일 분해능 0.0001 mm, 흑백 CMOS 카메라, 배율 16x~4800x, 시야 0.04 × 0.03 ~ 12.54 × 9.4 mm. 카메라 이동과 스트로브를 맞춘 비정지 측정(STREAM), 추적 오토포커스(옵션), 터치 트리거 프로브를 지원함.",
+  "test_items": [],
+  "limits": {
+    "measuring_range_x_mm": {
+      "min": 300,
+      "max": 600
+    },
+    "measuring_range_y_mm": {
+      "min": 200,
+      "max": 650
+    },
+    "measuring_range_z_mm": {
+      "min": 200,
+      "max": 250
+    },
+    "position_resolution_nm": {
+      "note": "원문 Resolution of scale 0.1 µm(PRE1552(3) p.2)",
+      "values": [
+        100
+      ]
+    },
+    "magnification": {
+      "min": 16,
+      "max": 4800,
+      "note": "원문 16x – 4800x(웹 페이지 값. 사양서 PDF 는 2.5x 대물렌즈 + 중배율 튜브 렌즈, 파워 터렛 1x·2x·6x(디지털 12x)만 적음)"
+    },
+    "field_of_view_mm": {
+      "min": 0.04,
+      "max": 12.54,
+      "note": "원문 0.04 x 0.03 – 12.54 x 9.4mm(웹 페이지 값. 사양서 PDF 에 없음)"
+    }
+  },
+  "models": [
+    {
+      "model": "QV APEX 302 Pro",
+      "variant": "형식 QV-X302P1L-E(363-601-10) · QV-X302T1L-E(363-603-10) · QV-X302P1C-E(363-602-10) · QV-X302T1C-E(363-604-10)",
+      "specs": {
+        "measuring_range_x_mm": 300,
+        "measuring_range_y_mm": 200,
+        "measuring_range_z_mm": 200,
+        "table_load_kg": 20,
+        "length_measuring_error_mpe": "EUX/EUY,MPE (1.5 + 3L/1000) / (1.5 + 4L/1000) µm, EUXY,MPE (2.0 + 4L/1000) / (2.0 + 5L/1000) µm, EUZ,MPE (1.5 + 4L/1000) / (1.5 + 5L/1000) µm — 앞은 20 ± 2 °C, 뒤는 19~24 °C. STREAM(옵션) E1X·E1Y (1.5 + 3L/1000) µm, E2XY (2.0 + 4L/1000) µm",
+        "weight_kg": {
+          "value": 355,
+          "note": "원문 Main unit mass (Including the special sub-base) 355 kg"
+        },
+        "footprint_mm": [
+          866,
+          930,
+          1612
+        ],
+        "stage_size_mm": [
+          399,
+          271
+        ]
+      },
+      "note": "PDF(PRE1552(3) p.2) 표기 'QV APEX 302 Pro'(웹 페이지 'QV Apex 302 Pro'). 형식 끝 L/C 는 표면 조명 백색/컬러 LED. 측정 범위·최대 적재 PDF 와 일치"
+    },
+    {
+      "model": "QV APEX 404 Pro",
+      "variant": "형식 QV-X404P1L-E(363-611-10) · QV-X404T1L-E(363-613-10) · QV-X404P1C-E(363-612-10) · QV-X404T1C-E(363-614-10)",
+      "specs": {
+        "measuring_range_x_mm": 400,
+        "measuring_range_y_mm": 400,
+        "measuring_range_z_mm": 250,
+        "table_load_kg": 40,
+        "length_measuring_error_mpe": "EUX/EUY,MPE (1.5 + 3L/1000) / (1.5 + 4L/1000) µm, EUXY,MPE (2.0 + 4L/1000) / (2.0 + 5L/1000) µm, EUZ,MPE (1.5 + 4L/1000) / (1.5 + 5L/1000) µm — 앞은 20 ± 2 °C, 뒤는 19~24 °C. STREAM(옵션) E1X·E1Y (1.5 + 3L/1000) µm, E2XY (2.0 + 4L/1000) µm",
+        "weight_kg": {
+          "value": 640,
+          "note": "원문 Main unit mass (Including the special sub-base) 640 kg"
+        },
+        "footprint_mm": [
+          1118,
+          1426,
+          1776
+        ],
+        "stage_size_mm": [
+          493,
+          551
+        ]
+      },
+      "note": "PDF(PRE1552(3) p.2) 표기 'QV APEX 404 Pro'(웹 페이지 'QV Apex 404 Pro'). 형식 끝 L/C 는 표면 조명 백색/컬러 LED. 측정 범위·최대 적재 PDF 와 일치"
+    },
+    {
+      "model": "QV APEX 606 Pro",
+      "variant": "형식 QV-X606P1L-E(363-621-10) · QV-X606T1L-E(363-623-10) · QV-X606P1C-E(363-622-10) · QV-X606T1C-E(363-624-10)",
+      "specs": {
+        "measuring_range_x_mm": 600,
+        "measuring_range_y_mm": 650,
+        "measuring_range_z_mm": 250,
+        "table_load_kg": 50,
+        "length_measuring_error_mpe": "EUX/EUY,MPE (1.5 + 3L/1000) / (1.5 + 4L/1000) µm, EUXY,MPE (2.0 + 4L/1000) / (2.0 + 5L/1000) µm, EUZ,MPE (1.5 + 4L/1000) / (1.5 + 5L/1000) µm — 앞은 20 ± 2 °C, 뒤는 19~24 °C. STREAM(옵션) E1X·E1Y (1.5 + 3L/1000) µm, E2XY (2.0 + 4L/1000) µm",
+        "weight_kg": {
+          "value": 1465,
+          "note": "원문 Main unit mass (Including the special sub-base) 1465 kg"
+        },
+        "footprint_mm": [
+          1400,
+          1994,
+          1804
+        ],
+        "stage_size_mm": [
+          697,
+          758
+        ]
+      },
+      "note": "PDF(PRE1552(3) p.2) 표기 'QV APEX 606 Pro'(웹 페이지 'QV Apex 606 Pro'). 형식 끝 L/C 는 표면 조명 백색/컬러 LED. 측정 범위·최대 적재 PDF 와 일치"
+    },
+    {
+      "model": "QVTP APEX 302 Pro",
+      "variant": "터치 프로브 겸용, 형식 QVT1-X302P1L-E(364-601-10) · QVT1-X302T1L-E(364-603-10) · QVT1-X302P1C-E(364-602-10) · QVT1-X302T1C-E(364-604-10)",
+      "specs": {
+        "measuring_range_x_mm": 300,
+        "measuring_range_y_mm": 200,
+        "measuring_range_z_mm": 200,
+        "table_load_kg": 20,
+        "length_measuring_error_mpe": "EUX/EUY,MPE (1.5 + 3L/1000) / (1.5 + 4L/1000) µm, EUXY,MPE (2.0 + 4L/1000) / (2.0 + 5L/1000) µm, EUZ,MPE (1.5 + 4L/1000) / (1.5 + 5L/1000) µm — 앞은 20 ± 2 °C, 뒤는 19~24 °C. STREAM(옵션) E1X·E1Y (1.5 + 3L/1000) µm, E2XY (2.0 + 4L/1000) µm. TP EX·EY·EZ,MPE (1.8 + 3L/1000) µm",
+        "weight_kg": {
+          "value": 355,
+          "note": "원문 Main unit mass (Including the special sub-base) 355 kg"
+        },
+        "footprint_mm": [
+          866,
+          930,
+          1612
+        ]
+      },
+      "note": "PDF(PRE1552(3) p.3) 사양표. 측정 범위는 영상 기준, 영상·터치 프로브 공통 범위 234 × 200 × 200 mm. 스케일 분해능 0.1 µm"
+    },
+    {
+      "model": "QVTP APEX 404 Pro",
+      "variant": "터치 프로브 겸용, 형식 QVT1-X404P1L-E(364-611-10) · QVT1-X404T1L-E(364-613-10) · QVT1-X404P1C-E(364-612-10) · QVT1-X404T1C-E(364-614-10)",
+      "specs": {
+        "measuring_range_x_mm": 400,
+        "measuring_range_y_mm": 400,
+        "measuring_range_z_mm": 250,
+        "table_load_kg": 40,
+        "length_measuring_error_mpe": "EUX/EUY,MPE (1.5 + 3L/1000) / (1.5 + 4L/1000) µm, EUXY,MPE (2.0 + 4L/1000) / (2.0 + 5L/1000) µm, EUZ,MPE (1.5 + 4L/1000) / (1.5 + 5L/1000) µm — 앞은 20 ± 2 °C, 뒤는 19~24 °C. STREAM(옵션) E1X·E1Y (1.5 + 3L/1000) µm, E2XY (2.0 + 4L/1000) µm. TP EX·EY·EZ,MPE (1.8 + 3L/1000) µm",
+        "weight_kg": {
+          "value": 640,
+          "note": "원문 Main unit mass (Including the special sub-base) 640 kg"
+        },
+        "footprint_mm": [
+          1118,
+          1426,
+          1776
+        ]
+      },
+      "note": "PDF(PRE1552(3) p.3) 사양표. 측정 범위는 영상 기준, 영상·터치 프로브 공통 범위 334 × 400 × 250 mm. 스케일 분해능 0.1 µm"
+    },
+    {
+      "model": "QVTP APEX 606 Pro",
+      "variant": "터치 프로브 겸용, 형식 QVT1-X606P1L-E(364-621-10) · QVT1-X606T1L-E(364-623-10) · QVT1-X606P1C-E(364-622-10) · QVT1-X606T1C-E(364-624-10)",
+      "specs": {
+        "measuring_range_x_mm": 600,
+        "measuring_range_y_mm": 650,
+        "measuring_range_z_mm": 250,
+        "table_load_kg": 50,
+        "length_measuring_error_mpe": "EUX/EUY,MPE (1.5 + 3L/1000) / (1.5 + 4L/1000) µm, EUXY,MPE (2.0 + 4L/1000) / (2.0 + 5L/1000) µm, EUZ,MPE (1.5 + 4L/1000) / (1.5 + 5L/1000) µm — 앞은 20 ± 2 °C, 뒤는 19~24 °C. STREAM(옵션) E1X·E1Y (1.5 + 3L/1000) µm, E2XY (2.0 + 4L/1000) µm. TP EX·EY·EZ,MPE (1.8 + 3L/1000) µm",
+        "weight_kg": {
+          "value": 1465,
+          "note": "원문 Main unit mass (Including the special sub-base) 1465 kg"
+        },
+        "footprint_mm": [
+          1400,
+          1994,
+          1804
+        ]
+      },
+      "note": "PDF(PRE1552(3) p.3) 사양표. 측정 범위는 영상 기준, 영상·터치 프로브 공통 범위 534 × 650 × 250 mm. 스케일 분해능 0.1 µm"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://dev.pim.mitutoyo.com/products/vision-measuring-machines/cnc/quick-vision-apex-pro/",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 정보 페이지(미국 법인 PIM 사이트). 기종·주문 번호·측정 범위·최대 적재·분해능·배율·시야. 정확도는 '요청 시 제공'"
+    },
+    {
+      "url": "https://shop.mitutoyo.eu/web/mitutoyo/en/mitutoyo/Quick%20Vision%20Apex%20%252F%20Hyper/Quick%20Vision%20APEX%20-%20HYPER%20Series/index.xhtml",
+      "retrieved": "2026-10-08",
+      "note": "제조사 유럽 판매 페이지 분류. QV APEX Pro · QV HYPER Pro 가 각각 12개 변형으로 실려 있다는 것만 확인"
+    },
+    {
+      "file": "mitutoyo/pre-201552-3-20--20quick-20vision-20series-20--20pro-20series-20--20specifications_web.pdf",
+      "pages": [
+        2,
+        3
+      ]
+    }
+  ],
+  "confidence": "catalog",
+  "notes": "PDF(사양서 PRE1552(3) p.2·3)로 확인: QV APEX Pro 3기종의 형식·주문 번호·측정 범위·최대 적재·본체 질량·스케일 분해능 0.1 µm·EU,MPE. 기종 표기를 PDF 대로 'QV APEX … Pro' 로 고침. 같은 PDF 의 터치 프로브 겸용 QVTP APEX Pro 3기종을 더함. 웹 값 그대로: 배율 16x~4800x, 시야 0.04 × 0.03 ~ 12.54 × 9.4 mm(PDF 에 없음). 고정밀형 QV HYPER Pro(스케일 분해능 0.02 µm, EUX/EUY (0.8 + 2L/1000) µm)와 QVH4 · QVWLI · QV ACCEL · QV ULTRA 는 같은 PDF 에 있으나 다른 계열이라 넣지 않음."
+}

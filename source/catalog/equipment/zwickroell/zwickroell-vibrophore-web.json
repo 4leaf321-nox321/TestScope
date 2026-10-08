@@ -1,0 +1,400 @@
+{
+  "id": "zwickroell-vibrophore-web",
+  "kind": "equipment_series",
+  "name": "ZwickRoell Vibrophore high-frequency resonance pulsators (Vibrophore 250 / 1000; family 15 – 1000 kN)",
+  "name_ko": "즈윅로엘 Vibrophore 공진식 고주파 피로시험기(웹 보강: 15·25·50·100·500·600 kN)",
+  "manufacturer": "zwickroell",
+  "category": "resonance_fatigue",
+  "drive": "resonance",
+  "description": "기계 공진기 + 전자기 구동의 공진식 시험기. 평균 하중은 리드스크루 크로스헤드로, 동적 하중은 공진으로 준다. 시편 강성이 충분하면 285 Hz 까지(표의 15~50 kN 은 35~300 Hz). 정적 시험도 하는 two-in-one, 에너지는 서보유압의 약 2 %.",
+  "test_items": [
+    "fatigue",
+    "fracture_toughness",
+    "tensile",
+    "compression"
+  ],
+  "measurands": [
+    "mechanical.fatigue_strength",
+    "mechanical.fracture_toughness",
+    "mechanical.crack_growth_rate"
+  ],
+  "standards": {
+    "compliance": [],
+    "test_methods": [
+      "DIN 50100",
+      "ASTM E399",
+      "ASTM E466",
+      "ISO 6892"
+    ]
+  },
+  "models": [
+    {
+      "model": "Vibrophore 15",
+      "specs": {
+        "dynamic_force_kN": 15,
+        "static_force_kN": {
+          "value": 15,
+          "note": "Mean load, max. ±15 kN"
+        },
+        "force_amplitude_kN": 7.5,
+        "oscillation_displacement_mm": {
+          "value": 6,
+          "note": "±3 mm"
+        },
+        "frequency_Hz": {
+          "min": 35,
+          "max": 300
+        },
+        "frame_stiffness_kN_mm": {
+          "value": 170,
+          "note": "약, 크로스헤드 간격 1000 mm"
+        },
+        "weight_kg": 1900,
+        "vertical_test_space_mm": {
+          "value": 1200,
+          "note": "로드셀 없이"
+        },
+        "horizontal_test_space_mm": {
+          "value": 610,
+          "note": "기둥 사이 간격. 표에 각주 숫자가 붙어 '6104' 로 읽힘"
+        },
+        "footprint_mm": {
+          "W": 885,
+          "D": 645,
+          "H": 2375
+        },
+        "crosshead_speed_mm_min": {
+          "min": 0.0001,
+          "max": 600,
+          "note": "정적 시험·평균 하중 제어(AC 구동)"
+        },
+        "return_speed_mm_min": 1000,
+        "crosshead_travel_mm": {
+          "value": 1099,
+          "note": "기계 프레임 최대 이동"
+        },
+        "item_no": {
+          "value": "3007123",
+          "note": "Vibrophore 15 including testControl II. 선택 two in one 1028357"
+        }
+      },
+      "note": "원문 Fmax 15 kN, 힘 진폭 ±7.5 kN"
+    },
+    {
+      "model": "Vibrophore 25",
+      "specs": {
+        "dynamic_force_kN": 25,
+        "static_force_kN": {
+          "value": 25,
+          "note": "Mean load, max. ±25 kN"
+        },
+        "force_amplitude_kN": 12.5,
+        "oscillation_displacement_mm": {
+          "value": 6,
+          "note": "±3 mm"
+        },
+        "frequency_Hz": {
+          "min": 35,
+          "max": 300
+        },
+        "frame_stiffness_kN_mm": {
+          "value": 170,
+          "note": "약, 크로스헤드 간격 1000 mm"
+        },
+        "weight_kg": 1900,
+        "vertical_test_space_mm": {
+          "value": 1200,
+          "note": "로드셀 없이"
+        },
+        "horizontal_test_space_mm": {
+          "value": 610,
+          "note": "기둥 사이 간격. 표에 각주 숫자가 붙어 '6104' 로 읽힘"
+        },
+        "footprint_mm": {
+          "W": 885,
+          "D": 645,
+          "H": 2375,
+          "note": "웹 페이지는 폭 890 mm"
+        },
+        "item_no": {
+          "value": "1050926",
+          "note": "Vibrophore 25 including testControl II. 선택 two in one 1028357, 진동 변위 측정 1033236"
+        },
+        "crosshead_speed_mm_min": {
+          "min": 0.0001,
+          "max": 600,
+          "note": "정적 시험·평균 하중 제어(AC 구동)"
+        },
+        "return_speed_mm_min": 1000,
+        "crosshead_travel_mm": {
+          "value": 1099,
+          "note": "기계 프레임 최대 이동"
+        }
+      },
+      "note": "원문 Fmax 25 kN, 힘 진폭 ±12.5 kN"
+    },
+    {
+      "model": "Vibrophore 50",
+      "specs": {
+        "dynamic_force_kN": 50,
+        "static_force_kN": {
+          "value": 50,
+          "note": "Mean load, max. ±50 kN"
+        },
+        "force_amplitude_kN": 25,
+        "oscillation_displacement_mm": {
+          "value": 6,
+          "note": "±3 mm"
+        },
+        "frequency_Hz": {
+          "min": 35,
+          "max": 300
+        },
+        "frame_stiffness_kN_mm": {
+          "value": 170,
+          "note": "약, 크로스헤드 간격 1000 mm"
+        },
+        "weight_kg": 1900,
+        "vertical_test_space_mm": {
+          "value": 1200,
+          "note": "로드셀 없이"
+        },
+        "horizontal_test_space_mm": {
+          "value": 610,
+          "note": "기둥 사이 간격. 표에 각주 숫자가 붙어 '6104' 로 읽힘"
+        },
+        "footprint_mm": {
+          "W": 885,
+          "D": 645,
+          "H": 2375,
+          "note": "웹 페이지는 폭 890 mm"
+        },
+        "item_no": {
+          "value": "1023099",
+          "note": "Vibrophore 50 including testControl II. 선택 two in one 1028360, 진동 변위 측정 1033326"
+        },
+        "crosshead_speed_mm_min": {
+          "min": 0.0001,
+          "max": 600,
+          "note": "정적 시험·평균 하중 제어(AC 구동)"
+        },
+        "return_speed_mm_min": 1000,
+        "crosshead_travel_mm": {
+          "value": 1099,
+          "note": "기계 프레임 최대 이동"
+        }
+      },
+      "note": "원문 Fmax 50 kN, 힘 진폭 ±25 kN"
+    },
+    {
+      "model": "Vibrophore 100",
+      "specs": {
+        "dynamic_force_kN": 100,
+        "static_force_kN": {
+          "value": 100,
+          "note": "Mean load, max. ±100 kN"
+        },
+        "force_amplitude_kN": 50,
+        "oscillation_displacement_mm": {
+          "value": 6,
+          "note": "±3 mm"
+        },
+        "frequency_Hz": {
+          "min": 30,
+          "max": 285
+        },
+        "frame_stiffness_kN_mm": {
+          "value": 380,
+          "note": "약, 크로스헤드 간격 1000 mm"
+        },
+        "weight_kg": 3200,
+        "vertical_test_space_mm": {
+          "value": 1200,
+          "note": "로드셀 없이"
+        },
+        "horizontal_test_space_mm": {
+          "value": 626,
+          "note": "기둥 사이 간격. 표에 각주 숫자가 붙어 '6264' 로 읽힘"
+        },
+        "footprint_mm": {
+          "W": 1094,
+          "D": 770,
+          "H": 2565
+        },
+        "item_no": {
+          "value": "084142",
+          "note": "Vibrophore 100 including testControl II. 선택 two in one 1009579, 진동 변위 측정 1001259"
+        },
+        "crosshead_speed_mm_min": {
+          "min": 0.0001,
+          "max": 600,
+          "note": "정적 시험·평균 하중 제어(AC 구동)"
+        },
+        "return_speed_mm_min": 1000,
+        "crosshead_travel_mm": {
+          "value": 977.5,
+          "note": "기계 프레임 최대 이동"
+        }
+      },
+      "note": "원문 Fmax 100 kN, 힘 진폭 ±50 kN"
+    },
+    {
+      "model": "Vibrophore 500",
+      "specs": {
+        "dynamic_force_kN": 500,
+        "static_force_kN": {
+          "value": 500,
+          "note": "Mean load, max. ±500 kN"
+        },
+        "force_amplitude_kN": 250,
+        "oscillation_displacement_mm": {
+          "value": 6,
+          "note": "±3 mm. 웹 페이지는 4 (±2) mm"
+        },
+        "frequency_Hz": {
+          "min": 30,
+          "max": 285,
+          "note": "웹 페이지는 35~285 Hz"
+        },
+        "frame_stiffness_kN_mm": {
+          "value": 960,
+          "note": "약, 크로스헤드 간격 1000 mm"
+        },
+        "weight_kg": 9000,
+        "vertical_test_space_mm": {
+          "value": 1700,
+          "note": "로드셀 없이"
+        },
+        "horizontal_test_space_mm": {
+          "value": 780,
+          "note": "기둥 사이 간격. 표에 각주 숫자가 붙어 '7804' 로 읽힘"
+        },
+        "footprint_mm": {
+          "W": 1220,
+          "D": 1369,
+          "H": 3465
+        },
+        "item_no": {
+          "value": "1011633",
+          "note": "Vibrophore 500 including testControl II. 선택 two in one 1012275, 진동 변위 측정 1012273"
+        },
+        "crosshead_speed_mm_min": {
+          "min": 0.0001,
+          "max": 250,
+          "note": "정적 시험·평균 하중 제어(AC 구동)"
+        },
+        "return_speed_mm_min": 1000,
+        "crosshead_travel_mm": {
+          "value": 1700,
+          "note": "기계 프레임 최대 이동"
+        }
+      },
+      "note": "원문 Fmax 500 kN, 힘 진폭 ±250 kN"
+    },
+    {
+      "model": "Vibrophore 600",
+      "specs": {
+        "dynamic_force_kN": 600,
+        "static_force_kN": {
+          "value": 600,
+          "note": "Mean load, max. ±600 kN"
+        },
+        "force_amplitude_kN": 300,
+        "oscillation_displacement_mm": {
+          "value": 4,
+          "note": "±2 mm"
+        },
+        "frequency_Hz": {
+          "min": 30,
+          "max": 265
+        },
+        "frame_stiffness_kN_mm": {
+          "value": 880,
+          "note": "약, 크로스헤드 간격 1000 mm"
+        },
+        "weight_kg": 9000,
+        "vertical_test_space_mm": {
+          "value": 1700,
+          "note": "로드셀 없이"
+        },
+        "horizontal_test_space_mm": {
+          "value": 780,
+          "note": "기둥 사이 간격. 표에 각주 숫자가 붙어 '7804' 로 읽힘"
+        },
+        "footprint_mm": {
+          "W": 1220,
+          "D": 1369,
+          "H": 3465
+        },
+        "item_no": {
+          "value": "1030616",
+          "note": "Vibrophore 600 including testControl II. 선택 two in one 1012275, 진동 변위 측정 1012273"
+        },
+        "crosshead_speed_mm_min": {
+          "min": 0.0001,
+          "max": 250,
+          "note": "정적 시험·평균 하중 제어(AC 구동)"
+        },
+        "return_speed_mm_min": 1000,
+        "crosshead_travel_mm": {
+          "value": 1700,
+          "note": "기계 프레임 최대 이동"
+        }
+      },
+      "note": "원문 Fmax 600 kN, 힘 진폭 ±300 kN"
+    }
+  ],
+  "supplements": "zwickroell-vibrophore",
+  "sources": [
+    {
+      "url": "https://www.zwickroell.com/products/dynamic-and-fatigue-testing-systems/vibrophores/",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지(HTML) 본문·표를 직접 읽음. 기술 개요 표(15·25·50·100·250·500·600·1000 kN). 각주 숫자는 떼고 옮겼다"
+    },
+    {
+      "file": "zwickroell/13_471_vibrophore_15_pi_en.pdf",
+      "pages": [
+        2
+      ]
+    },
+    {
+      "file": "zwickroell/13_937_vibrophore_25_pi_en.pdf",
+      "pages": [
+        2
+      ]
+    },
+    {
+      "file": "zwickroell/13_938_vibrophore_50_pi_en.pdf",
+      "pages": [
+        2
+      ]
+    },
+    {
+      "file": "zwickroell/13_890_vibrophore_100_pi_en.pdf",
+      "pages": [
+        2
+      ]
+    },
+    {
+      "file": "zwickroell/13_996_vibrophore_500_pi_en.pdf",
+      "pages": [
+        2
+      ]
+    },
+    {
+      "file": "zwickroell/13_997_vibrophore_600_pi_en.pdf",
+      "pages": [
+        2
+      ]
+    },
+    {
+      "file": "zwickroell/13_838_vibrophore_1000_pi_en.pdf",
+      "pages": [
+        2
+      ],
+      "note": "Vibrophore 1000 — 원 객체 zwickroell-vibrophore 의 기종이라 여기 더하지 않고 시험 주파수만 견주었다"
+    }
+  ],
+  "confidence": "catalog",
+  "notes": "원 객체 zwickroell-vibrophore 에 없는 15·25·50·100·500·600 kN 기종을 보탠다. PI PDF 로 기종별 힘·진폭·주파수·강성·무게·시험 공간을 확인하고 크로스헤드 속도·이동량·높이를 더했다. PDF 와 다른 웹 값은 고쳤다: Vibrophore 25·50 폭 885 mm(웹 890), Vibrophore 500 진동 변위 6 (±3) mm(웹 4 (±2))·시험 주파수 30~285 Hz(웹 35~285). 웹에서 옮긴 item_no 는 선택 「진동 변위 측정」 품번이었다 — 기계 품번(including testControl II)으로 바꾸고 선택 품번은 note 에 남겼다. Vibrophore 1000 PI 도 30 ... 285 Hz 라 웹 표의 30 ... 150 Hz 는 틀린 것으로 본다. 시험 주파수는 시험 배치의 강성과 질량으로 정해진다."
+}

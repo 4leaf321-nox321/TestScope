@@ -1,0 +1,95 @@
+{
+  "id": "netzsch-sta-2500-regulus",
+  "kind": "equipment_series",
+  "name": "NETZSCH STA 2500 Regulus Simultaneous Thermal Analyzer",
+  "name_ko": "네취 STA 2500 Regulus 동시열분석기",
+  "manufacturer": "netzsch",
+  "category": "sta",
+  "description": "탁상형 STA(TG-DSC). 노 I 실온~1100 °C, 노 II 실온~1600 °C.",
+  "test_items": [
+    "tga",
+    "dsc"
+  ],
+  "measurands": [
+    "thermal.decomposition_temp",
+    "thermal.char_residue",
+    "thermal.glass_transition",
+    "thermal.melting_point"
+  ],
+  "measurands_by_item": {
+    "tga": [
+      "thermal.decomposition_temp",
+      "thermal.char_residue"
+    ],
+    "dsc": [
+      "thermal.glass_transition",
+      "thermal.melting_point"
+    ]
+  },
+  "limits": {
+    "temperature_degC": {
+      "min": 20,
+      "max": 1600,
+      "note": "RT to 1100 °C / 1600 °C(쉽게 바꾸는 노 2종: Furnace I RT~1100, Furnace II RT~1600 °C)"
+    },
+    "heating_rate_K_min": {
+      "min": 0.001,
+      "max": 100,
+      "note": "노에 따라"
+    }
+  },
+  "models": [
+    {
+      "model": "STA 2500 Regulus",
+      "specs": {
+        "temperature_degC": {
+          "min": 20,
+          "max": 1600,
+          "note": "RT to 1100 °C / 1600 °C(쉽게 바꾸는 노 2종: Furnace I RT~1100, Furnace II RT~1600 °C)"
+        },
+        "heating_rate_K_min": {
+          "min": 0.001,
+          "max": 100,
+          "note": "노에 따라"
+        },
+        "temperature_precision_degC": {
+          "value": 0.3,
+          "note": "Temperature precision(repeatability) 0.3 K"
+        },
+        "balance_resolution_ug": 0.03,
+        "dynamic_weighing_range_mg": {
+          "value": 250,
+          "note": "칭량 범위 ±250 mg"
+        },
+        "sample_mass_mg": {
+          "max": 1000,
+          "note": "max. sample load 1 g"
+        }
+      },
+      "note": "탑 로딩 수직 차동 저울(초미량, 부력 보상). 열전대 S 형, 진공 기밀(배기 장치에 따라), 분위기 불활성·산화·진공, MFC 내장, 전동 노 승강, 자동 시료기(ASC) 20 도가니(선택). 도가니 표 최대 400 µl(대용량 Al2O3, 큰 slip-on 판 필요) — 표 줄이 밀려 note 로만 둔다"
+    }
+  ],
+  "relations": [
+    {
+      "type": "same_family_as",
+      "target": "netzsch-sta-449"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://analyzing-testing.netzsch.com/en/products/simultaneous-thermogravimetry-differential-scanning-calorimetry-sta-tg-dsc/sta-2500-regulus",
+      "retrieved": "2026-10-08",
+      "note": "제조사 페이지가 자동 조회를 막아(HTTP 403/406) 직접 열지 못함. 값은 웹 검색 엔진이 이 페이지에서 뽑은 발췌로만 확인했다 — 값마다 uncertain. 시료 온도 최대 1600 °C(노에 따라): Furnace I RT~1100 °C, Furnace II RT~1600 °C"
+    },
+    {
+      "file": "netzsch/sta_2500_regulus_en_web.pdf",
+      "pages": [
+        4,
+        5,
+        10
+      ]
+    }
+  ],
+  "confidence": "catalog",
+  "notes": "NETZSCH 사이트가 자동 조회를 막는다(HTTP 403). PDF 로 확인: 온도 범위(웹 발췌와 같음)·승온 속도·온도 정밀도·저울 분해능·칭량 범위(브로슈어 4·5쪽, NGB 1224). RT 하한은 20 °C 로 적고 note 에 원문을 남겼다."
+}

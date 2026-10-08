@@ -1,0 +1,207 @@
+{
+  "id": "fluke-ti-pro-series",
+  "kind": "equipment_series",
+  "name": "Fluke Ti PRO Series Thermal Camera (Ti300 PRO ~ Ti480 PRO)",
+  "name_ko": "플루크 Ti PRO 시리즈 열화상 카메라",
+  "manufacturer": "fluke",
+  "brand": "Ti PRO",
+  "category": "thermal_imager",
+  "form_factor": "handheld",
+  "description": "전문가용 휴대 열화상 카메라 계열. 해상도 240 × 180(Ti300 PRO) ~ 640 × 480(Ti401 PRO · Ti480 PRO), Ti450 PRO · Ti480 PRO 는 SuperResolution 으로 4 배 화소 영상을 만든다. 열 감도 25 ~ 75 mK, 측정 범위 상한 650 °C(Ti300 · Ti401) ~ 1,500 °C(Ti450 PRO). 7.5 ~ 14 µm, 60 Hz 또는 9 Hz 판, 확도 ±2 °C 또는 ±2 %, 무게 1.04 kg.",
+  "test_items": [
+    "thermography"
+  ],
+  "measurands": [
+    "surface_temperature",
+    "temperature_distribution",
+    "hotspot_location"
+  ],
+  "limits": {
+    "temperature_degC": {
+      "min": -20,
+      "max": 1500,
+      "note": "Ti450 PRO 는 -10 ~ 1,500 °C"
+    },
+    "ir_resolution_pixels": {
+      "min": 43200,
+      "max": 307200
+    },
+    "thermal_sensitivity_degC": {
+      "min": 0.025,
+      "max": 0.075
+    },
+    "frame_rate_fps": {
+      "values": [
+        9,
+        60
+      ],
+      "note": "원문 60 Hz or 9 Hz versions"
+    }
+  },
+  "models": [
+    {
+      "model": "Ti300 PRO",
+      "specs": {
+        "detector_pixels": "240 × 180",
+        "ir_resolution_pixels": 43200,
+        "thermal_sensitivity_degC": 0.04,
+        "temperature_degC": {
+          "min": -20,
+          "max": 650
+        },
+        "accuracy": "±2 °C 또는 ±2 % (25 °C 기준, 큰 값)",
+        "frame_rate_fps": [
+          9,
+          60
+        ],
+        "field_of_view_deg": "24° H × 17° V",
+        "weight_kg": 1.04
+      },
+      "note": "단종, 후속 Ti300+ 안내. 파장은 페이지에 없음"
+    },
+    {
+      "model": "Ti400 PRO",
+      "specs": {
+        "detector_pixels": "320 × 240",
+        "ir_resolution_pixels": 76800,
+        "thermal_sensitivity_degC": 0.04,
+        "temperature_degC": {
+          "min": -20,
+          "max": 1200
+        },
+        "accuracy": "±2 °C 또는 ±2 % (25 °C 기준, 큰 값)",
+        "frame_rate_fps": [
+          9,
+          60
+        ],
+        "field_of_view_deg": "24° H × 17° V",
+        "weight_kg": 1.04
+      },
+      "note": "단종, 대안 Ti401 PRO 안내. 파장은 페이지에 없음"
+    },
+    {
+      "model": "Ti401 PRO",
+      "specs": {
+        "detector_pixels": "640 × 480",
+        "ir_resolution_pixels": 307200,
+        "thermal_sensitivity_degC": 0.075,
+        "temperature_degC": {
+          "min": -20,
+          "max": 650
+        },
+        "accuracy": "±2 °C 또는 ±2 % (25 °C 기준, 큰 값)",
+        "wavelength_nm": {
+          "min": 7500,
+          "max": 14000
+        },
+        "frame_rate_fps": [
+          9,
+          60
+        ],
+        "field_of_view_deg": "34° H × 24° V",
+        "weight_kg": 1.04
+      },
+      "note": "SuperResolution 없음"
+    },
+    {
+      "model": "Ti450 PRO",
+      "specs": {
+        "ir_resolution_pixels": 76800,
+        "thermal_sensitivity_degC": 0.025,
+        "temperature_degC": {
+          "min": -10,
+          "max": 1500
+        },
+        "accuracy": "±2 °C 또는 ±2 % (25 °C 기준, 큰 값)",
+        "wavelength_nm": {
+          "min": 7500,
+          "max": 14000
+        },
+        "frame_rate_fps": [
+          9,
+          60
+        ],
+        "field_of_view_deg": "24° H × 17° V",
+        "weight_kg": 1.04
+      },
+      "note": "단종, 대안 Ti480 PRO 안내. 페이지는 적외 해상도를 '76,800 pixels' 로만 적음. SuperResolution 640 × 480"
+    },
+    {
+      "model": "Ti480 PRO",
+      "specs": {
+        "detector_pixels": "640 × 480",
+        "ir_resolution_pixels": 307200,
+        "thermal_sensitivity_degC": 0.05,
+        "temperature_degC": {
+          "min": -20,
+          "max": 1000
+        },
+        "accuracy": "±2 °C 또는 ±2 % (25 °C 기준, 큰 값)",
+        "wavelength_nm": {
+          "min": 7500,
+          "max": 14000
+        },
+        "frame_rate_fps": [
+          9,
+          60
+        ],
+        "field_of_view_deg": "34° H × 24° V",
+        "weight_kg": 1.04
+      },
+      "note": "SuperResolution 1,280 × 960. 측정 범위 원문 ≤-20 °C to 1000 °C"
+    },
+    {
+      "model": "Ti300+",
+      "note": "Ti480 PRO 페이지의 관련 기종 목록에 이름만 있음",
+      "uncertain": true
+    },
+    {
+      "model": "Ti400+",
+      "note": "Ti480 PRO 페이지의 관련 기종 목록에 이름만 있음",
+      "uncertain": true
+    },
+    {
+      "model": "Ti450 SF6",
+      "note": "Ti480 PRO 페이지의 관련 기종 목록에 이름만 있음",
+      "uncertain": true
+    }
+  ],
+  "relations": [
+    {
+      "type": "performs",
+      "target": "thermography"
+    },
+    {
+      "type": "same_family_as",
+      "target": "fluke-tix-expert-series"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://www.fluke.com/en-us/product/thermal-cameras/ti300-pro",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지(HTML). 단종"
+    },
+    {
+      "url": "https://www.fluke.com/en-us/product/thermal-cameras/ti400-pro",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지(HTML). 단종"
+    },
+    {
+      "url": "https://www.fluke.com/en-us/product/thermal-cameras/ti401-pro",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지(HTML)"
+    },
+    {
+      "url": "https://www.fluke.com/en-us/product/thermal-cameras/ti450-pro",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지(HTML). 단종"
+    },
+    {
+      "url": "https://www.fluke.com/en-us/product/thermal-cameras/ti480-pro",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지(HTML). 관련 기종 목록"
+    }
+  ],
+  "confidence": "limited"
+}

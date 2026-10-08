@@ -1,0 +1,254 @@
+{
+  "id": "data-physics-signalforce-air-cooled-shakers",
+  "kind": "equipment_series",
+  "name": "Data Physics SignalForce Air-Cooled Electrodynamic Shakers (GW-V / LE series)",
+  "name_ko": "데이터피직스 SignalForce 공랭식 전기동력 가진기",
+  "manufacturer": "data-physics",
+  "brand": "SignalForce",
+  "category": "vibration_shaker",
+  "drive": "electrodynamic",
+  "description": "SignalForce 턴키 진동 시험 시스템의 공랭식 가진기. 소형 GW-V2(정현 9 N)부터 GW-V617(최대 6.67 kN)까지의 소형 계열, GW-V1322/33·LE-308·LE-612/616/624·GW-V26XX·GW-V35XX·LE-812/816 의 중형 계열(9.1~35.6 kN), LE-1316-3(48.9~60 kN)·LE-1316-3EF(66.7 kN, 최대 5분)의 대형 계열로 나뉜다.",
+  "test_items": [
+    "vibration_sine_random"
+  ],
+  "measurands": [
+    "resonance_frequency",
+    "transmissibility",
+    "fatigue_life"
+  ],
+  "limits": {
+    "force_kN": {
+      "min": 0.009,
+      "max": 66.7,
+      "note": "정현 최대(원문 lbf·N 병기). LE-1316-3EF 66.7 kN 은 최대 운전 5분"
+    },
+    "force_random_kN": {
+      "min": 0.003,
+      "max": 66.7,
+      "note": "랜덤 최대"
+    }
+  },
+  "models": [
+    {
+      "model": "GW-V2",
+      "specs": {
+        "force_kN": 0.009,
+        "force_random_kN": 0.003
+      },
+      "note": "원문 정현/랜덤 2 lbf (9 N) / 0.7 lbf (3.0 N)"
+    },
+    {
+      "model": "GW-V4",
+      "specs": {
+        "force_kN": 0.0178,
+        "force_random_kN": 0.0059
+      },
+      "note": "원문 정현/랜덤 4 lbf (17.8 N) / 1.3 lbf (5.9 N)"
+    },
+    {
+      "model": "GW-V20",
+      "specs": {
+        "force_kN": 0.1,
+        "force_random_kN": 0.033
+      },
+      "note": "원문 정현/랜덤 22.5 lbf (100 N) / 7.4 lbf (33 N)"
+    },
+    {
+      "model": "GW-V55",
+      "specs": {
+        "force_kN": {
+          "min": 0.142,
+          "max": 0.31
+        },
+        "force_random_kN": {
+          "min": 0.05,
+          "max": 0.11
+        }
+      },
+      "note": "원문 정현/랜덤 32-70 lbf (142-310 N) / 11-25 lbf (50-110 N)"
+    },
+    {
+      "model": "GW-V100",
+      "specs": {
+        "force_kN": 1.0,
+        "force_random_kN": 0.533
+      },
+      "note": "원문 정현/랜덤 225 lbf (1000 N) / 120 lbf (533 N)"
+    },
+    {
+      "model": "GW-V300",
+      "specs": {
+        "force_kN": 1.646,
+        "force_random_kN": 0.849
+      },
+      "note": "원문 정현/랜덤 370 lbf (1646 N) / 190 lbf (849 N)"
+    },
+    {
+      "model": "GW-V350",
+      "specs": {
+        "force_kN": {
+          "min": 2.38,
+          "max": 3.1
+        },
+        "force_random_kN": {
+          "min": 1.31,
+          "max": 2.24
+        }
+      },
+      "note": "원문 정현/랜덤 535-697 lbf (2380-3100 N) / 295-505 lbf (1310-2240 N)"
+    },
+    {
+      "model": "GW-V400/400LT",
+      "specs": {
+        "force_kN": {
+          "min": 4.6,
+          "max": 5.3
+        },
+        "force_random_kN": {
+          "min": 2.56,
+          "max": 5.0
+        }
+      },
+      "note": "원문 정현/랜덤 1034-1191 lbf (4600-5300 N) / 575-1124 lbf (2560-5000 N)"
+    },
+    {
+      "model": "GW-V617",
+      "specs": {
+        "force_kN": {
+          "min": 4.67,
+          "max": 6.67
+        },
+        "force_random_kN": {
+          "min": 4.0,
+          "max": 4.6
+        }
+      },
+      "note": "원문 정현/랜덤 1050-1500 lbf (4670-6670 N) / 900-1025 lbf (4000-4600 N)"
+    },
+    {
+      "model": "GW-V1322/33",
+      "specs": {
+        "force_kN": {
+          "min": 9.1,
+          "max": 10.93
+        },
+        "force_random_kN": {
+          "min": 7.3,
+          "max": 10.0
+        }
+      },
+      "note": "원문 정현/랜덤 2050-2455 lbf (9100-10930 N) / 1640-2250 lbf (7300-10000 N)"
+    },
+    {
+      "model": "LE-308-3",
+      "specs": {
+        "force_kN": 13.3,
+        "force_random_kN": 12.0
+      },
+      "note": "원문 정현/랜덤 3000 lbf (13300 N) / 2700 lbf (12000 N)"
+    },
+    {
+      "model": "LE-308-3EF",
+      "specs": {
+        "force_kN": 15.6,
+        "force_random_kN": 12.9
+      },
+      "note": "원문 정현/랜덤 3500 lbf (15600 N) / 2900 lbf (12900 N)"
+    },
+    {
+      "model": "LE-612-3",
+      "specs": {
+        "force_kN": 26.7,
+        "force_random_kN": 26.7
+      },
+      "note": "원문 정현/랜덤 6000 lbf (26700 N) / 6000 lbf (26700 N)"
+    },
+    {
+      "model": "LE-616/624",
+      "specs": {
+        "force_kN": 26.7,
+        "force_random_kN": 26.7
+      },
+      "note": "원문 정현/랜덤 6000 lbf (26700 N) / 6000 lbf (26700 N)"
+    },
+    {
+      "model": "GW-V26XX",
+      "specs": {
+        "force_kN": {
+          "min": 10.6,
+          "max": 26.7
+        },
+        "force_random_kN": {
+          "min": 9.6,
+          "max": 22.3
+        }
+      },
+      "note": "원문 정현/랜덤 2380-6000 lbf (10600-26700 N) / 2160-5000 lbf (9600-22300 N)"
+    },
+    {
+      "model": "GW-V35XX",
+      "specs": {
+        "force_kN": 35.6,
+        "force_random_kN": 29.0
+      },
+      "note": "원문 정현/랜덤 8000 lbf (35600 N) / 6520 lbf (29000 N)"
+    },
+    {
+      "model": "LE-812-3",
+      "specs": {
+        "force_kN": 35.6,
+        "force_random_kN": 35.6
+      },
+      "note": "원문 정현/랜덤 8000 lbf (35600 N) / 8000 lbf (35600 N)"
+    },
+    {
+      "model": "LE-816",
+      "specs": {
+        "force_kN": 35.6,
+        "force_random_kN": 35.6
+      },
+      "note": "원문 정현/랜덤 8000 lbf (35600 N) / 8000 lbf (35600 N)"
+    },
+    {
+      "model": "LE-1316-3",
+      "specs": {
+        "force_kN": {
+          "min": 48.9,
+          "max": 60.0
+        },
+        "force_random_kN": {
+          "min": 48.9,
+          "max": 60.0
+        }
+      },
+      "note": "원문 정현/랜덤 11000-13500 lbf (48.9-60 kN) / 같음"
+    },
+    {
+      "model": "LE-1316-3EF",
+      "specs": {
+        "force_kN": 66.7,
+        "force_random_kN": 66.7
+      },
+      "note": "원문 정현/랜덤 15000 lbf (66.7 kN) / 같음. 최대 운전 시간 5분"
+    }
+  ],
+  "relations": [
+    {
+      "type": "performs",
+      "target": "vibration_sine_random"
+    },
+    {
+      "type": "same_family_as",
+      "target": "data-physics-signalforce-water-cooled-shakers"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://dataphysics.com/?p=1249",
+      "retrieved": "2026-10-08",
+      "note": "제조사 공랭식 가진기 페이지(Air-Cooled Electrodynamic Shakers). www 주소는 TLS 오류로 열리지 않아 같은 페이지의 ?p= 주소로 조회"
+    }
+  ],
+  "confidence": "limited",
+  "notes": "주파수 범위·스트로크는 이 페이지에 없다. 범위로 적힌 정격(GW-V55 등)은 구성(앰프·아마추어)에 따라 다른 값이다. 힘은 원문 N 을 kN 으로 옮겼다."
+}

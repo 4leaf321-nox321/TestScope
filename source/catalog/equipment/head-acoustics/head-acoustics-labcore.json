@@ -1,0 +1,73 @@
+{
+  "id": "head-acoustics-labcore",
+  "kind": "equipment_model",
+  "name": "HEAD acoustics labCORE Voice and Audio Quality Testing Hardware",
+  "name_ko": "HEAD acoustics labCORE 통화·오디오 품질 시험 하드웨어",
+  "manufacturer": "head-acoustics",
+  "brand": "labCORE",
+  "category": "audio_analyzer",
+  "form_factor": "rack",
+  "description": "ACQUA 측정 소프트웨어와 함께 쓰는 모듈형 통화·오디오 품질 시험 플랫폼. 48 kHz 에서 최대 32채널, 192 kHz 에서 최대 8채널. 아날로그 BNC 입력·출력 각 2, 헤드폰 출력 1, USB 오디오 호스트(Type C)·PC 연결 USB Type B·USB Type A 2, I2S 로 쓸 수 있는 GPIO BNC 2, VoIP 용 RJ45, AES 입출력 2, ADAT(TOSLINK), HEAD_link. 확장 모듈로 저잡음 아날로그 입출력, 마이크 입력, VoIP, 파워 앰프, Bluetooth·A2B 를 더한다.",
+  "test_items": [
+    "audio_performance"
+  ],
+  "measurands": [
+    "frequency_response",
+    "speech_quality"
+  ],
+  "materials": [
+    "mobile phones",
+    "headphones",
+    "smart speakers",
+    "hands-free systems",
+    "hearing aids"
+  ],
+  "limits": {
+    "channels": {
+      "max": 32,
+      "note": "48 kHz 에서 최대 32채널, 192 kHz 에서 최대 8채널"
+    },
+    "data_rate_Hz": {
+      "values": [
+        48000,
+        192000
+      ],
+      "note": "채널 수와 맞바꾸는 샘플링 주파수"
+    }
+  },
+  "models": [
+    {
+      "model": "labCORE",
+      "specs": {
+        "channels": 32,
+        "data_rate_Hz": {
+          "max": 192000
+        },
+        "interfaces": "BNC 아날로그 입출력 각 2, 헤드폰 1, USB-C(오디오 호스트), USB-B, USB-A 2, GPIO BNC 2(I2S), RJ45(VoIP), AES 입출력 2, ADAT, HEAD_link"
+      }
+    }
+  ],
+  "options": [
+    "labCORE Extensions(저잡음 아날로그 입출력, 마이크 입력, VoIP 인터페이스·코덱, 파워 앰프, Bluetooth, A2B)"
+  ],
+  "relations": [
+    {
+      "type": "performs",
+      "target": "audio_performance"
+    },
+    {
+      "type": "compatible_accessory",
+      "target": "head-acoustics-hms-ii-artificial-heads",
+      "note": "통화 품질 시험에서 인공 두상과 조합"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://www.head-acoustics.com/products/data-acquisition/labcore/",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지"
+    }
+  ],
+  "confidence": "limited",
+  "notes": "잔류 잡음·THD 등 아날로그 성능 수치는 페이지에 없다. ACQUA·RC-labCORE·VoCAS 소프트웨어로 제어한다."
+}

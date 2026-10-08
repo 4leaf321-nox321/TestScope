@@ -1,0 +1,272 @@
+{
+  "id": "dantec-dynamics-dic-systems",
+  "kind": "equipment_series",
+  "name": "Dantec Dynamics DIC Systems (EduDIC / FlexDIC / TestDIC / MulticamDIC / MSpeedDIC / HSpeedDIC / ThermechDIC; former Q-400 / Q-450)",
+  "name_ko": "단텍 다이내믹스 DIC 시스템(구 Q-400·Q-450)",
+  "manufacturer": "dantec-dynamics",
+  "category": "dic_strain_measurement",
+  "subcategory": "stereo_dic",
+  "form_factor": "portable",
+  "description": "Istra4D 소프트웨어로 해석하는 디지털 영상 상관(DIC) 시스템 계열. 교육용 EduDIC(2.3 MP 카메라 2대, 166 Hz), 3카메라 조정형 FlexDIC, 3카메라 고정형 TestDIC(5 MP 또는 12 MP), 4대 이상의 MulticamDIC, 중속 MSpeedDIC(진동 100 Hz 미만·3 m/s 미만), 고속 HSpeedDIC(SpeedSense 1～4 MP, 1～40 kHz), 전자부품 휨·열팽창계수(CTE)용 ThermechDIC(-80～400 °C)가 있다. 인장·압축·전단·굽힘·FLC·벌지·이축 인장, 반복·피로·파괴역학 시험에 쓴다. 이전 이름은 3D 상관 시스템 Q-400, 고속형 Q-450, 휨·열팽창용 Q-400 TCT.",
+  "test_items": [
+    "tensile",
+    "compression",
+    "flexure",
+    "fatigue",
+    "fracture_toughness"
+  ],
+  "measurands": [
+    "full_field_displacement",
+    "axial_strain",
+    "transverse_strain",
+    "poisson_ratio",
+    "shape_3d",
+    "warpage",
+    "coefficient_of_thermal_expansion"
+  ],
+  "standards": {
+    "compliance": [],
+    "test_methods": [
+      "JESD22-B112B",
+      "JEITA ED-7306"
+    ]
+  },
+  "limits": {
+    "data_rate_Hz": {
+      "max": 40000,
+      "note": "HSpeedDIC SpeedSense 1～40 kHz. EduDIC 166 Hz(전 해상도)"
+    },
+    "detector_megapixels": {
+      "min": 1,
+      "max": 24.4,
+      "note": "HSpeedDIC 1 Mpx ~ FlexDIC 24.4 Mpx(PDF). 웹 페이지 기준으로는 12 MP 까지였음"
+    },
+    "field_of_view_mm": {
+      "min": 0.1,
+      "max": 1500,
+      "note": "ThermechDIC 100×100 µm ~ 40×40 cm(웹 페이지), FlexDIC 24.4 Mpx 표준 시야 1500 × 1080 mm(PDF). 웹 페이지 기준 상한은 TestDIC 12 MP 42×30 cm(420 mm)"
+    },
+    "strain_resolution_microstrain": {
+      "min": 10,
+      "max": 15,
+      "note": "FlexDIC·TestDIC 10 µε, HSpeedDIC 15 µε(PDF 솔루션 시트)"
+    },
+    "temperature_degC": {
+      "min": -80,
+      "max": 400,
+      "note": "ThermechDIC 가열·냉각 스테이지. Q-400 TCT 는 -40～300 °C",
+      "requires_accessory": true
+    }
+  },
+  "models": [
+    {
+      "model": "EduDIC",
+      "specs": {
+        "detector_megapixels": 2.3,
+        "detector_pixels": "1920 x 1200 CMOS, 최대 2대",
+        "data_rate_Hz": 166,
+        "field_of_view_mm": {
+          "max": 200,
+          "note": "200 mm(H) x 125 mm(V), 대상 거리 470 mm"
+        }
+      },
+      "note": "교육용 2카메라 준정적 시스템. USB3 Vision, 외부 DAQ 불필요"
+    },
+    {
+      "model": "FlexDIC",
+      "specs": {
+        "detector_megapixels": {
+          "values": [
+            5.0,
+            12.3,
+            24.4
+          ],
+          "note": "PDF: 5.0 Mpx(2448 × 2048), 12.3 Mpx(4096 × 3000), 24.4 Mpx(5312 × 4600). 웹 페이지는 5·12 MP 만"
+        },
+        "data_rate_Hz": {
+          "min": 5,
+          "max": 77,
+          "note": "전 화소 프레임 속도. USB3 77 / 30 / 15 Hz, GigE 24 / 9 / 5 Hz(5.0 / 12.3 / 24.4 Mpx 순)"
+        },
+        "field_of_view_mm": {
+          "min": 500,
+          "max": 1500,
+          "note": "표준 시야 500 × 420 mm(5 Mpx, 거리 950 mm), 1000 × 730 mm(12.3 Mpx, 1130 mm), 1500 × 1080 mm(24.4 Mpx, 1850 mm)"
+        },
+        "strain_resolution_microstrain": {
+          "values": [
+            10
+          ],
+          "note": "PDF 원문 「10 strain」 — µ 기호가 추출에서 빠짐"
+        }
+      },
+      "note": "3카메라 조정형(2대 구성 가능). 진동 20 Hz 미만, 운동 0.3 m/s 미만. DAQ ±10 V 아날로그 입력 8, 출력 2. MulticamDIC 로 확장. 표준 렌즈 16·25 mm(24.4 Mpx 는 18·25 mm). 표준 공간 분해능 2대 204 / 244 / 282 µm/px, 3대 131 / 156 / 203 µm/px, 면내 분해능 2대 2 / 2 / 3 µm, 3대 1 / 2 / 3 µm(5.0 / 12.3 / 24.4 Mpx 순). 고정 구성 DSM 85610(5 Mpx)·85620(12 Mpx)·85630(24 Mpx)"
+    },
+    {
+      "model": "TestDIC",
+      "specs": {
+        "detector_megapixels": {
+          "values": [
+            5,
+            12.3
+          ],
+          "note": "PDF: 5 Mpx(2448 × 2048), 12.3 Mpx(4096 × 3000). 웹 페이지는 5·12 MP"
+        },
+        "data_rate_Hz": {
+          "values": [
+            77,
+            30
+          ],
+          "note": "USB3 CMOS, 5 Mpx @ 77 Hz, 12.3 Mpx @ 30 Hz"
+        },
+        "field_of_view_mm": {
+          "values": [
+            "250×200 (5 Mpx, f=16 mm)",
+            "420×300 (12 Mpx, f=16 mm)"
+          ]
+        },
+        "strain_resolution_microstrain": {
+          "values": [
+            10
+          ],
+          "note": "PDF 원문 「10 strain」 — µ 기호가 추출에서 빠짐"
+        }
+      },
+      "note": "3카메라 고정형. 렌즈 초점·조리개 사전 조정, 레이저 포인터 2개로 50 cm 거리 설정. 표준 공간 분해능 102 µm/px, 면내 분해능 1 µm, 면외 2 ~ 5 µm. DSM 85800(5 Mpx)·85820(12 Mpx)"
+    },
+    {
+      "model": "MulticamDIC",
+      "note": "4대 이상 카메라, 이면(bi-planar)·대형 구조물 시야"
+    },
+    {
+      "model": "MSpeedDIC",
+      "note": "중속 연속 모드 카메라(CXP-12 최대 4대 또는 10GigE 최대 8대). 진동 100 Hz 미만, 운동 3 m/s 미만"
+    },
+    {
+      "model": "HSpeedDIC",
+      "specs": {
+        "detector_megapixels": {
+          "min": 1,
+          "max": 4
+        },
+        "data_rate_Hz": {
+          "min": 1000,
+          "max": 40000
+        },
+        "strain_resolution_microstrain": {
+          "values": [
+            15
+          ],
+          "note": "PDF 원문 「15 strain」 — µ 기호가 추출에서 빠짐"
+        }
+      },
+      "note": "SpeedSense 버스트 모드 고속 카메라(표준 2대, 1·2·3대 구성). 홉킨슨 바·충돌·낙하·진동 해석. 표준 렌즈 35 mm, 표준 시야 400 × 250 mm, 거리 550 mm. 1 Mpx(1280 × 800)·4 Mpx(2560 × 1600) 10GigE 카메라 기준 공간 분해능 2대 313 / 156 µm/px, 3대 164 / 83 µm/px"
+    },
+    {
+      "model": "ThermechDIC",
+      "specs": {
+        "detector_megapixels": 12,
+        "field_of_view_mm": {
+          "min": 0.1,
+          "max": 400
+        },
+        "temperature_degC": {
+          "min": -80,
+          "max": 400
+        }
+      },
+      "note": "2·3카메라. 면내 ±0.5 µm, 면외 ±1.0 µm(시야 100 mm 기준). 온도 균일도 ±0.1 °C/cm, 안정도 ±0.05 °C(25 °C 초과). 스테이지 10×10～40×40 cm. JESD22-B112B, JEITA ED-7306"
+    },
+    {
+      "model": "Q-400",
+      "uncertain": true,
+      "note": "이전 이름(3D 영상 상관 시스템). 현행 제조사 페이지에 없음 — 판매 카탈로그 사이트(etesters) 설명으로만 확인"
+    },
+    {
+      "model": "Q-400 TCT",
+      "uncertain": true,
+      "specs": {
+        "temperature_degC": {
+          "min": -40,
+          "max": 300
+        }
+      },
+      "note": "이전 이름. 휨·열팽창 측정, 검사 영역 50×70 mm ~ 2×3 mm(etesters)"
+    },
+    {
+      "model": "Q-450",
+      "uncertain": true,
+      "note": "이전 이름(3D 고속 영상 상관 시스템). 진동·고속 과도 현상(etesters)"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://www.dantecdynamics.com/solutions/digital-image-correlation/",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지(HTML, dantecdynamics.com) DIC 제품 목록"
+    },
+    {
+      "url": "https://www.dantecdynamics.com/solutions/digital-image-correlation-dic/edudic/",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지(HTML, dantecdynamics.com) EduDIC"
+    },
+    {
+      "url": "https://www.dantecdynamics.com/solutions/digital-image-correlation-dic/flexdic/",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지(HTML, dantecdynamics.com) FlexDIC"
+    },
+    {
+      "url": "https://www.dantecdynamics.com/solutions/digital-image-correlation-dic/testdic/",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지(HTML, dantecdynamics.com) TestDIC"
+    },
+    {
+      "url": "https://www.dantecdynamics.com/solutions/digital-image-correlation-dic/mspeeddic/",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지(HTML, dantecdynamics.com) MSpeedDIC"
+    },
+    {
+      "url": "https://www.dantecdynamics.com/solutions/digital-image-correlation-dic/dic-high-speed/",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지(HTML, dantecdynamics.com) HSpeedDIC"
+    },
+    {
+      "url": "https://www.dantecdynamics.com/solutions/digital-image-correlation-dic/thermechdic/",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지(HTML, dantecdynamics.com) ThermechDIC"
+    },
+    {
+      "url": "https://www.etesters.com/catalog/B5E3C3D8-85EC-4BB5-995D-DE0EB7646114/dantec-dynamics-a-s/",
+      "retrieved": "2026-10-08",
+      "note": "판매 카탈로그 사이트(etesters). 제조사 현행 페이지에 없는 이전 이름 Q-400·Q-400 TCT·Q-450 설명"
+    },
+    {
+      "file": "dantec-dynamics/0839_v2-ss-flexdic-1.pdf",
+      "pages": [
+        1,
+        2,
+        4
+      ],
+      "note": "FlexDIC 솔루션 시트 SS_0839_v2 — 4쪽 기술 사양"
+    },
+    {
+      "file": "dantec-dynamics/0861_v1_ss_hspeeddic.pdf",
+      "pages": [
+        1,
+        2,
+        4
+      ],
+      "note": "HSpeedDIC 솔루션 시트 SS_0861_v1 — 4쪽 기술 사양(추출 텍스트에서 표 열이 흩어져 화소수 계산으로 열을 맞춤)"
+    },
+    {
+      "file": "dantec-dynamics/0870_v3_ss_testdic.pdf",
+      "pages": [
+        1,
+        4
+      ],
+      "note": "TestDIC 솔루션 시트 SS_0870_v3 — 4쪽 기술 사양"
+    }
+  ],
+  "confidence": "limited",
+  "notes": "같은 목록의 Videoextensometer RTSS 는 신율계라 넣지 않음. PDF 로 확인: FlexDIC(24.4 Mpx 더함, 프레임 속도·표준 시야·변형 분해능), TestDIC(12.3 Mpx 로 바로잡음, 시야·프레임 속도·변형 분해능), HSpeedDIC(1~4 Mpx, 1~40 kHz, 변형 분해능), limits 의 화소수·프레임 속도·시야 상한. 웹 값 그대로: EduDIC·MulticamDIC·MSpeedDIC·ThermechDIC(솔루션 시트 없음), limits 의 시야 하한·온도, 이전 이름 Q-400·Q-400 TCT·Q-450. FlexDIC·HSpeedDIC 면외 분해능(4~20 µm / 3~7 µm 등)은 추출 텍스트에서 카메라 2대·3대 행이 섞여 넣지 않음."
+}

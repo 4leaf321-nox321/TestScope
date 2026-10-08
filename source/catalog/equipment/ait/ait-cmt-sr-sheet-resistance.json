@@ -1,0 +1,151 @@
+{
+  "id": "ait-cmt-sr-sheet-resistance",
+  "kind": "equipment_series",
+  "name": "AIT CMT-SR Series Sheet Resistance / Resistivity Measurement Systems (CMT-SR2000N / CMT-SR3000 / CMT-SR5000)",
+  "name_ko": "AIT(에이아이티) CMT-SR 면저항·저항률 측정 시스템",
+  "manufacturer": "ait",
+  "category": "electrical_property_tester",
+  "subcategory": "four_point_probe",
+  "description": "국내 AIT(Advanced Instrument Technology)의 4탐침 면저항·저항률 측정 시스템 계열. PC 전용 소프트웨어로 측정·매핑·데이터 분석을 한다. CMT-SR2000N(장비 이용 기관 표기 CMT2000N)은 실리콘 웨이퍼·금속·태양전지용 전자동 시스템으로 전류원 10 nA～100 mA, 전압 0～2,000 mV, 200 mm 웨이퍼 또는 140×140 mm 사각 기판, ASTM·SEMI·사용자 측정 패턴. CMT-SR3000 은 LCD·ITO·유리·필름 같은 사각 시료용으로 자동 로딩 원격 운전을 지원한다. CMT-SR5000 은 실리콘 웨이퍼·태양전지용 고정밀형으로 300 mm·450 mm 웨이퍼판이 있다.",
+  "test_items": [
+    "electrical_transport"
+  ],
+  "measurands": [
+    "electrical.surface_resistivity",
+    "electrical.resistivity_volume"
+  ],
+  "materials": [
+    "silicon wafers",
+    "metal films",
+    "solar cells",
+    "LCD",
+    "ITO",
+    "glass",
+    "films"
+  ],
+  "limits": {
+    "current_A": {
+      "min": 1e-08,
+      "max": 0.1,
+      "note": "CMT2000N 전류원 10 nA ~ 100 mA"
+    },
+    "voltage_V": {
+      "min": 0,
+      "max": 2.0,
+      "note": "CMT2000N 0 ~ 2,000 mV"
+    },
+    "wafer_size_mm": {
+      "max": 450,
+      "note": "CMT2000N 200 mm, CMT-SR5000 300 mm·450 mm"
+    },
+    "surface_resistivity_ohm_sq": {
+      "min": 0.001,
+      "max": 2000000.0,
+      "note": "CMT-SR2000N 1 mΩ/sq ~ 2 MΩ/sq"
+    }
+  },
+  "models": [
+    {
+      "model": "CMT-SR2000N",
+      "specs": {
+        "surface_resistivity_ohm_sq": {
+          "min": 0.001,
+          "max": 2000000.0,
+          "note": "PDF 원문 「1 mohm/sq ~ 2 Mohm/sq」(4탐침 접촉). 웹 페이지(이용 기관)는 「1 mΩ/sq ~ 2 mΩ/sq」 — 상한 단위 오기였음"
+        },
+        "resistivity_ohm_cm": {
+          "max": 200000.0,
+          "note": "PDF 원문 「10.0 ohmcm ~ 200.0 Kohmcm」(두께 입력). 추출 텍스트에서 기호(~ · ± · µ)가 빠져 하한 10.0 의 단위 접두(µ 등)를 확신할 수 없어 하한은 비움 — 면저항 하한 1 mΩ/sq 와 맞추면 10 µΩ·cm 로 보임"
+        },
+        "current_A": {
+          "min": 1e-08,
+          "max": 0.1
+        },
+        "voltage_V": {
+          "min": 0,
+          "max": 2.0,
+          "note": "DVM 0 ~ 2,000 mV"
+        },
+        "wafer_size_mm": {
+          "max": 200,
+          "note": "PDF 「Wafer up to 8\"」"
+        },
+        "specimen_thickness_mm": {
+          "max": 6
+        },
+        "sample_size_mm": {
+          "max": 140,
+          "note": "140×140 mm 사각 기판 — 이용 기관 웹 페이지 값. PDF 에는 없음"
+        },
+        "probe_spacing_mm": {
+          "min": 0.635,
+          "max": 1.27,
+          "note": "4탐침 헤드(JANDEL) 핀 간격 25 ~ 50 mils, 5 mil 단위"
+        },
+        "load_g": {
+          "min": 10,
+          "max": 250,
+          "note": "핀 하중(pin load) 10 ~ 250 gram/pin"
+        },
+        "accuracy": "± 0.5 % (VLSI standard wafer, 23 °C); 전류원 ± 0.2 % (KRISS circuits). 웹 페이지는 「± 0.5 % (standard resistor)」",
+        "measurement_time_s": {
+          "values": [
+            3
+          ],
+          "note": "약 3 ± 1 s/point"
+        },
+        "weight_kg": {
+          "values": [
+            13.4
+          ]
+        }
+      },
+      "note": "이용 기관(UNIST) 페이지 표기는 CMT2000N. 전자동(X-Y-Z), 8\" 웨이퍼용, ASTM·SEMI 빠른 측정 모드. 출력 단위 Ω, Ω/sq, Ω·cm. 외형 562(W)×254(L)×250(H) mm, AC 220 V ± 10 % 55 W, 진공 약 200 mmHg"
+    },
+    {
+      "model": "CMT-SR3000",
+      "note": "LCD·ITO·유리·필름 등 사각 평판 시료용. 자동 시료 로딩 원격 운전. 수치 사양은 확인 못함"
+    },
+    {
+      "model": "CMT-SR5000",
+      "specs": {
+        "wafer_size_mm": {
+          "values": [
+            300,
+            450
+          ]
+        }
+      },
+      "note": "실리콘 웨이퍼·태양전지용 고정밀형. 300 mm 판 580(W)×700(D)×430(H) mm, 450 mm 판 610(W)×770(D)×430(H) mm"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://ucrf.unist.ac.kr/en/material/4point-probe/",
+      "retrieved": "2026-10-08",
+      "note": "장비 이용 기관(UNIST UCRF) 장비 소개 페이지. 제조사 공식 페이지를 찾지 못해 씀. CMT2000N 사양"
+    },
+    {
+      "url": "https://moov.co/marketplace/probers/advanced-instrument-technology/advanced-instrument-technology-aitcmtsr3000",
+      "retrieved": "2026-10-08",
+      "note": "중고 장비 거래 사이트의 제조사 설명 인용. 제조사 페이지가 없어 씀"
+    },
+    {
+      "url": "https://moov.co/marketplace/probers/advanced-instrument-technology/advanced-instrument-technology-aitcmtsr5000",
+      "retrieved": "2026-10-08",
+      "note": "중고 장비 거래 사이트의 제조사 설명 인용(CMT-SR5000 외형 치수)"
+    },
+    {
+      "file": "ait/specifications-sr2000n.pdf",
+      "pages": [
+        3,
+        4,
+        5,
+        6
+      ],
+      "note": "CMT-SR2000N Specifications(대리점 MDC Europe 배포본)"
+    }
+  ],
+  "confidence": "catalog",
+  "notes": "PDF 로 확인: CMT-SR2000N 면저항 범위·전류원·DVM 전압·웨이퍼 크기·정확도(면저항 상한 2 MΩ/sq 로 바로잡음, 저항률·핀 간격·핀 하중·두께 더함). 웹 값 그대로: CMT-SR2000N 140×140 mm 사각 기판, CMT-SR3000 설명, CMT-SR5000 웨이퍼 300·450 mm 와 외형(limits.wafer_size_mm 의 450 포함). CMT-SR1000N 등 다른 기종은 출처를 찾지 못해 넣지 않음."
+}

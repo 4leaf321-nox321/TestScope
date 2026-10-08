@@ -1,0 +1,242 @@
+{
+  "id": "em-test-esd-simulators",
+  "kind": "equipment_series",
+  "name": "EM TEST ESD Simulators (dito / esd NX30)",
+  "name_ko": "EM TEST(AMETEK CTS) ESD 시뮬레이터 dito·esd NX30",
+  "manufacturer": "em-test",
+  "category": "esd_simulator",
+  "form_factor": "handheld",
+  "description": "AMETEK CTS 의 EM TEST 브랜드 ESD 시뮬레이터. dito 는 IEC 61000-4-2 16.5 kV 급, 무게 870 g, 방전 팁·R/C 네트워크 교체식, 장시간 시험용 LiFePO4 파워 부스터. esd NX30 은 기중·접촉 방전 30 kV, 최대 25 Hz, ISO 10605·IEC 61000-4-2, 블리드오프 전환.",
+  "test_items": [
+    "esd_immunity"
+  ],
+  "standards": {
+    "compliance": [
+      "IEC/EN 61000-4-2 형식 승인·교정(카테고리 페이지)"
+    ],
+    "test_methods": [
+      "IEC 61000-4-2",
+      "ISO 10605 (esd NX30)"
+    ]
+  },
+  "limits": {
+    "esd_voltage_kV": {
+      "min": 0.2,
+      "max": 30,
+      "note": "dito 0.5~16.5 kV(기중; 접촉 최대 10 kV), esd NX30 계열 0.2~30 kV(기중·접촉)"
+    },
+    "discharge_mode": {
+      "values": [
+        "contact",
+        "air"
+      ],
+      "note": "esd NX30 페이지 'Air- and contact-discharge up to 30 kV'"
+    },
+    "frequency_Hz": {
+      "min": 0.5,
+      "max": 25,
+      "note": "esd NX30 계열 0.5, 1~20 Hz, 25 Hz 는 기중 방전만. dito 1~20 Hz(접촉 최대 10 Hz)"
+    },
+    "polarity": {
+      "values": [
+        "positive",
+        "negative",
+        "alternating"
+      ]
+    }
+  },
+  "models": [
+    {
+      "model": "dito",
+      "specs": {
+        "esd_voltage_kV": {
+          "min": 0.5,
+          "max": 16.5,
+          "note": "기중 방전 기준. 접촉 방전 최대 10 kV"
+        },
+        "contact_discharge_V": {
+          "min": 500,
+          "max": 10000,
+          "note": "±5 %, 100 V 단계"
+        },
+        "air_discharge_V": {
+          "min": 500,
+          "max": 16500,
+          "note": "±5 %, 100 V 단계"
+        },
+        "discharge_mode": {
+          "values": [
+            "contact",
+            "air"
+          ]
+        },
+        "polarity": {
+          "values": [
+            "positive",
+            "negative",
+            "alternating"
+          ]
+        },
+        "frequency_Hz": {
+          "min": 1,
+          "max": 20,
+          "note": "1 Hz 단계, 접촉 방전은 최대 10 Hz. 주기 0.5~20 s(0.5 s 단계)로도 설정"
+        },
+        "weight_kg": 0.87,
+        "operating_temperature_degC": {
+          "min": 5,
+          "max": 40
+        },
+        "operating_humidity_pct": {
+          "min": 20,
+          "max": 80,
+          "note": "결로 없음, 860~1060 mbar"
+        }
+      },
+      "note": "방전 팁·R/C 네트워크 교체식(표준 DM 1 150 pF/330 Ω), LiFePO4 파워 팩(1000 mAh, 16.5 kV 에서 70,000 회 넘게 방전). 유지 시간 > 5 s, 충전 전압 정확도 < ±5 %, 카운터 업 1~30,000·다운 0~999,999. 데이터시트(2025-04-29 판) 2쪽"
+    },
+    {
+      "model": "esd NX30",
+      "specs": {
+        "esd_voltage_kV": {
+          "min": 0.2,
+          "max": 30
+        },
+        "air_discharge_V": {
+          "min": 200,
+          "max": 30000,
+          "note": "±5 %"
+        },
+        "contact_discharge_V": {
+          "min": 200,
+          "max": 30000,
+          "note": "±5 %"
+        },
+        "discharge_mode": {
+          "values": [
+            "contact",
+            "air"
+          ]
+        },
+        "polarity": {
+          "values": [
+            "positive",
+            "negative",
+            "alternating"
+          ]
+        },
+        "frequency_Hz": {
+          "min": 0.5,
+          "max": 25,
+          "note": "0.5, 1~20 Hz(1 Hz 단계), 25 Hz 는 기중 방전만. 주기 0.04~300 s(0.01 s 단계)"
+        },
+        "weight_kg": 1.25,
+        "operating_temperature_degC": {
+          "min": 5,
+          "max": 40
+        },
+        "operating_humidity_pct": {
+          "min": 20,
+          "max": 80,
+          "note": "결로 없음, 860~1060 mbar"
+        }
+      },
+      "note": "베이스 스테이션(NiMH 2080 mAh 배터리 내장, 30 kV 에서 30,000 회) + 방전 건. R/C 네트워크 교체식(표준 150 pF/330 Ω), 블리드오프 내장(전환식)·외부 옵션, 광 링크 원격(esd.control), 25 mm 방전 구. 무게는 방전 건(네트워크 포함) 약 1.25 kg, 베이스 스테이션 약 6.5 kg. 크기 베이스 170 × 360 × 140 mm, 건 85 × 270 × 260 mm. 데이터시트(2025-07-16 판) 값",
+      "variant": "esd NX30-auto 는 방전 네트워크 150 pF/2000 Ω·330 pF/330 Ω·330 pF/2000 Ω 추가 구성"
+    },
+    {
+      "model": "esd NX30.1",
+      "variant": "esd NX30.1-auto 는 방전 네트워크 150 pF/2000 Ω·330 pF/330 Ω·330 pF/2000 Ω 추가 구성",
+      "specs": {
+        "esd_voltage_kV": {
+          "min": 0.2,
+          "max": 30
+        },
+        "air_discharge_V": {
+          "min": 200,
+          "max": 30000,
+          "note": "±5 %"
+        },
+        "contact_discharge_V": {
+          "min": 200,
+          "max": 30000,
+          "note": "±5 %"
+        },
+        "discharge_mode": {
+          "values": [
+            "contact",
+            "air"
+          ]
+        },
+        "polarity": {
+          "values": [
+            "positive",
+            "negative",
+            "alternating"
+          ]
+        },
+        "frequency_Hz": {
+          "min": 0.5,
+          "max": 25,
+          "note": "0.5, 1~20 Hz(1 Hz 단계), 25 Hz 는 기중 방전만. 주기 0.04~300 s(0.01 s 단계)"
+        },
+        "weight_kg": 1.25,
+        "operating_temperature_degC": {
+          "min": 5,
+          "max": 40
+        },
+        "operating_humidity_pct": {
+          "min": 20,
+          "max": 80,
+          "note": "결로 없음, 860~1060 mbar"
+        }
+      },
+      "note": "상용 전원 전용(배터리 없음). 원격 인터페이스·소프트웨어·인터록·원격 트리거·EUT Fail·R/C 모듈 감지·사용자 시험 저장·외부 블리드오프 옵션 없음, 자체 교정은 전원 투입 직후만. 블리드오프 내장(전환식), ISO 10605 볼·포인트 팁. 무게·크기는 esd NX30 과 같은 칸에 한 값만 적힘. 데이터시트(2025-07-16 판) 값"
+    }
+  ],
+  "relations": [
+    {
+      "type": "performs",
+      "target": "esd_immunity"
+    },
+    {
+      "type": "same_family_as",
+      "target": "teseq-nsg-437-435"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://www.ametek-cts.com/products/productgroups/electrostatic-discharge-esd",
+      "retrieved": "2026-10-08",
+      "note": "제조사(AMETEK CTS) ESD 제품군 목록 — 브랜드·전압 등급"
+    },
+    {
+      "url": "https://www.ametek-cts.com/products/brands/em-test/dito",
+      "retrieved": "2026-10-08",
+      "note": "제조사 dito 페이지"
+    },
+    {
+      "url": "https://www.ametek-cts.com/products/brands/em-test/esd-nx30-series",
+      "retrieved": "2026-10-08",
+      "note": "제조사 esd NX30 Series 페이지"
+    },
+    {
+      "file": "em-test/dito_datasheet_2024-12-13_en.pdf",
+      "pages": [
+        1,
+        2
+      ],
+      "note": "dito 데이터시트(본문 날짜 2025-04-29). 1쪽 특징·구성, 2쪽 사양·부속"
+    },
+    {
+      "file": "em-test/esd-nx30-series_datasheet_2025-07-16_en.pdf",
+      "pages": [
+        1,
+        2
+      ],
+      "note": "esd NX30 Series 데이터시트(2025-07-16). 1쪽 특징·기종별 구성, 2쪽 NX30·NX30.1 사양 비교"
+    }
+  ],
+  "confidence": "catalog",
+  "notes": "dito·esd NX30 계열 값은 데이터시트 PDF(dito 2025-04-29 판, esd NX30 Series 2025-07-16 판)로 채움. NX30 시리즈 데이터시트는 esd NX30·esd NX30-auto·esd NX30.1·esd NX30.1-auto 넷을 적음. -auto 는 방전 네트워크를 더 넣은 납품 구성이라 variant 로만 적음."
+}

@@ -1,0 +1,130 @@
+{
+  "id": "espec-sh-benchtop-models",
+  "kind": "equipment_series",
+  "name": "ESPEC SU / SH Series Benchtop Chambers",
+  "manufacturer": "espec",
+  "category": "climatic_chamber",
+  "form_factor": "benchtop",
+  "description": "ESPEC 벤치탑 항온항습조 SH 계열의 기종별 이름과 사양(제조사 영문 페이지 사양표). 온도 -20/-40/-60~+150 °C, 습도 30~95 %rh.",
+  "test_items": [
+    "damp_heat"
+  ],
+  "limits": {
+    "temperature_degC": {
+      "min": -60,
+      "max": 150
+    },
+    "humidity_pct": {
+      "min": 30,
+      "max": 95
+    }
+  },
+  "models": [
+    {
+      "model": "SH-222",
+      "form_factor": "benchtop",
+      "specs": {
+        "temperature_degC": {
+          "min": -20,
+          "max": 150
+        },
+        "humidity_pct": {
+          "min": 30,
+          "max": 95
+        },
+        "inner_mm": "W300×H300×D250",
+        "power": "100V AC 50/60Hz, 115V AC 60Hz NEC, 220V AC 50/60Hz*, 230V AC 50Hz*"
+      }
+    },
+    {
+      "model": "SH-242",
+      "form_factor": "benchtop",
+      "specs": {
+        "temperature_degC": {
+          "min": -40,
+          "max": 150
+        },
+        "humidity_pct": {
+          "min": 30,
+          "max": 95
+        },
+        "inner_mm": "W300×H300×D250",
+        "power": "100V AC 50/60Hz, 115V AC 60Hz NEC, 220V AC 50/60Hz*, 230V AC 50Hz*"
+      }
+    },
+    {
+      "model": "SH-262",
+      "form_factor": "benchtop",
+      "specs": {
+        "temperature_degC": {
+          "min": -60,
+          "max": 150
+        },
+        "humidity_pct": {
+          "min": 30,
+          "max": 95
+        },
+        "inner_mm": "W300×H300×D250",
+        "power": "100V /200V AC 50/60Hz, 220V AC 50/60Hz*, 230V AC 50Hz*, 200V AC 50/60Hz NEC"
+      }
+    },
+    {
+      "model": "SH-642",
+      "form_factor": "benchtop",
+      "specs": {
+        "temperature_degC": {
+          "min": -40,
+          "max": 150
+        },
+        "humidity_pct": {
+          "min": 30,
+          "max": 95
+        },
+        "inner_mm": "W400×H400×D400",
+        "power": "100V /200V AC 50/60Hz, 220V AC 50/60Hz*, 230V AC 50Hz*, 200V AC 50/60Hz NEC"
+      }
+    },
+    {
+      "model": "SH-662",
+      "form_factor": "benchtop",
+      "specs": {
+        "temperature_degC": {
+          "min": -60,
+          "max": 150
+        },
+        "humidity_pct": {
+          "min": 30,
+          "max": 95
+        },
+        "inner_mm": "W400×H400×D400",
+        "power": "100V /200V AC 50/60Hz, 220V AC 50/60Hz*, 230V AC 50Hz*, 200V AC 50/60Hz NEC"
+      }
+    },
+    {
+      "model": "SH-242-5",
+      "form_factor": "benchtop",
+      "specs": {
+        "temperature_degC": {
+          "min": -40,
+          "max": 150
+        },
+        "humidity_pct": {
+          "min": 30,
+          "max": 95
+        },
+        "inner_mm": "W300×H300×D250",
+        "power": "100V /200V AC 50/60Hz, 220V AC 50/60Hz*, 230V AC 50Hz*"
+      }
+    }
+  ],
+  "supplements": "espec-su-sh-benchtop",
+  "sources": [
+    {
+      "url": "https://www.espec.co.jp/english/products/env-test/sh/",
+      "retrieved": "2026-10-08",
+      "note": "제조사 영문 페이지 사양표(Model · Power supply · Temperature & Humidity Range · Inside dimensions)"
+    }
+  ],
+  "confidence": "limited",
+  "notes": "기존 객체 espec-su-sh-benchtop 은 'SU/SH series' 한 줄이라 대장의 'SH-242' 같은 기종명에 이어지지 않는다 — 기종을 보태려고 만든 보충 객체다. 페이지는 온도 전용 SU 기종도 있다고만 적고 기종표를 싣지 않아 SU 기종은 넣지 않았다. 전원 표기의 '*' 는 페이지 각주 기호 그대로다."
+}

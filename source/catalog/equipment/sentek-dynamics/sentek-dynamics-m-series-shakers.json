@@ -1,0 +1,256 @@
+{
+  "id": "sentek-dynamics-m-series-shakers",
+  "kind": "equipment_series",
+  "name": "Sentek Dynamics M-Series Medium-Force Air-Cooled Shakers",
+  "name_ko": "센텍 다이나믹스 M 시리즈 중추력 공랭식 가진기",
+  "manufacturer": "sentek-dynamics",
+  "category": "vibration_shaker",
+  "drive": "electrodynamic",
+  "form_factor": "floor",
+  "description": "공랭식 중추력 전기동력 가진기 열 기종. 정현 14.70~73.5 kN, 충격 29.40~147 kN, 2~3,000 Hz, 변위 51 mm, 속도 1.8~2.0 m/s, 가속도 80~100 g, 아마추어 280~640 mm, 탑재 300~1,000 kg.",
+  "test_items": [
+    "vibration_sine_random",
+    "mechanical_shock"
+  ],
+  "measurands": [
+    "resonance_frequency",
+    "transmissibility",
+    "fatigue_life"
+  ],
+  "limits": {
+    "force_kN": {
+      "min": 14.7,
+      "max": 73.5,
+      "note": "정현 피크"
+    },
+    "force_random_kN": {
+      "min": 14.7,
+      "max": 73.5,
+      "note": "랜덤 rms"
+    },
+    "force_shock_kN": {
+      "min": 29.4,
+      "max": 147,
+      "note": "충격(6 ms)"
+    },
+    "frequency_Hz": {
+      "min": 2,
+      "max": 3000
+    },
+    "displacement_mm": {
+      "values": [
+        51
+      ],
+      "note": "원문 Continuous Displacement. p-p 여부는 페이지에 없음"
+    },
+    "acceleration_g": {
+      "max": 100,
+      "note": "정현 피크 최대"
+    },
+    "payload_kg": {
+      "min": 300,
+      "max": 1000,
+      "note": "최대 정적 탑재"
+    }
+  },
+  "models": [
+    {
+      "model": "M1528A",
+      "specs": {
+        "force_kN": 14.7,
+        "force_random_kN": 14.7,
+        "force_shock_kN": 29.4,
+        "frequency_Hz": {
+          "min": 5,
+          "max": 3000
+        },
+        "displacement_mm": 51,
+        "velocity_m_s": 2.0,
+        "acceleration_g": 80,
+        "armature_diameter_mm": 280,
+        "armature_mass_kg": 18,
+        "payload_kg": 300
+      }
+    },
+    {
+      "model": "M2232A",
+      "specs": {
+        "force_kN": 21.56,
+        "force_random_kN": 21.56,
+        "force_shock_kN": 43.12,
+        "frequency_Hz": {
+          "min": 5,
+          "max": 3000
+        },
+        "displacement_mm": 51,
+        "velocity_m_s": 2.0,
+        "acceleration_g": 100,
+        "armature_diameter_mm": 320,
+        "armature_mass_kg": 22,
+        "payload_kg": 300
+      }
+    },
+    {
+      "model": "M3240A",
+      "specs": {
+        "force_kN": 31.36,
+        "force_random_kN": 31.36,
+        "force_shock_kN": 62.72,
+        "frequency_Hz": {
+          "min": 5,
+          "max": 2500
+        },
+        "displacement_mm": 51,
+        "velocity_m_s": 2.0,
+        "acceleration_g": 100,
+        "armature_diameter_mm": 400,
+        "armature_mass_kg": 32,
+        "payload_kg": 500
+      }
+    },
+    {
+      "model": "M3264M",
+      "specs": {
+        "force_kN": 31.36,
+        "force_random_kN": 21.9,
+        "force_shock_kN": 62.72,
+        "frequency_Hz": {
+          "min": 2,
+          "max": 2000
+        },
+        "displacement_mm": 51,
+        "velocity_m_s": 1.8,
+        "acceleration_g": 80,
+        "armature_diameter_mm": 640,
+        "armature_mass_kg": 40,
+        "payload_kg": 500
+      }
+    },
+    {
+      "model": "M4040A",
+      "specs": {
+        "force_kN": 39.2,
+        "force_random_kN": 39.2,
+        "force_shock_kN": 78.4,
+        "frequency_Hz": {
+          "min": 5,
+          "max": 2200
+        },
+        "displacement_mm": 51,
+        "velocity_m_s": 2.0,
+        "acceleration_g": 100,
+        "armature_diameter_mm": 400,
+        "armature_mass_kg": 40,
+        "payload_kg": 500
+      }
+    },
+    {
+      "model": "M5044A",
+      "specs": {
+        "force_kN": 49.0,
+        "force_random_kN": 49.0,
+        "force_shock_kN": 98,
+        "frequency_Hz": {
+          "min": 5,
+          "max": 2500
+        },
+        "displacement_mm": 51,
+        "velocity_m_s": 2.0,
+        "acceleration_g": 100,
+        "armature_diameter_mm": 445,
+        "armature_mass_kg": 49,
+        "payload_kg": 1000
+      }
+    },
+    {
+      "model": "M5064M",
+      "specs": {
+        "force_kN": 49.0,
+        "force_random_kN": 49.0,
+        "force_shock_kN": 98,
+        "frequency_Hz": {
+          "min": 2,
+          "max": 2300
+        },
+        "displacement_mm": 51,
+        "velocity_m_s": 1.8,
+        "acceleration_g": 80,
+        "armature_diameter_mm": 640,
+        "armature_mass_kg": 63,
+        "payload_kg": 1000
+      }
+    },
+    {
+      "model": "M6044A",
+      "specs": {
+        "force_kN": 58.8,
+        "force_random_kN": 58.8,
+        "force_shock_kN": 117.6,
+        "frequency_Hz": {
+          "min": 5,
+          "max": 2500
+        },
+        "displacement_mm": 51,
+        "velocity_m_s": 2.0,
+        "acceleration_g": 100,
+        "armature_diameter_mm": 445,
+        "armature_mass_kg": 49,
+        "payload_kg": 1000
+      }
+    },
+    {
+      "model": "M6544A",
+      "specs": {
+        "force_kN": 63.7,
+        "force_random_kN": 63.7,
+        "force_shock_kN": 127.4,
+        "frequency_Hz": {
+          "min": 5,
+          "max": 2400
+        },
+        "displacement_mm": 51,
+        "velocity_m_s": 2.0,
+        "acceleration_g": 100,
+        "armature_diameter_mm": 445,
+        "armature_mass_kg": 55,
+        "payload_kg": 1000
+      }
+    },
+    {
+      "model": "M7544A",
+      "specs": {
+        "force_kN": 73.5,
+        "force_random_kN": 73.5,
+        "force_shock_kN": 147,
+        "frequency_Hz": {
+          "min": 5,
+          "max": 2400
+        },
+        "displacement_mm": 51,
+        "velocity_m_s": 2.0,
+        "acceleration_g": 100,
+        "armature_diameter_mm": 445,
+        "armature_mass_kg": 65,
+        "payload_kg": 1000
+      }
+    }
+  ],
+  "features": [
+    "공랭식"
+  ],
+  "relations": [
+    {
+      "type": "performs",
+      "target": "vibration_sine_random"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://www.sentekdynamics.com/medium-force-shakers",
+      "retrieved": "2026-10-08",
+      "note": "제조사 계열 페이지. 기종별 사양 표(kN·lbf, m/s²·g 병기)"
+    }
+  ],
+  "confidence": "limited",
+  "notes": "모델명 끝의 A·M 의 뜻은 페이지에 없다."
+}

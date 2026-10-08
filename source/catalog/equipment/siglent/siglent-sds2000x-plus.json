@@ -1,0 +1,93 @@
+{
+  "id": "siglent-sds2000x-plus",
+  "kind": "equipment_series",
+  "name": "SDS2000X Plus Series Oscilloscopes",
+  "name_ko": "시글런트 SDS2000X Plus 오실로스코프",
+  "manufacturer": "siglent",
+  "brand": "SDS",
+  "category": "oscilloscope",
+  "subcategory": "mixed_signal_oscilloscope",
+  "form_factor": "benchtop",
+  "description": "100~350 MHz 대역의 2·4채널 오실로스코프 계열임. 2 GSa/s, 채널당 200 Mpts, 최대 16 디지털 채널, 10-bit acquisition mode, 10.1 inch 정전식 터치 화면.",
+  "test_items": [],
+  "limits": {
+    "bandwidth_Hz": {
+      "min": 100000000,
+      "max": 350000000
+    },
+    "sample_rate_Sa_s": {
+      "max": 2000000000
+    },
+    "record_length_pts": {
+      "max": 200000000
+    },
+    "channels": {
+      "values": [
+        2,
+        4
+      ]
+    },
+    "display_size_in": {
+      "values": [
+        10.1
+      ]
+    },
+    "logic_channel_count": {
+      "values": [
+        16
+      ],
+      "note": "원문 up to 4 analog channels + 16 digital channels"
+    }
+  },
+  "models": [
+    {
+      "model": "SDS2102X Plus",
+      "specs": {
+        "bandwidth_Hz": 100000000,
+        "channels": 2,
+        "sample_rate_Sa_s": 2000000000,
+        "record_length_pts": 200000000,
+        "display_size_in": 10.1
+      }
+    },
+    {
+      "model": "SDS2104X Plus",
+      "specs": {
+        "bandwidth_Hz": 100000000,
+        "channels": 4,
+        "sample_rate_Sa_s": 2000000000,
+        "record_length_pts": 200000000,
+        "display_size_in": 10.1
+      }
+    },
+    {
+      "model": "SDS2204X Plus",
+      "specs": {
+        "bandwidth_Hz": 200000000,
+        "channels": 4,
+        "sample_rate_Sa_s": 2000000000,
+        "record_length_pts": 200000000,
+        "display_size_in": 10.1
+      }
+    },
+    {
+      "model": "SDS2354X Plus",
+      "specs": {
+        "bandwidth_Hz": 350000000,
+        "channels": 4,
+        "sample_rate_Sa_s": 2000000000,
+        "record_length_pts": 200000000,
+        "display_size_in": 10.1
+      }
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://siglentna.com/digital-oscilloscopes/sds2000xp/",
+      "retrieved": "2026-10-08",
+      "note": "시글런트 북미 법인 사이트(siglentna.com)의 제품 페이지 기종 표. 원문 2 GSa/s, 200 Mpts/ch, \"up to 4 analog channels + 16 digital channels\", \"10-bit acquisition mode\", 10.1'' capacitive touch screen"
+    }
+  ],
+  "confidence": "limited",
+  "notes": "ADC 비트 수는 「10-bit acquisition mode」 표기뿐이라 vertical_resolution_bit 를 비움."
+}

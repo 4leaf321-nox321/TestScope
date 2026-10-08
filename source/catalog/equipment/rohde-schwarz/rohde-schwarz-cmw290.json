@@ -1,0 +1,70 @@
+{
+  "id": "rohde-schwarz-cmw290",
+  "kind": "equipment_series",
+  "name": "R&S CMW290",
+  "name_ko": "로데슈바르츠 CMW290 IoT 무선통신 테스터",
+  "manufacturer": "rohde-schwarz",
+  "brand": "CMW",
+  "category": "radio_communication_tester",
+  "description": "셀룰러·비셀룰러 IoT 기기를 시험하는 보급형 테스터(원문 Value-priced IoT tester). NB-IoT(R13~15, Cat. NB1/2)·LTE-M(R13~14, Cat.1/0/M1/M2)과 기존 GSM·WCDMA·LTE, WLAN 11a/b/g/n/ac/ax·Bluetooth 신호 시험을 지원한다. 네트워크 에뮬레이션(신호 모드)과 발생기·분석기 기능, 응용·종단 간 처리량 시험용 내부 서버, IP 스트림 DPI, CMWrun 시험 시퀀서를 갖춘다. GNSS·방송 기술도 언급된다.",
+  "test_items": [],
+  "limits": {
+    "radio_standards": {
+      "values": [
+        "NB-IoT (R13-15, Cat. NB1/2)",
+        "LTE-M (R13-14, Cat.1/0/M1/M2)",
+        "GSM",
+        "WCDMA",
+        "LTE",
+        "WLAN 802.11a/b/g/n/ac/ax",
+        "Bluetooth"
+      ],
+      "note": "제품 페이지 문구 그대로"
+    }
+  },
+  "models": [
+    {
+      "model": "CMW290",
+      "specs": {
+        "radio_standards": "NB-IoT, LTE-M, GSM, WCDMA, LTE, WLAN 802.11a/b/g/n/ac/ax, Bluetooth"
+      },
+      "note": "주파수 범위·대역폭은 페이지에 없다."
+    }
+  ],
+  "features": [
+    "네트워크 에뮬레이션(신호 모드)",
+    "발생기·분석기 기능",
+    "응용·종단 간 처리량 시험용 내부 서버",
+    "IP 스트림 DPI(deep packet inspection)",
+    "CMWrun 시험 시퀀서"
+  ],
+  "relations": [
+    {
+      "type": "same_family_as",
+      "target": "rohde-schwarz-cmw500"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://www.rohde-schwarz.com/us/products/test-and-measurement/wireless-tester-network-emulator/rs-cmw290_63493-117952.html",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지. 지원 표준·기능. 수치 사양 없음"
+    },
+    {
+      "url": "https://www.rohde-schwarz.com/us/products/test-and-measurement/wireless-tester-network-emulator_86475.html",
+      "retrieved": "2026-10-08",
+      "note": "제조사 네트워크 에뮬레이터 목록 페이지. CMW290 요약(NB-IoT·LTE-M, 기존 2G/3G/4G)"
+    },
+    {
+      "file": "rohde-schwarz/cmw-platform_bro_en_5214-2833-12_v0500.pdf",
+      "pages": [
+        4,
+        5,
+        29
+      ],
+      "note": "제조사 CMW 플랫폼 브로슈어(v05.00). CMW290 의 위치(CMW500 의 보급형 소형판, 기본 RF 측정·기능 시험, IoT 모듈 기능 시험, 서비스 용도). 수치 사양 없음"
+    }
+  ],
+  "confidence": "limited",
+  "notes": "제품 페이지 제목이 「R&S®CMW290」 뿐이라 name 에 부제를 붙이지 않았다. PDF 로 확인: CMW500 의 보급형 소형판(기본 RF 측정·Go/NoGo·IoT 모듈 기능 시험), 네트워크 에뮬레이션. 주파수 범위·출력 레벨·대역폭은 플랫폼 브로슈어에도 기종 값으로 없다(플랫폼 공통 「6 GHz support」 만 있음)."
+}

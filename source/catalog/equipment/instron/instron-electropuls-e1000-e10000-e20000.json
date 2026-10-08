@@ -1,0 +1,314 @@
+{
+  "id": "instron-electropuls-e1000-e10000-e20000",
+  "kind": "equipment_series",
+  "name": "Instron ElectroPuls E1000 / E10000 / E20000 All-Electric Dynamic Test Instruments (linear and linear-torsion)",
+  "name_ko": "인스트론 일렉트로펄스 E1000·E10000·E20000 전기식 동적 시험기",
+  "manufacturer": "instron",
+  "category": "electrodynamic_fatigue",
+  "drive": "electrodynamic",
+  "description": "오일이 없는 리니어(·회전) 모터 구동 전기식 동적 시험기. E1000 은 동적 ±1 kN, E10000 은 동적 선형 ±10 kN(선형-비틀림형 ±100 N·m), E20000 은 동적 선형 20 kN(선형-비틀림형 130 N·m)으로 E10000 과 거의 같은 크기에 두 배 하중. 스트로크 60 mm(E1000·E10000) / 75 mm(E20000).",
+  "test_items": [
+    "fatigue",
+    "torsion"
+  ],
+  "measurands": [
+    "mechanical.fatigue_strength"
+  ],
+  "limits": {
+    "dynamic_force_kN": {
+      "values": [
+        1,
+        10,
+        20
+      ]
+    },
+    "static_force_kN": {
+      "values": [
+        7,
+        14
+      ],
+      "note": "E10000 7 kN, E20000 14 kN(E1000 은 PDF 에 없음)"
+    },
+    "stroke_mm": {
+      "values": [
+        60,
+        75
+      ]
+    },
+    "torque_Nm": {
+      "values": [
+        100,
+        130
+      ],
+      "note": "선형-비틀림형"
+    },
+    "rotation_deg": {
+      "max": 135,
+      "note": "135° 표준, 16 회전까지 설정"
+    },
+    "frequency_Hz": {
+      "max": 100,
+      "note": "브로슈어 'greater than 100 Hz', E20000 사양서 'up to 100 Hz'"
+    },
+    "vertical_test_space_mm": {
+      "values": [
+        877,
+        956
+      ]
+    }
+  },
+  "models": [
+    {
+      "model": "E1000",
+      "specs": {
+        "dynamic_force_kN": {
+          "value": 1,
+          "note": "Force Capacity 1,000 N"
+        },
+        "stroke_mm": 60,
+        "frequency_Hz": {
+          "max": 100,
+          "note": "greater than 100 Hz(브로슈어 기술 요약)"
+        }
+      },
+      "form_factor": "benchtop",
+      "note": "탁상형. 600 시리즈 환경 챔버(단신형) 장착 가능. 연조직·소형 시편·자동 주사기 등"
+    },
+    {
+      "model": "E10000",
+      "variant": "Linear",
+      "specs": {
+        "dynamic_force_kN": {
+          "value": 10,
+          "note": "±10 kN(2250 lbf)"
+        },
+        "static_force_kN": {
+          "value": 7,
+          "note": "7 kN(1570 lbf)"
+        },
+        "stroke_mm": {
+          "value": 60,
+          "note": "60 mm(2.36 in)"
+        },
+        "vertical_test_space_mm": {
+          "value": 877,
+          "note": "치수도 '877 MAX - 17 MIN (AT MID STROKE)'"
+        },
+        "horizontal_test_space_mm": {
+          "value": 455,
+          "note": "치수도 '455 COLUMN DAYLIGHT'"
+        },
+        "frequency_Hz": {
+          "max": 100,
+          "note": "greater than 100 Hz(브로슈어 기술 요약)"
+        },
+        "operating_temperature_degC": {
+          "min": 10,
+          "max": 30
+        },
+        "power": "208–240 VAC 32 A 단상 50/60 Hz"
+      },
+      "form_factor": "floor",
+      "note": "바닥형, 2주식·액추에이터 상부 크로스헤드, 10 kN Dynacell 하부 장착. 바닥 면적 0.8 m² 미만. 하중 정확도 지시값 ±0.5% 또는 로드셀 용량 0.005% 중 큰 값"
+    },
+    {
+      "model": "E10000 Linear-Torsion",
+      "specs": {
+        "dynamic_force_kN": {
+          "value": 10,
+          "note": "10 kN(2250 lbf)"
+        },
+        "static_force_kN": {
+          "value": 7,
+          "note": "7 kN(1570 lbf)"
+        },
+        "torque_Nm": {
+          "value": 100,
+          "note": "±100 N·m(800 in-lb), torsional dynamic"
+        },
+        "stroke_mm": {
+          "value": 60,
+          "note": "60 mm(2.36 in)"
+        },
+        "rotation_deg": {
+          "max": 135,
+          "note": "135° 표준, 사용자 설정으로 16 회전"
+        },
+        "vertical_test_space_mm": {
+          "value": 877,
+          "note": "877 mm(34.5 in), 액추에이터 중간 스트로크에서 최대"
+        },
+        "horizontal_test_space_mm": {
+          "value": 455,
+          "note": "치수도 '455 COLUMN DAYLIGHT'"
+        },
+        "frequency_Hz": {
+          "max": 100,
+          "note": "greater than 100 Hz(브로슈어 기술 요약)"
+        },
+        "operating_temperature_degC": {
+          "min": 10,
+          "max": 30
+        },
+        "power": "208–240 VAC 32 A 단상 50/60 Hz"
+      },
+      "form_factor": "floor",
+      "note": "바닥형, 2축 Dynacell(선형·비틀림). 제어기 약 40 kg"
+    },
+    {
+      "model": "E20000",
+      "variant": "Linear",
+      "specs": {
+        "dynamic_force_kN": {
+          "value": 20,
+          "note": "20 kN(4,500 lbf) 인장 또는 압축. 완전 양진(full reverse) 18 kN"
+        },
+        "static_force_kN": {
+          "value": 14,
+          "note": "14 kN(3,150 lbf)"
+        },
+        "stroke_mm": {
+          "value": 75,
+          "note": "75 mm(2.95 in)"
+        },
+        "vertical_test_space_mm": {
+          "value": 956,
+          "note": "Daylight opening 956 mm(37.6 in)"
+        },
+        "horizontal_test_space_mm": {
+          "value": 515,
+          "note": "Column separation 515 mm(20.3 in)"
+        },
+        "frequency_Hz": {
+          "max": 100,
+          "note": "up to 100 Hz"
+        },
+        "weight_kg": {
+          "value": 1225,
+          "note": "1,225 kg(2,701 lb)"
+        },
+        "footprint_mm": {
+          "W": 1005,
+          "D": 1130,
+          "H": [
+            2165,
+            2871
+          ],
+          "note": "높이 최소 2165 / 최대 2871 mm, 깊이는 최대값"
+        },
+        "operating_temperature_degC": {
+          "min": 10,
+          "max": 30,
+          "note": "+30~+40 °C 는 성능 제한 운전"
+        },
+        "power": "3상 380–480 V ±10%"
+      },
+      "form_factor": "floor",
+      "note": "바닥형, 2주식·액추에이터 크로스헤드, 자동 전동 크로스헤드 리프트·클램프. Dynacell 25 kN(관성 보정). 전체 시스템 바닥 면적 1.2 m² 미만"
+    },
+    {
+      "model": "E20000 Linear-Torsion",
+      "specs": {
+        "dynamic_force_kN": {
+          "value": 20,
+          "note": "20 kN(4,500 lbf) 인장 또는 압축. 완전 양진(full reverse) 18 kN"
+        },
+        "static_force_kN": {
+          "value": 14,
+          "note": "14 kN(3,150 lbf)"
+        },
+        "torque_Nm": {
+          "value": 130,
+          "note": "130 N·m(1150 in-lb)"
+        },
+        "stroke_mm": {
+          "value": 75,
+          "note": "75 mm(2.95 in)"
+        },
+        "rotation_deg": {
+          "max": 135,
+          "note": "135° 표준, 16 회전"
+        },
+        "vertical_test_space_mm": {
+          "value": 956,
+          "note": "Daylight opening 956 mm(37.6 in)"
+        },
+        "horizontal_test_space_mm": {
+          "value": 515,
+          "note": "Column separation 515 mm(20.3 in)"
+        },
+        "frequency_Hz": {
+          "max": 100,
+          "note": "up to 100 Hz"
+        },
+        "weight_kg": {
+          "value": 1288,
+          "note": "1,288 kg(2,840 lb)"
+        },
+        "footprint_mm": {
+          "W": 1005,
+          "D": 1130,
+          "H": [
+            2165,
+            2871
+          ],
+          "note": "높이 최소 2165 / 최대 2871 mm, 깊이는 최대값"
+        },
+        "operating_temperature_degC": {
+          "min": 10,
+          "max": 30,
+          "note": "+30~+40 °C 는 성능 제한 운전"
+        },
+        "power": "3상 380–480 V ±10%"
+      },
+      "form_factor": "floor",
+      "note": "바닥형, 2축 Dynacell 25 kN · 150 N·m(관성 보정). 광학 엔코더 5 nm 분해능"
+    }
+  ],
+  "relations": [
+    {
+      "type": "same_family_as",
+      "target": "instron-electropuls-e3000"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://www.instron.com/en/products/testing-systems/dynamic-and-fatigue-systems/electropuls-systems/",
+      "retrieved": "2026-10-08",
+      "note": "제조사 페이지가 자동 조회를 막아(HTTP 403/406) 직접 열지 못함. 값은 웹 검색 엔진이 이 페이지에서 뽑은 발췌로만 확인했다 — 값마다 uncertain. E1000 ±1000 N·60 mm, E10000 ±10 kN·60 mm(선형-비틀림 ±100 N·m), E20000 20 kN·75 mm(선형-비틀림 130 N·m)"
+    },
+    {
+      "file": "instron/electropuls-2.pdf",
+      "pages": [
+        4,
+        5,
+        19
+      ]
+    },
+    {
+      "file": "instron/e10000-combined-pod-2.pdf",
+      "pages": [
+        1,
+        2,
+        3,
+        4
+      ]
+    },
+    {
+      "file": "instron/electropuls-e20000-linear-only.pdf",
+      "pages": [
+        1,
+        2
+      ]
+    },
+    {
+      "file": "instron/electropuls-e20000-linear-torsion.pdf",
+      "pages": [
+        1,
+        2
+      ]
+    }
+  ],
+  "confidence": "catalog",
+  "notes": "E3000 은 원 객체 instron-electropuls-e3000 에 있다. PDF 로 확인: 전 기종 동적 하중·스트로크·토크(브로슈어 19쪽 표), E10000·E20000 정적 하중·daylight·회전·전원(각 사양서). E10000 사양서 2·4쪽은 두 판이 겹쳐 추출돼 글자가 섞였다 — 프레임 무게(880/950/994 kg 이 섞여 보임)는 넣지 않았고, daylight·기둥 간격은 치수도 문자열로 확인했다. E1000 단독 사양서는 이번 PDF 에 없다."
+}

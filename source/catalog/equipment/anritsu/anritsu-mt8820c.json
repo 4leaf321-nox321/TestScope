@@ -1,0 +1,67 @@
+{
+  "id": "anritsu-mt8820c",
+  "kind": "equipment_series",
+  "name": "Anritsu Radio Communication Analyzer MT8820C",
+  "name_ko": "안리쓰 MT8820C 무선통신 분석기",
+  "manufacturer": "anritsu",
+  "category": "radio_communication_tester",
+  "description": "단종된 LTE-Advanced·2G·3G 단말 RF 시험기. 대체 기종은 MT8821C 다. 30 MHz~2.7 GHz(옵션 MT8820C-018 로 3.4~3.8 GHz 추가)이고, LTE-Advanced FDD/TDD 하향 CA, LTE FDD/TDD, W-CDMA·HSPA·DC-HSPA·4C-HSDPA, TD-SCDMA·TD-HSPA, GSM·GPRS·EGPRS, PHS 를 시험한다. 연구개발·서비스·생산용 빠른 시험, 비신호 단말 교정·기능 시험, MT8820A/B 와의 하위 호환, 두 대 동시 시험(parallelphone 옵션)을 지원한다.",
+  "test_items": [],
+  "limits": {
+    "frequency_Hz": {
+      "min": 30000000,
+      "max": 2700000000,
+      "note": "원문 30 MHz to 2.7 GHz. MT8820C-018 옵션 시 3.4~3.8 GHz 추가"
+    },
+    "radio_standards": {
+      "values": [
+        "LTE-Advanced FDD/TDD DL CA",
+        "LTE FDD/TDD",
+        "W-CDMA/HSPA/HSPA Evolution/DC-HSPA/4C-HSDPA",
+        "TD-SCDMA/TD-HSPA/TD-HSDPA Evolution",
+        "GSM/GPRS/EGPRS",
+        "PHS/Advanced PHS"
+      ],
+      "note": "제품 페이지 문구"
+    }
+  },
+  "models": [
+    {
+      "model": "MT8820C",
+      "specs": {
+        "frequency_Hz": {
+          "min": 30000000,
+          "max": 2700000000,
+          "note": "MT8820C-018 옵션 시 3.4~3.8 GHz 추가"
+        }
+      },
+      "note": "단종. 대체 기종 MT8821C. 하위 호환 대상 MT8820A/B"
+    }
+  ],
+  "features": [
+    "LTE-Advanced 하향 CA·LTE·2G·3G 단말 RF 시험",
+    "LTE 하향 2x2 MIMO 수신 처리량 시험(MX882012C/13C 옵션)",
+    "비신호 단말 교정·기능 시험",
+    "MT8820A/B 하위 호환",
+    "두 대 동시 시험(parallelphone 옵션)"
+  ],
+  "options": [
+    {
+      "name": "MT8820C-018",
+      "note": "3.4~3.8 GHz 대역 추가"
+    },
+    {
+      "name": "MX882012C/MX882013C",
+      "note": "LTE 하향 2x2 MIMO 수신 처리량 시험"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://www.anritsu.com/en-us/test-measurement/products/mt8820c",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지(Discontinued, 대체 MT8821C). 주파수, 지원 기술, 기능"
+    }
+  ],
+  "confidence": "limited",
+  "notes": "출력 레벨은 페이지에 없다."
+}

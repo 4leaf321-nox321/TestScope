@@ -1,0 +1,175 @@
+{
+  "id": "keysight-pna",
+  "kind": "equipment_series",
+  "name": "Keysight PNA Microwave Network Analyzers (N5221B / N5222B / N5224B / N5225B / N5227B)",
+  "name_ko": "키사이트 PNA 마이크로파 네트워크 분석기",
+  "manufacturer": "keysight",
+  "brand": "PNA",
+  "category": "network_lcr_analyzer",
+  "form_factor": "benchtop",
+  "description": "XN7 등급 탁상형 마이크로파 벡터 네트워크 분석기. 하한 900 Hz, 상한은 기종별 13.5/26.5/43.5/50/67 GHz. 2포트(신호원 1개) 또는 4포트(신호원 2개)로 구성하고, 신호원·수신기 감쇠기, 바이어스 티, 펄스 발생기·변조기를 내장해 펄스 S-파라미터를 측정한다.",
+  "test_items": [],
+  "limits": {
+    "frequency_Hz": {
+      "min": 900,
+      "max": 67000000000,
+      "note": "원문 900 Hz to 13.5/26.5/43.5/50/67 GHz(기종별). N5221B · N5222B 사양서(9018-03959 p.27 Table 23): 기본 10 MHz 부터, LFE 옵션(205 · 220 · 405 · 420)일 때 900 Hz 부터(typical 500 Hz)"
+    },
+    "rf_port_count": {
+      "values": [
+        2,
+        4
+      ]
+    }
+  },
+  "models": [
+    {
+      "model": "N5221B",
+      "specs": {
+        "frequency_Hz": {
+          "min": 900,
+          "max": 13500000000,
+          "note": "원문 N5221B Frequency Range 10 MHz to 13.5 GHz, (LFE Options) 900 Hz to 13.5 GHz(p.27 Table 23)"
+        },
+        "rf_port_count": {
+          "values": [
+            2,
+            4
+          ]
+        },
+        "rf_output_level_dBm": {
+          "max": 13,
+          "note": "원문 Maximum Leveled Power 사양 최대 13 dBm(옵션 200·400·201·401, 50 MHz~16 GHz 대역 Ports 1,3), typical 최대 22 dBm(p.27·28 Table 24·25). 대역·포트·옵션별로 다름"
+        },
+        "dynamic_range_dB": {
+          "max": 137,
+          "note": "원문 System Dynamic Range at Test Port 사양 최대 137 dB(옵션 200·400, 3.2~10 GHz, Ports 1,3, 10 Hz IFBW), typical 최대 144 dB(p.11 Table 2). 표가 텍스트에서 한 줄 밀려 있어 대역 순서로 맞춰 읽음"
+        }
+      },
+      "note": "2포트 기본형 옵션 200(→201 · 217 · 219), 4포트 기본형 옵션 400(→401 · 417 · 419), LFE 옵션 205 · 220 · 405 · 420(p.7). 옵션 217/219/417/419 에 신호원·수신기 감쇠기, 219/419/220/420 에 바이어스 티. 주파수 분해능 1 Hz"
+    },
+    {
+      "model": "N5222B",
+      "specs": {
+        "frequency_Hz": {
+          "min": 900,
+          "max": 26500000000,
+          "note": "원문 N5222B Frequency Range 10 MHz to 26.5 GHz, (LFE Options) 900 Hz to 26.5 GHz(p.27 Table 23)"
+        },
+        "rf_port_count": {
+          "values": [
+            2,
+            4
+          ]
+        },
+        "rf_output_level_dBm": {
+          "max": 13,
+          "note": "원문 Maximum Leveled Power 사양 최대 13 dBm(옵션 200·400·201·401, 50 MHz~16 GHz 대역 Ports 1,3), typical 최대 22 dBm(p.27·28 Table 24·25). 대역·포트·옵션별로 다름"
+        },
+        "dynamic_range_dB": {
+          "max": 137,
+          "note": "원문 System Dynamic Range at Test Port 사양 최대 137 dB(옵션 200·400, 3.2~10 GHz, Ports 1,3, 10 Hz IFBW), typical 최대 144 dB(p.11 Table 2). 표가 텍스트에서 한 줄 밀려 있어 대역 순서로 맞춰 읽음"
+        }
+      },
+      "note": "2포트 기본형 옵션 200(→201 · 217 · 219), 4포트 기본형 옵션 400(→401 · 417 · 419), LFE 옵션 205 · 220 · 405 · 420(p.7). 옵션 217/219/417/419 에 신호원·수신기 감쇠기, 219/419/220/420 에 바이어스 티. 주파수 분해능 1 Hz"
+    },
+    {
+      "model": "N5224B",
+      "specs": {
+        "frequency_Hz": {
+          "min": 900,
+          "max": 43500000000
+        },
+        "rf_port_count": {
+          "values": [
+            2,
+            4
+          ]
+        }
+      },
+      "note": "목록 페이지 값. 신호원 최대 2"
+    },
+    {
+      "model": "N5225B",
+      "specs": {
+        "frequency_Hz": {
+          "min": 900,
+          "max": 50000000000
+        },
+        "rf_port_count": {
+          "values": [
+            2,
+            4
+          ]
+        }
+      },
+      "note": "신호원 최대 2"
+    },
+    {
+      "model": "N5227B",
+      "specs": {
+        "frequency_Hz": {
+          "min": 900,
+          "max": 67000000000
+        },
+        "rf_port_count": {
+          "values": [
+            2,
+            4
+          ]
+        }
+      },
+      "note": "목록 페이지 값. 신호원 최대 2"
+    }
+  ],
+  "features": [
+    "신호원·수신기 감쇠기, 바이어스 티, 펄스 발생기·변조기 내장",
+    "펄스 S-파라미터 측정",
+    "DMX(Device measurement eXpert) 소프트웨어 포함(N5222B 페이지)"
+  ],
+  "relations": [
+    {
+      "type": "same_family_as",
+      "target": "keysight-pna-x"
+    },
+    {
+      "type": "same_family_as",
+      "target": "keysight-pna-l"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://www.keysight.com/us/en/product/N5221B/pna-microwave-network-analyzer-900-hz-10-mhz-13-5-ghz.html",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지. 900 Hz to 13.5 GHz, 2포트 신호원 1개 / 4포트 신호원 2개"
+    },
+    {
+      "url": "https://www.keysight.com/us/en/product/N5222B/pna-microwave-network-analyzer-900-hz-10-mhz-26-5-ghz.html",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지. 900 Hz to 26.5 GHz, 2·4 포트, 신호원 최대 2"
+    },
+    {
+      "url": "https://www.keysight.com/us/en/product/N5225B/pna-microwave-network-analyzer-900-hz-10-mhz-50-ghz.html",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지. 900 Hz to 50 GHz, 2·4 포트, 신호원 최대 2"
+    },
+    {
+      "url": "https://www.keysight.com/us/en/products/network-analyzers/pna-network-analyzers.html",
+      "retrieved": "2026-10-08",
+      "note": "제조사 목록 페이지. N5224B 900 Hz to 43.5 GHz, N5227B 900 Hz to 67 GHz, 2·4 포트, 신호원 최대 2"
+    },
+    {
+      "file": "keysight/9018-03959.pdf",
+      "pages": [
+        1,
+        7,
+        9,
+        11,
+        27,
+        28
+      ]
+    }
+  ],
+  "confidence": "limited",
+  "notes": "PDF(N5221B · N5222B 기술 사양서 9018-03959)로 확인: 두 기종의 주파수 범위(900 Hz 하한은 LFE 옵션일 때, 기본은 10 MHz), 2·4 포트 옵션 구성, 최대 출력·시스템 동적 범위. 웹 값 그대로: N5224B · N5225B · N5227B(이 PDF 에 없음). 제품 URL 의 '900 Hz/10 MHz' 는 LFE 옵션 유무에 따른 하한 차이임(PDF 로 확인)."
+}

@@ -1,0 +1,118 @@
+{
+  "id": "zeiss-axioscope-materials",
+  "kind": "equipment_series",
+  "name": "ZEISS Axioscope for Materials (Axioscope 5 / Axioscope 5 Polarization / Axioscope 7 / Axioscope Vario)",
+  "name_ko": "자이스 Axioscope 재료용 현미경",
+  "manufacturer": "zeiss",
+  "brand": "Axioscope",
+  "category": "optical_microscope",
+  "subcategory": "upright_metallurgical_microscope",
+  "form_factor": "benchtop",
+  "description": "재료 조직·박편·파면 관찰용 현미경 계열. Axioscope 5 는 코드화 부품의 수동형, Axioscope 5 Polarization 은 지질·광물·금속 조직용 편광형, Axioscope 7 은 코드화·전동 부품으로 자동 촬영하는 전동형, Axioscope Vario 는 380 mm 까지의 시편을 다루는 반사·형광용 유연형이다. Axiocam 카메라와 ZEN core 로 결정립 크기(절편법), 다상 분석, 층 두께, 주철 흑연 분류, 기공률 분석을 한다.",
+  "test_items": [
+    "microscopy"
+  ],
+  "limits": {
+    "specimen_height_mm": {
+      "max": 380,
+      "note": "Axioscope Vario: specimens up to 380 mm"
+    },
+    "stage_travel_mm": {
+      "max": 80,
+      "note": "기계식 스테이지 75 × 50 mm, 전동 스테이지 80 × 60 mm(Axioscope 7 전용)"
+    },
+    "operating_temperature_degC": {
+      "min": 10,
+      "max": 40,
+      "note": "운전 시 허용 온도. 습도 35 °C 에서 최대 75 %(결로 없음), 고도 2,000 m 이하"
+    }
+  },
+  "models": [
+    {
+      "model": "Axioscope 5",
+      "specs": {
+        "observation_methods": "BF, DF, POL, DIC, C-DIC, PlasDIC, Ph, FL(구성별)",
+        "stage_travel_mm": {
+          "values": [
+            "75 × 50"
+          ],
+          "note": "기계식 스테이지 75x50 R/L"
+        },
+        "weight_kg": {
+          "min": 14,
+          "max": 20,
+          "note": "스탠드 Axioscope 5/7 공통, 구성·부속에 따라"
+        }
+      },
+      "note": "수동, 코드화 부품. 외형 약 293.5 × 240 × 367.5 mm. 소비 전력 약 60 VA(내장 전원). 조동 약 4 mm/회전, 미동 약 0.4 mm/회전(눈금 약 4 µm), 승강 범위 약 25 mm. 조명 LED 10 W 또는 HAL 100 W"
+    },
+    {
+      "model": "Axioscope 5 Polarization",
+      "specs": {
+        "weight_kg": {
+          "min": 14,
+          "max": 20
+        }
+      },
+      "note": "편광 현미경(지질·광물·금속 조직). Pol 회전 스테이지 360°(클릭 정지)"
+    },
+    {
+      "model": "Axioscope 7",
+      "specs": {
+        "stage_travel_mm": {
+          "values": [
+            "80 × 60"
+          ],
+          "note": "전동 기계식 스테이지 80x60(Axioscope 7 전용)"
+        },
+        "weight_kg": {
+          "min": 14,
+          "max": 20
+        }
+      },
+      "note": "전동·코드화 부품, 자동 촬영. X·Y·Z 전동, 본체에서 스테이지 축 조작. 소비 전력 약 100 VA"
+    },
+    {
+      "model": "Axioscope Vario",
+      "specs": {
+        "specimen_height_mm": {
+          "max": 380
+        },
+        "weight_kg": {
+          "values": [
+            32
+          ]
+        }
+      },
+      "note": "반사·형광용, 시편 380 mm 까지. 스탠드 기둥 560 mm, 크랭크로 본체 높이 연속 조절, 초점 기어박스 15 mm. 외형 약 429 × 458.5 × 700 mm. 외부 전원(12 V DC 100 W)"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://www.zeiss.com/microscopy/en/products/light-microscopes/widefield-microscopes/axioscope-for-materials.html",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지(HTML, zeiss.com) Axioscope for Materials"
+    },
+    {
+      "file": "zeiss/en_product-flyer_axioscope_rel1.0_mat.pdf",
+      "pages": [
+        1,
+        2
+      ],
+      "note": "Axioscope 재료용 플라이어 EN_42_012_262(2018-08) — 기종 구성·대비법"
+    },
+    {
+      "file": "zeiss/en_product-information_axioscope.pdf",
+      "pages": [
+        14,
+        17,
+        19,
+        20,
+        21
+      ],
+      "note": "Axioscope 제품 정보 EN_42_011_255(2018-04) — Vario 시편 공간, 시스템 개요(스테이지), 기술 사양. 사양 표는 추출 텍스트에서 값이 이름보다 앞서 찍혀 순서로 맞춤"
+    }
+  ],
+  "confidence": "catalog",
+  "notes": "PDF 로 확인: Axioscope Vario 시편 380 mm. PDF 에서 더함: 스테이지(75 × 50 기계식, 80 × 60 전동), 무게(5/7 약 14～20 kg, Vario 약 32 kg), 운전 온도, 관찰법. 총 배율은 PDF 에도 없음(대물렌즈 EC EPIPLAN·EC Epiplan-NEOFLUAR·EC Epiplan-APOCHROMAT, 접안 PL 10x/23)."
+}

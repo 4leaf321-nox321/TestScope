@@ -1,0 +1,166 @@
+{
+  "id": "keysight-infiniivision-2000x",
+  "kind": "equipment_series",
+  "name": "InfiniiVision 2000 X-Series Oscilloscopes",
+  "name_ko": "키사이트 InfiniiVision 2000 X 오실로스코프",
+  "manufacturer": "keysight",
+  "brand": "InfiniiVision",
+  "category": "oscilloscope",
+  "subcategory": "digital_storage_oscilloscope",
+  "form_factor": "benchtop",
+  "description": "70~200 MHz 대역, 2·4채널의 보급형 오실로스코프 계열임. DSOX 는 아날로그 전용, MSOX 는 로직 분석기 내장 혼합 신호 기종. 8.5 inch WVGA 화면, 8 bit ADC, 200,000 wfms/s 갱신율(DSOX2024A 페이지). 키사이트 현재 분류로는 XR1-class.",
+  "test_items": [],
+  "limits": {
+    "bandwidth_Hz": {
+      "min": 70000000,
+      "max": 200000000,
+      "note": "원문 70 MHz~200 MHz"
+    },
+    "sample_rate_Sa_s": {
+      "max": 2000000000,
+      "note": "원문 2 GSa/s"
+    },
+    "record_length_pts": {
+      "max": 1000000,
+      "note": "제조사 DSOX2024A 페이지 up to 1 Mpts. 대리점 목록은 100 kpts 로 적음(표준 메모리로 보임)"
+    },
+    "channels": {
+      "values": [
+        2,
+        4
+      ]
+    },
+    "adc_resolution_bit": {
+      "values": [
+        8
+      ]
+    },
+    "display_size_in": {
+      "values": [
+        8.5
+      ]
+    }
+  },
+  "models": [
+    {
+      "model": "DSOX2002A",
+      "specs": {
+        "bandwidth_Hz": 70000000,
+        "channels": 2,
+        "sample_rate_Sa_s": 2000000000
+      }
+    },
+    {
+      "model": "DSOX2004A",
+      "specs": {
+        "bandwidth_Hz": 70000000,
+        "channels": 4,
+        "sample_rate_Sa_s": 2000000000
+      }
+    },
+    {
+      "model": "DSOX2012A",
+      "specs": {
+        "bandwidth_Hz": 100000000,
+        "channels": 2,
+        "sample_rate_Sa_s": 2000000000
+      }
+    },
+    {
+      "model": "DSOX2014A",
+      "specs": {
+        "bandwidth_Hz": 100000000,
+        "channels": 4,
+        "sample_rate_Sa_s": 2000000000
+      }
+    },
+    {
+      "model": "DSOX2022A",
+      "specs": {
+        "bandwidth_Hz": 200000000,
+        "channels": 2,
+        "sample_rate_Sa_s": 2000000000
+      }
+    },
+    {
+      "model": "DSOX2024A",
+      "specs": {
+        "bandwidth_Hz": 200000000,
+        "channels": 4,
+        "sample_rate_Sa_s": 2000000000,
+        "record_length_pts": 1000000,
+        "adc_resolution_bit": 8,
+        "display_size_in": 8.5
+      },
+      "note": "제조사 페이지: 200 MHz · 4 Analog channels · 2 GSa/s · 1 Mpts(최대) · 8 bits · 8.5 inch WVGA"
+    },
+    {
+      "model": "MSOX2002A",
+      "variant": "mixed signal",
+      "specs": {
+        "bandwidth_Hz": 70000000,
+        "channels": 2,
+        "sample_rate_Sa_s": 2000000000
+      }
+    },
+    {
+      "model": "MSOX2004A",
+      "variant": "mixed signal",
+      "specs": {
+        "bandwidth_Hz": 70000000,
+        "channels": 4,
+        "sample_rate_Sa_s": 2000000000
+      }
+    },
+    {
+      "model": "MSOX2012A",
+      "variant": "mixed signal",
+      "specs": {
+        "bandwidth_Hz": 100000000,
+        "channels": 2,
+        "sample_rate_Sa_s": 2000000000
+      }
+    },
+    {
+      "model": "MSOX2014A",
+      "variant": "mixed signal",
+      "specs": {
+        "bandwidth_Hz": 100000000,
+        "channels": 4,
+        "sample_rate_Sa_s": 2000000000
+      }
+    },
+    {
+      "model": "MSOX2022A",
+      "variant": "mixed signal",
+      "specs": {
+        "bandwidth_Hz": 200000000,
+        "channels": 2,
+        "sample_rate_Sa_s": 2000000000
+      }
+    },
+    {
+      "model": "MSOX2024A",
+      "variant": "mixed signal",
+      "specs": {
+        "bandwidth_Hz": 200000000,
+        "channels": 4,
+        "sample_rate_Sa_s": 2000000000
+      }
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://www.keysight.com/us/en/product/DSOX2024A/",
+      "retrieved": "2026-10-08",
+      "note": "제조사 기종 페이지. 200 MHz, 4 Analog channels, 2 GSa/s, up to 1 Mpts, 8 bits, 8.5 inch WVGA, 200,000 wfms/s"
+    },
+    {
+      "url": "https://www.batronix.com/shop/keysight/2000X.html",
+      "retrieved": "2026-10-08",
+      "note": "대리점(Batronix) 판매 목록 페이지. 키사이트 계열 페이지가 일반 분류 페이지(Essential/Advanced)로 넘어가 기종 목록을 얻지 못해, 기종 목록과 대리점 표기 사양을 여기서 확인함. 기종별 대역폭·채널 수(\"4 channel oscilloscope with 70 MHz Bandwidth\" 형식)와 2 GSa/s, 메모리 100 kpts 표기"
+    }
+  ],
+  "confidence": "limited",
+  "notes": "MSOX 기종의 디지털 채널 수는 조회한 페이지에 숫자로 없어 비움."
+}

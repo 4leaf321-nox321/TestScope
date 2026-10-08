@@ -1,0 +1,96 @@
+{
+  "id": "konica-minolta-cs-200",
+  "kind": "equipment_series",
+  "name": "Konica Minolta CS-200 Luminance Color Meter",
+  "name_ko": "코니카미놀타 CS-200 휘도·색채계",
+  "manufacturer": "konica-minolta",
+  "brand": "CS",
+  "category": "display_color_analyzer",
+  "form_factor": "portable",
+  "description": "측정각 1° · 0.2° · 0.1° 를 바꿔 쓰는 휴대형 휘도·색채계. 휘도 0.01 cd/m² 부터 1° 에서 200,000, 0.2° 에서 5,000,000, 0.1° 에서 20,000,000 cd/m² 까지 잰다. 최소 측정 지름 0.5 mm(근접 렌즈 0.1 mm), 최소 측정 거리 296 mm. 1° · 150 cd/m² 에서 휘도 ±2 % ±1 digit, 색도 ±0.002.",
+  "test_items": [
+    "photometry_colorimetry"
+  ],
+  "measurands": [
+    "luminance",
+    "chromaticity",
+    "correlated_color_temperature"
+  ],
+  "limits": {
+    "luminance_cd_m2": {
+      "min": 0.01,
+      "max": 20000000,
+      "note": "1° 200,000 / 0.2° 5,000,000 / 0.1° 20,000,000 cd/m² 까지"
+    },
+    "measuring_angle_deg": {
+      "values": [
+        1,
+        0.2,
+        0.1
+      ]
+    },
+    "spot_diameter_mm": {
+      "min": 0.1,
+      "note": "근접 렌즈 0.1 mm, 표준 0.5 mm"
+    }
+  },
+  "models": [
+    {
+      "model": "CS-200",
+      "specs": {
+        "measuring_angle_deg": [
+          1,
+          0.2,
+          0.1
+        ],
+        "luminance_cd_m2": {
+          "min": 0.01,
+          "max": 20000000
+        },
+        "spot_diameter_mm": 0.5,
+        "measurement_distance_mm": 296,
+        "luminance_accuracy_pct": 2,
+        "chromaticity_accuracy_xy": 0.002,
+        "interfaces": "USB 1.1",
+        "weight_kg": 1.8,
+        "detector": "Grating + linear photo diode array (spectral method)",
+        "repeatability_pct": {
+          "value": 0.1,
+          "note": "1°, 8 ~ 200,000 cd/m², 2σ: Lv 0.1 % + 1 digit, xy 0.0004. 4 ~ 8 cd/m² 0.5 % + 1 digit · xy 0.0005"
+        },
+        "measurement_time_s": {
+          "min": 0.5,
+          "max": 60,
+          "note": "Super-FAST 약 0.5 s, FAST 약 1 s, SLOW 약 3 s, Super-SLOW 약 12 s, AUTO 약 1 ~ 60 s 자동"
+        }
+      },
+      "note": "확도(1°): 150 cd/m² 에서 Lv ±2 % ±1 digit, xy ±0.002 / 1 ~ 10 cd/m² 에서 xy ±0.004 / 10 ~ 200,000 cd/m² 에서 xy ±0.003 / 0.01 ~ 0.5 cd/m² 에서 Lv ±0.02 cd/m² ±1 digit. 무게는 배터리 제외. 2° · 10° 관측자, 수직 동기 40 ~ 200 Hz"
+    }
+  ],
+  "relations": [
+    {
+      "type": "performs",
+      "target": "photometry_colorimetry"
+    },
+    {
+      "type": "same_family_as",
+      "target": "konica-minolta-cs-150-160"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://sensing.konicaminolta.us/us/products/cs-200-color-and-luminance-meter/",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지(HTML)"
+    },
+    {
+      "file": "konica-minolta/cs-200_catalog_eng.pdf",
+      "pages": [
+        5
+      ],
+      "note": "제조사 카탈로그 PDF 사양 쪽"
+    }
+  ],
+  "confidence": "catalog",
+  "notes": "PDF 로 확인: 측정각 · 표시 범위 · 최소 측정 지름 · 거리 · 확도 · 인터페이스 · 무게 전부(측정 방식 · 반복도 · 측정 시간을 더함)."
+}

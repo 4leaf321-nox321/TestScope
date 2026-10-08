@@ -1,0 +1,59 @@
+{
+  "id": "head-acoustics-sqobold",
+  "kind": "equipment_model",
+  "name": "HEAD acoustics SQobold Mobile Recording and Playback System",
+  "name_ko": "HEAD acoustics SQobold 이동형 4채널 녹음·재생 시스템",
+  "manufacturer": "head-acoustics",
+  "brand": "SQobold",
+  "category": "acoustic_measurement",
+  "form_factor": "handheld",
+  "description": "소형 4채널 소음·진동 데이터 수집 장치. 무게 485 g, 내장 64 GB, 배터리 최대 6시간, 컬러 터치스크린. ICP·AC·DC 결합을 채널마다 따로 고르고, 펄스 입력(회전수 등)·GPS 를 내장했으며 USB 어댑터로 CAN FD/OBD-II 를 받는다. 실시간 FFT, 음압 레벨, DIN 기준 라우드니스·샤프니스를 계산한다.",
+  "test_items": [],
+  "measurands": [
+    "sound_pressure_level",
+    "loudness",
+    "sharpness",
+    "vibration"
+  ],
+  "limits": {
+    "channels": {
+      "values": [
+        4
+      ]
+    },
+    "weight_kg": {
+      "max": 0.485
+    }
+  },
+  "models": [
+    {
+      "model": "SQobold",
+      "specs": {
+        "channels": 4,
+        "weight_kg": 0.485
+      }
+    }
+  ],
+  "features": [
+    "채널별 ICP/AC/DC 결합",
+    "펄스 입력",
+    "GPS 내장",
+    "CAN FD/OBD-II(USB 어댑터)",
+    "비디오 기록"
+  ],
+  "relations": [
+    {
+      "type": "same_family_as",
+      "target": "head-acoustics-squadriga-iii"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://www.head-acoustics.com/products/data-acquisition/sqobold/",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지"
+    }
+  ],
+  "confidence": "limited",
+  "notes": "샘플링 주파수·분해능·동적 범위는 페이지에 없다."
+}

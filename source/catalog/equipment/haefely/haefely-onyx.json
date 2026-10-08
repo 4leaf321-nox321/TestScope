@@ -1,0 +1,129 @@
+{
+  "id": "haefely-onyx",
+  "kind": "equipment_series",
+  "name": "Haefely ONYX ESD Simulators (ONYX 16 / ONYX 30)",
+  "name_ko": "하펠리 ONYX ESD 시뮬레이터",
+  "manufacturer": "haefely",
+  "brand": "ONYX",
+  "category": "esd_simulator",
+  "form_factor": "handheld",
+  "description": "별도 제어 본체 없이 배터리 또는 상용 전원으로 쓰는 일체형 ESD 시뮬레이터. 16 kV·30 kV 두 판. ONYX 16 은 기중·접촉 1~16 kV(100 V 단위), 양·음 극성, 단발~20 Hz, 기본 RC 150 pF/330 Ω, 1.7 kg. 터치 화면, 교체식 RC 유닛, 원격 제어 소프트웨어, 온습도 표시.",
+  "test_items": [
+    "esd_immunity"
+  ],
+  "standards": {
+    "compliance": [],
+    "test_methods": [
+      "IEC 61000-4-2",
+      "ISO 10605"
+    ]
+  },
+  "limits": {
+    "esd_voltage_kV": {
+      "min": 1,
+      "max": 30,
+      "note": "ONYX 16 1~16 kV, ONYX 30 30 kV 급"
+    },
+    "discharge_mode": {
+      "values": [
+        "contact",
+        "air"
+      ]
+    },
+    "polarity": {
+      "values": [
+        "positive",
+        "negative"
+      ]
+    },
+    "frequency_Hz": {
+      "values": [
+        "single",
+        0.1,
+        0.2,
+        0.5,
+        1,
+        2,
+        5,
+        10,
+        20
+      ],
+      "note": "ONYX 16 반복률"
+    }
+  },
+  "models": [
+    {
+      "model": "ONYX 16",
+      "specs": {
+        "air_discharge_V": {
+          "min": 1000,
+          "max": 16000
+        },
+        "contact_discharge_V": {
+          "min": 1000,
+          "max": 16000
+        },
+        "polarity": {
+          "values": [
+            "positive",
+            "negative"
+          ]
+        },
+        "frequency_Hz": {
+          "values": [
+            "single",
+            0.1,
+            0.2,
+            0.5,
+            1,
+            2,
+            5,
+            10,
+            20
+          ]
+        },
+        "weight_kg": 1.7,
+        "power_VA": 17,
+        "footprint_mm": "290 x 270 x 110 (W x H x D)"
+      },
+      "note": "전압 분해능 100 V, 방전 카운터 1~9999, 기본 RC 150 pF/330 Ω, 배터리 16시간 이상"
+    },
+    {
+      "model": "ONYX 30",
+      "specs": {
+        "esd_voltage_kV": {
+          "max": 30,
+          "note": "업계 기사 '16kV or 30kV versions'. 제조사 그룹 페이지 제목은 'Onix 30 - 32 kV' 로 적혀 있다",
+          "uncertain": true
+        }
+      },
+      "note": "상세 사양은 PDF 데이터시트에만 있음",
+      "uncertain": true
+    }
+  ],
+  "relations": [
+    {
+      "type": "performs",
+      "target": "esd_immunity"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://transientspecialists.com/collections/cemark/products/haefely-onyx-16-esd-simulator",
+      "retrieved": "2026-10-08",
+      "note": "대리점(Transient Specialists) 상품 페이지 — ONYX 16 사양. haefely.com 이 Pfiffner 그룹 페이지로 넘어가고 그룹 제품 검색은 봇 차단 페이지라 제조사 사양 페이지를 읽지 못해 씀"
+    },
+    {
+      "url": "https://www.pfiffner-group.com/about-pfiffner-group/haefely",
+      "retrieved": "2026-10-08",
+      "note": "제조사 그룹(Pfiffner) 의 HAEFELY 소개 — EMC 제품 'Onix 30 - 32 kV Electrostatic discharge test system' 항목"
+    },
+    {
+      "url": "https://interferencetechnology.com/electrostatic-discharge-simulator-in-16kv-or-30kv-versions/",
+      "retrieved": "2026-10-08",
+      "note": "업계 기사 — 16 kV·30 kV 두 판, 일체형·배터리/상용 전원"
+    }
+  ],
+  "confidence": "limited",
+  "notes": "ONYX 30 의 상한은 출처마다 30 kV(기사)·32 kV(그룹 페이지 제목)로 달라 uncertain 을 달았다."
+}

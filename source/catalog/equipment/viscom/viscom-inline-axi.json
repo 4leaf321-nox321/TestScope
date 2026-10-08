@@ -1,0 +1,114 @@
+{
+  "id": "viscom-inline-axi",
+  "kind": "equipment_series",
+  "name": "Viscom Inline 3D AXI (X7056-II / iX7059 PCB Inspection)",
+  "name_ko": "비스콤 인라인 3D X선 자동 검사(AXI) 장비",
+  "manufacturer": "viscom",
+  "category": "xray_inspection",
+  "form_factor": "floor",
+  "description": "생산 라인에 넣는 3D 자동 X선 검사(AXI) 장비. X7056-II 는 3D AOI 와 AXI 를 한 장비에 묶은 콤보로 14 bit 평판 검출기(6~32 µm/pixel)와 최대 450 × 350 mm 기판, xFastFlow 4초 기판 교체를 갖는다. iX7059 PCB Inspection 은 밀폐형 마이크로포커스 튜브 130 kV(옵션 180 kV)와 FPD T2(옵션 T3 · T4, 8.5~25 µm/pixel)로 최대 610 × 600 mm · 10 kg 기판을, XL 은 1400 × 660 mm · 15 kg 을 검사하며 평면 CT 로 3D 체적을 계산한다.",
+  "test_items": [
+    "xray_void_inspection"
+  ],
+  "materials": [
+    "PCB assemblies",
+    "BGA",
+    "LGA",
+    "THT assemblies"
+  ],
+  "limits": {
+    "tube_voltage_kV": {
+      "max": 180,
+      "note": "iX7059 PCB Inspection 130 kV(옵션 180 kV). X7056-II 는 페이지에 관전압 없음"
+    },
+    "spatial_resolution_um": {
+      "min": 6,
+      "note": "검출기 µm/pixel 표기. X7056-II 6~32, iX7059 8.5~25"
+    },
+    "sample_size_mm": {
+      "max": 1400,
+      "note": "iX7059 PCB Inspection XL 1400 × 660 mm"
+    },
+    "sample_weight_kg": {
+      "max": 15,
+      "note": "iX7059 PCB Inspection XL"
+    }
+  },
+  "models": [
+    {
+      "model": "X7056-II",
+      "variant": "3D AOI + 3D AXI 콤보",
+      "specs": {
+        "detector": "평판 검출기(FPD) 14 bit, xy 테이블 위 1대 + 고정 5대(추가 가능)",
+        "spatial_resolution_um": {
+          "min": 6,
+          "max": 32,
+          "note": "µm/pixel"
+        },
+        "sample_size_mm": "기판 최대 450 × 350",
+        "footprint_mm": "1493 × 1631 × 2251 (W × H × D), xFastFlow 포함 폭 1933"
+      },
+      "note": "검사 속도: AOI 65 cm²/s, AXI 는 구성에 따름"
+    },
+    {
+      "model": "iX7059 PCB Inspection",
+      "specs": {
+        "xray_source": "밀폐형 마이크로포커스 튜브",
+        "tube_voltage_kV": {
+          "max": 130,
+          "note": "옵션 180 kV"
+        },
+        "detector": "FPD T2 (옵션 T3 · T4), 14 bit",
+        "spatial_resolution_um": {
+          "min": 8.5,
+          "max": 25,
+          "note": "µm/pixel"
+        },
+        "sample_size_mm": "610 × 600",
+        "sample_weight_kg": 10,
+        "footprint_mm": "1493 × 1654 × 2207 (W × H × D)"
+      }
+    },
+    {
+      "model": "iX7059 PCB Inspection XL",
+      "specs": {
+        "tube_voltage_kV": {
+          "max": 130,
+          "note": "옵션 180 kV"
+        },
+        "sample_size_mm": "1400 × 660",
+        "sample_weight_kg": 15
+      }
+    }
+  ],
+  "features": [
+    "2D · 2.5D · 3D 검사",
+    "평면 CT 로 3D AXI 체적 계산(iX7059)",
+    "xFastFlow 4초 기판 교체(X7056-II)",
+    "0.3 mm 피치 BGA 까지 검사(X7056-II)"
+  ],
+  "relations": [
+    {
+      "type": "performs",
+      "target": "xray_void_inspection"
+    },
+    {
+      "type": "same_family_as",
+      "target": "viscom-manual-xray"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://www.viscom.com/en/products/x-ray-inspection/combo-x7056-ii/",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지(X7056-II)"
+    },
+    {
+      "url": "https://www.viscom.com/en/products/x-ray-inspection/inline-ix7059-pcb/",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지(iX7059 PCB Inspection / XL)"
+    }
+  ],
+  "notes": "같은 iX7059 계열의 One · Device Inspection · Heavy Duty · Module Inspection 은 페이지를 열지 않아 넣지 않았다. 구형 X7056 (II 이전)은 현행 목록에 없다.",
+  "confidence": "limited"
+}

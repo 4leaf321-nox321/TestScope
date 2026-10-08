@@ -1,0 +1,337 @@
+{
+  "id": "linseis-dil-l75-l76",
+  "kind": "equipment_series",
+  "name": "LINSEIS push-rod dilatometers DIL L75 (Horizontal / Vertical / Quattro / Laser / HP) and DIL L76",
+  "name_ko": "린세이스 푸시로드 딜라토미터 DIL L75·L76 계열",
+  "manufacturer": "linseis",
+  "category": "dilatometer",
+  "description": "푸시로드 딜라토미터 계열. DIL L75 수평형 -180~2800 °C, 수직형 -263~2800 °C(LVDT ±2.5 mm / 광학 엔코더 ±25 mm, ΔL 분해능 LVDT 0.03 nm · 엔코더 0.1 nm), Quattro 는 4 시료 동시(분해능 0.125 nm), Laser 는 분해능 0.3 nm, HP 형은 150/100 bar 고압. DIL L76 은 실온~1600 °C 수평형 CTE 측정기. 소결 속도 제어(RCS)·연화점·밀도 산출, 열 라이브러리.",
+  "test_items": [
+    "dilatometry"
+  ],
+  "measurands": [
+    "thermal.expansion_linear",
+    "thermal.dilatometric_softening_point"
+  ],
+  "measurands_by_item": {
+    "dilatometry": [
+      "thermal.expansion_linear",
+      "thermal.dilatometric_softening_point"
+    ]
+  },
+  "limits": {
+    "temperature_degC": {
+      "min": -263,
+      "max": 2800,
+      "note": "형식·노에 따라"
+    }
+  },
+  "models": [
+    {
+      "model": "DIL L75 Horizontal",
+      "specs": {
+        "temperature_degC": {
+          "min": -180,
+          "max": 2800,
+          "note": "-180 up to 2800 °C(노에 따라)"
+        },
+        "displacement_um": {
+          "values": [
+            2500,
+            25000
+          ],
+          "note": "LVDT ±2,500 µm(접촉력 10 mN~1 N) / 광학 엔코더 ±25,000 µm(접촉력 10 mN~5 N, 힘 변조 가능)"
+        },
+        "displacement_resolution_nm": {
+          "values": [
+            0.03,
+            0.1
+          ],
+          "note": "ΔL 분해능 LVDT 0.03 nm / 광학 엔코더 0.1 nm. 웹 페이지는 'Delta L resolution 0,01 µm'"
+        },
+        "force_N": {
+          "min": 0.01,
+          "max": 5
+        },
+        "heating_rate_K_min": {
+          "min": 0.001,
+          "max": 100,
+          "note": "노에 따라: 강·구리·석영·SiC 노 0.001~50 K/min, 흑연 노 0.001~100 K/min"
+        },
+        "accuracy_degC": {
+          "value": 1,
+          "note": "온도 정확도 1 K / 정밀도 0.1 K / 분해능 0.001 K"
+        },
+        "temperature_precision_degC": 0.1,
+        "force_resolution": "0.001 mN"
+      },
+      "note": "노 최대 2개, 단·복식 선택, 진공 기밀, 자동 배기·OGS 산소 게터(선택), L-DTA(선택, 2000 °C 까지), RCS 포함, 저온 LN2·인트라쿨러. 등온 안정도 0.02 K, ΔL/L0 반복도 0.001% · 정확도 0.002%, 분위기 불활성·산화·환원·진공"
+    },
+    {
+      "model": "DIL L75 Vertical",
+      "specs": {
+        "temperature_degC": {
+          "min": -263,
+          "max": 2800,
+          "note": "-263 up to 2800 °C(노에 따라, -263 °C 는 헬륨 노 L75/264 He)"
+        },
+        "displacement_um": {
+          "values": [
+            2500,
+            25000
+          ],
+          "note": "LVDT ±2,500 µm(접촉력 10 mN~1 N) / 광학 엔코더 ±25,000 µm(접촉력 10 mN~5 N, 힘 변조 가능)"
+        },
+        "displacement_resolution_nm": {
+          "values": [
+            0.03,
+            0.1
+          ],
+          "note": "ΔL 분해능 LVDT 0.03 nm / 광학 엔코더 0.1 nm. 웹 페이지는 'Delta L resolution 0,01 µm'"
+        },
+        "force_N": {
+          "min": 0.01,
+          "max": 5
+        },
+        "specimen_diameter_mm": {
+          "max": 20
+        },
+        "sample_length_mm": {
+          "max": 50
+        },
+        "heating_rate_K_min": {
+          "min": 0.001,
+          "max": 100,
+          "note": "노에 따라: 강·구리·석영·SiC 노 0.001~50 K/min, 흑연 노 0.001~100 K/min"
+        },
+        "accuracy_degC": {
+          "value": 1,
+          "note": "온도 정확도 1 K / 정밀도 0.1 K / 분해능 0.001 K"
+        },
+        "temperature_precision_degC": 0.1,
+        "force_resolution": "0.001 mN"
+      },
+      "note": "노 최대 3개(동시 장착). -263 °C 는 헬륨 노(L75/264 He, -263~300 °C). 큰 시료는 맞춤 DIL L75 Macro. 등온 안정도 0.02 K, ΔL/L0 반복도 0.001% · 정확도 0.002%, 분위기 불활성·산화·환원·진공"
+    },
+    {
+      "model": "DIL L75 Quattro",
+      "variant": "DIL L75 PT Quattro",
+      "specs": {
+        "temperature_degC": {
+          "min": -180,
+          "max": 2800,
+          "note": "-180~500/700/1000 °C, RT~1000/1400/1600/1750/2000/2400/2800 °C"
+        },
+        "heating_rate_K_min": {
+          "min": 0.01,
+          "max": 50
+        },
+        "displacement_um": {
+          "values": [
+            500,
+            5000
+          ]
+        },
+        "displacement_resolution_nm": 0.125,
+        "sample_length_mm": {
+          "max": 50
+        },
+        "specimen_diameter_mm": {
+          "max": 7
+        }
+      },
+      "note": "시료 4개 동시 팽창 측정. 시료 홀더 석영·Al2O3"
+    },
+    {
+      "model": "DIL L76 Horizontal",
+      "specs": {
+        "temperature_degC": {
+          "min": 20,
+          "max": 1600,
+          "note": "RT – 1600 °C"
+        },
+        "displacement_um": {
+          "values": [
+            2500,
+            25000
+          ],
+          "note": "LVDT ±2500 µm / 광학 엔코더 ±25000 µm(접촉력 50 mN~3 N). 웹 페이지는 LVDT 수동 접촉력 1 N 까지"
+        },
+        "displacement_resolution_nm": {
+          "values": [
+            0.05,
+            1
+          ],
+          "note": "LVDT 0.05 nm(디지털), 광학 엔코더 1 nm"
+        },
+        "force_N": {
+          "min": 0.05,
+          "max": 3,
+          "note": "광학 엔코더 접촉력 50 mN~3 N"
+        },
+        "heating_rate_K_min": {
+          "min": 0.001,
+          "max": 50,
+          "note": "노에 따라(흑연 노가 아닌 노 0.001~50 K/min)"
+        },
+        "accuracy_degC": {
+          "value": 1,
+          "note": "온도 정확도 1 K / 정밀도 0.1 K / 분해능 0.001 K"
+        },
+        "temperature_precision_degC": 0.1
+      },
+      "note": "CTE 측정용 수평형. 힘 변조 없음, 저온 LN2 선택, 진공 기밀 아님(분위기 불활성·산화·환원). 등온 안정도 0.02 K, ΔL/L0 반복도 0.001% · 정확도 0.002%"
+    },
+    {
+      "model": "DIL L75 Laser",
+      "variant": "DIL L73 Laser",
+      "specs": {
+        "temperature_degC": {
+          "min": -180,
+          "max": 1000,
+          "note": "노 구성에 따라"
+        },
+        "heating_rate_K_min": {
+          "min": 0.01,
+          "max": 50
+        },
+        "displacement_resolution_nm": {
+          "value": 0.3,
+          "note": "up to 0.3 nm (실험실 조건 시험)"
+        },
+        "sample_length_mm": {
+          "max": 50
+        },
+        "specimen_diameter_mm": {
+          "max": 7
+        }
+      },
+      "note": "레이저 간섭 방식 절대 측정. 분위기 진공·불활성·산화·환원"
+    },
+    {
+      "model": "DIL L75 HP/1",
+      "variant": "DIL HP L70",
+      "specs": {
+        "temperature_degC": {
+          "min": 20,
+          "max": 1100,
+          "note": "RT up to 1100 °C"
+        },
+        "pressure_bar": {
+          "max": 150
+        },
+        "displacement_um": {
+          "values": [
+            500,
+            5000
+          ]
+        },
+        "displacement_resolution_nm": 0.125,
+        "sample_length_mm": {
+          "max": 50
+        },
+        "specimen_diameter_mm": {
+          "values": [
+            7,
+            12,
+            20
+          ]
+        },
+        "force_N": {
+          "max": 1,
+          "note": "시료 압력 1000 mN 까지"
+        }
+      },
+      "note": "고압 딜라토미터, 진공 10⁻⁴ mbar"
+    },
+    {
+      "model": "DIL L75 HP/2",
+      "variant": "DIL HP L70",
+      "specs": {
+        "temperature_degC": {
+          "min": 20,
+          "max": 1800,
+          "note": "RT up to 1400/1800 °C"
+        },
+        "pressure_bar": {
+          "max": 100
+        },
+        "displacement_um": {
+          "values": [
+            500,
+            5000
+          ]
+        },
+        "displacement_resolution_nm": 0.125,
+        "sample_length_mm": {
+          "max": 50
+        },
+        "specimen_diameter_mm": {
+          "values": [
+            7,
+            12,
+            20
+          ]
+        },
+        "force_N": {
+          "max": 1
+        }
+      },
+      "note": "고압 딜라토미터, 진공 10⁻⁴ mbar"
+    }
+  ],
+  "relations": [
+    {
+      "type": "same_family_as",
+      "target": "linseis-tma-l71-l72"
+    },
+    {
+      "type": "same_family_as",
+      "target": "linseis-dil-l78-rita"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://www.linseis.com/en/instruments/dilatometer/dil-l75-horizontal/",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지(HTML) 본문·표를 직접 읽음. Black on white 표·노 프로그램 표"
+    },
+    {
+      "url": "https://www.linseis.com/en/instruments/dilatometer/dil-l75-vertical-dilatometer/",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지(HTML) 본문·표를 직접 읽음. 표·노 프로그램 표"
+    },
+    {
+      "url": "https://www.linseis.com/en/instruments/dilatometer/dil-l75-pt-quattro-dilatometer/",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지(HTML) 본문·표를 직접 읽음. 표·노 선택"
+    },
+    {
+      "url": "https://www.linseis.com/en/instruments/dilatometer/dil-l76-horizontal-dilatometer/",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지(HTML) 본문·표를 직접 읽음. 표"
+    },
+    {
+      "url": "https://www.linseis.com/en/instruments/dilatometer/dil-l73-laser-dilatometer/",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지(HTML) 본문·표를 직접 읽음. 페이지 제목 'DIL L75 Laser (DIL L73 Laser)'"
+    },
+    {
+      "url": "https://www.linseis.com/en/instruments/dilatometer/dil-hp-l70-high-pressure-dilatometer/",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지(HTML) 본문·표를 직접 읽음. 페이지 제목 'DIL L75 HP (DIL HP L70)', HP/1·HP/2 표"
+    },
+    {
+      "file": "linseis/linseis_dil-l75_l76_product-borchure.pdf",
+      "pages": [
+        4,
+        7,
+        12,
+        16,
+        17
+      ]
+    }
+  ],
+  "confidence": "limited",
+  "notes": "RT 하한은 20 °C 로 적고 note 에 원문을 남겼다. 모델명은 페이지 제목의 앞 이름을 쓰고 괄호 이름을 variant 로 두었다. PDF 로 확인: DIL L75 Horizontal · L75 Vertical · L76 행(온도 범위·변위 범위·ΔL 분해능·접촉력·승온 속도·온도 정확도, 브로슈어 16쪽 사양표, 17쪽 노 표). L75 ΔL 분해능은 PDF 값(LVDT 0.03 / 엔코더 0.1 nm)으로 바꿨다. 웹 값 그대로: L75 Quattro · L75 Laser · L75 HP/1 · HP/2 — 이 브로슈어에 사양표가 없다."
+}

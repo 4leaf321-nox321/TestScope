@@ -1,0 +1,494 @@
+{
+  "id": "yuasa-system-folding",
+  "kind": "equipment_series",
+  "name": "YUASA SYSTEM Folding Endurance Testers (Tension-Free Folding Clamshell-type DMLHP-CS / Y's Block DR11MR-CS series, U-shape DMLHB-FS / FU / 4U)",
+  "name_ko": "유아사 시스템 접이 내구 시험기 (Tension-Free 클램셸형·U자 접이)",
+  "manufacturer": "yuasa-system",
+  "category": "component_life_tester",
+  "drive": "electromechanical",
+  "form_factor": "benchtop",
+  "description": "플렉시블 디스플레이·유기 EL 디바이스·배리어 필름·플렉시블 기판·플랫 케이블 같은 면상 시료의 반복 접이 내구 시험 지그 계열임. Tension-Free® 클램셸형(소형 탁상형 DMLHP-CS, Y's Block DR11MR-CS 계열)은 더블 조인트 클램셸 구조의 시료 유지부가 열리고 닫히면서 시료에 인장 하중을 주지 않고 굽힘 반경 0.5~5.0 mm 로 180° 접음을 반복함. 표준 CS 외에 2조 동시 시험용 트윈형 CS-t, 폭 300 mm 시료용 대형 CS-m 이 있음. U자 계열은 소형 탁상형 내구 시험기(DMLHB/DMLHP)의 직선 왕복으로 시료를 U자로 접거나 U자 상태로 신축시킴. FS 는 판스프링으로 제어되는 틸트 클램프로 인장 없이 0~180° 굽힘을 주며, 제조사 페이지에 IEC 62715-6-1 대응으로 적힘. 4U 는 4레인에 레인별 굽힘 반경을 따로 설정함. 시험 속도는 지그와 구동부에 따라 약 5~90 왕복/분임.",
+  "test_items": [
+    "mechanical_endurance"
+  ],
+  "measurands": [
+    "cycles_to_failure"
+  ],
+  "materials": [
+    "flexible displays",
+    "OLED devices",
+    "barrier films",
+    "flexible substrates",
+    "flat cables",
+    "FPC",
+    "wearable products",
+    "flexible panels"
+  ],
+  "standards": {
+    "compliance": [],
+    "test_methods": [
+      "IEC 62715-6-1"
+    ]
+  },
+  "compliance_marks": [
+    "CE"
+  ],
+  "limits": {
+    "cycle_rate_cpm": {
+      "min": 5,
+      "max": 90,
+      "note": "DMLHP-CS 5~30 往復/分, DR11MR(4)-CS 계열 30~360 deg./sec.(약 5~60 reciprocation/min.), U자 계열 10~90 r/min. 왕복 구동 1회전을 왕복 1회로 보아 r/min 값을 그대로 cpm 으로 적음. 클램셸 값은 사양도 PDF, U자 값은 페이지·사양도 PDF"
+    },
+    "fold_angle_deg": {
+      "min": 0,
+      "max": 180,
+      "note": "클램셸형은 굽힘 각도 180° 고정(구동축 동작각 90 deg). DMLHB-FS 는 0~180°(시험 조건에 따라 180° 미만). 사양도 PDF 값"
+    },
+    "bend_radius_mm": {
+      "min": 0,
+      "max": 80,
+      "note": "클램셸형 0.5~5.0 mm(시료 유지부 면간 거리의 절반, 스페이서 합계로 설정), FS 0~18 mm, 4U 0~55 mm, FU 0.5~80 mm(시료 두께 0 기준, 페이지 값)"
+    },
+    "stroke_mm": {
+      "max": 60,
+      "note": "U자 계열 시험 스트로크 0~±60 mm(한쪽 값)"
+    },
+    "specimen_thickness_mm": {
+      "max": 3,
+      "note": "클램셸형 max. 1 mm, U자 계열 max. 3 mm"
+    },
+    "specimen_width_mm": {
+      "max": 300,
+      "note": "CS max. 130 mm(CS-t 는 130 mm × 2조), CS-m max. 300 mm, FS 224 mm, FU 215 mm, 4U 레인당 52 mm"
+    },
+    "stations": {
+      "values": [
+        1,
+        2,
+        4
+      ],
+      "note": "CS-t 2조, 4U 4레인, 나머지 1"
+    }
+  },
+  "models": [
+    {
+      "model": "DMLHP-CS",
+      "variant": "Tension-Free Folding Clamshell-type, 소형 탁상형",
+      "form_factor": "benchtop",
+      "specs": {
+        "cycle_rate_cpm": {
+          "min": 5,
+          "max": 30,
+          "note": "원문 屈曲速度 5～30 往復/分"
+        },
+        "fold_angle_deg": 180,
+        "bend_radius_mm": {
+          "min": 0.5,
+          "max": 5.0
+        },
+        "specimen_thickness_mm": {
+          "max": 1
+        },
+        "specimen_width_mm": {
+          "max": 130
+        },
+        "torque_Nm": 0.7,
+        "stations": 1,
+        "weight_kg": 25
+      },
+      "note": "질량 약 25 kg 은 페이지의 조립 완성도 값. 나머지 수치는 사양도 PDF(BF0101SR-DC11SR, 2018-09-03): 표준 구성은 시험 지그 BF0101SR + 구동부 DC11SR(허용 토크 1.8 N·m), 구동축 동작각 90 deg, 지그 허용 토크 max. 0.7 N·m. 구동부 약 15.0·지그 약 8.5·카트리지 약 1.0·안전 커버 약 3.0 kg. 도면 외곽 790 × 457 mm. 굽힘 반경 설정용 스페이서(5.0·2.0·1.0·0.5·0.2·0.1·0.05 mm 각 4장) 부속. 페이지 모델명은 DMLHP-CS 이나 사양도 구동부 표기는 DC11SR 임"
+    },
+    {
+      "model": "DR11MR-CS",
+      "variant": "Y's Block, 표준 CS 지그(BF0101SR)",
+      "form_factor": "benchtop",
+      "specs": {
+        "cycle_rate_cpm": {
+          "min": 5,
+          "max": 60,
+          "note": "원문 30～360 deg./sec. (約 5～60 reciprocation/min.)"
+        },
+        "fold_angle_deg": 180,
+        "bend_radius_mm": {
+          "min": 0.5,
+          "max": 5.0
+        },
+        "specimen_thickness_mm": {
+          "max": 1
+        },
+        "specimen_width_mm": {
+          "max": 130
+        },
+        "torque_Nm": 0.7,
+        "stations": 1,
+        "weight_kg": 20.0
+      },
+      "note": "사양도 PDF(BF0101SR-DR11MR, 2019-08-23) 값. weight_kg 는 구동부 본체 약 20.0 kg; 지그 약 9.0·카트리지(1세트) 약 1.0·안전 커버 약 3.0 kg 별도. 도면 외곽 952 × 459 mm"
+    },
+    {
+      "model": "DR11MR4-CS",
+      "variant": "Y's Block, 표준 CS 지그(BF0101SR), DR11MR4 구동부",
+      "form_factor": "benchtop",
+      "specs": {
+        "cycle_rate_cpm": {
+          "min": 5,
+          "max": 60,
+          "note": "원문 30～360 deg./sec. (約 5～60 reciprocation/min.)"
+        },
+        "fold_angle_deg": 180,
+        "bend_radius_mm": {
+          "min": 0.5,
+          "max": 5.0
+        },
+        "specimen_thickness_mm": {
+          "max": 1
+        },
+        "specimen_width_mm": {
+          "max": 130
+        },
+        "torque_Nm": 0.7,
+        "stations": 1,
+        "weight_kg": 23.0
+      },
+      "note": "사양도 PDF(BF0101SR-DR11MR4, 2020-07-20) 값. weight_kg 는 구동부 본체 약 23.0 kg; 지그 약 9.0·카트리지 약 1.0·안전 커버 약 3.0 kg 별도. 도면 외곽 1052 × 459 mm. DR11MR 와 DR11MR4 의 차이는 페이지에 설명이 없음(사양도상 구동부 길이 500 / 600 mm, 본체 질량 20.0 / 23.0 kg)"
+    },
+    {
+      "model": "DR11MR-CS-t",
+      "variant": "Y's Block, 트윈형 CS-t 지그(BF0102SR)",
+      "form_factor": "benchtop",
+      "specs": {
+        "cycle_rate_cpm": {
+          "min": 5,
+          "max": 60,
+          "note": "원문 30～360 deg./sec. (約 5～60 reciprocation/min.)"
+        },
+        "fold_angle_deg": 180,
+        "bend_radius_mm": {
+          "min": 0.5,
+          "max": 5.0
+        },
+        "specimen_thickness_mm": {
+          "max": 1
+        },
+        "specimen_width_mm": {
+          "max": 130,
+          "note": "max. 130 mm × 2 sets"
+        },
+        "torque_Nm": 0.7,
+        "stations": 2,
+        "weight_kg": 20.0
+      },
+      "note": "사양도 PDF(BF0102SR-DR11MR, 2019-02-25, 개정 B 2020-07-28) 값. weight_kg 는 구동부 본체 약 20.0 kg; 지그 약 12.5·카트리지(1세트) 약 1.0·안전 커버 약 3.5 kg 별도. 도면 외곽 1142 × 459 mm. 트윈형이라는 설명은 페이지 문구"
+    },
+    {
+      "model": "DR11MR4-CS-t",
+      "variant": "Y's Block, 트윈형 CS-t 지그(BF0102SR), DR11MR4 구동부",
+      "form_factor": "benchtop",
+      "specs": {
+        "cycle_rate_cpm": {
+          "min": 5,
+          "max": 60,
+          "note": "원문 30～360 deg./sec. (約 5～60 reciprocation/min.)"
+        },
+        "fold_angle_deg": 180,
+        "bend_radius_mm": {
+          "min": 0.5,
+          "max": 5.0
+        },
+        "specimen_thickness_mm": {
+          "max": 1
+        },
+        "specimen_width_mm": {
+          "max": 130,
+          "note": "max. 130 mm × 2 sets"
+        },
+        "torque_Nm": 0.7,
+        "stations": 2,
+        "weight_kg": 23.0
+      },
+      "note": "사양도 PDF(BF0102SR-DR11MR4, 2020-07-16) 값. weight_kg 는 구동부 본체 약 23.0 kg; 지그 약 12.5·카트리지 약 1.0·안전 커버 약 3.5 kg 별도. 도면 외곽 1237 × 459 mm"
+    },
+    {
+      "model": "DR11MR-CS-m",
+      "variant": "Y's Block, 대형 CS-m 지그(BF0101MR)",
+      "form_factor": "benchtop",
+      "specs": {
+        "cycle_rate_cpm": {
+          "min": 5,
+          "max": 60,
+          "note": "원문 30～360 deg./sec. (約 5～60 reciprocation/min.)"
+        },
+        "fold_angle_deg": 180,
+        "bend_radius_mm": {
+          "min": 0.5,
+          "max": 5.0
+        },
+        "specimen_thickness_mm": {
+          "max": 1
+        },
+        "specimen_width_mm": {
+          "max": 300
+        },
+        "torque_Nm": 0.7,
+        "stations": 1,
+        "weight_kg": 20.0
+      },
+      "note": "사양도 PDF(BF0101MR-DR11MR, 2019-02-04, 개정 B 2020-07-28) 값. weight_kg 는 구동부 본체 약 20.0 kg; 지그 약 22.0·카트리지 약 3.0·안전 커버 약 3.3 kg 별도. 도면 외곽 1133 × 460 mm, 안전 커버를 연 높이 713 mm(max. 723). 도면에 Optional Cartridge(Sample: max. 320) 표기. 대형형이라는 설명은 페이지 문구"
+    },
+    {
+      "model": "DR11MR4-CS-m",
+      "variant": "Y's Block, 대형 CS-m 지그(BF0101MR), DR11MR4 구동부",
+      "form_factor": "benchtop",
+      "specs": {
+        "cycle_rate_cpm": {
+          "min": 5,
+          "max": 60,
+          "note": "원문 30～360 deg./sec. (約 5～60 reciprocation/min.)"
+        },
+        "fold_angle_deg": 180,
+        "bend_radius_mm": {
+          "min": 0.5,
+          "max": 5.0
+        },
+        "specimen_thickness_mm": {
+          "max": 1
+        },
+        "specimen_width_mm": {
+          "max": 300
+        },
+        "torque_Nm": 0.7,
+        "stations": 1,
+        "weight_kg": 23.0
+      },
+      "note": "사양도 PDF(BF0101MR-DR11MR4, 2020-07-16) 값. weight_kg 는 구동부 본체 약 23.0 kg; 지그 약 22.0·카트리지 약 3.0·안전 커버 약 3.3 kg 별도. 도면 외곽 1234 × 460 mm"
+    },
+    {
+      "model": "DMLHB-FS / DMLHP-FS",
+      "variant": "面状体無負荷U字伸縮試験(Tension-Free U자 신축), 카트리지식 DMLHB-FS-C / DMLHP-FS-C 포함",
+      "form_factor": "benchtop",
+      "specs": {
+        "cycle_rate_cpm": {
+          "min": 10,
+          "max": 90,
+          "note": "원문 試験速度 10～90 r/min (DMLHB ボリューム調整)"
+        },
+        "fold_angle_deg": {
+          "min": 0,
+          "max": 180,
+          "note": "시험 조건에 따라 180° 미만"
+        },
+        "bend_radius_mm": {
+          "min": 0,
+          "max": 18,
+          "note": "면간 거리 0~144 mm 에 따름, 0⇔180° 굽힘 시험 기준"
+        },
+        "stroke_mm": {
+          "max": 60,
+          "note": "0～±60 mm, DMLHB 기계 조정"
+        },
+        "specimen_thickness_mm": {
+          "max": 3
+        },
+        "specimen_width_mm": {
+          "max": 224
+        },
+        "stations": 1,
+        "weight_kg": 24,
+        "footprint_mm": {
+          "W": 743,
+          "D": 485
+        }
+      },
+      "note": "IEC 62715-6-1 대응은 FS 페이지 제목(面状体無負荷U字伸縮試験 - 耐久試験紹介、IEC62715-6-1対応)에 적힘. 질량 약 24 kg 은 페이지의 조립 완성도 값. 나머지는 사양도 PDF(ET250001S0001, 2020-01-22, DMLHB 직선 왕복 사양 기준): 시험기 본체 약 17.0·지그 약 7.5·지그 커버 약 4.0 kg, 설치면 743 × 485 mm. 틸트 클램프를 고정하면 U⇔U 신축과 직선 시료 신축 시험도 가능. 시료와 지그는 클램프 바(금속부)·볼트를 빼고 절연됨. 사양도는 DMLHP 쪽 값을 따로 적지 않음"
+    },
+    {
+      "model": "DMLHB-FU / DMLHP-FU",
+      "variant": "面状体U字折り返し試験(U자 되접기)",
+      "form_factor": "benchtop",
+      "specs": {
+        "cycle_rate_cpm": {
+          "min": 10,
+          "max": 90,
+          "note": "원문 試験速度を10～90r/minまで可変"
+        },
+        "bend_radius_mm": {
+          "min": 0.5,
+          "max": 80,
+          "note": "원문 曲げR半径は0.5～5～80mm(サンプル厚＝0の場合), 0.5~5 mm 에서는 부속 클램프 사용 불가"
+        },
+        "stroke_mm": {
+          "max": 60,
+          "note": "0～±60 mm"
+        },
+        "specimen_thickness_mm": {
+          "max": 3
+        },
+        "specimen_width_mm": {
+          "max": 215
+        },
+        "stations": 1,
+        "weight_kg": 24
+      },
+      "note": "모든 값은 제품 페이지 문구에서 옮김. 사양도 PDF(ET221S002-005, 2016-05-31)는 이미지뿐이라 수치를 옮기지 않음(이미지상 설치면 712 × 444 mm 로 보이나 미확인)"
+    },
+    {
+      "model": "DMLHB-4U / DMLHP-4U",
+      "variant": "面状体U字折り返し試験 4レーン仕様",
+      "form_factor": "benchtop",
+      "specs": {
+        "cycle_rate_cpm": {
+          "min": 10,
+          "max": 90,
+          "note": "원문 試験速度 10～90 r/min (全レーン同一条件)"
+        },
+        "bend_radius_mm": {
+          "min": 0,
+          "max": 55,
+          "note": "레인별 설정, 부속 클램프 사용 시 최소 굽힘 반경(외치수) (5 + 시료 두께) mm"
+        },
+        "stroke_mm": {
+          "max": 60,
+          "note": "0～±60 mm, 전 레인 공통"
+        },
+        "specimen_thickness_mm": {
+          "max": 3,
+          "note": "레인별 설정"
+        },
+        "specimen_width_mm": {
+          "max": 52,
+          "note": "레인당"
+        },
+        "stations": 4,
+        "weight_kg": 24,
+        "footprint_mm": {
+          "W": 712,
+          "D": 443.5
+        }
+      },
+      "note": "질량 약 24 kg·4레인 동시 시험은 페이지 값. 나머지는 사양도 PDF(ET221001S0001, 2020-01-22): 시험기 본체 약 17·지그 약 9·지그 커버 약 4 kg, 설치면 712 × 443.5 mm. 페이지는 케이블·하네스·튜브 같은 선상 시료도 대상으로 적음"
+    }
+  ],
+  "environment": {
+    "temperature": "+5~+40 °C (사양도 PDF 試験環境/使用環境)",
+    "humidity": "15~85 %RH, 결로 없을 것",
+    "power": "AC100-240V 50/60 Hz 100 VA (구동부 DMLHB·DMLHP·DMLHPR 사양도 PDF. DR11MR 계열 값은 확인하지 않음)"
+  },
+  "features": [
+    "Tension-Free® 클램셸: 더블 조인트 클램셸 구조의 시료 유지부로 시료에 인장 하중 없이 자연 변형",
+    "굽힘 반경은 스페이서 합계로 설정(0.05~5.0 mm 스페이서 각 4장 부속)",
+    "카트리지식 시료 유지부(CS 계열, FS-C)",
+    "계측 시스템 배선용 개구부(클램셸 지그 아래 리드선용 틈)",
+    "안전 커버 개폐 인터록(RS-1NO)",
+    "FS: 틸트 클램프 고정으로 U⇔U 신축, 직선 시료 신축 시험 겸용",
+    "4U: 4레인 동시, 레인별 굽힘 반경 설정(속도·스트로크 공통)",
+    "CE 마킹 적합(소형 탁상형 페이지 표기)"
+  ],
+  "options": [
+    {
+      "name": "구동부 선택 DMLHB / DMLHP",
+      "note": "DMLHB 심플 오퍼레이션형, DMLHP 위치 결정형. 페이지 문구로 최대 왕복 속도 120 往復/分(심플)·90 往復/分(위치 결정), 최대 왕복 각도 ±270°, 최대 왕복 스트로크 ±60 mm. 시험 지그는 구동부에 포함되지 않음"
+    },
+    {
+      "name": "CS-m 옵션 카트리지",
+      "note": "사양도 PDF 에 Optional Cartridge(Sample: max. 320) 표기"
+    },
+    {
+      "name": "DR11MR4-CS-cam-ESA (곡률 해석 카메라)",
+      "note": "별도 제품 페이지·PDF 가 있으나 이번에 읽지 않음"
+    }
+  ],
+  "relations": [
+    {
+      "type": "same_family_as",
+      "target": "yuasa-system-face-plate-bending"
+    },
+    {
+      "type": "same_family_as",
+      "target": "yuasa-system-push-insertion"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://www.yuasa-system.jp/test",
+      "retrieved": "2026-10-08",
+      "note": "제조사 내구 시험 제품 목록 페이지(접이 계열 모델명·분류)"
+    },
+    {
+      "url": "https://www.yuasa-system.jp/test/s-cs",
+      "retrieved": "2026-10-08",
+      "note": "DMLHP-CS 제품 페이지: 약 25 kg, CE 마킹, 대상 시료"
+    },
+    {
+      "url": "https://www.yuasa-system.jp/test/y-cs",
+      "retrieved": "2026-10-08",
+      "note": "Y's Block DR11MR-CS / CS-t / CS-m 제품 페이지: 트윈형·대형 설명. 수치 없음"
+    },
+    {
+      "url": "https://www.yuasa-system.jp/test/s-fs",
+      "retrieved": "2026-10-08",
+      "note": "DMLHB-FS 제품 페이지: 제목의 IEC62715-6-1対応, 약 24 kg, 대상 시료"
+    },
+    {
+      "url": "https://www.yuasa-system.jp/test/s-fu",
+      "retrieved": "2026-10-08",
+      "note": "DMLHB-FU 제품 페이지: 폭 215 mm·두께 3 mm, 굽힘 R 0.5~80 mm, 스트로크 ±60 mm, 10~90 r/min, 약 24 kg"
+    },
+    {
+      "url": "https://www.yuasa-system.jp/test/s-4u",
+      "retrieved": "2026-10-08",
+      "note": "DMLHB-4U 제품 페이지: 4종 시료 동시 시험, 약 24 kg, 대상 시료"
+    },
+    {
+      "url": "https://www.yuasa-system.jp/test/small",
+      "retrieved": "2026-10-08",
+      "note": "소형 탁상형 구동부 DMLHB/DMLHP/DMLHPR 페이지: 최대 왕복 각도·스트로크·속도 문구"
+    },
+    {
+      "url": "https://www.yuasa-system.jp/pdf/DMLHP-CS.pdf",
+      "retrieved": "2026-10-08",
+      "note": "사양도 PDF 1쪽(BF0101SR-DC11SR). 원본 PDF 는 받았으나 텍스트로 읽히지 않음(외형도 · 글꼴 인코딩) — 값은 이 웹 페이지 기준"
+    },
+    {
+      "url": "https://www.yuasa-system.jp/pdf/DR11MR-CS_CS-t_CS-m_JP.pdf",
+      "retrieved": "2026-10-08",
+      "note": "사양도 PDF 1~6쪽(DR11MR / DR11MR4 × CS / CS-t / CS-m). 원본 PDF 는 받았으나 텍스트로 읽히지 않음(외형도 · 글꼴 인코딩) — 값은 이 웹 페이지 기준"
+    },
+    {
+      "url": "https://www.yuasa-system.jp/pdf/DMLHB-FS.pdf",
+      "retrieved": "2026-10-08",
+      "note": "사양도 PDF 1쪽(ET250001S0001). 원본 PDF 는 받았으나 텍스트로 읽히지 않음(외형도 · 글꼴 인코딩) — 값은 이 웹 페이지 기준"
+    },
+    {
+      "url": "https://www.yuasa-system.jp/pdf/DMLHB-4U.pdf",
+      "retrieved": "2026-10-08",
+      "note": "사양도 PDF 1쪽(ET221001S0001). 원본 PDF 는 받았으나 텍스트로 읽히지 않음(외형도 · 글꼴 인코딩) — 값은 이 웹 페이지 기준"
+    },
+    {
+      "url": "https://www.yuasa-system.jp/pdf/DMLHB_DMLHP_DMLHPR.pdf",
+      "retrieved": "2026-10-08",
+      "note": "구동부 사양도 PDF 3쪽, 전원 AC100-240V 100VA 만 옮김. 원본 PDF 는 받았으나 텍스트로 읽히지 않음(외형도 · 글꼴 인코딩) — 값은 이 웹 페이지 기준"
+    },
+    {
+      "file": "yuasa-system/dmlhp-cs.pdf",
+      "note": "제조사 원본 문서. 글꼴 인코딩 때문에 추출 텍스트에서 숫자가 빠짐 — 값 대조에는 못 씀(값은 웹 출처 기준)"
+    },
+    {
+      "file": "yuasa-system/dr11mr-cs-cs-t-cs-m-jp.pdf",
+      "note": "제조사 원본 문서. 글꼴 인코딩 때문에 추출 텍스트에서 숫자가 빠짐 — 값 대조에는 못 씀(값은 웹 출처 기준)"
+    },
+    {
+      "file": "yuasa-system/dmlhb-fs.pdf",
+      "note": "제조사 원본 문서. 글꼴 인코딩 때문에 추출 텍스트에서 숫자가 빠짐 — 값 대조에는 못 씀(값은 웹 출처 기준)"
+    },
+    {
+      "file": "yuasa-system/dmlhb-4u.pdf",
+      "note": "제조사 원본 문서. 글꼴 인코딩 때문에 추출 텍스트에서 숫자가 빠짐 — 값 대조에는 못 씀(값은 웹 출처 기준)"
+    },
+    {
+      "file": "yuasa-system/dmlhb-dmlhp-dmlhpr.pdf",
+      "note": "제조사 원본 문서. 글꼴 인코딩 때문에 추출 텍스트에서 숫자가 빠짐 — 값 대조에는 못 씀(값은 웹 출처 기준)"
+    }
+  ],
+  "confidence": "limited",
+  "notes": "제조사 id yuasa-system 은 신규 제안(ユアサシステム機器株式会社, YUASA SYSTEM Co., Ltd., 일본 오카야마). 신규 spec 키: cycle_rate_cpm, fold_angle_deg, bend_radius_mm. 클램셸 계열의 수치는 제품 페이지에 없고 사양도 PDF 에만 있음. test_items 에 flexure 는 넣지 않음(접이 반복 수명이며 굽힘 강도·탄성률 시험이 아님)."
+}

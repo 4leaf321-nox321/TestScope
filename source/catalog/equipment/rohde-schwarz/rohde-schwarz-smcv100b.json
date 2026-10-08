@@ -1,0 +1,137 @@
+{
+  "id": "rohde-schwarz-smcv100b",
+  "kind": "equipment_series",
+  "name": "R&S SMCV100B Vector Signal Generator",
+  "name_ko": "로데슈바르츠 SMCV100B 벡터 신호발생기",
+  "manufacturer": "rohde-schwarz",
+  "brand": "SMCV",
+  "category": "signal_generator",
+  "subcategory": "vector_rf",
+  "description": "방송·항법·셀룰러·무선용 멀티 표준 벡터 신호발생기. 4 kHz~3 GHz(SMCVB-B103)에서 SMCVBKB106 으로 6 GHz, SMCVBKB107 로 7.125 GHz 까지 늘리고, 변조 대역폭 최대 240 MHz(SMCVB-K523), 출력 최대 +20 dBm(SMCVB-K31 보증 사양, 설정 상한 +25 dBm)이다. 소프트웨어 옵션으로 기능을 정하는 구조이고 5인치 터치스크린으로 조작한다.",
+  "test_items": [],
+  "limits": {
+    "output_frequency_Hz": {
+      "min": 4000,
+      "max": 7125000000,
+      "note": "사양서: SMCVB-B103(필수) 4 kHz~3 GHz, +KB106 6 GHz, +KB106·KB107 7.125 GHz"
+    },
+    "bandwidth_Hz": {
+      "max": 240000000,
+      "note": "사양서 ARB RF 대역폭(최대 샘플 속도, 0.1 dB 롤오프): 표준 60 MHz(SMCVB-K505), K521 120 MHz, K522 160 MHz, K523 240 MHz"
+    },
+    "rf_output_level_dBm": {
+      "min": -120,
+      "max": 20,
+      "note": "사양서 Specified level range(PEP): 기본 -120~+15 dBm, SMCVB-K31 고출력 시 +20 dBm(10 MHz~6 GHz)·+18 dBm(6~7.125 GHz). 4 kHz~10 MHz 하한 -110 dBm. 설정 범위 -145~+16 dBm(기본)·+25 dBm(K31). 제품 페이지 Key facts 의 「up to +25 dBm」 은 K31 설정 상한이고 보증 사양 상한은 +20 dBm. 목록 페이지 Level range +20~-120 dBm 과 같다"
+    },
+    "radio_standards": {
+      "values": [
+        "5G NR",
+        "LTE",
+        "GSM/EDGE",
+        "Bluetooth",
+        "WLAN 802.11a/b/g/n/ac/ax/be",
+        "GNSS (GPS, Galileo, GLONASS, BeiDou)",
+        "DVB-T/T2",
+        "DAB",
+        "DRM",
+        "ATSC",
+        "위성통신"
+      ],
+      "note": "제품 페이지 문구"
+    },
+    "phase_noise_dBc_Hz": {
+      "values": [
+        -100,
+        -125
+      ],
+      "note": "사양서, 1 GHz 반송파·20 kHz 오프셋. -100: 기본, -125: SMCVB-K709 저위상잡음 옵션. 단위 dBc(1 Hz)"
+    },
+    "waveform_memory_pts": {
+      "values": [
+        64000000,
+        512000000,
+        1000000000
+      ],
+      "note": "사양서 ARB 파형 길이: 표준 64 Msample, SMCVB-K511 512 Msample, K512 1 Gsample"
+    }
+  },
+  "models": [
+    {
+      "model": "SMCV100B",
+      "specs": {
+        "output_frequency_Hz": {
+          "min": 4000,
+          "max": 7125000000
+        },
+        "bandwidth_Hz": 240000000,
+        "rf_output_level_dBm": {
+          "min": -120,
+          "max": 20,
+          "note": "사양 범위, 상한은 K31. 설정 상한 +25 dBm"
+        },
+        "phase_noise_dBc_Hz": {
+          "values": [
+            -100,
+            -125
+          ],
+          "note": "1 GHz·20 kHz. 기본 / K709"
+        },
+        "waveform_memory_pts": {
+          "values": [
+            64000000,
+            512000000,
+            1000000000
+          ]
+        }
+      }
+    }
+  ],
+  "features": [
+    "방송·항법·셀룰러·무선 멀티 표준",
+    "소프트웨어 옵션 정의 구조",
+    "5인치 터치스크린"
+  ],
+  "options": [
+    {
+      "name": "SMCVBKB106 / SMCVBKB107",
+      "note": "6 GHz / 7.125 GHz 주파수 확장"
+    },
+    {
+      "name": "SMCVB-K523",
+      "note": "기저대역 240 MHz"
+    },
+    {
+      "name": "SMCVB-K31",
+      "note": "고출력(보증 +20 dBm, 설정 +25 dBm)"
+    },
+    {
+      "name": "SMCVB-K709",
+      "note": "저위상잡음(1 GHz·20 kHz < -125 dBc)"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://www.rohde-schwarz.com/us/products/test-and-measurement/vector-signal-generators/rs-smcv100b-vector-signal-generator_63493-773184.html",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지. Key facts, 주파수 옵션, 대역폭, 출력, 지원 표준"
+    },
+    {
+      "url": "https://www.rohde-schwarz.com/us/products/test-and-measurement/vector-signal-generators_333559.html",
+      "retrieved": "2026-10-08",
+      "note": "제조사 벡터 신호발생기 목록 페이지. 주파수, I/Q 변조 대역폭, 레벨 범위"
+    },
+    {
+      "file": "rohde-schwarz/smcv100b_specs_en_3608-0627-22_v1700.pdf",
+      "pages": [
+        4,
+        5,
+        6,
+        12
+      ],
+      "note": "제조사 사양서(v17.00, 2025-09). 주파수 옵션, 레벨 설정·사양 범위(K31), 위상 잡음(기본·K709), ARB 파형 길이·RF 대역폭"
+    }
+  ],
+  "confidence": "catalog",
+  "notes": "PDF 로 확인: 주파수, 레벨 범위, ARB 대역폭 240 MHz(K523), 위상 잡음, ARB 메모리. 최대 출력 엇갈림(목록 +20 dBm vs 제품 페이지 +25 dBm)은 사양서로 정했다 — 보증 상한 +20 dBm(K31), +25 dBm 은 K31 설정 상한."
+}

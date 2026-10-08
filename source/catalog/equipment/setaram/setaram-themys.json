@@ -1,0 +1,391 @@
+{
+  "id": "setaram-themys",
+  "kind": "equipment_series",
+  "name": "SETARAM THEMYS thermal analyzers (THEMYS / One / Duo / HP / H2 / LV / Flash)",
+  "name_ko": "세타람 THEMYS 열분석기 계열",
+  "manufacturer": "setaram",
+  "category": "sta",
+  "description": "수직형 행다운 대칭 빔 저울의 모듈식 열분석 플랫폼. TGA·DTA·DSC·STA·EGA·TMA 측정 모듈을 바꿔 끼우고 FTIR·MS·GC-MS 를 붙인다. THEMYS 는 단일 노 2400 °C(TGA·DTA·TG-DTA·TMA), DSC·TG-DSC 1600 °C. One 은 1150/1600 °C, Duo 는 이중 노 1750 °C, HP 는 1200 °C·150 bar, H2 는 1750 °C, LV 는 대용량 시료 2000 °C, Flash 는 저울 모듈 최대 5개와 이미지 노로 빠른 가열·냉각.",
+  "test_items": [
+    "tga",
+    "dsc",
+    "tma"
+  ],
+  "measurands": [
+    "thermal.decomposition_temp",
+    "thermal.char_residue",
+    "thermal.expansion_linear"
+  ],
+  "measurands_by_item": {
+    "tga": [
+      "thermal.decomposition_temp",
+      "thermal.char_residue"
+    ],
+    "tma": [
+      "thermal.expansion_linear"
+    ]
+  },
+  "limits": {
+    "temperature_degC": {
+      "max": 2400,
+      "note": "THEMYS 단일 노. DSC 모듈은 1600 °C 까지"
+    },
+    "pressure_bar": {
+      "max": 150,
+      "note": "Themys HP"
+    },
+    "heating_rate_K_min": {
+      "min": 0.01,
+      "max": 600,
+      "note": "Flash 최대 600 °C/min, LV 0.01~20, 나머지 0.01~100 °C/min"
+    },
+    "balance_resolution_ug": {
+      "min": 0.00059,
+      "max": 0.2,
+      "note": "저울 형식·범위에 따라"
+    }
+  },
+  "models": [
+    {
+      "model": "Themys",
+      "variant": "THEMYS(기본)",
+      "specs": {
+        "temperature_degC": {
+          "max": 2400,
+          "note": "단일 노 2400 °C. TGA·DTA·TG-DTA·TMA 2400 °C, DSC·TG-DSC 1600 °C"
+        },
+        "heating_rate_K_min": {
+          "min": 0.01,
+          "max": 100
+        },
+        "sample_volume_uL": {
+          "min": 30,
+          "max": 2500,
+          "note": "TGA 55~2500 µL(또는 도가니 없이 H20×Ø14 mm), DTA·TG-DTA 30~300 µL, DSC·TG-DSC 80~100 µL"
+        },
+        "dynamic_weighing_range_mg": {
+          "values": [
+            5,
+            50,
+            200,
+            300,
+            2000,
+            3000
+          ],
+          "note": "고감도 ±5/±50, 고범용 ±200/±2000(auto-tare), 고용량 ±300/±3000 mg(소/대 범위)"
+        },
+        "sample_mass_mg": {
+          "values": [
+            35000,
+            100000
+          ],
+          "note": "최대 하중 35 g(고감도·고범용), 100 g(고용량)"
+        },
+        "balance_resolution_ug": {
+          "values": [
+            0.00059,
+            0.023,
+            0.03
+          ],
+          "note": "소범위 분해능: 고감도 0.00059, 고범용 0.023, 고용량 0.03 µg"
+        },
+        "temperature_precision_degC": {
+          "value": 0.4,
+          "note": "DSC·TG-DSC ±0.4 °C, DTA·TG-DTA ±0.8 °C"
+        },
+        "accuracy": "열량 정밀도 DSC·TG-DSC ±1 %, DTA·TG-DTA ±2 %(교정 시). TGA 기저선 드리프트 30 µg(1000 °C)·40 µg(1600 °C) 고감도 / 35 µg(1000 °C)·50 µg(1700 °C) 고범용 / <100 µg(1700 °C) 고용량, 드리프트 정밀도 ±3 / ±10 µg",
+        "displacement_mm": {
+          "value": 2,
+          "note": "TMA 측정 범위 ±2 mm, 시료 H20×Ø10 mm"
+        },
+        "displacement_resolution_nm": 0.2
+      }
+    },
+    {
+      "model": "Themys One",
+      "variant": "입문형",
+      "specs": {
+        "temperature_degC": {
+          "values": [
+            1150,
+            1600
+          ],
+          "note": "단일 노 1150 또는 1600 °C"
+        },
+        "heating_rate_K_min": {
+          "min": 0.01,
+          "max": 100,
+          "note": "승온·냉각 모두"
+        },
+        "cooling": "노 냉각 30 min(1150 → 50 °C), 32 min(1600 → 50 °C)",
+        "dynamic_weighing_range_mg": {
+          "values": [
+            200,
+            1000
+          ],
+          "note": "±200 / ±1000 mg"
+        },
+        "sample_mass_mg": {
+          "max": 20000,
+          "note": "최대 저울 용량 20 g"
+        },
+        "balance_resolution_ug": {
+          "values": [
+            0.02,
+            0.2
+          ],
+          "note": "0.02 / 0.2 µg"
+        },
+        "heat_flow_resolution_uW": {
+          "values": [
+            0.4,
+            10
+          ],
+          "note": "DSC 로드 분해능 0.4 / 10 µW(센서에 따라)"
+        },
+        "accuracy": "3D Cp 로드 Cp 정확도 2 % 이내(재료에 따라)",
+        "weight_kg": 60,
+        "footprint_mm": {
+          "H": 700,
+          "W": 500,
+          "D": 440
+        }
+      }
+    },
+    {
+      "model": "Themys Duo",
+      "variant": "이중 노",
+      "specs": {
+        "temperature_degC": {
+          "max": 1750,
+          "note": "TGA·DTA·TG-DTA 1750 °C, DSC·TG-DSC 1600 °C"
+        },
+        "heating_rate_K_min": {
+          "min": 0.01,
+          "max": 100
+        },
+        "sample_volume_uL": {
+          "min": 20,
+          "max": 1500,
+          "note": "TGA 55~1500 µL(또는 도가니 없이 H20×Ø14 mm), DTA·TG-DTA 20~300 µL, DSC·TG-DSC 75~110 µL"
+        },
+        "dynamic_weighing_range_mg": {
+          "values": [
+            20,
+            200
+          ],
+          "note": "±20 / ±200 mg"
+        },
+        "sample_mass_mg": {
+          "max": 35000,
+          "note": "최대 하중 35 g"
+        },
+        "balance_resolution_ug": 0.002,
+        "temperature_precision_degC": {
+          "value": 0.4,
+          "note": "DSC·TG-DSC ±0.4 °C, DTA·TG-DTA ±0.8 °C"
+        },
+        "accuracy_degC": {
+          "value": 0.25,
+          "note": "DSC·TG-DSC ±0.25 °C, DTA·TG-DTA ±0.4 °C"
+        },
+        "accuracy": "열량 정밀도 DSC·TG-DSC ±1 %, DTA·TG-DTA ±2 %(교정 시). TGA 기저선 드리프트 5 µg(1700 °C 까지, He), 드리프트 정밀도 ±1 µg",
+        "weight_kg": 145,
+        "footprint_mm": {
+          "H": 1700,
+          "W": 600,
+          "D": 550
+        }
+      }
+    },
+    {
+      "model": "Themys HP",
+      "variant": "고압",
+      "specs": {
+        "temperature_degC": {
+          "max": 1200
+        },
+        "pressure_bar": {
+          "max": 150,
+          "note": "이중 배압 조절: 저압 1~6 bar, 고압 6~150 bar"
+        },
+        "heating_rate_K_min": {
+          "min": 0.01,
+          "max": 100,
+          "note": "대기압 값, 압력에 따라 다름"
+        },
+        "sample_volume_uL": {
+          "max": 1300
+        },
+        "dynamic_weighing_range_mg": {
+          "values": [
+            200,
+            2000
+          ],
+          "note": "±200 / ±2000 mg"
+        },
+        "sample_mass_mg": {
+          "max": 35000,
+          "note": "최대 하중 35 g"
+        },
+        "balance_resolution_ug": 0.0023
+      }
+    },
+    {
+      "model": "Themys H2",
+      "specs": {
+        "temperature_degC": {
+          "max": 1750,
+          "note": "단일 노 1750 °C(TGA·DTA·TMA), DSC 1000 °C, 질량분석기 연결 1000 °C 까지"
+        },
+        "heating_rate_K_min": {
+          "min": 0.01,
+          "max": 100
+        },
+        "dynamic_weighing_range_mg": {
+          "values": [
+            20,
+            200
+          ],
+          "note": "TGA ±20 / ±200 mg"
+        },
+        "balance_resolution_ug": {
+          "values": [
+            0.002,
+            0.02
+          ],
+          "note": "소/대 범위로 읽었다"
+        },
+        "displacement_mm": {
+          "value": 2,
+          "note": "TMA 측정 범위 ±2 mm, 시료 H20×Ø10 mm"
+        },
+        "displacement_resolution_nm": 0.2
+      }
+    },
+    {
+      "model": "Themys LV",
+      "variant": "대용량 시료",
+      "specs": {
+        "temperature_degC": {
+          "max": 2000,
+          "note": "TGA·DTA·TG-DTA·TMA 2000 °C, TG-DSC·DSC 1600 °C"
+        },
+        "heating_rate_K_min": {
+          "min": 0.01,
+          "max": 20
+        },
+        "sample_volume_uL": {
+          "min": 220,
+          "max": 18100,
+          "note": "TGA 4.5~18.1 mL(또는 도가니 없이 H80×Ø20 mm), DTA·TG-DTA 220~500 µL, DSC·TG-DSC 360~420 µL. TMA 시료 H50×Ø15 mm"
+        },
+        "dynamic_weighing_range_mg": {
+          "values": [
+            200,
+            2000
+          ],
+          "note": "±200 / ±2000 mg"
+        },
+        "sample_mass_mg": {
+          "max": 100000,
+          "note": "최대 하중 100 g"
+        },
+        "balance_resolution_ug": 0.02,
+        "accuracy": "TGA 기저선 드리프트 <100 µg(1700 °C 까지, He)",
+        "displacement_mm": {
+          "value": 6,
+          "note": "TMA 측정 범위 ±6 mm"
+        },
+        "displacement_resolution_nm": 1.6
+      }
+    },
+    {
+      "model": "Themys Flash",
+      "variant": "다시료 고속 가열",
+      "specs": {
+        "temperature_degC": {
+          "max": 1200,
+          "note": "상온~1200 °C"
+        },
+        "heating_rate_K_min": {
+          "max": 600
+        },
+        "cooling": "1200 → 1000 °C 1 분 미만, 1000 → 200 °C 15 분, 200 → 70 °C 15 분",
+        "dynamic_weighing_range_mg": {
+          "values": [
+            20,
+            200
+          ],
+          "note": "±20 / ±200 mg"
+        },
+        "sample_mass_mg": {
+          "max": 35000,
+          "note": "최대 하중 35 g"
+        },
+        "balance_resolution_ug": 0.0023
+      },
+      "note": "저울 모듈 1~5개(주문 시 정함, 나중에 늘릴 수 있음), 이미지 노 5 공동. 최대 시료 15×12 mm(직사각) · Ø12 mm(원판). 분위기 산화·불활성·진공"
+    }
+  ],
+  "features": [
+    "행다운 대칭 빔 저울(드리프트·부력 상쇄)",
+    "삼중 열전대 DTA",
+    "다양한 운반·반응 가스",
+    "Themys HP: 유럽 압력장비 지침 2014/68/EU(그룹 2 가스)"
+  ],
+  "sources": [
+    {
+      "url": "https://setaramsolutions.com/product/themys",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지(HTML) 본문·표를 직접 읽음. THEMYS 특장점(2400 °C 단일 노, 모듈별 온도 상한)"
+    },
+    {
+      "url": "https://setaramsolutions.com/product/themys-one",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지(HTML) 본문·표를 직접 읽음"
+    },
+    {
+      "url": "https://setaramsolutions.com/product/themys-duo",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지(HTML) 본문·표를 직접 읽음"
+    },
+    {
+      "url": "https://setaramsolutions.com/product/themys-hp",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지(HTML) 본문·표를 직접 읽음"
+    },
+    {
+      "url": "https://setaramsolutions.com/product/themys-h2",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지(HTML) 본문·표를 직접 읽음"
+    },
+    {
+      "url": "https://setaramsolutions.com/product/themys-lv",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지(HTML) 본문·표를 직접 읽음"
+    },
+    {
+      "url": "https://setaramsolutions.com/product/themys-flash",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지(HTML) 본문·표를 직접 읽음"
+    },
+    {
+      "file": "setaram/en-themys-1.pdf",
+      "pages": [
+        4,
+        5,
+        6,
+        8,
+        10,
+        12,
+        14,
+        16,
+        18,
+        20
+      ]
+    }
+  ],
+  "confidence": "catalog",
+  "notes": "브로슈어 PDF 로 기종별 온도 상한·승온 속도·도가니 부피·저울 사양을 확인하고 채웠다. 저울 분해능·드리프트 칸은 추출에서 µ 기호가 빠져 「(g)」로 읽히는데 µg 로 옮겼다. H2 의 DTA·DSC 열(측정 범위·엔탈피 정밀도·온도 정밀도)과 최대 하중, LV 의 온도 정밀도·정확도는 추출 텍스트에서 열이 섞여 넣지 않았다. Setline(DSC·STA·TGA) 보급형 계열은 사양 수치가 페이지에 없어 만들지 않았다."
+}

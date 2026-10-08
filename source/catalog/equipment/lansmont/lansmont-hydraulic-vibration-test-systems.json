@@ -1,0 +1,300 @@
+{
+  "id": "lansmont-hydraulic-vibration-test-systems",
+  "kind": "equipment_series",
+  "name": "Lansmont Vibration Test Systems (Model 1000 / 1800 / 6200 / 7000 / 10000 / 15000 / 28000 / 6000H / 65000)",
+  "name_ko": "랜스몬트 유압식 진동 시험 시스템",
+  "manufacturer": "lansmont",
+  "category": "mechanical_dynamics",
+  "drive": "servohydraulic",
+  "form_factor": "floor",
+  "description": "포장·제품 수송 시험용 유압 진동 시험 시스템. 유압 액추에이터·펌프·서보 제어를 일체화해 전기만 있으면 돌고, TouchTest 진동 제어기로 랜덤 진동·Field-to-Lab 재현·공진 탐색과 드웰·정현 스윕·반복 바운스 시험을 폐루프 제어한다. 정지 추력 5.4 kN(Model 1000)~283.4 kN(Model 65000), 주파수 1~300 Hz(고성능판 500 Hz), 테이블 40 cm 정사각부터 259×406 cm 까지. Model 6000H 는 수평 시험용, Model 15000 은 스트로크 25.4 cm·100 Hz 까지의 대탑재용이다.",
+  "test_items": [
+    "vibration_sine_random"
+  ],
+  "measurands": [
+    "resonance_frequency",
+    "transmissibility"
+  ],
+  "materials": [
+    "packaged products",
+    "palletized loads",
+    "crated products",
+    "unit loads"
+  ],
+  "limits": {
+    "static_force_kN": {
+      "min": 5.4,
+      "max": 283.4,
+      "note": "정지 추력(stall force) @ 3000 psi. Model 15000 은 원문 15,000 lbs 를 환산"
+    },
+    "dynamic_force_kN": {
+      "min": 3.6,
+      "max": 189,
+      "note": "동적 추력 @ 3000 psi"
+    },
+    "frequency_Hz": {
+      "min": 1,
+      "max": 500,
+      "note": "표준 1~300 Hz, 고성능판 500 Hz(1000·1800·6200·28000·6000H), Model 15000 은 100 Hz 까지"
+    },
+    "table_size_mm": {
+      "min": 400,
+      "max": 4060,
+      "note": "원문 in·cm 병기, cm 값을 mm 로"
+    }
+  },
+  "models": [
+    {
+      "model": "Model 1000",
+      "specs": {
+        "static_force_kN": 5.4,
+        "frequency_Hz": {
+          "min": 1,
+          "max": 500
+        },
+        "table_size_mm": {
+          "values": [
+            400,
+            650,
+            850
+          ]
+        },
+        "dynamic_force_kN": 3.6
+      },
+      "note": "소형 제품·포장. 주파수 1~300 Hz(고성능 500 Hz). static_force_kN 은 원문 stall force, dynamic_force_kN 은 원문 dynamic force(3000 psi)"
+    },
+    {
+      "model": "Model 1800",
+      "specs": {
+        "static_force_kN": 20.3,
+        "frequency_Hz": {
+          "min": 1,
+          "max": 500
+        },
+        "table_size_mm": {
+          "values": [
+            650,
+            850,
+            1220,
+            1520,
+            1830
+          ]
+        },
+        "dynamic_force_kN": 13.5
+      },
+      "note": "인기 범용 기종(원문 one of our most popular models). 주파수 1~300 Hz(고성능 500 Hz). static_force_kN 은 원문 stall force, dynamic_force_kN 은 원문 dynamic force(3000 psi)"
+    },
+    {
+      "model": "Model 6200",
+      "specs": {
+        "static_force_kN": 32.9,
+        "frequency_Hz": {
+          "min": 1,
+          "max": 500
+        },
+        "table_size_mm": {
+          "values": [
+            850,
+            910,
+            1220,
+            1520,
+            1830
+          ]
+        },
+        "dynamic_force_kN": 21.9
+      },
+      "note": "긴 스트로크, 저주파 고에너지 프로파일. 주파수 1~300 Hz(고성능 1~500 Hz). static_force_kN 은 원문 stall force, dynamic_force_kN 은 원문 dynamic force(3000 psi)"
+    },
+    {
+      "model": "Model 7000",
+      "specs": {
+        "static_force_kN": 41,
+        "frequency_Hz": {
+          "min": 1,
+          "max": 300
+        },
+        "table_size_mm": {
+          "values": [
+            1220,
+            1520,
+            1830
+          ]
+        },
+        "dynamic_force_kN": 27.2
+      },
+      "note": "무거운 시료·팔레트 적재물. 주파수 1~300 Hz. static_force_kN 은 원문 stall force, dynamic_force_kN 은 원문 dynamic force(3000 psi)"
+    },
+    {
+      "model": "Model 10000",
+      "specs": {
+        "static_force_kN": 55,
+        "frequency_Hz": {
+          "min": 1,
+          "max": 300
+        },
+        "table_size_mm": {
+          "values": [
+            1220,
+            1520,
+            1830,
+            "1520×2490"
+          ]
+        },
+        "dynamic_force_kN": 36.7
+      },
+      "note": "단위 적재물·대형 목상자. 주파수 1~300 Hz. static_force_kN 은 원문 stall force, dynamic_force_kN 은 원문 dynamic force(3000 psi)"
+    },
+    {
+      "model": "Model 15000",
+      "specs": {
+        "static_force_kN": 66.72,
+        "frequency_Hz": {
+          "min": 1,
+          "max": 100
+        },
+        "table_size_mm": {
+          "values": [
+            1220,
+            1520
+          ]
+        },
+        "payload_kg": 1588,
+        "stroke_mm": 254
+      },
+      "note": "현행 최대 스트로크. 원문 15,000 lbs(kN 환산), 탑재 3,500 lbs (1,588 kg), 스트로크 10″ (25.4 cm). 주파수 ~100 Hz. static_force_kN 은 원문 stall force, dynamic_force_kN 은 원문 dynamic force(3000 psi)"
+    },
+    {
+      "model": "Model 28000",
+      "specs": {
+        "static_force_kN": 131,
+        "frequency_Hz": {
+          "min": 1,
+          "max": 500
+        },
+        "table_size_mm": {
+          "values": [
+            910,
+            1220,
+            1270,
+            1520,
+            "1520×2490",
+            "2590×4060"
+          ]
+        },
+        "dynamic_force_kN": 87.3
+      },
+      "note": "극한 탑재 또는 고성능 제품 평가. 테이블 원문 36\", 48\", 50\", 60\" 정사각, 60\"×98\", 102\"×160\". 주파수 1~300 Hz(고성능 1~500 Hz). static_force_kN 은 원문 stall force, dynamic_force_kN 은 원문 dynamic force(3000 psi)"
+    },
+    {
+      "model": "Model 6000H",
+      "specs": {
+        "static_force_kN": 32.9,
+        "frequency_Hz": {
+          "min": 1,
+          "max": 500
+        },
+        "table_size_mm": {
+          "values": [
+            910,
+            1220,
+            1520
+          ]
+        },
+        "dynamic_force_kN": 21.9
+      },
+      "note": "수평 단축 진동. 주파수 1~300 Hz(고성능 1~500 Hz). static_force_kN 은 원문 stall force, dynamic_force_kN 은 원문 dynamic force(3000 psi)"
+    },
+    {
+      "model": "Model 65000",
+      "specs": {
+        "static_force_kN": 283.4,
+        "frequency_Hz": {
+          "min": 1,
+          "max": 300
+        },
+        "table_size_mm": {
+          "values": [
+            "1520×2490",
+            "2100×2500",
+            "2100×3150",
+            "2590×4060"
+          ]
+        },
+        "dynamic_force_kN": 189
+      },
+      "note": "극한 탑재용 맞춤형. 주파수 1~300 Hz. static_force_kN 은 원문 stall force, dynamic_force_kN 은 원문 dynamic force(3000 psi)"
+    }
+  ],
+  "options": [
+    {
+      "name": "TouchTest Vibration (TTV) 제어기",
+      "note": "폐루프 진동 제어"
+    },
+    {
+      "name": "응답 채널",
+      "note": "계측 시험용"
+    },
+    {
+      "name": "맞춤 테이블 크기"
+    }
+  ],
+  "relations": [
+    {
+      "type": "performs",
+      "target": "vibration_sine_random"
+    },
+    {
+      "type": "same_family_as",
+      "target": "lansmont-ms-mechanical-shakers"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://www.lansmont.com/products/vibration-testers/model-1000",
+      "retrieved": "2026-10-08",
+      "note": "제조사 model-1000 페이지"
+    },
+    {
+      "url": "https://www.lansmont.com/products/vibration-testers/model-1800",
+      "retrieved": "2026-10-08",
+      "note": "제조사 model-1800 페이지"
+    },
+    {
+      "url": "https://www.lansmont.com/products/vibration-testers/model-6200",
+      "retrieved": "2026-10-08",
+      "note": "제조사 model-6200 페이지"
+    },
+    {
+      "url": "https://www.lansmont.com/products/vibration-testers/model-7000",
+      "retrieved": "2026-10-08",
+      "note": "제조사 model-7000 페이지"
+    },
+    {
+      "url": "https://www.lansmont.com/products/vibration-testers/model-10000",
+      "retrieved": "2026-10-08",
+      "note": "제조사 model-10000 페이지"
+    },
+    {
+      "url": "https://www.lansmont.com/products/vibration-testers/model-15000",
+      "retrieved": "2026-10-08",
+      "note": "제조사 model-15000 페이지"
+    },
+    {
+      "url": "https://www.lansmont.com/products/vibration-testers/model-28000",
+      "retrieved": "2026-10-08",
+      "note": "제조사 model-28000 페이지"
+    },
+    {
+      "url": "https://www.lansmont.com/products/vibration-testers/model-6000h",
+      "retrieved": "2026-10-08",
+      "note": "제조사 model-6000h 페이지"
+    },
+    {
+      "url": "https://www.lansmont.com/products/vibration-testers/model-65000",
+      "retrieved": "2026-10-08",
+      "note": "제조사 model-65000 페이지"
+    }
+  ],
+  "confidence": "limited",
+  "notes": "유압 진동대라 「전기동력식 가진기(vibration_shaker)」 분류와 맞지 않아 상위 진동·충격(mechanical_dynamics)으로 두었다. 탑재·변위는 Model 15000 외에는 페이지에 없다."
+}

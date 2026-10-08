@@ -1,0 +1,203 @@
+{
+  "id": "micro-epsilon-interferometer",
+  "kind": "equipment_series",
+  "name": "interferoMETER White Light Interferometers (5200-TH, 5400-DS, 5400-TH, 5420-TH, 5600-DS)",
+  "name_ko": "마이크로엡실론 interferoMETER 백색광 간섭 변위·두께 측정기",
+  "manufacturer": "micro-epsilon",
+  "category": "thickness_displacement_gauge",
+  "description": "백색광 간섭으로 절대 거리(DS)와 두께(TH)를 나노미터 수준으로 재는 계열임. 거리용 5400-DS(측정 범위 1.5/2.1 mm, 직선성 < ±0.05 µm)·5600-DS(1/1.5/2.1 mm, < ±0.01 µm, 분해능 30 pm), 두께용 5200-TH(0.001~0.1 mm)·5400-TH(0.035~1.5 mm)·5420-TH(0.05~4 mm)가 있음. 측정 속도 최대 6 kHz, 광섬유 케이블 최대 10 m, 진공·클린룸용 구성이 있음.",
+  "test_items": [],
+  "limits": {
+    "displacement_mm": {
+      "min": 1,
+      "max": 2.1,
+      "note": "DS(거리) 측정 범위"
+    },
+    "layer_thickness_um": {
+      "min": 1,
+      "max": 4000,
+      "note": "TH(두께) 측정 범위 원문 0.001~4 mm"
+    },
+    "linearity_um": {
+      "min": 0.01,
+      "max": 0.2
+    },
+    "position_resolution_nm": {
+      "min": 0.03,
+      "note": "원문 < 0.00003 µm(5600-DS)"
+    },
+    "data_rate_Hz": {
+      "max": 6000,
+      "note": "원문 measuring rate up to 6 kHz"
+    }
+  },
+  "models": [
+    {
+      "model": "interferoMETER 5200-TH",
+      "variant": "두께 측정",
+      "specs": {
+        "layer_thickness_um": {
+          "min": 1,
+          "max": 100,
+          "note": "원문 0.001 - 0.1 mm"
+        },
+        "linearity_um": {
+          "value": 0.1,
+          "note": "원문 <± 0.1 µm"
+        },
+        "position_resolution_nm": {
+          "value": 1,
+          "note": "원문 < 0.001 µm"
+        }
+      }
+    },
+    {
+      "model": "interferoMETER 5400-DS",
+      "variant": "거리 측정",
+      "specs": {
+        "displacement_mm": {
+          "values": [
+            1.5,
+            2.1
+          ],
+          "note": "원문 1.5 / 2.1 mm"
+        },
+        "linearity_um": {
+          "value": 0.05,
+          "note": "원문 <± 0.05 µm"
+        },
+        "position_resolution_nm": {
+          "value": 1,
+          "note": "원문 < 0.001 µm"
+        }
+      }
+    },
+    {
+      "model": "interferoMETER 5400-TH",
+      "variant": "두께 측정",
+      "specs": {
+        "layer_thickness_um": {
+          "min": 35,
+          "max": 1500,
+          "note": "원문 0.035 - 1.5 mm"
+        },
+        "linearity_um": {
+          "values": [
+            0.1,
+            0.2
+          ],
+          "note": "원문 <± 0.1 / 0.2 µm"
+        },
+        "position_resolution_nm": {
+          "value": 1,
+          "note": "원문 < 0.001 µm"
+        },
+        "data_rate_Hz": {
+          "max": 6000
+        }
+      }
+    },
+    {
+      "model": "IMS5400-TH45",
+      "variant": "5400-TH 단층형, 작동 거리 45 mm",
+      "specs": {
+        "working_distance_mm": 45,
+        "linearity_um": {
+          "value": 0.1,
+          "note": "원문 ±100 nm"
+        }
+      },
+      "note": "두께 최대 1.4 mm(제품 페이지 요약)"
+    },
+    {
+      "model": "IMS5400-TH70",
+      "variant": "5400-TH 단층형, 작동 거리 70 mm",
+      "specs": {
+        "working_distance_mm": 70,
+        "linearity_um": {
+          "value": 0.2,
+          "note": "원문 ±200 nm"
+        }
+      },
+      "note": "두께 최대 1.4 mm(제품 페이지 요약)"
+    },
+    {
+      "model": "IMS5400MP-TH45",
+      "variant": "5400-TH 다층형(최대 5층), 작동 거리 45 mm",
+      "specs": {
+        "working_distance_mm": 45
+      }
+    },
+    {
+      "model": "IMS5400MP-TH70",
+      "variant": "5400-TH 다층형(최대 5층), 작동 거리 70 mm",
+      "specs": {
+        "working_distance_mm": 70
+      }
+    },
+    {
+      "model": "interferoMETER 5420-TH",
+      "variant": "두께 측정",
+      "specs": {
+        "layer_thickness_um": {
+          "min": 50,
+          "max": 4000,
+          "note": "원문 0.05 - 4 mm"
+        },
+        "linearity_um": {
+          "value": 0.1,
+          "note": "원문 <± 0.1 µm"
+        },
+        "position_resolution_nm": {
+          "value": 1,
+          "note": "원문 < 0.001 µm"
+        }
+      }
+    },
+    {
+      "model": "interferoMETER 5600-DS",
+      "variant": "거리 측정",
+      "specs": {
+        "displacement_mm": {
+          "values": [
+            1,
+            1.5,
+            2.1
+          ],
+          "note": "원문 1 / 1.5 / 2.1 mm"
+        },
+        "linearity_um": {
+          "value": 0.01,
+          "note": "원문 <± 0.01 µm"
+        },
+        "position_resolution_nm": {
+          "value": 0.03,
+          "note": "원문 < 0.00003 µm(30 pm)"
+        },
+        "data_rate_Hz": {
+          "max": 6000
+        }
+      },
+      "note": "투명체 다중 피크 거리 측정(최대 13층), 표준·90° 빔 경로 센서."
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://www.micro-epsilon.com/distance-sensors/interferometers/",
+      "retrieved": "2026-10-08",
+      "note": "제조사 interferoMETER 목록 페이지(기종별 측정 범위·직선성·분해능)"
+    },
+    {
+      "url": "https://www.micro-epsilon.com/distance-sensors/interferometers/5400-th/",
+      "retrieved": "2026-10-08",
+      "note": "제조사 5400-TH 제품 페이지(IMS5400-TH45/TH70, 다층형 MP)"
+    },
+    {
+      "url": "https://www.micro-epsilon.com/distance-sensors/interferometers/5600-ds/",
+      "retrieved": "2026-10-08",
+      "note": "제조사 5600-DS 제품 페이지"
+    }
+  ],
+  "confidence": "limited",
+  "notes": "두께는 기존 키 layer_thickness_um(박막·도막 두께 범위)에 µm 로 바꿔 적음. 두께 측정이 되나 test_items 의 coating_thickness(도금·코팅)와 뜻이 달라 비움."
+}

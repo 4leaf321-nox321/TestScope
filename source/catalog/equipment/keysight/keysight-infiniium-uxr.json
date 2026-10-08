@@ -1,0 +1,119 @@
+{
+  "id": "keysight-infiniium-uxr",
+  "kind": "equipment_series",
+  "name": "Infiniium UXR-Series Oscilloscopes",
+  "name_ko": "키사이트 Infiniium UXR 오실로스코프",
+  "manufacturer": "keysight",
+  "brand": "Infiniium",
+  "category": "oscilloscope",
+  "subcategory": "real_time_oscilloscope",
+  "form_factor": "benchtop",
+  "description": "13~110 GHz 대역의 초고대역 실시간 오실로스코프 계열임. 4채널, 10 bit ADC, 채널당 128 GSa/s(13·33 GHz 기종) 또는 256 GSa/s(50 GHz 이상 기종). 50·70 GHz 기종은 110 GHz 까지 업그레이드 가능. 키사이트 현재 분류로는 XR9-class.",
+  "test_items": [],
+  "limits": {
+    "bandwidth_Hz": {
+      "min": 13000000000,
+      "max": 110000000000,
+      "note": "원문 13 GHz~110 GHz"
+    },
+    "sample_rate_Sa_s": {
+      "min": 128000000000,
+      "max": 256000000000
+    },
+    "record_length_pts": {
+      "min": 500000000,
+      "max": 2000000000
+    },
+    "channels": {
+      "values": [
+        4
+      ]
+    },
+    "adc_resolution_bit": {
+      "values": [
+        10
+      ]
+    }
+  },
+  "models": [
+    {
+      "model": "UXR0134B",
+      "specs": {
+        "bandwidth_Hz": 13000000000,
+        "channels": 4,
+        "sample_rate_Sa_s": 128000000000,
+        "adc_resolution_bit": 10
+      },
+      "note": "원문 13 GHz, 4 channel, 128 GSa/s sample rate on all channels, 10-bit ADC (검색 결과 발췌)"
+    },
+    {
+      "model": "UXR0334B",
+      "specs": {
+        "bandwidth_Hz": 33000000000,
+        "channels": 4,
+        "sample_rate_Sa_s": 128000000000,
+        "adc_resolution_bit": 10
+      },
+      "note": "원문 33 GHz, 4 channel, 128 GSa/s, 10-bit (검색 결과 발췌)"
+    },
+    {
+      "model": "UXR0504B",
+      "specs": {
+        "bandwidth_Hz": 50000000000,
+        "channels": 4,
+        "sample_rate_Sa_s": 256000000000,
+        "record_length_pts": {
+          "min": 500000000,
+          "max": 2000000000,
+          "note": "원문 500 Mpts (upgradable to 2 Gpts)"
+        },
+        "adc_resolution_bit": 10
+      },
+      "note": "원문 50 GHz (upgradable to 110 GHz), 256 GSa/s, 10-bit, 1.85 mm"
+    },
+    {
+      "model": "UXR0704BP",
+      "specs": {
+        "bandwidth_Hz": 70000000000,
+        "channels": 4,
+        "sample_rate_Sa_s": 256000000000,
+        "record_length_pts": {
+          "min": 500000000,
+          "max": 2000000000,
+          "note": "원문 500 Mpts (upgradable to 2 Gpts)"
+        },
+        "adc_resolution_bit": 10
+      },
+      "note": "원문 70 GHz (upgradable to 110 GHz), 256 GSa/s, 10-bit, 1 mm 입력"
+    },
+    {
+      "model": "UXR1104B",
+      "specs": {
+        "bandwidth_Hz": 110000000000,
+        "channels": 4,
+        "sample_rate_Sa_s": 256000000000,
+        "adc_resolution_bit": 10
+      },
+      "note": "원문 110 GHz, 4 Channel, 256 GSa/s, 10-bit (검색 결과 발췌)"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://www.keysight.com/us/en/products/oscilloscopes/benchtop/pro-benchtop-oscilloscopes.html",
+      "retrieved": "2026-10-08",
+      "note": "제조사 분류 페이지. UXR0504B·UXR0704BP 사양(50·70 GHz, 4 ch, 256 GSa/s, 500 Mpts→2 Gpts, 10-bit, 1.85 mm·1 mm)"
+    },
+    {
+      "url": "https://www.keysight.com/ca/en/products/oscilloscopes/infiniium-real-time-oscilloscopes/infiniium-uxr-b-series-oscilloscopes.html",
+      "retrieved": "2026-10-08",
+      "note": "제조사 분류 페이지(UXR-B). UXR0504B·UXR0704BP, 110 GHz 까지 업그레이드"
+    },
+    {
+      "url": "https://www.keysight.com/us/en/product/UXR0134B/infiniium-uxr-series-oscilloscope-13-ghz-4-channels.html",
+      "retrieved": "2026-10-08",
+      "note": "검색 결과 발췌. UXR0134B·UXR0334B·UXR1104B 페이지 제목과 샘플링 속도·ADC 비트. 페이지 본문은 열지 않음"
+    }
+  ],
+  "confidence": "limited",
+  "notes": "UXR 는 대역폭·입력 커넥터별로 기종이 많으나(2채널 기종, A 세대 등) 이번 조회에서 확인한 5종만 넣음. 같은 분류의 XR8(XR804KA, 8~33 GHz, 12-bit)은 넣지 않음."
+}

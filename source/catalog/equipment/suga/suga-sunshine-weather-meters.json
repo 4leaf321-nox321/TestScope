@@ -1,0 +1,63 @@
+{
+  "id": "suga-sunshine-weather-meters",
+  "kind": "equipment_series",
+  "name": "Suga Sunshine Carbon Arc Weather Meters and UV Fade Meters (S300 / S80 / S80D / S80-2D, U48 / U48AU)",
+  "name_ko": "스가시험기 선샤인 카본 아크 웨더미터·자외선 페이드미터",
+  "manufacturer": "suga",
+  "brand": "Sunshine Weather Meter",
+  "category": "weathering_tester",
+  "form_factor": "floor",
+  "description": "선샤인 카본 아크(S 계열)와 자외선 카본 아크(U48 계열) 광원의 촉진 내후·내광성 시험기. S300 은 로봇 팔로 카본을 자동 교환해 최대 300시간 연속, S80 은 4쌍 카본으로 약 78시간 연속 점등, S80D 는 듀 사이클(결로) 모델.",
+  "test_items": [
+    "accelerated_weathering"
+  ],
+  "models": [
+    {
+      "model": "S300",
+      "note": "サンシャインウェザーメーター. 로봇 팔 카본 자동 교환, 최대 12일(300시간) 연속"
+    },
+    {
+      "model": "S80",
+      "note": "상하 4쌍 선샤인 카본, 약 78시간 연속 점등"
+    },
+    {
+      "model": "S80D",
+      "note": "결로를 재현하는 듀 사이클 시험 모델"
+    },
+    {
+      "model": "S80-2D",
+      "note": "2조 독립형"
+    },
+    {
+      "model": "MV-S80-2D",
+      "note": "2조 독립형 — 제논·메탈링·선샤인 등 광원 조합"
+    },
+    {
+      "model": "U48AU",
+      "note": "紫外線フェードメーター. 장수명 자외선 카본 아크 램프, 48시간 안정 광"
+    },
+    {
+      "model": "U48",
+      "note": "紫外線フェードメーター. 외기 도입 온도 제어 모델"
+    }
+  ],
+  "relations": [
+    {
+      "type": "simulates_environment",
+      "target": "environment-solar-radiation"
+    },
+    {
+      "type": "same_family_as",
+      "target": "suga-xenon-weather-meters"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://www.sugatest.co.jp/productlist/plistcat/pcat1/%e3%82%b0%e3%83%ad%e3%83%bc%e3%83%90%e3%83%ab%e3%82%b9%e3%82%bf%e3%83%b3%e3%83%80%e3%83%bc%e3%83%89%e8%a9%a6%e9%a8%93%e6%a9%9f/",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 목록(グローバルスタンダード試験機) — 선샤인·자외선 페이드미터 기종명과 한 줄 사양"
+    }
+  ],
+  "confidence": "limited",
+  "notes": "조사 강도·블랙패널 온도 같은 수치 사양은 목록 페이지에 없어 비웠다."
+}

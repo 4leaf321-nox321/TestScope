@@ -1,0 +1,84 @@
+{
+  "id": "keyence-lm-x",
+  "kind": "equipment_series",
+  "name": "LM-X Series Multisensor Measurement System",
+  "name_ko": "키엔스 LM-X 멀티센서 측정기",
+  "manufacturer": "keyence",
+  "category": "coordinate_measuring_machine",
+  "form_factor": "benchtop",
+  "description": "고정밀 화상 측정, 다색 레이저 비접촉 높이 측정, 터치 프로브 접촉 측정을 한 대에 담은 멀티센서 치수 측정기 계열임. LM-X100TL 기준 시야 325 × 175 mm(광시야), 화상 측정 정확도 ±0.7 µm(고정밀 모드), 반복 정밀도 ±0.1 µm(고정밀 모드), XY 전동 스테이지 300 × 150 mm, Z 75 mm, 적재 7 kg.",
+  "test_items": [],
+  "limits": {
+    "field_of_view_mm": {
+      "max": 325,
+      "note": "광시야 325 × 175 mm, 고정밀 306 × 156 mm"
+    },
+    "measuring_repeatability_um": {
+      "min": 0.1,
+      "note": "화상 고정밀 모드 ±0.1 µm"
+    }
+  },
+  "models": [
+    {
+      "model": "LM-X100TL",
+      "variant": "헤드 · 다색 레이저 + 터치 프로브 모델",
+      "specs": {
+        "field_of_view_mm": {
+          "values": [
+            325,
+            175
+          ],
+          "note": "광시야 325 × 175 mm, 고정밀 306 × 156 mm"
+        },
+        "accuracy": "화상 광시야 ±2 µm, 고정밀 ±0.7 µm; 레이저 EUZ,MPE ±(4.8 + 0.04L) µm; 터치 프로브 X/Y ±(2.8 + 0.02L) µm, Z ±(4.8 + 0.04L) µm (2σ)",
+        "measuring_repeatability_um": {
+          "min": 0.1,
+          "max": 1.4,
+          "note": "화상 광시야 ±0.5 µm, 고정밀 ±0.1 µm; 레이저 ±0.6 µm; 터치 프로브 X/Y ±1.4 µm"
+        },
+        "stage_travel_mm": {
+          "values": [
+            300,
+            150,
+            75
+          ],
+          "note": "XY 전동 300 × 150 mm, Z 전동 75 mm"
+        },
+        "table_load_kg": 7,
+        "weight_kg": {
+          "value": 35,
+          "note": "원문 Approx. 35 kg"
+        }
+      }
+    },
+    {
+      "model": "LM-X100L",
+      "variant": "헤드 · 다색 레이저 모델",
+      "note": "기종명은 제조사 기종 페이지 제목에서 확인. 검색 결과 요약상 화상 측정 사양은 LM-X100TL 과 같음(직접 확인 안 함)"
+    },
+    {
+      "model": "LM-X100T",
+      "variant": "헤드 · 터치 프로브 모델",
+      "note": "기종명은 제조사 기종 페이지 제목에서 확인. 사양은 읽지 않음"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://www.keyence.com/products/measure-sys/multisensor-measure/lm-x/models/lm-x100tl/",
+      "retrieved": "2026-10-08",
+      "note": "제조사 기종 페이지(사양표)"
+    },
+    {
+      "url": "https://www.keyence.com/products/measure-sys/multisensor-measure/lm-x/models/lm-x100l/",
+      "retrieved": "2026-10-08",
+      "note": "기종 페이지 주소(검색 결과 제목으로만 확인, 열람 안 함)"
+    },
+    {
+      "url": "https://www.keyence.com/products/measure-sys/multisensor-measure/lm-x/models/lm-x100t/",
+      "retrieved": "2026-10-08",
+      "note": "기종 페이지 주소(검색 결과 제목으로만 확인, 열람 안 함)"
+    }
+  ],
+  "confidence": "limited",
+  "notes": "범주 note: 영상·레이저·접촉 프로브 겸용 치수 측정기라 3차원 측정기 분류에 둠. IM-X1000 계열의 LM-XC100 헤드는 다른 계열이라 넣지 않음."
+}

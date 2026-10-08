@@ -1,0 +1,115 @@
+{
+  "id": "tektronix-mdo4000c",
+  "kind": "equipment_series",
+  "name": "MDO4000C Mixed Domain Oscilloscope",
+  "name_ko": "텍트로닉스 MDO4000C 혼합 도메인 오실로스코프",
+  "manufacturer": "tektronix",
+  "brand": "MDO4000C",
+  "category": "oscilloscope",
+  "subcategory": "mixed_domain_oscilloscope",
+  "form_factor": "benchtop",
+  "description": "200 MHz~1 GHz 대역의 4채널 혼합 도메인 오실로스코프 계열로 스펙트럼 분석기(9 kHz~3 GHz 또는 6 GHz, SA3·SA6 옵션)를 내장함. 레코드 20 M, 옵션 16 디지털 채널, 10.4 inch XGA 화면, 8 bit(Hi Res 11 bit). 단종 — 제조사 권장 대체는 4 Series B MSO.",
+  "test_items": [],
+  "limits": {
+    "bandwidth_Hz": {
+      "min": 200000000,
+      "max": 1000000000
+    },
+    "sample_rate_Sa_s": {
+      "min": 2500000000,
+      "max": 5000000000,
+      "note": "원문 Sample rate (1 ch) 2.5 GS/s, MDO4104C 5 GS/s"
+    },
+    "record_length_pts": {
+      "max": 20000000
+    },
+    "channels": {
+      "values": [
+        4
+      ]
+    },
+    "logic_channel_count": {
+      "values": [
+        16
+      ],
+      "note": "옵션"
+    },
+    "adc_resolution_bit": {
+      "values": [
+        8
+      ],
+      "note": "원문 8 bits (11 bits with Hi Res)"
+    },
+    "display_size_in": {
+      "values": [
+        10.4
+      ]
+    }
+  },
+  "models": [
+    {
+      "model": "MDO4024C",
+      "specs": {
+        "bandwidth_Hz": 200000000,
+        "channels": 4,
+        "logic_channel_count": 16,
+        "sample_rate_Sa_s": 2500000000,
+        "record_length_pts": 20000000,
+        "adc_resolution_bit": 8,
+        "display_size_in": 10.4
+      }
+    },
+    {
+      "model": "MDO4034C",
+      "specs": {
+        "bandwidth_Hz": 350000000,
+        "channels": 4,
+        "logic_channel_count": 16,
+        "sample_rate_Sa_s": 2500000000,
+        "record_length_pts": 20000000,
+        "adc_resolution_bit": 8,
+        "display_size_in": 10.4
+      }
+    },
+    {
+      "model": "MDO4054C",
+      "specs": {
+        "bandwidth_Hz": 500000000,
+        "channels": 4,
+        "logic_channel_count": 16,
+        "sample_rate_Sa_s": 2500000000,
+        "record_length_pts": 20000000,
+        "adc_resolution_bit": 8,
+        "display_size_in": 10.4
+      }
+    },
+    {
+      "model": "MDO4104C",
+      "specs": {
+        "bandwidth_Hz": 1000000000,
+        "channels": 4,
+        "logic_channel_count": 16,
+        "sample_rate_Sa_s": 5000000000,
+        "record_length_pts": 20000000,
+        "adc_resolution_bit": 8,
+        "display_size_in": 10.4
+      }
+    }
+  ],
+  "features": [
+    "스펙트럼 분석기 내장(9 kHz~3 GHz / 6 GHz 옵션)"
+  ],
+  "sources": [
+    {
+      "url": "https://www.tek.com/en/products/oscilloscopes/mdo4000c",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지. \"This product has been discontinued. The 4 Series B MSO is the recommended replacement.\""
+    },
+    {
+      "url": "https://www.tek.com/en/datasheet/mixed-domain-oscilloscopes-0",
+      "retrieved": "2026-10-08",
+      "note": "제조사 HTML 데이터시트. 기종 표(대역폭, Sample rate (1 ch), Record length 20 M, digital 16(옵션), SA 9 kHz - 3 GHz/6 GHz), 10.4 in. XGA, 8 bits (11 bits with Hi Res). \"no longer being sold\""
+    }
+  ],
+  "confidence": "limited"
+}

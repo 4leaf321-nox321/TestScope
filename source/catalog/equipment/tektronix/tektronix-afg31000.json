@@ -1,0 +1,276 @@
+{
+  "id": "tektronix-afg31000",
+  "kind": "equipment_series",
+  "name": "Tektronix AFG31000 Series Arbitrary Function Generators",
+  "name_ko": "텍트로닉스 AFG31000 임의 함수 발생기",
+  "manufacturer": "tektronix",
+  "brand": "AFG31000",
+  "category": "signal_generator",
+  "subcategory": "function_arbitrary_waveform",
+  "description": "임의파형 생성을 내장한 함수 발생기 계열. 출력 주파수 25·50·100·150·250 MHz, 1채널·2채널, 샘플 속도 250 MS/s~2 GS/s, 14비트, 레코드 길이 채널당 16 Mpts(옵션 최대 128 Mpts), 진폭 1 mVp-p~10 Vp-p(50 Ω)다. DUT 에 걸린 실제 파형을 화면에 보여 주는 InstaView, 9인치 터치스크린, ArbBuilder 파형 편집, MOSFET·IGBT 이중 펄스 시험 소프트웨어, 여러 대 동기화를 갖춘다.",
+  "test_items": [],
+  "limits": {
+    "output_frequency_Hz": {
+      "max": 250000000,
+      "note": "데이터시트 기종표: 사인파 25·50·100·150·250 MHz(연속 모드). 하한은 추출 텍스트에서 단위 기호가 깨져 넣지 않았다"
+    },
+    "channels": {
+      "values": [
+        1,
+        2
+      ]
+    },
+    "sample_rate_Sa_s": {
+      "min": 250000000,
+      "max": 2000000000,
+      "note": "데이터시트: AFG3102x 250 MSa/s, AFG3105x 500 MSa/s, AFG3110x 1 GSa/s, AFG3115x·AFG3125x 2 GSa/s(Advanced 모드 가변 샘플 속도 1 Sa/s 부터)"
+    },
+    "dac_resolution_bit": {
+      "values": [
+        14
+      ]
+    },
+    "output_voltage_V": {
+      "min": 0.001,
+      "max": 10,
+      "note": "데이터시트 진폭(50 Ω 부하): AFG3102x~AFG3110x ≤60 MHz 1 mVp-p~10 Vp-p(~80 MHz 8, ~100 MHz 6 Vp-p), AFG3115x·AFG3125x ≤200 MHz 1 mVp-p~5 Vp-p(~250 MHz 4 Vp-p). 개방·High-Z 는 두 배(20/10 Vp-p)"
+    },
+    "waveform_memory_pts": {
+      "values": [
+        16000000,
+        128000000
+      ],
+      "note": "데이터시트: 채널당 16 Mpts, 옵션 128 Mpts(Advanced 모드). Basic 모드 임의파형 길이는 2~131,072 점"
+    },
+    "phase_noise_dBc_Hz": {
+      "values": [
+        -125
+      ],
+      "note": "20 MHz 반송파, 10 kHz 오프셋, 1 Vp-p, typ.(데이터시트)"
+    }
+  },
+  "models": [
+    {
+      "model": "AFG31021",
+      "specs": {
+        "output_frequency_Hz": {
+          "max": 25000000
+        },
+        "channels": 1,
+        "sample_rate_Sa_s": 250000000,
+        "dac_resolution_bit": 14,
+        "waveform_memory_pts": 16000000,
+        "output_voltage_V": {
+          "min": 0.001,
+          "max": 10,
+          "note": "50 Ω, ≤60 MHz 10 Vp-p"
+        },
+        "interfaces": "GPIB, Ethernet(10/100/1000BASE-T), USB 2.0"
+      }
+    },
+    {
+      "model": "AFG31022",
+      "specs": {
+        "output_frequency_Hz": {
+          "max": 25000000
+        },
+        "channels": 2,
+        "sample_rate_Sa_s": 250000000,
+        "dac_resolution_bit": 14,
+        "waveform_memory_pts": 16000000,
+        "output_voltage_V": {
+          "min": 0.001,
+          "max": 10,
+          "note": "50 Ω, ≤60 MHz 10 Vp-p"
+        },
+        "interfaces": "GPIB, Ethernet(10/100/1000BASE-T), USB 2.0"
+      }
+    },
+    {
+      "model": "AFG31051",
+      "specs": {
+        "output_frequency_Hz": {
+          "max": 50000000
+        },
+        "channels": 1,
+        "sample_rate_Sa_s": 500000000,
+        "dac_resolution_bit": 14,
+        "waveform_memory_pts": 16000000,
+        "output_voltage_V": {
+          "min": 0.001,
+          "max": 10,
+          "note": "50 Ω, ≤60 MHz 10 Vp-p"
+        },
+        "interfaces": "GPIB, Ethernet(10/100/1000BASE-T), USB 2.0"
+      }
+    },
+    {
+      "model": "AFG31052",
+      "specs": {
+        "output_frequency_Hz": {
+          "max": 50000000
+        },
+        "channels": 2,
+        "sample_rate_Sa_s": 500000000,
+        "dac_resolution_bit": 14,
+        "waveform_memory_pts": 16000000,
+        "output_voltage_V": {
+          "min": 0.001,
+          "max": 10,
+          "note": "50 Ω, ≤60 MHz 10 Vp-p"
+        },
+        "interfaces": "GPIB, Ethernet(10/100/1000BASE-T), USB 2.0"
+      }
+    },
+    {
+      "model": "AFG31101",
+      "specs": {
+        "output_frequency_Hz": {
+          "max": 100000000
+        },
+        "channels": 1,
+        "sample_rate_Sa_s": 1000000000,
+        "dac_resolution_bit": 14,
+        "waveform_memory_pts": 16000000,
+        "output_voltage_V": {
+          "min": 0.001,
+          "max": 10,
+          "note": "50 Ω, ≤60 MHz 10 Vp-p"
+        },
+        "interfaces": "GPIB, Ethernet(10/100/1000BASE-T), USB 2.0"
+      }
+    },
+    {
+      "model": "AFG31102",
+      "specs": {
+        "output_frequency_Hz": {
+          "max": 100000000
+        },
+        "channels": 2,
+        "sample_rate_Sa_s": 1000000000,
+        "dac_resolution_bit": 14,
+        "waveform_memory_pts": 16000000,
+        "output_voltage_V": {
+          "min": 0.001,
+          "max": 10,
+          "note": "50 Ω, ≤60 MHz 10 Vp-p"
+        },
+        "interfaces": "GPIB, Ethernet(10/100/1000BASE-T), USB 2.0"
+      }
+    },
+    {
+      "model": "AFG31151",
+      "specs": {
+        "output_frequency_Hz": {
+          "max": 150000000
+        },
+        "channels": 1,
+        "sample_rate_Sa_s": 2000000000,
+        "dac_resolution_bit": 14,
+        "waveform_memory_pts": 16000000,
+        "output_voltage_V": {
+          "min": 0.001,
+          "max": 5,
+          "note": "50 Ω, ≤200 MHz 5 Vp-p(~250 MHz 4 Vp-p)"
+        },
+        "interfaces": "GPIB, Ethernet(10/100/1000BASE-T), USB 2.0"
+      }
+    },
+    {
+      "model": "AFG31152",
+      "specs": {
+        "output_frequency_Hz": {
+          "max": 150000000
+        },
+        "channels": 2,
+        "sample_rate_Sa_s": 2000000000,
+        "dac_resolution_bit": 14,
+        "waveform_memory_pts": 16000000,
+        "output_voltage_V": {
+          "min": 0.001,
+          "max": 5,
+          "note": "50 Ω, ≤200 MHz 5 Vp-p(~250 MHz 4 Vp-p)"
+        },
+        "interfaces": "GPIB, Ethernet(10/100/1000BASE-T), USB 2.0"
+      }
+    },
+    {
+      "model": "AFG31251",
+      "specs": {
+        "output_frequency_Hz": {
+          "max": 250000000
+        },
+        "channels": 1,
+        "sample_rate_Sa_s": 2000000000,
+        "dac_resolution_bit": 14,
+        "waveform_memory_pts": 16000000,
+        "output_voltage_V": {
+          "min": 0.001,
+          "max": 5,
+          "note": "50 Ω, ≤200 MHz 5 Vp-p(~250 MHz 4 Vp-p)"
+        },
+        "interfaces": "GPIB, Ethernet(10/100/1000BASE-T), USB 2.0"
+      }
+    },
+    {
+      "model": "AFG31252",
+      "specs": {
+        "output_frequency_Hz": {
+          "max": 250000000
+        },
+        "channels": 2,
+        "sample_rate_Sa_s": 2000000000,
+        "dac_resolution_bit": 14,
+        "waveform_memory_pts": 16000000,
+        "output_voltage_V": {
+          "min": 0.001,
+          "max": 5,
+          "note": "50 Ω, ≤200 MHz 5 Vp-p(~250 MHz 4 Vp-p)"
+        },
+        "interfaces": "GPIB, Ethernet(10/100/1000BASE-T), USB 2.0"
+      }
+    }
+  ],
+  "features": [
+    "InstaView(DUT 실제 파형 표시)",
+    "9인치 터치스크린",
+    "ArbBuilder 파형 생성·편집",
+    "이중 펄스 시험(MOSFET·IGBT) 소프트웨어",
+    "잡음·지터 이전 세대 대비 10배 개선(원문)",
+    "여러 대 동기화로 채널 확장"
+  ],
+  "relations": [
+    {
+      "type": "same_family_as",
+      "target": "tektronix-afg1000"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://www.tek.com/en/products/signal-generators/arbitrary-function-generator/afg31000",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지. 기종 표(채널, 출력 주파수, 샘플 속도, 분해능, 레코드 길이)와 진폭"
+    },
+    {
+      "url": "https://www.tek.com/en/products/signal-generators/arbitrary-function-generator/afg3000",
+      "retrieved": "2026-10-08",
+      "note": "제조사 AFG3000C 페이지. 단종 안내와 AFG31000 교체 권장 문구만 확인"
+    },
+    {
+      "file": "tektronix/afg31000-datasheet-en-us-75w-61444-3.pdf",
+      "pages": [
+        1,
+        6,
+        7,
+        8,
+        11,
+        13,
+        14,
+        15
+      ],
+      "note": "제조사 데이터시트. 기종표(채널·사인파 주파수), 진폭·오프셋(기종별), 샘플 속도, 14 bit, 파형 메모리, 위상 잡음, 원격 인터페이스"
+    }
+  ],
+  "confidence": "catalog",
+  "notes": "제조사 페이지가 AFG3000C 를 단종으로 적고 이 계열로의 교체를 권한다. PDF 로 확인: 기종별 주파수·채널·샘플 속도, 14 bit, 메모리 16/128 Mpts, 진폭 범위. 진폭 10 Vp-p 는 25~100 MHz 기종 값이고 150·250 MHz 기종은 5 Vp-p(50 Ω) 라 기종 specs 에 나눠 적었다."
+}

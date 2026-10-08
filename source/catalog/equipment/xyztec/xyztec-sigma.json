@@ -1,0 +1,244 @@
+{
+  "id": "xyztec-sigma",
+  "kind": "equipment_series",
+  "name": "XYZTEC Sigma Bond Tester Series (Sigma / Sigma Lite / Sigma W8 / Sigma W12 / Sigma MAG / Sigma HF / Sigma EFEM)",
+  "name_ko": "XYZTEC Sigma 본드 테스터 계열",
+  "manufacturer": "xyztec",
+  "brand": "Sigma",
+  "category": "bond_tester",
+  "form_factor": "benchtop",
+  "description": "반도체 · 마이크로전자 접합부(와이어 본드 · 솔더 · 다이 부착 · 범프 등)를 전단 · 인장 · 박리 · 푸시로 시험하는 본드 테스터 계열. 회전식 측정 유닛(RMU)에 센서를 최대 6개 달아 끊김 없이 최대 200 kgf 까지 시험하고(Sigma), 정확도 0.075 %, 24 bit ADC, 10 kHz 샘플링, 전단 높이 정확도 ±1 µm, 착지력 2.5 gf 까지를 낸다(설명서 기준, 웹 페이지는 5 gf). Sigma Lite 는 보급형(0.2 %, 16 bit, 2 kHz), Sigma W8 · W12 는 4~8인치 · 2~12인치 웨이퍼용(1 gf~10 kgf), Sigma MAG 는 매거진 핸들러(X 600 mm), Sigma HF 는 1000 kgf 고하중 · 대면적(파워 모듈 · 배터리)이다.",
+  "test_items": [
+    "wire_bond_strength"
+  ],
+  "measurands": [
+    "shear_force",
+    "pull_force",
+    "failure_mode"
+  ],
+  "materials": [
+    "wire bonds",
+    "solder joints",
+    "die attach",
+    "bumps",
+    "lead frames",
+    "IGBT modules",
+    "power modules",
+    "battery"
+  ],
+  "limits": {
+    "shear_force_kgf": {
+      "min": 0.001,
+      "max": 1000,
+      "note": "Sigma HF 최대 1000 kgf. Sigma 는 RMU 연속 시험 최대 200 kgf. W8 · W12 는 'Force range 1 gf – 10 kgf'(시험 종류 구분 없음)"
+    },
+    "stage_travel_mm": {
+      "max": 600,
+      "note": "Sigma MAG X 600 mm. Sigma X 370 / Y 168 / Z 168 mm"
+    },
+    "wafer_size_mm": {
+      "max": 300,
+      "note": "Sigma W12 2~12인치(300 mm), W8 4~8인치(200 mm)"
+    },
+    "data_rate_Hz": {
+      "max": 10000,
+      "note": "샘플링 주파수. Sigma Lite 2 kHz"
+    },
+    "position_resolution_nm": {
+      "min": 10,
+      "note": "리니어 엔코더 분해능. Sigma HF 10 nm, 나머지 30 nm"
+    }
+  },
+  "models": [
+    {
+      "model": "Sigma",
+      "specs": {
+        "stage_travel_mm": "X 370 / Y 168 / Z 168",
+        "measuring_speed_mm_s": 50,
+        "position_resolution_nm": 30,
+        "accuracy": "0.075 %(설명서 p.6)",
+        "data_rate_Hz": 10000,
+        "footprint_mm": "620 × 558 × 608 (X × Y × H)",
+        "weight_kg": {
+          "value": 80,
+          "note": "원문 '±80 kg'(웹), 설명서 p.6 Weight 80 kg"
+        },
+        "shear_force_kgf": {
+          "max": 200,
+          "note": "원문 Max. shear force 200 kgf. 센서 범위 100 gf, 1 kgf, 10 kgf, 100 kgf, 200 kgf(설명서 p.6)"
+        },
+        "pull_force_kgf": {
+          "max": 200,
+          "note": "원문 Max. pull force 200 kgf(설명서 p.6)"
+        }
+      },
+      "note": "ADC 분해능(bit): 24; 전단 높이 정확도(±µm): 1(웹); 최소 착지력(gf): 2.5(설명서 p.6. 웹 페이지는 5 gf); 훅 동심도 10 µm(설명서); 회전식 측정 유닛(RMU): 센서 최대 6개, 연속 시험 최대 200 kgf, pull · peel · push · shear 공구 구성. 설명서 p.6 로 확인: 축 X 370 / Y 168 / Z 168 mm, 축 속도 50 mm/s, 엔코더 분해능 30 nm, 외형 620 × 558 × 608 mm, 80 kg"
+    },
+    {
+      "model": "Sigma Lite",
+      "specs": {
+        "stage_travel_mm": "X 168 / Y 168 / Z 168",
+        "measuring_speed_mm_s": 5,
+        "position_resolution_nm": 30,
+        "accuracy": "0.2 %",
+        "data_rate_Hz": 2000,
+        "footprint_mm": "620 × 558 × 608",
+        "weight_kg": 80
+      },
+      "note": "Sigma 로 업그레이드 가능한 보급형; ADC 분해능(bit): 16; 전단 높이 정확도(±µm): 1; 최소 착지력(gf): 5"
+    },
+    {
+      "model": "Sigma W8",
+      "specs": {
+        "wafer_size_mm": {
+          "min": 100,
+          "max": 200,
+          "note": "원문 4″ – 8″"
+        },
+        "stage_travel_mm": "X 370 / Y 370 / Z 168",
+        "measuring_speed_mm_s": 50,
+        "position_resolution_nm": 30,
+        "accuracy": "0.075 %",
+        "data_rate_Hz": 10000,
+        "footprint_mm": "620 × 935 × 608",
+        "weight_kg": {
+          "value": 100,
+          "note": "원문 '±100 kg'"
+        }
+      },
+      "note": "시험력 범위: 1 gf – 10 kgf; 최소 범프 피치(µm): 50; ADC 분해능(bit): 24"
+    },
+    {
+      "model": "Sigma W12",
+      "specs": {
+        "wafer_size_mm": {
+          "min": 50,
+          "max": 300,
+          "note": "원문 2″ – 12″ (up to 300 mm)"
+        },
+        "stage_travel_mm": "X 500 / Y 370 / Z 90",
+        "measuring_speed_mm_s": 50,
+        "position_resolution_nm": 30,
+        "accuracy": "0.075 %",
+        "data_rate_Hz": 10000,
+        "footprint_mm": "1300 × 935 × 608",
+        "weight_kg": {
+          "value": 100,
+          "note": "원문 '±100 kg'"
+        }
+      },
+      "note": "Cold Bump Pull(CBP), 휜 웨이퍼용 리프트 핀, EFEM 연동; 시험력 범위: 1 gf – 10 kgf; 최소 범프 피치(µm): 20; ADC 분해능(bit): 24"
+    },
+    {
+      "model": "Sigma MAG",
+      "specs": {
+        "stage_travel_mm": "X 600 / Y 168 / Z 168",
+        "measuring_speed_mm_s": 50,
+        "position_resolution_nm": 30,
+        "accuracy": "0.075 %",
+        "data_rate_Hz": 10000,
+        "sample_size_mm": "리드프레임 최대 100 × 240",
+        "footprint_mm": "1800 × 900 × 1100",
+        "weight_kg": {
+          "value": 160,
+          "note": "원문 '±160 kg'"
+        }
+      },
+      "note": "매거진 · 카세트 · 보트 핸들러; ADC 분해능(bit): 24"
+    },
+    {
+      "model": "Sigma HF",
+      "specs": {
+        "shear_force_kgf": {
+          "max": 1000
+        },
+        "stage_travel_mm": "X 500 / Y 500 / Z 200",
+        "measuring_speed_mm_s": 250,
+        "position_resolution_nm": 10,
+        "accuracy": "1 %",
+        "data_rate_Hz": 10000,
+        "footprint_mm": "1250 × 1250 × 2500",
+        "weight_kg": {
+          "value": 1750,
+          "note": "원문 '±1750 kg'"
+        }
+      },
+      "note": "IGBT · 파워 모듈 · 배터리용. SEMI S2 안전 캐비닛; ADC 분해능(bit): 24; 깊이 접근(mm): 80. 설명서 p.85 는 Sigma HF 축의 절대 최대 위치를 X 600 · Y 600 · Z 200 mm 로 적음(웹 사양 X 500 · Y 500 · Z 200 과 다름 — 소프트웨어 위치 한계라 사양 값은 그대로 둠)"
+    },
+    {
+      "model": "Sigma EFEM",
+      "note": "웨이퍼 · 패널 핸들러. 제품 목록에 'Handler for wafers and panels' 로만 확인, 사양 페이지는 열지 않음"
+    }
+  ],
+  "test_modes": [
+    "전단(shear)",
+    "인장(pull)",
+    "박리(peel)",
+    "푸시(push)",
+    "Cold Bump Pull (Sigma W12)"
+  ],
+  "features": [
+    "회전식 측정 유닛(RMU) — 센서 최대 6개",
+    "디지털 온도 보정",
+    "백래시 없는 리니어 엔코더",
+    "프로그래머블 착지력 2.5 gf 까지(설명서 p.6, 웹 페이지는 5 gf)",
+    "비전 · 딥러닝 · 자동 등급 판정 자동화"
+  ],
+  "relations": [
+    {
+      "type": "performs",
+      "target": "wire_bond_strength"
+    },
+    {
+      "type": "same_family_as",
+      "target": "nordson-dage-4000plus-bondtester"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://www.xyztec.com/products/sigma/",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지(Sigma)"
+    },
+    {
+      "url": "https://www.xyztec.com/products/sigma-lite/",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지(Sigma Lite)"
+    },
+    {
+      "url": "https://www.xyztec.com/products/sigma-w8/",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지(Sigma W8)"
+    },
+    {
+      "url": "https://www.xyztec.com/products/sigma-w12/",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지(Sigma W12)"
+    },
+    {
+      "url": "https://www.xyztec.com/products/sigma-mag/",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지(Sigma MAG)"
+    },
+    {
+      "url": "https://www.xyztec.com/products/sigma-hf/",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지(Sigma HF). 제품 목록은 sigma-hf-l 로 잇는다"
+    },
+    {
+      "url": "https://www.xyztec.com/products/",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 목록(Sigma EFEM 확인)"
+    },
+    {
+      "file": "xyztec/manual_sigma_02-2026_tuv.pdf",
+      "pages": [
+        6,
+        85,
+        96
+      ]
+    }
+  ],
+  "notes": "PDF(Sigma 설명서 02-2026, p.6 기계 사양)로 확인: Sigma 의 최대 전단·인장 200 kgf, 센서 범위, 정확도 0.075 %, 24 bit, 엔코더 30 nm, 축 이동·속도, 외형·무게. PDF 로 바꾼 값: 최소 착지력 2.5 gf(웹 5 gf). 웹 값 그대로: Sigma Lite · W8 · W12 · MAG · HF · EFEM 의 사양(설명서는 적합성 선언 p.96 에 기종명만 적음), 샘플링 10 kHz. 센서별 하중 범위(카트리지 목록)는 Sigma 페이지에 없다. 구형 Condor 계열(Condor EZ · 70 · 100 · 150 · 250)은 현행 제품 목록에 없고 페이지가 404 라 넣지 않았다.",
+  "confidence": "limited"
+}

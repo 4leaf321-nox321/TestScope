@@ -1,0 +1,103 @@
+{
+  "id": "imv-a-series-shaker",
+  "kind": "equipment_series",
+  "name": "IMV A-Series High-grade Vibration Test Systems",
+  "name_ko": "IMV A 시리즈 하이그레이드 진동 시험 장치",
+  "manufacturer": "imv",
+  "brand": "A-series",
+  "category": "vibration_shaker",
+  "form_factor": "floor",
+  "description": "주파수·속도·변위를 고르게 갖춘 범용 진동 시험 장치 계열. 수송 시험, 고가속도 내구 시험, 고속도 충격 시험까지 덮는다. 제조사 개요 기준 가진력 11~74 kN, 최대 탑재 질량 200~1,000 kg. A30·A45·A65·A74 는 76.2 mm p-p(3인치 스트로크)를 쓴다. HAG 형 파워 앰프 모듈을 표준으로 달고, 기준 조건 작성 도구(Launcher)와 웹 브라우저 원격 감시(System Monitor), 전 가진 영역 절전 기능을 갖춘다.",
+  "test_items": [
+    "vibration_sine_random",
+    "mechanical_shock"
+  ],
+  "measurands": [
+    "resonance_frequency",
+    "transmissibility",
+    "fatigue_life"
+  ],
+  "materials": [
+    "automotive components",
+    "aerospace equipment",
+    "precision instruments",
+    "electronic products",
+    "railway systems",
+    "batteries",
+    "fuel cells"
+  ],
+  "limits": {
+    "force_kN": {
+      "min": 11,
+      "max": 74,
+      "note": "제조사 진동 시험기 개요 페이지 표기 11kN～74kN. 기종별 정격은 페이지에 없음"
+    },
+    "payload_kg": {
+      "min": 200,
+      "max": 1000,
+      "note": "개요 페이지 200～1,000kg"
+    },
+    "stroke_mm_pk_pk": {
+      "values": [
+        76.2
+      ],
+      "note": "A30·A45·A65·A74 만(원문 ※A30、A45、A65、A74のみ対応)"
+    }
+  },
+  "models": [
+    {
+      "model": "A30",
+      "specs": {
+        "stroke_mm_pk_pk": 76.2
+      }
+    },
+    {
+      "model": "A45",
+      "specs": {
+        "stroke_mm_pk_pk": 76.2
+      }
+    },
+    {
+      "model": "A65",
+      "specs": {
+        "stroke_mm_pk_pk": 76.2
+      }
+    },
+    {
+      "model": "A74",
+      "specs": {
+        "stroke_mm_pk_pk": 76.2
+      }
+    }
+  ],
+  "features": [
+    "HAG 형 파워 앰프 모듈",
+    "Launcher(규격 기반 시험 조건 작성)",
+    "System Monitor(웹 브라우저 원격 감시)",
+    "전 가진 영역 절전 기능"
+  ],
+  "relations": [
+    {
+      "type": "performs",
+      "target": "vibration_sine_random"
+    },
+    {
+      "type": "same_family_as",
+      "target": "imv-i-series-shaker"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://we-are-imv.com/business/products/item/vibrationtest-aseries/",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지(일본어). 기종명 A30·A45·A65·A74 와 76.2 mm p-p"
+    },
+    {
+      "url": "https://we-are-imv.com/business/products/vibrationtest/",
+      "retrieved": "2026-10-08",
+      "note": "제조사 진동 시험기 개요. 계열별 가진력·탑재 질량 범위"
+    }
+  ],
+  "confidence": "limited",
+  "notes": "사양 표 페이지(specifications-aseries)는 표가 스크립트로 그려져 조회 도구가 값을 읽지 못했다. 76.2 mm p-p 를 쓰지 않는 다른 A 기종 이름은 확인하지 못했다."
+}

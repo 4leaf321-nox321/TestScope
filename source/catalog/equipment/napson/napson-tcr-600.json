@@ -1,0 +1,64 @@
+{
+  "id": "napson-tcr-600",
+  "kind": "equipment_model",
+  "name": "NAPSON TCR-600 High-Temperature 4-Point Probe Resistivity Meter",
+  "name_ko": "냅슨 TCR-600 고온 4탐침 저항률 측정기",
+  "manufacturer": "napson",
+  "category": "electrical_property_tester",
+  "subcategory": "four_point_probe",
+  "description": "온도 조절 기능이 있는 고온 대응 4탐침 저항률 측정기. 실온부터 최대 600 °C 까지 단계별 자동 측정. 진공 제어, 불활성 가스 치환 제어, 가열 스테이지, 수랭 칠러, 온도계, 가스 유량계, 진공계로 구성된다. 시료는 φ10 mm 또는 5×10 mm～35×35 mm(챔버 안). 최대 120 °C 반자동 매핑·다점 측정 사양은 주문형.",
+  "test_items": [
+    "electrical_transport"
+  ],
+  "measurands": [
+    "electrical.resistivity_volume",
+    "electrical.temperature_coefficient_resistance"
+  ],
+  "materials": [
+    "silicon",
+    "polysilicon",
+    "SiC",
+    "metal films",
+    "ITO"
+  ],
+  "limits": {
+    "resistivity_ohm_cm": {
+      "min": 1e-05,
+      "max": 100000.0,
+      "note": "원문 10μ～100kΩ・cm"
+    },
+    "temperature_degC": {
+      "max": 600,
+      "note": "실온～최대 600 °C, 단계별 자동 측정"
+    },
+    "sample_size_mm": {
+      "min": 5,
+      "max": 35,
+      "note": "φ10 mm 또는 5×10 mm～35×35 mm. 그 밖의 크기는 상담"
+    }
+  },
+  "models": [
+    {
+      "model": "TCR-600",
+      "specs": {
+        "resistivity_ohm_cm": {
+          "min": 1e-05,
+          "max": 100000.0
+        },
+        "temperature_degC": {
+          "max": 600
+        },
+        "principle": "4탐침법, 진공·불활성 가스 분위기 가열"
+      }
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://www.napson.co.jp/products/contact/manual/product02/",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지 TCR-600. 제조사 제품 페이지(일본어 HTML). 같은 페이지의 「電気抵抗測定の測定原理」 다운로드는 PDF 직링크가 아니라 신청 양식(form.napson.co.jp/form/form_download)이라 열지 않음"
+    }
+  ],
+  "confidence": "limited",
+  "notes": "외형 치수·무게, 승온 속도는 페이지에 없음."
+}

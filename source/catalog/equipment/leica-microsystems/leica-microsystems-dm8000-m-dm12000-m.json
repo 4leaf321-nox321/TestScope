@@ -1,0 +1,66 @@
+{
+  "id": "leica-microsystems-dm8000-m-dm12000-m",
+  "kind": "equipment_series",
+  "name": "Leica DM8000 M / DM12000 M Optical Inspection Microscopes",
+  "name_ko": "라이카 DM8000 M·DM12000 M 웨이퍼 검사 현미경",
+  "manufacturer": "leica-microsystems",
+  "category": "optical_microscope",
+  "subcategory": "semiconductor_inspection_microscope",
+  "form_factor": "benchtop",
+  "description": "반도체·웨이퍼 같은 재료를 빠르게 검사·분석하는 반사 현미경. DM8000 M 은 8인치, DM12000 M 은 12인치 웨이퍼용. 명시야·암시야·편광·미분간섭·형광·적외 관찰, 가시광·UV 일체 LED 조명(UV 로 분해능 향상), 0.7x 매크로 대물렌즈(약 36 mm 시야), Plan Fluotar 20x·50x·100x, 모든 대비법을 쓰는 150x VIS-UV 대물렌즈. 전동형은 노즈피스·조명·대비가 자동이고 클린룸용 밀폐 설계, 수동형도 있다. 시료 높이 42 mm(그 이상은 「material」 입사광 축과 스테이지 인서트).",
+  "test_items": [
+    "microscopy"
+  ],
+  "limits": {
+    "wafer_size_mm": {
+      "values": [
+        200,
+        300
+      ],
+      "note": "원문 8-inch / 12-inch. 200 mm·300 mm 로 적음"
+    },
+    "specimen_height_mm": {
+      "max": 42
+    },
+    "magnification": {
+      "min": 0.7,
+      "max": 150,
+      "note": "대물렌즈 배율"
+    }
+  },
+  "models": [
+    {
+      "model": "DM8000 M",
+      "specs": {
+        "wafer_size_mm": {
+          "max": 200
+        },
+        "specimen_height_mm": {
+          "max": 42
+        },
+        "observation_methods": "BF, DF, POL, DIC, Fluo, IR"
+      }
+    },
+    {
+      "model": "DM12000 M",
+      "specs": {
+        "wafer_size_mm": {
+          "max": 300
+        },
+        "specimen_height_mm": {
+          "max": 42
+        },
+        "observation_methods": "BF, DF, POL, DIC, Fluo, IR"
+      }
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://www.leica-microsystems.com/products/light-microscopes/upright-microscopes/p/dm8000-12000/",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지(HTML, leica-microsystems.com) DM8000 M & DM12000 M(DM8000 M 주소에서 넘어옴)"
+    }
+  ],
+  "confidence": "limited",
+  "notes": "스테이지 이동량은 페이지에 없음."
+}

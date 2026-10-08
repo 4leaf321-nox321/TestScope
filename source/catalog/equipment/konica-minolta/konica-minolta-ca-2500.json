@@ -1,0 +1,171 @@
+{
+  "id": "konica-minolta-ca-2500",
+  "kind": "equipment_series",
+  "name": "Konica Minolta CA-2500 2D Color Analyzer",
+  "name_ko": "코니카미놀타 CA-2500 2D 컬러 아날라이저",
+  "manufacturer": "konica-minolta",
+  "brand": "CA",
+  "category": "imaging_colorimeter",
+  "form_factor": "camera",
+  "description": "2/3 인치 흑백 CCD(1,000 × 1,000 화소)로 디스플레이 면의 휘도·색도 분포를 한 번에 재는 2D 컬러 아날라이저. 측정점 980 × 980(490 × 490, 196 × 196 선택), 휘도 0.05 ~ 100,000 cd/m², 휘도 확도 ±3 %, 색도 확도 ±0.005. 표준 · 광각 · 망원 렌즈와 접사 링을 바꿔 쓴다. 측정 시간은 단발 약 5 s 부터 256 회 적산 약 80 s.",
+  "test_items": [
+    "photometry_colorimetry"
+  ],
+  "measurands": [
+    "luminance",
+    "chromaticity",
+    "uniformity"
+  ],
+  "limits": {
+    "luminance_cd_m2": {
+      "min": 0.05,
+      "max": 100000
+    },
+    "resolution_pixels": {
+      "max": 1000000,
+      "note": "CCD 1,000 × 1,000, 측정점 980 × 980"
+    }
+  },
+  "models": [
+    {
+      "model": "CA-2500",
+      "specs": {
+        "detector": "CCD image sensor (monochrome), 2/3-inch",
+        "detector_pixels": "1000 × 1000",
+        "resolution_pixels": 1000000,
+        "luminance_cd_m2": {
+          "min": 0.05,
+          "max": 100000
+        },
+        "luminance_accuracy_pct": 3,
+        "chromaticity_accuracy_xy": 0.005,
+        "measurement_time_s": {
+          "min": 5,
+          "max": 80
+        },
+        "interfaces": "USB 2.0 or higher",
+        "repeatability_pct": {
+          "value": 0.5,
+          "note": "휘도 2σ(196 × 196, 64 회 적산). 색도 반복도 0.001"
+        },
+        "weight_kg": {
+          "value": 3.5,
+          "note": "표준 렌즈 · 렌즈 후드 장착 시 약 3.5 kg"
+        }
+      },
+      "note": "본체 공통 사양. 휘도 범위: 표준 · 광각 렌즈 0.05 ~ 100,000 cd/m², 망원 렌즈 0.25 ~, 망원 + 저배율 접사 링 0.25 ~, 망원 + 고배율 접사 링 0.5 ~(PDF). 측정 시간: 단발 약 5 s, 4 회 적산 약 6 s, 16 회 약 10 s, 64 회 약 25 s, 256 회 약 80 s(어두운 대상은 더 길어짐). 화소 간 오차 휘도 ±2 %(색도 ±0.002)"
+    },
+    {
+      "model": "CA-2500S",
+      "variant": "with standard lens",
+      "specs": {
+        "detector": "CCD image sensor (monochrome), 2/3-inch",
+        "detector_pixels": "1000 × 1000",
+        "resolution_pixels": 1000000,
+        "luminance_cd_m2": {
+          "min": 0.05,
+          "max": 100000
+        },
+        "luminance_accuracy_pct": 3,
+        "chromaticity_accuracy_xy": 0.005,
+        "measurement_distance_mm": {
+          "min": 250,
+          "note": "최소 거리. 측정 크기 약 98 mm / 250 mm, 210 mm / 500 mm, 440 mm / 1,000 mm, 890 mm / 2,000 mm"
+        },
+        "interfaces": "USB 2.0 or higher"
+      }
+    },
+    {
+      "model": "CA-2500W",
+      "variant": "with wide lens",
+      "specs": {
+        "detector": "CCD image sensor (monochrome), 2/3-inch",
+        "detector_pixels": "1000 × 1000",
+        "resolution_pixels": 1000000,
+        "luminance_cd_m2": {
+          "min": 0.05,
+          "max": 100000
+        },
+        "luminance_accuracy_pct": 3,
+        "chromaticity_accuracy_xy": 0.005,
+        "measurement_distance_mm": {
+          "min": 200,
+          "note": "최소 거리. 측정 크기 약 145 mm / 200 mm, 410 mm / 500 mm, 850 mm / 1,000 mm, 1,770 mm / 2,000 mm"
+        },
+        "interfaces": "USB 2.0 or higher"
+      }
+    },
+    {
+      "model": "CA-2500T",
+      "variant": "with telephoto lens",
+      "specs": {
+        "detector": "CCD image sensor (monochrome), 2/3-inch",
+        "detector_pixels": "1000 × 1000",
+        "resolution_pixels": 1000000,
+        "luminance_cd_m2": {
+          "min": 0.25,
+          "max": 100000
+        },
+        "luminance_accuracy_pct": 3,
+        "chromaticity_accuracy_xy": 0.005,
+        "measurement_distance_mm": {
+          "min": 900,
+          "note": "망원 렌즈 최소 거리. 측정 크기 약 115 mm / 900 mm, 275 mm / 2,000 mm, 420 mm / 3,000 mm. 저배율 접사 링 약 57 mm / 500 mm(고정), 고배율 접사 링 약 27 mm / 300 mm(고정)"
+        },
+        "interfaces": "USB 2.0 or higher"
+      },
+      "note": "접사 링을 끼우면 휘도 하한이 저배율 0.25 cd/m², 고배율 0.5 cd/m²"
+    },
+    {
+      "model": "CA-2500SW",
+      "variant": "with standard and wide lenses",
+      "note": "렌즈 묶음 판. 사양은 들어 있는 렌즈의 CA-2500S · W · T 칸을 따른다"
+    },
+    {
+      "model": "CA-2500ST",
+      "variant": "with standard and telephoto lenses",
+      "note": "렌즈 묶음 판. 사양은 들어 있는 렌즈의 CA-2500S · W · T 칸을 따른다"
+    },
+    {
+      "model": "CA-2500WT",
+      "variant": "with wide and telephoto lenses",
+      "note": "렌즈 묶음 판. 사양은 들어 있는 렌즈의 CA-2500S · W · T 칸을 따른다"
+    },
+    {
+      "model": "CA-2500A",
+      "variant": "with all lenses",
+      "note": "렌즈 묶음 판. 사양은 들어 있는 렌즈의 CA-2500S · W · T 칸을 따른다"
+    }
+  ],
+  "options": [
+    "표준 · 광각 · 망원 렌즈",
+    "저배율 · 고배율 접사 링(망원 렌즈용)"
+  ],
+  "relations": [
+    {
+      "type": "performs",
+      "target": "photometry_colorimetry"
+    },
+    {
+      "type": "same_family_as",
+      "target": "instrument-systems-lumicam-4000b"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://sensing.konicaminolta.us/us/products/ca-2500-2d-color-analyzer/",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지(HTML)"
+    },
+    {
+      "file": "konica-minolta/ca-2500_catalog_eng.pdf",
+      "pages": [
+        7,
+        8
+      ],
+      "note": "제조사 카탈로그 PDF. 주요 사양표와 시스템 구성(렌즈 묶음 7 가지)"
+    }
+  ],
+  "confidence": "catalog",
+  "notes": "PDF 로 확인: 검출기 · 측정점 · 휘도 범위 · 확도 · 측정 시간 · 인터페이스 전부. CA-2500S · W · T · SW · ST · WT · A 는 본체가 같고 묶은 렌즈만 다른 판매 구성(PDF 시스템 구성도)이라 기종으로 더하고, 본체 공통 사양은 CA-2500 칸에 둔다. 웹 페이지의 「0.25 ~(CA-2500T 접사)」 는 PDF 에서 망원 렌즈 자체의 하한이 0.25 cd/m² 로 확인됨."
+}

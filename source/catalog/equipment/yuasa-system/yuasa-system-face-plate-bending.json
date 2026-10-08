@@ -1,0 +1,218 @@
+{
+  "id": "yuasa-system-face-plate-bending",
+  "kind": "equipment_series",
+  "name": "YUASA SYSTEM Bending (Flex) Endurance Testers, Face-plate type (DMLHB-P150 / DR11MR3-P220 / TCD-P220 / TC111L-P300)",
+  "name_ko": "유아사 시스템 면판식 굴곡 내구 시험기 (케이블·선상 시료 좌우 굽힘)",
+  "manufacturer": "yuasa-system",
+  "category": "component_life_tester",
+  "drive": "electromechanical",
+  "description": "케이블·하네스·광섬유·튜브·와이어 같은 선상 시료와 폭이 좁은 띠상 시료의 좌우 반복 굽힘(굴곡) 내구 시험기 계열임. 면판(Φ150·Φ220·Φ300)에 붙인 굽힘 R 지그와 클램프로 시료를 잡고 면판을 회전 왕복시켜 최대 ±180° 굽힘을 반복함. 시료 아래에 추를 달아 장력을 주는 방식임. 제조사는 JIS 규격에 준거한 굴곡 시험이 가능하다고 적으나 규격 번호는 밝히지 않음. 소형 탁상형 DMLHB-P150, Y's Block DR11MR3-P220, 중형 탁상형 TCD-P220, 대형 자립형 TC111L-P300 으로 나뉨. 대형기 TC111L 은 6회로 단선 검지와 시험 횟수 프리셋으로 자동 정지함.",
+  "test_items": [
+    "mechanical_endurance"
+  ],
+  "measurands": [
+    "cycles_to_failure"
+  ],
+  "materials": [
+    "cables",
+    "wire harnesses",
+    "optical fiber cables",
+    "tubes",
+    "wires",
+    "flat cables",
+    "FPC",
+    "flexible displays",
+    "fibers"
+  ],
+  "standards": {
+    "compliance": [],
+    "test_methods": []
+  },
+  "limits": {
+    "cycle_rate_cpm": {
+      "min": 5,
+      "max": 120,
+      "note": "탁상형 3종은 페이지 예시만 있음: 직경 약 2 mm 케이블(TCD-P220 은 약 10 mm)에서 ±90° 120 r/min, ±180° 60 r/min. TC111L-P300 은 5~90 往復/分. r/min 은 면판 왕복 1회로 보아 cpm 으로 적음"
+    },
+    "fold_angle_deg": {
+      "min": 0,
+      "max": 180,
+      "note": "굽힘 각도 0~±180°(한쪽 값). 면판식 굴곡기의 굽힘 각도를 fold_angle_deg 로 담음"
+    },
+    "bend_radius_mm": {
+      "min": 2.5,
+      "max": 100,
+      "note": "P150 R2.5~R40, TCD-P220 R7~R50, TC111L-P300 R2.5~R100. 모두 R10 표준 부속"
+    },
+    "specimen_width_mm": {
+      "max": 70,
+      "note": "띠상 시료 폭: P150 30 mm, TCD-P220 50 mm, TC111L-P300 70 mm"
+    },
+    "force_N": {
+      "max": 100,
+      "note": "TC111L-P300 의 추(重錘) 장력 허용 하중, 본체 1대당(면판 1·2 무관). 탁상형 3종은 페이지에 값 없음"
+    }
+  },
+  "models": [
+    {
+      "model": "DMLHB-P150 / DMLHP-P150",
+      "variant": "소형 탁상형, Φ150 면판",
+      "form_factor": "benchtop",
+      "specs": {
+        "cycle_rate_cpm": {
+          "max": 120,
+          "note": "원문 直径2mm程度のケーブルの場合で±90°では120r/min、±180°では60r/min"
+        },
+        "fold_angle_deg": {
+          "max": 180,
+          "note": "최대 ±180°"
+        },
+        "bend_radius_mm": {
+          "min": 2.5,
+          "max": 40,
+          "note": "R10 표준 부속, R40 최대"
+        },
+        "specimen_width_mm": {
+          "max": 30,
+          "note": "띠상 시료"
+        },
+        "weight_kg": 19
+      },
+      "note": "값은 제품 페이지 문구. CE 마킹 적합 표기. 사양도 PDF(ET202S003-001)는 이미지뿐이라 수치를 옮기지 않음"
+    },
+    {
+      "model": "DR11MR3-P220",
+      "variant": "Y's Block, Φ220 면판",
+      "form_factor": "benchtop",
+      "specs": {
+        "cycle_rate_cpm": {
+          "max": 120,
+          "note": "원문 直径2mm程度のケーブルの場合で±90°では120r/min、±180°では60r/min"
+        },
+        "fold_angle_deg": {
+          "max": 180,
+          "note": "굴곡 각도 임의 설정, 최대 ±180°"
+        }
+      },
+      "note": "클램프 유효 길이 30 mm. 굽힘 R 범위·질량·시료 폭은 페이지에 없음"
+    },
+    {
+      "model": "TCD-P220",
+      "variant": "중형 탁상형, Φ220 면판",
+      "form_factor": "benchtop",
+      "specs": {
+        "cycle_rate_cpm": {
+          "max": 120,
+          "note": "페이지 예시: 직경 약 10 mm 케이블에서 ±90°では120r/min、±180°では60r/min"
+        },
+        "fold_angle_deg": {
+          "max": 180,
+          "note": "최대 ±180°"
+        },
+        "bend_radius_mm": {
+          "min": 7,
+          "max": 50,
+          "note": "R7~R50, R10 표준 부속"
+        },
+        "specimen_width_mm": {
+          "max": 50,
+          "note": "띠상 시료"
+        }
+      },
+      "note": "페이지 문구: JIS 규격에 준거한 추 장력에 의한 케이블 굴곡 시험(규격 번호 없음). 질량은 페이지에 없음"
+    },
+    {
+      "model": "TC111L-P300",
+      "variant": "대형 자립형, Φ300 면판",
+      "form_factor": "floor",
+      "specs": {
+        "cycle_rate_cpm": {
+          "min": 5,
+          "max": 90,
+          "note": "원문 屈曲速度は5〜90往復／分"
+        },
+        "fold_angle_deg": {
+          "min": 0,
+          "max": 180,
+          "note": "0°~±180°, 시험 시작 각도 기계 셋업으로 임의 설정"
+        },
+        "bend_radius_mm": {
+          "min": 2.5,
+          "max": 100,
+          "note": "페이지 R2.5~R100, R10 표준 부속. 2012 사양도 PDF: 굽힘 R 지그 φ20 mm(금속) 표준, 옵션 φ5~200 mm(φ30 이상 수지)"
+        },
+        "specimen_width_mm": {
+          "max": 70,
+          "note": "띠상 시료(페이지). 2012 사양도 PDF 의 클램프 가능 범위는 폭 79 mm·두께 60 mm"
+        },
+        "force_N": {
+          "max": 100,
+          "note": "추 허용 하중, 본체 1대당(1면판·2면판 무관). 사양도 PDF 표기 許容張力負荷 100 N(約10 kg)"
+        },
+        "torque_Nm": 16,
+        "weight_kg": 170
+      },
+      "note": "cycle·각도·R·폭·추 하중은 페이지 값. torque_Nm(출력축 최대 허용 토크)·질량 약 170 kg 과 다음 사항은 2012-01-19 사양도 PDF(TC00S001-01, 당시 사명 ユアサ工機株式会社): 출력축 요동 각도 0~±270°, 시험 횟수 최대 99,999,999회 프리셋, 단선 검지 6회로(판정 저항 7 kΩ), 프리셋 도달·단선·외부 정지 신호 시 자동 정지, AC200V 3상 50/60 Hz 약 1 kVA, 0.4 kW 기어드 모터 + 인버터, 5.7형 터치 패널. 도면 외형은 폭 680(면판 쪽 돌출 포함)·깊이 500·높이 1416 mm 로 읽히나 확인 필요"
+    }
+  ],
+  "features": [
+    "면판 회전 왕복으로 선상·띠상 시료를 좌우 반복 굽힘",
+    "추(重錘)로 시료에 장력 부여",
+    "굽힘 R 지그 교환(R10 표준 부속)",
+    "TC111L: 단선 검지 6회로, 시험 횟수 프리셋, 단선·외부 신호 자동 정지(2012 사양도 PDF)",
+    "소형 탁상형 P150 은 CE 마킹 적합 표기"
+  ],
+  "options": [
+    {
+      "name": "굽힘 R 지그",
+      "note": "P150 R2.5~R40, TCD-P220 R7~R50, TC111L-P300 R2.5~R100 중 선택. 표준은 R10"
+    },
+    {
+      "name": "TC111L 2면판 구성",
+      "note": "페이지에 1면판·2면판 표현만 있음. 동시 시료 수는 적혀 있지 않음"
+    }
+  ],
+  "relations": [
+    {
+      "type": "same_family_as",
+      "target": "yuasa-system-folding"
+    },
+    {
+      "type": "same_family_as",
+      "target": "yuasa-system-push-insertion"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://www.yuasa-system.jp/test/s-p150",
+      "retrieved": "2026-10-08",
+      "note": "DMLHB-P150 제품 페이지: R2.5~R40, ±180°, 폭 30 mm, 120/60 r/min 예시, 약 19 kg, CE"
+    },
+    {
+      "url": "https://www.yuasa-system.jp/test/y-p220",
+      "retrieved": "2026-10-08",
+      "note": "DR11MR3-P220 제품 페이지: 클램프 유효 길이 30 mm, ±180°, 120/60 r/min 예시, 대상 시료"
+    },
+    {
+      "url": "https://www.yuasa-system.jp/test/m-p220",
+      "retrieved": "2026-10-08",
+      "note": "TCD-P220 제품 페이지: R7~R50, ±180°, 폭 50 mm, 약 10 mm 케이블 120/60 r/min 예시, JIS 준거 문구"
+    },
+    {
+      "url": "https://www.yuasa-system.jp/test/l-p300",
+      "retrieved": "2026-10-08",
+      "note": "TC111L-P300 제품 페이지: R2.5~R100, 0~±180°, 5~90 往復/分, 추 100 N, 폭 70 mm"
+    },
+    {
+      "url": "https://www.yuasa-system.jp/pdf/TC111L-P300.pdf",
+      "retrieved": "2026-10-08",
+      "note": "2012 사양도 PDF 1쪽(TC00S001-01). 원본 PDF 는 받았으나 텍스트로 읽히지 않음(외형도 · 글꼴 인코딩) — 값은 이 웹 페이지 기준"
+    },
+    {
+      "file": "yuasa-system/tc111l-p300.pdf",
+      "note": "제조사 원본 문서. 글꼴 인코딩 때문에 추출 텍스트에서 숫자가 빠짐 — 값 대조에는 못 씀(값은 웹 출처 기준)"
+    }
+  ],
+  "confidence": "limited",
+  "notes": "제조사 id yuasa-system 은 신규 제안. 페이지가 'JIS 규격에 준거' 라고만 적고 번호가 없어 standards.test_methods 는 비움. 탁상형 3종의 속도는 케이블 지름에 따른 예시값이라 상한으로만 적음. DMLHB-P150 사양도 PDF 도 자동 저장 사본으로 열렸으나 이미지라 값을 쓰지 않음."
+}

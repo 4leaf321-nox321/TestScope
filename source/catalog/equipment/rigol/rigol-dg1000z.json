@@ -1,0 +1,107 @@
+{
+  "id": "rigol-dg1000z",
+  "kind": "equipment_series",
+  "name": "RIGOL DG1000Z Series Function/Arbitrary Waveform Generators",
+  "name_ko": "리골 DG1000Z 함수·임의파형 발생기",
+  "manufacturer": "rigol",
+  "brand": "DG1000Z",
+  "category": "signal_generator",
+  "subcategory": "function_arbitrary_waveform",
+  "description": "2채널 함수·임의파형 발생기 계열. 사인파 25·30·60 MHz(DG1022Z·DG1032Z·DG1062Z), 구형파 25 MHz, 샘플 속도 200 MSa/s, 14비트, 임의파형 메모리 2 M 또는 8 M(옵션 16 Mpts)이다. 주파수 안정도 ±1 ppm, 위상 잡음 -125 dBc/Hz, SiFi 지터 최저 200 ps, 내장 파형 160개, AM·FM·PM·ASK·FSK·PSK·PWM 변조, 스윕·버스트, 고조파 발생기, 7자리 주파수 계수기를 갖춘다.",
+  "test_items": [],
+  "limits": {
+    "output_frequency_Hz": {
+      "max": 60000000,
+      "note": "사인파 25·30·60 MHz, 구형파 25 MHz"
+    },
+    "channels": {
+      "values": [
+        2
+      ]
+    },
+    "sample_rate_Sa_s": {
+      "values": [
+        200000000
+      ],
+      "note": "원문 200 MSa/s"
+    },
+    "dac_resolution_bit": {
+      "values": [
+        14
+      ]
+    },
+    "waveform_memory_pts": {
+      "values": [
+        2000000,
+        8000000,
+        16000000
+      ],
+      "note": "DG1022Z 2 M, DG1032Z·DG1062Z 8 M, 옵션 Arb16M-DG1000Z 로 16 Mpts"
+    },
+    "phase_noise_dBc_Hz": {
+      "values": [
+        -125
+      ],
+      "note": "원문 -125dBc/Hz phase noise. 반송파·오프셋 조건은 페이지에 없다"
+    }
+  },
+  "models": [
+    {
+      "model": "DG1022Z",
+      "specs": {
+        "output_frequency_Hz": {
+          "max": 25000000,
+          "note": "사인파 25 MHz, 구형파 25 MHz"
+        },
+        "channels": 2,
+        "waveform_memory_pts": 2000000
+      }
+    },
+    {
+      "model": "DG1032Z",
+      "specs": {
+        "output_frequency_Hz": {
+          "max": 30000000,
+          "note": "사인파 30 MHz, 구형파 25 MHz"
+        },
+        "channels": 2,
+        "waveform_memory_pts": 8000000
+      }
+    },
+    {
+      "model": "DG1062Z",
+      "specs": {
+        "output_frequency_Hz": {
+          "max": 60000000,
+          "note": "사인파 60 MHz, 구형파 25 MHz"
+        },
+        "channels": 2,
+        "waveform_memory_pts": 8000000
+      }
+    }
+  ],
+  "features": [
+    "SiFi 기술(지터 최저 200 ps)",
+    "내장 파형 160개",
+    "AM·FM·PM·ASK·FSK·PSK·PWM 변조",
+    "선형·로그·계단 스윕, 버스트",
+    "고조파 발생기",
+    "파형 중첩·채널 추종",
+    "7자리 주파수 계수기"
+  ],
+  "options": [
+    {
+      "name": "Arb16M-DG1000Z",
+      "note": "임의파형 메모리 16 Mpts"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://www.rigolna.com/products/waveform-generators/dg1000z/",
+      "retrieved": "2026-10-08",
+      "note": "제조사 미국 법인 제품 페이지. 기종 표, 샘플 속도·분해능, 안정도·위상 잡음, 주요 기능"
+    }
+  ],
+  "confidence": "limited",
+  "notes": "진폭 범위는 페이지에 없다."
+}

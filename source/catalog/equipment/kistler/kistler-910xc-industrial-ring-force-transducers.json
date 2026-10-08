@@ -1,0 +1,68 @@
+{
+  "id": "kistler-910xc-industrial-ring-force-transducers",
+  "kind": "sensor",
+  "name": "Kistler 910xC Industrial Piezoelectric Ring Force Transducers (9101C–9107C)",
+  "name_ko": "키스틀러 910xC 산업용 압전 링형 힘 센서",
+  "manufacturer": "kistler",
+  "category": "force_pressure_sensor",
+  "subcategory": "piezoelectric_load_washer",
+  "description": "산업 현장용 압전(PE) 링형 힘 센서 계열(910x 패밀리). 문턱값이 매우 낮고 수명 제한이 없다. Fz 최대 700 kN(160 klbf), 직선성(히스테리시스 포함) ≤±1.5 %, IP68(케이블에 따라), 운전 온도 -40～120 °C.",
+  "test_items": [],
+  "measurands": [
+    "force",
+    "dynamic_force"
+  ],
+  "limits": {
+    "force_kN": {
+      "max": 700,
+      "note": "Fz max up to 700 kN / 160 klbf"
+    },
+    "operating_temperature_degC": {
+      "min": -40,
+      "max": 120
+    }
+  },
+  "models": [
+    {
+      "model": "9101C",
+      "uncertain": true,
+      "note": "제품군 이미지 파일명 범위 9101C-9107C 의 시작 기종"
+    },
+    {
+      "model": "9102C",
+      "note": "구면 와셔 9523 페이지에서도 확인"
+    },
+    {
+      "model": "9107C",
+      "uncertain": true,
+      "note": "이미지 파일명 범위의 끝 기종"
+    }
+  ],
+  "accuracy": {
+    "linearity": "직선성(히스테리시스 포함) ≤±1.5 %"
+  },
+  "environment": {
+    "protection": "IP68 (dependent on cable)",
+    "operating_temperature": "-40 ... 120°C"
+  },
+  "relations": [
+    {
+      "type": "same_family_as",
+      "target": "kistler-90x1c-ring-force-transducers"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://www.kistler.com/INT/en/cp/piezoelectric-force-sensors-910xc-910xc/P0000597",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품군 페이지(HTML, kistler.com). 변형(variant) 표는 스크립트로 채워져 읽지 못함. 이미지 파일명 9101C-9107C"
+    },
+    {
+      "url": "https://www.kistler.com/INT/en/p/spherical-washer-for-piezoelectric-force-sensors-of-types-9021c-and-9102c-9523/000000000018007872",
+      "retrieved": "2026-10-08",
+      "note": "제조사 부속 페이지(구면 와셔 9523). 9102C 기종명 확인"
+    }
+  ],
+  "confidence": "limited",
+  "notes": "기종별 측정 범위는 비움. 기종은 페이지에 이름이 보인 것만 넣음(이미지 파일명 범위 9101C–9107C 의 양 끝과 9102C) — 그 사이 기종은 확인 필요. 같은 제조사의 압전 로드셀 93x1C, 프레스력 센서 93x3A, 3축·6축 센서 등은 이번에 넣지 않음."
+}

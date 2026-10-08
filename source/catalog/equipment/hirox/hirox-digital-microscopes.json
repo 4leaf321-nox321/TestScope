@@ -1,0 +1,133 @@
+{
+  "id": "hirox-digital-microscopes",
+  "kind": "equipment_series",
+  "name": "Hirox Digital Microscopes (HRX-02 / RX-100 / HRX-01 / RH-8800 / RH-2000 / KH-8700 / KH-7700)",
+  "name_ko": "하이록스 디지털 현미경",
+  "manufacturer": "hirox",
+  "category": "optical_microscope",
+  "subcategory": "digital_microscope",
+  "form_factor": "benchtop",
+  "description": "교환식 렌즈와 스탠드를 조합하는 디지털 현미경 계열. 현행 최상위 HRX-02 는 단위 화소 3.45 μm 대형 화소 CMOS, 듀얼 카메라 전환, 360° 회전 헤드, 라이브 포커스·라이브 HDR, 조명 6종의 DIC 효과, 2D·3D 측정, 이미지 타일링을 갖춘다(유럽 법인 페이지 기준 줌 0.1x～10,000x, 전동 XYZ 스탠드 최대 1 m). 표준형 RX-100 은 0～7000배 렌즈 라인업과 옵션 3D 계측(높이차·체적·거칠기). HRX-01, RH-8800, RH-2000, KH-8700, KH-7700 은 단종 기종.",
+  "test_items": [
+    "microscopy"
+  ],
+  "measurands": [
+    "surface_morphology",
+    "dimension_2d",
+    "height_3d"
+  ],
+  "limits": {
+    "magnification": {
+      "max": 10000,
+      "note": "HRX-02 렌즈 라인업 최대(유럽 법인 페이지 0.1x to 10,000x). 일본 페이지 렌즈별: HRX-RVOMAX 10–500x, HR-2500 20–2500x, HR-5000 20–5000x, HR-1020E 10–200x, HR-2016 20–160x, HR-5040 50–400x"
+    },
+    "stage_travel_mm": {
+      "max": 100,
+      "note": "ST-AS2 전동 XY 50×50 또는 100×100 mm"
+    }
+  },
+  "models": [
+    {
+      "model": "HRX-02",
+      "specs": {
+        "magnification": {
+          "max": 10000
+        },
+        "detector_pixels": "대형 화소 CMOS(단위 화소 3.45 μm × 3.45 μm), 듀얼 카메라"
+      },
+      "note": "현행 플래그십. 스탠드 ST-AS2(전동 XY 50×50/100×100 mm), XYZ 전동·대형 XYZ 전동·Z 전동·수동"
+    },
+    {
+      "model": "RX-100",
+      "specs": {
+        "magnification": {
+          "max": 7000,
+          "note": "0～7000배 렌즈 라인업"
+        }
+      },
+      "note": "현행 표준형. 3D 계측 시스템 옵션"
+    },
+    {
+      "model": "HRX-01",
+      "note": "단종(이전 플래그십). 사양 미확인"
+    },
+    {
+      "model": "RH-8800",
+      "note": "단종(올인원). 카탈로그 PDF(cat_RH-8800_2000_jp_D.pdf)만 있어 사양 미확인"
+    },
+    {
+      "model": "RH-2000",
+      "note": "단종(기능 확장형). 사양 미확인"
+    },
+    {
+      "model": "KH-8700",
+      "note": "단종(올인원). 사양 미확인"
+    },
+    {
+      "model": "KH-7700",
+      "note": "단종(다기능형). 사양 미확인"
+    }
+  ],
+  "options": [
+    {
+      "name": "HRX-RVOMAX",
+      "note": "10～500배"
+    },
+    {
+      "name": "HR-2500E / HR-2500",
+      "note": "20～2500배"
+    },
+    {
+      "name": "HR-5000E / HR-5000",
+      "note": "20～5000배"
+    },
+    {
+      "name": "HR-1020E",
+      "note": "10～200배"
+    },
+    {
+      "name": "HR-2016E / HR-2016",
+      "note": "20～160배"
+    },
+    {
+      "name": "HR-5040E / HR-5040",
+      "note": "50～400배"
+    },
+    {
+      "name": "HR-10CE / HR-10C",
+      "note": "대물렌즈 교환형"
+    },
+    {
+      "name": "MXB-050Z",
+      "note": "매크로 줌 렌즈"
+    },
+    {
+      "name": "MXB-MACRO",
+      "note": "매크로 렌즈"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://www.hirox.com/products/hrx02/",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지(HTML, hirox.com 일본어) HRX-02"
+    },
+    {
+      "url": "https://www.hirox.com/products/rx100/",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지(HTML, hirox.com 일본어) RX-100"
+    },
+    {
+      "url": "https://www.hirox.com/products/discon/",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지(HTML, hirox.com 일본어) 단종 제품 목록(HRX-01, RH-2000, RH-8800, KH-8700, KH-7700 등)"
+    },
+    {
+      "url": "https://hirox-europe.com/products/",
+      "retrieved": "2026-10-08",
+      "note": "유럽 법인 제품 목록(HRX-02 줌 0.1x to 10,000x, 전동 XYZ 스탠드 최대 1 m)"
+    }
+  ],
+  "confidence": "limited",
+  "notes": "단종 기종 사양은 카탈로그 PDF 에만 있어 비움(pending_pdfs). 단종 목록의 KH-3000, KH-2700, KH-1300 등 오래된 기종은 넣지 않음. 같은 제조사의 탁상형 SEM(SH 계열)은 이 묶음 범위가 아님."
+}

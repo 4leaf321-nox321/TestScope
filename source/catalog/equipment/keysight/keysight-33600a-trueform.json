@@ -1,0 +1,177 @@
+{
+  "id": "keysight-33600a-trueform",
+  "kind": "equipment_series",
+  "name": "Keysight 33600A Series Trueform Waveform Generators",
+  "name_ko": "키사이트 33600A 트루폼 파형 발생기",
+  "manufacturer": "keysight",
+  "brand": "Trueform",
+  "category": "signal_generator",
+  "subcategory": "function_arbitrary_waveform",
+  "description": "Trueform 기술의 상위 함수·임의파형 발생기 계열(WG3-class). 대역폭 80 MHz(660 MSa/s)와 120 MHz(1 GSa/s), 1채널·2채널이 있고, 14비트 분해능, 진폭 1 mVpp~10 Vpp, 채널당 파형 메모리 4 MSa(옵션 64 MSa)다. 고조파 왜곡이 5배 낮은 사인파와 지터 1 ps 미만 펄스(80 MHz 까지)를 낸다.",
+  "test_items": [],
+  "limits": {
+    "bandwidth_Hz": {
+      "values": [
+        80000000,
+        120000000
+      ],
+      "note": "제조사 표기 Bandwidth"
+    },
+    "channels": {
+      "values": [
+        1,
+        2
+      ]
+    },
+    "sample_rate_Sa_s": {
+      "values": [
+        660000000,
+        1000000000
+      ],
+      "note": "원문 660 MSa/s, 1 GSa/s"
+    },
+    "dac_resolution_bit": {
+      "values": [
+        14
+      ]
+    },
+    "output_voltage_V": {
+      "min": 0.001,
+      "max": 10,
+      "note": "원문 1 mVpp to 10 Vpp. 부하 조건은 페이지에 없다"
+    },
+    "waveform_memory_pts": {
+      "values": [
+        4000000,
+        64000000
+      ],
+      "note": "채널당. 표준 4 MSa, 옵션 64 MSa"
+    }
+  },
+  "models": [
+    {
+      "model": "33611A",
+      "specs": {
+        "bandwidth_Hz": 80000000,
+        "channels": 1,
+        "sample_rate_Sa_s": 660000000,
+        "dac_resolution_bit": 14,
+        "output_voltage_V": {
+          "min": 0.001,
+          "max": 10,
+          "note": "원문 1 mVpp to 10 Vpp"
+        },
+        "waveform_memory_pts": {
+          "values": [
+            4000000,
+            64000000
+          ],
+          "note": "채널당. 표준 4 MSa, 옵션 64 MSa"
+        },
+        "interfaces": "USB, LAN (LXI-Core), GPIB(옵션)"
+      }
+    },
+    {
+      "model": "33612A",
+      "specs": {
+        "bandwidth_Hz": 80000000,
+        "channels": 2,
+        "sample_rate_Sa_s": 660000000,
+        "dac_resolution_bit": 14,
+        "output_voltage_V": {
+          "min": 0.001,
+          "max": 10,
+          "note": "원문 1 mVpp to 10 Vpp"
+        },
+        "waveform_memory_pts": {
+          "values": [
+            4000000,
+            64000000
+          ],
+          "note": "채널당. 표준 4 MSa, 옵션 64 MSa"
+        },
+        "interfaces": "USB, LAN (LXI-Core), GPIB(옵션)"
+      },
+      "note": "펄스 지터 <1 ps(80 MHz 펄스까지)"
+    },
+    {
+      "model": "33621A",
+      "specs": {
+        "bandwidth_Hz": 120000000,
+        "channels": 1,
+        "sample_rate_Sa_s": 1000000000,
+        "dac_resolution_bit": 14,
+        "output_voltage_V": {
+          "min": 0.001,
+          "max": 10,
+          "note": "원문 1 mVpp to 10 Vpp"
+        },
+        "waveform_memory_pts": {
+          "values": [
+            4000000,
+            64000000
+          ],
+          "note": "채널당. 표준 4 MSa, 옵션 64 MSa"
+        },
+        "interfaces": "USB, LAN (LXI-Core), GPIB(옵션)"
+      }
+    },
+    {
+      "model": "33622A",
+      "specs": {
+        "bandwidth_Hz": 120000000,
+        "channels": 2,
+        "sample_rate_Sa_s": 1000000000,
+        "dac_resolution_bit": 14,
+        "output_voltage_V": {
+          "min": 0.001,
+          "max": 10,
+          "note": "원문 1 mVpp to 10 Vpp"
+        },
+        "waveform_memory_pts": {
+          "values": [
+            4000000,
+            64000000
+          ],
+          "note": "채널당. 표준 4 MSa, 옵션 64 MSa"
+        },
+        "interfaces": "USB, LAN (LXI-Core), GPIB(옵션)"
+      }
+    }
+  ],
+  "features": [
+    "Trueform 신호 생성 기술",
+    "고조파 왜곡 5배 낮은 사인파(원문 5x lower harmonic distortion)",
+    "펄스 지터 <1 ps(80 MHz 까지)",
+    "USB·LAN(LXI-Core), GPIB 옵션"
+  ],
+  "relations": [
+    {
+      "type": "same_family_as",
+      "target": "keysight-33500b-trueform"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://www.keysight.com/us/en/product/33611A/waveform-generator-80-mhz-1-channel.html",
+      "retrieved": "2026-10-08",
+      "note": "제조사 33611A 제품 페이지"
+    },
+    {
+      "url": "https://www.keysight.com/us/en/product/33612A/waveform-generator-80-mhz-2-channel.html",
+      "retrieved": "2026-10-08",
+      "note": "제조사 33612A 제품 페이지"
+    },
+    {
+      "url": "https://www.keysight.com/us/en/product/33621A/waveform-generator-120-mhz-1-channel.html",
+      "retrieved": "2026-10-08",
+      "note": "제조사 33621A 제품 페이지"
+    },
+    {
+      "url": "https://www.keysight.com/us/en/product/33622A/waveform-generator-120-mhz-2-channel.html",
+      "retrieved": "2026-10-08",
+      "note": "제조사 33622A 제품 페이지"
+    }
+  ],
+  "confidence": "limited"
+}

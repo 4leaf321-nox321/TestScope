@@ -1,0 +1,373 @@
+{
+  "id": "keyence-lj-x8000",
+  "kind": "equipment_series",
+  "name": "LJ-X8000 Series 2D/3D Laser Profiler",
+  "name_ko": "키엔스 LJ-X8000 2D/3D 레이저 프로파일러",
+  "manufacturer": "keyence",
+  "category": "thickness_displacement_gauge",
+  "description": "청색 반도체 레이저(405 nm) 라인 빔으로 단면 프로파일(3200점)을 한 번에 얻는 2D/3D 레이저 변위 센서 계열임. 기준 거리 20~980 mm 의 센서 헤드 10종이 있고, Z축(높이) 측정 범위 ±2.2~±400 mm, X축(폭) 7~720 mm, Z축 반복 정밀도 0.3~10 µm. 단일 촬영 HDR, IP67. 높이·단차·폭·형상 측정에 씀.",
+  "test_items": [
+    "surface_topography"
+  ],
+  "limits": {
+    "displacement_mm": {
+      "min": -400,
+      "max": 400,
+      "note": "Z축 측정 범위 ±2.2 mm(LJ-X8020) ~ ±400 mm(LJ-X8900)"
+    },
+    "measuring_range_x_mm": {
+      "min": 7,
+      "max": 720,
+      "note": "X축(프로파일 폭) 측정 범위"
+    },
+    "measurement_distance_mm": {
+      "min": 20,
+      "max": 980
+    },
+    "measuring_repeatability_um": {
+      "min": 0.3,
+      "max": 10,
+      "note": "Z축"
+    },
+    "laser_wavelength_nm": {
+      "note": "원문 Blue semiconductor laser 405 nm (visible light)",
+      "values": [
+        405
+      ]
+    }
+  },
+  "models": [
+    {
+      "model": "LJ-X8020",
+      "variant": "센서 헤드",
+      "specs": {
+        "measurement_distance_mm": 20,
+        "displacement_mm": {
+          "min": -2.2,
+          "max": 2.2,
+          "note": "Z축(높이) 측정 범위 원문 ±2.2 mm (F.S.=4.4 mm)"
+        },
+        "measuring_repeatability_um": {
+          "value": 0.3,
+          "note": "Z축 반복 정밀도 원문 0.3 µm. X축 0.3 µm"
+        },
+        "laser_wavelength_nm": 405,
+        "weight_kg": {
+          "value": 1.0,
+          "note": "원문 Approx. 1000 g"
+        },
+        "measuring_range_x_mm": {
+          "min": 7,
+          "max": 8,
+          "note": "X축(폭) 측정 범위 NEAR 7 mm / 기준 거리 7.5 mm / FAR 8 mm"
+        }
+      },
+      "note": "프로파일 데이터 간격 2.5 µm(2 µm~). 레이저 Class 2M(IEC60825-1)."
+    },
+    {
+      "model": "LJ-X8030",
+      "variant": "센서 헤드",
+      "specs": {
+        "measurement_distance_mm": 28,
+        "displacement_mm": {
+          "min": -6.5,
+          "max": 6.5,
+          "note": "Z축(높이) 측정 범위 원문 ±6.5 mm (F.S.=13 mm)"
+        },
+        "measuring_repeatability_um": {
+          "value": 0.3,
+          "note": "Z축 반복 정밀도 원문 0.3 µm. X축 0.5 µm"
+        },
+        "laser_wavelength_nm": 405,
+        "weight_kg": {
+          "value": 1.3,
+          "note": "원문 Approx. 1300 g"
+        },
+        "measuring_range_x_mm": {
+          "min": 16,
+          "note": "X축(폭) 측정 범위 NEAR 16 mm / FAR 값 미확인"
+        }
+      },
+      "note": "프로파일 데이터 간격 5 µm(3 µm~). 레이저 Class 3R(IEC60825-1)."
+    },
+    {
+      "model": "LJ-X8060",
+      "variant": "센서 헤드",
+      "specs": {
+        "measurement_distance_mm": 64,
+        "displacement_mm": {
+          "min": -7.3,
+          "max": 7.3,
+          "note": "Z축(높이) 측정 범위 원문 ±7.3 mm (F.S.=14.6 mm)"
+        },
+        "measuring_repeatability_um": {
+          "value": 0.4,
+          "note": "Z축 반복 정밀도 원문 0.4 µm. X축 0.5 µm"
+        },
+        "laser_wavelength_nm": 405,
+        "weight_kg": {
+          "value": 1.0,
+          "note": "원문 Approx. 1000 g"
+        },
+        "measuring_range_x_mm": {
+          "min": 15,
+          "note": "X축(폭) 측정 범위 NEAR 15 mm / 기준 거리 16 mm / FAR 값 미확인"
+        }
+      },
+      "note": "프로파일 데이터 간격 5 µm(4 µm~). 레이저 Class 2M(IEC60825-1)."
+    },
+    {
+      "model": "LJ-X8070",
+      "variant": "센서 헤드",
+      "specs": {
+        "measurement_distance_mm": 50,
+        "displacement_mm": {
+          "min": -8,
+          "max": 8,
+          "note": "Z축(높이) 측정 범위 원문 ±8 mm (F.S.=16 mm)"
+        },
+        "measuring_repeatability_um": {
+          "value": 0.3,
+          "note": "Z축 반복 정밀도 원문 0.3 µm. X축 1 µm"
+        },
+        "laser_wavelength_nm": 405,
+        "weight_kg": {
+          "value": 1.3,
+          "note": "원문 Approx. 1300 g"
+        },
+        "measuring_range_x_mm": {
+          "min": 33.5,
+          "max": 36.5,
+          "note": "X축(폭) 측정 범위 NEAR 33.5 mm / 기준 거리 35 mm / FAR 36.5 mm"
+        }
+      },
+      "note": "프로파일 데이터 간격 12.5 µm(10 µm~). 레이저 Class 2M(IEC60825-1)."
+    },
+    {
+      "model": "LJ-X8080",
+      "variant": "센서 헤드",
+      "specs": {
+        "measurement_distance_mm": 73,
+        "displacement_mm": {
+          "min": -20.5,
+          "max": 20.5,
+          "note": "Z축(높이) 측정 범위 원문 ±20.5 mm (F.S.=41 mm)"
+        },
+        "measuring_repeatability_um": {
+          "value": 0.5,
+          "note": "Z축 반복 정밀도 원문 0.5 µm. X축 1 µm"
+        },
+        "laser_wavelength_nm": 405,
+        "weight_kg": {
+          "value": 1.1,
+          "note": "원문 Approx. 1100 g"
+        },
+        "measuring_range_x_mm": {
+          "min": 30,
+          "max": 39,
+          "note": "X축(폭) 측정 범위 NEAR 30 mm / 기준 거리 35 mm / FAR 39 mm"
+        }
+      },
+      "note": "프로파일 데이터 간격 12.5 µm(10 µm~). 레이저 Class 2M(IEC60825-1)."
+    },
+    {
+      "model": "LJ-X8100",
+      "variant": "센서 헤드",
+      "specs": {
+        "measurement_distance_mm": 107,
+        "displacement_mm": {
+          "min": -17,
+          "max": 17,
+          "note": "Z축(높이) 측정 범위 원문 ±17 mm (F.S.=34 mm)"
+        },
+        "measuring_repeatability_um": {
+          "value": 0.5,
+          "note": "Z축 반복 정밀도 원문 0.5 µm. X축 3 µm"
+        },
+        "laser_wavelength_nm": 405,
+        "weight_kg": {
+          "value": 1.6,
+          "note": "원문 Approx. 1600 g"
+        },
+        "measuring_range_x_mm": {
+          "min": 71,
+          "max": 77,
+          "note": "X축(폭) 측정 범위 NEAR 71 mm / 기준 거리 74 mm / FAR 77 mm"
+        }
+      },
+      "note": "프로파일 데이터 간격 25 µm(20 µm~). 레이저 Class 2M(IEC60825-1)."
+    },
+    {
+      "model": "LJ-X8200",
+      "variant": "센서 헤드",
+      "specs": {
+        "measurement_distance_mm": 245,
+        "displacement_mm": {
+          "min": -34,
+          "max": 34,
+          "note": "Z축(높이) 측정 범위 원문 ±34 mm (F.S.=68 mm)"
+        },
+        "measuring_repeatability_um": {
+          "value": 1,
+          "note": "Z축 반복 정밀도 원문 1 µm. X축 3 µm"
+        },
+        "laser_wavelength_nm": 405,
+        "weight_kg": {
+          "value": 1.2,
+          "note": "원문 Approx. 1200 g"
+        },
+        "measuring_range_x_mm": {
+          "min": 64,
+          "max": 80,
+          "note": "X축(폭) 측정 범위 NEAR 64 mm / 기준 거리 72 mm / FAR 80 mm"
+        }
+      },
+      "note": "프로파일 데이터 간격 25 µm(20 µm~). 레이저 Class 2M(IEC60825-1)."
+    },
+    {
+      "model": "LJ-X8300",
+      "variant": "센서 헤드",
+      "specs": {
+        "measurement_distance_mm": 288,
+        "displacement_mm": {
+          "min": -53,
+          "max": 53,
+          "note": "Z축(높이) 측정 범위 원문 ±53 mm (F.S.=106 mm)"
+        },
+        "measuring_repeatability_um": {
+          "value": 3,
+          "note": "Z축 반복 정밀도 원문 3 µm. X축 5 µm"
+        },
+        "laser_wavelength_nm": 405,
+        "weight_kg": {
+          "value": 1.4,
+          "note": "원문 Approx. 1400 g"
+        },
+        "measuring_range_x_mm": {
+          "min": 134,
+          "max": 160,
+          "note": "X축(폭) 측정 범위 NEAR 134 mm / 기준 거리 150 mm / FAR 160 mm"
+        }
+      },
+      "note": "프로파일 데이터 간격 50 µm(40 µm~). 레이저 Class 2M(IEC60825-1)."
+    },
+    {
+      "model": "LJ-X8400",
+      "variant": "센서 헤드",
+      "specs": {
+        "measurement_distance_mm": 380,
+        "displacement_mm": {
+          "min": -60,
+          "max": 60,
+          "note": "Z축(높이) 측정 범위 원문 ±60 mm"
+        },
+        "measuring_repeatability_um": {
+          "value": 5,
+          "note": "Z축 반복 정밀도 원문 5 µm. X축 10 µm"
+        },
+        "laser_wavelength_nm": 405,
+        "weight_kg": {
+          "value": 1.3,
+          "note": "원문 Approx. 1300 g"
+        },
+        "measuring_range_x_mm": {
+          "min": 180,
+          "max": 240,
+          "note": "X축(폭) 측정 범위 NEAR 180 mm / 기준 거리 210 mm / FAR 240 mm"
+        }
+      },
+      "note": "프로파일 데이터 간격 75 µm(50 µm~), 확장 시 100 µm. 레이저 Class 2M(IEC60825-1). 확장 범위 사용 시 Z +95 ~ -220 mm(F.S.=315 mm), X NEAR 163 mm · FAR 320 mm."
+    },
+    {
+      "model": "LJ-X8900",
+      "variant": "센서 헤드",
+      "specs": {
+        "measurement_distance_mm": 980,
+        "displacement_mm": {
+          "min": -400,
+          "max": 400,
+          "note": "Z축(높이) 측정 범위 원문 ±400 mm (F.S.=800 mm)"
+        },
+        "measuring_repeatability_um": {
+          "value": 10,
+          "note": "Z축 반복 정밀도 원문 10 µm. X축 25 µm"
+        },
+        "laser_wavelength_nm": 405,
+        "weight_kg": {
+          "value": 1.6,
+          "note": "원문 Approx. 1600 g"
+        },
+        "measuring_range_x_mm": {
+          "min": 300,
+          "max": 720,
+          "note": "X축(폭) 측정 범위 NEAR 300 mm / FAR 720 mm"
+        }
+      },
+      "note": "프로파일 데이터 간격 225 µm(100 µm~). 레이저 Class 2M(IEC60825-1)."
+    }
+  ],
+  "features": [
+    "프로파일 데이터 3200점",
+    "단일 촬영 HDR(Single-shot HDR)",
+    "IP67(IEC60529)"
+  ],
+  "sources": [
+    {
+      "url": "https://www.keyence.com/products/measure/laser-2d/lj-x8000/specs/",
+      "retrieved": "2026-10-08",
+      "note": "제조사 계열 사양 페이지(헤드 10종 목록). 표 요약에 오류가 있어 기종 값은 기종 페이지로 다시 읽음"
+    },
+    {
+      "url": "https://www.keyence.com/products/measure/laser-2d/lj-x8000/models/lj-x8020/",
+      "retrieved": "2026-10-08",
+      "note": "제조사 기종 페이지"
+    },
+    {
+      "url": "https://www.keyence.com/products/measure/laser-2d/lj-x8000/models/lj-x8030/",
+      "retrieved": "2026-10-08",
+      "note": "제조사 기종 페이지"
+    },
+    {
+      "url": "https://www.keyence.com/products/measure/laser-2d/lj-x8000/models/lj-x8060/",
+      "retrieved": "2026-10-08",
+      "note": "제조사 기종 페이지"
+    },
+    {
+      "url": "https://www.keyence.com/products/measure/laser-2d/lj-x8000/models/lj-x8070/",
+      "retrieved": "2026-10-08",
+      "note": "제조사 기종 페이지"
+    },
+    {
+      "url": "https://www.keyence.com/products/measure/laser-2d/lj-x8000/models/lj-x8080/",
+      "retrieved": "2026-10-08",
+      "note": "제조사 기종 페이지"
+    },
+    {
+      "url": "https://www.keyence.com/products/measure/laser-2d/lj-x8000/models/lj-x8100/",
+      "retrieved": "2026-10-08",
+      "note": "제조사 기종 페이지"
+    },
+    {
+      "url": "https://www.keyence.com/products/measure/laser-2d/lj-x8000/models/lj-x8200/",
+      "retrieved": "2026-10-08",
+      "note": "제조사 기종 페이지"
+    },
+    {
+      "url": "https://www.keyence.com/products/measure/laser-2d/lj-x8000/models/lj-x8300/",
+      "retrieved": "2026-10-08",
+      "note": "제조사 기종 페이지"
+    },
+    {
+      "url": "https://www.keyence.com/products/measure/laser-2d/lj-x8000/models/lj-x8400/",
+      "retrieved": "2026-10-08",
+      "note": "제조사 기종 페이지"
+    },
+    {
+      "url": "https://www.keyence.com/products/measure/laser-2d/lj-x8000/models/lj-x8900/",
+      "retrieved": "2026-10-08",
+      "note": "제조사 기종 페이지"
+    }
+  ],
+  "confidence": "limited",
+  "notes": "범주 note: 2D/3D 레이저 프로파일러(라인 스캔형 변위 센서)라 두께·변위 측정기로 분류하고, 단차·형상을 재므로 test_items 에 surface_topography 를 둠. LJ-X8030·LJ-X8060 의 X축 FAR 값과 LJ-X8030·LJ-X8900 의 X축 기준 거리 값은 기종 페이지 요약에서 읽히지 않아 비움."
+}

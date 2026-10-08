@@ -1,0 +1,130 @@
+{
+  "id": "sentek-dynamics-e-series-shakers",
+  "kind": "equipment_series",
+  "name": "Sentek Dynamics E-Series Extra High-Force Water-Cooled Shakers",
+  "name_ko": "센텍 다이나믹스 E 시리즈 초고추력 수랭식 가진기",
+  "manufacturer": "sentek-dynamics",
+  "category": "vibration_shaker",
+  "drive": "electrodynamic",
+  "form_factor": "floor",
+  "description": "수랭식 초고추력 전기동력 가진기 세 기종. 정현 196/294/392 kN, 랜덤 196/205.8/274 kN, 충격 392/588/784 kN, 5~2,200 Hz(대형일수록 상한 낮음), 연속·충격 변위 51 mm, 속도 1.8~2.0 m/s, 가속도 100 g, 아마추어 640/760/860 mm, 탑재 2,000/3,200/4,000 kg.",
+  "test_items": [
+    "vibration_sine_random",
+    "mechanical_shock"
+  ],
+  "measurands": [
+    "resonance_frequency",
+    "transmissibility",
+    "fatigue_life"
+  ],
+  "limits": {
+    "force_kN": {
+      "min": 196,
+      "max": 392,
+      "note": "정현 피크"
+    },
+    "force_random_kN": {
+      "min": 196,
+      "max": 274,
+      "note": "랜덤 rms"
+    },
+    "force_shock_kN": {
+      "min": 392,
+      "max": 784,
+      "note": "충격(6 ms)"
+    },
+    "frequency_Hz": {
+      "min": 5,
+      "max": 2200
+    },
+    "displacement_mm": {
+      "values": [
+        51
+      ],
+      "note": "원문 Continuous Displacement. p-p 여부는 페이지에 없음"
+    },
+    "acceleration_g": {
+      "max": 100,
+      "note": "정현 피크 최대"
+    },
+    "payload_kg": {
+      "min": 2000,
+      "max": 4000,
+      "note": "최대 정적 탑재"
+    }
+  },
+  "models": [
+    {
+      "model": "E20064A",
+      "specs": {
+        "force_kN": 196,
+        "force_random_kN": 196,
+        "force_shock_kN": 392,
+        "frequency_Hz": {
+          "min": 5,
+          "max": 2200
+        },
+        "displacement_mm": 51,
+        "velocity_m_s": 2.0,
+        "acceleration_g": 100,
+        "armature_diameter_mm": 640,
+        "armature_mass_kg": 160,
+        "payload_kg": 2000
+      }
+    },
+    {
+      "model": "E30076A",
+      "specs": {
+        "force_kN": 294,
+        "force_random_kN": 205.8,
+        "force_shock_kN": 588,
+        "frequency_Hz": {
+          "min": 5,
+          "max": 1900
+        },
+        "displacement_mm": 51,
+        "velocity_m_s": 1.8,
+        "acceleration_g": 100,
+        "armature_diameter_mm": 760,
+        "armature_mass_kg": 230,
+        "payload_kg": 3200
+      }
+    },
+    {
+      "model": "E40086A",
+      "specs": {
+        "force_kN": 392,
+        "force_random_kN": 274,
+        "force_shock_kN": 784,
+        "frequency_Hz": {
+          "min": 5,
+          "max": 1700
+        },
+        "displacement_mm": 51,
+        "velocity_m_s": 1.8,
+        "acceleration_g": 100,
+        "armature_diameter_mm": 860,
+        "armature_mass_kg": 350,
+        "payload_kg": 4000
+      }
+    }
+  ],
+  "features": [
+    "수랭식"
+  ],
+  "relations": [
+    {
+      "type": "performs",
+      "target": "vibration_sine_random"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://www.sentekdynamics.com/extra-high-force-shakers",
+      "retrieved": "2026-10-08",
+      "note": "제조사 계열 페이지. 기종별 사양 표(kN·lbf, m/s²·g 병기)"
+    }
+  ],
+  "confidence": "limited",
+  "notes": ""
+}

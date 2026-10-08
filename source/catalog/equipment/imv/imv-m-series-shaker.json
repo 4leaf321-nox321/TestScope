@@ -1,0 +1,136 @@
+{
+  "id": "imv-m-series-shaker",
+  "kind": "equipment_series",
+  "name": "IMV m-Series Compact Vibration Test Systems (m030-CE / m060-CE / m120-CE / m130LS)",
+  "name_ko": "IMV m 시리즈 소형 진동 시험 장치",
+  "manufacturer": "imv",
+  "brand": "m-series",
+  "category": "vibration_shaker",
+  "form_factor": "benchtop",
+  "description": "AC 100 V 로 움직이는 소형·저소음 진동 시험 장치. 개요 기준 가진력 300~1,200 N, 탑재 질량 15~120 kg 으로 소형 제품 평가에 쓰고 옮길 수 있다. 소비 전력이 종래 소형 가진기의 절반이고 냉각 팬을 멈춘 자연 공랭 운전이 된다. m130LS 는 수송 시험 전용판으로 최대 100 kg(120 사이즈급) 포장물을 ISO·JIS·ASTM·Amazon 수송 시험 규격으로 시험하며 전용 공사나 압축 공기가 필요 없다.",
+  "test_items": [
+    "vibration_sine_random"
+  ],
+  "measurands": [
+    "resonance_frequency",
+    "transmissibility",
+    "fatigue_life"
+  ],
+  "materials": [
+    "small products",
+    "electronic components",
+    "packaged products"
+  ],
+  "limits": {
+    "force_N": {
+      "min": 300,
+      "max": 1300,
+      "note": "개요 300N～1200N, m130LS ～1300N"
+    },
+    "payload_kg": {
+      "min": 10,
+      "max": 120,
+      "note": "개요 15～120kg. DC-120-2.5L 은 10 kg"
+    },
+    "frequency_Hz": {
+      "max": 2000,
+      "note": "m030-CE 상한 ～2000 Hz"
+    }
+  },
+  "models": [
+    {
+      "model": "m030-CE",
+      "specs": {
+        "weight_kg": 22,
+        "frequency_Hz": {
+          "max": 2000
+        }
+      },
+      "note": "원문 質量22kg、上限周波数～2000Hz"
+    },
+    {
+      "model": "m060-CE",
+      "specs": {
+        "weight_kg": 40,
+        "frequency_Hz": {
+          "max": 1500
+        }
+      },
+      "note": "원문 質量40kg、上限周波数～1500Hz"
+    },
+    {
+      "model": "m120-CE",
+      "specs": {
+        "force_N": 1200,
+        "payload_kg": 120
+      }
+    },
+    {
+      "model": "m130LS",
+      "specs": {
+        "force_N": 1300,
+        "payload_kg": 100,
+        "table_size_mm": [
+          500,
+          500
+        ],
+        "frequency_Hz": {
+          "max": 500
+        }
+      },
+      "note": "수송 시험용. 수직 보조 테이블 TBV-500(500×500×t45, 상한 500 Hz, 15 kg) 표준, 수평 보조 테이블 TBH-500(500×500, 500 Hz, 28 kg) 옵션. 탑재 100 kg 은 포장물 기준"
+    },
+    {
+      "model": "DC-120-2.5L",
+      "specs": {
+        "force_N": 1200,
+        "table_size_mm": [
+          200,
+          200
+        ],
+        "frequency_Hz": {
+          "max": 500
+        },
+        "acceleration_g": 3.06,
+        "stroke_mm_pk_pk": 10,
+        "payload_kg": 10
+      },
+      "note": "m 시리즈 페이지에 실린 2축 전환형(DC 시리즈) 기종. 원문 最大加速度30m/s2(≈3.06 g 로 환산), 最大変位10mmp-p"
+    }
+  ],
+  "features": [
+    "AC 100 V 운전",
+    "소비 전력 종래 소형기의 절반",
+    "자연 공랭 운전 가능",
+    "파워 앰프 35 kg → 25 kg 경량화"
+  ],
+  "relations": [
+    {
+      "type": "performs",
+      "target": "vibration_sine_random"
+    },
+    {
+      "type": "same_family_as",
+      "target": "imv-i-series-shaker"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://we-are-imv.com/business/products/item/vibrationtest-mseries/",
+      "retrieved": "2026-10-08",
+      "note": "제조사 m 시리즈 페이지(일본어)"
+    },
+    {
+      "url": "https://we-are-imv.com/business/products/item/vibrationtest-m130ls/",
+      "retrieved": "2026-10-08",
+      "note": "제조사 m130LS 페이지(일본어)"
+    },
+    {
+      "url": "https://we-are-imv.com/business/products/vibrationtest/",
+      "retrieved": "2026-10-08",
+      "note": "제조사 진동 시험기 개요"
+    }
+  ],
+  "confidence": "limited",
+  "notes": "DC-120-2.5L 의 가속도는 m/s² 원문을 g 로 바꿨다(30 m/s² ÷ 9.80665)."
+}

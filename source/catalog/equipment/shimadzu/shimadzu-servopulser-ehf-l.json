@@ -1,0 +1,250 @@
+{
+  "id": "shimadzu-servopulser-ehf-l",
+  "kind": "equipment_series",
+  "name": "Servopulser EHF-L Series Table-Top Fatigue and Endurance Testing Machine",
+  "name_ko": "시마즈 서보펄서 EHF-L 시리즈 탁상형 피로·내구 시험기",
+  "manufacturer": "shimadzu",
+  "category": "servohydraulic_fatigue",
+  "brand": "Servopulser",
+  "drive": "servohydraulic",
+  "form_factor": "benchtop",
+  "description": "탁상형 서보유압 피로·내구 시험기. 최대 동적 시험력 ±5 / ±10 / ±20 kN(정적 ±6 / ±12 / ±24 kN), 피스톤 스트로크 ±25 mm(k1) 또는 ±50 mm(k2), ±100 mm 형식도 제작 가능. 본체 무게 300 kg, 프레임 강성 0.0033 mm/kN(크로스헤드–테이블 500 mm). 테이블 하우징형 유압원 AF-4 와 조합할 수 있다.",
+  "test_items": [
+    "fatigue"
+  ],
+  "measurands": [
+    "mechanical.fatigue_strength"
+  ],
+  "limits": {
+    "dynamic_force_kN": {
+      "min": 5,
+      "max": 20,
+      "values": [
+        5,
+        10,
+        20
+      ],
+      "note": "원문 ± 값(진폭)"
+    },
+    "static_force_kN": {
+      "min": 6,
+      "max": 24,
+      "values": [
+        6,
+        12,
+        24
+      ],
+      "note": "원문 ± 값"
+    },
+    "stroke_mm": {
+      "values": [
+        50,
+        100
+      ],
+      "note": "원문 ±25 / ±50 mm 을 전 행정으로 옮김"
+    }
+  },
+  "models": [
+    {
+      "model": "EHF-LV005k1",
+      "specs": {
+        "dynamic_force_kN": 5,
+        "static_force_kN": 6,
+        "stroke_mm": 50,
+        "weight_kg": 300,
+        "frame_stiffness_kN_mm": {
+          "value": 303,
+          "note": "원문 frame rigidity 0.0033 mm/kN(크로스헤드–테이블 500 mm) 의 역수"
+        },
+        "vertical_test_space_mm": {
+          "min": 135,
+          "max": 835,
+          "uncertain": true,
+          "note": "원문 'Testing space (mm): A 135 to 835'. 도면 기호 A 가 세로 공간인지 페이지에 축 이름이 없다"
+        },
+        "horizontal_test_space_mm": {
+          "value": 460,
+          "uncertain": true,
+          "note": "원문 'Testing space (mm): B 460'. 도면 기호 B 를 폭으로 읽음"
+        },
+        "footprint_mm": {
+          "note": "원문 'Main unit dimensions (mm): C 800, D 600, E 1780' — 도면 기호라 W/D/H 를 가리지 않았다"
+        }
+      },
+      "note": "원문 동적 ±5 kN, 정적 ±6 kN, 피스톤 스트로크 ±25 mm"
+    },
+    {
+      "model": "EHF-LV005k2",
+      "specs": {
+        "dynamic_force_kN": 5,
+        "static_force_kN": 6,
+        "stroke_mm": 100,
+        "weight_kg": 300,
+        "frame_stiffness_kN_mm": {
+          "value": 303,
+          "note": "원문 frame rigidity 0.0033 mm/kN(크로스헤드–테이블 500 mm) 의 역수"
+        },
+        "vertical_test_space_mm": {
+          "min": 135,
+          "max": 835,
+          "uncertain": true,
+          "note": "원문 'Testing space (mm): A 135 to 835'. 도면 기호 A 가 세로 공간인지 페이지에 축 이름이 없다"
+        },
+        "horizontal_test_space_mm": {
+          "value": 460,
+          "uncertain": true,
+          "note": "원문 'Testing space (mm): B 460'. 도면 기호 B 를 폭으로 읽음"
+        },
+        "footprint_mm": {
+          "note": "원문 'Main unit dimensions (mm): C 800, D 600, E 1780' — 도면 기호라 W/D/H 를 가리지 않았다"
+        }
+      },
+      "note": "원문 동적 ±5 kN, 정적 ±6 kN, 피스톤 스트로크 ±50 mm"
+    },
+    {
+      "model": "EHF-LV010k1",
+      "specs": {
+        "dynamic_force_kN": 10,
+        "static_force_kN": 12,
+        "stroke_mm": 50,
+        "weight_kg": 300,
+        "frame_stiffness_kN_mm": {
+          "value": 303,
+          "note": "원문 frame rigidity 0.0033 mm/kN(크로스헤드–테이블 500 mm) 의 역수"
+        },
+        "vertical_test_space_mm": {
+          "min": 135,
+          "max": 835,
+          "uncertain": true,
+          "note": "원문 'Testing space (mm): A 135 to 835'. 도면 기호 A 가 세로 공간인지 페이지에 축 이름이 없다"
+        },
+        "horizontal_test_space_mm": {
+          "value": 460,
+          "uncertain": true,
+          "note": "원문 'Testing space (mm): B 460'. 도면 기호 B 를 폭으로 읽음"
+        },
+        "footprint_mm": {
+          "note": "원문 'Main unit dimensions (mm): C 800, D 600, E 1780' — 도면 기호라 W/D/H 를 가리지 않았다"
+        }
+      },
+      "note": "원문 동적 ±10 kN, 정적 ±12 kN, 피스톤 스트로크 ±25 mm"
+    },
+    {
+      "model": "EHF-LV010k2",
+      "specs": {
+        "dynamic_force_kN": 10,
+        "static_force_kN": 12,
+        "stroke_mm": 100,
+        "weight_kg": 300,
+        "frame_stiffness_kN_mm": {
+          "value": 303,
+          "note": "원문 frame rigidity 0.0033 mm/kN(크로스헤드–테이블 500 mm) 의 역수"
+        },
+        "vertical_test_space_mm": {
+          "min": 135,
+          "max": 835,
+          "uncertain": true,
+          "note": "원문 'Testing space (mm): A 135 to 835'. 도면 기호 A 가 세로 공간인지 페이지에 축 이름이 없다"
+        },
+        "horizontal_test_space_mm": {
+          "value": 460,
+          "uncertain": true,
+          "note": "원문 'Testing space (mm): B 460'. 도면 기호 B 를 폭으로 읽음"
+        },
+        "footprint_mm": {
+          "note": "원문 'Main unit dimensions (mm): C 800, D 600, E 1780' — 도면 기호라 W/D/H 를 가리지 않았다"
+        }
+      },
+      "note": "원문 동적 ±10 kN, 정적 ±12 kN, 피스톤 스트로크 ±50 mm"
+    },
+    {
+      "model": "EHF-LV020k1",
+      "specs": {
+        "dynamic_force_kN": 20,
+        "static_force_kN": 24,
+        "stroke_mm": 50,
+        "weight_kg": 300,
+        "frame_stiffness_kN_mm": {
+          "value": 303,
+          "note": "원문 frame rigidity 0.0033 mm/kN(크로스헤드–테이블 500 mm) 의 역수"
+        },
+        "vertical_test_space_mm": {
+          "min": 135,
+          "max": 835,
+          "uncertain": true,
+          "note": "원문 'Testing space (mm): A 135 to 835'. 도면 기호 A 가 세로 공간인지 페이지에 축 이름이 없다"
+        },
+        "horizontal_test_space_mm": {
+          "value": 460,
+          "uncertain": true,
+          "note": "원문 'Testing space (mm): B 460'. 도면 기호 B 를 폭으로 읽음"
+        },
+        "footprint_mm": {
+          "note": "원문 'Main unit dimensions (mm): C 800, D 600, E 1780' — 도면 기호라 W/D/H 를 가리지 않았다"
+        }
+      },
+      "note": "원문 동적 ±20 kN, 정적 ±24 kN, 피스톤 스트로크 ±25 mm"
+    },
+    {
+      "model": "EHF-LV020k2",
+      "specs": {
+        "dynamic_force_kN": 20,
+        "static_force_kN": 24,
+        "stroke_mm": 100,
+        "weight_kg": 300,
+        "frame_stiffness_kN_mm": {
+          "value": 303,
+          "note": "원문 frame rigidity 0.0033 mm/kN(크로스헤드–테이블 500 mm) 의 역수"
+        },
+        "vertical_test_space_mm": {
+          "min": 135,
+          "max": 835,
+          "uncertain": true,
+          "note": "원문 'Testing space (mm): A 135 to 835'. 도면 기호 A 가 세로 공간인지 페이지에 축 이름이 없다"
+        },
+        "horizontal_test_space_mm": {
+          "value": 460,
+          "uncertain": true,
+          "note": "원문 'Testing space (mm): B 460'. 도면 기호 B 를 폭으로 읽음"
+        },
+        "footprint_mm": {
+          "note": "원문 'Main unit dimensions (mm): C 800, D 600, E 1780' — 도면 기호라 W/D/H 를 가리지 않았다"
+        }
+      },
+      "note": "원문 동적 ±20 kN, 정적 ±24 kN, 피스톤 스트로크 ±50 mm"
+    }
+  ],
+  "accuracy": {
+    "force": "Within 0.5 % of indicated value or ±0.02 % of maximum dynamic test force, whichever is greater (24-bit rangeless)"
+  },
+  "utilities": "적용 유압원: AF-4, AF-10B, AF-20B, QF-10B, QF-20B (페이지 부제: With Table Housing AF-4 Hydraulic Power Supply Unit). 전원은 유압원에 따라 다름",
+  "features": [
+    "제어 항목: 시험력·스트로크(옵션으로 2개 추가)",
+    "시험력 24 bit 레인지리스",
+    "파형: 사인·삼각·사각·램프·헤버사인",
+    "크로스헤드 유압 구동(유압 클램프)"
+  ],
+  "relations": [
+    {
+      "type": "compatible_accessory",
+      "target": "shimadzu-servopulser-fatigue-grips-and-jigs"
+    },
+    {
+      "type": "same_family_as",
+      "target": "shimadzu-servopulser-ehf-u"
+    },
+    {
+      "type": "same_family_as",
+      "target": "shimadzu-servopulser-ehf-e"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://www.shimadzu.com/an/products/materials-testing/fatigue-testingimpact-testing/ehf-l-series/spec.html",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지(HTML) 본문·표를 직접 읽음. 기종별 사양 카드(최대 동적·정적 시험력, 스트로크, 정확도, 유압원)"
+    }
+  ],
+  "confidence": "limited",
+  "notes": "하중·스트로크는 페이지에 ± 로 적혀 있다. 하중은 진폭 그대로(±50 kN → 50), 스트로크는 기존 객체 관례대로 전 행정으로 옮겼다(±25 mm → 50 mm). 반복 속도·진폭은 '진폭 특성 도표 참조' 라고만 적혀 있어 주파수 값이 없다. 전원은 유압원에 따라 다르다고만 적혀 있다(카탈로그 34·35쪽 참조 문구). 최대 진폭 표기는 '±25 mm, ±50 mm', 'Units with a maximum stroke of ±100 mm can also be made.'"
+}

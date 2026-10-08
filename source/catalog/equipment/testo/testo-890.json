@@ -1,0 +1,109 @@
+{
+  "id": "testo-890",
+  "kind": "equipment_series",
+  "name": "testo 890 Thermal Imager",
+  "name_ko": "테스토 890 열화상 카메라",
+  "manufacturer": "testo",
+  "category": "thermal_imager",
+  "form_factor": "handheld",
+  "description": "testo 의 상위 휴대 열화상 카메라. 적외 해상도 640 × 480(SuperResolution 1,280 × 960), 열 감도 <40 mK(+30 °C), 측정 범위 -30 ~ +100 · 0 ~ +350 · 0 ~ +650 °C 전환, 7.5 ~ 14 µm, 33 Hz, 확도 ±2 °C 또는 ±2 %. 망원 렌즈를 더한 키트가 있다.",
+  "test_items": [
+    "thermography"
+  ],
+  "measurands": [
+    "surface_temperature",
+    "temperature_distribution",
+    "hotspot_location"
+  ],
+  "limits": {
+    "temperature_degC": {
+      "min": -30,
+      "max": 650,
+      "note": "-30 ~ +100 / 0 ~ +350 / 0 ~ +650 °C 전환. 고온 측정 옵션은 +350 ~ +1,200 °C(망원 렌즈와 함께 쓰지 못함)"
+    },
+    "ir_resolution_pixels": {
+      "max": 307200,
+      "note": "640 × 480"
+    },
+    "thermal_sensitivity_degC": {
+      "max": 0.04
+    },
+    "wavelength_nm": {
+      "min": 7500,
+      "max": 14000,
+      "note": "원문 7.5 ~ 14 µm"
+    }
+  },
+  "models": [
+    {
+      "model": "testo 890",
+      "specs": {
+        "detector_pixels": "640 × 480",
+        "ir_resolution_pixels": 307200,
+        "thermal_sensitivity_degC": 0.04,
+        "temperature_degC": {
+          "min": -30,
+          "max": 650
+        },
+        "accuracy": "±2 °C 또는 읽음값의 ±2 %(-30 ~ -22 °C 에서 ±3 °C)",
+        "wavelength_nm": {
+          "min": 7500,
+          "max": 14000
+        },
+        "frame_rate_fps": {
+          "value": 33,
+          "note": "EU 안 33 Hz, EU 밖 9 Hz"
+        },
+        "field_of_view_deg": "42° × 32°(표준, 최소 초점 0.1 m), 25° × 19°(25° 렌즈, 0.2 m), 15° × 11°(망원, 0.5 m), 6.6° × 5°(초망원, 2 m)",
+        "weight_kg": 1.63
+      },
+      "note": "레인지 -30 ~ +100 / 0 ~ +350 / 0 ~ +650 °C. 열 감도는 +30 °C 에서. IFOV 1.13 mrad(표준), SuperResolution 1,280 × 960. 운전 온도 -15 ~ +50 °C, IP54. 데이터시트 PDF(06.2018)로 확인"
+    },
+    {
+      "model": "testo 890 Set",
+      "note": "렌즈 둘 · 셋 또는 초망원 렌즈를 묶은 세트(주문 번호 0563 0890 X2 · X3 · X5 · X6, PDF 「Overview of variants」). 측정 사양은 testo 890 과 같다"
+    },
+    {
+      "model": "testo 890-2",
+      "note": "제품 페이지 제목에서 이름만 확인(주문 번호 0563 0890 V2)",
+      "uncertain": true
+    }
+  ],
+  "options": [
+    "초망원 렌즈 키트"
+  ],
+  "relations": [
+    {
+      "type": "performs",
+      "target": "thermography"
+    },
+    {
+      "type": "same_family_as",
+      "target": "testo-883"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://www.testo.com/en-US/testo-890/p/0563-0890-X1",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지. 검색 엔진이 보여 준 제조사 페이지 발췌로 읽음(페이지를 직접 열지 못함). 값은 데이터시트 PDF 로 확인함"
+    },
+    {
+      "url": "https://static-int.testo.com/media/4c/6e/c11e967c21b1/testo-890_IN.PDF",
+      "retrieved": "2026-10-08",
+      "note": "제조사 데이터시트 PDF 의 주소. 아래 file 출처로 PDF 를 읽어 확인함"
+    },
+    {
+      "file": "testo/testo-890_in.pdf",
+      "pages": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "note": "제조사 데이터시트 PDF(0981 8854, 06.2018)"
+    }
+  ],
+  "confidence": "catalog",
+  "notes": "PDF 로 확인: 적외 해상도 · 열 감도 · 측정 범위 · 확도 · 7.5 ~ 14 µm · 33 Hz 를 확인해 uncertain 을 지우고 시야 · 무게를 더함. testo 890-2 는 PDF 에 없어 이름만(uncertain) 그대로."
+}

@@ -1,0 +1,116 @@
+{
+  "id": "saginomiya-bmh-lst",
+  "kind": "equipment_series",
+  "name": "Saginomiya BMH Large-sized Material Fatigue Test System (LST Series)",
+  "name_ko": "사기노미야 BMH 대형 재료 피로시험 시스템(LST 시리즈)",
+  "manufacturer": "saginomiya",
+  "category": "servohydraulic_fatigue",
+  "drive": "servohydraulic",
+  "description": "ST 형 프레임으로 대하중 재료·구조물 시험을 하는 서보유압 시스템. 표준형 용량 최대 2 MN. 동적 ±300 / ±500 / ±1000 / ±2000 kN, 최대 변위 ±100 mm. 제어 채널 최대 4개(하중·변위 등), 자동 레인지 8단(×1~×128), 정적 하중 정확도 로드셀 용량의 ±0.2 %, 정적 변위 정확도 전 행정의 ±0.2 %, 제어 안정도 각 레인지 FS 의 ±1.0 %. 로드셀 FLC 형(전단 변형식), 변위계 차동변압기(액추에이터 내장).",
+  "test_items": [
+    "fatigue",
+    "tensile",
+    "compression"
+  ],
+  "measurands": [
+    "mechanical.fatigue_strength"
+  ],
+  "limits": {
+    "dynamic_force_kN": {
+      "min": 300,
+      "max": 2000,
+      "values": [
+        300,
+        500,
+        1000,
+        2000
+      ]
+    }
+  },
+  "models": [
+    {
+      "model": "LST-30",
+      "specs": {
+        "dynamic_force_kN": 300,
+        "static_force_kN": 350,
+        "stroke_mm": {
+          "value": 200,
+          "note": "최대 변위 ±100 mm"
+        },
+        "frame_stiffness_kN_mm": {
+          "value": 1493,
+          "note": "원문 강성 0.00067 mm/kN(크로스헤드 테이블 500 mm)의 역수"
+        }
+      },
+      "note": "로드 프레임 LT-300, 액추에이터 EFH-300, 유압원 HPT-22"
+    },
+    {
+      "model": "LST-50",
+      "specs": {
+        "dynamic_force_kN": 500,
+        "static_force_kN": 580,
+        "stroke_mm": {
+          "value": 200,
+          "note": "최대 변위 ±100 mm"
+        },
+        "frame_stiffness_kN_mm": {
+          "value": 2500,
+          "note": "원문 강성 0.0004 mm/kN(크로스헤드 테이블 500 mm)의 역수"
+        }
+      },
+      "note": "로드 프레임 LT-500, 액추에이터 EFH-500, 유압원 HPT-37"
+    },
+    {
+      "model": "LST-100",
+      "specs": {
+        "dynamic_force_kN": 1000,
+        "static_force_kN": 1160,
+        "stroke_mm": {
+          "value": 200,
+          "note": "최대 변위 ±100 mm"
+        },
+        "frame_stiffness_kN_mm": {
+          "value": 3333,
+          "note": "원문 강성 0.0003 mm/kN(크로스헤드 테이블 500 mm)의 역수"
+        }
+      },
+      "note": "로드 프레임 LT-1M, 액추에이터 EFH-1M, 유압원 HPT-55"
+    },
+    {
+      "model": "LST-200",
+      "specs": {
+        "dynamic_force_kN": 2000,
+        "static_force_kN": 2300,
+        "stroke_mm": {
+          "value": 200,
+          "note": "최대 변위 ±100 mm"
+        },
+        "frame_stiffness_kN_mm": {
+          "value": 4000,
+          "note": "원문 강성 0.00025 mm/kN(크로스헤드 테이블 500 mm)의 역수"
+        }
+      },
+      "note": "로드 프레임 LT-2M, 액추에이터 EFH-2M, 유압원 HPT-74TW"
+    }
+  ],
+  "accuracy": {
+    "static_load": "±0.2% of load cell capacity",
+    "static_displacement": "±0.2% of full stroke",
+    "control_stability": "±1.0% of FS in each range"
+  },
+  "relations": [
+    {
+      "type": "same_family_as",
+      "target": "saginomiya-smh-material-fatigue"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://www.saginomiya.co.jp/en/dynamic/material/bmh.html",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지(HTML) 본문·표를 직접 읽음. BMH203 LST Series 사양표"
+    }
+  ],
+  "confidence": "limited",
+  "notes": "프레임 강성은 원문이 mm/kN(컴플라이언스)이라 역수로 kN/mm 를 적었다. 액추에이터·유압원·로드 프레임은 표의 칸 순서대로 기종에 대응시켰다. 서보밸브 72-186 / 72-186 / 72-187 / 72-188."
+}

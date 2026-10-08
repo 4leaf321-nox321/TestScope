@@ -1,0 +1,78 @@
+{
+  "id": "hioki-mr8875",
+  "kind": "equipment_series",
+  "name": "Hioki Memory HiCorder MR8875",
+  "name_ko": "히오키 메모리 하이코더 MR8875",
+  "manufacturer": "hioki",
+  "brand": "Memory HiCorder",
+  "category": "dmm_daq",
+  "form_factor": "portable",
+  "description": "여러 물리량을 동시에 재는 휴대형 고속 파형 기록계. 입력 유닛 슬롯 4개, 아날로그 최대 16채널(MR8902 사용 시 60채널) + 로직 8채널 + 펄스 2채널. MR8901 로 전 채널 동시 500 kS/s. 메모리 32 M-words, 8.4인치 SVGA 터치 화면. 차량 탑재 분석·소비 전류 시험 등에 쓴다.",
+  "test_items": [],
+  "models": [
+    {
+      "model": "MR8875",
+      "specs": {
+        "channels": {
+          "max": 60,
+          "note": "아날로그 최대 16ch, MR8902 사용 시 60ch. 별도 로직 8ch·펄스 2ch",
+          "requires_accessory": true
+        },
+        "data_rate_Hz": {
+          "max": 500000,
+          "note": "500 kS/s(2 μs) 전 채널 동시, MR8901 사용 시",
+          "requires_accessory": true
+        },
+        "interfaces": "100BASE-TX LAN, USB 2.0",
+        "weight_kg": 2.4,
+        "footprint_mm": {
+          "W": 298,
+          "H": 224,
+          "D": 84
+        }
+      },
+      "note": "분해능 1/1250 of range(5 mV~10 V/div). 메모리 32 M-words(64 MB). 8.4인치 SVGA-TFT 컬러 LCD(800×600) 터치. 무게는 입력 유닛·배터리 제외"
+    }
+  ],
+  "options": [
+    {
+      "name": "MR8901",
+      "note": "4채널 전압 유닛"
+    },
+    {
+      "name": "MR8902",
+      "note": "15채널 전압·온도 유닛"
+    },
+    {
+      "name": "MR8903",
+      "note": "4채널 변형 유닛"
+    },
+    {
+      "name": "MR8904",
+      "note": "2포트 CAN 유닛"
+    },
+    {
+      "name": "MR8905",
+      "note": "2채널 고전압 유닛(최대 1000 V DC)"
+    }
+  ],
+  "relations": [
+    {
+      "type": "same_family_as",
+      "target": "hioki-mr6000"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://www.hioki.com/us-en/products/data-acquisition/daq-testing/id_5836",
+      "retrieved": "2026-10-08",
+      "note": "제조사 MR8875 페이지. 슬롯·채널, 샘플링·분해능, 입력 유닛(MR8901~MR8905), 메모리, 화면, 인터페이스, 치수·무게"
+    },
+    {
+      "url": "https://www.hioki.com/us-en/products/data-acquisition/daq-testing",
+      "retrieved": "2026-10-08",
+      "note": "제조사 DAQ 목록 페이지. MR8875 Max. 16ch Analog + 8ch Logic, 60ch scanner, 500k-Sampling/s"
+    }
+  ],
+  "confidence": "limited"
+}

@@ -1,0 +1,78 @@
+{
+  "id": "rohde-schwarz-rta4000",
+  "kind": "equipment_series",
+  "name": "R&S RTA4000 Oscilloscope",
+  "name_ko": "로데슈바르츠 RTA4000 오실로스코프",
+  "manufacturer": "rohde-schwarz",
+  "brand": "RTA",
+  "category": "oscilloscope",
+  "subcategory": "mixed_signal_oscilloscope",
+  "form_factor": "benchtop",
+  "description": "200 MHz~1 GHz 대역의 4채널 오실로스코프 계열임. 10 bit ADC, 5 Gsample/s, 200 Mpts, 옵션 16 디지털 채널, 10.1 inch WXGA(1280×800) 화면. 대역폭은 옵션 키로 정해짐.",
+  "test_items": [],
+  "limits": {
+    "bandwidth_Hz": {
+      "min": 200000000,
+      "max": 1000000000
+    },
+    "sample_rate_Sa_s": {
+      "max": 5000000000
+    },
+    "record_length_pts": {
+      "max": 200000000
+    },
+    "channels": {
+      "values": [
+        4
+      ]
+    },
+    "logic_channel_count": {
+      "values": [
+        16
+      ],
+      "note": "옵션"
+    },
+    "adc_resolution_bit": {
+      "values": [
+        10
+      ]
+    },
+    "display_size_in": {
+      "values": [
+        10.1
+      ]
+    }
+  },
+  "models": [
+    {
+      "model": "RTA4004",
+      "specs": {
+        "bandwidth_Hz": {
+          "min": 200000000,
+          "max": 1000000000,
+          "note": "기본 200 MHz. RTA-B243/B245/B2410 옵션으로 350·500 MHz·1 GHz"
+        },
+        "channels": 4,
+        "logic_channel_count": 16,
+        "sample_rate_Sa_s": 5000000000,
+        "record_length_pts": 200000000,
+        "adc_resolution_bit": 10,
+        "display_size_in": 10.1
+      }
+    }
+  ],
+  "options": [
+    {
+      "name": "RTA-B243·B245·B2410",
+      "note": "대역폭 350·500 MHz·1 GHz"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://www.rohde-schwarz.com/us/products/test-and-measurement/oscilloscopes/rs-rta4000-oscilloscope_63493-458432.html",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지 기종 표. 원문 5 Gsample/s, 200 Mpts, 10 bit, 16 (optional), 10.1\" WXGA"
+    }
+  ],
+  "confidence": "limited"
+}

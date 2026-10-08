@@ -1,0 +1,77 @@
+{
+  "id": "napson-rg-200pv",
+  "kind": "equipment_model",
+  "name": "NAPSON RG-200PV Semi-Automatic 4-Point Probe System for Solar Cells",
+  "name_ko": "냅슨 RG-200PV 태양전지용 반자동 4탐침 측정기",
+  "manufacturer": "napson",
+  "category": "electrical_property_tester",
+  "subcategory": "four_point_probe",
+  "form_factor": "benchtop",
+  "description": "4탐침법으로 저항률·면저항을 재는 태양전지용 반자동 측정기. X-Y 스테이지로 균일·임의 피치 다점 측정을 하고 2D/3D 매핑 소프트웨어가 딸린다. 최대 210×210 mm 사각 시료. 실리콘, 폴리실리콘, SiC, 탄소나노튜브, DLC, 그래핀, 은나노와이어, 금속·ITO 도전막, 확산·에피·이온주입 시료가 대상.",
+  "test_items": [
+    "electrical_transport"
+  ],
+  "measurands": [
+    "electrical.surface_resistivity",
+    "electrical.resistivity_volume"
+  ],
+  "materials": [
+    "silicon",
+    "polysilicon",
+    "SiC",
+    "carbon nanotubes",
+    "DLC",
+    "graphene",
+    "silver nanowires",
+    "metal films",
+    "ITO"
+  ],
+  "limits": {
+    "surface_resistivity_ohm_sq": {
+      "min": 0.001,
+      "max": 1000000.0,
+      "note": "원문 1m～1MΩ/sq"
+    },
+    "resistivity_ohm_cm": {
+      "min": 0.001,
+      "max": 10000.0,
+      "note": "원문 「1m～10k・cm」(Ω 표기가 빠져 있음)",
+      "uncertain": true
+    },
+    "sample_size_mm": {
+      "max": 210,
+      "note": "최대 210×210 mm(각형)"
+    }
+  },
+  "models": [
+    {
+      "model": "RG-200PV",
+      "specs": {
+        "surface_resistivity_ohm_sq": {
+          "min": 0.001,
+          "max": 1000000.0
+        },
+        "sample_size_mm": {
+          "max": 210
+        },
+        "footprint_mm": [
+          400,
+          325,
+          600
+        ],
+        "weight_kg": 35,
+        "principle": "4탐침법(접촉식)"
+      },
+      "note": "원문 W400×D325×H600mm, 약 35 kg"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://www.napson.co.jp/products/contact/semiauto/product03/",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지 RG-200PV. 제조사 제품 페이지(일본어 HTML). 같은 페이지의 「電気抵抗測定の測定原理」 다운로드는 PDF 직링크가 아니라 신청 양식(form.napson.co.jp/form/form_download)이라 열지 않음"
+    }
+  ],
+  "confidence": "limited",
+  "notes": "탐침 간격·전류 범위·정확도·전원은 페이지에 없음."
+}

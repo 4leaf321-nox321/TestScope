@@ -1,0 +1,225 @@
+{
+  "id": "konica-minolta-cs-3000",
+  "kind": "equipment_series",
+  "name": "Konica Minolta CS-3000 / CS-3000HDR / CS-2000Plus Spectroradiometer",
+  "name_ko": "코니카미놀타 CS-3000 분광복사휘도계",
+  "manufacturer": "konica-minolta",
+  "brand": "CS",
+  "category": "spectroradiometer",
+  "form_factor": "benchtop",
+  "description": "CS-2000 의 뒤를 잇는 고정밀 분광복사휘도계 계열. 측정 파장 380 ~ 780 nm, 반치폭 5 nm 이하, 측정각 1° · 0.2° · 0.1°. 표준광원 A 확도 보증 휘도는 CS-3000HDR 이 0.0001(1°) ~ 10,000,000 cd/m²(0.1°), CS-3000 이 0.0005 ~ 500,000 cd/m², CS-2000Plus 가 0.003 ~ 500,000 cd/m². 단독 측정 시간 최소 1 s ~ 약 190 s, 통신 측정 약 0.07 s.",
+  "test_items": [
+    "photometry_colorimetry"
+  ],
+  "measurands": [
+    "luminance",
+    "chromaticity",
+    "spectral_radiance",
+    "correlated_color_temperature"
+  ],
+  "materials": [
+    "LCD",
+    "OLED",
+    "HDR displays",
+    "light sources"
+  ],
+  "limits": {
+    "wavelength_nm": {
+      "min": 380,
+      "max": 780
+    },
+    "spectral_bandwidth_nm": {
+      "max": 5,
+      "note": "반치폭 5 nm 이하"
+    },
+    "measuring_angle_deg": {
+      "values": [
+        1,
+        0.2,
+        0.1
+      ]
+    },
+    "luminance_cd_m2": {
+      "min": 0.0001,
+      "max": 10000000,
+      "note": "CS-3000HDR 기준. 측정각별로 다름"
+    }
+  },
+  "models": [
+    {
+      "model": "CS-3000HDR",
+      "specs": {
+        "wavelength_nm": {
+          "min": 380,
+          "max": 780
+        },
+        "spectral_bandwidth_nm": 5,
+        "measuring_angle_deg": [
+          1,
+          0.2,
+          0.1
+        ],
+        "luminance_cd_m2": {
+          "min": 0.0001,
+          "max": 10000000
+        },
+        "measurement_time_s": {
+          "min": 1,
+          "max": 190,
+          "note": "단독 측정: 최소 1 s 이하(Manual) ~ 약 190 s(Normal), Manual 최대 약 242 s. 적분 시간 0.005 ~ 92 s(Normal). PC 통신 측정 약 0.07 s"
+        },
+        "interfaces": "RS-232C, USB 2.0",
+        "weight_kg": 7.0,
+        "wavelength_resolution_nm": {
+          "value": 1.0,
+          "note": "표시 파장 간격 1.0 nm(분해능 0.9 nm/pixel), 파장 정밀도 ±0.3 nm"
+        },
+        "spot_diameter_mm": {
+          "min": 0.5,
+          "max": 5,
+          "note": "최소 측정 지름 1° 5 mm · 0.2° 1 mm · 0.1° 0.5 mm(근접 렌즈 1 · 0.2 · 0.1 mm)"
+        },
+        "measurement_distance_mm": {
+          "min": 350,
+          "note": "최소 대물 거리. 근접 렌즈 55 mm"
+        },
+        "luminance_accuracy_pct": {
+          "value": 2,
+          "note": "1°, 표준광원 A, 0.0004 ~ 10,000,000 cd/m² ±2 %, 0.0001 ~ 0.0004 cd/m² ±5 %"
+        },
+        "chromaticity_accuracy_xy": {
+          "value": 0.0015,
+          "note": "1°, 0.05 cd/m² 이상: x ±0.0015, y ±0.001(u' ±0.0014, v' ±0.0006), 표준광원 A. 그보다 낮은 휘도는 x · y ±0.002"
+        }
+      },
+      "note": "휘도(확도 보증): 1° 0.0001 ~ 100,000 / 0.2° 0.0025 ~ 2,500,000 / 0.1° 0.01 ~ 10,000,000 cd/m²"
+    },
+    {
+      "model": "CS-3000",
+      "specs": {
+        "wavelength_nm": {
+          "min": 380,
+          "max": 780
+        },
+        "spectral_bandwidth_nm": 5,
+        "measuring_angle_deg": [
+          1,
+          0.2,
+          0.1
+        ],
+        "luminance_cd_m2": {
+          "min": 0.0005,
+          "max": 500000
+        },
+        "measurement_time_s": {
+          "min": 1,
+          "max": 190,
+          "note": "단독 측정: 최소 1 s 이하(Manual) ~ 약 190 s(Normal), Manual 최대 약 242 s. 적분 시간 0.005 ~ 92 s(Normal). PC 통신 측정 약 0.07 s"
+        },
+        "interfaces": "RS-232C, USB 2.0",
+        "weight_kg": 7.0,
+        "wavelength_resolution_nm": {
+          "value": 1.0,
+          "note": "표시 파장 간격 1.0 nm(분해능 0.9 nm/pixel), 파장 정밀도 ±0.3 nm"
+        },
+        "spot_diameter_mm": {
+          "min": 0.5,
+          "max": 5,
+          "note": "최소 측정 지름 1° 5 mm · 0.2° 1 mm · 0.1° 0.5 mm(근접 렌즈 1 · 0.2 · 0.1 mm)"
+        },
+        "measurement_distance_mm": {
+          "min": 350,
+          "note": "최소 대물 거리. 근접 렌즈 55 mm"
+        },
+        "luminance_accuracy_pct": {
+          "value": 2,
+          "note": "표준광원 A"
+        },
+        "chromaticity_accuracy_xy": {
+          "value": 0.0015,
+          "note": "1°, 0.05 cd/m² 이상: x ±0.0015, y ±0.001(u' ±0.0014, v' ±0.0006), 표준광원 A. 그보다 낮은 휘도는 x · y ±0.002"
+        }
+      },
+      "note": "휘도(표준광원 A, 확도 보증): 1° 0.0005 ~ 5,000 / 0.2° 0.0125 ~ 125,000 / 0.1° 0.05 ~ 500,000 cd/m². 크기 158 × 262 × 392 mm"
+    },
+    {
+      "model": "CS-2000Plus",
+      "specs": {
+        "wavelength_nm": {
+          "min": 380,
+          "max": 780
+        },
+        "spectral_bandwidth_nm": 5,
+        "measuring_angle_deg": [
+          1,
+          0.2,
+          0.1
+        ],
+        "luminance_cd_m2": {
+          "min": 0.003,
+          "max": 500000
+        },
+        "interfaces": "RS-232C, USB 2.0",
+        "wavelength_resolution_nm": {
+          "value": 1.0,
+          "note": "표시 파장 간격 1.0 nm(분해능 0.9 nm/pixel), 파장 정밀도 ±0.3 nm"
+        },
+        "spot_diameter_mm": {
+          "min": 0.5,
+          "max": 5,
+          "note": "최소 측정 지름 1° 5 mm · 0.2° 1 mm · 0.1° 0.5 mm(근접 렌즈 1 · 0.2 · 0.1 mm)"
+        },
+        "measurement_distance_mm": {
+          "min": 350,
+          "note": "최소 대물 거리. 근접 렌즈 55 mm"
+        },
+        "luminance_accuracy_pct": {
+          "value": 2,
+          "note": "표준광원 A"
+        },
+        "measurement_time_s": {
+          "min": 1,
+          "max": 242,
+          "note": "단독 측정: 최소 1 s 이하(Manual) ~ 최대 약 242 s(Normal · Manual). 적분 시간 0.005 ~ 120 s(Normal). PC 통신 측정 약 0.08 s"
+        },
+        "weight_kg": {
+          "value": 7.0,
+          "note": "약 7.0 kg(계열 공통 칸)"
+        }
+      },
+      "note": "CS-3000 제품 페이지 · 카탈로그에 함께 실린 기종. 휘도(표준광원 A, 확도 보증): 1° 0.003 ~ 5,000 / 0.2° 0.075 ~ 125,000 / 0.1° 0.3 ~ 500,000 cd/m². 측정각 전환은 수동(CS-3000 · HDR 은 전동)"
+    }
+  ],
+  "relations": [
+    {
+      "type": "performs",
+      "target": "photometry_colorimetry"
+    },
+    {
+      "type": "same_family_as",
+      "target": "konica-minolta-cs-2000"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://sensing.konicaminolta.us/us/products/cs-3000-spectroradiometer/",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지(HTML). CS-3000 · CS-2000Plus 사양"
+    },
+    {
+      "url": "https://sensing.konicaminolta.us/us/products/cs-3000-hdr-spectroradiometer/",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지(HTML). CS-3000HDR 사양"
+    },
+    {
+      "file": "konica-minolta/cs-3000_catalog_eng_a3_compressed.pdf",
+      "pages": [
+        2,
+        4
+      ],
+      "note": "제조사 CS-3000 계열 카탈로그 PDF(3 기종 사양표)"
+    }
+  ],
+  "confidence": "catalog",
+  "notes": "PDF 로 확인: 세 기종의 파장 범위 · 반치폭 · 측정각 · 확도 보증 휘도 범위 · 측정 시간 · 인터페이스 · 무게(휘도 확도 · 파장 간격 · 최소 측정 지름 · 대물 거리, CS-3000 · HDR 의 색도 확도를 더함). CS-2000Plus 의 색도 확도와 세 기종의 휘도 반복도는 사양표 텍스트가 휘도 문턱과 값의 줄이 어긋나 넣지 않았다."
+}

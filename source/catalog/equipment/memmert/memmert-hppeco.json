@@ -1,0 +1,198 @@
+{
+  "id": "memmert-hppeco",
+  "kind": "equipment_series",
+  "name": "Memmert HPPeco Constant Climate Chambers with Peltier Technology (HPP110eco … HPP2200eco)",
+  "name_ko": "메머트 HPPeco 펠티에 항온항습 챔버",
+  "manufacturer": "memmert",
+  "brand": "HPPeco",
+  "category": "climatic_chamber",
+  "drive": "thermal",
+  "form_factor": "floor",
+  "description": "냉매 없는 펠티에 냉각 항온항습 챔버. 0~+70 °C, 최대 90 %RH 까지 능동 가습·제습. ICH Q1A 안정성 시험, 화장품·식품 안정성 시험에 쓴다. 내용적 108~2140 L 일곱 크기.",
+  "test_items": [
+    "damp_heat"
+  ],
+  "standards": {
+    "compliance": [],
+    "test_methods": [
+      "ICH Q1A"
+    ]
+  },
+  "limits": {
+    "temperature_degC": {
+      "min": 0,
+      "max": 70
+    },
+    "humidity_pct": {
+      "min": 10,
+      "max": 90,
+      "note": "목록 표 10–90 % RH, 본문 'up to 90% rh'"
+    },
+    "chamber_volume_L": {
+      "min": 108,
+      "max": 2140,
+      "values": [
+        108,
+        256,
+        384,
+        749,
+        1060,
+        1360,
+        2140
+      ]
+    }
+  },
+  "models": [
+    {
+      "model": "HPP110eco",
+      "specs": {
+        "chamber_volume_L": 108,
+        "inner_mm": {
+          "note": "560 × 480 × 400 mm (페이지 표기 그대로)"
+        },
+        "temperature_degC": {
+          "min": 0,
+          "max": 70
+        },
+        "humidity_pct": {
+          "min": 10,
+          "max": 90
+        }
+      }
+    },
+    {
+      "model": "HPP260eco",
+      "specs": {
+        "chamber_volume_L": 256,
+        "inner_mm": {
+          "note": "640 × 800 × 500 mm (페이지 표기 그대로)"
+        },
+        "temperature_degC": {
+          "min": 0,
+          "max": 70
+        },
+        "humidity_pct": {
+          "min": 10,
+          "max": 90
+        }
+      }
+    },
+    {
+      "model": "HPP410eco",
+      "specs": {
+        "chamber_volume_L": 384,
+        "inner_mm": {
+          "note": "640 × 1200 × 500 mm (페이지 표기 그대로)"
+        },
+        "temperature_degC": {
+          "min": 0,
+          "max": 70
+        },
+        "humidity_pct": {
+          "min": 10,
+          "max": 90
+        }
+      }
+    },
+    {
+      "model": "HPP750eco",
+      "specs": {
+        "chamber_volume_L": 749,
+        "inner_mm": {
+          "note": "1040 × 1200 × 600 mm (페이지 표기 그대로)"
+        },
+        "temperature_degC": {
+          "min": 0,
+          "max": 70
+        },
+        "humidity_pct": {
+          "min": 10,
+          "max": 90
+        }
+      }
+    },
+    {
+      "model": "HPP1060eco",
+      "specs": {
+        "chamber_volume_L": 1060,
+        "inner_mm": {
+          "note": "1040 × 1200 × 850 mm (페이지 표기 그대로)"
+        },
+        "temperature_degC": {
+          "min": 0,
+          "max": 70
+        },
+        "humidity_pct": {
+          "min": 10,
+          "max": 90
+        }
+      }
+    },
+    {
+      "model": "HPP1400eco",
+      "specs": {
+        "chamber_volume_L": 1360,
+        "inner_mm": {
+          "note": "1250 × 1450 × 750 mm (페이지 표기 그대로)"
+        },
+        "temperature_degC": {
+          "min": 0,
+          "max": 70
+        },
+        "humidity_pct": {
+          "min": 10,
+          "max": 90
+        }
+      }
+    },
+    {
+      "model": "HPP2200eco",
+      "specs": {
+        "chamber_volume_L": 2140,
+        "inner_mm": {
+          "note": "1972 × 1450 × 750 mm (페이지 표기 그대로)"
+        },
+        "temperature_degC": {
+          "min": 0,
+          "max": 70
+        },
+        "humidity_pct": {
+          "min": 10,
+          "max": 90
+        }
+      }
+    }
+  ],
+  "features": [
+    "펠티에 냉각(냉매 없음)",
+    "마이크로 도징 펌프 가습",
+    "TwinDISPLAY 조작부",
+    "AtmoCONTROL 램프 프로그램",
+    "이중 문, 내부 유리창"
+  ],
+  "options": [
+    {
+      "name": "조명 장치 (Option P1)",
+      "note": "냉백색 6500 K 또는 냉백색/온백색 2700 K 조합, 1 % 단위 조광"
+    }
+  ],
+  "relations": [
+    {
+      "type": "simulates_environment",
+      "target": "environment-damp-heat"
+    },
+    {
+      "type": "same_family_as",
+      "target": "memmert-ich"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://www.memmert.com/products/climate-chambers/constant-climate-chamber/",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지. 기종 목록(내용적·내부 치수·온도·습도), 펠티에 기술, 조명 옵션"
+    }
+  ],
+  "confidence": "limited",
+  "notes": "온습도 변동·편차 수치는 페이지에 없다('absolutely homogeneous' 같은 서술만 있음)."
+}

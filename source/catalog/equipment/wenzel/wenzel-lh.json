@@ -1,0 +1,230 @@
+{
+  "id": "wenzel-lh",
+  "kind": "equipment_series",
+  "name": "WENZEL LH Coordinate Measuring Machine",
+  "name_ko": "웬젤 LH 브리지형 3차원 측정기",
+  "manufacturer": "wenzel",
+  "category": "coordinate_measuring_machine",
+  "form_factor": "floor",
+  "description": "전 축 화강암 구조와 에어 베어링 안내면을 쓴 브리지(포털)형 3차원 측정기 계열임. X 650~2000 mm, Y 750~5000 mm, Z 500~1500 mm 의 10개 크기가 있고, 정밀도 0.8 + L/450 µm 부터. 정확도 등급은 Standard · Premium · Premium-Select, 3축·5축 스캐닝 헤드와 광학 센서를 달 수 있음. 측정 정확도 12년 보증을 내세움.",
+  "test_items": [],
+  "limits": {
+    "measuring_range_x_mm": {
+      "min": 650,
+      "max": 2000
+    },
+    "measuring_range_y_mm": {
+      "min": 750,
+      "max": 5000
+    },
+    "measuring_range_z_mm": {
+      "min": 500,
+      "max": 1500
+    }
+  },
+  "models": [
+    {
+      "model": "LH 65",
+      "specs": {
+        "measuring_range_x_mm": 650,
+        "measuring_range_y_mm": {
+          "values": [
+            750,
+            1200
+          ],
+          "note": "Y 길이 선택"
+        },
+        "measuring_range_z_mm": 500,
+        "length_measuring_error_mpe": "0.8 + L / 450 µm(표의 Precision 열)"
+      },
+      "note": "원문 측정 범위 650 x 750/1200 x 500. PDF(LH Generation 브로셔 p.5) 측정 범위 표와 일치"
+    },
+    {
+      "model": "LH 67",
+      "specs": {
+        "measuring_range_x_mm": 650,
+        "measuring_range_y_mm": {
+          "values": [
+            1000,
+            1500,
+            2000
+          ],
+          "note": "Y 길이 선택"
+        },
+        "measuring_range_z_mm": 700,
+        "length_measuring_error_mpe": "0.8 + L / 450 µm(표의 Precision 열)"
+      },
+      "note": "원문 측정 범위 650 x 1000/1500/2000 x 700"
+    },
+    {
+      "model": "LH 85",
+      "specs": {
+        "measuring_range_x_mm": 800,
+        "measuring_range_y_mm": {
+          "values": [
+            1000,
+            1500,
+            2000
+          ],
+          "note": "Y 길이 선택"
+        },
+        "measuring_range_z_mm": 500,
+        "length_measuring_error_mpe": "0.8 + L / 450 µm(표의 Precision 열)"
+      },
+      "note": "원문 측정 범위 800 x 1000/1500/2000 x 500"
+    },
+    {
+      "model": "LH 87",
+      "specs": {
+        "measuring_range_x_mm": 800,
+        "measuring_range_y_mm": {
+          "values": [
+            1000,
+            1500,
+            2000
+          ],
+          "note": "Y 길이 선택"
+        },
+        "measuring_range_z_mm": 700,
+        "length_measuring_error_mpe": "0.8 + L / 450 µm(표의 Precision 열)"
+      },
+      "note": "원문 측정 범위 800 x 1000/1500/2000 x 700. PDF(LH Generation 브로셔 p.5) 측정 범위 표와 일치"
+    },
+    {
+      "model": "LH 105",
+      "specs": {
+        "measuring_range_x_mm": 1000,
+        "measuring_range_y_mm": {
+          "values": [
+            1000,
+            1500,
+            2000
+          ],
+          "note": "Y 길이 선택"
+        },
+        "measuring_range_z_mm": 500,
+        "length_measuring_error_mpe": "0.9 + L / 450 µm(표의 Precision 열)"
+      },
+      "note": "원문 측정 범위 1000 x 1000/1500/2000 x 500"
+    },
+    {
+      "model": "LH 107",
+      "specs": {
+        "measuring_range_x_mm": 1000,
+        "measuring_range_y_mm": {
+          "values": [
+            1000,
+            1500,
+            2000
+          ],
+          "note": "Y 길이 선택"
+        },
+        "measuring_range_z_mm": 700,
+        "length_measuring_error_mpe": "1.0 + L / 450 µm(표의 Precision 열)"
+      },
+      "note": "원문 측정 범위 1000 x 1000/1500/2000 x 700"
+    },
+    {
+      "model": "LH 108",
+      "specs": {
+        "measuring_range_x_mm": 1000,
+        "measuring_range_y_mm": {
+          "values": [
+            1200,
+            1600,
+            2000,
+            3000
+          ],
+          "note": "Y 길이 선택"
+        },
+        "measuring_range_z_mm": 800,
+        "length_measuring_error_mpe": "1.0 + L / 450 µm(표의 Precision 열)"
+      },
+      "note": "원문 측정 범위 1000 x 1200/1600/2000/3000 x 800. PDF(LH Generation 브로셔 p.5) 측정 범위 표와 일치"
+    },
+    {
+      "model": "LH 1210",
+      "specs": {
+        "measuring_range_x_mm": 1200,
+        "measuring_range_y_mm": {
+          "values": [
+            1600,
+            2000,
+            2500,
+            3000
+          ],
+          "note": "Y 길이 선택"
+        },
+        "measuring_range_z_mm": 1000
+      },
+      "note": "원문 측정 범위 1200 x 1600/2000/2500/3000 x 1000(PDF p.6). 정밀도는 PDF 에 없음"
+    },
+    {
+      "model": "LH 1512",
+      "specs": {
+        "measuring_range_x_mm": 1500,
+        "measuring_range_y_mm": {
+          "values": [
+            2000,
+            2500,
+            3000
+          ],
+          "note": "Y 길이 선택"
+        },
+        "measuring_range_z_mm": 1200,
+        "length_measuring_error_mpe": "1.9 + L / 450 µm(표의 Precision 열)"
+      },
+      "note": "원문 측정 범위 1500 x 2000/2500/3000 x 1200"
+    },
+    {
+      "model": "LH 2012",
+      "specs": {
+        "measuring_range_x_mm": 2000,
+        "measuring_range_y_mm": {
+          "values": [
+            2500,
+            3000,
+            4000
+          ],
+          "note": "Y 길이 선택"
+        },
+        "measuring_range_z_mm": 1200,
+        "length_measuring_error_mpe": "2.9 + L / 400 µm(표의 Precision 열)"
+      },
+      "note": "원문 측정 범위 2000 x 2500/3000/4000 x 1200"
+    },
+    {
+      "model": "LH 2015",
+      "specs": {
+        "measuring_range_x_mm": 2000,
+        "measuring_range_y_mm": {
+          "values": [
+            3000,
+            4000,
+            5000
+          ],
+          "note": "Y 길이 선택"
+        },
+        "measuring_range_z_mm": 1500,
+        "length_measuring_error_mpe": "2.9 + L / 450 µm(표의 Precision 열)"
+      },
+      "note": "원문 측정 범위 2000 x 3000/4000/5000 x 1500"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://www.wenzel-group.com/en/products/lh-series",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지(기종별 측정 범위·정밀도 표)"
+    },
+    {
+      "file": "wenzel/wenzel-lh-generation-brochure.pdf",
+      "pages": [
+        5,
+        6
+      ]
+    }
+  ],
+  "confidence": "limited",
+  "notes": "PDF 로 확인: LH 65 · LH 87 · LH 108 측정 범위(LH Generation 브로셔 p.5), LH 1210 추가(p.6). 웹 값 그대로: LH 67 · 85 · 105 · 107 · 1512 · 2012 · 2015 의 측정 범위와 전 기종 정밀도(브로셔에 정밀도 표 없음). 표의 정밀도 열이 어느 정확도 등급(Standard · Premium · Premium-Select)의 값인지 페이지에 적혀 있지 않아 문장 그대로 둠. Y 길이별 기종명(예: LH 87 + Y 길이)은 페이지에 없어 크기 기종 하나로 묶음."
+}

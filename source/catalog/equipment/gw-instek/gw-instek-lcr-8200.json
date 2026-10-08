@@ -1,0 +1,161 @@
+{
+  "id": "gw-instek-lcr-8200",
+  "kind": "equipment_series",
+  "name": "GW Instek LCR-8200(A) High-Frequency LCR Meter",
+  "name_ko": "GW 인스텍 LCR-8200(A) 고주파 LCR 미터",
+  "manufacturer": "gw-instek",
+  "brand": "LCR-8200",
+  "category": "network_lcr_analyzer",
+  "form_factor": "benchtop",
+  "description": "DC, 10 Hz 부터 1~50 MHz 까지의 고주파 LCR 미터 계열. LCR-8200 다섯 기종(1/5/10/20/30 MHz)과 등가 회로 모델 분석을 더한 LCR-8200A 다섯 기종(5/10/20/30/50 MHz). 기본 확도 0.08%, 7인치 컬러 LCD, 17개 파라미터 중 4개 동시 표시, 15단계 리스트 측정, 내장 DC 바이어스 ±12 V.",
+  "test_items": [],
+  "limits": {
+    "frequency_Hz": {
+      "min": 10,
+      "max": 50000000,
+      "note": "DC 측정 포함. 기종 상한 1/5/10/20/30/50 MHz"
+    }
+  },
+  "models": [
+    {
+      "model": "LCR-8201",
+      "variant": "LCR-8200",
+      "specs": {
+        "frequency_Hz": {
+          "min": 10,
+          "max": 1000000,
+          "note": "DC 측정 포함"
+        },
+        "accuracy": "기본 확도 0.08%"
+      }
+    },
+    {
+      "model": "LCR-8205",
+      "variant": "LCR-8200",
+      "specs": {
+        "frequency_Hz": {
+          "min": 10,
+          "max": 5000000,
+          "note": "DC 측정 포함"
+        },
+        "accuracy": "기본 확도 0.08%"
+      }
+    },
+    {
+      "model": "LCR-8210",
+      "variant": "LCR-8200",
+      "specs": {
+        "frequency_Hz": {
+          "min": 10,
+          "max": 10000000,
+          "note": "DC 측정 포함"
+        },
+        "accuracy": "기본 확도 0.08%"
+      }
+    },
+    {
+      "model": "LCR-8220",
+      "variant": "LCR-8200",
+      "specs": {
+        "frequency_Hz": {
+          "min": 10,
+          "max": 20000000,
+          "note": "DC 측정 포함"
+        },
+        "accuracy": "기본 확도 0.08%"
+      }
+    },
+    {
+      "model": "LCR-8230",
+      "variant": "LCR-8200",
+      "specs": {
+        "frequency_Hz": {
+          "min": 10,
+          "max": 30000000,
+          "note": "DC 측정 포함"
+        },
+        "accuracy": "기본 확도 0.08%"
+      }
+    },
+    {
+      "model": "LCR-8205A",
+      "variant": "LCR-8200A(등가 회로 모델 분석 포함)",
+      "specs": {
+        "frequency_Hz": {
+          "min": 10,
+          "max": 5000000,
+          "note": "DC 측정 포함"
+        },
+        "accuracy": "기본 확도 0.08%"
+      }
+    },
+    {
+      "model": "LCR-8210A",
+      "variant": "LCR-8200A(등가 회로 모델 분석 포함)",
+      "specs": {
+        "frequency_Hz": {
+          "min": 10,
+          "max": 10000000,
+          "note": "DC 측정 포함"
+        },
+        "accuracy": "기본 확도 0.08%"
+      }
+    },
+    {
+      "model": "LCR-8220A",
+      "variant": "LCR-8200A(등가 회로 모델 분석 포함)",
+      "specs": {
+        "frequency_Hz": {
+          "min": 10,
+          "max": 20000000,
+          "note": "DC 측정 포함"
+        },
+        "accuracy": "기본 확도 0.08%"
+      }
+    },
+    {
+      "model": "LCR-8230A",
+      "variant": "LCR-8200A(등가 회로 모델 분석 포함)",
+      "specs": {
+        "frequency_Hz": {
+          "min": 10,
+          "max": 30000000,
+          "note": "DC 측정 포함"
+        },
+        "accuracy": "기본 확도 0.08%"
+      }
+    },
+    {
+      "model": "LCR-8250A",
+      "variant": "LCR-8200A(등가 회로 모델 분석 포함)",
+      "specs": {
+        "frequency_Hz": {
+          "min": 10,
+          "max": 50000000,
+          "note": "DC 측정 포함"
+        },
+        "accuracy": "기본 확도 0.08%"
+      }
+    }
+  ],
+  "features": [
+    "7인치 컬러 LCD",
+    "17개 파라미터 중 4개 측정값 동시 표시",
+    "15단계 리스트 측정",
+    "2곡선 스윕 모드",
+    "등가 회로 모델 분석(LCR-8200A 만, 7종 모델)",
+    "내장 DC 바이어스 전압 ±12 V",
+    "USB 저장",
+    "RS-232C, USB Host/Device, LAN, GPIB, Handler",
+    "범용 전원 입력"
+  ],
+  "sources": [
+    {
+      "url": "https://www.gwinstek.com/en-global/products/detail/LCR-8200",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지. 기종별 주파수(DC, 10Hz~1/5/10/20/30/50MHz), 0.08% Basic Accuracy, 내장 DC 바이어스 ±12V, 인터페이스"
+    }
+  ],
+  "confidence": "limited",
+  "notes": "제조사 사양서(downloadSeriesSpec)는 열지 않음. 임피던스 측정 범위·측정 속도는 제품 페이지에 없음."
+}

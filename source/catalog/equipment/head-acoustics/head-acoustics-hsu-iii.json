@@ -1,0 +1,79 @@
+{
+  "id": "head-acoustics-hsu-iii",
+  "kind": "equipment_series",
+  "name": "HEAD acoustics HSU III Artificial Head Series (HSU III.2 / HSU III.3)",
+  "name_ko": "HEAD acoustics HSU III 바이노럴 녹음용 인공 두상",
+  "manufacturer": "head-acoustics",
+  "brand": "HSU",
+  "category": "head_torso_simulator",
+  "form_factor": "fixture",
+  "description": "귀·머리·어깨를 재현한 아날로그 인공 두상 마이크(HEAD Shoulder Unit). 재현성 있는 바이노럴 녹음용이다. HSU III.2 는 ICP 마이크로 자체 잡음 15.5 dB(A)SPL·동적 범위 119.5 dB(A)·최대 135 dBSPL, HSU III.3 은 콘덴서 마이크 저잡음판으로 6.5 dB(A)SPL·106.5 dB(A)·113 dBSPL. 피스톤폰 교정, 등화 ID·FF·DF·USER·LIN, HEADlab·SQuadriga III·SQobold 와 함께 쓴다.",
+  "test_items": [],
+  "measurands": [
+    "sound_pressure_level",
+    "binaural_recording"
+  ],
+  "materials": [
+    "vehicles",
+    "household appliances",
+    "IT equipment",
+    "environmental noise"
+  ],
+  "limits": {
+    "sound_pressure_level_dB": {
+      "min": 6.5,
+      "max": 135,
+      "note": "하한은 자체 잡음(III.3 6.5 dB(A)SPL, III.2 15.5 dB(A)SPL), 상한은 최대 음압(III.2 135, III.3 113 dBSPL)"
+    },
+    "dynamic_range_dB": {
+      "min": 106.5,
+      "max": 119.5,
+      "note": "원문 dB(A). III.3 106.5, III.2 119.5"
+    }
+  },
+  "models": [
+    {
+      "model": "HSU III.2",
+      "specs": {
+        "sound_pressure_level_dB": {
+          "min": 15.5,
+          "max": 135
+        },
+        "dynamic_range_dB": 119.5,
+        "type": "ICP 마이크"
+      }
+    },
+    {
+      "model": "HSU III.3",
+      "specs": {
+        "sound_pressure_level_dB": {
+          "min": 6.5,
+          "max": 113
+        },
+        "dynamic_range_dB": 106.5,
+        "type": "콘덴서 마이크(저잡음)"
+      },
+      "note": "IT 기기처럼 소음이 작은 대상용"
+    }
+  ],
+  "features": [
+    "피스톤폰 교정",
+    "등화 ID/FF/DF/USER/LIN",
+    "HEADlab·SQuadriga III·SQobold 연동"
+  ],
+  "relations": [
+    {
+      "type": "same_family_as",
+      "target": "head-acoustics-hms-v"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://www.head-acoustics.com/products/artificial-head-binaural-recording/hsu-iii/",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지. 두 기종 사양"
+    }
+  ],
+  "confidence": "limited",
+  "notes": "바이노럴 녹음 장비라 test_items 를 비움. 주파수 범위는 페이지에 없다."
+}

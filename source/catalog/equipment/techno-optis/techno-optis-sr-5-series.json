@@ -1,0 +1,184 @@
+{
+  "id": "techno-optis-sr-5-series",
+  "kind": "equipment_series",
+  "name": "Techno Optis (Topcon Technohouse) SR-5 Series Spectroradiometer",
+  "name_ko": "테크노옵티스(옛 탑콘 테크노하우스) SR-5 분광복사계",
+  "manufacturer": "techno-optis",
+  "brand": "SR",
+  "category": "spectroradiometer",
+  "form_factor": "benchtop",
+  "description": "옛 Topcon Technohouse(2025년 Techno Optis 로 사명 변경)의 SR 계열 분광복사계 신형. 측정 파장 380 ~ 780 nm, 파장 분해능 1 nm, 반치폭 5 nm, 측정각 2° · 1° · 0.2° · 0.1° 를 전동으로 바꾼다. 휘도 확도 ±2 % 이하, SR-5AS · SR-5A 는 0.1° 에서 500,000,000 cd/m² 까지 잰다.",
+  "test_items": [
+    "photometry_colorimetry"
+  ],
+  "measurands": [
+    "luminance",
+    "chromaticity",
+    "spectral_radiance",
+    "correlated_color_temperature"
+  ],
+  "limits": {
+    "wavelength_nm": {
+      "min": 380,
+      "max": 780
+    },
+    "measuring_angle_deg": {
+      "values": [
+        2,
+        1,
+        0.2,
+        0.1
+      ]
+    },
+    "luminance_cd_m2": {
+      "min": 0.0001,
+      "max": 500000000,
+      "note": "기종·측정각별로 다름"
+    },
+    "spectral_bandwidth_nm": {
+      "max": 5,
+      "note": "반치폭 5 nm"
+    }
+  },
+  "models": [
+    {
+      "model": "SR-5AS",
+      "specs": {
+        "wavelength_nm": {
+          "min": 380,
+          "max": 780
+        },
+        "wavelength_resolution_nm": 1,
+        "spectral_bandwidth_nm": 5,
+        "measuring_angle_deg": [
+          2,
+          1,
+          0.2,
+          0.1
+        ],
+        "luminance_cd_m2": {
+          "min": 0.0001,
+          "max": 500000000
+        },
+        "luminance_accuracy_pct": 2,
+        "chromaticity_accuracy_xy": 0.0015,
+        "interfaces": "RS-232C, USB 3.0",
+        "weight_kg": 5.5
+      },
+      "note": "휘도 범위: 2° 0.0001 ~ 1,500,000 / 1° 0.0005 ~ 4,500,000 / 0.2° 0.0125 ~ 100,000,000 / 0.1° 0.05 ~ 500,000,000 cd/m². 플래그십. 색도 확도 x ±0.0015, y ±0.001"
+    },
+    {
+      "model": "SR-5A",
+      "specs": {
+        "wavelength_nm": {
+          "min": 380,
+          "max": 780
+        },
+        "wavelength_resolution_nm": 1,
+        "spectral_bandwidth_nm": 5,
+        "measuring_angle_deg": [
+          2,
+          1,
+          0.2,
+          0.1
+        ],
+        "luminance_cd_m2": {
+          "min": 0.0005,
+          "max": 500000000
+        },
+        "luminance_accuracy_pct": 2,
+        "chromaticity_accuracy_xy": 0.0015,
+        "interfaces": "RS-232C, USB 3.0",
+        "weight_kg": 5.5
+      },
+      "note": "휘도 범위: 2° 0.0005 ~ 1,500,000 / 1° 0.0005 ~ 4,500,000 / 0.2° 0.0125 ~ 100,000,000 / 0.1° 0.05 ~ 500,000,000 cd/m². 색도 확도 x ±0.0015, y ±0.001"
+    },
+    {
+      "model": "SR-5S",
+      "specs": {
+        "wavelength_nm": {
+          "min": 380,
+          "max": 780
+        },
+        "wavelength_resolution_nm": 1,
+        "spectral_bandwidth_nm": 5,
+        "measuring_angle_deg": [
+          2,
+          1,
+          0.2,
+          0.1
+        ],
+        "luminance_cd_m2": {
+          "min": 0.001,
+          "max": 500000
+        },
+        "luminance_accuracy_pct": 2,
+        "chromaticity_accuracy_xy": 0.0015,
+        "interfaces": "RS-232C, USB 3.0",
+        "weight_kg": 5.5
+      },
+      "note": "휘도 범위: 2° 0.001 ~ 15,000 / 1° 0.003 ~ 45,000 / 0.2° 0.075 ~ 125,000 / 0.1° 0.3 ~ 500,000 cd/m²(페이지 값이 SR-5 와 같게 읽힘). 색도 확도 x ±0.0015, y ±0.001"
+    },
+    {
+      "model": "SR-5",
+      "specs": {
+        "wavelength_nm": {
+          "min": 380,
+          "max": 780
+        },
+        "wavelength_resolution_nm": 1,
+        "spectral_bandwidth_nm": 5,
+        "measuring_angle_deg": [
+          2,
+          1,
+          0.2,
+          0.1
+        ],
+        "luminance_cd_m2": {
+          "min": 0.001,
+          "max": 500000
+        },
+        "luminance_accuracy_pct": 2,
+        "chromaticity_accuracy_xy": 0.002,
+        "interfaces": "RS-232C, USB 3.0",
+        "weight_kg": 5.5
+      },
+      "note": "휘도 범위: 2° 0.001 ~ 15,000 / 1° 0.003 ~ 45,000 / 0.2° 0.075 ~ 125,000 / 0.1° 0.3 ~ 500,000 cd/m². 색도 확도 ±0.002"
+    }
+  ],
+  "relations": [
+    {
+      "type": "performs",
+      "target": "photometry_colorimetry"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://www.techno-optis.com/en/products/sr-5as/",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지(HTML)"
+    },
+    {
+      "url": "https://www.techno-optis.com/en/products/sr-5a/",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지(HTML)"
+    },
+    {
+      "url": "https://www.techno-optis.com/en/products/sr_5s/",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지(HTML)"
+    },
+    {
+      "url": "https://www.techno-optis.com/en/products/sr-5/",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지(HTML)"
+    },
+    {
+      "url": "https://www.techno-optis.com/en/products-series/sr/",
+      "retrieved": "2026-10-08",
+      "note": "제조사 계열 페이지(HTML). SR 계열 4 기종 목록"
+    }
+  ],
+  "confidence": "limited",
+  "notes": "측정 시간은 페이지에 없음. 이전 기종 SR-UL2 · SR-3AR 등은 현 제조사 사이트 목록에 없어 넣지 않았다. SR-5S 의 휘도 범위는 페이지 추출값이 SR-5 와 같아 확인이 필요하다."
+}

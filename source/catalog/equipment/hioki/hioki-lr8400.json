@@ -1,0 +1,79 @@
+{
+  "id": "hioki-lr8400",
+  "kind": "equipment_series",
+  "name": "Hioki Memory HiLogger LR8400 / LR8401 / LR8402",
+  "name_ko": "히오키 메모리 하이로거 LR8400 · LR8401 · LR8402",
+  "manufacturer": "hioki",
+  "brand": "Memory HiLogger",
+  "category": "dmm_daq",
+  "form_factor": "portable",
+  "description": "절연 아날로그 30채널(최대 60채널)과 펄스·디지털 8채널의 다채널 데이터 로거. 최고 10 ms(1~15ch), 16~30ch 20 ms, 31~60ch 50 ms. 전압 ±10 mV~±100 V, 열전대(K, J, E, T, N, R, S, B, W) -200~2000 °C, 습도 5~95% rh, 유니버설 유닛은 저항 0~200 Ω 도 잰다. 단종되었다.",
+  "test_items": [],
+  "limits": {
+    "channels": {
+      "min": 30,
+      "max": 60,
+      "note": "표준 아날로그 30ch, 확장 최대 60ch. 별도 펄스·디지털 8ch"
+    },
+    "data_interval_ms": {
+      "min": 10,
+      "max": 50,
+      "note": "1~15ch 10 ms, 16~30ch 20 ms, 31~60ch 50 ms"
+    },
+    "voltage_V": {
+      "min": 0.01,
+      "max": 100,
+      "note": "±10 mV~±100 V"
+    }
+  },
+  "models": [
+    {
+      "model": "LR8400",
+      "variant": "LR8400-20: 전압·온도 유닛 LR8500 ×2 내장, 30ch",
+      "specs": {
+        "channels": 30,
+        "data_interval_ms": 10
+      },
+      "note": "단종"
+    },
+    {
+      "model": "LR8401",
+      "variant": "LR8401-20: 유니버설 유닛 LR8501 ×2 내장, 30ch",
+      "specs": {
+        "channels": 30,
+        "data_interval_ms": 10
+      },
+      "note": "단종"
+    },
+    {
+      "model": "LR8402",
+      "variant": "LR8402-20: 유니버설 유닛 ×1 + 전압·온도 유닛 ×1 내장, 30ch",
+      "specs": {
+        "channels": 30,
+        "data_interval_ms": 10
+      },
+      "note": "단종"
+    }
+  ],
+  "features": [
+    "메모리 8 M-words",
+    "5.7인치 TFT 컬러 LCD(640×480)",
+    "USB 2.0, 100BASE-TX LAN",
+    "치수 272×182.4×66.5 mm, 1.8 kg"
+  ],
+  "relations": [
+    {
+      "type": "same_family_as",
+      "target": "hioki-lr8450"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://www.hioki.com/global/products/multichannel-data-loggers/multichannel/id_5846",
+      "retrieved": "2026-10-08",
+      "note": "제조사 페이지. 기종 비교(내장 유닛), 채널, 샘플링, 입력 범위, 메모리, 화면, 치수·무게, 인터페이스, Discontinued"
+    }
+  ],
+  "confidence": "limited",
+  "notes": "기종 이름은 페이지 제목(LR8402, LR8401, LR8400)을 따르고 비교표의 -20 접미사는 variant 에 적음. -20 외 변형은 확인하지 않음. 단종 날짜(2021-08-06)는 검색 요약에만 보여 적지 않음."
+}

@@ -1,0 +1,128 @@
+{
+  "id": "rs-zna-vna",
+  "kind": "equipment_series",
+  "name": "R&S ZNA Vector Network Analyzers",
+  "name_ko": "로데슈바르즈 ZNA 벡터 네트워크 분석기",
+  "manufacturer": "rohde-schwarz",
+  "brand": "ZNA",
+  "category": "network_lcr_analyzer",
+  "form_factor": "benchtop",
+  "description": "고급형 벡터 네트워크 분석기. 하한 10 MHz, 상한은 기종별 26.5/43.5/50/67 GHz, 확장형 ZNA67EXT 는 110 GHz. 2·4 포트, 내장 신호원 최대 4개, 시험 포트 출력 +17 dBm(목록 페이지).",
+  "test_items": [],
+  "limits": {
+    "frequency_Hz": {
+      "min": 10000000,
+      "max": 110000000000,
+      "note": "ZNA26 10 MHz~26.5 GHz, ZNA43 ~43.5 GHz, ZNA50 ~50 GHz, ZNA67 ~67 GHz, ZNA67EXT ~110 GHz"
+    },
+    "rf_port_count": {
+      "values": [
+        2,
+        4
+      ]
+    },
+    "rf_output_level_dBm": {
+      "max": 17,
+      "note": "목록 페이지 Test Port Output Power +17 dBm"
+    }
+  },
+  "models": [
+    {
+      "model": "ZNA26",
+      "specs": {
+        "frequency_Hz": {
+          "min": 10000000,
+          "max": 26500000000
+        },
+        "rf_port_count": {
+          "values": [
+            2,
+            4
+          ]
+        }
+      },
+      "note": "주문 번호 1332.4500.22(2포트) / .24(4포트), 3.5 mm(m)"
+    },
+    {
+      "model": "ZNA43",
+      "specs": {
+        "frequency_Hz": {
+          "min": 10000000,
+          "max": 43500000000
+        },
+        "rf_port_count": {
+          "values": [
+            2,
+            4
+          ]
+        }
+      },
+      "note": "1332.4500.42(2포트 2.92 mm) / .43(2포트 2.4 mm) / .44(4포트 2.92 mm) / .45(4포트 2.4 mm)"
+    },
+    {
+      "model": "ZNA50",
+      "specs": {
+        "frequency_Hz": {
+          "min": 10000000,
+          "max": 50000000000
+        },
+        "rf_port_count": {
+          "values": [
+            2,
+            4
+          ]
+        }
+      },
+      "note": "1332.4500.52(2포트) / .54(4포트), 2.4 mm(m)"
+    },
+    {
+      "model": "ZNA67",
+      "specs": {
+        "frequency_Hz": {
+          "min": 10000000,
+          "max": 67000000000
+        },
+        "rf_port_count": {
+          "values": [
+            2,
+            4
+          ]
+        }
+      },
+      "note": "1332.4500.62(2포트) / .64(4포트), 1.85 mm(m)"
+    },
+    {
+      "model": "ZNA67EXT",
+      "specs": {
+        "frequency_Hz": {
+          "min": 10000000,
+          "max": 110000000000
+        },
+        "rf_port_count": {
+          "values": [
+            2,
+            4
+          ]
+        }
+      },
+      "note": "주문 번호 1352.1888.xx(11종), 1.0 mm(m)"
+    }
+  ],
+  "features": [
+    "내장 신호원 최대 4개",
+    "2포트·4포트 기종"
+  ],
+  "sources": [
+    {
+      "url": "https://www.rohde-schwarz.com/us/products/test-and-measurement/vnas/rs-zna-vector-network-analyzers_63493-551810.html",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지. 기종·주문 번호·주파수·커넥터 표, 'Up to four integrated sources', 'Two or four port models available'"
+    },
+    {
+      "url": "https://www.rohde-schwarz.com/us/products/test-and-measurement/network-analyzers_64043.html",
+      "retrieved": "2026-10-08",
+      "note": "제조사 네트워크 분석기 목록 페이지(기종별 Max Frequency · Port Count · Test Port Output Power)"
+    }
+  ],
+  "confidence": "limited"
+}

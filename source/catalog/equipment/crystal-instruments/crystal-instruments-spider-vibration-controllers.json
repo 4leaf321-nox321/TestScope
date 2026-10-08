@@ -1,0 +1,135 @@
+{
+  "id": "crystal-instruments-spider-vibration-controllers",
+  "kind": "equipment_series",
+  "name": "Crystal Instruments Spider Vibration Controllers (Spider-81 / Spider-81B / Spider-80X / Spider-80Xi)",
+  "name_ko": "크리스탈 인스트루먼트 Spider 진동 제어기",
+  "manufacturer": "crystal-instruments",
+  "brand": "Spider",
+  "category": "mechanical_dynamics",
+  "form_factor": "modular",
+  "description": "네트워크로 묶어 채널을 늘리는 진동 시험 제어기·동적 측정 프런트엔드. Spider-81 은 입력 8(BNC)·출력 2, Spider-81B 는 입력 4·출력 1 의 보급판(LCD·고속 데이터 포트 없음). 입력 ±20 V, 24 bit A/D·D/A, 160 dBFS 동적 범위, 채널당 최대 102.4 kHz, 20 kHz 까지 위상 일치 ±1.0° 이내, 전하·전압·IEPE 입력. Spider-81 과 Spider-80X 를 묶어 512채널까지 키운다(Spider-80X 시스템은 1024 입력까지). Spider-80X 는 입력 8·출력 겸용 2채널에 채널당 24 bit ADC 2개로 160 dBFS(V2 데이터시트. 웹 페이지는 175 dBFS), IEEE 1588 PTPv2 동기, 4 GB 플래시. 랜덤·정현 중첩 랜덤·랜덤 중첩 랜덤·스윕 정현·공진 탐색·다중 정현·고전 충격·과도 시간 이력·SRS 합성·과도 랜덤·지진·시간 파형 재현 시험을 제어한다.",
+  "test_items": [
+    "vibration_sine_random",
+    "mechanical_shock"
+  ],
+  "measurands": [
+    "frequency_response_function",
+    "shock_response_spectrum"
+  ],
+  "limits": {
+    "channels": {
+      "min": 4,
+      "max": 1024,
+      "note": "단위당 입력 4(81B)·8(81·80X). Spider-80X 시스템 최대 1024 입력(V2 데이터시트 3쪽). 웹 Spider-81 페이지는 Spider-81·80X 묶음 512"
+    },
+    "dynamic_range_dB": {
+      "min": 160,
+      "max": 160,
+      "note": "Spider-81 160 dBFS(웹), Spider-80X 160 dBFS(V2 데이터시트 3쪽). 웹 Spider-80X 페이지는 175 dBFS(듀얼 ADC)"
+    },
+    "adc_resolution_bit": {
+      "values": [
+        24
+      ]
+    },
+    "data_rate_Hz": {
+      "max": 256000,
+      "note": "채널당. Spider-81 102.4 kHz(웹), Spider-80X 연속 기록 256 kHz(V2 데이터시트 3쪽)"
+    }
+  },
+  "models": [
+    {
+      "model": "Spider-81",
+      "specs": {
+        "channels": 8,
+        "dynamic_range_dB": 160,
+        "adc_resolution_bit": 24,
+        "data_rate_Hz": 102400,
+        "interfaces": "100Base-T RJ45, 절연 DIO 8, RS-485, 4 GB 플래시"
+      },
+      "note": "출력 2(±10 V), 전면 LCD"
+    },
+    {
+      "model": "Spider-81B",
+      "specs": {
+        "channels": 4,
+        "dynamic_range_dB": 160,
+        "adc_resolution_bit": 24,
+        "data_rate_Hz": 102400
+      },
+      "note": "출력 1. LCD·고속 데이터 포트 없는 보급판"
+    },
+    {
+      "model": "Spider-80X",
+      "specs": {
+        "channels": 8,
+        "dynamic_range_dB": 160,
+        "adc_resolution_bit": 24,
+        "data_rate_Hz": 256000,
+        "bandwidth_Hz": 115200,
+        "dac_resolution_bit": 24,
+        "analog_output_V": {
+          "max": 10,
+          "note": "±10 V, 2채널(회전계 입력과 공용), 출력 샘플링 102.4 kHz"
+        },
+        "interfaces": "100Base-T RJ45, RS-485, 절연 DIO(입력 2·출력 2, 9핀 D-SUB), 고속 데이터 포트(5핀 LEMO, Spider-NAS), 4 GB 플래시·32 MB RAM",
+        "footprint_mm": "240×35×310 (W×H×L)",
+        "weight_kg": 2,
+        "power_W": {
+          "max": 15,
+          "note": "100~240 VAC 어댑터(15 VDC)"
+        },
+        "operating_temperature_degC": {
+          "min": -10,
+          "max": 55
+        }
+      },
+      "note": "2채널을 출력 또는 회전계 입력으로 소프트웨어 선택(회전계 최대 300,000 RPM). IEEE 1588v2 동기(100 ns 이내), 전하 입력은 옵션. 입력 ±20 V·5 V·0.2 V 자동 레인지, 샘플링 0.48 Hz~256 kHz, 채널당 듀얼 24 bit ADC, 위상 일치 20 kHz 까지 1.0° 이내. 값은 Spider-80X V2 하드웨어 데이터시트(Version 8.0, 2021-03). 웹 Spider-80X 페이지는 동적 범위를 175 dBFS 로 적음"
+    },
+    {
+      "model": "Spider-80Xi",
+      "specs": {},
+      "note": "페이지가 「Spider-80Xi High Channel Count System」 으로만 언급. 80X 와 다른 점은 페이지에 없음",
+      "uncertain": true
+    }
+  ],
+  "relations": [
+    {
+      "type": "performs",
+      "target": "vibration_sine_random"
+    },
+    {
+      "type": "compatible_accessory",
+      "target": "sentek-dynamics-m-series-shakers",
+      "note": "센텍 다이나믹스 제어기 페이지가 Spider-81 을 자기 시스템 제어기로 소개"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://www.crystalinstruments.com/vibration-test-controller",
+      "retrieved": "2026-10-08",
+      "note": "제조사 Spider-81/81B 페이지"
+    },
+    {
+      "url": "https://www.crystalinstruments.com/dynamic-measurement-vibration-control",
+      "retrieved": "2026-10-08",
+      "note": "제조사 Spider-80X/80Xi 페이지"
+    },
+    {
+      "url": "https://www.sentekdynamics.com/vibration-control-system",
+      "retrieved": "2026-10-08",
+      "note": "센텍 다이나믹스 제어기 페이지(Spider-81 소개). 이 페이지는 동적 범위를 150 dBFS 로 적어 제조사 페이지(160 dBFS)와 다름 — 제조사 값을 따름"
+    },
+    {
+      "file": "crystal-instruments/datenblatt_-_spider-80x.pdf",
+      "pages": [
+        2,
+        3,
+        4
+      ],
+      "note": "Spider-80X V2 Hardware 데이터시트 Version 8.0 (2021-03, 대리점 nbn Austria 배포본). 2쪽 개요·성능, 3쪽 입력·회전계·출력, 4쪽 시스템·전원·환경"
+    }
+  ],
+  "confidence": "limited",
+  "notes": "가진기 없이는 시험을 못 하는 제어기라 분류를 상위 진동·충격(mechanical_dynamics)으로 두었다. Spider-80X 값은 V2 하드웨어 데이터시트로 채움. PDF 로 확인·변경: Spider-80X 동적 범위 175 → 160 dBFS, 시스템 최대 입력 512 → 1024 / 웹 값 그대로: Spider-81·81B·80Xi."
+}

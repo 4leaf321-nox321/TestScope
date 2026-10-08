@@ -1,0 +1,167 @@
+{
+  "id": "tira-tv-medium-shakers",
+  "kind": "equipment_series",
+  "name": "TIRA Vibration Test Systems 4 kN to 15 kN (TV 55240 / TV 56280 / TV 58311 / TV 58315)",
+  "name_ko": "티라 중형 진동 시험 시스템 (4~15 kN)",
+  "manufacturer": "tira",
+  "category": "vibration_shaker",
+  "form_factor": "floor",
+  "description": "TIRA 표준 진동 시험 시스템 4~15 kN 대역. 모든 기종이 50.8 mm p-p 롱 스트로크(LS)이고 아마추어 지름 180 mm 또는 340 mm 를 고른다. 정현 4/8/11/15 kN, 충격 12~45 kN, 주파수 2~3,000 Hz(TV 58311·58315 는 4,500 Hz).",
+  "test_items": [
+    "vibration_sine_random",
+    "mechanical_shock"
+  ],
+  "measurands": [
+    "resonance_frequency",
+    "transmissibility",
+    "fatigue_life"
+  ],
+  "materials": [
+    "electronic assemblies",
+    "automotive components",
+    "batteries"
+  ],
+  "limits": {
+    "force_kN": {
+      "min": 4,
+      "max": 15,
+      "note": "정현 정격 피크(원문 N). 랜덤 3.5~13 kN, 충격 12~45 kN"
+    },
+    "frequency_Hz": {
+      "min": 2,
+      "max": 4500
+    },
+    "stroke_mm_pk_pk": {
+      "values": [
+        50.8
+      ]
+    },
+    "acceleration_g": {
+      "max": 100,
+      "note": "정현 최대. 충격 최대 200 g"
+    }
+  },
+  "models": [
+    {
+      "model": "TV 55240/LS-180",
+      "specs": {
+        "force_kN": 4,
+        "force_random_kN": 3.5,
+        "force_shock_kN": 12,
+        "frequency_Hz": {
+          "min": 2,
+          "max": 3000
+        },
+        "stroke_mm_pk_pk": 50.8,
+        "acceleration_g": 60,
+        "armature_diameter_mm": 180,
+        "weight_kg": 700
+      },
+      "note": "총 질량 700 kg. 최대 가속도(정현/랜덤/충격) 60/50/150 g"
+    },
+    {
+      "model": "TV 55240/LS-340",
+      "specs": {
+        "force_kN": 4,
+        "force_random_kN": 3.6,
+        "force_shock_kN": 12,
+        "frequency_Hz": {
+          "min": 2,
+          "max": 3000
+        },
+        "stroke_mm_pk_pk": 50.8,
+        "acceleration_g": 50,
+        "armature_diameter_mm": 340,
+        "weight_kg": 780
+      },
+      "note": "총 질량 780 kg. 최대 가속도(정현/랜덤/충격) 50/45/130 g"
+    },
+    {
+      "model": "TV 56280/LS-180",
+      "specs": {
+        "force_kN": 8,
+        "force_random_kN": 7.2,
+        "force_shock_kN": 24,
+        "frequency_Hz": {
+          "min": 2,
+          "max": 3000
+        },
+        "stroke_mm_pk_pk": 50.8,
+        "acceleration_g": 93,
+        "armature_diameter_mm": 180,
+        "weight_kg": 765
+      },
+      "note": "총 질량 765 kg. 최대 가속도(정현/랜덤/충격) 93/72/186 g"
+    },
+    {
+      "model": "TV 56280/LS-340",
+      "specs": {
+        "force_kN": 8,
+        "force_random_kN": 7.2,
+        "force_shock_kN": 24,
+        "frequency_Hz": {
+          "min": 2,
+          "max": 3000
+        },
+        "stroke_mm_pk_pk": 50.8,
+        "acceleration_g": 88,
+        "armature_diameter_mm": 340,
+        "weight_kg": 780
+      },
+      "note": "총 질량 780 kg. 최대 가속도(정현/랜덤/충격) 88/65/200 g"
+    },
+    {
+      "model": "TV 58311/LS-340",
+      "specs": {
+        "force_kN": 11,
+        "force_random_kN": 11,
+        "force_shock_kN": 33,
+        "frequency_Hz": {
+          "min": 2,
+          "max": 4500
+        },
+        "stroke_mm_pk_pk": 50.8,
+        "acceleration_g": 80,
+        "armature_diameter_mm": 340,
+        "weight_kg": 1100
+      },
+      "note": "총 질량 1100 kg. 최대 가속도(정현/랜덤/충격) 80/65/200 g"
+    },
+    {
+      "model": "TV 58315/LS-340",
+      "specs": {
+        "force_kN": 15,
+        "force_random_kN": 13,
+        "force_shock_kN": 45,
+        "frequency_Hz": {
+          "min": 2,
+          "max": 4500
+        },
+        "stroke_mm_pk_pk": 50.8,
+        "acceleration_g": 100,
+        "armature_diameter_mm": 340,
+        "weight_kg": 1100
+      },
+      "note": "총 질량 1100 kg. 최대 가속도(정현/랜덤/충격) 100/80/200 g"
+    }
+  ],
+  "relations": [
+    {
+      "type": "performs",
+      "target": "vibration_sine_random"
+    },
+    {
+      "type": "same_family_as",
+      "target": "tira-tv-small-shakers"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://www.tira-gmbh.de/en/vibration-test-systems/vibration-test-systems/standard-systems/vibration-test-systems-4-kn-to-15-kn/",
+      "retrieved": "2026-10-08",
+      "note": "제조사 표준 시스템 4 kN~15 kN 페이지. 기종별 정격 표(원문 N)"
+    }
+  ],
+  "confidence": "limited",
+  "notes": "원문 힘 단위는 N 이며 kN 으로 옮겼다. 최대 속도·탑재 질량은 페이지에 없다."
+}

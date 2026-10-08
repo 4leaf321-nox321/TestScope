@@ -1,0 +1,91 @@
+{
+  "id": "audio-precision-apx516-b-series",
+  "kind": "equipment_model",
+  "name": "Audio Precision APx516 B Series Audio Analyzer",
+  "name_ko": "오디오프리시전 APx516 B 오디오 분석기",
+  "manufacturer": "audio-precision",
+  "brand": "APx",
+  "category": "audio_analyzer",
+  "form_factor": "benchtop",
+  "description": "전자 오디오 기기의 아날로그·디지털 시험용 보급형 모듈 분석기. 아날로그 2채널, 생성기 정현 2.0 Hz~80.1 kHz, 평형 최대 14.40 Vrms. 잔류 THD+N –100 dB + 2.0 µV(1 kHz·2.5 V 전형 <–109 dB), 분석기 대역 >90 kHz, 잔류 입력 잡음 2.0 µVrms.",
+  "test_items": [
+    "audio_performance"
+  ],
+  "measurands": [
+    "thd_n",
+    "frequency_response",
+    "snr"
+  ],
+  "limits": {
+    "frequency_Hz": {
+      "min": 2,
+      "max": 80100,
+      "note": "생성기 정현 주파수 범위"
+    },
+    "analog_output_voltage_Vrms": {
+      "max": 14.4,
+      "note": "평형 최대 진폭"
+    },
+    "residual_thd_n_dB": {
+      "max": -100,
+      "note": "–100 dB + 2.0 µV. 1 kHz·2.5 V 전형 <–109 dB"
+    },
+    "bandwidth_Hz": {
+      "min": 90000,
+      "note": "원문 >90 kHz"
+    },
+    "residual_noise_uV": {
+      "max": 2.0,
+      "note": "20 kHz BW"
+    },
+    "channels": {
+      "values": [
+        2
+      ]
+    }
+  },
+  "models": [
+    {
+      "model": "APx516 B Series",
+      "specs": {
+        "channels": 2,
+        "frequency_Hz": {
+          "min": 2,
+          "max": 80100
+        },
+        "analog_output_voltage_Vrms": 14.4,
+        "residual_thd_n_dB": -100,
+        "residual_noise_uV": 2.0
+      },
+      "note": "페이지 표기 APx516B Series"
+    }
+  ],
+  "options": [
+    "Bluetooth 5",
+    "Bluetooth Classic",
+    "PDM 16 (16 수집 채널)",
+    "PDM",
+    "PSIO (Programmable Serial I/O)",
+    "HDMI2 + eARC",
+    "AES/SPDIF"
+  ],
+  "relations": [
+    {
+      "type": "performs",
+      "target": "audio_performance"
+    },
+    {
+      "type": "same_family_as",
+      "target": "audio-precision-apx515-b-series"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://www.audioprecision.com/analyzers-accessories/apx516b",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지"
+    }
+  ],
+  "confidence": "limited",
+  "notes": "FFT 길이·비트 수는 페이지에 없다."
+}

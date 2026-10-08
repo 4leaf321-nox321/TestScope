@@ -63,7 +63,11 @@ def fetch(rel: str, url: str) -> str | None:
     done = subprocess.run(
         ["curl", "-sSL", "-A", "Mozilla/5.0", "--max-time", "180", "-o", str(target), url],
         capture_output=True,
-        text=True,
+        # **오류 문구의 인코딩을 못 박는다.** 한국어 Windows 의 curl 은 오류를 cp949 로 내서,
+        # text=True(로캘 해석)로 읽다 읽기 스레드가 죽고 stderr 가 None 이 되어 일괄 받기가
+        # 통째로 멈췄다(2026-10-08).
+        encoding="utf-8",
+        errors="replace",
     )
     if done.returncode != 0:
         target.unlink(missing_ok=True)
@@ -76,12 +80,18 @@ def fetch(rel: str, url: str) -> str | None:
     return None
 
 
+def text_paths(rel: str) -> tuple[Path, Path]:
+    """PDF 하나의 (텍스트, 메타) 자리. **`.pdf` 만 뗀다** — `with_suffix` 를 두 번 쓰던 때는
+    이름에 점이 있으면(`ess-2000ax_ed1.02.pdf`) `ess-2000ax_ed1.txt` 로 써서 다른 PDF 와 겹칠
+    수 있었고, `--check` 는 다른 자리를 보며 「텍스트 없음」 이라 했다(2026-10-08)."""
+    base = rel[:-4] if rel.lower().endswith(".pdf") else rel
+    return TEXT / f"{base}.txt", TEXT / f"{base}.meta.json"
+
+
 def extract(rel: str) -> str | None:
     """텍스트와 메타를 뽑는다. 둘 다 있으면 안 한다. 실패하면 이유를 돌려준다."""
     pdf = PDF / rel
-    stem = Path(rel).with_suffix("")
-    txt = TEXT / stem.with_suffix(".txt")
-    meta = TEXT / stem.with_suffix(".meta.json")
+    txt, meta = text_paths(rel)
     if txt.exists() and meta.exists():
         return None
     if shutil.which("pdftotext") is None:
@@ -124,7 +134,7 @@ def check(urls: dict[str, str]) -> tuple[list[str], list[str], list[str]]:
     missing_pdf = sorted(set(urls) - have)
     missing_url = sorted(have - set(urls))
     missing_text = sorted(
-        rel for rel in have if not (TEXT / Path(rel).with_suffix(".txt")).exists()
+        rel for rel in have if not text_paths(rel)[0].exists()
     )
     return missing_pdf, missing_url, missing_text
 
@@ -175,7 +185,7 @@ def main(argv: list[str]) -> int:
         return 1
     urls[rel] = url
     save_urls(urls)
-    meta = json.loads((TEXT / Path(rel).with_suffix(".meta.json")).read_text(encoding="utf-8"))
+    meta = json.loads(text_paths(rel)[1].read_text(encoding="utf-8"))
     print(f"OK {rel}: {meta['pages']}쪽 · {meta['bytes'] // 1024} KB · 글자 {meta['chars']}")
     return 0
 

@@ -20,6 +20,7 @@ import {
   Megaphone,
   MessageSquare,
   Package,
+  PackageSearch,
   ScrollText,
   Search,
   Server,
@@ -285,6 +286,15 @@ export const NAV_GROUPS: NavGroup[] = [
         label: '온톨로지',
         icon: Tags,
         to: '/admin/ontology',
+        audience: 'system_admin',
+      },
+      {
+        // **미연결 장비를 왜 미연결인지로 가른 일감.** 같은 기종이 있으면 잇고, 계열만 있으면
+        // 세우고, 정본에 없으면 사양서 조사 목록(CSV)이 된다. 홈의 「카탈로그에 안 이어진
+        // 장비」 가 시스템 관리자에게는 여기로 온다.
+        label: '카탈로그 보강',
+        icon: PackageSearch,
+        to: '/admin/catalog-gaps',
         audience: 'system_admin',
       },
       {

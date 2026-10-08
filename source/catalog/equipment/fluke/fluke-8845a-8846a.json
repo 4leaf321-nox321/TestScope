@@ -1,0 +1,93 @@
+{
+  "id": "fluke-8845a-8846a",
+  "kind": "equipment_series",
+  "name": "Fluke 8845A / 8846A 6.5 Digit Precision Multimeter",
+  "name_ko": "플루크 8845A · 8846A 6.5자리 정밀 멀티미터",
+  "manufacturer": "fluke",
+  "category": "dmm_daq",
+  "form_factor": "benchtop",
+  "description": "6.5자리 탁상형 정밀 멀티미터. 8845A 는 기본 DCV 확도 0.0035%, 8846A 는 24 ppm. 전압 100 mV~1000 V, 전류 100 μA~10 A, 저항 100 Ω~100 MΩ 레인지, 주파수·주기(3 Hz~300 kHz). 이중 표시, 추이·히스토그램 그래픽, 2×4선 저항 측정, Fluke 45·Agilent 34401A 에뮬레이션. 단종되었다.",
+  "test_items": [],
+  "limits": {
+    "dmm_resolution_digits": {
+      "values": [
+        6.5
+      ]
+    },
+    "voltage_V": {
+      "min": 0.1,
+      "max": 1000,
+      "note": "레인지 100 mV to 1000 V"
+    },
+    "current_A": {
+      "min": 0.0001,
+      "max": 10,
+      "note": "레인지 100 μA to 10 A"
+    },
+    "resistance_ohm": {
+      "min": 100,
+      "max": 100000000,
+      "note": "레인지 100 Ω to 100 MΩ"
+    }
+  },
+  "models": [
+    {
+      "model": "8845A",
+      "specs": {
+        "dmm_resolution_digits": 6.5,
+        "accuracy": "기본 V DC 확도 0.0035%(0.0035 + 0.0005)",
+        "voltage_V": {
+          "min": 0.1,
+          "max": 1000
+        },
+        "current_A": {
+          "min": 0.0001,
+          "max": 10
+        },
+        "resistance_ohm": {
+          "min": 100,
+          "max": 100000000
+        },
+        "interfaces": "RS-232, IEEE-488.2, Ethernet, USB"
+      },
+      "note": "단종"
+    },
+    {
+      "model": "8846A",
+      "specs": {
+        "dmm_resolution_digits": 6.5,
+        "accuracy": "기본 DCV 확도 24 ppm",
+        "voltage_V": {
+          "min": 0.1,
+          "max": 1000
+        },
+        "current_A": {
+          "min": 0.0001,
+          "max": 10
+        },
+        "resistance_ohm": {
+          "min": 100,
+          "max": 100000000
+        },
+        "interfaces": "RS-232, IEEE-488.2, Ethernet, USB"
+      },
+      "note": "단종. 레인지는 8845A 와 같다고 적힘"
+    }
+  ],
+  "features": [
+    "이중 표시",
+    "Trendplot·히스토그램 그래픽 표시",
+    "2×4선 저항 측정(리드 2개로 4선 측정)",
+    "Fluke 45·Agilent 34401A 에뮬레이션",
+    "FlukeView Forms Basic 포함"
+  ],
+  "sources": [
+    {
+      "url": "https://www.fluke.com/en-us/product/precision-measurement/bench-instruments/fluke-8845a-8846a",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지. Discontinued, 대체로 Keithley 2100 Series·DMM6500 권장. 8845A 0.0035%, 8846A 24 ppm, 100 mV~1000 V, 100 μA~10 A, 100 Ω~100 MΩ, 3 Hz~300 kHz, RS 232·IEEE-488.2·Ethernet·USB"
+    }
+  ],
+  "confidence": "limited",
+  "notes": "제조사가 대체 기종으로 Keithley 2100 Series 와 Keithley DMM6500 을 권함."
+}

@@ -1,0 +1,322 @@
+{
+  "id": "exosens-xenics-bobcat",
+  "kind": "equipment_series",
+  "name": "Xenics Bobcat / Bobcat+ SWIR Cameras",
+  "name_ko": "제닉스 Bobcat SWIR 카메라",
+  "manufacturer": "exosens",
+  "brand": "Xenics",
+  "category": "high_speed_swir_camera",
+  "subcategory": "swir_camera",
+  "form_factor": "camera",
+  "description": "Exosens(옛 Xenics) 의 InGaAs SWIR 카메라 계열. 320 × 256(100 · 400 Hz) 과 640 × 512(100 Hz) 해상도, 화소 간격 20 µm, 감도 파장 900 ~ 1,700 nm(vSWIR 판 500 ~ 1,700 nm). CameraLink · GigE Vision 인터페이스와 게이티드(Gated) · 무냉각(TE0) 판이 있다.",
+  "test_items": [],
+  "limits": {
+    "resolution_pixels": {
+      "min": 81920,
+      "max": 327680,
+      "note": "320 × 256 / 640 × 512"
+    },
+    "wavelength_nm": {
+      "min": 500,
+      "max": 1700,
+      "note": "SWIR 900 ~ 1,700 nm, vSWIR 500 ~ 1,700 nm(Bobcat 640 vSWIR, PDF)"
+    },
+    "frame_rate_fps": {
+      "min": 100,
+      "max": 400,
+      "note": "원문 Hz"
+    },
+    "pixel_pitch_um": {
+      "values": [
+        20
+      ]
+    }
+  },
+  "models": [
+    {
+      "model": "Bobcat 320 CL 100",
+      "specs": {
+        "detector": "InGaAs photodiode array with CTIA ROIC",
+        "detector_pixels": "320 × 256",
+        "resolution_pixels": 81920,
+        "pixel_pitch_um": 20,
+        "frame_rate_fps": 100,
+        "interfaces": "CameraLink",
+        "wavelength_nm": {
+          "min": 900,
+          "max": 1700
+        },
+        "cooling": "TE cooler"
+      }
+    },
+    {
+      "model": "Bobcat 320 CL 400",
+      "specs": {
+        "detector": "InGaAs photodiode array with CTIA ROIC",
+        "detector_pixels": "320 × 256",
+        "resolution_pixels": 81920,
+        "pixel_pitch_um": 20,
+        "frame_rate_fps": 400,
+        "interfaces": "CameraLink",
+        "wavelength_nm": {
+          "min": 900,
+          "max": 1700
+        },
+        "cooling": "TE cooler"
+      }
+    },
+    {
+      "model": "Bobcat 320 GigE 100",
+      "specs": {
+        "detector": "InGaAs photodiode array with CTIA ROIC",
+        "detector_pixels": "320 × 256",
+        "resolution_pixels": 81920,
+        "pixel_pitch_um": 20,
+        "frame_rate_fps": 100,
+        "interfaces": "GigE Vision",
+        "wavelength_nm": {
+          "min": 900,
+          "max": 1700
+        },
+        "cooling": "TE cooler"
+      }
+    },
+    {
+      "model": "Bobcat 320 GigE 400",
+      "specs": {
+        "detector": "InGaAs photodiode array with CTIA ROIC",
+        "detector_pixels": "320 × 256",
+        "resolution_pixels": 81920,
+        "pixel_pitch_um": 20,
+        "frame_rate_fps": 400,
+        "interfaces": "GigE Vision",
+        "wavelength_nm": {
+          "min": 900,
+          "max": 1700
+        },
+        "cooling": "TE cooler"
+      }
+    },
+    {
+      "model": "Bobcat 320 TE0 GigE 400",
+      "specs": {
+        "detector": "InGaAs photodiode array with CTIA ROIC",
+        "detector_pixels": "320 × 256",
+        "resolution_pixels": 81920,
+        "pixel_pitch_um": 20,
+        "frame_rate_fps": 400,
+        "interfaces": "GigE Vision",
+        "wavelength_nm": {
+          "min": 900,
+          "max": 1700
+        },
+        "cooling": "Uncooled",
+        "weight_kg": 0.28
+      }
+    },
+    {
+      "model": "Bobcat 320 WL GigE 400",
+      "specs": {
+        "detector": "InGaAs photodiode array with CTIA ROIC",
+        "detector_pixels": "320 × 256",
+        "resolution_pixels": 81920,
+        "pixel_pitch_um": 20,
+        "frame_rate_fps": 400,
+        "interfaces": "GigE Vision",
+        "wavelength_nm": {
+          "min": 900,
+          "max": 1700
+        },
+        "cooling": "Uncooled, windowless detector",
+        "weight_kg": 0.28
+      }
+    },
+    {
+      "model": "Bobcat+ 320 GigE 400",
+      "specs": {
+        "detector": "InGaAs photodiode array with CTIA ROIC",
+        "detector_pixels": "320 × 256",
+        "resolution_pixels": 81920,
+        "pixel_pitch_um": 20,
+        "frame_rate_fps": 400,
+        "interfaces": "GigE Vision",
+        "wavelength_nm": {
+          "min": 900,
+          "max": 1700
+        }
+      }
+    },
+    {
+      "model": "Bobcat+ 320 GigE vSWIR 400",
+      "specs": {
+        "detector": "InGaAs photodiode array with CTIA ROIC",
+        "detector_pixels": "320 × 256",
+        "resolution_pixels": 81920,
+        "pixel_pitch_um": 20,
+        "frame_rate_fps": 400,
+        "interfaces": "GigE Vision"
+      },
+      "note": "vSWIR 판의 파장 범위는 계열 페이지에 따로 적히지 않음(Bobcat 640 vSWIR 은 500 ~ 1,700 nm)"
+    },
+    {
+      "model": "Bobcat 320 CL Gated",
+      "specs": {
+        "detector": "InGaAs photodiode array with CTIA ROIC",
+        "detector_pixels": "320 × 256",
+        "resolution_pixels": 81920,
+        "pixel_pitch_um": 20,
+        "frame_rate_fps": 400,
+        "interfaces": "CameraLink",
+        "wavelength_nm": {
+          "min": 900,
+          "max": 1700
+        },
+        "cooling": "TE cooler",
+        "min_exposure_time_s": {
+          "value": 1e-07,
+          "note": "노출 100 ns ~ 1 ms(100 ns 간격) 또는 1 ms ~ 40 ms"
+        }
+      }
+    },
+    {
+      "model": "Bobcat 320 GigE Gated",
+      "specs": {
+        "detector": "InGaAs photodiode array with CTIA ROIC",
+        "detector_pixels": "320 × 256",
+        "resolution_pixels": 81920,
+        "pixel_pitch_um": 20,
+        "frame_rate_fps": 400,
+        "interfaces": "GigE Vision",
+        "wavelength_nm": {
+          "min": 900,
+          "max": 1700
+        },
+        "cooling": "TE cooler",
+        "min_exposure_time_s": {
+          "value": 1e-07,
+          "note": "노출 100 ns ~ 1 ms(100 ns 간격) 또는 1 ms ~ 40 ms"
+        }
+      }
+    },
+    {
+      "model": "Bobcat 640 CL",
+      "specs": {
+        "detector": "InGaAs photodiode array with CTIA ROIC",
+        "detector_pixels": "640 × 512",
+        "resolution_pixels": 327680,
+        "pixel_pitch_um": 20,
+        "wavelength_nm": {
+          "min": 900,
+          "max": 1700
+        },
+        "frame_rate_fps": 100,
+        "adc_resolution_bit": 14,
+        "cooling": "TE cooler",
+        "interfaces": "CameraLink (Standard SDR)",
+        "weight_kg": 0.285
+      },
+      "note": "무게는 렌즈 제외"
+    },
+    {
+      "model": "Bobcat 640 CL vSWIR",
+      "specs": {
+        "detector": "InGaAs photodiode array with CTIA ROIC",
+        "detector_pixels": "640 × 512",
+        "resolution_pixels": 327680,
+        "pixel_pitch_um": 20,
+        "wavelength_nm": {
+          "min": 500,
+          "max": 1700
+        },
+        "frame_rate_fps": 100,
+        "adc_resolution_bit": 14,
+        "cooling": "TE cooler",
+        "interfaces": "CameraLink (Standard SDR)",
+        "weight_kg": 0.285
+      },
+      "note": "무게는 렌즈 제외"
+    },
+    {
+      "model": "Bobcat 640 GigE",
+      "specs": {
+        "detector": "InGaAs photodiode array with CTIA ROIC",
+        "detector_pixels": "640 × 512",
+        "resolution_pixels": 327680,
+        "pixel_pitch_um": 20,
+        "wavelength_nm": {
+          "min": 900,
+          "max": 1700
+        },
+        "frame_rate_fps": 100,
+        "adc_resolution_bit": 14,
+        "cooling": "TE cooler",
+        "interfaces": "GigE Vision",
+        "weight_kg": 0.334
+      },
+      "note": "무게는 렌즈 제외"
+    },
+    {
+      "model": "Bobcat 640 GigE vSWIR",
+      "specs": {
+        "detector": "InGaAs photodiode array with CTIA ROIC",
+        "detector_pixels": "640 × 512",
+        "resolution_pixels": 327680,
+        "pixel_pitch_um": 20,
+        "wavelength_nm": {
+          "min": 500,
+          "max": 1700
+        },
+        "frame_rate_fps": 100,
+        "adc_resolution_bit": 14,
+        "cooling": "TE cooler",
+        "interfaces": "GigE Vision",
+        "weight_kg": 0.334
+      },
+      "note": "무게는 렌즈 제외"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://www.exosens.com/products/bobcat",
+      "retrieved": "2026-10-08",
+      "note": "제조사 계열 페이지(HTML). 14 기종 이름과 공통 사양(해상도, 20 µm, 900 ~ 1,700 nm, 프레임 속도, 인터페이스)"
+    },
+    {
+      "url": "https://exosens.com/products/bobcat-640",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지(HTML). Bobcat 640 CL · GigE 의 vSWIR 파장, 14-bit ADC, 무게"
+    },
+    {
+      "file": "exosens/exosens_swir_bobcat-20320-20series_leaflet.pdf",
+      "pages": [
+        2
+      ],
+      "note": "제조사 리플릿 PDF. Bobcat 320 Series 리플릿(CL · GigE 100 / 400)"
+    },
+    {
+      "file": "exosens/exosens_swir_bobcat-20320-20te0-20and-20wl-20series_leaflet-20-.pdf",
+      "pages": [
+        1,
+        2
+      ],
+      "note": "제조사 리플릿 PDF. Bobcat 320 TE0 · WL 리플릿"
+    },
+    {
+      "file": "exosens/exosens_swir_bobcat-20640-20series_leaflet.pdf",
+      "pages": [
+        2
+      ],
+      "note": "제조사 리플릿 PDF. Bobcat 640 Series 리플릿"
+    },
+    {
+      "file": "exosens/exosens_swir_bobcat-20gated-20series_leaflet.pdf",
+      "pages": [
+        1,
+        2
+      ],
+      "note": "제조사 리플릿 PDF. Bobcat 320 Gated 리플릿"
+    }
+  ],
+  "confidence": "catalog",
+  "notes": "계열 페이지는 비트 심도를 16 bit 로, Bobcat 640 페이지는 14-bit ADC 로 적어 계열 한계에는 넣지 않았다. USB3 Vision 인터페이스도 계열 페이지에 적혀 있으나 어느 기종인지 특정되지 않음. PDF 로 확인: Bobcat 320(CL · GigE 100 / 400) · 320 TE0 · 320 WL · 320 Gated · 640(SWIR · vSWIR) 12 기종의 화소 · 20 µm · 파장 · 프레임 속도 · 인터페이스 · 검출기, 냉각 방식과 TE0 · WL 무게 280 g, Gated 최소 노출 100 ns 를 더함 / 웹 값 그대로: Bobcat+ 320 두 기종(리플릿 없음), Bobcat 640 의 14-bit ADC 와 무게(리플릿은 「285 gr or 334 gr」 로만 적어 CL · GigE 대응은 웹 페이지 값). Bobcat 320 · Gated 리플릿도 무게를 「285 gr or 334 gr」 로만 적어 기종별로 넣지 않았다."
+}

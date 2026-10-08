@@ -1,0 +1,130 @@
+{
+  "id": "espec-fd-series",
+  "kind": "equipment_series",
+  "name": "ESPEC FD Series Temperature (& Humidity) Chambers (FDU / FDL / FDG / FDS)",
+  "name_ko": "에스펙 FD 계열 대형 온도(항온항습) 챔버",
+  "manufacturer": "espec",
+  "category": "climatic_chamber",
+  "drive": "thermal",
+  "form_factor": "floor",
+  "description": "내용적 1800~11000 L 의 대형 온도·항온항습 챔버. FDU(온도, -40~+180 °C)·FDL(-40~+180 °C, 20~95 %rh)·FDG(온도, -70~+180 °C)·FDS(-70~+180 °C, 20~95 %rh). 크기 코드 01800·02400·03375·04500·08000·11000.",
+  "test_items": [
+    "damp_heat",
+    "temperature_cycling"
+  ],
+  "limits": {
+    "temperature_degC": {
+      "min": -70,
+      "max": 180
+    },
+    "humidity_pct": {
+      "min": 20,
+      "max": 95,
+      "note": "FDL·FDS 만"
+    },
+    "chamber_volume_L": {
+      "min": 1800,
+      "max": 11000,
+      "note": "크기 코드 01800, 02400, 03375, 04500, 08000, 11000"
+    },
+    "heating_rate_K_min": {
+      "min": 3,
+      "note": "FDU·FDL: -18 °C ⇔ +158 °C 구간 3 K/min 이상, FDG·FDS: -45 °C ⇔ +155 °C 구간 3 K/min 이상"
+    },
+    "cooling_rate_K_min": {
+      "min": 3,
+      "note": "승온과 같은 구간·값"
+    }
+  },
+  "models": [
+    {
+      "model": "FDU",
+      "variant": "온도 전용",
+      "specs": {
+        "temperature_degC": {
+          "min": -40,
+          "max": 180
+        },
+        "heating_rate_K_min": {
+          "min": 3,
+          "note": "-18 °C ⇔ +158 °C"
+        },
+        "cooling_rate_K_min": {
+          "min": 3,
+          "note": "-18 °C ⇔ +158 °C"
+        }
+      }
+    },
+    {
+      "model": "FDL",
+      "variant": "온습도",
+      "specs": {
+        "temperature_degC": {
+          "min": -40,
+          "max": 180
+        },
+        "humidity_pct": {
+          "min": 20,
+          "max": 95
+        },
+        "heating_rate_K_min": {
+          "min": 3,
+          "note": "-18 °C ⇔ +158 °C"
+        },
+        "cooling_rate_K_min": {
+          "min": 3,
+          "note": "-18 °C ⇔ +158 °C"
+        }
+      }
+    },
+    {
+      "model": "FDG",
+      "variant": "온도 전용",
+      "specs": {
+        "temperature_degC": {
+          "min": -70,
+          "max": 180
+        },
+        "heating_rate_K_min": {
+          "min": 3,
+          "note": "-45 °C ⇔ +155 °C"
+        },
+        "cooling_rate_K_min": {
+          "min": 3,
+          "note": "-45 °C ⇔ +155 °C"
+        }
+      }
+    },
+    {
+      "model": "FDS",
+      "variant": "온습도",
+      "specs": {
+        "temperature_degC": {
+          "min": -70,
+          "max": 180
+        },
+        "humidity_pct": {
+          "min": 20,
+          "max": 95
+        },
+        "heating_rate_K_min": {
+          "min": 3,
+          "note": "-45 °C ⇔ +155 °C"
+        },
+        "cooling_rate_K_min": {
+          "min": 3,
+          "note": "-45 °C ⇔ +155 °C"
+        }
+      }
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://www.espec.co.jp/english/products/env-test/fd/",
+      "retrieved": "2026-10-08",
+      "note": "제조사 영문 페이지 사양표(형식별 온도·습도·변화 속도, 크기 코드)"
+    }
+  ],
+  "confidence": "limited",
+  "notes": "형식과 크기 코드를 잇는 전체 기종명(예: 형식+크기 코드) 표기는 페이지에 없어 형식 이름만 기종으로 적었다. 크기별 내부 치수·무게는 페이지에 없다."
+}

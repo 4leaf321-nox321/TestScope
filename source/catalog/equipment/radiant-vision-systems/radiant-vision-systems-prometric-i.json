@@ -1,0 +1,172 @@
+{
+  "id": "radiant-vision-systems-prometric-i",
+  "kind": "equipment_series",
+  "name": "Radiant Vision Systems ProMetric I Imaging Colorimeter",
+  "name_ko": "래디언트 ProMetric I 이미징 콜로리미터",
+  "manufacturer": "radiant-vision-systems",
+  "brand": "ProMetric",
+  "category": "imaging_colorimeter",
+  "form_factor": "camera",
+  "description": "디스플레이 · 조명 면의 휘도 · 색도 분포를 재는 이미징 콜로리미터 계열(Konica Minolta 그룹). 1.9 MP CCD(I2)부터 61 MP CMOS(I61)까지 해상도를 고르고, 휘도 확도 ±3 %, 색도 확도 ±0.003. 동적 범위 59 ~ 76 dB, 전자 제어 렌즈(24 ~ 200 mm)를 쓴다.",
+  "test_items": [
+    "photometry_colorimetry"
+  ],
+  "measurands": [
+    "luminance",
+    "chromaticity",
+    "uniformity",
+    "mura"
+  ],
+  "limits": {
+    "resolution_pixels": {
+      "min": 1920000,
+      "max": 61043840,
+      "note": "1,600 × 1,200 ~ 9,568 × 6,380"
+    },
+    "luminance_cd_m2": {
+      "min": 1e-05,
+      "max": 1010,
+      "note": "I2 0.00001 ~ 1,010, 나머지 0.0005 ~ 1,010 cd/m²"
+    },
+    "dynamic_range_dB": {
+      "min": 59,
+      "max": 76
+    },
+    "measurement_time_s": {
+      "min": 0.3,
+      "max": 2.4
+    }
+  },
+  "models": [
+    {
+      "model": "ProMetric I2",
+      "specs": {
+        "detector": "CCD",
+        "detector_pixels": "1600 × 1200",
+        "resolution_pixels": 1920000,
+        "dynamic_range_dB": 59,
+        "luminance_cd_m2": {
+          "min": 1e-05,
+          "max": 1010
+        },
+        "luminance_accuracy_pct": 3,
+        "chromaticity_accuracy_xy": 0.003,
+        "measurement_time_s": {
+          "min": 0.3,
+          "max": 1.1
+        },
+        "field_of_view_deg": "24 mm 20 × 15°, 35 mm 14 × 10°, 50 mm 10 × 8°, 100 mm macro 5 × 4°, 200 mm 3 × 2°",
+        "repeatability_pct": {
+          "value": 0.02,
+          "note": "단기 반복도: 휘도(Y) · 조도 ±0.02 %, 색좌표 ±0.00005(가상 검출기 100 × 100 화소)"
+        },
+        "interfaces": "Ethernet 100/1000, USB 2.0"
+      },
+      "note": "측정 시간 0.3 s(명소시) / 1.1 s(색), 100 cd/m² · Ethernet. 렌즈 24, 35, 50, 100, 200 mm(전자 제어). 동적 범위 1 × 1 binning. 최소 휘도: 검출 한계 0.00001, SNR 60 에서 0.0001, SNR 100 에서 0.0005 cd/m². 최대 1,010 cd/m² 는 ND 필터 사용"
+    },
+    {
+      "model": "ProMetric I8",
+      "specs": {
+        "detector": "CMOS",
+        "detector_pixels": "3296 × 2472",
+        "resolution_pixels": 8147712,
+        "dynamic_range_dB": 76,
+        "luminance_cd_m2": {
+          "min": 0.0005,
+          "max": 1010
+        },
+        "luminance_accuracy_pct": 3,
+        "chromaticity_accuracy_xy": 0.003,
+        "measurement_time_s": {
+          "min": 0.4,
+          "max": 1.2
+        },
+        "field_of_view_deg": "24 mm 38 × 30°, 35 mm 29 × 22°, 50 mm 21 × 16°, 100 mm macro 10 × 8°, 200 mm 5 × 4°",
+        "repeatability_pct": {
+          "value": 0.02,
+          "note": "단기 반복도: 휘도(Y) · 조도 ±0.02 %, 색좌표 ±0.00005(가상 검출기 100 × 100 화소)"
+        },
+        "interfaces": "Ethernet 100/1000, USB 2.0"
+      },
+      "note": "측정 시간 0.4 s(명소시) / 1.2 s(색). 렌즈: PDF 시야표에 24 · 35 · 50 · 100 · 200 mm 시야가 실림(웹 페이지는 50, 100, 200 mm). 동적 범위 1 × 1 binning. 최소 휘도: 검출 한계 0.0005, SNR 60 에서 0.0010, SNR 100 에서 0.0015 cd/m²"
+    },
+    {
+      "model": "ProMetric I29",
+      "specs": {
+        "detector": "CMOS",
+        "detector_pixels": "6576 × 4384",
+        "resolution_pixels": 28829184,
+        "dynamic_range_dB": 76,
+        "luminance_cd_m2": {
+          "min": 0.0005,
+          "max": 1010
+        },
+        "luminance_accuracy_pct": 3,
+        "chromaticity_accuracy_xy": 0.003,
+        "measurement_time_s": {
+          "min": 0.9,
+          "max": 2.4
+        },
+        "field_of_view_deg": "50 mm 40 × 28°, 100 mm macro 20 × 14°, 200 mm 11 × 7°",
+        "repeatability_pct": {
+          "value": 0.02,
+          "note": "단기 반복도: 휘도(Y) · 조도 ±0.02 %, 색좌표 ±0.00005(가상 검출기 100 × 100 화소)"
+        },
+        "interfaces": "Ethernet 100/1000, USB 2.0"
+      },
+      "note": "측정 시간 0.9 s(명소시) / 2.4 s(색). 렌즈 50, 100, 200 mm(전자 제어). 동적 범위 1 × 1 binning. 최소 휘도: 검출 한계 0.0005, SNR 60 에서 0.0010, SNR 100 에서 0.0015 cd/m²"
+    },
+    {
+      "model": "ProMetric I61",
+      "specs": {
+        "detector": "CMOS",
+        "detector_pixels": "9568 × 6380",
+        "resolution_pixels": 61043840,
+        "dynamic_range_dB": 76,
+        "luminance_cd_m2": {
+          "min": 0.0005,
+          "max": 1010
+        },
+        "luminance_accuracy_pct": 3,
+        "chromaticity_accuracy_xy": 0.003,
+        "measurement_time_s": {
+          "min": 0.6,
+          "max": 1.8
+        },
+        "field_of_view_deg": "50 mm 40 × 28°, 100 mm macro 20 × 14°, 200 mm 11 × 7°",
+        "repeatability_pct": {
+          "value": 0.02,
+          "note": "단기 반복도: 휘도(Y) · 조도 ±0.02 %, 색좌표 ±0.00005(가상 검출기 100 × 100 화소)"
+        },
+        "interfaces": "10 Gigabit Ethernet"
+      },
+      "note": "측정 시간 0.6 s(명소시) / 1.8 s(색). 렌즈 50, 100, 200 mm(전자 제어). 동적 범위 1 × 1 binning. 최소 휘도: 검출 한계 0.0005, SNR 60 에서 0.0010, SNR 100 에서 0.0015 cd/m². 시야는 PDF 시야표의 셋째 열(I29 와 같은 풀프레임 센서 폭)"
+    }
+  ],
+  "relations": [
+    {
+      "type": "performs",
+      "target": "photometry_colorimetry"
+    },
+    {
+      "type": "same_family_as",
+      "target": "radiant-vision-systems-prometric-y"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://sensing.konicaminolta.us/us/products/prometric-i-imaging-colorimeters/",
+      "retrieved": "2026-10-08",
+      "note": "Konica Minolta Sensing 미주 사이트의 Radiant Vision Systems 제품 페이지(HTML)"
+    },
+    {
+      "file": "radiant-vision-systems/radiant_spec_prometric-i_en.pdf",
+      "pages": [
+        2
+      ],
+      "note": "제조사 사양서 PDF(2022/03/31)"
+    }
+  ],
+  "confidence": "catalog",
+  "notes": "냉각 방식은 페이지 · PDF 에 없음. ProMetric I-SC 솔루션과 각종 렌즈(FPD 코노스코프, AR/VR, XRE)는 별도 제품이라 다루지 않음. PDF 로 확인: 네 기종의 센서 · 화소 · 동적 범위 · 휘도 범위 · 확도 · 측정 시간(반복도 · 시야 · 통신을 더함). PDF 의 무게 4.9 kg / 4.6 kg, 운전 온도 0 ~ 30 °C / 5 ~ 35 °C 는 사양표 텍스트에서 어느 기종 열인지 갈리지 않아 넣지 않았다(크기 238 × 181 × 230 mm, 전원 140 W 는 공통)."
+}

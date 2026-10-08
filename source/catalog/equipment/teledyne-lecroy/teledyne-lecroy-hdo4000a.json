@@ -1,0 +1,139 @@
+{
+  "id": "teledyne-lecroy-hdo4000a",
+  "kind": "equipment_series",
+  "name": "HDO4000A High Definition Oscilloscopes",
+  "name_ko": "텔레다인 르크로이 HDO4000A 오실로스코프",
+  "manufacturer": "teledyne-lecroy",
+  "brand": "HDO",
+  "category": "oscilloscope",
+  "subcategory": "high_definition_oscilloscope",
+  "form_factor": "benchtop",
+  "description": "200 MHz~1 GHz 대역의 4채널 12 bit 고분해능 오실로스코프 계열임. 10 GS/s, 25 Mpts, 12.1 inch 멀티터치 화면. -MS 기종은 16 디지털 채널(4+16 입력).",
+  "test_items": [],
+  "limits": {
+    "bandwidth_Hz": {
+      "min": 200000000,
+      "max": 1000000000
+    },
+    "sample_rate_Sa_s": {
+      "max": 10000000000
+    },
+    "record_length_pts": {
+      "max": 25000000
+    },
+    "channels": {
+      "values": [
+        4
+      ]
+    },
+    "logic_channel_count": {
+      "values": [
+        16
+      ]
+    },
+    "adc_resolution_bit": {
+      "values": [
+        12
+      ]
+    },
+    "display_size_in": {
+      "values": [
+        12.1
+      ]
+    }
+  },
+  "models": [
+    {
+      "model": "HDO4024A",
+      "specs": {
+        "bandwidth_Hz": 200000000,
+        "channels": 4,
+        "sample_rate_Sa_s": 10000000000,
+        "record_length_pts": 25000000,
+        "adc_resolution_bit": 12,
+        "display_size_in": 12.1
+      }
+    },
+    {
+      "model": "HDO4034A",
+      "specs": {
+        "bandwidth_Hz": 350000000,
+        "channels": 4,
+        "sample_rate_Sa_s": 10000000000,
+        "record_length_pts": 25000000,
+        "adc_resolution_bit": 12,
+        "display_size_in": 12.1
+      }
+    },
+    {
+      "model": "HDO4054A",
+      "specs": {
+        "bandwidth_Hz": 500000000,
+        "channels": 4,
+        "sample_rate_Sa_s": 10000000000,
+        "record_length_pts": 25000000,
+        "adc_resolution_bit": 12,
+        "display_size_in": 12.1
+      }
+    },
+    {
+      "model": "HDO4104A",
+      "specs": {
+        "bandwidth_Hz": 1000000000,
+        "channels": 4,
+        "sample_rate_Sa_s": 10000000000,
+        "record_length_pts": 25000000,
+        "adc_resolution_bit": 12,
+        "display_size_in": 12.1
+      }
+    },
+    {
+      "model": "HDO4034A-MS",
+      "variant": "mixed signal",
+      "specs": {
+        "bandwidth_Hz": 350000000,
+        "channels": 4,
+        "logic_channel_count": 16,
+        "sample_rate_Sa_s": 10000000000,
+        "record_length_pts": 25000000,
+        "adc_resolution_bit": 12,
+        "display_size_in": 12.1
+      }
+    },
+    {
+      "model": "HDO4054A-MS",
+      "variant": "mixed signal",
+      "specs": {
+        "bandwidth_Hz": 500000000,
+        "channels": 4,
+        "logic_channel_count": 16,
+        "sample_rate_Sa_s": 10000000000,
+        "record_length_pts": 25000000,
+        "adc_resolution_bit": 12,
+        "display_size_in": 12.1
+      }
+    },
+    {
+      "model": "HDO4104A-MS",
+      "variant": "mixed signal",
+      "specs": {
+        "bandwidth_Hz": 1000000000,
+        "channels": 4,
+        "logic_channel_count": 16,
+        "sample_rate_Sa_s": 10000000000,
+        "record_length_pts": 25000000,
+        "adc_resolution_bit": 12,
+        "display_size_in": 12.1
+      }
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://www.teledynelecroy.com/oscilloscope/hdo4000a-high-definition-oscilloscopes",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지 기종 표. 원문 Input Channels 4 또는 4+16, 10 GS/s, 25 Mpts, 12-bit. 12.1\" multi-touch display 는 Key Features"
+    }
+  ],
+  "confidence": "limited",
+  "notes": "2채널 HDO4000A 기종은 표에 없어 넣지 않음."
+}

@@ -1,0 +1,236 @@
+{
+  "id": "exosens-xenics-cheetah",
+  "kind": "equipment_series",
+  "name": "Xenics Cheetah / Cheetah+ High-Speed SWIR Cameras",
+  "name_ko": "제닉스 Cheetah 고속 SWIR 카메라",
+  "manufacturer": "exosens",
+  "brand": "Xenics",
+  "category": "high_speed_swir_camera",
+  "subcategory": "swir_camera",
+  "form_factor": "camera",
+  "description": "Exosens(옛 Xenics) 의 고속 InGaAs SWIR 카메라 계열. 640 × 512, 화소 간격 20 µm 에서 1단 열전 냉각(TE1) 판은 400 · 865 · 1,730 Hz, 3단 냉각(TE3) 판은 111 Hz 로 찍는다. Cheetah+ 는 CoaXPress 로 1,700 Hz. 감도 파장 900 ~ 1,700 nm(vSWIR 판 500 ~ 1,700 nm).",
+  "test_items": [],
+  "limits": {
+    "resolution_pixels": {
+      "max": 327680,
+      "note": "640 × 512"
+    },
+    "wavelength_nm": {
+      "min": 500,
+      "max": 1700,
+      "note": "SWIR 900 ~ 1,700, vSWIR 500 ~ 1,700 nm"
+    },
+    "frame_rate_fps": {
+      "min": 111,
+      "max": 1730,
+      "note": "원문 Hz. 전 화소"
+    },
+    "pixel_pitch_um": {
+      "values": [
+        20
+      ]
+    },
+    "adc_resolution_bit": {
+      "values": [
+        14
+      ]
+    }
+  },
+  "models": [
+    {
+      "model": "Cheetah 640 TE1 400",
+      "specs": {
+        "detector_pixels": "640 × 512",
+        "resolution_pixels": 327680,
+        "pixel_pitch_um": 20,
+        "wavelength_nm": {
+          "min": 900,
+          "max": 1700
+        },
+        "frame_rate_fps": {
+          "value": 444,
+          "note": "PDF 표 「111 / 444 / 865 / 1730 Hz」 의 400 등급 값. 웹 페이지는 400 Hz"
+        },
+        "adc_resolution_bit": 14,
+        "cooling": "TE1",
+        "interfaces": "CameraLink",
+        "weight_kg": 2.0
+      }
+    },
+    {
+      "model": "Cheetah 640 TE1 400 vSWIR",
+      "specs": {
+        "detector_pixels": "640 × 512",
+        "resolution_pixels": 327680,
+        "pixel_pitch_um": 20,
+        "wavelength_nm": {
+          "min": 500,
+          "max": 1700
+        },
+        "frame_rate_fps": {
+          "value": 444,
+          "note": "PDF 표 「111 / 444 / 865 / 1730 Hz」 의 400 등급 값. 웹 페이지는 400 Hz"
+        },
+        "adc_resolution_bit": 14,
+        "cooling": "TE1",
+        "interfaces": "CameraLink",
+        "weight_kg": 2.0
+      }
+    },
+    {
+      "model": "Cheetah 640 TE1 800",
+      "specs": {
+        "detector_pixels": "640 × 512",
+        "resolution_pixels": 327680,
+        "pixel_pitch_um": 20,
+        "wavelength_nm": {
+          "min": 900,
+          "max": 1700
+        },
+        "frame_rate_fps": 865,
+        "adc_resolution_bit": 14,
+        "cooling": "TE1",
+        "interfaces": "CameraLink",
+        "weight_kg": 2.0
+      }
+    },
+    {
+      "model": "Cheetah 640 TE1 800 vSWIR",
+      "specs": {
+        "detector_pixels": "640 × 512",
+        "resolution_pixels": 327680,
+        "pixel_pitch_um": 20,
+        "wavelength_nm": {
+          "min": 500,
+          "max": 1700
+        },
+        "frame_rate_fps": 865,
+        "adc_resolution_bit": 14,
+        "cooling": "TE1",
+        "interfaces": "CameraLink",
+        "weight_kg": 2.0
+      }
+    },
+    {
+      "model": "Cheetah 640 TE1 1700",
+      "specs": {
+        "detector_pixels": "640 × 512",
+        "resolution_pixels": 327680,
+        "pixel_pitch_um": 20,
+        "wavelength_nm": {
+          "min": 900,
+          "max": 1700
+        },
+        "frame_rate_fps": 1730,
+        "adc_resolution_bit": 14,
+        "cooling": "TE1",
+        "interfaces": "CameraLink",
+        "weight_kg": 2.0
+      }
+    },
+    {
+      "model": "Cheetah 640 TE1 1700 vSWIR",
+      "specs": {
+        "detector_pixels": "640 × 512",
+        "resolution_pixels": 327680,
+        "pixel_pitch_um": 20,
+        "wavelength_nm": {
+          "min": 500,
+          "max": 1700
+        },
+        "frame_rate_fps": 1730,
+        "adc_resolution_bit": 14,
+        "cooling": "TE1",
+        "interfaces": "CameraLink",
+        "weight_kg": 2.0
+      }
+    },
+    {
+      "model": "Cheetah 640 TE3",
+      "specs": {
+        "detector_pixels": "640 × 512",
+        "resolution_pixels": 327680,
+        "pixel_pitch_um": 20,
+        "wavelength_nm": {
+          "min": 900,
+          "max": 1700
+        },
+        "frame_rate_fps": 111,
+        "adc_resolution_bit": 14,
+        "cooling": "TE3",
+        "interfaces": "CameraLink",
+        "weight_kg": 2.0
+      }
+    },
+    {
+      "model": "Cheetah+ 640 CXP OEM 1700",
+      "specs": {
+        "detector_pixels": "640 × 512",
+        "resolution_pixels": 327680,
+        "pixel_pitch_um": 20,
+        "wavelength_nm": {
+          "min": 900,
+          "max": 1700
+        },
+        "frame_rate_fps": 1700,
+        "adc_resolution_bit": 14,
+        "cooling": {
+          "value": "TE1",
+          "note": "웹 페이지는 TE (stabilized)"
+        },
+        "interfaces": "CoaXPress",
+        "weight_kg": 0.875
+      }
+    },
+    {
+      "model": "Cheetah+ 640 CXP CAM 1700",
+      "specs": {
+        "detector_pixels": "640 × 512",
+        "resolution_pixels": 327680,
+        "pixel_pitch_um": 20,
+        "wavelength_nm": {
+          "min": 900,
+          "max": 1700
+        },
+        "frame_rate_fps": 1700,
+        "adc_resolution_bit": 14,
+        "cooling": {
+          "value": "TE1",
+          "note": "웹 페이지는 TE (stabilized)"
+        },
+        "interfaces": "CoaXPress",
+        "weight_kg": 1.206
+      }
+    }
+  ],
+  "relations": [
+    {
+      "type": "same_family_as",
+      "target": "exosens-xenics-bobcat"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://www.exosens.com/products/cheetah",
+      "retrieved": "2026-10-08",
+      "note": "제조사 계열 페이지(HTML). Cheetah 7 기종 · Cheetah+ 2 기종의 해상도·화소 간격·파장·프레임 속도·냉각·비트 심도"
+    },
+    {
+      "file": "exosens/exosens_swir_cheetah-20series_leaflet.pdf",
+      "pages": [
+        1,
+        2
+      ],
+      "note": "제조사 리플릿 PDF. Cheetah 640 7 기종"
+    },
+    {
+      "file": "exosens/exosens_swir_cheetah-2b-20640_leaflet.pdf",
+      "pages": [
+        2
+      ],
+      "note": "제조사 리플릿 PDF. Cheetah+ 640 OEM · CAM"
+    }
+  ],
+  "confidence": "catalog",
+  "notes": "기종명 끝의 400 · 800 · 1700 은 프레임 속도 등급. 리플릿 PDF 는 전 화소 최대 프레임 속도를 「111 Hz / 444 Hz / 865 Hz / 1730 Hz」 로 적어 TE3 · 400 · 800 · 1700 등급에 차례로 맞췄다(웹 페이지는 400 등급을 400 Hz 로 적음). PDF 로 확인: 9 기종의 화소 · 20 µm · 파장 · 프레임 속도 · 인터페이스, Cheetah+ 냉각 TE1, 무게(Cheetah 2,000 g, Cheetah+ OEM 875 g · CAM 1,206 g) / 웹 값 그대로: 14-bit ADC(리플릿에 비트 심도 없음)."
+}

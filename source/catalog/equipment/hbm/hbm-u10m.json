@@ -1,0 +1,57 @@
+{
+  "id": "hbm-u10m",
+  "kind": "sensor",
+  "name": "HBK (HBM) U10M Force Transducer",
+  "name_ko": "HBK(HBM) U10M 인장·압축 힘 센서",
+  "manufacturer": "hbm",
+  "brand": "HBM",
+  "category": "force_pressure_sensor",
+  "subcategory": "strain_gauge_force_transducer",
+  "description": "회전 대칭 저자세 구조의 인장·압축 힘 변환기. 녹슬지 않는 재료로 만들고 피로·재료 시험기용 초정밀 로드셀로 쓴다. 정격 1.25 kN～2.5 MN, HBK 정확도 등급 0.02～0.05(용량별).",
+  "test_items": [],
+  "measurands": [
+    "force"
+  ],
+  "limits": {
+    "force_kN": {
+      "min": 1.25,
+      "max": 2500,
+      "values": [
+        1.25,
+        2.5,
+        5,
+        12.5,
+        25,
+        50,
+        125,
+        250,
+        500,
+        1250,
+        2500
+      ],
+      "note": "정격 1.25 kN to 2.5 MN(2.5 MN=2500 kN 로 적음)"
+    }
+  },
+  "models": [
+    {
+      "model": "U10M",
+      "specs": {
+        "force_kN": {
+          "min": 1.25,
+          "max": 2500
+        },
+        "accuracy_class": "0.02(1.25·2.5·5 kN), 0.03(12.5·25 kN), 0.04(50·125·250 kN), 0.05(500 kN·1.25 MN)"
+      },
+      "note": "2.5 MN 의 정확도 등급은 확인하지 못함"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://www.hbkworld.com/en/products/transducers/force/u10m",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지(hbkworld.com)는 직접 조회 시 HTTP 403. 값은 웹 검색 결과에 나온 같은 페이지의 요약에서 옮김"
+    }
+  ],
+  "confidence": "limited",
+  "notes": "HBM 은 Brüel & Kjær 와 합쳐 HBK(Hottinger Brüel & Kjær)가 됐다 — 기존 제조사 bruel-kjaer 와 같은 모회사. 값이 검색 요약 경유라 데이터시트 대조가 필요하다. 감도·온도 범위는 확인 못함."
+}

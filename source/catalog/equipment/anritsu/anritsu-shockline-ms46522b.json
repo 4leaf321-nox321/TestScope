@@ -1,0 +1,113 @@
+{
+  "id": "anritsu-shockline-ms46522b",
+  "kind": "equipment_series",
+  "name": "Anritsu ShockLine MS46522B 2-Port Performance Vector Network Analyzer",
+  "name_ko": "안리쓰 ShockLine MS46522B 2포트 벡터 네트워크 분석기",
+  "manufacturer": "anritsu",
+  "brand": "ShockLine",
+  "category": "network_lcr_analyzer",
+  "form_factor": "benchtop",
+  "description": "수동 RF·마이크로파 소자의 S-파라미터와 시간 영역 특성을 재는 2포트 성능형 VNA. 주파수 옵션 50 kHz~8.5/20/43.5 GHz 와 55~92 GHz(E 대역, 1 m·5 m 테더) 가 있다. 3U 높이 본체에 컴퓨터·전원 내장, LAN 원격 제어, ShockLine 공통 GUI·SCPI, SmartCal 자동 교정기.",
+  "test_items": [],
+  "limits": {
+    "frequency_Hz": {
+      "min": 50000,
+      "max": 92000000000,
+      "note": "옵션 010 50 kHz~8.5 GHz, 020 50 kHz~20 GHz, 043 50 kHz~43.5 GHz, 082/083 55~92 GHz"
+    },
+    "rf_port_count": {
+      "values": [
+        2
+      ]
+    }
+  },
+  "models": [
+    {
+      "model": "MS46522B-010",
+      "specs": {
+        "frequency_Hz": {
+          "min": 50000,
+          "max": 8500000000
+        },
+        "rf_port_count": 2
+      },
+      "note": "옵션 061 바이어스 티(포트 1·2)는 옵션 10 전용"
+    },
+    {
+      "model": "MS46522B-020",
+      "specs": {
+        "frequency_Hz": {
+          "min": 50000,
+          "max": 20000000000
+        },
+        "rf_port_count": 2
+      }
+    },
+    {
+      "model": "MS46522B-043",
+      "specs": {
+        "frequency_Hz": {
+          "min": 50000,
+          "max": 43500000000
+        },
+        "rf_port_count": 2
+      },
+      "note": "Extended K 포트로 43.5 GHz 까지 성능 보증"
+    },
+    {
+      "model": "MS46522B-082",
+      "specs": {
+        "frequency_Hz": {
+          "min": 55000000000,
+          "max": 92000000000
+        },
+        "rf_port_count": 2
+      },
+      "note": "1 m 테더"
+    },
+    {
+      "model": "MS46522B-083",
+      "specs": {
+        "frequency_Hz": {
+          "min": 55000000000,
+          "max": 92000000000
+        },
+        "rf_port_count": 2
+      },
+      "note": "5 m 테더"
+    }
+  ],
+  "features": [
+    "SmartCal 자동 교정기",
+    "LAN 원격 제어",
+    "ShockLine 공통 GUI·SCPI",
+    "컴퓨터·전원 내장 3U 섀시"
+  ],
+  "options": [
+    {
+      "name": "Option 001",
+      "note": "랙 마운트"
+    },
+    {
+      "name": "Option 002",
+      "note": "시간 영역(time gating 포함)"
+    },
+    {
+      "name": "Option 024",
+      "note": "Universal Fixture Extraction(UFX)"
+    },
+    {
+      "name": "Option 061",
+      "note": "바이어스 티(포트 1·2, 옵션 10 전용)"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://www.anritsu.com/en-us/test-measurement/products/ms46522b",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지. 주파수 옵션 -010/-020/-043/-082/-083, 옵션 001/002/024/061, 3U 섀시"
+    }
+  ],
+  "confidence": "limited",
+  "notes": "기종 이름은 제조사 표기대로 주파수 옵션 접미사(-010 등)를 붙여 적음. 동적 범위·출력 전력 수치는 페이지에 없음. 같은 ShockLine 의 다른 기종(MS46524B 등)은 이번에 확인하지 않음."
+}

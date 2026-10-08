@@ -1,0 +1,131 @@
+{
+  "id": "tekscan-flexiforce",
+  "kind": "sensor",
+  "name": "Tekscan FlexiForce Force Sensors (A201 / A301 / A401 / HT201)",
+  "name_ko": "텍스캔 FlexiForce 박막 힘 센서",
+  "manufacturer": "tekscan",
+  "brand": "FlexiForce",
+  "category": "force_pressure_sensor",
+  "subcategory": "thin_film_force_sensor",
+  "description": "두께 0.203 mm 의 얇은 압저항 박막 힘 센서. A201 은 저 4.4 N·중 111 N·고 445 N 세 범위와 길이 4종, A301 은 같은 세 범위의 짧은 1인치형, A401 은 지름 25.4 mm 큰 감지면의 111 N, HT201 은 -40～240 °C 고온형(표준 222 N, 최대 2,224 N). 직선성 ±3 % FS 미만, 반복성 ±2.5 % 미만(HT201 ±3.5 %), 응답 시간 5 µs 미만.",
+  "test_items": [],
+  "measurands": [
+    "force"
+  ],
+  "limits": {
+    "force_N": {
+      "min": 4.4,
+      "max": 2224,
+      "note": "A201/A301 4.4·111·445 N, A401 111 N, HT201 표준 222 N·최대 2,224 N"
+    },
+    "response_time_ms": {
+      "max": 0.005,
+      "note": "원문 < 5 µsec"
+    },
+    "operating_temperature_degC": {
+      "min": -40,
+      "max": 240,
+      "note": "HT201 만 240 °C, 나머지 60 °C"
+    }
+  },
+  "models": [
+    {
+      "model": "A201",
+      "specs": {
+        "repeatability_pct": 2.5,
+        "response_time_ms": 0.005,
+        "operating_temperature_degC": {
+          "min": -40,
+          "max": 60
+        },
+        "force_N": {
+          "values": [
+            4.4,
+            111,
+            445
+          ]
+        }
+      },
+      "note": "길이 7.50·6.00·4.00·2.00 in, 감지 지름 0.375 in. 히스테리시스 < 4.5 % FS, 드리프트 < 5 %/로그 시간, 온도 감도 0.36 %/°C"
+    },
+    {
+      "model": "A301",
+      "specs": {
+        "repeatability_pct": 2.5,
+        "response_time_ms": 0.005,
+        "operating_temperature_degC": {
+          "min": -40,
+          "max": 60
+        },
+        "force_N": {
+          "values": [
+            4.4,
+            111,
+            445
+          ]
+        }
+      },
+      "note": "길이 1.00 in, 감지 지름 0.375 in"
+    },
+    {
+      "model": "A401",
+      "specs": {
+        "repeatability_pct": 2.5,
+        "response_time_ms": 0.005,
+        "operating_temperature_degC": {
+          "min": -40,
+          "max": 60
+        },
+        "force_N": 111
+      },
+      "note": "길이 56.9 mm, 감지 지름 25.4 mm"
+    },
+    {
+      "model": "HT201",
+      "specs": {
+        "force_N": {
+          "values": [
+            222
+          ],
+          "max": 2224
+        },
+        "repeatability_pct": 3.5,
+        "response_time_ms": 0.005,
+        "operating_temperature_degC": {
+          "min": -40,
+          "max": 240
+        }
+      },
+      "note": "고온형. 원문 표준 50 lbs, 최대 500 lb(N 값은 페이지 병기). 히스테리시스 < 3.6 % FS, 내구 300만 회 이상. 직선성 ±3 % 는 200 lbs 까지"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://www.tekscan.com/flexiforce-load-force-sensors-and-systems",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지(HTML, tekscan.com) FlexiForce 개요(기종 목록)"
+    },
+    {
+      "url": "https://www.tekscan.com/products-solutions/force-sensors/a201",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지(HTML, tekscan.com) A201"
+    },
+    {
+      "url": "https://www.tekscan.com/products-solutions/force-sensors/flexiforce-a301-sensor",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지(HTML, tekscan.com) A301"
+    },
+    {
+      "url": "https://www.tekscan.com/products-solutions/force-sensors/flexiforce-a401-sensor",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지(HTML, tekscan.com) A401"
+    },
+    {
+      "url": "https://www.tekscan.com/products-solutions/force-sensors/ht201",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지(HTML, tekscan.com) HT201"
+    }
+  ],
+  "confidence": "limited",
+  "notes": "repeatability_pct 는 원문 「< ±2.5 %(조건화한 센서, 정격의 80 %)」 의 상한. 성능값은 연산 증폭기 회로 구성 기준."
+}

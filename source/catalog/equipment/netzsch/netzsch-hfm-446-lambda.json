@@ -1,0 +1,144 @@
+{
+  "id": "netzsch-hfm-446-lambda",
+  "kind": "equipment_series",
+  "name": "NETZSCH HFM 446 Lambda Series Heat Flow Meters (Small / Medium / Large, Eco-Line)",
+  "name_ko": "네취 HFM 446 Lambda 열류계 계열",
+  "manufacturer": "netzsch",
+  "category": "thermal_conductivity",
+  "description": "단열재 등의 열전도율을 재는 열류계(HFM) 계열. 크기별 Small / Medium / Large 와 Eco-Line 형식. Small 의 판 온도 -20~90 °C.",
+  "test_items": [
+    "thermal_conductivity"
+  ],
+  "measurands": [
+    "thermal.conductivity",
+    "thermal.thermal_resistance"
+  ],
+  "measurands_by_item": {
+    "thermal_conductivity": [
+      "thermal.conductivity"
+    ]
+  },
+  "models": [
+    {
+      "model": "HFM 446 Lambda Small",
+      "specs": {
+        "thermal_conductivity_W_mK": {
+          "min": 0.007,
+          "max": 2,
+          "note": "0.007~2 W/(m·K). 2.0 W/(m·K) 는 선택 계측 키트로(단단하고 열전도율 높은 재료 권장)"
+        },
+        "temperature_degC": {
+          "min": -20,
+          "max": 90,
+          "note": "plate temperature range"
+        },
+        "specimen_size_mm": {
+          "value": 203,
+          "note": "최대 203 × 203 × 51 mm"
+        },
+        "specimen_thickness_mm": {
+          "max": 51
+        },
+        "force_N": {
+          "min": 0,
+          "max": 854,
+          "note": "접촉력 0~854 N(203 × 203 mm 에 21 kPa)"
+        }
+      },
+      "note": "측정 영역(열류 센서) 102 × 102 mm. 정확도 ±1~2 %, 반복도 ±0.25 %, 재현도 ±0.5 %(NIST SRM 1450 D, 두께 25 mm). Peltier 판 온도 제어, 외장 칠러, 판 구동 전동, 판마다 K 형 열전대 3개, 열전대 분해능 0.01 °C, 설정점 최대 99, 4 모서리 두께 측정(경사계)"
+    },
+    {
+      "model": "HFM 446 Lambda Medium",
+      "specs": {
+        "thermal_conductivity_W_mK": {
+          "min": 0.002,
+          "max": 2,
+          "note": "0.002~2 W/(m·K). 2.0 W/(m·K) 는 선택 계측 키트로"
+        },
+        "temperature_degC": {
+          "min": -20,
+          "max": 90,
+          "note": "plate temperature range. 선택 시 -30~90 °C"
+        },
+        "specimen_size_mm": {
+          "value": 305,
+          "note": "최대 305 × 305 × 105 mm"
+        },
+        "specimen_thickness_mm": {
+          "max": 105
+        },
+        "force_N": {
+          "min": 0,
+          "max": 1930,
+          "note": "접촉력 0~1930 N(305 × 305 mm 에 21 kPa)"
+        }
+      },
+      "note": "측정 영역(열류 센서) 102 × 102 mm. 정확도 ±1~2 %, 반복도 ±0.25 %, 재현도 ±0.5 %(NIST SRM 1450 D, 두께 25 mm). Peltier 판 온도 제어, 외장 칠러, 판 구동 전동, 판마다 K 형 열전대 3개, 열전대 분해능 0.01 °C, 설정점 최대 99, 4 모서리 두께 측정(경사계)"
+    },
+    {
+      "model": "HFM 446 Lambda Large",
+      "specs": {
+        "thermal_conductivity_W_mK": {
+          "min": 0.001,
+          "max": 0.5,
+          "note": "0.001~0.5 W/(m·K)"
+        },
+        "temperature_degC": {
+          "min": -20,
+          "max": 90,
+          "note": "plate temperature range"
+        },
+        "specimen_size_mm": {
+          "value": 611,
+          "note": "최대 611 × 611 × 200 mm"
+        },
+        "specimen_thickness_mm": {
+          "max": 200
+        },
+        "force_N": {
+          "min": 0,
+          "max": 1900,
+          "note": "접촉력 0~1900 N(611 × 611 mm 에 5 kPa)"
+        }
+      },
+      "note": "측정 영역(열류 센서) 254 × 254 mm. 정확도 ±1~2 %, 반복도 ±0.25 %, 재현도 ±0.5 %(NIST SRM 1450 D, 두께 25 mm). Peltier 판 온도 제어, 외장 칠러, 판 구동 전동, 판마다 K 형 열전대 3개, 열전대 분해능 0.01 °C, 설정점 최대 99, 4 모서리 두께 측정(경사계). DIN EN 12664 는 Large 에 해당하지 않는다"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://analyzing-testing.netzsch.com/en/products/thermal-conductivity/hfm-446-lambda-eco-line-1",
+      "retrieved": "2026-10-08",
+      "note": "제조사 페이지가 자동 조회를 막아(HTTP 403/406) 직접 열지 못함. 값은 웹 검색 엔진이 이 페이지에서 뽑은 발췌로만 확인했다 — 값마다 uncertain. HFM 446 Lambda Small 판 온도 -20~90 °C"
+    },
+    {
+      "url": "https://analyzing-testing.netzsch.com/en-US/products/heat-flow-meter-hfm-and-guarded-heat-flow-meter-ghfm/hfm-446-lambda-eco-line-medium",
+      "retrieved": "2026-10-08",
+      "note": "Medium Eco-Line 제품 페이지(검색 결과 제목만 확인)"
+    },
+    {
+      "url": "https://analyzing-testing.netzsch.com/en-US/products/heat-flow-meter-hfm-and-guarded-heat-flow-meter-ghfm/hfm-446-lambda-eco-line-large",
+      "retrieved": "2026-10-08",
+      "note": "Large Eco-Line 제품 페이지(검색 결과 제목만 확인)"
+    },
+    {
+      "file": "netzsch/technical_specifications_en_hfm_446_lambda_series_01.pdf",
+      "pages": [
+        1
+      ]
+    }
+  ],
+  "confidence": "catalog",
+  "notes": "NETZSCH 사이트가 자동 조회를 막는다(HTTP 403). PDF 로 확인: Small · Medium · Large 열전도율 범위·판 온도·시편 크기·접촉력·측정 영역(기술 사양서 1쪽, NGB 0321). 사양서가 적는 규격: ASTM C518, ISO 8301, JIS A1412, DIN EN 12667, DIN EN 12664(Large 제외). Eco-Line 이 별도 형식인지 같은 기종의 판매 이름인지는 사양서에도 나오지 않는다.",
+  "limits": {
+    "thermal_conductivity_W_mK": {
+      "min": 0.001,
+      "max": 2,
+      "note": "형식에 따라. 아주 낮은 열전도율에서는 정확도가 제한될 수 있다"
+    },
+    "temperature_degC": {
+      "min": -30,
+      "max": 90,
+      "note": "판 온도 -20~90 °C, Medium 선택 시 -30 °C"
+    }
+  }
+}

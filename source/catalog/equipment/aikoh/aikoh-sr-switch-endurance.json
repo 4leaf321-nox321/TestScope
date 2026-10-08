@@ -1,0 +1,184 @@
+{
+  "id": "aikoh-sr-switch-endurance",
+  "kind": "equipment_series",
+  "name": "AIKOH ENGINEERING Switch Endurance Tester SR Series (SR-1 / SR-3 / SR-5)",
+  "name_ko": "아이코 엔지니어링 스위치 내구 시험기 SR 시리즈",
+  "manufacturer": "aikoh",
+  "category": "component_life_tester",
+  "description": "키 스위치·실리콘 러버 스위치·키보드 같은 전자 부품의 반복 누름 내구 시험기임. 고정 스트로크 10 mm 의 가압 샤프트(Φ10 mm)가 초당 1~10회 속도로 시료를 누르며, 채널마다 6자리 설정 횟수 카운터를 가짐. 가압 헤드 수에 따라 SR-1(1채널)·SR-3(3채널)·SR-5(5채널)로 나뉨. 최대 누름 하중은 사양표에 채널당 1~5 kg(속도에 따름)으로 적혀 있으나 외형도에는 최대 하중 10 N 으로 적혀 있어 서로 다름.",
+  "test_items": [
+    "mechanical_endurance"
+  ],
+  "measurands": [
+    "cycles_to_failure"
+  ],
+  "materials": [
+    "key switches",
+    "silicone rubber switches",
+    "keyboards"
+  ],
+  "standards": {
+    "compliance": [],
+    "test_methods": []
+  },
+  "limits": {
+    "cycle_rate_cpm": {
+      "min": 60,
+      "max": 600,
+      "note": "원문 試験耐久速度 1～10回/Sec 를 분당으로 환산"
+    },
+    "stroke_mm": {
+      "max": 10,
+      "values": [
+        10
+      ],
+      "note": "원문 試験ストローク 10mm(固定)"
+    },
+    "force_N": {
+      "min": 9.8,
+      "max": 49,
+      "note": "원문 最大押し荷重 1～5kg/CH(速度に準ずる), 1 kgf = 9.80665 N 로 환산. 외형도 3종(dim_sr1/3/5.pdf)은 최대 하중 10N 으로 적어 사양표와 다름",
+      "uncertain": true
+    },
+    "stations": {
+      "values": [
+        1,
+        3,
+        5
+      ]
+    }
+  },
+  "models": [
+    {
+      "model": "SR-1",
+      "variant": "1채널",
+      "specs": {
+        "stations": 1,
+        "cycle_rate_cpm": {
+          "min": 60,
+          "max": 600,
+          "note": "1～10回/Sec"
+        },
+        "stroke_mm": 10,
+        "force_N": {
+          "min": 9.8,
+          "max": 49,
+          "note": "1～5kg/CH(速度に準ずる). 외형도 표기 최대 하중 10N",
+          "uncertain": true
+        },
+        "footprint_mm": {
+          "W": 260,
+          "D": 500,
+          "H": 949
+        }
+      },
+      "note": "외형 치수는 외형도 PDF(dim_sr1.pdf, Ver.1.00)에서 읽음. 깊이 500 mm 은 핸들 90 mm 포함(본체 410 mm). 질량 칸은 비어 있음"
+    },
+    {
+      "model": "SR-3",
+      "variant": "3채널",
+      "specs": {
+        "stations": 3,
+        "cycle_rate_cpm": {
+          "min": 60,
+          "max": 600,
+          "note": "1～10回/Sec"
+        },
+        "stroke_mm": 10,
+        "force_N": {
+          "min": 9.8,
+          "max": 49,
+          "note": "1～5kg/CH(速度に準ずる). 외형도 표기 최대 하중 10N",
+          "uncertain": true
+        },
+        "footprint_mm": {
+          "W": 540,
+          "D": 500,
+          "H": 949
+        }
+      },
+      "note": "외형 치수는 외형도 PDF(dim_sr3.pdf, Ver.1.00)에서 읽음. 헤드 간격 150 mm. 질량 칸은 비어 있음"
+    },
+    {
+      "model": "SR-5",
+      "variant": "5채널",
+      "specs": {
+        "stations": 5,
+        "cycle_rate_cpm": {
+          "min": 60,
+          "max": 600,
+          "note": "1～10回/Sec"
+        },
+        "stroke_mm": 10,
+        "force_N": {
+          "min": 9.8,
+          "max": 49,
+          "note": "1～5kg/CH(速度に準ずる). 외형도 표기 최대 하중 10N",
+          "uncertain": true
+        },
+        "footprint_mm": {
+          "W": 810,
+          "D": 500,
+          "H": 949
+        }
+      },
+      "note": "외형 치수는 외형도 PDF(dim_sr5.pdf, Ver.1.00)에서 읽음. 헤드 간격 150 mm. 질량 칸은 비어 있음"
+    }
+  ],
+  "environment": {
+    "power": "단상 AC100V"
+  },
+  "features": [
+    "가압 샤프트 Φ10 mm, 가압 플레이트 60×60 mm",
+    "시료 테이블 80×80 mm, 이동 범위 50 mm, 이동량 2mm/回(원문 표기, 핸들 1회전당으로 보이나 페이지에 설명 없음)",
+    "채널별 6자리 설정 횟수 카운터",
+    "표준 세트: 시험기 본체, 시료 고정판"
+  ],
+  "options": [
+    {
+      "name": "ダンパー治具 (댐퍼 지그)",
+      "note": "페이지 옵션 표기. 용도 설명 없음"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://www.aikoh.co.jp/endurance/sr/",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지 사양표(SR-1/3/5 공통 한 열): 용도, 속도, 최대 누름 하중, 스트로크, 샤프트·플레이트·테이블, 카운터, 전원, 표준 세트, 옵션"
+    },
+    {
+      "url": "https://www.aikoh.co.jp/category/endurance/",
+      "retrieved": "2026-10-08",
+      "note": "耐久試験機 분류 페이지: 키 스위치·실리콘 러버 스위치·키보드 용도 문구"
+    },
+    {
+      "url": "https://www.aikoh.co.jp/wp-content/uploads/dim_sr1.pdf",
+      "retrieved": "2026-10-08",
+      "note": "외형도 PDF(SR-1, 최대 하중 10N). 원본 PDF 는 받았으나 텍스트로 읽히지 않음(외형도 · 글꼴 인코딩) — 값은 이 웹 페이지 기준"
+    },
+    {
+      "url": "https://www.aikoh.co.jp/wp-content/uploads/dim_sr3.pdf",
+      "retrieved": "2026-10-08",
+      "note": "외형도 PDF(SR-3). 원본 PDF 는 받았으나 텍스트로 읽히지 않음(외형도 · 글꼴 인코딩) — 값은 이 웹 페이지 기준"
+    },
+    {
+      "url": "https://www.aikoh.co.jp/wp-content/uploads/dim_sr5.pdf",
+      "retrieved": "2026-10-08",
+      "note": "외형도 PDF(SR-5). 원본 PDF 는 받았으나 텍스트로 읽히지 않음(외형도 · 글꼴 인코딩) — 값은 이 웹 페이지 기준"
+    },
+    {
+      "file": "aikoh/sr1-outline-drawing.pdf",
+      "note": "제조사 원본 문서. 외형도라 텍스트가 거의 없음 — 값 대조에는 못 씀(값은 웹 출처 기준)"
+    },
+    {
+      "file": "aikoh/sr3-outline-drawing.pdf",
+      "note": "제조사 원본 문서. 외형도라 텍스트가 거의 없음 — 값 대조에는 못 씀(값은 웹 출처 기준)"
+    },
+    {
+      "file": "aikoh/sr5-outline-drawing.pdf",
+      "note": "제조사 원본 문서. 외형도라 텍스트가 거의 없음 — 값 대조에는 못 씀(값은 웹 출처 기준)"
+    }
+  ],
+  "confidence": "limited",
+  "notes": "제조사 id aikoh 는 신규 제안(アイコーエンジニアリング株式会社, AIKOH ENGINEERING Co., Ltd., 일본). 사양표가 SR-1/3/5 를 한 열로 적어 채널 수 외에는 기종별 차이가 없음. 채널 수(1/3/5)는 형번과 외형도 헤드 수에서 확인. 신규 spec 키: cycle_rate_cpm."
+}

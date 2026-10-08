@@ -1,0 +1,53 @@
+{
+  "id": "espec-mc-ultra-low",
+  "kind": "equipment_series",
+  "name": "ESPEC MC Series Compact Ultra-Low Temperature Chambers (MC-712R / MC-812R)",
+  "name_ko": "에스펙 MC 계열 소형 초저온 시험조",
+  "manufacturer": "espec",
+  "category": "climatic_chamber",
+  "drive": "thermal",
+  "form_factor": "floor",
+  "description": "소형 초저온 온도 시험조. MC-712R 은 -75~+100 °C, MC-812R 은 -85~+180 °C.",
+  "test_items": [
+    "temperature_cycling"
+  ],
+  "limits": {
+    "temperature_degC": {
+      "min": -85,
+      "max": 180
+    }
+  },
+  "models": [
+    {
+      "model": "MC-712R",
+      "specs": {
+        "temperature_degC": {
+          "min": -75,
+          "max": 100
+        },
+        "inner_mm": "W400×H400×D400",
+        "footprint_mm": "W900×H1200×D610"
+      },
+      "note": "페이지 'W400×H400×D400 / W900×H1200×D610' 을 내부/외형으로 읽었다",
+      "uncertain": true
+    },
+    {
+      "model": "MC-812R",
+      "specs": {
+        "temperature_degC": {
+          "min": -85,
+          "max": 180
+        }
+      }
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://www.espec.co.jp/english/products/env-test/mc/",
+      "retrieved": "2026-10-08",
+      "note": "제조사 영문 페이지 사양표(일부만 텍스트로 읽힘)"
+    }
+  ],
+  "confidence": "limited",
+  "notes": "변화 속도·내용적·무게는 페이지에 없다(PDF 카탈로그 1.9 MB 안내만 있음)."
+}

@@ -1,0 +1,70 @@
+{
+  "id": "albatross-projects-shielded-rooms",
+  "kind": "equipment_series",
+  "name": "Albatross Projects EMC and Microwave Shielded Rooms",
+  "name_ko": "알바트로스 프로젝트 EMC·마이크로파 차폐실",
+  "manufacturer": "albatross-projects",
+  "category": "shielded_enclosure",
+  "form_factor": "walk_in",
+  "description": "전자파 차폐·흡수 시험실을 짓는 독일 제조사의 EMC 시험실(완전 무반사 FAR·반무반사 SAC, 측정 거리 3·5·10 m)과 마이크로파 시험실(70 MHz~110 GHz 용도별 설계). 아연도금 강판 전금속 모듈을 볼트로 잇는 자립형 room-in-room 구조. 양개 차폐문 100 dB(40 GHz 까지).",
+  "test_items": [
+    "shielding_effectiveness",
+    "emi_emission"
+  ],
+  "limits": {
+    "frequency_Hz": {
+      "min": 70000000,
+      "max": 110000000000,
+      "note": "마이크로파 시험실 '70 MHz -110 GHz Auslegung individuell nach Anwendung & Verfahren'(용도별 설계 범위)"
+    },
+    "insertion_gain": {
+      "values": [
+        100
+      ],
+      "note": "차폐 효과(Schirmwirkung). 양개 문 100 dB, 40 GHz 까지 — 방 전체가 아니라 문의 사양"
+    }
+  },
+  "models": [
+    {
+      "model": "EMV-Raum FAR",
+      "note": "완전 무반사실(Fully-anechoic Room). 측정 거리 3·5·10 m 또는 맞춤",
+      "uncertain": true
+    },
+    {
+      "model": "EMV-Raum SAC",
+      "note": "반무반사실(Semi-anechoic Chamber, 반사 바닥). 측정 거리 3·5·10 m 또는 맞춤",
+      "uncertain": true
+    },
+    {
+      "model": "Mikrowellen-Raum",
+      "specs": {
+        "frequency_Hz": {
+          "min": 70000000,
+          "max": 110000000000
+        }
+      },
+      "note": "마이크로파 시험실. CTIA OTA 언급",
+      "uncertain": true
+    }
+  ],
+  "relations": [
+    {
+      "type": "performs",
+      "target": "shielding_effectiveness"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://www.albatross-projects.com/loesungen/emv-raeume/",
+      "retrieved": "2026-10-08",
+      "note": "제조사 EMC 시험실 페이지(독일어). FAR·SAC, 양개 문 100 dB 40 GHz, 설치 10,000실 이상"
+    },
+    {
+      "url": "https://www.albatross-projects.com/loesungen/mikrowellen-raume/",
+      "retrieved": "2026-10-08",
+      "note": "제조사 마이크로파 시험실 페이지(독일어). 70 MHz~110 GHz, 모듈 구조"
+    }
+  ],
+  "confidence": "limited",
+  "notes": "맞춤 설계 설비라 기종명이 없다 — 페이지의 시험실 유형을 model 로 적고 uncertain 을 달았다. 차폐 효과 키는 기존 ets-lindgren-shielding 과 같게 insertion_gain(dB)을 썼다. 방 전체의 주파수별 차폐 효과 표는 페이지에 없다."
+}

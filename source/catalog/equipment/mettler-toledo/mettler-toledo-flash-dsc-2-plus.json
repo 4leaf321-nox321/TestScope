@@ -1,0 +1,68 @@
+{
+  "id": "mettler-toledo-flash-dsc-2-plus",
+  "kind": "equipment_series",
+  "name": "METTLER TOLEDO Flash DSC 2+ Fast Scanning Calorimeter",
+  "name_ko": "메틀러토레도 Flash DSC 2+ 초고속 칩 열량계",
+  "manufacturer": "mettler-toledo",
+  "category": "dsc",
+  "description": "칩 센서 초고속 DSC. 냉각 2.4×10⁶ K/min·가열 3×10⁶ K/min 으로 준안정 구조를 만들거나 재조직을 억제해 본다. -95~1000 °C.",
+  "test_items": [
+    "dsc"
+  ],
+  "measurands": [
+    "thermal.glass_transition",
+    "thermal.melting_point"
+  ],
+  "measurands_by_item": {
+    "dsc": [
+      "thermal.glass_transition",
+      "thermal.melting_point"
+    ]
+  },
+  "limits": {
+    "temperature_degC": {
+      "min": -95,
+      "max": 1000,
+      "uncertain": true
+    },
+    "heating_rate_K_min": {
+      "min": 6,
+      "max": 3000000,
+      "uncertain": true
+    }
+  },
+  "models": [
+    {
+      "model": "Flash DSC 2+",
+      "specs": {
+        "temperature_degC": {
+          "min": -95,
+          "max": 1000,
+          "uncertain": true
+        },
+        "heating_rate_K_min": {
+          "min": 6,
+          "max": 3000000,
+          "uncertain": true
+        },
+        "cooling_rate_K_min": {
+          "max": 2400000,
+          "uncertain": true
+        },
+        "data_rate_Hz": {
+          "max": 10000,
+          "uncertain": true
+        }
+      }
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://www.mt.com/us/en/home/products/Laboratory_Analytics_Browse/TA_Family_Browse/ta-instruments/thermal-analysis-system-Flash-DSC-2-plus.html",
+      "retrieved": "2026-10-08",
+      "note": "제조사 페이지가 자동 조회를 막아(HTTP 403/406) 직접 열지 못함. 값은 웹 검색 엔진이 이 페이지에서 뽑은 발췌로만 확인했다 — 값마다 uncertain. -95~1000 °C, 승온 6~3,000,000 K/min, 냉각 최대 2,400,000 K/min, 데이터 최대 10,000 점/s"
+    }
+  ],
+  "confidence": "limited",
+  "notes": "HP DSC 2+ 는 제품 페이지 이름만 확인했다."
+}

@@ -1,0 +1,195 @@
+{
+  "id": "napson-rt-3000-systems",
+  "kind": "equipment_series",
+  "name": "NAPSON RT-3000 / RG-2000 / RG-3000 / RG-2000AL / RS-1300 4-Point Probe Resistivity Systems",
+  "name_ko": "냅슨 RT-3000 계열 4탐침 저항률·면저항 측정 시스템",
+  "manufacturer": "napson",
+  "category": "electrical_property_tester",
+  "subcategory": "four_point_probe",
+  "description": "4탐침법 측정기 RT-3000(S·H 두 가지)을 스테이지와 조합하는 저항률·면저항 측정 시스템. 반자동 스테이지 RG-2000(～8인치·～156×156 mm)과 RG-3000(～12인치·～210×210 mm), 카세트 스테이션을 단 전자동 RG-2000AL/RG-3000AL, 평판 디스플레이용 대형 전자동 RS-1300(약 1,500×1,850 mm 이하)이 있다. 측정 패턴 프로그래밍, 셀프 테스트, 원형·사각 매핑, 실리콘 시료의 두께·주변 위치·온도 보정, 면저항에서 막두께 환산 기능을 갖춘다. RS-1300 은 금속·ITO 도전막, LTPS, IGZO 등 유리 기판을 다룬다.",
+  "test_items": [
+    "electrical_transport"
+  ],
+  "measurands": [
+    "electrical.surface_resistivity",
+    "electrical.resistivity_volume"
+  ],
+  "materials": [
+    "silicon wafers",
+    "conductive thin films (metal, ITO)",
+    "LTPS",
+    "IGZO",
+    "FPD glass"
+  ],
+  "limits": {
+    "surface_resistivity_ohm_sq": {
+      "min": 0.001,
+      "max": 1000000000.0,
+      "note": "RT-3000(S) 1m～10MΩ/sq, RT-3000(H) 10m～1GΩ/sq. RS-1300 은 옵션으로 ～1TΩ/sq"
+    },
+    "resistivity_ohm_cm": {
+      "min": 0.0001,
+      "max": 1000000.0,
+      "note": "RT-3000(S) 원문 100μ～1MΩ・cm"
+    },
+    "wafer_size_mm": {
+      "max": 300,
+      "note": "원문 표준 ～8インチ, RG-3000 ～12インチ. 8인치=200 mm, 12인치=300 mm 로 적음"
+    },
+    "sample_size_mm": {
+      "max": 1850,
+      "note": "표준 ～156×156 mm, RG-3000 ～210×210 mm, RS-1300 약 1,500×1,850 mm 이하"
+    }
+  },
+  "models": [
+    {
+      "model": "RT-3000(S)",
+      "specs": {
+        "surface_resistivity_ohm_sq": {
+          "min": 0.001,
+          "max": 10000000.0
+        },
+        "resistivity_ohm_cm": {
+          "min": 0.0001,
+          "max": 1000000.0
+        },
+        "footprint_mm": [
+          250,
+          323,
+          135
+        ],
+        "weight_kg": 6,
+        "principle": "4탐침법"
+      },
+      "form_factor": "benchtop",
+      "note": "측정기 본체. 외형·무게(W250×D323×H135 mm, 약 6 kg)는 RT-3000 공통으로 적힘"
+    },
+    {
+      "model": "RT-3000(H)",
+      "specs": {
+        "surface_resistivity_ohm_sq": {
+          "min": 0.01,
+          "max": 1000000000.0
+        },
+        "footprint_mm": [
+          250,
+          323,
+          135
+        ],
+        "weight_kg": 6,
+        "principle": "4탐침법"
+      },
+      "form_factor": "benchtop",
+      "note": "고저항 쪽 측정기. 저항률 범위는 페이지에 RT-3000(S) 만 적힘"
+    },
+    {
+      "model": "RG-2000",
+      "specs": {
+        "wafer_size_mm": {
+          "max": 200
+        },
+        "sample_size_mm": {
+          "max": 156
+        },
+        "footprint_mm": [
+          835,
+          450,
+          450
+        ],
+        "weight_kg": 80
+      },
+      "note": "반자동 스테이지. 원문 ～8インチ, または～156ｘ156mm, WW835×D450×H450mm(원문 표기 그대로 W 가 겹침), 약 80 kg"
+    },
+    {
+      "model": "RG-3000",
+      "specs": {
+        "wafer_size_mm": {
+          "max": 300
+        },
+        "sample_size_mm": {
+          "max": 210
+        },
+        "footprint_mm": [
+          935,
+          564,
+          471
+        ],
+        "weight_kg": 95
+      },
+      "note": "반자동 스테이지(옵션 사양). 원문 ～12インチ, ～210×210mm, 약 95 kg"
+    },
+    {
+      "model": "RG-2000AL",
+      "specs": {
+        "wafer_size_mm": {
+          "values": [
+            150,
+            200
+          ]
+        },
+        "footprint_mm": [
+          1010,
+          850,
+          550
+        ],
+        "surface_resistivity_ohm_sq": {
+          "min": 0.001,
+          "max": 1000000000.0
+        }
+      },
+      "note": "카세트 스테이션 탑재 전자동. 원문 웨이퍼 6, 8 インチ(또는 12 インチ), 약 W1,010×D850×H550 mm. 측정 범위는 RT-3000(S)/(H) 와 같음"
+    },
+    {
+      "model": "RG-3000AL",
+      "specs": {
+        "wafer_size_mm": {
+          "max": 300
+        }
+      },
+      "note": "RG-2000AL 의 12인치 대응판으로 같은 페이지에 RG-2000AL(RG-3000AL) 로 묶여 적힘. 별도 외형 치수 없음",
+      "uncertain": true
+    },
+    {
+      "model": "RS-1300",
+      "specs": {
+        "surface_resistivity_ohm_sq": {
+          "min": 0.01,
+          "max": 1000000000.0,
+          "note": "옵션으로 ～1TΩ/sq"
+        },
+        "sample_size_mm": {
+          "max": 1850,
+          "note": "약 1,500×1,850 mm 이하"
+        }
+      },
+      "form_factor": "floor",
+      "note": "FPD 용 전자동 시스템(RT-3000/RS-1300). 최소 측정 피치 0.1 mm, 카세트 안 유리 기판 매핑, CIM 통신"
+    }
+  ],
+  "features": [
+    "측정 패턴 프로그래밍(원형·사각 매핑)",
+    "셀프 테스트 기능",
+    "실리콘 두께·주변 위치·온도 보정",
+    "면저항→금속막 두께 환산",
+    "2D/3D 매핑 소프트웨어"
+  ],
+  "sources": [
+    {
+      "url": "https://www.napson.co.jp/products/contact/semiauto/product02/",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지 RT-3000/RG-2000(RG-3000). 제조사 제품 페이지(일본어 HTML). 같은 페이지의 「電気抵抗測定の測定原理」 다운로드는 PDF 직링크가 아니라 신청 양식(form.napson.co.jp/form/form_download)이라 열지 않음"
+    },
+    {
+      "url": "https://www.napson.co.jp/products/contact/fullauto/product03/",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지 RG-2000AL(RG-3000AL)"
+    },
+    {
+      "url": "https://www.napson.co.jp/products/contact/fullauto/product04/",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지 RT-3000/RS-1300(FPD 용)"
+    }
+  ],
+  "confidence": "limited",
+  "notes": "전류 범위·탐침 간격·정확도·반복도는 페이지에 없음. RG-3000AL 은 RG-2000AL 페이지 제목의 괄호 표기로만 확인함. 영어 사이트(napson-resistivity.com)는 같은 제품을 일본어 페이지로 연결함."
+}

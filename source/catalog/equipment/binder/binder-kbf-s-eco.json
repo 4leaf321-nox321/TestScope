@@ -1,0 +1,176 @@
+{
+  "id": "binder-kbf-s-eco",
+  "kind": "equipment_series",
+  "name": "BINDER KBF-S ECO Constant Climate Chambers with Thermoelectric Cooling (KBF-S ECO 240 / 400 / 720 / 1020)",
+  "name_ko": "바인더 KBF-S ECO 열전 냉각 항온항습 챔버",
+  "manufacturer": "binder",
+  "brand": "KBF-S ECO",
+  "category": "climatic_chamber",
+  "drive": "thermal",
+  "form_factor": "floor",
+  "description": "냉매 대신 열전(펠티에) 냉각을 쓰는 안정성 시험용 항온항습 챔버. 0~+70 °C(주위 온도보다 24~28 °C 아래까지), 10~80 %RH. 내용적 247·400·700·1020 L.",
+  "test_items": [
+    "damp_heat"
+  ],
+  "limits": {
+    "temperature_degC": {
+      "min": 0,
+      "max": 70,
+      "note": "최저 온도는 주위 온도 기준 제한(240: -28 °C, 400: -26 °C, 720·1020: -24 °C)"
+    },
+    "humidity_pct": {
+      "min": 10,
+      "max": 80
+    },
+    "chamber_volume_L": {
+      "min": 247,
+      "max": 1020,
+      "values": [
+        247,
+        400,
+        700,
+        1020
+      ]
+    }
+  },
+  "models": [
+    {
+      "model": "KBF-S ECO 240",
+      "specs": {
+        "temperature_degC": {
+          "min": 0,
+          "max": 70,
+          "note": "주위 온도보다 최대 28 °C 아래까지. 습도 운전 온도 +5~+70 °C"
+        },
+        "humidity_pct": {
+          "min": 10,
+          "max": 80
+        },
+        "chamber_volume_L": 247,
+        "inner_mm": "W650×H785×D485",
+        "weight_kg": 146,
+        "power_kW": 0.8,
+        "footprint_mm": "W932×H1461×D796",
+        "temperature_uniformity_degC": {
+          "min": 0.1,
+          "max": 0.2,
+          "note": "±0.1 K(25 °C/60 %RH), ±0.2 K(40 °C/75 %RH)"
+        },
+        "temperature_fluctuation_degC": {
+          "max": 0.1,
+          "note": "±0.1 K"
+        },
+        "humidity_fluctuation_pct": {
+          "max": 0.3,
+          "note": "±0.3 %RH(25 °C/60 %RH, 40 °C/75 %RH)"
+        },
+        "payload_kg": {
+          "max": 100,
+          "note": "허용 적재, 랙당 30 kg"
+        }
+      },
+      "note": "데이터시트(2022-04-26) 2쪽 값. 최대 열 보상 250 W(40 °C), 소비 에너지 85 Wh/h(40 °C/75 %RH), 소음 46 dB(A), 퓨즈 16 A. 문 30초 개방 후 회복 5분(25 °C/60 %RH)·11분(40 °C/75 %RH). 120 V 판(KBFSECO240UL-120V)도 같은 성능"
+    },
+    {
+      "model": "KBF-S ECO 400",
+      "specs": {
+        "temperature_degC": {
+          "min": 0,
+          "max": 70,
+          "note": "주위 온도보다 최대 26 °C 아래까지. 습도 운전 온도 +5~+70 °C"
+        },
+        "humidity_pct": {
+          "min": 10,
+          "max": 80
+        },
+        "chamber_volume_L": 400,
+        "inner_mm": "W650×H1268×D485",
+        "weight_kg": 192,
+        "power_kW": 1.1
+      }
+    },
+    {
+      "model": "KBF-S ECO 720",
+      "specs": {
+        "temperature_degC": {
+          "min": 0,
+          "max": 70,
+          "note": "주위 온도보다 최대 24 °C 아래까지. 습도 운전 온도 +5~+70 °C"
+        },
+        "humidity_pct": {
+          "min": 10,
+          "max": 80
+        },
+        "chamber_volume_L": 700,
+        "inner_mm": "W973×H1250×D576",
+        "weight_kg": 267,
+        "power_kW": 1.2
+      }
+    },
+    {
+      "model": "KBF-S ECO 1020",
+      "specs": {
+        "temperature_degC": {
+          "min": 0,
+          "max": 70,
+          "note": "주위 온도보다 최대 24 °C 아래까지. 습도 운전 온도 +5~+70 °C"
+        },
+        "humidity_pct": {
+          "min": 10,
+          "max": 80
+        },
+        "chamber_volume_L": 1020,
+        "inner_mm": "W973×H1250×D836",
+        "weight_kg": 322,
+        "power_kW": 1.2
+      }
+    }
+  ],
+  "relations": [
+    {
+      "type": "simulates_environment",
+      "target": "environment-damp-heat"
+    },
+    {
+      "type": "same_family_as",
+      "target": "binder-kbf"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://www.binder-world.com/int-en/products/climate-chambers/constant-climate-chambers/constant-climate-product-list",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 목록. 기종별 온도 범위와 주위 온도 제한"
+    },
+    {
+      "url": "https://www.binder-world.com/int-en/products/climate-chambers/constant-climate-chambers/product/kbf-s-eco-240",
+      "retrieved": "2026-10-08",
+      "note": "제조사 기종 페이지"
+    },
+    {
+      "url": "https://www.binder-world.com/int-en/products/climate-chambers/constant-climate-chambers/product/kbf-s-eco-400",
+      "retrieved": "2026-10-08",
+      "note": "제조사 기종 페이지"
+    },
+    {
+      "url": "https://www.binder-world.com/int-en/products/climate-chambers/constant-climate-chambers/product/kbf-s-eco-720",
+      "retrieved": "2026-10-08",
+      "note": "제조사 기종 페이지"
+    },
+    {
+      "url": "https://www.binder-world.com/int-en/products/climate-chambers/constant-climate-chambers/product/kbf-s-eco-1020",
+      "retrieved": "2026-10-08",
+      "note": "제조사 기종 페이지"
+    },
+    {
+      "file": "binder/16218364_data-sheet-model-kbf-s-eco-240-en.pdf",
+      "pages": [
+        1,
+        2
+      ],
+      "note": "KBF-S ECO 240 데이터시트(2022-04-26). 1쪽 주요 특징·주문 정보, 2쪽 기술 데이터"
+    }
+  ],
+  "confidence": "limited",
+  "notes": "KBF-S 240 등 열전 냉각이 아닌 KBF-S 기종 페이지는 열리지 않아 넣지 않았다. PDF 로 확인: KBF-S ECO 240 — 온도·습도 범위, 균일도·변동, 용적, 내·외부 치수, 무게, 전력 / 웹 값 그대로: KBF-S ECO 400·720·1020. 데이터시트 각주는 240 이 주위 온도보다 28 °C, 720·1020 이 24 °C 아래까지라고 적고 400 은 언급하지 않음(1쪽 주요 특징 줄은 240 도 'max. 24 °C under ambient' 로 적어 2쪽 표와 다름)."
+}

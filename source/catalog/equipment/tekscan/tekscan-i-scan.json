@@ -1,0 +1,101 @@
+{
+  "id": "tekscan-i-scan",
+  "kind": "equipment_series",
+  "name": "Tekscan I-Scan Pressure Mapping System",
+  "name_ko": "텍스캔 I-Scan 압력 분포 측정 시스템",
+  "manufacturer": "tekscan",
+  "brand": "I-Scan",
+  "category": "force_pressure_sensor",
+  "subcategory": "pressure_mapping",
+  "description": "두 면 사이의 접촉 압력을 얇은 박막 촉각 센서로 재는 압력 분포 측정 시스템. 200종이 넘는 센서, 압력 범위 최대 25,000 psi(1,700 bar), 감지 소자 밀도 최대 248 개/cm²(간격 최소 0.6 mm), 감지 면적 3×3 mm～1,734×1,768 mm, 고온 센서 최대 200 °C, 센서 스캔 속도 최대 20 kHz. I-Scan 9·I-Scan Evolution 소프트웨어로 실시간 2D·3D 표시, 힘 중심 추적, 최대 힘·압력 확인, ASCII 내보내기를 한다.",
+  "test_items": [],
+  "measurands": [
+    "contact_pressure_distribution",
+    "contact_force",
+    "contact_area",
+    "center_of_force"
+  ],
+  "limits": {
+    "pressure_bar": {
+      "max": 1700,
+      "note": "원문 25,000 psi or 1,700 bar"
+    },
+    "data_rate_Hz": {
+      "max": 20000,
+      "note": "센서 스캔 속도. 전자부별 Evolution 100 Hz, VersaTek 20 kHz, 무선 4,600 Hz, 데이터로거 20 kHz. 초당 최대 1,600,000 감지점"
+    },
+    "spatial_resolution_um": {
+      "min": 600,
+      "note": "감지 소자 간격 최소 0.6 mm(밀도 최대 248 개/cm²) — 웹 페이지 값. PDF 는 「as narrow as 0.1 mm (0.02 in.) spacing」 으로 mm 와 in 값이 서로 맞지 않아(0.02 in ≈ 0.5 mm) 바꾸지 않음. 밀도 248 개/cm²(1,600 개/in²)는 PDF 로 확인"
+    },
+    "inspection_area_mm": {
+      "min": 3,
+      "max": 1768,
+      "note": "감지 면적 3×3 mm ~ 1,734×1,768 mm"
+    },
+    "operating_temperature_degC": {
+      "max": 200,
+      "note": "고온 센서(옵션) 최대 200 °C(392 °F)"
+    }
+  },
+  "models": [
+    {
+      "model": "I-Scan",
+      "note": "시스템(센서 + 전자부 + 소프트웨어). 소프트웨어 I-Scan 9, I-Scan Evolution(Windows PC·태블릿). 외부 트리거·동기, 아날로그 입력 -10～10 V, API·SDK. 온도 매핑 센서(130 감지점, I-Scan 9.5)"
+    },
+    {
+      "model": "Evolution",
+      "specs": {
+        "data_rate_Hz": {
+          "max": 100
+        }
+      },
+      "note": "표준 USB 전자부(Evolution 핸들). 일반 용도"
+    },
+    {
+      "model": "VersaTek",
+      "specs": {
+        "data_rate_Hz": {
+          "max": 20000
+        }
+      },
+      "note": "고속 USB 전자부(VersaTek 허브·핸들). 고속 측정이나 넓은 면적의 고해상도 센서용"
+    },
+    {
+      "model": "VersaTek Wireless Unit",
+      "specs": {
+        "data_rate_Hz": {
+          "max": 4600
+        }
+      },
+      "note": "무선 전송(최대 100 m). I-Scan 7 에서만"
+    },
+    {
+      "model": "VersaTek Datalogger Unit",
+      "specs": {
+        "data_rate_Hz": {
+          "max": 20000
+        }
+      },
+      "note": "데이터로거에 저장 후 PC 로 올림. 고속·잡음 환경의 무선 사용. I-Scan 7 에서만"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://www.tekscan.com/products-solutions/systems/i-scan-system",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지(HTML, tekscan.com) I-Scan System"
+    },
+    {
+      "file": "tekscan/idl-2025-iscan-20flyer_04162025_1_0.pdf",
+      "pages": [
+        2,
+        3,
+        4
+      ],
+      "note": "I-Scan System 플라이어 SF_Rev G_040125 — 센서 범위, 전자부별 스캔 속도, 소프트웨어, 온도 매핑"
+    }
+  ],
+  "confidence": "catalog",
+  "notes": "센서 기종(예: 5051, 5076 등) 목록은 웹 페이지·PDF 모두에 없어 넣지 않음. PDF 로 확인: 압력 상한, 감지 소자 밀도, 감지 면적, 고온 센서 200 °C, 스캔 속도 20 kHz. 전자부 4종(Evolution, VersaTek, VersaTek Wireless Unit, VersaTek Datalogger Unit)을 PDF 표기 그대로 기종으로 더함. 웹 값 그대로: 감지 소자 간격 0.6 mm."
+}

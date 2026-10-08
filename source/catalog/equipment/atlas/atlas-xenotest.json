@@ -1,0 +1,248 @@
+{
+  "id": "atlas-xenotest",
+  "kind": "equipment_series",
+  "name": "Atlas Xenotest Xenon Weathering Instruments (Xenotest 440 / 220 / 220+, Alpha+ / Beta+)",
+  "name_ko": "아틀라스 제노테스트 제논 내후성 시험기",
+  "manufacturer": "atlas",
+  "brand": "Xenotest",
+  "category": "weathering_tester",
+  "form_factor": "floor",
+  "description": "공랭식 2200 W 제논 램프의 회전 시편대형 내후·내광성 시험기. Xenotest 440 은 램프 2개(XenoLogic)로 300–400 nm 총 UV 최대 120 W/m², BST 최대 115 °C, 챔버 최대 65 °C, 습도 10~75 %(광 사이클). Xenotest 220/220+ 는 램프 1개, 섬유 내광성(ISO 105-B02, AATCC TM16)용. Alpha+·Beta+ 는 단종.",
+  "test_items": [
+    "accelerated_weathering"
+  ],
+  "materials": [
+    "textiles",
+    "plastics",
+    "coatings"
+  ],
+  "standards": {
+    "compliance": [],
+    "test_methods": [
+      "ISO 105-B02",
+      "AATCC TM16"
+    ]
+  },
+  "limits": {
+    "irradiance_control_nm": {
+      "values": [
+        "300-400"
+      ]
+    },
+    "irradiance_W_m2": {
+      "max": 180,
+      "note": "300–400 nm. 440·Beta+ 최대 120 W/m², Alpha+ 최대 180 W/m²"
+    },
+    "black_panel_temperature_degC": {
+      "max": 130,
+      "note": "BST. 440 최대 115 °C, 220 최대 100 °C, Alpha+·Beta+ 최대 130 °C"
+    },
+    "temperature_degC": {
+      "max": 70,
+      "note": "챔버 공기 온도(CHT). 440·220 최대 65 °C, Alpha+·Beta+ 최대 70 °C"
+    },
+    "humidity_pct": {
+      "min": 10,
+      "max": 75,
+      "note": "Xenotest 440, 광 사이클"
+    },
+    "exposure_area_cm2": {
+      "min": 1320,
+      "max": 4000
+    }
+  },
+  "models": [
+    {
+      "model": "Xenotest 440",
+      "specs": {
+        "lamp_power_W": {
+          "values": [
+            2200
+          ],
+          "note": "2 × 2200 W 공랭식 제논 램프(XenoLogic)"
+        },
+        "exposure_area_cm2": 2310,
+        "irradiance_W_m2": {
+          "max": 120,
+          "note": "300–400 nm 총 UV"
+        },
+        "black_panel_temperature_degC": {
+          "max": 115,
+          "note": "BST"
+        },
+        "temperature_degC": {
+          "max": 65,
+          "note": "CHT"
+        },
+        "humidity_pct": {
+          "min": 10,
+          "max": 75,
+          "note": "광 사이클"
+        },
+        "stations": {
+          "values": [
+            38,
+            33,
+            22,
+            11
+          ],
+          "note": "시편 치수별 자리 수: 13.5×4.5 cm 38 · 10.0×6.8 cm 33 · 13.5×5.5 cm 22 · 29.5×7.0 cm 11"
+        }
+      },
+      "note": "물탱크 60 L(자동 보충), 시편 분무, 랙 위 XENOSENSIV RC-300-400 센서. 램프 수명 4000 h 이상(40~60 W/m²)"
+    },
+    {
+      "model": "Xenotest 220",
+      "specs": {
+        "lamp_power_W": {
+          "values": [
+            2200
+          ],
+          "note": "1 × 2200 W 공랭식"
+        },
+        "exposure_area_cm2": 2310,
+        "black_panel_temperature_degC": {
+          "max": 100,
+          "note": "BST, 이중 제어 시"
+        },
+        "temperature_degC": {
+          "max": 65,
+          "note": "CHT"
+        },
+        "stations": {
+          "values": [
+            38
+          ],
+          "note": "시편 홀더 19개에 표준 섬유 시편 38장"
+        }
+      },
+      "note": "키패드·흑백 화면. 초음파 가습(60 L 물탱크)"
+    },
+    {
+      "model": "Xenotest 220+",
+      "specs": {
+        "lamp_power_W": {
+          "values": [
+            2200
+          ],
+          "note": "1 × 2200 W 공랭식"
+        },
+        "exposure_area_cm2": 2310,
+        "black_panel_temperature_degC": {
+          "max": 100,
+          "note": "BST, 이중 제어 시"
+        },
+        "temperature_degC": {
+          "max": 65,
+          "note": "CHT"
+        },
+        "stations": {
+          "values": [
+            38
+          ]
+        }
+      },
+      "note": "컬러 터치 화면 판"
+    },
+    {
+      "model": "Xenotest Alpha+",
+      "specs": {
+        "lamp_power_W": {
+          "values": [
+            2200
+          ],
+          "note": "1 × 2200 W 공랭식"
+        },
+        "exposure_area_cm2": 1320,
+        "irradiance_W_m2": {
+          "max": 180,
+          "note": "300–400 nm, 3 Sun"
+        },
+        "black_panel_temperature_degC": {
+          "max": 130,
+          "note": "BST, 이중 제어"
+        },
+        "temperature_degC": {
+          "max": 70,
+          "note": "CHT"
+        },
+        "stations": {
+          "values": [
+            11
+          ],
+          "note": "시편 홀더 11개"
+        }
+      },
+      "note": "단종(페이지: 더 이상 주문 불가)"
+    },
+    {
+      "model": "Xenotest Beta+",
+      "specs": {
+        "lamp_power_W": {
+          "values": [
+            2200
+          ],
+          "note": "3 × 2200 W 공랭식"
+        },
+        "exposure_area_cm2": 4000,
+        "irradiance_W_m2": {
+          "max": 120,
+          "note": "300–400 nm, 2 Sun"
+        },
+        "black_panel_temperature_degC": {
+          "max": 130,
+          "note": "BST, 이중 제어"
+        },
+        "temperature_degC": {
+          "max": 70,
+          "note": "CHT"
+        }
+      },
+      "note": "단종"
+    },
+    {
+      "model": "Xenotest Beta+ FD",
+      "note": "단종. 제품 목록에 이름만 확인",
+      "uncertain": true
+    }
+  ],
+  "relations": [
+    {
+      "type": "simulates_environment",
+      "target": "environment-solar-radiation"
+    },
+    {
+      "type": "same_family_as",
+      "target": "atlas-suntest"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://www.atlas-mts.com/products/standard-instruments/xenon-arc-weathering-test/xenotest",
+      "retrieved": "2026-10-08",
+      "note": "제조사 Xenotest 제품 목록"
+    },
+    {
+      "url": "https://www.atlas-mts.com/products/standard-instruments/xenon-arc-weathering-test/xenotest/440",
+      "retrieved": "2026-10-08",
+      "note": "제조사 Xenotest 440 페이지(Technical data)"
+    },
+    {
+      "url": "https://www.atlas-mts.com/products/standard-instruments/xenon-arc-weathering-test/xenotest/220",
+      "retrieved": "2026-10-08",
+      "note": "제조사 Xenotest 220/220+ 페이지"
+    },
+    {
+      "url": "https://www.atlas-mts.com/products/standard-instruments/xenon-arc-weathering-test/xenotest/alpha",
+      "retrieved": "2026-10-08",
+      "note": "제조사 Xenotest Alpha+ 페이지(단종 표기)"
+    },
+    {
+      "url": "https://www.atlas-mts.com/products/standard-instruments/xenon-arc-weathering-test/xenotest/xenotest-beta",
+      "retrieved": "2026-10-08",
+      "note": "제조사 Xenotest Beta+ 페이지(단종 표기)"
+    }
+  ],
+  "confidence": "limited",
+  "notes": "lamp_power_W 는 램프 1개 출력이고 램프 수는 note 에 적었다."
+}

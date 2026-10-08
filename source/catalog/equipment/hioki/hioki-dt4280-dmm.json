@@ -1,0 +1,102 @@
+{
+  "id": "hioki-dt4280-dmm",
+  "kind": "equipment_series",
+  "name": "Hioki Digital Multimeter DT4280 Series (DT4281 / DT4282)",
+  "name_ko": "히오키 디지털 멀티미터 DT4280 시리즈",
+  "manufacturer": "hioki",
+  "brand": "DT4280",
+  "category": "dmm_daq",
+  "form_factor": "handheld",
+  "description": "60,000 카운트 고정밀 휴대형 디지털 멀티미터. DC 전압 60.000 mV~1000.0 V(기본 확도 ±0.025% rdg. ±2 dgt.), AC 전압 20 Hz~100 kHz, 저항 60.000 Ω~600.0 MΩ, 정전용량 1.000 nF~100.0 mF, 주파수 ~500.00 kHz, K형 열전대 -40.0~800.0 °C. DT4281 은 전류 600 mA 까지 직접 입력에 클램프 센서 입력(AC 1000 A)을, DT4282 는 10 A 직접 입력을 갖는다. CAT IV 600 V·CAT III 1000 V.",
+  "test_items": [],
+  "limits": {
+    "dmm_display_counts": {
+      "values": [
+        60000
+      ]
+    },
+    "voltage_V": {
+      "min": 0.06,
+      "max": 1000,
+      "note": "DC·AC 60.000 mV~1000.0 V, 6 레인지"
+    },
+    "resistance_ohm": {
+      "min": 60,
+      "max": 600000000,
+      "note": "60.000 Ω~600.0 MΩ, 8 레인지"
+    }
+  },
+  "models": [
+    {
+      "model": "DT4281",
+      "specs": {
+        "dmm_display_counts": 60000,
+        "voltage_V": {
+          "min": 0.06,
+          "max": 1000
+        },
+        "current_A": {
+          "min": 0.0006,
+          "max": 0.6,
+          "note": "직접 입력 600.00 μA~600.00 mA. 클램프 입력 AC 10.00 A~1000 A(7 레인지)"
+        },
+        "resistance_ohm": {
+          "min": 60,
+          "max": 600000000
+        },
+        "accuracy": "DC V ±0.025% rdg. ±2 dgt., AC V ±0.2% rdg. ±25 dgt.(45~65 Hz), DC A ±0.05% rdg. ±5 dgt., 저항 ±0.03% rdg. ±2 dgt.",
+        "weight_kg": 0.65,
+        "footprint_mm": {
+          "W": 93,
+          "H": 197,
+          "D": 53
+        }
+      },
+      "note": "클램프 센서(옵션)로 비접촉 전류 측정"
+    },
+    {
+      "model": "DT4282",
+      "specs": {
+        "dmm_display_counts": 60000,
+        "voltage_V": {
+          "min": 0.06,
+          "max": 1000
+        },
+        "current_A": {
+          "min": 0.0006,
+          "max": 10,
+          "note": "600.00 μA~10.000 A, 6 레인지"
+        },
+        "resistance_ohm": {
+          "min": 60,
+          "max": 600000000
+        },
+        "accuracy": "DC V ±0.025% rdg. ±2 dgt., AC V ±0.2% rdg. ±25 dgt.(45~65 Hz), DC A ±0.05% rdg. ±5 dgt., 저항 ±0.03% rdg. ±2 dgt.",
+        "weight_kg": 0.65,
+        "footprint_mm": {
+          "W": 93,
+          "H": 197,
+          "D": 53
+        }
+      },
+      "note": "10 A 직접 입력"
+    }
+  ],
+  "compliance_marks": [
+    "CAT IV 600 V",
+    "CAT III 1000 V"
+  ],
+  "sources": [
+    {
+      "url": "https://www.hioki.com/global/products/testers/dmm-4/id_5791",
+      "retrieved": "2026-10-08",
+      "note": "제조사 DT4281 페이지 사양표"
+    },
+    {
+      "url": "https://www.hioki.com/us-en/products/testers/dmm-4/id_5803",
+      "retrieved": "2026-10-08",
+      "note": "제조사 DT4282 페이지 사양표"
+    }
+  ],
+  "confidence": "limited"
+}

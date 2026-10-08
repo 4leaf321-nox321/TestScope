@@ -1,0 +1,148 @@
+{
+  "id": "tektronix-6-series-b-mso",
+  "kind": "equipment_series",
+  "name": "6 Series B MSO Mixed Signal Oscilloscope",
+  "name_ko": "텍트로닉스 6 시리즈 B MSO 혼합 신호 오실로스코프",
+  "manufacturer": "tektronix",
+  "brand": "6 Series MSO",
+  "category": "oscilloscope",
+  "subcategory": "mixed_signal_oscilloscope",
+  "form_factor": "benchtop",
+  "description": "1~10 GHz 대역의 4·6·8채널 혼합 신호 오실로스코프 계열임. 최대 50 GS/s, 12 bit ADC, 레코드 62.5 M~1 G, 옵션 디지털 채널 최대 32·48·64, 15.6 inch 화면. 2U 랙 장착형 4채널 저형상 디지타이저 LPD64(DC~8 GHz, 25 GS/s)를 함께 넣음.",
+  "test_items": [],
+  "limits": {
+    "bandwidth_Hz": {
+      "min": 1000000000,
+      "max": 10000000000
+    },
+    "sample_rate_Sa_s": {
+      "min": 25000000000,
+      "max": 50000000000,
+      "note": "원문 Up to 50 GS/s"
+    },
+    "record_length_pts": {
+      "min": 62500000,
+      "max": 1000000000
+    },
+    "channels": {
+      "values": [
+        4,
+        6,
+        8
+      ]
+    },
+    "logic_channel_count": {
+      "values": [
+        32,
+        48,
+        64
+      ],
+      "note": "옵션. 최대값"
+    },
+    "adc_resolution_bit": {
+      "values": [
+        12
+      ]
+    },
+    "display_size_in": {
+      "values": [
+        15.6
+      ]
+    }
+  },
+  "models": [
+    {
+      "model": "MSO64B",
+      "specs": {
+        "bandwidth_Hz": {
+          "min": 1000000000,
+          "max": 10000000000,
+          "note": "원문 1 GHz - 10 GHz"
+        },
+        "channels": 4,
+        "logic_channel_count": 32,
+        "sample_rate_Sa_s": 50000000000,
+        "record_length_pts": {
+          "min": 62500000,
+          "max": 1000000000,
+          "note": "원문 62.5 M - 1 G"
+        },
+        "adc_resolution_bit": 12,
+        "display_size_in": 15.6
+      }
+    },
+    {
+      "model": "MSO66B",
+      "specs": {
+        "bandwidth_Hz": {
+          "min": 1000000000,
+          "max": 10000000000,
+          "note": "원문 1 GHz - 10 GHz"
+        },
+        "channels": 6,
+        "logic_channel_count": 48,
+        "sample_rate_Sa_s": 50000000000,
+        "record_length_pts": {
+          "min": 62500000,
+          "max": 1000000000,
+          "note": "원문 62.5 M - 1 G"
+        },
+        "adc_resolution_bit": 12,
+        "display_size_in": 15.6
+      }
+    },
+    {
+      "model": "MSO68B",
+      "specs": {
+        "bandwidth_Hz": {
+          "min": 1000000000,
+          "max": 10000000000,
+          "note": "원문 1 GHz - 10 GHz"
+        },
+        "channels": 8,
+        "logic_channel_count": 64,
+        "sample_rate_Sa_s": 50000000000,
+        "record_length_pts": {
+          "min": 62500000,
+          "max": 1000000000,
+          "note": "원문 62.5 M - 1 G"
+        },
+        "adc_resolution_bit": 12,
+        "display_size_in": 15.6
+      }
+    },
+    {
+      "model": "LPD64",
+      "variant": "Low Profile Digitizer",
+      "form_factor": "rackmount",
+      "specs": {
+        "bandwidth_Hz": {
+          "max": 8000000000,
+          "note": "원문 DC to 8 GHz"
+        },
+        "channels": 4,
+        "sample_rate_Sa_s": 25000000000,
+        "record_length_pts": {
+          "min": 125000000,
+          "max": 1000000000,
+          "note": "원문 표준 125 Mpts, 옵션 1 Gpts"
+        },
+        "adc_resolution_bit": 12
+      },
+      "note": "2U rack mount ready"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://www.tek.com/en/products/oscilloscopes/6-series-mso",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지. 6 Series B MSO 기종 표(MSO64B·MSO66B·MSO68B). 원문 Up to 50 GS/s, 62.5 M - 1 G, 12 bits, 15.6-inch"
+    },
+    {
+      "url": "https://www.tek.com/en/products/oscilloscopes/high-speed-digitizers/6-series-mso-low-profile",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지. LPD64: DC to 8 GHz, 4 ch, 25 GS/s, 125 Mpts(옵션 1 Gpts), 12-bits ADC, 2U"
+    }
+  ],
+  "confidence": "limited"
+}

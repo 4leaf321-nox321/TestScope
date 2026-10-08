@@ -1,0 +1,122 @@
+{
+  "id": "leica-microsystems-dvm6",
+  "kind": "equipment_series",
+  "name": "Leica DVM6 Digital Microscope (DVM6 S / DVM6 A / DVM6 M)",
+  "name_ko": "라이카 DVM6 디지털 현미경",
+  "manufacturer": "leica-microsystems",
+  "brand": "DVM6",
+  "category": "optical_microscope",
+  "subcategory": "digital_microscope",
+  "form_factor": "benchtop",
+  "description": "16:1 줌과 동초점(parfocal) PlanAPO 대물렌즈 3종(저·중·고배율)을 갈아 끼우는 디지털 현미경. 고배율 대물렌즈로 최대 2,350:1, 0.4 μm 까지 본다. 스탠드 틸트 ±60°(인코딩), 자동 초점, 대물렌즈 내장 4분할 링 조명과 동축 조명. DVM6 S 는 전동 초점, DVM6 A 는 전동 초점과 전동 XY 스테이지, DVM6 M 은 큰 시료용 모듈형(XY 150×100 mm).",
+  "test_items": [
+    "microscopy"
+  ],
+  "measurands": [
+    "surface_morphology",
+    "dimension_2d",
+    "height_3d"
+  ],
+  "limits": {
+    "zoom_ratio": {
+      "values": [
+        16
+      ]
+    },
+    "magnification": {
+      "max": 2350,
+      "note": "FOV 43.75 대물렌즈 최대 190:1, FOV 12.55 46x–675x, FOV 3.60 최대 2,350:1"
+    },
+    "field_of_view_mm": {
+      "max": 43.75,
+      "note": "대물렌즈별 최대 시야 43.75 / 12.55 / 3.60 mm"
+    },
+    "working_distance_mm": {
+      "min": 5,
+      "max": 60
+    },
+    "optical_resolution_lp_mm": {
+      "min": 415,
+      "max": 2366
+    },
+    "tilt_angle_deg": {
+      "min": -60,
+      "max": 60
+    },
+    "stage_travel_mm": {
+      "max": 150,
+      "note": "표준 70×50 mm, DVM6 M 150×100 mm"
+    }
+  },
+  "models": [
+    {
+      "model": "DVM6 S",
+      "specs": {
+        "tilt_angle_deg": {
+          "min": -60,
+          "max": 60
+        },
+        "detector_megapixels": 10,
+        "detector_pixels": "1/2.3\" CMOS 3664×2748. 저장 2 MP(1600×1200)·5 MP(2592×1944)·10 MP(3648×2736)",
+        "data_rate_Hz": 37
+      },
+      "note": "표준형, 전동 초점. 37 fps 는 1600×1200 라이브 영상 기준"
+    },
+    {
+      "model": "DVM6 A",
+      "specs": {
+        "stage_travel_mm": [
+          70,
+          50
+        ],
+        "tilt_angle_deg": {
+          "min": -60,
+          "max": 60
+        },
+        "detector_megapixels": 10,
+        "data_rate_Hz": 37,
+        "specimen_mass_kg": 2
+      },
+      "note": "전동 초점 + 전동 XY 스테이지(분해능 1 μm). 초점 이동 60 mm, 초점 분해능 0.25 μm(전동)"
+    },
+    {
+      "model": "DVM6 M",
+      "specs": {
+        "stage_travel_mm": [
+          150,
+          100
+        ]
+      },
+      "note": "큰 시료용 모듈형(제품 페이지)"
+    }
+  ],
+  "options": [
+    {
+      "name": "PlanAPO FOV 43.75",
+      "note": "WD 60 mm, 최대 190:1, 415 lp/mm"
+    },
+    {
+      "name": "PlanAPO FOV 12.55",
+      "note": "WD 33 mm, 최대 675:1, 1073 lp/mm"
+    },
+    {
+      "name": "PlanAPO FOV 3.60",
+      "note": "WD 5 mm, 최대 2350:1, 2366 lp/mm"
+    },
+    "편광·확산 어댑터",
+    "XY 스테이지용 투과 조명 인서트"
+  ],
+  "sources": [
+    {
+      "url": "https://www.leica-microsystems.com/products/digital-microscopes/p/leica-dvm6/",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지(HTML, leica-microsystems.com) DVM6 개요(DVM6 M, 0.4 μm)"
+    },
+    {
+      "url": "https://www.leica-microsystems.com/products/digital-microscopes/p/leica-dvm6/specification/",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지(HTML, leica-microsystems.com) DVM6 기술 사양(DVM6 S/A, 대물렌즈 표, 카메라)"
+    }
+  ],
+  "confidence": "limited"
+}

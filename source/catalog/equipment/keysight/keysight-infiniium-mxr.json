@@ -1,0 +1,293 @@
+{
+  "id": "keysight-infiniium-mxr",
+  "kind": "equipment_series",
+  "name": "Infiniium MXR-Series Oscilloscopes",
+  "name_ko": "키사이트 Infiniium MXR 오실로스코프",
+  "manufacturer": "keysight",
+  "brand": "Infiniium",
+  "category": "oscilloscope",
+  "subcategory": "real_time_oscilloscope",
+  "form_factor": "benchtop",
+  "description": "500 MHz~6 GHz, 4·8채널의 실시간 오실로스코프 계열임. 전 채널 16 GSa/s, 10 bit ADC, 최대 1.6 Gpts, 16 디지털 채널, 15.6 inch 화면, 대역폭·채널 수 업그레이드(최대 6 GHz·8채널). 현행은 B 세대이고 A 세대(MXRxxxA)는 단종되어 같은 숫자의 B 기종으로 대체됨. 키사이트 현재 분류로는 XR6-class.",
+  "test_items": [],
+  "limits": {
+    "bandwidth_Hz": {
+      "min": 500000000,
+      "max": 6000000000,
+      "note": "원문 500 MHz~6 GHz"
+    },
+    "channels": {
+      "values": [
+        4,
+        8
+      ]
+    },
+    "sample_rate_Sa_s": {
+      "max": 16000000000,
+      "note": "원문 16 GSa/s (B 세대 페이지)"
+    },
+    "record_length_pts": {
+      "max": 1600000000,
+      "note": "원문 1.6 Gpts"
+    },
+    "adc_resolution_bit": {
+      "values": [
+        10
+      ],
+      "note": "B 세대 페이지 10 bits. A 세대 페이지는 ENOB up to 9.0 만 적음"
+    },
+    "logic_channel_count": {
+      "values": [
+        16
+      ]
+    },
+    "display_size_in": {
+      "values": [
+        15.6
+      ]
+    }
+  },
+  "models": [
+    {
+      "model": "MXR054B",
+      "variant": "B",
+      "specs": {
+        "bandwidth_Hz": 500000000,
+        "channels": 4
+      }
+    },
+    {
+      "model": "MXR058B",
+      "variant": "B",
+      "specs": {
+        "bandwidth_Hz": 500000000,
+        "channels": 8
+      }
+    },
+    {
+      "model": "MXR104B",
+      "variant": "B",
+      "specs": {
+        "bandwidth_Hz": 1000000000,
+        "channels": 4
+      }
+    },
+    {
+      "model": "MXR108B",
+      "variant": "B",
+      "specs": {
+        "bandwidth_Hz": 1000000000,
+        "channels": 8
+      }
+    },
+    {
+      "model": "MXR204B",
+      "variant": "B",
+      "specs": {
+        "bandwidth_Hz": 2000000000,
+        "channels": 4
+      }
+    },
+    {
+      "model": "MXR208B",
+      "variant": "B",
+      "specs": {
+        "bandwidth_Hz": 2000000000,
+        "channels": 8
+      }
+    },
+    {
+      "model": "MXR254B",
+      "variant": "B",
+      "specs": {
+        "bandwidth_Hz": 2500000000,
+        "channels": 4
+      }
+    },
+    {
+      "model": "MXR258B",
+      "variant": "B",
+      "specs": {
+        "bandwidth_Hz": 2500000000,
+        "channels": 8
+      }
+    },
+    {
+      "model": "MXR404B",
+      "variant": "B",
+      "specs": {
+        "bandwidth_Hz": 4000000000,
+        "channels": 4
+      }
+    },
+    {
+      "model": "MXR408B",
+      "variant": "B",
+      "specs": {
+        "bandwidth_Hz": 4000000000,
+        "channels": 8
+      }
+    },
+    {
+      "model": "MXR604B",
+      "variant": "B",
+      "specs": {
+        "bandwidth_Hz": 6000000000,
+        "channels": 4
+      }
+    },
+    {
+      "model": "MXR608B",
+      "variant": "B",
+      "specs": {
+        "bandwidth_Hz": 6000000000,
+        "channels": 8
+      }
+    },
+    {
+      "model": "MXR054A",
+      "variant": "A",
+      "specs": {
+        "bandwidth_Hz": 500000000,
+        "channels": 4
+      },
+      "note": "제조사 페이지 제목에 [Discontinued], 대체 기종 MXR054B"
+    },
+    {
+      "model": "MXR058A",
+      "variant": "A",
+      "specs": {
+        "bandwidth_Hz": 500000000,
+        "channels": 8
+      },
+      "note": "제조사 페이지 제목에 [Discontinued], 대체 기종 MXR058B"
+    },
+    {
+      "model": "MXR104A",
+      "variant": "A",
+      "specs": {
+        "bandwidth_Hz": 1000000000,
+        "channels": 4
+      },
+      "note": "제조사 페이지 제목에 [Discontinued], 대체 기종 MXR104B"
+    },
+    {
+      "model": "MXR108A",
+      "variant": "A",
+      "specs": {
+        "bandwidth_Hz": 1000000000,
+        "channels": 8
+      },
+      "note": "제조사 페이지 제목에 [Discontinued], 대체 기종 MXR108B"
+    },
+    {
+      "model": "MXR204A",
+      "variant": "A",
+      "specs": {
+        "bandwidth_Hz": 2000000000,
+        "channels": 4
+      },
+      "note": "제조사 페이지 제목에 [Discontinued], 대체 기종 MXR204B"
+    },
+    {
+      "model": "MXR208A",
+      "variant": "A",
+      "specs": {
+        "bandwidth_Hz": 2000000000,
+        "channels": 8
+      },
+      "note": "제조사 페이지 제목에 [Discontinued], 대체 기종 MXR208B"
+    },
+    {
+      "model": "MXR254A",
+      "variant": "A",
+      "specs": {
+        "bandwidth_Hz": 2500000000,
+        "channels": 4
+      },
+      "note": "제조사 페이지 제목에 [Discontinued], 대체 기종 MXR254B"
+    },
+    {
+      "model": "MXR258A",
+      "variant": "A",
+      "specs": {
+        "bandwidth_Hz": 2500000000,
+        "channels": 8
+      },
+      "note": "제조사 페이지 제목에 [Discontinued], 대체 기종 MXR258B"
+    },
+    {
+      "model": "MXR404A",
+      "variant": "A",
+      "specs": {
+        "bandwidth_Hz": 4000000000,
+        "channels": 4
+      },
+      "note": "제조사 페이지 제목에 [Discontinued], 대체 기종 MXR404B"
+    },
+    {
+      "model": "MXR408A",
+      "variant": "A",
+      "specs": {
+        "bandwidth_Hz": 4000000000,
+        "channels": 8
+      },
+      "note": "제조사 페이지 제목에 [Discontinued], 대체 기종 MXR408B"
+    },
+    {
+      "model": "MXR604A",
+      "variant": "A",
+      "specs": {
+        "bandwidth_Hz": 6000000000,
+        "channels": 4
+      },
+      "note": "제조사 페이지 제목에 [Discontinued], 대체 기종 MXR604B"
+    },
+    {
+      "model": "MXR608A",
+      "variant": "A",
+      "specs": {
+        "bandwidth_Hz": 6000000000,
+        "channels": 8
+      },
+      "note": "제조사 페이지 제목에 [Discontinued], 대체 기종 MXR608B"
+    }
+  ],
+  "features": [
+    "전 채널 16 GSa/s",
+    "10 bit ADC",
+    "DDC 실시간 스펙트럼 분석(RTSA)",
+    "대역폭·채널 업그레이드",
+    "최대 8개 계측기 통합"
+  ],
+  "relations": [
+    {
+      "type": "same_family_as",
+      "target": "keysight-infiniium-exr",
+      "note": "같은 XR6-class 실시간 오실로스코프 플랫폼"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://www.keysight.com/us/en/product/MXR058B/",
+      "retrieved": "2026-10-08",
+      "note": "제조사 기종 페이지. 500 MHz, 8 Analog channels, 16 digital, 16 GSa/s, 1.6 Gpts, 10 bits, 15.6 inch, 6 GHz 까지 업그레이드"
+    },
+    {
+      "url": "https://www.keysight.com/us/en/product/MXR604B/",
+      "retrieved": "2026-10-08",
+      "note": "제조사 기종 페이지. 6 GHz, 4 Analog channels, 16 digital, 16 GSa/s, 1.6 Gpts, 10 bits, 15.6 inch. 나머지 B 기종도 같은 주소 형식의 페이지 머리글로 확인"
+    },
+    {
+      "url": "https://www.keysight.com/us/en/product/MXR608A/",
+      "retrieved": "2026-10-08",
+      "note": "제조사 기종 페이지. \"MXR608A Infiniium MXR-Series Oscilloscope: 6 GHz, 8 Channels [Discontinued]\", 대체 MXR608B. 나머지 A 기종 11종도 같은 주소 형식의 페이지 제목으로 단종·대체 확인"
+    },
+    {
+      "url": "https://www.keysight.com/us/en/products/oscilloscopes/benchtop/expert-benchtop-oscilloscopes.html",
+      "retrieved": "2026-10-08",
+      "note": "제조사 분류 페이지. MXR104B: 1 GHz on all 4 channels, 16 GSa/s, 1.6 Gpts; MXR608B: 6 GHz on all 8 channels"
+    }
+  ],
+  "confidence": "limited"
+}

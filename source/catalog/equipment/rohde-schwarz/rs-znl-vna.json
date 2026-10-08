@@ -1,0 +1,115 @@
+{
+  "id": "rs-znl-vna",
+  "kind": "equipment_series",
+  "name": "R&S ZNL Vector Network Analyzer",
+  "name_ko": "로데슈바르즈 ZNL 벡터 네트워크 분석기",
+  "manufacturer": "rohde-schwarz",
+  "brand": "ZNL",
+  "category": "network_lcr_analyzer",
+  "form_factor": "portable",
+  "description": "벡터 네트워크 분석기·스펙트럼 분석기·전력계를 한 상자에 담은 보급형 휴대 가능 VNA. 5 kHz~20 GHz, 2포트 양방향 측정. 선택 사양으로 26.5 GHz 까지의 스펙트럼 분석기를 하드웨어에 넣는다. 폭 40.8 cm, 높이 18.6 cm, 깊이 24 cm 미만, 6~8 kg.",
+  "test_items": [],
+  "limits": {
+    "frequency_Hz": {
+      "min": 5000,
+      "max": 20000000000,
+      "note": "원문 from 5 kHz up to 20 GHz. 기종 상한 3/4.5/6/14/20 GHz"
+    },
+    "rf_port_count": {
+      "values": [
+        2
+      ]
+    },
+    "rf_output_level_dBm": {
+      "max": 0,
+      "note": "목록 페이지 Test Port Output Power 0 dBm"
+    },
+    "weight_kg": {
+      "min": 6,
+      "max": 8,
+      "note": "원문 6 to 8 kg. 치수 폭 40.8 cm · 높이 18.6 cm · 깊이 24 cm 미만"
+    }
+  },
+  "models": [
+    {
+      "model": "ZNL3",
+      "specs": {
+        "frequency_Hz": {
+          "min": 5000,
+          "max": 3000000000
+        },
+        "rf_port_count": 2
+      },
+      "note": "주문 번호 1323.0012.03, N(f)"
+    },
+    {
+      "model": "ZNL4",
+      "specs": {
+        "frequency_Hz": {
+          "min": 5000,
+          "max": 4500000000
+        },
+        "rf_port_count": 2
+      },
+      "note": "1323.0012.04, N(f)"
+    },
+    {
+      "model": "ZNL6",
+      "specs": {
+        "frequency_Hz": {
+          "min": 5000,
+          "max": 6000000000
+        },
+        "rf_port_count": 2
+      },
+      "note": "1323.0012.06, N(f)"
+    },
+    {
+      "model": "ZNL14",
+      "specs": {
+        "frequency_Hz": {
+          "min": 5000,
+          "max": 14000000000
+        },
+        "rf_port_count": 2
+      },
+      "note": "1323.0012.14, N(f)"
+    },
+    {
+      "model": "ZNL20",
+      "specs": {
+        "frequency_Hz": {
+          "min": 5000,
+          "max": 20000000000
+        },
+        "rf_port_count": 2
+      },
+      "note": "1323.0012.20, 3.5 mm(m)"
+    }
+  ],
+  "features": [
+    "VNA·스펙트럼 분석기·전력계 통합",
+    "26.5 GHz 까지의 스펙트럼 분석기 선택 사양",
+    "높은 동적 범위·낮은 트레이스 잡음(수치는 페이지에 없음)"
+  ],
+  "relations": [
+    {
+      "type": "same_family_as",
+      "target": "rs-znle-vna"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://www.rohde-schwarz.com/us/products/test-and-measurement/vnas/rs-znl-vector-network-analyzer_63493-432704.html",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지. 기종 표(ZNL3/4/6/14/20, 주문 번호, 2포트, 3/4.5/6/14/20 GHz, 커넥터), 'Wide frequency range from 5 kHz up to 20 GHz', 치수·무게"
+    },
+    {
+      "url": "https://www.rohde-schwarz.com/us/products/test-and-measurement/network-analyzers_64043.html",
+      "retrieved": "2026-10-08",
+      "note": "제조사 네트워크 분석기 목록 페이지(기종별 Max Frequency · Port Count · Test Port Output Power)"
+    }
+  ],
+  "confidence": "limited",
+  "notes": "하한 5 kHz 는 계열 문구이며 기종 표에는 상한만 적혀 있어 각 기종 하한도 5 kHz 로 둠."
+}

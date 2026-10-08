@@ -1,0 +1,82 @@
+{
+  "id": "fujifilm-prescale",
+  "kind": "sensor",
+  "name": "FUJIFILM Prescale Pressure Measurement Film",
+  "name_ko": "후지필름 프리스케일 압력 측정 필름",
+  "manufacturer": "fujifilm",
+  "brand": "Prescale",
+  "category": "force_pressure_sensor",
+  "subcategory": "pressure_measurement_film",
+  "description": "가압하면 압력에 따라 붉게 발색해 압력 분포를 눈으로 보여 주는 측정 필름. 측정할 압력 범위(MPa)에 따라 종류를 고르며, 두 장을 겹치는 투 시트형과 한 장인 모노 시트형, 롤과 시트 형태가 있다. 압력 분포 매핑 시스템 FPD-8010E, 스마트폰 분석 앱 Prescale Mobile, 분석 시스템 Prescale Station 으로 발색을 수치화한다. 고온용 Prescale(100 LW, 200 LW, 200 LLW, 200 LLLW)도 있다.",
+  "test_items": [],
+  "measurands": [
+    "contact_pressure_distribution"
+  ],
+  "limits": {},
+  "models": [
+    {
+      "model": "5LW",
+      "note": "Ultra extreme low pressure. 압력 범위는 HTML 에 없음"
+    },
+    {
+      "model": "4LW",
+      "note": "Extreme low pressure"
+    },
+    {
+      "model": "LLLW",
+      "note": "페이지 표기 Ultra extreme low pressure(LLLW)"
+    },
+    {
+      "model": "MW",
+      "note": "Medium-pressure"
+    },
+    {
+      "model": "HHS",
+      "note": "Super high pressure"
+    },
+    {
+      "model": "100 LW",
+      "note": "Prescale for High Temperature"
+    },
+    {
+      "model": "200 LW",
+      "note": "Prescale for High Temperature"
+    },
+    {
+      "model": "200 LLW",
+      "note": "Prescale for High Temperature"
+    },
+    {
+      "model": "200 LLLW",
+      "note": "Prescale for High Temperature"
+    }
+  ],
+  "options": [
+    {
+      "name": "FPD-8010E",
+      "note": "Pressure Distribution Mapping System"
+    },
+    {
+      "name": "FUJIFILM Prescale Mobile",
+      "note": "압력 화상 분석 앱"
+    },
+    {
+      "name": "FUJIFILM Prescale Station",
+      "note": "압력 화상 분석 시스템"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://www.fujifilm.com/us/en/business/industrial-materials/measurement-film/prescale/feature",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지(HTML, 미국). 종류 이름(5LW, 4LW, LLLW, MW, HHS), 투 시트·모노 시트, 분석 시스템"
+    },
+    {
+      "url": "https://www.fujifilm.com/ch/en/business/inspection/measurement-film/prescale",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지(HTML, 스위스). 고온용 100 LW·200 LW·200 LLW·200 LLLW 추가"
+    }
+  ],
+  "confidence": "limited",
+  "notes": "제조사는 9종(롤)·6종(시트)이 있다고 적지만 HTML 에서 이름을 확인한 것만 넣음(LLW, LW, MS, HS 등은 이름을 확인하지 못함). 종류별 압력 범위(MPa)는 HTML 에 없고 다운로드 자료에만 있어 비움. 필름은 소모품이라 대장에는 분석 장치(FPD-8010E 등)로 올라 있을 수 있다."
+}

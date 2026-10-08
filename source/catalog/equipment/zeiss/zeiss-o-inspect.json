@@ -1,0 +1,67 @@
+{
+  "id": "zeiss-o-inspect",
+  "kind": "equipment_series",
+  "name": "ZEISS O-INSPECT Multisensor Vision Measuring Machine",
+  "name_ko": "자이스 O-INSPECT 멀티센서 영상 측정기",
+  "manufacturer": "zeiss",
+  "category": "coordinate_measuring_machine",
+  "form_factor": "floor",
+  "description": "광학(카메라)과 접촉 프로브를 표준으로 함께 갖춘 멀티센서 영상 측정기 계열임. 측정 체적 300 × 200 × 200 mm³(3/2/2), 500 × 400 × 300 mm³(5/4/3), 800 × 600 × 300 mm³(8/6/3). 광학 센서 ZEISS Discovery.V12(standard 100 · scout 160 · scout 240), 접촉 센서 VAST XXT(TL1 · TL3), 백색광 공초점 센서 DotScan(옵션).",
+  "test_items": [],
+  "limits": {
+    "measuring_range_x_mm": {
+      "min": 300,
+      "max": 800
+    },
+    "measuring_range_y_mm": {
+      "min": 200,
+      "max": 600
+    },
+    "measuring_range_z_mm": {
+      "min": 200,
+      "max": 300
+    }
+  },
+  "models": [
+    {
+      "model": "O-INSPECT 3/2/2",
+      "specs": {
+        "measuring_range_x_mm": 300,
+        "measuring_range_y_mm": 200,
+        "measuring_range_z_mm": 200,
+        "length_measuring_error_mpe": "MPE(E) 1D 1.6 + L/200 µm, 2D 1.9 + L/150 µm, 3D 2.4 + L/150 µm"
+      }
+    },
+    {
+      "model": "O-INSPECT 5/4/3",
+      "specs": {
+        "measuring_range_x_mm": 500,
+        "measuring_range_y_mm": 400,
+        "measuring_range_z_mm": 300,
+        "length_measuring_error_mpe": "MPE(E) 1D 1.4 + L/250 µm, 2D 1.6 + L/250 µm, 3D 1.9 + L/250 µm"
+      }
+    },
+    {
+      "model": "O-INSPECT 8/6/3",
+      "specs": {
+        "measuring_range_x_mm": 800,
+        "measuring_range_y_mm": 600,
+        "measuring_range_z_mm": 300,
+        "length_measuring_error_mpe": "MPE(E) 1D 1.5 + L/250 µm, 2D 1.8 + L/250 µm, 3D 2.2 + L/250 µm"
+      }
+    }
+  ],
+  "options": [
+    "ZEISS DotScan 백색광 공초점 센서",
+    "Discovery.V12 standard 100 / scout 160 / scout 240"
+  ],
+  "sources": [
+    {
+      "url": "https://www.zeiss.com/metrology/en/systems/cmms/vmms/o-inspect.html",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지(기술 데이터: 크기, MPE(E), 센서)"
+    }
+  ],
+  "confidence": "limited",
+  "notes": "범주 note: 영상·접촉 겸용 멀티센서 측정기라 3차원 측정기 분류에 둠. 입문형 O-DETECT 는 넣지 않음."
+}

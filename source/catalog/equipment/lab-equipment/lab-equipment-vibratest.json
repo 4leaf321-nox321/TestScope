@@ -1,0 +1,153 @@
+{
+  "id": "lab-equipment-vibratest",
+  "kind": "equipment_series",
+  "name": "L.A.B. Equipment VibraTest Mechanical Vibration Testers",
+  "name_ko": "L.A.B. VibraTest 기계식 진동 시험기",
+  "manufacturer": "lab-equipment",
+  "brand": "VibraTest",
+  "category": "mechanical_dynamics",
+  "form_factor": "floor",
+  "description": "전자 제품·부품의 납땜 불량·하드웨어 고장을 찾는 기계식 수직 진동기. 8~60 Hz, 가속도 3.2 g 또는 10 g, 테이블 610 mm 정사각부터 1,219×1,676 mm, 탑재 45~227 kg, 변위 1.3~2.2 mm. AMC+(Windows 11) 제어, 내장 공기 방진 장치라 기초 공사가 필요 없고 200~230 VAC 단상.",
+  "test_items": [
+    "vibration_sine_random"
+  ],
+  "measurands": [
+    "resonance_frequency"
+  ],
+  "materials": [
+    "electronic products",
+    "components"
+  ],
+  "limits": {
+    "frequency_Hz": {
+      "min": 8,
+      "max": 60
+    },
+    "acceleration_g": {
+      "values": [
+        3.2,
+        10
+      ]
+    },
+    "payload_kg": {
+      "min": 45,
+      "max": 227
+    },
+    "displacement_mm": {
+      "min": 1.3,
+      "max": 2.2,
+      "note": "p-p 여부는 페이지에 없음"
+    },
+    "table_size_mm": {
+      "min": 610,
+      "max": 1676
+    }
+  },
+  "models": [
+    {
+      "model": "VibraTest 24",
+      "specs": {
+        "table_size_mm": [
+          610,
+          610
+        ],
+        "payload_kg": 45,
+        "frequency_Hz": {
+          "min": 8,
+          "max": 60
+        },
+        "displacement_mm": 1.3,
+        "acceleration_g": {
+          "values": [
+            3.2,
+            10
+          ]
+        }
+      }
+    },
+    {
+      "model": "VibraTest 36",
+      "specs": {
+        "table_size_mm": [
+          914,
+          914
+        ],
+        "payload_kg": 136,
+        "frequency_Hz": {
+          "min": 8,
+          "max": 60
+        },
+        "displacement_mm": 2.2,
+        "acceleration_g": {
+          "values": [
+            3.2,
+            10
+          ]
+        }
+      }
+    },
+    {
+      "model": "VibraTest 48",
+      "specs": {
+        "table_size_mm": [
+          1219,
+          1219
+        ],
+        "payload_kg": 227,
+        "frequency_Hz": {
+          "min": 8,
+          "max": 60
+        },
+        "displacement_mm": 1.8,
+        "acceleration_g": {
+          "values": [
+            3.2,
+            10
+          ]
+        }
+      }
+    },
+    {
+      "model": "VibraTest 48x66",
+      "specs": {
+        "table_size_mm": [
+          1219,
+          1676
+        ],
+        "payload_kg": 227,
+        "frequency_Hz": {
+          "min": 8,
+          "max": 60
+        },
+        "displacement_mm": 1.8,
+        "acceleration_g": {
+          "values": [
+            3.2,
+            10
+          ]
+        }
+      }
+    }
+  ],
+  "power_requirements": "200-230 VAC, 50/60 Hz, 1 Phase",
+  "relations": [
+    {
+      "type": "performs",
+      "target": "vibration_sine_random"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://www.labequipment.com/vibration-test-systems/vibratest/",
+      "retrieved": "2026-10-08",
+      "note": "제조사 VibraTest 페이지"
+    },
+    {
+      "url": "https://www.labequipment.com/vibration-test-systems/",
+      "retrieved": "2026-10-08",
+      "note": "제조사 진동 시험기 목록"
+    }
+  ],
+  "confidence": "limited",
+  "notes": "기계식 진동기라 「전기동력식 가진기」 분류 대신 상위 진동·충격(mechanical_dynamics)에 두었다. 페이지 규격 표기는 「IEC, SAE, Select Mil-STD」 뿐이다."
+}

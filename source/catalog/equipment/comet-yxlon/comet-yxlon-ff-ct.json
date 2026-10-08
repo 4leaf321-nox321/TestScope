@@ -1,0 +1,180 @@
+{
+  "id": "comet-yxlon-ff-ct",
+  "kind": "equipment_series",
+  "name": "Comet Yxlon FF CT Series (FF20 CT / FF35 CT / FF85 CT)",
+  "name_ko": "코멧 익스론 FF 시리즈 산업용 CT",
+  "manufacturer": "comet-yxlon",
+  "brand": "FF CT",
+  "category": "xray_inspection",
+  "form_factor": "floor",
+  "description": "화강암 베이스와 능동 공기 방진 위에 다축 매니퓰레이터를 얹은 산업용 CT 계열. FF20 CT 는 190 kV 수랭 나노포커스 투과형 튜브로 2D 디테일 150 nm 까지 보고, FF35 CT 는 160 kV · 190 kV 나노포커스와 225 kV 마이크로포커스(320 W) 튜브를 단일 또는 이중으로 달며 SEMI · Metrology 변형이 있다. FF85 CT 는 190 kV 나노포커스부터 600 kV 미니포커스까지 튜브를 골라 지름 1800 mm · 높이 3000 mm · 1000 kg 시료를 다룬다.",
+  "test_items": [
+    "xray_void_inspection"
+  ],
+  "measurands": [
+    "internal_geometry",
+    "dimensional_metrology"
+  ],
+  "limits": {
+    "tube_voltage_kV": {
+      "values": [
+        160,
+        190,
+        225,
+        300,
+        450,
+        600
+      ],
+      "note": "FF20 CT 190 kV / FF35 CT 160·190·225 kV / FF85 CT 190·225·300·450·600 kV"
+    },
+    "tube_power_W": {
+      "max": 320,
+      "note": "FF35 CT 의 225 kV 마이크로포커스 튜브 320 W. 다른 튜브 출력은 페이지에 없음"
+    },
+    "feature_recognition_um": {
+      "min": 0.15,
+      "note": "FF20 CT 2D detail visibility down to 150 nm. FF35 CT 는 160 kV 튜브로 600 nm"
+    },
+    "specimen_diameter_mm": {
+      "max": 1800,
+      "note": "FF20 CT 380 mm · FF35 CT 530 mm · FF85 CT 1800 mm"
+    },
+    "specimen_height_mm": {
+      "max": 3000,
+      "note": "FF20 CT 700 mm · FF35 CT 800 mm · FF85 CT 3000 mm"
+    },
+    "sample_weight_kg": {
+      "max": 1000,
+      "note": "FF20 CT 17 kg · FF35 CT 50 kg · FF85 CT 1000 kg"
+    }
+  },
+  "models": [
+    {
+      "model": "FF20 CT",
+      "specs": {
+        "xray_source": "190 kV 투과형 나노포커스 튜브(수랭 타깃·코일), 초점 모드 4종",
+        "tube_voltage_kV": 190,
+        "feature_recognition_um": {
+          "min": 0.15,
+          "note": "2D(radioscopy) detail visibility down to 150 nm"
+        },
+        "specimen_diameter_mm": {
+          "max": 380,
+          "uncertain": true,
+          "note": "원문 '380 mm (11.02″)' — 두 값이 서로 맞지 않음(11.02″ 는 약 280 mm)"
+        },
+        "specimen_height_mm": {
+          "max": 700
+        },
+        "sample_weight_kg": 17,
+        "footprint_mm": "2380 × 945 × 2180 (W × D × H)"
+      },
+      "note": "매니퓰레이터: 화강암 베이스, 능동 공기 방진, 6축"
+    },
+    {
+      "model": "FF35 CT",
+      "specs": {
+        "xray_source": "160 kV 나노포커스 / 190 kV 나노포커스 투과형 / 225 kV 마이크로포커스 지향형(320 W, 수랭 타깃) — 단일 또는 이중 튜브",
+        "tube_voltage_kV": [
+          160,
+          190,
+          225
+        ],
+        "tube_power_W": {
+          "max": 320,
+          "note": "225 kV 튜브"
+        },
+        "spatial_resolution_um": {
+          "min": 4,
+          "note": "225 kV 튜브 2D 운전"
+        },
+        "feature_recognition_um": {
+          "min": 0.6,
+          "note": "160 kV 튜브 detail visibility 600 nm"
+        },
+        "specimen_diameter_mm": {
+          "max": 530
+        },
+        "specimen_height_mm": {
+          "max": 800
+        },
+        "sample_weight_kg": 50,
+        "footprint_mm": "2960 × 1590 × 2120 (W × D × H)"
+      },
+      "note": "매니퓰레이터: 화강암 베이스, 능동 공기 방진, 6~8축"
+    },
+    {
+      "model": "FF35 CT SEMI",
+      "variant": "FF35 CT 의 반도체용 변형",
+      "note": "적합 규격: SEMI S2-0818 · S8-0218"
+    },
+    {
+      "model": "FF35 CT Metrology",
+      "variant": "FF35 CT 의 치수 측정 변형",
+      "specs": {
+        "accuracy": "MPE_SD = 5.9 µm + L/75 (L in mm)"
+      }
+    },
+    {
+      "model": "FF85 CT",
+      "specs": {
+        "xray_source": "600 kV 미니포커스 / 450 kV 미니포커스 / 450 kV 메조포커스 / 300 kV 마이크로포커스 / 225 kV 마이크로포커스 / 190 kV 나노포커스 중 선택, 이중 튜브 구성",
+        "tube_voltage_kV": [
+          190,
+          225,
+          300,
+          450,
+          600
+        ],
+        "detector": "평판 검출기 · 라인 검출기 어레이",
+        "specimen_diameter_mm": {
+          "max": 1800
+        },
+        "specimen_height_mm": {
+          "max": 3000
+        },
+        "sample_weight_kg": 1000
+      },
+      "note": "매니퓰레이터: 화강암 베이스, 7축; 초점-검출기 거리(mm): 최대 3700 (미니포커스 + 라인 검출기 구성)"
+    }
+  ],
+  "features": [
+    "Cone-beam CT · QuickScan · QualityScan · HeliExtend · FlexCenter · ZoomScan · LayerScan · ScanExtend",
+    "이중 튜브 즉시 전환(FF35 CT · FF85 CT)",
+    "Geminy 그래픽 사용자 인터페이스(FF20 CT)"
+  ],
+  "relations": [
+    {
+      "type": "performs",
+      "target": "xray_void_inspection"
+    },
+    {
+      "type": "same_family_as",
+      "target": "comet-yxlon-ux"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://yxlon.comet.tech/en/products/ff20-ct",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지(FF20 CT)"
+    },
+    {
+      "url": "https://yxlon.comet.tech/en/products/ff35-ct",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지(FF35 CT). 변형 FF35 CT SEMI · FF35 CT Metrology"
+    },
+    {
+      "url": "https://yxlon.comet.tech/en/products/ff85-ct",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지(FF85 CT). 초점 크기 · 튜브 출력 · 외형 치수는 페이지에 없음"
+    },
+    {
+      "url": "https://yxlon.comet.tech/en/product-range-en",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품군 목록 페이지. 계열별 대표 사양 한 줄"
+    }
+  ],
+  "notes": "FF85 CT 의 튜브별 출력·초점 크기, FF20 CT 의 튜브 출력은 페이지에 없다. 브로슈어는 다운로드 양식 뒤에 있어 열지 않았다.",
+  "confidence": "limited"
+}

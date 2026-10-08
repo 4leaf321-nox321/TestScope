@@ -1,0 +1,62 @@
+{
+  "id": "keysight-e4990a-impedance-analyzer",
+  "kind": "equipment_series",
+  "name": "Keysight E4990A Impedance Analyzer",
+  "name_ko": "키사이트 E4990A 임피던스 분석기",
+  "manufacturer": "keysight",
+  "category": "network_lcr_analyzer",
+  "form_factor": "benchtop",
+  "description": "ZA5 등급 임피던스 분석기. 주파수 옵션 20 Hz~10/20/30/50/120 MHz(업그레이드 가능), 기본 확도 ±0.08%(typ ±0.045%), 10% 확도 측정 범위 25 mΩ~40 MΩ. DC 바이어스 0~±40 V, 0~±100 mA. 10.4인치 터치 화면(4채널·4트레이스), 등가 회로 분석과 한계선 시험.",
+  "test_items": [],
+  "limits": {
+    "frequency_Hz": {
+      "min": 20,
+      "max": 120000000,
+      "note": "주파수 옵션 상한 10/20/30/50/120 MHz"
+    },
+    "impedance_ohm": {
+      "min": 0.025,
+      "max": 40000000,
+      "note": "10% 측정 확도 범위 25 mΩ to 40 MΩ"
+    }
+  },
+  "models": [
+    {
+      "model": "E4990A",
+      "specs": {
+        "frequency_Hz": {
+          "min": 20,
+          "max": 120000000,
+          "note": "옵션 10/20/30/50/120 MHz"
+        },
+        "accuracy": "기본 확도 ±0.08%(±0.045% typ)",
+        "impedance_ohm": {
+          "min": 0.025,
+          "max": 40000000,
+          "note": "10% 확도 범위"
+        }
+      },
+      "note": "DC 바이어스 0 V~±40 V, 0 A~±100 mA. 고속 측정 옵션 001(10M/20M/30M/50M 옵션만)"
+    }
+  ],
+  "features": [
+    "주파수 옵션 5종(업그레이드 가능)",
+    "측정 파라미터 |Z|, |Y|, θ, R, X, G, B, L, C, D, Q, 복소 Z·Y, Vac, Iac, Vdc, Idc",
+    "등가 회로 분석·한계선 시험",
+    "10.4인치 컬러 터치 LCD, 4채널·4트레이스"
+  ],
+  "options": [
+    {
+      "name": "Option 001",
+      "note": "측정 속도 강화(10M/20M/30M/50M 옵션 전용)"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://www.keysight.com/us/en/product/E4990A/impedance-analyzer-20-hz-to-10-20-30-50-120-mhz.html",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지. 20 Hz to 10/20/30/50/120 MHz, ±0.08%(±0.045% typ), 25 mΩ to 40 MΩ(10% 확도 범위), DC Bias 0 V to ±40 V·0 A to ±100 mA, 측정 파라미터 목록"
+    }
+  ],
+  "confidence": "limited"
+}

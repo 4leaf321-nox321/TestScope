@@ -1,0 +1,128 @@
+{
+  "id": "rigol-dg800-pro",
+  "kind": "equipment_series",
+  "name": "RIGOL DG800 Pro Series Function/Arbitrary Waveform Generators",
+  "name_ko": "리골 DG800 Pro 함수·임의파형 발생기",
+  "manufacturer": "rigol",
+  "brand": "DG800 Pro",
+  "category": "signal_generator",
+  "subcategory": "function_arbitrary_waveform",
+  "description": "보급형 함수·임의파형 발생기 계열. 최대 출력 주파수 25 MHz(DG821 Pro 1채널·DG822 Pro 2채널)·50 MHz(DG852 Pro 2채널), 샘플 속도 625 MSa/s, 16비트, 파형 길이 2 Mpts(옵션 8 Mpts)다. 7인치 터치스크린, Type-C 전원, 지터 200 ps(rms), AM·FM·PM·ASK·FSK·PSK·PWM·SUM 변조, 시퀀스 64 이벤트, 최대 20차 고조파, 500 MHz 주파수 계수기를 갖춘다. 크기 266 × 165 × 63 mm, 무게 1.78 kg.",
+  "test_items": [],
+  "limits": {
+    "output_frequency_Hz": {
+      "max": 50000000,
+      "note": "최대 출력 주파수 25·50 MHz. 페이지 기능 목록에 40 MHz 구형파·25 MHz 가변 에지 펄스 문구가 있으나 기종 구분 없음"
+    },
+    "channels": {
+      "values": [
+        1,
+        2
+      ]
+    },
+    "sample_rate_Sa_s": {
+      "values": [
+        625000000
+      ],
+      "note": "원문 625 MSa/s"
+    },
+    "dac_resolution_bit": {
+      "values": [
+        16
+      ]
+    },
+    "waveform_memory_pts": {
+      "values": [
+        2000000,
+        8000000
+      ],
+      "note": "2 Mpts, 옵션 8 Mpts"
+    },
+    "weight_kg": {
+      "values": [
+        1.78
+      ]
+    }
+  },
+  "models": [
+    {
+      "model": "DG821 Pro",
+      "specs": {
+        "output_frequency_Hz": {
+          "max": 25000000
+        },
+        "channels": 1,
+        "sample_rate_Sa_s": 625000000,
+        "dac_resolution_bit": 16,
+        "waveform_memory_pts": {
+          "values": [
+            2000000,
+            8000000
+          ]
+        },
+        "weight_kg": 1.78
+      }
+    },
+    {
+      "model": "DG822 Pro",
+      "specs": {
+        "output_frequency_Hz": {
+          "max": 25000000
+        },
+        "channels": 2,
+        "sample_rate_Sa_s": 625000000,
+        "dac_resolution_bit": 16,
+        "waveform_memory_pts": {
+          "values": [
+            2000000,
+            8000000
+          ]
+        },
+        "weight_kg": 1.78
+      }
+    },
+    {
+      "model": "DG852 Pro",
+      "specs": {
+        "output_frequency_Hz": {
+          "max": 50000000
+        },
+        "channels": 2,
+        "sample_rate_Sa_s": 625000000,
+        "dac_resolution_bit": 16,
+        "waveform_memory_pts": {
+          "values": [
+            2000000,
+            8000000
+          ]
+        },
+        "weight_kg": 1.78
+      }
+    }
+  ],
+  "features": [
+    "7인치 컬러 터치스크린",
+    "Type-C 전원 커넥터",
+    "지터 200 ps(rms)",
+    "AM·FM·PM·ASK·FSK·PSK·PWM·SUM 변조",
+    "시퀀스 최대 64 이벤트",
+    "최대 20차 고조파",
+    "500 MHz 주파수 계수기"
+  ],
+  "relations": [
+    {
+      "type": "successor_of",
+      "target": "rigol-dg800",
+      "note": "DG800 페이지가 대체 기종으로 DG821 Pro·DG822 Pro·DG852 Pro 를 적는다"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://www.rigolna.com/products/waveform-generators/dg800-pro/",
+      "retrieved": "2026-10-08",
+      "note": "제조사 미국 법인 제품 페이지. 기종 표, 크기·무게, 주요 기능"
+    }
+  ],
+  "confidence": "limited",
+  "notes": "진폭 범위는 페이지에 없다. weight_kg 1.78 은 계열 공통 문구다."
+}

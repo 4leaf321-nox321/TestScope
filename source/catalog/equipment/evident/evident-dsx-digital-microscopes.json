@@ -1,0 +1,163 @@
+{
+  "id": "evident-dsx-digital-microscopes",
+  "kind": "equipment_series",
+  "name": "Evident DSX Series Digital Microscopes (DSX1000 / DSX2000)",
+  "name_ko": "에비던트(구 올림푸스) DSX 디지털 현미경",
+  "manufacturer": "evident",
+  "brand": "DSX",
+  "category": "optical_microscope",
+  "subcategory": "digital_microscope",
+  "form_factor": "benchtop",
+  "description": "텔레센트릭 광학계와 전동 줌(10배)을 쓰는 산업용 디지털 현미경 계열. 명시야·경사·암시야·MIX·편광·미분간섭(DSX2000 은 음영 SR 추가)을 모든 배율에서 쓴다. DSX1000(단종)은 23X～8,220X(사양서; 웹 페이지는 27X～9637X),1/1.2인치 235만 화소 CMOS(60 fps), 엔트리·틸트·고해상도·하이엔드 구성. 후속 DSX2000 은 장초점 대물렌즈로 20.9X～1,461X, 고해상도 대물렌즈로 26.1X～7307X, 1.1인치 1,237만 화소 글로벌 셔터 CMOS(60 fps), 줌 헤드 3종(DSX20-SZH·UZH·MZH)과 대물렌즈 20종. 두 기종 모두 X-Y 측정 정확도 ±3 %, 반복도 2 %, Z 반복도 1 μm, 틸트 프레임 ±90°.",
+  "test_items": [
+    "microscopy"
+  ],
+  "measurands": [
+    "surface_morphology",
+    "dimension_2d",
+    "height_3d"
+  ],
+  "limits": {
+    "magnification": {
+      "min": 20.9,
+      "max": 8220,
+      "note": "DSX1000 23X～8,220X(PDF 브로슈어, 27인치 모니터. 웹 페이지는 27X～9637X), DSX2000 20.9X～1,461X(장초점)·26.1X～7307X(고해상도)"
+    },
+    "zoom_ratio": {
+      "values": [
+        10
+      ],
+      "note": "광학 줌 1X～10X(전동)"
+    },
+    "working_distance_mm": {
+      "min": 0.35,
+      "max": 66.1
+    },
+    "detector_megapixels": {
+      "min": 2.35,
+      "max": 12.37
+    },
+    "data_rate_Hz": {
+      "max": 60,
+      "note": "카메라 최대 60 fps"
+    },
+    "stage_travel_mm": {
+      "max": 200,
+      "note": "DSX1000 전동 100×100 mm, DSX2000 DSX20-LMTS 200×100 mm"
+    },
+    "tilt_angle_deg": {
+      "min": -90,
+      "max": 90
+    }
+  },
+  "models": [
+    {
+      "model": "DSX1000",
+      "specs": {
+        "magnification": {
+          "min": 23,
+          "max": 8220,
+          "note": "PDF 브로슈어: 총 배율 23X～8,220X(27인치 모니터) — SXLOB 23X～1,644X, XLOB 49X～6,570X, UIS2 26X～8,220X. 하드웨어 매뉴얼 대물렌즈 표(1:1 화면비)는 20X～7,000X. 웹 페이지는 27X～9637X"
+        },
+        "zoom_ratio": 10,
+        "working_distance_mm": {
+          "min": 0.35,
+          "max": 66.1,
+          "note": "MPLAPON50X 0.35 mm ~ DSX10-SXLOB3X 66.1 mm"
+        },
+        "detector_megapixels": 2.35,
+        "detector_pixels": "1/1.2 inch CMOS, Peltier 냉각. PDF 브로슈어: Normal 1200×1200(1:1)/1600×1200(4:3), Super fine 3600×3600/4800×3600(틸트 프레임 시스템). 웹 페이지는 최고 5760×3600(초고해상도 모드)",
+        "data_rate_Hz": 60,
+        "observation_methods": "BF, OBQ, DF, MIX, PO, DIC",
+        "stage_travel_mm": [
+          100,
+          100
+        ],
+        "specimen_height_mm": {
+          "min": 0,
+          "max": 145,
+          "note": "관찰 가능 시료 높이: SXLOB 0～50 mm, XLOB 0～115 mm, UIS2 0～145 mm, 유센트릭(자유 각도) 관찰 0～50 mm"
+        },
+        "specimen_mass_kg": {
+          "max": 5,
+          "note": "스테이지 최대 적재: 전동 XY(DSX10-MTS)·회전 전동 XY(DSX10-RMTS) 5 kg, 수동(U-SIC4R2) 1 kg"
+        },
+        "tilt_angle_deg": {
+          "min": -90,
+          "max": 90
+        },
+        "accuracy": "X-Y 배율 정확도 ±3 %, Z 반복도 σn-1 1 μm(20X 이상). 웹 페이지의 「X-Y 반복도 2 %」 는 PDF 에서 찾지 못함",
+        "weight_kg": {
+          "min": 43.7,
+          "max": 46.7
+        }
+      },
+      "note": "단종(제조사 obsolete 페이지). 구성 Entry·Tilt·High-Resolution·High-End. 틸트는 Tilt·High-End, 회전 ±90° 는 High-End. 무게 43.7 kg(업라이트)·46.7 kg(틸트 프레임 시스템). PDF 브로슈어는 DSX10-SZH(업라이트 프레임 시스템)·DSX10-UZH(틸트 프레임 시스템) 두 열로 나눔. 줌 헤드 DSX10-UZH(유니버설)·DSX10-SZH(표준), 프레임 DSX10-TF(틸트 -90～90°)·DSX10-UF(업라이트), 스테이지 DSX10-RMTS(회전 전동 100×100 mm, 회전 -90～90°)·DSX10-MTS(전동 100×100 mm)·U-SIC4R2(수동 100×105 mm). 전동 초점 스트로크 101 mm"
+    },
+    {
+      "model": "DSX2000",
+      "specs": {
+        "magnification": {
+          "min": 20.9,
+          "max": 7307
+        },
+        "zoom_ratio": 10,
+        "working_distance_mm": {
+          "min": 0.35,
+          "max": 66.1
+        },
+        "detector_megapixels": 12.37,
+        "detector_pixels": "1.1-inch CMOS, global shutter. Ultra 모드 6000×6000 또는 8192×6000(UZH·MZH)",
+        "data_rate_Hz": 60,
+        "observation_methods": "BF, OBQ, DF, MIX, PO, DIC, SR",
+        "stage_travel_mm": {
+          "max": 200,
+          "note": "DSX20-TMTS 100×100, DSX20-RMTS 50～100(회전 ±20°～±90°), DSX20-LMTS 200×100"
+        },
+        "tilt_angle_deg": {
+          "min": -90,
+          "max": 90
+        },
+        "objectives": "20종: DSX10-SXLOB(1X, 3X, 10X), DSX10-XLOB(3X, 10X, 20X, 40X), UIS2 MPLFLN·LMPLFLN·MXPLFLN",
+        "accuracy": "X-Y ±3 %, 반복도 2 %, Z 반복도 1 μm",
+        "weight_kg": {
+          "min": 51.7,
+          "max": 54.7
+        }
+      },
+      "note": "줌 헤드 DSX20-SZH(표준)·DSX20-UZH(유니버설)·DSX20-MZH(전동). 프레임 DSX20-UF(업라이트)·DSX20-TF(틸트). 무게 원문 업라이트 54.7 kg, 틸트 51.7 kg"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://evidentscientific.com/en/products/obsolete/dsx1000",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지(HTML, evidentscientific.com) DSX1000(단종). 후속 기종으로 DSX2000 을 안내함"
+    },
+    {
+      "url": "https://evidentscientific.com/en/products/digital/dsx2000",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지(HTML, evidentscientific.com) DSX2000"
+    },
+    {
+      "file": "evident/opticalmetrology_brochure_en_m1715e_2023_11_web.pdf",
+      "pages": [
+        5
+      ],
+      "note": "Evident 광학 계측 종합 브로슈어 M1715E(2023-11) — DSX1000 사양·대물렌즈·스테이지 표(브로슈어 인쇄 쪽 4). DSX2000 은 없음"
+    },
+    {
+      "file": "evident/ax9336_09_dsx1000_hardwaremanual_e.pdf",
+      "pages": [
+        18,
+        19,
+        22,
+        23,
+        25
+      ],
+      "note": "DSX1000 하드웨어 사용 설명서 AX9336 — 사양, 대물렌즈 NA·WD, 스테이지 적재, 관찰 가능 시료 높이, 대물렌즈별 배율 표"
+    }
+  ],
+  "confidence": "limited",
+  "notes": "Evident 는 올림푸스 과학 사업부(산업용 현미경 포함)가 분리된 회사 — 대장에는 Olympus 로 적혀 있을 수 있다. PDF 로 확인: DSX1000 의 줌 10X, WD 0.35～66.1 mm, 2.35 MP 60 fps, 관찰법, 틸트 ±90°, 스테이지 100×100 mm, X-Y ±3 %·Z 반복도 1 μm, 무게(배율은 23X～8,220X 로 바로잡음, 시료 높이·적재 더함). 웹 값 그대로: DSX2000 전부(PDF 없음), DSX1000 초고해상도 5760×3600·X-Y 반복도 2 %, limits 의 화소수 상한·스테이지 200 mm."
+}

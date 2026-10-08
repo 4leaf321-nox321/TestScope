@@ -1,0 +1,521 @@
+{
+  "id": "mitutoyo-crysta-apex-v",
+  "kind": "equipment_series",
+  "name": "CRYSTA-Apex V Series CNC Coordinate Measuring Machine",
+  "name_ko": "미쓰토요 CRYSTA-Apex V CNC 3차원 측정기",
+  "manufacturer": "mitutoyo",
+  "category": "coordinate_measuring_machine",
+  "form_factor": "floor",
+  "description": "브리지형 CNC 3차원 측정기 계열임. 측정 범위 X 500~900 mm, Y 400~2000 mm, Z 400~800 mm 의 기종이 있고, 길이 측정 오차 E0,MPE = (1.7 + 3L/1000) µm(ISO 10360-2:2009). 최대 구동 속도 519 mm/s, 최대 구동 가속도 2309 mm/s², 최대 측정 속도 8 mm/s. 각 축 에어 베어링과 ABS 스케일, 온도 보정을 갖춤. 2025년 갱신판 CRYSTA-Apex V PLUS 는 보증 온도 범위를 15~30 °C 로 넓힘.",
+  "test_items": [],
+  "standards": {
+    "compliance": [
+      "ISO 10360-2:2009"
+    ],
+    "test_methods": []
+  },
+  "limits": {
+    "measuring_range_x_mm": {
+      "min": 500,
+      "max": 1200,
+      "note": "500·700·900 계열(E16026 p.3, E16036 p.11~13). 1200 계열 V122010 은 X 1200 mm"
+    },
+    "measuring_range_y_mm": {
+      "min": 400,
+      "max": 2000,
+      "note": "Y 400~2000 mm(E16036 p.11~13)"
+    },
+    "measuring_range_z_mm": {
+      "min": 400,
+      "max": 1000,
+      "note": "Z 400~800 mm(500~900 계열). V122010 은 Z 1000 mm"
+    },
+    "measuring_speed_mm_s": {
+      "max": 8,
+      "note": "원문 maximum measuring speed 8 mm/s, maximum drive speed 519 mm/s, maximum acceleration 2,309 mm/s²(E16026 p.5). V PLUS 900 계열 Z800 기종은 측정 속도 1~3 mm/s(E16036 p.13)"
+    }
+  },
+  "models": [
+    {
+      "model": "CRYSTA-Apex V544",
+      "specs": {
+        "measuring_range_x_mm": 500,
+        "measuring_range_y_mm": 400,
+        "measuring_range_z_mm": 400,
+        "length_measuring_error_mpe": "E0,MPE = (1.7 + 3L/1000) µm (ISO 10360-2:2009)"
+      },
+      "note": "E16026 p.3 에 측정 범위 X 500 · Y 400 · Z 400 mm 로 적힘. E0,MPE 는 계열 값(E16026 p.4)"
+    },
+    {
+      "model": "CRYSTA-Apex V574",
+      "specs": {
+        "measuring_range_x_mm": 500,
+        "measuring_range_y_mm": 700,
+        "measuring_range_z_mm": 400,
+        "length_measuring_error_mpe": "E0,MPE = (1.7 + 3L/1000) µm (ISO 10360-2:2009)"
+      },
+      "note": "기종명은 E16026 p.10 사진 설명에 있음. 측정 범위는 같은 번호의 V PLUS574(E16036 p.11)와 같음"
+    },
+    {
+      "model": "CRYSTA-Apex V776",
+      "specs": {
+        "measuring_range_x_mm": 700,
+        "measuring_range_y_mm": 700,
+        "measuring_range_z_mm": 600,
+        "length_measuring_error_mpe": "E0,MPE = (1.7 + 3L/1000) µm (ISO 10360-2:2009)"
+      },
+      "note": "E16026 p.3 에 측정 범위 X 700 · Y 700 · Z 600 mm 로 적힘. E0,MPE 는 계열 값(E16026 p.4)"
+    },
+    {
+      "model": "CRYSTA-Apex V7106",
+      "specs": {
+        "measuring_range_x_mm": 700,
+        "measuring_range_y_mm": 1000,
+        "measuring_range_z_mm": 600,
+        "length_measuring_error_mpe": "E0,MPE = (1.7 + 3L/1000) µm (ISO 10360-2:2009)"
+      },
+      "note": "측정 범위는 같은 번호의 V PLUS7106(E16036) 와 같음. 이 기종명 자체는 E16026 텍스트에 없음(2019 보도자료)"
+    },
+    {
+      "model": "CRYSTA-Apex V9106",
+      "specs": {
+        "measuring_range_x_mm": 900,
+        "measuring_range_y_mm": 1000,
+        "measuring_range_z_mm": 600,
+        "length_measuring_error_mpe": "E0,MPE = (1.7 + 3L/1000) µm (ISO 10360-2:2009)"
+      },
+      "note": "E16026 p.3 에 측정 범위 X 900 · Y 1000 · Z 600 mm 로 적힘. E0,MPE 는 계열 값(E16026 p.4)"
+    },
+    {
+      "model": "CRYSTA-Apex V9108",
+      "specs": {
+        "measuring_range_x_mm": 900,
+        "measuring_range_y_mm": 1000,
+        "measuring_range_z_mm": 800,
+        "length_measuring_error_mpe": "E0,MPE = (1.7 + 3L/1000) µm (ISO 10360-2:2009)"
+      },
+      "note": "측정 범위는 같은 번호의 V PLUS9108(E16036) 와 같음. 이 기종명 자체는 E16026 텍스트에 없음(2019 보도자료)"
+    },
+    {
+      "model": "CRYSTA-Apex V9166",
+      "specs": {
+        "measuring_range_x_mm": 900,
+        "measuring_range_y_mm": 1600,
+        "measuring_range_z_mm": 600,
+        "length_measuring_error_mpe": "E0,MPE = (1.7 + 3L/1000) µm (ISO 10360-2:2009)"
+      },
+      "note": "측정 범위는 같은 번호의 V PLUS9166(E16036) 와 같음. 이 기종명 자체는 E16026 텍스트에 없음(2019 보도자료)"
+    },
+    {
+      "model": "CRYSTA-Apex V9168",
+      "specs": {
+        "measuring_range_x_mm": 900,
+        "measuring_range_y_mm": 1600,
+        "measuring_range_z_mm": 800,
+        "length_measuring_error_mpe": "E0,MPE = (1.7 + 3L/1000) µm (ISO 10360-2:2009)"
+      },
+      "note": "측정 범위는 같은 번호의 V PLUS9168(E16036) 와 같음. 이 기종명 자체는 E16026 텍스트에 없음(2019 보도자료)"
+    },
+    {
+      "model": "CRYSTA-Apex V9206",
+      "specs": {
+        "measuring_range_x_mm": 900,
+        "measuring_range_y_mm": 2000,
+        "measuring_range_z_mm": 600,
+        "length_measuring_error_mpe": "E0,MPE = (1.7 + 3L/1000) µm (ISO 10360-2:2009)"
+      },
+      "note": "측정 범위는 같은 번호의 V PLUS9206(E16036) 와 같음. 이 기종명 자체는 E16026 텍스트에 없음(2019 보도자료)"
+    },
+    {
+      "model": "CRYSTA-Apex V9208",
+      "specs": {
+        "measuring_range_x_mm": 900,
+        "measuring_range_y_mm": 2000,
+        "measuring_range_z_mm": 800,
+        "length_measuring_error_mpe": "E0,MPE = (1.7 + 3L/1000) µm (ISO 10360-2:2009)"
+      },
+      "note": "측정 범위는 같은 번호의 V PLUS9208(E16036) 와 같음. 이 기종명 자체는 E16026 텍스트에 없음(2019 보도자료)"
+    },
+    {
+      "model": "CRYSTA-Apex V122010",
+      "variant": "1200 계열(대형)",
+      "specs": {
+        "measuring_range_x_mm": 1200,
+        "measuring_range_y_mm": 2000,
+        "measuring_range_z_mm": 1000
+      },
+      "note": "E16026 p.3 에 측정 범위 X 1200 · Y 2000 · Z 1000 mm. 이 계열의 E0,MPE 는 PDF 텍스트에 따로 없어 비움"
+    },
+    {
+      "model": "CRYSTA-Apex V162012",
+      "variant": "1600 계열(대형)",
+      "note": "E16026 p.3 사진 설명에 기종명만 있음(측정 범위 표기 없음)"
+    },
+    {
+      "model": "CRYSTA-Apex V203016",
+      "variant": "2000 계열(대형)",
+      "note": "E16026 p.3 사진 설명에 기종명만 있음(측정 범위 표기 없음)"
+    },
+    {
+      "model": "CRYSTA-Apex V PLUS544",
+      "variant": "CRYSTA-Apex V PLUS 500 계열(2025 갱신판)",
+      "specs": {
+        "measuring_range_x_mm": 500,
+        "measuring_range_y_mm": 400,
+        "measuring_range_z_mm": 400,
+        "length_measuring_error_mpe": "E0,MPE(SP25M SM25-1): 18~22 °C 1.8 + 3L/1000 µm, 16~26 °C 1.8 + 4L/1000 µm, 15~30 °C 1.8 + 6.5L/1000 µm (ISO 10360-2:2009). TP20 은 2.3 + 3L/1000 µm",
+        "measuring_speed_mm_s": {
+          "min": 1,
+          "max": 8,
+          "note": "원문 Measuring speed: 1 - 8(CNC 모드). 구동 속도 최대 519 mm/s(합성), 가속도 최대 2309 mm/s²(합성)"
+        },
+        "specimen_height_mm": {
+          "value": 545,
+          "note": "원문 Workpiece maximum height 545 mm"
+        },
+        "specimen_mass_kg": {
+          "value": 180,
+          "note": "원문 Workpiece maximum mass 180 kg"
+        },
+        "operating_temperature_degC": {
+          "min": 10,
+          "max": 35,
+          "note": "원문 Operating temperature 10 to 35 °C. 정확도 보증은 15~30 °C 까지"
+        },
+        "weight_kg": {
+          "value": 542,
+          "note": "원문 Machine mass (stand, 컨트롤러 포함) 542 kg"
+        }
+      },
+      "note": "E16036 p.11 사양표. 분해능 0.0001 mm, 각 축 에어 베어링"
+    },
+    {
+      "model": "CRYSTA-Apex V PLUS574",
+      "variant": "CRYSTA-Apex V PLUS 500 계열(2025 갱신판)",
+      "specs": {
+        "measuring_range_x_mm": 500,
+        "measuring_range_y_mm": 700,
+        "measuring_range_z_mm": 400,
+        "length_measuring_error_mpe": "E0,MPE(SP25M SM25-1): 18~22 °C 1.8 + 3L/1000 µm, 16~26 °C 1.8 + 4L/1000 µm, 15~30 °C 1.8 + 6.5L/1000 µm (ISO 10360-2:2009). TP20 은 2.3 + 3L/1000 µm",
+        "measuring_speed_mm_s": {
+          "min": 1,
+          "max": 8,
+          "note": "원문 Measuring speed: 1 - 8(CNC 모드). 구동 속도 최대 519 mm/s(합성), 가속도 최대 2309 mm/s²(합성)"
+        },
+        "specimen_height_mm": {
+          "value": 545,
+          "note": "원문 Workpiece maximum height 545 mm"
+        },
+        "specimen_mass_kg": {
+          "value": 180,
+          "note": "원문 Workpiece maximum mass 180 kg"
+        },
+        "operating_temperature_degC": {
+          "min": 10,
+          "max": 35,
+          "note": "원문 Operating temperature 10 to 35 °C. 정확도 보증은 15~30 °C 까지"
+        },
+        "weight_kg": {
+          "value": 691,
+          "note": "원문 Machine mass (stand, 컨트롤러 포함) 691 kg"
+        }
+      },
+      "note": "E16036 p.11 사양표. 분해능 0.0001 mm, 각 축 에어 베어링"
+    },
+    {
+      "model": "CRYSTA-Apex V PLUS776",
+      "variant": "CRYSTA-Apex V PLUS 700 계열(2025 갱신판)",
+      "specs": {
+        "measuring_range_x_mm": 700,
+        "measuring_range_y_mm": 700,
+        "measuring_range_z_mm": 600,
+        "length_measuring_error_mpe": "E0,MPE(SP25M SM25-1): 18~22 °C 1.8 + 3L/1000 µm, 16~26 °C 1.8 + 4L/1000 µm, 15~30 °C 1.8 + 5L/1000 µm (ISO 10360-2:2009). TP20 은 2.3 + 3L/1000 µm",
+        "measuring_speed_mm_s": {
+          "min": 1,
+          "max": 8,
+          "note": "원문 Measuring speed: 1 - 8(CNC 모드). 구동 속도 최대 519 mm/s(합성), 가속도 최대 2309 mm/s²(합성)"
+        },
+        "specimen_height_mm": {
+          "value": 800,
+          "note": "원문 Workpiece maximum height 800 mm"
+        },
+        "specimen_mass_kg": {
+          "value": 800,
+          "note": "원문 Workpiece maximum mass 800 kg"
+        },
+        "operating_temperature_degC": {
+          "min": 10,
+          "max": 35,
+          "note": "원문 Operating temperature 10 to 35 °C. 정확도 보증은 15~30 °C 까지"
+        },
+        "weight_kg": {
+          "value": 1810,
+          "note": "원문 Machine mass (stand, 컨트롤러 포함) 1810 kg"
+        }
+      },
+      "note": "E16036 p.12 사양표. 분해능 0.0001 mm, 각 축 에어 베어링"
+    },
+    {
+      "model": "CRYSTA-Apex V PLUS7106",
+      "variant": "CRYSTA-Apex V PLUS 700 계열(2025 갱신판)",
+      "specs": {
+        "measuring_range_x_mm": 700,
+        "measuring_range_y_mm": 1000,
+        "measuring_range_z_mm": 600,
+        "length_measuring_error_mpe": "E0,MPE(SP25M SM25-1): 18~22 °C 1.8 + 3L/1000 µm, 16~26 °C 1.8 + 4L/1000 µm, 15~30 °C 1.8 + 5L/1000 µm (ISO 10360-2:2009). TP20 은 2.3 + 3L/1000 µm",
+        "measuring_speed_mm_s": {
+          "min": 1,
+          "max": 8,
+          "note": "원문 Measuring speed: 1 - 8(CNC 모드). 구동 속도 최대 519 mm/s(합성), 가속도 최대 2309 mm/s²(합성)"
+        },
+        "specimen_height_mm": {
+          "value": 800,
+          "note": "원문 Workpiece maximum height 800 mm"
+        },
+        "specimen_mass_kg": {
+          "value": 1000,
+          "note": "원문 Workpiece maximum mass 1000 kg"
+        },
+        "operating_temperature_degC": {
+          "min": 10,
+          "max": 35,
+          "note": "원문 Operating temperature 10 to 35 °C. 정확도 보증은 15~30 °C 까지"
+        },
+        "weight_kg": {
+          "value": 2063,
+          "note": "원문 Machine mass (stand, 컨트롤러 포함) 2063 kg"
+        }
+      },
+      "note": "E16036 p.12 사양표. 분해능 0.0001 mm, 각 축 에어 베어링"
+    },
+    {
+      "model": "CRYSTA-Apex V PLUS9106",
+      "variant": "CRYSTA-Apex V PLUS 900 계열(2025 갱신판)",
+      "specs": {
+        "measuring_range_x_mm": 900,
+        "measuring_range_y_mm": 1000,
+        "measuring_range_z_mm": 600,
+        "length_measuring_error_mpe": "E0,MPE(SP25M SM25-1): 18~22 °C 1.8 + 3L/1000 µm, 16~26 °C 1.8 + 4L/1000 µm, 15~30 °C 1.8 + 5L/1000 µm (ISO 10360-2:2009). TP20 은 2.3 + 3L/1000 µm",
+        "measuring_speed_mm_s": {
+          "min": 1,
+          "max": 8,
+          "note": "원문 Measuring speed: 1 - 8(CNC 모드). 구동 속도 최대 519 mm/s(합성), 가속도 최대 2309 mm/s²(합성)"
+        },
+        "specimen_height_mm": {
+          "value": 800,
+          "note": "원문 Workpiece maximum height 800 mm"
+        },
+        "specimen_mass_kg": {
+          "value": 1200,
+          "note": "원문 Workpiece maximum mass 1200 kg"
+        },
+        "operating_temperature_degC": {
+          "min": 10,
+          "max": 35,
+          "note": "원문 Operating temperature 10 to 35 °C. 정확도 보증은 15~30 °C 까지"
+        },
+        "weight_kg": {
+          "value": 2267,
+          "note": "원문 Machine mass (stand, 컨트롤러 포함) 2267 kg"
+        }
+      },
+      "note": "E16036 p.13 사양표. 분해능 0.0001 mm, 각 축 에어 베어링"
+    },
+    {
+      "model": "CRYSTA-Apex V PLUS9166",
+      "variant": "CRYSTA-Apex V PLUS 900 계열(2025 갱신판)",
+      "specs": {
+        "measuring_range_x_mm": 900,
+        "measuring_range_y_mm": 1600,
+        "measuring_range_z_mm": 600,
+        "length_measuring_error_mpe": "E0,MPE(SP25M SM25-1): 18~22 °C 1.8 + 3L/1000 µm, 16~26 °C 1.8 + 4L/1000 µm, 15~30 °C 1.8 + 5L/1000 µm (ISO 10360-2:2009). TP20 은 2.3 + 3L/1000 µm",
+        "measuring_speed_mm_s": {
+          "min": 1,
+          "max": 8,
+          "note": "원문 Measuring speed: 1 - 8(CNC 모드). 구동 속도 최대 519 mm/s(합성), 가속도 최대 2309 mm/s²(합성)"
+        },
+        "specimen_height_mm": {
+          "value": 800,
+          "note": "원문 Workpiece maximum height 800 mm"
+        },
+        "specimen_mass_kg": {
+          "value": 1500,
+          "note": "원문 Workpiece maximum mass 1500 kg"
+        },
+        "operating_temperature_degC": {
+          "min": 10,
+          "max": 35,
+          "note": "원문 Operating temperature 10 to 35 °C. 정확도 보증은 15~30 °C 까지"
+        },
+        "weight_kg": {
+          "value": 2969,
+          "note": "원문 Machine mass (stand, 컨트롤러 포함) 2969 kg"
+        }
+      },
+      "note": "E16036 p.13 사양표. 분해능 0.0001 mm, 각 축 에어 베어링"
+    },
+    {
+      "model": "CRYSTA-Apex V PLUS9206",
+      "variant": "CRYSTA-Apex V PLUS 900 계열(2025 갱신판)",
+      "specs": {
+        "measuring_range_x_mm": 900,
+        "measuring_range_y_mm": 2000,
+        "measuring_range_z_mm": 600,
+        "length_measuring_error_mpe": "E0,MPE(SP25M SM25-1): 18~22 °C 1.8 + 3L/1000 µm, 16~26 °C 1.8 + 4L/1000 µm, 15~30 °C 1.8 + 5L/1000 µm (ISO 10360-2:2009). TP20 은 2.3 + 3L/1000 µm",
+        "measuring_speed_mm_s": {
+          "min": 1,
+          "max": 8,
+          "note": "원문 Measuring speed: 1 - 8(CNC 모드). 구동 속도 최대 519 mm/s(합성), 가속도 최대 2309 mm/s²(합성)"
+        },
+        "specimen_height_mm": {
+          "value": 800,
+          "note": "원문 Workpiece maximum height 800 mm"
+        },
+        "specimen_mass_kg": {
+          "value": 1800,
+          "note": "원문 Workpiece maximum mass 1800 kg"
+        },
+        "operating_temperature_degC": {
+          "min": 10,
+          "max": 35,
+          "note": "원문 Operating temperature 10 to 35 °C. 정확도 보증은 15~30 °C 까지"
+        },
+        "weight_kg": {
+          "value": 4052,
+          "note": "원문 Machine mass (stand, 컨트롤러 포함) 4052 kg"
+        }
+      },
+      "note": "E16036 p.13 사양표. 분해능 0.0001 mm, 각 축 에어 베어링"
+    },
+    {
+      "model": "CRYSTA-Apex V PLUS9108",
+      "variant": "CRYSTA-Apex V PLUS 900 계열(2025 갱신판)",
+      "specs": {
+        "measuring_range_x_mm": 900,
+        "measuring_range_y_mm": 1000,
+        "measuring_range_z_mm": 800,
+        "length_measuring_error_mpe": "E0,MPE(SP25M SM25-1): 18~22 °C 1.8 + 3L/1000 µm, 16~26 °C 1.8 + 4L/1000 µm, 15~30 °C 1.8 + 6.5L/1000 µm (ISO 10360-2:2009). TP20 은 2.3 + 3L/1000 µm",
+        "measuring_speed_mm_s": {
+          "min": 1,
+          "max": 3,
+          "note": "원문 Measuring speed: 1 - 3(CNC 모드). 구동 속도 최대 519 mm/s(합성), 가속도 최대 1732 mm/s²(합성)"
+        },
+        "specimen_height_mm": {
+          "value": 1000,
+          "note": "원문 Workpiece maximum height 1000 mm"
+        },
+        "specimen_mass_kg": {
+          "value": 1200,
+          "note": "원문 Workpiece maximum mass 1200 kg"
+        },
+        "operating_temperature_degC": {
+          "min": 10,
+          "max": 35,
+          "note": "원문 Operating temperature 10 to 35 °C. 정확도 보증은 15~30 °C 까지"
+        },
+        "weight_kg": {
+          "value": 2287,
+          "note": "원문 Machine mass (stand, 컨트롤러 포함) 2287 kg"
+        }
+      },
+      "note": "E16036 p.13 사양표. 분해능 0.0001 mm, 각 축 에어 베어링"
+    },
+    {
+      "model": "CRYSTA-Apex V PLUS9168",
+      "variant": "CRYSTA-Apex V PLUS 900 계열(2025 갱신판)",
+      "specs": {
+        "measuring_range_x_mm": 900,
+        "measuring_range_y_mm": 1600,
+        "measuring_range_z_mm": 800,
+        "length_measuring_error_mpe": "E0,MPE(SP25M SM25-1): 18~22 °C 1.8 + 3L/1000 µm, 16~26 °C 1.8 + 4L/1000 µm, 15~30 °C 1.8 + 6.5L/1000 µm (ISO 10360-2:2009). TP20 은 2.3 + 3L/1000 µm",
+        "measuring_speed_mm_s": {
+          "min": 1,
+          "max": 3,
+          "note": "원문 Measuring speed: 1 - 3(CNC 모드). 구동 속도 최대 519 mm/s(합성), 가속도 최대 1732 mm/s²(합성)"
+        },
+        "specimen_height_mm": {
+          "value": 1000,
+          "note": "원문 Workpiece maximum height 1000 mm"
+        },
+        "specimen_mass_kg": {
+          "value": 1500,
+          "note": "원문 Workpiece maximum mass 1500 kg"
+        },
+        "operating_temperature_degC": {
+          "min": 10,
+          "max": 35,
+          "note": "원문 Operating temperature 10 to 35 °C. 정확도 보증은 15~30 °C 까지"
+        },
+        "weight_kg": {
+          "value": 2999,
+          "note": "원문 Machine mass (stand, 컨트롤러 포함) 2999 kg"
+        }
+      },
+      "note": "E16036 p.13 사양표. 분해능 0.0001 mm, 각 축 에어 베어링"
+    },
+    {
+      "model": "CRYSTA-Apex V PLUS9208",
+      "variant": "CRYSTA-Apex V PLUS 900 계열(2025 갱신판)",
+      "specs": {
+        "measuring_range_x_mm": 900,
+        "measuring_range_y_mm": 2000,
+        "measuring_range_z_mm": 800,
+        "length_measuring_error_mpe": "E0,MPE(SP25M SM25-1): 18~22 °C 1.8 + 3L/1000 µm, 16~26 °C 1.8 + 4L/1000 µm, 15~30 °C 1.8 + 6.5L/1000 µm (ISO 10360-2:2009). TP20 은 2.3 + 3L/1000 µm",
+        "measuring_speed_mm_s": {
+          "min": 1,
+          "max": 3,
+          "note": "원문 Measuring speed: 1 - 3(CNC 모드). 구동 속도 최대 519 mm/s(합성), 가속도 최대 1732 mm/s²(합성)"
+        },
+        "specimen_height_mm": {
+          "value": 1000,
+          "note": "원문 Workpiece maximum height 1000 mm"
+        },
+        "specimen_mass_kg": {
+          "value": 1800,
+          "note": "원문 Workpiece maximum mass 1800 kg"
+        },
+        "operating_temperature_degC": {
+          "min": 10,
+          "max": 35,
+          "note": "원문 Operating temperature 10 to 35 °C. 정확도 보증은 15~30 °C 까지"
+        },
+        "weight_kg": {
+          "value": 4082,
+          "note": "원문 Machine mass (stand, 컨트롤러 포함) 4082 kg"
+        }
+      },
+      "note": "E16036 p.13 사양표. 분해능 0.0001 mm, 각 축 에어 베어링"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://www2.mitutoyo.co.jp/eng/new/news/2019/08/mitutoyo_launches_sales_of_high_accuracy_cnc_coordinate_measuring_machine_crysta-apex_v_series_suite.html",
+      "retrieved": "2026-10-08",
+      "note": "제조사(본사 영문) 2019 출시 보도자료. 기종명, 측정 범위 표(병합 셀), E0,MPE, 속도·가속도"
+    },
+    {
+      "url": "https://www2.mitutoyo.co.jp/eng/new/news/2025/07/launch_of_the_new_cnc_coordinate_measuring_machine_crysta-apex_v_plus_series.html",
+      "retrieved": "2026-10-08",
+      "note": "제조사(본사 영문) 2025 CRYSTA-Apex V PLUS 출시 보도자료. 계열별 측정 범위, 온도 구간별 E0,MPE"
+    },
+    {
+      "file": "mitutoyo/e16026.pdf",
+      "pages": [
+        3,
+        4,
+        5,
+        10
+      ]
+    },
+    {
+      "file": "mitutoyo/e16036.pdf",
+      "pages": [
+        11,
+        12,
+        13
+      ]
+    }
+  ],
+  "confidence": "catalog",
+  "notes": "PDF 로 확인: V 계열 E0,MPE 1.7 + 3L/1000 µm·구동 속도 519 mm/s·가속도 2,309 mm/s²·측정 속도 8 mm/s·V544/V776/V9106 측정 범위(E16026), V PLUS 10기종의 측정 범위·온도 구간별 E0,MPE·측정 속도·작업물 한계(E16036 p.11~13). 웹 보도자료 값과 어긋난 값은 없음. 'CRYSTA-Apex V PLUS' 하나로 묶었던 항목을 PDF 기종명(V PLUS544 … V PLUS9208)으로 나눔. V 계열 V7106·V9108·V9166·V9168·V9206·V9208 의 기종명·측정 범위는 2019 보도자료 값 그대로(같은 번호 V PLUS 와 같음). E16026 에 대형 V122010·V162012·V203016 이 나와 더함(V162012·V203016 은 이름만)."
+}

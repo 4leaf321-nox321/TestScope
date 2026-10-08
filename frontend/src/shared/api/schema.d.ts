@@ -1836,6 +1836,100 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/api/equipment-models/gaps": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * List Catalog Gaps
+         * @description **카탈로그 보강 목록** — 미연결 장비를 왜 미연결인지로 가른다. 시스템 관리자 전용.
+         *
+         *     같은 기종 있음(`exact`) · 비슷한 기종 있음(`similar`) · 계열만 있음(`series_only`) ·
+         *     카탈로그에 없음(`not_in_catalog`) · 모델명 없음(`no_model`) · 카탈로그 대상 아님
+         *     (`excluded`, 관리자가 아니오 한 것). 묶는 열쇠는 기종 등록 요청과 같다.
+         *
+         *     요약 · 분류별 표는 거르지 않고, 묶음 목록만 `case` · `category_term_id` · `q` 로 거른다.
+         *     `/{model_id}` 보다 **먼저 선언한다.**
+         */
+        get: operations["list_catalog_gaps_api_equipment_models_gaps_get"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/equipment-models/gaps/export": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * Export Catalog Gaps
+         * @description 보강 목록 전체(CSV) — **제조사 사양서 조사의 출발점.** 자산번호를 전부 싣는다.
+         *
+         *     조사한 것은 카탈로그 정본(`source/catalog`)에 넣고 반입한다. 그다음 이 목록에서 연결한다.
+         */
+        get: operations["export_catalog_gaps_api_equipment_models_gaps_export_get"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/equipment-models/gaps/requests": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /**
+         * Request Catalog Gaps
+         * @description 묶음들을 **기종 등록 요청으로 올린다.** 정하는 일은 기종 등록 요청 화면이 한다.
+         *
+         *     모델명이 없는 묶음은 건너뛰고(`skipped`), 이미 열린 요청은 다시 안 만든다.
+         */
+        post: operations["request_catalog_gaps_api_equipment_models_gaps_requests_post"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/equipment-models/gaps/resolve": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /**
+         * Resolve Catalog Gap
+         * @description 한 묶음을 정한다 — 요청을 만든 뒤 바로 그 요청을 정한다(기종 등록 요청과 같은 규칙).
+         *
+         *     `model_id` · `series_id`+`name` · `reject` 중 **하나만.** 정한 기종이 묶음의 장비 전부에
+         *     걸리고, 막힌 줄은 `failed` 로 온다.
+         */
+        post: operations["resolve_catalog_gap_api_equipment_models_gaps_resolve_post"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/api/equipment-models/{model_id}": {
         parameters: {
             query?: never;
@@ -4600,6 +4694,142 @@ export interface components {
             statuses: components["schemas"]["FilterOption"][];
             /** Series */
             series: components["schemas"]["FilterOption"][];
+        };
+        /**
+         * CatalogGapCandidateOut
+         * @description 후보 기종 또는 후보 계열. **후보일 뿐이다** — 사람이 같은지 보고 고른다.
+         */
+        CatalogGapCandidateOut: {
+            /**
+             * Id
+             * Format: uuid
+             */
+            id: string;
+            /** Label */
+            label: string;
+            /** Detail */
+            detail?: string | null;
+            /** Score */
+            score?: number | null;
+        };
+        /**
+         * CatalogGapCategoryOut
+         * @description 분류 하나의 미연결 대수를 경우별로.
+         */
+        CatalogGapCategoryOut: {
+            /** Category */
+            category: string;
+            /** Category Term Id */
+            category_term_id: string | null;
+            /** In Catalog */
+            in_catalog: boolean;
+            /** Total */
+            total: number;
+            /** By Case */
+            by_case: {
+                [key: string]: number;
+            };
+        };
+        /**
+         * CatalogGapGroupOut
+         * @description 같은 제조사 + 모델명 표기의 미연결 장비 묶음 — 기종 등록 요청과 **같은 열쇠**다.
+         */
+        CatalogGapGroupOut: {
+            /** Key */
+            key: string;
+            /** Case */
+            case: string;
+            /** Case Label */
+            case_label: string;
+            /** Maker Text */
+            maker_text: string | null;
+            /** Model Text */
+            model_text: string | null;
+            /** Maker Known */
+            maker_known: boolean;
+            /** Count */
+            count: number;
+            /** Categories */
+            categories: string[];
+            /** Departments */
+            departments: string[];
+            /** Units */
+            units: components["schemas"]["CatalogGapUnitOut"][];
+            /** Models */
+            models: components["schemas"]["CatalogGapCandidateOut"][];
+            /** Series */
+            series: components["schemas"]["CatalogGapCandidateOut"][];
+            /** Open Requests */
+            open_requests: number;
+        };
+        /**
+         * CatalogGapRequestsRequest
+         * @description 묶음들을 기종 등록 요청으로 올린다.
+         */
+        CatalogGapRequestsRequest: {
+            /** Keys */
+            keys: string[];
+        };
+        /**
+         * CatalogGapResolveRequest
+         * @description 한 묶음을 정한다 — 연결(`model_id`) · 계열에 세우기(`series_id`+`name`) ·
+         *     아니오(`reject`). **셋 중 하나만**(기종 등록 요청 정하기와 같은 규칙).
+         */
+        CatalogGapResolveRequest: {
+            /** Key */
+            key: string;
+            /** Model Id */
+            model_id?: string | null;
+            /** Series Id */
+            series_id?: string | null;
+            /** Name */
+            name?: string | null;
+            /**
+             * Reject
+             * @default false
+             */
+            reject: boolean;
+        };
+        /**
+         * CatalogGapUnitOut
+         * @description 보강 목록 한 묶음에 든 장비 한 대.
+         */
+        CatalogGapUnitOut: {
+            /**
+             * Id
+             * Format: uuid
+             */
+            id: string;
+            /** Asset No */
+            asset_no: string;
+            /** Name */
+            name: string;
+            /** Workspace */
+            workspace: string | null;
+            /** Category */
+            category: string | null;
+        };
+        /**
+         * CatalogGapsOut
+         * @description 카탈로그 보강 목록. 요약과 분류별 표는 **거르지 않은 전체**다.
+         */
+        CatalogGapsOut: {
+            /** Units */
+            units: number;
+            /** By Case */
+            by_case: {
+                [key: string]: number;
+            };
+            /** Case Labels */
+            case_labels: {
+                [key: string]: string;
+            };
+            /** By Category */
+            by_category: components["schemas"]["CatalogGapCategoryOut"][];
+            /** Groups Total */
+            groups_total: number;
+            /** Groups */
+            groups: components["schemas"]["CatalogGapGroupOut"][];
         };
         /**
          * CatalogHit
@@ -12841,6 +13071,129 @@ export interface operations {
         requestBody: {
             content: {
                 "application/json": components["schemas"]["EquipmentModelProposalDecision"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        [key: string]: unknown;
+                    };
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    list_catalog_gaps_api_equipment_models_gaps_get: {
+        parameters: {
+            query?: {
+                case?: string | null;
+                category_term_id?: string | null;
+                q?: string | null;
+            };
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["CatalogGapsOut"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    export_catalog_gaps_api_equipment_models_gaps_export_get: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": unknown;
+                };
+            };
+        };
+    };
+    request_catalog_gaps_api_equipment_models_gaps_requests_post: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["CatalogGapRequestsRequest"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        [key: string]: unknown;
+                    };
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    resolve_catalog_gap_api_equipment_models_gaps_resolve_post: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["CatalogGapResolveRequest"];
             };
         };
         responses: {

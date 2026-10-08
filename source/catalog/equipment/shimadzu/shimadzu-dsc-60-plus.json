@@ -1,0 +1,107 @@
+{
+  "id": "shimadzu-dsc-60-plus",
+  "kind": "equipment_series",
+  "name": "DSC-60 Plus Series Differential Scanning Calorimeter (DSC-60 Plus / DSC-60A Plus)",
+  "name_ko": "시마즈 DSC-60 Plus 시리즈 시차주사열량계",
+  "manufacturer": "shimadzu",
+  "category": "dsc",
+  "description": "열류식 DSC. 온도 범위 실온~600 °C(액체질소 없이), 액체질소로 -140~600 °C. 열류 측정 범위 ±150 mW, 기저선 잡음 0.5 µW 이하(rms, 150 °C 공시료 유지). DSC-60A Plus 는 최대 24 시료 자동 측정.",
+  "test_items": [
+    "dsc"
+  ],
+  "measurands": [
+    "thermal.glass_transition",
+    "thermal.melting_point",
+    "thermal.specific_heat",
+    "thermal.latent_heat_fusion"
+  ],
+  "measurands_by_item": {
+    "dsc": [
+      "thermal.glass_transition",
+      "thermal.melting_point",
+      "thermal.specific_heat",
+      "thermal.latent_heat_fusion"
+    ]
+  },
+  "limits": {
+    "temperature_degC": {
+      "min": -140,
+      "max": 600,
+      "note": "실온 미만은 액체질소 사용"
+    },
+    "heat_flow_mW": {
+      "max": 150,
+      "note": "±150 mW"
+    }
+  },
+  "models": [
+    {
+      "model": "DSC-60 Plus",
+      "specs": {
+        "temperature_degC": {
+          "min": -140,
+          "max": 600,
+          "note": "액체질소 없이 실온~600 °C"
+        },
+        "heat_flow_mW": {
+          "value": 150,
+          "note": "±150 mW"
+        },
+        "heat_flow_noise_uW_rms": 0.5,
+        "footprint_mm": {
+          "W": 320,
+          "D": 500,
+          "H": 290
+        },
+        "weight_kg": 28,
+        "power": "AC100V, 120V, 230V 50/60Hz MAX 800VA"
+      },
+      "note": "자동 측정 기능 없음"
+    },
+    {
+      "model": "DSC-60A Plus",
+      "specs": {
+        "temperature_degC": {
+          "min": -140,
+          "max": 600,
+          "note": "액체질소 없이 실온~600 °C"
+        },
+        "heat_flow_mW": {
+          "value": 150,
+          "note": "±150 mW"
+        },
+        "heat_flow_noise_uW_rms": 0.5,
+        "footprint_mm": {
+          "W": 320,
+          "D": 500,
+          "H": 290
+        },
+        "weight_kg": 31,
+        "power": "AC100V, 120V, 230V 50/60Hz MAX 800VA"
+      },
+      "note": "자동 측정 최대 24 시료"
+    }
+  ],
+  "relations": [
+    {
+      "type": "same_family_as",
+      "target": "shimadzu-dtg-60"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://www.shimadzu.com/an/products/thermal-analysis/differential-scanning-calorimeters/dsc-60-plus-series/spec.html",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지(HTML) 본문·표를 직접 읽음. 기종별 사양(온도 범위, 열류 측정 범위, 기저선 잡음, 외형, 무게, 자동 측정)"
+    },
+    {
+      "file": "shimadzu/c160-e006.pdf",
+      "pages": [
+        2,
+        3
+      ]
+    }
+  ],
+  "confidence": "catalog",
+  "notes": "PDF(C160-E006)로 온도 범위(-140~600 °C, 표준 냉각 챔버·액체질소), 열류 범위 ±150 mW, 잡음 <0.5 µW, 외형·무게, 자동 시료 24 를 확인하고 전원을 더했다. 승온 속도는 PDF 에도 없다. 분위기 질소·불활성·건조 공기. 선택 냉각: TAC-60L 액체질소 자동 냉각 -130~500 °C(-80 °C 에서 -10 °C/min), TAC-60i 전기 냉각 -50~500 °C."
+}

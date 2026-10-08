@@ -1,0 +1,186 @@
+{
+  "id": "weiss-climeevent",
+  "kind": "equipment_series",
+  "name": "Weiss Technik ClimeEvent Reach-in Climate Test Chambers (C2 series)",
+  "name_ko": "바이스 테크닉 ClimeEvent 리치인 항온항습 시험 챔버",
+  "manufacturer": "weiss-technik",
+  "brand": "ClimeEvent",
+  "category": "climatic_chamber",
+  "drive": "thermal",
+  "form_factor": "floor",
+  "description": "리치인 항온항습 시험 챔버. 절대 습도 제어와 큰 수조로 기후 변화 시험과 극한 온습도 조합을 다룬다. 25.4 cm(10\") 접이식 터치 화면. 기종명 C2/180/50/3 의 표에서 시험 공간 190 L, -50~+180 °C, 10~98 %RH. 자연 냉매 R744(CO2) 기종과 일반 냉매 기종이 있다. weisstechnik·vötschtechnik 두 브랜드로 공급된다.",
+  "test_items": [
+    "damp_heat",
+    "temperature_cycling"
+  ],
+  "limits": {
+    "temperature_degC": {
+      "min": -50,
+      "max": 180,
+      "note": "C2/180/50/3 행 기준. 다른 기종 값은 페이지에서 보이지 않음",
+      "uncertain": true
+    },
+    "humidity_pct": {
+      "min": 10,
+      "max": 98,
+      "note": "C2/180/50/3 행 기준"
+    }
+  },
+  "models": [
+    {
+      "model": "C2/180/50/3",
+      "variant": "CO2 냉매(R744)",
+      "specs": {
+        "chamber_volume_L": 190,
+        "footprint_mm": "H1830×W900×D1575",
+        "inner_mm": "H750×W580×D450",
+        "temperature_degC": {
+          "min": -50,
+          "max": 180
+        },
+        "humidity_pct": {
+          "min": 10,
+          "max": 98
+        },
+        "cooling_rate_K_min": {
+          "max": 4.5,
+          "note": "기술 데이터 표의 냉각 속도"
+        },
+        "refrigerant": "R744 (CO2)"
+      },
+      "note": "페이지 기술 데이터 표에서 값이 보인 유일한 행"
+    },
+    {
+      "model": "C2/340/50/3",
+      "variant": "CO2 냉매(R744)",
+      "specs": {
+        "refrigerant": "R744 (CO2)"
+      },
+      "note": "기종 선택 목록에 있는 이름. 기술 데이터 값은 페이지에서 보이지 않았다"
+    },
+    {
+      "model": "C2/600/50/4",
+      "variant": "CO2 냉매(R744)",
+      "specs": {
+        "refrigerant": "R744 (CO2)"
+      },
+      "note": "기종 선택 목록에 있는 이름. 기술 데이터 값은 페이지에서 보이지 않았다"
+    },
+    {
+      "model": "C2/1000/50/10",
+      "variant": "CO2 냉매(R744)",
+      "specs": {
+        "refrigerant": "R744 (CO2)"
+      },
+      "note": "기종 선택 목록에 있는 이름. 기술 데이터 값은 페이지에서 보이지 않았다"
+    },
+    {
+      "model": "C2/1500/50/7",
+      "variant": "CO2 냉매(R744)",
+      "specs": {
+        "refrigerant": "R744 (CO2)"
+      },
+      "note": "기종 선택 목록에 있는 이름. 기술 데이터 값은 페이지에서 보이지 않았다"
+    },
+    {
+      "model": "C2/180/70/3",
+      "note": "기종 선택 목록에 있는 이름. 기술 데이터 값은 페이지에서 보이지 않았다"
+    },
+    {
+      "model": "C2/180/70/5",
+      "note": "기종 선택 목록에 있는 이름. 기술 데이터 값은 페이지에서 보이지 않았다"
+    },
+    {
+      "model": "C2/340/70/3",
+      "note": "기종 선택 목록에 있는 이름. 기술 데이터 값은 페이지에서 보이지 않았다"
+    },
+    {
+      "model": "C2/340/70/5",
+      "note": "기종 선택 목록에 있는 이름. 기술 데이터 값은 페이지에서 보이지 않았다"
+    },
+    {
+      "model": "C2/600/70/3",
+      "note": "기종 선택 목록에 있는 이름. 기술 데이터 값은 페이지에서 보이지 않았다"
+    },
+    {
+      "model": "C2/600/70/5",
+      "note": "기종 선택 목록에 있는 이름. 기술 데이터 값은 페이지에서 보이지 않았다"
+    },
+    {
+      "model": "C2/1000/70/3",
+      "note": "기종 선택 목록에 있는 이름. 기술 데이터 값은 페이지에서 보이지 않았다"
+    },
+    {
+      "model": "C2/1000/70/5",
+      "note": "기종 선택 목록에 있는 이름. 기술 데이터 값은 페이지에서 보이지 않았다"
+    },
+    {
+      "model": "C2/1500/70/3",
+      "note": "기종 선택 목록에 있는 이름. 기술 데이터 값은 페이지에서 보이지 않았다"
+    },
+    {
+      "model": "C2/1500/70/5",
+      "note": "기종 선택 목록에 있는 이름. 기술 데이터 값은 페이지에서 보이지 않았다"
+    },
+    {
+      "model": "C2/2000/70/5",
+      "note": "기종 선택 목록에 있는 이름. 기술 데이터 값은 페이지에서 보이지 않았다"
+    },
+    {
+      "model": "C/3600/50/4/W",
+      "variant": "ClimeEvent XXL-W, 폭 넓은 시험실, R744 냉매",
+      "specs": {
+        "chamber_volume_L": 3597,
+        "inner_mm": "H1510×W1985×D1200",
+        "footprint_mm": "H2165×W3985×D1560",
+        "temperature_degC": {
+          "min": -50,
+          "max": 180
+        },
+        "humidity_pct": {
+          "min": 10,
+          "max": 95
+        },
+        "refrigerant": "R744 (CO2)",
+        "power_kW": 24,
+        "power": "3/N/PE AC 400 V ±10 % 50 Hz, 41 A",
+        "weight_kg": 1700,
+        "payload_kg": 400
+      },
+      "note": "제품 시트 PDF(weiss-technik/pdf.pdf) 값, 명목 3600 L. 2쪽 표는 추출 텍스트에서 항목 이름과 값이 따로 떨어져 있으나 둘 다 20개이고 온도 범위·습도 센서·전압·케이블 길이 자리가 맞아 같은 순서로 읽힘. 그 순서로 읽은 나머지 값(확인 필요, specs 에 넣지 않음): 변화 속도 가열·냉각 각 1 K/min(공랭), 온도 균일도 ±0.5~2 K, 시간 변동 ±0.3~1 K, 최대 열 보상 5000 W(+20 °C·-20 °C 수랭)·500 W(+25~+90 °C), 이슬점 +5~+85 °C, 습도 시험 온도 +10~+90 °C, 습도 변동 ±3~5 %RH. 소음 70 dB(A), 바스켓 최대 2개·바스켓당 75 kg(4쪽)"
+    }
+  ],
+  "relations": [
+    {
+      "type": "simulates_environment",
+      "target": "environment-damp-heat"
+    },
+    {
+      "type": "same_family_as",
+      "target": "weiss-labevent"
+    },
+    {
+      "type": "same_family_as",
+      "target": "weiss-tempevent"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://www.weiss-technik.com/environmental-simulation/en/products/detail/climeevent~gp50800",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지. 기종 선택 목록(16개)과 기술 데이터 표(C2/180/50/3 한 행만 값이 보임)"
+    },
+    {
+      "file": "weiss-technik/pdf.pdf",
+      "pages": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "note": "ClimeEvent XXL-W C/3600/50/4/W 제품 시트. 1쪽 소개, 2쪽 성능·전기 표, 3쪽 시험 공간·외형·무게, 4쪽 내부 부속"
+    }
+  ],
+  "confidence": "limited",
+  "notes": "페이지가 기종 선택에 따라 표를 바꾸는 구조라 C2/180/50/3 외 기종의 값을 읽지 못했다. 기종명 숫자의 뜻(용적/최저 온도/변화 속도로 보임)을 페이지가 설명하지 않아 값으로 옮기지 않았다. 페이지 본문에 ESS 형(10~25 K/min, 270~1300 L)이 언급되나 그 기종은 weiss-tempevent 로 따로 적었다. 구형 표기(C/180/40/3, C/340/70/5 등)는 현행 페이지에 없어 넣지 않았다. 저장소 PDF(weiss-technik/pdf.pdf)는 C2 표의 기종이 아니라 ClimeEvent XXL-W(C/3600/50/4/W) 제품 시트라 그 기종을 더함. C2 기종 값은 PDF 로 확인하지 못함."
+}

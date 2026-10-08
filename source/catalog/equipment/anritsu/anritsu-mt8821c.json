@@ -1,0 +1,96 @@
+{
+  "id": "anritsu-mt8821c",
+  "kind": "equipment_series",
+  "name": "Anritsu Radio Communication Analyzer MT8821C",
+  "name_ko": "안리쓰 MT8821C 무선통신 분석기",
+  "manufacturer": "anritsu",
+  "category": "radio_communication_tester",
+  "description": "스마트폰·태블릿·IoT 모듈 개발용 무선통신 분석기. 최대 6 GHz, 발생기·분석기 대역폭 160 MHz 이고, LTE/LTE-Advanced, Cat-M1/NB-IoT, NTN NB-IoT, W-CDMA/HSPA, GSM/EGPRS, TD-SCDMA/HSPA, LTE-U/LAA(5 GHz 대역)를 시험한다. LTE-A 하향 CA 는 한 대로 2CC 4x4 MIMO·4CC 2x2 MIMO, 두 대로 4CC 4x4·6CC 2x2, 세 대로 5CC 4x4 까지 된다. VoLTE 음성·영상 에코백, OTA·SAR 시험, IP 처리량 시험용 내장 PC, GPIB·이더넷 원격 제어를 지원한다.",
+  "test_items": [],
+  "limits": {
+    "frequency_Hz": {
+      "min": 30000000,
+      "max": 6000000000,
+      "note": "브로슈어 사양: 송수신 30 MHz~3.8 GHz, MT8821C-019(Extended RF) 로 6.0 GHz"
+    },
+    "bandwidth_Hz": {
+      "max": 160000000,
+      "note": "원문 160 MHz wide frequency bandwidth (Generator/Analyzer). 브로슈어 2쪽도 같은 문구"
+    },
+    "radio_standards": {
+      "values": [
+        "LTE/LTE-Advanced",
+        "Cat-M1/NB-IoT",
+        "NTN NB-IoT",
+        "W-CDMA/HSPA",
+        "GSM/EGPRS",
+        "TD-SCDMA/HSPA",
+        "LTE-U/LAA"
+      ],
+      "note": "제품 페이지 문구"
+    },
+    "rf_output_level_dBm": {
+      "min": -140,
+      "max": 5,
+      "note": "브로슈어 Level range: Main 1, 2 -140~-10 dBm(내부 발생기 TX1), -140~-16 dBm(TX2·3·4, 옵션), Aux 1~4 -125~+5 dBm"
+    }
+  },
+  "models": [
+    {
+      "model": "MT8821C",
+      "specs": {
+        "frequency_Hz": {
+          "min": 30000000,
+          "max": 6000000000,
+          "note": "3.8 GHz 초과는 MT8821C-019"
+        },
+        "bandwidth_Hz": 160000000,
+        "radio_standards": "LTE/LTE-A, Cat-M1/NB-IoT, NTN NB-IoT, W-CDMA/HSPA, GSM/EGPRS, TD-SCDMA/HSPA, LTE-U/LAA",
+        "interfaces": "GPIB, Ethernet",
+        "rf_output_level_dBm": {
+          "min": -140,
+          "max": 5,
+          "note": "Main -140~-10 dBm, Aux -125~+5 dBm"
+        },
+        "display_size_in": 12.1
+      }
+    }
+  ],
+  "features": [
+    "LTE-A 5CC SISO(한 대)",
+    "하향 CA 2CC 4x4 MIMO·4CC 2x2 MIMO(한 대)",
+    "4CC 4x4·6CC 2x2(두 대), 5CC 4x4(세 대)",
+    "VoLTE 음성·영상 에코백",
+    "OTA·SAR 시험",
+    "IP 처리량 시험용 내장 Windows 7 PC",
+    "GPIB·이더넷 원격 제어"
+  ],
+  "relations": [
+    {
+      "type": "successor_of",
+      "target": "anritsu-mt8820c",
+      "note": "MT8820C 페이지가 대체 기종으로 MT8821C 를 적는다"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://www.anritsu.com/en-us/test-measurement/products/mt8821c",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지. 최대 6 GHz, 160 MHz, 지원 기술, CA·MIMO 구성"
+    },
+    {
+      "file": "anritsu/dwl010978.pdf",
+      "pages": [
+        1,
+        2,
+        7,
+        10,
+        14,
+        16
+      ],
+      "note": "제조사 브로슈어. 주파수 30 MHz~3.8/6 GHz, 출력 레벨, 160 MHz 대역폭, 지원 시스템·CA 구성, GPIB·이더넷, 12.1인치 화면"
+    }
+  ],
+  "confidence": "catalog",
+  "notes": "PDF 로 확인: 주파수(하한 30 MHz 포함), 출력 레벨, 160 MHz 대역폭, 지원 시스템, 원격 제어(GPIB·이더넷). 브로슈어 2쪽은 LTE-A 8CA 까지 지원한다고 적는다(웹 features 의 CA 구성은 대수별 MIMO 조합)."
+}

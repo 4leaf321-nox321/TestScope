@@ -1,0 +1,164 @@
+{
+  "id": "photron-fastcam-nova-s",
+  "kind": "equipment_series",
+  "name": "Photron FASTCAM NOVA S-Series",
+  "name_ko": "포트론 FASTCAM NOVA S 고속 카메라",
+  "manufacturer": "photron",
+  "brand": "FASTCAM",
+  "category": "high_speed_swir_camera",
+  "subcategory": "high_speed_camera",
+  "form_factor": "camera",
+  "description": "1 메가픽셀(1,024 × 1,024) 자체 CMOS 센서의 고속 카메라 계열로, 단종된 SA-Z · SA-X2 의 후속으로 안내된다. 전 화소 프레임 속도는 S6 6,400 · S9 9,000 · S12 12,800 · S16 16,000 fps, 화소를 줄이면 최대 800,000 ~ 1,100,000 fps. 셔터 1 ms ~ 0.2 µs, 감도 흑백 ISO 64,000 / 컬러 ISO 16,000, 메모리 16 ~ 128 GB, 10-Gigabit Ethernet.",
+  "test_items": [],
+  "limits": {
+    "resolution_pixels": {
+      "max": 1048576,
+      "note": "1,024 × 1,024"
+    },
+    "frame_rate_fps": {
+      "min": 6400,
+      "max": 16000,
+      "note": "전 화소 기준"
+    },
+    "max_frame_rate_fps": {
+      "max": 1100000,
+      "note": "화소를 줄였을 때. S6 800,000 / S9 900,000 / S12 1,000,000 / S16 1,100,000 fps"
+    },
+    "min_exposure_time_s": {
+      "min": 2e-07,
+      "note": "셔터 1 ms ~ 0.2 µs"
+    },
+    "memory_GB": {
+      "values": [
+        16,
+        32,
+        64,
+        128
+      ]
+    }
+  },
+  "models": [
+    {
+      "model": "NOVA S6",
+      "specs": {
+        "detector": "Proprietary 1-megapixel CMOS image sensor",
+        "detector_pixels": "1024 × 1024",
+        "resolution_pixels": 1048576,
+        "min_exposure_time_s": 2e-07,
+        "memory_GB": [
+          16,
+          32,
+          64,
+          128
+        ],
+        "adc_resolution_bit": 12,
+        "interfaces": "10-Gigabit Ethernet",
+        "weight_kg": 3.3,
+        "frame_rate_fps": 6400,
+        "max_frame_rate_fps": 800000,
+        "pixel_pitch_um": 20
+      },
+      "note": "최대 프레임 속도는 type 800K(128 × 16 화소). 수출 통제용 형식 type 500K 는 500,000 fps, type 200KS 는 200,000 fps"
+    },
+    {
+      "model": "NOVA S9",
+      "specs": {
+        "detector": "Proprietary 1-megapixel CMOS image sensor",
+        "detector_pixels": "1024 × 1024",
+        "resolution_pixels": 1048576,
+        "min_exposure_time_s": 2e-07,
+        "memory_GB": [
+          16,
+          32,
+          64,
+          128
+        ],
+        "adc_resolution_bit": 12,
+        "interfaces": "10-Gigabit Ethernet",
+        "weight_kg": 3.3,
+        "frame_rate_fps": 9000,
+        "max_frame_rate_fps": 900000,
+        "pixel_pitch_um": 20
+      },
+      "note": "최대 프레임 속도는 type 900K(128 × 16 화소). 수출 통제용 형식 type 500K 는 500,000 fps, type 200KS 는 200,000 fps"
+    },
+    {
+      "model": "NOVA S12",
+      "specs": {
+        "detector": "Proprietary 1-megapixel CMOS image sensor",
+        "detector_pixels": "1024 × 1024",
+        "resolution_pixels": 1048576,
+        "min_exposure_time_s": 2e-07,
+        "memory_GB": {
+          "values": [
+            32,
+            64,
+            128
+          ],
+          "note": "PDF: S12 · S16 은 32 · 64 · 128 GB. 웹 페이지는 계열 공통으로 16 ~ 128 GB"
+        },
+        "adc_resolution_bit": 12,
+        "interfaces": "10-Gigabit Ethernet",
+        "weight_kg": 3.3,
+        "frame_rate_fps": 12800,
+        "max_frame_rate_fps": 1000000,
+        "pixel_pitch_um": 20
+      },
+      "note": "최대 프레임 속도는 type 1000K(128 × 16 화소). 수출 통제용 형식 type 500K 는 500,000 fps, type 200KS 는 200,000 fps"
+    },
+    {
+      "model": "NOVA S16",
+      "specs": {
+        "detector": "Proprietary 1-megapixel CMOS image sensor",
+        "detector_pixels": "1024 × 1024",
+        "resolution_pixels": 1048576,
+        "min_exposure_time_s": 2e-07,
+        "memory_GB": {
+          "values": [
+            32,
+            64,
+            128
+          ],
+          "note": "PDF: S12 · S16 은 32 · 64 · 128 GB. 웹 페이지는 계열 공통으로 16 ~ 128 GB"
+        },
+        "adc_resolution_bit": 12,
+        "interfaces": "10-Gigabit Ethernet",
+        "weight_kg": 3.3,
+        "frame_rate_fps": 16000,
+        "max_frame_rate_fps": 1100000,
+        "pixel_pitch_um": 20
+      },
+      "note": "최대 프레임 속도는 type 1100K(128 × 16 화소). 수출 통제용 형식 type 500K 는 500,000 fps, type 200KS 는 200,000 fps"
+    }
+  ],
+  "features": [
+    "흑백 ISO 64,000 / 컬러 ISO 16,000",
+    "10-Gigabit Ethernet",
+    "메모리 16·32·64·128 GB"
+  ],
+  "relations": [
+    {
+      "type": "successor_of",
+      "target": "photron-fastcam-sa-series",
+      "note": "제조사 단종 제품 페이지가 SA-Z · SA-X2 · SA5 · SA4 · SA1.1 의 후속으로 NOVA S 를 안내"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://photron.com/fastcam-nova-s/",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지(HTML). S6 사양 전체와 S9·S12·S16 의 프레임 속도 차이. 크기 120 × 120 × 217.2 mm, 무게 3.3 kg"
+    },
+    {
+      "file": "photron/nova_4models_08.31.2026.pdf",
+      "pages": [
+        1,
+        2,
+        3
+      ],
+      "note": "제조사 NOVA S16 / S12 / S9 / S6 데이터시트 PDF(2026-08-31)"
+    }
+  ],
+  "confidence": "catalog",
+  "notes": "기종명 표기는 페이지 표기(NOVA S6 등)를 따랐고, PDF 와 대장에는 'FASTCAM Nova S6' 처럼 적힌다. PDF 로 확인: 네 기종의 전 화소 · 최대 프레임 속도, 셔터 0.2 µs, 감도, ADC, 인터페이스, 크기 · 무게(화소 20 µm 를 더함). S12 · S16 의 메모리는 PDF 대로 32 ~ 128 GB 로 고침. 운전 온도 0 ~ 45 °C, 전원 DC 22 ~ 32 V 150 VA."
+}

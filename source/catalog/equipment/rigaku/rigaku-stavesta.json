@@ -1,0 +1,159 @@
+{
+  "id": "rigaku-stavesta",
+  "kind": "equipment_series",
+  "name": "Rigaku Thermo plus EVO3 STAvesta Simultaneous Thermal Analyzer (TG-DSC)",
+  "name_ko": "리가쿠 Thermo plus EVO3 STAvesta 동시열분석기(TG-DSC)",
+  "manufacturer": "rigaku",
+  "category": "sta",
+  "brand": "Thermo plus",
+  "description": "수평 차동 3코일 저울의 트윈 홀더 TG-DSC. 노 6종(표준·고온·간접 가열·시료 관찰·가습 HUM·냉동 냉각)을 사용자가 바꾼다. 시료 최대 1 g(90 µL), TG ±500 mg, DSC ±600 mW(100 °C)·±1,400 mW(1,000 °C)·±3,000 mW(1,500 °C), DTA ±1,000 µV, 비열 정밀도 ±3 %, TG 기저선 드리프트 <10 µg(1,000 °C 까지)·<20 µg(1,400 °C 까지). FlatBlank 자동 공시료 보정, Rapid·Advanced 온도 제어, 자기 진단 vestaeye, 자동 시료 교환기 52 시료. GC-MS·FTIR 연결.",
+  "test_items": [
+    "tga",
+    "dsc"
+  ],
+  "measurands": [
+    "thermal.decomposition_temp",
+    "thermal.char_residue",
+    "thermal.glass_transition",
+    "thermal.melting_point",
+    "thermal.specific_heat"
+  ],
+  "measurands_by_item": {
+    "tga": [
+      "thermal.decomposition_temp",
+      "thermal.char_residue"
+    ],
+    "dsc": [
+      "thermal.glass_transition",
+      "thermal.melting_point",
+      "thermal.specific_heat"
+    ]
+  },
+  "limits": {
+    "temperature_degC": {
+      "min": -40,
+      "max": 1500,
+      "note": "노에 따라 다름(냉동 냉각 노 -40~700 °C)"
+    },
+    "heating_rate_K_min": {
+      "max": 100,
+      "note": "최대 승온 속도, 노에 따라 20~100 °C/min"
+    }
+  },
+  "models": [
+    {
+      "model": "STAvesta",
+      "specs": {
+        "temperature_degC": {
+          "min": -40,
+          "max": 1500,
+          "note": "Standard 실온~1100 °C (최대 100 °C/min); High temperature 실온~1500 °C (최대 100 °C/min); Indirect heated 실온~1500 °C (최대 50 °C/min); Sample observation 실온~1100 °C (최대 100 °C/min); HUM 실온~1400 °C (최대 20 °C/min); Refrigerated cooling -40~700 °C (최대 20 °C/min)"
+        },
+        "heating_rate_K_min": {
+          "max": 100
+        },
+        "sample_mass_mg": {
+          "max": 1000,
+          "note": "1 g (90 µL)"
+        },
+        "dynamic_weighing_range_mg": {
+          "value": 500,
+          "note": "TG range ±500 mg"
+        },
+        "heat_flow_mW": {
+          "values": [
+            600,
+            1400,
+            3000
+          ],
+          "note": "DSC range ±600 mW (100 °C), ±1,400 mW (1,000 °C), ±3,000 mW (1,500 °C)"
+        },
+        "dta_range_uV": {
+          "value": 1000,
+          "note": "±1,000 µV"
+        },
+        "footprint_mm": {
+          "W": 412,
+          "H": 355,
+          "D": 561,
+          "note": "표준(S)·고온(H)·간접 가열(B) 노 형"
+        },
+        "accuracy_degC": {
+          "value": 0.2,
+          "note": "온도 정확도 ±0.2(리가쿠 조건). 단위 기호가 추출에서 빠져 °C 로 읽었다"
+        },
+        "temperature_precision_degC": {
+          "value": 0.05,
+          "note": "온도 정밀도 ±0.05 °C(리가쿠 조건)"
+        },
+        "weight_kg": {
+          "value": 45,
+          "note": "STAvesta/C 47 kg, STAvesta/HUM 50 kg, +ASC 55 kg"
+        }
+      },
+      "note": "분위기: S/H/B/C 노 공기·불활성·감압, 냉동 냉각(LR) 건조 가스, HUM 불활성(N2)·가습"
+    },
+    {
+      "model": "TG-DTA8122",
+      "specs": {
+        "temperature_degC": {
+          "max": 1500,
+          "note": "실온~1,500 °C"
+        },
+        "heating_rate_K_min": {
+          "max": 100
+        },
+        "footprint_mm": {
+          "W": 208,
+          "D": 625,
+          "H": 299,
+          "note": "본체. 제어부 W275×D355×H318 mm"
+        },
+        "weight_kg": {
+          "value": 31,
+          "note": "본체 18 kg + 제어부 13 kg"
+        },
+        "power": "Single phase 100-240 VAC, 50/60 Hz, 15 A"
+      },
+      "note": "Thermo plus EVO2 분리형 컨트롤러 TG-DTA(본체·제어부 분리, 글러브박스 설치 가능, ASC·시료 관찰 노 대응). 사양표의 「250 mg」 칸은 어느 행 값인지 추출 텍스트로 확실하지 않아 넣지 않았다"
+    }
+  ],
+  "accuracy": {
+    "specific_heat": "±3 %",
+    "tg_baseline_drift": "<10 µg (up to 1,000 °C), <20 µg (up to 1,400 °C)",
+    "tg_sensitivity_noise": "0.18 µg / 0.09 µg (RMS)",
+    "dsc_sensitivity_noise": "10 µW / 5 µW (RMS)",
+    "energy_precision": "±1 %"
+  },
+  "options": [
+    "자동 시료 교환기(시료 52, 기준 3, 교정 시료 5)",
+    "노 유닛 6종",
+    "ASC 안전 커버",
+    "등온 유닛(S·H·B 노)",
+    "발생 가스 도입 인터페이스"
+  ],
+  "relations": [
+    {
+      "type": "same_family_as",
+      "target": "rigaku-thermo-plus-dsc"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://rigaku.com/products/thermal-analysis/sta/stavesta",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지(HTML) 본문·표를 직접 읽음. 개요·특징·사양표(노별 온도·최대 승온 속도, 시료량, TG/DSC/DTA 범위, 비열 정밀도, TG 기저선 드리프트, 분위기, 옵션, 치수)"
+    },
+    {
+      "file": "rigaku/sta_brochure_en.pdf",
+      "pages": [
+        3,
+        13,
+        18,
+        19
+      ]
+    }
+  ],
+  "confidence": "catalog",
+  "notes": "PDF 브로슈어로 확인: 노별 온도·최대 승온 속도, 시료량 1 g(90 µL), TG ±500 mg, DTA ±1,000 µV, 비열 정밀도 ±3 %, TG 기저선 드리프트, 치수. 시료 관찰 노 상한의 각주 *1 은 「시료 관찰 측정은 1,000 °C 까지」. 노별 온도·승온 속도는 기종 note 와 temperature_degC note 에 원문대로 적었다. DSC 범위 칸은 추출 텍스트가 「600 mW(100 °C), 1,400 W(1,000 °C), 3,000 W(1,500 °C)」로 읽혀 뒤 두 값의 단위 접두가 빠져 있어 웹 값을 그대로 두었다. 같은 브로슈어의 TG-DTA8122(Thermo plus EVO2)를 기종으로 더했다. Dynamic STA(사인파 변조) 최대 승·냉각 20 °C/min, 진폭 0.02~5 °C, 주기 40~200 s."
+}

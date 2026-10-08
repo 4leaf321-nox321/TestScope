@@ -1,0 +1,152 @@
+{
+  "id": "anritsu-mg3710e",
+  "kind": "equipment_series",
+  "name": "Anritsu Vector Signal Generator MG3710E",
+  "name_ko": "안리쓰 MG3710E 벡터 신호발생기",
+  "manufacturer": "anritsu",
+  "category": "signal_generator",
+  "subcategory": "vector_rf",
+  "description": "100 kHz~6 GHz 벡터 신호발생기. 1st RF 는 2.7·4·6 GHz 주파수 옵션이고 2nd RF(옵션)를 더해 출력 2개로 쓴다. 광대역(160 MHz/120 MHz) 기저대역 발생기와 64 Msample 파형 메모리(옵션 1024 Msample)를 내장한다. 출력 +23 dBm(CW, 400 MHz~3 GHz), 1 GHz·20 kHz 오프셋 위상 잡음 < -131 dBc/Hz(typ.), W-CDMA ACLR -68 dBc, 주파수·진폭 전환 <600 µs 다. LTE·W-CDMA·GSM·CDMA2000·Bluetooth·GNSS·WLAN·5G NR(sub-6 GHz) 신호를 만든다.",
+  "test_items": [],
+  "limits": {
+    "output_frequency_Hz": {
+      "min": 100000,
+      "max": 6000000000,
+      "note": "사양 범위 100 kHz~2.7 GHz(-032)/4 GHz(-034)/6 GHz(-036). 2nd SG(옵션) 같은 범위(-062, -064, -066). 사양서 설정 범위는 9 kHz 부터, 분해능 0.01 Hz"
+    },
+    "bandwidth_Hz": {
+      "max": 160000000,
+      "note": "사양서 ARB Modulation Bandwidth 160 MHz*/120 MHz — 160 MHz 는 펌웨어 2.00.00 이상에서 IQproducer MX370111A·802.11ac(160 MHz) 옵션 MX370111A-002 로 WLAN 을 쓸 때만, 그 밖에는 120 MHz. 외부 I/Q 입력(MG3710E-018) RF 160 MHz(nom.)"
+    },
+    "rf_output_level_dBm": {
+      "min": -144,
+      "max": 23,
+      "note": "사양서 설정 범위: 기본 -110~+17 dBm, 저출력 확장 MG3710E-042/072 로 -144 dBm, 고출력 확장 MG3710E-041/071 로 +30 dBm(설정값). 레벨 확도 보증 상한 +23 dBm(400 MHz~3 GHz, -041/071, 역전력 보호 -043/073 없을 때; 있으면 +20 dBm)"
+    },
+    "phase_noise_dBc_Hz": {
+      "values": [
+        -140,
+        -131,
+        -125
+      ],
+      "note": "CW, 20 kHz 오프셋(Phase Noise Optimization < 200 kHz). -140: 100 MHz(nom.), -131: 1 GHz(typ.), -125: 2 GHz(typ.)"
+    },
+    "channels": {
+      "values": [
+        1,
+        2
+      ],
+      "note": "1st SG 1개, 2nd SG(MG3710E-062/064/066) 더하면 2개"
+    },
+    "waveform_memory_pts": {
+      "values": [
+        64000000,
+        256000000,
+        1024000000
+      ],
+      "note": "RF 마다 64 Msamples, MG3710E-045 로 256 Msamples, -046 으로 1024 Msamples(2nd RF 는 -075/-076). 파형 분해능 14·15·16 bit"
+    },
+    "radio_standards": {
+      "values": [
+        "LTE",
+        "W-CDMA/HSDPA",
+        "GSM/EDGE",
+        "CDMA2000",
+        "Bluetooth",
+        "GPS",
+        "GLONASS",
+        "WLAN 802.11a/b/g/n/ac",
+        "5G NR (sub-6 GHz TDD/FDD)"
+      ],
+      "note": "제품 페이지 문구"
+    }
+  },
+  "models": [
+    {
+      "model": "MG3710E",
+      "specs": {
+        "output_frequency_Hz": {
+          "min": 100000,
+          "max": 6000000000
+        },
+        "bandwidth_Hz": {
+          "max": 160000000,
+          "note": "160 MHz 는 WLAN 160 MHz 옵션 사용 시, 그 밖에 120 MHz"
+        },
+        "rf_output_level_dBm": {
+          "min": -144,
+          "max": 23,
+          "note": "기본 -110~+17 dBm. -042 로 -144 dBm, -041 로 확도 보증 +23 dBm(400 MHz~3 GHz), 설정 상한 +30 dBm"
+        },
+        "phase_noise_dBc_Hz": {
+          "values": [
+            -140,
+            -131,
+            -125
+          ],
+          "note": "20 kHz 오프셋. 100 MHz(nom.)·1 GHz(typ.)·2 GHz(typ.)"
+        },
+        "channels": {
+          "values": [
+            1,
+            2
+          ]
+        },
+        "waveform_memory_pts": {
+          "values": [
+            64000000,
+            256000000,
+            1024000000
+          ]
+        },
+        "interfaces": "Ethernet(10/100/1000BASE-T), GPIB, USB"
+      }
+    }
+  ],
+  "features": [
+    "2nd RF 옵션으로 출력 2개",
+    "광대역 기저대역 발생기 내장",
+    "ACLR -68 dBc(W-CDMA TM1 64DPCH, ≤+5 dBm)",
+    "주파수·진폭 전환 <600 µs(List/Sweep)"
+  ],
+  "options": [
+    {
+      "name": "MG3710E-032 / -034 / -036",
+      "note": "1st RF 상한 2.7 / 4 / 6 GHz"
+    },
+    {
+      "name": "MG3710E-062/162, -064/164, -066/166",
+      "note": "2nd RF 상한 2.7 / 4 / 6 GHz"
+    }
+  ],
+  "relations": [
+    {
+      "type": "same_family_as",
+      "target": "anritsu-mg3740a"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://www.anritsu.com/en-us/test-measurement/products/mg3710e",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지. 주파수 옵션, 기저대역, 출력, 위상 잡음, ACLR, 지원 표준"
+    },
+    {
+      "file": "anritsu/dwl19699.pdf",
+      "pages": [
+        1,
+        4,
+        5,
+        6,
+        10,
+        21,
+        25,
+        27,
+        28
+      ],
+      "note": "제조사 데이터시트. 주파수·출력 레벨(설정 범위·확도 표)·위상 잡음·ACLR·ARB 대역폭·파형 메모리·BER·인터페이스"
+    }
+  ],
+  "confidence": "catalog",
+  "notes": "PDF 로 확인: 주파수, 출력 레벨, 위상 잡음, 기저대역 대역폭, 파형 메모리, 채널, ACLR, 전환 시간. 지원 무선 표준 목록은 데이터시트에 없어 제품 페이지 문구 그대로."
+}

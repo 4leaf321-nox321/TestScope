@@ -1,0 +1,99 @@
+{
+  "id": "comet-yxlon-cougar-evo",
+  "kind": "equipment_series",
+  "name": "Comet Yxlon Cougar EVO",
+  "name_ko": "코멧 익스론 Cougar EVO 마이크로포커스 X-ray 검사 장비",
+  "manufacturer": "comet-yxlon",
+  "brand": "Cougar EVO",
+  "category": "xray_inspection",
+  "form_factor": "floor",
+  "description": "설치 면적 약 1 m² 의 소형 마이크로포커스 X-ray 검사 장비. Cheetah EVO 와 같은 FeinFocus FXT-160.50(마이크로포커스) · FXT-160.51(멀티포커스) 튜브(20~160 kV)와 평판 검출기 1308 · 1313 · 1616(127 µm, 16 bit)을 쓴다. 최대 투시 영역 310 × 310 mm, 시료 440 × 550 mm, ±70° 경사 관찰, 라미노그래피 · CT QuickScan · QualityScan 3D 모드, VoidInspect 자동 보이드 계산을 갖춘다.",
+  "test_items": [
+    "xray_void_inspection"
+  ],
+  "measurands": [
+    "void_percentage"
+  ],
+  "materials": [
+    "PCB assemblies",
+    "semiconductor packages"
+  ],
+  "limits": {
+    "tube_voltage_kV": {
+      "min": 20,
+      "max": 160
+    },
+    "pixel_pitch_um": {
+      "values": [
+        127
+      ]
+    },
+    "inspection_area_mm": {
+      "max": 310,
+      "note": "최대 투시 영역 310 × 310 mm (12″ × 12″)"
+    },
+    "sample_size_mm": {
+      "max": 550,
+      "note": "시료 440 × 550 mm (17″ × 21″)"
+    },
+    "oblique_view_angle_deg": {
+      "max": 70,
+      "note": "±70° (전체 140°)"
+    }
+  },
+  "models": [
+    {
+      "model": "Cougar EVO",
+      "specs": {
+        "xray_source": "FeinFocus FXT-160.50 Microfocus 또는 FXT-160.51 Multifocus",
+        "tube_voltage_kV": {
+          "min": 20,
+          "max": 160
+        },
+        "detector": "평판 검출기 1308 (1004 × 620 px) / 1313 (1004 × 1004 px) / 1616 (1276 × 1276 px), 16 bit",
+        "pixel_pitch_um": 127,
+        "inspection_area_mm": "310 × 310",
+        "sample_size_mm": "440 × 550",
+        "oblique_view_angle_deg": 70,
+        "footprint_mm": "1000 × 1050 × 2200 (W × D × H)",
+        "weight_kg": 1450
+      }
+    }
+  ],
+  "features": [
+    "설치 면적 약 1 m²",
+    "VoidInspect 자동 보이드 계산",
+    "대형 평판 검출기로 시야 최대 50 % 확대를 내세움",
+    "±70° 경사 관찰"
+  ],
+  "options": [
+    {
+      "name": "선량 저감 키트(Dose reduction kit)",
+      "note": "민감한 부품용"
+    }
+  ],
+  "relations": [
+    {
+      "type": "performs",
+      "target": "xray_void_inspection"
+    },
+    {
+      "type": "same_family_as",
+      "target": "comet-yxlon-cheetah-evo"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://yxlon.comet.tech/en/products/cougar-evo",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지. 튜브·검출기·투시 영역·외형·무게"
+    },
+    {
+      "url": "https://yxlon.comet.tech/en/product-range-en",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품군 목록 페이지. 계열별 대표 사양 한 줄"
+    }
+  ],
+  "notes": "튜브 출력(W) · 초점 크기 · 시료 하중은 페이지에 없다.",
+  "confidence": "limited"
+}

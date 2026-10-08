@@ -1,0 +1,77 @@
+{
+  "id": "konica-minolta-cl-200a",
+  "kind": "equipment_series",
+  "name": "Konica Minolta CL-200A Chroma Meter",
+  "name_ko": "코니카미놀타 CL-200A 색채 조도계",
+  "manufacturer": "konica-minolta",
+  "brand": "CL",
+  "category": "display_color_analyzer",
+  "form_factor": "handheld",
+  "description": "광원의 조도와 색도를 함께 재는 휴대형 색채 조도계. 실리콘 광전지 수광부로 0.1 ~ 99,990 lx 를 네 레인지로 자동 전환해 재고, 조도 확도 ±2 % ±1 digit, 색도 확도 ±0.002(표준광원 A, 800 lx). 삼자극치(XYZ), 색도(Ev xy, Ev u'v'), 상관 색온도(Tcp, Δuv), 색차를 표시한다.",
+  "test_items": [
+    "photometry_colorimetry"
+  ],
+  "measurands": [
+    "illuminance",
+    "chromaticity",
+    "correlated_color_temperature"
+  ],
+  "materials": [
+    "LED lighting",
+    "light sources"
+  ],
+  "limits": {
+    "illuminance_lx": {
+      "min": 0.1,
+      "max": 99990,
+      "note": "네 레인지 자동 선택"
+    }
+  },
+  "models": [
+    {
+      "model": "CL-200A",
+      "specs": {
+        "illuminance_lx": {
+          "min": 0.1,
+          "max": 99990
+        },
+        "chromaticity_accuracy_xy": 0.002,
+        "detector": "Silicon photocell",
+        "interfaces": "USB(PC) / RS-232C(프린터)",
+        "weight_kg": 0.215,
+        "accuracy": "Ev(직선성) ±2 % ±1 digit, xy ±0.002(800 lx, 표준광원 A)",
+        "repeatability_pct": {
+          "value": 0.5,
+          "note": "Ev 0.5 % + 1 digit(2σ), xy 0.0005(800 lx, 표준광원 A)"
+        },
+        "measurement_time_s": {
+          "value": 0.5,
+          "note": "2 회/s(수광부 1 개 연속 측정)"
+        }
+      },
+      "note": "조도 확도 ±2 % ±1 digit. 0.01 ~ 9,999 fcd. 색도는 5 lx 이상. 무게는 배터리 제외. JIS C 1609-1:2006 AA 급, 다점 측정 2 ~ 30 점"
+    }
+  ],
+  "relations": [
+    {
+      "type": "performs",
+      "target": "photometry_colorimetry"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://sensing.konicaminolta.us/us/products/cl-200a-chroma-meter/",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지(HTML)"
+    },
+    {
+      "file": "konica-minolta/cl-200_catalog_eng.pdf",
+      "pages": [
+        4
+      ],
+      "note": "제조사 카탈로그 PDF 주요 사양"
+    }
+  ],
+  "confidence": "catalog",
+  "notes": "PDF 로 확인: 측정 범위 · 확도 · 수광부 · 인터페이스 · 무게 전부(반복도 · 측정 속도를 더함)."
+}

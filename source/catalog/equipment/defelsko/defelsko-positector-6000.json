@@ -1,0 +1,370 @@
+{
+  "id": "defelsko-positector-6000",
+  "kind": "equipment_series",
+  "name": "DeFelsko PosiTector 6000 Coating Thickness Gages (F / N / FN probes)",
+  "name_ko": "디펠스코 PosiTector 6000 도막 두께계",
+  "manufacturer": "defelsko",
+  "brand": "PosiTector",
+  "category": "coating_surface_test",
+  "form_factor": "handheld",
+  "description": "자기(철 기재 F) · 와전류(비철 기재 N) 원리로 금속 위 도막 두께를 재는 휴대형 두께계. 본체(Standard · Advanced)에 프로브를 바꿔 끼우며, 표준 프로브(F · N · FN 계열)는 0~1500 µm(0~60 mils), 두꺼운 도막용 FT 계열 0~6 mm, FKS1 · NKS1 0~13 mm, FLS1 0~63.5 mm 까지 잰다. 분 당 60회 이상(FAST 모드 90회 이상) 측정, IP65, Advanced 본체는 250,000 개 측정값 저장과 WiFi · Bluetooth 를 갖춘다.",
+  "test_items": [
+    "coating_thickness"
+  ],
+  "measurands": [
+    "coating_thickness"
+  ],
+  "materials": [
+    "paint on steel",
+    "paint on non-ferrous metals",
+    "galvanizing",
+    "anodizing",
+    "powder coatings"
+  ],
+  "standards": {
+    "compliance": [],
+    "test_methods": [
+      "ISO 2178",
+      "ISO 2360",
+      "ISO 2808",
+      "ISO 19840",
+      "ASTM B244",
+      "ASTM B499",
+      "ASTM D1186",
+      "ASTM D1400",
+      "ASTM D7091",
+      "ASTM E376",
+      "ASTM G12",
+      "BS 3900-C5",
+      "SSPC-PA2",
+      "AS 2331.1.4",
+      "AS 3894.3-B"
+    ]
+  },
+  "limits": {
+    "coating_thickness_um": {
+      "min": 0,
+      "max": 63500,
+      "note": "프로브별. 표준 0~1500 µm, 최대 FLS1 0~63.5 mm(0~2.5 in)"
+    }
+  },
+  "models": [
+    {
+      "model": "PosiTector 6000 F1",
+      "variant": "철 기재, 일체형",
+      "specs": {
+        "coating_thickness_um": {
+          "min": 0,
+          "max": 1500,
+          "note": "원문 0-60 mils / 0-1500 µm"
+        },
+        "accuracy": "±(0.05 mils + 1 %) 0~2 mils, ±(0.1 mils + 1 %) >2 mils"
+      }
+    },
+    {
+      "model": "PosiTector 6000 FS1",
+      "variant": "철 기재, 케이블형",
+      "specs": {
+        "coating_thickness_um": {
+          "min": 0,
+          "max": 1500
+        },
+        "accuracy": "±(0.05 mils + 1 %) 0~2 mils, ±(0.1 mils + 1 %) >2 mils"
+      }
+    },
+    {
+      "model": "PosiTector 6000 FRS1",
+      "variant": "철 기재, 90° 직각 케이블형",
+      "specs": {
+        "coating_thickness_um": {
+          "min": 0,
+          "max": 1500
+        },
+        "accuracy": "±(0.05 mils + 1 %) 0~2 mils, ±(0.1 mils + 1 %) >2 mils"
+      }
+    },
+    {
+      "model": "PosiTector 6000 FXS1",
+      "variant": "철 기재, Xtreme(고온 · 거친 면, 250 °C 까지)",
+      "specs": {
+        "coating_thickness_um": {
+          "min": 0,
+          "max": 2000,
+          "note": "원문 0-80 mils / 0-2000 µm"
+        },
+        "accuracy": "±(0.05 mils + 1 %) 0~2 mils, ±(0.1 mils + 1 %) >2 mils"
+      }
+    },
+    {
+      "model": "PosiTector 6000 FT1",
+      "variant": "철 기재, 두꺼운 도막",
+      "specs": {
+        "coating_thickness_um": {
+          "min": 0,
+          "max": 6000,
+          "note": "원문 0-250 mils / 0-6 mm"
+        },
+        "accuracy": "±(0.5 mils + 1 %) 0~100 mils, ±(0.5 mils + 3 %) >100 mils"
+      }
+    },
+    {
+      "model": "PosiTector 6000 FTS1",
+      "variant": "철 기재, 두꺼운 도막 케이블형",
+      "specs": {
+        "coating_thickness_um": {
+          "min": 0,
+          "max": 6000
+        },
+        "accuracy": "±(0.5 mils + 1 %) 0~100 mils, ±(0.5 mils + 3 %) >100 mils"
+      }
+    },
+    {
+      "model": "PosiTector 6000 FTRS1",
+      "variant": "철 기재, 두꺼운 도막 90°",
+      "specs": {
+        "coating_thickness_um": {
+          "min": 0,
+          "max": 6000
+        },
+        "accuracy": "±(0.5 mils + 1 %) 0~100 mils, ±(0.5 mils + 3 %) >100 mils"
+      }
+    },
+    {
+      "model": "PosiTector 6000 FHXS1",
+      "variant": "철 기재, 초고범위 Xtreme",
+      "specs": {
+        "coating_thickness_um": {
+          "min": 0,
+          "max": 10000,
+          "note": "원문 0-400 mils / 0-10,000 µm"
+        },
+        "accuracy": "±(0.1 mils + 3 %) / ±(2 µm + 3 %)"
+      }
+    },
+    {
+      "model": "PosiTector 6000 FKS1",
+      "variant": "철 기재, 확장 범위",
+      "specs": {
+        "coating_thickness_um": {
+          "min": 0,
+          "max": 13000,
+          "note": "원문 0-500 mils / 0-13 mm"
+        },
+        "accuracy": "±(1 mil + 3 %) / ±(0.02 mm + 3 %)"
+      }
+    },
+    {
+      "model": "PosiTector 6000 FJS1",
+      "variant": "철 기재, 아주 두꺼운 도막",
+      "specs": {
+        "coating_thickness_um": {
+          "min": 0,
+          "max": 38000,
+          "note": "원문 0-1.5 in / 0-38 mm"
+        },
+        "accuracy": "±(0.01 in + 3 %) / ±(0.2 mm + 3 %)"
+      }
+    },
+    {
+      "model": "PosiTector 6000 FLS1",
+      "variant": "철 기재, 최대 범위",
+      "specs": {
+        "coating_thickness_um": {
+          "min": 0,
+          "max": 63500,
+          "note": "원문 0-2.5 in / 0-63.5 mm"
+        },
+        "accuracy": "±(0.01 in + 3 %) / ±(0.2 mm + 3 %)"
+      }
+    },
+    {
+      "model": "PosiTector 6000 N1",
+      "variant": "비철 기재, 일체형",
+      "specs": {
+        "coating_thickness_um": {
+          "min": 0,
+          "max": 1500
+        },
+        "accuracy": "±(0.05 mils + 1 %) 0~2 mils, ±(0.1 mils + 1 %) >2 mils"
+      }
+    },
+    {
+      "model": "PosiTector 6000 NS1",
+      "variant": "비철 기재, 케이블형",
+      "specs": {
+        "coating_thickness_um": {
+          "min": 0,
+          "max": 1500
+        },
+        "accuracy": "±(0.05 mils + 1 %) 0~2 mils, ±(0.1 mils + 1 %) >2 mils"
+      }
+    },
+    {
+      "model": "PosiTector 6000 NRS1",
+      "variant": "비철 기재, 90°",
+      "specs": {
+        "coating_thickness_um": {
+          "min": 0,
+          "max": 1500
+        },
+        "accuracy": "±(0.05 mils + 1 %) 0~2 mils, ±(0.1 mils + 1 %) >2 mils"
+      }
+    },
+    {
+      "model": "PosiTector 6000 NAS1",
+      "variant": "비철 기재, 아노다이징 알루미늄용",
+      "specs": {
+        "coating_thickness_um": {
+          "min": 0,
+          "max": 625,
+          "note": "원문 0-25 mils / 0-625 µm"
+        },
+        "accuracy": "±(0.02 mils + 1 %) 0~4 mils, ±(0.1 mils + 3 %) >4 mils"
+      }
+    },
+    {
+      "model": "PosiTector 6000 N0S1",
+      "variant": "비철 기재, 소형 부품용 마이크로 프로브",
+      "specs": {
+        "coating_thickness_um": {
+          "min": 0,
+          "max": 625
+        },
+        "accuracy": "±(0.02 mils + 1 %) 0~4 mils, ±(0.1 mils + 3 %) >4 mils"
+      }
+    },
+    {
+      "model": "PosiTector 6000 N45S1",
+      "variant": "비철 기재, 45° 마이크로 프로브",
+      "specs": {
+        "coating_thickness_um": {
+          "min": 0,
+          "max": 625
+        },
+        "accuracy": "±(0.02 mils + 1 %) 0~4 mils, ±(0.1 mils + 3 %) >4 mils"
+      }
+    },
+    {
+      "model": "PosiTector 6000 N90S1",
+      "variant": "비철 기재, 90° 마이크로 프로브",
+      "specs": {
+        "coating_thickness_um": {
+          "min": 0,
+          "max": 625
+        },
+        "accuracy": "±(0.02 mils + 1 %) 0~4 mils, ±(0.1 mils + 3 %) >4 mils"
+      }
+    },
+    {
+      "model": "PosiTector 6000 NKS1",
+      "variant": "비철 기재, 확장 범위",
+      "specs": {
+        "coating_thickness_um": {
+          "min": 0,
+          "max": 13000,
+          "note": "원문 0-500 mils / 0-13 mm"
+        },
+        "accuracy": "±(1 mil + 3 %) / ±(0.02 mm + 3 %)"
+      }
+    },
+    {
+      "model": "PosiTector 6000 FN1",
+      "variant": "철 · 비철 겸용, 일체형",
+      "specs": {
+        "coating_thickness_um": {
+          "min": 0,
+          "max": 1500
+        },
+        "accuracy": "±(0.05 mils + 1 %) 0~2 mils, ±(0.1 mils + 1 %) >2 mils"
+      }
+    },
+    {
+      "model": "PosiTector 6000 FNS1",
+      "variant": "철 · 비철 겸용, 케이블형",
+      "specs": {
+        "coating_thickness_um": {
+          "min": 0,
+          "max": 1500
+        },
+        "accuracy": "±(0.05 mils + 1 %) 0~2 mils, ±(0.1 mils + 1 %) >2 mils"
+      }
+    },
+    {
+      "model": "PosiTector 6000 FNRS1",
+      "variant": "철 · 비철 겸용, 90°",
+      "specs": {
+        "coating_thickness_um": {
+          "min": 0,
+          "max": 1500
+        },
+        "accuracy": "±(0.05 mils + 1 %) 0~2 mils, ±(0.1 mils + 1 %) >2 mils"
+      }
+    },
+    {
+      "model": "PosiTector 6000 FNDS1",
+      "variant": "철 · 비철 겸용, 듀플렉스 도막",
+      "specs": {
+        "coating_thickness_um": {
+          "min": 0,
+          "max": 1500
+        },
+        "accuracy": "±(0.05 mils + 1 %) 0~2 mils, ±(0.1 mils + 1 %) >2 mils"
+      }
+    },
+    {
+      "model": "PosiTector 6000 FNTS1",
+      "variant": "철 · 비철 겸용, 두꺼운 도막",
+      "specs": {
+        "coating_thickness_um": {
+          "min": 0,
+          "max": 6000
+        },
+        "accuracy": "±(0.5 mils + 1 %) 0~100 mils, ±(0.5 mils + 3 %) >100 mils"
+      }
+    },
+    {
+      "model": "PosiTector 6000 FNGS1",
+      "variant": "철 · 비철 겸용",
+      "specs": {
+        "coating_thickness_um": {
+          "min": 0,
+          "max": 63500,
+          "note": "원문 0-2.5 in / 0-63.5 mm — 같은 페이지를 두 번 읽은 요약이 'Maximum (FNGS)' 행으로 같은 값을 냈으나 FLS1 과 같은 범위라 확인 필요",
+          "uncertain": true
+        },
+        "accuracy": "±(0.01 in + 3 %) / ±(0.2 mm + 3 %)"
+      }
+    }
+  ],
+  "features": [
+    "2.8″ 내충격 컬러 터치스크린",
+    "IP65",
+    "분 당 60회 이상(FAST 90회 이상) 측정",
+    "AAA 전지 3개로 20시간 이상",
+    "Standard 본체 프로브당 1,000 개 저장, Advanced 본체 250,000 개 · 1,000 배치 · WiFi · Bluetooth",
+    "NIST 또는 PTB 추적 교정서"
+  ],
+  "relations": [
+    {
+      "type": "performs",
+      "target": "coating_thickness"
+    },
+    {
+      "type": "same_family_as",
+      "target": "defelsko-positest-at"
+    },
+    {
+      "type": "same_family_as",
+      "target": "elcometer-456"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://www.defelsko.com/positector-6000",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지. 프로브 모델별 범위 · 정확도 표, 규격 목록"
+    }
+  ],
+  "notes": "프로브별 범위 · 정확도는 페이지 표를 프로브 단위로 다시 읽어 적었다. 정확도는 mils 표기가 원문이다(FHXS1 · FKS1 · FJS1 · FLS1 은 µm/mm 표기 병기). 기종명은 'PosiTector 6000 <프로브>' 꼴로 적었다 — 대장에는 'PosiTector 6000' 만 적혀 있을 수 있다.",
+  "confidence": "limited"
+}

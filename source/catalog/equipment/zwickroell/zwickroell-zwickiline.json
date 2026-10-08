@@ -1,0 +1,537 @@
+{
+  "id": "zwickroell-zwickiline",
+  "kind": "equipment_series",
+  "name": "ZwickRoell zwickiLine table-top materials testing machines (Z0.5 – Z5.0)",
+  "name_ko": "즈윅로엘 zwickiLine 탁상형 단주 재료시험기",
+  "manufacturer": "zwickroell",
+  "category": "universal_testing_machine",
+  "drive": "electromechanical",
+  "form_factor": "single_column_tabletop",
+  "description": "0.5~5 kN 탁상형 단주 재료시험기. 가볍고 옮길 수 있으며, 0.5~2.5 kN 범위는 청정실 등급 5·6 요건을 만족한다. 인장·압축·굽힘·반복 시험. 크로스헤드 속도 0.0005 mm/min 부터(용량별 최고 600~3000 mm/min), 설정 속도 편차 최대 0.05 %. 표준 높이 TS/TN/TH 세 가지.",
+  "test_items": [
+    "tensile",
+    "compression",
+    "flexure"
+  ],
+  "measurands": [
+    "mechanical.tensile_strength",
+    "mechanical.yield_strength",
+    "mechanical.youngs_modulus",
+    "mechanical.elongation_at_break"
+  ],
+  "limits": {
+    "force_kN": {
+      "min": 0.5,
+      "max": 5,
+      "values": [
+        0.5,
+        1,
+        2.5,
+        5
+      ]
+    },
+    "crosshead_speed_mm_min": {
+      "min": 0.0005,
+      "max": 3000
+    },
+    "temperature_degC": {
+      "min": -70,
+      "max": 360,
+      "requires_accessory": true,
+      "note": "페이지 요약 'Temperature range -70 °C ... +360 °C' — 온도 챔버 사용 시"
+    }
+  },
+  "models": [
+    {
+      "model": "Z0.5 TS",
+      "specs": {
+        "force_kN": 0.5,
+        "vertical_test_space_mm": {
+          "min": 235,
+          "max": 565,
+          "note": "크로스헤드 앵글 위 장착 Pmin…Pmax"
+        },
+        "throat_depth_mm": {
+          "value": 105,
+          "note": "시험 공간 깊이, 폭은 제한 없음"
+        },
+        "crosshead_speed_mm_min": {
+          "min": 0.0005,
+          "max": 2000
+        },
+        "position_resolution_nm": {
+          "value": 55.4,
+          "note": "원문 drive travel resolution 0.0554 µm"
+        },
+        "weight_kg": {
+          "value": 68,
+          "note": "기계 전자장치 포함"
+        },
+        "footprint_mm": {
+          "H": 789,
+          "W": 408,
+          "D": 480,
+          "note": "상부 크로스헤드 없이. 전자장치 포함 폭 411, 깊이 622 mm"
+        },
+        "item_no": "1080950"
+      },
+      "note": "형식 품번 1080950"
+    },
+    {
+      "model": "Z0.5 TN",
+      "specs": {
+        "force_kN": 0.5,
+        "vertical_test_space_mm": {
+          "min": 235,
+          "max": 1065,
+          "note": "크로스헤드 앵글 위 장착 Pmin…Pmax"
+        },
+        "throat_depth_mm": {
+          "value": 105,
+          "note": "시험 공간 깊이, 폭은 제한 없음"
+        },
+        "crosshead_speed_mm_min": {
+          "min": 0.0005,
+          "max": 2000
+        },
+        "position_resolution_nm": {
+          "value": 55.4,
+          "note": "원문 drive travel resolution 0.0554 µm"
+        },
+        "weight_kg": {
+          "value": 76,
+          "note": "기계 전자장치 포함"
+        },
+        "footprint_mm": {
+          "H": 1289,
+          "W": 408,
+          "D": 480,
+          "note": "상부 크로스헤드 없이. 전자장치 포함 폭 411, 깊이 622 mm"
+        },
+        "item_no": "1080951"
+      },
+      "note": "같은 이름의 고속 변형(품번 1123065)은 최고 3000 mm/min, 분해능 0.0830 µm, 소음 61 dB(A)"
+    },
+    {
+      "model": "Z0.5 TH",
+      "specs": {
+        "force_kN": 0.5,
+        "vertical_test_space_mm": {
+          "min": 235,
+          "max": 1365,
+          "note": "크로스헤드 앵글 위 장착 Pmin…Pmax"
+        },
+        "throat_depth_mm": {
+          "value": 105,
+          "note": "시험 공간 깊이, 폭은 제한 없음"
+        },
+        "crosshead_speed_mm_min": {
+          "min": 0.0005,
+          "max": 2000
+        },
+        "position_resolution_nm": {
+          "value": 55.4,
+          "note": "원문 drive travel resolution 0.0554 µm"
+        },
+        "weight_kg": {
+          "value": 81,
+          "note": "기계 전자장치 포함"
+        },
+        "footprint_mm": {
+          "H": 1589,
+          "W": 408,
+          "D": 480,
+          "note": "상부 크로스헤드 없이. 전자장치 포함 폭 411, 깊이 622 mm"
+        },
+        "item_no": "1080952"
+      },
+      "note": "같은 이름의 고속 변형(품번 1123066)은 최고 3000 mm/min, 분해능 0.0830 µm"
+    },
+    {
+      "model": "Z1.0 TS",
+      "specs": {
+        "force_kN": 1,
+        "vertical_test_space_mm": {
+          "min": 235,
+          "max": 565,
+          "note": "크로스헤드 앵글 위 장착 Pmin…Pmax"
+        },
+        "throat_depth_mm": {
+          "value": 105,
+          "note": "시험 공간 깊이, 폭은 제한 없음"
+        },
+        "crosshead_speed_mm_min": {
+          "min": 0.0005,
+          "max": 2000
+        },
+        "position_resolution_nm": {
+          "value": 55.4,
+          "note": "원문 drive travel resolution 0.0554 µm"
+        },
+        "weight_kg": {
+          "value": 68,
+          "note": "기계 전자장치 포함"
+        },
+        "footprint_mm": {
+          "H": 789,
+          "W": 408,
+          "D": 480,
+          "note": "상부 크로스헤드 없이. 전자장치 포함 폭 411, 깊이 622 mm"
+        },
+        "item_no": "058997"
+      }
+    },
+    {
+      "model": "Z1.0 TN",
+      "specs": {
+        "force_kN": 1,
+        "vertical_test_space_mm": {
+          "min": 235,
+          "max": 1065,
+          "note": "크로스헤드 앵글 위 장착 Pmin…Pmax"
+        },
+        "throat_depth_mm": {
+          "value": 105,
+          "note": "시험 공간 깊이, 폭은 제한 없음"
+        },
+        "crosshead_speed_mm_min": {
+          "min": 0.0005,
+          "max": 2000
+        },
+        "position_resolution_nm": {
+          "value": 55.4,
+          "note": "원문 drive travel resolution 0.0554 µm"
+        },
+        "weight_kg": {
+          "value": 76,
+          "note": "기계 전자장치 포함"
+        },
+        "footprint_mm": {
+          "H": 1289,
+          "W": 408,
+          "D": 480,
+          "note": "상부 크로스헤드 없이. 전자장치 포함 폭 411, 깊이 622 mm"
+        },
+        "item_no": "058998"
+      }
+    },
+    {
+      "model": "Z1.0 TH",
+      "specs": {
+        "force_kN": 1,
+        "vertical_test_space_mm": {
+          "min": 235,
+          "max": 1365,
+          "note": "크로스헤드 앵글 위 장착 Pmin…Pmax"
+        },
+        "throat_depth_mm": {
+          "value": 105,
+          "note": "시험 공간 깊이, 폭은 제한 없음"
+        },
+        "crosshead_speed_mm_min": {
+          "min": 0.0005,
+          "max": 2000
+        },
+        "position_resolution_nm": {
+          "value": 55.4,
+          "note": "원문 drive travel resolution 0.0554 µm"
+        },
+        "weight_kg": {
+          "value": 81,
+          "note": "기계 전자장치 포함"
+        },
+        "footprint_mm": {
+          "H": 1589,
+          "W": 408,
+          "D": 480,
+          "note": "상부 크로스헤드 없이. 전자장치 포함 폭 411, 깊이 622 mm"
+        },
+        "item_no": "058999"
+      }
+    },
+    {
+      "model": "Z2.5 TS",
+      "specs": {
+        "force_kN": 2.5,
+        "vertical_test_space_mm": {
+          "min": 235,
+          "max": 565,
+          "note": "크로스헤드 앵글 위 장착 Pmin…Pmax"
+        },
+        "throat_depth_mm": {
+          "value": 105,
+          "note": "시험 공간 깊이, 폭은 제한 없음"
+        },
+        "crosshead_speed_mm_min": {
+          "min": 0.0005,
+          "max": 1000
+        },
+        "position_resolution_nm": {
+          "value": 27.7,
+          "note": "원문 drive travel resolution 0.0277 µm"
+        },
+        "weight_kg": {
+          "value": 68,
+          "note": "기계 전자장치 포함"
+        },
+        "footprint_mm": {
+          "H": 789,
+          "W": 408,
+          "D": 480,
+          "note": "상부 크로스헤드 없이. 전자장치 포함 폭 411, 깊이 622 mm"
+        },
+        "item_no": "059001"
+      }
+    },
+    {
+      "model": "Z2.5 TN",
+      "specs": {
+        "force_kN": 2.5,
+        "vertical_test_space_mm": {
+          "min": 235,
+          "max": 1065,
+          "note": "크로스헤드 앵글 위 장착 Pmin…Pmax"
+        },
+        "throat_depth_mm": {
+          "value": 105,
+          "note": "시험 공간 깊이, 폭은 제한 없음"
+        },
+        "crosshead_speed_mm_min": {
+          "min": 0.0005,
+          "max": 1000
+        },
+        "position_resolution_nm": {
+          "value": 27.7,
+          "note": "원문 drive travel resolution 0.0277 µm"
+        },
+        "weight_kg": {
+          "value": 76,
+          "note": "기계 전자장치 포함"
+        },
+        "footprint_mm": {
+          "H": 1289,
+          "W": 408,
+          "D": 480,
+          "note": "상부 크로스헤드 없이. 전자장치 포함 폭 411, 깊이 622 mm"
+        },
+        "item_no": "059003"
+      }
+    },
+    {
+      "model": "Z2.5 TH",
+      "specs": {
+        "force_kN": 2.5,
+        "vertical_test_space_mm": {
+          "min": 235,
+          "max": 1365,
+          "note": "크로스헤드 앵글 위 장착 Pmin…Pmax"
+        },
+        "throat_depth_mm": {
+          "value": 105,
+          "note": "시험 공간 깊이, 폭은 제한 없음"
+        },
+        "crosshead_speed_mm_min": {
+          "min": 0.0005,
+          "max": 1000
+        },
+        "position_resolution_nm": {
+          "value": 27.7,
+          "note": "원문 drive travel resolution 0.0277 µm"
+        },
+        "weight_kg": {
+          "value": 81,
+          "note": "기계 전자장치 포함"
+        },
+        "footprint_mm": {
+          "H": 1589,
+          "W": 408,
+          "D": 480,
+          "note": "상부 크로스헤드 없이. 전자장치 포함 폭 411, 깊이 622 mm"
+        },
+        "item_no": "059004"
+      }
+    },
+    {
+      "model": "Z2.5 TN+",
+      "specs": {
+        "force_kN": 2.5,
+        "vertical_test_space_mm": {
+          "min": 365,
+          "max": 1040
+        },
+        "throat_depth_mm": 105,
+        "crosshead_speed_mm_min": {
+          "min": 0.0005,
+          "max": 3000
+        },
+        "position_resolution_nm": 0.95,
+        "weight_kg": 127,
+        "footprint_mm": {
+          "H": 1289,
+          "W": 408,
+          "D": 480,
+          "note": "전자장치 포함 폭 437, 깊이 662 mm"
+        },
+        "power_W": {
+          "value": 500,
+          "note": "구동 출력, AC 서보 모터"
+        },
+        "item_no": "1039527"
+      },
+      "note": "소음 64 dB(A), 주위 +10~+35 °C, 습도 20~90 %"
+    },
+    {
+      "model": "Z5.0 TS",
+      "specs": {
+        "force_kN": 5,
+        "vertical_test_space_mm": {
+          "min": 365,
+          "max": 540,
+          "note": "크로스헤드 앵글 위 장착 Pmin…Pmax"
+        },
+        "throat_depth_mm": {
+          "value": 105,
+          "note": "시험 공간 깊이, 폭은 제한 없음"
+        },
+        "crosshead_speed_mm_min": {
+          "min": 0.0005,
+          "max": 600
+        },
+        "position_resolution_nm": {
+          "value": 16.8,
+          "note": "원문 drive travel resolution 0.0168 µm"
+        },
+        "weight_kg": {
+          "value": 70,
+          "note": "기계 전자장치 포함"
+        },
+        "footprint_mm": {
+          "H": 789,
+          "W": 408,
+          "D": 480,
+          "note": "상부 크로스헤드 없이. 전자장치 포함 폭 411, 깊이 622 mm"
+        },
+        "item_no": "059005"
+      }
+    },
+    {
+      "model": "Z5.0 TN",
+      "specs": {
+        "force_kN": 5,
+        "vertical_test_space_mm": {
+          "min": 365,
+          "max": 1040,
+          "note": "크로스헤드 앵글 위 장착 Pmin…Pmax"
+        },
+        "throat_depth_mm": {
+          "value": 105,
+          "note": "시험 공간 깊이, 폭은 제한 없음"
+        },
+        "crosshead_speed_mm_min": {
+          "min": 0.0005,
+          "max": 600
+        },
+        "position_resolution_nm": {
+          "value": 16.8,
+          "note": "원문 drive travel resolution 0.0168 µm"
+        },
+        "weight_kg": {
+          "value": 78,
+          "note": "기계 전자장치 포함"
+        },
+        "footprint_mm": {
+          "H": 1289,
+          "W": 408,
+          "D": 480,
+          "note": "상부 크로스헤드 없이. 전자장치 포함 폭 411, 깊이 622 mm"
+        },
+        "item_no": "059006"
+      }
+    },
+    {
+      "model": "Z5.0 TH",
+      "specs": {
+        "force_kN": 5,
+        "vertical_test_space_mm": {
+          "min": 365,
+          "max": 1340,
+          "note": "크로스헤드 앵글 위 장착 Pmin…Pmax"
+        },
+        "throat_depth_mm": {
+          "value": 105,
+          "note": "시험 공간 깊이, 폭은 제한 없음"
+        },
+        "crosshead_speed_mm_min": {
+          "min": 0.0005,
+          "max": 600
+        },
+        "position_resolution_nm": {
+          "value": 16.8,
+          "note": "원문 drive travel resolution 0.0168 µm"
+        },
+        "weight_kg": {
+          "value": 83,
+          "note": "기계 전자장치 포함"
+        },
+        "footprint_mm": {
+          "H": 1589,
+          "W": 408,
+          "D": 480,
+          "note": "상부 크로스헤드 없이. 전자장치 포함 폭 411, 깊이 622 mm"
+        },
+        "item_no": "059007"
+      }
+    }
+  ],
+  "features": [
+    "단주 구조, 정밀 크로스헤드 가이드",
+    "터치 조작",
+    "청정실(등급 5·6, 0.5~2.5 kN)",
+    "대형 베이스 옵션(폭 583, 깊이 565 mm)"
+  ],
+  "relations": [
+    {
+      "type": "same_family_as",
+      "target": "zwickroell-proline"
+    },
+    {
+      "type": "same_family_as",
+      "target": "zwickroell-allroundline"
+    },
+    {
+      "type": "extends_temperature",
+      "target": "zwickroell-temperature-chamber-zwickiline"
+    },
+    {
+      "type": "controlled_by",
+      "target": "zwickroell-testxpert-software"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://www.zwickroell.com/products/static-materials-testing-machines/universal-testing-machines-for-static-applications/zwickiline/",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지(HTML) 본문·표를 직접 읽음. 소개와 기술 데이터 표(Z0.5·Z1.0·Z2.5·Z2.5+·Z5.0). 표 숫자 뒤에 각주 번호가 붙어 읽혀(예 '0.0005 ... 20004', '7892') 각주 숫자는 떼고 옮겼다"
+    },
+    {
+      "file": "zwickroell/02_396_zwickiline_z0_5_up_to_z5_0_materials_testing_machine_pi_en.pdf",
+      "pages": [
+        3,
+        4,
+        5,
+        6,
+        7,
+        8
+      ]
+    },
+    {
+      "file": "zwickroell/02_595_material_testing_machine_zwickiline_z2.5_tn__pi_en.pdf",
+      "pages": [
+        1,
+        3
+      ]
+    }
+  ],
+  "confidence": "catalog",
+  "notes": "Z0.5 TN·TH 는 같은 이름의 두 품번(1080951/1123065, 1080952/1123066)이 있어 고속 변형은 note 로 적었다. PDF(PI396·PI595)로 Z0.5~Z5.0·Z2.5 TN+ 기술 데이터 표(시험 공간·깊이·치수·무게·속도·분해능·품번)를 모두 확인했다. Z2.5 TN+ 의 power_W 500(구동 출력)은 PDF 에 없다(PDF: 전원 230 V 1Ph, 소비 전력 약 2.3 kVA). 온도 범위 -70~+360 °C 는 이 PDF 에 없다(온도 챔버 쪽 값). 안전문·보호 가드를 열면 속도는 600 mm/min 으로 줄어든다. 소음(vmax, 1 m): Z0.5 56 dB(A)(고속 형 61), Z1.0~Z5.0 55, Z2.5 TN+ 64."
+}

@@ -1,0 +1,147 @@
+{
+  "id": "ta-instruments-dilatometers",
+  "kind": "equipment_series",
+  "name": "TA Instruments Dilatometers (DIL 800 series: 801 / 802 / 805 / 806 / 820 / 830)",
+  "name_ko": "TA 인스트루먼트 딜라토미터 계열(DIL 800 시리즈)",
+  "manufacturer": "ta-instruments",
+  "category": "dilatometer",
+  "description": "푸시로드·급랭·광학 딜라토미터 계열. DIL 830 시리즈(831 고분해능, 832 True Differential)는 노에 따라 RT~1100/1500/1700 °C, 길이 분해능 1 nm. 805 계열은 급랭(805A/D, 805A/D/T, 805L), 806 은 광학, 820 시리즈는 수직형(HT 고온형 포함).",
+  "test_items": [
+    "dilatometry"
+  ],
+  "measurands": [
+    "thermal.expansion_linear"
+  ],
+  "measurands_by_item": {
+    "dilatometry": [
+      "thermal.expansion_linear"
+    ]
+  },
+  "limits": {
+    "temperature_degC": {
+      "max": 1700,
+      "uncertain": true,
+      "note": "DIL 830 시리즈 노 선택 기준"
+    }
+  },
+  "models": [
+    {
+      "model": "DIL 831",
+      "specs": {
+        "temperature_degC": {
+          "max": 1700,
+          "uncertain": true,
+          "note": "RT–1100 / RT–1500 / RT–1700 °C(노에 따라)"
+        },
+        "displacement_resolution_nm": {
+          "value": 1,
+          "uncertain": true,
+          "note": "length resolution 1 nm, 온도 분해능 0.05 °C"
+        }
+      },
+      "note": "고분해능 수평 푸시로드. CTE 정확도 0.03 × 10⁻⁶ K⁻¹(검색 발췌)"
+    },
+    {
+      "model": "DIL 832",
+      "specs": {
+        "temperature_degC": {
+          "max": 1700,
+          "uncertain": true,
+          "note": "RT–1100 / RT–1500 / RT–1700 °C(노에 따라)"
+        },
+        "displacement_resolution_nm": {
+          "value": 1,
+          "uncertain": true
+        },
+        "sample_length_mm": {
+          "max": 25,
+          "uncertain": true
+        },
+        "specimen_diameter_mm": {
+          "max": 6,
+          "uncertain": true
+        }
+      },
+      "note": "True Differential 고분해능 수평 푸시로드. CTE 정확도 0.01 × 10⁻⁶ K⁻¹(검색 발췌)"
+    },
+    {
+      "model": "DIL 801",
+      "note": "단일 시료 딜라토미터. 제품 페이지 이름만 확인(사양 미확인)",
+      "uncertain": true
+    },
+    {
+      "model": "DIL 802",
+      "note": "True Differential 딜라토미터. 제품 페이지 이름만 확인(사양 미확인)",
+      "uncertain": true
+    },
+    {
+      "model": "DIL 805A/D",
+      "note": "급랭 딜라토미터. 제품 페이지 이름만 확인(사양 미확인)",
+      "uncertain": true
+    },
+    {
+      "model": "DIL 805A/D/T",
+      "note": "급랭 딜라토미터. 제품 페이지 이름만 확인(사양 미확인)",
+      "uncertain": true
+    },
+    {
+      "model": "DIL 805L",
+      "note": "급랭 딜라토미터. 제품 페이지 이름만 확인(사양 미확인)",
+      "uncertain": true
+    },
+    {
+      "model": "DIL 806",
+      "note": "광학 딜라토미터. 제품 페이지 이름만 확인(사양 미확인)",
+      "uncertain": true
+    },
+    {
+      "model": "DIL 821",
+      "note": "820 시리즈 수직형. 제품 페이지 이름만 확인(사양 미확인)",
+      "uncertain": true
+    },
+    {
+      "model": "DIL 822",
+      "note": "820 시리즈 수직형. 제품 페이지 이름만 확인(사양 미확인)",
+      "uncertain": true
+    },
+    {
+      "model": "DIL 821HT / 822HT",
+      "note": "820 HT 고온 수직형. 제품 페이지 이름만 확인(사양 미확인)",
+      "uncertain": true
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://www.tainstruments.com/dil-831/",
+      "retrieved": "2026-10-08",
+      "note": "제조사 페이지가 자동 조회를 막아(HTTP 403/406) 직접 열지 못함. 값은 웹 검색 엔진이 이 페이지에서 뽑은 발췌로만 확인했다 — 값마다 uncertain. DIL 831: RT–1100/1500/1700 °C, 길이 분해능 1 nm·0.05 °C, CTE 정확도 0.03e-6/K"
+    },
+    {
+      "url": "https://www.tainstruments.com/dil-832/?lang=fr",
+      "retrieved": "2026-10-08",
+      "note": "제조사 페이지가 자동 조회를 막아(HTTP 403/406) 직접 열지 못함. 값은 웹 검색 엔진이 이 페이지에서 뽑은 발췌로만 확인했다 — 값마다 uncertain. DIL 832: RT–1100/1500/1700 °C, 1 nm, CTE 정확도 0.01e-6/K, 시료 0~25 mm × 최대 Ø6 mm"
+    },
+    {
+      "url": "https://www.tainstruments.com/category/products/dilatometers/dil-830-series/",
+      "retrieved": "2026-10-08",
+      "note": "DIL 830 시리즈 분류 페이지(검색 결과 제목만 확인)"
+    },
+    {
+      "url": "https://www.tainstruments.com/dil-820-series/",
+      "retrieved": "2026-10-08",
+      "note": "DIL 820 시리즈 수직형 페이지(검색 결과 제목만 확인)"
+    },
+    {
+      "url": "https://www.tainstruments.com/dil-805ad/",
+      "retrieved": "2026-10-08",
+      "note": "DIL 805A/D 급랭 딜라토미터 페이지(검색 결과 제목만 확인)"
+    },
+    {
+      "url": "https://www.tainstruments.com/dil-806/",
+      "retrieved": "2026-10-08",
+      "note": "DIL 806 광학 딜라토미터 페이지(검색 결과 제목만 확인)"
+    }
+  ],
+  "confidence": "limited",
+  "notes": "사양은 DIL 831·832 만 검색 발췌로 확인했다. 나머지 기종은 검색 결과의 제품 페이지 제목으로 이름만 적었다."
+}

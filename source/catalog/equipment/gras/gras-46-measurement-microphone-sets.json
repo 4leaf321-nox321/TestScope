@@ -1,0 +1,366 @@
+{
+  "id": "gras-46-measurement-microphone-sets",
+  "kind": "sensor",
+  "name": "GRAS Measurement Microphone Sets (46-series, 146AE / 147AX / 246AE)",
+  "name_ko": "GRAS 측정 마이크 세트 (46 계열)",
+  "manufacturer": "gras",
+  "category": "acoustic_measurement",
+  "form_factor": "probe",
+  "description": "카트리지와 프리앰프를 짝지어 교정한 측정 마이크 세트. CCP(0 V 프리폴라라이즈드, BNC·Microdot) 계열과 LEMO(200 V 외부 편극) 계열이 있고, 크기는 1/2\"·1/4\"·1/8\", 형식은 자유음장·압력형·랜덤 입사·멀티필드다. 대표 기종 46AE 는 3.15 Hz~20 kHz(±2 dB), 17~138 dB, 50 mV/Pa 로 IEC 61672 Class 1 이고, 1/8\" 압력형 46DD 는 6.5 Hz~70 kHz, 52~174 dB 까지 잰다.",
+  "test_items": [],
+  "measurands": [
+    "sound_pressure_level",
+    "frequency_response"
+  ],
+  "standards": {
+    "compliance": [
+      "IEC 61094-4 (WS2F, 46AE·46AF 카트리지)",
+      "IEC 61672 Class 1 (46AE)"
+    ],
+    "test_methods": []
+  },
+  "limits": {
+    "frequency_Hz": {
+      "min": 3.15,
+      "max": 80000,
+      "note": "±2 dB 범위. 조회한 다섯 기종(46AE·46AF·46AM·46BE·46DD) 기준"
+    },
+    "sound_pressure_level_dB": {
+      "min": 17,
+      "max": 174,
+      "note": "동적 범위 하한(dB(A))~상한(dB). 조회한 다섯 기종 기준"
+    },
+    "mic_sensitivity_mV_Pa": {
+      "min": 0.8,
+      "max": 50,
+      "note": "@ 250 Hz"
+    }
+  },
+  "models": [
+    {
+      "model": "46BD-FV",
+      "specs": {
+        "type": "1/4\" CCP 압력형 표준 마이크 세트, 전면 통기"
+      },
+      "note": "목록 페이지의 형식 설명만 확인"
+    },
+    {
+      "model": "146AE",
+      "specs": {
+        "type": "1/2\" CCP 자유음장 마이크 세트"
+      },
+      "note": "목록 페이지의 형식 설명만 확인"
+    },
+    {
+      "model": "147AX",
+      "specs": {
+        "type": "CCP 러기드 압력형 마이크"
+      },
+      "note": "목록 페이지의 형식 설명만 확인"
+    },
+    {
+      "model": "246AE",
+      "specs": {
+        "type": "1/2\" CCP 자유음장 표준 SysCheck2 마이크 세트"
+      },
+      "note": "목록 페이지의 형식 설명만 확인"
+    },
+    {
+      "model": "46AD",
+      "specs": {
+        "type": "1/2\" CCP 압력형 표준 마이크 세트, 고감도"
+      },
+      "note": "목록 페이지의 형식 설명만 확인"
+    },
+    {
+      "model": "46AM",
+      "specs": {
+        "frequency_Hz": {
+          "min": 3.15,
+          "max": 31500
+        },
+        "sound_pressure_level_dB": {
+          "min": 25,
+          "max": 149
+        },
+        "mic_sensitivity_mV_Pa": 14.5,
+        "interfaces": "BNC",
+        "type": "40AM 카트리지 + 26CA 프리앰프"
+      },
+      "note": "1/2\" CCP 자유음장 표준 마이크 세트, 광대역. 주파수 범위 ±2 dB 3.15 Hz~31.5 kHz(±1 dB 5 Hz~16 kHz). 하한 25 dB(A). 감도 14.5 mV/Pa(±2 dB)"
+    },
+    {
+      "model": "46AO",
+      "specs": {
+        "type": "1/2\" CCP 압력형 표준 마이크 세트"
+      },
+      "note": "목록 페이지의 형식 설명만 확인"
+    },
+    {
+      "model": "46AO-S2",
+      "specs": {
+        "type": "1/2\" CCP 압력형 마이크 세트"
+      },
+      "note": "목록 페이지의 형식 설명만 확인"
+    },
+    {
+      "model": "46AQ",
+      "specs": {
+        "type": "1/2\" CCP 랜덤 입사 표준 마이크 세트"
+      },
+      "note": "목록 페이지의 형식 설명만 확인"
+    },
+    {
+      "model": "46AZ",
+      "specs": {
+        "type": "1/2\" CCP 자유음장 표준 마이크 세트, 저주파"
+      },
+      "note": "목록 페이지의 형식 설명만 확인"
+    },
+    {
+      "model": "46BC",
+      "specs": {
+        "type": "1/4\" CCP 멀티필드 마이크 세트, 고감도"
+      },
+      "note": "목록 페이지의 형식 설명만 확인"
+    },
+    {
+      "model": "46BD",
+      "specs": {
+        "type": "1/4\" CCP 압력형 표준 마이크 세트"
+      },
+      "note": "목록 페이지의 형식 설명만 확인"
+    },
+    {
+      "model": "46BD-S1",
+      "specs": {
+        "type": "1/4\" CCP 압력형 표준 마이크 세트, SMB 커넥터"
+      },
+      "note": "목록 페이지의 형식 설명만 확인"
+    },
+    {
+      "model": "46BE",
+      "specs": {
+        "frequency_Hz": {
+          "min": 4,
+          "max": 80000
+        },
+        "sound_pressure_level_dB": {
+          "min": 35,
+          "max": 160
+        },
+        "mic_sensitivity_mV_Pa": 3.6,
+        "interfaces": "Microdot 10/32",
+        "type": "40BE 카트리지 + 26CB 프리앰프"
+      },
+      "note": "1/4\" CCP 자유음장 표준 마이크 세트. 주파수 범위 ±2 dB 4 Hz~80 kHz(±1 dB 10 Hz~40 kHz). 하한 35 dB(A). 감도 3.6 mV/Pa @ 250 Hz(±3 dB). 40BE 는 IEC 61094 WS3F"
+    },
+    {
+      "model": "46BG",
+      "specs": {
+        "type": "1/4\" CCP 압력형 표준 마이크 세트, 고음압"
+      },
+      "note": "목록 페이지의 형식 설명만 확인"
+    },
+    {
+      "model": "46BG-FV",
+      "specs": {
+        "type": "1/4\" CCP 압력형 전면 통기 마이크 세트, 고음압"
+      },
+      "note": "목록 페이지의 형식 설명만 확인"
+    },
+    {
+      "model": "46BL-1",
+      "specs": {
+        "type": "1/4\" CCP 압력형 표준 마이크 세트, 고감도"
+      },
+      "note": "목록 페이지의 형식 설명만 확인"
+    },
+    {
+      "model": "46BL-1-FV",
+      "specs": {
+        "type": "1/4\" CCP 압력형 표준 마이크 세트, 고감도, 전면 통기"
+      },
+      "note": "목록 페이지의 형식 설명만 확인"
+    },
+    {
+      "model": "46DD",
+      "specs": {
+        "frequency_Hz": {
+          "min": 6.5,
+          "max": 70000
+        },
+        "sound_pressure_level_dB": {
+          "min": 52,
+          "max": 174
+        },
+        "mic_sensitivity_mV_Pa": 0.8,
+        "interfaces": "Microdot 10/32",
+        "type": "40DD 카트리지(1/8\" 압력형) + 26CB 프리앰프(TEDS)"
+      },
+      "note": "1/8\" CCP 압력형 표준 마이크 세트. 주파수 범위 ±2 dB 6.5 Hz~70 kHz(±1 dB 10 Hz~25 kHz). 하한 52 dB(A). 감도 0.8 mV/Pa(±3 dB)"
+    },
+    {
+      "model": "46DD-FV",
+      "specs": {
+        "type": "1/8\" CCP 압력형 표준 마이크 세트, 전면 통기"
+      },
+      "note": "목록 페이지의 형식 설명만 확인"
+    },
+    {
+      "model": "46DE",
+      "specs": {
+        "type": "1/8\" CCP 압력형 표준 마이크 세트"
+      },
+      "note": "목록 페이지의 형식 설명만 확인"
+    },
+    {
+      "model": "46AE",
+      "specs": {
+        "frequency_Hz": {
+          "min": 3.15,
+          "max": 20000
+        },
+        "sound_pressure_level_dB": {
+          "min": 17,
+          "max": 138
+        },
+        "mic_sensitivity_mV_Pa": 50,
+        "operating_temperature_degC": {
+          "min": -30,
+          "max": 85
+        },
+        "interfaces": "BNC",
+        "type": "40AE 카트리지 + 26CA 프리앰프"
+      },
+      "note": "1/2\" CCP 자유음장 표준 마이크 세트. 주파수 범위 ±2 dB 3.15 Hz~20 kHz(±1 dB 5 Hz~10 kHz). 하한 17 dB(A). 감도 50 mV/Pa @ 250 Hz(±1.5 dB). IEC 61094-4 WS2F, IEC 61672 Class 1"
+    },
+    {
+      "model": "46AK",
+      "specs": {
+        "type": "1/2\" CCP 자유음장 표준 마이크 세트"
+      },
+      "note": "목록 페이지의 형식 설명만 확인"
+    },
+    {
+      "model": "46AF",
+      "specs": {
+        "frequency_Hz": {
+          "min": 3.15,
+          "max": 20000
+        },
+        "sound_pressure_level_dB": {
+          "min": 17,
+          "max": 149
+        },
+        "mic_sensitivity_mV_Pa": 50,
+        "interfaces": "7-pin LEMO (FGG.1B.307)",
+        "type": "40AF 카트리지(200 V 외부 편극) + 26TK 프리앰프(TEDS)"
+      },
+      "note": "1/2\" LEMO 자유음장 표준 마이크 세트. 주파수 범위 ±2 dB 3.15 Hz~20 kHz(±1 dB 5 Hz~10 kHz). 상한 142 dB(+28 V/±14 V 전원), 149 dB(+120 V/±60 V 전원). 감도 50 mV/Pa(±2 dB)"
+    },
+    {
+      "model": "46BH-1",
+      "specs": {
+        "type": "1/4\" LEMO 압력형 표준 마이크 세트, 고음압"
+      },
+      "note": "목록 페이지의 형식 설명만 확인"
+    },
+    {
+      "model": "46DP-1",
+      "specs": {
+        "type": "1/8\" LEMO 압력형 표준 마이크 세트"
+      },
+      "note": "목록 페이지의 형식 설명만 확인"
+    },
+    {
+      "model": "46AC",
+      "specs": {
+        "type": "1/2\" LEMO 자유음장 표준 마이크 세트, 광대역"
+      },
+      "note": "목록 페이지의 형식 설명만 확인"
+    },
+    {
+      "model": "46AR",
+      "specs": {
+        "type": "1/2\" LEMO 랜덤 입사 표준 마이크 세트"
+      },
+      "note": "목록 페이지의 형식 설명만 확인"
+    },
+    {
+      "model": "46AP",
+      "specs": {
+        "type": "1/2\" LEMO 압력형 표준 마이크 세트, 고감도"
+      },
+      "note": "목록 페이지의 형식 설명만 확인"
+    },
+    {
+      "model": "46AG",
+      "specs": {
+        "type": "1/2\" LEMO 압력형 표준 마이크 세트"
+      },
+      "note": "목록 페이지의 형식 설명만 확인"
+    },
+    {
+      "model": "46AN",
+      "specs": {
+        "type": "1/2\" LEMO 자유음장 표준 마이크 세트, 저주파"
+      },
+      "note": "목록 페이지의 형식 설명만 확인"
+    },
+    {
+      "model": "46BP-1",
+      "specs": {
+        "type": "1/4\" LEMO 압력형 표준 마이크 세트"
+      },
+      "note": "목록 페이지의 형식 설명만 확인"
+    },
+    {
+      "model": "46BF-1",
+      "specs": {
+        "type": "1/4\" LEMO 자유음장 표준 마이크 세트"
+      },
+      "note": "목록 페이지의 형식 설명만 확인"
+    }
+  ],
+  "relations": [
+    {
+      "type": "compatible_accessory",
+      "target": "gras-kemar-45bb-45bc"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://www.grasacoustics.com/products/measurement-microphone-sets",
+      "retrieved": "2026-10-08",
+      "note": "제조사 측정 마이크 세트 목록(CCP·LEMO). 기종명과 형식 설명"
+    },
+    {
+      "url": "https://www.grasacoustics.com/products/measurement-microphone-sets/product/551-46am",
+      "retrieved": "2026-10-08",
+      "note": "46AM 제품 페이지: 주파수 범위, 동적 범위, 감도, 구성"
+    },
+    {
+      "url": "https://www.grasacoustics.com/products/measurement-microphone-sets/product/143-46be",
+      "retrieved": "2026-10-08",
+      "note": "46BE 제품 페이지: 주파수 범위, 동적 범위, 감도, 구성"
+    },
+    {
+      "url": "https://www.grasacoustics.com/products/measurement-microphone-sets/product/185-46dd",
+      "retrieved": "2026-10-08",
+      "note": "46DD 제품 페이지: 주파수 범위, 동적 범위, 감도, 구성"
+    },
+    {
+      "url": "https://www.grasacoustics.com/products/measurement-microphone-sets/product/140-46ae",
+      "retrieved": "2026-10-08",
+      "note": "46AE 제품 페이지: 주파수 범위, 동적 범위, 감도, 구성"
+    },
+    {
+      "url": "https://www.grasacoustics.com/products/measurement-microphone-sets/product/145-46af",
+      "retrieved": "2026-10-08",
+      "note": "46AF 제품 페이지: 주파수 범위, 동적 범위, 감도, 구성"
+    }
+  ],
+  "confidence": "limited",
+  "notes": "33 기종 중 다섯 기종만 개별 페이지를 열어 수치를 적었다. 나머지는 형식 설명뿐이다. 마이크 자체는 시험을 하지 않아 test_items 를 비움."
+}

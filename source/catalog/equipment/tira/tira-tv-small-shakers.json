@@ -1,0 +1,217 @@
+{
+  "id": "tira-tv-small-shakers",
+  "kind": "equipment_series",
+  "name": "TIRA Vibration Test Systems 9 N to 2.7 kN (TV 50009 / TV 50018 / TV 511xx / TV 5220 / TV 50350)",
+  "name_ko": "티라 소형 진동 시험 시스템 (9 N~2.7 kN)",
+  "manufacturer": "tira",
+  "category": "vibration_shaker",
+  "form_factor": "benchtop",
+  "description": "TIRA 표준 진동 시험 시스템 가운데 9 N~2.7 kN 대역. TV 50009·TV 50018 은 2~20,000 Hz 의 초소형 가진기(M4 나사 아마추어), TV 51110·51120·51140 은 정현 100~400 N·60 mm 아마추어, TV 5220(1 kN)·TV 50350(2.7 kN)은 120 mm 아마추어에 충격 정격과 45 mm p-p 롱 스트로크(/LS)판을 갖춘다.",
+  "test_items": [
+    "vibration_sine_random",
+    "mechanical_shock"
+  ],
+  "measurands": [
+    "resonance_frequency",
+    "transmissibility",
+    "fatigue_life"
+  ],
+  "materials": [
+    "electronic components",
+    "PCB",
+    "sensors",
+    "small assemblies"
+  ],
+  "limits": {
+    "force_N": {
+      "min": 9,
+      "max": 2700,
+      "note": "정현 정격 피크. 랜덤 최대 2000 N rms, 충격 최대 5500 N"
+    },
+    "frequency_Hz": {
+      "min": 2,
+      "max": 20000,
+      "note": "TV 50009·50018 2~20,000 Hz, TV 50350 2~4,500 Hz"
+    },
+    "stroke_mm_pk_pk": {
+      "min": 3,
+      "max": 45,
+      "note": "최대 변위 p-p. /LS 판 45 mm"
+    },
+    "acceleration_g": {
+      "max": 100,
+      "note": "정현 최대. 충격 최대 180 g(TV 50350-120)"
+    }
+  },
+  "models": [
+    {
+      "model": "TV 50009",
+      "specs": {
+        "force_N": 9,
+        "frequency_Hz": {
+          "min": 2,
+          "max": 20000
+        },
+        "stroke_mm_pk_pk": 3,
+        "acceleration_g": 60,
+        "weight_kg": 2.2
+      },
+      "note": "아마추어 M4 나사. 가진기 질량 2.2 kg"
+    },
+    {
+      "model": "TV 50018",
+      "specs": {
+        "force_N": 18,
+        "frequency_Hz": {
+          "min": 2,
+          "max": 20000
+        },
+        "stroke_mm_pk_pk": 5,
+        "acceleration_g": 65,
+        "weight_kg": 5
+      },
+      "note": "아마추어 M4 나사. 가진기 질량 5 kg"
+    },
+    {
+      "model": "TV 51110",
+      "specs": {
+        "force_N": 100,
+        "force_random_kN": 0.07,
+        "frequency_Hz": {
+          "min": 2,
+          "max": 7000
+        },
+        "stroke_mm_pk_pk": 13,
+        "acceleration_g": 45,
+        "armature_diameter_mm": 60,
+        "weight_kg": 12
+      },
+      "note": "가진기 질량 12 kg. 최대 가속도(정현/랜덤/충격) 45/30 g"
+    },
+    {
+      "model": "TV 51120",
+      "specs": {
+        "force_N": 200,
+        "force_random_kN": 0.14,
+        "frequency_Hz": {
+          "min": 2,
+          "max": 7000
+        },
+        "stroke_mm_pk_pk": 13,
+        "acceleration_g": 89,
+        "armature_diameter_mm": 60,
+        "weight_kg": 12
+      },
+      "note": "가진기 질량 12 kg. 최대 가속도(정현/랜덤/충격) 89/62 g"
+    },
+    {
+      "model": "TV 51140",
+      "specs": {
+        "force_N": 400,
+        "force_random_kN": 0.311,
+        "frequency_Hz": {
+          "min": 2,
+          "max": 6500
+        },
+        "stroke_mm_pk_pk": 20,
+        "acceleration_g": 100,
+        "armature_diameter_mm": 60,
+        "weight_kg": 18
+      },
+      "note": "가진기 질량 18 kg. 최대 가속도(정현/랜덤/충격) 100/50 g"
+    },
+    {
+      "model": "TV 5220-120",
+      "specs": {
+        "force_N": 1000,
+        "force_random_kN": 0.65,
+        "force_shock_kN": 1.5,
+        "frequency_Hz": {
+          "min": 2,
+          "max": 6500
+        },
+        "stroke_mm_pk_pk": 25.4,
+        "acceleration_g": 60,
+        "armature_diameter_mm": 120,
+        "weight_kg": 122
+      },
+      "note": "총 질량 122 kg. 최대 가속도(정현/랜덤/충격) 60/35/90 g"
+    },
+    {
+      "model": "TV 5220/LS-120",
+      "specs": {
+        "force_N": 1000,
+        "force_random_kN": 0.65,
+        "force_shock_kN": 1.5,
+        "frequency_Hz": {
+          "min": 2,
+          "max": 6500
+        },
+        "stroke_mm_pk_pk": 45,
+        "acceleration_g": 60,
+        "armature_diameter_mm": 120,
+        "weight_kg": 122
+      },
+      "note": "롱 스트로크(LS)판. 총 질량 122 kg. 최대 가속도(정현/랜덤/충격) 60/35/90 g"
+    },
+    {
+      "model": "TV 50350-120",
+      "specs": {
+        "force_N": 2700,
+        "force_random_kN": 2.0,
+        "force_shock_kN": 5.5,
+        "frequency_Hz": {
+          "min": 2,
+          "max": 4500
+        },
+        "stroke_mm_pk_pk": 25.4,
+        "acceleration_g": 100,
+        "armature_diameter_mm": 120,
+        "weight_kg": 280
+      },
+      "note": "총 질량 280 kg. 최대 가속도(정현/랜덤/충격) 100/70/180 g"
+    },
+    {
+      "model": "TV 50350/LS-120",
+      "specs": {
+        "force_N": 2700,
+        "force_random_kN": 2.0,
+        "force_shock_kN": 5.3,
+        "frequency_Hz": {
+          "min": 2,
+          "max": 4500
+        },
+        "stroke_mm_pk_pk": 45,
+        "acceleration_g": 95,
+        "armature_diameter_mm": 120,
+        "weight_kg": 280
+      },
+      "note": "롱 스트로크(LS)판. 총 질량 280 kg. 최대 가속도(정현/랜덤/충격) 95/73/160 g"
+    }
+  ],
+  "relations": [
+    {
+      "type": "performs",
+      "target": "vibration_sine_random"
+    },
+    {
+      "type": "same_family_as",
+      "target": "tira-tiravib-5x-shakers",
+      "note": "같은 9 N~400 N 페이지의 TV 52110·TV 52120 은 기존 객체(TIRAvib 52110·52120)와 같은 기종이라 여기 넣지 않음"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://www.tira-gmbh.de/en/vibration-test-systems/vibration-test-systems/standard-systems/vibration-test-systems-9-n-to-400-n/",
+      "retrieved": "2026-10-08",
+      "note": "제조사 표준 시스템 9 N~400 N 페이지. 기종별 정격 표"
+    },
+    {
+      "url": "https://www.tira-gmbh.de/en/vibration-test-systems/vibration-test-systems/standard-systems/vibration-test-systems-1-kn-to-27-kn/",
+      "retrieved": "2026-10-08",
+      "note": "제조사 표준 시스템 1 kN~2.7 kN 페이지. 기종별 정격 표(충격 포함)"
+    }
+  ],
+  "confidence": "limited",
+  "notes": "force_random_kN·force_shock_kN 은 원문 N 을 kN 으로 옮긴 값이다. 최대 속도·탑재 질량·냉각 방식은 페이지에 없다. 1~2.7 kN 시스템의 소비 전력은 2.9~5.7 kVA."
+}

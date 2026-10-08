@@ -1,0 +1,702 @@
+{
+  "id": "optronis-cyclone-series",
+  "kind": "equipment_series",
+  "name": "Optronis Cyclone / CyclonePlus Series",
+  "name_ko": "옵트로니스 Cyclone · CyclonePlus 고속 카메라",
+  "manufacturer": "optronis",
+  "category": "high_speed_swir_camera",
+  "subcategory": "high_speed_camera",
+  "form_factor": "camera",
+  "description": "CoaXPress(CXP-12) 로 영상을 내보내는 고속·고해상도 카메라 계열(흑백 M / 컬러 C). 1,280 × 860 에서 3,518 fps(1HS) 부터 9,344 × 7,000(65 MP)에서 71 fps 까지 해상도와 속도를 고른다. Cyclone 은 CXP-12 4 × 12.5 Gbps 인터페이스, CyclonePlus 는 같은 해상도 구성의 개량 판.",
+  "test_items": [],
+  "limits": {
+    "resolution_pixels": {
+      "max": 65408000,
+      "note": "9,344 × 7,000 (Cyclone-65-70 · CyclonePlus-65)"
+    },
+    "frame_rate_fps": {
+      "min": 71,
+      "max": 3518,
+      "note": "각 기종 전 화소 최대값"
+    }
+  },
+  "models": [
+    {
+      "model": "Cyclone-65-70-M",
+      "variant": "monochrome",
+      "specs": {
+        "detector_pixels": "9344 × 7000",
+        "resolution_pixels": 65408000,
+        "frame_rate_fps": 71,
+        "interfaces": "CoaXPress CXP-12 (4 × 12.5 Gbps)",
+        "pixel_pitch_um": 3.2,
+        "min_exposure_time_s": 1.2e-05,
+        "max_frame_rate_fps": {
+          "value": 13500,
+          "note": "9344 × 4 화소(Runner 시스템 PDF)"
+        }
+      }
+    },
+    {
+      "model": "Cyclone-65-70-C",
+      "variant": "color",
+      "specs": {
+        "detector_pixels": "9344 × 7000",
+        "resolution_pixels": 65408000,
+        "frame_rate_fps": 71,
+        "interfaces": "CoaXPress CXP-12 (4 × 12.5 Gbps)",
+        "pixel_pitch_um": 3.2,
+        "min_exposure_time_s": 1.2e-05,
+        "max_frame_rate_fps": {
+          "value": 13500,
+          "note": "9344 × 4 화소(Runner 시스템 PDF)"
+        }
+      }
+    },
+    {
+      "model": "Cyclone-21-230-M",
+      "variant": "monochrome",
+      "specs": {
+        "detector_pixels": "5120 × 4096",
+        "resolution_pixels": 20971520,
+        "frame_rate_fps": 230,
+        "interfaces": "CoaXPress CXP-12 (4 × 12.5 Gbps)"
+      }
+    },
+    {
+      "model": "Cyclone-21-230-C",
+      "variant": "color",
+      "specs": {
+        "detector_pixels": "5120 × 4096",
+        "resolution_pixels": 20971520,
+        "frame_rate_fps": 230,
+        "interfaces": "CoaXPress CXP-12 (4 × 12.5 Gbps)"
+      }
+    },
+    {
+      "model": "Cyclone-25-150-M",
+      "variant": "monochrome",
+      "specs": {
+        "detector_pixels": "5120 × 5120",
+        "resolution_pixels": 26214400,
+        "frame_rate_fps": 150,
+        "interfaces": "CoaXPress CXP-12 (4 × 12.5 Gbps)",
+        "pixel_pitch_um": 2.5,
+        "min_exposure_time_s": 1.2e-05,
+        "max_frame_rate_fps": {
+          "value": 20900,
+          "note": "5120 × 4 화소(Runner 시스템 PDF)"
+        }
+      }
+    },
+    {
+      "model": "Cyclone-25-150-C",
+      "variant": "color",
+      "specs": {
+        "detector_pixels": "5120 × 5120",
+        "resolution_pixels": 26214400,
+        "frame_rate_fps": 150,
+        "interfaces": "CoaXPress CXP-12 (4 × 12.5 Gbps)",
+        "pixel_pitch_um": 2.5,
+        "min_exposure_time_s": 1.2e-05,
+        "max_frame_rate_fps": {
+          "value": 20900,
+          "note": "5120 × 4 화소(Runner 시스템 PDF)"
+        }
+      }
+    },
+    {
+      "model": "Cyclone-5-700-M",
+      "variant": "monochrome",
+      "specs": {
+        "detector_pixels": "2560 × 1916",
+        "resolution_pixels": 4904960,
+        "frame_rate_fps": 693,
+        "interfaces": "CoaXPress CXP-12 (4 × 12.5 Gbps)",
+        "pixel_pitch_um": 5,
+        "min_exposure_time_s": 4e-06,
+        "max_frame_rate_fps": {
+          "value": 120000,
+          "note": "2,560 × 4 화소(Runner 시스템 PDF). 카메라 데이터시트는 2,560 × 8 에서 95,057 fps"
+        },
+        "detector": "LUX51, Global Shutter",
+        "adc_resolution_bit": {
+          "value": 10,
+          "note": "8 / 10 bit"
+        },
+        "weight_kg": {
+          "value": 0.4,
+          "note": "마운트 제외 400 g. 65 × 65 × 71 mm"
+        }
+      },
+      "note": "데이터시트: 전 화소 20 ~ 693 fps, 노출 4 µs ~ 1/프레임 속도, 활성 면적 12.80 × 9.60 mm, 포화 용량 15,000 e-, 시간 암잡음 10 e-, 소비 전력 10 W(PoCXP), 운전 온도 0 ~ 40 °C"
+    },
+    {
+      "model": "Cyclone-5-700-C",
+      "variant": "color",
+      "specs": {
+        "detector_pixels": "2560 × 1916",
+        "resolution_pixels": 4904960,
+        "frame_rate_fps": 693,
+        "interfaces": "CoaXPress CXP-12 (4 × 12.5 Gbps)",
+        "pixel_pitch_um": 5,
+        "min_exposure_time_s": 4e-06,
+        "max_frame_rate_fps": {
+          "value": 120000,
+          "note": "2,560 × 4 화소(Runner 시스템 PDF). 카메라 데이터시트는 2,560 × 8 에서 95,057 fps"
+        },
+        "detector": "LUX51, Global Shutter",
+        "adc_resolution_bit": {
+          "value": 10,
+          "note": "8 / 10 bit"
+        },
+        "weight_kg": {
+          "value": 0.4,
+          "note": "마운트 제외 400 g. 65 × 65 × 71 mm"
+        }
+      },
+      "note": "데이터시트: 전 화소 20 ~ 693 fps, 노출 4 µs ~ 1/프레임 속도, 활성 면적 12.80 × 9.60 mm, 포화 용량 15,000 e-, 시간 암잡음 10 e-, 소비 전력 10 W(PoCXP), 운전 온도 0 ~ 40 °C"
+    },
+    {
+      "model": "Cyclone-2-2000-M",
+      "variant": "monochrome",
+      "specs": {
+        "detector_pixels": "1920 × 1080",
+        "resolution_pixels": 2073600,
+        "frame_rate_fps": 2166,
+        "interfaces": "CoaXPress CXP-12 (4 × 12.5 Gbps)",
+        "pixel_pitch_um": 10,
+        "min_exposure_time_s": 4e-06,
+        "max_frame_rate_fps": {
+          "value": 212000,
+          "note": "1920 × 4 화소(Runner 시스템 PDF)"
+        }
+      },
+      "note": "Runner 시스템 PDF(12/2022)는 이 카메라를 쓴 Runner-2-2000 의 최대 프레임 속도를 2,100 fps @ 1920 × 1080 로 적는다. 전 화소 값은 웹 페이지 값(2,166 fps) 그대로"
+    },
+    {
+      "model": "Cyclone-2-2000-C",
+      "variant": "color",
+      "specs": {
+        "detector_pixels": "1920 × 1080",
+        "resolution_pixels": 2073600,
+        "frame_rate_fps": 2166,
+        "interfaces": "CoaXPress CXP-12 (4 × 12.5 Gbps)",
+        "pixel_pitch_um": 10,
+        "min_exposure_time_s": 4e-06,
+        "max_frame_rate_fps": {
+          "value": 212000,
+          "note": "1920 × 4 화소(Runner 시스템 PDF)"
+        }
+      },
+      "note": "Runner 시스템 PDF(12/2022)는 이 카메라를 쓴 Runner-2-2000 의 최대 프레임 속도를 2,100 fps @ 1920 × 1080 로 적는다. 전 화소 값은 웹 페이지 값(2,166 fps) 그대로"
+    },
+    {
+      "model": "Cyclone-1HS-3500-M",
+      "variant": "monochrome",
+      "specs": {
+        "detector_pixels": "1280 × 860",
+        "resolution_pixels": 1100800,
+        "frame_rate_fps": 3518,
+        "interfaces": "CoaXPress CXP-12 (4 × 12.5 Gbps)",
+        "pixel_pitch_um": 13.7,
+        "min_exposure_time_s": 2e-06,
+        "max_frame_rate_fps": {
+          "value": 275000,
+          "note": "1280 × 4 화소(Runner 시스템 PDF)"
+        }
+      },
+      "note": "Runner 시스템 PDF(12/2022)는 이 카메라를 쓴 Runner-1HS-3500 의 최대 프레임 속도를 3,500 fps @ 1280 × 860 로 적는다. 전 화소 값은 웹 페이지 값(3,518 fps) 그대로"
+    },
+    {
+      "model": "Cyclone-1HS-3500-C",
+      "variant": "color",
+      "specs": {
+        "detector_pixels": "1280 × 860",
+        "resolution_pixels": 1100800,
+        "frame_rate_fps": 3518,
+        "interfaces": "CoaXPress CXP-12 (4 × 12.5 Gbps)",
+        "pixel_pitch_um": 13.7,
+        "min_exposure_time_s": 2e-06,
+        "max_frame_rate_fps": {
+          "value": 275000,
+          "note": "1280 × 4 화소(Runner 시스템 PDF)"
+        }
+      },
+      "note": "Runner 시스템 PDF(12/2022)는 이 카메라를 쓴 Runner-1HS-3500 의 최대 프레임 속도를 3,500 fps @ 1280 × 860 로 적는다. 전 화소 값은 웹 페이지 값(3,518 fps) 그대로"
+    },
+    {
+      "model": "Cyclone-16-300-M",
+      "variant": "monochrome",
+      "specs": {
+        "detector_pixels": "4672 × 3416",
+        "resolution_pixels": 15959552,
+        "frame_rate_fps": 284,
+        "interfaces": "CoaXPress CXP-12 (4 × 12.5 Gbps)"
+      }
+    },
+    {
+      "model": "Cyclone-16-300-C",
+      "variant": "color",
+      "specs": {
+        "detector_pixels": "4672 × 3416",
+        "resolution_pixels": 15959552,
+        "frame_rate_fps": 284,
+        "interfaces": "CoaXPress CXP-12 (4 × 12.5 Gbps)"
+      }
+    },
+    {
+      "model": "CyclonePlus-14-M",
+      "variant": "monochrome",
+      "specs": {
+        "detector_pixels": "4608 × 3072",
+        "resolution_pixels": 14155776,
+        "frame_rate_fps": 310
+      }
+    },
+    {
+      "model": "CyclonePlus-14-C",
+      "variant": "color",
+      "specs": {
+        "detector_pixels": "4608 × 3072",
+        "resolution_pixels": 14155776,
+        "frame_rate_fps": 310
+      }
+    },
+    {
+      "model": "CyclonePlus-9-M",
+      "variant": "monochrome",
+      "specs": {
+        "detector_pixels": "4096 × 2307",
+        "resolution_pixels": 9449472,
+        "frame_rate_fps": 509
+      }
+    },
+    {
+      "model": "CyclonePlus-9-C",
+      "variant": "color",
+      "specs": {
+        "detector_pixels": "4096 × 2307",
+        "resolution_pixels": 9449472,
+        "frame_rate_fps": 509
+      }
+    },
+    {
+      "model": "CyclonePlus-21-M",
+      "variant": "monochrome",
+      "specs": {
+        "detector_pixels": "5120 × 4096",
+        "resolution_pixels": 20971520,
+        "frame_rate_fps": 230
+      }
+    },
+    {
+      "model": "CyclonePlus-21-C",
+      "variant": "color",
+      "specs": {
+        "detector_pixels": "5120 × 4096",
+        "resolution_pixels": 20971520,
+        "frame_rate_fps": 230
+      }
+    },
+    {
+      "model": "CyclonePlus-25-M",
+      "variant": "monochrome",
+      "specs": {
+        "detector_pixels": "5120 × 5120",
+        "resolution_pixels": 26214400,
+        "frame_rate_fps": 150
+      }
+    },
+    {
+      "model": "CyclonePlus-25-C",
+      "variant": "color",
+      "specs": {
+        "detector_pixels": "5120 × 5120",
+        "resolution_pixels": 26214400,
+        "frame_rate_fps": 150
+      }
+    },
+    {
+      "model": "CyclonePlus-65-M",
+      "variant": "monochrome",
+      "specs": {
+        "detector_pixels": "9344 × 7000",
+        "resolution_pixels": 65408000,
+        "frame_rate_fps": 71
+      }
+    },
+    {
+      "model": "CyclonePlus-65-C",
+      "variant": "color",
+      "specs": {
+        "detector_pixels": "9344 × 7000",
+        "resolution_pixels": 65408000,
+        "frame_rate_fps": 71
+      }
+    },
+    {
+      "model": "CyclonePlus-65LS-M",
+      "variant": "monochrome",
+      "specs": {
+        "detector_pixels": "9344 × 7000",
+        "resolution_pixels": 65408000,
+        "frame_rate_fps": 71
+      }
+    },
+    {
+      "model": "CyclonePlus-65LS-C",
+      "variant": "color",
+      "specs": {
+        "detector_pixels": "9344 × 7000",
+        "resolution_pixels": 65408000,
+        "frame_rate_fps": 71
+      }
+    },
+    {
+      "model": "CyclonePlus-1HS-M",
+      "variant": "monochrome",
+      "specs": {
+        "detector_pixels": "1280 × 860",
+        "resolution_pixels": 1100800,
+        "frame_rate_fps": 3518
+      }
+    },
+    {
+      "model": "CyclonePlus-1HS-C",
+      "variant": "color",
+      "specs": {
+        "detector_pixels": "1280 × 860",
+        "resolution_pixels": 1100800,
+        "frame_rate_fps": 3518
+      }
+    },
+    {
+      "model": "CyclonePlus-2-M",
+      "variant": "monochrome",
+      "specs": {
+        "detector_pixels": "1920 × 1080",
+        "resolution_pixels": 2073600,
+        "frame_rate_fps": 2166
+      }
+    },
+    {
+      "model": "CyclonePlus-2-C",
+      "variant": "color",
+      "specs": {
+        "detector_pixels": "1920 × 1080",
+        "resolution_pixels": 2073600,
+        "frame_rate_fps": 2166
+      }
+    },
+    {
+      "model": "CyclonePlus-5-M",
+      "variant": "monochrome",
+      "specs": {
+        "detector_pixels": "2560 × 1920",
+        "resolution_pixels": 4915200,
+        "frame_rate_fps": 693
+      }
+    },
+    {
+      "model": "CyclonePlus-5-C",
+      "variant": "color",
+      "specs": {
+        "detector_pixels": "2560 × 1920",
+        "resolution_pixels": 4915200,
+        "frame_rate_fps": 693
+      }
+    },
+    {
+      "model": "Runner-1HS-3500-M",
+      "variant": "CamRecord Runner 시스템(mono) — Cyclone-1HS-3500-M 카메라 + Controller-RC1",
+      "specs": {
+        "detector_pixels": "1280 × 860",
+        "resolution_pixels": 1100800,
+        "frame_rate_fps": 3500,
+        "max_frame_rate_fps": {
+          "value": 275000,
+          "note": "1280 × 4 화소"
+        },
+        "pixel_pitch_um": 13.7,
+        "min_exposure_time_s": 2e-06,
+        "memory_GB": [
+          24,
+          56
+        ],
+        "adc_resolution_bit": 8,
+        "interfaces": "CoaXPress (camera–controller); controller GigE, USB2/USB3",
+        "weight_kg": {
+          "value": 0.7,
+          "note": "카메라 약 700 g(98 × 65 × 71 mm). 컨트롤러 205 × 270 × 80 mm, 1.9 kg"
+        }
+      },
+      "note": "영상 대각 21.12 mm. 최대 프레임 속도 · 전 화소 녹화 시간 6.6 s(24 GB) / 15.5 s(56 GB). 카메라 운전 온도 0 ~ 25 °C(CY-HIS 0 ~ 35, CY-FAN 0 ~ 50 °C)"
+    },
+    {
+      "model": "Runner-1HS-3500-C",
+      "variant": "CamRecord Runner 시스템(color) — Cyclone-1HS-3500-C 카메라 + Controller-RC1",
+      "specs": {
+        "detector_pixels": "1280 × 860",
+        "resolution_pixels": 1100800,
+        "frame_rate_fps": 3500,
+        "max_frame_rate_fps": {
+          "value": 275000,
+          "note": "1280 × 4 화소"
+        },
+        "pixel_pitch_um": 13.7,
+        "min_exposure_time_s": 2e-06,
+        "memory_GB": [
+          24,
+          56
+        ],
+        "adc_resolution_bit": 8,
+        "interfaces": "CoaXPress (camera–controller); controller GigE, USB2/USB3",
+        "weight_kg": {
+          "value": 0.7,
+          "note": "카메라 약 700 g(98 × 65 × 71 mm). 컨트롤러 205 × 270 × 80 mm, 1.9 kg"
+        }
+      },
+      "note": "영상 대각 21.12 mm. 최대 프레임 속도 · 전 화소 녹화 시간 6.6 s(24 GB) / 15.5 s(56 GB). 카메라 운전 온도 0 ~ 25 °C(CY-HIS 0 ~ 35, CY-FAN 0 ~ 50 °C)"
+    },
+    {
+      "model": "Runner-2-2000-M",
+      "variant": "CamRecord Runner 시스템(mono) — Cyclone-2-2000-M 카메라 + Controller-RC1",
+      "specs": {
+        "detector_pixels": "1920 × 1080",
+        "resolution_pixels": 2073600,
+        "frame_rate_fps": 2100,
+        "max_frame_rate_fps": {
+          "value": 212000,
+          "note": "1920 × 4 화소"
+        },
+        "pixel_pitch_um": 10,
+        "min_exposure_time_s": 4e-06,
+        "memory_GB": [
+          24,
+          56
+        ],
+        "adc_resolution_bit": 8,
+        "interfaces": "CoaXPress (camera–controller); controller GigE, USB2/USB3",
+        "weight_kg": {
+          "value": 0.7,
+          "note": "카메라 약 700 g(98 × 65 × 71 mm). 컨트롤러 205 × 270 × 80 mm, 1.9 kg"
+        }
+      },
+      "note": "영상 대각 22.03 mm. 최대 프레임 속도 · 전 화소 녹화 시간 5.7 s(24 GB) / 13.4 s(56 GB). 카메라 운전 온도 0 ~ 25 °C(CY-HIS 0 ~ 35, CY-FAN 0 ~ 50 °C)"
+    },
+    {
+      "model": "Runner-2-2000-C",
+      "variant": "CamRecord Runner 시스템(color) — Cyclone-2-2000-C 카메라 + Controller-RC1",
+      "specs": {
+        "detector_pixels": "1920 × 1080",
+        "resolution_pixels": 2073600,
+        "frame_rate_fps": 2100,
+        "max_frame_rate_fps": {
+          "value": 212000,
+          "note": "1920 × 4 화소"
+        },
+        "pixel_pitch_um": 10,
+        "min_exposure_time_s": 4e-06,
+        "memory_GB": [
+          24,
+          56
+        ],
+        "adc_resolution_bit": 8,
+        "interfaces": "CoaXPress (camera–controller); controller GigE, USB2/USB3",
+        "weight_kg": {
+          "value": 0.7,
+          "note": "카메라 약 700 g(98 × 65 × 71 mm). 컨트롤러 205 × 270 × 80 mm, 1.9 kg"
+        }
+      },
+      "note": "영상 대각 22.03 mm. 최대 프레임 속도 · 전 화소 녹화 시간 5.7 s(24 GB) / 13.4 s(56 GB). 카메라 운전 온도 0 ~ 25 °C(CY-HIS 0 ~ 35, CY-FAN 0 ~ 50 °C)"
+    },
+    {
+      "model": "Runner-5-700-M",
+      "variant": "CamRecord Runner 시스템(mono) — Cyclone-5-700-M 카메라 + Controller-RC1",
+      "specs": {
+        "detector_pixels": "2560 × 1916",
+        "resolution_pixels": 4904960,
+        "frame_rate_fps": 693,
+        "max_frame_rate_fps": {
+          "value": 120000,
+          "note": "2560 × 4 화소"
+        },
+        "pixel_pitch_um": 5,
+        "min_exposure_time_s": 4e-06,
+        "memory_GB": [
+          24,
+          56
+        ],
+        "adc_resolution_bit": 8,
+        "interfaces": "CoaXPress (camera–controller); controller GigE, USB2/USB3",
+        "weight_kg": {
+          "value": 0.7,
+          "note": "카메라 약 700 g(98 × 65 × 71 mm). 컨트롤러 205 × 270 × 80 mm, 1.9 kg"
+        }
+      },
+      "note": "영상 대각 16.00 mm. 최대 프레임 속도 · 전 화소 녹화 시간 7.6 s(24 GB) / 17.7 s(56 GB). 카메라 운전 온도 0 ~ 25 °C(CY-HIS 0 ~ 35, CY-FAN 0 ~ 50 °C)"
+    },
+    {
+      "model": "Runner-5-700-C",
+      "variant": "CamRecord Runner 시스템(color) — Cyclone-5-700-C 카메라 + Controller-RC1",
+      "specs": {
+        "detector_pixels": "2560 × 1916",
+        "resolution_pixels": 4904960,
+        "frame_rate_fps": 693,
+        "max_frame_rate_fps": {
+          "value": 120000,
+          "note": "2560 × 4 화소"
+        },
+        "pixel_pitch_um": 5,
+        "min_exposure_time_s": 4e-06,
+        "memory_GB": [
+          24,
+          56
+        ],
+        "adc_resolution_bit": 8,
+        "interfaces": "CoaXPress (camera–controller); controller GigE, USB2/USB3",
+        "weight_kg": {
+          "value": 0.7,
+          "note": "카메라 약 700 g(98 × 65 × 71 mm). 컨트롤러 205 × 270 × 80 mm, 1.9 kg"
+        }
+      },
+      "note": "영상 대각 16.00 mm. 최대 프레임 속도 · 전 화소 녹화 시간 7.6 s(24 GB) / 17.7 s(56 GB). 카메라 운전 온도 0 ~ 25 °C(CY-HIS 0 ~ 35, CY-FAN 0 ~ 50 °C)"
+    },
+    {
+      "model": "Runner-25-150-M",
+      "variant": "CamRecord Runner 시스템(mono) — Cyclone-25-150-M 카메라 + Controller-RC1",
+      "specs": {
+        "detector_pixels": "5120 × 5120",
+        "resolution_pixels": 26214400,
+        "frame_rate_fps": 150,
+        "max_frame_rate_fps": {
+          "value": 20900,
+          "note": "5120 × 4 화소"
+        },
+        "pixel_pitch_um": 2.5,
+        "min_exposure_time_s": 1.2e-05,
+        "memory_GB": [
+          24,
+          56
+        ],
+        "adc_resolution_bit": 8,
+        "interfaces": "CoaXPress (camera–controller); controller GigE, USB2/USB3",
+        "weight_kg": {
+          "value": 0.7,
+          "note": "카메라 약 700 g(98 × 65 × 71 mm). 컨트롤러 205 × 270 × 80 mm, 1.9 kg"
+        }
+      },
+      "note": "영상 대각 18.10 mm. 최대 프레임 속도 · 전 화소 녹화 시간 6.5 s(24 GB) / 15.2 s(56 GB). 카메라 운전 온도 0 ~ 25 °C(CY-HIS 0 ~ 35, CY-FAN 0 ~ 50 °C)"
+    },
+    {
+      "model": "Runner-25-150-C",
+      "variant": "CamRecord Runner 시스템(color) — Cyclone-25-150-C 카메라 + Controller-RC1",
+      "specs": {
+        "detector_pixels": "5120 × 5120",
+        "resolution_pixels": 26214400,
+        "frame_rate_fps": 150,
+        "max_frame_rate_fps": {
+          "value": 20900,
+          "note": "5120 × 4 화소"
+        },
+        "pixel_pitch_um": 2.5,
+        "min_exposure_time_s": 1.2e-05,
+        "memory_GB": [
+          24,
+          56
+        ],
+        "adc_resolution_bit": 8,
+        "interfaces": "CoaXPress (camera–controller); controller GigE, USB2/USB3",
+        "weight_kg": {
+          "value": 0.7,
+          "note": "카메라 약 700 g(98 × 65 × 71 mm). 컨트롤러 205 × 270 × 80 mm, 1.9 kg"
+        }
+      },
+      "note": "영상 대각 18.10 mm. 최대 프레임 속도 · 전 화소 녹화 시간 6.5 s(24 GB) / 15.2 s(56 GB). 카메라 운전 온도 0 ~ 25 °C(CY-HIS 0 ~ 35, CY-FAN 0 ~ 50 °C)"
+    },
+    {
+      "model": "Runner-65-70-M",
+      "variant": "CamRecord Runner 시스템(mono) — Cyclone-65-70-M 카메라 + Controller-RC1",
+      "specs": {
+        "detector_pixels": "9344 × 7000",
+        "resolution_pixels": 65408000,
+        "frame_rate_fps": 71,
+        "max_frame_rate_fps": {
+          "value": 13500,
+          "note": "9344 × 4 화소"
+        },
+        "pixel_pitch_um": 3.2,
+        "min_exposure_time_s": 1.2e-05,
+        "memory_GB": [
+          24,
+          56
+        ],
+        "adc_resolution_bit": 8,
+        "interfaces": "CoaXPress (camera–controller); controller GigE, USB2/USB3",
+        "weight_kg": {
+          "value": 0.7,
+          "note": "카메라 약 700 g(98 × 65 × 71 mm). 컨트롤러 205 × 270 × 80 mm, 1.9 kg"
+        }
+      },
+      "note": "영상 대각 37.36 mm. 최대 프레임 속도 · 전 화소 녹화 시간 5.5 s(24 GB) / 12.9 s(56 GB). 카메라 운전 온도 0 ~ 25 °C(CY-HIS 0 ~ 35, CY-FAN 0 ~ 50 °C)"
+    },
+    {
+      "model": "Runner-65-70-C",
+      "variant": "CamRecord Runner 시스템(color) — Cyclone-65-70-C 카메라 + Controller-RC1",
+      "specs": {
+        "detector_pixels": "9344 × 7000",
+        "resolution_pixels": 65408000,
+        "frame_rate_fps": 71,
+        "max_frame_rate_fps": {
+          "value": 13500,
+          "note": "9344 × 4 화소"
+        },
+        "pixel_pitch_um": 3.2,
+        "min_exposure_time_s": 1.2e-05,
+        "memory_GB": [
+          24,
+          56
+        ],
+        "adc_resolution_bit": 8,
+        "interfaces": "CoaXPress (camera–controller); controller GigE, USB2/USB3",
+        "weight_kg": {
+          "value": 0.7,
+          "note": "카메라 약 700 g(98 × 65 × 71 mm). 컨트롤러 205 × 270 × 80 mm, 1.9 kg"
+        }
+      },
+      "note": "영상 대각 37.36 mm. 최대 프레임 속도 · 전 화소 녹화 시간 5.5 s(24 GB) / 12.9 s(56 GB). 카메라 운전 온도 0 ~ 25 °C(CY-HIS 0 ~ 35, CY-FAN 0 ~ 50 °C)"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://optronis.com/en/productcategories/cyclone-series/",
+      "retrieved": "2026-10-08",
+      "note": "제조사 계열 페이지(HTML). Cyclone 7 기종의 해상도·최대 프레임 속도, CXP-12 4 × 12.5 Gbps"
+    },
+    {
+      "url": "https://optronis.com/en/productcategories/cyclone-plus-series/",
+      "retrieved": "2026-10-08",
+      "note": "제조사 계열 페이지(HTML). CyclonePlus 9 기종의 해상도·프레임 속도"
+    },
+    {
+      "file": "optronis/cyclone-5-700.pdf",
+      "pages": [
+        1,
+        2
+      ],
+      "note": "제조사 Cyclone-5-700 데이터시트 PDF(12.19)"
+    },
+    {
+      "file": "optronis/runner.pdf",
+      "pages": [
+        1,
+        2,
+        4
+      ],
+      "note": "제조사 CamRecord Runner 시스템 데이터시트 PDF(12/2022). Cyclone 5 형식을 쓰는 Runner 10 기종"
+    }
+  ],
+  "confidence": "limited",
+  "notes": "화소 크기·센서 형번은 계열 페이지에 없음. CyclonePlus-14 해상도는 원문 '4.608 x 3.072'(유럽식 자릿점) 을 4,608 × 3,072 로 읽음. Cyclone-5-700 은 2,560 × 1,916, CyclonePlus-5 는 2,560 × 1,920 으로 페이지 표기가 다르다. PDF 로 확인: Cyclone-5-700(자체 데이터시트), Cyclone-1HS-3500 · 2-2000 · 25-150 · 65-70 의 해상도와 화소 크기 · 최소 노출 · 화소 축소 최대 속도(Runner PDF), Runner 10 기종을 더함 / 웹 값 그대로: CyclonePlus 18 항목 전체, Cyclone-21-230 · 16-300, Cyclone-1HS-3500(3,518 fps) · 2-2000(2,166 fps) 의 전 화소 속도(Runner PDF 는 Runner 시스템 값으로 3,500 · 2,100 fps)."
+}

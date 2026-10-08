@@ -1,0 +1,44 @@
+{
+  "id": "siemens-simcenter-scadas",
+  "kind": "equipment_series",
+  "name": "Siemens Simcenter SCADAS Data Acquisition (SCADAS ES / RS / Mobile)",
+  "name_ko": "지멘스 Simcenter SCADAS 데이터 수집 장치",
+  "manufacturer": "siemens",
+  "brand": "Simcenter SCADAS",
+  "category": "mechanical_dynamics",
+  "form_factor": "modular",
+  "description": "소음·진동 시험용 다물리 데이터 수집 장치 계열. SCADAS ES 는 실험실·현장 시험용 모듈형 차세대 플랫폼(브라우저 접속·다중 사용자), SCADAS RS 는 원격 연결을 갖춘 험지용 고성능 수집 장치, SCADAS Mobile 은 진동·힘·변형·변위·온도·소리·비틀림·압력·CAN·GPS 를 받는 다양한 입력 모듈 구성이다.",
+  "test_items": [],
+  "measurands": [
+    "vibration",
+    "sound_pressure_level",
+    "strain"
+  ],
+  "models": [
+    {
+      "model": "Simcenter SCADAS ES",
+      "specs": {},
+      "note": "모듈형 다물리 데이터 수집, 브라우저 접속"
+    },
+    {
+      "model": "Simcenter SCADAS RS",
+      "specs": {},
+      "note": "원격 연결 험지용"
+    },
+    {
+      "model": "Simcenter SCADAS Mobile",
+      "specs": {},
+      "note": "입력 모듈 구성형"
+    }
+  ],
+  "relations": [],
+  "sources": [
+    {
+      "url": "https://www.siemens.com/en-us/products/simcenter/physical-testing/scadas/",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지(plm.sw.siemens.com 에서 넘어감). 기종명과 한 줄 설명뿐"
+    }
+  ],
+  "confidence": "limited",
+  "notes": "채널 수·샘플링·동적 범위는 페이지에 없다(브로슈어·팩트시트 PDF 참조라고만 함). 요청에 따라 진동 제어기 자리(mechanical_dynamics)에 두었지만 실제로는 소음·진동 데이터 수집 장치라 DMM/DAQ(dmm_daq)나 음향 측정(acoustic_measurement)으로 옮길 수 있다. 시험을 직접 하지 않아 test_items 를 비움. 구형 SCADAS(Lab·XS·III 등)는 이 페이지에 없다."
+}

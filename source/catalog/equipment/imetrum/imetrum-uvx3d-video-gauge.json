@@ -1,0 +1,138 @@
+{
+  "id": "imetrum-uvx3d-video-gauge",
+  "kind": "equipment_series",
+  "name": "iMetrum UVX3D Video Extensometers and Video Gauge (UVX3D 110 / UVX3D 220)",
+  "name_ko": "아이메트럼 UVX3D 비접촉 3D 비디오 신율계·Video Gauge",
+  "manufacturer": "imetrum",
+  "category": "dic_strain_measurement",
+  "subcategory": "video_extensometer_dic",
+  "form_factor": "portable",
+  "description": "iMetrum 의 영상 측정 소프트웨어 Video Gauge(마이크로미터보다 나은 분해능, 1 kHz 이상 촬영, 변형률·변위·거리·회전·전단 변형·균열 길이·가상 LVDT, DIC 등고선)를 바탕으로 한 비접촉 3D 비디오 신율계 UVX3D. UVX3D 110 은 표점 10～80 mm, UVX3D 220 은 20～200 mm. 분해능 0.5 μm 미만, 120·500·1000 Hz 프리셋(1000 Hz 는 후처리만), ISO 9513 Class 0.5·ASTM E83 Class B-1 이상, 시편 온도 −100～+370 °C, 최대 추종 속도 2500 mm/min, 작동 거리 320～360 mm. 변형률·신장·변위·회전·푸아송비를 잰다.",
+  "test_items": [
+    "tensile",
+    "compression"
+  ],
+  "measurands": [
+    "axial_strain",
+    "transverse_strain",
+    "poisson_ratio",
+    "elongation",
+    "full_field_displacement"
+  ],
+  "standards": {
+    "compliance": [
+      "ISO 9513 Class 0.5",
+      "ASTM E83 Class B-1"
+    ],
+    "test_methods": []
+  },
+  "limits": {
+    "gauge_length_mm": {
+      "min": 10,
+      "max": 200
+    },
+    "position_resolution_nm": {
+      "max": 500.0,
+      "note": "원문 <0.5 μm"
+    },
+    "data_rate_Hz": {
+      "values": [
+        120,
+        500,
+        1000
+      ],
+      "note": "1000 Hz 는 후처리 측정만"
+    },
+    "temperature_degC": {
+      "min": -100,
+      "max": 370,
+      "note": "권장 시편 온도"
+    },
+    "following_speed_mm_min": {
+      "max": 2500
+    },
+    "working_distance_mm": {
+      "min": 320,
+      "max": 360
+    }
+  },
+  "models": [
+    {
+      "model": "UVX3D 110",
+      "specs": {
+        "gauge_length_mm": {
+          "min": 10,
+          "max": 80
+        },
+        "specimen_width_mm": {
+          "min": 2.1,
+          "note": "축방향 최소 2.1 mm, 횡방향 12 mm"
+        },
+        "position_resolution_nm": {
+          "max": 500.0
+        },
+        "field_of_view_mm": {
+          "values": [
+            "110×94 (120 Hz)",
+            "110×23 (500 Hz)",
+            "110×11 (1000 Hz)"
+          ],
+          "note": "높이 110 mm, 폭은 데이터 속도별"
+        },
+        "accuracy_class": "ISO 9513 Class 0.5 / ASTM E83 Class B-1"
+      }
+    },
+    {
+      "model": "UVX3D 220",
+      "specs": {
+        "gauge_length_mm": {
+          "min": 20,
+          "max": 200
+        },
+        "specimen_width_mm": {
+          "min": 4.7,
+          "note": "축방향 최소 4.7 mm, 횡방향 25 mm. 목록 페이지는 축방향 7.5 mm 로 적음"
+        },
+        "position_resolution_nm": {
+          "max": 500.0
+        },
+        "field_of_view_mm": {
+          "values": [
+            "220H×94W×40D (120 Hz)",
+            "220H×48W×40D (500 Hz)",
+            "220H×24W×40D (1000 Hz)"
+          ]
+        },
+        "accuracy_class": "ISO 9513 Class 0.5 / ASTM E83 Class B-1 capable"
+      }
+    },
+    {
+      "model": "Video Gauge",
+      "note": "핵심 소프트웨어 플랫폼. 분해능 better than a micron, 촬영 over 1kHz"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://www.imetrum.com/products/video-gauge/",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지(HTML, imetrum.com) Video Gauge"
+    },
+    {
+      "url": "https://www.imetrum.com/products/uvx3d-110/",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지(HTML, imetrum.com) UVX3D 110"
+    },
+    {
+      "url": "https://www.imetrum.com/products/uvx3d-220/",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지(HTML, imetrum.com) UVX3D 220"
+    },
+    {
+      "url": "https://www.imetrum.com/products/",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지(HTML, imetrum.com) 제품 목록(UVX3D 최소 시편 폭 요약)"
+    }
+  ],
+  "confidence": "limited",
+  "notes": "분류 판단: UVX3D 는 쓰임새로는 비접촉 비디오 신율계(extensometer)에 가깝지만 DIC 기반 Video Gauge 위에 선 제품이고 의뢰서가 DIC 묶음으로 지정해 dic_strain_measurement 에 둠. Instron AVE 처럼 extensometer 로 옮길지는 사람이 판단. UVX3D 220 축방향 최소 시편 폭은 제품 페이지(4.7 mm)와 목록 페이지(7.5 mm)가 다름."
+}

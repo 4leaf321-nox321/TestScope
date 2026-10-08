@@ -1,0 +1,73 @@
+{
+  "id": "mettler-toledo-tma-sdta-2-plus",
+  "kind": "equipment_series",
+  "name": "METTLER TOLEDO TMA/SDTA 2+ Thermomechanical Analyzer",
+  "name_ko": "메틀러토레도 TMA/SDTA 2+ 열기계분석기",
+  "manufacturer": "mettler-toledo",
+  "category": "tma",
+  "description": "TMA 에 SDTA(시료 온도 차 신호)를 함께 재는 열기계분석기. -150~1600 °C, 힘 -0.1~1 N, 길이 분해능 0.5 nm.",
+  "test_items": [
+    "tma"
+  ],
+  "measurands": [
+    "thermal.expansion_linear",
+    "thermal.glass_transition"
+  ],
+  "measurands_by_item": {
+    "tma": [
+      "thermal.expansion_linear",
+      "thermal.glass_transition"
+    ]
+  },
+  "limits": {
+    "temperature_degC": {
+      "min": -150,
+      "max": 1600,
+      "uncertain": true
+    }
+  },
+  "models": [
+    {
+      "model": "TMA/SDTA 2+",
+      "specs": {
+        "temperature_degC": {
+          "min": -150,
+          "max": 1600,
+          "uncertain": true
+        },
+        "force_N": {
+          "min": -0.1,
+          "max": 1,
+          "uncertain": true
+        },
+        "displacement_resolution_nm": {
+          "value": 0.5,
+          "uncertain": true
+        },
+        "displacement_mm": {
+          "value": 5,
+          "uncertain": true,
+          "note": "±5 mm"
+        },
+        "sample_length_mm": {
+          "max": 20,
+          "uncertain": true
+        },
+        "data_rate_Hz": {
+          "max": 10,
+          "uncertain": true,
+          "note": "10 data pts/sec"
+        }
+      },
+      "note": "SDTA 분해능 0.005 °C(검색 발췌)"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://www.mt.com/int/en/home/products/Laboratory_Analytics_Browse/TA_Family_Browse/ta-instruments/thermal-analysis-system-TMA-SDTA-2-plus.html",
+      "retrieved": "2026-10-08",
+      "note": "제조사 페이지가 자동 조회를 막아(HTTP 403/406) 직접 열지 못함. 값은 웹 검색 엔진이 이 페이지에서 뽑은 발췌로만 확인했다 — 값마다 uncertain. -150~1600 °C, 힘 -0.1~1 N, SDTA 분해능 0.005 °C, 길이 분해능 0.5 nm, 데이터 10 점/s, 시료 최대 20 mm, 측정 범위 ±5 mm"
+    }
+  ],
+  "confidence": "limited"
+}

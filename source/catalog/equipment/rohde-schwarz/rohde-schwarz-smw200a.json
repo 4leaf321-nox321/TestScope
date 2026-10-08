@@ -1,0 +1,123 @@
+{
+  "id": "rohde-schwarz-smw200a",
+  "kind": "equipment_series",
+  "name": "R&S SMW200A Vector Signal Generator",
+  "name_ko": "로데슈바르츠 SMW200A 벡터 신호발생기",
+  "manufacturer": "rohde-schwarz",
+  "brand": "SMW",
+  "category": "signal_generator",
+  "subcategory": "vector_rf_microwave",
+  "description": "복잡한 디지털 변조 신호와 MIMO 페이딩을 만드는 상위 벡터 신호발생기. 단일 경로 100 kHz~67 GHz, 2 경로 구성 100 kHz~44 GHz 이고, 변조 대역폭 2 GHz(2 GHz 에서 주파수 응답 <0.4 dB), 통합 페이딩 대역폭 최대 800 MHz·최대 8x8 MIMO(페이딩 채널 최대 64)를 낸다. 기저대역 모듈 최대 2개, 페이딩 시뮬레이터 모듈 최대 4개이고, SGT100A 를 붙여 RF 경로 8개까지 늘린다. GNSS·레이더 시뮬레이터 기능을 갖춘다.",
+  "test_items": [],
+  "limits": {
+    "output_frequency_Hz": {
+      "min": 100000,
+      "max": 67000000000,
+      "note": "사양서: RF 경로 A 100 kHz~3/6/7.5/12.75/20/31.8/40/44/56/67 GHz(SMW-B1003~B1067), 선택 RF 경로 B 100 kHz~3/6/7.5/12.75/20/31.8/44 GHz(SMW-B2003~B2044)"
+    },
+    "bandwidth_Hz": {
+      "max": 2000000000,
+      "note": "사양서: 광대역 기저대역(SMW-B13XT + B9)으로 RF 변조 대역폭 2 GHz(2 GHz 에서 주파수 응답 < 0.4 dB 측정값), 표준 기저대역(B13/B13T + B10) 160 MHz. 통합 페이딩 대역폭 최대 800 MHz. 목록 페이지는 I/Q 변조 대역폭 내부 2 GHz·외부 2 GHz"
+    },
+    "rf_output_level_dBm": {
+      "min": -120,
+      "max": 18,
+      "note": "사양서 Specified level range(PEP): -120~+18 dBm(3 MHz~20 GHz, B1003~B1020; 40/44 GHz 형은 3 MHz~3 GHz·20~29 GHz). 56/67 GHz 형 +15 dBm, 33 GHz 초과 하한 -115 dBm. 목록 페이지 Level range -120~+18 dBm 과 같다"
+    },
+    "channels": {
+      "max": 2,
+      "note": "RF 경로 A + 선택 경로 B(2 경로). 신호원 최대 8개, R&S SGT100A 를 붙여 RF 경로 최대 8개"
+    },
+    "radio_standards": {
+      "values": [
+        "5G NR",
+        "WLAN IEEE 802.11be",
+        "GNSS",
+        "레이더"
+      ],
+      "note": "페이지의 성능 예(EVM)와 시뮬레이터 기능에 나온 것만"
+    },
+    "phase_noise_dBc_Hz": {
+      "values": [
+        -134,
+        -150
+      ],
+      "note": "사양서. -134: 1 GHz·20 kHz 오프셋 기본 성능 사양(typ. -140). -150: 1 GHz·10 kHz 오프셋 typ.(Key features 문구, SMW-B711/B721 초저위상잡음 표의 사양 -144·typ. -150 과 같다). 단위 dBc(1 Hz)"
+    }
+  },
+  "models": [
+    {
+      "model": "SMW200A",
+      "specs": {
+        "output_frequency_Hz": {
+          "min": 100000,
+          "max": 67000000000,
+          "note": "2 경로 구성은 44 GHz 까지"
+        },
+        "bandwidth_Hz": {
+          "max": 2000000000,
+          "note": "광대역 기저대역(B13XT·B9). 표준 기저대역 160 MHz"
+        },
+        "rf_output_level_dBm": {
+          "min": -120,
+          "max": 18
+        },
+        "channels": {
+          "max": 2
+        },
+        "phase_noise_dBc_Hz": {
+          "values": [
+            -134,
+            -150
+          ],
+          "note": "1 GHz. 20 kHz 기본 사양 / 10 kHz typ.(B711/B721)"
+        }
+      }
+    }
+  ],
+  "features": [
+    "변조 대역폭 2 GHz, 주파수 응답 <0.4 dB",
+    "통합 페이딩 최대 800 MHz·8x8 MIMO, 페이딩 채널 최대 64",
+    "반송파 최대 8개 집성",
+    "EVM 0.1 %(5G NR 100 MHz, 측정값)",
+    "EVM -53 dB(IEEE 802.11be 320 MHz, 7 GHz, 측정값)",
+    "GNSS·레이더 시뮬레이터",
+    "SGT100A 로 RF 경로 8개"
+  ],
+  "options": [
+    {
+      "name": "R&S SMW-B711 / SMW-B721",
+      "note": "초저위상잡음 옵션"
+    },
+    {
+      "name": "R&S SGT100A",
+      "note": "RF 경로 확장(최대 8)"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://www.rohde-schwarz.com/us/products/test-and-measurement/vector-signal-generators/rs-smw200a-vector-signal-generator_63493-38656.html",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지. Key facts, 주파수, 변조 대역폭, MIMO·페이딩, EVM"
+    },
+    {
+      "url": "https://www.rohde-schwarz.com/us/products/test-and-measurement/vector-signal-generators_333559.html",
+      "retrieved": "2026-10-08",
+      "note": "제조사 벡터 신호발생기 목록 페이지. 주파수, I/Q 변조 대역폭, 레벨 범위"
+    },
+    {
+      "file": "rohde-schwarz/smw200a_specs_en_3606-8037-22_v3100.pdf",
+      "pages": [
+        5,
+        7,
+        8,
+        13,
+        20,
+        23
+      ],
+      "note": "제조사 사양서(v31.00, 2026-05). Key features, 주파수 옵션(경로 A·B), 기저대역 구성(160 MHz / 2 GHz), 레벨 범위, 위상 잡음(기본·B711/B721)"
+    }
+  ],
+  "confidence": "catalog",
+  "notes": "PDF 로 확인: 주파수(경로 A 67 GHz·경로 B 44 GHz), 변조 대역폭 2 GHz, 페이딩 800 MHz·채널 64, 레벨 범위, RF 경로 8(SGT100A), 위상 잡음(웹 페이지에 없던 값)."
+}

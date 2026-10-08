@@ -1,0 +1,113 @@
+{
+  "id": "elcometer-456",
+  "kind": "equipment_series",
+  "name": "Elcometer 456 Coating Thickness Gauge (Model B / S / T; integral & separate; F / N / FNF)",
+  "name_ko": "엘코미터 456 도막 두께계",
+  "manufacturer": "elcometer",
+  "brand": "Elcometer 456",
+  "category": "coating_surface_test",
+  "form_factor": "handheld",
+  "description": "철(F) · 비철(N) · 겸용(FNF) 기재 위 건조 도막 두께를 재는 휴대형 두께계. 기능에 따라 Model B(최근 5개 저장) · S(1,500개) · T(150,000개, 2,500 배치) 세 기종이고, 일체형(integral)은 Scale 1 0~1500 µm(±1~3 % 또는 ±2.5 µm) · Scale 2 0~5 mm · Scale 3 0~13 mm, 분리형(separate)은 교체식 프로브를 쓴다. 분 당 70회 이상(스캔 프로브 140회 이상), IP64 상당, AA 전지 2개로 약 24시간, −10~50 °C 에서 쓴다.",
+  "test_items": [
+    "coating_thickness"
+  ],
+  "measurands": [
+    "coating_thickness"
+  ],
+  "materials": [
+    "paint on steel",
+    "paint on non-ferrous metals"
+  ],
+  "standards": {
+    "compliance": [],
+    "test_methods": [
+      "ISO 2178",
+      "ISO 2360",
+      "ISO 2808",
+      "ISO 19840",
+      "ASTM D7091",
+      "ASTM D1186",
+      "SSPC-PA2",
+      "BS 3900",
+      "DIN 50981",
+      "IMO PSPC"
+    ]
+  },
+  "limits": {
+    "coating_thickness_um": {
+      "min": 0,
+      "max": 31000,
+      "note": "일체형 Scale 1 0~1500 µm · Scale 2 0~5 mm · Scale 3 0~13 mm. 분리형 페이지 요약은 프로브 전체를 0~31 mm(0~1,220 mils)로 적음 — 프로브별 범위 확인 필요",
+      "uncertain": true
+    },
+    "operating_temperature_degC": {
+      "min": -10,
+      "max": 50
+    }
+  },
+  "models": [
+    {
+      "model": "Elcometer 456 Model B",
+      "note": "저장: 최근 5개, 1 배치; 품번: 일체형 A456CFBI1 (F, Scale 1) · A456CNBI1 (N) · A456CFNFBI1 (FNF) · A456CFBI2 (Scale 2) · A456CFBI3 (Scale 3) / 분리형 A456CFBS · A456CNBS · A456CFNFBS"
+    },
+    {
+      "model": "Elcometer 456 Model S",
+      "note": "저장: 1,500개 (분리형 페이지 1 배치, 일체형 페이지 2,500 배치 — 두 페이지가 다름); 품번: 일체형 A456CFSI1 · A456CFNFSI1 / 분리형 A456CFSS · A456CNSS · A456CFNFSS"
+    },
+    {
+      "model": "Elcometer 456 Model T",
+      "note": "저장: 150,000개, 2,500 배치; 품번: 일체형 A456CFTI1 · A456CFNFTI1 / 분리형 A456CFTS · A456CNTS · A456CFNFTS"
+    }
+  ],
+  "range_table": [
+    {
+      "scale": "Scale 1 (일체형)",
+      "range": "0~1,500 µm (0~60 mils)",
+      "accuracy": "±1~3 % 또는 ±2.5 µm (±0.1 mil)",
+      "resolution": "0.1 µm (0~100 µm), 1 µm (100~1,500 µm)"
+    },
+    {
+      "scale": "Scale 2 (일체형)",
+      "range": "0~5 mm (0~200 mils)",
+      "accuracy": "±1~3 % 또는 ±20 µm (±1.0 mil)",
+      "resolution": "1 µm (0~1 mm), 10 µm (1~5 mm)"
+    },
+    {
+      "scale": "Scale 3 (일체형)",
+      "range": "0~13 mm (0~500 mils)",
+      "accuracy": "±1~3 % 또는 ±50 µm (±2.0 mils)",
+      "resolution": "1 µm (0~2 mm), 10 µm (2~13 mm)"
+    }
+  ],
+  "features": [
+    "2.4″ QVGA 컬러 TFT",
+    "IP64 상당",
+    "Bluetooth · USB, ElcoMaster 소프트웨어 · 앱",
+    "교정: 공장 초기화 · 2점 · 1점 영점 · 영점 오프셋(ISO 19840) · 자동",
+    "141 × 73 × 37 mm, 156 g(일체형) / 161 g(분리형)"
+  ],
+  "relations": [
+    {
+      "type": "performs",
+      "target": "coating_thickness"
+    },
+    {
+      "type": "same_family_as",
+      "target": "defelsko-positector-6000"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://www.elcometer.com/en/elcometer-456-integral-coating-thickness-gauge.html",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지(일체형). Scale 1~3 범위 · 정확도 · 분해능"
+    },
+    {
+      "url": "https://www.elcometer.com/en/elcometer-456-separate-coating-thickness-gauge.html",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지(분리형). 프로브 범위는 요약에서 F · N · FNF 모두 0~31 mm 로만 읽힘"
+    }
+  ],
+  "notes": "분리형 프로브별 범위(스캔 · 미니 · 각도 프로브 등)는 페이지 요약에서 갈라 읽지 못했다. 데이터시트 PDF 를 열면 채울 수 있다.",
+  "confidence": "limited"
+}

@@ -1,0 +1,139 @@
+{
+  "id": "evident-lext-ols5100",
+  "kind": "equipment_series",
+  "name": "Evident LEXT OLS5100 3D Laser Scanning Microscope",
+  "name_ko": "에비던트(구 올림푸스) LEXT OLS5100 3D 레이저 현미경",
+  "manufacturer": "evident",
+  "brand": "LEXT",
+  "category": "optical_profilometer",
+  "subcategory": "laser_scanning_confocal_microscope",
+  "form_factor": "benchtop",
+  "description": "405 nm 레이저 주사 공초점 방식으로 표면 형상·거칠기를 서브마이크로미터 수준에서 재는 3D 레이저 현미경. 총 배율 54x～17,280x, 시야 16 μm～5,120 μm. 높이 측정 표시 분해능 0.5 nm, 정확도 0.15+L/100 μm, 폭 측정 정확도 ±1.5 %. 스테이지 100×100 mm(수동·전동) 또는 300×300 mm(전동), 시료 최대 높이 37～210 mm(기종별). 대물렌즈 10종(NA 0.08～0.95, WD 0.35～25 mm).",
+  "test_items": [
+    "surface_topography",
+    "microscopy"
+  ],
+  "measurands": [
+    "surface.roughness_ra",
+    "surface.roughness_sq",
+    "step_height",
+    "surface_morphology"
+  ],
+  "limits": {
+    "laser_wavelength_nm": {
+      "values": [
+        405
+      ],
+      "note": "최대 출력 0.95 mW"
+    },
+    "magnification": {
+      "min": 54,
+      "max": 17280
+    },
+    "field_of_view_mm": {
+      "min": 0.016,
+      "max": 5.12,
+      "note": "원문 16 µm–5,120 µm"
+    },
+    "vertical_resolution_nm": {
+      "max": 0.5,
+      "note": "높이 표시 분해능 0.5 nm, 폭 표시 분해능 1 nm"
+    },
+    "stage_travel_mm": {
+      "max": 300,
+      "note": "100×100 mm(수동/전동) 또는 300×300 mm(전동)"
+    },
+    "specimen_height_mm": {
+      "min": 37,
+      "max": 210,
+      "note": "기종별 최대 시료 높이: SAF 100 mm, SMF 40 mm, LAF 37 mm, EAF 210 mm"
+    },
+    "working_distance_mm": {
+      "min": 0.35,
+      "max": 25,
+      "note": "브로슈어 대물렌즈 표 8종은 WD 0.35～20.0 mm. 상한 25 mm 는 웹 페이지(대물렌즈 10종) 값"
+    }
+  },
+  "models": [
+    {
+      "model": "OLS5100-SAF",
+      "specs": {
+        "specimen_height_mm": {
+          "max": 100
+        },
+        "weight_kg": {
+          "values": [
+            31
+          ],
+          "note": "현미경 본체 약 31 kg, 컨트롤 박스 약 12 kg 별도"
+        }
+      },
+      "note": "전동 XY 스테이지"
+    },
+    {
+      "model": "OLS5100-SMF",
+      "specs": {
+        "specimen_height_mm": {
+          "max": 40
+        },
+        "weight_kg": {
+          "values": [
+            32
+          ],
+          "note": "현미경 본체 약 32 kg"
+        }
+      },
+      "note": "수동 XY 스테이지"
+    },
+    {
+      "model": "OLS5100-LAF",
+      "specs": {
+        "specimen_height_mm": {
+          "max": 37
+        },
+        "weight_kg": {
+          "values": [
+            50
+          ],
+          "note": "현미경 본체 약 50 kg"
+        }
+      },
+      "note": "전동 XY 스테이지(대형)"
+    },
+    {
+      "model": "OLS5100-EAF",
+      "specs": {
+        "specimen_height_mm": {
+          "max": 210
+        },
+        "weight_kg": {
+          "values": [
+            43
+          ],
+          "note": "현미경 본체 약 43 kg"
+        }
+      },
+      "note": "전동 XY 스테이지, 키 큰 시료용 프레임"
+    }
+  ],
+  "accuracy": {
+    "height": "정확도 0.15+L/100 μm(L: 측정 길이 μm). 반복도 σn-1: 5X 0.45 μm, 10X 0.1 μm, 20X 0.03 μm, 50X 0.012 μm, 100X 0.012 μm(10X～100X 는 PDF 로 확인, 5X 는 웹 페이지 값). 동적 범위 16 bit",
+    "width": "정확도 측정값 ±1.5 %. 반복도 3σn-1: 5X 0.4 μm, 10X 0.2 μm, 20X 0.05 μm, 50X 0.04 μm, 100X 0.02 μm"
+  },
+  "sources": [
+    {
+      "url": "https://evidentscientific.com/en/products/digital-imaging/lext-ols5100",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지(HTML, evidentscientific.com) LEXT OLS5100"
+    },
+    {
+      "file": "evident/opticalmetrology_brochure_en_m1715e_2023_11_web.pdf",
+      "pages": [
+        4
+      ],
+      "note": "Evident 광학 계측 종합 브로슈어 M1715E(2023-11) — OLS5100 사양·대물렌즈 표(브로슈어 인쇄 쪽 3). 측정 성능 칸은 추출 텍스트에서 글자가 뒤섞여 일부만 읽음"
+    }
+  ],
+  "confidence": "catalog",
+  "notes": "분류 판단: 레이저 주사 공초점 현미경은 관찰보다 3D 표면 형상·거칠기 측정이 주 용도이고 제조사도 「3D optical profilometers」 메뉴에 둔다. 그래서 optical_microscope 가 아니라 기존 분류 optical_profilometer 에 넣고 시험 항목은 surface_topography 와 microscopy 를 함께 적었다. 운영 대장에서 「광학 현미경」 으로 분류돼 있으면 사람이 옮길 것. 본체 무게 31～50 kg, 컨트롤 박스 약 12 kg. 구 올림푸스 제품. PDF 로 확인: 총 배율, 시야, 405 nm 레이저, 기종별 최대 시료 높이·스테이지 방식·무게, 대물렌즈 NA·WD(8종), 높이 반복도(10X～100X). 웹 값 그대로: 레이저 최대 출력 0.95 mW, 높이 표시 분해능 0.5 nm, 스테이지 이동 100×100·300×300 mm, WD 상한 25 mm, 높이·폭 정확도와 폭 반복도(PDF 의 측정 성능 칸은 추출 텍스트에서 두 열의 글자가 번갈아 섞여 읽을 수 없음)."
+}

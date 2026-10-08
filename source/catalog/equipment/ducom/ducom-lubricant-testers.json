@@ -1,0 +1,203 @@
+{
+  "id": "ducom-lubricant-testers",
+  "kind": "equipment_series",
+  "name": "Ducom Lubricant Tribology Testers (Four Ball Tester FBT-3 / TR-30 Series, HFRR-4.2)",
+  "name_ko": "듀콤 윤활유 트라이볼로지 시험기 (4구 시험기 FBT-3 · TR-30, HFRR-4.2)",
+  "manufacturer": "ducom",
+  "category": "tribometer",
+  "form_factor": "benchtop",
+  "description": "윤활유 · 연료의 마모 방지성 · 극압성 · 윤활성을 보는 시험기. 4구 시험기 FBT-3(탁상형)와 TR-30 계열(표준형, TR-30L)은 300~3,000 rpm, 하중 100~10,000 N, 마찰력 0~200 N, 마찰 토크 0~16 N·m, 최대 90 °C(옵션 200 °C)다. HFRR-4.2 는 고주파 왕복 시험기로 10~200 Hz, 행정 20 µm~2.0 mm, 무게추 0~1.0 kg, 마찰력 최대 10 N, 상온~150 °C(옵션 400 °C)에서 디젤 연료 윤활성 규격을 수행한다.",
+  "test_items": [
+    "friction_wear_tribo"
+  ],
+  "measurands": [
+    "wear_scar_diameter",
+    "weld_load",
+    "friction_coefficient"
+  ],
+  "materials": [
+    "lubricants",
+    "greases",
+    "diesel fuels"
+  ],
+  "standards": {
+    "compliance": [],
+    "test_methods": [
+      "ASTM D2266",
+      "ASTM D2596",
+      "ASTM D2783",
+      "ASTM D4172",
+      "ASTM D5183",
+      "DIN 51350-2",
+      "DIN 51350-3",
+      "DIN 51350-4",
+      "DIN 51350-5",
+      "IP 239",
+      "IP 300",
+      "ISO 20623",
+      "CEC L-45-A-99",
+      "ASTM D6079",
+      "ASTM D7688",
+      "ISO 12156-1",
+      "JPI-5S-50-98",
+      "EN 590",
+      "IP 450",
+      "CEC F-06-A-96",
+      "SH/T 0765"
+    ]
+  },
+  "limits": {
+    "force_N": {
+      "min": 100,
+      "max": 10000,
+      "note": "4구 시험기. HFRR-4.2 는 무게추 0~1.0 kg"
+    },
+    "rotation_rpm": {
+      "min": 300,
+      "max": 3000,
+      "note": "4구 시험기(TR-30 고속 옵션 있음)"
+    },
+    "friction_force_mN": {
+      "max": 200000,
+      "note": "4구 시험기 0~200 N. HFRR 최대 10 N"
+    },
+    "torque_Nm": {
+      "max": 16,
+      "note": "4구 시험기 마찰 토크"
+    },
+    "frequency_Hz": {
+      "min": 10,
+      "max": 200,
+      "note": "HFRR-4.2"
+    },
+    "stroke_mm": {
+      "min": 0.02,
+      "max": 2.0,
+      "note": "HFRR-4.2"
+    },
+    "temperature_degC": {
+      "max": 400,
+      "note": "4구 시험기 최대 90 °C(옵션 200 °C), HFRR-4.2 상온~150 °C(옵션 400 °C)"
+    }
+  },
+  "models": [
+    {
+      "model": "FBT-3",
+      "variant": "Four Ball Tester (Desktop)",
+      "specs": {
+        "rotation_rpm": {
+          "min": 300,
+          "max": 3000
+        },
+        "force_N": {
+          "min": 100,
+          "max": 10000
+        },
+        "friction_force_mN": {
+          "max": 200000,
+          "note": "원문 0~200 N"
+        },
+        "torque_Nm": {
+          "max": 16
+        },
+        "temperature_degC": {
+          "max": 90,
+          "note": "옵션 200 °C"
+        },
+        "shear_rate_1_s": {
+          "value": 10000000,
+          "note": "옵션 KRL 부착 시 10⁷ /s"
+        }
+      }
+    },
+    {
+      "model": "TR-30L",
+      "variant": "Four Ball Tester TR-30 Series (Standard)",
+      "specs": {
+        "rotation_rpm": {
+          "min": 300,
+          "max": 3000,
+          "note": "고속 옵션 있음"
+        },
+        "force_N": {
+          "min": 100,
+          "max": 10000
+        },
+        "friction_force_mN": {
+          "max": 200000,
+          "note": "원문 0~200 N"
+        },
+        "torque_Nm": {
+          "max": 16
+        },
+        "temperature_degC": {
+          "max": 90,
+          "note": "옵션 200 °C"
+        }
+      },
+      "note": "페이지가 TR-30 계열의 표준판으로 TR-30L 을 든다. 옵션: 공압 하중, KRL 전단 안정성, 구름 피로, 스러스트 와셔, 고온 볼 포트, 영상 수집"
+    },
+    {
+      "model": "HFRR-4.2",
+      "variant": "High Frequency Reciprocating Rig",
+      "specs": {
+        "frequency_Hz": {
+          "min": 10,
+          "max": 200
+        },
+        "stroke_mm": {
+          "min": 0.02,
+          "max": 2.0
+        },
+        "load_kg": {
+          "min": 0,
+          "max": 1.0,
+          "note": "무게추"
+        },
+        "friction_force_mN": {
+          "max": 10000,
+          "note": "원문 10.0 N (Max)"
+        },
+        "temperature_degC": {
+          "max": 150,
+          "note": "상온~150 °C, 옵션 400 °C"
+        },
+        "power": "100~240 VAC, 50/60 Hz"
+      },
+      "note": "시편: 상부 볼 지름 6.0 mm, 하부 디스크 10.0 mm × 3 mm"
+    }
+  ],
+  "relations": [
+    {
+      "type": "performs",
+      "target": "friction_wear_tribo"
+    },
+    {
+      "type": "same_family_as",
+      "target": "ducom-tribometers"
+    },
+    {
+      "type": "same_family_as",
+      "target": "rtec-instruments-fbt-1000"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://www.ducom.com/four-ball-tester-fbt-3",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지(FBT-3)"
+    },
+    {
+      "url": "https://www.ducom.com/four-ball-tester-tr-30-series",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지(TR-30 Series)"
+    },
+    {
+      "url": "https://www.ducom.com/high-frequency-reciprocating-rig-hfrr",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지(HFRR-4.2)"
+    }
+  ],
+  "notes": "TR-30 계열의 다른 기종명(TR-30H 등)은 페이지에 없다. measurands 는 4구 시험법이 내는 값을 적은 것이다.",
+  "confidence": "limited"
+}

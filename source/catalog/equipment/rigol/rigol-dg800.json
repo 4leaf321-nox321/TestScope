@@ -1,0 +1,157 @@
+{
+  "id": "rigol-dg800",
+  "kind": "equipment_series",
+  "name": "RIGOL DG800 Series Function/Arbitrary Waveform Generators",
+  "name_ko": "리골 DG800 함수·임의파형 발생기",
+  "manufacturer": "rigol",
+  "brand": "DG800",
+  "category": "signal_generator",
+  "subcategory": "function_arbitrary_waveform",
+  "description": "단종(OBSOLETE)된 보급형 함수·임의파형 발생기 계열. 사인파 10·25·35 MHz, 1채널·2채널, 임의파형 메모리 2 Mpts(옵션 8 Mpts), 16비트 수직 분해능, SiFi II, 파형 중첩, 8차 고조파 발생기, PRBS·RS232·시퀀스 출력, 팬 없는 구조, 4.3인치 터치스크린을 갖춘다. 대체 기종은 DG800 Pro 계열이다.",
+  "test_items": [],
+  "limits": {
+    "output_frequency_Hz": {
+      "max": 35000000,
+      "note": "사인파 10·25·35 MHz, 구형파 5·10 MHz"
+    },
+    "channels": {
+      "values": [
+        1,
+        2
+      ]
+    },
+    "dac_resolution_bit": {
+      "values": [
+        16
+      ]
+    },
+    "waveform_memory_pts": {
+      "values": [
+        2000000,
+        8000000
+      ],
+      "note": "2 Mpts, 옵션 8 Mpts"
+    }
+  },
+  "models": [
+    {
+      "model": "DG811",
+      "specs": {
+        "output_frequency_Hz": {
+          "max": 10000000,
+          "note": "사인파 10 MHz, 구형파 5 MHz"
+        },
+        "channels": 1,
+        "waveform_memory_pts": {
+          "values": [
+            2000000,
+            8000000
+          ]
+        }
+      },
+      "note": "단종. 대체 DG821 Pro"
+    },
+    {
+      "model": "DG812",
+      "specs": {
+        "output_frequency_Hz": {
+          "max": 10000000,
+          "note": "사인파 10 MHz, 구형파 5 MHz"
+        },
+        "channels": 2,
+        "waveform_memory_pts": {
+          "values": [
+            2000000,
+            8000000
+          ]
+        }
+      },
+      "note": "단종. 대체 DG822 Pro"
+    },
+    {
+      "model": "DG821",
+      "specs": {
+        "output_frequency_Hz": {
+          "max": 25000000,
+          "note": "사인파 25 MHz, 구형파 10 MHz"
+        },
+        "channels": 1,
+        "waveform_memory_pts": {
+          "values": [
+            2000000,
+            8000000
+          ]
+        }
+      },
+      "note": "단종. 대체 DG821 Pro"
+    },
+    {
+      "model": "DG822",
+      "specs": {
+        "output_frequency_Hz": {
+          "max": 25000000,
+          "note": "사인파 25 MHz, 구형파 10 MHz"
+        },
+        "channels": 2,
+        "waveform_memory_pts": {
+          "values": [
+            2000000,
+            8000000
+          ]
+        }
+      },
+      "note": "단종. 대체 DG822 Pro"
+    },
+    {
+      "model": "DG831",
+      "specs": {
+        "output_frequency_Hz": {
+          "max": 35000000,
+          "note": "사인파 35 MHz, 구형파 10 MHz"
+        },
+        "channels": 1,
+        "waveform_memory_pts": {
+          "values": [
+            2000000,
+            8000000
+          ]
+        }
+      },
+      "note": "단종. 페이지에 대체 기종 없음"
+    },
+    {
+      "model": "DG832",
+      "specs": {
+        "output_frequency_Hz": {
+          "max": 35000000,
+          "note": "사인파 35 MHz, 구형파 10 MHz"
+        },
+        "channels": 2,
+        "waveform_memory_pts": {
+          "values": [
+            2000000,
+            8000000
+          ]
+        }
+      },
+      "note": "단종. 대체 DG852 Pro"
+    }
+  ],
+  "features": [
+    "16비트 수직 분해능",
+    "SiFi II",
+    "파형 중첩·8차 고조파",
+    "PRBS·RS232·시퀀스 출력",
+    "팬 없는 구조",
+    "4.3인치 터치스크린"
+  ],
+  "sources": [
+    {
+      "url": "https://www.rigolna.com/products/waveform-generators/dg800/",
+      "retrieved": "2026-10-08",
+      "note": "제조사 미국 법인 제품 페이지. 기종 표(단종 표시·대체 기종)와 주요 기능"
+    }
+  ],
+  "confidence": "limited",
+  "notes": "샘플 속도·진폭 범위는 페이지에 없다."
+}

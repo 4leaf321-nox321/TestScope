@@ -26,7 +26,7 @@
   "relations": [
     {"type": "performs", "target": "photometry_colorimetry"},
     {"type": "same_family_as", "target": "konica-minolta-cs-2000"},
-    {"type": "successor_of", "target": "placeholder-konica-minolta-ca-310"}
+    {"type": "successor_of", "target": "konica-minolta-ca-310"}
   ],
   "sources": [
     {"file": "konica-minolta/ca-410-display-color-analyzer-catalog.pdf", "pages": [1, 2, 3]},

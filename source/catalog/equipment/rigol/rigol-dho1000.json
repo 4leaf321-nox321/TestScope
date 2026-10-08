@@ -1,0 +1,106 @@
+{
+  "id": "rigol-dho1000",
+  "kind": "equipment_series",
+  "name": "DHO1000 Series Digital Oscilloscope",
+  "name_ko": "리골 DHO1000 디지털 오실로스코프",
+  "manufacturer": "rigol",
+  "brand": "DHO",
+  "category": "oscilloscope",
+  "subcategory": "high_definition_oscilloscope",
+  "form_factor": "benchtop",
+  "description": "70~200 MHz 대역의 2·4채널 12 bit 오실로스코프 계열임. 2 GSa/s, 50 Mpts.",
+  "test_items": [],
+  "limits": {
+    "bandwidth_Hz": {
+      "min": 70000000,
+      "max": 200000000
+    },
+    "sample_rate_Sa_s": {
+      "max": 2000000000
+    },
+    "record_length_pts": {
+      "max": 50000000
+    },
+    "channels": {
+      "values": [
+        2,
+        4
+      ]
+    },
+    "adc_resolution_bit": {
+      "values": [
+        12
+      ]
+    }
+  },
+  "models": [
+    {
+      "model": "DHO1072",
+      "specs": {
+        "bandwidth_Hz": 70000000,
+        "channels": 2,
+        "sample_rate_Sa_s": 2000000000,
+        "record_length_pts": 50000000,
+        "adc_resolution_bit": 12
+      }
+    },
+    {
+      "model": "DHO1074",
+      "specs": {
+        "bandwidth_Hz": 70000000,
+        "channels": 4,
+        "sample_rate_Sa_s": 2000000000,
+        "record_length_pts": 50000000,
+        "adc_resolution_bit": 12
+      }
+    },
+    {
+      "model": "DHO1102",
+      "specs": {
+        "bandwidth_Hz": 100000000,
+        "channels": 2,
+        "sample_rate_Sa_s": 2000000000,
+        "record_length_pts": 50000000,
+        "adc_resolution_bit": 12
+      }
+    },
+    {
+      "model": "DHO1104",
+      "specs": {
+        "bandwidth_Hz": 100000000,
+        "channels": 4,
+        "sample_rate_Sa_s": 2000000000,
+        "record_length_pts": 50000000,
+        "adc_resolution_bit": 12
+      }
+    },
+    {
+      "model": "DHO1202",
+      "specs": {
+        "bandwidth_Hz": 200000000,
+        "channels": 2,
+        "sample_rate_Sa_s": 2000000000,
+        "record_length_pts": 50000000,
+        "adc_resolution_bit": 12
+      }
+    },
+    {
+      "model": "DHO1204",
+      "specs": {
+        "bandwidth_Hz": 200000000,
+        "channels": 4,
+        "sample_rate_Sa_s": 2000000000,
+        "record_length_pts": 50000000,
+        "adc_resolution_bit": 12
+      }
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://www.rigolna.com/products/digital-oscilloscopes/dho1000/",
+      "retrieved": "2026-10-08",
+      "note": "리골 북미 법인 사이트(rigolna.com)의 제품 페이지 기종 표. 원문 12 Bit, 2 GSa/s, 50 Mpts"
+    }
+  ],
+  "confidence": "limited"
+}

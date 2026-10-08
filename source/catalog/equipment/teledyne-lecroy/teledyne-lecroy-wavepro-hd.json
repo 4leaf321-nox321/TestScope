@@ -1,0 +1,132 @@
+{
+  "id": "teledyne-lecroy-wavepro-hd",
+  "kind": "equipment_series",
+  "name": "WavePro HD High Definition Oscilloscopes",
+  "name_ko": "텔레다인 르크로이 WavePro HD 오실로스코프",
+  "manufacturer": "teledyne-lecroy",
+  "brand": "WavePro",
+  "category": "oscilloscope",
+  "subcategory": "high_definition_oscilloscope",
+  "form_factor": "benchtop",
+  "description": "2.5~8 GHz 대역의 4채널 12 bit 고분해능 오실로스코프 계열임. 20 GS/s, 채널당 100 Mpts(최대 5 Gpts). -MS 는 혼합 신호 기종.",
+  "test_items": [],
+  "limits": {
+    "bandwidth_Hz": {
+      "min": 2500000000,
+      "max": 8000000000
+    },
+    "sample_rate_Sa_s": {
+      "max": 20000000000
+    },
+    "record_length_pts": {
+      "max": 5000000000,
+      "min": 50000000,
+      "note": "원문 Memory: 50 Mpts - 5 Gpts, 기종 카드는 100 Mpts/Ch"
+    },
+    "channels": {
+      "values": [
+        4
+      ]
+    },
+    "adc_resolution_bit": {
+      "values": [
+        12
+      ]
+    }
+  },
+  "models": [
+    {
+      "model": "WavePro 254HD",
+      "specs": {
+        "bandwidth_Hz": 2500000000,
+        "channels": 4,
+        "sample_rate_Sa_s": 20000000000,
+        "record_length_pts": 100000000,
+        "adc_resolution_bit": 12
+      }
+    },
+    {
+      "model": "WavePro 404HD",
+      "specs": {
+        "bandwidth_Hz": 4000000000,
+        "channels": 4,
+        "sample_rate_Sa_s": 20000000000,
+        "record_length_pts": 100000000,
+        "adc_resolution_bit": 12
+      }
+    },
+    {
+      "model": "WavePro 604HD",
+      "specs": {
+        "bandwidth_Hz": 6000000000,
+        "channels": 4,
+        "sample_rate_Sa_s": 20000000000,
+        "record_length_pts": 100000000,
+        "adc_resolution_bit": 12
+      }
+    },
+    {
+      "model": "WavePro 804HD",
+      "specs": {
+        "bandwidth_Hz": 8000000000,
+        "channels": 4,
+        "sample_rate_Sa_s": 20000000000,
+        "record_length_pts": 100000000,
+        "adc_resolution_bit": 12
+      }
+    },
+    {
+      "model": "WavePro 254HD-MS",
+      "variant": "mixed signal",
+      "specs": {
+        "bandwidth_Hz": 2500000000,
+        "channels": 4,
+        "sample_rate_Sa_s": 20000000000,
+        "record_length_pts": 100000000,
+        "adc_resolution_bit": 12
+      }
+    },
+    {
+      "model": "WavePro 404HD-MS",
+      "variant": "mixed signal",
+      "specs": {
+        "bandwidth_Hz": 4000000000,
+        "channels": 4,
+        "sample_rate_Sa_s": 20000000000,
+        "record_length_pts": 100000000,
+        "adc_resolution_bit": 12
+      }
+    },
+    {
+      "model": "WavePro 604HD-MS",
+      "variant": "mixed signal",
+      "specs": {
+        "bandwidth_Hz": 6000000000,
+        "channels": 4,
+        "sample_rate_Sa_s": 20000000000,
+        "record_length_pts": 100000000,
+        "adc_resolution_bit": 12
+      }
+    },
+    {
+      "model": "WavePro 804HD-MS",
+      "variant": "mixed signal",
+      "specs": {
+        "bandwidth_Hz": 8000000000,
+        "channels": 4,
+        "sample_rate_Sa_s": 20000000000,
+        "record_length_pts": 100000000,
+        "adc_resolution_bit": 12
+      }
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://www.teledynelecroy.com/oscilloscope/wavepro-hd-oscilloscope",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지 기종 카드. 원문 \"(2.5 GHz, 20 GS/s, 4ch, 100 Mpts/Ch High Definition Oscilloscope)\" 형식. Main Specifications: 2.5 GHz - 8 GHz, 12-bit, 20 GS/s, Max Memory 5 Gpts"
+    }
+  ],
+  "confidence": "limited",
+  "notes": "-MS 기종의 디지털 채널 수는 페이지에 숫자로 없어 비움."
+}

@@ -1,0 +1,129 @@
+{
+  "id": "rigaku-tma8311",
+  "kind": "equipment_series",
+  "name": "Rigaku TMA8311 Thermomechanical Analyzer",
+  "name_ko": "리가쿠 TMA8311 열기계분석기",
+  "manufacturer": "rigaku",
+  "category": "tma",
+  "description": "차동 팽창 원리(검출계 자체의 팽창·수축을 상쇄)의 TMA. 압축·인장·침입·고감도 차동 침입 방법, 정하중 외에 정속 하중·사인파 반복 하중. 표준형 상온~1,100 °C, 고온형 상온~1,500 °C, 저온형 -150~600 °C. 수축 속도로 온도를 제어하는 SCTMA(선택, 세라믹 소결 모사).",
+  "test_items": [
+    "tma"
+  ],
+  "measurands": [
+    "thermal.expansion_linear",
+    "thermal.glass_transition"
+  ],
+  "measurands_by_item": {
+    "tma": [
+      "thermal.expansion_linear",
+      "thermal.glass_transition"
+    ]
+  },
+  "limits": {
+    "temperature_degC": {
+      "min": -150,
+      "max": 1500,
+      "requires_accessory": true,
+      "note": "압축 표준(SiO2) 실온~1,100 °C, 압축 고온(Al2O3) 실온~1,500 °C, 인장 실온~600 °C, 침입·3점 굽힘 실온~1,100 °C. 실온 이하는 선택 냉각 장치: LN2 자동 충전 -150~600 °C, 냉동기 -70~600 °C"
+    },
+    "force_N": {
+      "max": 1,
+      "note": "최대 하중 1000 mN"
+    },
+    "heating_rate_K_min": {
+      "max": 100,
+      "note": "저온 노 20 °C/min"
+    },
+    "displacement_um": {
+      "min": -5000,
+      "max": 5000,
+      "note": "TMA 풀스케일 ±5000 µm"
+    },
+    "frequency_Hz": {
+      "min": 0.01,
+      "max": 1,
+      "note": "사인파 반복 하중"
+    }
+  },
+  "models": [
+    {
+      "model": "TMA8311",
+      "specs": {
+        "temperature_degC": {
+          "min": -150,
+          "max": 1500,
+          "note": "압축 표준 실온~1,100 °C, 압축 고온 실온~1,500 °C, 인장 실온~600 °C, 침입·3점 굽힘 실온~1,100 °C. 선택 냉각: LN2 자동 충전 -150~600 °C, 냉동기 -70~600 °C"
+        },
+        "footprint_mm": {
+          "W": 380,
+          "H": 580,
+          "D": 580,
+          "note": "코어 유닛"
+        },
+        "weight_kg": {
+          "value": 30,
+          "note": "코어 유닛"
+        },
+        "power": "Single phase 100-240 VAC, 50/60 Hz, 15 A",
+        "force_N": {
+          "max": 1,
+          "note": "정하중 최대 1000 mN(1 mN 단위), 정속 하중 1~500 mN/min, 사인파 1~1000 mN"
+        },
+        "heating_rate_K_min": {
+          "max": 100,
+          "note": "저온 노 20 °C/min"
+        },
+        "displacement_um": {
+          "value": 5000,
+          "note": "TMA 풀스케일 ±5000 µm"
+        },
+        "frequency_Hz": {
+          "min": 0.01,
+          "max": 1,
+          "note": "사인파 반복 하중"
+        },
+        "specimen_diameter_mm": {
+          "max": 12,
+          "note": "압축: 차동 9 mm 이하 / 비차동 12 mm 이하. 침입 5 mm 이하"
+        },
+        "sample_length_mm": {
+          "min": 10,
+          "max": 20,
+          "note": "압축 10~20 mm. 인장 길이 10·15·20 mm(두께 10~200 µm, 폭 5 mm), 3점 굽힘 길이 9~13 mm"
+        }
+      },
+      "note": "형식: 표준(SiO2 지지관·검출봉) / 고온(Al2O3). 측정법 압축·인장·침입(차동 침입)·3점 굽힘. 분위기 공기·불활성 가스·진공·수증기. 전원 표기는 웹 페이지 「1Ø AC100-120 V / 200-240 V 50/60 Hz 15 A」"
+    }
+  ],
+  "options": [
+    "TMA 냉각 장치",
+    "다중 가스 제어기",
+    "유량계",
+    "가스 선택기",
+    "SCTMA"
+  ],
+  "relations": [
+    {
+      "type": "same_family_as",
+      "target": "rigaku-thermo-plus-dsc"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://rigaku.com/products/thermal-analysis/tma/tma8311",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지(HTML) 본문·표를 직접 읽음. 개요·특징·측정 방법·온도·사양(치수·무게·전원)"
+    },
+    {
+      "file": "rigaku/tma-tdl_brochure_en.pdf",
+      "pages": [
+        2,
+        4,
+        7,
+        8
+      ]
+    }
+  ],
+  "confidence": "catalog",
+  "notes": "PDF 브로슈어(BTTMA00)로 측정법별 온도, 최대 하중 1000 mN, 하중 방식, 풀스케일 ±5000 µm, 최대 승온 속도, 치수·무게를 확인하고 채웠다. 웹 페이지의 「저온형 -150~600 °C」는 PDF 에서 선택 냉각 장치(LN2 자동 충전)로 나와 limits 에 requires_accessory 를 달았다. 변위 분해능은 PDF 에도 없다. 같은 브로슈어의 TDL8411 열팽창계(Thermo plus EVO2, 압축 하중 최대 500 mN, 실온~1,100/1,500 °C, 최대 40 °C/min, 풀스케일 ±5000 µm, ASC 25 시료, 28 kg, W702×D362×H356 mm)는 TMA 가 아니라 이 객체에 넣지 않았다(별도 객체 후보). TMA/HUM-1 가습 TMA 는 선택 장치."
+}

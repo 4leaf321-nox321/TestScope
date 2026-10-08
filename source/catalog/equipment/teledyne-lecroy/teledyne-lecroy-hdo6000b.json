@@ -1,0 +1,126 @@
+{
+  "id": "teledyne-lecroy-hdo6000b",
+  "kind": "equipment_series",
+  "name": "HDO6000B High Definition Oscilloscopes",
+  "name_ko": "텔레다인 르크로이 HDO6000B 오실로스코프",
+  "manufacturer": "teledyne-lecroy",
+  "brand": "HDO",
+  "category": "oscilloscope",
+  "subcategory": "high_definition_oscilloscope",
+  "form_factor": "benchtop",
+  "description": "350 MHz~1 GHz 대역의 4채널 12 bit 고분해능 오실로스코프 계열임. 4채널 10 GS/s(ESR), 채널당 50 Mpts, 최대 250 Mpts(4채널 동작). -MS 기종은 16 디지털 채널.",
+  "test_items": [],
+  "limits": {
+    "bandwidth_Hz": {
+      "min": 350000000,
+      "max": 1000000000
+    },
+    "sample_rate_Sa_s": {
+      "max": 10000000000,
+      "note": "원문 10 GS/s on 4 Ch with ESR"
+    },
+    "record_length_pts": {
+      "min": 50000000,
+      "max": 250000000
+    },
+    "channels": {
+      "values": [
+        4
+      ]
+    },
+    "logic_channel_count": {
+      "values": [
+        16
+      ]
+    },
+    "adc_resolution_bit": {
+      "values": [
+        12
+      ]
+    }
+  },
+  "models": [
+    {
+      "model": "HDO6034B",
+      "specs": {
+        "bandwidth_Hz": 350000000,
+        "channels": 4,
+        "sample_rate_Sa_s": 10000000000,
+        "record_length_pts": {
+          "min": 50000000,
+          "max": 250000000,
+          "note": "원문 50 Mpts/ch, 250 Mpts (4 Ch operation)"
+        },
+        "adc_resolution_bit": 12
+      }
+    },
+    {
+      "model": "HDO6054B",
+      "specs": {
+        "bandwidth_Hz": 500000000,
+        "channels": 4,
+        "sample_rate_Sa_s": 10000000000,
+        "record_length_pts": {
+          "min": 50000000,
+          "max": 250000000,
+          "note": "원문 50 Mpts/ch, 250 Mpts (4 Ch operation)"
+        },
+        "adc_resolution_bit": 12
+      }
+    },
+    {
+      "model": "HDO6104B",
+      "specs": {
+        "bandwidth_Hz": 1000000000,
+        "channels": 4,
+        "sample_rate_Sa_s": 10000000000,
+        "record_length_pts": {
+          "min": 50000000,
+          "max": 250000000,
+          "note": "원문 50 Mpts/ch, 250 Mpts (4 Ch operation)"
+        },
+        "adc_resolution_bit": 12
+      }
+    },
+    {
+      "model": "HDO6054B-MS",
+      "variant": "mixed signal",
+      "specs": {
+        "bandwidth_Hz": 500000000,
+        "channels": 4,
+        "logic_channel_count": 16,
+        "sample_rate_Sa_s": 10000000000,
+        "record_length_pts": {
+          "min": 50000000,
+          "max": 250000000,
+          "note": "원문 50 Mpts/ch, 250 Mpts (4 Ch operation)"
+        },
+        "adc_resolution_bit": 12
+      }
+    },
+    {
+      "model": "HDO6104B-MS",
+      "variant": "mixed signal",
+      "specs": {
+        "bandwidth_Hz": 1000000000,
+        "channels": 4,
+        "logic_channel_count": 16,
+        "sample_rate_Sa_s": 10000000000,
+        "record_length_pts": {
+          "min": 50000000,
+          "max": 250000000,
+          "note": "원문 50 Mpts/ch, 250 Mpts (4 Ch operation)"
+        },
+        "adc_resolution_bit": 12
+      }
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://www.teledynelecroy.com/oscilloscope/hdo6000b-high-definition-oscilloscopes",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지. 원문 \"350 MHz Bandwidth, 4 Input Channels, 50 Mpts/ch, 10 GS/s\" 형식, 10 GS/s on 4 Ch with ESR, 250 Mpts (4 Ch operation), 12-bit"
+    }
+  ],
+  "confidence": "limited"
+}

@@ -1,0 +1,81 @@
+{
+  "id": "hioki-im3570-impedance-analyzer",
+  "kind": "equipment_series",
+  "name": "Hioki Impedance Analyzer IM3570",
+  "name_ko": "히오키 임피던스 분석기 IM3570",
+  "manufacturer": "hioki",
+  "brand": "IM",
+  "category": "network_lcr_analyzer",
+  "form_factor": "benchtop",
+  "description": "4 Hz~5 MHz 임피던스 분석기. 기본 확도 Z ±0.08% rdg., θ ±0.05°, LCR 모드 최고 0.5 ms(100 kHz). 측정 범위 100 mΩ~100 MΩ(12 레인지). 외부 DC 바이어스 유닛(±40 V, 최대 2 A)과 등가 회로 분석 펌웨어 IM9000 을 선택한다.",
+  "test_items": [],
+  "limits": {
+    "frequency_Hz": {
+      "min": 4,
+      "max": 5000000,
+      "note": "5자리 설정 분해능, 최소 10 mHz"
+    },
+    "impedance_ohm": {
+      "min": 0.1,
+      "max": 100000000,
+      "note": "12 레인지"
+    },
+    "measurement_time_s": {
+      "max": 0.0005,
+      "note": "0.5 ms(100 kHz, FAST, 화면 끔, 대표값). 1 kHz 에서 1.5 ms"
+    }
+  },
+  "models": [
+    {
+      "model": "IM3570",
+      "specs": {
+        "frequency_Hz": {
+          "min": 4,
+          "max": 5000000
+        },
+        "accuracy": "Z ±0.08% rdg. θ ±0.05°",
+        "measurement_time_s": 0.0005,
+        "test_signal_level": "V·CV 5 mV~5 Vrms(1 MHz 이하), 10 mV~1 Vrms(1.0001~5 MHz); CC 10 μA~50 mArms(1 MHz 이하), 10 μA~10 mArms(1.0001~5 MHz)",
+        "impedance_ohm": {
+          "min": 0.1,
+          "max": 100000000,
+          "note": "12 레인지"
+        },
+        "interfaces": "EXT I/O(handler), RS-232C, GP-IB, USB, USB 메모리, LAN"
+      }
+    }
+  ],
+  "options": [
+    {
+      "name": "DC BIAS VOLTAGE UNIT 9268-10",
+      "note": "±40 V"
+    },
+    {
+      "name": "DC BIAS CURRENT UNIT 9269-10",
+      "note": "최대 2 A"
+    },
+    {
+      "name": "EQUIVALENT CIRCUIT ANALYSIS FIRMWARE IM9000",
+      "note": "IM3570 용 등가 회로 분석"
+    }
+  ],
+  "relations": [
+    {
+      "type": "same_family_as",
+      "target": "hioki-im35xx-lcr-meters"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://www.hioki.com/global/products/lcr-meters/3-ghz/id_5772",
+      "retrieved": "2026-10-08",
+      "note": "제조사 IM3570 페이지. 주파수·확도·속도·신호 레벨·범위·DC 바이어스 유닛·인터페이스"
+    },
+    {
+      "url": "https://www.hioki.com/global/products/lcr-meters/3-ghz",
+      "retrieved": "2026-10-08",
+      "note": "제조사 'Impedance Analyzers, up to 3 GHz' 목록 페이지. IM3570 4 Hz to 5 MHz·±0.08%·0.5 ms, IM9000 펌웨어"
+    }
+  ],
+  "confidence": "limited"
+}

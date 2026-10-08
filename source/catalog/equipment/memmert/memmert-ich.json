@@ -1,0 +1,167 @@
+{
+  "id": "memmert-ich",
+  "kind": "equipment_series",
+  "name": "Memmert ICH / ICH L Climate Chambers (ICH110 / ICH260 / ICH750, ICH110L / ICH260L / ICH750L)",
+  "name_ko": "메머트 ICH·ICH L 항온항습 챔버",
+  "manufacturer": "memmert",
+  "brand": "ICH",
+  "category": "climatic_chamber",
+  "drive": "thermal",
+  "form_factor": "floor",
+  "description": "안정성 시험용 항온항습 챔버. ICH 는 -10~+60 °C, 조명형 ICH L 은 0~+60 °C, 습도 10~80 %RH 디지털 능동 제어. ICH L 은 형광·UV 광원으로 ICH Q1B option 2 광안정성 시험을 한다. 내용적 108·256·749 L.",
+  "test_items": [
+    "damp_heat"
+  ],
+  "standards": {
+    "compliance": [],
+    "test_methods": [
+      "ICH Q1B option 2 (ICH L)"
+    ]
+  },
+  "limits": {
+    "temperature_degC": {
+      "min": -10,
+      "max": 60,
+      "note": "ICH -10~+60 °C, ICH L 0~+60 °C"
+    },
+    "humidity_pct": {
+      "min": 10,
+      "max": 80
+    },
+    "chamber_volume_L": {
+      "min": 108,
+      "max": 749,
+      "values": [
+        108,
+        256,
+        749
+      ]
+    }
+  },
+  "models": [
+    {
+      "model": "ICH110",
+      "specs": {
+        "chamber_volume_L": 108,
+        "inner_mm": {
+          "note": "560 × 480 × 400 mm (페이지 표기 그대로)"
+        },
+        "temperature_degC": {
+          "min": -10,
+          "max": 60
+        },
+        "humidity_pct": {
+          "min": 10,
+          "max": 80
+        }
+      }
+    },
+    {
+      "model": "ICH260",
+      "specs": {
+        "chamber_volume_L": 256,
+        "inner_mm": {
+          "note": "640 × 800 × 500 mm (페이지 표기 그대로)"
+        },
+        "temperature_degC": {
+          "min": -10,
+          "max": 60
+        },
+        "humidity_pct": {
+          "min": 10,
+          "max": 80
+        }
+      }
+    },
+    {
+      "model": "ICH750",
+      "specs": {
+        "chamber_volume_L": 749,
+        "inner_mm": {
+          "note": "1040 × 1200 × 600 mm (페이지 표기 그대로)"
+        },
+        "temperature_degC": {
+          "min": -10,
+          "max": 60
+        },
+        "humidity_pct": {
+          "min": 10,
+          "max": 80
+        }
+      }
+    },
+    {
+      "model": "ICH110L",
+      "specs": {
+        "chamber_volume_L": 108,
+        "inner_mm": {
+          "note": "560 × 480 × 400 mm (페이지 표기 그대로)"
+        },
+        "temperature_degC": {
+          "min": 0,
+          "max": 60
+        },
+        "humidity_pct": {
+          "min": 10,
+          "max": 80
+        }
+      },
+      "note": "조명 장착형(광안정성 ICH Q1B option 2, 형광·UV 광원)"
+    },
+    {
+      "model": "ICH260L",
+      "specs": {
+        "chamber_volume_L": 256,
+        "inner_mm": {
+          "note": "640 × 800 × 500 mm (페이지 표기 그대로)"
+        },
+        "temperature_degC": {
+          "min": 0,
+          "max": 60
+        },
+        "humidity_pct": {
+          "min": 10,
+          "max": 80
+        }
+      },
+      "note": "조명 장착형(광안정성 ICH Q1B option 2, 형광·UV 광원)"
+    },
+    {
+      "model": "ICH750L",
+      "specs": {
+        "chamber_volume_L": 749,
+        "inner_mm": {
+          "note": "1040 × 1200 × 600 mm (페이지 표기 그대로)"
+        },
+        "temperature_degC": {
+          "min": 0,
+          "max": 60
+        },
+        "humidity_pct": {
+          "min": 10,
+          "max": 80
+        }
+      },
+      "note": "조명 장착형(광안정성 ICH Q1B option 2, 형광·UV 광원)"
+    }
+  ],
+  "relations": [
+    {
+      "type": "simulates_environment",
+      "target": "environment-damp-heat"
+    },
+    {
+      "type": "same_family_as",
+      "target": "memmert-hppeco"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://www.memmert.com/en/products/climate-chambers/climate-chamber",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지. ICH·ICH L 기종 목록, 온도·습도 범위"
+    }
+  ],
+  "confidence": "limited",
+  "notes": "CO2 제어형 ICHC 는 m360 맞춤 제품 페이지에 따로 있어 이 객체에 넣지 않았다."
+}

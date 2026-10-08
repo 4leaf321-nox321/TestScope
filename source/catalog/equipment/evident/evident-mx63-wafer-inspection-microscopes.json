@@ -1,0 +1,112 @@
+{
+  "id": "evident-mx63-wafer-inspection-microscopes",
+  "kind": "equipment_series",
+  "name": "Evident MX63 / MX63L Wafer Inspection Microscopes",
+  "name_ko": "에비던트(구 올림푸스) MX63·MX63L 웨이퍼 검사 현미경",
+  "manufacturer": "evident",
+  "brand": "MX",
+  "category": "optical_microscope",
+  "subcategory": "semiconductor_inspection_microscope",
+  "form_factor": "benchtop",
+  "description": "웨이퍼·평판 디스플레이·회로 기판 같은 대형 시료를 보는 반사형 검사 현미경. MX63 은 200 mm 웨이퍼까지(스테이지 210×210 또는 158×158 mm, 적재 8 kg), MX63L 은 같은 설치 면적으로 300 mm 웨이퍼까지(356×305 mm, 15 kg). 고휘도 백색 LED(옵션 100 W 할로겐·수은등), 명시야·암시야·미분간섭·편광·형광·적외·MIX 관찰, UIS2 무한원 보정 광학계. SEMI S2/S8, CE, UL 대응.",
+  "test_items": [
+    "microscopy"
+  ],
+  "standards": {
+    "compliance": [
+      "SEMI S2",
+      "SEMI S8",
+      "CE",
+      "UL"
+    ],
+    "test_methods": []
+  },
+  "limits": {
+    "wafer_size_mm": {
+      "max": 300,
+      "note": "MX63 ～200 mm, MX63L ～300 mm"
+    },
+    "stage_travel_mm": {
+      "max": 356,
+      "note": "MX63 210×210 또는 158×158, MX63L 356×305"
+    },
+    "specimen_mass_kg": {
+      "max": 15,
+      "note": "최대 적재 MX63 8 kg, MX63L 15 kg — 웹 페이지 값(PDF 에 없음)"
+    },
+    "magnification": {
+      "min": 12.5,
+      "max": 1500,
+      "note": "총 배율(PDF)"
+    }
+  },
+  "models": [
+    {
+      "model": "MX63",
+      "specs": {
+        "wafer_size_mm": {
+          "max": 200,
+          "note": "PDF 에는 8 in. × 8 in. 스테이지(MX-SIC8R)와 200 mm 웨이퍼 로더 AL120 조합으로 나옴"
+        },
+        "stage_travel_mm": {
+          "values": [
+            "210×210",
+            "158×158"
+          ],
+          "note": "MX-SIC8R 8 in. × 8 in. 스테이지 210 × 210 mm(투과 조명 영역 189 × 189 mm), MX-SIC6R2 6 in. × 6 in. 스테이지 158 × 158 mm(반사 전용)"
+        },
+        "magnification": {
+          "min": 12.5,
+          "max": 1500
+        },
+        "specimen_mass_kg": 8,
+        "weight_kg": 35.6,
+        "observation_methods": "BF, DF, DIC, POL, FL, IR, MIX"
+      },
+      "note": "무게 약 35.6 kg(프레임 26 kg). 외형 약 509 × 770 × 507 mm(W × D × H)"
+    },
+    {
+      "model": "MX63L",
+      "specs": {
+        "wafer_size_mm": {
+          "max": 300
+        },
+        "stage_travel_mm": [
+          356,
+          305
+        ],
+        "magnification": {
+          "min": 12.5,
+          "max": 1500
+        },
+        "specimen_mass_kg": 15,
+        "weight_kg": 44,
+        "observation_methods": "BF, DF, DIC, POL, FL, IR, MIX"
+      },
+      "note": "무게 약 44 kg(프레임 28.5 kg). MX-SIC1412R2 14 in. × 12 in. 스테이지(투과 조명 영역 356 × 284 mm, MX-TILLB 조합). 외형 약 711 × 790 × 507 mm(W × D × H)"
+    }
+  ],
+  "options": [
+    "MXPLFLN 대물렌즈(20X NA 0.8 WD 3 mm, 50X NA 0.8 WD 3 mm)",
+    "IR 대물렌즈 5X～100X",
+    "100 W 할로겐 램프",
+    "100 W 수은 램프"
+  ],
+  "sources": [
+    {
+      "url": "https://evidentscientific.com/en/products/semiconductor-inspection/mx63-mx63l",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지(HTML, evidentscientific.com) MX63/MX63L"
+    },
+    {
+      "file": "evident/opticalmetrology_brochure_en_m1715e_2023_11_web.pdf",
+      "pages": [
+        12,
+        13
+      ],
+      "note": "Evident 광학 계측 종합 브로슈어 M1715E(2023-11) — MX63/MX63L 사양(브로슈어 인쇄 쪽 11), AL120 웨이퍼 로더"
+    }
+  ],
+  "confidence": "catalog",
+  "notes": "PDF 로 확인: 총 배율 12.5～1,500X(이전에는 웹 검색 요약에만 있어 비웠던 값), 300 mm 웨이퍼, 스테이지 스트로크, 무게, 관찰법, SEMI S2/S8·CE·UL. 웹 값 그대로: 최대 적재 8 kg·15 kg. 구 올림푸스 제품."
+}

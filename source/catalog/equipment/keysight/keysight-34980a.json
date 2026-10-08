@@ -1,0 +1,39 @@
+{
+  "id": "keysight-34980a",
+  "kind": "equipment_series",
+  "name": "Keysight 34980A Multifunction Switch/Measure Unit",
+  "name_ko": "키사이트 34980A 다기능 스위치·측정 장치",
+  "manufacturer": "keysight",
+  "category": "dmm_daq",
+  "description": "8슬롯 모듈형 스위치·측정 메인프레임. 2선 멀티플렉서 최대 560채널 또는 매트릭스 교차점 4,096개, 6½자리(22비트) 내장 DMM, 최대 1,000 채널/s 스캔. 50 GHz 까지의 스위칭, 디지털 I/O, D/A 변환, 카운터·적산 모듈. LAN·USB·GPIB(LXI).",
+  "test_items": [],
+  "models": [
+    {
+      "model": "34980A",
+      "specs": {
+        "dmm_resolution_digits": 6.5,
+        "channels": {
+          "max": 560,
+          "note": "2선 멀티플렉서 기준. 매트릭스는 교차점 4,096",
+          "requires_accessory": true
+        },
+        "channel_scan_rate_ch_s": 1000,
+        "interfaces": "LAN, USB, GPIB(LXI)"
+      }
+    }
+  ],
+  "relations": [
+    {
+      "type": "same_family_as",
+      "target": "keysight-daq970a"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://www.keysight.com/us/en/product/34980A/multifunction-switch-measure-unit.html",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지. 8-slot, 560 2-wire mux 또는 4,096 matrix cross-points, 6.5 digits(22 bits), 1,000 ch/s, LAN·USB·GPIB"
+    }
+  ],
+  "confidence": "limited"
+}

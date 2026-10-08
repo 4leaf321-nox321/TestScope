@@ -1,0 +1,93 @@
+{
+  "id": "interface-lowprofile-load-cells",
+  "kind": "sensor",
+  "name": "Interface LowProfile Load Cells (1000 / 1000 High Capacity / 1100 / 1200 / 1500 / SSLP)",
+  "name_ko": "인터페이스 LowProfile 범용 로드셀",
+  "manufacturer": "interface",
+  "brand": "LowProfile",
+  "category": "force_pressure_sensor",
+  "subcategory": "strain_gauge_load_cell",
+  "description": "저자세(LowProfile) 범용 인장·압축 로드셀 계열. 1000 피로 정격형 1.25～225 kN, 1000 대용량 피로 정격형 450～4500 kN, 1100 초정밀형 1.33～890 kN, 1200 표준 정밀형 1.5～450 kN, 1500 저용량형 111 N～1.33 kN, SSLP 스테인리스형 5～5000 kN.",
+  "test_items": [],
+  "measurands": [
+    "force"
+  ],
+  "limits": {
+    "force_kN": {
+      "min": 0.111,
+      "max": 5000,
+      "note": "계열 전체(1500 의 111 N ~ SSLP 의 5000 kN)"
+    }
+  },
+  "models": [
+    {
+      "model": "1000 Fatigue-Rated Universal LowProfile",
+      "specs": {
+        "force_kN": {
+          "min": 1.25,
+          "max": 225
+        }
+      },
+      "note": "원문 250-50K lbf. 개별 기종 번호(예: 용량별 품번)는 확인 못함"
+    },
+    {
+      "model": "1000 High Capacity Fatigue-Rated Universal LowProfile",
+      "specs": {
+        "force_kN": {
+          "min": 450,
+          "max": 4500
+        }
+      },
+      "note": "원문 100K-1,000K lbf. 개별 기종 번호(예: 용량별 품번)는 확인 못함"
+    },
+    {
+      "model": "1100 Ultra Precision Universal LowProfile",
+      "specs": {
+        "force_kN": {
+          "min": 1.33,
+          "max": 890
+        }
+      },
+      "note": "원문 300 lbf-200K lbf. 개별 기종 번호(예: 용량별 품번)는 확인 못함"
+    },
+    {
+      "model": "1200 Standard Precision Universal LowProfile",
+      "specs": {
+        "force_kN": {
+          "min": 1.5,
+          "max": 450
+        }
+      },
+      "note": "원문 300 lbf-100K lbf. 개별 기종 번호(예: 용량별 품번)는 확인 못함"
+    },
+    {
+      "model": "1500 Low Capacity Universal LowProfile",
+      "specs": {
+        "force_kN": {
+          "min": 0.111,
+          "max": 1.33
+        }
+      },
+      "note": "원문 25-300 lbf. 개별 기종 번호(예: 용량별 품번)는 확인 못함"
+    },
+    {
+      "model": "SSLP Stainless Steel Low Profile",
+      "specs": {
+        "force_kN": {
+          "min": 5,
+          "max": 5000
+        }
+      },
+      "note": "원문 1,124 lbf-1,124K lbf. 개별 기종 번호(예: 용량별 품번)는 확인 못함"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://www.interfaceforce.com/product-category/load-cells/",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 목록 페이지(HTML, interfaceforce.com). 계열명과 용량 범위만 확인"
+    }
+  ],
+  "confidence": "limited",
+  "notes": "분류 판단: 시험기 하중계로도 쓰이지만 독립 힘 측정 센서로 납품·관리되는 경우가 많아 force_pressure_sensor 에 둠(시험기 장착용이면 load_cell). 정확도·비직선성은 계열 페이지를 열지 않아 비움. 모델 이름은 계열명(기종 번호 아님)."
+}

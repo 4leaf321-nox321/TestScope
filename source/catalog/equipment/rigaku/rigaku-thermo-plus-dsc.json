@@ -1,0 +1,215 @@
+{
+  "id": "rigaku-thermo-plus-dsc",
+  "kind": "equipment_series",
+  "name": "Rigaku Thermo plus EVO2 DSC8231 / DSCvesta Differential Scanning Calorimeters",
+  "name_ko": "리가쿠 Thermo plus EVO2 DSC8231·DSCvesta 시차주사열량계",
+  "manufacturer": "rigaku",
+  "category": "dsc",
+  "brand": "Thermo plus",
+  "description": "열유속식 DSC. 소형 노로 저잡음·고감도, 빠른 가스 치환과 승·냉각. DSC8231 은 -150~725 °C(최대 750 °C), DSCvesta 는 -170~725 °C 이고 시료 관찰(상온~350 °C, 냉각 장치로 -70 °C 까지)·UV 조사 장치·자동 시료 교환기를 단다. 실온 이하는 냉각 장치, 500 °C 이상은 불활성 가스 필요.",
+  "test_items": [
+    "dsc"
+  ],
+  "measurands": [
+    "thermal.glass_transition",
+    "thermal.melting_point",
+    "thermal.specific_heat",
+    "thermal.latent_heat_fusion"
+  ],
+  "measurands_by_item": {
+    "dsc": [
+      "thermal.glass_transition",
+      "thermal.melting_point",
+      "thermal.specific_heat",
+      "thermal.latent_heat_fusion"
+    ]
+  },
+  "limits": {
+    "temperature_degC": {
+      "min": -180,
+      "max": 1500,
+      "requires_accessory": true,
+      "note": "실온 이하는 냉각 장치(선택). DSCvesta2 -180~725 °C(LN2 직접 냉각), DSC8231 최대 750 °C, DSC8271 실온~1,500 °C. 기존 -170~750 °C 는 DSCvesta2·DSC8271 을 더하며 넓혔다"
+    },
+    "heating_rate_K_min": {
+      "max": 150,
+      "note": "DSCvesta2·DSCvesta 150, DSC8231 100, DSC8271 20 °C/min. 냉각 장치를 달면 장치에 따라 다름"
+    },
+    "heat_flow_mW": {
+      "max": 1000,
+      "note": "DSC 범위 ±1000 mW(DSCvesta2) · ±400 mW(DSCvesta) · ±100 mW(DSC8231·DSC8271)"
+    },
+    "heat_flow_noise_uW_rms": {
+      "min": 0.05,
+      "max": 5,
+      "note": "잡음(RMS) 0.05 µW(DSCvesta2) ~ 5 µW(DSC8271)"
+    }
+  },
+  "models": [
+    {
+      "model": "DSCvesta2",
+      "specs": {
+        "temperature_degC": {
+          "min": -180,
+          "max": 725,
+          "note": "실온 이하는 냉각 장치: LN2 직접 -180, LN2 자동 충전 -150, 냉동기 TC100 -95 / TC50 -40(~600), 순환조 -10 °C 부터. 600 °C 초과는 불활성 가스"
+        },
+        "heating_rate_K_min": {
+          "max": 150,
+          "note": "냉각 장치를 달면 장치에 따라 다름"
+        },
+        "heat_flow_mW": {
+          "value": 1000,
+          "note": "DSC 범위 ±1000 mW"
+        },
+        "heat_flow_noise_uW_rms": 0.05,
+        "temperature_precision_degC": {
+          "value": 0.03,
+          "note": "±0.03 °C(리가쿠 조건)"
+        },
+        "accuracy": "에너지 정밀도 ±0.04 %, 비열 정확도 ±1 %, 기저선 재현성 ±5 µW(리가쿠 조건)",
+        "dynamic_range": {
+          "value": 40000000,
+          "note": "4×10^7 (DSC 범위/잡음)"
+        },
+        "weight_kg": {
+          "value": 32,
+          "note": "ASC 포함 42 kg"
+        },
+        "power": "Single phase 100-240 VAC, 50/60 Hz, 5 A"
+      },
+      "note": "Thermo plus EVO2 신형. 자기 진단 vestaeye, ASC 52 시료(교정 4, 기준 3), 시료 관찰 -70~725 °C(냉각 장치 연결 시), UV 조사 장치, 은(Ag) 노"
+    },
+    {
+      "model": "DSC8231",
+      "specs": {
+        "temperature_degC": {
+          "min": -150,
+          "max": 725,
+          "note": "max. 750 °C"
+        },
+        "footprint_mm": {
+          "W": 210,
+          "H": 310,
+          "D": 520
+        },
+        "weight_kg": {
+          "value": 15.5,
+          "note": "ASC 포함 30.5 kg"
+        },
+        "power": "Single phase 100-240 VAC, 50/60 Hz, 5 A",
+        "heating_rate_K_min": {
+          "max": 100,
+          "note": "냉각 장치를 달면 장치에 따라 다름"
+        },
+        "heat_flow_mW": {
+          "value": 100,
+          "note": "DSC 범위 ±100 mW"
+        },
+        "heat_flow_noise_uW_rms": 0.5,
+        "dynamic_range": {
+          "value": 400000,
+          "note": "4×10^5 (DSC 범위/잡음)"
+        }
+      },
+      "note": "냉각 장치 3종, 자동 시료 교환기, 다중 가스 제어, Dynamic DSC. 전원 표기는 웹 페이지 「1Ø AC100-120 V / 200-240 V 50/60 Hz 5 A」. 냉각: LN2 자동 충전 -130~500 °C, LN2 사이펀 -150~500 °C, 순환조. ASC 28 시료. 500 °C 초과는 불활성 가스"
+    },
+    {
+      "model": "DSCvesta",
+      "specs": {
+        "temperature_degC": {
+          "min": -170,
+          "max": 725
+        },
+        "footprint_mm": {
+          "W": 380,
+          "H": 367,
+          "D": 492
+        },
+        "weight_kg": {
+          "value": 28,
+          "note": "ASC 포함 38 kg"
+        },
+        "power": "Single phase 100-240 VAC, 50/60 Hz, 5 A",
+        "heating_rate_K_min": {
+          "max": 150,
+          "note": "냉각 장치를 달면 장치에 따라 다름"
+        },
+        "heat_flow_mW": {
+          "value": 400,
+          "note": "DSC 범위 ±400 mW"
+        },
+        "heat_flow_noise_uW_rms": 0.1,
+        "dynamic_range": {
+          "value": 8000000,
+          "note": "8×10^6 (DSC 범위/잡음)"
+        }
+      },
+      "note": "냉각 장치 4종, 시료 관찰 장치, UV 조사 장치, 안전 커버, ASC. 전원 표기는 웹 페이지 「1Ø AC100-120 V / 200-240 V 50/60 Hz 5 A」. 냉각: 냉동기 -90~725 °C, LN2 자동 충전 -150~725 °C, LN2 사이펀 -170~725 °C, 순환조 -10~500 °C. ASC 28 시료. 500 °C 초과는 불활성 가스"
+    },
+    {
+      "model": "DSC8271",
+      "specs": {
+        "temperature_degC": {
+          "max": 1500,
+          "note": "실온~1,500 °C"
+        },
+        "heating_rate_K_min": {
+          "max": 20
+        },
+        "heat_flow_mW": {
+          "value": 100,
+          "note": "DSC 범위 ±100 mW"
+        },
+        "heat_flow_noise_uW_rms": 5,
+        "dynamic_range": {
+          "value": 40000,
+          "note": "4×10^4 (DSC 범위/잡음)"
+        },
+        "sample_volume_uL": {
+          "max": 45
+        },
+        "weight_kg": 32,
+        "power": "Single phase 100 VAC, 50/60 Hz, 15 A"
+      },
+      "note": "고온 DSC. 단열부를 따로 식혀 측정 후 냉각 시간을 줄인다"
+    }
+  ],
+  "relations": [
+    {
+      "type": "same_family_as",
+      "target": "rigaku-stavesta"
+    },
+    {
+      "type": "same_family_as",
+      "target": "rigaku-tma8311"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://rigaku.com/products/thermal-analysis/thermal-analysis/dsc8231",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지(HTML) 본문·표를 직접 읽음. 특징·사양(측정 온도, 치수, 무게, 전원)·옵션"
+    },
+    {
+      "url": "https://rigaku.com/products/thermal-analysis/thermal-analysis/dscvesta",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지(HTML) 본문·표를 직접 읽음. 특징·사양·옵션. 자료 목록에 'Thermo Plus EVO2 Differential Scanning Calorimeter DSCvesta'"
+    },
+    {
+      "file": "rigaku/dsc_brochure_en.pdf",
+      "pages": [
+        2,
+        3,
+        7,
+        8,
+        9,
+        10,
+        14,
+        15
+      ]
+    }
+  ],
+  "confidence": "catalog",
+  "notes": "PDF 브로슈어(BTDSC00) 사양표로 기종별 온도 범위·DSC 범위·최대 승온 속도·잡음·동적 범위·무게·전원을 확인하고 채웠다. 같은 브로슈어의 DSCvesta2·DSC8271 을 기종으로 더했다(객체 이름은 DSC8231·DSCvesta 만 적고 있다). 사양표는 추출에서 열이 섞여 다음은 넣지 않았다: 최대 시료량 90 µL(DSCvesta2·DSCvesta·DSC8231 공통 칸으로 보이나 확실하지 않음), 자기 진단 행. 에너지 정밀도·온도 정밀도·비열 정확도·기저선 재현성은 DSCvesta2 열에만 값이 있다. DSCvesta 외형 깊이는 PDF 그림에서 492/509 중 어느 것인지 가릴 수 없어 웹 값 그대로 두었다."
+}

@@ -1,0 +1,329 @@
+{
+  "id": "thermotron-fa-altitude-chambers",
+  "kind": "equipment_series",
+  "name": "Thermotron FA Altitude Test Chambers (FA-CH / FA-CHM)",
+  "name_ko": "써모트론 FA 고도 시험 챔버",
+  "manufacturer": "thermotron",
+  "brand": "FA",
+  "category": "altitude_chamber",
+  "drive": "thermal",
+  "form_factor": "floor",
+  "description": "온도와 고도(감압)를 함께 거는 바닥형 고도 시험 챔버임. 표준 고도 범위는 100,000 ft(30.5 km, 8 torr)까지이고 옵션으로 150,000 ft(45.7 km, 1 torr)까지 확장됨. 온도 범위 -73~177 °C. 작업공간 4~96 ft³ 일곱 크기에 압축기 마력 조합을 더해 온도 전용(CH) 12기종, 온습도(CHM) 11기종으로 구성됨. 습도 옵션은 20~95 %RH 이며 대기압(site level)에서만 적용됨. 8800 컨트롤러가 기본이고 캠 동작 도어 잠금, 내부 압력 라이너, 인터록 히터를 표준 안전 장치로 갖춤. 군수·항공우주·자동차·전자 분야용으로 소개됨.",
+  "test_items": [
+    "altitude_low_pressure",
+    "temperature_cycling",
+    "damp_heat"
+  ],
+  "measurands": [
+    "operating_altitude"
+  ],
+  "materials": [
+    "military equipment",
+    "aerospace components",
+    "automotive components",
+    "electronics"
+  ],
+  "limits": {
+    "chamber_pressure_kPa": {
+      "min": 1.07,
+      "note": "원문 8 torr(100,000 ft) 를 1 torr = 0.133322 kPa 로 환산. 옵션 확장 고도 1 torr(150,000 ft) = 0.133 kPa. 상한은 설치 장소 대기압(수치 미기재)"
+    },
+    "altitude_m": {
+      "max": 30480,
+      "note": "원문 100,000 ft (30.5 km). 옵션 Extended Altitude Range 150,000 ft (45.7 km) = 45,720 m. 하한은 설치 장소 고도"
+    },
+    "temperature_degC": {
+      "min": -73,
+      "max": 177,
+      "note": "원문 -73~177 °C (-100~350 °F), 전 기종 공통"
+    },
+    "humidity_pct": {
+      "min": 20,
+      "max": 95,
+      "requires_accessory": true,
+      "note": "습도 시스템은 옵션(CHM 기종). 건구 4.4~85 °C, 이슬점 4.4~84 °C, 제어 ±5 %RH(건구 20 °C 초과 시), 대기압(site level) 습도 시험에 한함"
+    },
+    "chamber_volume_L": {
+      "min": 131,
+      "max": 2718,
+      "values": [
+        131,
+        302,
+        478,
+        994,
+        1307,
+        1812,
+        2718
+      ],
+      "note": "브로슈어 2쪽 사양표 값(내부 치수에서 계산한 값과 일치). 1쪽과 웹 페이지는 명목 4~96 ft³ = 113~2,718 L 로 적음"
+    }
+  },
+  "models": [
+    {
+      "model": "FA-4-CH-1-1",
+      "variant": "온도 전용",
+      "form_factor": "floor",
+      "specs": {
+        "chamber_volume_L": 131,
+        "inner_mm": "W510×D510×H510 (20×20×20 in)",
+        "footprint_mm": "W810×D860×H2080 (32×34×82 in)",
+        "weight_kg": 680,
+        "temperature_degC": {
+          "min": -73,
+          "max": 177
+        },
+        "altitude_m": {
+          "max": 30480,
+          "note": "100,000 ft, 옵션 150,000 ft(45,720 m)"
+        },
+        "chamber_pressure_kPa": {
+          "min": 1.07,
+          "note": "8 torr, 옵션 1 torr(0.133 kPa)"
+        }
+      },
+      "note": "명목 4 ft³. 습도형(CHM) 없음. 운송 중량 1,500 lbs. 웹 페이지는 113 L 로 적음"
+    },
+    {
+      "model": "FA-10-CH-3-3 / FA-10-CH-5-5 / FA-10-CHM-3-3 / FA-10-CHM-5-5",
+      "variant": "CH 온도 전용, CHM 온습도, 끝 두 숫자는 압축기 마력",
+      "form_factor": "floor",
+      "specs": {
+        "chamber_volume_L": 302,
+        "inner_mm": "W610×D610×H810 (24×24×32 in)",
+        "footprint_mm": "W1220×D1520×H2310 (48×60×91 in)",
+        "weight_kg": {
+          "values": [
+            1134,
+            1361
+          ],
+          "note": "-3-3 1,134 kg(2,500 lbs) / -5-5 1,361 kg(3,000 lbs), 운송 중량"
+        },
+        "temperature_degC": {
+          "min": -73,
+          "max": 177
+        },
+        "altitude_m": {
+          "max": 30480,
+          "note": "100,000 ft, 옵션 150,000 ft(45,720 m)"
+        },
+        "chamber_pressure_kPa": {
+          "min": 1.07,
+          "note": "8 torr, 옵션 1 torr(0.133 kPa)"
+        }
+      },
+      "note": "명목 10 ft³. 웹 기종 페이지(FA-10-CH-3-3)는 283 L, 반입 치수 48×54×88 in, 운송 중량 1,137 kg, 460 V/3상/60 Hz 40 FLA · 230 V 70 FLA, 습도 최저 이슬점 +7 °C 로 적어 브로슈어(2017-08)와 다름"
+    },
+    {
+      "model": "FA-16-CH-3-3 / FA-16-CH-5-5 / FA-16-CHM-3-3 / FA-16-CHM-5-5",
+      "variant": "CH 온도 전용, CHM 온습도",
+      "form_factor": "floor",
+      "specs": {
+        "chamber_volume_L": 478,
+        "inner_mm": "W610×D970×H810 (24×38×32 in)",
+        "footprint_mm": "W1220×D1880×H2310 (48×74×91 in)",
+        "weight_kg": {
+          "values": [
+            1587,
+            1814
+          ],
+          "note": "-3-3 1,587 kg / -5-5 1,814 kg"
+        },
+        "temperature_degC": {
+          "min": -73,
+          "max": 177
+        },
+        "altitude_m": {
+          "max": 30480,
+          "note": "100,000 ft, 옵션 150,000 ft(45,720 m)"
+        },
+        "chamber_pressure_kPa": {
+          "min": 1.07,
+          "note": "8 torr, 옵션 1 torr(0.133 kPa)"
+        }
+      },
+      "note": "명목 16 ft³. 웹 페이지는 453 L"
+    },
+    {
+      "model": "FA-35-CH-5-5 / FA-35-CH-7.5-7.5 / FA-35-CHM-5-5 / FA-35-CHM-7.5-7.5",
+      "variant": "CH 온도 전용, CHM 온습도",
+      "form_factor": "floor",
+      "specs": {
+        "chamber_volume_L": 994,
+        "inner_mm": "W970×D970×H1070 (38×38×42 in)",
+        "footprint_mm": "W1630×D2010×H2740 (64×79×108 in)",
+        "weight_kg": {
+          "values": [
+            2494,
+            2721
+          ],
+          "note": "-5-5 2,494 kg / -7.5-7.5 2,721 kg"
+        },
+        "temperature_degC": {
+          "min": -73,
+          "max": 177
+        },
+        "altitude_m": {
+          "max": 30480,
+          "note": "100,000 ft, 옵션 150,000 ft(45,720 m)"
+        },
+        "chamber_pressure_kPa": {
+          "min": 1.07,
+          "note": "8 torr, 옵션 1 torr(0.133 kPa)"
+        }
+      },
+      "note": "명목 35 ft³. 웹 페이지는 991 L"
+    },
+    {
+      "model": "FA-46-CH-7.5-7.5 / FA-46-CHM-7.5-7.5",
+      "variant": "CH 온도 전용, CHM 온습도",
+      "form_factor": "floor",
+      "specs": {
+        "chamber_volume_L": 1307,
+        "inner_mm": "W970×D1270×H1070 (38×50×42 in)",
+        "footprint_mm": "W1620×D2310×H2740 (64×91×108 in)",
+        "weight_kg": 3175,
+        "temperature_degC": {
+          "min": -73,
+          "max": 177
+        },
+        "altitude_m": {
+          "max": 30480,
+          "note": "100,000 ft, 옵션 150,000 ft(45,720 m)"
+        },
+        "chamber_pressure_kPa": {
+          "min": 1.07,
+          "note": "8 torr, 옵션 1 torr(0.133 kPa)"
+        }
+      },
+      "note": "명목 46 ft³. 웹 페이지는 1,302 L. 브로슈어 CHM 행은 내부 치수 cm 를 97×97×107 로 적었으나 인치 값(38×50×42)과 CH 행으로 보아 오기로 판단"
+    },
+    {
+      "model": "FA-64-CH-7.5-7.5 / FA-64-CH-15-15 / FA-64-CHM-7.5-7.5 / FA-64-CHM-15-15",
+      "variant": "CH 온도 전용, CHM 온습도",
+      "form_factor": "floor",
+      "specs": {
+        "chamber_volume_L": 1812,
+        "inner_mm": "W1220×D1220×H1220 (48×48×48 in)",
+        "footprint_mm": "W1910×D2360×H2790 (75×93×110 in)",
+        "weight_kg": {
+          "values": [
+            3856,
+            4082
+          ],
+          "note": "-7.5-7.5 3,856 kg(CHM 3,855 kg) / -15-15 4,082 kg"
+        },
+        "temperature_degC": {
+          "min": -73,
+          "max": 177
+        },
+        "altitude_m": {
+          "max": 30480,
+          "note": "100,000 ft, 옵션 150,000 ft(45,720 m)"
+        },
+        "chamber_pressure_kPa": {
+          "min": 1.07,
+          "note": "8 torr, 옵션 1 torr(0.133 kPa)"
+        }
+      },
+      "note": "명목 64 ft³"
+    },
+    {
+      "model": "FA-96-CH-7.5-7.5 / FA-96-CH-15-15 / FA-96-CHM-7.5-7.5 / FA-96-CHM-15-15",
+      "variant": "CH 온도 전용, CHM 온습도",
+      "form_factor": "floor",
+      "specs": {
+        "chamber_volume_L": 2718,
+        "inner_mm": "W1220×D1830×H1220 (48×72×48 in)",
+        "footprint_mm": "W1910×D2970×H2790 (75×117×110 in)",
+        "weight_kg": {
+          "values": [
+            4308,
+            4533
+          ],
+          "note": "-7.5-7.5 4,308 kg / -15-15 4,533 kg(CHM 4,535 kg)"
+        },
+        "temperature_degC": {
+          "min": -73,
+          "max": 177
+        },
+        "altitude_m": {
+          "max": 30480,
+          "note": "100,000 ft, 옵션 150,000 ft(45,720 m)"
+        },
+        "chamber_pressure_kPa": {
+          "min": 1.07,
+          "note": "8 torr, 옵션 1 torr(0.133 kPa)"
+        }
+      },
+      "note": "명목 96 ft³"
+    }
+  ],
+  "features": [
+    "8800 컨트롤러 기본(Windows 기반, 12인치 컬러 터치스크린, 다단계 암호 보안, 스프레드시트 형식 데이터 내려받기)",
+    "제품 온도 제어(Product Temperature Control): 공기 온도를 과보상해 제품 온도를 제어",
+    "시스템 모니터: 냉동 계통 과압·과온 감지 및 알림",
+    "활동 로그 15년 이상 보관",
+    "표준 안전 장치: 캠 동작 도어 잠금, 내부 압력 라이너, 인터록 히터"
+  ],
+  "options": [
+    {
+      "name": "Extended Altitude Range",
+      "note": "150,000 ft (45.7 km; 1 torr = 0.133 kPa)까지 확장"
+    },
+    {
+      "name": "Humidity System",
+      "note": "20~95 %RH, 대기압에서만"
+    },
+    "Humidity Water Purification System",
+    "Remote Air-Cooled Condenser",
+    "Heat-Tempered, Multi-Pane Window with Bars",
+    "Interior Light",
+    "Shelves",
+    "Access Ports",
+    "Casters",
+    "Refrigeration Quiet Package",
+    "Electrical Disconnect Switch",
+    "Chart Recorder",
+    "GPIB (IEEE-488)",
+    "CE and CSA Compliant",
+    "Positive Pressure",
+    "External Pressure Member",
+    {
+      "name": "Custom Altitude Chambers",
+      "note": "고도 워크인 챔버를 포함한 주문 제작 가능(브로슈어 각주)"
+    }
+  ],
+  "relations": [
+    {
+      "type": "simulates_environment",
+      "target": "environment-low-pressure"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://thermotron.com/equipment/specialty-environmental-chamber/altitude-chamber/",
+      "retrieved": "2026-10-08",
+      "note": "제품 목록 페이지: 온도 범위, 고도 100,000 ft(옵션 150,000 ft), 기종별 명목 용적(ft³·L), 브로슈어 링크"
+    },
+    {
+      "url": "https://thermotron.com/wp-content/uploads/2015/09/BC-150-Altitude-Chamber.pdf",
+      "retrieved": "2026-10-08",
+      "note": "제조사 브로슈어 BC-150 (2017-08, 2쪽). 1쪽 특징·옵션, 2쪽 General Specifications 표와 습도 범위. 같은 문서를 저장소 PDF(thermotron/bc-150-altitude-chamber.pdf)로 대조함"
+    },
+    {
+      "file": "thermotron/bc-150-altitude-chamber.pdf",
+      "pages": [
+        1,
+        2
+      ],
+      "note": "브로슈어 BC-150 (August 2017). 1쪽 고도·온도·용적 범위·옵션, 2쪽 기종별 내·외부 치수·용적·운송 중량과 습도 범위"
+    },
+    {
+      "url": "https://thermotron.com/?p=2677",
+      "retrieved": "2026-10-08",
+      "note": "FA-10-CH-3-3 기종 페이지: 반입 치수, 운송 중량, 전기 요구, 습도 각주(+7 °C 최저 이슬점), 60 Hz·+23.9 °C 주위 조건 기준 성능"
+    }
+  ],
+  "confidence": "catalog",
+  "notes": "제조사 자료에 시험 규격(MIL-STD-810, RTCA DO-160, IEC 60068-2-13 등) 명시가 없어 standards 를 비움. 고도 상승·하강 속도와 온도 변화율은 웹 페이지·브로슈어 어디에도 없음. 성능은 60 Hz, 주위 +23.9 °C(+75 °F) 기준(기종 페이지). 기압 kPa 값은 원문 torr 의 환산값임. PDF(thermotron/bc-150-altitude-chamber.pdf 1~2쪽)로 확인: 23개 기종의 내·외부 치수, 용적, 운송 중량, 온도·습도·고도 범위 전부."
+}

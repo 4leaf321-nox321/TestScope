@@ -1,0 +1,286 @@
+{
+  "id": "imada-zt-series-force-gauges",
+  "kind": "equipment_series",
+  "name": "IMADA ZT Series Digital Force Gauges (ZTA / ZTS)",
+  "name_ko": "이마다 ZT 계열 디지털 포스 게이지(ZTA 고기능형·ZTS 표준형)",
+  "manufacturer": "imada",
+  "brand": "ZT",
+  "category": "force_pressure_sensor",
+  "subcategory": "digital_force_gauge",
+  "form_factor": "handheld",
+  "description": "인장·압축 하중을 재는 디지털 포스 게이지. 2000 Hz 고속 샘플링으로 피크를 정확히 잡고 그래프가 매끄럽다. 고휘도 유기 EL 표시, USB·무선·직렬 출력. ZTA 는 고기능형으로 USB 메모리 저장, 변위 입출력(리니어 스케일 스탠드와 조합 시 변위 표시), 1차·2차 피크 검출을 더한다. ZTS 는 표준형. 용량 2 N～5000 N(대용량 포함), 정확도 ±0.2 % F.S. ±1 digit(전 기종, 사양서; 대리점 표는 2500 N 이상 ±0.3 %), 과부하 200 % F.S., 운전 0～40 °C, 충전식 Ni-MH 또는 AC 어댑터.",
+  "test_items": [
+    "tensile",
+    "compression"
+  ],
+  "measurands": [
+    "force",
+    "peak_force"
+  ],
+  "limits": {
+    "force_N": {
+      "min": 2,
+      "max": 5000,
+      "note": "제조사 사양서: ZTA·ZTS 모두 2 N～5000 N(2500 N·5000 N 은 대용량형). 제조사 웹 페이지 문구는 「capacity of 1000N」(표준 계열 최대)"
+    },
+    "digital_sample_rate_Hz": {
+      "max": 2000,
+      "note": "제조사 사양서 최대 2000 data/sec(USB 메모리 저장은 ZTA 최대 100 data/sec, 동봉 소프트웨어 Force Logger 는 10 data/sec). 대리점 표는 「30,000 data/sec 샘플링, 2,000 data/sec 처리·전송」"
+    },
+    "operating_temperature_degC": {
+      "min": 0,
+      "max": 40
+    },
+    "operating_humidity_pct": {
+      "min": 20,
+      "max": 80
+    }
+  },
+  "models": [
+    {
+      "model": "ZTA-2N",
+      "variant": "ZTA-0.4(미국 표기)",
+      "specs": {
+        "force_N": 2,
+        "force_resolution": "0.001 N",
+        "accuracy": "±0.2% F.S. ±1 digit"
+      },
+      "note": "무게 약 490 g"
+    },
+    {
+      "model": "ZTA-5N",
+      "variant": "ZTA-1(미국 표기)",
+      "specs": {
+        "force_N": 5,
+        "force_resolution": "0.001 N",
+        "accuracy": "±0.2% F.S. ±1 digit"
+      },
+      "note": "무게 약 490 g"
+    },
+    {
+      "model": "ZTA-20N",
+      "variant": "ZTA-4(미국 표기)",
+      "specs": {
+        "force_N": 20,
+        "force_resolution": "0.01 N",
+        "accuracy": "±0.2% F.S. ±1 digit"
+      },
+      "note": "무게 약 490 g"
+    },
+    {
+      "model": "ZTA-50N",
+      "variant": "ZTA-11(미국 표기)",
+      "specs": {
+        "force_N": 50,
+        "force_resolution": "0.01 N",
+        "accuracy": "±0.2% F.S. ±1 digit"
+      },
+      "note": "무게 약 490 g"
+    },
+    {
+      "model": "ZTA-100N",
+      "specs": {
+        "force_N": 100,
+        "force_resolution": "0.1 N",
+        "accuracy": "±0.2% F.S. ±1 digit"
+      },
+      "note": "무게 약 490 g. PDF 에서 새로 더한 기종(대리점 표에 없던 100 N). 미국 표기 기종명은 출처에 없음"
+    },
+    {
+      "model": "ZTA-200N",
+      "variant": "ZTA-44(미국 표기)",
+      "specs": {
+        "force_N": 200,
+        "force_resolution": "0.1 N",
+        "accuracy": "±0.2% F.S. ±1 digit"
+      },
+      "note": "무게 약 490 g"
+    },
+    {
+      "model": "ZTA-500N",
+      "variant": "ZTA-110(미국 표기)",
+      "specs": {
+        "force_N": 500,
+        "force_resolution": "0.1 N",
+        "accuracy": "±0.2% F.S. ±1 digit"
+      },
+      "note": "무게 약 490 g"
+    },
+    {
+      "model": "ZTA-1000N",
+      "variant": "ZTA-220(미국 표기)",
+      "specs": {
+        "force_N": 1000,
+        "force_resolution": "1 N",
+        "accuracy": "±0.2% F.S. ±1 digit"
+      },
+      "note": "무게 약 490 g"
+    },
+    {
+      "model": "ZTA-2500N",
+      "variant": "ZTA-550(미국 표기)",
+      "specs": {
+        "force_N": 2500,
+        "force_resolution": "1 N",
+        "accuracy": "±0.2% F.S. ±1 digit"
+      },
+      "note": "대용량형(측정축 M10, 손잡이 포함). 무게 약 1100 g. 웹(대리점) 표는 정확도 ±0.3% F.S. ±1 LSD 로 적었으나 제조사 사양서는 전 기종 ±0.2% F.S. ±1 digit"
+    },
+    {
+      "model": "ZTA-5000N",
+      "variant": "ZTA-1100(미국 표기)",
+      "specs": {
+        "force_N": 5000,
+        "force_resolution": "1 N",
+        "accuracy": "±0.2% F.S. ±1 digit"
+      },
+      "note": "대용량형(측정축 M10, 손잡이 포함). 무게 약 1100 g. 웹(대리점) 표는 정확도 ±0.3% F.S. ±1 LSD 로 적었으나 제조사 사양서는 전 기종 ±0.2% F.S. ±1 digit"
+    },
+    {
+      "model": "ZTS-2N",
+      "variant": "ZTS-0.4(미국 표기)",
+      "specs": {
+        "force_N": 2,
+        "force_resolution": "0.001 N",
+        "accuracy": "±0.2% F.S. ±1 digit"
+      },
+      "note": "무게 약 490 g"
+    },
+    {
+      "model": "ZTS-5N",
+      "variant": "ZTS-1(미국 표기)",
+      "specs": {
+        "force_N": 5,
+        "force_resolution": "0.001 N",
+        "accuracy": "±0.2% F.S. ±1 digit"
+      },
+      "note": "무게 약 490 g"
+    },
+    {
+      "model": "ZTS-20N",
+      "variant": "ZTS-4(미국 표기)",
+      "specs": {
+        "force_N": 20,
+        "force_resolution": "0.01 N",
+        "accuracy": "±0.2% F.S. ±1 digit"
+      },
+      "note": "무게 약 490 g"
+    },
+    {
+      "model": "ZTS-50N",
+      "variant": "ZTS-11(미국 표기)",
+      "specs": {
+        "force_N": 50,
+        "force_resolution": "0.01 N",
+        "accuracy": "±0.2% F.S. ±1 digit"
+      },
+      "note": "무게 약 490 g"
+    },
+    {
+      "model": "ZTS-100N",
+      "specs": {
+        "force_N": 100,
+        "force_resolution": "0.1 N",
+        "accuracy": "±0.2% F.S. ±1 digit"
+      },
+      "note": "무게 약 490 g. PDF 에서 새로 더한 기종(대리점 표에 없던 100 N). 미국 표기 기종명은 출처에 없음"
+    },
+    {
+      "model": "ZTS-200N",
+      "variant": "ZTS-44(미국 표기)",
+      "specs": {
+        "force_N": 200,
+        "force_resolution": "0.1 N",
+        "accuracy": "±0.2% F.S. ±1 digit"
+      },
+      "note": "무게 약 490 g"
+    },
+    {
+      "model": "ZTS-500N",
+      "variant": "ZTS-110(미국 표기)",
+      "specs": {
+        "force_N": 500,
+        "force_resolution": "0.1 N",
+        "accuracy": "±0.2% F.S. ±1 digit"
+      },
+      "note": "무게 약 490 g"
+    },
+    {
+      "model": "ZTS-1000N",
+      "variant": "ZTS-220(미국 표기)",
+      "specs": {
+        "force_N": 1000,
+        "force_resolution": "1 N",
+        "accuracy": "±0.2% F.S. ±1 digit"
+      },
+      "note": "무게 약 490 g"
+    },
+    {
+      "model": "ZTS-2500N",
+      "variant": "ZTS-550(미국 표기)",
+      "specs": {
+        "force_N": 2500,
+        "force_resolution": "1 N",
+        "accuracy": "±0.2% F.S. ±1 digit"
+      },
+      "note": "대용량형(측정축 M10, 손잡이 포함). 무게 약 1100 g. 웹(대리점) 표는 정확도 ±0.3% F.S. ±1 LSD 로 적었으나 제조사 사양서는 전 기종 ±0.2% F.S. ±1 digit"
+    },
+    {
+      "model": "ZTS-5000N",
+      "variant": "ZTS-1100(미국 표기)",
+      "specs": {
+        "force_N": 5000,
+        "force_resolution": "1 N",
+        "accuracy": "±0.2% F.S. ±1 digit"
+      },
+      "note": "대용량형(측정축 M10, 손잡이 포함). 무게 약 1100 g. 웹(대리점) 표는 정확도 ±0.3% F.S. ±1 LSD 로 적었으나 제조사 사양서는 전 기종 ±0.2% F.S. ±1 digit"
+    }
+  ],
+  "accuracy": {
+    "force": "±0.2% F.S. ±1 digit(ZTA·ZTS 전 기종, 제조사 사양서). 웹(대리점) 표는 2500 N 이상을 ±0.3% F.S. ±1 LSD 로 적었음",
+    "overload": "약 200% F.S.(약 110% F.S. 에서 경고 메시지·알람)"
+  },
+  "sources": [
+    {
+      "url": "https://www.forcegauge.net/en/product/detail/zta010",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지(HTML, forcegauge.net = IMADA 공식). ZTA 기능·2000Hz. 기종별 표는 PDF(zta_e.pdf)"
+    },
+    {
+      "url": "https://www.forcegauge.net/en/product/detail/zts010",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지 ZTS. 「ZTS-50N」 표기, 펌웨어 Ver.5 이후 잡음 개선"
+    },
+    {
+      "url": "https://www.sumipol.com/en/product/zt-digital-force-gauge-en/",
+      "retrieved": "2026-10-08",
+      "note": "판매 대리점(Sumipol, 태국) 페이지. 제조사 HTML 에 기종 표가 없어 용량·분해능·정확도·과부하를 여기서 옮김(미국식 lbf 기반 기종명)"
+    },
+    {
+      "file": "imada/zta_e.pdf",
+      "pages": [
+        1,
+        2,
+        4,
+        5
+      ],
+      "note": "ZTA 사양서(2026-06-02) — 사양·기종 표"
+    },
+    {
+      "file": "imada/zts_e.pdf",
+      "pages": [
+        3
+      ],
+      "note": "ZTS 사양서 — 사양·기종 표(기종 표는 추출 텍스트에서 표시 칸이 어긋나지만 분해능 열은 순서대로 읽힘)"
+    },
+    {
+      "file": "imada/forcegauge_ct_e.pdf",
+      "pages": [
+        2
+      ],
+      "note": "IMADA 포스 게이지 비교표(2025-05-28) — ZTS·ZTA 용량·정확도·샘플링"
+    }
+  ],
+  "confidence": "catalog",
+  "notes": "IMADA 일본 사이트(imada.co.jp)는 인증서 오류로 열지 못해 공식 영문 사이트 forcegauge.net 를 씀. 기종명은 제조사 사양서 표기(「<계열>-<용량>N」 꼴)로 바꾸고, 대리점 표의 미국 표기(ZTA-0.4 등)는 variant 로 옮김. PDF 로 확인: 기종 10종씩(100 N 더함), 용량·분해능, 정확도(2500 N 이상도 ±0.2 % 로 바로잡음), 2000 data/sec, 과부하 200 %, 운전 0～40 °C·20～80 %RH. ZTA 는 변위 입출력·USB 메모리·1차/2차 피크가 더해진 고기능형(ZTS 와 측정 사양 같음)."
+}

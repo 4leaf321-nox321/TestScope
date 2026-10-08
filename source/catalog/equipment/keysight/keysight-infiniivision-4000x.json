@@ -1,0 +1,413 @@
+{
+  "id": "keysight-infiniivision-4000x",
+  "kind": "equipment_series",
+  "name": "InfiniiVision 4000 X-Series Oscilloscopes",
+  "name_ko": "키사이트 InfiniiVision 4000 X 오실로스코프",
+  "manufacturer": "keysight",
+  "brand": "InfiniiVision",
+  "category": "oscilloscope",
+  "subcategory": "mixed_signal_oscilloscope",
+  "form_factor": "benchtop",
+  "description": "200 MHz~1.5 GHz 대역의 2·4채널 오실로스코프 계열임. 5 GSa/s, 4 Mpts, 12.1 inch 정전식 터치 화면, 1,000,000 wfms/s 갱신율. 구 A 세대(DSOX40xxA·MSOX40xxA)는 단종되어 G 세대(DSOX40xxG·MSOX40xxG, 파형 발생기 내장)로 대체됨. 키사이트 현재 분류로는 XR4-class.",
+  "test_items": [],
+  "limits": {
+    "bandwidth_Hz": {
+      "min": 200000000,
+      "max": 1500000000,
+      "note": "원문 200 MHz~1.5 GHz"
+    },
+    "sample_rate_Sa_s": {
+      "max": 5000000000,
+      "note": "원문 5 GSa/s"
+    },
+    "record_length_pts": {
+      "max": 4000000,
+      "note": "원문 4 Mpts"
+    },
+    "channels": {
+      "values": [
+        2,
+        4
+      ]
+    },
+    "logic_channel_count": {
+      "values": [
+        16
+      ],
+      "note": "MSOX G 기종 페이지에서 확인. A 세대 MSOX 의 디지털 채널 수는 조회 페이지에 숫자로 없음"
+    },
+    "adc_resolution_bit": {
+      "values": [
+        8
+      ]
+    },
+    "display_size_in": {
+      "values": [
+        12.1
+      ]
+    }
+  },
+  "models": [
+    {
+      "model": "DSOX4022A",
+      "specs": {
+        "bandwidth_Hz": 200000000,
+        "channels": 2,
+        "sample_rate_Sa_s": 5000000000,
+        "record_length_pts": 4000000
+      },
+      "note": "단종 계열(A). 대리점 표기 사양"
+    },
+    {
+      "model": "DSOX4032A",
+      "specs": {
+        "bandwidth_Hz": 350000000,
+        "channels": 2,
+        "sample_rate_Sa_s": 5000000000,
+        "record_length_pts": 4000000
+      },
+      "note": "단종 계열(A). 대리점 표기 사양"
+    },
+    {
+      "model": "DSOX4052A",
+      "specs": {
+        "bandwidth_Hz": 500000000,
+        "channels": 2,
+        "sample_rate_Sa_s": 5000000000,
+        "record_length_pts": 4000000
+      },
+      "note": "단종 계열(A). 대리점 표기 사양"
+    },
+    {
+      "model": "DSOX4024A",
+      "specs": {
+        "bandwidth_Hz": 200000000,
+        "channels": 4,
+        "sample_rate_Sa_s": 5000000000,
+        "record_length_pts": 4000000
+      },
+      "note": "제조사 페이지: DSOX4024A Oscilloscope: 200 MHz, 4 Analog Channels [Discontinued], 대체 기종 DSOX4024G"
+    },
+    {
+      "model": "DSOX4034A",
+      "specs": {
+        "bandwidth_Hz": 350000000,
+        "channels": 4,
+        "sample_rate_Sa_s": 5000000000,
+        "record_length_pts": 4000000
+      },
+      "note": "단종 계열(A). 대리점 표기 사양"
+    },
+    {
+      "model": "DSOX4054A",
+      "specs": {
+        "bandwidth_Hz": 500000000,
+        "channels": 4,
+        "sample_rate_Sa_s": 5000000000,
+        "record_length_pts": 4000000
+      },
+      "note": "단종 계열(A). 대리점 표기 사양"
+    },
+    {
+      "model": "DSOX4104A",
+      "specs": {
+        "bandwidth_Hz": 1000000000,
+        "channels": 4,
+        "sample_rate_Sa_s": 5000000000,
+        "record_length_pts": 4000000
+      },
+      "note": "단종 계열(A). 대리점 표기 사양"
+    },
+    {
+      "model": "DSOX4154A",
+      "specs": {
+        "bandwidth_Hz": 1500000000,
+        "channels": 4,
+        "sample_rate_Sa_s": 5000000000,
+        "record_length_pts": 4000000
+      },
+      "note": "단종 계열(A). 대리점 표기 사양"
+    },
+    {
+      "model": "MSOX4022A",
+      "variant": "mixed signal",
+      "specs": {
+        "bandwidth_Hz": 200000000,
+        "channels": 2,
+        "sample_rate_Sa_s": 5000000000,
+        "record_length_pts": 4000000
+      },
+      "note": "단종 계열(A). 대리점 페이지가 같은 숫자의 DSOX 기종과 사양이 같다고 적음"
+    },
+    {
+      "model": "MSOX4032A",
+      "variant": "mixed signal",
+      "specs": {
+        "bandwidth_Hz": 350000000,
+        "channels": 2,
+        "sample_rate_Sa_s": 5000000000,
+        "record_length_pts": 4000000
+      },
+      "note": "단종 계열(A). 대리점 페이지가 같은 숫자의 DSOX 기종과 사양이 같다고 적음"
+    },
+    {
+      "model": "MSOX4052A",
+      "variant": "mixed signal",
+      "specs": {
+        "bandwidth_Hz": 500000000,
+        "channels": 2,
+        "sample_rate_Sa_s": 5000000000,
+        "record_length_pts": 4000000
+      },
+      "note": "단종 계열(A). 대리점 페이지가 같은 숫자의 DSOX 기종과 사양이 같다고 적음"
+    },
+    {
+      "model": "MSOX4024A",
+      "variant": "mixed signal",
+      "specs": {
+        "bandwidth_Hz": 200000000,
+        "channels": 4,
+        "sample_rate_Sa_s": 5000000000,
+        "record_length_pts": 4000000
+      },
+      "note": "단종 계열(A). 대리점 페이지가 같은 숫자의 DSOX 기종과 사양이 같다고 적음"
+    },
+    {
+      "model": "MSOX4034A",
+      "variant": "mixed signal",
+      "specs": {
+        "bandwidth_Hz": 350000000,
+        "channels": 4,
+        "sample_rate_Sa_s": 5000000000,
+        "record_length_pts": 4000000
+      },
+      "note": "단종 계열(A). 대리점 페이지가 같은 숫자의 DSOX 기종과 사양이 같다고 적음"
+    },
+    {
+      "model": "MSOX4054A",
+      "variant": "mixed signal",
+      "specs": {
+        "bandwidth_Hz": 500000000,
+        "channels": 4,
+        "sample_rate_Sa_s": 5000000000,
+        "record_length_pts": 4000000
+      },
+      "note": "단종 계열(A). 대리점 페이지가 같은 숫자의 DSOX 기종과 사양이 같다고 적음"
+    },
+    {
+      "model": "MSOX4104A",
+      "variant": "mixed signal",
+      "specs": {
+        "bandwidth_Hz": 1000000000,
+        "channels": 4,
+        "sample_rate_Sa_s": 5000000000,
+        "record_length_pts": 4000000
+      },
+      "note": "단종 계열(A). 대리점 페이지가 같은 숫자의 DSOX 기종과 사양이 같다고 적음"
+    },
+    {
+      "model": "MSOX4154A",
+      "variant": "mixed signal",
+      "specs": {
+        "bandwidth_Hz": 1500000000,
+        "channels": 4,
+        "sample_rate_Sa_s": 5000000000,
+        "record_length_pts": 4000000
+      },
+      "note": "단종 계열(A). 대리점 페이지가 같은 숫자의 DSOX 기종과 사양이 같다고 적음"
+    },
+    {
+      "model": "DSOX4022G",
+      "specs": {
+        "bandwidth_Hz": 200000000,
+        "channels": 2
+      },
+      "note": "파형 발생기 내장"
+    },
+    {
+      "model": "DSOX4032G",
+      "specs": {
+        "bandwidth_Hz": 350000000,
+        "channels": 2
+      },
+      "note": "파형 발생기 내장"
+    },
+    {
+      "model": "DSOX4052G",
+      "specs": {
+        "bandwidth_Hz": 500000000,
+        "channels": 2
+      },
+      "note": "파형 발생기 내장"
+    },
+    {
+      "model": "DSOX4024G",
+      "specs": {
+        "bandwidth_Hz": 200000000,
+        "channels": 4,
+        "sample_rate_Sa_s": 5000000000,
+        "record_length_pts": 4000000,
+        "adc_resolution_bit": 8,
+        "display_size_in": 12.1
+      },
+      "note": "제조사 페이지: 200 MHz · 4 · 5 GSa/s · 4 Mpts · 8-bit · 12.1 inch · 1,000,000 waveforms/s. 파형 발생기 내장"
+    },
+    {
+      "model": "DSOX4034G",
+      "specs": {
+        "bandwidth_Hz": 350000000,
+        "channels": 4
+      },
+      "note": "파형 발생기 내장"
+    },
+    {
+      "model": "DSOX4054G",
+      "specs": {
+        "bandwidth_Hz": 500000000,
+        "channels": 4
+      },
+      "note": "파형 발생기 내장"
+    },
+    {
+      "model": "DSOX4104G",
+      "specs": {
+        "bandwidth_Hz": 1000000000,
+        "channels": 4
+      },
+      "note": "파형 발생기 내장"
+    },
+    {
+      "model": "DSOX4154G",
+      "specs": {
+        "bandwidth_Hz": 1500000000,
+        "channels": 4,
+        "sample_rate_Sa_s": 5000000000,
+        "record_length_pts": 4000000
+      },
+      "note": "파형 발생기 내장"
+    },
+    {
+      "model": "MSOX4022G",
+      "variant": "mixed signal",
+      "specs": {
+        "bandwidth_Hz": 200000000,
+        "channels": 2,
+        "logic_channel_count": 16,
+        "sample_rate_Sa_s": 5000000000,
+        "record_length_pts": 4000000,
+        "adc_resolution_bit": 8
+      },
+      "note": "혼합 신호·파형 발생기 내장"
+    },
+    {
+      "model": "MSOX4032G",
+      "variant": "mixed signal",
+      "specs": {
+        "bandwidth_Hz": 350000000,
+        "channels": 2,
+        "logic_channel_count": 16,
+        "sample_rate_Sa_s": 5000000000,
+        "record_length_pts": 4000000,
+        "adc_resolution_bit": 8
+      },
+      "note": "혼합 신호·파형 발생기 내장"
+    },
+    {
+      "model": "MSOX4052G",
+      "variant": "mixed signal",
+      "specs": {
+        "bandwidth_Hz": 500000000,
+        "channels": 2,
+        "logic_channel_count": 16,
+        "record_length_pts": 4000000,
+        "sample_rate_Sa_s": 5000000000
+      },
+      "note": "혼합 신호·파형 발생기 내장"
+    },
+    {
+      "model": "MSOX4024G",
+      "variant": "mixed signal",
+      "specs": {
+        "bandwidth_Hz": 200000000,
+        "channels": 4
+      },
+      "note": "혼합 신호·파형 발생기 내장"
+    },
+    {
+      "model": "MSOX4034G",
+      "variant": "mixed signal",
+      "specs": {
+        "bandwidth_Hz": 350000000,
+        "channels": 4,
+        "logic_channel_count": 16,
+        "record_length_pts": 4000000
+      },
+      "note": "혼합 신호·파형 발생기 내장"
+    },
+    {
+      "model": "MSOX4054G",
+      "variant": "mixed signal",
+      "specs": {
+        "bandwidth_Hz": 500000000,
+        "channels": 4,
+        "logic_channel_count": 16,
+        "record_length_pts": 4000000,
+        "sample_rate_Sa_s": 5000000000
+      },
+      "note": "혼합 신호·파형 발생기 내장"
+    },
+    {
+      "model": "MSOX4104G",
+      "variant": "mixed signal",
+      "specs": {
+        "bandwidth_Hz": 1000000000,
+        "channels": 4
+      },
+      "note": "혼합 신호·파형 발생기 내장"
+    },
+    {
+      "model": "MSOX4154G",
+      "variant": "mixed signal",
+      "specs": {
+        "bandwidth_Hz": 1500000000,
+        "channels": 4
+      },
+      "note": "혼합 신호·파형 발생기 내장"
+    }
+  ],
+  "features": [
+    "12.1 inch 정전식 터치 화면",
+    "존 터치 트리거",
+    "표준 세그먼트 메모리",
+    "G 세대 파형 발생기 내장"
+  ],
+  "sources": [
+    {
+      "url": "https://www.keysight.com/us/en/product/DSOX4024A/",
+      "retrieved": "2026-10-08",
+      "note": "제조사 기종 페이지. \"DSOX4024A Oscilloscope: 200 MHz, 4 Analog Channels [Discontinued]\", Replacement Product DSOX4024G"
+    },
+    {
+      "url": "https://www.keysight.com/us/en/product/DSOX4024G/oscilloscope-200-mhz-4-analog-channels.html",
+      "retrieved": "2026-10-08",
+      "note": "제조사 기종 페이지. 200 MHz, 4, 5 GSa/s, 4 Mpts, 8-bit, 12.1 inch, 1,000,000 waveforms/second"
+    },
+    {
+      "url": "https://www.keysight.com/us/en/product/MSOX4022G/",
+      "retrieved": "2026-10-08",
+      "note": "제조사 기종 페이지. 200 MHz, 2 analog + 16 digital, 4 Mpts, 5 GSa/s, 8 bits. 나머지 G 기종도 같은 주소 형식의 페이지 머리글로 대역폭·채널 수를 확인"
+    },
+    {
+      "url": "https://www.keysight.com/us/en/products/oscilloscopes/benchtop/advanced-benchtop-oscilloscopes.html",
+      "retrieved": "2026-10-08",
+      "note": "제조사 분류 페이지. MSOX4054G: 500 MHz, 4 analog, 16 digital, 5 GSa/s, 4 Mpts"
+    },
+    {
+      "url": "https://www.batronix.com/shop/keysight/4000X.html",
+      "retrieved": "2026-10-08",
+      "note": "대리점(Batronix) 판매 목록 페이지. 키사이트 계열 페이지가 일반 분류 페이지(Essential/Advanced)로 넘어가 기종 목록을 얻지 못해, 기종 목록과 대리점 표기 사양을 여기서 확인함. A 세대 16종의 대역폭과 \"5 GSa/s sample rate, 4 Mpts memory depth\" 표기. G 세대는 이 페이지에 없음"
+    }
+  ],
+  "confidence": "limited",
+  "notes": "A 세대의 단종 표시는 DSOX4024A 페이지에서만 확인. A 세대 사양은 대리점 표기."
+}

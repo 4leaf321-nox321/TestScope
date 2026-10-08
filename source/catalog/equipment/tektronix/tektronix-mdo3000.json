@@ -1,0 +1,69 @@
+{
+  "id": "tektronix-mdo3000",
+  "kind": "equipment_series",
+  "name": "MDO3000 Mixed Domain Oscilloscope",
+  "name_ko": "텍트로닉스 MDO3000 혼합 도메인 오실로스코프",
+  "manufacturer": "tektronix",
+  "brand": "MDO3000",
+  "category": "oscilloscope",
+  "subcategory": "mixed_domain_oscilloscope",
+  "form_factor": "benchtop",
+  "description": "스펙트럼 분석기를 내장한 4채널 혼합 도메인 오실로스코프 계열임. 2.5 GS/s, 10 Mpoints, 옵션 16 디지털 채널, 스펙트럼 분석 최대 3 GHz. 제조사 페이지는 공급이 제한적이며 3 Series MDO 를 권장 대체로 적음.",
+  "test_items": [],
+  "limits": {
+    "bandwidth_Hz": {
+      "min": 100000000,
+      "max": 200000000,
+      "note": "기종 표 기준 100·200 MHz. 개요는 up to 1 GHz 로 적음"
+    },
+    "sample_rate_Sa_s": {
+      "max": 2500000000
+    },
+    "record_length_pts": {
+      "max": 10000000
+    },
+    "channels": {
+      "values": [
+        4
+      ]
+    },
+    "logic_channel_count": {
+      "values": [
+        16
+      ]
+    }
+  },
+  "models": [
+    {
+      "model": "MDO3014",
+      "specs": {
+        "bandwidth_Hz": 100000000,
+        "channels": 4,
+        "logic_channel_count": 16,
+        "sample_rate_Sa_s": 2500000000,
+        "record_length_pts": 10000000
+      },
+      "note": "원문 100 MHz · 2.5 GS/s · 10 Mpoints · 16 digital (optional) · SA up to 3 GHz"
+    },
+    {
+      "model": "MDO3024",
+      "specs": {
+        "bandwidth_Hz": 200000000,
+        "channels": 4,
+        "logic_channel_count": 16,
+        "sample_rate_Sa_s": 2500000000,
+        "record_length_pts": 10000000
+      },
+      "note": "원문 200 MHz · 2.5 GS/s · 10 Mpoints · 16 digital (optional) · SA up to 3 GHz"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://www.tek.com/en/products/oscilloscopes/mdo3000",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지. \"The supply of the MDO3000 Series oscilloscopes is limited. The 3 Series MDO oscilloscopes are the recommended replacements\". 기종 표에는 MDO3014·MDO3024 만 있음"
+    }
+  ],
+  "confidence": "limited",
+  "notes": "개요는 최대 1 GHz 라고 하나 기종 표에는 두 기종만 있어 그 둘만 넣음. 단종이 아니라 「공급 제한」 표기."
+}

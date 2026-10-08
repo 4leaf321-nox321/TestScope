@@ -1,0 +1,72 @@
+{
+  "id": "keithley-3700a",
+  "kind": "equipment_series",
+  "name": "Keithley 3700A Systems Switch/Multimeter",
+  "name_ko": "키슬리 3700A 시스템 스위치·멀티미터",
+  "manufacturer": "keithley",
+  "category": "dmm_daq",
+  "form_factor": "rack",
+  "description": "6슬롯 2U 풀랙 스위치·멀티미터 메인프레임. 2선 멀티플렉서 최대 576채널, 선택 DMM 7½자리(3½자리에서 메모리로 14,000 readings/s 초과). TSP 스크립트 내장, TSP-Link 확장, LXI/Ethernet·GPIB·USB, 디지털 I/O 14개. 3706A 는 DMM 내장, 3706A-S 는 스위치 전용이다.",
+  "test_items": [],
+  "limits": {
+    "channels": {
+      "max": 576,
+      "note": "2선 멀티플렉서 카드 기준",
+      "requires_accessory": true
+    }
+  },
+  "models": [
+    {
+      "model": "3706A",
+      "specs": {
+        "dmm_resolution_digits": 7.5,
+        "channels": {
+          "max": 576,
+          "requires_accessory": true
+        },
+        "data_rate_Hz": {
+          "max": 14000,
+          "note": "원문 >14,000 readings/second to memory at 3½ digits"
+        },
+        "interfaces": "LXI/Ethernet, GPIB, USB"
+      },
+      "note": "DMM 내장"
+    },
+    {
+      "model": "3706A-S",
+      "specs": {
+        "channels": {
+          "max": 576,
+          "requires_accessory": true
+        },
+        "interfaces": "LXI/Ethernet, GPIB, USB"
+      },
+      "note": "스위치 전용(DMM 없음)"
+    }
+  ],
+  "features": [
+    "TSP 스크립트 처리기 내장",
+    "TSP-Link 마스터/슬레이브 확장",
+    "프로그래머블 디지털 I/O 14개",
+    "2U 풀랙 크기"
+  ],
+  "relations": [
+    {
+      "type": "same_family_as",
+      "target": "keithley-2700-integra"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://www.tek.com/en/products/keithley/data-acquisition-daq-systems/3700a-systems-switch-multimeter",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지. 3706A-S(switch only)·3706A(integrated DMM), 6 slots, up to 576 two-wire mux channels, 7½-digit, >14,000 readings/s at 3½ digits"
+    },
+    {
+      "url": "https://www.tek.com/en/products/keithley/data-acquisition-daq-systems",
+      "retrieved": "2026-10-08",
+      "note": "제조사 DAQ 목록 페이지. 3700A 576 channels, 7½-digit, Six-slot"
+    }
+  ],
+  "confidence": "limited"
+}

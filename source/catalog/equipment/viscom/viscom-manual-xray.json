@@ -1,0 +1,119 @@
+{
+  "id": "viscom-manual-xray",
+  "kind": "equipment_series",
+  "name": "Viscom Manual X-ray Inspection Systems (X8011-III / X8068)",
+  "name_ko": "비스콤 수동 X선 검사 장비 (X8011-III · X8068)",
+  "manufacturer": "viscom",
+  "category": "xray_inspection",
+  "form_factor": "floor",
+  "description": "실험실 · 샘플 분석용 수동 2D/2.5D/3D X선 검사 장비. X8011-III 는 밀폐형 직사 튜브(XT9130-T 130 kV, XT9180-T 180 kV) 또는 개방형 마이크로포커스 튜브(XT9160-T ED/XD 160 kV, XT9200-T ED/XD 210 kV)를 골라 달고, 460 × 435 mm 테이블 · Z 290 mm · 10 kg 시료를 다룬다. X8068 은 큰 조립품용으로 지름 722 mm · 25 kg 시료, 기하 배율 2500배 초과, 검증 분해능 <4 µm(90 kV/80 µA)이며 Viscom XVR 로 CT 를 한다.",
+  "test_items": [
+    "xray_void_inspection"
+  ],
+  "materials": [
+    "PCB assemblies",
+    "BGA",
+    "QFN",
+    "THT assemblies"
+  ],
+  "limits": {
+    "tube_voltage_kV": {
+      "min": 20,
+      "max": 210,
+      "note": "X8011-III 튜브 선택에 따라 130 / 160 / 180 / 210 kV. X8068 은 130 / 160 kV"
+    },
+    "spatial_resolution_um": {
+      "min": 4,
+      "note": "X8068 검증 분해능 <4 µm (90 kV/80 µA)"
+    },
+    "magnification": {
+      "max": 2500,
+      "note": "X8068 기하 배율 '>2500x' — 2500 을 넘는다는 표기"
+    },
+    "sample_weight_kg": {
+      "max": 25,
+      "note": "X8068 25 kg, X8011-III 10 kg(회전 모듈 사용 시 5 kg)"
+    },
+    "specimen_diameter_mm": {
+      "max": 722,
+      "note": "X8068"
+    }
+  },
+  "models": [
+    {
+      "model": "X8011-III",
+      "specs": {
+        "xray_source": "XT9130-T 밀폐 직사 20~130 kV / XT9180-T 밀폐 직사 20~180 kV / XT9160-T ED·XD 개방 마이크로포커스 20~160 kV / XT9200-T ED·XD 개방 마이크로포커스 20~210 kV",
+        "tube_voltage_kV": {
+          "min": 20,
+          "max": 210
+        },
+        "stage_travel_mm": "테이블 460 × 435 (X/Y), Z 290 (n × 360° 회전). 회전 모듈 350 × 430",
+        "sample_weight_kg": {
+          "max": 10,
+          "note": "회전 모듈 사용 시 5 kg"
+        },
+        "detector": "고분해능 디지털 평판 검출기",
+        "footprint_mm": "1343 × 2292 × 1707 (W × H × D)",
+        "weight_kg": 2500
+      }
+    },
+    {
+      "model": "X8068",
+      "specs": {
+        "xray_source": "XT9130-T 밀폐 직사 130 kV / XT9160-T ED 개방 마이크로포커스 20~160 kV / XT9160-T XD 고분해능 20~160 kV",
+        "tube_voltage_kV": {
+          "min": 20,
+          "max": 160
+        },
+        "magnification": {
+          "note": "기하 배율 >2500x"
+        },
+        "spatial_resolution_um": {
+          "min": 4,
+          "note": "검증 분해능 <4 µm (90 kV/80 µA)"
+        },
+        "specimen_diameter_mm": {
+          "max": 722
+        },
+        "sample_weight_kg": 25,
+        "footprint_mm": "1859 × 2202 × 2155 (W × H × D)"
+      }
+    }
+  ],
+  "features": [
+    "2D · 2.5D · 3D 검사",
+    "Viscom XMC 인터페이스와 SI 소프트웨어",
+    "Viscom XVR 로 CT (X8068)",
+    "전동 창으로 시료 교체 (X8068)"
+  ],
+  "relations": [
+    {
+      "type": "performs",
+      "target": "xray_void_inspection"
+    },
+    {
+      "type": "same_family_as",
+      "target": "viscom-inline-axi"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://www.viscom.com/en/products/x-ray-inspection/manual-x8011-iii/",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지(X8011-III)"
+    },
+    {
+      "url": "https://www.viscom.com/en/products/x-ray-inspection/manual-x8068/",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지(X8068)"
+    },
+    {
+      "url": "https://www.viscom.com/en/products/x-ray-inspection",
+      "retrieved": "2026-10-08",
+      "note": "제조사 X선 검사 제품 목록"
+    }
+  ],
+  "notes": "튜브 출력(W) · 초점 크기는 두 기종 페이지에 없다. 이전 세대 X8011-II 는 현행 목록에 없다.",
+  "confidence": "limited"
+}

@@ -1,0 +1,121 @@
+{
+  "id": "tektronix-mso-dpo70000dx",
+  "kind": "equipment_series",
+  "name": "MSO/DPO70000DX Series Oscilloscopes",
+  "name_ko": "텍트로닉스 MSO/DPO70000DX 고성능 오실로스코프",
+  "manufacturer": "tektronix",
+  "brand": "MSO/DPO70000",
+  "category": "oscilloscope",
+  "subcategory": "real_time_oscilloscope",
+  "form_factor": "benchtop",
+  "description": "8~33 GHz 대역의 4채널 고성능 오실로스코프 계열임. 샘플링 50~100 GS/s, 레코드 62.5M~1G points. MSO 기종은 16 디지털 채널.",
+  "test_items": [],
+  "limits": {
+    "bandwidth_Hz": {
+      "min": 8000000000,
+      "max": 33000000000,
+      "note": "원문 8 GHz~33 GHz"
+    },
+    "channels": {
+      "values": [
+        4
+      ]
+    },
+    "logic_channel_count": {
+      "values": [
+        16
+      ]
+    },
+    "sample_rate_Sa_s": {
+      "min": 50000000000,
+      "max": 100000000000,
+      "note": "원문 50 GS/s - 100 GS/s"
+    },
+    "record_length_pts": {
+      "min": 62500000,
+      "max": 1000000000,
+      "note": "원문 62.5M points - 1G points"
+    }
+  },
+  "models": [
+    {
+      "model": "MSO70804DX",
+      "variant": "mixed signal",
+      "specs": {
+        "bandwidth_Hz": 8000000000,
+        "channels": 4,
+        "logic_channel_count": 16
+      }
+    },
+    {
+      "model": "MSO71254DX",
+      "variant": "mixed signal",
+      "specs": {
+        "bandwidth_Hz": 12500000000,
+        "channels": 4,
+        "logic_channel_count": 16
+      }
+    },
+    {
+      "model": "MSO71604DX",
+      "variant": "mixed signal",
+      "specs": {
+        "bandwidth_Hz": 16000000000,
+        "channels": 4,
+        "logic_channel_count": 16
+      }
+    },
+    {
+      "model": "MSO72004DX",
+      "variant": "mixed signal",
+      "specs": {
+        "bandwidth_Hz": 20000000000,
+        "channels": 4,
+        "logic_channel_count": 16
+      }
+    },
+    {
+      "model": "MSO72304DX",
+      "variant": "mixed signal",
+      "specs": {
+        "bandwidth_Hz": 23000000000,
+        "channels": 4,
+        "logic_channel_count": 16
+      }
+    },
+    {
+      "model": "MSO72504DX",
+      "variant": "mixed signal",
+      "specs": {
+        "bandwidth_Hz": 25000000000,
+        "channels": 4,
+        "logic_channel_count": 16
+      }
+    },
+    {
+      "model": "MSO73304DX",
+      "variant": "mixed signal",
+      "specs": {
+        "bandwidth_Hz": 33000000000,
+        "channels": 4,
+        "logic_channel_count": 16
+      }
+    },
+    {
+      "model": "DPO73304DX",
+      "specs": {
+        "bandwidth_Hz": 33000000000,
+        "channels": 4
+      }
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://www.tek.com/en/products/oscilloscopes/dpo70000-mso70000",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지 기종 표. 원문 Sample Rate 50 GS/s - 100 GS/s, Record Length 62.5M points - 1G points (전 기종 같은 표기)"
+    }
+  ],
+  "confidence": "limited",
+  "notes": "기종 표에 DPO 기종은 DPO73304DX 하나만 있음. 다른 DPO70000DX 기종은 넣지 않음."
+}

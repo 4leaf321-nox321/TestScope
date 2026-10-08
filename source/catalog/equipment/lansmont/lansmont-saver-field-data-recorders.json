@@ -1,0 +1,167 @@
+{
+  "id": "lansmont-saver-field-data-recorders",
+  "kind": "equipment_series",
+  "name": "Lansmont SAVER Shock and Vibration Field Data Recorders (3D15 / 3X90 / 9X30 / 9XGPS / AM)",
+  "name_ko": "랜스몬트 SAVER 충격·진동 현장 데이터 기록계",
+  "manufacturer": "lansmont",
+  "brand": "SAVER",
+  "category": "mechanical_dynamics",
+  "form_factor": "handheld",
+  "description": "수송 중 포장물이 겪는 충격·진동을 현장에서 기록하는 데이터 로거. 3축 가속도 풀스케일 5~200 g, 50~5,000 샘플/s(9X30 은 10,000), 16 bit A/D, 앤티앨리어스 필터 10~500 Hz, 온도 –40~60 °C·습도 5~95 % RH 를 함께 기록한다. 3X90 은 최대 90일, 9X30 은 9채널·기압 포함 최대 30일, 3D15 는 DC 응답으로 저주파를 잰다. 기록을 Lansmont 진동 시험기의 Field-to-Lab 재현에 쓴다.",
+  "test_items": [],
+  "measurands": [
+    "peak_acceleration",
+    "vibration",
+    "temperature",
+    "humidity"
+  ],
+  "materials": [
+    "packaged products",
+    "shipping containers"
+  ],
+  "limits": {
+    "acceleration_g": {
+      "values": [
+        5,
+        10,
+        20,
+        50,
+        100,
+        200
+      ],
+      "note": "풀스케일 선택값. 3D15 는 50 g 까지"
+    },
+    "data_rate_Hz": {
+      "min": 50,
+      "max": 10000,
+      "note": "샘플/s. 9X30 만 10,000"
+    },
+    "channels": {
+      "values": [
+        3,
+        9
+      ]
+    },
+    "adc_resolution_bit": {
+      "values": [
+        16
+      ]
+    },
+    "operating_temperature_degC": {
+      "min": -40,
+      "max": 60
+    }
+  },
+  "models": [
+    {
+      "model": "SAVER 3D15",
+      "specs": {
+        "acceleration_g": {
+          "values": [
+            5,
+            10,
+            20,
+            50
+          ]
+        },
+        "data_rate_Hz": {
+          "min": 50,
+          "max": 5000
+        },
+        "channels": 3,
+        "weight_kg": 0.473
+      },
+      "note": "DC 응답(저주파) 측정용. 가속도 파형·온도·습도·공간 인식. 배터리 최대 15일"
+    },
+    {
+      "model": "SAVER 3X90",
+      "specs": {
+        "acceleration_g": {
+          "values": [
+            5,
+            10,
+            20,
+            50,
+            100,
+            200
+          ]
+        },
+        "data_rate_Hz": {
+          "min": 50,
+          "max": 5000
+        },
+        "channels": 3,
+        "weight_kg": 0.473
+      },
+      "note": "3축 가속도·온도·습도. 9 V 배터리 자가 전원. 배터리 최대 90일"
+    },
+    {
+      "model": "SAVER 9X30",
+      "specs": {
+        "acceleration_g": {
+          "values": [
+            5,
+            10,
+            20,
+            50,
+            100,
+            200
+          ]
+        },
+        "data_rate_Hz": {
+          "min": 50,
+          "max": 10000
+        },
+        "channels": 9,
+        "weight_kg": 1.0
+      },
+      "note": "최대 9 동적 채널(내장 3축 + 외부 6), 온도·습도·기압(10~1100 mbar). 배터리 최대 30일"
+    },
+    {
+      "model": "SAVER 9XGPS",
+      "specs": {},
+      "note": "제품 목록에 이름만 확인",
+      "uncertain": true
+    },
+    {
+      "model": "SAVER AM",
+      "specs": {},
+      "note": "제품 목록의 SAVER AM Asset Monitor. 사양 미조회",
+      "uncertain": true
+    }
+  ],
+  "options": [
+    "SaverXware 소프트웨어"
+  ],
+  "relations": [
+    {
+      "type": "compatible_accessory",
+      "target": "lansmont-hydraulic-vibration-test-systems",
+      "note": "현장 기록을 Field-to-Lab 시험으로 재현(Model 15000 페이지 문구)"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://www.lansmont.com/products/data_loggers/saver_3x90",
+      "retrieved": "2026-10-08",
+      "note": "제조사 SAVER 3X90 페이지"
+    },
+    {
+      "url": "https://www.lansmont.com/products/environmental-data-recorders/savertm-9x30",
+      "retrieved": "2026-10-08",
+      "note": "제조사 SAVER 9X30 페이지"
+    },
+    {
+      "url": "https://www.lansmont.com/products/data_loggers/saver_3d15",
+      "retrieved": "2026-10-08",
+      "note": "제조사 SAVER 3D15 페이지"
+    },
+    {
+      "url": "https://www.lansmont.com/products/",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 목록(9XGPS·AM 이름)"
+    }
+  ],
+  "confidence": "limited",
+  "notes": "시험기가 아니라 기록계라 분류를 상위 진동·충격(mechanical_dynamics)으로, test_items 는 비웠다. 3X90·3D15 무게 473 g, 9X30 1 kg. 3D15 의 대역은 DC~필터 설정, 3X90·9X30 은 0.4 Hz~필터 설정."
+}

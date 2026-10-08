@@ -1,0 +1,88 @@
+{
+  "id": "listen-inc-scm-measurement-microphones",
+  "kind": "sensor",
+  "name": "Listen SCM Measurement Microphones (SCM-4 / SCM-4A)",
+  "name_ko": "Listen SCM 측정 마이크",
+  "manufacturer": "listen-inc",
+  "brand": "SCM",
+  "category": "acoustic_measurement",
+  "form_factor": "probe",
+  "description": "SoundCheck 용 자유음장 측정 마이크. SCM-4 는 20 Hz~20 kHz ±2 dB, 감도 20 mV/Pa, 최대 134 dB SPL(1 % THD 미만 126 dB SPL 피크), 잡음 바닥 23 dBA, Microdot 10-32 잭(7핀 LEMO·BNC 어댑터 주문 가능), 지름 7.0 mm. SCM-4A 는 같은 카트리지의 짧은 판(길이 3.4 cm)이다. SCM-3 의 후속이다.",
+  "test_items": [],
+  "measurands": [
+    "sound_pressure_level",
+    "frequency_response"
+  ],
+  "limits": {
+    "frequency_Hz": {
+      "min": 20,
+      "max": 20000,
+      "note": "±2 dB"
+    },
+    "sound_pressure_level_dB": {
+      "min": 23,
+      "max": 134,
+      "note": "하한은 잡음 바닥 23 dBA, 상한은 최대 SPL"
+    },
+    "mic_sensitivity_mV_Pa": {
+      "values": [
+        20
+      ]
+    }
+  },
+  "models": [
+    {
+      "model": "SCM-4",
+      "specs": {
+        "frequency_Hz": {
+          "min": 20,
+          "max": 20000
+        },
+        "mic_sensitivity_mV_Pa": 20,
+        "sound_pressure_level_dB": {
+          "min": 23,
+          "max": 134
+        },
+        "weight_kg": 0.0084,
+        "interfaces": "10-32 Microdot"
+      },
+      "note": "길이 9.2 cm, 지름 7.0 mm, 약 8.4 g. 전원 5~50 V"
+    },
+    {
+      "model": "SCM-4A",
+      "specs": {
+        "frequency_Hz": {
+          "min": 20,
+          "max": 20000
+        },
+        "mic_sensitivity_mV_Pa": 20,
+        "sound_pressure_level_dB": {
+          "min": 23,
+          "max": 134
+        },
+        "weight_kg": 0.0038
+      },
+      "note": "길이 3.4 cm, 약 3.8 g. 성능은 SCM-4 와 같음"
+    },
+    {
+      "model": "SCM-3",
+      "specs": {},
+      "note": "SCM-4 의 선행 기종으로 페이지에 언급만 됨",
+      "uncertain": true
+    }
+  ],
+  "relations": [
+    {
+      "type": "compatible_accessory",
+      "target": "listen-inc-soundcheck"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://www.listeninc.com/products/audio-testing-hardware/scm-measurement-microphones/",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지"
+    }
+  ],
+  "confidence": "limited"
+}

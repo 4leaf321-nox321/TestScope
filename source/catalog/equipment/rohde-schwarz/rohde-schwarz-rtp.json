@@ -1,0 +1,98 @@
+{
+  "id": "rohde-schwarz-rtp",
+  "kind": "equipment_series",
+  "name": "R&S RTP High-Performance Oscilloscope",
+  "name_ko": "로데슈바르츠 RTP 고성능 오실로스코프",
+  "manufacturer": "rohde-schwarz",
+  "brand": "RTP",
+  "category": "oscilloscope",
+  "subcategory": "real_time_oscilloscope",
+  "form_factor": "benchtop",
+  "description": "4~16 GHz 대역의 고성능 오실로스코프 계열임. 채널당 20 Gsample/s(2채널 인터리브 40 Gsample/s), 4채널 100 Mpoints(1채널 400 Mpoints, 최대 3 Gpoints), 750,000 waveforms/s 초과 수집률, 16 bit HD 모드, 옵션 16 디지털 채널. 13·16 GHz 기종은 2채널 인터리브에서 최고 대역.",
+  "test_items": [],
+  "limits": {
+    "bandwidth_Hz": {
+      "min": 4000000000,
+      "max": 16000000000
+    },
+    "sample_rate_Sa_s": {
+      "min": 20000000000,
+      "max": 40000000000,
+      "note": "원문 20 Gsample/s on each channel, 40 Gsample/s (2 channels interleaved)"
+    },
+    "channels": {
+      "values": [
+        4
+      ]
+    },
+    "logic_channel_count": {
+      "values": [
+        16
+      ],
+      "note": "옵션"
+    },
+    "record_length_pts": {
+      "min": 100000000,
+      "max": 3000000000,
+      "note": "원문 100 Mpoints on 4 channels; 400 Mpoints on 1 channel; max 3 Gpoints"
+    }
+  },
+  "models": [
+    {
+      "model": "RTP044B",
+      "specs": {
+        "bandwidth_Hz": 4000000000,
+        "channels": 4,
+        "logic_channel_count": 16,
+        "sample_rate_Sa_s": 20000000000
+      }
+    },
+    {
+      "model": "RTP064B",
+      "specs": {
+        "bandwidth_Hz": 6000000000,
+        "channels": 4,
+        "logic_channel_count": 16,
+        "sample_rate_Sa_s": 20000000000
+      }
+    },
+    {
+      "model": "RTP084B",
+      "specs": {
+        "bandwidth_Hz": 8000000000,
+        "channels": 4,
+        "logic_channel_count": 16,
+        "sample_rate_Sa_s": 20000000000
+      }
+    },
+    {
+      "model": "RTP134B",
+      "specs": {
+        "bandwidth_Hz": 13000000000,
+        "channels": 4,
+        "logic_channel_count": 16,
+        "sample_rate_Sa_s": 40000000000
+      },
+      "note": "원문 13 GHz (2 channels interleave), 채널 2/4"
+    },
+    {
+      "model": "RTP164B",
+      "specs": {
+        "bandwidth_Hz": 16000000000,
+        "channels": 4,
+        "logic_channel_count": 16,
+        "sample_rate_Sa_s": 40000000000
+      },
+      "note": "원문 16 GHz (2 channels interleave), 채널 2/4"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://www.rohde-schwarz.com/us/products/test-and-measurement/oscilloscopes/rs-rtp-oscilloscope_63493-469056.html",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지. R&S®RTP044B(1803.7000.04) … RTP164B(1803.7000.16), \"40 Gsample/s (2 channels interleaved)\", \"20 Gsample/s on each channel\", \"100 Mpoints on 4 channels; 400 Mpoints on 1 channel\", max 3 Gpoints, up to 16 bit(HD mode), 16 digital channels(옵션)"
+    }
+  ],
+  "confidence": "limited",
+  "notes": "기종별 샘플링 속도는 13·16 GHz 기종이 2채널 인터리브 대역이라는 표기를 따라 40 Gsample/s 로 둠."
+}

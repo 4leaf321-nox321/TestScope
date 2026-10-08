@@ -1,0 +1,108 @@
+{
+  "id": "rohde-schwarz-cmw500",
+  "kind": "equipment_series",
+  "name": "R&S CMW500 Wideband Radio Communication Tester",
+  "name_ko": "로데슈바르츠 CMW500 광대역 무선통신 테스터",
+  "manufacturer": "rohde-schwarz",
+  "brand": "CMW",
+  "category": "radio_communication_tester",
+  "description": "LTE·NB-IoT·NB-NTN·WCDMA·GSM·WLAN·Bluetooth 를 한 장비에서 신호(signaling) 시험하는 멀티 RAT 무선통신 테스터. LTE-Advanced 는 하향 8 CC, 4x4/8x2 MIMO 페이딩, 상향 2 CC 반송파 집성까지 다룬다. WLAN 11a/b/g/n/ac/ax 는 SISO·MIMO 신호 시험을 지원한다. 내장 페이딩 시뮬레이터로 실제 전파 환경을 흉내 내고, 내부 서버로 IP 응용 시험을 한다. RF·프로토콜·IP 응용 계층을 함께 시험한다. 콜박스(callbox)와 프로토콜 테스터 두 구성으로 나온다. C-V2X, eCall·NG eCall·ERA-GLONASS 시험에도 쓴다.",
+  "test_items": [],
+  "limits": {
+    "radio_standards": {
+      "values": [
+        "LTE",
+        "LTE-Advanced",
+        "NB-IoT",
+        "NB-NTN",
+        "WCDMA",
+        "GSM",
+        "WLAN 802.11a/b/g/n/ac/ax",
+        "Bluetooth Classic",
+        "Bluetooth Low Energy",
+        "C-V2X",
+        "WCDMA/HSPA+",
+        "GSM/GPRS/EGPRS",
+        "eMTC",
+        "CDMA2000 1xRTT",
+        "CDMA2000 1xEV-DO",
+        "IEEE 802.15.4 (ZigBee)",
+        "GNSS (GPS, GLONASS, BeiDou)",
+        "DVB-T",
+        "T-DMB",
+        "CMMB"
+      ],
+      "note": "제품 페이지 Key facts·기술 목록에 적힌 이름 + 플랫폼 브로슈어 8쪽 기술 표(CMW 플랫폼 공통: 셀룰러·비셀룰러·방송)"
+    },
+    "frequency_Hz": {
+      "max": 6000000000,
+      "note": "플랫폼 브로슈어: Versatile hardware platform 「6 GHz support」, CMW500 프로토콜 시험기에서 3GPP FDD·TDD 대역을 6 GHz 까지(LTE-U·LAA·WLAN 연동 포함). 하한은 없다"
+    }
+  },
+  "models": [
+    {
+      "model": "CMW500",
+      "specs": {
+        "radio_standards": "LTE, NB-IoT, NB-NTN, WCDMA, GSM, WLAN 802.11a/b/g/n/ac/ax, Bluetooth Classic·LE",
+        "frequency_Hz": {
+          "max": 6000000000,
+          "note": "3GPP 대역 6 GHz 까지(브로슈어)"
+        }
+      },
+      "note": "페이지에 CMW500 callbox 와 CMW500 protocol tester 두 구성이 적혀 있다. 출력 레벨·RF 포트 수는 페이지·브로슈어 모두 없다."
+    }
+  ],
+  "features": [
+    "멀티 RAT 신호 시험(LTE·NB-IoT·NB-NTN·WCDMA·GSM·WLAN·Bluetooth)",
+    "LTE-Advanced 하향 8 CC, 4x4/8x2 MIMO 페이딩, 상향 2 CC 반송파 집성",
+    "WLAN 11a/b/g/n/ac/ax SISO·MIMO 신호 시험",
+    "응용 시험용 내부 서버, IP 처리량·품질 측정",
+    "내장 페이딩 시뮬레이터",
+    "eCall·NG eCall·ERA-GLONASS 시험"
+  ],
+  "relations": [
+    {
+      "type": "successor_of",
+      "target": "rohde-schwarz-cmu200",
+      "note": "CMU200 제품 페이지 주소가 CMW500 페이지로 넘어가고, 제조사 응용 노트가 CMU200 을 CMW500 으로 바꾸는 방법을 다룬다"
+    },
+    {
+      "type": "same_family_as",
+      "target": "rohde-schwarz-cmw290"
+    },
+    {
+      "type": "same_family_as",
+      "target": "rohde-schwarz-cmw270"
+    },
+    {
+      "type": "same_family_as",
+      "target": "rohde-schwarz-cmw100",
+      "note": "CMW100 페이지: CMW500 과 원격 제어·측정 개념이 호환"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://www.rohde-schwarz.com/us/products/test-and-measurement/wireless-tester-network-emulator/cmw500-wideband-radio-communication-tester_63493-10844.html",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지. Key facts(멀티 RAT 신호 시험, LTE-A 8DL CC, WLAN SISO/MIMO, 내부 서버)와 지원 기술 목록. 수치 사양 없음"
+    },
+    {
+      "url": "https://www.rohde-schwarz.com/us/products/test-and-measurement/wireless-tester-network-emulator_86475.html",
+      "retrieved": "2026-10-08",
+      "note": "제조사 네트워크 에뮬레이터 목록 페이지. CMW500 요약 재확인"
+    },
+    {
+      "file": "rohde-schwarz/cmw-platform_bro_en_5214-2833-12_v0500.pdf",
+      "pages": [
+        4,
+        5,
+        8,
+        21,
+        29
+      ],
+      "note": "제조사 CMW 플랫폼 브로슈어(v05.00). 6 GHz 지원, LTE-A 8 DL CC·4x4/8x2 MIMO 페이딩·2 UL CA, 프로토콜 시험기(DL 8CC·UL 6CC, LTE 1.4~20 MHz, 6 GHz 까지 3GPP 대역), 기술 표, 다중 DUT 8대"
+    }
+  ],
+  "confidence": "catalog",
+  "notes": "PDF 로 확인: 6 GHz 까지, LTE-A 8 DL CC·4x4/8x2 MIMO 페이딩·2 UL CA, 지원 기술 표, 내장 페이딩·서버. 출력 레벨·RF 포트 수는 플랫폼 브로슈어에도 없다(사양서 PDF 필요). 옛 CMU200 제품 페이지 주소가 이 CMW500 페이지로 넘어간다."
+}

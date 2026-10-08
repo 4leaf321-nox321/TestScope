@@ -1,0 +1,83 @@
+{
+  "id": "linseis-hdsc-l62",
+  "kind": "equipment_series",
+  "name": "LINSEIS HDSC L62 High-Temperature DSC / DTA",
+  "name_ko": "린세이스 HDSC L62 고온 DSC·DTA",
+  "manufacturer": "linseis",
+  "category": "dsc",
+  "description": "고온 DSC/DTA. -150~1750 °C(노에 따라), 승온 0.01~100 K/min, 진공 10⁻⁵ mbar(펌프에 따라)·선택 가압 5 bar. 교환식 DSC·DTA 센서(E·K·S·B·C 형)와 여러 도가니 재질, 온도 정밀도 0.01 °C, 42 위치 시료 로봇(선택), MS·FTIR·GC-MS 연결.",
+  "test_items": [
+    "dsc"
+  ],
+  "measurands": [
+    "thermal.glass_transition",
+    "thermal.melting_point",
+    "thermal.specific_heat",
+    "thermal.latent_heat_fusion"
+  ],
+  "measurands_by_item": {
+    "dsc": [
+      "thermal.glass_transition",
+      "thermal.melting_point",
+      "thermal.specific_heat",
+      "thermal.latent_heat_fusion"
+    ]
+  },
+  "limits": {
+    "temperature_degC": {
+      "min": -150,
+      "max": 1750,
+      "note": "노에 따라. 웹 페이지는 -170 °C"
+    },
+    "heating_rate_K_min": {
+      "min": 0.01,
+      "max": 100
+    }
+  },
+  "models": [
+    {
+      "model": "HDSC L62",
+      "variant": "DSC L62",
+      "specs": {
+        "temperature_degC": {
+          "min": -150,
+          "max": 1750,
+          "note": "-150 °C up to 1750 °C(노에 따라). 웹 페이지는 -170 °C"
+        },
+        "heating_rate_K_min": {
+          "min": 0.01,
+          "max": 100,
+          "note": "0.01 up to 100 °C/min(노에 따라)"
+        },
+        "temperature_precision_degC": 0.01,
+        "pressure_bar": {
+          "max": 5,
+          "note": "선택 가압 up to 5 bar"
+        },
+        "dta_range_uV": {
+          "values": [
+            250,
+            2500
+          ],
+          "note": "DTA 측정 범위 250 / 2500 µV. DTA 분해능 0.05 nV, 감도 1.5 µV/mW"
+        }
+      },
+      "note": "DSC 센서 E/K/S/B/C 형. 사양서 원문 'DSC-Resolution 0.3/ 0.4/ 1/ 1.2 mW, Calorimetric sensitivity approx. 4/ 6/ 17.6/ 22.5 mW' — 사양서도 웹과 같이 mW 로 적는다(같은 회사 STA 페이지는 µW). 단위 확인 필요라 키 값으로 넣지 않았다. 진공 10⁻⁵ mbar(펌프에 따라), 시료 로봇 42 위치(선택)"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://www.linseis.com/en/instruments/differential-scanning-calorimeter-dsc/hdsc-l62/",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지(HTML) 본문·표를 직접 읽음. Specifications 목록(페이지 제목 'Linseis DSC L62')"
+    },
+    {
+      "file": "linseis/specifications-hdsc-l62.pdf",
+      "pages": [
+        1
+      ]
+    }
+  ],
+  "confidence": "catalog",
+  "notes": "DTA 분류 페이지에도 같은 제품(hdsc-l62)이 걸려 있다. PDF 로 확인: 온도 범위(하한 -150 °C 로 바꿈)·승온 속도·온도 정밀도·가압·진공·시료 로봇·DTA 범위(사양서 1쪽). 사양서 머리에 'DSC L63 Basic' 이 함께 찍혀 있으나 표 값은 HDSC L62 것(1750 °C, E/K/S/B/C 센서)이다."
+}

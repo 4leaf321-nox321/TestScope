@@ -1,0 +1,202 @@
+{
+  "id": "thermotron-se-s-series-models",
+  "kind": "equipment_series",
+  "name": "Thermotron SE-Series and S/SM-Series Environmental Test Chambers",
+  "manufacturer": "thermotron",
+  "category": "climatic_chamber",
+  "description": "Thermotron SE·S/SM 계열과 벤치탑 기종의 기종명·작업 공간 용적(제조사 페이지).",
+  "test_items": [
+    "damp_heat",
+    "temperature_cycling"
+  ],
+  "limits": {
+    "chamber_volume_L": {
+      "min": 25,
+      "max": 2945
+    }
+  },
+  "models": [
+    {
+      "model": "SE-300",
+      "specs": {
+        "chamber_volume_L": 289
+      },
+      "note": "선택 사양으로 습도 시스템, 1단 또는 캐스케이드 냉동"
+    },
+    {
+      "model": "SE-400",
+      "specs": {
+        "chamber_volume_L": 385
+      },
+      "note": "선택 사양으로 습도 시스템, 1단 또는 캐스케이드 냉동"
+    },
+    {
+      "model": "SE-600",
+      "specs": {
+        "chamber_volume_L": 586
+      },
+      "note": "선택 사양으로 습도 시스템, 1단 또는 캐스케이드 냉동"
+    },
+    {
+      "model": "SE-1000",
+      "specs": {
+        "chamber_volume_L": 986
+      },
+      "note": "선택 사양으로 습도 시스템, 1단 또는 캐스케이드 냉동"
+    },
+    {
+      "model": "SE-1200",
+      "specs": {
+        "chamber_volume_L": 1184
+      },
+      "note": "선택 사양으로 습도 시스템, 1단 또는 캐스케이드 냉동"
+    },
+    {
+      "model": "SE-1400",
+      "specs": {
+        "chamber_volume_L": 1366
+      },
+      "note": "선택 사양으로 습도 시스템, 1단 또는 캐스케이드 냉동"
+    },
+    {
+      "model": "SE-2000",
+      "specs": {
+        "chamber_volume_L": 1965
+      },
+      "note": "선택 사양으로 습도 시스템, 1단 또는 캐스케이드 냉동"
+    },
+    {
+      "model": "SE-3000",
+      "specs": {
+        "chamber_volume_L": 2945
+      },
+      "note": "선택 사양으로 습도 시스템, 1단 또는 캐스케이드 냉동"
+    },
+    {
+      "model": "SE-300-4-4",
+      "specs": {
+        "chamber_volume_L": 289,
+        "cooling_rate_K_min": {
+          "max": 7.4,
+          "note": "페이지 '7.4ºC/minute cooling rate'"
+        }
+      },
+      "note": "SE-300 기종 페이지. 같은 페이지의 'Temperature Range: 85ºC to -40ºC' 는 냉각 속도 규정 구간으로 보여 온도 범위로 옮기지 않았다"
+    },
+    {
+      "model": "SE-300-6-6",
+      "specs": {
+        "chamber_volume_L": 289,
+        "cooling_rate_K_min": {
+          "max": 10,
+          "note": "페이지 '10ºC/minute cooling rate'"
+        }
+      },
+      "note": "SE-300 기종 페이지"
+    },
+    {
+      "model": "S-4",
+      "specs": {
+        "chamber_volume_L": 113
+      },
+      "note": "S 는 온도 챔버, SM 은 온습도 챔버(페이지 설명)"
+    },
+    {
+      "model": "S-8",
+      "specs": {
+        "chamber_volume_L": 227
+      },
+      "note": "S 는 온도 챔버, SM 은 온습도 챔버(페이지 설명)"
+    },
+    {
+      "model": "S-16",
+      "specs": {
+        "chamber_volume_L": 453
+      },
+      "note": "S 는 온도 챔버, SM 은 온습도 챔버(페이지 설명)"
+    },
+    {
+      "model": "S-27",
+      "specs": {
+        "chamber_volume_L": 764
+      },
+      "note": "S 는 온도 챔버, SM 은 온습도 챔버(페이지 설명)"
+    },
+    {
+      "model": "S-32",
+      "specs": {
+        "chamber_volume_L": 906
+      },
+      "note": "S 는 온도 챔버, SM 은 온습도 챔버(페이지 설명)"
+    },
+    {
+      "model": "S-8-2-2-8200",
+      "specs": {
+        "chamber_volume_L": 227
+      },
+      "note": "S-8 기종 페이지. 85 → -40 °C 냉각 26분(온도 챔버), 17분(습도 챔버) — 페이지에 같은 기종명으로 두 구성이 적혀 있다"
+    },
+    {
+      "model": "S-1.0-8200",
+      "form_factor": "benchtop",
+      "specs": {
+        "chamber_volume_L": 25
+      },
+      "note": "벤치탑. 25 → -35 °C 냉각 42분"
+    },
+    {
+      "model": "SM-1.0-8200",
+      "form_factor": "benchtop",
+      "specs": {
+        "chamber_volume_L": 25
+      },
+      "note": "벤치탑. 25 → -35 °C 냉각 11분"
+    },
+    {
+      "model": "S-1.2-8200",
+      "form_factor": "benchtop",
+      "specs": {
+        "chamber_volume_L": 34
+      },
+      "note": "벤치탑. 25 → -35 °C 냉각 18분"
+    },
+    {
+      "model": "S-1.5-8200",
+      "form_factor": "benchtop",
+      "specs": {
+        "chamber_volume_L": 42
+      },
+      "note": "벤치탑. 25 → -35 °C 냉각 22분"
+    }
+  ],
+  "supplements": "thermotron-se-s-series",
+  "sources": [
+    {
+      "url": "https://thermotron.com/equipment/temperature-chamber/se-series-temperature-chamber/",
+      "retrieved": "2026-10-08",
+      "note": "제조사 SE 계열 페이지. 기종 8개와 작업 공간 용적"
+    },
+    {
+      "url": "https://thermotron.com/equipment/se-series-temperature-chamber/se-300/",
+      "retrieved": "2026-10-08",
+      "note": "제조사 SE-300 기종 페이지. 하위 기종 SE-300-4-4·SE-300-6-6 냉각 속도"
+    },
+    {
+      "url": "https://thermotron.com/equipment/temperature-chamber/s-series-environmental-chambers/",
+      "retrieved": "2026-10-08",
+      "note": "제조사 S/SM 계열 페이지. 기종 5개 용적, S·SM 의 뜻"
+    },
+    {
+      "url": "https://thermotron.com/equipment/s-series-environmental-chambers/s-8/",
+      "retrieved": "2026-10-08",
+      "note": "제조사 S-8 기종 페이지. 하위 기종명과 냉각 시간"
+    },
+    {
+      "url": "https://thermotron.com/equipment/temperature-chamber/benchtop-environmental-test-chamber-2/",
+      "retrieved": "2026-10-08",
+      "note": "제조사 벤치탑 페이지. 기종 4개 용적과 냉각 시간"
+    }
+  ],
+  "confidence": "limited",
+  "notes": "기존 객체 thermotron-se-s-series 의 기종이 'SE-Series (온도/온습도)' 처럼 계열 한 줄이라 대장 기종명에 이어지도록 보탠 보충 객체다. 기종별 온도·습도 범위는 페이지에 없다. 하위 기종명의 숫자(-4-4, -2-2 등)는 페이지가 뜻을 밝히지 않아 해석하지 않았다."
+}

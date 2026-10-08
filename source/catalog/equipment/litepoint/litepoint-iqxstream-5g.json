@@ -1,0 +1,102 @@
+{
+  "id": "litepoint-iqxstream-5g",
+  "kind": "equipment_series",
+  "name": "LitePoint IQxstream-5G",
+  "name_ko": "라이트포인트 IQxstream-5G FR1 셀룰러 시험기",
+  "manufacturer": "litepoint",
+  "brand": "IQxstream",
+  "category": "radio_communication_tester",
+  "description": "5G FR1 Sub-6 GHz 셀룰러 단말 생산용 다중 DUT·다중 안테나 시험기. 400~6000 MHz(IQxstream-5G+ 선택 시 7300 MHz), 연속 대역폭 200 MHz 로 5G NR 반송파 집성을 다룬다. VSA·VSG 를 갖춘 이중 모듈 구조이고, IQ3107 확장 모듈로 DUT 포트를 최대 32개까지 늘린다. 최대 출력 +5 dBm, 100 MHz CC 에서 EVM 최대 -45 dB 다. 5G NR FR1, LTE TDD/FDD, C-V2X, LAA, 2G/3G 와 옵션으로 Wi-Fi·Bluetooth·Zigbee·NB-IoT·GNSS 를 지원한다.",
+  "test_items": [],
+  "limits": {
+    "frequency_Hz": {
+      "min": 400000000,
+      "max": 7300000000,
+      "note": "400 MHz~6000 MHz, IQxstream-5G+ 선택 시 7300 MHz"
+    },
+    "bandwidth_Hz": {
+      "max": 200000000,
+      "note": "원문 200 MHz of contiguous bandwidth"
+    },
+    "rf_output_level_dBm": {
+      "max": 5,
+      "note": "원문 maximum output Power of up to +5dBm"
+    },
+    "rf_port_count": {
+      "max": 32,
+      "requires_accessory": true,
+      "note": "IQ3107 확장 모듈로 DUT 포트 최대 32개"
+    },
+    "radio_standards": {
+      "values": [
+        "5G NR FR1",
+        "LTE TDD/FDD",
+        "C-V2X",
+        "LAA",
+        "2G/3G",
+        "Wi-Fi 802.11a/ac/ah/ax/b/g/n/p/af (옵션)",
+        "Bluetooth (옵션)",
+        "Zigbee (옵션)",
+        "NB-IoT (옵션)",
+        "GPS/GLONASS/Galileo/Compass (옵션)"
+      ],
+      "note": "제품 페이지 문구"
+    }
+  },
+  "models": [
+    {
+      "model": "IQxstream-5G",
+      "specs": {
+        "frequency_Hz": {
+          "min": 400000000,
+          "max": 6000000000
+        },
+        "bandwidth_Hz": 200000000,
+        "rf_output_level_dBm": {
+          "max": 5
+        }
+      }
+    },
+    {
+      "model": "IQxstream-5G+",
+      "specs": {
+        "frequency_Hz": {
+          "min": 400000000,
+          "max": 7300000000
+        }
+      },
+      "note": "페이지에 「7300 MHz with optional IQxstream-5G+」 로 적힌 확장 구성"
+    }
+  ],
+  "features": [
+    "VSA·VSG 이중 모듈 구조",
+    "다중 DUT·다중 안테나 생산 시험",
+    "IQ3107 확장 모듈로 DUT 포트 최대 32",
+    "100 MHz CC 에서 EVM 최대 -45 dB"
+  ],
+  "options": [
+    {
+      "name": "IQ3107 확장 모듈",
+      "note": "DUT 포트 최대 32개"
+    },
+    {
+      "name": "IQxstream-5G+",
+      "note": "상한 7300 MHz"
+    }
+  ],
+  "relations": [
+    {
+      "type": "same_family_as",
+      "target": "litepoint-iqxel-mw-7g"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://www.litepoint.com/products/iqxstream-5g/",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지. 주파수, 대역폭, 최대 출력, EVM, 지원 표준, 확장 포트"
+    }
+  ],
+  "confidence": "limited",
+  "notes": "최소 출력 레벨·입력 레벨은 페이지에 없다."
+}

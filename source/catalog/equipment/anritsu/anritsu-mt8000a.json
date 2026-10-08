@@ -1,0 +1,124 @@
+{
+  "id": "anritsu-mt8000a",
+  "kind": "equipment_series",
+  "name": "Anritsu Radio Communication Test Station MT8000A",
+  "name_ko": "안리쓰 MT8000A 무선통신 시험 스테이션",
+  "manufacturer": "anritsu",
+  "category": "radio_communication_tester",
+  "description": "5G NR 단말·기지국 시험 플랫폼. FR1(최대 7.125 GHz), FR2(28 GHz·39 GHz 대역), FR3 옵션(7.125~16 GHz)을 다루며 RF 측정, 프로토콜 시험, OTA 챔버 빔포밍 시험, 응용·처리량 시험을 한다. 최대 4x4 MIMO, 최대 8 CC 반송파 집성, 송수신 포트 최대 4개 동시 측정, NSA·SA, DSS, NTN, RedCap, 핸드오버·망 이상 시험, 기지국 생산(비신호 RF) 시험을 지원한다.",
+  "test_items": [],
+  "limits": {
+    "frequency_Hz": {
+      "min": 400000000,
+      "max": 43500000000,
+      "note": "브로슈어 사양: FR1 RF 모듈 0.4~6 GHz(MT8000A-021·-031/-032), 0.4~7.125 GHz(Enhanced RF Module -033), 3~12 GHz 서브 모듈 -022(설정 2~12 GHz, -023 으로 2.4 GHz·-024 로 7.125 GHz 확장), RF Base Module -041(주파수 확장)로 0.4~16 GHz(FR3). 밀리미터파는 RF 변환기: MA80001A 24.25~29.5 GHz, MA80002A 37.0~42.5 GHz, MA80003A 24.25~29.5·37.0~43.5 GHz"
+    },
+    "bandwidth_Hz": {
+      "max": 1000000000,
+      "note": "브로슈어 최대 변조 대역폭: FR1 모듈 20 MHz(<0.6 GHz)·200 MHz·400 MHz(3.3~6 GHz, -021/-033), -022 의 6 GHz 초과 1 GHz, 밀리미터파 변환기 1 GHz. 웹 페이지는 채널 대역폭 Sub-6 20~100 MHz, mmWave 100~400 MHz 로 적는다"
+    },
+    "rf_port_count": {
+      "max": 4,
+      "note": "원문 Up to four simultaneous/parallel measurement ports(TRx)"
+    },
+    "radio_standards": {
+      "values": [
+        "5G NR (NSA/SA)",
+        "DSS",
+        "NTN",
+        "RedCap"
+      ],
+      "note": "페이지 시험 응용 목록"
+    },
+    "rf_output_level_dBm": {
+      "min": -110,
+      "max": 15,
+      "note": "브로슈어 설정 범위: FR1 모듈 Main -110~-10 dBm, Aux -110~0 dBm(3~12 GHz 모듈 6 GHz 초과 Main -18·Aux -8 dBm 까지). 밀리미터파 변환기 MA80001A·MA80002A -90~+5 dBm, MA80003A -70~+15 dBm"
+    }
+  },
+  "models": [
+    {
+      "model": "MT8000A",
+      "specs": {
+        "frequency_Hz": {
+          "min": 400000000,
+          "max": 43500000000,
+          "note": "FR1 0.4~7.125 GHz, FR3 -041 로 16 GHz, mmWave 는 RF 변환기(MA80001A/2A/3A) 24.25~43.5 GHz"
+        },
+        "bandwidth_Hz": {
+          "max": 1000000000,
+          "note": "최대 변조 대역폭. FR1 400 MHz, 6 GHz 초과·mmWave 1 GHz"
+        },
+        "rf_output_level_dBm": {
+          "min": -110,
+          "max": 15,
+          "note": "FR1 Main -110~-10 dBm·Aux -110~0 dBm, mmWave 변환기 MA80003A 최대 +15 dBm"
+        },
+        "rf_port_count": 4,
+        "radio_standards": "5G NR NSA/SA, DSS, NTN, RedCap"
+      },
+      "note": "지원 대역 예: n41(2.5 GHz), n78~79(3.5/4.5 GHz), n257(28 GHz), n260(39 GHz). 부반송파 간격 15·30·120 kHz"
+    }
+  ],
+  "features": [
+    "최대 4x4 MIMO",
+    "최대 8 CC 반송파 집성",
+    "송수신 포트 최대 4개 병렬 측정",
+    "OTA 챔버 빔포밍 시험",
+    "응용·처리량 시험",
+    "핸드오버·망 이상 시험",
+    "기지국 생산용 비신호 RF 시험",
+    "FR3(7.125~16 GHz) 옵션"
+  ],
+  "options": [
+    {
+      "name": "MX800045A",
+      "note": "Base Station Test Suite for NR mmWave"
+    },
+    {
+      "name": "MX800046A",
+      "note": "Base Station Test Suite for NR Sub-6 GHz"
+    },
+    {
+      "name": "MX800010A",
+      "note": "OTA·처리량 측정"
+    },
+    {
+      "name": "MX800050A",
+      "note": "프로토콜 시험"
+    }
+  ],
+  "relations": [
+    {
+      "type": "same_family_as",
+      "target": "anritsu-mt8821c"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://www.anritsu.com/en-us/test-measurement/products/mt8000a",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지. 주파수 대역(FR1·FR2·FR3), MIMO, CA, 포트, 채널 대역폭, 시험 응용, 소프트웨어 묶음"
+    },
+    {
+      "file": "anritsu/dwl19556.pdf",
+      "pages": [
+        2,
+        4,
+        15,
+        24,
+        26,
+        27,
+        28,
+        29,
+        30,
+        32,
+        33,
+        34
+      ],
+      "note": "제조사 브로슈어. FR1·FR3·mmWave 주파수, 모듈별 출력 레벨 설정 범위, 최대 변조 대역폭, 4x4 MIMO·8CA"
+    }
+  ],
+  "confidence": "catalog",
+  "notes": "PDF 로 확인: 주파수(모듈·변환기별), 출력 레벨, 최대 변조 대역폭, 4x4 MIMO·8CA, FR3 16 GHz. 웹 값 그대로: rf_port_count 4(브로슈어는 슬롯 1~4·Enhanced RF Module 의 Main 1~4 를 적을 뿐 「동시 측정 포트 4」 문구는 없다), 지원 표준 목록."
+}

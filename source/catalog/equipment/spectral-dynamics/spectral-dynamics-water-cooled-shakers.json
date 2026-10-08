@@ -1,0 +1,188 @@
+{
+  "id": "spectral-dynamics-water-cooled-shakers",
+  "kind": "equipment_series",
+  "name": "Spectral Dynamics Water-Cooled Electrodynamic Shakers (SD-xxxxxLS3/LS4)",
+  "name_ko": "스펙트럴 다이나믹스 수랭식 전기동력 가진기",
+  "manufacturer": "spectral-dynamics",
+  "category": "vibration_shaker",
+  "drive": "electrodynamic",
+  "form_factor": "floor",
+  "description": "넓은 주파수 대역의 수랭식 전기동력 진동 시험 시스템 7 기종. 정현 13,264~78,683 lbf(약 59~350 kN), 아마추어 450~870 mm, 스트로크 76/63 mm(LS4 는 100/90 mm), 가속도 100 g, 속도 2 m/s, 탑재 500~4,000 kg, 앰프 60~400 kVA.",
+  "test_items": [
+    "vibration_sine_random"
+  ],
+  "measurands": [
+    "resonance_frequency",
+    "transmissibility",
+    "fatigue_life"
+  ],
+  "limits": {
+    "force_kN": {
+      "min": 59.0,
+      "max": 350.0,
+      "note": "원문 lbf 를 kN 으로 환산"
+    },
+    "displacement_mm": {
+      "min": 63,
+      "max": 100,
+      "note": "원문 Stroke (mm)"
+    },
+    "acceleration_g": {
+      "max": 100
+    },
+    "velocity_m_s": {
+      "max": 2
+    },
+    "payload_kg": {
+      "min": 500,
+      "max": 4000
+    }
+  },
+  "models": [
+    {
+      "model": "SD-13200LS3-450",
+      "specs": {
+        "force_kN": 59.0,
+        "force_random_kN": 59.0,
+        "armature_diameter_mm": 450,
+        "displacement_mm": {
+          "values": [
+            76.0,
+            63.0
+          ]
+        },
+        "acceleration_g": 100,
+        "velocity_m_s": 2,
+        "payload_kg": 500
+      },
+      "note": "원문 정현/랜덤 13,264/13,264 lbf, Stroke 76/63 mm, 앰프 60 kVA"
+    },
+    {
+      "model": "SD-20000LS3-450",
+      "specs": {
+        "force_kN": 89.0,
+        "force_random_kN": 89.0,
+        "armature_diameter_mm": 450,
+        "displacement_mm": {
+          "values": [
+            76.0,
+            63.0
+          ]
+        },
+        "acceleration_g": 100,
+        "velocity_m_s": 2,
+        "payload_kg": 1000
+      },
+      "note": "원문 정현/랜덤 20,008/20,008 lbf, Stroke 76/63 mm, 앰프 100 kVA. 탑재 1,000 kg(옵션 +2,000 kg)"
+    },
+    {
+      "model": "SD-26400LS3-550",
+      "specs": {
+        "force_kN": 120.0,
+        "force_random_kN": 108.0,
+        "armature_diameter_mm": 550,
+        "displacement_mm": {
+          "values": [
+            76.0,
+            63.0
+          ]
+        },
+        "acceleration_g": 100,
+        "velocity_m_s": 2,
+        "payload_kg": 1000
+      },
+      "note": "원문 정현/랜덤 26,977/24,279 lbf, Stroke 76/63 mm, 앰프 120 kVA. 탑재 1,000 kg(옵션 +2,000 kg)"
+    },
+    {
+      "model": "SD-26400LS4-550",
+      "specs": {
+        "force_kN": 120.0,
+        "force_random_kN": 108.0,
+        "armature_diameter_mm": 550,
+        "displacement_mm": {
+          "values": [
+            100.0,
+            90.0
+          ]
+        },
+        "acceleration_g": 100,
+        "velocity_m_s": 2,
+        "payload_kg": 1000
+      },
+      "note": "원문 정현/랜덤 26,977/24,279 lbf, Stroke 100/90 mm, 앰프 120 kVA"
+    },
+    {
+      "model": "SD-35000LS3-650",
+      "specs": {
+        "force_kN": 157.0,
+        "force_random_kN": 137.0,
+        "armature_diameter_mm": 650,
+        "displacement_mm": {
+          "values": [
+            76.0,
+            63.0
+          ]
+        },
+        "acceleration_g": 100,
+        "velocity_m_s": 2,
+        "payload_kg": 1400
+      },
+      "note": "원문 정현/랜덤 35,295/30,799 lbf, Stroke 76/63 mm, 앰프 180 kVA. 탑재 1,400 kg(옵션 +2,500 kg)"
+    },
+    {
+      "model": "SD-44000LS3-650",
+      "specs": {
+        "force_kN": 196.0,
+        "force_random_kN": 176.0,
+        "armature_diameter_mm": 650,
+        "displacement_mm": {
+          "values": [
+            76.0,
+            63.0
+          ]
+        },
+        "acceleration_g": 100,
+        "velocity_m_s": 2,
+        "payload_kg": 1400
+      },
+      "note": "원문 정현/랜덤 44,063/39,566 lbf, Stroke 76/63 mm, 앰프 240 kVA. 탑재 1,400 kg(옵션 +2,500 kg)"
+    },
+    {
+      "model": "SD-77000LS3-870",
+      "specs": {
+        "force_kN": 350.0,
+        "force_random_kN": 280.0,
+        "armature_diameter_mm": 870,
+        "displacement_mm": {
+          "values": [
+            76.0,
+            63.5
+          ]
+        },
+        "acceleration_g": 100,
+        "velocity_m_s": 2,
+        "payload_kg": 4000
+      },
+      "note": "원문 정현/랜덤 78,683/62,947 lbf, Stroke 76/63.5 mm, 앰프 400 kVA"
+    }
+  ],
+  "relations": [
+    {
+      "type": "performs",
+      "target": "vibration_sine_random"
+    },
+    {
+      "type": "same_family_as",
+      "target": "spectral-dynamics-air-cooled-shakers"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://www.spectraldynamics.com/shakers/water-cooled",
+      "retrieved": "2026-10-08",
+      "note": "제조사 수랭식 가진기 페이지. 비교 표(lbf)"
+    }
+  ],
+  "confidence": "limited",
+  "notes": "힘은 원문 lbf 를 kN 으로 환산했다. 주파수 범위·충격 정격·아마추어 질량은 페이지에 없다."
+}

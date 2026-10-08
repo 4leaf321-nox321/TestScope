@@ -1,0 +1,121 @@
+{
+  "id": "espec-er-rain-spray-chamber",
+  "kind": "equipment_series",
+  "name": "ESPEC Rain & Spray Test Chamber ER37",
+  "name_ko": "에스펙 강우·분무 시험 챔버 ER37",
+  "manufacturer": "espec",
+  "category": "water_ingress_tester",
+  "form_factor": "floor",
+  "description": "IP 코드(IEC 60529)와 JIS D 0203, SAE J2245, SAE J575 의 강우·분무 시험을 수행하는 챔버임. 적하(IP 1·2), 할로(halo) 분무 암에 의한 요동 분무(IP 3·4), 10피트 분류(IP 5·6), 80 °C 세차식 분사(IP 9X)를 다룸. 속도·유량 제어식 회전 강우·분무 노즐, 수압 조절기·압력계·유량계, 대용량 바닥 배수 장치를 갖춤. 시편 선반은 고정식이며 회전 선반은 옵션임. 온습도 제어(-20~150 °C)와 분사 전 냉각(5~20 °C)을 옵션으로 더할 수 있음. 요청한 기능·옵션으로 주문 제작되는 기종임. ESPEC North America 페이지 기준임.",
+  "test_items": [
+    "water_ingress"
+  ],
+  "standards": {
+    "compliance": [],
+    "test_methods": [
+      "IEC 60529",
+      "JIS D 0203",
+      "SAE J2245",
+      "SAE J575"
+    ]
+  },
+  "limits": {
+    "ipx_levels": {
+      "note": "IPX1 · IPX2 · IPX3 · IPX4 · IPX5 · IPX6 · IPX9 (원문은 IP 1 and 2, IP 3 and 4, IP 5 and 6, IP 9X(Car-wash-style water jets at 80°C). IP 9X 가 IPX9 인지 IPX9K 인지 구분하지 않아 IPX9 로 적고 uncertain 을 닮)"
+    },
+    "chamber_volume_L": {
+      "max": 1000,
+      "note": "원문 37 cu. ft. / 1000 Liters"
+    },
+    "temperature_degC": {
+      "min": -20,
+      "max": 150,
+      "requires_accessory": true,
+      "note": "온습도 제어 챔버 옵션"
+    },
+    "humidity_pct": {
+      "min": 20,
+      "max": 95,
+      "requires_accessory": true,
+      "uncertain": true,
+      "note": "온습도 제어 옵션. 제품군 페이지는 20 to 95%RH, 응용 페이지는 20 to 98%RH 로 서로 다름. 낮은 쪽을 적음"
+    },
+    "water_temperature_degC": {
+      "min": 5,
+      "max": 20,
+      "requires_accessory": true,
+      "note": "Water conditioning 옵션: 분사 전 물을 5~20 °C 로 냉각. 기본은 상온수"
+    }
+  },
+  "models": [
+    {
+      "model": "ER37",
+      "specs": {
+        "chamber_volume_L": 1000,
+        "inner_mm": {
+          "width": 1000,
+          "depth": 1000,
+          "height": 1000,
+          "note": "원문 40\" x 40\" x 40\" / 1000 x 1000 x 1000 mm (W x D x H)"
+        },
+        "footprint_mm": {
+          "W": 2160,
+          "D": 1880,
+          "H": 2440,
+          "note": "원문 85\" x 74\" x 96\""
+        },
+        "power": "400/460V 3ph 50/60Hz",
+        "water_cooling_peak_demand": "3 GPM",
+        "humidity_control": false
+      },
+      "note": "제품군 표의 Humidity Control 칸은 no(기본 사양). 표 비고: Speed and rate controlled rotating rain and spray nozzles"
+    }
+  ],
+  "features": [
+    "속도·유량 제어식 회전 강우·분무 노즐",
+    "수압 조절기, 압력계, 유량계",
+    "대용량 바닥 배수 장치",
+    "와이퍼 달린 관찰창",
+    "고정식 시편 선반"
+  ],
+  "options": [
+    {
+      "name": "회전 선반(회전 테이블)",
+      "note": "시편을 돌려 분무에 고르게 노출. 회전 속도는 페이지에 없음"
+    },
+    {
+      "name": "Water conditioning",
+      "note": "분사 전 물을 5~20 °C 로 냉각"
+    },
+    {
+      "name": "온습도 제어 강우 챔버",
+      "note": "-20~150 °C, 20~95 %RH(응용 페이지는 20~98 %RH)"
+    }
+  ],
+  "relations": [
+    {
+      "type": "requires",
+      "target": "utility-cooling-water",
+      "note": "사양표의 Water-cooling Peak Demand 3 GPM"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://espec.com/na/products/family/rain_spray_test",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품군 페이지(2등급). IP 등급별 시험 방식, 적용 규격, 기본 장비, 옵션(-20~150 °C, 20~95 %RH), 기종 표(ER37). PDF 로는 확인하지 않음"
+    },
+    {
+      "url": "https://espec.com/na/products/model/er37",
+      "retrieved": "2026-10-08",
+      "note": "제조사 기종 페이지. 내부·외형 치수, 용적, 전원, 수랭 피크 수요 3 GPM, 와이퍼 달린 관찰창, 고정 선반(회전 선반 옵션), built to order"
+    },
+    {
+      "url": "https://espec.com/na/applications/family/rain_simulation_chamber",
+      "retrieved": "2026-10-08",
+      "note": "제조사 응용 페이지. JIS D 0203·SAE J2245·SAE J575 시험 조건(S1·S2·R1·R2)과 옵션(분사 전 냉각 5~20 °C, -20~150 °C·20~98 %RH)"
+    }
+  ],
+  "confidence": "limited",
+  "notes": "수압·유량·분류 노즐 사양, 회전 테이블 rpm·적재 하중, 무게는 페이지에 없음. 기종 페이지에 Related documents: brochure, detailed specifications, drawing 이 이름만 있고 공개 링크는 없음. 응용 페이지의 S1(노즐 40개, 1 kgf/cm2, 30분), S2(노즐 40개, 3 kgf/cm2, 60분), R1(노즐 2개, 0.3 kgf/cm2, 10분), R2(노즐 2개, 0.1 kgf/cm2, 10분)와 4.0 ± 0.5 rpm, 45° 는 JIS D 0203·SAE 규격의 시험 조건으로 적힌 것이라 장비 한계에 넣지 않음. 북미 외 지역의 ESPEC 강우 챔버 기종은 찾지 못함."
+}

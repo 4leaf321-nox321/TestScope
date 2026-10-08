@@ -1,0 +1,138 @@
+{
+  "id": "linseis-dsc-l63",
+  "kind": "equipment_series",
+  "name": "LINSEIS DSC L63 Differential Scanning Calorimeter (Basic / Advanced)",
+  "name_ko": "린세이스 DSC L63 시차주사열량계",
+  "manufacturer": "linseis",
+  "category": "dsc",
+  "description": "참 열류(true heat flow) 설계와 은 노를 쓴 DSC. 하드웨어 교체 없이 -170~750 °C, 승온 0.01~200 K/min, 온도 정확도 ±0.2 K, 엔탈피 정밀도 <1 %(인듐). 냉각은 액체질소 또는 기계식 인트라쿨러, 빠른 냉각 100 K/min(560 °C 까지). 90 위치 자동 시료기(선택), 변조 DSC(MDSC)·광학 DSC(CCD 카메라)·UV 경화 DSC. 도가니 9종, 스타터 키트 포함.",
+  "test_items": [
+    "dsc"
+  ],
+  "measurands": [
+    "thermal.glass_transition",
+    "thermal.melting_point",
+    "thermal.specific_heat",
+    "thermal.latent_heat_fusion"
+  ],
+  "measurands_by_item": {
+    "dsc": [
+      "thermal.glass_transition",
+      "thermal.melting_point",
+      "thermal.specific_heat",
+      "thermal.latent_heat_fusion"
+    ]
+  },
+  "limits": {
+    "temperature_degC": {
+      "min": -170,
+      "max": 750,
+      "note": "Basic -170~600 °C, Advanced · Ultimate -170~750 °C"
+    },
+    "heating_rate_K_min": {
+      "min": 0.01,
+      "max": 200,
+      "note": "Basic 0.01~100, Advanced 0.01~150, Ultimate 0.01~200 K/min"
+    },
+    "cooling_rate_K_min": {
+      "max": 100,
+      "note": "560 °C 까지(웹 냉각 속도 표). 사양서는 Ultimate 0.02~50 K/min(최고 온도→실온)만 적는다"
+    }
+  },
+  "models": [
+    {
+      "model": "DSC L63 Basic",
+      "note": "은 노·센서 사용자 교체. 냉각 인트라쿨러 5 min(100→0 °C) / LN2 10 min(100→-100 °C). 엔탈피 정밀도 <1 %(인듐), 기준선 반복도 <40 µW, 기준선 드리프트 100 µW. 변조 DSC(가역·비가역·전체 열류). MFC(3 가스) 선택",
+      "specs": {
+        "temperature_degC": {
+          "min": -170,
+          "max": 600
+        },
+        "heating_rate_K_min": {
+          "min": 0.01,
+          "max": 100
+        },
+        "accuracy_degC": 0.2,
+        "heat_flow_resolution_uW": 0.03,
+        "heat_flow_mW": {
+          "max": 750,
+          "note": "측정 범위 ±750 mW"
+        },
+        "data_rate_Hz": 100
+      }
+    },
+    {
+      "model": "DSC L63 Advanced",
+      "note": "은 노·센서 사용자 교체. 냉각 인트라쿨러 5 min(100→0 °C) / LN2 10 min(100→-100 °C). 엔탈피 정밀도 <1 %(인듐), 기준선 반복도 <40 µW, 기준선 드리프트 75 µW. 변조 DSC(가역·비가역·전체 열류). MFC(3 가스) 내장",
+      "specs": {
+        "temperature_degC": {
+          "min": -170,
+          "max": 750
+        },
+        "heating_rate_K_min": {
+          "min": 0.01,
+          "max": 150
+        },
+        "accuracy_degC": 0.2,
+        "heat_flow_resolution_uW": 0.03,
+        "heat_flow_mW": {
+          "max": 750,
+          "note": "측정 범위 ±750 mW"
+        },
+        "data_rate_Hz": 100
+      }
+    },
+    {
+      "model": "DSC L63 Ultimate",
+      "specs": {
+        "temperature_degC": {
+          "min": -170,
+          "max": 750
+        },
+        "heating_rate_K_min": {
+          "min": 0.01,
+          "max": 200
+        },
+        "accuracy_degC": 0.2,
+        "heat_flow_resolution_uW": 0.02,
+        "heat_flow_mW": {
+          "max": 750,
+          "note": "측정 범위 ±750 mW"
+        },
+        "data_rate_Hz": 100,
+        "cooling_rate_K_min": {
+          "min": 0.02,
+          "max": 50,
+          "note": "0.02 to 50 K/min top to RT"
+        }
+      },
+      "note": "은 노·센서 사용자 교체. 냉각 인트라쿨러 5 min(100→0 °C) / LN2 10 min(100→-100 °C). 엔탈피 정밀도 <1 %(인듐), 기준선 반복도 <40 µW, 기준선 드리프트 70 µW. 변조 DSC(가역·비가역·전체 열류), 단일 측정 Cp. MFC(3 가스) 내장"
+    }
+  ],
+  "accuracy": {
+    "temperature": "±0.2 K",
+    "enthalpy": "<1 % (Indium)"
+  },
+  "options": [
+    "90 위치 시료 로봇",
+    "광학 DSC(CCD 카메라)",
+    "UV 경화 DSC(광 셀)",
+    "액체질소 냉각",
+    "인트라쿨러"
+  ],
+  "sources": [
+    {
+      "url": "https://www.linseis.com/en/instruments/differential-scanning-calorimeter-dsc/dsc-l63/",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지(HTML) 본문·표를 직접 읽음. Specifications 목록과 냉각 속도 표"
+    },
+    {
+      "file": "linseis/specifications-dsc-l63.pdf",
+      "pages": [
+        1
+      ]
+    }
+  ],
+  "confidence": "catalog",
+  "notes": "PDF 로 확인: 형식 Basic · Advanced · Ultimate 별 온도 범위·승온 속도·온도 정확도·엔탈피 정밀도·열량 분해능·측정 범위(사양서 1쪽). Ultimate 를 기종 행으로 더했다. 웹 값 그대로: 빠른 냉각 100 K/min(560 °C 까지). 웹의 냉각 속도 표 두 개(라벨 없음): (1) 100 K/min→560 °C, 50→240, 20→40, 10→-30, 5→-48, 1→-60 °C; (2) 50 K/min→310 °C, 20→125, 5→30, 1→5 °C — 어느 냉각 장치인지 사양서로도 확인되지 않는다."
+}

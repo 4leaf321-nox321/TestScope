@@ -1,0 +1,90 @@
+{
+  "id": "linseis-udsc-l64",
+  "kind": "equipment_series",
+  "name": "LINSEIS UDSC L64 Ultimate DSC / UDSC L64-LT (micro calorimetric DSC)",
+  "name_ko": "린세이스 UDSC L64 초고감도 DSC",
+  "manufacturer": "linseis",
+  "category": "dsc",
+  "description": "적은 시료 부피(5~100 µL)로 미소 열 효과를 보는 초고감도 DSC. L64 Ultimate 는 -60~160 °C(구성에 따라), 0.001 °C/min 부터의 저속 스캔, 제어 정확도 100 µ°C. L64-LT 는 스털링 냉동기로 액체질소 없이 -170~50 °C, 스캔 0.001~3 °C/min, 자동 시료기 호환.",
+  "test_items": [
+    "dsc"
+  ],
+  "measurands": [
+    "thermal.glass_transition",
+    "thermal.melting_point",
+    "thermal.specific_heat"
+  ],
+  "measurands_by_item": {
+    "dsc": [
+      "thermal.glass_transition",
+      "thermal.melting_point",
+      "thermal.specific_heat"
+    ]
+  },
+  "limits": {
+    "temperature_degC": {
+      "min": -170,
+      "max": 160
+    },
+    "sample_volume_uL": {
+      "min": 5,
+      "max": 100
+    }
+  },
+  "models": [
+    {
+      "model": "UDSC L64",
+      "variant": "Ultimate DSC",
+      "specs": {
+        "temperature_degC": {
+          "min": -60,
+          "max": 160,
+          "note": "구성에 따라"
+        },
+        "sample_volume_uL": {
+          "min": 5,
+          "max": 100
+        },
+        "heating_rate_K_min": {
+          "min": 0.001
+        }
+      },
+      "note": "제어 정확도 100 µ°C"
+    },
+    {
+      "model": "UDSC L64-LT",
+      "specs": {
+        "temperature_degC": {
+          "min": -170,
+          "max": 50
+        },
+        "sample_volume_uL": {
+          "min": 10,
+          "max": 100
+        },
+        "heating_rate_K_min": {
+          "min": 0.001,
+          "max": 3
+        }
+      },
+      "note": "온도 조절 정확도 최대 100 µ°C, 스털링 냉동기 내장, 등온·동적 측정"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://www.linseis.com/en/instruments/differential-scanning-calorimeter-dsc/udsc-l64-ultimate-dsc/",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지(HTML) 본문·표를 직접 읽음. Specifications 목록"
+    },
+    {
+      "url": "https://www.linseis.com/en/instruments/differential-scanning-calorimeter-dsc/udsc-l64-lt/",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지(HTML) 본문·표를 직접 읽음. Specifications 목록"
+    },
+    {
+      "file": "linseis/specifications-udsc_l64.pdf",
+      "note": "제조사 원본 문서. 스캔 이미지라 텍스트가 없음 — 값 대조에는 못 씀(값은 웹 출처 기준)"
+    }
+  ],
+  "confidence": "limited"
+}

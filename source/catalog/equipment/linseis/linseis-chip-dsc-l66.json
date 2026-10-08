@@ -1,0 +1,166 @@
+{
+  "id": "linseis-chip-dsc-l66",
+  "kind": "equipment_series",
+  "name": "LINSEIS Chip-DSC L66 (Chip-DSC 1 / 10 / 100) miniature DSC",
+  "name_ko": "린세이스 Chip-DSC L66 칩 센서 소형 DSC",
+  "manufacturer": "linseis",
+  "category": "dsc",
+  "description": "칩 센서를 쓴 소형 DSC. Chip-DSC 1 은 실온~450 °C(냉각 없음)·100 K/min, Chip-DSC 10 은 -180~600 °C·300 K/min, Chip-DSC 100 은 -150~600 °C·1000 K/min. 공통 온도 정확도 ±0.2 K, 분해능 0.03 µW, 측정 범위 ±2.5~±1000 mW, 교정 주기 6개월 권장.",
+  "test_items": [
+    "dsc"
+  ],
+  "measurands": [
+    "thermal.glass_transition",
+    "thermal.melting_point",
+    "thermal.specific_heat",
+    "thermal.latent_heat_fusion"
+  ],
+  "measurands_by_item": {
+    "dsc": [
+      "thermal.glass_transition",
+      "thermal.melting_point",
+      "thermal.specific_heat",
+      "thermal.latent_heat_fusion"
+    ]
+  },
+  "limits": {
+    "temperature_degC": {
+      "min": -180,
+      "max": 600,
+      "note": "Chip-DSC 1 은 실온~450 °C. -180 °C 는 급랭 냉각 부속(Chip-DSC 10), -150 °C 는 Peltier·인트라쿨러·LN2 냉각(Chip-DSC 100)"
+    },
+    "heating_rate_K_min": {
+      "min": 0.001,
+      "max": 1000
+    }
+  },
+  "models": [
+    {
+      "model": "Chip-DSC 1",
+      "variant": "Chip-DSC L66 Basic",
+      "specs": {
+        "temperature_degC": {
+          "max": 450,
+          "note": "RT up to 450 °C (no cooling options possible)"
+        },
+        "heating_rate_K_min": {
+          "min": 0.001,
+          "max": 100,
+          "note": "승·냉각"
+        },
+        "cooling_rate_K_min": {
+          "max": 100
+        },
+        "accuracy_degC": 0.2,
+        "heat_flow_mW": {
+          "min": 2.5,
+          "max": 1000,
+          "note": "측정 범위 ±2.5 ~ ±1000 mW"
+        },
+        "heat_flow_resolution_uW": 0.03,
+        "temperature_precision_degC": 0.02
+      },
+      "note": "온도 정밀도 ±0.02 K, 디지털 분해능 1,680만 점, 400→50 °C 냉각 2.7 min, 분위기 불활성·산화(정적·동적), 교정 6개월 주기 권장"
+    },
+    {
+      "model": "Chip-DSC 10",
+      "variant": "Chip-DSC L66 Advanced",
+      "specs": {
+        "temperature_degC": {
+          "max": 600,
+          "note": "RT~600 °C, 선택 LN2 급랭 냉각(quench cooling)으로 -180~600 °C",
+          "min": -180,
+          "requires_accessory": true
+        },
+        "heating_rate_K_min": {
+          "min": 0.001,
+          "max": 300,
+          "note": "승·냉각"
+        },
+        "cooling_rate_K_min": {
+          "max": 300
+        },
+        "accuracy_degC": 0.2,
+        "heat_flow_mW": {
+          "min": 2.5,
+          "max": 1000,
+          "note": "측정 범위 ±2.5 ~ ±1000 mW"
+        },
+        "heat_flow_resolution_uW": 0.03,
+        "temperature_precision_degC": 0.02
+      },
+      "note": "온도 정밀도 ±0.02 K, 디지털 분해능 1,680만 점, 400→50 °C 냉각 2.7 min, 분위기 불활성·산화(정적·동적), 교정 6개월 주기 권장"
+    },
+    {
+      "model": "Chip-DSC 100",
+      "variant": "Chip-DSC L66 Ultimate",
+      "specs": {
+        "temperature_degC": {
+          "max": 600,
+          "note": "-150 up to 600 °C (Peltier, closed-loop intracooler, LN2 cooling)",
+          "min": -150
+        },
+        "heating_rate_K_min": {
+          "min": 0.001,
+          "max": 1000,
+          "note": "승·냉각"
+        },
+        "cooling_rate_K_min": {
+          "max": 1000
+        },
+        "accuracy_degC": 0.2,
+        "heat_flow_mW": {
+          "min": 2.5,
+          "max": 1000,
+          "note": "측정 범위 ±2.5 ~ ±1000 mW"
+        },
+        "heat_flow_resolution_uW": 0.03,
+        "temperature_precision_degC": 0.02
+      },
+      "note": "온도 정밀도 ±0.02 K, 디지털 분해능 1,680만 점, 400→50 °C 냉각 2.7 min, 분위기 불활성·산화(정적·동적), 교정 6개월 주기 권장"
+    }
+  ],
+  "options": [
+    {
+      "name": "HP-DSC 고압 셀",
+      "note": "50/150 bar, OIT 시험(Chip-DSC 100)"
+    },
+    "광학 DSC(CCD)",
+    "광(UV) DSC",
+    "라만 DSC",
+    {
+      "name": "시료 로봇",
+      "note": "최대 96 시료(Chip-DSC 100)"
+    },
+    "급랭 냉각 장치(유리 돔, -180 °C)"
+  ],
+  "sources": [
+    {
+      "url": "https://www.linseis.com/en/instruments/differential-scanning-calorimeter-dsc/chip-dsc-l66-basic/",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지(HTML) 본문·표를 직접 읽음. Hard Facts 표"
+    },
+    {
+      "url": "https://www.linseis.com/en/instruments/differential-scanning-calorimeter-dsc/chip-dsc-l66-advanced/",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지(HTML) 본문·표를 직접 읽음. Hard Facts 표, 급랭 냉각(-180~600 °C)"
+    },
+    {
+      "url": "https://www.linseis.com/en/instruments/differential-scanning-calorimeter-dsc/chip-dsc-l66-ultimate/",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지(HTML) 본문·표를 직접 읽음. Hard Facts 표, 선택 부속(HP-DSC 50/150 bar, 광학·광·라만 DSC, 96 시료 로봇)"
+    },
+    {
+      "file": "linseis/linseis-chip-dsc-differential-scanning-calorimeter-v16-compressed.pdf",
+      "pages": [
+        5,
+        8,
+        10,
+        11,
+        14
+      ]
+    }
+  ],
+  "confidence": "catalog",
+  "notes": "PDF 로 확인: 사양표(14쪽)의 온도 범위·승냉각 속도·온도 정확도·정밀도·분해능·측정 범위 모두 웹 Hard Facts 와 같다. 냉각 부속 범위(Peltier 0~600, 인트라쿨러 -100~600, LN2 -150~600, 급랭 -180~600 °C)는 8쪽."
+}

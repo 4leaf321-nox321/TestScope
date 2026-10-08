@@ -1,0 +1,109 @@
+{
+  "id": "tektronix-tbs2000b",
+  "kind": "equipment_series",
+  "name": "TBS2000B Digital Storage Oscilloscope",
+  "name_ko": "텍트로닉스 TBS2000B 디지털 오실로스코프",
+  "manufacturer": "tektronix",
+  "brand": "TBS",
+  "category": "oscilloscope",
+  "subcategory": "digital_storage_oscilloscope",
+  "form_factor": "benchtop",
+  "description": "70~200 MHz 대역의 2·4채널 디지털 저장 오실로스코프 계열임. 최대 2 GS/s, 5M points 레코드 길이, 15 수평 눈금의 9 inch WVGA(800×480) 화면.",
+  "test_items": [],
+  "limits": {
+    "bandwidth_Hz": {
+      "min": 70000000,
+      "max": 200000000,
+      "note": "원문 70 MHz~200 MHz"
+    },
+    "sample_rate_Sa_s": {
+      "max": 2000000000,
+      "note": "원문 up to 2 GS/s"
+    },
+    "record_length_pts": {
+      "max": 5000000,
+      "note": "원문 5M points"
+    },
+    "channels": {
+      "values": [
+        2,
+        4
+      ]
+    },
+    "display_size_in": {
+      "values": [
+        9
+      ]
+    }
+  },
+  "models": [
+    {
+      "model": "TBS2072B",
+      "specs": {
+        "bandwidth_Hz": 70000000,
+        "channels": 2,
+        "sample_rate_Sa_s": 2000000000,
+        "record_length_pts": 5000000,
+        "display_size_in": 9
+      }
+    },
+    {
+      "model": "TBS2074B",
+      "specs": {
+        "bandwidth_Hz": 70000000,
+        "channels": 4,
+        "sample_rate_Sa_s": 2000000000,
+        "record_length_pts": 5000000,
+        "display_size_in": 9
+      }
+    },
+    {
+      "model": "TBS2102B",
+      "specs": {
+        "bandwidth_Hz": 100000000,
+        "channels": 2,
+        "sample_rate_Sa_s": 2000000000,
+        "record_length_pts": 5000000,
+        "display_size_in": 9
+      }
+    },
+    {
+      "model": "TBS2104B",
+      "specs": {
+        "bandwidth_Hz": 100000000,
+        "channels": 4,
+        "sample_rate_Sa_s": 2000000000,
+        "record_length_pts": 5000000,
+        "display_size_in": 9
+      }
+    },
+    {
+      "model": "TBS2202B",
+      "specs": {
+        "bandwidth_Hz": 200000000,
+        "channels": 2,
+        "sample_rate_Sa_s": 2000000000,
+        "record_length_pts": 5000000,
+        "display_size_in": 9
+      }
+    },
+    {
+      "model": "TBS2204B",
+      "specs": {
+        "bandwidth_Hz": 200000000,
+        "channels": 4,
+        "sample_rate_Sa_s": 2000000000,
+        "record_length_pts": 5000000,
+        "display_size_in": 9
+      }
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://www.tek.com/en/products/oscilloscopes/tbs2000",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지 기종 표. 원문 up to 2 GS/s, 5M points, 9-inch WVGA display with 15 horizontal divisions"
+    }
+  ],
+  "confidence": "limited"
+}

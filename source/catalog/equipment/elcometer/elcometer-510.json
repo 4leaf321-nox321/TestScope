@@ -1,0 +1,149 @@
+{
+  "id": "elcometer-510",
+  "kind": "equipment_series",
+  "name": "Elcometer 510 Automatic Pull-Off Hydraulic Adhesion Gauge (Model S / Model T)",
+  "name_ko": "엘코미터 510 자동 유압식 풀오프 부착력 시험기",
+  "manufacturer": "elcometer",
+  "brand": "Elcometer 510",
+  "category": "adhesion_tester",
+  "form_factor": "portable",
+  "description": "자동 유압 펌프가 매끄럽고 연속으로 가압하는 풀오프 부착력 시험기. 돌리 지름 10 · 14.2 · 20 · 50 mm 에 따라 범위가 8~100 MPa · 4~50 MPa · 2~25 MPa · 0.3~4 MPa, 가압 속도가 0.4~5.6 · 0.2~2.8 · 0.1~1.4 · 0.02~0.22 MPa/s 이다. 압력 정확도 ±1 % FS, 분해능 0.01 MPa(1 psi), 가압 속도 정확도 ±(2.5 % + 0.3 s). Model S 와 Model T 두 기종이고 Model T 만 AC 전원을 쓴다.",
+  "test_items": [
+    "coating_adhesion"
+  ],
+  "measurands": [
+    "pull_off_adhesion_strength"
+  ],
+  "materials": [
+    "coatings on metal",
+    "concrete"
+  ],
+  "standards": {
+    "compliance": [],
+    "test_methods": [
+      "ASTM C1583",
+      "ASTM D4541",
+      "ASTM D7234-12",
+      "AS/NZS 1580.408.5",
+      "BS 1881-207",
+      "DIN 1048-2",
+      "EN 1015-12",
+      "EN 12636",
+      "EN 13144",
+      "EN 1542",
+      "EN 24624",
+      "ISO 16276-1",
+      "ISO 4624",
+      "JIS K 5600-5-7"
+    ]
+  },
+  "limits": {
+    "pull_off_strength_MPa": {
+      "min": 0.3,
+      "max": 100,
+      "note": "원문 Operating Range 10 mm 8~100 · 14.2 mm 4~50 · 20 mm 2~25 · 50 mm 0.3~4 MPa(PDF p.9)"
+    },
+    "dolly_diameter_mm": {
+      "values": [
+        10,
+        14.2,
+        20,
+        50
+      ]
+    },
+    "pull_rate_MPa_s": {
+      "min": 0.02,
+      "max": 5.6,
+      "note": "원문 Pull Rate Range 10 mm 0.4~5.6 · 14.2 mm 0.2~2.8 · 20 mm 0.1~1.4 · 50 mm 0.02~0.22 MPa/s(PDF p.9). 연속 설정은 Model T Advanced Mode, Standard Mode(S·T)는 돌리별 5단(10 mm 1~5 MPa/s 등, p.8)"
+    }
+  },
+  "models": [
+    {
+      "model": "Elcometer 510 Model S",
+      "specs": {
+        "pull_off_strength_MPa": {
+          "min": 0.3,
+          "max": 100
+        },
+        "accuracy": "±1 % FS, 가압 속도 ±(2.5 % + 0.3 s)",
+        "force_resolution": "0.01 MPa (1 psi), 가압 속도 0.01 MPa/s",
+        "power": "AA 8개",
+        "footprint_mm": "260 × 100 × 66 (본체)",
+        "weight_kg": {
+          "value": 2.9,
+          "note": "10 · 14.2 · 20 mm 구성. 50 mm 구성 3.1 kg"
+        },
+        "pull_rate_MPa_s": {
+          "values": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "note": "원문 Standard Mode 선택 속도 10 mm: 1.00~5.00 MPa/s 5단, 14.2 mm: 0.4/0.7/1.4/2.0/2.5, 20 mm: 0.2/0.3/0.7/1.0/1.2, 50 mm: 0.04~0.20 MPa/s(PDF p.8). 값은 10 mm 돌리 기준"
+        }
+      },
+      "note": "품번: F510-20S (20 mm 키트), F510-50S (50 mm 콘크리트 키트)"
+    },
+    {
+      "model": "Elcometer 510 Model T",
+      "specs": {
+        "pull_off_strength_MPa": {
+          "min": 0.3,
+          "max": 100
+        },
+        "accuracy": "±1 % FS, 가압 속도 ±(2.5 % + 0.3 s)",
+        "force_resolution": "0.01 MPa (1 psi), 가압 속도 0.01 MPa/s",
+        "power": "AA 8개 또는 AC 전원",
+        "footprint_mm": "260 × 100 × 66 (본체)",
+        "weight_kg": {
+          "value": 2.9,
+          "note": "50 mm 구성 3.1 kg"
+        },
+        "pull_rate_MPa_s": {
+          "min": 0.02,
+          "max": 5.6,
+          "note": "원문 Advanced Mode 10 mm 0.40~5.60 · 14.2 mm 0.20~2.80 · 20 mm 0.10~1.40 MPa/s(0.1 MPa 간격) · 50 mm 0.02~0.22 MPa/s(0.01 MPa 간격). Standard Mode 5단도 됨(PDF p.8)"
+        }
+      },
+      "note": "품번: F510-20T (20 mm 키트), F510-50T (50 mm 콘크리트 키트)"
+    }
+  ],
+  "features": [
+    "자동 유압 펌프 연속 가압",
+    "돌리별 가압 속도 선택",
+    "충전 1회 약 200회(25 MPa 까지 1 MPa/s), 5시간 이내 재충전",
+    "액추에이터 높이 85 mm(10 · 14.2 · 20 mm) / 110 mm(50 mm)"
+  ],
+  "relations": [
+    {
+      "type": "performs",
+      "target": "coating_adhesion"
+    },
+    {
+      "type": "same_family_as",
+      "target": "elcometer-506"
+    },
+    {
+      "type": "same_family_as",
+      "target": "defelsko-positest-at"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://www.elcometer.com/en/elcometer-510-automatic-pull-off-adhesion-gauge.html",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지. 데이터시트 · 설명서 PDF 는 열지 않음"
+    },
+    {
+      "file": "elcometer/510.pdf",
+      "pages": [
+        8,
+        9
+      ]
+    }
+  ],
+  "notes": "PDF(제품 카탈로그 p.8·9)로 확인: 돌리별 범위·가압 속도, 압력 정확도 1 % FS, 분해능 0.01 MPa, 가압 속도 정확도 ±(2.5 % + 0.3 s), 본체 260 × 100 × 66 mm, 무게, 전원·배터리. 가압 속도 연속 설정은 Model T Advanced Mode 만, Model S 는 돌리별 5단 선택(p.8). 키트 무게 20 mm 6.1 kg, 50 mm 7.3 kg.",
+  "confidence": "catalog"
+}

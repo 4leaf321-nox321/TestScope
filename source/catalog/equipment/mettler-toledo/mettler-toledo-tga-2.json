@@ -1,0 +1,48 @@
+{
+  "id": "mettler-toledo-tga-2",
+  "kind": "equipment_series",
+  "name": "METTLER TOLEDO TGA 2 Thermogravimetric Analyzer",
+  "name_ko": "메틀러토레도 TGA 2 열중량분석기",
+  "manufacturer": "mettler-toledo",
+  "category": "tga",
+  "description": "가열·냉각·등온 중 질량 변화로 조성을 보는 TGA. 플라스틱·엘라스토머·열경화성 수지·광물·세라믹, 화학·제약 분석.",
+  "test_items": [
+    "tga"
+  ],
+  "measurands": [
+    "thermal.decomposition_temp",
+    "thermal.char_residue"
+  ],
+  "measurands_by_item": {
+    "tga": [
+      "thermal.decomposition_temp",
+      "thermal.char_residue"
+    ]
+  },
+  "models": [
+    {
+      "model": "TGA 2",
+      "specs": {
+        "accuracy_degC": {
+          "value": 1,
+          "uncertain": true,
+          "note": "±1 K"
+        },
+        "data_rate_Hz": {
+          "max": 10,
+          "uncertain": true,
+          "note": "10 data pts/sec"
+        }
+      }
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://www.mt.com/us/en/home/products/Laboratory_Analytics_Browse/TA_Family_Browse/ta-instruments/thermal-analysis-system-TGA-2.html",
+      "retrieved": "2026-10-08",
+      "note": "제조사 페이지가 자동 조회를 막아(HTTP 403/406) 직접 열지 못함. 값은 웹 검색 엔진이 이 페이지에서 뽑은 발췌로만 확인했다 — 값마다 uncertain. 온도 정확도 ±1 K, 데이터 10 점/s. 가열·냉각·등온에서 질량 변화를 재 조성 분석"
+    }
+  ],
+  "confidence": "limited",
+  "notes": "온도 범위·저울 분해능은 검색 발췌에 없었다."
+}

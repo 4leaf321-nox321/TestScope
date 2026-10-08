@@ -1,0 +1,99 @@
+{
+  "id": "lansmont-ms-mechanical-shakers",
+  "kind": "equipment_series",
+  "name": "Lansmont MS2000 / MS400 Mechanical Shakers",
+  "name_ko": "랜스몬트 MS 기계식 진동기",
+  "manufacturer": "lansmont",
+  "category": "mechanical_dynamics",
+  "drive": "electromechanical",
+  "form_factor": "floor",
+  "description": "편심 캠 방식의 포장 시험용 기계식 진동기. 원형 동기 운동과 수직 직선 운동을 바꿔 가며 반복 충격·적재물 이탈(loose load)·바운스 시험을 한다. 가변 속도 DC 모터와 동기 벨트로 구동. MS2000 은 탑재 907 kg·테이블 152×152 cm·2~4.7 Hz, MS400 은 181 kg·122×122 cm·2~5 Hz, 변위는 둘 다 2.54 cm.",
+  "test_items": [
+    "vibration_sine_random"
+  ],
+  "measurands": [
+    "transmissibility"
+  ],
+  "materials": [
+    "packaged products",
+    "palletized loads"
+  ],
+  "limits": {
+    "payload_kg": {
+      "min": 181,
+      "max": 907
+    },
+    "frequency_Hz": {
+      "min": 2,
+      "max": 5
+    },
+    "displacement_mm": {
+      "values": [
+        25.4
+      ],
+      "note": "원문 1.0 in. (2.54 cm). p-p 여부는 페이지에 없음"
+    },
+    "table_size_mm": {
+      "values": [
+        1220,
+        1520
+      ]
+    }
+  },
+  "models": [
+    {
+      "model": "MS2000",
+      "specs": {
+        "payload_kg": 907,
+        "table_size_mm": [
+          1520,
+          1520
+        ],
+        "frequency_Hz": {
+          "min": 2,
+          "max": 4.7
+        },
+        "displacement_mm": 25.4
+      }
+    },
+    {
+      "model": "MS400",
+      "specs": {
+        "payload_kg": 181,
+        "table_size_mm": [
+          1220,
+          1220
+        ],
+        "frequency_Hz": {
+          "min": 2,
+          "max": 5
+        },
+        "displacement_mm": 25.4
+      }
+    }
+  ],
+  "relations": [
+    {
+      "type": "performs",
+      "target": "vibration_sine_random"
+    },
+    {
+      "type": "same_family_as",
+      "target": "lansmont-hydraulic-vibration-test-systems"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://www.lansmont.com/products/mechanical-shakers/lansmont-ms2000",
+      "retrieved": "2026-10-08",
+      "note": "제조사 MS2000 페이지"
+    },
+    {
+      "url": "https://www.lansmont.com/products/mechanical-shakers/lansmont-ms400",
+      "retrieved": "2026-10-08",
+      "note": "제조사 MS400 페이지"
+    }
+  ],
+  "confidence": "limited",
+  "notes": "페이지는 ISTA·ASTM·TAPPI·ISO·MIL-STD·UN·DOT 등에 따른 시험이라고만 하고 규격 번호를 적지 않았다. 고정 주파수 반복 충격 시험이라 정현·랜덤 진동 항목과 정확히 같지는 않다."
+}

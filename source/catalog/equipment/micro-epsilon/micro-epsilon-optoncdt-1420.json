@@ -1,0 +1,300 @@
+{
+  "id": "micro-epsilon-optoncdt-1420",
+  "kind": "equipment_series",
+  "name": "optoNCDT 1420 Laser Triangulation Sensor",
+  "name_ko": "마이크로엡실론 optoNCDT 1420 레이저 변위 센서",
+  "manufacturer": "micro-epsilon",
+  "category": "thickness_displacement_gauge",
+  "description": "컨트롤러 일체형 레이저 삼각측량 변위 센서 계열임. 측정 범위 10·25·50·100·200·500 mm, 직선성 8 µm 부터, 반복 정밀도 0.5 µm 부터, 측정 속도 8 kHz. IP67, 레이저 Class 1 변형은 최대 390 µW. RS422 와 PROFINET · EtherNet/IP · EtherCAT 연결을 지원함.",
+  "test_items": [],
+  "limits": {
+    "displacement_mm": {
+      "min": 10,
+      "max": 500,
+      "values": [
+        10,
+        25,
+        50,
+        100,
+        200,
+        500
+      ],
+      "note": "원문 Measuring range 10 | 25 | 50 | 100 | 200 | 500 mm(ILD1420-10~-500, PDF p.4)"
+    },
+    "linearity_um": {
+      "min": 8,
+      "note": "원문 Linearity < 8 µm(ILD1420-10, < 0.08 % FSO). ILD1420-500 은 < 500~1000 µm(< 0.1~0.2 % FSO)"
+    },
+    "measuring_repeatability_um": {
+      "min": 0.5,
+      "note": "원문 Repeatability 0.5 µm(ILD1420-10, 측정 속도 1 kHz · median 9)"
+    },
+    "data_rate_Hz": {
+      "max": 8000,
+      "note": "원문 Measuring rate 6 adjustable stages: 8 / 4 / 2 / 1 / 0.5 / 0.25 kHz(공장 설정 2 kHz). 레이저 Class 1 기종은 최대 4 kHz"
+    },
+    "measurement_distance_mm": {
+      "min": 20,
+      "max": 100,
+      "note": "원문 Start of measuring range 20 mm(ILD1420-10) ~ 100 mm(ILD1420-500)"
+    },
+    "laser_wavelength_nm": {
+      "values": [
+        670
+      ],
+      "note": "원문 Semiconductor laser < 1 mW, 670 nm (red), Class 2"
+    },
+    "operating_temperature_degC": {
+      "min": 0,
+      "max": 50,
+      "note": "원문 Operation 0 ... +50 °C (non-condensing)"
+    }
+  },
+  "models": [
+    {
+      "model": "ILD1420-10",
+      "specs": {
+        "displacement_mm": {
+          "value": 10,
+          "note": "원문 Measuring range 10 mm"
+        },
+        "measurement_distance_mm": {
+          "value": 20,
+          "note": "원문 Start of measuring range 20 mm(중앙 25 mm, 끝 30 mm)"
+        },
+        "linearity_um": {
+          "value": 8,
+          "note": "원문 Linearity < 8 µm(< 0.08 % FSO)"
+        },
+        "measuring_repeatability_um": {
+          "value": 0.5,
+          "note": "원문 Repeatability 0.5 µm(1 kHz, median 9)"
+        },
+        "spot_size_um": {
+          "value": 45,
+          "note": "원문 Light spot diameter MMR 45 x 50 µm(짧은 쪽을 값으로)"
+        },
+        "data_rate_Hz": {
+          "value": 8000,
+          "note": "원문 Measuring rate max. 8 kHz(레이저 Class 2 표준)"
+        }
+      },
+      "note": "레이저 점(Laser point) 표준형, Class 2. 기종명은 PDF p.4 표기 그대로"
+    },
+    {
+      "model": "ILD1420-25",
+      "specs": {
+        "displacement_mm": {
+          "value": 25,
+          "note": "원문 Measuring range 25 mm"
+        },
+        "measurement_distance_mm": {
+          "value": 25,
+          "note": "원문 Start of measuring range 25 mm(중앙 37.5 mm, 끝 50 mm)"
+        },
+        "linearity_um": {
+          "value": 20,
+          "note": "원문 Linearity < 20 µm(< 0.08 % FSO)"
+        },
+        "measuring_repeatability_um": {
+          "value": 1,
+          "note": "원문 Repeatability 1 µm(1 kHz, median 9)"
+        },
+        "spot_size_um": {
+          "value": 55,
+          "note": "원문 Light spot diameter MMR 55 x 60 µm(짧은 쪽을 값으로)"
+        },
+        "data_rate_Hz": {
+          "value": 8000,
+          "note": "원문 Measuring rate max. 8 kHz(레이저 Class 2 표준)"
+        }
+      },
+      "note": "레이저 점(Laser point) 표준형, Class 2. 기종명은 PDF p.4 표기 그대로"
+    },
+    {
+      "model": "ILD1420-50",
+      "specs": {
+        "displacement_mm": {
+          "value": 50,
+          "note": "원문 Measuring range 50 mm"
+        },
+        "measurement_distance_mm": {
+          "value": 35,
+          "note": "원문 Start of measuring range 35 mm(중앙 60 mm, 끝 85 mm)"
+        },
+        "linearity_um": {
+          "value": 40,
+          "note": "원문 Linearity < 40 µm(< 0.08 % FSO)"
+        },
+        "measuring_repeatability_um": {
+          "value": 2,
+          "note": "원문 Repeatability 2 µm(1 kHz, median 9)"
+        },
+        "spot_size_um": {
+          "value": 80,
+          "note": "원문 Light spot diameter MMR 80 x 95 µm(짧은 쪽을 값으로)"
+        },
+        "data_rate_Hz": {
+          "value": 8000,
+          "note": "원문 Measuring rate max. 8 kHz(레이저 Class 2 표준)"
+        }
+      },
+      "note": "레이저 점(Laser point) 표준형, Class 2. 기종명은 PDF p.4 표기 그대로"
+    },
+    {
+      "model": "ILD1420-100",
+      "specs": {
+        "displacement_mm": {
+          "value": 100,
+          "note": "원문 Measuring range 100 mm"
+        },
+        "measurement_distance_mm": {
+          "value": 50,
+          "note": "원문 Start of measuring range 50 mm(중앙 100 mm, 끝 150 mm)"
+        },
+        "linearity_um": {
+          "value": 80,
+          "note": "원문 Linearity < 80 µm(< 0.08 % FSO)"
+        },
+        "measuring_repeatability_um": {
+          "value": 4,
+          "note": "원문 Repeatability 4 µm(1 kHz, median 9)"
+        },
+        "spot_size_um": {
+          "value": 710,
+          "note": "원문 Light spot diameter MMR 710 x 910 µm(짧은 쪽을 값으로)"
+        },
+        "data_rate_Hz": {
+          "value": 8000,
+          "note": "원문 Measuring rate max. 8 kHz(레이저 Class 2 표준)"
+        }
+      },
+      "note": "레이저 점(Laser point) 표준형, Class 2. 기종명은 PDF p.4 표기 그대로"
+    },
+    {
+      "model": "ILD1420-200",
+      "specs": {
+        "displacement_mm": {
+          "value": 200,
+          "note": "원문 Measuring range 200 mm"
+        },
+        "measurement_distance_mm": {
+          "value": 60,
+          "note": "원문 Start of measuring range 60 mm(중앙 160 mm, 끝 260 mm)"
+        },
+        "linearity_um": {
+          "value": 160,
+          "note": "원문 Linearity < 160 µm(< 0.08 % FSO)"
+        },
+        "measuring_repeatability_um": {
+          "min": 8,
+          "max": 16,
+          "note": "원문 Repeatability 8 ... 16 µm(1 kHz, median 9)"
+        },
+        "spot_size_um": {
+          "value": 710,
+          "note": "원문 Light spot diameter MMR 710 x 910 µm(짧은 쪽을 값으로)"
+        },
+        "data_rate_Hz": {
+          "value": 8000,
+          "note": "원문 Measuring rate max. 8 kHz(레이저 Class 2 표준)"
+        }
+      },
+      "note": "레이저 점(Laser point) 표준형, Class 2. 기종명은 PDF p.4 표기 그대로"
+    },
+    {
+      "model": "ILD1420-500",
+      "specs": {
+        "displacement_mm": {
+          "value": 500,
+          "note": "원문 Measuring range 500 mm"
+        },
+        "measurement_distance_mm": {
+          "value": 100,
+          "note": "원문 Start of measuring range 100 mm(중앙 350 mm, 끝 600 mm)"
+        },
+        "linearity_um": {
+          "min": 500,
+          "max": 1000,
+          "note": "원문 Linearity < 500 ... 1000 µm(< 0.1 ... 0.2 % FSO)"
+        },
+        "measuring_repeatability_um": {
+          "min": 20,
+          "max": 40,
+          "note": "원문 Repeatability 20 ... 40 µm(1 kHz, median 9)"
+        },
+        "spot_size_um": {
+          "value": 710,
+          "note": "원문 Light spot diameter MMR 710 x 910 µm(짧은 쪽을 값으로)"
+        },
+        "data_rate_Hz": {
+          "value": 8000,
+          "note": "원문 Measuring rate max. 8 kHz(레이저 Class 2 표준)"
+        }
+      },
+      "note": "레이저 점(Laser point) 표준형, Class 2. 기종명은 PDF p.4 표기 그대로"
+    },
+    {
+      "model": "optoNCDT 1420LL",
+      "variant": "레이저 라인(Laser Line)형",
+      "specs": {
+        "displacement_mm": {
+          "min": 10,
+          "max": 50,
+          "note": "원문 Measuring range 10 - 50 mm"
+        },
+        "measuring_repeatability_um": {
+          "value": 0.5,
+          "note": "원문 Repeatability 0.5 µm(최소값)"
+        }
+      },
+      "note": "PDF p.3 개요 표 표기. 주문 기호는 ILD1420-<측정 범위>LL(p.6). 기종별 상세 표는 이 PDF 에 없음"
+    },
+    {
+      "model": "optoNCDT 1420CL1",
+      "variant": "레이저 Class 1 형",
+      "specs": {
+        "displacement_mm": {
+          "min": 10,
+          "max": 50,
+          "note": "원문 Measuring range 10 - 50 mm"
+        },
+        "measuring_repeatability_um": {
+          "value": 0.5,
+          "note": "원문 Repeatability 0.5 µm(최소값)"
+        },
+        "data_rate_Hz": {
+          "value": 4000,
+          "note": "원문 For models with laser class 1, the maximum measurement rate is 4 kHz"
+        }
+      },
+      "note": "PDF p.3 개요 표 표기. 주문 기호는 ILD1420-<측정 범위>CL1(p.6). Class 1 기종은 IP65, 아날로그 출력 D/A 12 bit(p.4 각주)"
+    }
+  ],
+  "features": [
+    "인터페이스: RS422, PROFINET, EtherNet/IP, EtherCAT",
+    "IP67"
+  ],
+  "sources": [
+    {
+      "url": "https://www.micro-epsilon.com/distance-sensors/laser-sensors/optoncdt-1420",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지. 측정 범위·직선성·반복 정밀도·측정 속도·IP67·인터페이스"
+    },
+    {
+      "url": "https://www.micro-epsilon.com/distance-sensors/laser-sensors/",
+      "retrieved": "2026-10-08",
+      "note": "제조사 레이저 센서 목록 페이지(계열별 측정 범위·반복 정밀도·측정 속도)"
+    },
+    {
+      "file": "micro-epsilon/dax--optoncdt-1420--en.pdf",
+      "pages": [
+        3,
+        4,
+        6
+      ]
+    }
+  ],
+  "confidence": "catalog",
+  "notes": "PDF 로 확인: ILD1420-10~-500 기종명·측정 범위·측정 시작 거리·직선성·반복 정밀도·스폿, 측정 속도 8 kHz, 파장 670 nm, 운전 온도(데이터시트 p.4). 웹 페이지의 'Class 1 변형 최대 390 µW' 는 PDF 에 없음(PDF 는 Class 2 표준 < 1 mW 만 적음). 같은 외형의 하위 계열 optoNCDT 1220(반복 1 µm)·1320(반복 1 µm)은 넣지 않음."
+}

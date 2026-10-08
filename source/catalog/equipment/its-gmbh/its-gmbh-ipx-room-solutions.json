@@ -1,0 +1,297 @@
+{
+  "id": "its-gmbh-ipx-room-solutions",
+  "kind": "equipment_series",
+  "name": "iTS Room Solutions for Spray and Jet Water (SRA 1200, WVM 1000, high-pressure units, DT turntables, TG drip units)",
+  "name_ko": "iTS 방수 시험실 구성 모듈",
+  "manufacturer": "its-gmbh",
+  "category": "water_ingress_tester",
+  "description": "챔버 대신 시험실(룸)에 설치해 방수 시험 설비를 구성하는 모듈 계열임. 요동관 시스템 SRA 1200(반경 최대 1200 mm, IPX3·IPX4), 급수 모듈 WVM 1000(1000 l 저수조, 0~105 l/min, IPX5·IPX6·IPX6K), 고압 유닛(7~18 l/min, 30~120 bar, 최고 85 °C, IPX9·IPX9K), 회전대 DT 계열(0~5 rpm, 적재 200 kg 또는 1000 kg)로 이루어짐. 적하 유닛 TG 계열(IPX1·IPX2)은 같은 제조사의 IPX1/IPX2 안내 페이지에 단독 제품으로 실림.",
+  "test_items": [
+    "water_ingress"
+  ],
+  "standards": {
+    "compliance": [],
+    "test_methods": [
+      "IEC 60529",
+      "ISO 20653",
+      "IEC 60068-2-18",
+      "IEC 60598-1",
+      "LV 124",
+      "BMW GS 95003-4",
+      "UL 50E",
+      "NEMA 250"
+    ]
+  },
+  "limits": {
+    "ipx_levels": {
+      "note": "IPX1 · IPX2 · IPX3 · IPX4 · IPX5 · IPX6 · IPX6K · IPX9 · IPX9K (모듈별로 다름. IPX1/IPX2 는 TG 적하 유닛, IPX3/IPX4 는 SRA 1200, IPX5/IPX6/IPX6K 는 WVM 1000, IPX9/IPX9K 는 고압 유닛)"
+    },
+    "oscillating_tube_radius_mm": {
+      "max": 1200,
+      "note": "SRA 1200: Swivel arc up to 1200 mm radius"
+    },
+    "spray_flow_L_min": {
+      "min": 0,
+      "max": 105,
+      "note": "WVM 1000 0~105 l/min. 고압 유닛 7~18 l/min"
+    },
+    "water_pressure_bar": {
+      "min": 0,
+      "max": 120,
+      "note": "WVM 1000 0~14 bar(옵션에 따라). 고압 유닛 30~120 bar"
+    },
+    "water_temperature_degC": {
+      "max": 85,
+      "note": "고압 유닛 water up to 85 °C. WVM 1000 PRO/FLEX 의 시험수 가열은 통상 약 20 °C, 최고 30 °C"
+    },
+    "turntable_speed_rpm": {
+      "min": 0,
+      "max": 5,
+      "note": "DT 계열 공통. infinitely variable speed of 0–5 rpm, continuously, reversing, or positioning"
+    },
+    "turntable_load_kg": {
+      "max": 1000,
+      "note": "DT PRO 200 kg, DT HD 1000 kg"
+    },
+    "turntable_diameter_mm": {
+      "min": 800,
+      "max": 1500,
+      "note": "DT 800 PRO Ø 800 mm ~ DT 1500 HD Ø 1500 mm"
+    }
+  },
+  "models": [
+    {
+      "model": "SRA 1200",
+      "variant": "swivel tube system",
+      "specs": {
+        "ipx_levels": "IPX3 · IPX4",
+        "oscillating_tube_radius_mm": {
+          "max": 1200
+        }
+      },
+      "note": "카운터 베어링 기둥형 또는 벽 베어링형. 자동 유량 제어"
+    },
+    {
+      "model": "WVM 1000",
+      "variant": "BASIC / PRO / FLEX",
+      "specs": {
+        "ipx_levels": "IPX5 · IPX6 · IPX6K",
+        "tank_volume_L": 1000,
+        "spray_flow_L_min": {
+          "min": 0,
+          "max": 105
+        },
+        "water_pressure_bar": {
+          "min": 0,
+          "max": 14,
+          "note": "원문 0–14 bar depending on the option"
+        },
+        "water_temperature_degC": {
+          "max": 30,
+          "note": "PRO/FLEX 의 시험수 가열. 통상 약 20 °C"
+        }
+      },
+      "note": "PRO 는 7인치 터치 패널, FLEX 는 15인치 터치 패널. IPX6K 용 승압 펌프 옵션, UL hose down 용 대용량 펌프 옵션. 자동 시험은 DT PRO 회전대와 WVM 1000 PRO 조합"
+    },
+    {
+      "model": "High-pressure unit with boiler",
+      "specs": {
+        "ipx_levels": "IPX9 · IPX9K",
+        "tank_volume_L": 150,
+        "heating_power_kW": 18,
+        "spray_flow_L_min": {
+          "min": 7,
+          "max": 18
+        },
+        "water_pressure_bar": {
+          "min": 30,
+          "max": 120
+        },
+        "water_temperature_degC": {
+          "max": 85
+        }
+      },
+      "note": "원문: 150 l boiler, 18 kW heating capacity, flow rate 7–18 l/min, pressure 30–120 bar, water up to 85 °C"
+    },
+    {
+      "model": "High-pressure unit with instantaneous water heater",
+      "specs": {
+        "ipx_levels": "IPX9 · IPX9K",
+        "heating_power_kW": 110,
+        "spray_flow_L_min": {
+          "min": 7,
+          "max": 18
+        },
+        "water_pressure_bar": {
+          "min": 30,
+          "max": 120
+        }
+      },
+      "note": "원문: 110 kW heating capacity, identical pressure and flow rates. 수온 상한은 이 문장에 따로 적히지 않음(모듈 요약에는 water up to 85 °C)"
+    },
+    {
+      "model": "DT 800 PRO",
+      "specs": {
+        "turntable_diameter_mm": 800,
+        "turntable_load_kg": 200,
+        "turntable_speed_rpm": {
+          "min": 0,
+          "max": 5
+        }
+      }
+    },
+    {
+      "model": "DT 1000 PRO",
+      "specs": {
+        "turntable_diameter_mm": 1000,
+        "turntable_load_kg": 200,
+        "turntable_speed_rpm": {
+          "min": 0,
+          "max": 5
+        }
+      }
+    },
+    {
+      "model": "DT 1200 PRO",
+      "specs": {
+        "turntable_diameter_mm": 1200,
+        "turntable_load_kg": 200,
+        "turntable_speed_rpm": {
+          "min": 0,
+          "max": 5
+        }
+      }
+    },
+    {
+      "model": "DT 1200 HD",
+      "specs": {
+        "turntable_diameter_mm": 1200,
+        "turntable_load_kg": 1000,
+        "turntable_speed_rpm": {
+          "min": 0,
+          "max": 5
+        }
+      }
+    },
+    {
+      "model": "DT 1500 HD",
+      "specs": {
+        "turntable_diameter_mm": 1500,
+        "turntable_load_kg": 1000,
+        "turntable_speed_rpm": {
+          "min": 0,
+          "max": 5
+        }
+      }
+    },
+    {
+      "model": "TG 43",
+      "variant": "drip unit",
+      "specs": {
+        "ipx_levels": "IPX1 · IPX2",
+        "drip_area_mm": "400 × 300",
+        "drip_needle_count": 336,
+        "footprint_mm": "502 × 465",
+        "weight_kg": 16,
+        "weight_kg_filled": 18
+      }
+    },
+    {
+      "model": "TG 64",
+      "variant": "drip unit",
+      "specs": {
+        "ipx_levels": "IPX1 · IPX2",
+        "drip_area_mm": "600 × 400",
+        "drip_needle_count": 600,
+        "footprint_mm": "736 × 565",
+        "weight_kg": 23,
+        "weight_kg_filled": 27
+      }
+    },
+    {
+      "model": "TG 1010",
+      "variant": "drip unit",
+      "specs": {
+        "ipx_levels": "IPX1 · IPX2",
+        "drip_area_mm": "1000 × 1000",
+        "drip_needle_count": 2500,
+        "footprint_mm": "1136 × 1165",
+        "weight_kg": 55,
+        "weight_kg_filled": 70
+      }
+    }
+  ],
+  "features": [
+    "모듈 단위로 시험실에 구성",
+    "DT 회전대: 0~5 rpm 무단 변속, 연속·역회전·위치 결정 운전"
+  ],
+  "options": [
+    {
+      "name": "IPX9K 시험 리그(랜스 4개)",
+      "note": "DIN EN 60529·ISO 20653 기준으로 측정한 노즐 형상"
+    },
+    {
+      "name": "XY 축 랜스",
+      "note": "노즐 이동 X 2200 mm, Y 900 mm"
+    },
+    {
+      "name": "시편 매달기 축 포털",
+      "note": "체인 호이스트 4개"
+    },
+    {
+      "name": "수동 분무 노즐 IPX3/4"
+    },
+    {
+      "name": "UL rain test",
+      "note": "노즐 3개, 높이 1300~2100 mm 조절"
+    },
+    {
+      "name": "IPX5/IPX6 단독 분류 노즐",
+      "note": "IPX5 6.3 mm 노즐(유량계 0~20 l/min, 압력계 0~1 bar), IPX6 12.5 mm 노즐(유량계 0~100 l/min, 압력계 0~2.5 bar), 삼각대 고정 가능"
+    },
+    {
+      "name": "WVM 1000 승압 펌프",
+      "note": "IPX6K 용"
+    }
+  ],
+  "relations": [
+    {
+      "type": "same_family_as",
+      "target": "its-gmbh-spk-water-test-chambers",
+      "note": "같은 제조사의 방수 시험 계열"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://its-gmbh.de/en/produkt/raumloesungen-fuer-spritz-und-strahlwasser/",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지(2등급). SRA 1200, WVM 1000, 고압 유닛 요약, DT 회전대 표, 규격 목록. PDF 로는 아직 확인하지 않음"
+    },
+    {
+      "url": "https://its-gmbh.de/en/ipx9k-pruefung/",
+      "retrieved": "2026-10-08",
+      "note": "제조사 시험 안내 페이지. 고압 유닛(보일러형 150 l·18 kW, 순간 가열형 110 kW, 7~18 l/min, 30~120 bar, 85 °C), 랜스 4개 리그, XY 랜스 2200 × 900 mm, 축 포털"
+    },
+    {
+      "url": "https://its-gmbh.de/en/ipx5-ipx6-pruefung/",
+      "retrieved": "2026-10-08",
+      "note": "제조사 시험 안내 페이지. WVM 1000(1000 l, 0~105 l/min, 0~14 bar, 가열 최고 30 °C, BASIC/PRO/FLEX), 단독 분류 노즐 계측 범위"
+    },
+    {
+      "url": "https://its-gmbh.de/en/ipx3-ipx4-pruefung/",
+      "retrieved": "2026-10-08",
+      "note": "제조사 시험 안내 페이지. SRA 1200, 수동 분무 노즐, UL rain test(노즐 3개, 1300~2100 mm)"
+    },
+    {
+      "url": "https://its-gmbh.de/en/ipx1-ipx2-pruefung/",
+      "retrieved": "2026-10-08",
+      "note": "제조사 시험 안내 페이지. TG 43/64/1010 적하 유닛 표(적하 면적, 바늘 수, 외형, 무게 빈/채움)"
+    },
+    {
+      "file": "its-gmbh/its-brochure-en.pdf",
+      "note": "제조사 원본 문서. 이미지 브로슈어라 텍스트가 없음 — 값 대조에는 못 씀(값은 웹 출처 기준)"
+    }
+  ],
+  "confidence": "limited",
+  "notes": "TG 적하 유닛의 외형 치수는 원문에 두 값만 있어 축 이름 없이 문자열로 둠. TG 유닛의 적하량 1 mm/min·3 mm/min 은 규격 요구로 적힌 값이라 장비 사양에 넣지 않음. 페이지에 TK64 적하 챔버(IPX1/IPX2 전용)가 이름만 나오고 수치가 없음."
+}

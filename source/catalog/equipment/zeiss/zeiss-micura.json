@@ -1,0 +1,37 @@
+{
+  "id": "zeiss-micura",
+  "kind": "equipment_series",
+  "name": "ZEISS MICURA Bridge-Type CMM",
+  "name_ko": "자이스 MICURA 소형 고정밀 3차원 측정기",
+  "manufacturer": "zeiss",
+  "category": "coordinate_measuring_machine",
+  "form_factor": "floor",
+  "description": "공차가 좁은 소형 부품용 브리지형 3차원 측정기임. 측정 범위 500 × 700 × 600 mm(5/7/6 dm), 정확도 0.7 + L/400 µm 부터, 최대 시편 질량 730 kg. 시편 온도 센서 2개 표준, VAST XT gold · VAST XTR gold 프로브로 초당 최대 500점 스캐닝, 외부 회전 테이블로 4축 측정(옵션).",
+  "test_items": [],
+  "limits": {
+    "specimen_mass_kg": {
+      "max": 730
+    }
+  },
+  "models": [
+    {
+      "model": "MICURA 5/7/6",
+      "specs": {
+        "measuring_range_x_mm": 500,
+        "measuring_range_y_mm": 700,
+        "measuring_range_z_mm": 600,
+        "length_measuring_error_mpe": "Accuracy from 0.7 + L/400 µm",
+        "specimen_mass_kg": 730
+      },
+      "note": "페이지는 크기를 5/7/6 dm 하나로 적음"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://www.zeiss.com/metrology/en/systems/cmms/bridge-type-cmms/micura.html",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지(기술 데이터)"
+    }
+  ],
+  "confidence": "limited"
+}

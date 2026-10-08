@@ -1,0 +1,393 @@
+{
+  "id": "waygate-technologies-phoenix-vtomex",
+  "kind": "equipment_series",
+  "name": "Waygate Technologies Phoenix V|tome|x (S Neo / M Neo / M300 / M240 / C450)",
+  "name_ko": "웨이게이트 피닉스 v|tome|x 산업용 CT",
+  "manufacturer": "waygate-technologies",
+  "brand": "phoenix|x-ray",
+  "category": "xray_inspection",
+  "form_factor": "floor",
+  "description": "고분해능 산업용 CT 계열. V|tome|x S Neo 는 240 kV/320 W 개방형 지향 마이크로포커스(옵션 180 kV/20 W 나노포커스 이중 튜브)로 디테일 <1 µm(나노포커스 <0.2 µm), V|tome|x M Neo · M300 은 300 kV/500 W 마이크로포커스(M240 은 240 kV/320 W)로 대형 시료와 VDI/VDE 2630 치수 측정을, V|tome|x C450 은 450 kV 미니포커스(700 W/1500 W)로 지름 500 mm · 높이 1000 mm 스캔 영역과 100 kg 시료를 다룬다.",
+  "test_items": [
+    "xray_void_inspection"
+  ],
+  "measurands": [
+    "internal_geometry",
+    "dimensional_metrology",
+    "porosity"
+  ],
+  "standards": {
+    "compliance": [
+      "VDI/VDE 2630-1.3 (Metrology|edition)"
+    ],
+    "test_methods": []
+  },
+  "limits": {
+    "tube_voltage_kV": {
+      "values": [
+        180,
+        240,
+        300,
+        450
+      ],
+      "note": "180 kV 는 옵션 나노포커스(이중 튜브)"
+    },
+    "tube_power_W": {
+      "min": 15,
+      "max": 1500,
+      "note": "나노포커스 15 W(V|tome|x M 이중 튜브, BHFF31319EN p.7) · 20 W(M Neo BHFF60028 p.6, S Neo 웹), 240 kV 320 W, 300 kV 500 W, C450 700 W / 1500 W"
+    },
+    "feature_recognition_um": {
+      "min": 0.2,
+      "note": "나노포커스 0.2 µm(M · M Neo PDF, S Neo 는 웹 <0.2 µm). 마이크로포커스 <1 µm, C450 미니포커스 ~50 µm · 메조포커스 ~20 µm(PDF)"
+    },
+    "voxel_size_um": {
+      "min": 0.27,
+      "note": "S Neo 나노포커스 옵션 <0.27 µm. M300 나노포커스 + Dynamic 41|100 <0.5 µm"
+    },
+    "specimen_diameter_mm": {
+      "max": 500,
+      "note": "C450 3D 스캔 Ø500 mm, M Neo 오프셋 스캔 시 500 mm, M 은 이동 제한 시 500 mm(PDF)"
+    },
+    "specimen_height_mm": {
+      "max": 1000,
+      "note": "C450 최대 3D 스캔 영역 Ø500 × 1000 mm"
+    },
+    "sample_weight_kg": {
+      "max": 100,
+      "note": "C450 옵션 100 kg(표준 50 kg, HS 회전 유닛 10 kg — BHFF31350EN p.7). S Neo 10 kg(옵션 15 kg, 웹), M 50 kg, M Neo 75 kg(PDF)"
+    },
+    "magnification": {
+      "max": 225,
+      "note": "M Neo 나노포커스 기하 배율 최대 225배(BHFF60028 p.6). M 은 나노포커스 200배"
+    }
+  },
+  "models": [
+    {
+      "model": "Phoenix V|tome|x S Neo",
+      "specs": {
+        "xray_source": "개방형 지향 고출력 마이크로포커스 240 kV/320 W, 옵션 180 kV/20 W 나노포커스(다이아몬드 윈도) 이중 튜브",
+        "tube_voltage_kV": 240,
+        "tube_power_W": 320,
+        "feature_recognition_um": {
+          "note": "<1 µm (마이크로포커스), 옵션 <0.2 µm (나노포커스)"
+        },
+        "voxel_size_um": {
+          "note": "1 µm (마이크로포커스), 옵션 <0.27 µm (나노포커스)"
+        },
+        "detector": "DXR S100 Pro (100 µm, 2500 × 3000) / Dynamic 41|200 (200 µm, 2036 × 2036, 최대 30 fps) / Dynamic 41|100 (100 µm, 4048 × 4048)",
+        "specimen_diameter_mm": {
+          "max": 400
+        },
+        "specimen_height_mm": {
+          "min": 360,
+          "max": 400,
+          "note": "원문 '400 mm Ø × 360-400 mm height'"
+        },
+        "sample_weight_kg": {
+          "max": 10,
+          "note": "옵션 15 kg"
+        },
+        "footprint_mm": "2550 × 1905 × 1275",
+        "weight_kg": 4050,
+        "accuracy": "SD ≤ (9.8 + L/50) µm, VDI/VDE 2630 (Metrology|edition)"
+      }
+    },
+    {
+      "model": "Phoenix V|tome|x M Neo",
+      "specs": {
+        "xray_source": "300 kV/500 W 개방형 지향 고출력 마이크로포커스(또는 240 kV/320 W), 옵션 180 kV/20 W 나노포커스(다이아몬드 윈도) 이중 튜브 · 수평 배치",
+        "tube_voltage_kV": [
+          240,
+          300
+        ],
+        "tube_power_W": [
+          320,
+          500
+        ],
+        "magnification": {
+          "min": 1.29,
+          "max": 100,
+          "note": "나노포커스 시 최대 225배"
+        },
+        "feature_recognition_um": {
+          "note": "<1 µm (마이크로포커스), 옵션 0.2 µm (나노포커스)"
+        },
+        "voxel_size_um": {
+          "min": 2,
+          "note": "원문 Down to 2 µm(microfocus), optional 1 µm with Dynamic 41|100, optional down to <0.5 µm(nanofocus + Dynamic 41|100)"
+        },
+        "detector": "Dynamic 41|200 (410 × 410 mm, 200 µm, 4 MP) 또는 Dynamic 41|100 (410 × 410 mm, 100 µm, 16 MP)",
+        "specimen_diameter_mm": {
+          "max": 500,
+          "note": "원문 310 mm x 700 mm in height; up to 500 mm in diameter when using an offset scan"
+        },
+        "specimen_height_mm": {
+          "max": 700,
+          "note": "원문 700 mm in height"
+        },
+        "sample_weight_kg": 75,
+        "footprint_mm": "약 2911 × 2177 × 1710",
+        "weight_kg": 9500,
+        "working_distance_mm": {
+          "max": 700,
+          "note": "원문 Max. focus object distance 700 mm(microfocus tube)"
+        },
+        "measurement_distance_mm": {
+          "min": 310,
+          "max": 900,
+          "note": "원문 Variable focus-detector-distance(옵션) 310 mm - 900 mm"
+        }
+      },
+      "note": "BHFF60028(05/2024) p.6 사양표로 확인. 6축 화강암 매니퓰레이터, Scatter|correct 최대 스캔 지름 290 mm(오프셋 450 mm)"
+    },
+    {
+      "model": "Phoenix V|tome|x M300",
+      "specs": {
+        "xray_source": "300 kV/500 W 개방형 지향 고출력 마이크로포커스(폐회로 수랭), 옵션 Dual|tube 180 kV/15 W 나노포커스(다이아몬드 윈도)",
+        "tube_voltage_kV": 300,
+        "tube_power_W": 500,
+        "magnification": {
+          "min": 1.3,
+          "max": 100,
+          "note": "나노포커스 시 최대 200배"
+        },
+        "feature_recognition_um": {
+          "note": "<1 µm (마이크로포커스), 옵션 0.2 µm (나노포커스)"
+        },
+        "voxel_size_um": {
+          "min": 2,
+          "note": "옵션 나노포커스 + Dynamic 41|100 으로 <0.5 µm"
+        },
+        "accuracy": "SD ≤ (3.8 + L/100 mm) µm, VDI 2630-1.3",
+        "specimen_diameter_mm": {
+          "max": 500,
+          "note": "원문 360 mm x 600 mm; up to 500 x 600 mm with limited travel range"
+        },
+        "specimen_height_mm": {
+          "max": 600,
+          "note": "원문 최대 3D 스캔 420 mm x 400 mm"
+        },
+        "sample_weight_kg": {
+          "max": 50,
+          "note": "고정밀 CT 는 약 20 kg"
+        },
+        "footprint_mm": "2620 × 2060 × 1570 (W × H × D)",
+        "weight_kg": 7960,
+        "working_distance_mm": {
+          "max": 600,
+          "note": "원문 Max. focus object distance 600 mm(microfocus tube)"
+        },
+        "measurement_distance_mm": {
+          "value": 800,
+          "note": "원문 Focus-detector-distance 800 mm"
+        }
+      },
+      "note": "BHFF31319EN(01/2023) p.7 사양표로 확인. 웹 페이지는 나노포커스 옵션을 180 kV/20 W 로 적었으나 PDF 는 180 kV/15 W. 4축 화강암 매니퓰레이터, Scatter|correct 최대 스캔 지름 260 mm · 기하 배율 1.51~100x"
+    },
+    {
+      "model": "Phoenix V|tome|x M240",
+      "variant": "M300 의 240 kV/320 W 구성",
+      "specs": {
+        "tube_voltage_kV": 240,
+        "tube_power_W": 320
+      },
+      "note": "BHFF31319EN p.1·7: 'Alternatively available with 240 kV/320 W microfocus X-ray tube'"
+    },
+    {
+      "model": "Phoenix V|tome|x M Dual|tube",
+      "variant": "V|tome|x M + 180 kV 나노CT 이중 튜브",
+      "specs": {
+        "xray_source": "300 kV/500 W(또는 240 kV/320 W) 마이크로포커스 + 180 kV/15 W 고출력 나노포커스(다이아몬드 윈도)",
+        "tube_voltage_kV": [
+          180,
+          300
+        ],
+        "tube_power_W": [
+          15,
+          500
+        ],
+        "magnification": {
+          "min": 1.3,
+          "max": 200,
+          "note": "원문 1.3x to 100x; up to 200x with nanofocus tube"
+        },
+        "feature_recognition_um": {
+          "min": 0.2,
+          "note": "원문 optional down to 0.2 µm (nanofocus tube)"
+        },
+        "voxel_size_um": {
+          "min": 0.5,
+          "note": "원문 Optional down to <0.5 µm (nanofocus + dyn. 41|100)"
+        }
+      },
+      "note": "BHFF31319EN p.1 표지에 'Phoenix V|tome|x M Dual|tube (+180 kV nanoCT)' 로 따로 적힘. 사양은 p.7 의 Dual|tube option 행"
+    },
+    {
+      "model": "Phoenix V|tome|x C450",
+      "specs": {
+        "xray_source": "밀폐형 ISOVOLT 450 M2/0.4-1.0HP 미니포커스, 옵션 450 kV 메조포커스",
+        "tube_voltage_kV": 450,
+        "tube_power_W": [
+          700,
+          1500
+        ],
+        "spot_size_um": {
+          "values": [
+            400,
+            1000
+          ],
+          "note": "원문 0.4 mm (700 W) / 1.0 mm (1,500 W)"
+        },
+        "feature_recognition_um": {
+          "note": "원문 Down to ~50 µm with ISOVOLT Minifocus / ~20 µm with Mesofocus"
+        },
+        "voxel_size_um": {
+          "min": 100,
+          "max": 146,
+          "note": "원문 Voxelsize range 100-146 µm(V|tome|x C)"
+        },
+        "detector": "Dynamic 41|200p+ (410 × 410 mm, 200 µm, 4 MP) 또는 Dynamic 41|100 (100 µm, 16 MP), 옵션 LDA",
+        "sample_weight_kg": {
+          "max": 100,
+          "note": "원문 up to 50 kg(110 lbs.) or optionally up to 100 kg(220 lbs.). 웹 값 정리에서 'HS 버전' 이라 적었던 것은 PDF 와 다름(HS 회전 유닛은 10 kg)"
+        },
+        "magnification": {
+          "min": 1.37,
+          "max": 2,
+          "note": "원문 Geometrical magnification (3D) 1.37-2x"
+        },
+        "scan_range_mm": "Ø500 × 1000 (Scatter|correct 사용 시 270 × 1000)",
+        "accuracy": "SD ≤ (15 + L/50 mm) µm, VDI 2630-1.3(Metrology|edition 옵션)",
+        "optical_resolution_lp_mm": {
+          "value": 2.5,
+          "note": "원문 Spatial CT resolution 2.5 lp/mm at 130 µm voxel resolution(ASTM E1695)"
+        },
+        "measurement_distance_mm": {
+          "value": 1300,
+          "note": "원문 Focus Detector Distance (FDD) 1,300 mm"
+        },
+        "working_distance_mm": {
+          "min": 650,
+          "max": 950,
+          "note": "원문 Focus object distance 650-950 mm"
+        },
+        "footprint_mm": [
+          2310,
+          2750,
+          2870
+        ],
+        "weight_kg": {
+          "value": 15000,
+          "note": "원문 ~15,000 kg"
+        }
+      },
+      "note": "BHFF31350EN(02/2026) p.7 사양표 'Phoenix V|tome|x C' 열. 외형 W × H × D(콘솔 제외)"
+    },
+    {
+      "model": "Phoenix V|tome|x C450 HS",
+      "variant": "고속(HS) 구성 · Quick|pick 매니퓰레이터",
+      "specs": {
+        "xray_source": "밀폐형 ISOVOLT 450 M2/0.4-1.0HP 미니포커스, 옵션 450 kV 메조포커스",
+        "tube_voltage_kV": 450,
+        "tube_power_W": [
+          700,
+          1500
+        ],
+        "voxel_size_um": {
+          "min": 87,
+          "max": 139,
+          "note": "원문 Voxelsize range 87-139 µm(V|tome|x C Scatter|correct / HS 열)"
+        },
+        "magnification": {
+          "min": 1.44,
+          "max": 2.3,
+          "note": "원문 Geometrical magnification (3D) 1.44-2.3x"
+        },
+        "measurement_distance_mm": {
+          "value": 1150,
+          "note": "원문 Focus Detector Distance (FDD) 1,150 mm"
+        },
+        "working_distance_mm": {
+          "min": 500,
+          "max": 800,
+          "note": "원문 Focus object distance 500-800 mm"
+        },
+        "sample_weight_kg": {
+          "max": 10,
+          "note": "원문 270 x 310 mm / up to 10 kg (rotation unit HS); 100 x 125 mm / up to 3 kg (Quick|pick gripper)"
+        },
+        "scan_range_mm": "Ø270 × 310(HS 회전 유닛), Quick|pick 그리퍼 100 × 125"
+      },
+      "note": "BHFF31350EN p.6·7. 사양표 두 번째 열은 Scatter|correct 구성과 HS 가 같이 씀. 터빈 블레이드 25개를 2시간 안에 무인 배치 CT"
+    }
+  ],
+  "features": [
+    "이중 튜브(dual|tube) 구성",
+    "Scatter|correct · Flash! · Multi|BHC",
+    "Datos|x 3 재구성 소프트웨어",
+    "Metrology|edition (VDI/VDE 2630)"
+  ],
+  "relations": [
+    {
+      "type": "performs",
+      "target": "xray_void_inspection"
+    },
+    {
+      "type": "same_family_as",
+      "target": "waygate-technologies-phoenix-micromex-nanomex-neo"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://www.bakerhughes.com/waygate-technologies/industrial-radiography-and-ct/ct-inspection-systems/vtomex-s",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지(V|tome|x S Neo)"
+    },
+    {
+      "url": "https://www.bakerhughes.com/waygate-technologies/industrial-radiography-and-ct/industrial-3d-precision-metrology-ct/vtomex-m-neo",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지(V|tome|x M Neo)"
+    },
+    {
+      "url": "https://www.bakerhughes.com/waygate-technologies/industrial-radiography-and-ct/industrial-3d-precision-metrology-ct/vtomex-m",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지(V|tome|x M300 · M240)"
+    },
+    {
+      "url": "https://www.bakerhughes.com/waygate-technologies/industrial-radiography-and-ct/industrial-3d-precision-metrology-ct/vtomex-c",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지(V|tome|x C450)"
+    },
+    {
+      "file": "waygate-technologies/bhff31319en_2023-01_phoenix-vtomex-m_a4_v02_2.pdf",
+      "pages": [
+        1,
+        5,
+        7
+      ]
+    },
+    {
+      "file": "waygate-technologies/phoenix-vtomex-c450-en-bhpd-31350-052020.pdf",
+      "pages": [
+        2,
+        5,
+        6,
+        7
+      ]
+    },
+    {
+      "file": "waygate-technologies/wt_neo_brochure_en_v02_5.pdf",
+      "pages": [
+        5,
+        6
+      ]
+    },
+    {
+      "file": "waygate-technologies/v-tome-x-s-neo-brochure-2026-en.pdf",
+      "note": "제조사 원본 문서. 이미지 PDF 라 텍스트가 없음 — 값 대조에는 못 씀(값은 웹 출처 기준)"
+    }
+  ],
+  "notes": "PDF 로 확인: V|tome|x M300 · M240(BHFF31319EN), M Neo(BHFF60028), C450(BHFF31350EN)의 관전압·출력·기하 배율·디테일 검출·복셀·시료 한계·외형·무게·정확도. PDF 로 바꾼 값: M300 나노포커스 옵션 180 kV/15 W(웹 20 W), C450 최대 100 kg 은 HS 가 아닌 표준 매니퓰레이터 옵션. M Dual|tube · C450 HS 를 PDF 기종명으로 더함. 웹 값 그대로: V|tome|x S Neo 전부(S Neo 브로셔 PDF 는 텍스트가 비어 있음 — 이미지 PDF). M300 페이지는 외형을 W × H × D 로 적었다(PDF 도 W x H x D). 기종명 표기는 제조사 'Phoenix V|tome|x' 그대로 두었다(대장에는 'vtomex' 로 적힐 수 있다).",
+  "confidence": "catalog"
+}

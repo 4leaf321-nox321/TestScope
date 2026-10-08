@@ -1,0 +1,85 @@
+{
+  "id": "yokogawa-dlm5000",
+  "kind": "equipment_series",
+  "name": "DLM5000 Series Mixed Signal Oscilloscope",
+  "name_ko": "요코가와 DLM5000 혼합 신호 오실로스코프",
+  "manufacturer": "yokogawa",
+  "brand": "DLM",
+  "category": "oscilloscope",
+  "subcategory": "mixed_signal_oscilloscope",
+  "form_factor": "benchtop",
+  "description": "350·500 MHz 대역의 4·8채널 혼합 신호 오실로스코프 계열임. 8채널 동시 최대 2.5 GS/s, 최대 500 Mpoints(단일 표준 50 Mpoints), 8채널 기종은 32 bit 로직, 12.1 inch 화면, 히스토리 최대 100,000 파형.",
+  "test_items": [],
+  "limits": {
+    "bandwidth_Hz": {
+      "min": 350000000,
+      "max": 500000000
+    },
+    "channels": {
+      "values": [
+        4,
+        8
+      ]
+    },
+    "logic_channel_count": {
+      "values": [
+        32
+      ]
+    },
+    "sample_rate_Sa_s": {
+      "max": 2500000000,
+      "note": "원문 Up to 2.5 GS/s (8 channels at the same time)"
+    },
+    "record_length_pts": {
+      "min": 50000000,
+      "max": 500000000,
+      "note": "원문 standard 50 Mpoints (single), up to 500 Mpoints"
+    },
+    "display_size_in": {
+      "values": [
+        12.1
+      ]
+    }
+  },
+  "models": [
+    {
+      "model": "DLM5034",
+      "specs": {
+        "bandwidth_Hz": 350000000,
+        "channels": 4
+      }
+    },
+    {
+      "model": "DLM5054",
+      "specs": {
+        "bandwidth_Hz": 500000000,
+        "channels": 4
+      }
+    },
+    {
+      "model": "DLM5038",
+      "specs": {
+        "bandwidth_Hz": 350000000,
+        "channels": 8,
+        "logic_channel_count": 32
+      }
+    },
+    {
+      "model": "DLM5058",
+      "specs": {
+        "bandwidth_Hz": 500000000,
+        "channels": 8,
+        "logic_channel_count": 32
+      }
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://tmi.yokogawa.com/solutions/products/oscilloscopes/digital-and-mixed-signal-oscilloscopes/dlm5000-mso-series/",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지 기종 표(\"Mixed Signal Oscilloscope: 8 ch, 350 MHZ\" 형식). \"Up to 2.5 GS/s (8 channels at the same time)\", \"Up to 500 Mpoints\", 표준 50 Mpoints, \"8 analog channels, 32 bits of logic\", 12.1 inch"
+    }
+  ],
+  "confidence": "limited",
+  "notes": "4채널 기종의 로직 입력 수는 조회 범위에 없어 비움."
+}

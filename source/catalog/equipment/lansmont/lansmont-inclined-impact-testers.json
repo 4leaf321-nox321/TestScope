@@ -1,0 +1,81 @@
+{
+  "id": "lansmont-inclined-impact-testers",
+  "kind": "equipment_series",
+  "name": "Lansmont Inclined Impact Testers (IT 152-4K / IT 213-6K)",
+  "name_ko": "랜스몬트 경사 충격 시험기",
+  "manufacturer": "lansmont",
+  "category": "shock_test_machine",
+  "form_factor": "floor",
+  "description": "유통 취급 중 충돌을 모사하는 경사 충격 시험기. IT 152-4K 는 탑재 1,814 kg·대차 152×152 cm·충격 속도 최대 2.1 m/s, IT 213-6K 는 2,721 kg·213×213 cm·2.2 m/s. 대차는 공압 관절 장치로 움직인다.",
+  "test_items": [
+    "mechanical_shock"
+  ],
+  "measurands": [
+    "peak_acceleration"
+  ],
+  "materials": [
+    "palletized loads",
+    "crated products"
+  ],
+  "limits": {
+    "payload_kg": {
+      "min": 1814,
+      "max": 2721
+    },
+    "impact_velocity_m_s": {
+      "max": 2.2,
+      "note": "원문 7.3 ft./sec. 을 페이지가 2.1 / 2.2 m/sec 로 다르게 적음"
+    },
+    "table_size_mm": {
+      "values": [
+        1520,
+        2130
+      ],
+      "note": "대차 크기"
+    }
+  },
+  "models": [
+    {
+      "model": "IT 152-4K",
+      "specs": {
+        "payload_kg": 1814,
+        "table_size_mm": [
+          1520,
+          1520
+        ],
+        "impact_velocity_m_s": 2.1
+      }
+    },
+    {
+      "model": "IT 213-6K",
+      "specs": {
+        "payload_kg": 2721,
+        "table_size_mm": [
+          2130,
+          2130
+        ],
+        "impact_velocity_m_s": 2.2
+      }
+    }
+  ],
+  "relations": [
+    {
+      "type": "performs",
+      "target": "mechanical_shock"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://www.lansmont.com/products/impact/lansmont-it-152-4k",
+      "retrieved": "2026-10-08",
+      "note": "제조사 IT 152-4K 페이지"
+    },
+    {
+      "url": "https://www.lansmont.com/products/impact/lansmont-it-213-6k",
+      "retrieved": "2026-10-08",
+      "note": "제조사 IT 213-6K 페이지"
+    }
+  ],
+  "confidence": "limited",
+  "notes": "경사각·규격(ASTM D880 등)은 페이지에 없다."
+}

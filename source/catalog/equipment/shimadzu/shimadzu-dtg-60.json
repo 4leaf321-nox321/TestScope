@@ -1,0 +1,180 @@
+{
+  "id": "shimadzu-dtg-60",
+  "kind": "equipment_series",
+  "name": "DTG-60 Series Simultaneous TG/DTA Analyzer (DTG-60 / DTG-60H / DTG-60A / DTG-60AH)",
+  "name_ko": "시마즈 DTG-60 시리즈 열중량·시차열 동시분석기",
+  "manufacturer": "shimadzu",
+  "category": "sta",
+  "description": "평행 가이드 차동 상접시 저울을 쓴 TG/DTA 동시 측정 장치. 상온~1100 °C(DTG-60·60A) 또는 상온~1500 °C(H 형). TG ±500 mg, DTA ±1000 µV, 무게 읽음 0.1 µg, 시료 총중량 최대 1 g, 분위기 공기·불활성 가스. A 형은 24 시료 자동 교환.",
+  "test_items": [
+    "tga"
+  ],
+  "measurands": [
+    "thermal.decomposition_temp",
+    "thermal.char_residue"
+  ],
+  "measurands_by_item": {
+    "tga": [
+      "thermal.decomposition_temp",
+      "thermal.char_residue"
+    ]
+  },
+  "limits": {
+    "temperature_degC": {
+      "max": 1500,
+      "note": "상온부터. DTG-60/60A 1100 °C, DTG-60H/60AH 1500 °C"
+    },
+    "balance_resolution_ug": {
+      "values": [
+        0.1
+      ]
+    }
+  },
+  "models": [
+    {
+      "model": "DTG-60",
+      "specs": {
+        "temperature_degC": {
+          "max": 1100,
+          "note": "상온~1100 °C"
+        },
+        "dynamic_weighing_range_mg": {
+          "value": 500,
+          "note": "TG 측정 범위 ±500 mg"
+        },
+        "dta_range_uV": {
+          "value": 1000,
+          "note": "DTA 측정 범위 ±1000 µV"
+        },
+        "balance_resolution_ug": 0.1,
+        "sample_mass_mg": {
+          "max": 1000,
+          "note": "총중량 최대 1 g"
+        },
+        "footprint_mm": {
+          "W": 367,
+          "D": 650,
+          "H": 474,
+          "note": "웹 페이지는 H 453 mm"
+        },
+        "weight_kg": 35,
+        "power": "AC 100 V, 120 V, 230 V, 1300 VA, 50/60 Hz"
+      },
+      "note": "수동 시료 장착"
+    },
+    {
+      "model": "DTG-60H",
+      "specs": {
+        "temperature_degC": {
+          "max": 1500,
+          "note": "상온~1500 °C"
+        },
+        "dynamic_weighing_range_mg": {
+          "value": 500,
+          "note": "TG 측정 범위 ±500 mg"
+        },
+        "dta_range_uV": {
+          "value": 1000,
+          "note": "DTA 측정 범위 ±1000 µV"
+        },
+        "balance_resolution_ug": 0.1,
+        "sample_mass_mg": {
+          "max": 1000,
+          "note": "총중량 최대 1 g"
+        },
+        "footprint_mm": {
+          "W": 367,
+          "D": 650,
+          "H": 474,
+          "note": "웹 페이지는 H 453 mm"
+        },
+        "weight_kg": 35,
+        "power": "AC 100 V, 120 V, 230 V, 1500 VA, 50/60 Hz"
+      },
+      "note": "수동 시료 장착"
+    },
+    {
+      "model": "DTG-60A",
+      "specs": {
+        "temperature_degC": {
+          "max": 1100,
+          "note": "상온~1100 °C"
+        },
+        "dynamic_weighing_range_mg": {
+          "value": 500,
+          "note": "TG 측정 범위 ±500 mg"
+        },
+        "dta_range_uV": {
+          "value": 1000,
+          "note": "DTA 측정 범위 ±1000 µV"
+        },
+        "balance_resolution_ug": 0.1,
+        "sample_mass_mg": {
+          "max": 1000,
+          "note": "총중량 최대 1 g"
+        },
+        "footprint_mm": {
+          "W": 367,
+          "D": 650,
+          "H": 474,
+          "note": "웹 페이지는 H 453 mm"
+        },
+        "weight_kg": 40,
+        "power": "AC 100 V, 120 V, 230 V, 1300 VA, 50/60 Hz"
+      },
+      "note": "자동 시료 교환 24 시료/트레이, 자동 해석·보고서 출력"
+    },
+    {
+      "model": "DTG-60AH",
+      "specs": {
+        "temperature_degC": {
+          "max": 1500,
+          "note": "상온~1500 °C"
+        },
+        "dynamic_weighing_range_mg": {
+          "value": 500,
+          "note": "TG 측정 범위 ±500 mg"
+        },
+        "dta_range_uV": {
+          "value": 1000,
+          "note": "DTA 측정 범위 ±1000 µV"
+        },
+        "balance_resolution_ug": 0.1,
+        "sample_mass_mg": {
+          "max": 1000,
+          "note": "총중량 최대 1 g"
+        },
+        "footprint_mm": {
+          "W": 367,
+          "D": 650,
+          "H": 474,
+          "note": "웹 페이지는 H 453 mm"
+        },
+        "weight_kg": 40,
+        "power": "AC 100 V, 120 V, 230 V, 1500 VA, 50/60 Hz"
+      },
+      "note": "자동 시료 교환 24 시료/트레이, 자동 해석·보고서 출력"
+    }
+  ],
+  "relations": [
+    {
+      "type": "same_family_as",
+      "target": "shimadzu-dsc-60-plus"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://www.shimadzu.com/an/products/thermal-analysis/simultaneous-thermal-analysis/dtg-60-series/spec.html",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지(HTML) 본문·표를 직접 읽음. 기종별 사양(저울 방식, 온도 범위, TG·DTA 측정 범위, 읽음, 시료량, 분위기, 외형, 무게, 전원)"
+    },
+    {
+      "file": "shimadzu/c160-e006.pdf",
+      "pages": [
+        5
+      ]
+    }
+  ],
+  "confidence": "catalog",
+  "notes": "DTA(시차열) 동시 측정이라 test_items 는 tga 만 두었다(DSC 가 아님). PDF(C160-E006)로 저울 방식·온도 범위·TG/DTA 범위·읽음·시료량·분위기·자동 시료·무게·전원을 확인했다. 외형 높이는 PDF 가 474 mm 라 웹 값(453 mm)에서 고쳤다. 승온 속도는 PDF 에도 없다."
+}

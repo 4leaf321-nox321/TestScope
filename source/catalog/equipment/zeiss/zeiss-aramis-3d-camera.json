@@ -1,0 +1,82 @@
+{
+  "id": "zeiss-aramis-3d-camera",
+  "kind": "equipment_series",
+  "name": "ZEISS ARAMIS 3D Camera (ARAMIS 3D Camera 12M / ARAMIS SRX)",
+  "name_ko": "자이스(구 GOM) ARAMIS 3D 카메라 DIC 시스템",
+  "manufacturer": "zeiss",
+  "brand": "ARAMIS (GOM)",
+  "category": "dic_strain_measurement",
+  "subcategory": "stereo_dic",
+  "form_factor": "portable",
+  "description": "산업 고급 용도의 고해상도 3D 카메라 DIC 시스템으로 변형률·변위를 전 영역·높은 공간 분해능으로 잰다. 협대역 청색광(Blue Light Technology)으로 주변광 간섭을 거른다. ARAMIS 3D Camera 12M 은 4096×3000 화소, 전 해상도 25 fps 로 준정적 시험용(측정 체적 35×25～5000×4000 mm). ARAMIS SRX 는 4096×3068 화소, 전 해상도 335 fps(내부 RAM)로 충돌 시험의 3D 변위·회전·속도·가속도까지 잰다(70×50～5100×4200 mm).",
+  "test_items": [
+    "tensile",
+    "compression",
+    "fatigue"
+  ],
+  "measurands": [
+    "full_field_displacement",
+    "axial_strain",
+    "transverse_strain",
+    "poisson_ratio",
+    "shape_3d"
+  ],
+  "limits": {
+    "field_of_view_mm": {
+      "min": 35,
+      "max": 5100,
+      "note": "측정 체적 12M 35×25～5000×4000 mm, SRX 70×50～5100×4200 mm"
+    },
+    "data_rate_Hz": {
+      "max": 1000,
+      "note": "SRX 전 해상도 335 fps(내부 RAM), 4096×1000 에서 1000 fps"
+    }
+  },
+  "models": [
+    {
+      "model": "ARAMIS 3D Camera 12M",
+      "specs": {
+        "detector_pixels": "4096 x 3000",
+        "data_rate_Hz": {
+          "max": 75,
+          "note": "25 fps(4096×3000 전 해상도), 43 fps(2496×2096, 5M), 75 fps(4096×1000, 1/3 화면)"
+        },
+        "field_of_view_mm": {
+          "min": 35,
+          "max": 5000,
+          "note": "35 x 25 mm up to 5000 x 4000 mm"
+        }
+      }
+    },
+    {
+      "model": "ARAMIS SRX",
+      "specs": {
+        "detector_pixels": "4096 x 3068",
+        "data_rate_Hz": {
+          "max": 1000,
+          "note": "335 fps(전 해상도, 내부 RAM), 75 fps(50 fps)(PC RAM), 500 fps(4096×2000), 1000 fps(4096×1000)"
+        },
+        "field_of_view_mm": {
+          "min": 70,
+          "max": 5100,
+          "note": "70 x 50 mm up to 5100 x 4200 mm"
+        }
+      }
+    }
+  ],
+  "relations": [
+    {
+      "type": "same_family_as",
+      "target": "zeiss-aramis-adjustable"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://www.zeiss.com/metrology/en/systems/optical-3d/3d-testing/aramis-3d-camera.html",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지(HTML, zeiss.com/metrology) ARAMIS 3D Camera"
+    }
+  ],
+  "confidence": "limited",
+  "notes": "ARAMIS 는 GOM 이 만들던 제품으로 GOM 이 ZEISS 에 인수돼 지금은 ZEISS 이름으로 판다 — 대장에는 GOM 으로 적혀 있을 수 있다. 변형 정확도 수치는 페이지에 없음."
+}

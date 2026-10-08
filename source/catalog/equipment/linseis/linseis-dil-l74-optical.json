@@ -1,0 +1,93 @@
+{
+  "id": "linseis-dil-l74-optical",
+  "kind": "equipment_series",
+  "name": "LINSEIS DIL L74 optical dilatometer",
+  "name_ko": "린세이스 DIL L74 광학 딜라토미터",
+  "manufacturer": "linseis",
+  "category": "dilatometer",
+  "description": "고해상도 카메라·자동 초점의 비접촉 광학 딜라토미터. -100~500 °C, 실온~500/1000/1500/2000 °C(노에 따라), 정확도 최대 1 µm, 시야 3.3 × 2.8 mm, 진공 10⁻⁵ mbar, 승온 0.01~100 °C/min. 회분 용융·석탄 회분 시험 규격을 지원한다.",
+  "test_items": [
+    "dilatometry"
+  ],
+  "measurands": [
+    "thermal.expansion_linear"
+  ],
+  "measurands_by_item": {
+    "dilatometry": [
+      "thermal.expansion_linear"
+    ]
+  },
+  "standards": {
+    "compliance": [],
+    "test_methods": [
+      "ASTM D1857",
+      "CEN/TR 15404",
+      "BS 1016:Part 15",
+      "CEN/TS 15370-1",
+      "DIN 51730",
+      "IS 12891",
+      "ISO 540",
+      "NF M03-048"
+    ]
+  },
+  "limits": {
+    "temperature_degC": {
+      "min": -100,
+      "max": 2000,
+      "note": "표 기준. 페이지 제목은 '-180 °C to 2800 °C'"
+    }
+  },
+  "models": [
+    {
+      "model": "DIL L74 OD",
+      "specs": {
+        "temperature_degC": {
+          "min": -100,
+          "max": 2000,
+          "note": "-100~500 °C; RT~500/1000/1500/2000 °C"
+        },
+        "field_of_view_mm": {
+          "note": "3.3 × 2.8 mm"
+        },
+        "heating_rate_K_min": {
+          "min": 0.01,
+          "max": 100
+        }
+      },
+      "note": "분위기 산화(선택: 환원·불활성·진공), USB"
+    },
+    {
+      "model": "L74/V/2000",
+      "specs": {
+        "temperature_degC": {
+          "max": 2000,
+          "note": "RT up to 2000 °C"
+        },
+        "sample_length_mm": {
+          "max": 20,
+          "note": "up to max. 20 mm"
+        },
+        "displacement_resolution_nm": {
+          "value": 1000,
+          "note": "Resolution up to 1 µm"
+        }
+      },
+      "note": "Optical Dilatometer L74/V/2000. 분위기 불활성·환원·진공, 진공 최대 10⁻² mbar. 기준 시료·테이블 포함"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://www.linseis.com/en/instruments/dilatometer/dil-l74-optical-dilatometer/",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지(HTML) 본문·표를 직접 읽음. 기종 표(DIL L74 OD), 데이터시트 목록"
+    },
+    {
+      "file": "linseis/specifications-optical-dialtometer-l74-v-2000.pdf",
+      "pages": [
+        1
+      ]
+    }
+  ],
+  "confidence": "limited",
+  "notes": "PDF 로 확인: L74/V/2000 형식 1종(실온~2000 °C, 시료 길이 최대 20 mm, 분해능 1 µm, 진공 10⁻² mbar)을 기종 행으로 더했다. 웹 값 그대로: DIL L74 OD 행(-100~500 °C, 시야 3.3 × 2.8 mm, 승온 0.01~100 °C/min, 진공 10⁻⁵ mbar) — 이 PDF 는 다른 형식이라 확인하지 못한다. 데이터시트 이름으로 V 2400, HS 500, HS 600LT, HS 1000, HS 1600, HS 1700, H 150HP 형식이 더 나열돼 있다 — 그 PDF 는 이번에 없다. 가열 현미경(DIL L74 heating microscope) 페이지는 따로 있다."
+}

@@ -1,0 +1,220 @@
+{
+  "id": "noiseken-ess-esd-simulators",
+  "kind": "equipment_series",
+  "name": "Noiseken ESS Series ESD Simulators (ESS-B3011A, ESS-PS1 and discontinued ESS models)",
+  "name_ko": "노이즈켄 ESS 계열 정전기 방전 시뮬레이터",
+  "manufacturer": "noiseken",
+  "brand": "ESS",
+  "category": "esd_simulator",
+  "form_factor": "portable",
+  "description": "IEC 61000-4-2 · ISO 10605 정전기 방전 내성 시험용 ESD 시뮬레이터. 현행 ESS-PS1(배터리 방전 건 GT-31S, 0.20~30.0 kV, CR 네트워크 5종)과 2024년에 단종된 보급형 ESS-B3011A(0.20~30.0 kV), 그리고 대장에 남아 있을 수 있는 단종 기종(ESS-2000·ESS-2002EX 등)을 함께 적는다. 현행 상위 기종 ESS-S3011A 는 별도 객체.",
+  "test_items": [
+    "esd_immunity"
+  ],
+  "standards": {
+    "compliance": [],
+    "test_methods": [
+      "IEC 61000-4-2",
+      "ISO 10605"
+    ]
+  },
+  "limits": {
+    "esd_voltage_kV": {
+      "min": 0.2,
+      "max": 30.0,
+      "note": "현행·단종 기종 모두 0.20~30.0 kV, 최대 30.5 kV"
+    },
+    "discharge_mode": {
+      "values": [
+        "contact",
+        "air"
+      ]
+    },
+    "polarity": {
+      "values": [
+        "positive",
+        "negative"
+      ]
+    }
+  },
+  "models": [
+    {
+      "model": "ESS-B3011A",
+      "specs": {
+        "esd_voltage_kV": {
+          "min": 0.2,
+          "max": 30.0,
+          "note": "±5 %, 최대 30.5 kV"
+        },
+        "discharge_mode": {
+          "values": [
+            "contact",
+            "air"
+          ]
+        },
+        "polarity": {
+          "values": [
+            "positive",
+            "negative"
+          ]
+        },
+        "power_VA": 62,
+        "power": "AC 100 V ~ AC 240 V ±10 % 50 Hz / 60 Hz",
+        "footprint_mm": "270×263×200 (본체)",
+        "weight_kg": 4.6
+      },
+      "note": "2024 단종(제조사 유지보수 안내 PDF, 2024-09 기준). 보급형. 방전 건 GT-30RB(약 1300 g, 83.4×217.2×229.3 mm). 반복 주기 0.05~9.99 s(0.01 s 단위)·수동, 방전 횟수 1~999·연속. CR 150 pF/330 Ω"
+    },
+    {
+      "model": "ESS-PS1",
+      "specs": {
+        "esd_voltage_kV": {
+          "min": 0.2,
+          "max": 30.0,
+          "note": "최대 30.5 kV"
+        },
+        "discharge_mode": {
+          "values": [
+            "contact",
+            "air"
+          ]
+        },
+        "polarity": {
+          "values": [
+            "positive",
+            "negative"
+          ]
+        },
+        "power": "AC100V - 240V ±10%, 50Hz to 60Hz / 배터리",
+        "weight_kg": 3.0,
+        "footprint_mm": "(W)1800 x (D)270 x (H)124 (페이지 표기 그대로)"
+      },
+      "note": "방전 건 GT-31S(0.20~30.5 kV, 유지 시간 5 s 이상, 1.5 kg, 리튬이온 14.4 V 3.40 Ah 약 7시간). 반복 0.05~600.0 s, 방전 1~60000 회·연속. CR 150 pF-330 Ω, 330 pF-330 Ω, 150 pF-2 kΩ, 330 pF-2 kΩ, 0 Ω. 무게는 AC 어댑터 제외"
+    },
+    {
+      "model": "ESS-2000AX",
+      "note": "단종(2013), 기술 지원 종료. 취급설명서 Ed.1.02 15장 사양(텍스트 51쪽): 반복 주기 NORMAL 0.05~600.0 s·EXTRA 1.00~600.0 s, 방전 1~60,000 회·연속, IEC 시험 모드(접촉 2/4/6/8 kV, 기중 2/4/8/15 kV), 시퀀스 20 프로그램 × 30 스텝, 권장 방전 건 TC-815R·TC-815ISO, 충전 저항 10 MΩ(건의 43 MΩ 와 합쳐 53 MΩ). 후속 ESS-S3011A/B3011A",
+      "specs": {
+        "esd_voltage_kV": {
+          "min": 0.2,
+          "max": 30.0,
+          "note": "최대 30.5 kV. 허용차 0.20~1.9 kV ±10 %, 2.0~30.0 kV ±5 %"
+        },
+        "discharge_mode": {
+          "values": [
+            "contact",
+            "air"
+          ]
+        },
+        "polarity": {
+          "values": [
+            "positive",
+            "negative"
+          ]
+        },
+        "power_VA": 75,
+        "power": "AC100V~AC240V ±10%, 50Hz/60Hz",
+        "footprint_mm": "(W)266 × (H)294 × (D)317 (본체)",
+        "weight_kg": 5.3,
+        "operating_temperature_degC": {
+          "min": 15,
+          "max": 35
+        },
+        "operating_humidity_pct": {
+          "min": 25,
+          "max": 75,
+          "note": "결로 없음"
+        }
+      }
+    },
+    {
+      "model": "ESS-100L",
+      "note": "단종(1997), 기술 지원 종료. 후속 ESS-S3011A/B3011A"
+    },
+    {
+      "model": "ESS-100LA",
+      "note": "단종(2000), 기술 지원 종료. 후속 ESS-S3011A/B3011A"
+    },
+    {
+      "model": "ESS-2000",
+      "note": "단종(2009), 기술 지원 종료. 후속 ESS-S3011A/B3011A"
+    },
+    {
+      "model": "ESS-2001",
+      "note": "단종(2002), 기술 지원 종료. 후속 ESS-S3011A/B3011A"
+    },
+    {
+      "model": "ESS-2002",
+      "note": "단종(2009), 기술 지원 종료. 후속 ESS-S3011A/B3011A"
+    },
+    {
+      "model": "ESS-2002EX",
+      "note": "단종(2011), 기술 지원 종료. 후속 ESS-S3011A/B3011A"
+    },
+    {
+      "model": "ESS-S3011",
+      "note": "단종(2016). 제조사 유지보수 안내 PDF(2024-09 기준) 목록의 'ESS-S3011 / B3011'"
+    },
+    {
+      "model": "ESS-B3011",
+      "note": "단종(2016). 제조사 유지보수 안내 PDF(2024-09 기준) 목록의 'ESS-S3011 / B3011'"
+    },
+    {
+      "model": "ESS-200AX",
+      "note": "단종(1999), 기술 지원 종료. 후속 ESS-S3011A/B3011A"
+    },
+    {
+      "model": "ESS-630A",
+      "note": "단종(1989), 기술 지원 종료. 후속 ESS-S3011A/B3011A"
+    }
+  ],
+  "relations": [
+    {
+      "type": "performs",
+      "target": "esd_immunity"
+    },
+    {
+      "type": "same_family_as",
+      "target": "noiseken-ess-s3011a"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://www.noiseken.com/products/emc_type/ess/",
+      "retrieved": "2026-10-08",
+      "note": "제조사 ESD 시뮬레이터 목록"
+    },
+    {
+      "url": "https://www.noiseken.com/products/emc/ess/4801/",
+      "retrieved": "2026-10-08",
+      "note": "제조사 ESS-B3011A & GT-30RB 페이지(사양표)"
+    },
+    {
+      "url": "https://www.noiseken.com/products/emc/ess/9371/",
+      "retrieved": "2026-10-08",
+      "note": "제조사 ESS-PS1 & GT-31S 페이지(사양표)"
+    },
+    {
+      "url": "https://www.noiseken.com/products/old-products/discontinued-models-lists/",
+      "retrieved": "2026-10-08",
+      "note": "제조사 단종 기종 목록(단종 연도·후속 기종)"
+    },
+    {
+      "file": "noiseken/electrostatic-discharge-simulators-repair-status-and-successor-equipment.pdf",
+      "pages": [
+        1,
+        2
+      ],
+      "note": "제조사 ESD 시뮬레이터 유지보수 안내(2024-09 기준). 1쪽 본체·방전 건 단종 연도와 유지보수 상태, 2쪽 현행 후속 기종(ESS-PS1, ESS-S3011A)"
+    },
+    {
+      "file": "noiseken/ess-2000ax_ed1.02.pdf",
+      "pages": [
+        51
+      ],
+      "note": "ESS-2000AX 취급설명서 Ed.1.02, 15장 사양(추출 텍스트 page 51, 인쇄 쪽 49)"
+    }
+  ],
+  "confidence": "limited",
+  "notes": "제조사 유지보수 안내 PDF(2024-09 기준)로 단종 연도를 확인함: ESS-200AX 1999, ESS-2000AX 2013, ESS-S3011·B3011 2016, ESS-B3011A 2024. 같은 PDF 는 현행 후속 기종을 ESS-S3011A 와 ESS-PS1 로 적음. ESS-606 계열(후속 ESS-6002/6008)은 부품(디바이스) 수준 ESD 시험기라 이 객체에 넣지 않았다. PDF 로 확인: 단종 연도 전부, ESS-2000AX 사양 / 웹 값 그대로: ESS-B3011A·ESS-PS1 사양."
+}

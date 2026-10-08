@@ -1,0 +1,138 @@
+{
+  "id": "elcometer-106",
+  "kind": "equipment_series",
+  "name": "Elcometer 106 Pull-Off Adhesion Tester (Scale 1–5)",
+  "name_ko": "엘코미터 106 풀오프 부착력 시험기",
+  "manufacturer": "elcometer",
+  "category": "adhesion_tester",
+  "form_factor": "handheld",
+  "description": "지름 20 mm 돌리(면적 314 mm²)를 떼어 내는 풀오프 부착력 시험기. 눈금(Scale) 1~5 로 범위가 갈린다 — Scale 1 0.5~3.5 MPa, Scale 2 1~7.0 MPa, Scale 3 3~15 MPa, Scale 4 5~22 MPa, Scale 5 0.05~0.2 MPa.",
+  "test_items": [
+    "coating_adhesion"
+  ],
+  "measurands": [
+    "pull_off_adhesion_strength"
+  ],
+  "standards": {
+    "compliance": [],
+    "test_methods": [
+      "AS 1580.408.5",
+      "ASTM D4541",
+      "AS/NZS 1580.408.5",
+      "EN 13144",
+      "EN 24624",
+      "ISO 4624",
+      "ISO 16276-1",
+      "JIS K 5600-5-7",
+      "NF T30-062",
+      "NF T30-606"
+    ]
+  },
+  "limits": {
+    "pull_off_strength_MPa": {
+      "min": 0.05,
+      "max": 22
+    },
+    "dolly_diameter_mm": {
+      "values": [
+        20
+      ]
+    }
+  },
+  "models": [
+    {
+      "model": "Elcometer 106 Scale 1",
+      "specs": {
+        "pull_off_strength_MPa": {
+          "min": 0.5,
+          "max": 3.5
+        },
+        "footprint_mm": "175 × 76",
+        "weight_kg": {
+          "value": 2.8,
+          "note": "총중량"
+        }
+      },
+      "note": "품번: F106----1 (교정서 포함 F106----1C)"
+    },
+    {
+      "model": "Elcometer 106 Scale 2",
+      "specs": {
+        "pull_off_strength_MPa": {
+          "min": 1,
+          "max": 7.0
+        },
+        "footprint_mm": "175 × 76",
+        "weight_kg": {
+          "value": 2.8,
+          "note": "총중량"
+        }
+      },
+      "note": "품번: F106----2 (F106----2C)"
+    },
+    {
+      "model": "Elcometer 106 Scale 3",
+      "specs": {
+        "pull_off_strength_MPa": {
+          "min": 3,
+          "max": 15
+        },
+        "footprint_mm": "185 × 76",
+        "weight_kg": {
+          "value": 4.2,
+          "note": "총중량"
+        }
+      },
+      "note": "품번: F106----3 (F106----3C)"
+    },
+    {
+      "model": "Elcometer 106 Scale 4",
+      "specs": {
+        "pull_off_strength_MPa": {
+          "min": 5,
+          "max": 22
+        },
+        "footprint_mm": "185 × 76",
+        "weight_kg": {
+          "value": 4.5,
+          "note": "총중량"
+        }
+      },
+      "note": "품번: F106----4 (F106----4C)"
+    },
+    {
+      "model": "Elcometer 106 Scale 5",
+      "specs": {
+        "pull_off_strength_MPa": {
+          "min": 0.05,
+          "max": 0.2
+        },
+        "footprint_mm": "175 × 76",
+        "weight_kg": {
+          "value": 2.8,
+          "note": "총중량"
+        }
+      },
+      "note": "품번: F106----5 (F106----5C)"
+    }
+  ],
+  "relations": [
+    {
+      "type": "performs",
+      "target": "coating_adhesion"
+    },
+    {
+      "type": "same_family_as",
+      "target": "elcometer-510"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://www.elcometer.com/en/coatings-inspection/all-coatings-inspection/adhesion-testers/elcometer-106-pull-off-adhesion-tester.html",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지"
+    }
+  ],
+  "notes": "범위는 kg/cm² · psi 로도 병기되어 있다(Scale 1 5~35 kg/cm², 72~500 psi 등). 같은 목록의 Elcometer 106/6(콘크리트) · 108 · 508(푸시오프)은 넣지 않았다.",
+  "confidence": "limited"
+}

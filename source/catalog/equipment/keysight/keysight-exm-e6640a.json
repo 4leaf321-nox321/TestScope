@@ -1,0 +1,83 @@
+{
+  "id": "keysight-exm-e6640a",
+  "kind": "equipment_series",
+  "name": "Keysight E6640A EXM Wireless Test Set",
+  "name_ko": "키사이트 E6640A EXM 무선 시험 세트",
+  "manufacturer": "keysight",
+  "brand": "EXM",
+  "category": "radio_communication_tester",
+  "description": "셀룰러·WLAN 칩셋 표준을 시험하는 시험 세트. 최대 6 GHz, 분석·발생 대역폭 최대 160 MHz 이고, 송수신기(TRX) 1~4개를 넣고 송수신기마다 포트 8개를 둔다. 멀티포트 어댑터로 DUT 최대 32대를 연결하고 2x2/3x3/4x4 true MIMO 시험을 한다. Qualcomm QDART 5G 승인을 받았다.",
+  "test_items": [],
+  "limits": {
+    "frequency_Hz": {
+      "max": 6000000000,
+      "note": "원문 Up to 6 GHz maximum. 하한은 페이지에 없다"
+    },
+    "bandwidth_Hz": {
+      "max": 160000000,
+      "note": "분석·발생 대역폭 최대 160 MHz"
+    },
+    "channels": {
+      "values": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "note": "송수신기(TRX) 1·2·3·4개 구성"
+    },
+    "rf_port_count": {
+      "max": 8,
+      "note": "송수신기(TRX)당 8포트. 멀티포트 어댑터로 DUT 최대 32대"
+    },
+    "radio_standards": {
+      "values": [
+        "5G NR",
+        "LTE/LTE-A (FDD/TDD)",
+        "HSPA+",
+        "W-CDMA",
+        "1xEV-DO",
+        "cdma2000",
+        "GSM/EDGE-Evo",
+        "TD-SCDMA",
+        "DECT",
+        "PHS",
+        "802.11a/b/g/n/j/p/ac/af/ah/ax",
+        "Bluetooth 5.0",
+        "GNSS",
+        "FM",
+        "Zigbee",
+        "Z-Wave"
+      ],
+      "note": "제품 페이지 문구"
+    }
+  },
+  "models": [
+    {
+      "model": "E6640A",
+      "specs": {
+        "frequency_Hz": {
+          "max": 6000000000
+        },
+        "bandwidth_Hz": 160000000,
+        "rf_port_count": 8
+      },
+      "note": "송수신기 수(1~4)는 구성 선택. rf_ports 는 송수신기당 값"
+    }
+  ],
+  "features": [
+    "확장형 구조(최신 셀룰러·WLAN 칩셋 표준 대응)",
+    "멀티포트 어댑터로 DUT 최대 32대",
+    "2x2/3x3/4x4 true MIMO 시험",
+    "Qualcomm QDART 5G 승인"
+  ],
+  "sources": [
+    {
+      "url": "https://www.keysight.com/us/en/product/E6640A/exm-wireless-test-set.html",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지. 최대 6 GHz, 160 MHz, TRX 1~4, TRX당 8포트, 지원 기술"
+    }
+  ],
+  "confidence": "limited",
+  "notes": "출력 레벨 범위는 페이지에 없다."
+}

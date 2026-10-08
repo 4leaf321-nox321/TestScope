@@ -1,0 +1,56 @@
+{
+  "id": "fluke-170-series",
+  "kind": "equipment_series",
+  "name": "Fluke 170 Series True-RMS Digital Multimeters (175 / 177 / 179)",
+  "name_ko": "플루크 170 시리즈 디지털 멀티미터",
+  "manufacturer": "fluke",
+  "category": "dmm_daq",
+  "form_factor": "handheld",
+  "description": "True RMS 휴대형 디지털 멀티미터 계열. 179 는 DC 전압 1000 V ±(0.09%+2), AC 전압 1000 V ±(1.0%+3), 전류 10 A, 저항 50 MΩ, 정전용량 10,000 µF, 주파수 100 kHz, 온도 -40~400 °C, CAT III 1000 V·CAT IV 600 V.",
+  "test_items": [],
+  "models": [
+    {
+      "model": "179",
+      "specs": {
+        "voltage_V": {
+          "max": 1000,
+          "note": "DC ±(0.09%+2), AC ±(1.0%+3)"
+        },
+        "current_A": {
+          "max": 10,
+          "note": "DC ±(1.0%+3), AC ±(1.5%+3)"
+        },
+        "resistance_ohm": {
+          "max": 50000000,
+          "note": "±(0.9%+1)"
+        },
+        "accuracy": "DC V ±(0.09% + 2), AC V ±(1.0% + 3), DC A ±(1.0% + 3), AC A ±(1.5% + 3), 저항 ±(0.9% + 1), 정전용량 ±(1.2% + 2), 주파수 ±(0.1% + 1), 온도 ±(1.0% + 10)",
+        "weight_kg": 0.42,
+        "footprint_mm": {
+          "W": 43,
+          "D": 90,
+          "H": 185,
+          "note": "원문 43 x 90 x 185 mm(축 이름 없음)"
+        }
+      },
+      "note": "정전용량 10,000 µF, 주파수 100 kHz, 온도 -40~400 °C. CAT III 1000 V, CAT IV 600 V. 배터리 약 200시간(알칼리, 백라이트 끔). 품번 1564549"
+    },
+    {
+      "model": "177",
+      "note": "179 페이지의 공용 매뉴얼에만 나옴. 사양 미확인"
+    },
+    {
+      "model": "175",
+      "note": "179 페이지의 공용 매뉴얼에만 나옴. 사양 미확인"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://www.fluke.com/en-us/product/electrical-testing/digital-multimeters/fluke-179",
+      "retrieved": "2026-10-08",
+      "note": "제조사 179 제품 페이지 사양표. 175·177·179 공용 매뉴얼 언급"
+    }
+  ],
+  "confidence": "limited",
+  "notes": "계열 이름 '170 Series' 는 공용 매뉴얼(175·177·179) 기준으로 붙임."
+}

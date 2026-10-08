@@ -1,0 +1,162 @@
+{
+  "id": "rohde-schwarz-smb100b",
+  "kind": "equipment_series",
+  "name": "R&S SMB100B RF and Microwave Signal Generator",
+  "name_ko": "로데슈바르츠 SMB100B RF·마이크로파 신호발생기",
+  "manufacturer": "rohde-schwarz",
+  "brand": "SMB",
+  "category": "signal_generator",
+  "subcategory": "analog_rf_microwave",
+  "description": "중급 아날로그 RF·마이크로파 신호발생기. 8 kHz~1·3·6·12.75·20·31.8·40 GHz(주파수 옵션)이고 SZM 주파수 체배기로 50~170 GHz 를 낸다. 출력 옵션(K31·K33·K35·B32)으로 보증 최대 +26 dBm(6 GHz 이하 형), 측정 출력은 1 GHz 34 dBm·20 GHz 25 dBm·40 GHz 19 dBm 가량(제품 페이지)이다. 10 GHz·20 kHz 오프셋 SSB 위상 잡음 < -112 dBc(측정값)다. 고성능 펄스 변조·펄스 발생기·다기능 발생기·펄스열·AM/FM/φM·스테레오/RDS 부호기를 옵션으로 둔다.",
+  "test_items": [],
+  "limits": {
+    "output_frequency_Hz": {
+      "min": 8000,
+      "max": 40000000000,
+      "note": "사양서: RF 형 SMBB-B101 1 GHz·B103 3 GHz·B106 6 GHz, 마이크로파 형 B112 12.75 GHz·B120 20 GHz·B131 31.8 GHz·B140/B140N 40 GHz, 모두 8 kHz 부터. SZM 주파수 체배기 50~170 GHz 는 제품 페이지 문구"
+    },
+    "rf_output_level_dBm": {
+      "min": -127,
+      "max": 26,
+      "note": "사양서 Specified level range(PEP): 상한 +26 dBm(B101/B103/B106 + K31·B32, 10 MHz~6 GHz). K31 만 +21 dBm, 기본 +18 dBm. B112/B120 기본 +18·K33 +21 dBm, B131/B140 기본 +14·K35 +19 dBm. 하한 -127 dBm. 설정 범위 -145~+36 dBm(K31+B32). 제품 페이지의 34 dBm(1 GHz)·25 dBm(20 GHz)·19 dBm(40 GHz)는 사양서에서 측정 출력 그래프(K31+B32·K33·K35)로만 나오고 보증 사양이 아니다. 목록 페이지 Level range -127~+26 dBm 과 같다"
+    },
+    "phase_noise_dBc_Hz": {
+      "values": [
+        -126,
+        -112
+      ],
+      "note": "사양서 20 kHz 오프셋: -126 = 1 GHz 사양(typ. -132), -112 = 10 GHz 측정값(사양 < -106). 목록 페이지의 < -126 dBc 는 1 GHz 사양값. 단위 dBc(1 Hz)"
+    }
+  },
+  "models": [
+    {
+      "model": "SMB100B",
+      "specs": {
+        "output_frequency_Hz": {
+          "min": 8000,
+          "max": 40000000000
+        },
+        "rf_output_level_dBm": {
+          "min": -127,
+          "max": 26,
+          "note": "사양 범위. 상한은 6 GHz 이하 형 + K31·B32"
+        },
+        "phase_noise_dBc_Hz": {
+          "values": [
+            -126,
+            -112
+          ],
+          "note": "20 kHz 오프셋. 1 GHz 사양 / 10 GHz 측정값"
+        },
+        "interfaces": "Ethernet/LAN(표준), GPIB·USB(SMBB-B86 또는 K986)"
+      },
+      "note": "주파수 범위는 options 의 SMBB-B1xx 로 고른다"
+    }
+  ],
+  "features": [
+    "광대역 잡음 < -145 dBc(측정값, 주파수 범위에 따라)",
+    "SZM 체배기로 170 GHz 까지",
+    "출력 옵션(K31·B32)으로 보증 +26 dBm, 측정 출력은 1 GHz 에서 34 dBm 가량(제품 페이지)"
+  ],
+  "options": [
+    {
+      "name": "SMBB-B101",
+      "note": "8 kHz~1 GHz"
+    },
+    {
+      "name": "SMBB-B103",
+      "note": "8 kHz~3 GHz"
+    },
+    {
+      "name": "SMBB-B106",
+      "note": "8 kHz~6 GHz"
+    },
+    {
+      "name": "SMBB-B112",
+      "note": "8 kHz~12.75 GHz"
+    },
+    {
+      "name": "SMBB-B120",
+      "note": "8 kHz~20 GHz"
+    },
+    {
+      "name": "SMBB-B131",
+      "note": "8 kHz~31.8 GHz"
+    },
+    {
+      "name": "SMBB-B140",
+      "note": "8 kHz~40 GHz"
+    },
+    {
+      "name": "SMBB-B140N",
+      "note": "8 kHz~40 GHz(최소 펄스 폭 제한)"
+    },
+    {
+      "name": "SMBB-K31 / K33 / K35 / B32",
+      "note": "출력 옵션"
+    },
+    {
+      "name": "SMBB-K22",
+      "note": "고성능 펄스 변조기"
+    },
+    {
+      "name": "SMBB-K23",
+      "note": "펄스 발생기"
+    },
+    {
+      "name": "SMBB-K24",
+      "note": "다기능 발생기"
+    },
+    {
+      "name": "SMBB-K27",
+      "note": "펄스열"
+    },
+    {
+      "name": "SMBB-K720",
+      "note": "AM/FM/φM"
+    },
+    {
+      "name": "SMBB-B5",
+      "note": "스테레오/RDS 부호기"
+    },
+    {
+      "name": "R&S SZM 주파수 체배기",
+      "note": "50~170 GHz"
+    }
+  ],
+  "relations": [
+    {
+      "type": "same_family_as",
+      "target": "rohde-schwarz-sma100b"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://www.rohde-schwarz.com/us/products/test-and-measurement/analog-signal-generators/rs-smb100b-rf-and-microwave-signal-generator_63493-553988.html",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지. 주파수 옵션, 최고 출력, 위상 잡음, 변조 옵션"
+    },
+    {
+      "url": "https://www.rohde-schwarz.com/us/products/test-and-measurement/analog-signal-generators_333521.html",
+      "retrieved": "2026-10-08",
+      "note": "제조사 아날로그 신호발생기 목록 페이지. 주파수, 레벨 범위, SSB 위상 잡음"
+    },
+    {
+      "file": "rohde-schwarz/smb100b_specs_en_3607-8182-22_v1200.pdf",
+      "pages": [
+        4,
+        5,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        24
+      ],
+      "note": "제조사 사양서(v12.00, 2025-09). 하드웨어 구성표, 주파수 옵션, 레벨 범위(옵션별)·설정 범위, 측정 출력 그래프, 위상 잡음·광대역 잡음"
+    }
+  ],
+  "confidence": "catalog",
+  "notes": "PDF 로 확인: 주파수 옵션, 레벨 범위 -127~+26 dBm, 위상 잡음. 최대 출력 엇갈림(목록 +26 dBm vs 제품 페이지 34 dBm)은 사양서로 정했다 — 보증 상한 +26 dBm, 34 dBm 은 측정 출력 그래프 쪽 값. SZM 체배기는 사양서에 없다."
+}

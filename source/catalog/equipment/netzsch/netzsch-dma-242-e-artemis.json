@@ -1,0 +1,102 @@
+{
+  "id": "netzsch-dma-242-e-artemis",
+  "kind": "equipment_series",
+  "name": "NETZSCH DMA 242 E Artemis Dynamic Mechanical Analyzer",
+  "name_ko": "네취 DMA 242 E Artemis 동적기계분석기",
+  "manufacturer": "netzsch",
+  "category": "dma",
+  "description": "DMA. -170~600 °C.",
+  "test_items": [
+    "dma"
+  ],
+  "measurands": [
+    "mechanical.storage_modulus",
+    "mechanical.loss_modulus",
+    "mechanical.loss_tangent",
+    "thermal.glass_transition"
+  ],
+  "measurands_by_item": {
+    "dma": [
+      "mechanical.storage_modulus",
+      "mechanical.loss_modulus",
+      "mechanical.loss_tangent",
+      "thermal.glass_transition"
+    ]
+  },
+  "limits": {
+    "temperature_degC": {
+      "min": -170,
+      "max": 600,
+      "note": "냉각 장치에 따라: 액체질소 -170~600 °C, 압축공기 vortex tube 0~600 °C, AIC 80 공기 인트라쿨러 -70~600 °C(300 °C 미만에서 작동)"
+    },
+    "heating_rate_K_min": {
+      "min": 0.01,
+      "max": 20
+    },
+    "frequency_Hz": {
+      "min": 0.01,
+      "max": 100
+    },
+    "force_N": {
+      "max": 24,
+      "note": "고하중 24 N / 고분해능 8 N(max.)"
+    }
+  },
+  "models": [
+    {
+      "model": "DMA 242 E Artemis",
+      "specs": {
+        "temperature_degC": {
+          "min": -170,
+          "max": 600,
+          "note": "냉각 장치에 따라: 액체질소 -170~600 °C, 압축공기 vortex tube 0~600 °C, AIC 80 공기 인트라쿨러 -70~600 °C(300 °C 미만에서 작동)"
+        },
+        "heating_rate_K_min": {
+          "min": 0.01,
+          "max": 20
+        },
+        "frequency_Hz": {
+          "min": 0.01,
+          "max": 100
+        },
+        "force_N": {
+          "max": 24,
+          "note": "Force range with high force 24 N(max.) / with high resolution 8 N(max.)"
+        },
+        "displacement_um": {
+          "value": 240,
+          "note": "최대 제어 변형 진폭 ±240 µm"
+        },
+        "displacement_mm": {
+          "max": 20,
+          "note": "정적 변형 up to 20 mm"
+        },
+        "modulus_Pa": {
+          "min": 1000,
+          "max": 1000000000000,
+          "note": "원문 10⁻³~10⁶ MPa"
+        },
+        "sample_length_mm": {
+          "max": 60,
+          "note": "3점 굽힘 최대 시료: 길이 60 mm, 폭 12 mm, 두께 5 mm(변형 모드에 따라 다름)"
+        }
+      },
+      "note": "감쇠(tan δ) 범위 0.005~100. 변형 모드: 3점 굽힘, 단·양 외팔보 굽힘, 전단, 인장, 압축/침투. 추가 모드: 등변형, TMA 모드, 크리프/완화, 응력/변형 스윕. 선택 부속: 침지 수조, 습도 발생기, UV 장치, 유전 분석기(DEA)"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://analyzing-testing.netzsch.com/en-US/products/dynamic-mechanical-analysis-dma/dma-242-e-artemis",
+      "retrieved": "2026-10-08",
+      "note": "제조사 페이지가 자동 조회를 막아(HTTP 403/406) 직접 열지 못함. 값은 웹 검색 엔진이 이 페이지에서 뽑은 발췌로만 확인했다 — 값마다 uncertain. -170~600 °C"
+    },
+    {
+      "file": "netzsch/technical_specifications_en_dma_242_e_artemis.pdf",
+      "pages": [
+        1
+      ]
+    }
+  ],
+  "confidence": "catalog",
+  "notes": "PDF 로 확인: 온도 범위(웹 발췌와 같음)·승온 속도·주파수·힘·변형·탄성률 범위(기술 사양서 1쪽, NGB 0819)."
+}

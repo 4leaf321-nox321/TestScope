@@ -1,0 +1,107 @@
+{
+  "id": "rigol-mso8000",
+  "kind": "equipment_series",
+  "name": "MSO8000 Series Digital Oscilloscope",
+  "name_ko": "리골 MSO8000 디지털 오실로스코프",
+  "manufacturer": "rigol",
+  "brand": "MSO8000",
+  "category": "oscilloscope",
+  "subcategory": "mixed_signal_oscilloscope",
+  "form_factor": "benchtop",
+  "description": "600 MHz~2 GHz 대역의 4채널 혼합 신호 오실로스코프 계열임. 10 GSa/s, 500 Mpts, 600 Kwfms/s, 옵션 16 디지털 채널.",
+  "test_items": [],
+  "limits": {
+    "bandwidth_Hz": {
+      "min": 600000000,
+      "max": 2000000000
+    },
+    "sample_rate_Sa_s": {
+      "max": 10000000000
+    },
+    "record_length_pts": {
+      "max": 500000000
+    },
+    "channels": {
+      "values": [
+        4
+      ]
+    },
+    "logic_channel_count": {
+      "values": [
+        16
+      ],
+      "note": "옵션"
+    }
+  },
+  "models": [
+    {
+      "model": "MSO8064",
+      "specs": {
+        "bandwidth_Hz": 600000000,
+        "channels": 4,
+        "logic_channel_count": 16,
+        "sample_rate_Sa_s": 10000000000,
+        "record_length_pts": 500000000
+      }
+    },
+    {
+      "model": "MSO8074A",
+      "specs": {
+        "bandwidth_Hz": 750000000,
+        "channels": 4,
+        "logic_channel_count": 16,
+        "sample_rate_Sa_s": 10000000000,
+        "record_length_pts": 500000000
+      }
+    },
+    {
+      "model": "MSO8104",
+      "specs": {
+        "bandwidth_Hz": 1000000000,
+        "channels": 4,
+        "logic_channel_count": 16,
+        "sample_rate_Sa_s": 10000000000,
+        "record_length_pts": 500000000
+      }
+    },
+    {
+      "model": "MSO8154A",
+      "specs": {
+        "bandwidth_Hz": 1500000000,
+        "channels": 4,
+        "logic_channel_count": 16,
+        "sample_rate_Sa_s": 10000000000,
+        "record_length_pts": 500000000
+      }
+    },
+    {
+      "model": "MSO8204",
+      "specs": {
+        "bandwidth_Hz": 2000000000,
+        "channels": 4,
+        "logic_channel_count": 16,
+        "sample_rate_Sa_s": 10000000000,
+        "record_length_pts": 500000000
+      }
+    },
+    {
+      "model": "MSO8204A",
+      "specs": {
+        "bandwidth_Hz": 2000000000,
+        "channels": 4,
+        "logic_channel_count": 16,
+        "sample_rate_Sa_s": 10000000000,
+        "record_length_pts": 500000000
+      }
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://www.rigolna.com/products/digital-oscilloscopes/MSO8000/",
+      "retrieved": "2026-10-08",
+      "note": "리골 북미 법인 사이트(rigolna.com)의 제품 페이지 기종 표. 원문 10 GSa/s, 500 Mpts, 600 Kwfms/s, 16 (opt)"
+    }
+  ],
+  "confidence": "limited",
+  "notes": "수직 분해능은 기종 표에 없어 비움."
+}

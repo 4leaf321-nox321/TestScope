@@ -1,0 +1,43 @@
+{
+  "id": "hbm-s2m",
+  "kind": "sensor",
+  "name": "HBK (HBM) S2M Force Transducer",
+  "name_ko": "HBK(HBM) S2M 정밀 S형 힘 센서",
+  "manufacturer": "hbm",
+  "brand": "HBM",
+  "category": "force_pressure_sensor",
+  "subcategory": "strain_gauge_force_transducer",
+  "description": "정격 10 N～1 kN 의 정밀 힘 변환기. 정확도 등급 0.02, 비직선성·상대 반전 오차·횡력 영향 각 0.02 %, 출력 2 mV/V 로 신호 대 잡음비가 좋다.",
+  "test_items": [],
+  "measurands": [
+    "force"
+  ],
+  "limits": {
+    "force_N": {
+      "min": 10,
+      "max": 1000
+    }
+  },
+  "models": [
+    {
+      "model": "S2M",
+      "specs": {
+        "force_N": {
+          "min": 10,
+          "max": 1000
+        },
+        "accuracy_class": "0.02"
+      },
+      "note": "정격 단계 목록은 확인 못함"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://www.hbkworld.com/en/products/transducers/force/s2",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지(hbkworld.com)는 직접 조회 시 HTTP 403. 값은 웹 검색 결과에 나온 같은 페이지의 요약에서 옮김"
+    }
+  ],
+  "confidence": "limited",
+  "notes": "HBM(현 HBK) 제품. 값이 검색 요약 경유라 데이터시트 대조가 필요하다."
+}

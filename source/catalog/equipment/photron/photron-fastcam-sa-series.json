@@ -1,0 +1,164 @@
+{
+  "id": "photron-fastcam-sa-series",
+  "kind": "equipment_series",
+  "name": "Photron FASTCAM SA Series (SA-Z, SA-X2, SA6, SA5, SA4, SA1.1)",
+  "name_ko": "포트론 FASTCAM SA 고속 카메라(단종)",
+  "manufacturer": "photron",
+  "brand": "FASTCAM",
+  "category": "high_speed_swir_camera",
+  "subcategory": "high_speed_camera",
+  "form_factor": "camera",
+  "description": "포트론의 이전 세대 고성능 고속 카메라 계열로 모두 단종됨. 메가픽셀 해상도에서 SA-Z 최대 21,000 fps, SA-X2 최대 13,500 fps, SA5 7,500 fps, SA1.1 5,400 fps, SA4 3,600 fps 이고, 화소를 줄이면 SA-Z 최대 2,100,000 fps, SA5 1,000,000 fps. 제조사는 후속으로 FASTCAM NOVA S · Mini AX · Mini WX 를 안내한다. 연구소에 오래 남아 있는 기종이라 대장 연결용으로 남긴다.",
+  "test_items": [],
+  "limits": {
+    "frame_rate_fps": {
+      "min": 3600,
+      "max": 20000,
+      "note": "전 화소(메가픽셀) 기준. SA-Z 20,000(PDF; 메가픽셀 최대 21,000) / SA-X2 12,500(PDF; 1,024 × 1,000 에서 13,500) / SA5 7,500 / SA1.1 5,400 / SA4 3,600 fps(웹)"
+    },
+    "max_frame_rate_fps": {
+      "max": 2100000,
+      "note": "SA-Z Type 2100K, 화소를 줄였을 때"
+    }
+  },
+  "models": [
+    {
+      "model": "SA-Z",
+      "specs": {
+        "detector": "Proprietary Design Advanced CMOS",
+        "frame_rate_fps": {
+          "value": 20000,
+          "note": "전 화소 1,024 × 1,024. 단종 제품 페이지와 PDF 본문은 「메가픽셀에서 최대 21,000 fps」"
+        },
+        "max_frame_rate_fps": {
+          "value": 2100000,
+          "note": "Type 2100K. Type 200K 224,000 fps, Type 480K 480,000 fps. 단종 제품 페이지는 「Up to 2M fps」"
+        },
+        "detector_pixels": "1024 × 1024",
+        "resolution_pixels": 1048576,
+        "pixel_pitch_um": 20,
+        "min_exposure_time_s": {
+          "value": 1e-06,
+          "note": "셔터 1 ms ~ 1 µs, Type 2100K 는 159 ns 선택(수출 통제)"
+        },
+        "memory_GB": [
+          8,
+          16,
+          32,
+          64,
+          128
+        ],
+        "adc_resolution_bit": {
+          "value": 12,
+          "note": "흑백 12-bit / 컬러 36-bit"
+        },
+        "interfaces": "Dual Gigabit Ethernet",
+        "weight_kg": 10.4
+      },
+      "note": "데이터시트(Rev 16.10.27): 896 × 896 에서 25,000 fps, 512 × 256 에서 120,000 fps. 감도 ISO 50,000 흑백 / 20,000 컬러(ISO 12232 Ssat). 128 GB 메모리는 당시 「early 2017」 예정. 크기 261.6 × 150 × 375.4 mm, 운전 온도 0 ~ 45 °C. 후속 NOVA S"
+    },
+    {
+      "model": "SA-X2",
+      "specs": {
+        "detector": "Proprietary Design Advanced CMOS",
+        "frame_rate_fps": {
+          "value": 12500,
+          "note": "전 화소 1,024 × 1,024. 1,024 × 1,000 에서 13,500 fps(단종 제품 페이지의 메가픽셀 값)"
+        },
+        "max_frame_rate_fps": {
+          "value": 1080000,
+          "note": "Type 1080K. Type 200K 216,000 fps, Type 480K 480,000 fps"
+        },
+        "detector_pixels": "1024 × 1024",
+        "resolution_pixels": 1048576,
+        "pixel_pitch_um": 20,
+        "min_exposure_time_s": {
+          "value": 1e-06,
+          "note": "셔터 1 ms ~ 1 µs, Type 1080K 는 293 ns 선택(수출 통제)"
+        },
+        "memory_GB": [
+          8,
+          16,
+          32,
+          64,
+          128
+        ],
+        "adc_resolution_bit": {
+          "value": 12,
+          "note": "흑백 12-bit / 컬러 36-bit"
+        },
+        "interfaces": "Dual Gigabit Ethernet",
+        "weight_kg": {
+          "value": 9.9,
+          "note": "RV 모델 13.7 kg"
+        }
+      },
+      "note": "데이터시트(Rev 17.03.03): 768 × 768 에서 22,500 fps, 256 × 280 에서 120,000 fps. 감도 ISO 25,000 흑백 / 10,000 컬러(ISO 12232 Ssat). 운전 온도 0 ~ 40 °C(RV 모델 0 ~ 45 °C). 후속 NOVA S"
+    },
+    {
+      "model": "SA6",
+      "note": "단종 제품 페이지에 'High definition' 만 적힘. 후속 Mini WX"
+    },
+    {
+      "model": "SA5",
+      "specs": {
+        "frame_rate_fps": 7500,
+        "max_frame_rate_fps": 1000000
+      },
+      "note": "7,500 fps(메가픽셀), Up to 1M fps. 후속 NOVA S · Mini AX"
+    },
+    {
+      "model": "SA4",
+      "specs": {
+        "frame_rate_fps": 3600,
+        "max_frame_rate_fps": 500000
+      },
+      "note": "3,600 fps(메가픽셀), 500,000 fps(화소 축소). 후속 NOVA S · Mini AX"
+    },
+    {
+      "model": "SA1.1",
+      "specs": {
+        "frame_rate_fps": 5400,
+        "max_frame_rate_fps": 675000
+      },
+      "note": "5,400 fps(메가픽셀), 675,000 fps 최대. 후속 NOVA S · Mini AX"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://photron.com/discontinued-products/",
+      "retrieved": "2026-10-08",
+      "note": "제조사 단종 제품 페이지(HTML). 기종별 메가픽셀 프레임 속도·최대 프레임 속도와 후속 제품 링크"
+    },
+    {
+      "url": "https://photron.com/wp-content/uploads/2016/11/SA-Z-REV16.10.27_LowRes.pdf",
+      "retrieved": "2026-10-08",
+      "note": "제조사 SA-Z 카탈로그 PDF 의 주소. 아래 file 출처로 PDF 를 읽어 확인함"
+    },
+    {
+      "url": "https://photron.com/wp-content/uploads/2014/05/SA-X2-REV17.03.03_LR.pdf",
+      "retrieved": "2026-10-08",
+      "note": "제조사 SA-X2 카탈로그 PDF 의 주소. 아래 file 출처로 PDF 를 읽어 확인함"
+    },
+    {
+      "file": "photron/sa-z-rev16.10.27_lowres.pdf",
+      "pages": [
+        1,
+        2,
+        3
+      ],
+      "note": "제조사 SA-Z 데이터시트 PDF(Rev 16.10.27)"
+    },
+    {
+      "file": "photron/sa-x2-rev17.03.03_lr.pdf",
+      "pages": [
+        1,
+        2,
+        3
+      ],
+      "note": "제조사 SA-X2 데이터시트 PDF(Rev 17.03.03)"
+    }
+  ],
+  "confidence": "limited",
+  "notes": "모두 단종. PDF 로 확인: SA-Z · SA-X2 의 해상도 · 화소 20 µm · 메모리 · ADC 를 확인해 uncertain 을 지우고, 전 화소 프레임 속도를 PDF 값(SA-Z 20,000, SA-X2 12,500 fps)으로, SA-Z 최대 속도를 2,100,000 fps 로 고침. 셔터 · 인터페이스 · 무게를 더함 / 웹 값 그대로: SA6 · SA5 · SA4 · SA1.1(PDF 없음)."
+}

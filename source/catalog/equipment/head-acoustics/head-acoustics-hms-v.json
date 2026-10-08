@@ -1,0 +1,80 @@
+{
+  "id": "head-acoustics-hms-v",
+  "kind": "equipment_model",
+  "name": "HEAD acoustics HMS V Digital Artificial Head",
+  "name_ko": "HEAD acoustics HMS V 디지털 인공 두상",
+  "manufacturer": "head-acoustics",
+  "brand": "HMS",
+  "category": "head_torso_simulator",
+  "form_factor": "fixture",
+  "description": "바이노럴 녹음용 디지털 인공 두상. 채널마다 A/D 변환기 2개를 병렬로 둔 Dual ADC·32 bit 로 가청 동적 범위 전체를 한 번에 담는다. 샘플링 32.768~204.8 kHz 아홉 단계, 내장 메모리 약 60 GB(USB 확장), 등화 ID·FF·DF·LIN 선택, 22 Hz 고역 통과 필터, 원격 교정. HSU 계열과 머리 형상이 같다.",
+  "test_items": [],
+  "measurands": [
+    "sound_pressure_level",
+    "binaural_recording"
+  ],
+  "materials": [
+    "vehicles",
+    "household appliances",
+    "IT equipment"
+  ],
+  "limits": {
+    "data_rate_Hz": {
+      "values": [
+        32768,
+        44100,
+        48000,
+        51200,
+        88200,
+        96000,
+        102400,
+        192000,
+        204800
+      ],
+      "note": "샘플링 주파수 목록(원문 kHz)"
+    },
+    "adc_resolution_bit": {
+      "values": [
+        32
+      ],
+      "note": "32-bit technology, Dual ADC"
+    }
+  },
+  "models": [
+    {
+      "model": "HMS V",
+      "specs": {
+        "adc_resolution_bit": 32,
+        "interfaces": "USB-A, USB-C, 네트워크, HEAD_link+ / HEAD_link, 펄스 입력(BNC), 헤드폰(3.5 mm), 라인 출력(6.35 mm)"
+      }
+    }
+  ],
+  "features": [
+    "Dual ADC(채널당 A/D 2개)",
+    "내장 메모리 약 60 GB",
+    "등화 ID/FF/DF/LIN",
+    "22 Hz 고역 통과 필터",
+    "과부하 검출",
+    "원격 교정",
+    "여러 대 동기 또는 HMS IV.0 과 짝"
+  ],
+  "options": [
+    "_lab_PWR 배터리 팩(약 5시간)",
+    "USB 저장 매체"
+  ],
+  "relations": [
+    {
+      "type": "same_family_as",
+      "target": "head-acoustics-hsu-iii"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://www.head-acoustics.com/products/artificial-head/hms-v/",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지"
+    }
+  ],
+  "confidence": "limited",
+  "notes": "바이노럴 녹음(음질 평가) 장비라 test_items 의 오디오 성능(THD·SNR) 과 맞지 않아 비움. 주파수 범위·자체 잡음은 페이지에 없다."
+}

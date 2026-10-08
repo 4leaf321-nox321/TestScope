@@ -1,0 +1,69 @@
+{
+  "id": "espec-tsh-haats",
+  "kind": "equipment_model",
+  "name": "ESPEC Highly Accelerated Air to Air Thermal Shock Chamber TSH-13-W (HAATS)",
+  "name_ko": "에스펙 고가속 기상식 열충격 챔버 TSH-13-W",
+  "manufacturer": "espec",
+  "category": "thermal_shock_chamber",
+  "drive": "thermal",
+  "form_factor": "floor",
+  "description": "12 L 소형 시험 영역에서 +125 °C → -40 °C 를 3분 안에 회복하는 고가속 기상식 열충격 챔버. 고온 노출 +60~+200 °C, 저온 노출 -70~0 °C.",
+  "test_items": [
+    "thermal_shock",
+    "temperature_cycling"
+  ],
+  "limits": {
+    "high_temp_degC": {
+      "min": 60,
+      "max": 200
+    },
+    "low_temp_degC": {
+      "min": -70,
+      "max": 0
+    },
+    "recovery_time_min": {
+      "max": 3,
+      "note": "+125 °C ↔ -40 °C 회복 3분 이내"
+    }
+  },
+  "models": [
+    {
+      "model": "TSH-13-W",
+      "specs": {
+        "high_temp_degC": {
+          "min": 60,
+          "max": 200
+        },
+        "low_temp_degC": {
+          "min": -70,
+          "max": 0
+        },
+        "recovery_time_min": {
+          "max": 3
+        },
+        "chamber_volume_L": 12,
+        "inner_mm": "W300×H200×D200",
+        "weight_kg": 1070
+      },
+      "note": "무게 '약 1,070 kg'"
+    }
+  ],
+  "relations": [
+    {
+      "type": "same_family_as",
+      "target": "espec-tsa-thermal-shock"
+    },
+    {
+      "type": "simulates_environment",
+      "target": "environment-thermal-shock"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://www.espec.co.jp/english/products/env-test/haats/",
+      "retrieved": "2026-10-08",
+      "note": "제조사 영문 페이지 사양표"
+    }
+  ],
+  "confidence": "limited"
+}

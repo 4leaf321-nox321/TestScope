@@ -1,0 +1,157 @@
+{
+  "id": "rohde-schwarz-sma100b",
+  "kind": "equipment_series",
+  "name": "R&S SMA100B RF and Microwave Signal Generator",
+  "name_ko": "로데슈바르츠 SMA100B RF·마이크로파 신호발생기",
+  "manufacturer": "rohde-schwarz",
+  "brand": "SMA",
+  "category": "signal_generator",
+  "subcategory": "analog_rf_microwave",
+  "description": "고순도 아날로그 RF·마이크로파 신호발생기. 8 kHz~3·6·12.75·20·31.8·40·50·67 GHz(주파수 옵션, 72 GHz 까지 overrange)이고, SZM 주파수 체배기로 50~170 GHz 를 낸다. 10 GHz·10 kHz 오프셋 SSB 위상 잡음 -132 dBc(typ., SMAB-B711 옵션), 10 GHz·30 MHz 오프셋 광대역 잡음 -162 dBc(측정값), 넓은 주파수 범위에서 최대 출력 30 dBm 초과다. 고성능 펄스 변조·펄스 발생기·펄스열, AM/FM/φM, Scan AM, 처프, 램프 스윕을 옵션으로 둔다.",
+  "test_items": [],
+  "limits": {
+    "output_frequency_Hz": {
+      "min": 8000,
+      "max": 67000000000,
+      "note": "사양서: 주파수 옵션 SMAB-B103 3 GHz·B106 6 GHz·B112 12.75 GHz·B120 20 GHz·B131 31.8 GHz·B140(N) 40 GHz·B150(N) 50 GHz·B167(N) 67 GHz, 모두 8 kHz 부터. overrange 67~72 GHz. SZM 주파수 체배기 50~170 GHz 는 제품 페이지 문구(사양서에는 없음)"
+    },
+    "rf_output_level_dBm": {
+      "min": -127,
+      "max": 30,
+      "note": "사양서 Specified level range(PEP): 하한 -127 dBm(100 kHz 이상, 주파수 대역·옵션에 따라 -120/-115/-95/-75 dBm), 상한 +30 dBm(3·6 GHz 형 + K31/B32 고출력, 8 MHz~6 GHz). 옵션 없는 3·6 GHz 형 +19 dBm, 20 GHz 형 +K33/B34 +28 dBm(8 MHz~6 GHz), 40 GHz 형 +B35/K36/B36S +29 dBm(8 MHz~3 GHz)·+27 dBm(20~33 GHz), 67 GHz 형 +B37/K38/B39/K40 +23 dBm(1 MHz~3 GHz). 설정 범위 -145~+40 dBm. Key features: 6 GHz 형 최대 38 dBm(원문 Ultra high output power up to 38 dBm). 목록 페이지 Level range -127~+30 dBm 과 같다"
+    },
+    "phase_noise_dBc_Hz": {
+      "values": [
+        -140,
+        -120,
+        -132
+      ],
+      "note": "사양서. 기본 장비 20 kHz 오프셋: -140 = 1 GHz typ.(사양 < -135), -120 = 10 GHz typ.(사양 < -115). -132 = 10 GHz·10 kHz 오프셋 typ.(사양 < -128), SMAB-B711 초저위상잡음 옵션. 목록 페이지의 < -147 dBc 는 B711 의 1 GHz·10 kHz 사양값과 같다. 단위 dBc(1 Hz)"
+    }
+  },
+  "models": [
+    {
+      "model": "SMA100B",
+      "specs": {
+        "output_frequency_Hz": {
+          "min": 8000,
+          "max": 67000000000
+        },
+        "rf_output_level_dBm": {
+          "min": -127,
+          "max": 30,
+          "note": "사양 범위. 최대 +30 dBm 은 6 GHz 형 + K31/B32 고출력 옵션"
+        },
+        "phase_noise_dBc_Hz": {
+          "values": [
+            -140,
+            -120,
+            -132
+          ],
+          "note": "-140: 1 GHz·20 kHz typ., -120: 10 GHz·20 kHz typ.(기본). -132: 10 GHz·10 kHz typ.(SMAB-B711)"
+        }
+      },
+      "note": "주파수 범위는 options 의 SMAB-B1xx 로 고른다. 높이 2 HU(SMAB-B92)·3 HU(SMAB-B93, 7인치 화면)"
+    }
+  ],
+  "features": [
+    "SSB 위상 잡음 -132 dBc(10 GHz, 10 kHz, typ., SMAB-B711 옵션)",
+    "광대역 잡음 -162 dBc(10 GHz, 30 MHz 오프셋, 측정값)",
+    "낮은 고조파(원문 Exceptionally low harmonics)",
+    "SZM 체배기로 170 GHz 까지"
+  ],
+  "options": [
+    {
+      "name": "SMAB-B103",
+      "note": "8 kHz~3 GHz (1420.8488.02)"
+    },
+    {
+      "name": "SMAB-B106",
+      "note": "8 kHz~6 GHz (1420.8588.02)"
+    },
+    {
+      "name": "SMAB-B112",
+      "note": "8 kHz~12.75 GHz (1420.8688.02)"
+    },
+    {
+      "name": "SMAB-B120",
+      "note": "8 kHz~20 GHz (1420.8788.02)"
+    },
+    {
+      "name": "SMAB-B131",
+      "note": "8 kHz~31.8 GHz (1420.8888.02)"
+    },
+    {
+      "name": "SMAB-B140",
+      "note": "8 kHz~40 GHz (1420.8988.02)"
+    },
+    {
+      "name": "SMAB-B150",
+      "note": "8 kHz~50 GHz (1420.9049.02)"
+    },
+    {
+      "name": "SMAB-B167",
+      "note": "8 kHz~67 GHz (1420.9149.02)"
+    },
+    {
+      "name": "SMAB-B711 / B711N",
+      "note": "초저위상잡음(10 GHz·10 kHz -128 dBc, typ. -132). B709 저위상잡음, B710 근접 위상잡음 개선"
+    },
+    {
+      "name": "SMAB-K31 / B32 / K33 / B34 / B35 / K36 / B36S / B37 / K38 / B39 / K40",
+      "note": "고출력·초고출력 옵션(주파수 옵션별 조합, 사양서 7쪽)"
+    },
+    {
+      "name": "SMAB-K22",
+      "note": "고성능 펄스 변조기"
+    },
+    {
+      "name": "SMAB-K23",
+      "note": "펄스 발생기"
+    },
+    {
+      "name": "SMAB-K27",
+      "note": "펄스열"
+    },
+    {
+      "name": "R&S SZM 주파수 체배기",
+      "note": "50~170 GHz"
+    }
+  ],
+  "relations": [
+    {
+      "type": "same_family_as",
+      "target": "rohde-schwarz-smb100b"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://www.rohde-schwarz.com/us/products/test-and-measurement/analog-signal-generators/rs-sma100b-rf-and-microwave-signal-generator_63493-427776.html",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지. 주파수 옵션(주문 번호), 위상 잡음, 출력, 변조 옵션"
+    },
+    {
+      "url": "https://www.rohde-schwarz.com/us/products/test-and-measurement/analog-signal-generators_333521.html",
+      "retrieved": "2026-10-08",
+      "note": "제조사 아날로그 신호발생기 목록 페이지. 주파수, 레벨 범위, SSB 위상 잡음"
+    },
+    {
+      "file": "rohde-schwarz/sma100b_specs_en_5215-1018-22_v1001.pdf",
+      "pages": [
+        4,
+        6,
+        7,
+        8,
+        13,
+        14,
+        15,
+        23,
+        26,
+        56
+      ],
+      "note": "제조사 사양서(v10.01, 2026-08). 주파수 옵션, 레벨 범위(옵션별), 설정 범위, 위상 잡음 표, 광대역 잡음, 주문 번호"
+    }
+  ],
+  "confidence": "catalog",
+  "notes": "PDF 로 확인: 주파수 옵션·주문 번호, 레벨 범위 -127~+30 dBm(고출력 옵션 기준), 위상 잡음. 웹 페이지의 -132 dBc(10 GHz·10 kHz typ.)는 사양서상 SMAB-B711 옵션 값이고, 기본 장비는 10 GHz·20 kHz 에서 typ. -120 dBc 다. SZM 체배기는 사양서에 없다."
+}

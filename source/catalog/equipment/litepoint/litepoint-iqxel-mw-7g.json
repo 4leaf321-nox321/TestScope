@@ -1,0 +1,97 @@
+{
+  "id": "litepoint-iqxel-mw-7g",
+  "kind": "equipment_series",
+  "name": "LitePoint IQxel-MW 7G",
+  "name_ko": "라이트포인트 IQxel-MW 7G Wi-Fi 6E 시험기",
+  "manufacturer": "litepoint",
+  "brand": "IQxel",
+  "category": "radio_communication_tester",
+  "description": "Wi-Fi 6E·Wi-Fi 7 등 연결성 기기용 시험기(원문 IQxel-MW 7G Wi-Fi 6E 802.11ax Tester). 표준 구성 400 MHz~7.3 GHz(6 GHz 구성 후 7.3 GHz 확장도 있음), 포트당 160 MHz·80+80 MHz 를 기본 지원하고 802.11be EHT 160 MHz 는 옵션이다. 활성 포트 2·4·8·16 구성이며 8x8 true MIMO 로 확장된다. Wi-Fi(802.11a/b/g/j/n/p/ac/ax/be/af/ah/az/ba), Bluetooth(Classic/EDR, LE, 5.0~5.3, Channel Sounding), Zigbee·Z-Wave·Wi-SUN·DECT·LoRa·Sigfox, GNSS, 셀룰러 신호를 다룬다.",
+  "test_items": [],
+  "limits": {
+    "frequency_Hz": {
+      "min": 400000000,
+      "max": 7300000000,
+      "note": "표준 구성 400 MHz to 7.3 GHz. 다른 구성은 6 GHz 까지이고 7.3 GHz 로 확장 가능"
+    },
+    "bandwidth_Hz": {
+      "max": 160000000,
+      "note": "포트당 160 MHz, 80+80 MHz 기본. 802.11be EHT 160 MHz 는 옵션"
+    },
+    "rf_port_count": {
+      "values": [
+        2,
+        4,
+        8,
+        16
+      ],
+      "note": "활성 포트 구성"
+    },
+    "radio_standards": {
+      "values": [
+        "802.11a/b/g/j/n/p",
+        "802.11ac",
+        "802.11ax (Wi-Fi 6/6E)",
+        "802.11be (Wi-Fi 7)",
+        "802.11af/ah/az/ba",
+        "Bluetooth Classic/EDR/LE 5.0-5.3",
+        "Bluetooth Channel Sounding",
+        "Zigbee",
+        "Z-Wave",
+        "Wi-SUN",
+        "DECT",
+        "LoRa",
+        "Sigfox",
+        "GPS/GLONASS/Compass/Galileo",
+        "GSM/EDGE",
+        "CDMA/CDMA2000",
+        "TD-SCDMA",
+        "W-CDMA HSPA/HSPA+",
+        "LTE",
+        "3GPP 5G NR"
+      ],
+      "note": "제품 페이지 문구"
+    }
+  },
+  "models": [
+    {
+      "model": "IQxel-MW 7G",
+      "specs": {
+        "frequency_Hz": {
+          "min": 400000000,
+          "max": 7300000000
+        },
+        "bandwidth_Hz": 160000000,
+        "rf_port_count": {
+          "values": [
+            2,
+            4,
+            8,
+            16
+          ]
+        }
+      }
+    }
+  ],
+  "features": [
+    "포트당 160 MHz·80+80 MHz",
+    "활성 포트 2·4·8·16 구성",
+    "8x8 true MIMO 확장",
+    "802.11be EHT 160 MHz(옵션)"
+  ],
+  "relations": [
+    {
+      "type": "same_family_as",
+      "target": "litepoint-iqxstream-5g"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://www.litepoint.com/products/iqxel-mw-7g/",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지. 주파수, 대역폭, 지원 표준, 포트 구성, MIMO"
+    }
+  ],
+  "confidence": "limited",
+  "notes": "VSA/VSG 출력·입력 레벨, EVM, 외형은 페이지에 없다(기술 사양 문서에 있다고 적힘)."
+}

@@ -1,0 +1,94 @@
+{
+  "id": "perkinelmer-pyris-sta-9",
+  "kind": "equipment_series",
+  "name": "PerkinElmer Pyris STA 9 Simultaneous Thermal Analyzer",
+  "name_ko": "퍼킨엘머 Pyris STA 9 동시열분석기",
+  "manufacturer": "perkinelmer",
+  "category": "sta",
+  "brand": "Pyris",
+  "description": "Pyris 9 시리즈 동시열분석기(TGA-DSC). 저울 용량 1500 mg, 온도 15~1100 °C. 알루미나 노, SaTurnA 센서(시료·기준 온도 측정), 15 °C 부터 시작해 수분·용매 증발까지 잡는다. 알루미나·백금 팬, MFC 퍼지 가스(질소·헬륨·아르곤·압축공기·산소).",
+  "test_items": [
+    "tga",
+    "dsc"
+  ],
+  "measurands": [
+    "thermal.decomposition_temp",
+    "thermal.char_residue",
+    "thermal.glass_transition",
+    "thermal.melting_point"
+  ],
+  "measurands_by_item": {
+    "tga": [
+      "thermal.decomposition_temp",
+      "thermal.char_residue"
+    ],
+    "dsc": [
+      "thermal.glass_transition",
+      "thermal.melting_point"
+    ]
+  },
+  "limits": {
+    "temperature_degC": {
+      "min": 15,
+      "max": 1100
+    },
+    "heating_rate_K_min": {
+      "min": 1,
+      "max": 300,
+      "note": "제어 승온. 탄도(ballistic) 승온 >450 °C/min"
+    }
+  },
+  "models": [
+    {
+      "model": "Pyris STA 9",
+      "specs": {
+        "temperature_degC": {
+          "min": 15,
+          "max": 1100
+        },
+        "sample_mass_mg": {
+          "max": 1500,
+          "note": "balance capacity 1500 mg"
+        },
+        "heating_rate_K_min": {
+          "min": 1,
+          "max": 300,
+          "note": "제어 승온 1~300 °C/min, 탄도(ballistic) >450 °C/min"
+        },
+        "cooling": "불활성 냉각 가스(분석 분위기 유지), 1000 → 30 °C 20 분 이내",
+        "accuracy_degC": {
+          "value": 0.5,
+          "note": "온도 정확도 ±0.5 °C(설정·측정 온도 차)"
+        },
+        "balance_resolution_ug": {
+          "value": 0.1,
+          "uncertain": true,
+          "note": "추출 텍스트에 「0.1 g」 — µ 기호가 빠진 것으로 읽었다"
+        },
+        "accuracy": "온도 정밀도 <0.05 %(10 회 반복 RSD), 열량 정확도 ±1.5 %, 열량 정밀도 <0.5 %(RSD), 등온 저울 드리프트 <2 µg/h, 시료·프로그램 온도 상관·반복도 <0.01 °C",
+        "weight_kg": 12
+      }
+    }
+  ],
+  "relations": [
+    {
+      "type": "same_family_as",
+      "target": "perkinelmer-pyris-tga-9"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://www.perkinelmer.com/library/spc-pyris-sta-9-specifications-sheet.html",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지(HTML) 본문·표를 직접 읽음. 사양서 소개문(저울 용량 1500 mg, 15~1100 °C). 전체 사양표는 PDF"
+    },
+    {
+      "file": "perkinelmer/spc-pyris-sta-9-specifications-sheet.pdf",
+      "pages": [
+        1
+      ]
+    }
+  ],
+  "confidence": "catalog",
+  "notes": "PDF 사양서로 확인: 저울 용량 1500 mg, 15~1100 °C. 승온·냉각, 온도·열량 정확도, 무게를 PDF 에서 더했다. 저울 정확도·정밀도 칸은 추출 텍스트에서 줄이 밀려(두 칸 다 0.01 % 로 읽힘) 어느 값인지 확실하지 않아 넣지 않았다. 외형 치수 칸은 PDF 에 비어 있다."
+}

@@ -1,0 +1,147 @@
+{
+  "id": "flir-t500-series",
+  "kind": "equipment_series",
+  "name": "FLIR T500-Series Professional Thermal Camera (T530, T540, T560)",
+  "name_ko": "플리어 T500 시리즈 열화상 카메라",
+  "manufacturer": "flir",
+  "brand": "T-Series",
+  "category": "thermal_imager",
+  "form_factor": "handheld",
+  "description": "회전 렌즈 블록의 전문가용 휴대 열화상 카메라 계열(T660 · T800 아래 등급). 해상도 T530 320 × 240, T540 464 × 348, T560 640 × 480, 열 감도는 렌즈에 따라 <30 ~ <50 mK. 측정 범위 -20 ~ 120 · 0 ~ 650 °C 와 300 ~ 1,500 °C(T530 은 선택 교정 300 ~ 1,200 °C). 7.5 ~ 14 µm, 30 Hz, 확도 ±2 °C 또는 ±2 %, 무게 1.4 kg.",
+  "test_items": [
+    "thermography"
+  ],
+  "measurands": [
+    "surface_temperature",
+    "temperature_distribution",
+    "hotspot_location"
+  ],
+  "limits": {
+    "temperature_degC": {
+      "min": -20,
+      "max": 1500,
+      "note": "레인지 전환. T530 은 650 °C(선택 교정 1,200 °C)"
+    },
+    "ir_resolution_pixels": {
+      "min": 76800,
+      "max": 307200
+    },
+    "thermal_sensitivity_degC": {
+      "min": 0.03,
+      "max": 0.05,
+      "note": "렌즈별, 원문 mK @ 30 °C"
+    },
+    "wavelength_nm": {
+      "min": 7500,
+      "max": 14000,
+      "note": "원문 7.5 ~ 14.0 µm"
+    },
+    "frame_rate_fps": {
+      "values": [
+        30
+      ],
+      "note": "원문 30 Hz"
+    }
+  },
+  "models": [
+    {
+      "model": "T530",
+      "specs": {
+        "detector_pixels": "320 × 240",
+        "ir_resolution_pixels": 76800,
+        "thermal_sensitivity_degC": 0.03,
+        "temperature_degC": {
+          "min": -20,
+          "max": 650
+        },
+        "accuracy": "±2 °C 또는 읽음값의 ±2 %",
+        "wavelength_nm": {
+          "min": 7500,
+          "max": 14000
+        },
+        "frame_rate_fps": 30,
+        "field_of_view_deg": "14° / 24° / 42° / 80°, DFOV 14° + 24° · 24° + 42°",
+        "weight_kg": 1.4
+      },
+      "note": "NETD 42° <30, 24° <40, 14° <50, 80° <40 mK @ 30 °C. 선택 교정 300 ~ 1,200 °C"
+    },
+    {
+      "model": "T540",
+      "specs": {
+        "detector_pixels": "464 × 348",
+        "ir_resolution_pixels": 161472,
+        "thermal_sensitivity_degC": 0.03,
+        "temperature_degC": {
+          "min": -20,
+          "max": 1500
+        },
+        "accuracy": "±2 °C 또는 읽음값의 ±2 %",
+        "wavelength_nm": {
+          "min": 7500,
+          "max": 14000
+        },
+        "frame_rate_fps": 30,
+        "field_of_view_deg": "14° / 24° / 42° / 80°, DFOV 24° + 14° · 24° + 42°",
+        "weight_kg": 1.4
+      },
+      "note": "NETD 42° <30, 24° <40, 14° <50, 80° <40 mK. 레인지 -20 ~ 120 / 0 ~ 650 / 300 ~ 1,500 °C"
+    },
+    {
+      "model": "T560",
+      "specs": {
+        "detector_pixels": "640 × 480",
+        "ir_resolution_pixels": 307200,
+        "thermal_sensitivity_degC": 0.03,
+        "temperature_degC": {
+          "min": -20,
+          "max": 1500
+        },
+        "accuracy": "±2 °C 또는 읽음값의 ±2 %",
+        "wavelength_nm": {
+          "min": 7500,
+          "max": 14000
+        },
+        "frame_rate_fps": 30,
+        "field_of_view_deg": "42° × 32° / 24° × 18° / 14° × 10° / 80° × 63°, FlexView 이중 시야",
+        "weight_kg": 1.4
+      },
+      "note": "NETD 14° <50, 24° <40, 42° <30 mK. 레인지 -20 ~ 120 / 0 ~ 650 / 300 ~ 1,500 °C"
+    }
+  ],
+  "options": [
+    "렌즈 14° · 24° · 42° · 80°",
+    "이중 시야(DFOV) 렌즈"
+  ],
+  "relations": [
+    {
+      "type": "performs",
+      "target": "thermography"
+    },
+    {
+      "type": "same_family_as",
+      "target": "flir-t660"
+    },
+    {
+      "type": "same_family_as",
+      "target": "flir-t800-series"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://www.flir.com/products/t530/",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지(HTML)"
+    },
+    {
+      "url": "https://www.flir.com/products/t540/",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지(HTML)"
+    },
+    {
+      "url": "https://www.flir.com/products/t560/",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지(HTML)"
+    }
+  ],
+  "confidence": "limited"
+}

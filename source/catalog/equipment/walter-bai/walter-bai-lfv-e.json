@@ -1,0 +1,69 @@
+{
+  "id": "walter-bai-lfv-e",
+  "kind": "equipment_series",
+  "name": "Walter+Bai LFV-E Electrodynamic Test Systems (up to 12 kN)",
+  "name_ko": "발터바이 LFV-E 전기동력식 피로시험기",
+  "manufacturer": "walter-bai",
+  "category": "electrodynamic_fatigue",
+  "drive": "electrodynamic",
+  "description": "유체가 없는 보이스코일 서보전동 구동(위 크로스헤드 장착)의 피로·내구 시험기. 힘 용량 12 kN 까지, 인장-비틀림용 토크 구동 형식도 있다. 일정 하중·단조·반복(편진·양진) 하중을 폐루프로 제어하고 스트로크·힘·변형률 채널을 쓴다.",
+  "test_items": [
+    "fatigue",
+    "torsion"
+  ],
+  "measurands": [
+    "mechanical.fatigue_strength"
+  ],
+  "standards": {
+    "compliance": [],
+    "test_methods": [
+      "ISO 14801"
+    ]
+  },
+  "limits": {
+    "dynamic_force_kN": {
+      "max": 12
+    }
+  },
+  "models": [
+    {
+      "model": "LFV-E",
+      "specs": {
+        "dynamic_force_kN": {
+          "max": 12
+        }
+      },
+      "note": "제품 정보 'LFV-E Electrodynamic Fatigue Testing System'"
+    },
+    {
+      "model": "LFV-E Table-Top",
+      "form_factor": "benchtop",
+      "specs": {
+        "dynamic_force_kN": {
+          "max": 12
+        }
+      },
+      "note": "제품 정보 'LFV-E Electrodynamic Table-Top Fatigue Testing System'"
+    }
+  ],
+  "features": [
+    "백래시·히스테리시스 없는 운동",
+    "무소음 스트로크 변환기 내장",
+    "유지보수가 거의 없는 보이스코일 구동"
+  ],
+  "relations": [
+    {
+      "type": "same_family_as",
+      "target": "walter-bai-lfv"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://www.walterbai.com/page/products/Materials_Testing_Systems/Dynamic_and_Fatigue_Testing_Systems/LFV-E_Electrodynamic_Fatigue_Testing_Systems.php",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지(HTML) 본문·표를 직접 읽음. 소개·특징, 제품 정보 목록(바닥형·탁상형·ISO 14801 치과 임플란트)"
+    }
+  ],
+  "confidence": "limited",
+  "notes": "기종별 힘·스트로크 표는 페이지에 없다. 'LFV-E Table-Top' 은 제품 정보 제목에서 딴 이름이다."
+}

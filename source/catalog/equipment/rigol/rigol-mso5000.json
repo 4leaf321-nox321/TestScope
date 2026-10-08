@@ -1,0 +1,107 @@
+{
+  "id": "rigol-mso5000",
+  "kind": "equipment_series",
+  "name": "MSO5000 Series Digital Oscilloscope",
+  "name_ko": "리골 MSO5000 디지털 오실로스코프",
+  "manufacturer": "rigol",
+  "brand": "MSO5000",
+  "category": "oscilloscope",
+  "subcategory": "mixed_signal_oscilloscope",
+  "form_factor": "benchtop",
+  "description": "70~350 MHz 대역의 2·4채널 혼합 신호 오실로스코프 계열임. 실시간 8 GSa/s, 최대 100 Mpts, 옵션 16 디지털 채널.",
+  "test_items": [],
+  "limits": {
+    "bandwidth_Hz": {
+      "min": 70000000,
+      "max": 350000000
+    },
+    "sample_rate_Sa_s": {
+      "max": 8000000000
+    },
+    "record_length_pts": {
+      "max": 100000000
+    },
+    "channels": {
+      "values": [
+        2,
+        4
+      ]
+    },
+    "logic_channel_count": {
+      "values": [
+        16
+      ],
+      "note": "옵션"
+    }
+  },
+  "models": [
+    {
+      "model": "MSO5072",
+      "specs": {
+        "bandwidth_Hz": 70000000,
+        "channels": 2,
+        "logic_channel_count": 16,
+        "sample_rate_Sa_s": 8000000000,
+        "record_length_pts": 100000000
+      }
+    },
+    {
+      "model": "MSO5074",
+      "specs": {
+        "bandwidth_Hz": 70000000,
+        "channels": 4,
+        "logic_channel_count": 16,
+        "sample_rate_Sa_s": 8000000000,
+        "record_length_pts": 100000000
+      }
+    },
+    {
+      "model": "MSO5102",
+      "specs": {
+        "bandwidth_Hz": 100000000,
+        "channels": 2,
+        "logic_channel_count": 16,
+        "sample_rate_Sa_s": 8000000000,
+        "record_length_pts": 100000000
+      }
+    },
+    {
+      "model": "MSO5104",
+      "specs": {
+        "bandwidth_Hz": 100000000,
+        "channels": 4,
+        "logic_channel_count": 16,
+        "sample_rate_Sa_s": 8000000000,
+        "record_length_pts": 100000000
+      }
+    },
+    {
+      "model": "MSO5204",
+      "specs": {
+        "bandwidth_Hz": 200000000,
+        "channels": 4,
+        "logic_channel_count": 16,
+        "sample_rate_Sa_s": 8000000000,
+        "record_length_pts": 100000000
+      }
+    },
+    {
+      "model": "MSO5354",
+      "specs": {
+        "bandwidth_Hz": 350000000,
+        "channels": 4,
+        "logic_channel_count": 16,
+        "sample_rate_Sa_s": 8000000000,
+        "record_length_pts": 100000000
+      }
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://www.rigolna.com/products/digital-oscilloscopes/MSO5000/",
+      "retrieved": "2026-10-08",
+      "note": "리골 북미 법인 사이트(rigolna.com)의 제품 페이지 기종 표. 원문 Real-time Sample Rate 8 GSa/s, Max Memory Depth 100 Mpts, 16 (opt)"
+    }
+  ],
+  "confidence": "limited"
+}

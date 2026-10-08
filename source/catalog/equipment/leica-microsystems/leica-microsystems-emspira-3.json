@@ -1,0 +1,98 @@
+{
+  "id": "leica-microsystems-emspira-3",
+  "kind": "equipment_model",
+  "name": "Leica Emspira 3 Digital Microscope",
+  "name_ko": "라이카 Emspira 3 검사용 디지털 현미경",
+  "manufacturer": "leica-microsystems",
+  "category": "optical_microscope",
+  "subcategory": "digital_microscope",
+  "form_factor": "benchtop",
+  "description": "8:1 인코딩 줌과 4K 60 fps 라이브 영상(HDMI)의 검사용 디지털 현미경. 최대 분해능 337 lp/mm, 최대 시야 76.1×42.8 mm, 최대 피사계 심도 40.5 mm, 작동 거리 303～19 mm. 측정 정확도 ±1 %(0.75x 줌)·±0.5 %(6.0x 줌), 12 MP 정지 화상, IP21 하우징, 항균 표면(AgTreat, ISO 22196).",
+  "test_items": [
+    "microscopy"
+  ],
+  "limits": {
+    "zoom_ratio": {
+      "values": [
+        8
+      ],
+      "note": "줌 0.75x ~ 6.0x(PDF 의 정확도 조건), 8개 클릭 정지 위치"
+    },
+    "field_of_view_mm": {
+      "max": 76.1,
+      "note": "X 76.1 mm, Y 42.8 mm"
+    },
+    "working_distance_mm": {
+      "min": 19,
+      "max": 303
+    },
+    "data_rate_Hz": {
+      "max": 60,
+      "note": "3,840 × 2,160 라이브"
+    },
+    "detector_megapixels": {
+      "values": [
+        12
+      ],
+      "note": "정지 화상 12 MP"
+    },
+    "magnification": {
+      "min": 8.2,
+      "max": 1027,
+      "note": "PDF: 최대 총배율 28인치 모니터 1027:1(PlanApo 5.0x)·65:1(Achr 0.32x), 10인치 모니터 360:1·23:1. 하한 8.2x 는 웹 검색 결과 요약(28인치 모니터, 대물렌즈에 따라 8.2x～1027x, 1x Planapo 로 26x～206x) 값 — 0.32x 최대 65:1 을 8:1 줌으로 나누면 약 8.1x 로 맞음"
+    },
+    "optical_resolution_lp_mm": {
+      "max": 337,
+      "note": "최대 분해능(General optical data 표)"
+    }
+  },
+  "models": [
+    {
+      "model": "Emspira 3",
+      "specs": {
+        "zoom_ratio": 8,
+        "working_distance_mm": {
+          "min": 19,
+          "max": 303
+        },
+        "field_of_view_mm": {
+          "max": 76.1,
+          "note": "X 76.1 mm, Y 42.8 mm. 최대 피사계 심도 40.5 mm"
+        },
+        "optical_resolution_lp_mm": {
+          "max": 337
+        },
+        "magnification": {
+          "max": 1027,
+          "note": "28인치 모니터, PlanApo 5.0x"
+        },
+        "data_rate_Hz": 60,
+        "detector_megapixels": 12,
+        "accuracy": "+/- 1 % (0.75x 줌), +/- 0.5 % (6.0x 줌)"
+      },
+      "note": "PC 없이 단독 운전(화면 표시·측정·오버레이·비교), HDMI 2.0a, USB 3.0 type C, USB 2 ×4. 파일 JPG·TIF·BMP. LAS X 5.0.2 이상 지원"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://www.leica-microsystems.com/products/digital-microscopes/p/emspira-3/",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지(HTML, leica-microsystems.com) Emspira 3 개요(8:1 줌, 4K 60 fps, IP 21)"
+    },
+    {
+      "url": "https://www.leica-microsystems.com/products/digital-microscopes/p/emspira-3/specification/",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지(HTML, leica-microsystems.com) Emspira 3 기술 사양(일부만 표시됨)"
+    },
+    {
+      "file": "leica-microsystems/emspira-203_tech-20information_flyer_en_mc-0004052_19.04.2022.pdf",
+      "pages": [
+        1,
+        2
+      ],
+      "note": "Emspira 3 Technical Information MC-0004052(2022-04-19). 추출 텍스트에서 사양 표의 값이 이름보다 한 줄 앞서 찍혀 순서로 맞춤"
+    }
+  ],
+  "confidence": "catalog",
+  "notes": "PDF 로 확인: 시야·피사계 심도·작동 거리·측정 정확도·4K 60 fps·12 MP·IP 21·AgTreat, 최대 총배율 1027:1(웹 검색 요약 값이라 붙였던 uncertain 을 지움), 최대 분해능 337 lp/mm 더함. 웹 값 그대로: 총배율 하한 8.2x."
+}

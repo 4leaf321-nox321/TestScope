@@ -35,8 +35,9 @@ def _term(
     *,
     parent: VocabularyTerm | None = None,
     code: str | None = None,
+    aliases: list[str] | None = None,
 ) -> VocabularyTerm:
-    """온톨로지 값을 없으면 만든다. **코드로 먼저, 그다음 비교키로 찾는다.**
+    """온톨로지 값을 없으면 만든다. **코드로 먼저, 그다음 비교키로, 그다음 별칭으로 찾는다.**
 
     코드(온톨로지 id — `tensile` · `universal_testing_machine` · `instron`)가 있으면 그것으로
     찾는다. 이름으로만 찾으면 관리 화면에서 「인장」 을 「인장 시험」 으로 바꾼 다음 반입이
@@ -46,6 +47,11 @@ def _term(
     코드 없이 이름으로 찾힌 값에는 코드를 **채운다**(다음부터는 코드로 찾힌다). 다른
     코드가 이미 붙어 있으면 온톨로지 쪽 두 id 가 같은 이름을 쓰는 것이다 — 덮지 않고
     그 값을 쓰되 `_CODE_CLASHES` 에 남겨 끝에 보고한다.
+
+    `aliases` 는 **운영에서 손으로 만든 값의 다른 표기**다(2026-10-08, 분류 「DMM/DAQ」 ·
+    「치수형상측정장비」). 정본이 그 분류를 나중에 들이면 이름이 한 글자만 달라도 같은 분류가
+    두 줄로 서고, 장비는 옛 줄에 남아 새 줄의 카탈로그를 못 본다. 코드가 없는 값만 별칭으로
+    잡는다 — 다른 코드가 붙은 값은 다른 분류다.
 
     반입은 값을 만든다. 설치(`reference.py`)가 축만 세우고 값을 안 심는 것과 다른
     일이다 — 137개를 넣으려면 제조사와 분류가 먼저 있어야 하고, 그것을 사람에게
@@ -73,6 +79,17 @@ def _term(
                 f"{axis.slug}: 「{found.value}」 = {found.code} 인데 {code} 도 같은 이름"
             )
         return found
+    for alias in aliases or []:
+        found = db.scalar(
+            select(VocabularyTerm).where(
+                VocabularyTerm.vocabulary_id == axis.id,
+                VocabularyTerm.normalized == compare_key(alias),
+                VocabularyTerm.code.is_(None),
+            )
+        )
+        if found is not None:
+            found.code = code
+            return found
     found = VocabularyTerm(
         vocabulary_id=axis.id,
         value=clean(value),
@@ -127,6 +144,7 @@ def step_ontology(
                 actor,
                 parent=categories.get(parent_id) if parent_id else None,
                 code=row["id"],
+                aliases=row.get("aliases"),
             )
         pending = rest
         if not pending:
@@ -182,6 +200,49 @@ def _test_item_aliases(
             )
             known.add(norm)
             added += 1
+    return added
+
+
+def step_maker_aliases(db: Session, cat: Catalog, makers: dict[str, VocabularyTerm]) -> int:
+    """1-b. 제조사의 **정식 이름 · 한글 이름 · 옛 이름**을 별칭으로. 더한 수를 돌려준다.
+
+    제조사 값은 원본 id(`konica-minolta`)로 서 있어서, 대장에 「Konica Minolta」 ·
+    「코니카미놀타」 · 옛 사명 「Olympus」(현 Evident) 로 적힌 장비는 이름으로 못 찾았다 —
+    카탈로그 보강 목록이 그 장비를 「제조사 모름」 으로 세운다(2026-10-08). 시험 항목 별칭과
+    같은 규칙: 있는 별칭은 안 덮고, **다른 제조사의 값 이름과 같은 것은 넣지 않는다**
+    (「Agilent」 는 Keysight 의 옛 이름이지만 Agilent 가 따로 서 있다).
+    """
+    axis = _axis(db, "manufacturer")
+    known = {
+        one.normalized
+        for one in db.scalars(
+            select(VocabularyAlias).where(VocabularyAlias.vocabulary_id == axis.id)
+        )
+    }
+    taken = set(
+        db.scalars(
+            select(VocabularyTerm.normalized).where(VocabularyTerm.vocabulary_id == axis.id)
+        )
+    )
+    added = 0
+    for row in cat.manufacturers:
+        term = makers.get(row["id"])
+        if term is None:
+            continue
+        candidates = [row.get("name"), row.get("name_ko"), *(row.get("aliases") or [])]
+        for raw in candidates:
+            text = clean(str(raw or ""))
+            norm = compare_key(text)
+            if not text or not norm or norm in taken or norm in known:
+                continue
+            db.add(
+                VocabularyAlias(
+                    vocabulary_id=axis.id, term_id=term.id, value=text, normalized=norm
+                )
+            )
+            known.add(norm)
+            added += 1
+    db.flush()
     return added
 
 

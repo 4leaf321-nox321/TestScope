@@ -457,6 +457,19 @@ SPEC_DEFINITION_LINKS: dict[str, str] = {
     "torque": "torque",
     "acceleration": "acceleration",
     "impact_energy": "impact_energy",
+    # 2026-10-08 — 신뢰성 시험이 묻는데 이어진 사양이 없어 판정이 늘 「모름」 이던 축.
+    "drop_height": "drop_height",
+    # **냉각 속도만 잇는다.** 승온·하강 속도 축 하나에 승온·냉각 둘을 이으면 먼저 오는 쪽이
+    # 이기는데(`conditions_from_specs_bulk`), 챔버는 대개 냉각이 느리다 — 승온 10 · 냉각 5
+    # K/min 챔버가 7 K/min 온도 사이클에 「됨」 이 된다. 느린 쪽으로 답하면 틀려도 보수적이다.
+    "cooling_rate": "ramp_rate",
+    # 변위는 「얼마나 휘게 하나」 다(기판 굽힘 1~10 mm). 장비가 밀어낼 수 있는 이동량이 답이다.
+    "crosshead_travel": "displacement",
+    "actuator_stroke": "displacement",
+    # 저기압 챔버(2026-10-08 카탈로그 반입) — 온톨로지 `chamber_pressure_kPa` ·
+    # `altitude_m` 의 승격분.
+    "chamber_pressure": "pressure",
+    "altitude": "altitude",
 }
 
 #: 종류를 바꿔야 하는 정의: 키 -> 새 종류. **문장을 구간으로** 만 있다.
@@ -685,7 +698,7 @@ SPEC_DEFINITIONS: list[
         "number",
         "length",
         "mm",
-        None,
+        "displacement",
         "max",
         30,
         None,
@@ -697,7 +710,7 @@ SPEC_DEFINITIONS: list[
         "number",
         "length",
         "mm",
-        None,
+        "displacement",
         "max",
         40,
         None,

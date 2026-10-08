@@ -1,0 +1,102 @@
+{
+  "id": "rigol-ds1000z",
+  "kind": "equipment_series",
+  "name": "1000Z Series Digital Oscilloscope",
+  "name_ko": "리골 1000Z 디지털 오실로스코프",
+  "manufacturer": "rigol",
+  "brand": "DS1000Z",
+  "category": "oscilloscope",
+  "subcategory": "digital_storage_oscilloscope",
+  "form_factor": "benchtop",
+  "description": "50~200 MHz 대역의 2·4채널 보급형 디지털 오실로스코프 계열임. 12 Mpts 저장 깊이. Plus 기종은 RPL1116 로직 프로브를 더하면 16 디지털 채널.",
+  "test_items": [],
+  "limits": {
+    "bandwidth_Hz": {
+      "min": 50000000,
+      "max": 200000000
+    },
+    "channels": {
+      "values": [
+        2,
+        4
+      ]
+    },
+    "logic_channel_count": {
+      "values": [
+        16
+      ]
+    },
+    "record_length_pts": {
+      "max": 12000000,
+      "note": "원문 12Mpts Storage Depth"
+    }
+  },
+  "models": [
+    {
+      "model": "DS1102Z-E",
+      "specs": {
+        "bandwidth_Hz": 100000000,
+        "channels": 2
+      }
+    },
+    {
+      "model": "DS1202Z-E",
+      "specs": {
+        "bandwidth_Hz": 200000000,
+        "channels": 2
+      }
+    },
+    {
+      "model": "DS1054Z",
+      "specs": {
+        "bandwidth_Hz": 50000000,
+        "channels": 4
+      }
+    },
+    {
+      "model": "DS1074Z Plus",
+      "specs": {
+        "bandwidth_Hz": 70000000,
+        "channels": 4,
+        "logic_channel_count": 16
+      },
+      "note": "원문 Buy RPL1116 probe to enable 16 digital channels"
+    },
+    {
+      "model": "DS1104Z Plus",
+      "specs": {
+        "bandwidth_Hz": 100000000,
+        "channels": 4,
+        "logic_channel_count": 16
+      },
+      "note": "원문 Buy RPL1116 probe to enable 16 digital channels"
+    },
+    {
+      "model": "DS1074Z-S Plus",
+      "specs": {
+        "bandwidth_Hz": 70000000,
+        "channels": 4,
+        "logic_channel_count": 16
+      },
+      "note": "원문 Buy RPL1116 probe to enable 16 digital channels"
+    },
+    {
+      "model": "DS1104Z-S Plus",
+      "specs": {
+        "bandwidth_Hz": 100000000,
+        "channels": 4,
+        "logic_channel_count": 16
+      },
+      "note": "원문 Buy RPL1116 probe to enable 16 digital channels"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://www.rigolna.com/products/digital-oscilloscopes/1000z/",
+      "retrieved": "2026-10-08",
+      "note": "리골 북미 법인 사이트(rigolna.com)의 제품 페이지 기종 표. 원문 기종별 대역폭·채널, \"12Mpts Storage Depth\"(특징 항목). 샘플링 속도는 표에 없음"
+    }
+  ],
+  "confidence": "limited",
+  "notes": "-S 접미사의 뜻은 조회 페이지 범위에서 확인하지 못함. 기종 표에 없는 MSO1074Z·MSO1104Z 등은 넣지 않음."
+}

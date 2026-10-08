@@ -1,0 +1,165 @@
+{
+  "id": "photo-research-spectrascan-benchtop",
+  "kind": "equipment_series",
+  "name": "Photo Research SpectraScan PR-7 Series / PR-1050 Benchtop Spectroradiometer",
+  "name_ko": "포토리서치 SpectraScan PR-7 · PR-1050 분광복사계",
+  "manufacturer": "photo-research",
+  "brand": "SpectraScan",
+  "category": "spectroradiometer",
+  "form_factor": "benchtop",
+  "description": "Pritchard 광학계의 거치형 분광복사계 계열. PR-730 · PR-740 은 512 소자 · 0.781 nm/화소(1 nm 간격 출력), 측정 파장 380 ~ 780 nm, 측정 개구 2° ~ 0.1° 와 슬릿 등 8 가지. PR-740 은 PR-730 보다 20 배 민감하고 250 배 빨라 약 300 ms 에 잰다. PR-788 은 512 소자 · 1 nm/화소의 확장 동적 범위 판, PR-1050 은 500,000,000:1 동적 범위의 최상위 기종. 근적외 판(PR-735 · PR-745)이 있다.",
+  "test_items": [
+    "photometry_colorimetry"
+  ],
+  "measurands": [
+    "luminance",
+    "chromaticity",
+    "spectral_radiance",
+    "correlated_color_temperature",
+    "dominant_wavelength"
+  ],
+  "limits": {
+    "wavelength_nm": {
+      "min": 380,
+      "max": 780,
+      "note": "PR-730 · PR-740 가시광 판"
+    },
+    "measuring_angle_deg": {
+      "values": [
+        2,
+        1,
+        0.5,
+        0.25,
+        0.125,
+        0.2,
+        0.1
+      ],
+      "note": "슬릿 개구 별도"
+    },
+    "measurement_time_s": {
+      "min": 0.3,
+      "max": 75,
+      "note": "PR-740 · PR-788 약 300 ms, PR-730 약 75 s"
+    }
+  },
+  "models": [
+    {
+      "model": "PR-730",
+      "specs": {
+        "wavelength_nm": {
+          "min": 380,
+          "max": 780
+        },
+        "wavelength_resolution_nm": 0.781,
+        "detector": "512 detector elements",
+        "luminance_cd_m2": {
+          "min": 0.0003426,
+          "max": 47964
+        },
+        "measuring_angle_deg": [
+          2,
+          1,
+          0.5,
+          0.25,
+          0.125,
+          0.2,
+          0.1
+        ],
+        "measurement_time_s": 75,
+        "interfaces": "RS-232, USB, Bluetooth"
+      },
+      "note": "휘도 원문 1.00E-4 ~ 1.40E4 fL(ND 필터 없이), 1 fL = 3.426 cd/m² 로 환산. 측정 시간 원문 Approximately 75,000 ms. 슬릿 0.1° × 1°(수평), 0.1° × 2°(수직), 0.5° × 1.5°(수평). 부품 번호 6730-0001-00"
+    },
+    {
+      "model": "PR-740",
+      "specs": {
+        "wavelength_nm": {
+          "min": 380,
+          "max": 780
+        },
+        "wavelength_resolution_nm": 0.781,
+        "detector": "512 detector elements",
+        "measuring_angle_deg": [
+          2,
+          1,
+          0.5,
+          0.25,
+          0.125,
+          0.2,
+          0.1
+        ],
+        "measurement_time_s": 0.3,
+        "interfaces": "RS-232, USB, Bluetooth"
+      },
+      "note": "동적 범위 원문 5.00E-6 ~ 5.00E1(단위 표기 없음 — 환산하지 않음). PR-730 대비 20 배 민감, 250 배 빠름. 부품 번호 6740-0001-01"
+    },
+    {
+      "model": "PR-788",
+      "specs": {
+        "wavelength_resolution_nm": 1,
+        "detector": "512 detector elements",
+        "measuring_angle_deg": [
+          2,
+          1,
+          0.5,
+          0.25,
+          0.125,
+          0.2,
+          0.1
+        ],
+        "measurement_time_s": 0.3,
+        "interfaces": "USB, optional Bluetooth or RS-232, SD"
+      },
+      "note": "Extended Dynamic Range. 동적 범위 원문 3.42E-5 ~ 1.71E4(단위 표기 없음 — 환산하지 않음). 측정 파장 380 ~ 780 nm 와 1,000,000:1 동적 범위는 검색 발췌에만 있어 넣지 않음"
+    },
+    {
+      "model": "PR-1050",
+      "specs": {
+        "dynamic_range": 500000000
+      },
+      "note": "500,000,000:1 동적 범위, 가변 분광 대역폭, AR/VR 개구 지름 3 · 4 · 5 mm. 파장 · 휘도 범위는 사양서 PDF 에만 있음. 부품 번호 1050-0001-00"
+    },
+    {
+      "model": "PR-735",
+      "note": "근적외 분광복사계 목록 페이지에 이름만 실림. 사양 미조회"
+    },
+    {
+      "model": "PR-745",
+      "note": "근적외 분광복사계 목록 페이지에 이름만 실림. 사양 미조회"
+    }
+  ],
+  "relations": [
+    {
+      "type": "performs",
+      "target": "photometry_colorimetry"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://novanta.com/precision-medicine/product/photo-research-pr-730/",
+      "retrieved": "2026-10-08",
+      "note": "제조사(Novanta) 제품 페이지(HTML)"
+    },
+    {
+      "url": "https://novanta.com/precision-medicine/product/photo-research-pr-740/",
+      "retrieved": "2026-10-08",
+      "note": "제조사(Novanta) 제품 페이지(HTML)"
+    },
+    {
+      "url": "https://novanta.com/precision-medicine/product/photo-research-pr-788/",
+      "retrieved": "2026-10-08",
+      "note": "제조사(Novanta) 제품 페이지(HTML)"
+    },
+    {
+      "url": "https://novanta.com/precision-medicine/product/photo-research-pr-1050-spectroradiometer/",
+      "retrieved": "2026-10-08",
+      "note": "제조사(Novanta) 제품 페이지(HTML)"
+    },
+    {
+      "url": "https://novanta.com/precision-medicine/near-infrared-spectroradiometers/",
+      "retrieved": "2026-10-08",
+      "note": "제조사 목록 페이지(HTML). PR-735 · PR-745 이름"
+    }
+  ],
+  "confidence": "limited"
+}

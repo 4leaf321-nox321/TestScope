@@ -1,0 +1,95 @@
+{
+  "id": "keithley-daq6510",
+  "kind": "equipment_series",
+  "name": "Keithley DAQ6510 Data Acquisition and Logging Multimeter System",
+  "name_ko": "키슬리 DAQ6510 데이터 수집·로깅 멀티미터 시스템",
+  "manufacturer": "keithley",
+  "category": "dmm_daq",
+  "form_factor": "benchtop",
+  "description": "6½자리 2슬롯 데이터 수집·로깅 멀티미터. 플러그인 스위치 모듈 12종으로 최대 80채널, 측정 기능 최대 15종, 솔리드스테이트 멀티플렉서로 800 채널/s 스캔. 기본 DCV 확도 0.0025%, 전압 100 nV~1000 V, 1 MS/s 16비트 디지타이저(700만 readings 저장).",
+  "test_items": [],
+  "models": [
+    {
+      "model": "DAQ6510",
+      "specs": {
+        "dmm_resolution_digits": 6.5,
+        "channels": {
+          "max": 80,
+          "requires_accessory": true
+        },
+        "channel_scan_rate_ch_s": 800,
+        "accuracy": "기본 DCV 확도 0.0025%",
+        "voltage_V": {
+          "min": 1e-07,
+          "max": 1000,
+          "note": "100 nV to 1000 V"
+        },
+        "data_rate_Hz": 1000000,
+        "interfaces": "LAN, LXI, USB 표준; GPIB, RS-232 옵션"
+      },
+      "note": "스캔 800 ch/s 는 솔리드스테이트 멀티플렉서 사용 시. data_rate_Hz 는 디지타이저 1 MS/s. 최소 측정 0.0005 PLC(60 Hz 에서 8.3 µs)"
+    }
+  ],
+  "options": [
+    {
+      "name": "7700",
+      "note": "20채널 멀티플렉서"
+    },
+    {
+      "name": "7701",
+      "note": "32채널 차동 멀티플렉서"
+    },
+    {
+      "name": "7702",
+      "note": "40채널 차동 멀티플렉서"
+    },
+    {
+      "name": "7703",
+      "note": "32채널 고속 차동 멀티플렉서"
+    },
+    {
+      "name": "7705",
+      "note": "40채널 제어 모듈"
+    },
+    {
+      "name": "7706",
+      "note": "올인원 I/O 모듈"
+    },
+    {
+      "name": "7707",
+      "note": "32채널 디지털 I/O 모듈"
+    },
+    {
+      "name": "7708",
+      "note": "40채널 차동 멀티플렉서 모듈"
+    },
+    {
+      "name": "7709",
+      "note": "6 × 8 매트릭스 모듈"
+    },
+    {
+      "name": "7710",
+      "note": "20채널 60 V 솔리드스테이트 멀티플렉서 카드"
+    }
+  ],
+  "relations": [
+    {
+      "type": "same_family_as",
+      "target": "keithley-dmm6500"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://www.tek.com/en/products/keithley/digital-multimeter/keithley-daq6510",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지. Up to 80 channels, 15 functions, 12 plug-in modules(7700~7710 목록), 800 ch/s, 0.0025%, 100 nV to 1000 V, 1 MS/s 16-bit, 7 million readings, LAN·LXI·USB 표준, GPIB·RS-232 옵션"
+    },
+    {
+      "url": "https://www.tek.com/en/products/keithley/data-acquisition-daq-systems",
+      "retrieved": "2026-10-08",
+      "note": "제조사 DAQ 목록 페이지. DAQ6510 6½-Digit, 80 channels, Two-slot"
+    }
+  ],
+  "confidence": "limited",
+  "notes": "페이지는 모듈 12종이라 적으나 목록에는 10종만 보여 그것만 적음."
+}

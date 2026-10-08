@@ -1,0 +1,139 @@
+{
+  "id": "jandel-four-point-probe-test-units",
+  "kind": "equipment_series",
+  "name": "Jandel Four-Point Probe Test Units (RM3000+ / ResTest / HM21)",
+  "name_ko": "잔델 4탐침 측정 유닛(RM3000+·ResTest·HM21)",
+  "manufacturer": "jandel",
+  "category": "electrical_property_tester",
+  "subcategory": "four_point_probe",
+  "form_factor": "benchtop",
+  "description": "4탐침 헤드·프로브 스탠드와 함께 쓰는 정전류원·전압계 일체형 측정 유닛. RM3000+ 는 10 nA～100 mA 정전류, 0.001～1000 mV 측정으로 면저항 1 mΩ/□～1×10⁸ Ω/□, 체적저항률 1 mΩ·cm～1×10⁶ Ω·cm 를 다룬다. ResTest 는 1 μA～10 mA(레인지 3개)로 10 mΩ/□～1 MΩ/□, HM21 은 100 nA～10 mA 로 1 Ω/□～10 MΩ/□.",
+  "test_items": [
+    "electrical_transport"
+  ],
+  "measurands": [
+    "electrical.surface_resistivity",
+    "electrical.resistivity_volume"
+  ],
+  "limits": {
+    "surface_resistivity_ohm_sq": {
+      "min": 0.001,
+      "max": 100000000.0,
+      "note": "RM3000+ 기준. 원문 「1 mΩ/² bis 1 x 10⁸ Ω/²」(독일어 혼용)"
+    },
+    "resistivity_ohm_cm": {
+      "min": 0.001,
+      "max": 1000000.0
+    },
+    "current_A": {
+      "min": 1e-08,
+      "max": 0.1,
+      "note": "RM3000+ 10 nA - 100 mA"
+    },
+    "voltage_V": {
+      "min": 1e-06,
+      "max": 4,
+      "note": "RM3000+ 0.001～1000 mV, ResTest 0.04～4000 mV"
+    }
+  },
+  "models": [
+    {
+      "model": "RM3000+",
+      "specs": {
+        "surface_resistivity_ohm_sq": {
+          "min": 0.001,
+          "max": 100000000.0
+        },
+        "resistivity_ohm_cm": {
+          "min": 0.001,
+          "max": 1000000.0
+        },
+        "current_A": {
+          "min": 1e-08,
+          "max": 0.1
+        },
+        "voltage_V": {
+          "min": 1e-06,
+          "max": 1.0,
+          "note": "0.001 mV to 1000 mV"
+        },
+        "accuracy": "better than 0.1% against resistors for 100 nA and larger"
+      }
+    },
+    {
+      "model": "ResTest",
+      "specs": {
+        "surface_resistivity_ohm_sq": {
+          "min": 0.01,
+          "max": 1000000.0
+        },
+        "resistivity_ohm_cm": {
+          "min": 0.01,
+          "max": 10000.0
+        },
+        "current_A": {
+          "min": 1e-06,
+          "max": 0.01,
+          "note": "PDF(사용 설명서): 인가 전류 1 µA ~ 10 mA, 레인지 3개(1 ~ 10 µA, 10 ~ 100 µA, 0.5 ~ 10 mA). 웹 페이지 원문 「1 μA and 10 mA」 는 양 끝 값"
+        },
+        "voltage_V": {
+          "min": 4e-05,
+          "max": 4.0,
+          "note": "웹 페이지 0.04 mV to 4000 mV. PDF 는 1x 이득에서 0 ~ 4 V, 100x 이득 레인지는 추출 텍스트가 어긋나 읽지 못함"
+        }
+      },
+      "note": "정전류원·디지털 전압계 일체형. 면저항·웨이퍼 저항률·체적 저항률·저항 표시. 내부 저장 99개, USB 메모리 저장(개수 제한 없음). 켤 때마다 자체 교정. 면저항·체적 저항률 범위는 웹 페이지 값(PDF 에 없음)"
+    },
+    {
+      "model": "HM21",
+      "specs": {
+        "surface_resistivity_ohm_sq": {
+          "min": 1,
+          "max": 10000000.0
+        },
+        "resistivity_ohm_cm": {
+          "min": 0.01,
+          "max": 10000.0
+        },
+        "current_A": {
+          "min": 1e-07,
+          "max": 0.01,
+          "note": "정전류 6단(100 nA ~ 10 mA), 극성 반전 가능"
+        },
+        "voltage_V": {
+          "min": 1e-05,
+          "max": 1.25,
+          "note": "0.01 mV to 1250 mV"
+        },
+        "accuracy": "±0.5 % across range against resistors, better than ±0.2 % in mid range"
+      },
+      "note": "면저항 1 Ω/□ ~ 10 MΩ/□, 체적 저항률 10 mΩ·cm ~ 10 kΩ·cm 가 보증 범위(범위 밖도 측정은 되나 정확도 낮음). 내부 저장 50개, USB 연결·무료 소프트웨어"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://www.polytec.com/en/photonics/products/semiconductor-metrology/four-point-probe-test-instruments",
+      "retrieved": "2026-10-08",
+      "note": "판매 대리점(Polytec) 제품 페이지. 제조사 jandel.co.uk 는 2026-10-08 조회 시 HTTP 500 이라 대리점 페이지를 씀"
+    },
+    {
+      "file": "jandel/datenblatt-4pp-testgeraet-hm21.pdf",
+      "pages": [
+        1,
+        2
+      ],
+      "note": "HM21 데이터시트(Jandel Engineering 머리글, 대리점 Polytec 배포)"
+    },
+    {
+      "file": "jandel/datenblatt-4pp-testgeraet-restest.pdf",
+      "pages": [
+        3,
+        7,
+        9
+      ],
+      "note": "ResTest v1 사용 설명서(Jandel Engineering) — 전기 사양, 전류 레인지, 저장 개수"
+    }
+  ],
+  "confidence": "limited",
+  "notes": "프로브 스탠드(cylindrical probe, multi-height probe 등)와 매핑 장비는 사양 페이지를 못 열어 넣지 않음. 탐침 간격은 헤드별이라 측정 유닛 객체에는 없음. PDF 로 확인: HM21 전부(면저항·체적 저항률·전류·전압·정확도), ResTest 전류(1 µA ~ 10 mA 연속 3 레인지로 바로잡음 — 이전에는 「1 μA and 10 mA」 를 두 값으로 적었음)와 전압 상한 4 V. 웹 값 그대로: RM3000+ 전부(PDF 없음), ResTest 면저항·체적 저항률 범위와 전압 하한, limits 전체(RM3000+ 기준)."
+}

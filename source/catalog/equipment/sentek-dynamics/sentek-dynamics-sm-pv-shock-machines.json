@@ -1,0 +1,162 @@
+{
+  "id": "sentek-dynamics-sm-pv-shock-machines",
+  "kind": "equipment_series",
+  "name": "Sentek Dynamics SM-PV Series Pneumatic Shock Machines",
+  "name_ko": "센텍 다이나믹스 SM-PV 공압식 충격 시험기",
+  "manufacturer": "sentek-dynamics",
+  "category": "shock_test_machine",
+  "drive": "pneumatic",
+  "form_factor": "floor",
+  "description": "공압식 충격 시험기 다섯 기종. 테이블 500×500 mm·50 kg(SM-PV50)부터 1,200×1,200 mm·1,000 kg(SM-PV1000)까지, 반정현 최대 가속도 750 g(소형)~250 g(대형), 펄스 폭 1.5~60 ms. 반정현·후피크 톱니·사다리꼴 파형을 낸다. MIL-STD-810F, IEC 68-2-27, UN38.3 등을 대상 규격으로 적는다.",
+  "test_items": [
+    "mechanical_shock"
+  ],
+  "measurands": [
+    "peak_acceleration",
+    "shock_response_spectrum"
+  ],
+  "materials": [
+    "electronic products",
+    "batteries",
+    "components"
+  ],
+  "standards": {
+    "compliance": [],
+    "test_methods": [
+      "MIL-STD-810F",
+      "IEC 60068-2-27",
+      "UN 38.3"
+    ]
+  },
+  "limits": {
+    "acceleration_g": {
+      "min": 10,
+      "max": 750,
+      "note": "반정현 기준"
+    },
+    "pulse_duration_ms": {
+      "min": 1.5,
+      "max": 60
+    },
+    "payload_kg": {
+      "min": 50,
+      "max": 1000
+    },
+    "table_size_mm": {
+      "min": 500,
+      "max": 1200
+    }
+  },
+  "models": [
+    {
+      "model": "SM-PV50",
+      "specs": {
+        "table_size_mm": [
+          500,
+          500
+        ],
+        "payload_kg": 50,
+        "acceleration_g": {
+          "min": 10,
+          "max": 750
+        },
+        "pulse_duration_ms": {
+          "min": 1.5,
+          "max": 60
+        }
+      }
+    },
+    {
+      "model": "SM-PV100",
+      "specs": {
+        "table_size_mm": [
+          600,
+          600
+        ],
+        "payload_kg": 100,
+        "acceleration_g": {
+          "min": 10,
+          "max": 600
+        },
+        "pulse_duration_ms": {
+          "min": 2,
+          "max": 60
+        }
+      }
+    },
+    {
+      "model": "SM-PV200",
+      "specs": {
+        "table_size_mm": [
+          800,
+          600
+        ],
+        "payload_kg": 200,
+        "acceleration_g": {
+          "min": 10,
+          "max": 450
+        },
+        "pulse_duration_ms": {
+          "min": 2.5,
+          "max": 60
+        }
+      }
+    },
+    {
+      "model": "SM-PV600",
+      "specs": {
+        "table_size_mm": [
+          1000,
+          800
+        ],
+        "payload_kg": 600,
+        "acceleration_g": {
+          "min": 10,
+          "max": 300
+        },
+        "pulse_duration_ms": {
+          "min": 3.5,
+          "max": 60
+        }
+      }
+    },
+    {
+      "model": "SM-PV1000",
+      "specs": {
+        "table_size_mm": [
+          1200,
+          1200
+        ],
+        "payload_kg": 1000,
+        "acceleration_g": {
+          "min": 10,
+          "max": 250
+        },
+        "pulse_duration_ms": {
+          "min": 4.5,
+          "max": 60
+        }
+      }
+    }
+  ],
+  "pulse_waveforms": [
+    "반정현(Half-sine)",
+    "후피크 톱니(Post-peak Sawtooth)",
+    "사다리꼴(Trapezoid)"
+  ],
+  "relations": [
+    {
+      "type": "performs",
+      "target": "mechanical_shock"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://www.sentekdynamics.com/shock-machines",
+      "retrieved": "2026-10-08",
+      "note": "제조사 충격 시험기 페이지. 기종별 표"
+    }
+  ],
+  "confidence": "limited",
+  "notes": "원문 규격 표기 IEC68-2-27 을 현행 번호 IEC 60068-2-27 로 적었다. 속도 변화·낙하 높이는 페이지에 없다."
+}

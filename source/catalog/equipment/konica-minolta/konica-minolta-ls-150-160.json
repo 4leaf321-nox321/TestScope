@@ -1,0 +1,111 @@
+{
+  "id": "konica-minolta-ls-150-160",
+  "kind": "equipment_series",
+  "name": "Konica Minolta LS-150 / LS-160 Luminance Meter",
+  "name_ko": "코니카미놀타 LS-150 / LS-160 휘도계",
+  "manufacturer": "konica-minolta",
+  "brand": "LS",
+  "category": "display_color_analyzer",
+  "form_factor": "portable",
+  "description": "휘도만 재는 휴대형 스폿 휘도계. LS-150 은 수광각 1°, 0.001 ~ 999,900 cd/m², LS-160 은 수광각 1/3°, 0.01 ~ 9,999,000 cd/m². 광학계는 CS-150 / CS-160 과 같아 최소 측정 거리 1,012 mm(근접 렌즈 213 mm). 확도 ±2 % ±1 ~ 2 digits, 반복도 0.2 % + 1 digit.",
+  "test_items": [
+    "photometry_colorimetry"
+  ],
+  "measurands": [
+    "luminance"
+  ],
+  "limits": {
+    "luminance_cd_m2": {
+      "min": 0.001,
+      "max": 9999000
+    },
+    "acceptance_angle_deg": {
+      "values": [
+        1,
+        0.33
+      ],
+      "note": "LS-160 원문 1/3°"
+    }
+  },
+  "models": [
+    {
+      "model": "LS-150",
+      "specs": {
+        "acceptance_angle_deg": 1,
+        "spot_diameter_mm": 14.4,
+        "measurement_distance_mm": 1012,
+        "luminance_cd_m2": {
+          "min": 0.001,
+          "max": 999900
+        },
+        "luminance_accuracy_pct": 2,
+        "interfaces": "USB 2.0",
+        "weight_kg": 0.85,
+        "measurement_time_s": {
+          "min": 0.7,
+          "max": 4.3,
+          "note": "AUTO 0.7 ~ 4.3 s, Manual 0.7 ~ 7.1 s"
+        },
+        "repeatability_pct": {
+          "value": 0.2,
+          "note": "0.2 % + 1 digit(표준광원 A, 표준 거리, Auto)"
+        },
+        "field_of_view_deg": "9°"
+      },
+      "note": "최소 측정 지름 14.4 mm(근접 렌즈 1.3 mm). 확도 ±2 % ±2 digits(1 cd/m² 이하) / ±2 % ±1 digit(1 cd/m² 이상). DIN 5032-7 Class B. 광학계 SLR, f = 85 mm F2.8, 화각 9°"
+    },
+    {
+      "model": "LS-160",
+      "specs": {
+        "acceptance_angle_deg": 0.33,
+        "spot_diameter_mm": 4.5,
+        "measurement_distance_mm": 1012,
+        "luminance_cd_m2": {
+          "min": 0.01,
+          "max": 9999000
+        },
+        "luminance_accuracy_pct": 2,
+        "interfaces": "USB 2.0",
+        "weight_kg": 0.85,
+        "measurement_time_s": {
+          "min": 0.7,
+          "max": 4.3,
+          "note": "AUTO 0.7 ~ 4.3 s, Manual 0.7 ~ 7.1 s"
+        },
+        "repeatability_pct": {
+          "value": 0.2,
+          "note": "0.2 % + 1 digit(표준광원 A, 표준 거리, Auto)"
+        },
+        "field_of_view_deg": "9°"
+      },
+      "note": "수광각 원문 1/3°. 최소 측정 지름 4.5 mm(근접 렌즈 0.4 mm). 확도 ±2 % ±2 digits(10 cd/m² 이하) / ±2 % ±1 digit(10 cd/m² 이상). 광학계 SLR, f = 85 mm F2.8, 화각 9°"
+    }
+  ],
+  "relations": [
+    {
+      "type": "performs",
+      "target": "photometry_colorimetry"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://sensing.konicaminolta.us/us/products/ls-150-luminance-meter/",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지(HTML)"
+    },
+    {
+      "url": "https://sensing.konicaminolta.us/us/products/ls-160-luminance-meter/",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지(HTML)"
+    },
+    {
+      "file": "konica-minolta/ls150_catalog_eng_compressed.pdf",
+      "pages": [
+        3
+      ],
+      "note": "제조사 카탈로그 PDF 주요 사양(LS-150 · LS-160)"
+    }
+  ],
+  "confidence": "catalog",
+  "notes": "PDF 로 확인: 두 기종의 측정각 · 최소 측정 지름 · 거리 · 휘도 범위 · 확도 · 반복도 · 인터페이스 · 무게 전부(측정 시간 · 화각을 더함)."
+}

@@ -1,0 +1,129 @@
+{
+  "id": "konica-minolta-ca-527",
+  "kind": "equipment_series",
+  "name": "Konica Minolta CA-527 Display Color Analyzer",
+  "name_ko": "코니카미놀타 CA-527 디스플레이 컬러 아날라이저",
+  "manufacturer": "konica-minolta",
+  "brand": "CA",
+  "category": "display_color_analyzer",
+  "form_factor": "probe",
+  "description": "초저휘도 측정에 맞춘 차세대 디스플레이 컬러 아날라이저. 측정 지름 Ø27 mm, 확도 보증 거리 30 ± 5 mm 에서 휘도 0.0001 ~ 10,000 cd/m², 색도 0.001 ~ 10,000 cd/m² 를 확도 보증한다. 백색 휘도 확도는 0.01 cd/m² 초과에서 ±1.5 %, 색도 확도는 0.01 cd/m² 초과에서 ±0.002. AUTO 모드 측정 속도는 0.2 cd/m² 초과에서 초당 20 회. JEITA · VESA · FMA 플리커, VRR 플리커, SVM 을 최대 200 kHz 샘플링으로 잰다.",
+  "test_items": [
+    "photometry_colorimetry"
+  ],
+  "measurands": [
+    "luminance",
+    "chromaticity",
+    "flicker"
+  ],
+  "materials": [
+    "OLED",
+    "LCD",
+    "micro OLED"
+  ],
+  "limits": {
+    "luminance_cd_m2": {
+      "min": 0.0001,
+      "max": 10000,
+      "note": "확도 보증 범위. 색도는 0.001 ~ 10,000 cd/m²"
+    },
+    "spot_diameter_mm": {
+      "values": [
+        27
+      ]
+    },
+    "acceptance_angle_deg": {
+      "values": [
+        8.5
+      ],
+      "note": "± 8.5°"
+    },
+    "measurement_distance_mm": {
+      "min": 25,
+      "max": 35,
+      "note": "30 ± 5 mm"
+    },
+    "luminance_accuracy_pct": {
+      "min": 1.5,
+      "max": 9,
+      "note": "휘도 수준별(백색). 0.0001 cd/m² 초과 ±9 %, 0.0005 초과 ±3 %, 0.001 초과 ±2 %, 0.01 cd/m² 초과 ±1.5 %"
+    },
+    "chromaticity_accuracy_xy": {
+      "min": 0.002,
+      "max": 0.003,
+      "note": "0.001 cd/m² 초과 ±0.003, 0.01 cd/m² 초과 ±0.002"
+    }
+  },
+  "models": [
+    {
+      "model": "CA-527",
+      "specs": {
+        "spot_diameter_mm": 27,
+        "acceptance_angle_deg": 8.5,
+        "measurement_distance_mm": {
+          "min": 25,
+          "max": 35
+        },
+        "luminance_cd_m2": {
+          "min": 0.0001,
+          "max": 10000
+        },
+        "luminance_accuracy_pct": 1.5,
+        "chromaticity_accuracy_xy": 0.002,
+        "power": "DC 5 V (USB 또는 RS 커넥터)",
+        "repeatability_pct": {
+          "value": 0.12,
+          "note": "휘도 반복도 2σ, >0.1 cd/m². >0.0001 10 %, >0.0005 2 %, >0.001 1 %, >0.01 0.30 %, >1 cd/m² 0.10 %. 색도 반복도 >0.001 0.0030, >0.01 0.0009, >0.1 0.0004, >1 cd/m² 0.0002"
+        },
+        "interfaces": "USB 2.0, RS-232C",
+        "weight_kg": {
+          "value": 0.71,
+          "note": "마운트 포함 710 g. 크기 52 × 52 × 272 mm"
+        }
+      },
+      "note": "수광각 원문 ± 8.5°. 휘도 확도(백색): >0.0001 cd/m² ±9 %, >0.0005 ±3 %, >0.001 ±2 %, >0.01 · >0.1 ±1.5 %. 색도 확도(백색): >0.001 ±0.003, >0.01 · >0.1 ±0.002. 측정 속도(AUTO): 1 회/s(>0.0001), 5 회/s(>0.015), 20 회/s(>0.2 cd/m²) — CA-527 카탈로그 PDF 와 웹 페이지 값. CA-500 계열 카탈로그와 CA-500/410 사양표 PDF 는 5 회/s(>0.012), 20 회/s(>0.15 cd/m²) 로 적음"
+    }
+  ],
+  "features": [
+    "0.0001 cd/m² 초저휘도 확도 보증",
+    "플리커: JEITA · VESA · FMA · VRR 플리커 · SVM, 최대 200 kHz 샘플링",
+    "USB 버스 전원(DC 5 V)"
+  ],
+  "relations": [
+    {
+      "type": "performs",
+      "target": "photometry_colorimetry"
+    },
+    {
+      "type": "same_family_as",
+      "target": "konica-minolta-ca-410"
+    },
+    {
+      "type": "same_family_as",
+      "target": "konica-minolta-ca-510"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://sensing.konicaminolta.us/us/products/ca-527-color-analyzer/",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지(HTML). 측정 지름·거리·휘도·색도 범위와 확도, 측정 속도, 플리커 방식"
+    },
+    {
+      "file": "konica-minolta/ca527_catalog_eng-2-compressed.pdf",
+      "pages": [
+        4
+      ],
+      "note": "제조사 CA-527 카탈로그 PDF 사양 쪽"
+    },
+    {
+      "file": "konica-minolta/ca-500_410_spec281_eng.pdf",
+      "pages": [
+        1
+      ],
+      "note": "제조사 CA-500 · CA-410 계열 주요 사양표 PDF(CA-527 열). 무게 · 통신"
+    }
+  ],
+  "confidence": "catalog",
+  "notes": "PDF 로 확인: 측정 지름 · 확도 보증 거리 · 휘도 범위 · 확도 · 측정 속도 · 플리커 · 전원(수광각 ±8.5°, 반복도, 무게 710 g, 통신을 더함). 측정 속도의 휘도 문턱은 PDF 끼리 다르다(위 기종 note)."
+}

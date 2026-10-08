@@ -1,0 +1,102 @@
+{
+  "id": "yokogawa-dlm3000",
+  "kind": "equipment_series",
+  "name": "DLM3000 Series Mixed Signal Oscilloscope",
+  "name_ko": "요코가와 DLM3000 혼합 신호 오실로스코프",
+  "manufacturer": "yokogawa",
+  "brand": "DLM",
+  "category": "oscilloscope",
+  "subcategory": "mixed_signal_oscilloscope",
+  "form_factor": "benchtop",
+  "description": "200·350·500 MHz 대역의 2·4채널 혼합 신호 오실로스코프 계열임. 4채널 기종은 4번째 채널을 8 bit 로직 입력으로 바꿔 쓸 수 있음. 표준 메모리 12.5 Mpoints(반복 수집) 또는 125 M(단일·인터리브).",
+  "test_items": [],
+  "limits": {
+    "bandwidth_Hz": {
+      "min": 200000000,
+      "max": 500000000
+    },
+    "channels": {
+      "values": [
+        2,
+        4
+      ]
+    },
+    "logic_channel_count": {
+      "values": [
+        8
+      ],
+      "note": "4번째 아날로그 채널을 8 bit 로직으로 전환"
+    },
+    "record_length_pts": {
+      "min": 12500000,
+      "max": 125000000,
+      "note": "원문 12.5 Mpoints (repeating acquisition) or 125 M (single interleave)"
+    }
+  },
+  "models": [
+    {
+      "model": "DLM3022",
+      "specs": {
+        "bandwidth_Hz": 200000000,
+        "channels": 2
+      }
+    },
+    {
+      "model": "DLM3024",
+      "specs": {
+        "bandwidth_Hz": 200000000,
+        "channels": 4,
+        "logic_channel_count": 8
+      },
+      "note": "원문 4 / 3 + 8-bit logic"
+    },
+    {
+      "model": "DLM3032",
+      "specs": {
+        "bandwidth_Hz": 350000000,
+        "channels": 2
+      }
+    },
+    {
+      "model": "DLM3034",
+      "specs": {
+        "bandwidth_Hz": 350000000,
+        "channels": 4,
+        "logic_channel_count": 8
+      },
+      "note": "원문 4 / 3 + 8-bit logic"
+    },
+    {
+      "model": "DLM3052",
+      "specs": {
+        "bandwidth_Hz": 500000000,
+        "channels": 2
+      }
+    },
+    {
+      "model": "DLM3054",
+      "specs": {
+        "bandwidth_Hz": 500000000,
+        "channels": 4,
+        "logic_channel_count": 8
+      },
+      "note": "원문 4 / 3 + 8-bit logic"
+    }
+  ],
+  "relations": [
+    {
+      "type": "successor_of",
+      "target": "yokogawa-dlm2000",
+      "note": "DLM2000 단종 안내가 대체로 DLM3000 을 적음"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://tmi.yokogawa.com/solutions/products/oscilloscopes/digital-and-mixed-signal-oscilloscopes/dlm3000-mso-series/",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지 기종 표(모델명·대역폭·채널). \"Long memory is standard with 12.5 Mpoints (repeating acquisition) or 125 M (single interleave)\""
+    }
+  ],
+  "confidence": "limited",
+  "notes": "최대 샘플링 속도·ADC 분해능·화면 크기는 조회한 페이지 범위에 없어 비움."
+}

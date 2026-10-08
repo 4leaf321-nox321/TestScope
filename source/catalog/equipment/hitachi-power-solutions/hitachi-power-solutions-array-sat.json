@@ -1,0 +1,116 @@
+{
+  "id": "hitachi-power-solutions-array-sat",
+  "kind": "equipment_series",
+  "name": "Hitachi Electronic-Scanning / Large-Area SAT (ES5100 Series, FS LINE / FS LINE Hybrid, WAFER LINE)",
+  "name_ko": "히타치 전자 주사 · 대형 · 웨이퍼 초음파 탐상 장치 (ES5100 · FS LINE · WAFER LINE)",
+  "manufacturer": "hitachi-power-solutions",
+  "category": "acoustic_microscope",
+  "form_factor": "floor",
+  "description": "어레이 탐촉자 전자 주사나 대형 행정, 웨이퍼 반송으로 FineSAT 가 못 다루는 대상을 검사하는 초음파 탐상 장치. ES5100 계열은 25 · 50 · 75 MHz 탐촉자로 300 × 200 × 50 mm 이하 워크를 고속 전자 주사한다. FS LINE 은 FPD 스퍼터링 타깃 · 태양전지 · 세라믹 부품 같은 대형 대상을 800 × 800 mm 또는 2000 × 1500 mm 범위로 주사하고(동시 송수신 16소자, 최대 192소자, 수신 대역 10~50 MHz), FS LINE Hybrid 는 단일 · 어레이 탐촉자를 함께 쓴다. WAFER LINE 은 4~12인치 SOI · 접합 웨이퍼용이다.",
+  "test_items": [
+    "acoustic_delamination"
+  ],
+  "measurands": [
+    "delamination_area",
+    "void_percentage"
+  ],
+  "materials": [
+    "sputtering targets",
+    "photovoltaic cells",
+    "ceramic components",
+    "SOI wafers",
+    "bonded wafers"
+  ],
+  "limits": {
+    "transducer_frequency_MHz": {
+      "min": 10,
+      "max": 75,
+      "note": "ES5100 25 · 50 · 75 MHz, FS LINE 수신 대역 10~50 MHz"
+    },
+    "scan_range_mm": {
+      "max": 2000,
+      "note": "FS LINE 표준 2000 × 1500 mm 또는 800 × 800 mm. 다른 범위는 문의"
+    },
+    "wafer_size_mm": {
+      "min": 100,
+      "max": 300,
+      "note": "WAFER LINE 원문 4 to 12-inch"
+    }
+  },
+  "models": [
+    {
+      "model": "ES5100",
+      "variant": "Electronic scanning High-speed SAT",
+      "specs": {
+        "transducer_frequency_MHz": [
+          25,
+          50,
+          75
+        ],
+        "sample_size_mm": "300 × 200 × 50 이하"
+      },
+      "note": "표시: A · B · C-scope"
+    },
+    {
+      "model": "FS LINE",
+      "specs": {
+        "channels": {
+          "max": 16,
+          "note": "동시 송수신 최대 16소자, 처리 최대 192소자"
+        },
+        "bandwidth_Hz": {
+          "min": 10000000,
+          "max": 50000000,
+          "note": "수신 대역 10~50 MHz"
+        },
+        "scan_range_mm": "800 × 800 또는 2000 × 1500 (표준)"
+      }
+    },
+    {
+      "model": "FS LINE Hybrid",
+      "note": "단일 탐촉자와 어레이 탐촉자를 동시에 써 대형품 검사 시간을 줄임. 정량 사양은 FS LINE 과 같은 페이지에 따로 없음"
+    },
+    {
+      "model": "WAFER LINE",
+      "specs": {
+        "wafer_size_mm": "4~12인치"
+      },
+      "note": "클린룸: ISO class 3 이상; 반송: SUS 섀시 · FOUP 대응"
+    }
+  ],
+  "options": [
+    {
+      "name": "회전 플랫폼(FS LINE)",
+      "note": "관 · 원통형 대상 검사"
+    }
+  ],
+  "relations": [
+    {
+      "type": "performs",
+      "target": "acoustic_delamination"
+    },
+    {
+      "type": "same_family_as",
+      "target": "hitachi-power-solutions-finesat"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://www.hitachi-power-solutions.com/en/product-site/sat/products/es5100/index.html",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지(ES5100 Series)"
+    },
+    {
+      "url": "https://www.hitachi-power-solutions.com/en/product-site/sat/products/fsline/index.html",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지(FS LINE / FS LINE Hybrid)"
+    },
+    {
+      "url": "https://www.hitachi-power-solutions.com/en/product-site/sat/products/waferline/index.html",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지(WAFER LINE). 주파수 · 처리량 등 정량 사양 없음"
+    }
+  ],
+  "notes": "세 계열 모두 외형 · 무게 · 전원과 주사 속도가 페이지에 없다.",
+  "confidence": "limited"
+}

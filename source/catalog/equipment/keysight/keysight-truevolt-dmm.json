@@ -1,0 +1,131 @@
+{
+  "id": "keysight-truevolt-dmm",
+  "kind": "equipment_series",
+  "name": "Keysight Truevolt Series Digital Multimeters (34460A / 34461A / 34465A / 34470A)",
+  "name_ko": "키사이트 Truevolt 디지털 멀티미터",
+  "manufacturer": "keysight",
+  "brand": "Truevolt",
+  "category": "dmm_daq",
+  "form_factor": "benchtop",
+  "description": "Truevolt 기술의 탁상형 디지털 멀티미터 계열. 6½자리 34460A(75 ppm, 300 rdg/s)·34461A(35 ppm, 1,000 rdg/s, 34401A 후속)·34465A(30 ppm, 50,000 rdg/s)와 7½자리 34470A(16 ppm, 50,000 rdg/s). 4.3인치 컬러 그래픽 화면에 히스토그램·막대·추이 차트를 그린다. DCV·ACV, DCI·ACI, 2·4선 저항, 주파수, 정전용량, 다이오드, 도통, 온도를 잰다.",
+  "test_items": [],
+  "limits": {
+    "dmm_resolution_digits": {
+      "values": [
+        6.5,
+        7.5
+      ]
+    },
+    "data_rate_Hz": {
+      "min": 300,
+      "max": 50000,
+      "note": "최대 판독 속도 300~50,000 readings/s"
+    }
+  },
+  "models": [
+    {
+      "model": "34460A",
+      "specs": {
+        "dmm_resolution_digits": 6.5,
+        "accuracy": "기본 1년 DCV 확도 75 ppm",
+        "data_rate_Hz": 300,
+        "current_A": {
+          "min": 0.0001,
+          "max": 3,
+          "note": "DC 전류 레인지 100 µA to 3 A"
+        },
+        "interfaces": "USB"
+      },
+      "note": "메모리 1,000 readings"
+    },
+    {
+      "model": "34461A",
+      "specs": {
+        "dmm_resolution_digits": 6.5,
+        "accuracy": "기본 1년 DCV 확도 35 ppm",
+        "data_rate_Hz": 1000,
+        "current_A": {
+          "min": 0.0001,
+          "max": 10,
+          "note": "DC 전류 레인지 100 µA to 10 A"
+        },
+        "interfaces": "LAN, USB, GPIB(옵션)"
+      },
+      "note": "메모리 10,000 readings. 34401A 의 대체 기종"
+    },
+    {
+      "model": "34465A",
+      "specs": {
+        "dmm_resolution_digits": 6.5,
+        "accuracy": "기본 1년 DCV 확도 30 ppm",
+        "data_rate_Hz": 50000,
+        "voltage_V": {
+          "max": 1000,
+          "note": "1000 V 레인지"
+        },
+        "current_A": {
+          "min": 1e-06,
+          "max": 10,
+          "note": "1 µA 레인지~10 A 레인지"
+        },
+        "resistance_ohm": {
+          "max": 1000000000.0,
+          "note": "1 GΩ 레인지"
+        },
+        "interfaces": "LAN, USB, GPIB(옵션)"
+      },
+      "note": "메모리 50,000 readings. 디지타이징 모드·고급 트리거, 데이터 로깅 모드"
+    },
+    {
+      "model": "34470A",
+      "specs": {
+        "dmm_resolution_digits": 7.5,
+        "accuracy": "기본 DCV 확도 16 ppm",
+        "data_rate_Hz": 50000,
+        "interfaces": "LAN, USB, GPIB(옵션)"
+      },
+      "note": "메모리 50,000 readings. 1 µA 레인지(pA 분해능), 디지타이징·고급 트리거"
+    }
+  ],
+  "features": [
+    "Truevolt 기술",
+    "4.3인치 컬러 그래픽 화면(히스토그램·막대·추이 차트)",
+    "측정 기능 DCV·ACV, DCI·ACI, 2·4선 저항, 주파수, 정전용량, 다이오드, 도통, 온도",
+    "BenchVue 지원"
+  ],
+  "relations": [
+    {
+      "type": "same_family_as",
+      "target": "keysight-3458a-dmm"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://www.keysight.com/us/en/products/digital-multimeters-dmm/truevolt-series-multimeters.html",
+      "retrieved": "2026-10-08",
+      "note": "제조사 계열 페이지. 6½~7½ digits, 16~75 ppm, 메모리 1,000~2,000,000 readings, LAN·USB·GPIB(옵션), 측정 기능 목록"
+    },
+    {
+      "url": "https://www.keysight.com/us/en/product/34460A/digital-multimeter-6-5-digit-basic-truevolt.html",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지. 6½, 75 ppm, 300 rdg/s, 1,000 readings, USB, DCI 100 µA to 3 A"
+    },
+    {
+      "url": "https://www.keysight.com/us/en/product/34461A/digital-multimeter-6-5-digit-truevolt-dmm.html",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지. 6½, 35 ppm, 1,000 rdg/s, 10,000 readings, LAN·USB·GPIB(옵션), DCI 100 µA to 10 A, 34401A 대체"
+    },
+    {
+      "url": "https://www.keysight.com/us/en/product/34465A/digital-multimeter-6-5-digit-truevolt-dmm.html",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지. 6½, 30 ppm, 50,000 rdg/s, 50,000 readings, 1000 V·10 A·1 GΩ 레인지, 1 µA 레인지"
+    },
+    {
+      "url": "https://www.keysight.com/us/en/product/34470A/digital-multimeter-7-5-digit-truevolt-dmm.html",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지. 7½, 16 ppm, 50,000 rdg/s, 50,000 readings, 1 µA 레인지(pA 분해능)"
+    }
+  ],
+  "confidence": "limited",
+  "notes": "계열 페이지는 DM6 등급에 DM34460A~DM34461A 도 함께 적으나 관계(같은 제품의 다른 번호인지)가 분명하지 않아 기종으로 넣지 않음. 34460A·34461A·34470A 의 전압·저항 상한은 기종 페이지에 없음."
+}

@@ -1,0 +1,130 @@
+{
+  "id": "walter-bai-lfv",
+  "kind": "equipment_series",
+  "name": "Walter+Bai LFV Series Servohydraulic Multipurpose Dynamic and Fatigue Test Systems (up to 630 kN; LFV-L and LFV Compact up to 50 kN)",
+  "name_ko": "발터바이 LFV 시리즈 서보유압 다목적 동적·피로 시험기",
+  "manufacturer": "walter-bai",
+  "category": "servohydraulic_fatigue",
+  "drive": "servohydraulic",
+  "description": "TMF·LCF·파괴역학·HCF·고변형속도·부품 시험용 모듈식 서보유압 시스템. 바닥형 LFV 는 630 kN 까지(액추에이터 아래 베이스), LFV-L 은 50 kN 까지의 탁상형(액추에이터 위 크로스헤드, 생체·첨단 재료), LFV Compact 는 유압 파워팩을 베이스에 넣은 50 kN 까지의 형식(T 홈 판). 이중 작동·양로드·등면적 액추에이터와 정압 4포켓 베어링, 유압 패시브 클램핑(HH 형), Dion7 소프트웨어.",
+  "test_items": [
+    "fatigue",
+    "fracture_toughness",
+    "thermomechanical_fatigue",
+    "tensile",
+    "compression",
+    "flexure",
+    "relaxation"
+  ],
+  "measurands": [
+    "mechanical.fatigue_strength",
+    "mechanical.fracture_toughness",
+    "mechanical.crack_growth_rate"
+  ],
+  "limits": {
+    "dynamic_force_kN": {
+      "max": 630,
+      "values": [
+        50,
+        100,
+        250,
+        400,
+        500,
+        630
+      ],
+      "note": "제품 정보 목록과 계열 이름의 상한"
+    }
+  },
+  "models": [
+    {
+      "model": "LFV 100 kN",
+      "form_factor": "floor",
+      "specs": {
+        "dynamic_force_kN": 100
+      },
+      "note": "제품 정보 '100 kN Servohydraulic Fatigue Testing Machine'"
+    },
+    {
+      "model": "LFV 250 kN",
+      "form_factor": "floor",
+      "specs": {
+        "dynamic_force_kN": 250
+      },
+      "note": "제품 정보 '250 kN Servohydraulic Fatigue Testing Machine'(파괴역학·고온 부속 구성 예도 있음)"
+    },
+    {
+      "model": "LFV 400 kN",
+      "form_factor": "floor",
+      "specs": {
+        "dynamic_force_kN": 400
+      },
+      "note": "제품 정보 '400 kN Servohydraulic Fatigue Testing Machine'"
+    },
+    {
+      "model": "LFV 500 kN",
+      "form_factor": "floor",
+      "specs": {
+        "dynamic_force_kN": 500
+      },
+      "note": "제품 정보 '500 kN Servohydraulic Fatigue testing Machine with lower T-slot platen'"
+    },
+    {
+      "model": "LFV 630 kN",
+      "form_factor": "floor",
+      "specs": {
+        "dynamic_force_kN": 630
+      },
+      "note": "제품 정보 '630 kN Servohydraulic Fatigue Testing Machine'"
+    },
+    {
+      "model": "LFV-L",
+      "form_factor": "benchtop",
+      "specs": {
+        "dynamic_force_kN": {
+          "max": 50
+        }
+      },
+      "note": "탁상형, 50 kN 까지"
+    },
+    {
+      "model": "LFV Compact",
+      "specs": {
+        "dynamic_force_kN": {
+          "max": 50
+        }
+      },
+      "note": "유압 파워팩 베이스 내장, 50 kN 까지"
+    }
+  ],
+  "features": [
+    "이중 작동·양로드·등면적 서보 액추에이터, 정압 4포켓 베어링",
+    "유압 패시브 클램핑(Version HH)",
+    "자기 식별 변환기 코딩 디지털 제어",
+    "정렬 지그와 정렬 검증 장비"
+  ],
+  "relations": [
+    {
+      "type": "same_family_as",
+      "target": "walter-bai-lfv-e"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://www.walterbai.com/page/products/Materials_Testing_Systems/Dynamic_and_Fatigue_Testing_Systems/LFV_Multipurpose_Dynamic_and_Fatigue_Systems_up_to_630_kN.php",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지(HTML) 본문·표를 직접 읽음. 바닥형 LFV(액추에이터 아래 베이스) 소개와 제품 정보 목록(100·250·400·630 kN, 500 kN T 홈 판)"
+    },
+    {
+      "url": "https://www.walterbai.com/page/products/Materials_Testing_Systems/Dynamic_and_Fatigue_Testing_Systems/LFV-L_Multipurpose_Dynamic_and_Fatigue_Systems_up_to_50_kN.php",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지(HTML) 본문·표를 직접 읽음. LFV-L 탁상형(50 kN 까지)"
+    },
+    {
+      "url": "https://www.walterbai.com/page/products/Materials_Testing_Systems/Dynamic_and_Fatigue_Testing_Systems/LFV_Compact_Multipurpose_Dynamic_and_Fatigue_Systems_up_to_50_kN.php",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지(HTML) 본문·표를 직접 읽음. LFV Compact(유압원 베이스 내장, 50 kN 까지)"
+    }
+  ],
+  "confidence": "limited",
+  "notes": "모델명은 페이지가 하중으로만 부르는 제품 정보 제목을 따라 'LFV 100 kN' 처럼 적었다 — 제조사 정식 형식명은 확인이 필요하다. 사양표(스트로크·시험 공간)는 페이지에 없다."
+}

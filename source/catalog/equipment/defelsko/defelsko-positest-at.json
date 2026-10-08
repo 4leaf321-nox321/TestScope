@@ -1,0 +1,208 @@
+{
+  "id": "defelsko-positest-at",
+  "kind": "equipment_series",
+  "name": "DeFelsko PosiTest AT Pull-Off Adhesion Testers (AT-A Automatic / AT-M Manual)",
+  "name_ko": "디펠스코 PosiTest AT 풀오프 부착력 시험기 (AT-A 자동 · AT-M 수동)",
+  "manufacturer": "defelsko",
+  "brand": "PosiTest",
+  "category": "adhesion_tester",
+  "form_factor": "portable",
+  "description": "금속 · 목재 · 콘크리트 등 단단한 기재 위 도막에 돌리(dolly)를 붙여 떼어 내는 힘으로 부착력을 재는 유압식 풀오프 시험기. AT-A 는 전자 제어 유압 펌프가 연속으로 가압하고(가압 속도 설정, 리튬이온 전지로 250회 이상, 100,000 회 저장), AT-M 은 한 번 펌프질하는 수동식이다(AAA 전지 3개, 200 회 저장). 분해능 0.01 MPa(1 psi), 정확도 ±1 % FS, AT-A 의 돌리별 최대 풀오프 압력은 10 mm 96 MPa · 14 mm 50 MPa · 20 mm 24 MPa · 50 mm 3.8 MPa 이다. 키트는 20 mm(금속), 50 mm(콘크리트 · 목재 · 플라스틱), 50 × 50 mm(타일, EN 12004-2), 50 mm C(콘크리트 · 오버레이, ASTM C1583 · EN 1542) 구성으로 나뉜다.",
+  "test_items": [
+    "coating_adhesion"
+  ],
+  "measurands": [
+    "pull_off_adhesion_strength"
+  ],
+  "materials": [
+    "coatings on metal",
+    "coatings on wood",
+    "concrete",
+    "tile adhesives",
+    "plastics"
+  ],
+  "standards": {
+    "compliance": [],
+    "test_methods": [
+      "ASTM C1583",
+      "ASTM C1857",
+      "ASTM D4541",
+      "ASTM D7234",
+      "ASTM D7522",
+      "ISO 4624",
+      "ISO 16276-1",
+      "EN 1542",
+      "EN 12004-2",
+      "AS/NZS 1580.408.5"
+    ],
+    "test_methods_by_item": {
+      "coating_adhesion": [
+        "ASTM D4541",
+        "ASTM D7234",
+        "ISO 4624",
+        "ISO 16276-1"
+      ]
+    }
+  },
+  "limits": {
+    "pull_off_strength_MPa": {
+      "min": 0.1,
+      "max": 96,
+      "note": "AT-A 10 mm 돌리 96 MPa(14,000 psi). 키트별 범위는 기종 사양 참조"
+    },
+    "dolly_diameter_mm": {
+      "values": [
+        10,
+        14,
+        20,
+        50
+      ],
+      "note": "타일용 50 × 50 mm 정사각 돌리 별도"
+    }
+  },
+  "models": [
+    {
+      "model": "PosiTest AT-A",
+      "variant": "Automatic",
+      "specs": {
+        "pull_off_strength_MPa": {
+          "max": 96,
+          "note": "돌리별 최대: 10 mm 96 MPa · 14 mm 50 MPa · 20 mm 24 MPa · 50 mm 3.8 MPa"
+        },
+        "accuracy": "±1 % FS",
+        "force_resolution": "0.01 MPa (1 psi)"
+      },
+      "note": "저장: 100,000 회, 1,000 배치; 전지: 내장 리튬이온, 1회 충전 250회 이상, USB-C 충전; 보호 등급: IP65"
+    },
+    {
+      "model": "PosiTest AT-M",
+      "variant": "Manual",
+      "specs": {
+        "accuracy": "±1 % FS",
+        "force_resolution": "0.01 MPa (1 psi)"
+      },
+      "note": "저장: 최대 200 회; 전지: AAA 3개, 최대 16시간"
+    },
+    {
+      "model": "ATA20",
+      "variant": "AT-A 20 mm 키트(금속 도막)",
+      "specs": {
+        "pull_off_strength_MPa": {
+          "min": 0.7,
+          "max": 24
+        },
+        "dolly_diameter_mm": 20
+      }
+    },
+    {
+      "model": "ATM20",
+      "variant": "AT-M 20 mm 키트(금속 도막)",
+      "specs": {
+        "pull_off_strength_MPa": {
+          "min": 0.7,
+          "max": 20
+        },
+        "dolly_diameter_mm": 20
+      }
+    },
+    {
+      "model": "ATA50",
+      "variant": "AT-A 50 mm 키트(콘크리트 · 목재 · 플라스틱)",
+      "specs": {
+        "pull_off_strength_MPa": {
+          "min": 0.1,
+          "max": 3.8
+        },
+        "dolly_diameter_mm": 50
+      }
+    },
+    {
+      "model": "ATM50",
+      "variant": "AT-M 50 mm 키트",
+      "specs": {
+        "pull_off_strength_MPa": {
+          "min": 0.1,
+          "max": 3.3
+        },
+        "dolly_diameter_mm": 50
+      }
+    },
+    {
+      "model": "ATA50T",
+      "variant": "AT-A 50 × 50 mm 타일 키트(EN 12004-2)",
+      "specs": {
+        "pull_off_strength_MPa": {
+          "min": 0.4,
+          "max": 3.033
+        }
+      }
+    },
+    {
+      "model": "ATM50T",
+      "variant": "AT-M 50 × 50 mm 타일 키트",
+      "specs": {
+        "pull_off_strength_MPa": {
+          "min": 0.1,
+          "max": 2.585
+        }
+      }
+    },
+    {
+      "model": "ATA50C",
+      "variant": "AT-A 50 mm 콘크리트 키트(ASTM C1583 · EN 1542)",
+      "specs": {
+        "pull_off_strength_MPa": {
+          "min": 0.4,
+          "max": 3.8
+        },
+        "dolly_diameter_mm": 50
+      }
+    },
+    {
+      "model": "ATM50C",
+      "variant": "AT-M 50 mm 콘크리트 키트",
+      "specs": {
+        "pull_off_strength_MPa": {
+          "min": 0.1,
+          "max": 3.3
+        },
+        "dolly_diameter_mm": 50
+      }
+    }
+  ],
+  "features": [
+    "자기 정렬 돌리(알루미늄 20 · 50 mm, 강 50 × 50 mm · 50 mm C1583)",
+    "NIST 추적 로드셀 교정서",
+    "IP65 (AT-A)",
+    "PosiSoft 소프트웨어 · PosiTector 앱(AT-A)"
+  ],
+  "consumables": [
+    "돌리",
+    "에폭시 접착제(ResinLab EP11HT)",
+    "연마 패드",
+    "절단 공구"
+  ],
+  "relations": [
+    {
+      "type": "performs",
+      "target": "coating_adhesion"
+    },
+    {
+      "type": "same_family_as",
+      "target": "defelsko-positector-6000"
+    },
+    {
+      "type": "same_family_as",
+      "target": "elcometer-510"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://www.defelsko.com/positest-at",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지. 키트 표 · 돌리별 최대 압력 · 규격"
+    }
+  ],
+  "notes": "돌리별 최대 압력(10 · 14 mm 포함)은 AT-A 기준 표기다. AT-M 의 10 · 14 mm 돌리 범위는 페이지에 따로 없다.",
+  "confidence": "limited"
+}

@@ -1,0 +1,96 @@
+{
+  "id": "tektronix-3-series-mdo",
+  "kind": "equipment_series",
+  "name": "3 Series MDO Mixed Domain Oscilloscope",
+  "name_ko": "텍트로닉스 3 시리즈 MDO 혼합 도메인 오실로스코프",
+  "manufacturer": "tektronix",
+  "brand": "3 Series MDO",
+  "category": "oscilloscope",
+  "subcategory": "mixed_domain_oscilloscope",
+  "form_factor": "benchtop",
+  "description": "100 MHz~1 GHz 대역의 2·4채널 혼합 도메인 오실로스코프 계열로 스펙트럼 분석기를 내장함(표준 1 GHz, 옵션 3 GHz). 최대 5 GS/s, 10 M 레코드, 옵션 16 디지털 채널, 11.6 inch HD(1920×1080) 정전식 터치 화면.",
+  "test_items": [],
+  "limits": {
+    "bandwidth_Hz": {
+      "min": 100000000,
+      "max": 1000000000
+    },
+    "sample_rate_Sa_s": {
+      "max": 5000000000
+    },
+    "record_length_pts": {
+      "max": 10000000
+    },
+    "channels": {
+      "values": [
+        2,
+        4
+      ]
+    },
+    "logic_channel_count": {
+      "values": [
+        16
+      ],
+      "note": "옵션"
+    },
+    "display_size_in": {
+      "values": [
+        11.6
+      ]
+    }
+  },
+  "models": [
+    {
+      "model": "MDO32",
+      "specs": {
+        "bandwidth_Hz": {
+          "min": 100000000,
+          "max": 1000000000,
+          "note": "원문 100 MHz - 1 GHz"
+        },
+        "channels": 2,
+        "logic_channel_count": 16,
+        "sample_rate_Sa_s": 5000000000,
+        "record_length_pts": 10000000,
+        "display_size_in": 11.6
+      },
+      "note": "원문 Up to 5 GS/s · 10 M · 16 digital (optional) · 스펙트럼 분석기 1 GHz(표준)/3 GHz(옵션)"
+    },
+    {
+      "model": "MDO34",
+      "specs": {
+        "bandwidth_Hz": {
+          "min": 100000000,
+          "max": 1000000000,
+          "note": "원문 100 MHz - 1 GHz"
+        },
+        "channels": 4,
+        "logic_channel_count": 16,
+        "sample_rate_Sa_s": 5000000000,
+        "record_length_pts": 10000000,
+        "display_size_in": 11.6
+      },
+      "note": "원문 Up to 5 GS/s · 10 M · 16 digital (optional) · 스펙트럼 분석기 1 GHz(표준)/3 GHz(옵션)"
+    }
+  ],
+  "features": [
+    "스펙트럼 분석기 내장(1 GHz 표준, 3 GHz 옵션)",
+    "11.6 inch HD 정전식 터치 화면"
+  ],
+  "relations": [
+    {
+      "type": "successor_of",
+      "target": "tektronix-mdo3000",
+      "note": "제조사가 MDO3000 의 권장 대체로 3 Series MDO 를 적음"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://www.tek.com/en/products/oscilloscopes/3-series-mdo",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지 기종 표. 원문 100 MHz - 1 GHz, Up to 5 GS/s, 10 M, 16 digital (optional), SA 1 GHz/3 GHz, 11.6-inch"
+    }
+  ],
+  "confidence": "limited",
+  "notes": "ADC 분해능은 페이지에 없음."
+}

@@ -1,0 +1,134 @@
+{
+  "id": "techno-optis-bm-series",
+  "kind": "equipment_series",
+  "name": "Techno Optis (Topcon Technohouse) BM Series Luminance Colorimeter",
+  "name_ko": "테크노옵티스(옛 탑콘 테크노하우스) BM 휘도·색채계",
+  "manufacturer": "techno-optis",
+  "brand": "BM",
+  "category": "display_color_analyzer",
+  "form_factor": "benchtop",
+  "description": "측정각을 바꿔 쓰는 거치형 휘도·색채계 계열. BM-7AC 는 2° · 1° · 0.2° · 0.1° 에서 0.01 ~ 12,000,000 cd/m² 를 약 0.5 s 에 재 생산 라인 검사에 쓰이고, BM-5AC 는 3° ~ 0.1° 다섯 각도로 0.00005 cd/m² 의 저휘도까지 잰다. BM-9A 는 표시부(BM-9AC)와 헤드를 나눈 소형 휘도계.",
+  "test_items": [
+    "photometry_colorimetry"
+  ],
+  "measurands": [
+    "luminance",
+    "chromaticity",
+    "correlated_color_temperature"
+  ],
+  "limits": {
+    "luminance_cd_m2": {
+      "min": 5e-05,
+      "max": 28000000,
+      "note": "BM-5AC 3° 하한 ~ BM-9A 0.2° 상한"
+    },
+    "measuring_angle_deg": {
+      "values": [
+        3,
+        2,
+        1,
+        0.2,
+        0.1
+      ]
+    },
+    "measurement_time_s": {
+      "min": 0.5,
+      "max": 2,
+      "note": "BM-7AC 약 0.5 s, BM-5AC 약 2 s"
+    }
+  },
+  "models": [
+    {
+      "model": "BM-7AC",
+      "specs": {
+        "measuring_angle_deg": [
+          2,
+          1,
+          0.2,
+          0.1
+        ],
+        "luminance_cd_m2": {
+          "min": 0.01,
+          "max": 12000000
+        },
+        "luminance_accuracy_pct": 2,
+        "chromaticity_accuracy_xy": 0.002,
+        "measurement_time_s": 0.5,
+        "interfaces": "RS-232C, USB",
+        "weight_kg": 3.0
+      },
+      "note": "휘도: 2° 0.01 ~ 30,000 / 1° 0.04 ~ 120,000 / 0.2° 1 ~ 3,000,000 / 0.1° 4 ~ 12,000,000 cd/m². 확도 ±4 %(1 ~ 5 cd/m²), ±2 %(5 cd/m² 이상). 색도 dx, dy ±0.002. 아날로그 출력 판 BM-7AC-ANA"
+    },
+    {
+      "model": "BM-7AC-ANA",
+      "variant": "analog output",
+      "note": "BM-7AC 의 아날로그 출력 선택 판. 사양은 BM-7AC 와 같은지 페이지로 확인하지 않음"
+    },
+    {
+      "model": "BM-5AC",
+      "specs": {
+        "measuring_angle_deg": [
+          3,
+          2,
+          1,
+          0.2,
+          0.1
+        ],
+        "luminance_cd_m2": {
+          "min": 5e-05,
+          "max": 1200000
+        },
+        "luminance_accuracy_pct": 4,
+        "chromaticity_accuracy_xy": 0.005,
+        "measurement_time_s": 2,
+        "interfaces": "RS-232C, USB",
+        "weight_kg": 3.6
+      },
+      "note": "휘도: 3° 0.00005 ~ 1,500 / 2° 0.0001 ~ 3,000 / 1° 0.0004 ~ 12,000 / 0.2° 0.01 ~ 300,000 / 0.1° 0.04 ~ 1,200,000 cd/m². 색도 ±0.005 이하(표준광원 A), ±0.008 이하(색 보정 적용)"
+    },
+    {
+      "model": "BM-9A",
+      "variant": "BM-9AC 표시부 + BM-9A20D / BM-9A10D / BM-9A02D 헤드",
+      "specs": {
+        "measuring_angle_deg": [
+          2,
+          1,
+          0.2
+        ],
+        "luminance_cd_m2": {
+          "min": 0.01,
+          "max": 28000000
+        },
+        "luminance_accuracy_pct": 2,
+        "interfaces": "USB, 아날로그 전압 출력(0 ~ 3 V)",
+        "weight_kg": 0.35
+      },
+      "note": "휘도: 2° 0.01 ~ 280,000 / 1° 0.1 ~ 2,800,000 / 0.2° 1 ~ 28,000,000 cd/m². 확도 ±2 % of rdg. ±2 digit(기종별 하한 0.1 · 1.0 · 10 cd/m²). 무게 350 g(표시부 130 g + 헤드 220 g). 휘도만 잼"
+    }
+  ],
+  "relations": [
+    {
+      "type": "performs",
+      "target": "photometry_colorimetry"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://www.techno-optis.com/en/products/luminance-colorimeter-bm-7ac/",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지(HTML)"
+    },
+    {
+      "url": "https://www.techno-optis.com/en/products/luminance-colorimeter-bm-5ac/",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지(HTML)"
+    },
+    {
+      "url": "https://www.techno-optis.com/en/products/luminance-meter-bm-9a/",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지(HTML)"
+    }
+  ],
+  "confidence": "limited",
+  "notes": "BM-9A 헤드 이름(20D · 10D · 02D)과 측정각의 대응은 페이지 요약에서 확인하지 못해 적지 않았다."
+}

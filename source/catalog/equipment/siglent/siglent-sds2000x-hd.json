@@ -1,0 +1,97 @@
+{
+  "id": "siglent-sds2000x-hd",
+  "kind": "equipment_series",
+  "name": "SDS2000X HD Series Digital Storage Oscilloscope",
+  "name_ko": "시글런트 SDS2000X HD 오실로스코프",
+  "manufacturer": "siglent",
+  "brand": "SDS",
+  "category": "oscilloscope",
+  "subcategory": "high_definition_oscilloscope",
+  "form_factor": "benchtop",
+  "description": "100~350 MHz 대역의 4채널 12 bit 오실로스코프 계열임. 2 GSa/s, 채널당 200 Mpts, 16 디지털 채널, 10.1 inch 화면.",
+  "test_items": [],
+  "limits": {
+    "bandwidth_Hz": {
+      "min": 100000000,
+      "max": 350000000
+    },
+    "sample_rate_Sa_s": {
+      "max": 2000000000
+    },
+    "record_length_pts": {
+      "max": 200000000
+    },
+    "channels": {
+      "values": [
+        4
+      ]
+    },
+    "logic_channel_count": {
+      "values": [
+        16
+      ]
+    },
+    "adc_resolution_bit": {
+      "values": [
+        12
+      ]
+    },
+    "display_size_in": {
+      "values": [
+        10.1
+      ]
+    }
+  },
+  "models": [
+    {
+      "model": "SDS2104X HD",
+      "specs": {
+        "bandwidth_Hz": {
+          "value": 100000000,
+          "uncertain": true,
+          "note": "계열 목록의 100 MHz 표기. 기종 표에는 없음"
+        },
+        "channels": 4
+      },
+      "note": "페이지 메뉴에만 나오는 기종명",
+      "uncertain": true
+    },
+    {
+      "model": "SDS2204X HD",
+      "specs": {
+        "bandwidth_Hz": 200000000,
+        "channels": 4,
+        "logic_channel_count": 16,
+        "sample_rate_Sa_s": 2000000000,
+        "record_length_pts": 200000000,
+        "adc_resolution_bit": 12,
+        "display_size_in": 10.1
+      }
+    },
+    {
+      "model": "SDS2354X HD",
+      "specs": {
+        "bandwidth_Hz": 350000000,
+        "channels": 4,
+        "logic_channel_count": 16,
+        "sample_rate_Sa_s": 2000000000,
+        "record_length_pts": 200000000,
+        "adc_resolution_bit": 12,
+        "display_size_in": 10.1
+      }
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://siglentna.com/digital-oscilloscopes/sds2000x-hd-digital-storage-oscilloscope/",
+      "retrieved": "2026-10-08",
+      "note": "시글런트 북미 법인 사이트(siglentna.com)의 제품 페이지 기종 표. 원문 4+EXT, 2 GSa/s, 200 Mpts/ch, 12-bit, 16 digital, 10.1\""
+    },
+    {
+      "url": "https://siglentna.com/digital-oscilloscopes/",
+      "retrieved": "2026-10-08",
+      "note": "시글런트 북미 법인 사이트(siglentna.com)의 제품 페이지(계열 목록). SDS2000X HD: 100, 200, 350 MHz, 4+EXT"
+    }
+  ],
+  "confidence": "limited"
+}

@@ -68,11 +68,27 @@
    "registered": "2026-09-10 감사에서 사용 중인 키를 등록"
   },
   {
+   "key": "adc_resolution_bit",
+   "label": "A/D 분해능",
+   "dimension": "count",
+   "unit": "bit",
+   "note": "데이터 수집 장치·진동 제어기·분석기의 A/D 변환 비트 수",
+   "registered": "2026-10-08 운영 미연결 장비 분류 보강(2차, 제조사 웹 사양)에서 등록"
+  },
+  {
    "key": "air_discharge_V",
    "label": "기중 방전 전압",
    "dimension": "voltage",
    "unit": "V",
    "registered": "2026-09-12 MaterialTwin 능력행의 측정 범위를 기종 사양으로 들이며 등록"
+  },
+  {
+   "key": "altitude_m",
+   "label": "모의 고도",
+   "dimension": "length",
+   "unit": "m",
+   "testscope_key": "altitude",
+   "registered": "2026-10-08 저기압 챔버·방수 설비·부품 수명 시험기 반입에서 등록"
   },
   {
    "key": "ambient_degC",
@@ -110,6 +126,22 @@
    "unit": "rad/s"
   },
   {
+   "key": "armature_diameter_mm",
+   "label": "아마추어 지름",
+   "dimension": "length",
+   "unit": "mm",
+   "note": "가진기 가동부(아마추어) 지름. 기존 unholtz-dickie-shakers 가 미등록 상태로 쓰고 있다",
+   "registered": "2026-10-08 운영 미연결 장비 분류 보강(2차, 제조사 웹 사양)에서 등록"
+  },
+  {
+   "key": "armature_mass_kg",
+   "label": "아마추어 질량",
+   "dimension": "mass",
+   "unit": "kg",
+   "note": "유효 가동 질량. 기존 IMV 객체의 armature_mass_kg(미등록)와 같은 이름",
+   "registered": "2026-10-08 운영 미연결 장비 분류 보강(2차, 제조사 웹 사양)에서 등록"
+  },
+  {
    "key": "balance_resolution_ug",
    "label": "저울 분해능",
    "dimension": "mass",
@@ -126,11 +158,26 @@
    }
   },
   {
+   "key": "bend_radius_mm",
+   "label": "굽힘 반경",
+   "dimension": "length",
+   "unit": "mm",
+   "registered": "2026-10-08 저기압 챔버·방수 설비·부품 수명 시험기 반입에서 등록"
+  },
+  {
    "key": "bending_moment_Nm",
    "label": "굽힘 모멘트",
    "dimension": "torque",
    "unit": "N*m",
    "registered": "2026-09-10 감사에서 사용 중인 키를 등록"
+  },
+  {
+   "key": "black_panel_temperature_degC",
+   "label": "블랙패널 온도(BPT/BST)",
+   "dimension": "temperature",
+   "unit": "degC",
+   "note": "내후성 시험기의 BPT(비절연) 또는 BST(절연) 제어 범위. 어느 쪽인지 note 에. 챔버 공기 온도는 temperature_degC",
+   "registered": "2026-10-08 운영 미연결 장비 분류 보강(2차, 제조사 웹 사양)에서 등록"
   },
   {
    "key": "bore_diameter_mm",
@@ -175,6 +222,15 @@
    "testscope_key": "chamber"
   },
   {
+   "key": "chamber_pressure_kPa",
+   "label": "챔버 압력",
+   "dimension": "pressure",
+   "unit": "kPa",
+   "testscope_key": "pressure",
+   "note": "저기압 챔버가 낼 수 있는 압력 범위. 하한이 곧 모의 고도 상한",
+   "registered": "2026-10-08 저기압 챔버·방수 설비·부품 수명 시험기 반입에서 등록"
+  },
+  {
    "key": "chamber_volume_L",
    "label": "챔버 용적",
    "dimension": "volume",
@@ -189,10 +245,26 @@
    "registered": "2026-09-10 감사에서 사용 중인 키를 등록"
   },
   {
+   "key": "channel_scan_rate_ch_s",
+   "label": "채널 스캔 속도",
+   "dimension": "rate",
+   "unit": "ch/s",
+   "note": "스위치·멀티플렉서 DAQ 의 채널 스캔 속도. data_rate_Hz(판독·샘플 속도)와 구분",
+   "registered": "2026-10-08 운영 미연결 장비 분류 보강(2차, 제조사 웹 사양)에서 등록"
+  },
+  {
    "key": "channels",
    "label": "채널 수",
    "dimension": "count",
    "registered": "2026-09-10 감사에서 사용 중인 키를 등록"
+  },
+  {
+   "key": "chromaticity_accuracy_xy",
+   "label": "색도 정확도(xy)",
+   "dimension": "ratio",
+   "unit": "",
+   "note": "CIE xy 좌표의 ± 값 절댓값(예 0.002). 조건(휘도 · 광원)은 note 에",
+   "registered": "2026-10-08 운영 미연결 장비 분류 보강(2차, 제조사 웹 사양)에서 등록"
   },
   {
    "key": "coating_thickness_um",
@@ -303,6 +375,14 @@
    "registered": "2026-09-10 감사에서 사용 중인 키를 등록"
   },
   {
+   "key": "cut_spacing_mm",
+   "label": "크로스컷 칼날 간격",
+   "dimension": "length",
+   "unit": "mm",
+   "note": "크로스컷 커터 날 간격(1 · 1.5 · 2 · 3 mm). 도막 두께에 따라 고른다",
+   "registered": "2026-10-08 운영 미연결 장비 분류 보강(2차, 제조사 웹 사양)에서 등록"
+  },
+  {
    "key": "cutoff_current_A",
    "label": "차단 전류",
    "dimension": "current",
@@ -311,6 +391,22 @@
    "unit_variants": {
     "cutoff_current": 1.0
    }
+  },
+  {
+   "key": "cycle_rate_cpm",
+   "label": "반복 속도",
+   "dimension": "rate",
+   "unit": "cpm",
+   "note": "분당 왕복 횟수. Hz·rpm 원문은 비고에",
+   "registered": "2026-10-08 저기압 챔버·방수 설비·부품 수명 시험기 반입에서 등록"
+  },
+  {
+   "key": "dac_resolution_bit",
+   "label": "D/A 분해능",
+   "dimension": "count",
+   "unit": "bit",
+   "note": "파형 발생기 DAC 분해능. 오실로스코프·디지타이저 ADC 분해능도 같은 칸을 쓸 수 있다(다른 묶음과 맞출 것)",
+   "registered": "2026-10-08 운영 미연결 장비 분류 보강(2차, 제조사 웹 사양)에서 등록"
   },
   {
    "key": "data_interval_ms",
@@ -351,6 +447,14 @@
    "registered": "2026-09-12 사양 조사(공식 카탈로그 PDF·제조사 페이지)에서 쓴 키 등록"
   },
   {
+   "key": "depth_scale_mm",
+   "label": "수심 눈금 범위",
+   "dimension": "length",
+   "unit": "mm",
+   "role": "descriptive",
+   "registered": "2026-10-08 저기압 챔버·방수 설비·부품 수명 시험기 반입에서 등록"
+  },
+  {
    "key": "detector",
    "label": "검출기",
    "dimension": "",
@@ -388,6 +492,22 @@
    "registered": "2026-09-10 감사에서 사용 중인 키를 등록"
   },
   {
+   "key": "dip_depth_mm",
+   "label": "침지 깊이(웨팅 밸런스)",
+   "dimension": "length",
+   "unit": "mm",
+   "note": "솔더 조에 시편을 담그는 깊이. 방수 설비의 immersion_depth_m(침수 깊이)과 뜻이 달라 따로 둔다",
+   "registered": "2026-10-08 운영 미연결 장비 분류 보강(2차, 제조사 웹 사양)에서 등록"
+  },
+  {
+   "key": "dip_speed_mm_s",
+   "label": "침지 속도",
+   "dimension": "speed",
+   "unit": "mm/s",
+   "note": "웨팅 밸런스 시편 침지 · 인상 속도",
+   "registered": "2026-10-08 운영 미연결 장비 분류 보강(2차, 제조사 웹 사양)에서 등록"
+  },
+  {
    "key": "discharge_mode",
    "label": "방전 방식",
    "dimension": "mode",
@@ -408,10 +528,67 @@
    "registered": "2026-09-12 MaterialTwin 능력행의 측정 범위를 기종 사양으로 들이며 등록"
   },
   {
+   "key": "displacement_resolution_nm",
+   "label": "변위 분해능",
+   "dimension": "length",
+   "unit": "nm",
+   "note": "TMA·딜라토미터의 길이 변화 분해능. 기존 객체 2곳에서 미등록으로 쓰던 이름",
+   "registered": "2026-10-08 운영 미연결 장비 분류 보강(2차, 제조사 웹 사양)에서 등록"
+  },
+  {
    "key": "displacement_um",
    "label": "변위 측정 범위",
    "dimension": "length",
    "unit": "µm"
+  },
+  {
+   "key": "display_size_in",
+   "label": "화면 크기",
+   "dimension": "length",
+   "unit": "in",
+   "role": "descriptive",
+   "note": "대각선 inch",
+   "registered": "2026-10-08 운영 미연결 장비 분류 보강(2차, 제조사 웹 사양)에서 등록"
+  },
+  {
+   "key": "dmm_display_counts",
+   "label": "표시 카운트",
+   "dimension": "count",
+   "unit": "counts",
+   "note": "휴대형 멀티미터의 최대 표시 카운트(6000, 60000 등)",
+   "registered": "2026-10-08 운영 미연결 장비 분류 보강(2차, 제조사 웹 사양)에서 등록"
+  },
+  {
+   "key": "dmm_resolution_digits",
+   "label": "표시 자릿수",
+   "dimension": "count",
+   "unit": "digits",
+   "note": "탁상형 멀티미터의 자릿수. 6½ 은 6.5 로 적음",
+   "registered": "2026-10-08 운영 미연결 장비 분류 보강(2차, 제조사 웹 사양)에서 등록"
+  },
+  {
+   "key": "dolly_diameter_mm",
+   "label": "돌리 지름",
+   "dimension": "length",
+   "unit": "mm",
+   "note": "풀오프 시험 돌리 지름. 지름에 따라 측정 범위가 바뀐다",
+   "registered": "2026-10-08 운영 미연결 장비 분류 보강(2차, 제조사 웹 사양)에서 등록"
+  },
+  {
+   "key": "drip_area_mm",
+   "label": "적하 면적",
+   "dimension": "length",
+   "unit": "mm",
+   "role": "descriptive",
+   "registered": "2026-10-08 저기압 챔버·방수 설비·부품 수명 시험기 반입에서 등록"
+  },
+  {
+   "key": "drip_needle_count",
+   "label": "적하 니들 수",
+   "dimension": "count",
+   "unit": "",
+   "role": "descriptive",
+   "registered": "2026-10-08 저기압 챔버·방수 설비·부품 수명 시험기 반입에서 등록"
   },
   {
    "key": "drop_height_m",
@@ -435,6 +612,14 @@
    "registered": "2026-09-10 감사에서 사용 중인 키를 등록"
   },
   {
+   "key": "dta_range_uV",
+   "label": "DTA 측정 범위",
+   "dimension": "voltage",
+   "unit": "µV",
+   "note": "TG/DTA·STA 의 DTA 신호 범위(±)",
+   "registered": "2026-10-08 운영 미연결 장비 분류 보강(2차, 제조사 웹 사양)에서 등록"
+  },
+  {
    "key": "dynamic_force_kN",
    "label": "동적 하중",
    "dimension": "force",
@@ -453,6 +638,22 @@
    "label": "동적 범위",
    "dimension": "ratio",
    "registered": "2026-09-10 감사에서 사용 중인 키를 등록"
+  },
+  {
+   "key": "dynamic_range_dB",
+   "label": "동적 범위(dB)",
+   "dimension": "level",
+   "unit": "dB",
+   "note": "기존 dynamic_range 는 단위 없는 비(ratio)로 등록돼 dB 값을 넣으면 뜻이 섞인다. 인터페이스·DAQ·진동 제어기의 dBFS 값도 여기에",
+   "registered": "2026-10-08 운영 미연결 장비 분류 보강(2차, 제조사 웹 사양)에서 등록"
+  },
+  {
+   "key": "dynamic_weighing_range_mg",
+   "label": "칭량 범위(TG)",
+   "dimension": "mass",
+   "unit": "mg",
+   "note": "TG 측정 범위(±). 시료 최대 질량(sample_mass_mg)과 다르다. 기존 객체 ta-instruments-discovery-tga 가 미등록으로 쓰던 이름",
+   "registered": "2026-10-08 운영 미연결 장비 분류 보강(2차, 제조사 웹 사양)에서 등록"
   },
   {
    "key": "ear_simulators",
@@ -519,11 +720,28 @@
    "registered": "2026-09-12 MaterialTwin 능력행의 측정 범위를 기종 사양으로 들이며 등록"
   },
   {
+   "key": "exposure_area_cm2",
+   "label": "시편 노출 면적",
+   "dimension": "area",
+   "unit": "cm2",
+   "note": "내후성 시험기의 유효 노출 면적",
+   "registered": "2026-10-08 운영 미연결 장비 분류 보강(2차, 제조사 웹 사양)에서 등록"
+  },
+  {
    "key": "feature_recognition_um",
    "label": "형상 인식 한계",
    "dimension": "length",
    "unit": "um",
    "registered": "2026-09-10 감사에서 사용 중인 키를 등록"
+  },
+  {
+   "key": "field_of_view_deg",
+   "label": "시야각",
+   "dimension": "angle",
+   "unit": "deg",
+   "role": "descriptive",
+   "note": "「33° × 25°」 처럼 가로 × 세로 · 렌즈별 목록으로 온다",
+   "registered": "2026-10-08 운영 미연결 장비 분류 보강(2차, 제조사 웹 사양)에서 등록"
   },
   {
    "key": "field_of_view_mm",
@@ -547,6 +765,13 @@
    "registered": "2026-09-10 감사에서 사용 중인 키를 등록"
   },
   {
+   "key": "fold_angle_deg",
+   "label": "굽힘 각도",
+   "dimension": "angle",
+   "unit": "deg",
+   "registered": "2026-10-08 저기압 챔버·방수 설비·부품 수명 시험기 반입에서 등록"
+  },
+  {
    "key": "following_speed_mm_min",
    "label": "추종 속도",
    "dimension": "speed",
@@ -566,12 +791,28 @@
    "note": "[W, D, H] 배열이거나 {W,D,H} 객체. 낱개 이름(width_mm 등)은 아래 셋"
   },
   {
+   "key": "footprint_mm_with_ipx9k_unit",
+   "label": "설치 면적(IPX9K 유닛 포함)",
+   "dimension": "length",
+   "unit": "mm",
+   "role": "descriptive",
+   "registered": "2026-10-08 저기압 챔버·방수 설비·부품 수명 시험기 반입에서 등록"
+  },
+  {
    "key": "force_N",
    "label": "하중(소용량)",
    "dimension": "force",
    "unit": "N",
    "note": "동적 시험기·DMA 등 N 단위가 자연스러운 곳. 검색 시 kN 으로 환산",
    "testscope_key": "force"
+  },
+  {
+   "key": "force_amplitude_kN",
+   "label": "힘 진폭",
+   "dimension": "force",
+   "unit": "kN",
+   "note": "공진식 피로시험기의 최대 힘 진폭(±). 기존 zwickroell-vibrophore 가 미등록으로 쓰던 이름",
+   "registered": "2026-10-08 운영 미연결 장비 분류 보강(2차, 제조사 웹 사양)에서 등록"
   },
   {
    "key": "force_kN",
@@ -599,6 +840,14 @@
    "registered": "2026-09-12 MaterialTwin 능력행의 측정 범위를 기종 사양으로 들이며 등록"
   },
   {
+   "key": "force_random_kN",
+   "label": "랜덤 가진력",
+   "dimension": "force",
+   "unit": "kN",
+   "note": "진동 시험기의 랜덤 정격(rms). force_kN 은 정현 피크 정격으로 쓴다. 기존 IMV 객체의 force_random_kN_rms 와 같은 뜻 — 별칭으로 묶을 후보",
+   "registered": "2026-10-08 운영 미연결 장비 분류 보강(2차, 제조사 웹 사양)에서 등록"
+  },
+  {
    "key": "force_resolution",
    "label": "하중 분해능",
    "dimension": "",
@@ -606,6 +855,14 @@
    "note": "단위가 카탈로그마다 다르다(N·% of reading). 원문을 살린다",
    "role": "descriptive",
    "registered": "2026-09-10 3차: 기종 사양(models[].specs)에서 값이 많은 것부터 등록"
+  },
+  {
+   "key": "force_shock_kN",
+   "label": "충격 가진력",
+   "dimension": "force",
+   "unit": "kN",
+   "note": "진동 시험기의 충격(피크) 정격. 기존 IMV 객체의 force_shock_kN 이 이미 이 이름을 쓴다",
+   "registered": "2026-10-08 운영 미연결 장비 분류 보강(2차, 제조사 웹 사양)에서 등록"
   },
   {
    "key": "fra_current_A",
@@ -627,6 +884,14 @@
    "dimension": "voltage",
    "unit": "V",
    "registered": "2026-09-10 감사에서 사용 중인 키를 등록"
+  },
+  {
+   "key": "frame_rate_fps",
+   "label": "전 화소 프레임 속도",
+   "dimension": "frequency",
+   "unit": "fps",
+   "note": "카메라가 최대 해상도에서 내는 프레임 속도. 열화상 카메라의 Hz 표기도 이 칸(1 Hz = 1 fps). nordson-dage-quadra-xray 가 이미 쓰고 있으나 미등록",
+   "registered": "2026-10-08 운영 미연결 장비 분류 보강(2차, 제조사 웹 사양)에서 등록"
   },
   {
    "key": "frame_stiffness_kN_mm",
@@ -719,11 +984,43 @@
    "registered": "2026-09-10 감사에서 사용 중인 키를 등록"
   },
   {
+   "key": "heat_flow_mW",
+   "label": "열류 측정 범위",
+   "dimension": "power",
+   "unit": "mW",
+   "note": "DSC·STA 의 열류(DSC) 측정 범위. 원문 ± 값의 크기를 적는다",
+   "registered": "2026-10-08 운영 미연결 장비 분류 보강(2차, 제조사 웹 사양)에서 등록"
+  },
+  {
+   "key": "heat_flow_noise_uW_rms",
+   "label": "열류 잡음(RMS)",
+   "dimension": "power",
+   "unit": "uW rms",
+   "note": "DSC 기저선 잡음. 기존 객체 ta-instruments-discovery-dsc 가 미등록으로 쓰던 이름 그대로 — 등록하면 미등록 기준선도 준다",
+   "registered": "2026-10-08 운영 미연결 장비 분류 보강(2차, 제조사 웹 사양)에서 등록"
+  },
+  {
+   "key": "heat_flow_resolution_uW",
+   "label": "열류 분해능",
+   "dimension": "power",
+   "unit": "µW",
+   "note": "DSC 분해능(LINSEIS 'DSC resolution', 'Resolution 0.03 µW')",
+   "registered": "2026-10-08 운영 미연결 장비 분류 보강(2차, 제조사 웹 사양)에서 등록"
+  },
+  {
    "key": "heated_length_mm",
    "label": "가열 길이",
    "dimension": "length",
    "unit": "mm",
    "registered": "2026-09-10 감사에서 사용 중인 키를 등록"
+  },
+  {
+   "key": "heating_power_kW",
+   "label": "가열 전력",
+   "dimension": "power",
+   "unit": "kW",
+   "role": "descriptive",
+   "registered": "2026-10-08 저기압 챔버·방수 설비·부품 수명 시험기 반입에서 등록"
   },
   {
    "key": "heating_rate_K_h",
@@ -756,10 +1053,34 @@
    "registered": "2026-09-10 감사에서 사용 중인 키를 등록"
   },
   {
+   "key": "high_temp_degC",
+   "label": "고온 노출 온도",
+   "dimension": "temperature",
+   "unit": "degC",
+   "note": "열충격 챔버의 고온조(고온 노출) 범위. espec-tsa-thermal-shock 가 이미 등록 없이 쓰는 이름을 그대로 등록 제안",
+   "registered": "2026-10-08 운영 미연결 장비 분류 보강(2차, 제조사 웹 사양)에서 등록"
+  },
+  {
    "key": "horizontal_test_space_mm",
    "label": "수평 시험 공간(컬럼 간격)",
    "dimension": "length",
    "unit": "mm"
+  },
+  {
+   "key": "humidity_control",
+   "label": "습도 제어",
+   "dimension": "",
+   "unit": "",
+   "role": "descriptive",
+   "registered": "2026-10-08 저기압 챔버·방수 설비·부품 수명 시험기 반입에서 등록"
+  },
+  {
+   "key": "humidity_fluctuation_pct",
+   "label": "습도 변동",
+   "dimension": "humidity",
+   "unit": "%",
+   "note": "suggested_keys.json 에 이미 후보로 있고 espec-platinous-chambers 가 쓰는 키",
+   "registered": "2026-10-08 운영 미연결 장비 분류 보강(2차, 제조사 웹 사양)에서 등록"
   },
   {
    "key": "humidity_pct",
@@ -774,6 +1095,14 @@
    "dimension": "illuminance",
    "unit": "lx",
    "registered": "2026-09-10 감사에서 사용 중인 키를 등록"
+  },
+  {
+   "key": "immersion_depth_m",
+   "label": "침수 깊이",
+   "dimension": "length",
+   "unit": "m",
+   "note": "IPX7·IPX8 침수 시험의 수심",
+   "registered": "2026-10-08 저기압 챔버·방수 설비·부품 수명 시험기 반입에서 등록"
   },
   {
    "key": "impact_energy_J",
@@ -793,6 +1122,14 @@
    "label": "충격 속도",
    "dimension": "speed",
    "unit": "m/s"
+  },
+  {
+   "key": "impedance_ohm",
+   "label": "임피던스 측정 범위",
+   "dimension": "resistance",
+   "unit": "ohm",
+   "note": "LCR 미터·임피던스 분석기의 |Z| 측정 범위(확도 보증 범위는 note 에)",
+   "registered": "2026-10-08 운영 미연결 장비 분류 보강(2차, 제조사 웹 사양)에서 등록"
   },
   {
    "key": "indentation_depth_um",
@@ -897,11 +1234,27 @@
    "registered": "2026-09-12 사양 조사(공식 카탈로그 PDF·제조사 페이지)에서 쓴 키 등록"
   },
   {
+   "key": "ipx_levels",
+   "label": "지원 IPX 등급",
+   "dimension": "grade",
+   "unit": "",
+   "note": "기본 구성과 옵션 모듈 등급을 함께 적음",
+   "registered": "2026-10-08 저기압 챔버·방수 설비·부품 수명 시험기 반입에서 등록"
+  },
+  {
    "key": "ir_resolution_pixels",
    "label": "적외 화소수",
    "dimension": "count",
    "unit": "pixels",
    "registered": "2026-09-10 감사에서 사용 중인 키를 등록"
+  },
+  {
+   "key": "irradiance_W_m2",
+   "label": "조사 강도",
+   "dimension": "irradiance",
+   "unit": "W/m2",
+   "note": "내후성 시험기의 광원 조사 강도. 대역(300–400 nm, 340 nm 등)은 값 note 에 적는다. 조사 제어 파장은 기존 irradiance_control_nm",
+   "registered": "2026-10-08 운영 미연결 장비 분류 보강(2차, 제조사 웹 사양)에서 등록"
   },
   {
    "key": "irradiance_control_nm",
@@ -918,6 +1271,14 @@
    "role": "not_spec",
    "note": "제조사 주문 번호. 사양이 아니므로 정의로 세우지 않는다",
    "registered": "2026-09-10 3차: 기종 사양(models[].specs)에서 값이 많은 것부터 등록"
+  },
+  {
+   "key": "lamp_power_W",
+   "label": "램프 출력",
+   "dimension": "power",
+   "unit": "W",
+   "note": "램프 1개 출력. 램프 수는 note 에. 장비 소비 전력(power_kW)과 다르다",
+   "registered": "2026-10-08 운영 미연결 장비 분류 보강(2차, 제조사 웹 사양)에서 등록"
   },
   {
    "key": "laser_wavelength_nm",
@@ -952,6 +1313,31 @@
    "dimension": "current",
    "unit": "A",
    "registered": "2026-09-10 감사에서 사용 중인 키를 등록"
+  },
+  {
+   "key": "length_measuring_error_mpe",
+   "label": "길이 측정 오차(MPE)",
+   "dimension": "",
+   "unit": "",
+   "role": "descriptive",
+   "note": "「E0,MPE = (1.7 + 3L/1000) µm」 처럼 상수 + 길이 비례항 문장. 온도 구간·센서 조건이 붙는다(ISO 10360-2 등)",
+   "registered": "2026-10-08 운영 미연결 장비 분류 보강(2차, 제조사 웹 사양)에서 등록"
+  },
+  {
+   "key": "linearity_pct_fs",
+   "label": "직선성(풀스케일 대비)",
+   "dimension": "ratio",
+   "unit": "%F.S.",
+   "note": "「±0.02% of F.S.」 처럼 측정 범위 대비 비율로 적은 직선성. 길이로 바꾸려면 기종 측정 범위가 필요해 linearity_um 과 따로 둔다",
+   "registered": "2026-10-08 운영 미연결 장비 분류 보강(2차, 제조사 웹 사양)에서 등록"
+  },
+  {
+   "key": "linearity_um",
+   "label": "직선성",
+   "dimension": "length",
+   "unit": "um",
+   "note": "변위 센서 직선성 오차를 길이로 적은 값(±는 뺀 크기)",
+   "registered": "2026-10-08 운영 미연결 장비 분류 보강(2차, 제조사 웹 사양)에서 등록"
   },
   {
    "key": "load_N",
@@ -1001,11 +1387,35 @@
    "registered": "2026-09-12 사양 조사(공식 카탈로그 PDF·제조사 페이지)에서 쓴 키 등록"
   },
   {
+   "key": "logic_channel_count",
+   "label": "디지털(로직) 채널 수",
+   "dimension": "count",
+   "unit": "",
+   "note": "MSO 로직 입력 수. 옵션이면 비고에. 아날로그 입력 수는 기존 channels 를 씀",
+   "registered": "2026-10-08 운영 미연결 장비 분류 보강(2차, 제조사 웹 사양)에서 등록"
+  },
+  {
+   "key": "low_temp_degC",
+   "label": "저온 노출 온도",
+   "dimension": "temperature",
+   "unit": "degC",
+   "note": "열충격 챔버의 저온조(저온 노출) 범위. espec-tsa-thermal-shock 가 이미 쓰는 이름",
+   "registered": "2026-10-08 운영 미연결 장비 분류 보강(2차, 제조사 웹 사양)에서 등록"
+  },
+  {
    "key": "low_vacuum_Pa",
    "label": "저진공 범위",
    "dimension": "pressure",
    "unit": "Pa",
    "registered": "2026-09-12 사양 조사(공식 카탈로그 PDF·제조사 페이지)에서 쓴 키 등록"
+  },
+  {
+   "key": "luminance_accuracy_pct",
+   "label": "휘도 정확도",
+   "dimension": "ratio",
+   "unit": "%",
+   "note": "± 값의 절댓값. 휘도 수준 · 광원 조건은 note 에",
+   "registered": "2026-10-08 운영 미연결 장비 분류 보강(2차, 제조사 웹 사양)에서 등록"
   },
   {
    "key": "luminance_cd_m2",
@@ -1058,6 +1468,14 @@
    "registered": "2026-09-12 MaterialTwin 능력행의 측정 범위를 기종 사양으로 들이며 등록"
   },
   {
+   "key": "max_frame_rate_fps",
+   "label": "최대 프레임 속도(화소 축소)",
+   "dimension": "frequency",
+   "unit": "fps",
+   "note": "화소(ROI)를 줄였을 때 오르는 최대 프레임 속도. 고속 카메라는 전 화소 값과 두세 자릿수 차이가 나서 칸을 나눈다",
+   "registered": "2026-10-08 운영 미연결 장비 분류 보강(2차, 제조사 웹 사양)에서 등록"
+  },
+  {
    "key": "max_speed_at_full_force_mm_min",
    "label": "최대 하중에서의 속도",
    "dimension": "speed",
@@ -1086,6 +1504,14 @@
    "registered": "2026-09-10 감사에서 사용 중인 키를 등록"
   },
   {
+   "key": "measurement_time_constant_s",
+   "label": "측정 시간 상수",
+   "dimension": "time",
+   "unit": "s",
+   "note": "DSC 신호 시간 상수(작을수록 분해능이 좋다). 기존 객체에서 미등록으로 쓰던 이름",
+   "registered": "2026-10-08 운영 미연결 장비 분류 보강(2차, 제조사 웹 사양)에서 등록"
+  },
+  {
    "key": "measurement_time_s",
    "label": "측정 시간",
    "dimension": "time",
@@ -1098,6 +1524,38 @@
    "dimension": "angle",
    "unit": "deg",
    "registered": "2026-09-10 감사에서 사용 중인 키를 등록"
+  },
+  {
+   "key": "measuring_range_x_mm",
+   "label": "X축 측정 범위",
+   "dimension": "length",
+   "unit": "mm",
+   "note": "3차원 측정기·영상 측정기의 X 축 측정 범위. 라인 프로파일러에서는 X축(폭) 측정 범위",
+   "registered": "2026-10-08 운영 미연결 장비 분류 보강(2차, 제조사 웹 사양)에서 등록"
+  },
+  {
+   "key": "measuring_range_y_mm",
+   "label": "Y축 측정 범위",
+   "dimension": "length",
+   "unit": "mm",
+   "note": "3차원 측정기·영상 측정기의 Y 축 측정 범위",
+   "registered": "2026-10-08 운영 미연결 장비 분류 보강(2차, 제조사 웹 사양)에서 등록"
+  },
+  {
+   "key": "measuring_range_z_mm",
+   "label": "Z축 측정 범위",
+   "dimension": "length",
+   "unit": "mm",
+   "note": "3차원 측정기·영상 측정기의 Z 축 측정 범위. 표면조도계 검출기 Z 범위(z_range_um)와 다르다",
+   "registered": "2026-10-08 운영 미연결 장비 분류 보강(2차, 제조사 웹 사양)에서 등록"
+  },
+  {
+   "key": "measuring_repeatability_um",
+   "label": "반복 정밀도",
+   "dimension": "length",
+   "unit": "um",
+   "note": "변위 센서·측정기의 반복 정밀도(길이). 비율로 적는 repeatability_pct 와 차원이 다르다",
+   "registered": "2026-10-08 운영 미연결 장비 분류 보강(2차, 제조사 웹 사양)에서 등록"
   },
   {
    "key": "measuring_speed_mm_s",
@@ -1117,6 +1575,30 @@
    "label": "실린더 온도(MFI)",
    "dimension": "temperature",
    "unit": "degC"
+  },
+  {
+   "key": "memory_GB",
+   "label": "내장 메모리",
+   "dimension": "data",
+   "unit": "GB",
+   "note": "고속 카메라 녹화 메모리 선택지",
+   "registered": "2026-10-08 운영 미연결 장비 분류 보강(2차, 제조사 웹 사양)에서 등록"
+  },
+  {
+   "key": "mic_sensitivity_mV_Pa",
+   "label": "마이크 감도",
+   "dimension": "sensitivity",
+   "unit": "mV/Pa",
+   "note": "측정 마이크·마이크 세트의 개방 회로 감도(@ 250 Hz 등 조건은 note)",
+   "registered": "2026-10-08 운영 미연결 장비 분류 보강(2차, 제조사 웹 사양)에서 등록"
+  },
+  {
+   "key": "min_exposure_time_s",
+   "label": "최소 노출(셔터 · 적분) 시간",
+   "dimension": "time",
+   "unit": "s",
+   "note": "고속 카메라 셔터 · 적외선 카메라 적분 시간의 최솟값",
+   "registered": "2026-10-08 운영 미연결 장비 분류 보강(2차, 제조사 웹 사양)에서 등록"
   },
   {
    "key": "min_rise_time_us",
@@ -1141,12 +1623,45 @@
    "registered": "2026-09-12 MaterialTwin 능력행의 측정 범위를 기종 사양으로 들이며 등록"
   },
   {
+   "key": "nozzle_count",
+   "label": "노즐 수",
+   "dimension": "count",
+   "unit": "",
+   "role": "descriptive",
+   "registered": "2026-10-08 저기압 챔버·방수 설비·부품 수명 시험기 반입에서 등록"
+  },
+  {
+   "key": "nozzle_distance_mm",
+   "label": "노즐 거리",
+   "dimension": "length",
+   "unit": "mm",
+   "role": "descriptive",
+   "registered": "2026-10-08 저기압 챔버·방수 설비·부품 수명 시험기 반입에서 등록"
+  },
+  {
    "key": "objectives",
    "label": "대물렌즈 구성",
    "dimension": "",
    "unit": "",
    "role": "descriptive",
    "registered": "2026-09-12 사양 조사(공식 카탈로그 PDF·제조사 페이지)에서 쓴 키 등록"
+  },
+  {
+   "key": "oblique_view_angle_deg",
+   "label": "경사 관찰 각도",
+   "dimension": "angle",
+   "unit": "deg",
+   "note": "X-ray 검사에서 시료를 비스듬히 보는 최대 각(±70° 면 70)",
+   "registered": "2026-10-08 운영 미연결 장비 분류 보강(2차, 제조사 웹 사양)에서 등록"
+  },
+  {
+   "key": "observation_methods",
+   "label": "관찰법",
+   "dimension": "",
+   "unit": "",
+   "role": "descriptive",
+   "note": "BF, DF, DIC, POL, FL, IR, MIX 같은 광학 현미경 대비법 목록",
+   "registered": "2026-10-08 운영 미연결 장비 분류 보강(2차, 제조사 웹 사양)에서 등록"
   },
   {
    "key": "operating_humidity_pct",
@@ -1161,6 +1676,30 @@
    "dimension": "temperature",
    "unit": "degC",
    "registered": "2026-09-10 감사에서 사용 중인 키를 등록"
+  },
+  {
+   "key": "optical_resolution_lp_mm",
+   "label": "광학 분해능(선쌍)",
+   "dimension": "",
+   "unit": "lp/mm",
+   "note": "실체·디지털 현미경의 분해능(900 lp/mm 등)",
+   "registered": "2026-10-08 운영 미연결 장비 분류 보강(2차, 제조사 웹 사양)에서 등록"
+  },
+  {
+   "key": "oscillating_tube_radius_mm",
+   "label": "요동관 반경",
+   "dimension": "length",
+   "unit": "mm",
+   "note": "IPX3·IPX4 요동관 시험의 관 반경. 시편 크기를 정함",
+   "registered": "2026-10-08 저기압 챔버·방수 설비·부품 수명 시험기 반입에서 등록"
+  },
+  {
+   "key": "oscillation_displacement_mm",
+   "label": "진동 변위",
+   "dimension": "length",
+   "unit": "mm",
+   "note": "공진식 피로시험기의 최대 탄성 시편 변형(진동 변위, 전폭). 기존 zwickroell-vibrophore 가 미등록으로 쓰던 이름",
+   "registered": "2026-10-08 운영 미연결 장비 분류 보강(2차, 제조사 웹 사양)에서 등록"
   },
   {
    "key": "output_frequency_Hz",
@@ -1185,6 +1724,14 @@
    "unit_variants": {
     "output_voltage_kV": 1000.0
    }
+  },
+  {
+   "key": "overall_height_mm",
+   "label": "전체 높이",
+   "dimension": "length",
+   "unit": "mm",
+   "role": "descriptive",
+   "registered": "2026-10-08 저기압 챔버·방수 설비·부품 수명 시험기 반입에서 등록"
   },
   {
    "key": "package_size_mm",
@@ -1228,6 +1775,14 @@
    "registered": "2026-09-10 감사에서 사용 중인 키를 등록"
   },
   {
+   "key": "phase_noise_dBc_Hz",
+   "label": "SSB 위상 잡음",
+   "dimension": "level",
+   "unit": "dBc/Hz",
+   "note": "반송파 주파수·오프셋(예: 1 GHz, 20 kHz)과 spec/typ/meas 구분을 note 에. 조건이 다르면 값끼리 비교가 안 되어 values 로 적었다. 더 음수일수록 좋다. R&S 페이지는 단위를 dBc 로만 적는다",
+   "registered": "2026-10-08 운영 미연결 장비 분류 보강(2차, 제조사 웹 사양)에서 등록"
+  },
+  {
    "key": "phases",
    "label": "상 수",
    "dimension": "count",
@@ -1239,6 +1794,14 @@
    "dimension": "speed",
    "unit": "mm/min",
    "registered": "2026-09-10 감사에서 사용 중인 키를 등록"
+  },
+  {
+   "key": "pixel_pitch_um",
+   "label": "검출기 화소 피치",
+   "dimension": "length",
+   "unit": "um",
+   "note": "X선 평판 검출기 화소 간격(127 · 139 · 179 µm 등)",
+   "registered": "2026-10-08 운영 미연결 장비 분류 보강(2차, 제조사 웹 사양)에서 등록"
   },
   {
    "key": "polarity",
@@ -1400,6 +1963,14 @@
    "registered": "2026-09-12 사양 조사(공식 카탈로그 PDF·제조사 페이지)에서 쓴 키 등록"
   },
   {
+   "key": "probe_spacing_mm",
+   "label": "탐침 간격",
+   "dimension": "length",
+   "unit": "mm",
+   "note": "4탐침 핀 간격(1.0·1.5·5 mm 등)",
+   "registered": "2026-10-08 운영 미연결 장비 분류 보강(2차, 제조사 웹 사양)에서 등록"
+  },
+  {
    "key": "profile_storage",
    "label": "프로파일 저장 수",
    "dimension": "count",
@@ -1422,11 +1993,34 @@
    "testscope_key": "force"
   },
   {
+   "key": "pull_off_strength_MPa",
+   "label": "풀오프 부착 강도 측정 범위",
+   "dimension": "stress",
+   "unit": "MPa",
+   "note": "돌리를 떼어 내는 인장 응력 범위(ISO 4624 · ASTM D4541). pressure_MPa(가압 압력)와 뜻이 다르다",
+   "registered": "2026-10-08 운영 미연결 장비 분류 보강(2차, 제조사 웹 사양)에서 등록"
+  },
+  {
+   "key": "pull_rate_MPa_s",
+   "label": "풀오프 가압 속도",
+   "dimension": "rate",
+   "unit": "MPa/s",
+   "note": "자동 풀오프 시험기의 응력 증가 속도",
+   "registered": "2026-10-08 운영 미연결 장비 분류 보강(2차, 제조사 웹 사양)에서 등록"
+  },
+  {
    "key": "pulse_duration_ms",
    "label": "펄스 지속",
    "dimension": "time",
    "unit": "ms",
    "registered": "2026-09-10 감사에서 사용 중인 키를 등록"
+  },
+  {
+   "key": "pumpdown_time_min",
+   "label": "감압 소요 시간",
+   "dimension": "time",
+   "unit": "min",
+   "registered": "2026-10-08 저기압 챔버·방수 설비·부품 수명 시험기 반입에서 등록"
   },
   {
    "key": "push_force_kgf",
@@ -1437,12 +2031,37 @@
    "testscope_key": "force"
   },
   {
+   "key": "radio_standards",
+   "label": "지원 무선 표준",
+   "dimension": "",
+   "unit": "",
+   "role": "descriptive",
+   "note": "LTE·5G NR·WLAN 802.11 계열·Bluetooth·GNSS 등 페이지에 적힌 이름 그대로. 무선통신 테스터와 벡터 신호발생기가 쓴다",
+   "registered": "2026-10-08 운영 미연결 장비 분류 보강(2차, 제조사 웹 사양)에서 등록"
+  },
+  {
    "key": "ranges_Mohm",
    "label": "저항 레인지",
    "dimension": "",
    "unit": "MΩ",
    "note": "절연저항계 측정 레인지 목록",
    "registered": "2026-09-12 사양 조사(공식 카탈로그 PDF·제조사 페이지)에서 쓴 키 등록"
+  },
+  {
+   "key": "record_length_pts",
+   "label": "메모리 깊이(레코드 길이)",
+   "dimension": "count",
+   "unit": "pts",
+   "note": "한 번에 수집하는 점 수. 표준·옵션·채널 수 조건은 비고에",
+   "registered": "2026-10-08 운영 미연결 장비 분류 보강(2차, 제조사 웹 사양)에서 등록"
+  },
+  {
+   "key": "recovery_time_min",
+   "label": "온도 회복 시간",
+   "dimension": "time",
+   "unit": "min",
+   "note": "열충격 챔버의 노출 전환 뒤 온도 회복 시간. espec-tsa-thermal-shock 가 이미 쓰는 이름",
+   "registered": "2026-10-08 운영 미연결 장비 분류 보강(2차, 제조사 웹 사양)에서 등록"
   },
   {
    "key": "refractive_index",
@@ -1477,11 +2096,35 @@
    }
   },
   {
+   "key": "residual_noise_uV",
+   "label": "잔류 잡음",
+   "dimension": "voltage",
+   "unit": "µV",
+   "note": "오디오 분석기 입력 잔류 잡음(대역 조건은 note, 흔히 20 kHz BW)",
+   "registered": "2026-10-08 운영 미연결 장비 분류 보강(2차, 제조사 웹 사양)에서 등록"
+  },
+  {
    "key": "residual_thd_n_dB",
    "label": "잔류 THD+N",
    "dimension": "level",
    "unit": "dB",
    "registered": "2026-09-10 감사에서 사용 중인 키를 등록"
+  },
+  {
+   "key": "resistance_ohm",
+   "label": "저항 측정 범위",
+   "dimension": "resistance",
+   "unit": "ohm",
+   "note": "저저항률계(Loresta 10⁻⁴～10⁷ Ω)·고저항률계(Hiresta 10³～10¹⁴ Ω)의 저항 레인지. insulation_resistance_ohm(절연저항계)과 쓰임이 달라 따로 둠",
+   "registered": "2026-10-08 운영 미연결 장비 분류 보강(2차, 제조사 웹 사양)에서 등록"
+  },
+  {
+   "key": "resistivity_ohm_cm",
+   "label": "체적 저항률 측정 범위",
+   "dimension": "",
+   "unit": "ohm·cm",
+   "note": "4탐침·와전류 저항률계의 저항률 범위. surface_resistivity_ohm_sq(면저항)의 짝",
+   "registered": "2026-10-08 운영 미연결 장비 분류 보강(2차, 제조사 웹 사양)에서 등록"
   },
   {
    "key": "resolution_bandwidth_Hz",
@@ -1525,6 +2168,22 @@
    "registered": "2026-09-12 사양 조사(공식 카탈로그 PDF·제조사 페이지)에서 쓴 키 등록"
   },
   {
+   "key": "rf_output_level_dBm",
+   "label": "RF 출력 레벨",
+   "dimension": "level",
+   "unit": "dBm",
+   "note": "신호발생기·무선통신 테스터 발생기의 RF 출력 레벨 범위. 반송파 주파수·CW/변조 조건은 note 에. 「1 GHz 에서 24 dBm」 처럼 한 주파수 값이면 그 주파수를 note 에 남긴다",
+   "registered": "2026-10-08 운영 미연결 장비 분류 보강(2차, 제조사 웹 사양)에서 등록"
+  },
+  {
+   "key": "rf_port_count",
+   "label": "RF 포트 수",
+   "dimension": "count",
+   "unit": "",
+   "note": "RF 커넥터(포트) 개수. 독립 송수신 경로(VSA/VSG·TRX) 수는 channels",
+   "registered": "2026-10-08 운영 미연결 장비 분류 보강(2차, 제조사 웹 사양)에서 등록"
+  },
+  {
    "key": "rotation_deg",
    "label": "회전각",
    "dimension": "angle",
@@ -1565,6 +2224,14 @@
    "unit": "mg"
   },
   {
+   "key": "sample_rate_Sa_s",
+   "label": "최대 샘플링 속도",
+   "dimension": "rate",
+   "unit": "Sa/s",
+   "note": "오실로스코프·디지타이저 ADC 의 실시간 샘플링 속도. 인터리브·채널 수 조건은 비고에. 시험기 컨트롤러 내부 샘플 속도(digital_sample_rate_Hz)·데이터 기록 속도(data_rate_Hz)와 다른 칸",
+   "registered": "2026-10-08 운영 미연결 장비 분류 보강(2차, 제조사 웹 사양)에서 등록"
+  },
+  {
    "key": "sample_size_mm",
    "label": "시료 크기",
    "dimension": "length",
@@ -1598,6 +2265,14 @@
    "dimension": "mass",
    "unit": "kg",
    "registered": "2026-09-10 감사에서 사용 중인 키를 등록"
+  },
+  {
+   "key": "sampling_cycle_us",
+   "label": "샘플링 주기",
+   "dimension": "time",
+   "unit": "us",
+   "note": "변위 센서 샘플링 주기(선택 가능한 단계는 values). 속도로 적힌 값은 data_rate_Hz",
+   "registered": "2026-10-08 운영 미연결 장비 분류 보강(2차, 제조사 웹 사양)에서 등록"
   },
   {
    "key": "scan_length_mm",
@@ -1685,6 +2360,14 @@
    "registered": "2026-09-10 감사에서 사용 중인 키를 등록"
   },
   {
+   "key": "sound_pressure_level_dB",
+   "label": "측정 음압 범위",
+   "dimension": "level",
+   "unit": "dB",
+   "note": "마이크·인공 두상·녹음기의 측정 가능 음압. min 은 자체 잡음(하한, 흔히 dB(A)), max 는 상한 음압",
+   "registered": "2026-10-08 운영 미연결 장비 분류 보강(2차, 제조사 웹 사양)에서 등록"
+  },
+  {
    "key": "spatial_resolution_um",
    "label": "공간 분해능",
    "dimension": "length",
@@ -1762,6 +2445,13 @@
    "registered": "2026-09-10 감사에서 사용 중인 키를 등록"
   },
   {
+   "key": "specimen_width_mm",
+   "label": "시편 폭",
+   "dimension": "length",
+   "unit": "mm",
+   "registered": "2026-10-08 저기압 챔버·방수 설비·부품 수명 시험기 반입에서 등록"
+  },
+  {
    "key": "spectral_bandwidth_nm",
    "label": "분광 대역폭",
    "dimension": "wavelength",
@@ -1813,6 +2503,29 @@
    "registered": "2026-09-10 감사에서 사용 중인 키를 등록"
   },
   {
+   "key": "spray_angles_deg",
+   "label": "분사 각도",
+   "dimension": "angle",
+   "unit": "deg",
+   "role": "descriptive",
+   "registered": "2026-10-08 저기압 챔버·방수 설비·부품 수명 시험기 반입에서 등록"
+  },
+  {
+   "key": "spray_duration_s_per_position",
+   "label": "위치별 분사 시간",
+   "dimension": "time",
+   "unit": "s",
+   "role": "descriptive",
+   "registered": "2026-10-08 저기압 챔버·방수 설비·부품 수명 시험기 반입에서 등록"
+  },
+  {
+   "key": "spray_flow_L_min",
+   "label": "분사 유량",
+   "dimension": "flow",
+   "unit": "L/min",
+   "registered": "2026-10-08 저기압 챔버·방수 설비·부품 수명 시험기 반입에서 등록"
+  },
+  {
    "key": "stage_size_mm",
    "label": "스테이지 크기",
    "dimension": "length",
@@ -1852,6 +2565,22 @@
    "dimension": "length",
    "unit": "um",
    "registered": "2026-09-12 사양 조사(공식 카탈로그 PDF·제조사 페이지)에서 쓴 키 등록"
+  },
+  {
+   "key": "strain_range_pct",
+   "label": "변형률 측정 범위",
+   "dimension": "ratio",
+   "unit": "%",
+   "note": "DIC 변형률 측정 범위(50 με～2500 % → 0.005～2500). suggested_keys 의 full_scale_strain_pct(신율계)와 통합 검토",
+   "registered": "2026-10-08 운영 미연결 장비 분류 보강(2차, 제조사 웹 사양)에서 등록"
+  },
+  {
+   "key": "strain_resolution_microstrain",
+   "label": "변형 분해능",
+   "dimension": "",
+   "unit": "µε",
+   "note": "DIC 변형률 분해능(10～50 µε)",
+   "registered": "2026-10-08 운영 미연결 장비 분류 보강(2차, 제조사 웹 사양)에서 등록"
   },
   {
    "key": "stroke_mm",
@@ -1931,11 +2660,50 @@
    "registered": "2026-09-10 감사에서 사용 중인 키를 등록"
   },
   {
+   "key": "tank_base_mm",
+   "label": "수조 바닥 치수",
+   "dimension": "length",
+   "unit": "mm",
+   "role": "descriptive",
+   "registered": "2026-10-08 저기압 챔버·방수 설비·부품 수명 시험기 반입에서 등록"
+  },
+  {
+   "key": "tank_diameter_mm",
+   "label": "수조 지름",
+   "dimension": "length",
+   "unit": "mm",
+   "role": "descriptive",
+   "registered": "2026-10-08 저기압 챔버·방수 설비·부품 수명 시험기 반입에서 등록"
+  },
+  {
+   "key": "tank_height_mm",
+   "label": "수조 높이",
+   "dimension": "length",
+   "unit": "mm",
+   "role": "descriptive",
+   "registered": "2026-10-08 저기압 챔버·방수 설비·부품 수명 시험기 반입에서 등록"
+  },
+  {
+   "key": "tank_volume_L",
+   "label": "수조 용량",
+   "dimension": "volume",
+   "unit": "L",
+   "registered": "2026-10-08 저기압 챔버·방수 설비·부품 수명 시험기 반입에서 등록"
+  },
+  {
    "key": "tem_resolution_nm",
    "label": "TEM 분해능",
    "dimension": "length",
    "unit": "nm",
    "registered": "2026-09-12 사양 조사(공식 카탈로그 PDF·제조사 페이지)에서 쓴 키 등록"
+  },
+  {
+   "key": "temperature_control_min_pressure_kPa",
+   "label": "온도 제어 최저 압력",
+   "dimension": "pressure",
+   "unit": "kPa",
+   "note": "이 압력 아래에서는 온도 제어가 안 됨",
+   "registered": "2026-10-08 저기압 챔버·방수 설비·부품 수명 시험기 반입에서 등록"
   },
   {
    "key": "temperature_degC",
@@ -1955,11 +2723,27 @@
    "registered": "2026-09-10 감사에서 사용 중인 키를 등록"
   },
   {
+   "key": "temperature_precision_degC",
+   "label": "온도 정밀도",
+   "dimension": "temperature",
+   "unit": "degC",
+   "note": "열분석기 온도 정밀도(반복성). accuracy_degC(정확도)와 구분. 기존 객체에서 미등록으로 쓰던 이름",
+   "registered": "2026-10-08 운영 미연결 장비 분류 보강(2차, 제조사 웹 사양)에서 등록"
+  },
+  {
    "key": "temperature_reproducibility_K",
    "label": "온도 재현성",
    "dimension": "temperature",
    "unit": "K",
    "registered": "2026-09-10 감사에서 사용 중인 키를 등록"
+  },
+  {
+   "key": "temperature_uniformity_degC",
+   "label": "온도 편차(공간 분포)",
+   "dimension": "temperature",
+   "unit": "degC",
+   "note": "suggested_keys.json 에 이미 후보로 있고 espec-platinous-chambers 가 쓰는 키. 원문 단위 K 는 같은 크기라 그대로 옮김",
+   "registered": "2026-10-08 운영 미연결 장비 분류 보강(2차, 제조사 웹 사양)에서 등록"
   },
   {
    "key": "test_force_mN",
@@ -2023,6 +2807,15 @@
    "registered": "2026-09-10 3차: 기종 사양(models[].specs)에서 값이 많은 것부터 등록"
   },
   {
+   "key": "test_signal_level",
+   "label": "측정 신호 레벨",
+   "dimension": "",
+   "unit": "",
+   "role": "descriptive",
+   "note": "LCR 미터·임피던스 분석기의 시험 신호 전압·전류 범위. 주파수 구간·모드마다 달라 글로 둠",
+   "registered": "2026-10-08 운영 미연결 장비 분류 보강(2차, 제조사 웹 사양)에서 등록"
+  },
+  {
    "key": "test_space_L",
    "label": "시험 공간 부피",
    "dimension": "",
@@ -2076,6 +2869,14 @@
    "dimension": "length",
    "unit": "mm",
    "registered": "2026-09-10 감사에서 사용 중인 키를 등록"
+  },
+  {
+   "key": "tilt_angle_deg",
+   "label": "경사(틸트) 각도",
+   "dimension": "angle",
+   "unit": "deg",
+   "note": "디지털 현미경 스탠드·헤드 기울기(±90° 등). rotation_deg(회전각)와 다름",
+   "registered": "2026-10-08 운영 미연결 장비 분류 보강(2차, 제조사 웹 사양)에서 등록"
   },
   {
    "key": "time_resolution_us",
@@ -2149,6 +2950,35 @@
    "dimension": "voltage",
    "unit": "kV",
    "registered": "2026-09-10 감사에서 사용 중인 키를 등록"
+  },
+  {
+   "key": "turntable_diameter_mm",
+   "label": "회전대 지름",
+   "dimension": "length",
+   "unit": "mm",
+   "registered": "2026-10-08 저기압 챔버·방수 설비·부품 수명 시험기 반입에서 등록"
+  },
+  {
+   "key": "turntable_height_mm",
+   "label": "회전대 높이",
+   "dimension": "length",
+   "unit": "mm",
+   "role": "descriptive",
+   "registered": "2026-10-08 저기압 챔버·방수 설비·부품 수명 시험기 반입에서 등록"
+  },
+  {
+   "key": "turntable_load_kg",
+   "label": "회전대 하중",
+   "dimension": "mass",
+   "unit": "kg",
+   "registered": "2026-10-08 저기압 챔버·방수 설비·부품 수명 시험기 반입에서 등록"
+  },
+  {
+   "key": "turntable_speed_rpm",
+   "label": "회전대 속도",
+   "dimension": "angular_velocity",
+   "unit": "rpm",
+   "registered": "2026-10-08 저기압 챔버·방수 설비·부품 수명 시험기 반입에서 등록"
   },
   {
    "key": "type",
@@ -2227,6 +3057,22 @@
    "registered": "2026-09-10 감사에서 사용 중인 키를 등록"
   },
   {
+   "key": "water_cooling_peak_demand",
+   "label": "냉각수 최대 소요량",
+   "dimension": "",
+   "unit": "",
+   "role": "descriptive",
+   "registered": "2026-10-08 저기압 챔버·방수 설비·부품 수명 시험기 반입에서 등록"
+  },
+  {
+   "key": "water_pressure_bar",
+   "label": "분사 수압",
+   "dimension": "pressure",
+   "unit": "bar",
+   "note": "IPX9K 는 80~100 bar",
+   "registered": "2026-10-08 저기압 챔버·방수 설비·부품 수명 시험기 반입에서 등록"
+  },
+  {
    "key": "water_range_mg",
    "label": "수분 측정 범위",
    "dimension": "mass",
@@ -2235,12 +3081,36 @@
    "registered": "2026-09-12 사양 조사(공식 카탈로그 PDF·제조사 페이지)에서 쓴 키 등록"
   },
   {
+   "key": "water_temperature_degC",
+   "label": "분사 수온",
+   "dimension": "temperature",
+   "unit": "degC",
+   "note": "IPX9K 는 80 °C",
+   "registered": "2026-10-08 저기압 챔버·방수 설비·부품 수명 시험기 반입에서 등록"
+  },
+  {
+   "key": "waveform_memory_pts",
+   "label": "파형 메모리(채널당)",
+   "dimension": "count",
+   "unit": "pts",
+   "note": "임의파형·ARB 메모리 길이(Sa = pts). 표준·옵션 값을 values 로. 오실로스코프 기록 길이(메모리 깊이)와는 다른 칸",
+   "registered": "2026-10-08 운영 미연결 장비 분류 보강(2차, 제조사 웹 사양)에서 등록"
+  },
+  {
    "key": "wavelength_nm",
    "label": "측정 파장 범위",
    "dimension": "length",
    "unit": "nm",
    "note": "분광기·타원계가 다루는 빛의 파장. 투과율·반사율 자체의 범위가 아니다 — 원본이 그 칸에 파장을 적어 온다",
    "registered": "2026-09-12 MaterialTwin 능력행의 측정 범위를 기종 사양으로 들이며 등록"
+  },
+  {
+   "key": "wavelength_resolution_nm",
+   "label": "파장 분해능(출력 간격)",
+   "dimension": "length",
+   "unit": "nm",
+   "note": "분광기의 파장 출력 간격 또는 화소당 nm. 반치폭(spectral_bandwidth_nm)과 다른 칸",
+   "registered": "2026-10-08 운영 미연결 장비 분류 보강(2차, 제조사 웹 사양)에서 등록"
   },
   {
    "key": "wear_depth",
@@ -2261,6 +3131,22 @@
    "unit_variants": {
     "weight_g": 0.001
    }
+  },
+  {
+   "key": "weight_kg_filled",
+   "label": "무게(물 채움)",
+   "dimension": "mass",
+   "unit": "kg",
+   "role": "descriptive",
+   "registered": "2026-10-08 저기압 챔버·방수 설비·부품 수명 시험기 반입에서 등록"
+  },
+  {
+   "key": "wetting_force_mN",
+   "label": "젖음력 측정 범위",
+   "dimension": "force",
+   "unit": "mN",
+   "note": "웨팅 밸런스(솔더링성) 하중 센서 범위. gf 표기는 9.80665 배",
+   "registered": "2026-10-08 운영 미연결 장비 분류 보강(2차, 제조사 웹 사양)에서 등록"
   },
   {
    "key": "width_mm",
@@ -2333,6 +3219,14 @@
    "dimension": "voltage",
    "unit": "V",
    "registered": "2026-09-12 MaterialTwin 능력행의 측정 범위를 기종 사양으로 들이며 등록"
+  },
+  {
+   "key": "zoom_ratio",
+   "label": "줌 비",
+   "dimension": "ratio",
+   "unit": "",
+   "note": "현미경 광학 줌 비. 16.4:1 → 16.4",
+   "registered": "2026-10-08 운영 미연결 장비 분류 보강(2차, 제조사 웹 사양)에서 등록"
   }
  ]
 }

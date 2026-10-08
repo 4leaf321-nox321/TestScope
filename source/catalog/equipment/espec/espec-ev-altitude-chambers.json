@@ -1,0 +1,539 @@
+{
+  "id": "espec-ev-altitude-chambers",
+  "kind": "equipment_series",
+  "name": "ESPEC Altitude Chambers (EVX / EVZ / EVL, ESPEC North America)",
+  "name_ko": "에스펙 고도 챔버 (EVX·EVZ·EVL)",
+  "manufacturer": "espec",
+  "brand": "EVX / EVZ / EVL",
+  "category": "altitude_chamber",
+  "drive": "thermal",
+  "form_factor": "floor",
+  "description": "ESPEC 북미 법인이 공개한 온도·저압(고도) 동시 시험 챔버임. 설치 장소 고도에서 100,000 ft(30,480 m)까지 감압하면서 온도를 -65~150 °C(기종에 따라 하한 -60 또는 -35 °C) 범위로 제어함. EVX·EVL 형은 고도 계통을 끈 상태에서만 습도를 제어하고(EVX 10~95 %RH, EVL 20~95 %RH) EVZ 형은 습도 기능이 없음. 작업공간은 8·15·34·64 cu ft 네 크기이며 평균 온도 변화율은 기종에 따라 1~8 °C/min(-40~85 °C, 빈 조)임. 제조사는 고도 챔버를 요구 조건에 따라 비용과 유틸리티가 크게 달라지는 주문 제작 시스템으로 설명함. 항공 전자 장비 시험과 산악 지대 고지대 조건 모사를 대표 용도로 듦.",
+  "test_items": [
+    "altitude_low_pressure",
+    "temperature_cycling",
+    "damp_heat"
+  ],
+  "measurands": [
+    "operating_altitude"
+  ],
+  "materials": [
+    "avionics",
+    "aerospace equipment"
+  ],
+  "standards": {
+    "compliance": [],
+    "test_methods": [
+      "MIL-STD-202G Method 105C (Conditions A/B/C/F)",
+      "MIL-STD-810G Method 500.5",
+      "IEC 60068-2-39",
+      "IEC 60068-2-40",
+      "JIS W 0812"
+    ],
+    "test_methods_by_item": {
+      "altitude_low_pressure": [
+        "MIL-STD-202G Method 105C (Conditions A/B/C/F)",
+        "MIL-STD-810G Method 500.5",
+        "IEC 60068-2-39",
+        "IEC 60068-2-40",
+        "JIS W 0812"
+      ]
+    }
+  },
+  "limits": {
+    "altitude_m": {
+      "max": 30480,
+      "note": "원문 'Site to 100,000 feet' (전 기종 공통). 하한은 설치 장소 고도"
+    },
+    "temperature_degC": {
+      "min": -65,
+      "max": 150,
+      "note": "EVX8-4WWL -65 °C, EVL34-12WWL -35 °C, 그 밖의 기종 -60 °C"
+    },
+    "humidity_pct": {
+      "min": 10,
+      "max": 95,
+      "note": "EVX 10~95 %RH, EVL 20~95 %RH. 고도 계통을 끈 상태에서만. EVZ 는 습도 없음"
+    },
+    "heating_rate_K_min": {
+      "min": 1,
+      "max": 8,
+      "uncertain": true,
+      "note": "원문은 'Average Change Rate' 한 값(-40~85 °C, 빈 조, EVL 은 -20~85 °C). 50 Hz 에서는 더 낮다고 적음"
+    },
+    "cooling_rate_K_min": {
+      "min": 1,
+      "max": 8,
+      "uncertain": true,
+      "note": "heating_rate_K_min 과 같은 원문 값. 승온·강온 구분 없음"
+    },
+    "chamber_volume_L": {
+      "min": 200,
+      "max": 1812,
+      "note": "8·15·34·64 cu ft. EVX8-4WWL 만 200 L 로 적고 나머지는 cu ft 만 적어 환산함(8 cu ft = 227 L)"
+    }
+  },
+  "models": [
+    {
+      "model": "EVX8-4WWL",
+      "form_factor": "floor",
+      "specs": {
+        "temperature_degC": {
+          "min": -65,
+          "max": 150
+        },
+        "altitude_m": {
+          "max": 30480,
+          "note": "원문 'Site to 100,000 feet'"
+        },
+        "heating_rate_K_min": {
+          "max": 5,
+          "uncertain": true,
+          "note": "원문 'Average Change Rate 5°C/min (-40~85 °C, 빈 조)'. 승온·강온 구분 없이 한 값이라 두 키에 같이 적음"
+        },
+        "cooling_rate_K_min": {
+          "max": 5,
+          "uncertain": true,
+          "note": "원문 'Average Change Rate 5°C/min (-40~85 °C, 빈 조)'. 승온·강온 구분 없이 한 값이라 두 키에 같이 적음"
+        },
+        "chamber_volume_L": {
+          "values": [
+            200
+          ],
+          "uncertain": true,
+          "note": "페이지 원문 '8 cu. ft. / 200 Liters'. 8 cu ft 는 227 L 이고 내부 610 mm 정육면체도 227 L 라 200 L 와 맞지 않음"
+        },
+        "inner_mm": "W610×D610×H610 (24×24×24 in)",
+        "footprint_mm": "W1390×D2630×H2180 (55×104×86 in)",
+        "power": "400/460V 3ph 50/60Hz 80 Service Amps",
+        "humidity_pct": {
+          "min": 10,
+          "max": 95,
+          "note": "고도 계통을 끈 상태에서만(humidity while altitude is off)"
+        }
+      },
+      "note": "온습도형. 냉동 4-hp. 냉각수 최대 수요 4.1 GPM(수온 24 °C)"
+    },
+    {
+      "model": "EVX8-2WA",
+      "form_factor": "floor",
+      "specs": {
+        "temperature_degC": {
+          "min": -60,
+          "max": 150
+        },
+        "altitude_m": {
+          "max": 30480,
+          "note": "원문 'Site to 100,000 feet'"
+        },
+        "heating_rate_K_min": {
+          "max": 1,
+          "uncertain": true,
+          "note": "원문 'Average Change Rate 1°C/min (-40~85 °C, 빈 조)'. 승온·강온 구분 없이 한 값이라 두 키에 같이 적음"
+        },
+        "cooling_rate_K_min": {
+          "max": 1,
+          "uncertain": true,
+          "note": "원문 'Average Change Rate 1°C/min (-40~85 °C, 빈 조)'. 승온·강온 구분 없이 한 값이라 두 키에 같이 적음"
+        },
+        "chamber_volume_L": {
+          "values": [
+            227
+          ],
+          "note": "원문 8 cu. ft. 를 1 cu ft = 28.317 L 로 환산(페이지에 L 값 없음)"
+        },
+        "inner_mm": "W609×D609×H609 (24×24×24 in)",
+        "footprint_mm": "W1397×D1879×H2108 (55×74×83 in)",
+        "power": "208/230V 3ph 60Hz 110 Service Amps",
+        "humidity_pct": {
+          "min": 10,
+          "max": 95,
+          "note": "고도 계통을 끈 상태에서만(humidity while altitude is off)"
+        }
+      },
+      "note": "온습도형. 냉동 Single-Stage 2-hp Scroll"
+    },
+    {
+      "model": "EVX15-7.5WWL",
+      "form_factor": "floor",
+      "specs": {
+        "temperature_degC": {
+          "min": -60,
+          "max": 150
+        },
+        "altitude_m": {
+          "max": 30480,
+          "note": "원문 'Site to 100,000 feet'"
+        },
+        "heating_rate_K_min": {
+          "max": 5,
+          "uncertain": true,
+          "note": "원문 'Average Change Rate 5°C/min (-40~85 °C, 빈 조)'. 승온·강온 구분 없이 한 값이라 두 키에 같이 적음"
+        },
+        "cooling_rate_K_min": {
+          "max": 5,
+          "uncertain": true,
+          "note": "원문 'Average Change Rate 5°C/min (-40~85 °C, 빈 조)'. 승온·강온 구분 없이 한 값이라 두 키에 같이 적음"
+        },
+        "chamber_volume_L": {
+          "values": [
+            425
+          ],
+          "note": "원문 15 cu. ft. 를 1 cu ft = 28.317 L 로 환산(페이지에 L 값 없음)"
+        },
+        "inner_mm": "W762×D762×H762 (30×30×30 in)",
+        "footprint_mm": "W1549×D2692×H2260 (61×106×89 in)",
+        "power": "400/460V 3ph 50/60Hz 90 Service Amps",
+        "humidity_pct": {
+          "min": 10,
+          "max": 95,
+          "note": "고도 계통을 끈 상태에서만(humidity while altitude is off)"
+        }
+      },
+      "note": "온습도형. 냉동 6-hp Scroll. 냉각수 수요는 문의"
+    },
+    {
+      "model": "EVX34-15WW",
+      "form_factor": "floor",
+      "specs": {
+        "temperature_degC": {
+          "min": -60,
+          "max": 150
+        },
+        "altitude_m": {
+          "max": 30480,
+          "note": "원문 'Site to 100,000 feet'"
+        },
+        "heating_rate_K_min": {
+          "max": 8,
+          "uncertain": true,
+          "note": "원문 'Average Change Rate 8°C/min (-40~85 °C, 빈 조)'. 승온·강온 구분 없이 한 값이라 두 키에 같이 적음"
+        },
+        "cooling_rate_K_min": {
+          "max": 8,
+          "uncertain": true,
+          "note": "원문 'Average Change Rate 8°C/min (-40~85 °C, 빈 조)'. 승온·강온 구분 없이 한 값이라 두 키에 같이 적음"
+        },
+        "chamber_volume_L": {
+          "values": [
+            963
+          ],
+          "note": "원문 34 cu. ft. 를 1 cu ft = 28.317 L 로 환산(페이지에 L 값 없음)"
+        },
+        "inner_mm": "W990×D990×H990 (39×39×39 in)",
+        "footprint_mm": "W2082×D3352×H2489 (82×132×98 in)",
+        "power": "400/460V 3ph 50/60Hz 150 Service Amps",
+        "humidity_pct": {
+          "min": 10,
+          "max": 95,
+          "note": "고도 계통을 끈 상태에서만(humidity while altitude is off)"
+        }
+      },
+      "note": "온습도형. 냉동 15-hp Discus 캐스케이드. 변화율은 50 Hz 에서 더 낮음. 주문 제작(built to order)"
+    },
+    {
+      "model": "EVX64-15WW",
+      "form_factor": "floor",
+      "specs": {
+        "temperature_degC": {
+          "min": -60,
+          "max": 150
+        },
+        "altitude_m": {
+          "max": 30480,
+          "note": "원문 'Site to 100,000 feet'"
+        },
+        "heating_rate_K_min": {
+          "max": 6,
+          "uncertain": true,
+          "note": "원문 'Average Change Rate 6°C/min (-40~85 °C, 빈 조)'. 승온·강온 구분 없이 한 값이라 두 키에 같이 적음"
+        },
+        "cooling_rate_K_min": {
+          "max": 6,
+          "uncertain": true,
+          "note": "원문 'Average Change Rate 6°C/min (-40~85 °C, 빈 조)'. 승온·강온 구분 없이 한 값이라 두 키에 같이 적음"
+        },
+        "chamber_volume_L": {
+          "values": [
+            1812
+          ],
+          "note": "원문 64 cu. ft. 를 1 cu ft = 28.317 L 로 환산(페이지에 L 값 없음)"
+        },
+        "inner_mm": "W1219×D1219×H1219 (48×48×48 in)",
+        "footprint_mm": "W2082×D3556×H2692 (82×140×106 in)",
+        "power": "400/460V 3ph 50/60Hz 150 Service Amps",
+        "humidity_pct": {
+          "min": 10,
+          "max": 95,
+          "note": "고도 계통을 끈 상태에서만(humidity while altitude is off)"
+        }
+      },
+      "note": "온습도형. 냉각수 최대 수요 31.3 GPM(수온 24 °C). 변화율은 50 Hz 에서 더 낮음. 페이지의 냉동 표기(Single-Stage, 2-hp Scroll)는 기종명(15)과 맞지 않아 옮기지 않음"
+    },
+    {
+      "model": "EVZ8-2WA",
+      "form_factor": "floor",
+      "specs": {
+        "temperature_degC": {
+          "min": -60,
+          "max": 150
+        },
+        "altitude_m": {
+          "max": 30480,
+          "note": "원문 'Site to 100,000 feet'"
+        },
+        "heating_rate_K_min": {
+          "max": 1,
+          "uncertain": true,
+          "note": "원문 'Average Change Rate 1°C/min (-40~85 °C, 빈 조)'. 승온·강온 구분 없이 한 값이라 두 키에 같이 적음"
+        },
+        "cooling_rate_K_min": {
+          "max": 1,
+          "uncertain": true,
+          "note": "원문 'Average Change Rate 1°C/min (-40~85 °C, 빈 조)'. 승온·강온 구분 없이 한 값이라 두 키에 같이 적음"
+        },
+        "chamber_volume_L": {
+          "values": [
+            227
+          ],
+          "note": "원문 8 cu. ft. 를 1 cu ft = 28.317 L 로 환산(페이지에 L 값 없음)"
+        },
+        "inner_mm": "W609×D609×H609 (24×24×24 in)",
+        "footprint_mm": "W1397×D1879×H2108 (55×74×83 in)",
+        "power": "208/230V 3ph 60Hz 80 Service Amps"
+      },
+      "note": "온도 전용(습도 없음). 냉동 Single-Stage 2-hp Scroll"
+    },
+    {
+      "model": "EVZ15-7.5WWL",
+      "form_factor": "floor",
+      "specs": {
+        "temperature_degC": {
+          "min": -60,
+          "max": 150
+        },
+        "altitude_m": {
+          "max": 30480,
+          "note": "원문 'Site to 100,000 feet'"
+        },
+        "heating_rate_K_min": {
+          "max": 5,
+          "uncertain": true,
+          "note": "원문 'Average Change Rate 5°C/min (-40~85 °C, 빈 조)'. 승온·강온 구분 없이 한 값이라 두 키에 같이 적음"
+        },
+        "cooling_rate_K_min": {
+          "max": 5,
+          "uncertain": true,
+          "note": "원문 'Average Change Rate 5°C/min (-40~85 °C, 빈 조)'. 승온·강온 구분 없이 한 값이라 두 키에 같이 적음"
+        },
+        "chamber_volume_L": {
+          "values": [
+            425
+          ],
+          "note": "원문 15 cu. ft. 를 1 cu ft = 28.317 L 로 환산(페이지에 L 값 없음)"
+        },
+        "inner_mm": "W762×D762×H762 (30×30×30 in)",
+        "footprint_mm": "W1549×D2692×H2260 (61×106×89 in)",
+        "power": "400/460V 3ph 50/60Hz 80 Service Amps"
+      },
+      "note": "온도 전용. 냉동 7.5-hp Scroll 캐스케이드"
+    },
+    {
+      "model": "EVZ34-15WW",
+      "form_factor": "floor",
+      "specs": {
+        "temperature_degC": {
+          "min": -60,
+          "max": 150
+        },
+        "altitude_m": {
+          "max": 30480,
+          "note": "원문 'Site to 100,000 feet'"
+        },
+        "heating_rate_K_min": {
+          "max": 8,
+          "uncertain": true,
+          "note": "원문 'Average Change Rate 8°C/min (-40~85 °C, 빈 조)'. 승온·강온 구분 없이 한 값이라 두 키에 같이 적음"
+        },
+        "cooling_rate_K_min": {
+          "max": 8,
+          "uncertain": true,
+          "note": "원문 'Average Change Rate 8°C/min (-40~85 °C, 빈 조)'. 승온·강온 구분 없이 한 값이라 두 키에 같이 적음"
+        },
+        "chamber_volume_L": {
+          "values": [
+            963
+          ],
+          "note": "원문 34 cu. ft. 를 1 cu ft = 28.317 L 로 환산(페이지에 L 값 없음)"
+        },
+        "inner_mm": "W990×D990×H990 (39×39×39 in)",
+        "footprint_mm": "W2082×D3352×H2489 (82×132×98 in)",
+        "power": "400/460V 3ph 50/60Hz 150 Service Amps"
+      },
+      "note": "온도 전용. 냉동 15-hp Discus 캐스케이드"
+    },
+    {
+      "model": "EVZ64-15WW",
+      "form_factor": "floor",
+      "specs": {
+        "temperature_degC": {
+          "min": -60,
+          "max": 150
+        },
+        "altitude_m": {
+          "max": 30480,
+          "note": "원문 'Site to 100,000 feet'"
+        },
+        "heating_rate_K_min": {
+          "max": 6,
+          "uncertain": true,
+          "note": "원문 'Average Change Rate 6°C/min (-40~85 °C, 빈 조)'. 승온·강온 구분 없이 한 값이라 두 키에 같이 적음"
+        },
+        "cooling_rate_K_min": {
+          "max": 6,
+          "uncertain": true,
+          "note": "원문 'Average Change Rate 6°C/min (-40~85 °C, 빈 조)'. 승온·강온 구분 없이 한 값이라 두 키에 같이 적음"
+        },
+        "chamber_volume_L": {
+          "values": [
+            1812
+          ],
+          "note": "원문 64 cu. ft. 를 1 cu ft = 28.317 L 로 환산(페이지에 L 값 없음)"
+        },
+        "inner_mm": "W1219×D1219×H1219 (48×48×48 in)",
+        "footprint_mm": "W2082×D3556×H2692 (82×140×106 in)",
+        "power": "400/460V 3ph 50/60Hz 150 Service Amps"
+      },
+      "note": "온도 전용. 냉동 캐스케이드 15-hp 왕복동. 냉각수 최대 수요 31.3 GPM(수온 24 °C)"
+    },
+    {
+      "model": "EVL34-12WWL",
+      "form_factor": "floor",
+      "specs": {
+        "temperature_degC": {
+          "min": -35,
+          "max": 150
+        },
+        "altitude_m": {
+          "max": 30480,
+          "note": "원문 'Site to 100,000 feet'"
+        },
+        "heating_rate_K_min": {
+          "max": 5,
+          "uncertain": true,
+          "note": "원문 'Average Change Rate 5°C/min (-20~85 °C, 빈 조)'. 승온·강온 구분 없이 한 값이라 두 키에 같이 적음"
+        },
+        "cooling_rate_K_min": {
+          "max": 5,
+          "uncertain": true,
+          "note": "원문 'Average Change Rate 5°C/min (-20~85 °C, 빈 조)'. 승온·강온 구분 없이 한 값이라 두 키에 같이 적음"
+        },
+        "chamber_volume_L": {
+          "values": [
+            963
+          ],
+          "note": "원문 34 cu. ft. 를 1 cu ft = 28.317 L 로 환산(페이지에 L 값 없음)"
+        },
+        "inner_mm": "W990×D990×H990 (39×39×39 in)",
+        "footprint_mm": "W2082×D3352×H2489 (82×132×98 in)",
+        "power": "400/460V 3ph 50/60Hz 150 Service Amps",
+        "humidity_pct": {
+          "min": 20,
+          "max": 95,
+          "note": "고도 계통을 끈 상태에서만(humidity while altitude is off)"
+        }
+      },
+      "note": "온습도형(하한 -35 °C). 냉동 12-hp Scroll 단단"
+    }
+  ],
+  "features": [
+    "온도와 저압(고도) 조건을 동시에 거는 주문 제작형 챔버",
+    "습도 제어는 고도 계통을 끈 상태에서만(EVX·EVL)"
+  ],
+  "options": [
+    "Additional Shelves",
+    "Cable ports",
+    "Viewing Window",
+    "Dry Air Purge",
+    {
+      "name": "Liquid Nitrogen Injection",
+      "note": "냉각 부스트"
+    },
+    "Serial Computer Interface",
+    "Overcool Protector",
+    "Emergency Stop Switch",
+    "Additional Six Time Signals",
+    "Paperless Recorder/DAQ",
+    "Web Controller"
+  ],
+  "relations": [
+    {
+      "type": "simulates_environment",
+      "target": "environment-low-pressure"
+    },
+    {
+      "type": "requires",
+      "target": "utility-cooling-water",
+      "note": "기종명 WW/WWL 기종. EVX8-4WWL·EVX64·EVZ64 는 냉각수 수요(GPM)를 적었고 나머지는 문의로 둠. 2WA 기종은 냉각수 표기 없음"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://espec.com/na/products/family/altitude",
+      "retrieved": "2026-10-08",
+      "note": "제품군 페이지: 소개문, 기종 목록, 적용 시험법, 옵션. PDF 데이터시트 링크 없음"
+    },
+    {
+      "url": "https://espec.com/na/products/model/evx8_4wwl",
+      "retrieved": "2026-10-08",
+      "note": "EVX8-4WWL 기종 사양표"
+    },
+    {
+      "url": "https://espec.com/na/products/model/evx8_2wa",
+      "retrieved": "2026-10-08",
+      "note": "EVX8-2WA 기종 사양표"
+    },
+    {
+      "url": "https://espec.com/na/products/model/evx15_7.5wwl",
+      "retrieved": "2026-10-08",
+      "note": "EVX15-7.5WWL 기종 사양표"
+    },
+    {
+      "url": "https://espec.com/na/products/model/evx34_15ww",
+      "retrieved": "2026-10-08",
+      "note": "EVX34-15WW 기종 사양표"
+    },
+    {
+      "url": "https://espec.com/na/products/model/evx64_15ww",
+      "retrieved": "2026-10-08",
+      "note": "EVX64-15WW 기종 사양표"
+    },
+    {
+      "url": "https://espec.com/na/products/model/evz8_2wa",
+      "retrieved": "2026-10-08",
+      "note": "EVZ8-2WA 기종 사양표"
+    },
+    {
+      "url": "https://espec.com/na/products/model/evz15_7.5wwl",
+      "retrieved": "2026-10-08",
+      "note": "EVZ15-7.5WWL 기종 사양표"
+    },
+    {
+      "url": "https://espec.com/na/products/model/evz34_15ww",
+      "retrieved": "2026-10-08",
+      "note": "EVZ34-15WW 기종 사양표"
+    },
+    {
+      "url": "https://espec.com/na/products/model/evz64_15ww",
+      "retrieved": "2026-10-08",
+      "note": "EVZ64-15WW 기종 사양표"
+    },
+    {
+      "url": "https://espec.com/na/products/model/evl34_12wwl",
+      "retrieved": "2026-10-08",
+      "note": "EVL34-12WWL 기종 사양표"
+    }
+  ],
+  "confidence": "limited",
+  "notes": "기압(kPa·Torr) 값과 고도 상승·하강 속도는 페이지에 없어 chamber_pressure_kPa 를 비움(100,000 ft 를 표준대기로 환산하지 않음). 시험법 원문은 'Mil-Std 202G (conditions 105C, A/B/C/F), Mil-Std 810G (condition 500.5), IEC 60068-2-39, IEC 60068-2-40, JIS W 0812' 이고 제조사는 챔버 사양에 따라 달라진다고 단서를 닮. 중량은 기종 페이지에 없음. 데이터시트 PDF 를 찾지 못함."
+}

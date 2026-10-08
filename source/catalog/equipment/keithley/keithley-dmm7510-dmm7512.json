@@ -1,0 +1,71 @@
+{
+  "id": "keithley-dmm7510-dmm7512",
+  "kind": "equipment_series",
+  "name": "Keithley DMM7510 / DMM7512 7½-Digit Sampling Multimeters",
+  "name_ko": "키슬리 DMM7510 · DMM7512 7½자리 샘플링 멀티미터",
+  "manufacturer": "keithley",
+  "category": "dmm_daq",
+  "form_factor": "benchtop",
+  "description": "7½자리 정밀 멀티미터에 1 MS/s 디지타이저를 더한 샘플링 멀티미터. DMM7510 은 그래픽 화면 1채널, DMM7512 는 2채널 기종이다. DMM7512 페이지 레인지: 전압 10 nV~1000 V, 저항 0.1 µΩ~1 GΩ, 전류 1 pA~3 A.",
+  "test_items": [],
+  "limits": {
+    "dmm_resolution_digits": {
+      "values": [
+        7.5
+      ]
+    },
+    "data_rate_Hz": {
+      "max": 1000000,
+      "note": "디지타이징 1 MS/s"
+    }
+  },
+  "models": [
+    {
+      "model": "DMM7510",
+      "specs": {
+        "dmm_resolution_digits": 7.5,
+        "accuracy": "DCV 1년 0.0014%",
+        "data_rate_Hz": 1000000,
+        "interfaces": "GPIB, USB(TMC), LAN(LXI)"
+      },
+      "note": "감도 10 nV, 1 pA, 0.1 µΩ. 메모리 표준 11 M readings, compact 27.5 M readings"
+    },
+    {
+      "model": "DMM7512",
+      "specs": {
+        "dmm_resolution_digits": 7.5,
+        "accuracy": "DCV 1년 14 ppm",
+        "data_rate_Hz": 1000000,
+        "channels": 2,
+        "voltage_V": {
+          "min": 1e-08,
+          "max": 1000
+        },
+        "resistance_ohm": {
+          "min": 1e-07,
+          "max": 1000000000.0
+        },
+        "current_A": {
+          "min": 1e-12,
+          "max": 3
+        },
+        "interfaces": "USB-TMC, LAN-LXI, TSP-Link"
+      },
+      "note": "자릿수 3½~7½ 선택. 메모리 27.5 M readings"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://www.tek.com/en/products/keithley/digital-multimeter/dmm7510",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지. 7.5 digits, DCV 1년 0.0014%, 10 nV·1 pA·0.1 µΩ, 1,000,000 readings/s, 메모리 11 M(표준)·27.5 M(compact), GPIB·USB(TMC)·LAN(LXI)"
+    },
+    {
+      "url": "https://www.tek.com/en/products/keithley/digital-multimeter/dmm7512",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지. 2 channels, 3½~7½ digits, 14 ppm, 1 Msample/s, 27.5 M readings, 10 nV–1000 V, 0.1 µΩ–1 GΩ, 1 pA–3 A, USB-TMC·LAN-LXI·TSP-Link"
+    }
+  ],
+  "confidence": "limited",
+  "notes": "DMM7510 페이지 요약의 전류 문구('up to 1A')는 해석이 분명하지 않아 적지 않음."
+}

@@ -1,0 +1,74 @@
+{
+  "id": "imv-pet-series-shaker",
+  "kind": "equipment_series",
+  "name": "IMV PET Series Small Vibration Exciters",
+  "name_ko": "IMV PET 시리즈 소형 가진기",
+  "manufacturer": "imv",
+  "brand": "PET",
+  "category": "vibration_shaker",
+  "form_factor": "benchtop",
+  "description": "모달 해석·센서 평가용 소형 가진기. 개요 기준 가진력 9.8~49 N, 탑재 약 3 kg, AC 100 V. 진동 계측 장치 교정, 기계 임피던스 측정, MEMS 센서·기판 평가에 쓰고, 고주파판 PET-05H 는 40,000 Hz 까지 가진해 압전 센서 특성 시험·모달 서베이에 쓴다.",
+  "test_items": [
+    "vibration_sine_random"
+  ],
+  "measurands": [
+    "resonance_frequency",
+    "modal_parameters"
+  ],
+  "materials": [
+    "sensors",
+    "MEMS sensors",
+    "PCB",
+    "small components"
+  ],
+  "limits": {
+    "force_N": {
+      "min": 9.8,
+      "max": 49,
+      "note": "개요 9.8N～49N"
+    },
+    "payload_kg": {
+      "max": 3,
+      "note": "개요 ～3kg程度"
+    },
+    "frequency_Hz": {
+      "max": 40000,
+      "note": "PET-05H"
+    }
+  },
+  "models": [
+    {
+      "model": "PET-05H",
+      "specs": {
+        "frequency_Hz": {
+          "max": 40000
+        }
+      },
+      "note": "고주파 대응판"
+    }
+  ],
+  "relations": [
+    {
+      "type": "performs",
+      "target": "vibration_sine_random"
+    },
+    {
+      "type": "same_family_as",
+      "target": "imv-m-series-shaker"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://we-are-imv.com/business/products/item/vibrationtest-pet/",
+      "retrieved": "2026-10-08",
+      "note": "제조사 PET 시리즈 페이지(일본어)"
+    },
+    {
+      "url": "https://we-are-imv.com/business/products/vibrationtest/",
+      "retrieved": "2026-10-08",
+      "note": "제조사 진동 시험기 개요"
+    }
+  ],
+  "confidence": "limited",
+  "notes": "PET-05H 외 기종명은 페이지에 없다."
+}

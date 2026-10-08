@@ -1,0 +1,136 @@
+{
+  "id": "rigol-dg2000",
+  "kind": "equipment_series",
+  "name": "RIGOL DG2000 Series Function/Arbitrary Waveform Generators",
+  "name_ko": "리골 DG2000 함수·임의파형 발생기",
+  "manufacturer": "rigol",
+  "brand": "DG2000",
+  "category": "signal_generator",
+  "subcategory": "function_arbitrary_waveform",
+  "description": "2채널 함수·임의파형 발생기 계열. 사인파 50·70·100 MHz(DG2052·DG2072·DG2102), 16비트 수직 분해능, 임의파형 길이 16 M, SiFi II 기술(계단·평활·보간 필터), 지터 최저 200 ps 다. 4.3인치 터치스크린, 팬 없는 구조, 이중 톤·노이즈·RS232·PRBS 출력, 8차 고조파 발생기, 이더넷·USB 를 갖춘다.",
+  "test_items": [],
+  "limits": {
+    "output_frequency_Hz": {
+      "max": 100000000,
+      "note": "데이터시트 기종표: 사인파 50·70·100 MHz, 구형파 15·20·25 MHz(DG2052·DG2072·DG2102). 하한은 추출 텍스트에서 단위 기호(µ)가 빠진 것으로 보여 넣지 않았다"
+    },
+    "channels": {
+      "values": [
+        2
+      ]
+    },
+    "dac_resolution_bit": {
+      "values": [
+        16
+      ],
+      "note": "원문 Vertical Resolution 16 bits"
+    },
+    "waveform_memory_pts": {
+      "values": [
+        16000000
+      ],
+      "note": "원문 Arbitrary Waveform Length 16 Mpts(채널당)"
+    },
+    "sample_rate_Sa_s": {
+      "max": 250000000,
+      "note": "원문 Sample Rate 250 MSa/s"
+    },
+    "output_voltage_V": {
+      "min": 0.001,
+      "max": 10,
+      "note": "진폭(50 Ω 부하) ≤10 MHz 1 mVpp~10 Vpp, ≤30 MHz 5 Vpp, ≤60 MHz 2.5 Vpp, >60 MHz 1 Vpp. 오프셋 ±5 Vpk(ac+dc)"
+    },
+    "phase_noise_dBc_Hz": {
+      "values": [
+        -105
+      ],
+      "note": "10 MHz 반송파, 10 kHz 오프셋, 0 dBm, typ."
+    }
+  },
+  "models": [
+    {
+      "model": "DG2052",
+      "specs": {
+        "output_frequency_Hz": {
+          "max": 50000000,
+          "note": "사인파 50 MHz, 구형파 15 MHz"
+        },
+        "channels": 2,
+        "waveform_memory_pts": 16000000,
+        "sample_rate_Sa_s": 250000000,
+        "dac_resolution_bit": 16,
+        "output_voltage_V": {
+          "min": 0.001,
+          "max": 10,
+          "note": "50 Ω 부하, ≤10 MHz 에서 10 Vpp"
+        },
+        "interfaces": "USB Host·Device, LAN(LXI Core 2011), USB-GPIB"
+      }
+    },
+    {
+      "model": "DG2072",
+      "specs": {
+        "output_frequency_Hz": {
+          "max": 70000000,
+          "note": "사인파 70 MHz, 구형파 20 MHz"
+        },
+        "channels": 2,
+        "waveform_memory_pts": 16000000,
+        "sample_rate_Sa_s": 250000000,
+        "dac_resolution_bit": 16,
+        "output_voltage_V": {
+          "min": 0.001,
+          "max": 10,
+          "note": "50 Ω 부하, ≤10 MHz 에서 10 Vpp"
+        },
+        "interfaces": "USB Host·Device, LAN(LXI Core 2011), USB-GPIB"
+      }
+    },
+    {
+      "model": "DG2102",
+      "specs": {
+        "output_frequency_Hz": {
+          "max": 100000000,
+          "note": "사인파 100 MHz, 구형파 25 MHz"
+        },
+        "channels": 2,
+        "waveform_memory_pts": 16000000,
+        "sample_rate_Sa_s": 250000000,
+        "dac_resolution_bit": 16,
+        "output_voltage_V": {
+          "min": 0.001,
+          "max": 10,
+          "note": "50 Ω 부하, ≤10 MHz 에서 10 Vpp"
+        },
+        "interfaces": "USB Host·Device, LAN(LXI Core 2011), USB-GPIB"
+      }
+    }
+  ],
+  "features": [
+    "16비트 수직 분해능",
+    "SiFi II(계단·평활·보간)",
+    "지터 최저 200 ps",
+    "4.3인치 터치스크린",
+    "팬 없는 구조",
+    "8차 고조파 발생기",
+    "이더넷·USB"
+  ],
+  "sources": [
+    {
+      "url": "https://www.rigolna.com/products/waveform-generators/dg2000/",
+      "retrieved": "2026-10-08",
+      "note": "제조사 미국 법인(RIGOL Technologies USA) 제품 페이지. 기종 표와 주요 기능"
+    },
+    {
+      "file": "rigol/dg2000-20datasheet.pdf",
+      "pages": [
+        1,
+        7,
+        8
+      ],
+      "note": "제조사 데이터시트. 기종표(채널·주파수), 샘플 속도, 수직 분해능, 파형 길이, 진폭, 위상 잡음, 인터페이스"
+    }
+  ],
+  "confidence": "catalog",
+  "notes": "PDF 로 확인: 기종별 주파수, 채널, 샘플 속도 250 MSa/s, 16 bit, 파형 길이 16 Mpts, 진폭 범위, 위상 잡음, 지터 200 ps, 인터페이스."
+}

@@ -1,0 +1,881 @@
+{
+  "id": "keyence-lk-g5000",
+  "kind": "equipment_series",
+  "name": "LK-G5000 Series Ultra High-Speed/High-Accuracy Laser Displacement Sensor",
+  "name_ko": "키엔스 LK-G5000 초고속·고정밀 레이저 변위 센서",
+  "manufacturer": "keyence",
+  "category": "thickness_displacement_gauge",
+  "description": "삼각측량식 1차원 레이저 변위 센서 계열임. RS-CMOS 수광 소자와 HDE 렌즈로 여러 재질 표면에 초점을 맞추고, 최대 샘플링 속도 392 kHz(샘플링 주기 2.55 µs), 반복 정밀도 0.005 µm(LK-H008), 직선성 ±0.02% of F.S. 를 냄. 기준 거리 8~150 mm 의 센서 헤드 20종 이상을 분리형 컨트롤러 LK-G5001 에 연결함. 확산 반사형과 정반사형, 스폿형과 와이드(라인 빔)형, 레이저 Class 2·3R 변형이 있음.",
+  "test_items": [],
+  "limits": {
+    "displacement_mm": {
+      "min": -40,
+      "max": 40,
+      "note": "헤드별 측정 범위 ±0.5 mm(LK-H008) ~ ±40 mm(LK-H150 계열)"
+    },
+    "measurement_distance_mm": {
+      "min": 8,
+      "max": 150,
+      "note": "헤드별 기준 거리"
+    },
+    "measuring_repeatability_um": {
+      "min": 0.005,
+      "note": "계열 대표값 0.005 µm(LK-H008). 헤드별 0.005~0.25 µm"
+    },
+    "linearity_pct_fs": {
+      "min": 0.02,
+      "note": "원문 0.02% of F.S.(확산 반사 헤드). LK-H008 은 ±0.05% of F.S."
+    },
+    "data_rate_Hz": {
+      "max": 392000,
+      "note": "원문 Max sampling speed 392 kHz"
+    },
+    "spot_size_um": {
+      "min": 20,
+      "max": 120,
+      "note": "스폿 지름(와이드형은 짧은 쪽)"
+    }
+  },
+  "models": [
+    {
+      "model": "LK-H008",
+      "variant": "정반사(specular reflective) · 스폿형",
+      "specs": {
+        "measurement_distance_mm": 8,
+        "displacement_mm": {
+          "min": -0.5,
+          "max": 0.5,
+          "note": "원문 ±0.5 mm"
+        },
+        "spot_size_um": 20,
+        "linearity_pct_fs": {
+          "value": 0.05,
+          "note": "원문 ±0.05% of F.S."
+        },
+        "measuring_repeatability_um": 0.005,
+        "sampling_cycle_us": {
+          "values": [
+            2.55,
+            5,
+            10,
+            20,
+            50,
+            100,
+            200,
+            500,
+            1000
+          ],
+          "note": "원문 2.55/5/10/20/50/100/200/500/1000 µs"
+        },
+        "laser_wavelength_nm": 655,
+        "weight_kg": {
+          "value": 0.24,
+          "note": "원문 Approx. 240 g"
+        }
+      },
+      "note": "레이저 IEC 60825-1 Class 1. 직선성 F.S.=1 mm."
+    },
+    {
+      "model": "LK-H008W",
+      "variant": "정반사 · 와이드형",
+      "specs": {
+        "measurement_distance_mm": 8,
+        "displacement_mm": {
+          "min": -0.5,
+          "max": 0.5,
+          "note": "원문 ±0.5 mm"
+        },
+        "spot_size_um": {
+          "value": 20,
+          "note": "원문 20 µm × 550 µm(타원 빔)"
+        },
+        "linearity_pct_fs": {
+          "value": 0.05,
+          "note": "원문 ±0.05% of F.S."
+        },
+        "measuring_repeatability_um": 0.005,
+        "sampling_cycle_us": {
+          "values": [
+            2.55,
+            5,
+            10,
+            20,
+            50,
+            100,
+            200,
+            500,
+            1000
+          ],
+          "note": "원문 2.55/5/10/20/50/100/200/500/1000 µs"
+        },
+        "laser_wavelength_nm": 655,
+        "weight_kg": {
+          "value": 0.24,
+          "note": "원문 Approx. 240 g"
+        }
+      },
+      "note": "레이저 IEC 60825-1 Class 1."
+    },
+    {
+      "model": "LK-H020",
+      "variant": "확산 반사(diffuse reflective) · 스폿형",
+      "specs": {
+        "measurement_distance_mm": 20,
+        "displacement_mm": {
+          "min": -3,
+          "max": 3,
+          "note": "원문 ±3 mm"
+        },
+        "spot_size_um": 25,
+        "linearity_pct_fs": {
+          "value": 0.02,
+          "note": "원문 ±0.02% of F.S."
+        },
+        "measuring_repeatability_um": 0.02,
+        "sampling_cycle_us": {
+          "values": [
+            2.55,
+            5,
+            10,
+            20,
+            50,
+            100,
+            200,
+            500,
+            1000
+          ],
+          "note": "원문 2.55/5/10/20/50/100/200/500/1000 µs"
+        },
+        "laser_wavelength_nm": 655,
+        "weight_kg": {
+          "value": 0.23,
+          "note": "원문 Approx. 230 g"
+        }
+      },
+      "note": "레이저 IEC 60825-1 Class 3R."
+    },
+    {
+      "model": "LK-H022",
+      "variant": "확산 반사 · 스폿형",
+      "specs": {
+        "measurement_distance_mm": 20,
+        "displacement_mm": {
+          "min": -3,
+          "max": 3,
+          "note": "원문 ±3 mm"
+        },
+        "spot_size_um": 25,
+        "linearity_pct_fs": {
+          "value": 0.02,
+          "note": "원문 ±0.02% of F.S."
+        },
+        "measuring_repeatability_um": 0.02,
+        "sampling_cycle_us": {
+          "values": [
+            2.55,
+            5,
+            10,
+            20,
+            50,
+            100,
+            200,
+            500,
+            1000
+          ],
+          "note": "원문 2.55/5/10/20/50/100/200/500/1000 µs"
+        },
+        "laser_wavelength_nm": 655,
+        "weight_kg": {
+          "value": 0.23,
+          "note": "원문 Approx. 230 g"
+        }
+      },
+      "note": "레이저 IEC 60825-1 Class 2."
+    },
+    {
+      "model": "LK-H025",
+      "variant": "확산 반사 · 와이드형",
+      "specs": {
+        "measurement_distance_mm": 20,
+        "displacement_mm": {
+          "min": -3,
+          "max": 3,
+          "note": "원문 ±3 mm"
+        },
+        "spot_size_um": {
+          "value": 25,
+          "note": "원문 25 µm × 1,400 µm"
+        },
+        "linearity_pct_fs": {
+          "value": 0.02,
+          "note": "원문 ±0.02% of F.S."
+        },
+        "measuring_repeatability_um": 0.02,
+        "sampling_cycle_us": {
+          "values": [
+            2.55,
+            5,
+            10,
+            20,
+            50,
+            100,
+            200,
+            500,
+            1000
+          ],
+          "note": "원문 2.55/5/10/20/50/100/200/500/1000 µs"
+        },
+        "laser_wavelength_nm": 655,
+        "weight_kg": {
+          "value": 0.23,
+          "note": "원문 Approx. 230 g"
+        }
+      },
+      "note": "레이저 IEC 60825-1 Class 3R."
+    },
+    {
+      "model": "LK-H027",
+      "variant": "확산 반사 · 와이드형",
+      "specs": {
+        "measurement_distance_mm": 20,
+        "displacement_mm": {
+          "min": -3,
+          "max": 3,
+          "note": "원문 ±3 mm"
+        },
+        "spot_size_um": {
+          "value": 25,
+          "note": "원문 25 µm × 1,400 µm"
+        },
+        "linearity_pct_fs": {
+          "value": 0.02,
+          "note": "원문 ±0.02% of F.S."
+        },
+        "measuring_repeatability_um": 0.02,
+        "sampling_cycle_us": {
+          "values": [
+            2.55,
+            5,
+            10,
+            20,
+            50,
+            100,
+            200,
+            500,
+            1000
+          ],
+          "note": "원문 2.55/5/10/20/50/100/200/500/1000 µs"
+        },
+        "laser_wavelength_nm": 655,
+        "weight_kg": {
+          "value": 0.23,
+          "note": "원문 Approx. 230 g"
+        }
+      },
+      "note": "레이저 IEC 60825-1 Class 2."
+    },
+    {
+      "model": "LK-H050",
+      "variant": "확산 반사 · 스폿형",
+      "specs": {
+        "measurement_distance_mm": 50,
+        "displacement_mm": {
+          "min": -10,
+          "max": 10,
+          "note": "원문 ±10 mm"
+        },
+        "spot_size_um": 50,
+        "linearity_pct_fs": {
+          "value": 0.02,
+          "note": "원문 ±0.02% of F.S."
+        },
+        "measuring_repeatability_um": 0.025,
+        "sampling_cycle_us": {
+          "values": [
+            2.55,
+            5,
+            10,
+            20,
+            50,
+            100,
+            200,
+            500,
+            1000
+          ],
+          "note": "원문 2.55/5/10/20/50/100/200/500/1000 µs"
+        },
+        "laser_wavelength_nm": 655,
+        "weight_kg": {
+          "value": 0.26,
+          "note": "원문 Approx. 260 g"
+        }
+      },
+      "note": "레이저 IEC 60825-1 Class 3R."
+    },
+    {
+      "model": "LK-H052",
+      "variant": "확산 반사 · 스폿형",
+      "specs": {
+        "measurement_distance_mm": 50,
+        "displacement_mm": {
+          "min": -10,
+          "max": 10,
+          "note": "원문 ±10 mm"
+        },
+        "spot_size_um": 50,
+        "linearity_pct_fs": {
+          "value": 0.02,
+          "note": "원문 ±0.02% of F.S."
+        },
+        "measuring_repeatability_um": 0.025,
+        "sampling_cycle_us": {
+          "values": [
+            2.55,
+            5,
+            10,
+            20,
+            50,
+            100,
+            200,
+            500,
+            1000
+          ],
+          "note": "원문 2.55/5/10/20/50/100/200/500/1000 µs"
+        },
+        "laser_wavelength_nm": 655,
+        "weight_kg": {
+          "value": 0.26,
+          "note": "원문 Approx. 260 g"
+        }
+      },
+      "note": "레이저 IEC 60825-1 Class 2."
+    },
+    {
+      "model": "LK-H055",
+      "variant": "확산 반사 · 와이드형",
+      "specs": {
+        "measurement_distance_mm": 50,
+        "displacement_mm": {
+          "min": -10,
+          "max": 10,
+          "note": "원문 ±10 mm"
+        },
+        "spot_size_um": {
+          "value": 50,
+          "note": "원문 50 µm × 2,000 µm"
+        },
+        "linearity_pct_fs": {
+          "value": 0.02,
+          "note": "원문 ±0.02% of F.S."
+        },
+        "measuring_repeatability_um": 0.025,
+        "sampling_cycle_us": {
+          "values": [
+            2.55,
+            5,
+            10,
+            20,
+            50,
+            100,
+            200,
+            500,
+            1000
+          ],
+          "note": "원문 2.55/5/10/20/50/100/200/500/1000 µs"
+        },
+        "laser_wavelength_nm": 655,
+        "weight_kg": {
+          "value": 0.26,
+          "note": "원문 Approx. 260 g"
+        }
+      },
+      "note": "레이저 IEC 60825-1 Class 3R."
+    },
+    {
+      "model": "LK-H057",
+      "variant": "확산 반사 · 와이드형",
+      "specs": {
+        "measurement_distance_mm": 50,
+        "displacement_mm": {
+          "min": -10,
+          "max": 10,
+          "note": "원문 ±10 mm"
+        },
+        "spot_size_um": {
+          "value": 50,
+          "note": "원문 50 µm × 2,000 µm"
+        },
+        "linearity_pct_fs": {
+          "value": 0.02,
+          "note": "원문 ±0.02% of F.S."
+        },
+        "measuring_repeatability_um": 0.025,
+        "sampling_cycle_us": {
+          "values": [
+            2.55,
+            5,
+            10,
+            20,
+            50,
+            100,
+            200,
+            500,
+            1000
+          ],
+          "note": "원문 2.55/5/10/20/50/100/200/500/1000 µs"
+        },
+        "laser_wavelength_nm": 655,
+        "weight_kg": {
+          "value": 0.26,
+          "note": "원문 Approx. 260 g"
+        }
+      },
+      "note": "레이저 IEC 60825-1 Class 2."
+    },
+    {
+      "model": "LK-H080",
+      "variant": "확산 반사 · 스폿형",
+      "specs": {
+        "measurement_distance_mm": 80,
+        "displacement_mm": {
+          "min": -18,
+          "max": 18,
+          "note": "원문 ±18 mm"
+        },
+        "spot_size_um": 70,
+        "linearity_pct_fs": {
+          "value": 0.02,
+          "note": "원문 ±0.02% of F.S."
+        },
+        "measuring_repeatability_um": 0.1,
+        "sampling_cycle_us": {
+          "values": [
+            2.55,
+            5,
+            10,
+            20,
+            50,
+            100,
+            200,
+            500,
+            1000
+          ],
+          "note": "원문 2.55/5/10/20/50/100/200/500/1000 µs"
+        },
+        "laser_wavelength_nm": 655,
+        "weight_kg": {
+          "value": 0.28,
+          "note": "원문 Approx. 280 g"
+        }
+      },
+      "note": "레이저 IEC 60825-1 Class 3R."
+    },
+    {
+      "model": "LK-H082",
+      "variant": "확산 반사 / 정반사 · 스폿형",
+      "specs": {
+        "measurement_distance_mm": 80,
+        "displacement_mm": {
+          "min": -18,
+          "max": 18,
+          "note": "원문 ±18 mm"
+        },
+        "spot_size_um": 70,
+        "linearity_pct_fs": {
+          "value": 0.02,
+          "note": "원문 ±0.02% of F.S."
+        },
+        "measuring_repeatability_um": 0.1,
+        "sampling_cycle_us": {
+          "values": [
+            2.55,
+            5,
+            10,
+            20,
+            50,
+            100,
+            200,
+            500,
+            1000
+          ],
+          "note": "원문 2.55/5/10/20/50/100/200/500/1000 µs"
+        },
+        "laser_wavelength_nm": 655,
+        "weight_kg": {
+          "value": 0.28,
+          "note": "원문 Approx. 280 g"
+        }
+      },
+      "note": "레이저 IEC 60825-1 Class 2. 정반사 설치 시 기준 거리 76.7 mm, 측정 범위 -17.6 ~ +14.5 mm."
+    },
+    {
+      "model": "LK-H085",
+      "variant": "확산 반사 · 와이드형",
+      "specs": {
+        "measurement_distance_mm": 80,
+        "displacement_mm": {
+          "min": -18,
+          "max": 18,
+          "note": "원문 ±18 mm"
+        },
+        "spot_size_um": {
+          "value": 70,
+          "note": "원문 70 µm × 2,500 µm"
+        },
+        "linearity_pct_fs": {
+          "value": 0.02,
+          "note": "원문 ±0.02% of F.S."
+        },
+        "measuring_repeatability_um": 0.1,
+        "sampling_cycle_us": {
+          "values": [
+            2.55,
+            5,
+            10,
+            20,
+            50,
+            100,
+            200,
+            500,
+            1000
+          ],
+          "note": "원문 2.55/5/10/20/50/100/200/500/1000 µs"
+        },
+        "laser_wavelength_nm": 655,
+        "weight_kg": {
+          "value": 0.28,
+          "note": "원문 Approx. 280 g"
+        }
+      },
+      "note": "레이저 IEC 60825-1 Class 3R."
+    },
+    {
+      "model": "LK-H087",
+      "variant": "확산 반사 / 정반사 · 와이드형",
+      "specs": {
+        "measurement_distance_mm": 80,
+        "displacement_mm": {
+          "min": -18,
+          "max": 18,
+          "note": "원문 ±18 mm"
+        },
+        "spot_size_um": {
+          "value": 70,
+          "note": "원문 70 µm × 2,500 µm"
+        },
+        "linearity_pct_fs": {
+          "value": 0.02,
+          "note": "원문 ±0.02% of F.S."
+        },
+        "measuring_repeatability_um": 0.1,
+        "sampling_cycle_us": {
+          "values": [
+            2.55,
+            5,
+            10,
+            20,
+            50,
+            100,
+            200,
+            500,
+            1000
+          ],
+          "note": "원문 2.55/5/10/20/50/100/200/500/1000 µs"
+        },
+        "laser_wavelength_nm": 655,
+        "weight_kg": {
+          "value": 0.28,
+          "note": "원문 Approx. 280 g"
+        }
+      },
+      "note": "레이저 IEC 60825-1 Class 2. 정반사 설치 시 기준 거리 76.7 mm, 측정 범위 -17.6 ~ +14.5 mm."
+    },
+    {
+      "model": "LK-H150",
+      "variant": "확산 반사 · 스폿형",
+      "specs": {
+        "measurement_distance_mm": 150,
+        "displacement_mm": {
+          "min": -40,
+          "max": 40,
+          "note": "원문 ±40 mm"
+        },
+        "spot_size_um": 120,
+        "linearity_pct_fs": {
+          "value": 0.02,
+          "note": "원문 ±0.02% of F.S."
+        },
+        "measuring_repeatability_um": 0.25,
+        "sampling_cycle_us": {
+          "values": [
+            2.55,
+            5,
+            10,
+            20,
+            50,
+            100,
+            200,
+            500,
+            1000
+          ],
+          "note": "원문 2.55/5/10/20/50/100/200/500/1000 µs"
+        },
+        "laser_wavelength_nm": 655,
+        "weight_kg": {
+          "value": 0.3,
+          "note": "원문 Approx. 300 g"
+        }
+      },
+      "note": "레이저 IEC 60825-1 Class 3R."
+    },
+    {
+      "model": "LK-H152",
+      "variant": "확산 반사 / 정반사 · 스폿형",
+      "specs": {
+        "measurement_distance_mm": 150,
+        "displacement_mm": {
+          "min": -40,
+          "max": 40,
+          "note": "원문 ±40 mm"
+        },
+        "spot_size_um": 120,
+        "linearity_pct_fs": {
+          "value": 0.02,
+          "note": "원문 ±0.02% of F.S."
+        },
+        "measuring_repeatability_um": 0.25,
+        "sampling_cycle_us": {
+          "values": [
+            2.55,
+            5,
+            10,
+            20,
+            50,
+            100,
+            200,
+            500,
+            1000
+          ],
+          "note": "원문 2.55/5/10/20/50/100/200/500/1000 µs"
+        },
+        "laser_wavelength_nm": 655,
+        "weight_kg": {
+          "value": 0.3,
+          "note": "원문 Approx. 300 g"
+        }
+      },
+      "note": "레이저 IEC 60825-1 Class 2. 정반사 설치 시 기준 거리 147.5 mm, 측정 범위 -39.5 ~ +24.4 mm."
+    },
+    {
+      "model": "LK-H155",
+      "variant": "확산 반사 · 와이드형",
+      "specs": {
+        "measurement_distance_mm": 150,
+        "displacement_mm": {
+          "min": -40,
+          "max": 40,
+          "note": "원문 ±40 mm"
+        },
+        "spot_size_um": {
+          "value": 120,
+          "note": "원문 120 µm × 4,200 µm"
+        },
+        "linearity_pct_fs": {
+          "value": 0.02,
+          "note": "원문 ±0.02% of F.S."
+        },
+        "measuring_repeatability_um": 0.25,
+        "sampling_cycle_us": {
+          "values": [
+            2.55,
+            5,
+            10,
+            20,
+            50,
+            100,
+            200,
+            500,
+            1000
+          ],
+          "note": "원문 2.55/5/10/20/50/100/200/500/1000 µs"
+        },
+        "laser_wavelength_nm": 655,
+        "weight_kg": {
+          "value": 0.3,
+          "note": "원문 Approx. 300 g"
+        }
+      },
+      "note": "레이저 IEC 60825-1 Class 3R."
+    },
+    {
+      "model": "LK-H157",
+      "variant": "확산 반사 / 정반사 · 와이드형",
+      "specs": {
+        "measurement_distance_mm": 150,
+        "displacement_mm": {
+          "min": -40,
+          "max": 40,
+          "note": "원문 ±40 mm"
+        },
+        "spot_size_um": {
+          "value": 120,
+          "note": "원문 120 µm × 4,200 µm"
+        },
+        "linearity_pct_fs": {
+          "value": 0.02,
+          "note": "원문 ±0.02% of F.S."
+        },
+        "measuring_repeatability_um": 0.25,
+        "sampling_cycle_us": {
+          "values": [
+            2.55,
+            5,
+            10,
+            20,
+            50,
+            100,
+            200,
+            500,
+            1000
+          ],
+          "note": "원문 2.55/5/10/20/50/100/200/500/1000 µs"
+        },
+        "laser_wavelength_nm": 655,
+        "weight_kg": {
+          "value": 0.3,
+          "note": "원문 Approx. 300 g"
+        }
+      },
+      "note": "레이저 IEC 60825-1 Class 2. 정반사 설치 시 기준 거리 147.5 mm, 측정 범위 -39.5 ~ +24.4 mm."
+    },
+    {
+      "model": "LK-G5001",
+      "variant": "분리형 메인 컨트롤러",
+      "specs": {
+        "measurement_channels": 2,
+        "interfaces": "RS-232C, USB 2.0, Ethernet(100Base-TX/10Base-T), EtherNet/IP",
+        "power": "24 VDC ±10%",
+        "operating_temperature_degC": {
+          "min": 0,
+          "max": 50,
+          "note": "확장 유닛 1대 이하 0~+50 °C, 2대 이상 0~+40 °C"
+        },
+        "weight_kg": {
+          "value": 0.6,
+          "note": "원문 Approx. 600 g"
+        }
+      },
+      "note": "센서 헤드 2대 연결. 표시 범위 ±999.999 µm ~ ±9999.99 mm(7단 선택), 최소 표시 단위 0.001 µm. 헤드 증설 유닛으로 확장(소비 전류가 헤드 12대 기준까지 적혀 있음)."
+    }
+  ],
+  "features": [
+    "RS-CMOS · HDE 렌즈 팩",
+    "최대 샘플링 392 kHz",
+    "센서 헤드 20종 이상",
+    "확산 반사 · 정반사 겸용 헤드(LK-H082 등)"
+  ],
+  "sources": [
+    {
+      "url": "https://www.keyence.com/products/measure/laser-1d/lk-g5000/",
+      "retrieved": "2026-10-08",
+      "note": "제조사 계열 페이지. 직선성 0.02% of F.S., 반복 정밀도 0.005 µm, 최대 샘플링 392 kHz, 센서 헤드 20종 이상"
+    },
+    {
+      "url": "https://www.keyence.com/products/measure/laser-1d/lk-g5000/models/lk-h008/",
+      "retrieved": "2026-10-08",
+      "note": "제조사 기종 페이지(사양표)"
+    },
+    {
+      "url": "https://www.keyence.com/products/measure/laser-1d/lk-g5000/models/lk-h008w/",
+      "retrieved": "2026-10-08",
+      "note": "제조사 기종 페이지(사양표)"
+    },
+    {
+      "url": "https://www.keyence.com/products/measure/laser-1d/lk-g5000/models/lk-h020/",
+      "retrieved": "2026-10-08",
+      "note": "제조사 기종 페이지(사양표)"
+    },
+    {
+      "url": "https://www.keyence.com/products/measure/laser-1d/lk-g5000/models/lk-h022/",
+      "retrieved": "2026-10-08",
+      "note": "제조사 기종 페이지(사양표)"
+    },
+    {
+      "url": "https://www.keyence.com/products/measure/laser-1d/lk-g5000/models/lk-h025/",
+      "retrieved": "2026-10-08",
+      "note": "제조사 기종 페이지(사양표)"
+    },
+    {
+      "url": "https://www.keyence.com/products/measure/laser-1d/lk-g5000/models/lk-h027/",
+      "retrieved": "2026-10-08",
+      "note": "제조사 기종 페이지(사양표)"
+    },
+    {
+      "url": "https://www.keyence.com/products/measure/laser-1d/lk-g5000/models/lk-h050/",
+      "retrieved": "2026-10-08",
+      "note": "제조사 기종 페이지(사양표)"
+    },
+    {
+      "url": "https://www.keyence.com/products/measure/laser-1d/lk-g5000/models/lk-h052/",
+      "retrieved": "2026-10-08",
+      "note": "제조사 기종 페이지(사양표)"
+    },
+    {
+      "url": "https://www.keyence.com/products/measure/laser-1d/lk-g5000/models/lk-h055/",
+      "retrieved": "2026-10-08",
+      "note": "제조사 기종 페이지(사양표)"
+    },
+    {
+      "url": "https://www.keyence.com/products/measure/laser-1d/lk-g5000/models/lk-h057/",
+      "retrieved": "2026-10-08",
+      "note": "제조사 기종 페이지(사양표)"
+    },
+    {
+      "url": "https://www.keyence.com/products/measure/laser-1d/lk-g5000/models/lk-h080/",
+      "retrieved": "2026-10-08",
+      "note": "제조사 기종 페이지(사양표)"
+    },
+    {
+      "url": "https://www.keyence.com/products/measure/laser-1d/lk-g5000/models/lk-h082/",
+      "retrieved": "2026-10-08",
+      "note": "제조사 기종 페이지(사양표)"
+    },
+    {
+      "url": "https://www.keyence.com/products/measure/laser-1d/lk-g5000/models/lk-h085/",
+      "retrieved": "2026-10-08",
+      "note": "제조사 기종 페이지(사양표)"
+    },
+    {
+      "url": "https://www.keyence.com/products/measure/laser-1d/lk-g5000/models/lk-h087/",
+      "retrieved": "2026-10-08",
+      "note": "제조사 기종 페이지(사양표)"
+    },
+    {
+      "url": "https://www.keyence.com/products/measure/laser-1d/lk-g5000/models/lk-h150/",
+      "retrieved": "2026-10-08",
+      "note": "제조사 기종 페이지(사양표)"
+    },
+    {
+      "url": "https://www.keyence.com/products/measure/laser-1d/lk-g5000/models/lk-h152/",
+      "retrieved": "2026-10-08",
+      "note": "제조사 기종 페이지(사양표)"
+    },
+    {
+      "url": "https://www.keyence.com/products/measure/laser-1d/lk-g5000/models/lk-h155/",
+      "retrieved": "2026-10-08",
+      "note": "제조사 기종 페이지(사양표)"
+    },
+    {
+      "url": "https://www.keyence.com/products/measure/laser-1d/lk-g5000/models/lk-h157/",
+      "retrieved": "2026-10-08",
+      "note": "제조사 기종 페이지(사양표)"
+    },
+    {
+      "url": "https://www.keyence.com/products/measure/laser-1d/lk-g5000/models/lk-g5001/",
+      "retrieved": "2026-10-08",
+      "note": "제조사 기종 페이지(사양표)"
+    }
+  ],
+  "confidence": "limited",
+  "notes": "센서 헤드는 제조사 기종 페이지에서 확인한 18종만 적음(제조사는 20종 이상이라 함). 확산 반사 헤드 가운데 LK-H020·H050·H080·H150 등은 기종 페이지 요약에서 확산 반사 값만 읽혔음. 레이저 등급은 사양 키가 없어 기종 note 에 적음."
+}

@@ -1,0 +1,116 @@
+{
+  "id": "admesy-imaging-colorimeters",
+  "kind": "equipment_series",
+  "name": "Admesy Helios XYZ / Titan Imaging Colorimeter",
+  "name_ko": "애드메시 Helios · Titan 이미징 콜로리미터",
+  "manufacturer": "admesy",
+  "brand": "Helios / Titan",
+  "category": "imaging_colorimeter",
+  "form_factor": "camera",
+  "description": "디스플레이 면의 휘도 · 색도 분포를 재는 이미징 콜로리미터. Helios XYZ 는 24.6 MP Sony 검출기와 자체 코팅 XYZ 필터, 상측 텔레센트릭 렌즈로 0.02 ~ 20,000 cd/m² 를 휘도 ±2 %, 색도 ±0.002 로 재고 작동 거리 300 mm ~ 3 m. Titan 은 12.3 MP(4,096 × 3,000) RGB 센서에 컬러리미터를 내장한 판(35 mm 렌즈, 시야 ±14°, 작동 거리 400 ~ 2,000 mm).",
+  "test_items": [
+    "photometry_colorimetry"
+  ],
+  "measurands": [
+    "luminance",
+    "chromaticity",
+    "uniformity"
+  ],
+  "limits": {
+    "luminance_cd_m2": {
+      "min": 0.005,
+      "max": 24000,
+      "note": "Helios XYZ 0.02 ~ 20,000(웹 페이지). Titan 카메라 부분 0.005 ~ ~17,000, 내장 스폿미터 0.007 ~ 24,000(PDF)"
+    },
+    "dynamic_range_dB": {
+      "min": 60,
+      "max": 70
+    }
+  },
+  "models": [
+    {
+      "model": "Helios XYZ",
+      "variant": "25 MP XYZ",
+      "specs": {
+        "detector": "24.6 MP Sony detector",
+        "luminance_cd_m2": {
+          "min": 0.02,
+          "max": 20000
+        },
+        "luminance_accuracy_pct": 2,
+        "chromaticity_accuracy_xy": 0.002,
+        "dynamic_range_dB": 70,
+        "working_distance_mm": {
+          "min": 300,
+          "max": 3000
+        }
+      },
+      "note": "자동 초점(소프트웨어 명령)"
+    },
+    {
+      "model": "Titan",
+      "variant": "12 MP, built in colorimeter, 35 mm lens",
+      "specs": {
+        "detector": "Sony IMX304 RGB",
+        "detector_pixels": "4096 × 3000",
+        "resolution_pixels": 12288000,
+        "dynamic_range_dB": 60,
+        "working_distance_mm": {
+          "min": 400,
+          "max": 2000
+        },
+        "field_of_view_deg": "± 14°",
+        "adc_resolution_bit": 12,
+        "luminance_cd_m2": {
+          "min": 0.005,
+          "max": 17000,
+          "note": "카메라 부분, 적분 시간 1 ms ~ 10 s. 내장 스폿미터는 0.007 ~ 24,000 cd/m²(적분 0.5 ms ~ 1 s)"
+        },
+        "luminance_accuracy_pct": {
+          "value": 2,
+          "note": "내장 스폿미터(Hyperion) ±2 %, LCD 백색 약 150 cd/m²(x 0.300, y 0.325). 카메라 부분은 스폿미터 대비 ±1 %(OLED 백색 9 점, 전형값)"
+        },
+        "chromaticity_accuracy_xy": {
+          "value": 0.001,
+          "note": "내장 스폿미터 교정 후 ±0.001, LCD 백색 약 150 cd/m². 카메라 부분은 스폿미터 대비 ±0.0015(전형값)"
+        },
+        "min_exposure_time_s": 0.001,
+        "measurement_time_s": {
+          "value": 0.5,
+          "note": "백색 화면 한 장, 스폿미터 측정 포함"
+        },
+        "weight_kg": 5.5
+      },
+      "note": "PDF: 카메라 시야 14°(텍스트 추출에서 ± 기호가 빠졌을 수 있음), 35 mm f/2 렌즈, OD0 · OD1 필터, 플랫필드 교정 후 불균일 0.45 %. 스폿미터 시야 1.25°. 운전 온도 15 ~ 35 °C"
+    }
+  ],
+  "relations": [
+    {
+      "type": "performs",
+      "target": "photometry_colorimetry"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://www.admesy.com/products/helios-xyz/",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지(HTML)"
+    },
+    {
+      "url": "https://www.admesy.com/products/titan/",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지(HTML)"
+    },
+    {
+      "file": "admesy/titan-imaging-colorimeter-specification.pdf",
+      "pages": [
+        4,
+        5,
+        7
+      ],
+      "note": "제조사 사양서 PDF(Titan, Version 1.0.2 July 2023). Helios XYZ 는 다루지 않음"
+    }
+  ],
+  "confidence": "limited",
+  "notes": "PDF 로 확인: Titan(센서 IMX304 4,096 × 3,000, 동적 범위 60 dB, 작동 거리 400 ~ 2,000 mm, 시야 14°)과 PDF 에서 더한 휘도 범위 · 확도 · ADC · 무게 / 웹 값 그대로: Helios XYZ 전체(이 PDF 는 Titan 사양서뿐)."
+}

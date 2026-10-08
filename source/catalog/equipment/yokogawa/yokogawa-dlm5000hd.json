@@ -1,0 +1,72 @@
+{
+  "id": "yokogawa-dlm5000hd",
+  "kind": "equipment_series",
+  "name": "DLM5000HD Series High-Definition Oscilloscope",
+  "name_ko": "요코가와 DLM5000HD 고분해능 오실로스코프",
+  "manufacturer": "yokogawa",
+  "brand": "DLM",
+  "category": "oscilloscope",
+  "subcategory": "high_definition_oscilloscope",
+  "form_factor": "benchtop",
+  "description": "최대 500 MHz, 4·8채널 고분해능 오실로스코프 계열임. 12 bit ADC(고분해능 모드 최대 16 bit), 2.5 GS/s, 최대 1 GigaPoint, 표준 16 bit 로직(/L4·/L32 옵션 최대 32), 12.1 inch 터치 화면, 두 대 연결로 16채널 동기 측정.",
+  "test_items": [],
+  "limits": {
+    "bandwidth_Hz": {
+      "max": 500000000,
+      "note": "원문 Up to 500 MHz"
+    },
+    "channels": {
+      "values": [
+        4,
+        8
+      ]
+    },
+    "sample_rate_Sa_s": {
+      "max": 2500000000,
+      "note": "원문 2.5 GS/s"
+    },
+    "record_length_pts": {
+      "max": 1000000000,
+      "note": "원문 Up to 1 GigaPoint"
+    },
+    "adc_resolution_bit": {
+      "values": [
+        12
+      ],
+      "note": "고분해능 모드 최대 16 bit"
+    },
+    "logic_channel_count": {
+      "min": 16,
+      "max": 32,
+      "note": "표준 16 bit, /L4·/L32 옵션 최대 32"
+    },
+    "display_size_in": {
+      "values": [
+        12.1
+      ]
+    }
+  },
+  "models": [
+    {
+      "model": "DLM5034HD"
+    },
+    {
+      "model": "DLM5038HD"
+    },
+    {
+      "model": "DLM5054HD"
+    },
+    {
+      "model": "DLM5058HD"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://tmi.yokogawa.com/solutions/products/oscilloscopes/digital-and-mixed-signal-oscilloscopes/dlm5000hd-series-mixed-signal-oscilloscope/",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지. 원문 Up to 500 MHz bandwidth and 2.5 GS/s, 4 or 8 analog channels, up to 32 digital channels, Up to 1 GigaPoint, 12-bit (up to 16-bits), 16 bit logic standard(/L4·/L32), 12.1in. 기종명은 문서 제목 \"DLM5034HD, DLM5038HD, DLM5054HD, DLM5058HD High Definition Oscilloscope\""
+    }
+  ],
+  "confidence": "limited",
+  "notes": "기종별 대역폭·채널 수는 페이지에 표로 없어 기종 사양을 비움(이름 규칙으로 채우지 않음)."
+}

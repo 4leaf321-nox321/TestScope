@@ -1,0 +1,30 @@
+{
+  "id": "mitutoyo-linear-height-lh-600",
+  "kind": "equipment_series",
+  "name": "LINEAR HEIGHT LH-600 Linear Height Gage",
+  "name_ko": "미쓰토요 리니어 하이트 LH-600 하이트 게이지",
+  "manufacturer": "mitutoyo",
+  "category": "thickness_displacement_gauge",
+  "form_factor": "benchtop",
+  "description": "전동 측정 헤드와 회전 터치스크린을 갖춘 정밀 하이트 게이지 계열임. 높이·치수뿐 아니라 각도, 구멍 위치, 직각도·진직도, 2D 형상까지 재며, 지시 오차는 ±(1.1 + 0.6L/600) µm. 인코더 오염 자가 점검 기능, Digimatic · USB · RS-232C 출력을 갖춤.",
+  "test_items": [],
+  "models": [
+    {
+      "model": "LH-600F",
+      "specs": {
+        "accuracy": "±(1.1 + 0.6L/600) µm",
+        "interfaces": "Digimatic, USB, RS-232C"
+      },
+      "note": "제조사 소개 페이지가 '최신 리니어 하이트 게이지' 로 소개하는 기종"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://measure.mitutoyo.com/lh-600",
+      "retrieved": "2026-10-08",
+      "note": "제조사(미국 법인) 제품 소개 페이지. LH-600F 지시 오차와 기능"
+    }
+  ],
+  "confidence": "limited",
+  "notes": "측정 범위·분해능·측정력은 페이지에 없어 비움. 다른 변형(LH-600E 등)은 확인하지 못함."
+}

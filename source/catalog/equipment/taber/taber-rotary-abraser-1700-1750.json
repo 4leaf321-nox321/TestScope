@@ -1,0 +1,113 @@
+{
+  "id": "taber-rotary-abraser-1700-1750",
+  "kind": "equipment_series",
+  "name": "Taber Rotary Platform Abraser 1700 (single) / 1750 (dual)",
+  "name_ko": "테이버 회전 플랫폼 마모시험기 1700 · 1750",
+  "manufacturer": "taber",
+  "category": "abrasion_tester",
+  "form_factor": "benchtop",
+  "description": "회전하는 시편 위에 두 개의 마모 휠을 접선 방향으로 올려 문지르는 테이버 마모 시험기. 1700 은 시편대 1개, 1750 은 시편대 2개를 각자 터치스크린으로 따로 돌린다. 플랫폼 60 · 72 rpm, 휠 하중 250 g 에 보조 추로 총 500 g · 1000 g, 카운터웨이트 키트로 50 · 125 · 150 · 175 g 을 덜어 낸다. 시편은 약 100 mm 정사각 또는 원형, 두께 6.35 mm(부속으로 40 mm 까지), 마모 면적 약 30 cm², 진공 흡입 노즐(8 · 11 mm)로 마모 부스러기를 뺀다.",
+  "test_items": [
+    "abrasion"
+  ],
+  "measurands": [
+    "wear_index",
+    "mass_loss",
+    "cycles_to_failure"
+  ],
+  "materials": [
+    "plastics",
+    "coatings",
+    "textiles",
+    "leather",
+    "metals",
+    "rubber",
+    "laminates"
+  ],
+  "limits": {
+    "rotation_rpm": {
+      "values": [
+        60,
+        72
+      ]
+    },
+    "load_g": {
+      "values": [
+        250,
+        500,
+        1000
+      ],
+      "note": "휠 하중 250 g, 보조 추로 총 500 · 1000 g. 카운터웨이트로 50 · 125 · 150 · 175 g 감소"
+    },
+    "specimen_thickness_mm": {
+      "max": 40,
+      "note": "표준 6.35 mm, 선택 부속으로 40 mm"
+    },
+    "specimen_size_mm": {
+      "max": 100,
+      "note": "약 100 mm 정사각 또는 원형"
+    },
+    "stations": {
+      "values": [
+        1,
+        2
+      ]
+    }
+  },
+  "models": [
+    {
+      "model": "1700",
+      "variant": "single specimen turntable",
+      "specs": {
+        "stations": 1,
+        "rotation_rpm": [
+          60,
+          72
+        ],
+        "power": "115/230 V, 60/50 Hz"
+      }
+    },
+    {
+      "model": "1750",
+      "variant": "dual specimen turntables",
+      "specs": {
+        "stations": 2,
+        "rotation_rpm": [
+          60,
+          72
+        ],
+        "power": "115/230 V, 60/50 Hz"
+      },
+      "note": "시편대마다 독립 터치스크린 제어"
+    }
+  ],
+  "features": [
+    "LCD 터치스크린(언어 선택)",
+    "빠른 휠 장착 허브",
+    "독립 마모 암(정밀 균형)",
+    "진공 흡입(노즐 8 · 11 mm)"
+  ],
+  "options": [
+    "카운터웨이트 키트(50 · 125 · 150 · 175 g)",
+    "두꺼운 시편용 부속(40 mm 까지)"
+  ],
+  "relations": [
+    {
+      "type": "performs",
+      "target": "abrasion"
+    },
+    {
+      "type": "same_family_as",
+      "target": "taber-rotary-abraser-5135-5155"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://www.taberindustries.com/taber-rotary-abraser",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지(Model 1700 · 1750)"
+    }
+  ],
+  "notes": "현행 페이지는 1700 · 1750 만 싣고 5135 · 5155 와의 관계(후속 여부)를 말하지 않는다. 시험 규격 목록은 이 페이지에 없다.",
+  "confidence": "limited"
+}

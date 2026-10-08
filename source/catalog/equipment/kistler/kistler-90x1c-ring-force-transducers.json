@@ -1,0 +1,54 @@
+{
+  "id": "kistler-90x1c-ring-force-transducers",
+  "kind": "sensor",
+  "name": "Kistler 90x1C Piezoelectric Ring Force Transducers (9001C–9071C)",
+  "name_ko": "키스틀러 90x1C 압전 링형 힘 센서(로드 와셔)",
+  "manufacturer": "kistler",
+  "category": "force_pressure_sensor",
+  "subcategory": "piezoelectric_load_washer",
+  "description": "z 방향 힘을 재는 압전(PE) 링형 힘 센서(로드 와셔) 계열. 강성이 매우 높고 문턱값이 매우 낮으며 노화가 없어 수명 제한이 없다. Fz 최대 1200 kN(270 klbf), 직선성(히스테리시스 포함) ≤±0.5 %, IP68 같은 보호 등급 선택지가 있다.",
+  "test_items": [],
+  "measurands": [
+    "force",
+    "dynamic_force"
+  ],
+  "limits": {
+    "force_kN": {
+      "max": 1200,
+      "note": "Fz max up to 1200 kN / 270 klbf(계열 최대)"
+    }
+  },
+  "models": [
+    {
+      "model": "9001C",
+      "uncertain": true,
+      "note": "제품군 이미지 파일명 「9001C-9071C_-_Modellreihe」 의 시작 기종"
+    },
+    {
+      "model": "9021C",
+      "note": "같은 제조사 구면 와셔 9523 페이지에 「types 9021C and 9102C」 로 확인"
+    },
+    {
+      "model": "9071C",
+      "uncertain": true,
+      "note": "제품군 이미지 파일명 범위의 끝 기종"
+    }
+  ],
+  "accuracy": {
+    "linearity": "직선성(히스테리시스 포함) ≤±0.5 %"
+  },
+  "sources": [
+    {
+      "url": "https://www.kistler.com/INT/en/cp/piezoelectric-force-sensors-90x1c-90x1c/P0000576",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품군 페이지(HTML, kistler.com). 변형(variant) 표는 스크립트로 채워져 읽지 못함. 이미지 파일명 9001C-9071C"
+    },
+    {
+      "url": "https://www.kistler.com/INT/en/p/spherical-washer-for-piezoelectric-force-sensors-of-types-9021c-and-9102c-9523/000000000018007872",
+      "retrieved": "2026-10-08",
+      "note": "제조사 부속 페이지(구면 와셔 9523). 9021C·9102C 기종명 확인"
+    }
+  ],
+  "confidence": "limited",
+  "notes": "기종별 측정 범위·감도는 페이지에서 읽지 못해 비움. 기종은 페이지에 이름이 보인 것만 넣음(이미지 파일명 범위 9001C–9071C 의 양 끝과 9021C) — 그 사이 기종 목록은 확인 필요. 의뢰서의 9101A 등 「A」 세대 로드 와셔는 현행 페이지에 없음(현행은 C 세대) — 대장에 9101A 가 있으면 이 계열 또는 910xC 의 이전 세대로 볼 것."
+}

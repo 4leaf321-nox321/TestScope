@@ -1,0 +1,92 @@
+{
+  "id": "hioki-mr6000",
+  "kind": "equipment_series",
+  "name": "Hioki Memory HiCorder MR6000 / MR6000-01",
+  "name_ko": "히오키 메모리 하이코더 MR6000",
+  "manufacturer": "hioki",
+  "brand": "Memory HiCorder",
+  "category": "dmm_daq",
+  "form_factor": "portable",
+  "description": "입력 유닛 최대 8개를 꽂는 고속 파형 기록계. 아날로그 최대 32채널(U8975), 로직 최대 128채널(8973), U8976 으로 전 채널 동시 200 MS/s·DC~30 MHz·10 mV~400 V f.s.(12 레인지). 저장 메모리 1 G-words, 12.1인치 XGA 터치 화면. MR6000-01 은 실시간 파형 연산·디지털 필터 연산을 더한다.",
+  "test_items": [],
+  "limits": {
+    "channels": {
+      "max": 32,
+      "note": "아날로그 최대 32ch(U8975 사용 시). 로직 최대 128ch(8973)",
+      "requires_accessory": true
+    },
+    "data_rate_Hz": {
+      "max": 200000000,
+      "note": "200 MS/s 전 채널 동시(U8976 사용 시)",
+      "requires_accessory": true
+    },
+    "bandwidth_Hz": {
+      "min": 0,
+      "max": 30000000,
+      "note": "DC to 30 MHz(U8976)",
+      "requires_accessory": true
+    },
+    "voltage_V": {
+      "min": 0.01,
+      "max": 400,
+      "note": "10 mV to 400 V f.s., 12 ranges(U8976). 최대 허용 입력 400 V DC",
+      "requires_accessory": true
+    }
+  },
+  "models": [
+    {
+      "model": "MR6000",
+      "specs": {
+        "channels": {
+          "max": 32,
+          "requires_accessory": true
+        },
+        "data_rate_Hz": 200000000,
+        "interfaces": "LAN, USB, SD, SATA, 모니터 출력",
+        "weight_kg": 6.5,
+        "footprint_mm": {
+          "W": 353,
+          "H": 235,
+          "D": 154.8
+        }
+      },
+      "note": "A/D 분해능 1/1600 of range(U8976), 1/32000 of range(U8975). 무게는 본체만"
+    },
+    {
+      "model": "MR6000-01",
+      "variant": "실시간 파형 연산·디지털 필터 연산 포함",
+      "specs": {
+        "channels": {
+          "max": 32,
+          "requires_accessory": true
+        },
+        "data_rate_Hz": 200000000
+      }
+    }
+  ],
+  "features": [
+    "입력 유닛 최대 8개",
+    "저장 메모리 1 G-words",
+    "12.1인치 XGA-TFT 컬러 LCD(1024×768)",
+    "SD ×1, USB 메모리, SSD/HDD 저장"
+  ],
+  "relations": [
+    {
+      "type": "same_family_as",
+      "target": "hioki-mr8875"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://www.hioki.com/us-en/products/data-acquisition/daq-testing/id_6671",
+      "retrieved": "2026-10-08",
+      "note": "제조사 MR6000 페이지. 변형, 채널, 샘플링·분해능, 범위·대역, 메모리, 화면, 인터페이스, 치수·무게"
+    },
+    {
+      "url": "https://www.hioki.com/us-en/products/data-acquisition/daq-testing",
+      "retrieved": "2026-10-08",
+      "note": "제조사 DAQ 목록 페이지. MR6000 32 Analog ch to 128 Logic ch, 200 MS/s, 1G-Words"
+    }
+  ],
+  "confidence": "limited"
+}

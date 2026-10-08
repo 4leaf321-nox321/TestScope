@@ -1,0 +1,187 @@
+{
+  "id": "keysight-streamline-usb-vna",
+  "kind": "equipment_series",
+  "name": "Keysight Streamline Series USB Vector Network Analyzers (P50xxB)",
+  "name_ko": "키사이트 Streamline USB 벡터 네트워크 분석기",
+  "manufacturer": "keysight",
+  "brand": "Streamline",
+  "category": "network_lcr_analyzer",
+  "form_factor": "portable",
+  "description": "XN4 등급 소형 USB 벡터 네트워크 분석기. 본체에 화면이 없고 Thunderbolt 3 로 PC 에 연결해 고성능 VNA 와 같은 GUI·SCPI 로 운용한다. 2포트 P500xB 는 9 kHz~4.5/6.5/9/14/20 GHz, 100 kHz~32/53 GHz 기종이 있고, P502xB 는 4포트(6포트 선택)다. 최대 출력 10 dBm, ECal 호환, 두 대를 이어 시험 포트를 늘린다.",
+  "test_items": [],
+  "limits": {
+    "frequency_Hz": {
+      "min": 9000,
+      "max": 53000000000,
+      "note": "2포트 9 kHz to 4.5/6.5/9/14/20 GHz, 100 kHz to 32/53 GHz. 4포트 P5024B 9 kHz to 20 GHz, P5028B 100 kHz to 53 GHz"
+    },
+    "rf_port_count": {
+      "values": [
+        2,
+        4,
+        6
+      ]
+    },
+    "rf_output_level_dBm": {
+      "max": 10,
+      "note": "계열 페이지 원문 Maximum output power: 8 dBm to 10 dBm"
+    }
+  },
+  "models": [
+    {
+      "model": "P5000B",
+      "specs": {
+        "frequency_Hz": {
+          "min": 9000,
+          "max": 4500000000
+        },
+        "rf_port_count": 2,
+        "rf_output_level_dBm": 10
+      }
+    },
+    {
+      "model": "P5001B",
+      "specs": {
+        "frequency_Hz": {
+          "min": 9000,
+          "max": 6500000000
+        },
+        "rf_port_count": 2
+      },
+      "note": "페이지 제목 값"
+    },
+    {
+      "model": "P5002B",
+      "specs": {
+        "frequency_Hz": {
+          "min": 9000,
+          "max": 9000000000
+        },
+        "rf_port_count": 2
+      },
+      "note": "페이지 제목 값"
+    },
+    {
+      "model": "P5003B",
+      "specs": {
+        "frequency_Hz": {
+          "min": 9000,
+          "max": 14000000000
+        },
+        "rf_port_count": 2
+      },
+      "note": "페이지 제목 값"
+    },
+    {
+      "model": "P5004B",
+      "specs": {
+        "frequency_Hz": {
+          "min": 9000,
+          "max": 20000000000
+        },
+        "rf_port_count": 2
+      }
+    },
+    {
+      "model": "P5006B",
+      "specs": {
+        "frequency_Hz": {
+          "min": 100000,
+          "max": 32000000000
+        },
+        "rf_port_count": 2
+      },
+      "note": "페이지 제목 값"
+    },
+    {
+      "model": "P5008B",
+      "specs": {
+        "frequency_Hz": {
+          "min": 100000,
+          "max": 53000000000
+        },
+        "rf_port_count": 2
+      },
+      "note": "페이지 제목 값"
+    },
+    {
+      "model": "P5024B",
+      "specs": {
+        "frequency_Hz": {
+          "min": 9000,
+          "max": 20000000000
+        },
+        "rf_port_count": {
+          "values": [
+            4,
+            6
+          ]
+        },
+        "rf_output_level_dBm": 10
+      },
+      "note": "4포트 기종에 두 번째 신호원 옵션"
+    },
+    {
+      "model": "P5028B",
+      "specs": {
+        "frequency_Hz": {
+          "min": 100000,
+          "max": 53000000000
+        },
+        "rf_port_count": 4
+      }
+    }
+  ],
+  "features": [
+    "Thunderbolt 3 인터페이스",
+    "한 손으로 드는 소형 본체",
+    "Keysight ECal 호환",
+    "두 대 연결로 시험 포트 확장",
+    "고성능 VNA 와 같은 GUI·SCPI",
+    "VNA 활성화 옵션으로 소프트웨어 업그레이드"
+  ],
+  "sources": [
+    {
+      "url": "https://www.keysight.com/us/en/products/network-analyzers/streamline-series-usb-vector-network-analyzers/p50xxb-streamline-series-vector-network-analyzers.html",
+      "retrieved": "2026-10-08",
+      "note": "제조사 계열 페이지. P5004B 2포트 9 kHz to 20 GHz, P5024B 4·6포트 9 kHz to 20 GHz, P5028B 4포트 100 kHz to 53 GHz, Maximum output power 8 dBm to 10 dBm, Thunderbolt 3"
+    },
+    {
+      "url": "https://www.keysight.com/us/en/product/P5000B/streamline-vector-network-analyzer-9-khz-to-4-5-ghz-2-port.html",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지. 9 kHz to 4.5 GHz, 2포트, 최대 출력 10 dBm, 신호원 1, Thunderbolt 3"
+    },
+    {
+      "url": "https://www.keysight.com/us/en/product/P5024B/streamline-vector-network-analyzer-9-khz-to-20-ghz-4-port.html",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지. 9 kHz to 20 GHz, 4·6포트, 최대 출력 10 dBm, 'P5020B through P5028B' 계열 언급"
+    },
+    {
+      "url": "https://www.keysight.com/us/en/product/P5001B/streamline-vector-network-analyzer-9-khz-to-6-5-ghz-2-port.html",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지 제목(검색 결과로 확인): P5001B ... 9 kHz to 6.5 GHz, 2-port. 본문은 열지 않음"
+    },
+    {
+      "url": "https://www.keysight.com/us/en/product/P5002B/streamline-vector-network-analyzer-9-khz-to-9-ghz-2-port.html",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지 제목(검색 결과로 확인): 9 kHz to 9 GHz, 2-port. 본문은 열지 않음"
+    },
+    {
+      "url": "https://www.keysight.com/us/en/product/P5003B/streamline-vector-network-analyzer-9-khz-to-14-ghz-2-port.html",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지 주소·제목(검색 결과로 확인): 9 kHz to 14 GHz, 2-port. 본문은 열지 않음"
+    },
+    {
+      "url": "https://www.keysight.com/us/en/product/P5006B/streamline-vector-network-analyzer-100-khz-to-32-ghz-2-port.html",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지 주소·제목(검색 결과로 확인): 100 kHz to 32 GHz, 2-port. 본문은 열지 않음"
+    },
+    {
+      "url": "https://www.keysight.com/us/en/product/P5008B/streamline-vector-network-analyzer-100-khz-to-53-ghz-2-port.html",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지 주소·제목(검색 결과로 확인): 100 kHz to 53 GHz, 2-port. 본문은 열지 않음"
+    }
+  ],
+  "confidence": "limited",
+  "notes": "P5005B·P5007B 와 P5020B~P5023B·P5025B~P5027B 는 이번에 페이지로 확인하지 못해 넣지 않음(P5024B 페이지가 'P5020B through P5028B' 계열을 언급)."
+}

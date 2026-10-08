@@ -1,0 +1,97 @@
+{
+  "id": "helmut-fischer-dmp10-40-series",
+  "kind": "equipment_series",
+  "name": "Helmut Fischer DMP10-40 Series (DUALSCOPE DMP20/40, DELTASCOPE DMP10/30, ISOSCOPE DMP10/30)",
+  "name_ko": "헬무트 피셔 DMP10~40 휴대형 도막 두께계",
+  "manufacturer": "helmut-fischer",
+  "category": "coating_surface_test",
+  "form_factor": "handheld",
+  "description": "알루미늄 일체 하우징(IP64)의 휴대형 도막 두께계 여섯 기종. DUALSCOPE 는 진폭 감응 와전류법과 자기 유도법을 함께(DMP20 · DMP40), DELTASCOPE 는 자기 유도법만(DMP10 · DMP30), ISOSCOPE 는 진폭 감응 와전류법만(DMP10 · DMP30) 쓴다. 보급형(DMP10 · 20)은 측정값 10,000 개 · USB-C · 빛 · 소리 경보, 상위형(DMP30 · 40)은 2,500 배치 250,000 개 · USB-C 와 Bluetooth · 빛 · 소리 · 진동 경보를 갖는다. 교체식 리튬이온 전지로 24시간 이상 쓴다.",
+  "test_items": [
+    "coating_thickness"
+  ],
+  "measurands": [
+    "coating_thickness"
+  ],
+  "standards": {
+    "compliance": [],
+    "test_methods": [
+      "DIN EN ISO 2178",
+      "DIN EN ISO 2360",
+      "ASTM D7091"
+    ]
+  },
+  "models": [
+    {
+      "model": "DUALSCOPE DMP20",
+      "specs": {
+        "principle": "진폭 감응 와전류 + 자기 유도",
+        "interfaces": "USB-C"
+      },
+      "note": "저장: 10,000 개"
+    },
+    {
+      "model": "DUALSCOPE DMP40",
+      "specs": {
+        "principle": "진폭 감응 와전류 + 자기 유도",
+        "interfaces": "USB-C, Bluetooth"
+      },
+      "note": "저장: 250,000 개, 2,500 배치"
+    },
+    {
+      "model": "DELTASCOPE DMP10",
+      "specs": {
+        "principle": "자기 유도",
+        "interfaces": "USB-C"
+      },
+      "note": "저장: 10,000 개"
+    },
+    {
+      "model": "DELTASCOPE DMP30",
+      "specs": {
+        "principle": "자기 유도",
+        "interfaces": "USB-C, Bluetooth"
+      },
+      "note": "저장: 250,000 개, 2,500 배치"
+    },
+    {
+      "model": "ISOSCOPE DMP10",
+      "specs": {
+        "principle": "진폭 감응 와전류",
+        "interfaces": "USB-C"
+      },
+      "note": "저장: 10,000 개"
+    },
+    {
+      "model": "ISOSCOPE DMP30",
+      "specs": {
+        "principle": "진폭 감응 와전류",
+        "interfaces": "USB-C, Bluetooth"
+      },
+      "note": "저장: 250,000 개, 2,500 배치"
+    }
+  ],
+  "relations": [
+    {
+      "type": "performs",
+      "target": "coating_thickness"
+    },
+    {
+      "type": "same_family_as",
+      "target": "helmut-fischer-mp0-series"
+    },
+    {
+      "type": "same_family_as",
+      "target": "helmut-fischer-dualscope-fmp100-h-fmp150"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://www.helmut-fischer.com/products/tactile-measuring-devices/dmp10-40-series",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지. 측정 범위 수치는 페이지에 없음"
+    }
+  ],
+  "notes": "측정 범위는 프로브에 따르고 이 페이지에는 수치가 없다. 페이지가 적은 'ASTM 4471' 은 규격명이 불분명해 목록에 넣지 않았다.",
+  "confidence": "limited"
+}

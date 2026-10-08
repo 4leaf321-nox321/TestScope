@@ -1,0 +1,166 @@
+{
+  "id": "hikmicro-b-series",
+  "kind": "equipment_series",
+  "name": "HIKMICRO B Series Handheld Thermal Camera",
+  "name_ko": "하이크마이크로 B 시리즈 열화상 카메라",
+  "manufacturer": "hikmicro",
+  "brand": "B",
+  "category": "thermal_imager",
+  "form_factor": "handheld",
+  "description": "보급형 휴대 열화상 카메라 계열. 다섯 기종 모두 256 × 192(49,152 화소), NETD <40 mK(25 °C, F#1.0), 측정 -20 ~ 550 °C, 확도 ±2 °C · ±2 % 중 큰 값, 7.5 ~ 14 µm, 25 Hz, 시야 37.2° × 50.0°.",
+  "test_items": [
+    "thermography"
+  ],
+  "measurands": [
+    "surface_temperature",
+    "temperature_distribution",
+    "hotspot_location"
+  ],
+  "limits": {
+    "temperature_degC": {
+      "min": -20,
+      "max": 550
+    },
+    "ir_resolution_pixels": {
+      "max": 49152,
+      "note": "256 × 192"
+    },
+    "thermal_sensitivity_degC": {
+      "max": 0.04,
+      "note": "<40 mK @ 25 °C, F#1.0"
+    },
+    "frame_rate_fps": {
+      "values": [
+        25
+      ],
+      "note": "원문 25 Hz"
+    }
+  },
+  "models": [
+    {
+      "model": "B01",
+      "specs": {
+        "detector_pixels": "256 × 192",
+        "ir_resolution_pixels": 49152,
+        "thermal_sensitivity_degC": 0.04,
+        "temperature_degC": {
+          "min": -20,
+          "max": 550
+        },
+        "accuracy": "Max (±2 °C, ±2 %)",
+        "wavelength_nm": {
+          "min": 7500,
+          "max": 14000
+        },
+        "frame_rate_fps": 25,
+        "field_of_view_deg": "37.2° × 50.0°"
+      }
+    },
+    {
+      "model": "B01S",
+      "specs": {
+        "detector_pixels": "256 × 192",
+        "ir_resolution_pixels": 49152,
+        "thermal_sensitivity_degC": 0.04,
+        "temperature_degC": {
+          "min": -20,
+          "max": 550
+        },
+        "accuracy": "Max (±2 °C, ±2 %)",
+        "wavelength_nm": {
+          "min": 7500,
+          "max": 14000
+        },
+        "frame_rate_fps": 25,
+        "field_of_view_deg": "37.2° × 50.0°"
+      }
+    },
+    {
+      "model": "B10",
+      "specs": {
+        "detector_pixels": "256 × 192",
+        "ir_resolution_pixels": 49152,
+        "thermal_sensitivity_degC": 0.04,
+        "temperature_degC": {
+          "min": -20,
+          "max": 550
+        },
+        "accuracy": "Max (±2 °C, ±2 %)",
+        "wavelength_nm": {
+          "min": 7500,
+          "max": 14000
+        },
+        "frame_rate_fps": 25,
+        "field_of_view_deg": "37.2° × 50.0°"
+      }
+    },
+    {
+      "model": "B10S",
+      "specs": {
+        "detector_pixels": "256 × 192",
+        "ir_resolution_pixels": 49152,
+        "thermal_sensitivity_degC": 0.04,
+        "temperature_degC": {
+          "min": -20,
+          "max": 550
+        },
+        "accuracy": "Max (±2 °C, ±2 %)",
+        "wavelength_nm": {
+          "min": 7500,
+          "max": 14000
+        },
+        "frame_rate_fps": 25,
+        "field_of_view_deg": "37.2° × 50.0°"
+      }
+    },
+    {
+      "model": "B20",
+      "specs": {
+        "detector_pixels": "256 × 192",
+        "ir_resolution_pixels": 49152,
+        "thermal_sensitivity_degC": 0.04,
+        "temperature_degC": {
+          "min": -20,
+          "max": 550
+        },
+        "accuracy": "Max (±2 °C, ±2 %)",
+        "wavelength_nm": {
+          "min": 7500,
+          "max": 14000
+        },
+        "frame_rate_fps": 25,
+        "field_of_view_deg": "37.2° × 50.0°",
+        "pixel_pitch_um": 12,
+        "weight_kg": {
+          "value": 0.38,
+          "note": "Approx. 380 g"
+        }
+      },
+      "note": "PDF: 확도 조건은 주위 15 ~ 35 °C, 대상 0 °C 초과. 초점 거리 3.6 mm, F1.0, IFOV 3.3 mrad, 최소 초점 거리 0.3 m, 가시 카메라 2 MP, 3.2\" LCD, 내장 16 GB, IP54, 운전 온도 -10 ~ 50 °C"
+    }
+  ],
+  "relations": [
+    {
+      "type": "performs",
+      "target": "thermography"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://www.hikmicrotech.com/en_us/industrial-products/b-series-handheld-thermal-imager/",
+      "retrieved": "2026-10-08",
+      "note": "제조사 계열 페이지(HTML). 다섯 기종 사양"
+    },
+    {
+      "file": "hikmicro/05289f1f628e4d8dad7ffa98f54117b2.pdf",
+      "pages": [
+        1,
+        2,
+        3
+      ],
+      "note": "제조사 기종 데이터시트 PDF(B20 한 기종)"
+    }
+  ],
+  "confidence": "limited",
+  "notes": "기종 사이 차이(화면 · 저장 · 무선 등)는 읽은 사양 항목에 드러나지 않았다. PDF 로 확인: B20 의 화소 · NETD · 측정 범위 · 확도 · 7.5 ~ 14 µm · 25 Hz · 시야(화소 간격 12 µm 과 무게 380 g 을 더함) / 웹 값 그대로: B01 · B01S · B10 · B10S(PDF 는 B20 데이터시트뿐, 값은 B20 과 같게 적혀 있음)."
+}

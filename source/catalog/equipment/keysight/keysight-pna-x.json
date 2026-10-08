@@ -1,0 +1,210 @@
+{
+  "id": "keysight-pna-x",
+  "kind": "equipment_series",
+  "name": "Keysight PNA-X Microwave Network Analyzers (N5241B / N5242B / N5244B / N5245B / N5247B / N5249B)",
+  "name_ko": "키사이트 PNA-X 마이크로파 네트워크 분석기",
+  "manufacturer": "keysight",
+  "brand": "PNA-X",
+  "category": "network_lcr_analyzer",
+  "form_factor": "benchtop",
+  "description": "XN8 등급(Pro) 능동 소자 특성 평가용 벡터 네트워크 분석기. 내부 신호원(최대 3개), S-파라미터·잡음 수신기(저잡음 수신기 1개), 펄스 변조기·발생기, 신호 결합기, 스위치와 RF 접근 포트를 한 장비에 넣어 증폭기·믹서·주파수 변환기를 측정한다. 상한은 기종별 8.5/13.5/26.5/43.5/50/67 GHz, 2·4 포트.",
+  "test_items": [],
+  "limits": {
+    "frequency_Hz": {
+      "min": 900,
+      "max": 67000000000,
+      "note": "사양서 표(9018-04469 p.32 Table 30, 9018-04523 p.40 Table 32): 기본 하한 10 MHz, 4포트 LFE 옵션 425 일 때 900 Hz(N5242B · N5245B). 표지·웹은 기종 모두 900 Hz 로 적음. 상한 8.5/13.5/26.5/43.5/50/67 GHz"
+    },
+    "rf_port_count": {
+      "values": [
+        2,
+        4
+      ]
+    }
+  },
+  "models": [
+    {
+      "model": "N5249B",
+      "specs": {
+        "frequency_Hz": {
+          "min": 10000000,
+          "max": 8500000000,
+          "note": "원문 N5249B Frequency Range 10 MHz to 8.5 GHz(9018-04469 p.32 Table 30). 표지 · 제품명은 900 Hz"
+        },
+        "rf_port_count": {
+          "values": [
+            2,
+            4
+          ]
+        },
+        "rf_output_level_dBm": {
+          "max": 13,
+          "note": "원문 Maximum Leveled Power 사양 최대 13 dBm(옵션 201/401, Hi Power Mode), typical 최대 20~21 dBm. 대역·포트·모드별로 다름(9018-04469 p.32 Table 31)"
+        }
+      },
+      "note": "9018-04469 사양서로 확인"
+    },
+    {
+      "model": "N5241B",
+      "specs": {
+        "frequency_Hz": {
+          "min": 10000000,
+          "max": 13500000000,
+          "note": "원문 N5241B Frequency Range 10 MHz to 13.5 GHz(9018-04469 p.32 Table 30). 2포트 LFE 옵션 205 가 있으나(p.9) 표에 그 하한이 없음. 표지는 900 Hz"
+        },
+        "rf_port_count": {
+          "values": [
+            2,
+            4
+          ]
+        },
+        "rf_output_level_dBm": {
+          "max": 13,
+          "note": "원문 Maximum Leveled Power 사양 최대 13 dBm(옵션 201/401, Hi Power Mode), typical 최대 20~21 dBm. 대역·포트·모드별로 다름(9018-04469 p.32 Table 31)"
+        }
+      },
+      "note": "9018-04469 사양서로 확인"
+    },
+    {
+      "model": "N5242B",
+      "specs": {
+        "frequency_Hz": {
+          "min": 900,
+          "max": 26500000000,
+          "note": "원문 N5242B Frequency Range 10 MHz to 26.5 GHz, (Option 425) 900 Hz to 26.5 GHz(9018-04469 p.32 Table 30)"
+        },
+        "rf_port_count": {
+          "values": [
+            2,
+            4
+          ]
+        },
+        "rf_output_level_dBm": {
+          "max": 13,
+          "note": "원문 Maximum Leveled Power 사양 최대 13 dBm(옵션 201/401, Hi Power Mode), typical 최대 20~21 dBm. 대역·포트·모드별로 다름(9018-04469 p.32 Table 31)"
+        }
+      },
+      "note": "9018-04469 사양서로 확인. 900 Hz 하한은 4포트 LFE 옵션 425 일 때"
+    },
+    {
+      "model": "N5244B",
+      "specs": {
+        "frequency_Hz": {
+          "min": 10000000,
+          "max": 43500000000,
+          "note": "원문 N5244B Frequency Range 10 MHz to 43.5 GHz(9018-04523 p.40 Table 32). 900 Hz 로 내리는 옵션 425 는 'N5245B only'(p.9). 웹 제품 페이지 · 표지는 900 Hz"
+        },
+        "rf_port_count": {
+          "values": [
+            2,
+            4
+          ]
+        },
+        "dynamic_range_dB": {
+          "value": 124,
+          "note": "웹 페이지 값 124 dB. 사양서 Table 1(옵션 201/401) 시스템 동적 범위 사양은 대역별 112~133 dB, typical 124~141 dB(p.13)"
+        },
+        "rf_output_level_dBm": {
+          "max": 13,
+          "note": "원문 Maximum Leveled Power 사양 최대 13 dBm(옵션 201/401, Hi Power Mode), typical 최대 20~21 dBm. 대역·포트·모드별로 다름(9018-04523 p.41 Table 33)"
+        }
+      },
+      "note": "9018-04523 사양서로 확인. 하한을 웹 900 Hz 에서 PDF 사양표 10 MHz 로 고침"
+    },
+    {
+      "model": "N5245B",
+      "specs": {
+        "frequency_Hz": {
+          "min": 900,
+          "max": 50000000000,
+          "note": "원문 N5245B Frequency Range 10 MHz to 50.0 GHz, (Option 425, N5245B only) 900 Hz to 50.0 GHz(9018-04523 p.9 · p.40 Table 32). 웹 목록 페이지는 10 MHz"
+        },
+        "rf_port_count": {
+          "values": [
+            2,
+            4
+          ]
+        },
+        "rf_output_level_dBm": {
+          "max": 13,
+          "note": "원문 Maximum Leveled Power 사양 최대 13 dBm(옵션 201/401, Hi Power Mode), typical 최대 20~21 dBm. 대역·포트·모드별로 다름(9018-04523 p.41 Table 33)"
+        }
+      },
+      "note": "9018-04523 사양서로 확인. 900 Hz 하한은 옵션 425(4포트 구성형 테스트 세트 + LFE)일 때"
+    },
+    {
+      "model": "N5247B",
+      "specs": {
+        "frequency_Hz": {
+          "min": 10000000,
+          "max": 67000000000
+        },
+        "rf_port_count": {
+          "values": [
+            2,
+            4
+          ]
+        }
+      },
+      "note": "목록 페이지 값"
+    }
+  ],
+  "features": [
+    "내부 신호원 최대 3개",
+    "S-파라미터·잡음 수신기(저잡음 수신기 1개)",
+    "펄스 변조기·발생기, 신호 결합기, 스위치·RF 접근 포트 내장"
+  ],
+  "relations": [
+    {
+      "type": "same_family_as",
+      "target": "keysight-pna"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://www.keysight.com/us/en/product/N5249B/pna-x-microwave-network-analyzer-900-hz-10-mhz-8-5-ghz.html",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지. 10 MHz to 8.5 GHz(제품명에는 900 Hz Minimum frequency), 2·4 포트, 신호원 최대 3, 저잡음 수신기 1"
+    },
+    {
+      "url": "https://www.keysight.com/us/en/product/N5241B/pna-x-microwave-network-analyzer-900-hz-10-mhz-13-5-ghz.html",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지. 10 MHz to 13.5 GHz, 2·4 포트, 신호원 최대 3, 저잡음 수신기 1"
+    },
+    {
+      "url": "https://www.keysight.com/us/en/product/N5242B/pna-x-microwave-network-analyzer-900-hz-10-mhz-26-5-ghz.html",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지. 900 Hz to 26.5 GHz, 2·4 포트, 신호원 최대 3. 관련 기종 N5241B·N5244B·N5245B·N5247B·N5249B 언급"
+    },
+    {
+      "url": "https://www.keysight.com/us/en/product/N5244B/pna-x-microwave-network-analyzer-900-hz-10-mhz-43-5-ghz.html",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지. 900 Hz to 43.5 GHz, 2·4 포트, 신호원 최대 3, 저잡음 수신기 1, Dynamic Range 124 dB"
+    },
+    {
+      "url": "https://www.keysight.com/us/en/products/network-analyzers/pna-network-analyzers/pna-x-network-analyzers.html",
+      "retrieved": "2026-10-08",
+      "note": "제조사 PNA-X 목록 페이지. N5245B 10 MHz to 50 GHz, N5247B 10 MHz to 67 GHz, 2·4 포트, 신호원 최대 3"
+    },
+    {
+      "file": "keysight/9018-04469.pdf",
+      "pages": [
+        1,
+        9,
+        32
+      ]
+    },
+    {
+      "file": "keysight/9018-04523.pdf",
+      "pages": [
+        1,
+        9,
+        13,
+        40,
+        41
+      ]
+    }
+  ],
+  "confidence": "catalog",
+  "notes": "PDF(PNA-X 기술 사양서 9018-04469: N5249B · N5241B · N5242B, 9018-04523: N5244B · N5245B)로 확인: 기종별 주파수 범위, 2·4 포트 옵션, 최대 출력. PDF 로 바꾼 값: N5244B 하한 10 MHz(웹 900 Hz — 옵션 425 는 N5245B 전용), N5245B 하한 900 Hz(옵션 425, 웹 10 MHz). 웹 값 그대로: N5247B(이 PDF 들에 없음), N5244B 동적 범위 124 dB. N5244B 페이지의 출력 전력 문구(+13 dBm at 1 GHz to +11 dBm at 67 GHz)는 기종 상한(43.5 GHz)과 맞지 않아 계열 공통 문구로 보고 적지 않음. NA5205A(PNA-X Pro 계열, 10 MHz to 50 GHz)는 목록 페이지에 함께 나오나 이번 객체에서 뺌."
+}

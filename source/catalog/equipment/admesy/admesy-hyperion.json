@@ -1,0 +1,78 @@
+{
+  "id": "admesy-hyperion",
+  "kind": "equipment_series",
+  "name": "Admesy Hyperion Colorimeter",
+  "name_ko": "애드메시 Hyperion 컬러리미터(단종)",
+  "manufacturer": "admesy",
+  "brand": "Hyperion",
+  "category": "display_color_analyzer",
+  "form_factor": "probe",
+  "description": "디스플레이 측정용 고속 컬러리미터 계열로, 제조사는 Prometheus 계열로 대체되었다고 적는다. 10 mm 판은 0.003 ~ 12,000 cd/m², 20 mm 판은 0.0005 ~ 5,000 cd/m² 를 재고, 초당 2,000 샘플로 플리커를 잰다. 기계식 셔터와 자동 레인지, 광섬유 연결을 갖춘다.",
+  "test_items": [
+    "photometry_colorimetry"
+  ],
+  "measurands": [
+    "luminance",
+    "chromaticity",
+    "flicker"
+  ],
+  "limits": {
+    "luminance_cd_m2": {
+      "min": 0.0005,
+      "max": 12000
+    }
+  },
+  "models": [
+    {
+      "model": "Hyperion 10 mm",
+      "specs": {
+        "luminance_cd_m2": {
+          "min": 0.003,
+          "max": 12000
+        }
+      },
+      "note": "페이지 이름 'Colorimeter 10 mm (Hyperion Series)'"
+    },
+    {
+      "model": "Hyperion 20 mm",
+      "specs": {
+        "luminance_cd_m2": {
+          "min": 0.0005,
+          "max": 5000
+        }
+      },
+      "note": "페이지 이름 'Colorimeter 20 mm (Hyperion Series)'"
+    }
+  ],
+  "features": [
+    "플리커 측정 2,000 samples/s",
+    "기계식 셔터",
+    "자동 레인지",
+    "광섬유 연결"
+  ],
+  "relations": [
+    {
+      "type": "performs",
+      "target": "photometry_colorimetry"
+    },
+    {
+      "type": "same_family_as",
+      "target": "admesy-prometheus-colorimeters",
+      "note": "후속 Prometheus"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://www.admesy.com/products/hyperion-10/",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지(HTML). 'Hyperion has been replaced with the new and improved Prometheus Series'"
+    },
+    {
+      "url": "https://www.admesy.com/products/hyperion-20/",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지(HTML)"
+    }
+  ],
+  "confidence": "limited",
+  "notes": "측정 스폿 · 수광각 · 확도는 제품 페이지에 없음(사양서 대기)."
+}

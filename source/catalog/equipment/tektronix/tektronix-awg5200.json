@@ -1,0 +1,172 @@
+{
+  "id": "tektronix-awg5200",
+  "kind": "equipment_series",
+  "name": "Tektronix AWG5200 Series Arbitrary Waveform Generators",
+  "name_ko": "텍트로닉스 AWG5200 임의파형 발생기",
+  "manufacturer": "tektronix",
+  "brand": "AWG5200",
+  "category": "signal_generator",
+  "subcategory": "arbitrary_waveform",
+  "description": "16비트 DAC 고속 임의파형 발생기 계열. 아날로그 채널 2·4·8개(AWG5202·AWG5204·AWG5208), 샘플 속도 1.5 kS/s~10 GS/s, 아날로그 대역폭 2 GHz(-3 dB), 직접 생성 최대 4 GHz, 채널당 파형 메모리 2 GS 다. 출력 경로는 Direct DC(1.5 Vp-p 차동), Direct AC(-17~-5 dBm), Amp AC(-85~+10 dBm)다. 여러 대를 동기화해 32채널 넘게 늘리고, SourceXpress 로 PC 에서 제어한다.",
+  "test_items": [],
+  "limits": {
+    "output_frequency_Hz": {
+      "max": 4000000000,
+      "note": "데이터시트 유효 출력 주파수(샘플 속도/2.5): 2 GHz, DDR(2배 보간) 모드 4 GHz. 원문 Output RF signals directly up to 4 GHz"
+    },
+    "bandwidth_Hz": {
+      "max": 2000000000,
+      "note": "데이터시트 아날로그 대역폭 DC HBW 출력 DC~2 GHz(-3 dB)·4 GHz(-6 dB), AC 출력 10 MHz~2 GHz(-3 dB). DC HBW 증폭 옵션 1.3 GHz, DC 고전압 옵션 370 MHz(2 Vp-p)"
+    },
+    "channels": {
+      "values": [
+        2,
+        4,
+        8
+      ]
+    },
+    "sample_rate_Sa_s": {
+      "min": 300,
+      "max": 10000000000,
+      "note": "데이터시트: 300 S/s~5 GS/s, 2배 보간(DDR) 시 10 GS/s. 기본 2.5 GS/s, -x50(예: AWG5200-250) 옵션으로 5 GS/s. 웹 페이지 하한 1.5 kS/s 는 사양서와 다르다"
+    },
+    "dac_resolution_bit": {
+      "values": [
+        16
+      ],
+      "note": "16 bit(마커 없을 때), 마커 1~4개 쓰면 15~12 bit"
+    },
+    "rf_output_level_dBm": {
+      "min": -85,
+      "max": 10,
+      "note": "AC Amplified 출력(-xAC 옵션) -85~+10 dBm(10 MHz~3.5 GHz), -50~+10 dBm(3.5~5 GHz). 표준 AC Direct -17~-5 dBm"
+    },
+    "waveform_memory_pts": {
+      "values": [
+        2000000000
+      ],
+      "note": "원문 2 GS/channel(데이터시트·웹)"
+    },
+    "output_voltage_V": {
+      "min": 0.01,
+      "max": 5,
+      "note": "단일 종단 50 Ω: DC HBW 25 mVp-p~0.75 Vp-p(차동 1.5 Vp-p), DC HBW 증폭 옵션(-xDC) 1.5 Vp-p, DC 고전압 옵션(-xHV) 10 mVp-p~5 Vp-p(차동 10 Vp-p)"
+    }
+  },
+  "models": [
+    {
+      "model": "AWG5202",
+      "specs": {
+        "channels": 2,
+        "dac_resolution_bit": 16,
+        "sample_rate_Sa_s": {
+          "max": 10000000000,
+          "note": "5 GS/s(옵션), 2배 보간 10 GS/s. 기본 2.5 GS/s"
+        },
+        "bandwidth_Hz": 2000000000,
+        "rf_output_level_dBm": {
+          "min": -85,
+          "max": 10,
+          "note": "AC Amplified 출력(옵션)"
+        },
+        "waveform_memory_pts": 2000000000,
+        "output_voltage_V": {
+          "min": 0.01,
+          "max": 5,
+          "note": "DC 고전압 옵션 단일 종단. 표준 DC HBW 0.75 Vp-p"
+        },
+        "interfaces": "Ethernet(10/100/1000BASE-T), USB 2.0·3.0"
+      }
+    },
+    {
+      "model": "AWG5204",
+      "specs": {
+        "channels": 4,
+        "dac_resolution_bit": 16,
+        "sample_rate_Sa_s": {
+          "max": 10000000000,
+          "note": "5 GS/s(옵션), 2배 보간 10 GS/s. 기본 2.5 GS/s"
+        },
+        "bandwidth_Hz": 2000000000,
+        "rf_output_level_dBm": {
+          "min": -85,
+          "max": 10,
+          "note": "AC Amplified 출력(옵션)"
+        },
+        "waveform_memory_pts": 2000000000,
+        "output_voltage_V": {
+          "min": 0.01,
+          "max": 5,
+          "note": "DC 고전압 옵션 단일 종단. 표준 DC HBW 0.75 Vp-p"
+        },
+        "interfaces": "Ethernet(10/100/1000BASE-T), USB 2.0·3.0"
+      }
+    },
+    {
+      "model": "AWG5208",
+      "specs": {
+        "channels": 8,
+        "dac_resolution_bit": 16,
+        "sample_rate_Sa_s": {
+          "max": 10000000000,
+          "note": "5 GS/s(옵션), 2배 보간 10 GS/s. 기본 2.5 GS/s"
+        },
+        "bandwidth_Hz": 2000000000,
+        "rf_output_level_dBm": {
+          "min": -85,
+          "max": 10,
+          "note": "AC Amplified 출력(옵션)"
+        },
+        "waveform_memory_pts": 2000000000,
+        "output_voltage_V": {
+          "min": 0.01,
+          "max": 5,
+          "note": "DC 고전압 옵션 단일 종단. 표준 DC HBW 0.75 Vp-p"
+        },
+        "interfaces": "Ethernet(10/100/1000BASE-T), USB 2.0·3.0"
+      }
+    }
+  ],
+  "features": [
+    "16비트 DAC",
+    "낮은 잡음 바닥",
+    "여러 대 동기화로 32채널 이상",
+    "기존 AWG 코드와 하위 호환",
+    "SourceXpress PC 제어"
+  ],
+  "sources": [
+    {
+      "url": "https://www.tek.com/en/products/arbitrary-waveform-generators/awg5200",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지. 기종 비교표(채널, 분해능, 샘플 속도, 대역폭, 출력 경로)와 메모리"
+    },
+    {
+      "file": "tektronix/awg5200-series-arbitrary-waveform-generator-datasheet-76w608487.pdf",
+      "pages": [
+        1,
+        3,
+        4,
+        5,
+        13,
+        14
+      ],
+      "note": "제조사 데이터시트. 채널·메모리·분해능, 샘플 속도, 출력 경로별 진폭·대역폭, 주문 정보(샘플 속도·출력 옵션)"
+    }
+  ],
+  "confidence": "catalog",
+  "options": [
+    {
+      "name": "AWG5200-x25 / -x50",
+      "note": "샘플 속도 2.5 GS/s / 5 GS/s(10 GS/s 보간). x = 2·4·8(채널 수)"
+    },
+    {
+      "name": "AWG5200-xDC / -xHV / -xAC",
+      "note": "DC 고대역 증폭 / DC 고전압 / AC 증폭 출력"
+    },
+    {
+      "name": "AWG5200-xDIGUP / AWG5200-SEQ",
+      "note": "디지털 상향 변환 / 시퀀싱"
+    }
+  ],
+  "notes": "PDF 로 확인: 채널 2·4·8, 16 bit, 2 GS/채널, 샘플 속도(최대 5 GS/s·보간 10 GS/s, 하한 300 S/s — 웹 1.5 kS/s 와 다름), 대역폭 2 GHz, 출력 경로별 레벨. -85~+10 dBm 은 AC Amplified 옵션 출력이다."
+}

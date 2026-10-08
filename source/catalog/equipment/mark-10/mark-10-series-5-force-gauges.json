@@ -1,0 +1,226 @@
+{
+  "id": "mark-10-series-5-force-gauges",
+  "kind": "equipment_series",
+  "name": "Mark-10 Series 5 Digital Force Gauges (M5-012 – M5-2000)",
+  "name_ko": "마크텐 Series 5 디지털 포스 게이지",
+  "manufacturer": "mark-10",
+  "brand": "Series 5",
+  "category": "force_pressure_sensor",
+  "subcategory": "digital_force_gauge",
+  "form_factor": "handheld",
+  "description": "Mark-10 의 중급 디지털 포스 게이지. 용량 0.5 N(0.12 lbF)～10,000 N(2000 lbF) 17기종, 정확도 ±0.1 % 풀스케일, 샘플링 7,000 Hz, 데이터 출력 최대 500 Hz. M5-750 이상은 대용량형으로 데이터시트가 따로다.",
+  "test_items": [
+    "tensile",
+    "compression"
+  ],
+  "measurands": [
+    "force",
+    "peak_force"
+  ],
+  "limits": {
+    "force_N": {
+      "min": 0.5,
+      "max": 10000
+    },
+    "digital_sample_rate_Hz": {
+      "max": 7000,
+      "note": "7,000 Hz(PDF 데이터시트)"
+    },
+    "data_rate_Hz": {
+      "max": 500,
+      "note": "데이터 출력 속도 — 웹 페이지 값. PDF 에는 USB/RS-232 최대 230,400 baud(대용량형 115,200 baud)만 있음"
+    },
+    "operating_temperature_degC": {
+      "min": 4.4,
+      "max": 37.8,
+      "note": "원문 40 - 100°F, 최대 습도 96 %(결로 없음)"
+    }
+  },
+  "models": [
+    {
+      "model": "M5-012",
+      "specs": {
+        "force_N": 0.5,
+        "force_resolution": "0.00002 lbF (0.0001 N)",
+        "accuracy": "±0.1% of full scale",
+        "weight_kg": 0.45
+      }
+    },
+    {
+      "model": "M5-025",
+      "specs": {
+        "force_N": 1,
+        "force_resolution": "0.00005 lbF (0.0002 N)",
+        "accuracy": "±0.1% of full scale",
+        "weight_kg": 0.45
+      }
+    },
+    {
+      "model": "M5-05",
+      "specs": {
+        "force_N": 2.5,
+        "force_resolution": "0.0001 lbF (0.0005 N)",
+        "accuracy": "±0.1% of full scale",
+        "weight_kg": 0.45
+      }
+    },
+    {
+      "model": "M5-1",
+      "specs": {
+        "force_N": 5,
+        "force_resolution": "0.0002 lbF (0.001 N)",
+        "accuracy": "±0.1% of full scale",
+        "weight_kg": 0.45
+      },
+      "note": "분해능은 PDF 데이터시트 0.0002 lbF(0.001 N). 웹 페이지 원문 0.002 lbF 는 오기였음"
+    },
+    {
+      "model": "M5-2",
+      "specs": {
+        "force_N": 10,
+        "force_resolution": "0.0005 lbF (0.002 N)",
+        "accuracy": "±0.1% of full scale",
+        "weight_kg": 0.45
+      }
+    },
+    {
+      "model": "M5-5",
+      "specs": {
+        "force_N": 25,
+        "force_resolution": "0.001 lbF (0.005 N)",
+        "accuracy": "±0.1% of full scale",
+        "weight_kg": 0.45
+      }
+    },
+    {
+      "model": "M5-10",
+      "specs": {
+        "force_N": 50,
+        "force_resolution": "0.002 lbF (0.01 N)",
+        "accuracy": "±0.1% of full scale",
+        "weight_kg": 0.45
+      }
+    },
+    {
+      "model": "M5-20",
+      "specs": {
+        "force_N": 100,
+        "force_resolution": "0.005 lbF (0.02 N)",
+        "accuracy": "±0.1% of full scale",
+        "weight_kg": 0.45
+      }
+    },
+    {
+      "model": "M5-50",
+      "specs": {
+        "force_N": 250,
+        "force_resolution": "0.01 lbF (0.05 N)",
+        "accuracy": "±0.1% of full scale",
+        "weight_kg": 0.45
+      }
+    },
+    {
+      "model": "M5-100",
+      "specs": {
+        "force_N": 500,
+        "force_resolution": "0.02 lbF (0.1 N)",
+        "accuracy": "±0.1% of full scale",
+        "weight_kg": 0.45
+      }
+    },
+    {
+      "model": "M5-200",
+      "specs": {
+        "force_N": 1000,
+        "force_resolution": "0.05 lbF (0.2 N)",
+        "accuracy": "±0.1% of full scale",
+        "weight_kg": 0.54
+      }
+    },
+    {
+      "model": "M5-300",
+      "specs": {
+        "force_N": 1500,
+        "force_resolution": "0.1 lbF (0.5 N)",
+        "accuracy": "±0.1% of full scale",
+        "weight_kg": 0.54
+      }
+    },
+    {
+      "model": "M5-500",
+      "specs": {
+        "force_N": 2500,
+        "force_resolution": "0.1 lbF (0.5 N)",
+        "accuracy": "±0.1% of full scale",
+        "weight_kg": 0.54
+      }
+    },
+    {
+      "model": "M5-750",
+      "specs": {
+        "force_N": 3750,
+        "force_resolution": "0.5 lbF (2 N)",
+        "accuracy": "±0.1% of full scale",
+        "weight_kg": 0.82
+      }
+    },
+    {
+      "model": "M5-1000",
+      "specs": {
+        "force_N": 5000,
+        "force_resolution": "0.5 lbF (2 N)",
+        "accuracy": "±0.1% of full scale",
+        "weight_kg": 0.82
+      }
+    },
+    {
+      "model": "M5-1500",
+      "specs": {
+        "force_N": 7500,
+        "force_resolution": "1 lbF (5 N)",
+        "accuracy": "±0.1% of full scale",
+        "weight_kg": 0.82
+      }
+    },
+    {
+      "model": "M5-2000",
+      "specs": {
+        "force_N": 10000,
+        "force_resolution": "1 lbF (5 N)",
+        "accuracy": "±0.1% of full scale",
+        "weight_kg": 0.82
+      }
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://www.mark-10.com/products/force-gauges/series-5/",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지(HTML, mark-10.com) Series 5 기종 표"
+    },
+    {
+      "file": "mark-10/datasheetseries5.pdf",
+      "pages": [
+        1,
+        2,
+        3
+      ],
+      "note": "Series 5 데이터시트 32-1111 REV 0926(M5-012～M5-500) — 사양·용량×분해능 표"
+    },
+    {
+      "file": "mark-10/datasheetm5-1000.pdf",
+      "pages": [
+        1,
+        2
+      ],
+      "note": "Series 5 대용량 데이터시트 32-1127 REV 0319(M5-750～M5-2000)"
+    }
+  ],
+  "confidence": "catalog",
+  "notes": "분해능은 lbF 원문에 N 값을 괄호로 붙임. PDF 로 확인: 17기종 용량·분해능(M5-1 분해능 0.0002 lbF 로 바로잡음), 정확도 ±0.1 % FS, 7,000 Hz, 과부하 200 %, 무게. Series 5 표(M5-012～M5-500)는 추출 텍스트에서 lbF·N 열이 한 줄씩 밀려 찍혔으나 값이 용량 순서대로 하나씩 이어져 기종명(lbF 용량)과 맞춰 읽음. 웹 값 그대로: 데이터 출력 500 Hz. 아날로그 출력 ±1 VDC(풀스케일 0.25 %).",
+  "accuracy": {
+    "force": "±0.1% of full scale",
+    "overload": "200% of full scale(110% 이상에서 「OVER」 표시)",
+    "load_cell_deflection": "풀스케일에서 0.25 mm(M5-012 는 0.13 mm)"
+  }
+}

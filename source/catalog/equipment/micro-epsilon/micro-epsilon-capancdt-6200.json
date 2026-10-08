@@ -1,0 +1,79 @@
+{
+  "id": "micro-epsilon-capancdt-6200",
+  "kind": "equipment_series",
+  "name": "capaNCDT 6200 Capacitive Multi-Channel Measuring System",
+  "name_ko": "마이크로엡실론 capaNCDT 6200 정전용량 변위 측정 시스템",
+  "manufacturer": "micro-epsilon",
+  "category": "thickness_displacement_gauge",
+  "description": "정전용량식 비접촉 변위·간극 측정용 모듈형 다채널 컨트롤러 계열임. 최대 4채널, 주파수 응답 최대 20 kHz, 디지털 측정 속도 최대 3.9 kHz. 기본 모듈(DT62xx)에 채널별 복조 모듈(DL62xx)을 꽂아 구성하며, 아날로그(U/I) · Ethernet · EtherCAT · PROFINET 출력을 냄. 다이캐스트 알루미늄 하우징, DIN 레일 장착. capaNCDT 정전용량 센서(CS…, CSH…)를 연결함.",
+  "test_items": [],
+  "limits": {
+    "measurement_channels": {
+      "max": 4
+    },
+    "bandwidth_Hz": {
+      "max": 20000,
+      "note": "원문 Frequency response up to 20 kHz"
+    },
+    "data_rate_Hz": {
+      "max": 3900,
+      "note": "원문 Measuring rate (digital) up to 3.9 kHz"
+    }
+  },
+  "models": [
+    {
+      "model": "DT6220",
+      "variant": "기본 모듈(Ethernet)"
+    },
+    {
+      "model": "DT6230",
+      "variant": "기본 모듈(Ethernet/EtherCAT)"
+    },
+    {
+      "model": "DT6240",
+      "variant": "기본 모듈(PROFINET)"
+    },
+    {
+      "model": "DT6222",
+      "variant": "기본 모듈(고속형)"
+    },
+    {
+      "model": "DT6228",
+      "variant": "기본 모듈(고온 센서용)"
+    },
+    {
+      "model": "DT6238",
+      "variant": "기본 모듈(고온 센서용)"
+    },
+    {
+      "model": "DL6220",
+      "variant": "복조 모듈(표준)"
+    },
+    {
+      "model": "DL6230",
+      "variant": "복조 모듈(최고 분해능)"
+    },
+    {
+      "model": "DL6222",
+      "variant": "복조 모듈(고속형)"
+    },
+    {
+      "model": "DL6228",
+      "variant": "복조 모듈(고온 센서용)"
+    }
+  ],
+  "features": [
+    "인터페이스: Analog (U/I), Ethernet, EtherCAT, PROFINET",
+    "다이캐스트 알루미늄 하우징, DIN 레일 장착",
+    "웹 인터페이스 설정"
+  ],
+  "sources": [
+    {
+      "url": "https://www.micro-epsilon.com/distance-sensors/capacitive-sensors/capancdt-6200/",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지(기본·복조 모듈 기종, 채널 수, 주파수 응답, 측정 속도, 인터페이스)"
+    }
+  ],
+  "confidence": "limited",
+  "notes": "분해능·직선성은 센서와 복조 모듈 조합별로 데이터시트 PDF(pending_pdfs)에 있어 비움. 정전용량 센서 목록 페이지의 '분해능 0.03 nm' 는 capaNCDT 전체 문구라 이 계열 값으로 쓰지 않음."
+}

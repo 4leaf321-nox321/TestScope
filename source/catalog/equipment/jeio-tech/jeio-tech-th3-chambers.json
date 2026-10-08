@@ -1,0 +1,215 @@
+{
+  "id": "jeio-tech-th3-chambers",
+  "kind": "equipment_series",
+  "name": "JEIO TECH Temperature & Humidity Chambers (TH3-KE / TH3-ME / TH3-PE / TH3-E / TH3-G / TH3-TG / TH3-DG, TH-KH)",
+  "name_ko": "제이오텍 항온항습기(온습도 챔버)",
+  "manufacturer": "jeio-tech",
+  "category": "climatic_chamber",
+  "drive": "thermal",
+  "form_factor": "benchtop",
+  "description": "국내 제조사 제이오텍의 항온항습기 계열. 제품명 기준 온도 범위가 TH3-KE -40~100 °C, TH3-ME -20~100 °C, TH3-PE 0~100 °C, TH3-E 0~90 °C, TH3-G -40~100 °C, TH3-TG·TH3-DG -5~100 °C, TH-KH(초저온·대용량) -70~100 °C. 기종명 뒤 숫자(-025, -065, -100)는 내용적(L)이다(대리점 상품명 기준).",
+  "test_items": [
+    "damp_heat"
+  ],
+  "limits": {
+    "temperature_degC": {
+      "min": -70,
+      "max": 100,
+      "note": "제품명 기준"
+    },
+    "humidity_pct": {
+      "max": 95,
+      "note": "TH-KH 페이지 'Max. 95% RH'"
+    }
+  },
+  "models": [
+    {
+      "model": "TH3-KE",
+      "specs": {
+        "temperature_degC": {
+          "min": -40,
+          "max": 100,
+          "note": "제품명에 적힌 범위"
+        }
+      },
+      "note": "항온항습기, 표준(-40 °C) — 탁상형"
+    },
+    {
+      "model": "TH3-ME",
+      "specs": {
+        "temperature_degC": {
+          "min": -20,
+          "max": 100,
+          "note": "제품명에 적힌 범위"
+        }
+      },
+      "note": "항온항습기, 표준(-20 °C) — 탁상형. 페이지에 TH3-PKME 표기도 있음"
+    },
+    {
+      "model": "TH3-PE",
+      "specs": {
+        "temperature_degC": {
+          "min": 0,
+          "max": 100,
+          "note": "제품명에 적힌 범위"
+        }
+      },
+      "note": "항온항습기, 표준(0 °C) — 탁상형"
+    },
+    {
+      "model": "TH-KH",
+      "specs": {
+        "temperature_degC": {
+          "min": -70,
+          "max": 100,
+          "note": "제품명에 적힌 범위"
+        },
+        "humidity_pct": {
+          "max": 95
+        }
+      },
+      "note": "항온항습기, 초저온(-70 °C), 대용량. 습도 최대 95 %RH"
+    },
+    {
+      "model": "TH3-G",
+      "specs": {
+        "temperature_degC": {
+          "min": -40,
+          "max": 100,
+          "note": "제품명에 적힌 범위"
+        }
+      },
+      "note": "온습도 챔버, 저온용(-40 °C), 콤팩트(NEW)"
+    },
+    {
+      "model": "TH3-TG",
+      "specs": {
+        "temperature_degC": {
+          "min": -5,
+          "max": 100,
+          "note": "제품명에 적힌 범위"
+        }
+      },
+      "note": "온습도 챔버, 상온용(-5 °C), ICH Q1A(R2) 장기 안정성 시험용(NEW)"
+    },
+    {
+      "model": "TH3-DG",
+      "specs": {
+        "temperature_degC": {
+          "min": -5,
+          "max": 100,
+          "note": "제품명에 적힌 범위"
+        }
+      },
+      "note": "온습도 챔버(-5 °C), 2조(Dual)"
+    },
+    {
+      "model": "TH3-E",
+      "specs": {
+        "temperature_degC": {
+          "min": 0,
+          "max": 90,
+          "note": "제품명에 적힌 범위"
+        }
+      },
+      "note": "항온항습기, 기본형. 5.6인치 컬러 터치 화면"
+    },
+    {
+      "model": "TH3-ME-025",
+      "specs": {
+        "chamber_volume_L": 25
+      },
+      "note": "영국 대리점 상품명. 대리점은 습도 없는 온도 범위를 -20~+150 °C 로 적어 제조사 제품명(-20~100 °C)과 다르다 — 온도는 비웠다",
+      "uncertain": true
+    },
+    {
+      "model": "TH3-ME-065",
+      "specs": {
+        "chamber_volume_L": 65
+      },
+      "note": "영국 대리점 상품명",
+      "uncertain": true
+    },
+    {
+      "model": "TH3-KE-100",
+      "specs": {
+        "chamber_volume_L": 100
+      },
+      "note": "영국 대리점 상품명",
+      "uncertain": true
+    },
+    {
+      "model": "TH3-PE-065",
+      "specs": {
+        "chamber_volume_L": 65
+      },
+      "note": "영국 대리점 상품명",
+      "uncertain": true
+    }
+  ],
+  "relations": [
+    {
+      "type": "simulates_environment",
+      "target": "environment-damp-heat"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://www.jeiotech.com/selguide/selGuide2016_temp-humid-chamber.php",
+      "retrieved": "2026-10-08",
+      "note": "제조사 온습도 챔버 선택 가이드(제품 링크 목록). 사양표는 이미지라 읽지 못함"
+    },
+    {
+      "url": "https://www.jeiotech.com/item.php?it_id=1541386515",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지(TH3-KE). 제품명의 온도 범위만 텍스트로 읽힘, 사양표는 이미지"
+    },
+    {
+      "url": "https://www.jeiotech.com/item.php?it_id=1541388045",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지(TH3-ME). 제품명의 온도 범위만 텍스트로 읽힘, 사양표는 이미지"
+    },
+    {
+      "url": "https://www.jeiotech.com/item.php?it_id=1541390014",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지(TH3-PE). 제품명의 온도 범위만 텍스트로 읽힘, 사양표는 이미지"
+    },
+    {
+      "url": "https://www.jeiotech.com/item.php?it_id=1429604627",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지(TH-KH). 제품명의 온도 범위만 텍스트로 읽힘, 사양표는 이미지"
+    },
+    {
+      "url": "https://www.jeiotech.com/item.php?it_id=1762489760",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지(TH3-G). 제품명의 온도 범위만 텍스트로 읽힘, 사양표는 이미지"
+    },
+    {
+      "url": "https://www.jeiotech.com/item.php?it_id=1762493944",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지(TH3-TG). 제품명의 온도 범위만 텍스트로 읽힘, 사양표는 이미지"
+    },
+    {
+      "url": "https://www.jeiotech.com/item.php?it_id=1340376853",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지(TH3-DG). 제품명의 온도 범위만 텍스트로 읽힘, 사양표는 이미지"
+    },
+    {
+      "url": "https://www.jeiotech.com/item.php?it_id=1567556594",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지(TH3-E). 제품명의 온도 범위만 텍스트로 읽힘, 사양표는 이미지"
+    },
+    {
+      "url": "https://www.medlinescientific.co.uk/product/jeio-tech-th3-me-025-25-litre-bench-top-temperature-humidity-test-chamber/",
+      "retrieved": "2026-10-08",
+      "note": "영국 대리점(Medline Scientific) 상품 페이지 — 크기별 기종명 확인용. 제조사 페이지에 크기별 기종명이 텍스트로 없어서 씀"
+    },
+    {
+      "url": "https://www.medlinescientific.co.uk/product/jeio-tech-th3-me-065-65-litre-bench-top-temperature-humidity-test-chamber/",
+      "retrieved": "2026-10-08",
+      "note": "영국 대리점 상품 페이지 — 기종명 확인용"
+    }
+  ],
+  "confidence": "limited",
+  "notes": "제조사 페이지의 사양표가 이미지(TH3-KE-ME-PE_spec_20260210.png, TH3-E_spec_20260210.png)라 습도 범위·내용적·변동 값을 읽지 못했다. 크기별 기종명(TH3-ME-025 등)은 대리점 상품명에서 가져와 uncertain 을 달았다. 과제에 적힌 'TH-ME/TH-PE' 는 현행 표기 TH3-ME/TH3-PE 로 보인다."
+}

@@ -1,0 +1,127 @@
+{
+  "id": "admesy-prometheus-colorimeters",
+  "kind": "equipment_series",
+  "name": "Admesy Prometheus Colorimeters",
+  "name_ko": "애드메시 Prometheus 컬러리미터",
+  "manufacturer": "admesy",
+  "brand": "Prometheus",
+  "category": "display_color_analyzer",
+  "form_factor": "probe",
+  "description": "Hyperion 을 대체한 디스플레이 측정용 컬러리미터 계열. 측정 스폿 2.1 ~ 27 mm, 광각 · 포인터 · 6 각도 · 코사인 보정기 판 등 11 가지가 있다. 10 mm 판은 0.001 ~ 30,000 cd/m²(UHL 모드 190,000 cd/m²), 27 mm 광각 판은 0.0001 ~ 2,800 cd/m² 를 잰다. CIE 1931 또는 CIE 170-2:2015 등색함수를 고르고, 플리커를 2,000 · 3,000 · 3,125 samples/s 로 잰다.",
+  "test_items": [
+    "photometry_colorimetry"
+  ],
+  "measurands": [
+    "luminance",
+    "chromaticity",
+    "flicker"
+  ],
+  "limits": {
+    "luminance_cd_m2": {
+      "min": 0.0001,
+      "max": 30000,
+      "note": "조회한 두 판 기준. UHL 모드 최대 190,000 cd/m²(10 mm)"
+    },
+    "acceptance_angle_deg": {
+      "values": [
+        2.5,
+        4.5
+      ],
+      "note": "± 값. 10 mm 5°(±2.5°), 27 mm 광각 9°(±4.5°)"
+    }
+  },
+  "models": [
+    {
+      "model": "Prometheus Colorimeter 27 mm Wide-Angle",
+      "specs": {
+        "spot_diameter_mm": 29,
+        "working_distance_mm": 25,
+        "acceptance_angle_deg": 4.5,
+        "luminance_cd_m2": {
+          "min": 0.0001,
+          "max": 2800
+        },
+        "measurement_time_s": 0.022
+      },
+      "note": "측정 스폿 29 mm @ WD 25 mm, 수광각 원문 9° (± 4.5°). 색도 0.001 ~ 2,800 cd/m², UHL 모드 20,000 cd/m². 측정 시간 22 ms 이상(휘도 · 프레임 주파수에 따라)"
+    },
+    {
+      "model": "Prometheus Colorimeter 20 mm",
+      "note": "제조사 제품 목록에 이름만 확인. 사양 미조회"
+    },
+    {
+      "model": "Prometheus Colorimeter 10 mm",
+      "specs": {
+        "spot_diameter_mm": 10.2,
+        "acceptance_angle_deg": 2.5,
+        "luminance_cd_m2": {
+          "min": 0.001,
+          "max": 30000
+        }
+      },
+      "note": "측정 스폿 10.2 mm @ WD 1 mm, 수광각 원문 5° (± 2.5°). 색도 0.01 ~ 30,000 cd/m², UHL 모드 190,000 cd/m². 시준 렌즈라 측정 거리를 바꿀 수 있음"
+    },
+    {
+      "model": "Prometheus Colorimeter 10 mm Wide-Angle",
+      "note": "제조사 제품 목록에 이름만 확인. 사양 미조회"
+    },
+    {
+      "model": "Prometheus Colorimeter 10 mm IFC",
+      "note": "제조사 제품 목록에 이름만 확인. 사양 미조회"
+    },
+    {
+      "model": "Prometheus Colorimeter 5 mm",
+      "note": "제조사 제품 목록에 이름만 확인. 사양 미조회"
+    },
+    {
+      "model": "Prometheus Colorimeter 2.1 mm",
+      "note": "제조사 제품 목록에 이름만 확인. 사양 미조회"
+    },
+    {
+      "model": "Prometheus Colorimeter 2.1 mm w/ Pointer",
+      "note": "제조사 제품 목록에 이름만 확인. 사양 미조회"
+    },
+    {
+      "model": "Prometheus Colorimeter Dual Spot 2 mm w/ Pointer",
+      "note": "제조사 제품 목록에 이름만 확인. 사양 미조회"
+    },
+    {
+      "model": "Prometheus Colorimeter 6-Angle 10 mm",
+      "note": "제조사 제품 목록에 이름만 확인. 사양 미조회"
+    },
+    {
+      "model": "Prometheus Colorimeter Cosine Corrector",
+      "note": "제조사 제품 목록에 이름만 확인. 사양 미조회"
+    }
+  ],
+  "features": [
+    "CIE 1931 또는 CIE 170-2:2015 등색함수 선택",
+    "플리커 2,000 · 3,000 · 3,125 samples/s",
+    "광섬유 연결(10 mm IFC)"
+  ],
+  "relations": [
+    {
+      "type": "performs",
+      "target": "photometry_colorimetry"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://www.admesy.com/products/",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 목록(HTML). Prometheus 컬러리미터 11 기종 이름"
+    },
+    {
+      "url": "https://www.admesy.com/products/prometheus-colorimeter-10/",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지(HTML)"
+    },
+    {
+      "url": "https://www.admesy.com/products/prometheus-colorimeter-27wa/",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지(HTML)"
+    }
+  ],
+  "confidence": "limited",
+  "notes": "같은 Prometheus 이름의 뷰파인더 분광계와 휘도 · 플리커계(LF 2.5 mm · 17 mm)는 다른 종류라 넣지 않았다. 확도 수치는 페이지에 없음."
+}

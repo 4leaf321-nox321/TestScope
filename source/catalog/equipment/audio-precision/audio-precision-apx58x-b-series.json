@@ -1,0 +1,116 @@
+{
+  "id": "audio-precision-apx58x-b-series",
+  "kind": "equipment_series",
+  "name": "Audio Precision APx58x B Series Multichannel Audio Analyzers (APx582 B / APx585 B / APx586 B)",
+  "name_ko": "오디오프리시전 APx58x B 시리즈 다채널 오디오 분석기",
+  "manufacturer": "audio-precision",
+  "brand": "APx",
+  "category": "audio_analyzer",
+  "form_factor": "benchtop",
+  "description": "다채널 오디오 분석기. APx582 B 는 아날로그 출력 2·입력 8, APx585 B 는 출력·입력 각 8, APx586 B 는 입력 모듈을 하나 더해 입력 16·출력 8 채널이다. 생성기 정현 5 Hz~80.1 kHz, 평형 최대 14.4 Vrms(APx585·586) / 26.66 Vrms(APx582), 잔류 THD+N –103 dB + 1.4 µV(20 kHz BW). 분석기 대역 90 kHz, 잔류 입력 잡음 1.3 µV, 최대 FFT 1248K 점, 개별 고조파 d2~d10.",
+  "test_items": [
+    "audio_performance"
+  ],
+  "measurands": [
+    "thd_n",
+    "frequency_response",
+    "snr",
+    "crosstalk"
+  ],
+  "materials": [
+    "AV receivers",
+    "soundbars",
+    "automotive audio",
+    "multichannel amplifiers"
+  ],
+  "limits": {
+    "frequency_Hz": {
+      "min": 5,
+      "max": 80100,
+      "note": "생성기 정현 주파수 범위"
+    },
+    "analog_output_voltage_Vrms": {
+      "max": 26.66,
+      "note": "평형. APx582 26.66 Vrms, APx585·586 14.4 Vrms"
+    },
+    "residual_thd_n_dB": {
+      "max": -103,
+      "note": "20 kHz BW, –103 dB + 1.4 µV"
+    },
+    "bandwidth_Hz": {
+      "max": 90000,
+      "note": "원문 1 to 16 channels of analog input 90 kHz"
+    },
+    "residual_noise_uV": {
+      "max": 1.3
+    },
+    "digital_sample_rate_Hz": {
+      "min": 27000,
+      "max": 200000,
+      "note": "디지털 출력 27~200 kS/s(광 27~108 kS/s)"
+    },
+    "channels": {
+      "values": [
+        8,
+        16
+      ],
+      "note": "아날로그 입력 채널 수. 출력은 APx582 2, APx585·586 8"
+    }
+  },
+  "models": [
+    {
+      "model": "APx582 B Series",
+      "specs": {
+        "channels": 8,
+        "analog_output_voltage_Vrms": 26.66
+      },
+      "note": "아날로그 출력 2채널 · 입력 8채널"
+    },
+    {
+      "model": "APx585 B Series",
+      "specs": {
+        "channels": 8,
+        "analog_output_voltage_Vrms": 14.4
+      },
+      "note": "아날로그 출력·입력 각 8채널 동시"
+    },
+    {
+      "model": "APx586 B Series",
+      "specs": {
+        "channels": 16,
+        "analog_output_voltage_Vrms": 14.4
+      },
+      "note": "입력 모듈 추가로 입력 16채널, 출력 8채널"
+    }
+  ],
+  "features": [
+    "최대 FFT 1248K 점",
+    "개별 고조파 분석 d2~d10"
+  ],
+  "options": [
+    "Advanced Digital I/O",
+    "Advanced Master Clock",
+    "Bluetooth 5",
+    "PDM 16",
+    "Programmable Serial I/O",
+    "HDMI2 + eARC"
+  ],
+  "relations": [
+    {
+      "type": "performs",
+      "target": "audio_performance"
+    },
+    {
+      "type": "same_family_as",
+      "target": "audio-precision-apx52x-b-series"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://www.audioprecision.com/analyzers-accessories/apx58x",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지"
+    }
+  ],
+  "confidence": "limited"
+}

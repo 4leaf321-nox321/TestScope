@@ -1,0 +1,106 @@
+{
+  "id": "rs-znle-vna",
+  "kind": "equipment_series",
+  "name": "R&S ZNLE Vector Network Analyzer",
+  "name_ko": "로데슈바르즈 ZNLE 벡터 네트워크 분석기",
+  "manufacturer": "rohde-schwarz",
+  "brand": "ZNLE",
+  "category": "network_lcr_analyzer",
+  "form_factor": "benchtop",
+  "description": "교육·개발·생산용 보급형 탁상 벡터 네트워크 분석기. 100 kHz~20 GHz, 2포트 양방향 측정. 트레이스 잡음 typ. 0.001 dB(측정 대역폭 10 kHz). ZNLE18 은 18 GHz(20 GHz 초과 범위).",
+  "test_items": [],
+  "limits": {
+    "frequency_Hz": {
+      "min": 100000,
+      "max": 20000000000,
+      "note": "원문 from 100 kHz up to 20 GHz. ZNLE18 은 18 GHz(20 GHz overrange)"
+    },
+    "rf_port_count": {
+      "values": [
+        2
+      ]
+    },
+    "rf_output_level_dBm": {
+      "max": 0,
+      "note": "목록 페이지 Test Port Output Power 0 dBm"
+    }
+  },
+  "models": [
+    {
+      "model": "ZNLE3",
+      "specs": {
+        "frequency_Hz": {
+          "min": 100000,
+          "max": 3000000000
+        },
+        "rf_port_count": 2
+      },
+      "note": "주문 번호 1323.0012.53, N(f)"
+    },
+    {
+      "model": "ZNLE4",
+      "specs": {
+        "frequency_Hz": {
+          "min": 100000,
+          "max": 4500000000
+        },
+        "rf_port_count": 2
+      },
+      "note": "1323.0012.54, N(f)"
+    },
+    {
+      "model": "ZNLE6",
+      "specs": {
+        "frequency_Hz": {
+          "min": 100000,
+          "max": 6000000000
+        },
+        "rf_port_count": 2
+      },
+      "note": "1323.0012.56, N(f)"
+    },
+    {
+      "model": "ZNLE14",
+      "specs": {
+        "frequency_Hz": {
+          "min": 100000,
+          "max": 14000000000
+        },
+        "rf_port_count": 2
+      },
+      "note": "1323.0012.64, N(f)"
+    },
+    {
+      "model": "ZNLE18",
+      "specs": {
+        "frequency_Hz": {
+          "min": 100000,
+          "max": 18000000000,
+          "note": "20 GHz overrange"
+        },
+        "rf_port_count": 2
+      },
+      "note": "1323.0012.70, N(f)"
+    }
+  ],
+  "relations": [
+    {
+      "type": "same_family_as",
+      "target": "rs-znl-vna"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://www.rohde-schwarz.com/us/products/test-and-measurement/network-analyzers/rs-znle-vector-network-analyzer_63493-447936.html",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지. 기종(ZNLE3/4/6/14/18, 주문 번호, 2포트, 3/4.5/6/14/18 GHz(20 GHz overrange), N(f)), 'Broad frequency range: from 100 kHz up to 20 GHz', trace noise typ. 0.001 dB"
+    },
+    {
+      "url": "https://www.rohde-schwarz.com/us/products/test-and-measurement/network-analyzers_64043.html",
+      "retrieved": "2026-10-08",
+      "note": "제조사 네트워크 분석기 목록 페이지(기종별 Max Frequency · Port Count · Test Port Output Power)"
+    }
+  ],
+  "confidence": "limited",
+  "notes": "하한 100 kHz 는 계열 문구. 대리점 페이지에는 1 MHz(선택 100 kHz)로 적힌 것이 있어 하한이 옵션일 수 있음 — 제조사 페이지 값을 적음."
+}

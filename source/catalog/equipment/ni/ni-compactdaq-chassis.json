@@ -1,0 +1,54 @@
+{
+  "id": "ni-compactdaq-chassis",
+  "kind": "equipment_series",
+  "name": "NI CompactDAQ Chassis (cDAQ-9171 / 9174 / 9178 / 9179 / 9185 / 9189)",
+  "name_ko": "NI CompactDAQ 섀시",
+  "manufacturer": "ni",
+  "brand": "CompactDAQ",
+  "category": "dmm_daq",
+  "form_factor": "modular",
+  "description": "C Series I/O 모듈을 꽂아 센서·전기 측정 시스템을 꾸리는 CompactDAQ 섀시 계열. 섀시가 모듈과 호스트 사이의 타이밍·동기·데이터 전송을 맡는다. cDAQ-9178 은 8슬롯 USB 2.0 섀시로 32비트 범용 카운터/타이머 4개를 내장하고 -20~55 °C 에서 운전한다.",
+  "test_items": [],
+  "models": [
+    {
+      "model": "cDAQ-9178",
+      "specs": {
+        "interfaces": "USB 2.0",
+        "operating_temperature_degC": {
+          "min": -20,
+          "max": 55
+        }
+      },
+      "note": "8슬롯, 32비트 범용 카운터/타이머 4개, 내장 트리거. 네트워크 동기 미지원. 품번 781156-01"
+    },
+    {
+      "model": "cDAQ-9171",
+      "note": "cDAQ-9178 페이지에 같은 계열로만 나옴. 사양 미확인"
+    },
+    {
+      "model": "cDAQ-9174",
+      "note": "cDAQ-9178 페이지에 같은 계열로만 나옴. 사양 미확인"
+    },
+    {
+      "model": "cDAQ-9179",
+      "note": "cDAQ-9178 페이지에 같은 계열로만 나옴. 사양 미확인"
+    },
+    {
+      "model": "cDAQ-9185",
+      "note": "cDAQ-9178 페이지에 같은 계열로만 나옴. 사양 미확인"
+    },
+    {
+      "model": "cDAQ-9189",
+      "note": "cDAQ-9178 페이지에 같은 계열로만 나옴. 사양 미확인"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://www.ni.com/en-us/shop/model/cdaq-9178.html",
+      "retrieved": "2026-10-08",
+      "note": "제조사 cDAQ-9178 페이지. 8 slots, USB 2.0, 4 counters/timers, -20 °C to 55 °C, 품번 781156-01. 같은 계열 cDAQ-9171/9174/9178/9179/9185/9189 언급"
+    }
+  ],
+  "confidence": "limited",
+  "notes": "섀시만 적음. 채널 수·샘플링 속도·측정 범위는 꽂는 C Series 모듈이 정하므로 섀시 객체에 두지 않음."
+}

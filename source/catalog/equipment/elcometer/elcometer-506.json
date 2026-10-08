@@ -1,0 +1,89 @@
+{
+  "id": "elcometer-506",
+  "kind": "equipment_model",
+  "name": "Elcometer 506 Hydraulic Pull-Off Adhesion Tester",
+  "name_ko": "엘코미터 506 유압식 풀오프 부착력 시험기",
+  "manufacturer": "elcometer",
+  "category": "adhesion_tester",
+  "form_factor": "portable",
+  "description": "수동 유압식 디지털 풀오프 부착력 시험기. 돌리 14.2 mm 4~50 MPa, 20 mm 2~25 MPa, 50 mm 0.3~4 MPa 범위를 0.01 MPa(1 psi) 분해능 · ±1 % FS 정확도로 읽는다. 길이 290 mm, 무게 1.8 kg(50 mm 구성 2.0 kg), AA 전지 2개로 2000 시간.",
+  "test_items": [
+    "coating_adhesion"
+  ],
+  "measurands": [
+    "pull_off_adhesion_strength"
+  ],
+  "standards": {
+    "compliance": [],
+    "test_methods": [
+      "ASTM D4541",
+      "ASTM D7234",
+      "ISO 4624",
+      "ISO 16276-1",
+      "EN 1542",
+      "EN 12636",
+      "EN 13144",
+      "BS 1881-207",
+      "DIN 1048-2",
+      "AS/NZS 1580.408.5",
+      "JIS K 5600-5-7",
+      "NF T30-062",
+      "NF T30-606"
+    ]
+  },
+  "limits": {
+    "pull_off_strength_MPa": {
+      "min": 0.3,
+      "max": 50,
+      "note": "14.2 mm 4~50 · 20 mm 2~25 · 50 mm 0.3~4 MPa"
+    },
+    "dolly_diameter_mm": {
+      "values": [
+        14.2,
+        20,
+        50
+      ]
+    }
+  },
+  "models": [
+    {
+      "model": "Elcometer 506",
+      "specs": {
+        "pull_off_strength_MPa": {
+          "min": 0.3,
+          "max": 50
+        },
+        "accuracy": "±1 % FS",
+        "force_resolution": "0.01 MPa (1 psi)",
+        "pressure_MPa": {
+          "value": 26,
+          "note": "원문 'Pressure Rating: 26MPa (3800psi)'"
+        },
+        "weight_kg": {
+          "value": 1.8,
+          "note": "50 mm 구성 2.0 kg"
+        }
+      },
+      "note": "전지: AA 2개, 2000 시간; 품번: F506-20D · F506-20DC (20 mm, C 는 교정서 포함) / F506-50D · F506-50DC (50 mm)"
+    }
+  ],
+  "relations": [
+    {
+      "type": "performs",
+      "target": "coating_adhesion"
+    },
+    {
+      "type": "same_family_as",
+      "target": "elcometer-510"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://www.elcometer.com/en/coatings-inspection/all-coatings-inspection/adhesion-testers/elcometer-506-pull-off-adhesion-tester.html",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지"
+    }
+  ],
+  "notes": "'Pressure Rating 26 MPa' 가 유압 회로 정격인지 페이지가 설명하지 않는다.",
+  "confidence": "limited"
+}

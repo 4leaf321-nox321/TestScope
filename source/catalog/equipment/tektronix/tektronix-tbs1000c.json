@@ -1,0 +1,99 @@
+{
+  "id": "tektronix-tbs1000c",
+  "kind": "equipment_series",
+  "name": "TBS1000C Digital Storage Oscilloscope",
+  "name_ko": "텍트로닉스 TBS1000C 디지털 오실로스코프",
+  "manufacturer": "tektronix",
+  "brand": "TBS",
+  "category": "oscilloscope",
+  "subcategory": "digital_storage_oscilloscope",
+  "form_factor": "benchtop",
+  "description": "50~200 MHz 대역의 2채널 보급형 디지털 저장 오실로스코프 계열임. 1 GS/s, 20k points, 7 inch WVGA 화면. -EDU 는 교육용 기종.",
+  "test_items": [],
+  "limits": {
+    "bandwidth_Hz": {
+      "min": 50000000,
+      "max": 200000000,
+      "note": "원문 50 MHz~200 MHz"
+    },
+    "sample_rate_Sa_s": {
+      "max": 1000000000,
+      "note": "원문 1 GS/s"
+    },
+    "record_length_pts": {
+      "max": 20000,
+      "note": "원문 20k points"
+    },
+    "channels": {
+      "values": [
+        2
+      ]
+    },
+    "display_size_in": {
+      "values": [
+        7
+      ]
+    }
+  },
+  "models": [
+    {
+      "model": "TBS1052C-EDU",
+      "variant": "EDU",
+      "specs": {
+        "bandwidth_Hz": 50000000,
+        "channels": 2,
+        "sample_rate_Sa_s": 1000000000,
+        "record_length_pts": 20000,
+        "display_size_in": 7
+      }
+    },
+    {
+      "model": "TBS1052C",
+      "specs": {
+        "bandwidth_Hz": 50000000,
+        "channels": 2,
+        "sample_rate_Sa_s": 1000000000,
+        "record_length_pts": 20000,
+        "display_size_in": 7
+      }
+    },
+    {
+      "model": "TBS1072C",
+      "specs": {
+        "bandwidth_Hz": 70000000,
+        "channels": 2,
+        "sample_rate_Sa_s": 1000000000,
+        "record_length_pts": 20000,
+        "display_size_in": 7
+      }
+    },
+    {
+      "model": "TBS1102C",
+      "specs": {
+        "bandwidth_Hz": 100000000,
+        "channels": 2,
+        "sample_rate_Sa_s": 1000000000,
+        "record_length_pts": 20000,
+        "display_size_in": 7
+      }
+    },
+    {
+      "model": "TBS1202C",
+      "specs": {
+        "bandwidth_Hz": 200000000,
+        "channels": 2,
+        "sample_rate_Sa_s": 1000000000,
+        "record_length_pts": 20000,
+        "display_size_in": 7
+      }
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://www.tek.com/en/products/oscilloscopes/tbs1000-2-channel-digital-storage-oscilloscope",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지 기종 표. 원문 50~200 MHz, 2 ch, 1 GS/s, 20k points, 7-inch WVGA"
+    }
+  ],
+  "confidence": "limited"
+}

@@ -1,0 +1,168 @@
+{
+  "id": "espec-tsa-large-thermal-shock",
+  "kind": "equipment_series",
+  "name": "ESPEC TSA Large-Capacity Thermal Shock Chambers (TSA-603EL, TSA-1100H-W … TSA-12000H-W)",
+  "name_ko": "에스펙 TSA 대용량 열충격 챔버",
+  "manufacturer": "espec",
+  "brand": "TSA",
+  "category": "thermal_shock_chamber",
+  "drive": "thermal",
+  "form_factor": "floor",
+  "description": "시험 영역 600 L 이상의 대용량 기상식 열충격 챔버. TSA-603EL(600 L, 고온 +65~+150 °C, 저온 -50~0 °C)과 H-W 계열(1100~12000 L, 고온 +60~+180 °C, 저온 -60~-10 °C; 12000 L 는 +60~+150 °C / -60~0 °C).",
+  "test_items": [
+    "thermal_shock",
+    "temperature_cycling"
+  ],
+  "limits": {
+    "high_temp_degC": {
+      "min": 60,
+      "max": 180
+    },
+    "low_temp_degC": {
+      "min": -60,
+      "max": 0
+    },
+    "chamber_volume_L": {
+      "min": 600,
+      "max": 12000,
+      "values": [
+        600,
+        1100,
+        1650,
+        2310,
+        3300,
+        12000
+      ]
+    }
+  },
+  "models": [
+    {
+      "model": "TSA-603EL",
+      "specs": {
+        "high_temp_degC": {
+          "min": 65,
+          "max": 150
+        },
+        "low_temp_degC": {
+          "min": -50,
+          "max": 0
+        },
+        "chamber_volume_L": 600,
+        "inner_mm": "W1200×H670×D750",
+        "load_kg": {
+          "max": 50,
+          "note": "균등 분포 하중"
+        },
+        "weight_kg": 1700,
+        "precool_limit_degC": {
+          "min": -70,
+          "note": "예냉조: 상온 → -70 °C 90분 이내"
+        },
+        "preheat_limit_degC": {
+          "max": 200,
+          "note": "예열조: 상온 → +200 °C 30분 이내"
+        }
+      },
+      "note": "무게 '약 1700 kg'. 600 L 는 제품명·개요 기준"
+    },
+    {
+      "model": "TSA-1100H-W",
+      "specs": {
+        "high_temp_degC": {
+          "min": 60,
+          "max": 180
+        },
+        "low_temp_degC": {
+          "min": -60,
+          "max": -10
+        },
+        "chamber_volume_L": 1100,
+        "inner_mm": "W1000×H1100×D1000"
+      }
+    },
+    {
+      "model": "TSA-1650H-W",
+      "specs": {
+        "high_temp_degC": {
+          "min": 60,
+          "max": 180
+        },
+        "low_temp_degC": {
+          "min": -60,
+          "max": -10
+        },
+        "chamber_volume_L": 1650,
+        "inner_mm": "W1500×H1100×D1000"
+      }
+    },
+    {
+      "model": "TSA-2310H-W",
+      "specs": {
+        "high_temp_degC": {
+          "min": 60,
+          "max": 180
+        },
+        "low_temp_degC": {
+          "min": -60,
+          "max": -10
+        },
+        "chamber_volume_L": 2310,
+        "inner_mm": "W2000×H1100×D1000"
+      }
+    },
+    {
+      "model": "TSA-3300H-W",
+      "specs": {
+        "high_temp_degC": {
+          "min": 60,
+          "max": 180
+        },
+        "low_temp_degC": {
+          "min": -60,
+          "max": -10
+        },
+        "chamber_volume_L": 3300,
+        "inner_mm": "W1500×H1100×D2000"
+      }
+    },
+    {
+      "model": "TSA-12000H-W",
+      "specs": {
+        "high_temp_degC": {
+          "min": 60,
+          "max": 150
+        },
+        "low_temp_degC": {
+          "min": -60,
+          "max": 0
+        },
+        "chamber_volume_L": 12000,
+        "inner_mm": "W3000×H2000×D2000"
+      }
+    }
+  ],
+  "relations": [
+    {
+      "type": "same_family_as",
+      "target": "espec-tsa-thermal-shock"
+    },
+    {
+      "type": "simulates_environment",
+      "target": "environment-thermal-shock"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://www.espec.co.jp/english/products/env-test/tsabig/",
+      "retrieved": "2026-10-08",
+      "note": "제조사 영문 페이지 사양표(H-W 계열 5기종)"
+    },
+    {
+      "url": "https://www.espec.co.jp/english/products/env-test/tsa603/",
+      "retrieved": "2026-10-08",
+      "note": "제조사 영문 페이지 사양표(TSA-603EL)"
+    }
+  ],
+  "confidence": "limited",
+  "notes": "H-W 계열의 회복 시간·시편 하중은 페이지에 없다."
+}

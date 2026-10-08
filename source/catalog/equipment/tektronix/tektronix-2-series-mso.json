@@ -1,0 +1,116 @@
+{
+  "id": "tektronix-2-series-mso",
+  "kind": "equipment_series",
+  "name": "2 Series MSO Mixed Signal Oscilloscope",
+  "name_ko": "텍트로닉스 2 시리즈 MSO 혼합 신호 오실로스코프",
+  "manufacturer": "tektronix",
+  "brand": "2 Series MSO",
+  "category": "oscilloscope",
+  "subcategory": "mixed_signal_oscilloscope",
+  "form_factor": "portable",
+  "description": "70~500 MHz 대역의 휴대형 2·4채널 혼합 신호 오실로스코프 계열임. 2.5 GS/s, 10 M points, 16 디지털 채널, 10 inch WXGA 화면. -EDU 기종은 70~200 MHz 교육용.",
+  "test_items": [],
+  "limits": {
+    "bandwidth_Hz": {
+      "min": 70000000,
+      "max": 500000000
+    },
+    "sample_rate_Sa_s": {
+      "max": 2500000000,
+      "note": "원문 2.5 GS/s"
+    },
+    "record_length_pts": {
+      "max": 10000000,
+      "note": "원문 10 M points"
+    },
+    "channels": {
+      "values": [
+        2,
+        4
+      ]
+    },
+    "logic_channel_count": {
+      "values": [
+        16
+      ]
+    },
+    "display_size_in": {
+      "values": [
+        10
+      ]
+    }
+  },
+  "models": [
+    {
+      "model": "MSO22",
+      "specs": {
+        "bandwidth_Hz": {
+          "min": 70000000,
+          "max": 500000000,
+          "note": "원문 70 MHz - 500 MHz"
+        },
+        "channels": 2,
+        "logic_channel_count": 16,
+        "sample_rate_Sa_s": 2500000000,
+        "record_length_pts": 10000000,
+        "display_size_in": 10
+      }
+    },
+    {
+      "model": "MSO24",
+      "specs": {
+        "bandwidth_Hz": {
+          "min": 70000000,
+          "max": 500000000,
+          "note": "원문 70 MHz - 500 MHz"
+        },
+        "channels": 4,
+        "logic_channel_count": 16,
+        "sample_rate_Sa_s": 2500000000,
+        "record_length_pts": 10000000,
+        "display_size_in": 10
+      }
+    },
+    {
+      "model": "MSO22-EDU",
+      "variant": "EDU",
+      "specs": {
+        "bandwidth_Hz": {
+          "min": 70000000,
+          "max": 200000000,
+          "note": "원문 70 MHz - 200 MHz"
+        },
+        "channels": 2,
+        "logic_channel_count": 16,
+        "sample_rate_Sa_s": 2500000000,
+        "record_length_pts": 10000000,
+        "display_size_in": 10
+      }
+    },
+    {
+      "model": "MSO24-EDU",
+      "variant": "EDU",
+      "specs": {
+        "bandwidth_Hz": {
+          "min": 70000000,
+          "max": 200000000,
+          "note": "원문 70 MHz - 200 MHz"
+        },
+        "channels": 4,
+        "logic_channel_count": 16,
+        "sample_rate_Sa_s": 2500000000,
+        "record_length_pts": 10000000,
+        "display_size_in": 10
+      }
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://www.tek.com/en/products/oscilloscopes/2-series-mso",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지 기종 표. 원문 2.5 GS/s, 10 M points, 16 digital, 10 inch WXGA"
+    }
+  ],
+  "confidence": "limited",
+  "notes": "기종 이름의 대역폭은 옵션으로 정해져 기종명만으로는 대역폭이 갈리지 않음. ADC 분해능은 페이지에 없음."
+}

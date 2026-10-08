@@ -1,0 +1,69 @@
+{
+  "id": "lansmont-pdt-drop-testers-web",
+  "kind": "equipment_series",
+  "name": "Lansmont PDT Precision Drop Testers (PDT-56ED / PDT-80 / PDT-80M)",
+  "manufacturer": "lansmont",
+  "brand": "PDT",
+  "category": "drop_tester",
+  "form_factor": "floor",
+  "description": "현행 웹 목록의 대형 PDT 기종을 기존 계열 객체에 보탠다. PDT 300 은 반환 용기·목상자·팔레트 적재물용으로 300 kg(XXL 플래튼 227 kg), 낙하 높이 2.5~244 cm, 플래튼 105/188/300 cm. PDT 700 은 700 kg, 2.5~122 cm, 앞뒤 깊이 202 cm 까지. 둘 다 전동 호이스트로 위치를 잡고 ASTM D5276 을 넘는 평면 낙하 정확도를 낸다(±2° 출하 검증).",
+  "test_items": [
+    "free_fall_drop"
+  ],
+  "measurands": [
+    "drop_survival_height"
+  ],
+  "standards": {
+    "compliance": [],
+    "test_methods": [
+      "ASTM D5276"
+    ]
+  },
+  "models": [
+    {
+      "model": "PDT 300",
+      "specs": {
+        "payload_kg": 300,
+        "drop_height_mm": {
+          "min": 25,
+          "max": 2440
+        },
+        "package_size_mm": 3000
+      },
+      "note": "XXL 플래튼은 227 kg. 플래튼 표준 105 cm·XL 188 cm·XXL 300 cm. 연장 높이 옵션"
+    },
+    {
+      "model": "PDT 700",
+      "specs": {
+        "payload_kg": 700,
+        "drop_height_mm": {
+          "min": 25,
+          "max": 1220
+        },
+        "package_size_mm": 2020
+      },
+      "note": "모서리·꼭짓점 낙하 고정구 옵션. 핸드헬드 제어기"
+    }
+  ],
+  "relations": [
+    {
+      "type": "performs",
+      "target": "free_fall_drop"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://www.lansmont.com/products/drop-testers/pdt-300",
+      "retrieved": "2026-10-08",
+      "note": "제조사 PDT 300 페이지"
+    },
+    {
+      "url": "https://www.lansmont.com/products/drop/lansmont-pdt-700",
+      "retrieved": "2026-10-08",
+      "note": "제조사 PDT 700 페이지"
+    }
+  ],
+  "confidence": "limited",
+  "notes": "PDT 300·700 은 전동 호이스트 구동으로, 기존 객체의 drive(pneumatic)와 다르다. 그래서 drive 를 적지 않았다.",
+  "supplements": "lansmont-pdt-drop-testers"
+}

@@ -1,0 +1,110 @@
+{
+  "id": "yokogawa-scopecorder-dl950-dl350",
+  "kind": "equipment_series",
+  "name": "Yokogawa ScopeCorder DL950 / DL350",
+  "name_ko": "요코가와 스코프코더 DL950 · DL350",
+  "manufacturer": "yokogawa",
+  "brand": "ScopeCorder",
+  "category": "dmm_daq",
+  "description": "혼합 신호 오실로스코프와 휴대형 데이터 수집 기록계를 합친 ScopeCorder 계열. DL950 은 입력 모듈 슬롯 8개, 동기 채널 최대 160개, 200 MS/s, 16비트, 메모리 8 Gpts, 12.1인치 터치 화면, 10 GbE 전송. DL350 은 A4 크기 휴대형으로 모듈 2개(최대 32채널 + 내장 디지털 16채널), 100 MS/s, 16비트, 배터리 3.5시간, 0~45 °C 운전. 전압·전류·온도·변형·주파수·로직·CAN 등 20종 넘는 모듈.",
+  "test_items": [],
+  "limits": {
+    "channels": {
+      "max": 160,
+      "note": "DL950 은 본체 1대 최대 128ch(16CH 온도/전압 모듈 8개), 서브 유닛 4대를 광섬유로 묶으면 최대 160ch(/C50 옵션, 브로셔 p.9·20). DL350 최대 32 + 디지털 16(웹)",
+      "requires_accessory": true
+    },
+    "data_rate_Hz": {
+      "max": 200000000,
+      "note": "DL950 200 MS/s(720212 모듈, 14 bit — 브로셔 p.18), DL350 100 MS/s(웹)"
+    }
+  },
+  "models": [
+    {
+      "model": "DL950",
+      "form_factor": "benchtop",
+      "specs": {
+        "channels": {
+          "max": 160,
+          "requires_accessory": true,
+          "note": "원문 Up to 160-CH by synchronizing multiple DL950s(/C50, 서브 유닛 4대). 본체 1대는 32ch(4CH 모듈) · 128ch(16CH 온도/전압 모듈)"
+        },
+        "data_rate_Hz": {
+          "value": 200000000,
+          "note": "원문 200 MS/s(720212 고속 절연 모듈, 14 bit, 대역 40 MHz)"
+        },
+        "interfaces": "10 GbE(/C60 옵션)",
+        "bandwidth_Hz": {
+          "max": 40000000,
+          "note": "원문 720212 모듈 Bandwidth 40 MHz(브로셔 p.18)",
+          "requires_accessory": true
+        },
+        "record_length_pts": {
+          "values": [
+            1000000000,
+            4000000000,
+            8000000000
+          ],
+          "note": "원문 Memory size Standard 1 Gpoint / /M1 4 Gpoints / /M2 8 Gpoints(채널당 최대 0.5 · 2 · 4 Gpoints)"
+        },
+        "operating_temperature_degC": {
+          "min": 5,
+          "max": 40,
+          "note": "원문 Operating environment Temperature: 5 °C to 40 °C"
+        },
+        "weight_kg": {
+          "value": 7.5,
+          "note": "원문 Approx. 7.5 kg (main unit only, no options)"
+        },
+        "footprint_mm": [
+          375,
+          259,
+          202
+        ]
+      },
+      "note": "입력 모듈 슬롯 8개, 메모리 표준 1 Gpoint · /M1 4 Gpoints · /M2 8 Gpoints, /M2 에서 200 MS/s 연속 캡처 20초, 12.1인치 터치 화면, 최대 소비 전력 280 VA. 브로셔 Bulletin DL950-01EN 으로 확인. 웹 페이지의 '16비트' 는 저속 모듈 기준(200 MS/s 모듈은 14 bit)"
+    },
+    {
+      "model": "DL350",
+      "form_factor": "portable",
+      "specs": {
+        "channels": {
+          "max": 32,
+          "note": "모듈 2개, 별도 내장 디지털 16ch",
+          "requires_accessory": true
+        },
+        "data_rate_Hz": 100000000,
+        "operating_temperature_degC": {
+          "min": 0,
+          "max": 45
+        }
+      },
+      "note": "16비트, 모듈당 내부 메모리 100 M points(펌웨어 1.20 이후 SD 기록 모듈당 20 Gpoints), SD 연속 기록 50일, 배터리 3.5시간, A4 크기, JIS D1601 진동 규격 적합"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://tmi.yokogawa.com/us/solutions/products/oscilloscopes/scopecorders/dl950/",
+      "retrieved": "2026-10-08",
+      "note": "제조사 DL950 페이지. 8 input module slots, up to 160 synchronized channels, 200 MS/s, 8 Gpts, 16-bit, 20+ module types, 10 GbE, 12.1-inch touch screen, /M2 옵션"
+    },
+    {
+      "url": "https://tmi.yokogawa.com/solutions/products/data-acquisition-equipment/scopecorders/dl350-scopecorder/",
+      "retrieved": "2026-10-08",
+      "note": "제조사 DL350 페이지. 100 MS/s, 16-bit, up to 2 modules, up to 32 channels + 16 built-in digital, 100 M points per module, 3.5 hrs battery, A4, 0~45 °C, JIS D1601"
+    },
+    {
+      "file": "yokogawa/budl950-01en.pdf",
+      "pages": [
+        4,
+        7,
+        9,
+        18,
+        20,
+        23
+      ]
+    }
+  ],
+  "confidence": "limited",
+  "notes": "PDF(Bulletin DL950-01EN)로 확인: DL950 슬롯 8, 채널(본체 128 · 다중 연결 160), 200 MS/s, 메모리 1/4/8 Gpoints, 운전 온도, 외형·무게, 200 MS/s 모듈 대역 40 MHz. 웹 값 그대로: DL350 전부(이 PDF 에 없음). ScopeCorder 는 오실로스코프 성격도 있으나 제조사가 데이터 수집 장비로 분류해 dmm_daq 에 둠."
+}

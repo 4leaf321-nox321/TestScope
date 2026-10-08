@@ -2,12 +2,23 @@
  "_comment": "제조사 노드. id 는 pdf/ 하위 폴더명과 같다. TestScope 축 manufacturer 의 값 후보.",
  "manufacturers": [
   {
+   "id": "3ctest",
+   "name": "3ctest (3C Test Ltd.)",
+   "country": "CN",
+   "website": "http://www.3ctest.cn",
+   "domains": [
+    "esd_simulator"
+   ],
+   "note": "웹사이트 주소는 대리점·검색 결과 표기 기준이며 직접 열어 보지 않았다"
+  },
+  {
    "id": "admesy",
    "name": "Admesy",
    "country": "NL",
    "website": "https://www.admesy.com",
    "domains": [
-    "display_color_analyzer"
+    "display_color_analyzer",
+    "imaging_colorimeter"
    ],
    "note": "PDF 미확보 — 다운로드 실패, 빈 폴더 정리함"
   },
@@ -23,6 +34,47 @@
    "registered": "2026-09-12 materialtwin-20260905 계측기 반입"
   },
   {
+   "id": "aikoh",
+   "name": "AIKOH ENGINEERING Co., Ltd.",
+   "name_ko": "아이코 엔지니어링",
+   "country": "JP",
+   "website": "https://www.aikoh.co.jp",
+   "domains": [
+    "component_life_tester"
+   ]
+  },
+  {
+   "id": "ait",
+   "name": "Advanced Instrument Technology (AIT)",
+   "name_ko": "에이아이티",
+   "country": "KR",
+   "domains": [
+    "electrical_property_tester"
+   ],
+   "note": "CMT-SR 면저항 측정 시스템. 공식 웹사이트를 찾지 못해 website 비움"
+  },
+  {
+   "id": "albatross-projects",
+   "name": "Albatross Projects GmbH",
+   "country": "DE",
+   "website": "https://www.albatross-projects.com",
+   "domains": [
+    "shielded_enclosure"
+   ],
+   "note": "차폐실·무반사실·흡수체"
+  },
+  {
+   "id": "allied-vision",
+   "name": "Allied Vision Technologies",
+   "name_ko": "얼라이드 비전",
+   "country": "DE",
+   "website": "https://www.alliedvision.com",
+   "domains": [
+    "high_speed_swir_camera"
+   ],
+   "note": "Goldeye SWIR 카메라"
+  },
+  {
    "id": "ametek-lloyd",
    "name": "AMETEK / Lloyd Instruments",
    "country": "GB",
@@ -35,6 +87,22 @@
    "domains": [
     "universal_testing_machine",
     "force_tester"
+   ]
+  },
+  {
+   "id": "anritsu",
+   "name": "Anritsu Corporation",
+   "name_ko": "안리쓰",
+   "country": "JP",
+   "website": "https://www.anritsu.com",
+   "domains": [
+    "network_lcr_analyzer",
+    "radio_communication_tester",
+    "signal_generator"
+   ],
+   "note": "제품 페이지 주소는 anritsu.com/en-us/test-measurement/products/<기종>. 본사 소재국은 페이지에 적혀 있지 않아 일반 정보로 적었다.",
+   "aliases": [
+    "안리쓰"
    ]
   },
   {
@@ -68,6 +136,17 @@
    ]
   },
   {
+   "id": "atlas",
+   "name": "Atlas Material Testing Technology",
+   "name_ko": "아틀라스",
+   "country": "US",
+   "website": "https://www.atlas-mts.com",
+   "domains": [
+    "weathering_tester"
+   ],
+   "note": "AMETEK 계열. 브랜드 Xenotest(독일 Linsengericht), SUNTEST, Weather-Ometer(Ci 시리즈), UVTest"
+  },
+  {
    "id": "audio-precision",
    "name": "Audio Precision",
    "country": "US",
@@ -84,6 +163,17 @@
    "domains": [
     "shore_irhd_hardness"
    ]
+  },
+  {
+   "id": "binder",
+   "name": "BINDER GmbH",
+   "name_ko": "바인더",
+   "country": "DE",
+   "website": "https://www.binder-world.com",
+   "domains": [
+    "climatic_chamber"
+   ],
+   "note": "항온항습·안정성 챔버(KMF·MKF·KBF·KBF PRO·KBF-S ECO)"
   },
   {
    "id": "brookfield-ametek",
@@ -106,6 +196,11 @@
    "domains": [
     "head_torso_simulator",
     "vibration_shaker"
+   ],
+   "aliases": [
+    "B&K",
+    "Bruel & Kjaer",
+    "Bruel and Kjaer"
    ]
   },
   {
@@ -156,6 +251,53 @@
    ]
   },
   {
+   "id": "comet-yxlon",
+   "name": "Comet Yxlon",
+   "name_ko": "코멧 익스론",
+   "country": "DE",
+   "website": "https://yxlon.comet.tech",
+   "domains": [
+    "xray_inspection"
+   ],
+   "note": "옛 YXLON International. 제품 페이지의 X선 튜브 이름 FeinFocus(FXT-160.50 · 160.51)는 이 회사 튜브 브랜드",
+   "aliases": [
+    "YXLON"
+   ]
+  },
+  {
+   "id": "copper-mountain",
+   "name": "Copper Mountain Technologies",
+   "name_ko": "코퍼 마운틴 테크놀로지스",
+   "country": "US",
+   "website": "https://coppermountaintech.com",
+   "domains": [
+    "network_lcr_analyzer"
+   ],
+   "note": "벡터 네트워크 분석기 전문"
+  },
+  {
+   "id": "correlated-solutions",
+   "name": "Correlated Solutions, Inc.",
+   "name_ko": "코릴레이티드 솔루션스",
+   "country": "US",
+   "website": "https://www.correlatedsolutions.com",
+   "domains": [
+    "dic_strain_measurement"
+   ],
+   "note": "VIC-2D·VIC-3D·VIC-Volume"
+  },
+  {
+   "id": "crystal-instruments",
+   "name": "Crystal Instruments",
+   "name_ko": "크리스탈 인스트루먼트",
+   "country": "US",
+   "website": "https://www.crystalinstruments.com",
+   "domains": [
+    "mechanical_dynamics"
+   ],
+   "note": "Spider 진동 제어기·동적 신호 분석기(CoCo). 국가는 페이지에서 확인하지 않음(확인 요)"
+  },
+  {
    "id": "cscforce",
    "name": "C.S.C. Force Measurement",
    "country": "US",
@@ -173,7 +315,8 @@
     "climatic_chamber",
     "thermal_shock_chamber",
     "altitude_chamber"
-   ]
+   ],
+   "note": "Weiss Technik North America 의 제품 브랜드(CA 계열 카탈로그 기준)"
   },
   {
    "id": "daekyung-tech",
@@ -193,14 +336,73 @@
    "note": "PDF 미확보"
   },
   {
+   "id": "dantec-dynamics",
+   "name": "Dantec Dynamics A/S",
+   "name_ko": "단텍 다이내믹스",
+   "country": "DK",
+   "website": "https://www.dantecdynamics.com",
+   "domains": [
+    "dic_strain_measurement"
+   ],
+   "note": "Istra4D DIC 시스템. 이전 제품명 Q-400·Q-450"
+  },
+  {
+   "id": "data-physics",
+   "name": "Data Physics Corporation",
+   "name_ko": "데이터 피직스",
+   "country": "US",
+   "website": "https://www.dataphysics.com",
+   "domains": [
+    "vibration_shaker"
+   ],
+   "note": "가진기 브랜드 SignalForce. www 주소는 TLS 오류로 열리지 않아 dataphysics.com 으로 조회"
+  },
+  {
    "id": "defelsko",
    "name": "DeFelsko",
    "country": "US",
    "website": "https://www.defelsko.com",
    "domains": [
     "scratch_hardness_tester",
-    "adhesion_tester"
+    "adhesion_tester",
+    "coating_surface_test"
    ]
+  },
+  {
+   "id": "ducom",
+   "name": "Ducom Instruments",
+   "name_ko": "듀콤",
+   "country": "IN",
+   "website": "https://www.ducom.com",
+   "domains": [
+    "tribometer"
+   ],
+   "note": "핀온디스크 · 4구 시험기 · HFRR"
+  },
+  {
+   "id": "elcometer",
+   "name": "Elcometer",
+   "name_ko": "엘코미터",
+   "country": "GB",
+   "website": "https://www.elcometer.com",
+   "domains": [
+    "adhesion_tester",
+    "coating_surface_test",
+    "scratch_hardness_tester",
+    "abrasion_tester"
+   ],
+   "note": "도막 검사 장비(풀오프 · 크로스컷 · 두께 · 연필경도 · 마모)"
+  },
+  {
+   "id": "em-test",
+   "name": "EM TEST (AMETEK CTS)",
+   "country": "CH",
+   "website": "https://www.ametek-cts.com",
+   "domains": [
+    "esd_simulator",
+    "transient_generator"
+   ],
+   "note": "AMETEK CTS 의 브랜드. 과제 메모의 'ametek-cts' 대신 브랜드 단위 id 를 제안한다 — 기존 'teseq'(이름 'Teseq / AMETEK CTS')가 이미 AMETEK CTS 를 가리키고 있어 'ametek-cts' 를 따로 세우면 같은 회사가 두 줄이 된다. 사람이 정할 일"
   },
   {
    "id": "emco-test",
@@ -248,7 +450,8 @@
     "halt_hass_chamber",
     "dust_chamber",
     "altitude_chamber",
-    "battery_abuse_tester"
+    "battery_abuse_tester",
+    "water_ingress_tester"
    ],
    "note": "Qualmark(HALT/HASS) 인수"
   },
@@ -264,6 +467,33 @@
     "environmental_simulation"
    ],
    "note": "라이브 사이트의 PDF 링크가 200 과 함께 HTML 게이트를 준다. archive.org 스냅샷(2023~2025)에서 확보 — 브로슈어가 마케팅 층위라 기종별 사양표가 없다"
+  },
+  {
+   "id": "evident",
+   "name": "Evident Corporation",
+   "name_ko": "에비던트",
+   "country": "JP",
+   "website": "https://evidentscientific.com",
+   "domains": [
+    "optical_microscope",
+    "optical_profilometer"
+   ],
+   "note": "구 Olympus 과학 사업부(산업용·생명과학 현미경). 대장에는 Olympus 로 적혀 있을 수 있음",
+   "aliases": [
+    "Olympus",
+    "올림푸스"
+   ]
+  },
+  {
+   "id": "exosens",
+   "name": "Exosens",
+   "name_ko": "엑소센스",
+   "country": "FR",
+   "website": "https://www.exosens.com",
+   "domains": [
+    "high_speed_swir_camera"
+   ],
+   "note": "Xenics(SWIR 카메라 Bobcat · Cheetah) 를 브랜드로 가진다. 옛 Photonis 그룹. 대장에는 'Xenics' 로 적힐 수 있다"
   },
   {
    "id": "filmetrics",
@@ -284,7 +514,48 @@
    "website": "https://www.flir.com",
    "domains": [
     "thermal_imager"
+   ],
+   "aliases": [
+    "Teledyne FLIR",
+    "FLIR Systems"
    ]
+  },
+  {
+   "id": "fluke",
+   "name": "Fluke Corporation",
+   "name_ko": "플루크",
+   "country": "US",
+   "website": "https://www.fluke.com",
+   "domains": [
+    "dmm_daq",
+    "thermal_imager"
+   ],
+   "note": "열화상 카메라(TiS · Ti PRO · TiX). 같은 회사의 다른 계측기는 이 묶음 밖",
+   "aliases": [
+    "플루크"
+   ]
+  },
+  {
+   "id": "four-dimensions",
+   "name": "Four Dimensions, Inc.",
+   "name_ko": "포 디멘션스",
+   "country": "US",
+   "website": "https://www.4dimensions.com",
+   "domains": [
+    "electrical_property_tester"
+   ],
+   "note": "4탐침·수은 탐침 C-V 측정기"
+  },
+  {
+   "id": "fujifilm",
+   "name": "FUJIFILM Corporation",
+   "name_ko": "후지필름",
+   "country": "JP",
+   "website": "https://www.fujifilm.com",
+   "domains": [
+    "force_pressure_sensor"
+   ],
+   "note": "Prescale 압력 측정 필름, FPD-8010E 분석 시스템"
   },
   {
    "id": "goettfert",
@@ -296,6 +567,92 @@
     "melt_flow_indexer"
    ],
    "note": "PDF 미확보"
+  },
+  {
+   "id": "graphtec",
+   "name": "GRAPHTEC IWATSU Test Instruments Co., Ltd. (Graphtec)",
+   "name_ko": "그래프텍",
+   "country": "JP",
+   "website": "https://graphteciwatsu.com",
+   "domains": [
+    "dmm_daq"
+   ],
+   "note": "데이터 로거 브랜드 midi LOGGER. 옛 graphteccorp.com/logger/ 페이지가 graphteciwatsu.com/en/product/logger/ 로 301 이동했고 페이지 회사명이 GRAPHTEC IWATSU Test Instruments 임",
+   "aliases": [
+    "Graphtec Iwatsu"
+   ]
+  },
+  {
+   "id": "gras",
+   "name": "GRAS Sound & Vibration",
+   "name_ko": "그라스",
+   "country": "DK",
+   "website": "https://www.grasacoustics.com",
+   "domains": [
+    "head_torso_simulator",
+    "acoustic_measurement"
+   ],
+   "note": "KEMAR 인공 두상, 측정 마이크 세트, 헤드폰 시험 고정구. 모회사는 페이지에서 확인하지 않음"
+  },
+  {
+   "id": "gw-instek",
+   "name": "Good Will Instrument Co., Ltd. (GW Instek)",
+   "name_ko": "GW 인스텍",
+   "country": "TW",
+   "website": "https://www.gwinstek.com",
+   "domains": [
+    "network_lcr_analyzer"
+   ],
+   "note": "브랜드 GW Instek. 이번 묶음은 LCR-8200(A) 만"
+  },
+  {
+   "id": "haefely",
+   "name": "Haefely AG",
+   "name_ko": "하펠리",
+   "country": "CH",
+   "website": "https://www.pfiffner-group.com/about-pfiffner-group/haefely",
+   "domains": [
+    "esd_simulator"
+   ],
+   "note": "Pfiffner 그룹. haefely.com 은 그룹 페이지로 넘어간다. 'Haefely EMC' 로도 불림"
+  },
+  {
+   "id": "hamamatsu",
+   "name": "Hamamatsu Photonics",
+   "name_ko": "하마마쓰 포토닉스",
+   "country": "JP",
+   "website": "https://www.hamamatsu.com",
+   "domains": [
+    "high_speed_swir_camera"
+   ],
+   "note": "InGaAs 카메라. 같은 회사의 다른 광 검출 제품군이 있다"
+  },
+  {
+   "id": "hbm",
+   "name": "HBM (HBK – Hottinger Brüel & Kjær)",
+   "name_ko": "에이치비엠(HBK)",
+   "country": "DE",
+   "website": "https://www.hbkworld.com",
+   "domains": [
+    "force_pressure_sensor"
+   ],
+   "note": "구 Hottinger Baldwin Messtechnik. Brüel & Kjær 와 합쳐 HBK — 기존 제조사 bruel-kjaer(「Brüel & Kjær (HBK)」)와 같은 모회사라 합칠지 사람이 판단할 것. 대장에는 HBM 으로 적힌 경우가 많아 따로 제안",
+   "aliases": [
+    "Hottinger Baldwin Messtechnik"
+   ]
+  },
+  {
+   "id": "head-acoustics",
+   "name": "HEAD acoustics",
+   "name_ko": "헤드 어쿠스틱스",
+   "country": "DE",
+   "website": "https://www.head-acoustics.com",
+   "domains": [
+    "head_torso_simulator",
+    "acoustic_measurement",
+    "audio_analyzer"
+   ],
+   "note": "인공 두상(HMS·HSU), 이동형 녹음기(SQuadriga·SQobold), 통화 품질 시험 하드웨어(labCORE)"
   },
   {
    "id": "hegewald-peschke",
@@ -313,8 +670,20 @@
    "country": "DE",
    "website": "https://www.helmut-fischer.com",
    "domains": [
-    "xrf_thickness"
+    "xrf_thickness",
+    "coating_surface_test"
    ]
+  },
+  {
+   "id": "hikmicro",
+   "name": "HIKMICRO",
+   "name_ko": "하이크마이크로",
+   "country": "CN",
+   "website": "https://www.hikmicrotech.com",
+   "domains": [
+    "thermal_imager"
+   ],
+   "note": "Hikvision 계열 열화상 카메라 제조사"
   },
   {
    "id": "hioki",
@@ -324,7 +693,9 @@
    "website": "https://www.hioki.com",
    "domains": [
     "insulation_tester",
-    "power_analyzer"
+    "power_analyzer",
+    "dmm_daq",
+    "network_lcr_analyzer"
    ]
   },
   {
@@ -336,6 +707,17 @@
    "domains": [
     "hast_chamber"
    ]
+  },
+  {
+   "id": "hirox",
+   "name": "Hirox Co., Ltd.",
+   "name_ko": "하이록스",
+   "country": "JP",
+   "website": "https://www.hirox.com",
+   "domains": [
+    "optical_microscope"
+   ],
+   "note": "디지털 현미경. 유럽 법인 hirox-europe.com"
   },
   {
    "id": "hitachi-high-tech",
@@ -350,7 +732,21 @@
     "sta",
     "tma",
     "dma"
+   ],
+   "aliases": [
+    "Hitachi High-Technologies"
    ]
+  },
+  {
+   "id": "hitachi-power-solutions",
+   "name": "Hitachi Power Solutions Co., Ltd.",
+   "name_ko": "히타치 파워 솔루션즈",
+   "country": "JP",
+   "website": "https://www.hitachi-power-solutions.com",
+   "domains": [
+    "acoustic_microscope"
+   ],
+   "note": "초음파 탐상 영상 장치(SAT) FineSAT. 기존 hitachi-high-tech(Hitachi High-Tech Analytical Science, 열분석 · SEM)와 다른 회사라 따로 둔다"
   },
   {
    "id": "horiba",
@@ -374,6 +770,29 @@
    ]
   },
   {
+   "id": "imada",
+   "name": "IMADA Co., Ltd.",
+   "name_ko": "이마다",
+   "country": "JP",
+   "website": "https://www.forcegauge.net",
+   "domains": [
+    "force_pressure_sensor",
+    "force_tester"
+   ],
+   "note": "디지털 포스 게이지. 일본 사이트 imada.co.jp 는 인증서 오류로 조회 실패, 공식 영문 사이트 forcegauge.net 사용"
+  },
+  {
+   "id": "imetrum",
+   "name": "Imetrum Ltd",
+   "name_ko": "아이메트럼",
+   "country": "GB",
+   "website": "https://www.imetrum.com",
+   "domains": [
+    "dic_strain_measurement"
+   ],
+   "note": "Video Gauge, UVX3D 비디오 신율계"
+  },
+  {
    "id": "imv",
    "name": "IMV Corporation",
    "name_ko": "아이엠브이",
@@ -391,6 +810,17 @@
    "domains": [
     "helium_leak_detector"
    ]
+  },
+  {
+   "id": "infratec",
+   "name": "InfraTec GmbH",
+   "name_ko": "인프라텍",
+   "country": "DE",
+   "website": "https://www.infratec.eu",
+   "domains": [
+    "thermal_imager"
+   ],
+   "note": "ImageIR · VarioCAM 적외선 카메라. 제품 페이지가 스크립트로 그려져 자동 조회로 본문을 못 읽는다"
   },
   {
    "id": "innovatest",
@@ -425,7 +855,8 @@
     "hdt_vicat",
     "torsion_tester",
     "environmental_chamber",
-    "extensometer"
+    "extensometer",
+    "hydraulic_utm"
    ]
   },
   {
@@ -440,11 +871,33 @@
    "note": "Konica Minolta 그룹"
   },
   {
+   "id": "interface",
+   "name": "Interface, Inc.",
+   "name_ko": "인터페이스",
+   "country": "US",
+   "website": "https://www.interfaceforce.com",
+   "domains": [
+    "force_pressure_sensor"
+   ],
+   "note": "로드셀·토크 센서(미국 애리조나). 일반 명사와 겹치는 id 라 반입 시 interface-force 로 바꿀지 판단"
+  },
+  {
    "id": "ipc",
    "name": "IPC (표준화 단체)",
    "country": "US",
    "website": "https://www.ipc.org",
    "note": "장비 제조사가 아님 — 시험법 문서 출처"
+  },
+  {
+   "id": "its-gmbh",
+   "name": "iTS GmbH",
+   "country": "DE",
+   "website": "https://its-gmbh.de",
+   "domains": [
+    "water_ingress_tester",
+    "dust_chamber"
+   ],
+   "note": "IP 방진·방수 시험 설비 전문"
   },
   {
    "id": "ja-woollam",
@@ -456,6 +909,28 @@
     "film_thickness_analyzer"
    ],
    "registered": "2026-09-12 materialtwin-20260905 계측기 반입"
+  },
+  {
+   "id": "jandel",
+   "name": "Jandel Engineering Ltd",
+   "name_ko": "잔델",
+   "country": "GB",
+   "website": "https://www.jandel.co.uk",
+   "domains": [
+    "electrical_property_tester"
+   ],
+   "note": "4탐침 헤드·스탠드·측정 유닛. 제조사 사이트가 2026-10-08 HTTP 500 이라 Polytec(대리점) 페이지로 조사"
+  },
+  {
+   "id": "jeio-tech",
+   "name": "JEIO TECH",
+   "name_ko": "제이오텍",
+   "country": "KR",
+   "website": "https://www.jeiotech.com",
+   "domains": [
+    "climatic_chamber"
+   ],
+   "note": "국내 제조사. 항온항습기 TH3 계열"
   },
   {
    "id": "jeol",
@@ -477,9 +952,24 @@
    "parent": "Tektronix",
    "website": "https://www.tek.com/keithley",
    "domains": [
-    "electrical_property_tester"
+    "electrical_property_tester",
+    "dmm_daq"
    ],
    "registered": "2026-09-12 materialtwin-20260905 계측기 반입"
+  },
+  {
+   "id": "keyence",
+   "name": "KEYENCE",
+   "name_ko": "키엔스",
+   "country": "JP",
+   "website": "https://www.keyence.com",
+   "domains": [
+    "coordinate_measuring_machine",
+    "optical_microscope",
+    "optical_profilometer",
+    "thickness_displacement_gauge"
+   ],
+   "note": "레이저·공초점·분광 간섭·접촉식 변위 센서, 2D/3D 프로파일러, 영상 치수 측정기(IM·LM-X), 핸드헬드 CMM(XM), 3D 스캐너 CMM(VL). 기종별 사양은 제조사 기종 페이지(models/<기종명>/)에 HTML 로 있음"
   },
   {
    "id": "keysight",
@@ -489,7 +979,12 @@
    "website": "https://www.keysight.com",
    "domains": [
     "emi_receiver",
-    "power_analyzer"
+    "power_analyzer",
+    "signal_generator",
+    "radio_communication_tester",
+    "oscilloscope",
+    "dmm_daq",
+    "network_lcr_analyzer"
    ]
   },
   {
@@ -514,6 +1009,17 @@
    ]
   },
   {
+   "id": "kistler",
+   "name": "Kistler Group",
+   "name_ko": "키스틀러",
+   "country": "CH",
+   "website": "https://www.kistler.com",
+   "domains": [
+    "force_pressure_sensor"
+   ],
+   "note": "압전 힘·압력 센서"
+  },
+  {
    "id": "kla",
    "name": "KLA Instruments (Nanomechanics)",
    "country": "US",
@@ -521,6 +1027,17 @@
    "domains": [
     "instrumented_indentation"
    ]
+  },
+  {
+   "id": "klippel",
+   "name": "KLIPPEL GmbH",
+   "name_ko": "클리펠",
+   "country": "DE",
+   "website": "https://www.klippel.de",
+   "domains": [
+    "acoustic_measurement"
+   ],
+   "note": "스피커 변환기 측정(R&D System: KA3·DA2·PM8)"
   },
   {
    "id": "konica-minolta",
@@ -546,6 +1063,19 @@
    "registered": "2026-09-12 materialtwin-20260905 계측기 반입"
   },
   {
+   "id": "lab-equipment",
+   "name": "L.A.B. Equipment, Inc.",
+   "name_ko": "엘에이비 이큅먼트",
+   "country": "US",
+   "website": "https://www.labequipment.com",
+   "domains": [
+    "shock_test_machine",
+    "drop_tester",
+    "mechanical_dynamics"
+   ],
+   "note": "포장 시험 장비(AutoShock II·SD-Series·TrueDrop·VibraTest·경사 충격). 1933년 설립이라고 사이트가 적음. 국가는 페이지에서 확인하지 않음(확인 요)"
+  },
+  {
    "id": "lake-shore",
    "name": "Lake Shore Cryotronics",
    "name_ko": "레이크쇼어",
@@ -564,7 +1094,41 @@
    "domains": [
     "drop_tester",
     "shock_test_machine",
-    "vibration_shaker"
+    "vibration_shaker",
+    "mechanical_dynamics"
+   ]
+  },
+  {
+   "id": "lavision",
+   "name": "LaVision GmbH",
+   "name_ko": "라비전",
+   "country": "DE",
+   "website": "https://www.lavision.de",
+   "domains": [
+    "dic_strain_measurement"
+   ],
+   "note": "StrainMaster(DaVis) DIC·DVC"
+  },
+  {
+   "id": "leica-microsystems",
+   "name": "Leica Microsystems",
+   "name_ko": "라이카 마이크로시스템즈",
+   "country": "DE",
+   "website": "https://www.leica-microsystems.com",
+   "domains": [
+    "optical_microscope"
+   ],
+   "note": "카메라 회사 Leica Camera 와 다른 회사(Danaher 계열)"
+  },
+  {
+   "id": "lib-industry",
+   "name": "Xi'an LIB Environmental Simulation Industry",
+   "name_ko": "LIB 인더스트리",
+   "country": "CN",
+   "website": "https://www.lib-climaticchamber.com",
+   "domains": [
+    "water_ingress_tester",
+    "climatic_chamber"
    ]
   },
   {
@@ -588,8 +1152,31 @@
     "dilatometer",
     "thermal_conductivity",
     "dsc",
-    "tga"
+    "tga",
+    "sta"
    ]
+  },
+  {
+   "id": "listen-inc",
+   "name": "Listen, Inc.",
+   "name_ko": "리슨",
+   "country": "US",
+   "website": "https://www.listeninc.com",
+   "domains": [
+    "acoustic_measurement"
+   ],
+   "note": "SoundCheck 오디오 측정 소프트웨어와 인터페이스·마이크. id 를 listen 으로 하지 않은 이유: 일반 단어라 다른 이름과 겹치기 쉽다"
+  },
+  {
+   "id": "litepoint",
+   "name": "LitePoint",
+   "name_ko": "라이트포인트",
+   "country": "US",
+   "website": "https://www.litepoint.com",
+   "domains": [
+    "radio_communication_tester"
+   ],
+   "note": "제품 페이지에 「A Teradyne Company」 로 적힌다. 소재국은 페이지에 없어 일반 정보로 적었다."
   },
   {
    "id": "maccor",
@@ -599,6 +1186,17 @@
    "domains": [
     "battery_cycler"
    ]
+  },
+  {
+   "id": "malcom",
+   "name": "Malcom Co., Ltd.",
+   "name_ko": "말콤",
+   "country": "JP",
+   "website": "https://www.malcom.co.jp",
+   "domains": [
+    "solderability_tester"
+   ],
+   "note": "솔더 젖음성 시험기 SWB-2 · SP-2, 리플로 체커 등"
   },
   {
    "id": "malvern-panalytical",
@@ -613,6 +1211,18 @@
    ]
   },
   {
+   "id": "mark-10",
+   "name": "Mark-10 Corporation",
+   "name_ko": "마크텐",
+   "country": "US",
+   "website": "https://mark-10.com",
+   "domains": [
+    "force_pressure_sensor",
+    "force_tester"
+   ],
+   "note": "포스 게이지 Series 2～7, 힘 시험기 Series F"
+  },
+  {
    "id": "mecmesin",
    "name": "Mecmesin",
    "name_ko": "멕메신",
@@ -623,6 +1233,17 @@
     "force_tester",
     "universal_testing_machine"
    ]
+  },
+  {
+   "id": "memmert",
+   "name": "Memmert GmbH + Co. KG",
+   "name_ko": "메머트",
+   "country": "DE",
+   "website": "https://www.memmert.com",
+   "domains": [
+    "climatic_chamber"
+   ],
+   "note": "HCP·HPPeco·ICH·TESTA"
   },
   {
    "id": "metrohm",
@@ -648,6 +1269,17 @@
     "dma",
     "tma"
    ]
+  },
+  {
+   "id": "micro-epsilon",
+   "name": "Micro-Epsilon",
+   "name_ko": "마이크로엡실론",
+   "country": "DE",
+   "website": "https://www.micro-epsilon.com",
+   "domains": [
+    "thickness_displacement_gauge"
+   ],
+   "note": "센서 계열 브랜드 optoNCDT(레이저), confocalDT(공초점), capaNCDT(정전용량), interferoMETER(백색광 간섭). 제품 페이지는 계열 대표값만 적고 기종별 값은 데이터시트 PDF 에 있음"
   },
   {
    "id": "micromeritics",
@@ -680,7 +1312,9 @@
    "domains": [
     "rockwell_hardness",
     "vickers_knoop_hardness",
-    "portable_hardness"
+    "portable_hardness",
+    "coordinate_measuring_machine",
+    "thickness_displacement_gauge"
    ]
   },
   {
@@ -730,6 +1364,17 @@
    ]
   },
   {
+   "id": "napson",
+   "name": "NAPSON Corporation",
+   "name_ko": "냅슨",
+   "country": "JP",
+   "website": "https://www.napson-resistivity.com",
+   "domains": [
+    "electrical_property_tester"
+   ],
+   "note": "일본어 제품 페이지는 napson.co.jp/products/ 아래. 4탐침·와전류 저항률 측정기 전문"
+  },
+  {
    "id": "netzsch",
    "name": "NETZSCH Analyzing & Testing",
    "name_ko": "네취",
@@ -764,13 +1409,43 @@
    ]
   },
   {
+   "id": "ni",
+   "name": "NI (National Instruments)",
+   "name_ko": "엔아이(내쇼널 인스트루먼트)",
+   "country": "US",
+   "website": "https://www.ni.com",
+   "domains": [
+    "dmm_daq"
+   ],
+   "note": "옛 이름 National Instruments. 데이터 수집 브랜드 CompactDAQ",
+   "aliases": [
+    "National Instruments"
+   ]
+  },
+  {
    "id": "nikon",
    "name": "Nikon Metrology",
    "name_ko": "니콘",
    "country": "JP",
    "website": "https://industry.nikon.com",
    "domains": [
-    "xray_inspection"
+    "xray_inspection",
+    "optical_microscope"
+   ]
+  },
+  {
+   "id": "nittoseiko-analytech",
+   "name": "Nittoseiko Analytech Co., Ltd.",
+   "name_ko": "닛토세이코 아날리테크",
+   "country": "JP",
+   "website": "https://www.n-analytech.co.jp",
+   "domains": [
+    "electrical_property_tester"
+   ],
+   "note": "구 Mitsubishi Chemical Analytech(미쓰비시화학 아날리테크). Loresta·Hiresta 저항률계. 대장에 「미쓰비시」 로 적혀 있을 수 있음",
+   "aliases": [
+    "Mitsubishi Chemical Analytech",
+    "Mitsubishi Chemical"
    ]
   },
   {
@@ -796,6 +1471,50 @@
    ]
   },
   {
+   "id": "norman-tool",
+   "name": "Norman Tool, Inc.",
+   "name_ko": "노먼 툴",
+   "country": "US",
+   "website": "https://normantool.com",
+   "domains": [
+    "abrasion_tester"
+   ],
+   "note": "RCA 마모 시험기(7-IBB), 키패드 · 터치 반복 시험기 Motion Pro"
+  },
+  {
+   "id": "omron",
+   "name": "OMRON",
+   "name_ko": "옴론",
+   "country": "JP",
+   "website": "https://www.ia.omron.com",
+   "domains": [
+    "thickness_displacement_gauge"
+   ],
+   "note": "산업 자동화 사업(OMRON Industrial Automation). 유럽 사이트 industrial.omron.eu, 미국 automation.omron.com. 본사 사양 페이지(ia.omron.com)는 자동 조회 시 403"
+  },
+  {
+   "id": "optris",
+   "name": "Optris GmbH",
+   "name_ko": "옵트리스",
+   "country": "DE",
+   "website": "https://optris.com",
+   "domains": [
+    "thermal_imager"
+   ],
+   "note": "PI · Xi 적외선 카메라, 적외선 온도계"
+  },
+  {
+   "id": "optronis",
+   "name": "Optronis GmbH",
+   "name_ko": "옵트로니스",
+   "country": "DE",
+   "website": "https://optronis.com",
+   "domains": [
+    "high_speed_swir_camera"
+   ],
+   "note": "Cyclone · CyclonePlus CoaXPress 고속 카메라, CamRecord 녹화 장치"
+  },
+  {
    "id": "ossila",
    "name": "Ossila",
    "name_ko": "오실라",
@@ -818,6 +1537,17 @@
    "registered": "2026-09-12 materialtwin-20260905 계측기 반입"
   },
   {
+   "id": "panasonic",
+   "name": "Panasonic Industry",
+   "name_ko": "파나소닉 인더스트리",
+   "country": "JP",
+   "website": "https://industry.panasonic.com",
+   "domains": [
+    "thickness_displacement_gauge"
+   ],
+   "note": "FA 센서(옛 SUNX 계열 포함) 사업. 레이저 변위 센서 HG-C, HL-G1 등"
+  },
+  {
    "id": "park-systems",
    "name": "Park Systems",
    "name_ko": "파크시스템스",
@@ -836,8 +1566,31 @@
    "domains": [
     "dsc",
     "tga",
-    "dma"
+    "dma",
+    "sta"
    ]
+  },
+  {
+   "id": "photo-research",
+   "name": "Photo Research (Novanta / JADAK)",
+   "name_ko": "포토리서치",
+   "country": "US",
+   "website": "https://novanta.com/precision-medicine/spectroradiometers-for-light-and-color-measurement/",
+   "domains": [
+    "spectroradiometer"
+   ],
+   "note": "SpectraScan 분광복사계. JADAK(Novanta) 브랜드. photoresearch.com · jadaktech.com 이 novanta.com 으로 넘어간다"
+  },
+  {
+   "id": "photron",
+   "name": "Photron",
+   "name_ko": "포트론",
+   "country": "JP",
+   "website": "https://photron.com",
+   "domains": [
+    "high_speed_swir_camera"
+   ],
+   "note": "FASTCAM 고속 카메라"
   },
   {
    "id": "proceq",
@@ -849,6 +1602,17 @@
    ]
   },
   {
+   "id": "pva-tepla",
+   "name": "PVA TePla Analytical Systems",
+   "name_ko": "PVA 테플라",
+   "country": "DE",
+   "website": "https://www.pvatepla.com",
+   "domains": [
+    "acoustic_microscope"
+   ],
+   "note": "PVA TePla 그룹의 주사 초음파 현미경(SAM) 부문. 옛 기종명 SAM 300 · SAM 400 · SAM 302 HD2 등"
+  },
+  {
    "id": "q-lab",
    "name": "Q-Lab Corporation",
    "country": "US",
@@ -857,6 +1621,17 @@
     "weathering_tester",
     "corrosion_chamber"
    ]
+  },
+  {
+   "id": "radiant-vision-systems",
+   "name": "Radiant Vision Systems",
+   "name_ko": "래디언트 비전 시스템즈",
+   "country": "US",
+   "website": "https://www.radiantvisionsystems.com",
+   "domains": [
+    "imaging_colorimeter"
+   ],
+   "note": "Konica Minolta 그룹. ProMetric 이미징 콜로리미터는 Konica Minolta Sensing 미주 사이트에서도 판다. 웹사이트 주소는 이번 조사에서 열어 보지 않았다"
   },
   {
    "id": "renishaw",
@@ -870,6 +1645,20 @@
    "registered": "2026-09-12 materialtwin-20260905 계측기 반입"
   },
   {
+   "id": "rhesca",
+   "name": "RHESCA Co., Ltd.",
+   "name_ko": "레스카",
+   "country": "JP",
+   "website": "https://www.rhesca.co.jp",
+   "domains": [
+    "solderability_tester",
+    "bond_tester",
+    "scratch_hardness_tester",
+    "tribometer"
+   ],
+   "note": "솔더 젖음성 · 본딩 강도 · 박막 스크래치 · 마찰 마모 시험기"
+  },
+  {
    "id": "rigaku",
    "name": "Rigaku",
    "name_ko": "리가쿠",
@@ -877,9 +1666,35 @@
    "website": "https://www.rigaku.com",
    "domains": [
     "xray_diffractometer",
-    "composition_spectrometer"
+    "composition_spectrometer",
+    "sta",
+    "dsc",
+    "tma"
    ],
    "registered": "2026-09-12 materialtwin-20260905 계측기 반입"
+  },
+  {
+   "id": "rigol",
+   "name": "RIGOL Technologies",
+   "name_ko": "리골",
+   "country": "CN",
+   "website": "https://www.rigol.com",
+   "domains": [
+    "oscilloscope",
+    "signal_generator"
+   ],
+   "note": "사양 출처는 미국 법인 사이트(rigolna.com, RIGOL Technologies USA)다. 소재국은 페이지에 없어 일반 정보로 적었다."
+  },
+  {
+   "id": "rion",
+   "name": "RION Co., Ltd.",
+   "name_ko": "리온",
+   "country": "JP",
+   "website": "https://rion-sv.com",
+   "domains": [
+    "acoustic_measurement"
+   ],
+   "note": "소음계·진동계. rion-sv.com 은 음향·진동 제품 영문 사이트"
   },
   {
    "id": "rohde-schwarz",
@@ -888,8 +1703,49 @@
    "country": "DE",
    "website": "https://www.rohde-schwarz.com",
    "domains": [
-    "emi_receiver"
+    "emi_receiver",
+    "radio_communication_tester",
+    "signal_generator",
+    "oscilloscope",
+    "network_lcr_analyzer"
+   ],
+   "aliases": [
+    "R&S",
+    "Rohde and Schwarz"
    ]
+  },
+  {
+   "id": "royce-instruments",
+   "name": "Royce Instruments",
+   "name_ko": "로이스 인스트루먼츠",
+   "country": "US",
+   "website": "https://www.royceinstruments.com",
+   "domains": [
+    "bond_tester"
+   ],
+   "note": "royceinstruments.com 이 V-TEK(vtekusa.com)으로 301 이동한다. 제품 페이지는 V-TEK 사이트의 Royce Equipment 메뉴"
+  },
+  {
+   "id": "rtec-instruments",
+   "name": "Rtec Instruments",
+   "name_ko": "알텍 인스트루먼츠",
+   "country": "US",
+   "website": "https://rtec-instruments.com",
+   "domains": [
+    "tribometer"
+   ],
+   "note": "다기능 트라이보미터 MFT 계열, 4구 시험기 FBT-1000"
+  },
+  {
+   "id": "saginomiya",
+   "name": "Saginomiya Seisakusho, Inc.",
+   "name_ko": "사기노미야 제작소",
+   "country": "JP",
+   "website": "https://www.saginomiya.co.jp/en/",
+   "domains": [
+    "servohydraulic_fatigue"
+   ],
+   "note": "鷺宮製作所. 자동 제어 부품과 시험 시스템(재료 피로·진동·자동차·건설) 사업"
   },
   {
    "id": "salt",
@@ -907,6 +1763,43 @@
    "note": "light-salt.kr 이 열리지만 제품 사양이 이미지라 텍스트로 못 뽑는다. PDF 카탈로그 없음"
   },
   {
+   "id": "sensors-unlimited",
+   "name": "Sensors Unlimited",
+   "name_ko": "센서스 언리미티드",
+   "country": "US",
+   "website": "https://www.sensorsinc.com",
+   "domains": [
+    "high_speed_swir_camera"
+   ],
+   "note": "Collins Aerospace(RTX) 소속 InGaAs SWIR 카메라 제조사"
+  },
+  {
+   "id": "sentek-dynamics",
+   "name": "Sentek Dynamics",
+   "name_ko": "센텍 다이나믹스",
+   "country": "US",
+   "website": "https://www.sentekdynamics.com",
+   "domains": [
+    "vibration_shaker",
+    "shock_test_machine"
+   ],
+   "note": "국가는 페이지에서 확인하지 않음(본사 미국으로 알려짐 — 확인 요). 제어기 페이지가 Crystal Instruments Spider-81 을 소개"
+  },
+  {
+   "id": "setaram",
+   "name": "SETARAM (KEP Technologies)",
+   "name_ko": "세타람",
+   "country": "FR",
+   "website": "https://setaramsolutions.com",
+   "domains": [
+    "sta",
+    "tga",
+    "dsc",
+    "tma"
+   ],
+   "note": "KEP Technologies 그룹의 재료 특성 분석 브랜드(사이트 소개문). THEMYS·Setline 열분석기, Calvet 열량계"
+  },
+  {
    "id": "shimadzu",
    "name": "Shimadzu",
    "name_ko": "시마즈",
@@ -920,7 +1813,11 @@
     "hydraulic_utm",
     "servohydraulic_fatigue",
     "instrumented_indentation",
-    "vickers_knoop_hardness"
+    "vickers_knoop_hardness",
+    "xray_inspection",
+    "dsc",
+    "sta",
+    "electrodynamic_fatigue"
    ]
   },
   {
@@ -942,9 +1839,33 @@
    "country": "DE",
    "website": "https://plm.sw.siemens.com",
    "domains": [
-    "thermal_transient_tester"
+    "thermal_transient_tester",
+    "mechanical_dynamics"
    ],
    "note": "구 Mentor Graphics MicReD"
+  },
+  {
+   "id": "siglent",
+   "name": "SIGLENT Technologies",
+   "name_ko": "시글런트",
+   "country": "CN",
+   "website": "https://www.siglent.com",
+   "domains": [
+    "oscilloscope"
+   ],
+   "note": "이번 조회는 북미 법인 사이트 siglentna.com 을 씀"
+  },
+  {
+   "id": "spectral-dynamics",
+   "name": "Spectral Dynamics, Inc.",
+   "name_ko": "스펙트럴 다이나믹스",
+   "country": "US",
+   "website": "https://www.spectraldynamics.com",
+   "domains": [
+    "vibration_shaker",
+    "mechanical_dynamics"
+   ],
+   "note": "진동 제어기(PANTHER·Lynx·Puma·Jaguar)와 가진기. 국가는 페이지에서 확인하지 않음(확인 요)"
   },
   {
    "id": "stable-micro-systems",
@@ -966,6 +1887,18 @@
    ]
   },
   {
+   "id": "suga",
+   "name": "Suga Test Instruments Co., Ltd.",
+   "name_ko": "스가시험기",
+   "country": "JP",
+   "website": "https://www.sugatest.co.jp",
+   "domains": [
+    "weathering_tester",
+    "corrosion_chamber"
+   ],
+   "note": "제논·선샤인 카본 아크·메탈링 웨더미터, 복합 사이클 부식 시험기"
+  },
+  {
    "id": "ta-instruments",
    "name": "TA Instruments",
    "country": "US",
@@ -980,7 +1913,10 @@
     "tga",
     "dma",
     "rotational_rheometer",
-    "electrodynamic_fatigue"
+    "electrodynamic_fatigue",
+    "dilatometer",
+    "sta",
+    "tma"
    ],
    "note": "tainstruments.com 은 curl 차단 — 브로슈어는 유통사 미러에서 받음"
   },
@@ -990,7 +1926,66 @@
    "country": "US",
    "website": "https://www.taberindustries.com",
    "domains": [
-    "abrasion_tester"
+    "abrasion_tester",
+    "scratch_hardness_tester"
+   ]
+  },
+  {
+   "id": "techno-optis",
+   "name": "Techno Optis (former Topcon Technohouse)",
+   "name_ko": "테크노옵티스(옛 탑콘 테크노하우스)",
+   "country": "JP",
+   "website": "https://www.techno-optis.com",
+   "domains": [
+    "spectroradiometer",
+    "display_color_analyzer"
+   ],
+   "note": "옛 이름 TOPCON TECHNOHOUSE CORPORATION. 2025-02-14 사명 변경 공지. topcon-techno.co.jp 가 techno-optis.com 으로 넘어간다. 대장에는 'Topcon' 으로 적혀 있을 가능성이 크다",
+   "aliases": [
+    "Topcon",
+    "Topcon Technohouse",
+    "탑콘"
+   ]
+  },
+  {
+   "id": "tekscan",
+   "name": "Tekscan, Inc.",
+   "name_ko": "텍스캔",
+   "country": "US",
+   "website": "https://www.tekscan.com",
+   "domains": [
+    "force_pressure_sensor"
+   ],
+   "note": "I-Scan 압력 분포, FlexiForce 박막 힘 센서"
+  },
+  {
+   "id": "tektronix",
+   "name": "Tektronix",
+   "name_ko": "텍트로닉스",
+   "country": "US",
+   "website": "https://www.tek.com",
+   "domains": [
+    "oscilloscope",
+    "signal_generator"
+   ],
+   "note": "manufacturers.json 의 keithley 항목 parent 가 Tektronix 다. 이번 묶음에서는 AFG·AWG 신호발생기만 다뤘다(오실로스코프는 다른 묶음).",
+   "aliases": [
+    "텍트로닉스"
+   ]
+  },
+  {
+   "id": "teledyne-lecroy",
+   "name": "Teledyne LeCroy",
+   "name_ko": "텔레다인 르크로이",
+   "country": "US",
+   "website": "https://www.teledynelecroy.com",
+   "domains": [
+    "oscilloscope"
+   ],
+   "note": "Teledyne Technologies 산하. 옛 이름 LeCroy. 같은 사이트의 T3DSO 계열은 Teledyne Test Tools 브랜드",
+   "aliases": [
+    "LeCroy",
+    "르크로이"
    ]
   },
   {
@@ -1002,6 +1997,17 @@
     "esd_simulator",
     "transient_generator"
    ]
+  },
+  {
+   "id": "testo",
+   "name": "Testo",
+   "name_ko": "테스토",
+   "country": "DE",
+   "website": "https://www.testo.com",
+   "domains": [
+    "thermal_imager"
+   ],
+   "note": "testo.com 제품 페이지가 자동 조회에 429 를 낸다"
   },
   {
    "id": "testometric",
@@ -1033,7 +2039,8 @@
    "domains": [
     "climatic_chamber",
     "thermal_shock_chamber",
-    "vibration_shaker"
+    "vibration_shaker",
+    "altitude_chamber"
    ]
   },
   {
@@ -1099,6 +2106,60 @@
    "note": "현행 데이터시트는 등록 폼 뒤. archive.org 스냅샷(2003~2021)에서 Sprint LC/GT·Qualitek mR 확보 — 자료가 오래됐다"
   },
   {
+   "id": "viscom",
+   "name": "Viscom SE",
+   "name_ko": "비스콤",
+   "country": "DE",
+   "website": "https://www.viscom.com",
+   "domains": [
+    "xray_inspection"
+   ],
+   "note": "AOI · AXI 검사 장비"
+  },
+  {
+   "id": "vision-research",
+   "name": "Vision Research (AMETEK)",
+   "name_ko": "비전 리서치",
+   "country": "US",
+   "website": "https://www.phantomhighspeed.com",
+   "domains": [
+    "high_speed_swir_camera"
+   ],
+   "note": "브랜드 Phantom. AMETEK 소속. 대장에는 'Phantom' 으로 적히는 일이 많다. 사이트가 자동 조회를 막는다(403)",
+   "aliases": [
+    "Phantom"
+   ]
+  },
+  {
+   "id": "walter-bai",
+   "name": "Walter + Bai AG",
+   "name_ko": "발터바이",
+   "country": "CH",
+   "website": "https://www.walterbai.com",
+   "domains": [
+    "servohydraulic_fatigue",
+    "electrodynamic_fatigue",
+    "universal_testing_machine",
+    "hydraulic_utm"
+   ],
+   "note": "Prüfmaschinen - Testing Machines (Löhningen). 표기 'w+b' / 'Walter+Bai'"
+  },
+  {
+   "id": "waygate-technologies",
+   "name": "Waygate Technologies (Baker Hughes)",
+   "name_ko": "웨이게이트 테크놀로지스",
+   "country": "DE",
+   "website": "https://www.bakerhughes.com/waygate-technologies",
+   "domains": [
+    "xray_inspection"
+   ],
+   "note": "Baker Hughes 산하. 옛 GE Inspection Technologies. X선 · CT 제품 브랜드 phoenix|x-ray (microme|x · nanome|x · v|tome|x)",
+   "aliases": [
+    "GE Inspection Technologies",
+    "phoenix|x-ray"
+   ]
+  },
+  {
    "id": "weiss-technik",
    "name": "Weiss Technik",
    "name_ko": "바이스 테크닉",
@@ -1108,9 +2169,33 @@
     "climatic_chamber",
     "thermal_shock_chamber",
     "dust_chamber",
-    "corrosion_chamber"
+    "corrosion_chamber",
+    "altitude_chamber",
+    "water_ingress_tester"
    ],
    "note": "Schunk 그룹"
+  },
+  {
+   "id": "wenzel",
+   "name": "WENZEL Group",
+   "name_ko": "웬젤",
+   "country": "DE",
+   "website": "https://www.wenzel-group.com",
+   "domains": [
+    "coordinate_measuring_machine"
+   ],
+   "note": "미국 법인 WENZEL America(wenzelamerica.com)"
+  },
+  {
+   "id": "xyztec",
+   "name": "XYZTEC",
+   "name_ko": "엑스와이지텍",
+   "country": "NL",
+   "website": "https://www.xyztec.com",
+   "domains": [
+    "bond_tester"
+   ],
+   "note": "본드 테스터 Sigma 계열. 구형 Condor 계열"
   },
   {
    "id": "yokogawa",
@@ -1119,8 +2204,21 @@
    "country": "JP",
    "website": "https://tmi.yokogawa.com",
    "domains": [
-    "power_analyzer"
+    "power_analyzer",
+    "oscilloscope",
+    "dmm_daq"
    ]
+  },
+  {
+   "id": "yuasa-system",
+   "name": "YUASA SYSTEM Co., Ltd.",
+   "name_ko": "유아사 시스템",
+   "country": "JP",
+   "website": "https://www.yuasa-system.jp",
+   "domains": [
+    "component_life_tester"
+   ],
+   "note": "옛 사명 ユアサ工機株式会社. 폴더블·유연 디스플레이 굽힘 내구 시험기"
   },
   {
    "id": "zeiss",
@@ -1130,7 +2228,10 @@
    "website": "https://www.zeiss.com",
    "domains": [
     "electron_microscope",
-    "xray_inspection"
+    "xray_inspection",
+    "coordinate_measuring_machine",
+    "dic_strain_measurement",
+    "optical_microscope"
    ],
    "registered": "2026-09-12 materialtwin-20260905 계측기 반입"
   },
@@ -1156,7 +2257,9 @@
     "hardness",
     "melt_flow_indexer",
     "hdt_vicat",
-    "environmental_chamber"
+    "environmental_chamber",
+    "servohydraulic_fatigue",
+    "electrodynamic_fatigue"
    ]
   },
   {

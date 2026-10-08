@@ -1,0 +1,144 @@
+{
+  "id": "zeiss-aramis-adjustable",
+  "kind": "equipment_series",
+  "name": "ZEISS ARAMIS Adjustable / ARAMIS 1 / ARAMIS High Speed DIC Systems",
+  "name_ko": "자이스(구 GOM) ARAMIS Adjustable 모듈형 DIC 시스템",
+  "manufacturer": "zeiss",
+  "brand": "ARAMIS (GOM)",
+  "category": "dic_strain_measurement",
+  "subcategory": "stereo_dic",
+  "form_factor": "portable",
+  "description": "연구·개발·산업용 모듈형 카메라 DIC 시스템. 표준 카메라 3종(12～24 MP, 25～2,000 fps)에 입문형 ARAMIS 1 과 고속형 ARAMIS High Speed(최대 200,000 fps)가 있다. 조명은 LED System B45-15, 광 프로젝터, LED 패널(모두 청색광). 24M 은 후면 조사형 센서와 광섬유 전송, VDI 2634-1·2626 기반 수락 절차.",
+  "test_items": [
+    "tensile",
+    "compression",
+    "fatigue"
+  ],
+  "measurands": [
+    "full_field_displacement",
+    "axial_strain",
+    "transverse_strain",
+    "poisson_ratio",
+    "shape_3d"
+  ],
+  "standards": {
+    "compliance": [
+      "VDI 2634-1",
+      "VDI 2626"
+    ],
+    "test_methods": []
+  },
+  "limits": {
+    "field_of_view_mm": {
+      "min": 15,
+      "max": 5000,
+      "note": "측정 체적 최소 15×15 mm(High Speed) ~ 최대 5000×5000 mm"
+    },
+    "data_rate_Hz": {
+      "max": 200000,
+      "note": "High Speed 최대 200,000 fps"
+    }
+  },
+  "models": [
+    {
+      "model": "ARAMIS 1",
+      "specs": {
+        "detector_pixels": "2474 x 2064",
+        "data_rate_Hz": {
+          "max": 150,
+          "note": "50 fps(최대 150 fps)"
+        },
+        "field_of_view_mm": {
+          "min": 50,
+          "max": 500,
+          "note": "50 x 40 mm to 500 x 425 mm"
+        }
+      },
+      "note": "3D"
+    },
+    {
+      "model": "ARAMIS Adjustable 12M",
+      "specs": {
+        "detector_pixels": "4096 x 3000",
+        "data_rate_Hz": {
+          "max": 150,
+          "note": "25 fps(최대 150 fps)"
+        },
+        "field_of_view_mm": {
+          "min": 20,
+          "max": 5000,
+          "note": "20 x 15 mm to 5000 x 4000 mm"
+        }
+      },
+      "note": "2D/3D"
+    },
+    {
+      "model": "ARAMIS Adjustable 24M",
+      "specs": {
+        "detector_pixels": "5312 x 4448",
+        "detector_megapixels": 24,
+        "data_rate_Hz": {
+          "max": 360,
+          "note": "전 해상도 100 fps, 프레임 모드 4종 추가로 360 fps"
+        },
+        "field_of_view_mm": {
+          "min": 20,
+          "max": 5000,
+          "note": "20 x 18 mm to 5000 x 4500 mm"
+        }
+      },
+      "note": "3D. 24 MP 카메라 2대, 후면 조사형 칩, 광섬유 전송"
+    },
+    {
+      "model": "ARAMIS Adjustable SRX",
+      "specs": {
+        "detector_pixels": "4096 x 3068",
+        "data_rate_Hz": {
+          "max": 2000,
+          "note": "335 fps(최대 2000 fps)"
+        },
+        "field_of_view_mm": {
+          "min": 33,
+          "max": 5000,
+          "note": "33 x 25 mm to 5000 x 4000 mm"
+        }
+      },
+      "note": "3D"
+    },
+    {
+      "model": "ARAMIS High Speed",
+      "specs": {
+        "detector_pixels": "1024 x 1024",
+        "data_rate_Hz": {
+          "max": 200000
+        },
+        "field_of_view_mm": {
+          "min": 15,
+          "max": 5000,
+          "note": "15 x 15 mm to 5000 x 5000 mm"
+        }
+      },
+      "note": "2D/3D"
+    }
+  ],
+  "relations": [
+    {
+      "type": "same_family_as",
+      "target": "zeiss-aramis-3d-camera"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://www.zeiss.com/metrology/en/systems/optical-3d/3d-testing/aramis-adjustable.html",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지(HTML, zeiss.com/metrology) ARAMIS Adjustable(변형 5종 표)"
+    },
+    {
+      "url": "https://www.zeiss.com/metrology/en/systems/optical-3d/3d-testing/aramis-adjustable-24m.html",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지(HTML, zeiss.com/metrology) ARAMIS Adjustable 24M"
+    }
+  ],
+  "confidence": "limited",
+  "notes": "구 GOM 제품. 이전 세대 이름(ARAMIS 4M, 5M, 12M 등)은 현행 페이지에 없어 넣지 않음."
+}

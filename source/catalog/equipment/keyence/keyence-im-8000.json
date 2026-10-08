@@ -1,0 +1,164 @@
+{
+  "id": "keyence-im-8000",
+  "kind": "equipment_series",
+  "name": "IM-8000 Series Image Dimension Measurement System",
+  "name_ko": "키엔스 IM-8000 화상 치수 측정기",
+  "manufacturer": "keyence",
+  "category": "coordinate_measuring_machine",
+  "form_factor": "benchtop",
+  "description": "1인치 2000만 화소 흑백 CMOS 로 시야 안의 치수를 한 번에 재는 영상 치수 측정기 계열임. 광시야 모드 시야 ø100 mm ~ 300 × 200 mm, 고정밀 모드 25 × 25 ~ 225 × 125 mm. 반복 정밀도 ±0.5 µm(고정밀 모드, 스테이지 이동 없음), 측정 정확도 ±2 µm(고정밀 모드, ±2σ). 최대 300개 항목을 수 초 안에 측정하며, 선택형 자동 회전 지그로 여러 면을 잼.",
+  "test_items": [],
+  "limits": {
+    "field_of_view_mm": {
+      "max": 300,
+      "note": "광시야 모드 최대 300 × 200 mm(IM-8030)"
+    },
+    "measuring_repeatability_um": {
+      "min": 0.5,
+      "max": 2,
+      "note": "원문 ±0.5 ~ ±2 µm(모드·스테이지 이동 여부별)"
+    },
+    "detector_megapixels": {
+      "note": "원문 1\" 20-megapixel monochrome CMOS",
+      "values": [
+        20
+      ]
+    },
+    "table_load_kg": {
+      "min": 5,
+      "max": 7.5
+    }
+  },
+  "models": [
+    {
+      "model": "IM-8005",
+      "variant": "헤드",
+      "specs": {
+        "field_of_view_mm": {
+          "values": [
+            100
+          ],
+          "note": "광시야 모드 ø100 mm, 고정밀 모드 25 × 25 mm"
+        },
+        "measuring_repeatability_um": {
+          "min": 0.5,
+          "max": 1,
+          "note": "고정밀 ±0.5 µm, 광시야 ±1 µm(스테이지 이동 없음)"
+        },
+        "accuracy": "광시야 ±3.9 µm, 고정밀 ±2 µm (±2σ)",
+        "table_load_kg": 5,
+        "stage_travel_mm": {
+          "values": [
+            75
+          ],
+          "note": "Z 스테이지 75 mm(전동). XY 이동 범위는 페이지에 없음"
+        },
+        "detector_megapixels": 20,
+        "weight_kg": {
+          "value": 24,
+          "note": "원문 Approx. 24 kg"
+        }
+      }
+    },
+    {
+      "model": "IM-8020",
+      "variant": "헤드",
+      "specs": {
+        "field_of_view_mm": {
+          "values": [
+            200,
+            200
+          ],
+          "note": "광시야 모드 200 × 200 mm, 고정밀 모드 125 × 125 mm"
+        },
+        "measuring_repeatability_um": {
+          "min": 0.5,
+          "max": 2
+        },
+        "accuracy": "광시야 ±3.9 µm / 이어 붙이기 ±(7 + 0.02L) µm, 고정밀 ±2 µm / 이어 붙이기 ±(4 + 0.02L) µm (±2σ)",
+        "stage_travel_mm": {
+          "values": [
+            100,
+            100,
+            75
+          ],
+          "note": "XY 100 × 100 mm, Z 75 mm"
+        },
+        "table_load_kg": 5,
+        "detector_megapixels": 20,
+        "weight_kg": {
+          "value": 30,
+          "note": "원문 Approx. 30 kg"
+        }
+      },
+      "note": "반복 정밀도: 광시야 모드 ±1 µm(스테이지 이동 없음) / ±2 µm(이동), 고정밀 모드 ±0.5 µm / ±1.5 µm. 측정 정확도(±2σ): 광시야 ±3.9 µm, 이어 붙이기(binding) ±(7 + 0.02L) µm, 고정밀 ±2 µm, 이어 붙이기 ±(4 + 0.02L) µm."
+    },
+    {
+      "model": "IM-8030",
+      "variant": "헤드",
+      "specs": {
+        "field_of_view_mm": {
+          "values": [
+            300,
+            200
+          ],
+          "note": "광시야 모드 300 × 200 mm, 고정밀 모드 225 × 125 mm"
+        },
+        "measuring_repeatability_um": {
+          "min": 0.5,
+          "max": 2
+        },
+        "accuracy": "광시야 ±3.9 µm / 이어 붙이기 ±(7 + 0.02L) µm, 고정밀 ±2 µm / 이어 붙이기 ±(4 + 0.02L) µm (±2σ)",
+        "stage_travel_mm": {
+          "values": [
+            200,
+            100,
+            75
+          ],
+          "note": "XY 200 × 100 mm, Z 75 mm"
+        },
+        "table_load_kg": 7.5,
+        "detector_megapixels": 20,
+        "weight_kg": {
+          "value": 33,
+          "note": "원문 Approx. 33 kg"
+        }
+      },
+      "note": "반복 정밀도: 광시야 모드 ±1 µm(스테이지 이동 없음) / ±2 µm(이동), 고정밀 모드 ±0.5 µm / ±1.5 µm. 측정 정확도(±2σ): 광시야 ±3.9 µm, 이어 붙이기(binding) ±(7 + 0.02L) µm, 고정밀 ±2 µm, 이어 붙이기 ±(4 + 0.02L) µm."
+    },
+    {
+      "model": "IM-8001",
+      "variant": "컨트롤러",
+      "note": "기종명은 제조사 기종 페이지(검색 결과)에서 확인. 사양은 읽지 않음"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://www.keyence.com/products/measure-sys/image-measure/im-8000/",
+      "retrieved": "2026-10-08",
+      "note": "제조사 계열 페이지(검색 결과로 확인)"
+    },
+    {
+      "url": "https://www.keyence.com/products/measure-sys/image-measure/im-8000/models/im-8005/",
+      "retrieved": "2026-10-08",
+      "note": "제조사 기종 페이지"
+    },
+    {
+      "url": "https://www.keyence.com/products/measure-sys/image-measure/im-8000/models/im-8020/",
+      "retrieved": "2026-10-08",
+      "note": "제조사 기종 페이지"
+    },
+    {
+      "url": "https://www.keyence.com/products/measure-sys/image-measure/im-8000/models/im-8030/",
+      "retrieved": "2026-10-08",
+      "note": "제조사 기종 페이지"
+    },
+    {
+      "url": "https://www.keyence.com/products/measure-sys/image-measure/im-8000/models/im-8001/",
+      "retrieved": "2026-10-08",
+      "note": "컨트롤러 기종 페이지 주소(검색 결과로만 확인, 열람 안 함)"
+    }
+  ],
+  "confidence": "limited",
+  "notes": "범주 note: 영상(비전) 치수 측정기라 3차원 측정기 분류에 둠. 높이(Z) 측정은 Z 스테이지 이동 범위만 확인함."
+}

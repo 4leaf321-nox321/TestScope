@@ -623,8 +623,12 @@ def test_카탈로그에_안_이어진_장비를_되찾을_수_있다(client: Te
         for one in client.get("/api/server/maintenance", headers=admin.headers).json()
     }
     said = rows["equipment_without_model"]
-    assert said["link"] == "/equipment?catalog=unlinked"
     assert said["count"] == listed.json()["total"]
+    # 시스템 관리자는 **왜 안 이어졌는지로 가른 목록**으로 간다 — 거기 합계도 같아야 한다.
+    assert said["link"] == "/admin/catalog-gaps"
+    gaps = client.get("/api/equipment-models/gaps", headers=admin.headers)
+    assert gaps.status_code == 200, gaps.text
+    assert gaps.json()["units"] == said["count"]
 
 
 def _upsert(

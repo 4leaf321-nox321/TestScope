@@ -705,6 +705,20 @@ async def _write_chain(ctx: _Ctx) -> int:
                             bad += 1
                             print(f"  실패 요청이 이어지지 않았습니다: {_short(decided, 70)}")
 
+                    # 8-2-b''. **보강 목록** — 요청이 없는 미연결 장비까지 왜 미연결인지로 가른다.
+                    # 없는 묶음을 정하려 하면 404 다(서버가 묶음을 지어내지 않는다).
+                    step(
+                        "list_model_requests(gaps)",
+                        await server.list_model_requests(ctx, gaps=True),
+                        ["units", "by_case"],
+                    )
+                    expect_refusal(
+                        "decide_model_request(gap, 없는 묶음)",
+                        await server.decide_model_request(
+                            ctx, f"mcp-없는-묶음-{tag}", reject=True, gap=True
+                        ),
+                    )
+
                     # 8-2-c. **AI 가 넣은 값은 AI 가 고친다.** 사람 · 반입 값을 못 덮는 쪽은
                     # pytest(`test_spec_overwrite.py`)가 본다 — 이 사슬은 토큰 하나로만 돌아서
                     # 사람이 적은 값을 만들 길이 없다(CI 의 DB 에는 반입 값도 없다).

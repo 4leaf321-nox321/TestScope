@@ -1,0 +1,143 @@
+{
+  "id": "keysight-exg-x-series",
+  "kind": "equipment_series",
+  "name": "Keysight EXG X-Series Signal Generators (N5171B / N5172B / N5173B)",
+  "name_ko": "키사이트 EXG X-시리즈 신호발생기",
+  "manufacturer": "keysight",
+  "brand": "EXG",
+  "category": "signal_generator",
+  "subcategory": "rf_microwave",
+  "description": "보급형 RF·마이크로파 신호발생기 계열. N5172B 는 9 kHz~6 GHz 벡터 신호발생기(최대 변조 대역폭 160 MHz), N5171B 는 같은 주파수의 아날로그 신호발생기, N5173B 는 9 kHz~40 GHz 마이크로파 아날로그 신호발생기(주파수 옵션 13·20·31.8·40 GHz)다. 1 GHz·20 kHz 오프셋 위상 잡음 -122 dBc/Hz 다.",
+  "test_items": [],
+  "limits": {
+    "output_frequency_Hz": {
+      "min": 9000,
+      "max": 40000000000,
+      "note": "N5171B·N5172B 9 kHz~6 GHz, N5173B 9 kHz~40 GHz(옵션 13·20·31.8·40 GHz)"
+    },
+    "bandwidth_Hz": {
+      "max": 160000000,
+      "note": "N5172B 최대 변조 대역폭 160 MHz"
+    },
+    "rf_output_level_dBm": {
+      "max": 23,
+      "note": "1 GHz 에서 N5171B·N5172B 21 dBm, N5173B 23 dBm"
+    },
+    "phase_noise_dBc_Hz": {
+      "values": [
+        -122
+      ],
+      "note": "1 GHz 반송파, 20 kHz 오프셋. 세 기종 같음"
+    },
+    "channels": {
+      "values": [
+        1
+      ],
+      "note": "출력 1개"
+    }
+  },
+  "models": [
+    {
+      "model": "N5172B",
+      "variant": "vector",
+      "specs": {
+        "output_frequency_Hz": {
+          "min": 9000,
+          "max": 6000000000
+        },
+        "bandwidth_Hz": 160000000,
+        "rf_output_level_dBm": {
+          "max": 21,
+          "note": "1 GHz"
+        },
+        "phase_noise_dBc_Hz": {
+          "values": [
+            -122
+          ],
+          "note": "1 GHz 반송파, 20 kHz 오프셋"
+        },
+        "channels": 1
+      },
+      "note": "고조파 -35 dBc(1 GHz), 주파수 전환 800 µs. 현재 페이지 분류명 Essential Vector Signal Generator"
+    },
+    {
+      "model": "N5171B",
+      "variant": "analog",
+      "specs": {
+        "output_frequency_Hz": {
+          "min": 9000,
+          "max": 6000000000
+        },
+        "rf_output_level_dBm": {
+          "max": 21,
+          "note": "1 GHz"
+        },
+        "phase_noise_dBc_Hz": {
+          "values": [
+            -122
+          ],
+          "note": "1 GHz 반송파, 20 kHz 오프셋"
+        },
+        "channels": 1
+      },
+      "note": "고조파 -35 dBc(1 GHz), 주파수 전환 800 µs"
+    },
+    {
+      "model": "N5173B",
+      "variant": "microwave analog",
+      "specs": {
+        "output_frequency_Hz": {
+          "min": 9000,
+          "max": 40000000000,
+          "note": "주파수 옵션 13·20·31.8·40 GHz"
+        },
+        "rf_output_level_dBm": {
+          "max": 23,
+          "note": "1 GHz"
+        },
+        "phase_noise_dBc_Hz": {
+          "values": [
+            -122
+          ],
+          "note": "1 GHz 반송파, 20 kHz 오프셋"
+        },
+        "channels": 1
+      },
+      "note": "고조파 -33 dBc(1 GHz), 주파수 전환 600 µs, 스텝 감쇠기 옵션 115 dB, OCXO 에이징 ±5 ppb/일. 현재 분류명 XG2-class"
+    }
+  ],
+  "features": [
+    "9 kHz~6 GHz 벡터·아날로그, 9 kHz~40 GHz 마이크로파 아날로그",
+    "스텝 감쇠기 옵션 115 dB(N5173B)"
+  ],
+  "relations": [
+    {
+      "type": "same_family_as",
+      "target": "keysight-mxg-x-series"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://www.keysight.com/us/en/product/N5172B/exg-x-series-rf-vector-signal-generator-9-khz-6-ghz.html",
+      "retrieved": "2026-10-08",
+      "note": "제조사 N5172B 제품 페이지. 주파수, 변조 대역폭, 출력, 위상 잡음"
+    },
+    {
+      "url": "https://www.keysight.com/us/en/product/N5171B/exg-x-series-rf-analog-signal-generator-9-khz-6-ghz.html",
+      "retrieved": "2026-10-08",
+      "note": "제조사 N5171B 제품 페이지. 주파수, 출력, 위상 잡음"
+    },
+    {
+      "url": "https://www.keysight.com/us/en/product/N5173B/exg-x-series-microwave-analog-signal-generator-9-khz-40-ghz.html",
+      "retrieved": "2026-10-08",
+      "note": "제조사 N5173B 제품 페이지. 주파수 옵션, 출력, 위상 잡음, 감쇠기·OCXO"
+    },
+    {
+      "url": "https://www.keysight.com/us/en/products/signal-sources/analog-signal-generators/essential-analog-signal-generators.html",
+      "retrieved": "2026-10-08",
+      "note": "제조사 Essential 아날로그 신호발생기 목록. N5173B 요약 재확인"
+    }
+  ],
+  "confidence": "limited",
+  "notes": "N5172B 페이지 요약에 기저대역 업그레이드(60~512 MHz RF 대역폭) 구성 언급이 있으나 대표 사양 160 MHz 와 맞지 않아 limits 에 넣지 않았다."
+}

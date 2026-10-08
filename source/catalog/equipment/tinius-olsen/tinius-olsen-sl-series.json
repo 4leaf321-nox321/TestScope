@@ -1,0 +1,302 @@
+{
+  "id": "tinius-olsen-sl-series",
+  "kind": "equipment_series",
+  "name": "Tinius Olsen SL Series Hydraulic Universal Testing Machines (300SL – 3000SL)",
+  "name_ko": "티니어스 올센 SL 시리즈 유압 만능시험기",
+  "manufacturer": "tinius-olsen",
+  "category": "hydraulic_utm",
+  "drive": "hydraulic",
+  "description": "인장·압축·횡굽힘·전단 시험용 4주식 유압 만능시험기. 최대 힘 300~3,000 kN. 마찰 없는 피스톤 운전, 유선 핸드헬드·블루투스 무선·가상 컨트롤러 인터페이스와 Horizon 소프트웨어. 크로스헤드 닫힘·반개방·완전 개방형, 헤드 내장 포켓 그립(평판·환봉), 기둥 914 mm 연장, 조정식 상부 크로스헤드, 노·환경 챔버·안전 인클로저 선택.",
+  "test_items": [
+    "tensile",
+    "compression",
+    "flexure",
+    "shear"
+  ],
+  "measurands": [
+    "mechanical.tensile_strength",
+    "mechanical.yield_strength",
+    "mechanical.youngs_modulus",
+    "mechanical.elongation_at_break",
+    "mechanical.compressive_strength",
+    "mechanical.flexural_strength"
+  ],
+  "limits": {
+    "force_kN": {
+      "min": 300,
+      "max": 4500,
+      "values": [
+        300,
+        600,
+        1000,
+        1500,
+        2000,
+        3000,
+        4500
+      ],
+      "note": "4500SL-RB 4,500 kN 은 PDF. 웹 분류 페이지 기종은 3000 kN 까지"
+    },
+    "stroke_mm": {
+      "values": [
+        152,
+        229
+      ]
+    },
+    "piston_speed_mm_min": {
+      "min": 0,
+      "max": 76,
+      "note": "시험 속도 0~3 in/min"
+    }
+  },
+  "models": [
+    {
+      "model": "300SL",
+      "specs": {
+        "force_kN": 300,
+        "stroke_mm": 152,
+        "piston_speed_mm_min": {
+          "min": 0,
+          "max": 76,
+          "note": "시험 속도 0~3 in/min"
+        },
+        "horizontal_test_space_mm": {
+          "value": 317.5,
+          "note": "(A) 나사 사이 간격"
+        },
+        "footprint_mm": {
+          "W": 737,
+          "D": 483,
+          "H": 1842,
+          "note": "(F)·(G) 바닥 기초 치수, (H) 높이(그립 가드 또는 레버 높이와 스트로크를 더함)"
+        },
+        "weight_kg": {
+          "value": 1180,
+          "note": "프레임 순중량, 총중량 1406 kg"
+        }
+      },
+      "note": "원문 'Model 300SL', 최대 힘 300 kN / 60,000 lbf. 크로스헤드 조정 속도 508 mm/min, 표준 개구(B) 737 mm"
+    },
+    {
+      "model": "600SL",
+      "specs": {
+        "force_kN": 600,
+        "stroke_mm": 152,
+        "piston_speed_mm_min": {
+          "min": 0,
+          "max": 76,
+          "note": "시험 속도 0~3 in/min"
+        },
+        "horizontal_test_space_mm": {
+          "value": 457.2,
+          "note": "(A) 나사 사이 간격"
+        },
+        "footprint_mm": {
+          "W": 762,
+          "D": 635,
+          "H": 1956,
+          "note": "(F)·(G) 바닥 기초 치수, (H) 높이(그립 가드 또는 레버 높이와 스트로크를 더함)"
+        },
+        "weight_kg": {
+          "value": 2132,
+          "note": "프레임 순중량, 총중량 2586 kg"
+        }
+      },
+      "note": "원문 'Model 600SL', 최대 힘 600 kN / 120,000 lbf. 크로스헤드 조정 속도 305 mm/min, 표준 개구(B) 914 mm"
+    },
+    {
+      "model": "1000SL",
+      "specs": {
+        "force_kN": 1000,
+        "stroke_mm": 229,
+        "piston_speed_mm_min": {
+          "min": 0,
+          "max": 76,
+          "note": "시험 속도 0~3 in/min"
+        },
+        "horizontal_test_space_mm": {
+          "value": 495.3,
+          "note": "(A) 나사 사이 간격"
+        },
+        "footprint_mm": {
+          "W": 864,
+          "D": 660,
+          "H": 2289,
+          "note": "(F)·(G) 바닥 기초 치수, (H) 높이(그립 가드 또는 레버 높이와 스트로크를 더함)"
+        },
+        "weight_kg": {
+          "value": 4082,
+          "note": "프레임 순중량, 총중량 4490 kg"
+        }
+      },
+      "note": "원문 'Model 1000SL', 최대 힘 1000 kN / 200,000 lbf. 크로스헤드 조정 속도 305 mm/min, 표준 개구(B) 1067 mm"
+    },
+    {
+      "model": "1500SL",
+      "specs": {
+        "force_kN": 1500,
+        "stroke_mm": 229,
+        "piston_speed_mm_min": {
+          "min": 0,
+          "max": 76,
+          "note": "시험 속도 0~3 in/min"
+        },
+        "horizontal_test_space_mm": {
+          "value": 571.5,
+          "note": "(A) 나사 사이 간격"
+        },
+        "footprint_mm": {
+          "W": 940,
+          "D": 851,
+          "H": 2445,
+          "note": "(F)·(G) 바닥 기초 치수, (H) 높이(그립 가드 또는 레버 높이와 스트로크를 더함)"
+        },
+        "weight_kg": {
+          "value": 5444,
+          "note": "프레임 순중량, 총중량 6034 kg"
+        }
+      },
+      "note": "원문 'Model 1500SL', 최대 힘 1500 kN / 300,000 lbf. 크로스헤드 조정 속도 305 mm/min, 표준 개구(B) 1175 mm"
+    },
+    {
+      "model": "2000SL",
+      "specs": {
+        "force_kN": 2000,
+        "stroke_mm": 229,
+        "piston_speed_mm_min": {
+          "min": 0,
+          "max": 76,
+          "note": "시험 속도 0~3 in/min"
+        },
+        "horizontal_test_space_mm": {
+          "value": 571.5,
+          "note": "(A) 나사 사이 간격"
+        },
+        "footprint_mm": {
+          "W": 940,
+          "D": 851,
+          "H": 2445,
+          "note": "(F)·(G) 바닥 기초 치수, (H) 높이(그립 가드 또는 레버 높이와 스트로크를 더함)"
+        },
+        "weight_kg": {
+          "value": 5444,
+          "note": "프레임 순중량, 총중량 6034 kg"
+        }
+      },
+      "note": "원문 'Model 2000SL', 최대 힘 2000 kN / 400,000 lbf. 크로스헤드 조정 속도 305 mm/min, 표준 개구(B) 1175 mm"
+    },
+    {
+      "model": "3000SL",
+      "specs": {
+        "force_kN": 3000,
+        "stroke_mm": 229,
+        "piston_speed_mm_min": {
+          "min": 0,
+          "max": 76,
+          "note": "시험 속도 0~3 in/min"
+        },
+        "horizontal_test_space_mm": {
+          "value": 622.3,
+          "note": "(A) 나사 사이 간격"
+        },
+        "footprint_mm": {
+          "W": 1092,
+          "D": 863,
+          "H": 2692,
+          "note": "(F)·(G) 바닥 기초 치수, (H) 높이(그립 가드 또는 레버 높이와 스트로크를 더함)"
+        },
+        "weight_kg": {
+          "value": 10433,
+          "note": "프레임 순중량, 총중량 10433 kg"
+        }
+      },
+      "note": "원문 'Model 3000SL', 최대 힘 3000 kN / 600,000 lbf. 피스톤을 베이스 아래 또는 시험 공간 위에 두는 두 형식, 피트 설치 가능. 크로스헤드 조정 속도 305 mm/min, 표준 개구(B) 2083 mm. 사양표 3000SL 열은 바닥·피트 설치 겸용(각주 6)"
+    },
+    {
+      "model": "3000SL-RB",
+      "specs": {
+        "force_kN": 3000
+      },
+      "note": "원문 'Model 3000SL-RB', 최대 힘 3000 kN / 600,000 lbf. 인장·압축용"
+    },
+    {
+      "model": "4500SL-RB",
+      "specs": {
+        "force_kN": 4500
+      },
+      "note": "원문 '4500SL-RB [09014000]', 최대 힘 4,500 kN / 1,000,000 lbf. 철근·판·봉 시편·콘크리트 원주 등 특수 시험용 RB 계열"
+    },
+    {
+      "model": "SL Compression Only",
+      "note": "제품 페이지 이름 'Model SL – Compression Only'. 본문 사양 없음",
+      "uncertain": true
+    }
+  ],
+  "relations": [
+    {
+      "type": "same_family_as",
+      "target": "tinius-olsen-st-series"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://www.tiniusolsen.com/product/model-300sl/",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지(HTML) 본문·표를 직접 읽음. Features & Benefits"
+    },
+    {
+      "url": "https://www.tiniusolsen.com/product/model-600sl/",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지(HTML) 본문·표를 직접 읽음. Features & Benefits"
+    },
+    {
+      "url": "https://www.tiniusolsen.com/product/model-1000sl/",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지(HTML) 본문·표를 직접 읽음. Features & Benefits"
+    },
+    {
+      "url": "https://www.tiniusolsen.com/product/model-1500sl/",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지(HTML) 본문·표를 직접 읽음. Features & Benefits"
+    },
+    {
+      "url": "https://www.tiniusolsen.com/product/model-2000sl/",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지(HTML) 본문·표를 직접 읽음. Features & Benefits"
+    },
+    {
+      "url": "https://www.tiniusolsen.com/product/model-3000sl/",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지(HTML) 본문·표를 직접 읽음. Features & Benefits"
+    },
+    {
+      "url": "https://www.tiniusolsen.com/product/model-3000sl-rb/",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지(HTML) 본문·표를 직접 읽음. Features & Benefits"
+    },
+    {
+      "url": "https://www.tiniusolsen.com/product/model-sl-compression-only/",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지(HTML) 본문·표를 직접 읽음. Features & Benefits"
+    },
+    {
+      "url": "https://www.tiniusolsen.com/product-category/universal-testing-machines/hydraulic-utms/",
+      "retrieved": "2026-10-08",
+      "note": "제조사 유압 UTM 분류 페이지(기종 목록)"
+    },
+    {
+      "file": "tinius-olsen/sl-series-brochure-a4-email.pdf",
+      "pages": [
+        2,
+        4,
+        7,
+        8,
+        9
+      ]
+    }
+  ],
+  "confidence": "catalog",
+  "notes": "브로슈어 PDF 사양표(7·8쪽)로 스트로크·시험 속도·나사 간격·치수·무게를 채웠다. 표는 추출에서 300SL 열이 따로 떨어져 나왔으나 in·mm 쌍이 서로 맞아 기종별로 가렸다. 표준 개구(B)·크로스헤드 조정 속도는 기종 note 에만 적었고, 최대 시편 크기 표는 열 대응이 확실하지 않아 넣지 않았다. 3000SL-RB 는 표에 따로 열이 없다. SL A·AF 형(300~1,000 kN, 개방 전면·고정 크로스헤드), 온도 챔버 -185~535 °C, 노 1,200 °C 선택이 있다. 하중 측정 ASTM E4·BS 1610·DIN 51221·EN 10002-2·ISO 7500-1, 변형 측정 ASTM E83·BS 3846·ISO 9513.",
+  "accuracy": {
+    "force": "±0.2 % of indicated load from 0.2 % to 100 % of frame capacity (NIST 소급 교정)"
+  }
+}

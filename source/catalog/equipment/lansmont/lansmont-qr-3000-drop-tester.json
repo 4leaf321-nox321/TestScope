@@ -1,0 +1,54 @@
+{
+  "id": "lansmont-qr-3000-drop-tester",
+  "kind": "equipment_model",
+  "name": "Lansmont QR 3000 Quick Release Drop Tester",
+  "name_ko": "랜스몬트 QR 3000 퀵 릴리스 낙하 시험기",
+  "manufacturer": "lansmont",
+  "category": "drop_tester",
+  "form_factor": "fixture",
+  "description": "크고 부피 큰 시료를 지게차·윈치 같은 고객 장비로 매달아 발판 스위치로 놓는 퀵 릴리스 낙하 장치. 탑재 11~1,361 kg, 낙하 높이는 들어 올리는 장비에 달렸다. 산업용 솔레노이드, 115 VAC 60 Hz(옵션 230 VAC).",
+  "test_items": [
+    "free_fall_drop"
+  ],
+  "measurands": [
+    "drop_survival_height"
+  ],
+  "limits": {
+    "payload_kg": {
+      "min": 11,
+      "max": 1361,
+      "note": "원문 25 to 3000 lbs. (11 to 1361 kg)"
+    }
+  },
+  "models": [
+    {
+      "model": "QR 3000",
+      "specs": {
+        "payload_kg": {
+          "min": 11,
+          "max": 1361
+        }
+      }
+    }
+  ],
+  "power_requirements": "115 VAC, 60 Hz (옵션 230 VAC, 50/60 Hz)",
+  "relations": [
+    {
+      "type": "performs",
+      "target": "free_fall_drop"
+    },
+    {
+      "type": "same_family_as",
+      "target": "lansmont-pdt-drop-testers"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://www.lansmont.com/products/drop/lansmont-qr-3000",
+      "retrieved": "2026-10-08",
+      "note": "제조사 QR 3000 페이지"
+    }
+  ],
+  "confidence": "limited",
+  "notes": "리프트 장비는 고객이 준비한다."
+}

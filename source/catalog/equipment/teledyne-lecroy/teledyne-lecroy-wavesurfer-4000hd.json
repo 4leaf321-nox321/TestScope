@@ -1,0 +1,110 @@
+{
+  "id": "teledyne-lecroy-wavesurfer-4000hd",
+  "kind": "equipment_series",
+  "name": "WaveSurfer 4000HD High Definition Oscilloscopes",
+  "name_ko": "텔레다인 르크로이 WaveSurfer 4000HD 오실로스코프",
+  "manufacturer": "teledyne-lecroy",
+  "brand": "WaveSurfer",
+  "category": "oscilloscope",
+  "subcategory": "high_definition_oscilloscope",
+  "form_factor": "benchtop",
+  "description": "200 MHz~1 GHz 대역의 4채널 12 bit 고분해능 오실로스코프 계열임. 4채널 동작 2.5 GS/s, 최대 25 Mpts(2채널 동작).",
+  "test_items": [],
+  "limits": {
+    "bandwidth_Hz": {
+      "min": 200000000,
+      "max": 1000000000
+    },
+    "sample_rate_Sa_s": {
+      "max": 2500000000
+    },
+    "record_length_pts": {
+      "max": 25000000
+    },
+    "channels": {
+      "values": [
+        4
+      ]
+    },
+    "adc_resolution_bit": {
+      "values": [
+        12
+      ]
+    }
+  },
+  "models": [
+    {
+      "model": "WaveSurfer 4024HD",
+      "specs": {
+        "bandwidth_Hz": 200000000,
+        "channels": 4,
+        "sample_rate_Sa_s": {
+          "value": 2500000000,
+          "note": "원문 2.5 GS/s on 4Ch"
+        },
+        "record_length_pts": {
+          "max": 25000000,
+          "note": "원문 25 Mpts (2 Ch operation)"
+        },
+        "adc_resolution_bit": 12
+      }
+    },
+    {
+      "model": "WaveSurfer 4034HD",
+      "specs": {
+        "bandwidth_Hz": 350000000,
+        "channels": 4,
+        "sample_rate_Sa_s": {
+          "value": 2500000000,
+          "note": "원문 2.5 GS/s on 4Ch"
+        },
+        "record_length_pts": {
+          "max": 25000000,
+          "note": "원문 25 Mpts (2 Ch operation)"
+        },
+        "adc_resolution_bit": 12
+      }
+    },
+    {
+      "model": "WaveSurfer 4054HD",
+      "specs": {
+        "bandwidth_Hz": 500000000,
+        "channels": 4,
+        "sample_rate_Sa_s": {
+          "value": 2500000000,
+          "note": "원문 2.5 GS/s on 4Ch"
+        },
+        "record_length_pts": {
+          "max": 25000000,
+          "note": "원문 25 Mpts (2 Ch operation)"
+        },
+        "adc_resolution_bit": 12
+      }
+    },
+    {
+      "model": "WaveSurfer 4104HD",
+      "specs": {
+        "bandwidth_Hz": 1000000000,
+        "channels": 4,
+        "sample_rate_Sa_s": {
+          "value": 2500000000,
+          "note": "원문 2.5 GS/s on 4Ch"
+        },
+        "record_length_pts": {
+          "max": 25000000,
+          "note": "원문 25 Mpts (2 Ch operation)"
+        },
+        "adc_resolution_bit": 12
+      }
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://www.teledynelecroy.com/oscilloscope/wavesurfer-4000hd-oscilloscopes",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지 기종 표. 원문 Bandwidth, Input Channels 4, 2.5 GS/s on 4Ch, 25 Mpts (2 Ch operation), 12-bits"
+    }
+  ],
+  "confidence": "limited",
+  "notes": "대장에는 WS4024HD·WR8058HD 처럼 줄인 주문 코드로 적힐 수 있으나 이번 조회 페이지에서는 확인하지 못함."
+}

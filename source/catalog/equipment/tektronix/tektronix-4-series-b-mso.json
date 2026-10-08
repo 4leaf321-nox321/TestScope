@@ -1,0 +1,109 @@
+{
+  "id": "tektronix-4-series-b-mso",
+  "kind": "equipment_series",
+  "name": "4 Series B MSO Mixed Signal Oscilloscope",
+  "name_ko": "텍트로닉스 4 시리즈 B MSO 혼합 신호 오실로스코프",
+  "manufacturer": "tektronix",
+  "brand": "4 Series MSO",
+  "category": "oscilloscope",
+  "subcategory": "mixed_signal_oscilloscope",
+  "form_factor": "benchtop",
+  "description": "200 MHz~1.5 GHz 대역의 4·6채널 혼합 신호 오실로스코프 계열임. 6.25 GS/s, 12 bit ADC(High Res 모드 16 bit), 레코드 31.25 M~62.5 M, FlexChannel 로 최대 32·48 디지털 채널(옵션), 13.3 inch HD(1920×1080) 화면.",
+  "test_items": [],
+  "limits": {
+    "bandwidth_Hz": {
+      "min": 200000000,
+      "max": 1500000000
+    },
+    "sample_rate_Sa_s": {
+      "max": 6250000000
+    },
+    "record_length_pts": {
+      "min": 31250000,
+      "max": 62500000
+    },
+    "channels": {
+      "values": [
+        4,
+        6
+      ]
+    },
+    "logic_channel_count": {
+      "values": [
+        32,
+        48
+      ],
+      "note": "옵션. 최대값"
+    },
+    "adc_resolution_bit": {
+      "values": [
+        12
+      ]
+    },
+    "display_size_in": {
+      "values": [
+        13.3
+      ]
+    }
+  },
+  "models": [
+    {
+      "model": "MSO44B",
+      "specs": {
+        "bandwidth_Hz": {
+          "min": 200000000,
+          "max": 1500000000,
+          "note": "원문 200 MHz to 1.5 GHz"
+        },
+        "channels": 4,
+        "logic_channel_count": 32,
+        "sample_rate_Sa_s": 6250000000,
+        "record_length_pts": {
+          "min": 31250000,
+          "max": 62500000,
+          "note": "원문 31.25 M to 62.5 M"
+        },
+        "adc_resolution_bit": 12,
+        "display_size_in": 13.3
+      },
+      "note": "원문 6.25 GS/s · 12 bits (16 bits in High Res mode) · digital up to 32 (optional)"
+    },
+    {
+      "model": "MSO46B",
+      "specs": {
+        "bandwidth_Hz": {
+          "min": 200000000,
+          "max": 1500000000,
+          "note": "원문 200 MHz to 1.5 GHz"
+        },
+        "channels": 6,
+        "logic_channel_count": 48,
+        "sample_rate_Sa_s": 6250000000,
+        "record_length_pts": {
+          "min": 31250000,
+          "max": 62500000,
+          "note": "원문 31.25 M to 62.5 M"
+        },
+        "adc_resolution_bit": 12,
+        "display_size_in": 13.3
+      },
+      "note": "원문 6.25 GS/s · 12 bits (16 bits in High Res mode) · digital up to 48 (optional)"
+    }
+  ],
+  "relations": [
+    {
+      "type": "successor_of",
+      "target": "tektronix-mdo4000c",
+      "note": "제조사가 MDO4000C 의 권장 대체로 4 Series B MSO 를 적음"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://www.tek.com/en/products/oscilloscopes/4-series-mso",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지. 4 Series B MSO 기종 표(MSO44B·MSO46B). 같은 페이지의 경쟁사 비교 표는 쓰지 않음"
+    }
+  ],
+  "confidence": "limited",
+  "notes": "B 이전의 4 Series MSO(MSO44·MSO46)는 현재 페이지에 없어 넣지 않음."
+}

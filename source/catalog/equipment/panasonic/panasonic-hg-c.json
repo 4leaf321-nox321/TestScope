@@ -1,0 +1,340 @@
+{
+  "id": "panasonic-hg-c",
+  "kind": "equipment_series",
+  "name": "HG-C Series CMOS Type Micro Laser Distance Sensor",
+  "name_ko": "파나소닉 HG-C CMOS 마이크로 레이저 거리 센서",
+  "manufacturer": "panasonic",
+  "category": "thickness_displacement_gauge",
+  "description": "CMOS 수광 소자를 쓴 소형 레이저 변위(거리) 센서 계열임. 측정 중심 거리 30~400 mm, 측정 범위 ±5~±200 mm, 반복 정밀도 10 µm(HG-C1030)부터, 직선성 ±0.1 % F.S.(HG-C1030~1100), 빔 지름 약 ø50~500 µm, 응답 시간 1.5/5/10 ms, 레이저 Class 2.",
+  "test_items": [],
+  "limits": {
+    "measurement_distance_mm": {
+      "min": 30,
+      "max": 400
+    },
+    "displacement_mm": {
+      "min": -200,
+      "max": 200,
+      "note": "기종별 ±5 ~ ±200 mm"
+    },
+    "measuring_repeatability_um": {
+      "min": 10,
+      "max": 800
+    },
+    "spot_size_um": {
+      "min": 50,
+      "max": 500
+    }
+  },
+  "models": [
+    {
+      "model": "HG-C1030",
+      "specs": {
+        "measurement_distance_mm": 30,
+        "displacement_mm": {
+          "min": -5,
+          "max": 5,
+          "note": "원문 ±5 mm"
+        },
+        "spot_size_um": {
+          "value": 50,
+          "note": "원문 ø50 μm approx."
+        },
+        "response_time_ms": {
+          "values": [
+            1.5,
+            5,
+            10
+          ],
+          "note": "원문 1.5 / 5 / 10 ms"
+        },
+        "measuring_repeatability_um": 10,
+        "linearity_pct_fs": {
+          "value": 0.1,
+          "note": "원문 ±0.1 % F.S."
+        }
+      },
+      "note": "레이저 Class 2."
+    },
+    {
+      "model": "HG-C1030-P",
+      "specs": {
+        "measurement_distance_mm": 30,
+        "displacement_mm": {
+          "min": -5,
+          "max": 5,
+          "note": "원문 ±5 mm"
+        },
+        "spot_size_um": {
+          "value": 50,
+          "note": "원문 ø50 μm approx."
+        },
+        "response_time_ms": {
+          "values": [
+            1.5,
+            5,
+            10
+          ],
+          "note": "원문 1.5 / 5 / 10 ms"
+        },
+        "measuring_repeatability_um": 10,
+        "linearity_pct_fs": {
+          "value": 0.1,
+          "note": "원문 ±0.1 % F.S."
+        }
+      },
+      "note": "레이저 Class 2. 페이지 표에 기본형과 같은 사양으로 실림"
+    },
+    {
+      "model": "HG-C1050",
+      "specs": {
+        "measurement_distance_mm": 50,
+        "displacement_mm": {
+          "min": -15,
+          "max": 15,
+          "note": "원문 ±15 mm"
+        },
+        "spot_size_um": {
+          "value": 70,
+          "note": "원문 ø70 μm approx."
+        },
+        "response_time_ms": {
+          "values": [
+            1.5,
+            5,
+            10
+          ],
+          "note": "원문 1.5 / 5 / 10 ms"
+        },
+        "measuring_repeatability_um": 30,
+        "linearity_pct_fs": {
+          "value": 0.1,
+          "note": "원문 ±0.1 % F.S."
+        }
+      },
+      "note": "레이저 Class 2."
+    },
+    {
+      "model": "HG-C1050-P",
+      "specs": {
+        "measurement_distance_mm": 50,
+        "displacement_mm": {
+          "min": -15,
+          "max": 15,
+          "note": "원문 ±15 mm"
+        },
+        "spot_size_um": {
+          "value": 70,
+          "note": "원문 ø70 μm approx."
+        },
+        "response_time_ms": {
+          "values": [
+            1.5,
+            5,
+            10
+          ],
+          "note": "원문 1.5 / 5 / 10 ms"
+        },
+        "measuring_repeatability_um": 30,
+        "linearity_pct_fs": {
+          "value": 0.1,
+          "note": "원문 ±0.1 % F.S."
+        }
+      },
+      "note": "레이저 Class 2. 페이지 표에 기본형과 같은 사양으로 실림"
+    },
+    {
+      "model": "HG-C1100",
+      "specs": {
+        "measurement_distance_mm": 100,
+        "displacement_mm": {
+          "min": -35,
+          "max": 35,
+          "note": "원문 ±35 mm"
+        },
+        "spot_size_um": {
+          "value": 120,
+          "note": "원문 ø120 μm approx."
+        },
+        "response_time_ms": {
+          "values": [
+            1.5,
+            5,
+            10
+          ],
+          "note": "원문 1.5 / 5 / 10 ms"
+        },
+        "measuring_repeatability_um": 70,
+        "linearity_pct_fs": {
+          "value": 0.1,
+          "note": "원문 ±0.1 % F.S."
+        }
+      },
+      "note": "레이저 Class 2."
+    },
+    {
+      "model": "HG-C1100-P",
+      "specs": {
+        "measurement_distance_mm": 100,
+        "displacement_mm": {
+          "min": -35,
+          "max": 35,
+          "note": "원문 ±35 mm"
+        },
+        "spot_size_um": {
+          "value": 120,
+          "note": "원문 ø120 μm approx."
+        },
+        "response_time_ms": {
+          "values": [
+            1.5,
+            5,
+            10
+          ],
+          "note": "원문 1.5 / 5 / 10 ms"
+        },
+        "measuring_repeatability_um": 70,
+        "linearity_pct_fs": {
+          "value": 0.1,
+          "note": "원문 ±0.1 % F.S."
+        }
+      },
+      "note": "레이저 Class 2. 페이지 표에 기본형과 같은 사양으로 실림"
+    },
+    {
+      "model": "HG-C1200",
+      "specs": {
+        "measurement_distance_mm": 200,
+        "displacement_mm": {
+          "min": -80,
+          "max": 80,
+          "note": "원문 ±80 mm"
+        },
+        "spot_size_um": {
+          "value": 300,
+          "note": "원문 ø300 μm approx."
+        },
+        "response_time_ms": {
+          "values": [
+            1.5,
+            5,
+            10
+          ],
+          "note": "원문 1.5 / 5 / 10 ms"
+        },
+        "measuring_repeatability_um": 200,
+        "linearity_pct_fs": {
+          "value": 0.2,
+          "note": "원문 ±0.2 % F.S."
+        }
+      },
+      "note": "레이저 Class 2."
+    },
+    {
+      "model": "HG-C1200-P",
+      "specs": {
+        "measurement_distance_mm": 200,
+        "displacement_mm": {
+          "min": -80,
+          "max": 80,
+          "note": "원문 ±80 mm"
+        },
+        "spot_size_um": {
+          "value": 300,
+          "note": "원문 ø300 μm approx."
+        },
+        "response_time_ms": {
+          "values": [
+            1.5,
+            5,
+            10
+          ],
+          "note": "원문 1.5 / 5 / 10 ms"
+        },
+        "measuring_repeatability_um": 200,
+        "linearity_pct_fs": {
+          "value": 0.2,
+          "note": "원문 ±0.2 % F.S."
+        }
+      },
+      "note": "레이저 Class 2. 페이지 표에 기본형과 같은 사양으로 실림"
+    },
+    {
+      "model": "HG-C1400",
+      "specs": {
+        "measurement_distance_mm": 400,
+        "displacement_mm": {
+          "min": -200,
+          "max": 200,
+          "note": "원문 ±200 mm"
+        },
+        "spot_size_um": {
+          "value": 500,
+          "note": "원문 ø500 μm approx."
+        },
+        "response_time_ms": {
+          "values": [
+            1.5,
+            5,
+            10
+          ],
+          "note": "원문 1.5 / 5 / 10 ms"
+        },
+        "measuring_repeatability_um": {
+          "min": 300,
+          "max": 800,
+          "note": "원문 300-800 μm"
+        },
+        "linearity_pct_fs": {
+          "min": 0.2,
+          "max": 0.3,
+          "note": "원문 ±0.2-0.3 % F.S."
+        }
+      },
+      "note": "레이저 Class 2."
+    },
+    {
+      "model": "HG-C1400-P",
+      "specs": {
+        "measurement_distance_mm": 400,
+        "displacement_mm": {
+          "min": -200,
+          "max": 200,
+          "note": "원문 ±200 mm"
+        },
+        "spot_size_um": {
+          "value": 500,
+          "note": "원문 ø500 μm approx."
+        },
+        "response_time_ms": {
+          "values": [
+            1.5,
+            5,
+            10
+          ],
+          "note": "원문 1.5 / 5 / 10 ms"
+        },
+        "measuring_repeatability_um": {
+          "min": 300,
+          "max": 800,
+          "note": "원문 300-800 μm"
+        },
+        "linearity_pct_fs": {
+          "min": 0.2,
+          "max": 0.3,
+          "note": "원문 ±0.2-0.3 % F.S."
+        }
+      },
+      "note": "레이저 Class 2. 페이지 표에 기본형과 같은 사양으로 실림"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://industry.panasonic.com/global/en/products/fasys/sensor/photoelectric/hg-c",
+      "retrieved": "2026-10-08",
+      "note": "제조사 계열 페이지(기종별 사양표)"
+    }
+  ],
+  "confidence": "limited",
+  "notes": "-P 변형의 뜻(출력 형식 등)은 페이지 표에서 읽지 못해 적지 않음. 같은 제조사의 HL-G1 계열은 제품 페이지를 찾지 못해 넣지 않음(skipped)."
+}

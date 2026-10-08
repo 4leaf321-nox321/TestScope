@@ -1,0 +1,123 @@
+{
+  "id": "rohde-schwarz-cmu200",
+  "kind": "equipment_series",
+  "name": "R&S CMU200 Universal Radio Communication Tester",
+  "name_ko": "로데슈바르츠 CMU200 범용 무선통신 테스터",
+  "manufacturer": "rohde-schwarz",
+  "brand": "CMU",
+  "category": "radio_communication_tester",
+  "description": "단종된 이동통신 단말 시험기. 제조사 제품 페이지 주소가 지금은 CMW500 페이지로 넘어간다. 제조사 응용 노트는 휴대전화 음성 기능 시험(3GPP 26.132 음향 시험, ITU-T P.862(PESQ)·P.863(POLQA) 음성 품질 시험)에서 CMU200 을 CMW500 으로 바꾸는 방법을 다룬다.",
+  "test_items": [],
+  "standards": {
+    "compliance": [],
+    "test_methods": [
+      "3GPP TS 26.132",
+      "ITU-T P.862",
+      "ITU-T P.863"
+    ]
+  },
+  "limits": {
+    "radio_standards": {
+      "values": [
+        "GSM/GPRS/EDGE",
+        "TDMA (IS-136)",
+        "AMPS",
+        "CDMA2000 1xRTT",
+        "CDMA2000 1xEV-DO",
+        "WCDMA/HSPA",
+        "Bluetooth"
+      ],
+      "note": "옵션·부속 목록의 기술 열. 대역 소프트웨어: GSM400·GSM850·GSM900(R/E-GSM)·GSM1800·GSM1900·GT800, IS-136 800/1900 MHz, WCDMA band 1~11, CDMA2000 band class 0~17(450 MHz·셀룰러·PCS·IMT-2000)"
+    }
+  },
+  "models": [
+    {
+      "model": "CMU200",
+      "note": "단종. 기본 유닛 주문 번호 1100.0008.02(옵션·부속 목록). 신호 시험은 범용 신호 유닛 CMU-B21 과 표준별 모듈·소프트웨어 옵션으로 구성한다. 기종 변형(V02·V10·V30 등)은 PDF 에도 없다.",
+      "specs": {
+        "radio_standards": "GSM/GPRS/EDGE, TDMA(IS-136), AMPS, CDMA2000 1xRTT/1xEV-DO, WCDMA/HSPA, Bluetooth"
+      }
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://www.rohde-schwarz.com/tw/product/cmu200-productstartpage_63493-7830.html",
+      "retrieved": "2026-10-08",
+      "note": "제조사 옛 CMU200 제품 페이지 주소. 조회 시 CMW500 페이지 내용이 나온다(단종 후 이동)"
+    },
+    {
+      "url": "https://www.rohde-schwarz.com/us/applications/replacing-rs-cmu200-with-rs-cmw500-in-2g-and-3g-speech-test-applications_56280-67270.html",
+      "retrieved": "2026-10-08",
+      "note": "제조사 응용 노트 페이지. 2G·3G 음성 시험에서 CMU200 을 CMW500 으로 바꾸는 방법. 수치 사양 없음"
+    },
+    {
+      "file": "rohde-schwarz/cmu200_options_and_accessories.pdf",
+      "pages": [
+        1,
+        2,
+        3
+      ],
+      "note": "제조사 CMU200 옵션·부속 목록. 기술별 옵션 표(GSM·TDMA·AMPS·CDMA2000·WCDMA·Bluetooth), 대역 소프트웨어, 주문 번호. 주파수 범위·출력 레벨 수치는 없다"
+    },
+    {
+      "file": "rohde-schwarz/1ga65_0e.pdf",
+      "pages": [
+        1,
+        3
+      ],
+      "note": "제조사 응용 노트 1GA65(2014). CMU200·UPV 로 하던 3GPP 26.132 음향·ITU-T P.862/P.863 음성 품질 시험을 CMW500 으로 옮기는 방법. 수치 사양 없음"
+    }
+  ],
+  "confidence": "limited",
+  "notes": "운영 대장에 CMU200 이 남아 있을 때 이어지도록 세운 객체다. PDF 로 확인: 지원 기술·대역 옵션, 하드웨어 옵션, 기본 유닛 주문 번호. 주파수 범위·출력 레벨은 두 PDF(옵션 목록·응용 노트)에 모두 없어 비웠다. standards.test_methods 는 응용 노트가 CMU200 으로 하던 시험으로 든 것이다.",
+  "options": [
+    {
+      "name": "CMU-B11 / CMU-B12",
+      "note": "기준 OCXO(노화 2×10⁻⁷/년) / 고안정 OCXO(3.5×10⁻⁸/년)"
+    },
+    {
+      "name": "CMU-B17",
+      "note": "아날로그 I/Q IF 인터페이스"
+    },
+    {
+      "name": "CMU-B21",
+      "note": "범용 신호 유닛(모델 14: WCDMA 용, 모델 54: AMPS·TDMA·GSM/GPRS/EGPRS 신호 모듈 포함)"
+    },
+    {
+      "name": "CMU-B41",
+      "note": "오디오 발생기·분석기"
+    },
+    {
+      "name": "CMU-B52",
+      "note": "내장 멀티모드 음성 코덱"
+    },
+    {
+      "name": "CMU-B53",
+      "note": "Bluetooth 확장"
+    },
+    {
+      "name": "CMU-B56 / CMU-B68",
+      "note": "WCDMA(3GPP FDD) 신호 모듈 / 기저대역 보드"
+    },
+    {
+      "name": "CMU-B83 / B88 / B89",
+      "note": "CDMA2000 1xRTT 신호 유닛 / 1xEV-DO 비신호 발생기 / 1xEV-DO 신호 모듈"
+    },
+    {
+      "name": "CMU-B95",
+      "note": "보조 발생기(GSM BCCH, (E)GPRS 응용 시험)"
+    },
+    {
+      "name": "CMU-B96",
+      "note": "두 번째 TX RF 채널"
+    },
+    {
+      "name": "CMU-B99",
+      "note": "RF1 레벨 범위를 RF2 와 같게"
+    },
+    {
+      "name": "CMU-Z10",
+      "note": "안테나 커플러 900 MHz/1700~2200 MHz"
+    }
+  ]
+}

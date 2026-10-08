@@ -1,0 +1,39 @@
+{
+  "id": "keysight-3458a-dmm",
+  "kind": "equipment_series",
+  "name": "Keysight 3458A Digital Multimeter, 8½ Digit",
+  "name_ko": "키사이트 3458A 8½자리 디지털 멀티미터",
+  "manufacturer": "keysight",
+  "brand": "3458A",
+  "category": "dmm_daq",
+  "form_factor": "benchtop",
+  "description": "8½자리 고정밀 디지털 멀티미터. 최대 100,000 readings/s, 메모리 148,000 readings, GPIB. 기본 1년 DCV 확도는 페이지에 4 ppm(표준 8 ppm)으로 적혀 있다. AC 최대 입력 700 Vrms(표준), 옵션으로 1000 Vrms.",
+  "test_items": [],
+  "models": [
+    {
+      "model": "3458A",
+      "specs": {
+        "dmm_resolution_digits": 8.5,
+        "accuracy": "기본 1년 DCV 확도 4 ppm(표준 8 ppm)",
+        "data_rate_Hz": 100000,
+        "interfaces": "GPIB"
+      },
+      "note": "AC 최대 입력 700 Vrms(표준), 1000 Vrms 옵션. 이전 버전과 코드 호환"
+    }
+  ],
+  "relations": [
+    {
+      "type": "same_family_as",
+      "target": "keysight-truevolt-dmm"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://www.keysight.com/us/en/product/3458A/digital-multimeter-8-5-digit.html",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지. 8.5 digits, 4 ppm(standard 8 ppm), 100,000 readings/s, 148,000 readings, 700 Vrms ac maximum input(옵션 1000 Vrms), GPIB"
+    }
+  ],
+  "confidence": "limited",
+  "notes": "4 ppm 과 표준 8 ppm 의 조건(고안정 옵션 여부)은 페이지 요약에서 분명하지 않음. 전류·저항 레인지는 페이지에 없음."
+}

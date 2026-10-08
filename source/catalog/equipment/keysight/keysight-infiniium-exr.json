@@ -1,0 +1,132 @@
+{
+  "id": "keysight-infiniium-exr",
+  "kind": "equipment_series",
+  "name": "Infiniium EXR-Series Oscilloscopes",
+  "name_ko": "키사이트 Infiniium EXR 오실로스코프",
+  "manufacturer": "keysight",
+  "brand": "Infiniium",
+  "category": "oscilloscope",
+  "subcategory": "real_time_oscilloscope",
+  "form_factor": "benchtop",
+  "description": "500 MHz~2.5 GHz, 4·8채널의 실시간 오실로스코프 계열(8종)임. 전 채널 동시 16 GSa/s, 10 bit ADC, 최대 1.6 Gpts 메모리, 16 디지털 채널, 15.6 inch 화면. 대역폭·채널 수를 2.5 GHz·8채널까지 업그레이드 가능. 키사이트 현재 분류로는 XR6-class.",
+  "test_items": [],
+  "limits": {
+    "bandwidth_Hz": {
+      "min": 500000000,
+      "max": 2500000000,
+      "note": "원문 500 MHz~2.5 GHz"
+    },
+    "channels": {
+      "values": [
+        4,
+        8
+      ]
+    },
+    "sample_rate_Sa_s": {
+      "max": 16000000000,
+      "note": "원문 16 GSa/s, 전 채널 동시"
+    },
+    "record_length_pts": {
+      "min": 100000000,
+      "max": 1600000000,
+      "note": "원문 표준 100 Mpts/채널, 최대 1.6 Gpts"
+    },
+    "adc_resolution_bit": {
+      "values": [
+        10
+      ]
+    },
+    "logic_channel_count": {
+      "values": [
+        16
+      ]
+    },
+    "display_size_in": {
+      "values": [
+        15.6
+      ]
+    }
+  },
+  "models": [
+    {
+      "model": "EXR054A",
+      "specs": {
+        "bandwidth_Hz": 500000000,
+        "channels": 4
+      }
+    },
+    {
+      "model": "EXR058A",
+      "specs": {
+        "bandwidth_Hz": 500000000,
+        "channels": 8
+      }
+    },
+    {
+      "model": "EXR104A",
+      "specs": {
+        "bandwidth_Hz": 1000000000,
+        "channels": 4
+      }
+    },
+    {
+      "model": "EXR108A",
+      "specs": {
+        "bandwidth_Hz": 1000000000,
+        "channels": 8
+      }
+    },
+    {
+      "model": "EXR204A",
+      "specs": {
+        "bandwidth_Hz": 2000000000,
+        "channels": 4
+      }
+    },
+    {
+      "model": "EXR208A",
+      "specs": {
+        "bandwidth_Hz": 2000000000,
+        "channels": 8
+      }
+    },
+    {
+      "model": "EXR254A",
+      "specs": {
+        "bandwidth_Hz": 2500000000,
+        "channels": 4
+      }
+    },
+    {
+      "model": "EXR258A",
+      "specs": {
+        "bandwidth_Hz": 2500000000,
+        "channels": 8
+      }
+    }
+  ],
+  "features": [
+    "전 채널 16 GSa/s",
+    "10 bit ADC",
+    "대역폭·채널 업그레이드",
+    "오실로스코프·로직·프로토콜 분석기·DVM·카운터·보드 플로터·파형 발생기 통합"
+  ],
+  "sources": [
+    {
+      "url": "https://www.keysight.com/us/en/product/EXR058A/infiniium-exr-series-oscilloscope-500-mhz-8-channels.html",
+      "retrieved": "2026-10-08",
+      "note": "제조사 기종 페이지. 500 MHz, 8 Analog channels, 1.6 Gpts, 16 digital, 15.6 inch, 16 GSa/s, 10-bit ADC, 2.5 GHz 까지 업그레이드"
+    },
+    {
+      "url": "https://www.keysight.com/us/en/product/EXR108A/",
+      "retrieved": "2026-10-08",
+      "note": "제조사 기종 페이지. 1 GHz, 8 Analog channels, 16 GSa/s, 1.6 Gpts, 10 bits. EXR204A·EXR208A·EXR258A 도 같은 주소 형식으로 확인"
+    },
+    {
+      "url": "https://www.keysight.com/us/en/product/EXR254A/infiniium-exr-series-oscilloscope-2-5-ghz-4-channels.html",
+      "retrieved": "2026-10-08",
+      "note": "검색 결과 발췌. EXR054A·EXR104A·EXR254A 페이지 제목과 \"10-bit ADC, 16 GSa/s on all channels, 100 Mpts standard memory per channel\""
+    }
+  ],
+  "confidence": "limited"
+}

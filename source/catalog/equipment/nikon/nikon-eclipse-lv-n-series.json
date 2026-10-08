@@ -1,0 +1,102 @@
+{
+  "id": "nikon-eclipse-lv-n-series",
+  "kind": "equipment_series",
+  "name": "Nikon ECLIPSE LV-N Series Industrial Microscopes (LV150N / LV150NA / LV100ND / LV100NDA)",
+  "name_ko": "니콘 ECLIPSE LV-N 산업용 정립 현미경",
+  "manufacturer": "nikon",
+  "brand": "ECLIPSE",
+  "category": "optical_microscope",
+  "subcategory": "upright_metallurgical_microscope",
+  "form_factor": "benchtop",
+  "description": "반도체·패키지·FPD·전자부품·재료·정밀 금형 검사용 정립 현미경 계열(CFI60-2/CFI60 광학계). LV150N·LV150NA 는 반사(에피) 조명형으로 명시야·암시야·편광·미분간섭·에피 형광·2광속 간섭을 쓴다. LV100ND·LV100NDA 는 반사·투과 겸용으로 투과 쪽에 위상차가 더해진다. 이름 끝 A 는 전동 노즈피스·조리개 자동 최적화형. 현행품은 고연색 LED 램프하우스 C-LL-I(수명 50,000시간)를 단 「LED」 판이다.",
+  "test_items": [
+    "microscopy"
+  ],
+  "limits": {
+    "specimen_height_mm": {
+      "max": 73,
+      "note": "LV150N 38 mm(컬럼 라이저 사용 시 73 mm), LV100ND 38 mm, LV100NDA 33 mm"
+    },
+    "stage_travel_mm": {
+      "max": 150,
+      "note": "LV-S32 75×50, LV-S64 150×100, LV-S6 150×150(LV150 계열)"
+    }
+  },
+  "models": [
+    {
+      "model": "LV150N",
+      "variant": "ECLIPSE LV150N LED",
+      "specs": {
+        "specimen_height_mm": {
+          "max": 38,
+          "note": "LV-NU5A 노즈피스와 LV-S32/LV-S64 스테이지 기준. 컬럼 라이저로 73 mm"
+        },
+        "observation_methods": "BF, DF, POL, DIC, epi-FL, 2광속 간섭(반사)",
+        "weight_kg": 9
+      },
+      "note": "노즈피스 C-N6, LV-NU5N, LV-NBD5N, LV-NU5IN. 소비 1.2 A / 75 W. ESD 1000 → 10 V 0.2 s 이내"
+    },
+    {
+      "model": "LV150NA",
+      "variant": "ECLIPSE LV150NA LED",
+      "specs": {
+        "specimen_height_mm": {
+          "max": 38
+        },
+        "observation_methods": "BF, DF, POL, DIC, epi-FL, 2광속 간섭(반사)",
+        "weight_kg": 9
+      },
+      "note": "전동 노즈피스 LV-NU5A, LV-NU5AC, LV-NU5AI"
+    },
+    {
+      "model": "LV100ND",
+      "variant": "ECLIPSE LV100ND LED",
+      "specs": {
+        "specimen_height_mm": {
+          "max": 38
+        },
+        "observation_methods": "반사: BF, DF, POL, DIC, epi-FL, 2광속 간섭 / 투과: BF, DF, POL, DIC, 위상차",
+        "stage_travel_mm": {
+          "values": [
+            "75×50",
+            "150×100"
+          ]
+        },
+        "weight_kg": 9
+      },
+      "note": "노즈피스 C-N6, LV-NU5N, LV-NBD5N, LV-NU5IN, D-ND6, P-N. 소비 0.7 A / 58 W"
+    },
+    {
+      "model": "LV100NDA",
+      "variant": "ECLIPSE LV100NDA LED",
+      "specs": {
+        "specimen_height_mm": {
+          "max": 33
+        },
+        "observation_methods": "반사: BF, DF, POL, DIC, epi-FL, 2광속 간섭 / 투과: BF, DF, POL, DIC, 위상차",
+        "stage_travel_mm": {
+          "values": [
+            "75×50",
+            "150×100"
+          ]
+        },
+        "weight_kg": 10
+      },
+      "note": "전동 노즈피스 LV-NU5A, LV-NU5AC, LV-NU5AI. 에피 조명기 LV-UEPI2A 로 조리개 자동 최적화"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://industry.nikon.com/en-aom/products/industrial-microscopy/industrial-microscopes/eclipse-lv150naled-lv150nled/",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지(HTML, industry.nikon.com) ECLIPSE LV150NA LED / LV150N LED"
+    },
+    {
+      "url": "https://industry.nikon.com/en-aom/products/industrial-microscopy/industrial-microscopes/upright-eclipse-lv100nda-lv100nd/",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지(HTML, industry.nikon.com) ECLIPSE LV100NDA LED / LV100ND LED"
+    }
+  ],
+  "confidence": "limited",
+  "notes": "기종명은 대장 연결을 위해 「LED」 를 뺀 기본 이름으로 적고 현행 정식 이름은 variant 에 둠(할로겐판 구형도 같은 기본 이름). 대형 스테이지판 LV150NL 은 현행 페이지에 없어 넣지 않음. 같은 목록의 L300N/L200N, MA200, MA100N, LV100N POL 은 이번에 열지 않음."
+}

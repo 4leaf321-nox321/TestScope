@@ -1,0 +1,197 @@
+{
+  "id": "optris-pi-series",
+  "kind": "equipment_series",
+  "name": "Optris PI Series Infrared Camera",
+  "name_ko": "옵트리스 PI 시리즈 적외선 카메라",
+  "manufacturer": "optris",
+  "brand": "PI",
+  "category": "thermal_imager",
+  "form_factor": "camera",
+  "description": "공정 · 연구용 소형 고정형 적외선 카메라 계열(USB, 선택 GigE PoE). 장파 판(PI 400i · 450i · 640i)은 비냉각 볼로미터로 -20 ~ 1,500 °C, 단파 판(PI 05M · 08M · 1M)은 금속 · 고온용으로 450 ~ 2,450 °C 를 최대 1 kHz 로, 협대역 G7 판은 유리 측정용(150 ~ 3,000 °C). PI 640i 는 640 × 480 에서 32 Hz(라인 스캔 125 Hz), NETD 40 ~ 60 mK.",
+  "test_items": [
+    "thermography"
+  ],
+  "measurands": [
+    "surface_temperature",
+    "temperature_distribution",
+    "hotspot_location"
+  ],
+  "limits": {
+    "temperature_degC": {
+      "min": -20,
+      "max": 3000,
+      "note": "장파 -20 ~ 1,500, 단파 450 ~ 2,450, G7 150 ~ 3,000 °C"
+    },
+    "ir_resolution_pixels": {
+      "min": 110016,
+      "max": 366720,
+      "note": "382 × 288 ~ 764 × 480"
+    },
+    "thermal_sensitivity_degC": {
+      "min": 0.04,
+      "max": 0.06,
+      "note": "PI 450i · 640i, 렌즈별"
+    },
+    "frame_rate_fps": {
+      "min": 32,
+      "max": 80,
+      "note": "장파 판 전 화소. 원문 Hz"
+    },
+    "max_frame_rate_fps": {
+      "max": 1000,
+      "note": "단파 판 up to 1 kHz"
+    }
+  },
+  "models": [
+    {
+      "model": "PI 400i",
+      "variant": "LT",
+      "specs": {
+        "detector_pixels": "382 × 288",
+        "ir_resolution_pixels": 110016,
+        "temperature_degC": {
+          "min": -20,
+          "max": 1500
+        },
+        "frame_rate_fps": 80
+      },
+      "note": "계열 페이지 값"
+    },
+    {
+      "model": "PI 450i",
+      "variant": "LT 18°×14° / 29°×22° / 53°×38° / 80°×54°",
+      "specs": {
+        "detector_pixels": "382 × 288",
+        "ir_resolution_pixels": 110016,
+        "thermal_sensitivity_degC": 0.04,
+        "temperature_degC": {
+          "min": -20,
+          "max": 1500
+        },
+        "accuracy": "±2 °C 또는 ±2 % (큰 값)",
+        "frame_rate_fps": 80,
+        "weight_kg": 0.251,
+        "pixel_pitch_um": 17
+      },
+      "note": "레인지 -20 ~ 100 / -20 ~ 900 / -20 ~ 1,500 °C. 80 Hz(27 Hz 전환). NETD 40 mK(29° · 53°) / 60 mK(18°). 화소 간격 17 µm, USB 2.0. 무게 237 ~ 251 g(렌즈별). 파장은 추출값이 7.9 µm(G7 판과 혼동 가능)로 나와 비움"
+    },
+    {
+      "model": "PI 640i",
+      "variant": "LT",
+      "specs": {
+        "detector_pixels": "640 × 480",
+        "ir_resolution_pixels": 307200,
+        "thermal_sensitivity_degC": 0.04,
+        "temperature_degC": {
+          "min": -20,
+          "max": 1500
+        },
+        "accuracy": "±2 °C 또는 ±2 % (큰 값)",
+        "wavelength_nm": {
+          "min": 8000,
+          "max": 14000
+        },
+        "frame_rate_fps": 32,
+        "field_of_view_deg": "15°×11° / 33°×25° / 60°×45° / 90°×64° / 120°×100°",
+        "weight_kg": 0.34,
+        "pixel_pitch_um": 17,
+        "detector": "Uncooled bolometer"
+      },
+      "note": "비냉각 볼로미터. 레인지 -20 ~ 900 / -20 ~ 1,500 °C. 라인 스캔 125 Hz. NETD 40 mK(15°) / 60 mK(120°). 화소 간격 17 µm. 무게 269 ~ 340 g"
+    },
+    {
+      "model": "PI 05M",
+      "specs": {
+        "detector_pixels": "764 × 480",
+        "ir_resolution_pixels": 366720,
+        "temperature_degC": {
+          "min": 900,
+          "max": 2450
+        },
+        "wavelength_nm": {
+          "min": 500,
+          "max": 540
+        },
+        "max_frame_rate_fps": 1000
+      },
+      "note": "파장 원문 0.50 ~ 0.54 µm. 프레임 up to 1 kHz"
+    },
+    {
+      "model": "PI 08M",
+      "specs": {
+        "detector_pixels": "764 × 480",
+        "ir_resolution_pixels": 366720,
+        "temperature_degC": {
+          "min": 575,
+          "max": 1900
+        },
+        "max_frame_rate_fps": 1000
+      },
+      "note": "파장 원문 0.8 µm. 프레임 up to 1 kHz"
+    },
+    {
+      "model": "PI 1M",
+      "specs": {
+        "detector_pixels": "764 × 480",
+        "ir_resolution_pixels": 366720,
+        "temperature_degC": {
+          "min": 450,
+          "max": 1800
+        },
+        "max_frame_rate_fps": 1000
+      },
+      "note": "파장 원문 1 µm. 금속 측정용. 프레임 up to 1 kHz"
+    },
+    {
+      "model": "PI 450i G7",
+      "specs": {
+        "detector_pixels": "382 × 288",
+        "ir_resolution_pixels": 110016,
+        "temperature_degC": {
+          "min": 150,
+          "max": 1500
+        },
+        "frame_rate_fps": 80
+      },
+      "note": "협대역 7.9 µm(유리용)"
+    },
+    {
+      "model": "PI 640i G7",
+      "specs": {
+        "detector_pixels": "640 × 480",
+        "ir_resolution_pixels": 307200,
+        "temperature_degC": {
+          "min": 150,
+          "max": 3000
+        },
+        "max_frame_rate_fps": 125
+      },
+      "note": "협대역 G7(유리용). 프레임 up to 125 Hz"
+    }
+  ],
+  "relations": [
+    {
+      "type": "performs",
+      "target": "thermography"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://optris.com/us/products/category/thermal-cameras/precision-line/",
+      "retrieved": "2026-10-08",
+      "note": "제조사 계열 페이지(HTML). 8 기종의 해상도 · 측정 범위 · 프레임 속도 · 파장"
+    },
+    {
+      "url": "https://optris.com/us/products/thermal-cameras/precision-line/pi-640i/",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지(HTML)"
+    },
+    {
+      "url": "https://optris.com/us/products/thermal-cameras/precision-line/pi-450i/",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지(HTML)"
+    }
+  ],
+  "confidence": "limited",
+  "notes": "단파 판의 1 kHz 가 전 화소 값인지는 페이지에 없다. Xi 계열은 다루지 않음."
+}

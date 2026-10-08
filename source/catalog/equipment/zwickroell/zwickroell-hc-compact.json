@@ -1,0 +1,234 @@
+{
+  "id": "zwickroell-hc-compact",
+  "kind": "equipment_series",
+  "name": "ZwickRoell HC Compact servohydraulic testing systems (HC Compact 10/25 kN, 50/100 kN)",
+  "name_ko": "즈윅로엘 HC Compact 유압원 일체형 서보유압 시험기",
+  "manufacturer": "zwickroell",
+  "category": "servohydraulic_fatigue",
+  "drive": "servohydraulic",
+  "description": "저소음 유압 파워팩을 시험 프레임의 받침으로 쓴 일체형 서보유압 시험기. 두 크기: HC Compact 10/25 kN(액추에이터 위, T 홈 플랫폼, 부품·생체의료 시험)과 HC Compact 50/100 kN(액추에이터 아래, 항온조·고온로, 복합재·LCF 시험). 정렬 정확도 1 m 당 +0.1 mm. 파워팩: 10/25 kN 형 210 bar, 10.7 l/min, 모터 5 kW, 오일 160 l, 기름 포함 690 kg, 소음 <58 dB(A); 50/100 kN 형 280 bar, 30 l/min, 모터 15 kW, 냉각수 최대 30 l/min.",
+  "test_items": [
+    "fatigue",
+    "fracture_toughness"
+  ],
+  "measurands": [
+    "mechanical.fatigue_strength",
+    "mechanical.fracture_toughness",
+    "mechanical.crack_growth_rate"
+  ],
+  "standards": {
+    "compliance": [],
+    "test_methods": [
+      "ISO 12106",
+      "ASTM E606",
+      "DIN 50100",
+      "ASTM E399",
+      "ASTM E647",
+      "ASTM E466"
+    ]
+  },
+  "limits": {
+    "dynamic_force_kN": {
+      "min": 10,
+      "max": 100,
+      "values": [
+        10,
+        25,
+        50,
+        100
+      ]
+    },
+    "temperature_degC": {
+      "requires_accessory": true,
+      "note": "온도 값은 PDF 에도 없다. 웹 비교표는 50/100 kN 형만 항온조·고온로 장착으로 적으나, PDF 는 10/25 kN 형에도 온도 챔버(+250 mm 높이 필요)를 적는다"
+    },
+    "stroke_mm": {
+      "values": [
+        100,
+        250
+      ],
+      "note": "10/25 kN 형 100·250 mm, 50/100 kN 형 100 mm"
+    }
+  },
+  "models": [
+    {
+      "model": "HC Compact 10",
+      "specs": {
+        "dynamic_force_kN": 10,
+        "horizontal_test_space_mm": 460,
+        "vertical_test_space_mm": {
+          "values": [
+            1070,
+            1320,
+            1570
+          ],
+          "note": "G 최대 시험 공간: 표준 / +250 / +500 mm. 작업 시험 공간 310~1010 / 560~1260 / 810~1510 mm"
+        },
+        "frame_stiffness_kN_mm": 300,
+        "weight_kg": {
+          "values": [
+            1080,
+            1095,
+            1120
+          ],
+          "note": "K 총 무게(표준 / +250 / +500 mm)"
+        },
+        "footprint_mm": {
+          "W": 720,
+          "D": 1360,
+          "H": 2240,
+          "note": "A 기둥 끝 높이 2240 / 2490 / 2740 mm"
+        },
+        "stroke_mm": {
+          "values": [
+            100,
+            250
+          ],
+          "note": "시험 액추에이터 피스톤 스트로크, 시스템 압력 210 bar"
+        }
+      },
+      "note": "HC Compact 10/25 kN: 액추에이터 위 크로스헤드, T 홈 플랫폼. 기술 데이터 표의 동적 정격은 25 kN 열. 프레임 품번(수동/수동) 1037238 / 1037462 / 1037469"
+    },
+    {
+      "model": "HC Compact 25",
+      "specs": {
+        "dynamic_force_kN": 25,
+        "horizontal_test_space_mm": 460,
+        "vertical_test_space_mm": {
+          "values": [
+            1070,
+            1320,
+            1570
+          ],
+          "note": "G 최대 시험 공간: 표준 / +250 / +500 mm. 작업 시험 공간 310~1010 / 560~1260 / 810~1510 mm"
+        },
+        "frame_stiffness_kN_mm": 300,
+        "weight_kg": {
+          "values": [
+            1080,
+            1095,
+            1120
+          ],
+          "note": "K 총 무게(표준 / +250 / +500 mm)"
+        },
+        "footprint_mm": {
+          "W": 720,
+          "D": 1360,
+          "H": 2240,
+          "note": "A 기둥 끝 높이 2240 / 2490 / 2740 mm"
+        },
+        "stroke_mm": {
+          "values": [
+            100,
+            250
+          ],
+          "note": "시험 액추에이터 피스톤 스트로크, 시스템 압력 210 bar"
+        }
+      },
+      "note": "HC Compact 10/25 kN: 액추에이터 위 크로스헤드, T 홈 플랫폼. 기술 데이터 표의 동적 정격은 25 kN 열. 프레임 품번(수동/수동) 1037238 / 1037462 / 1037469"
+    },
+    {
+      "model": "HC Compact 50",
+      "specs": {
+        "dynamic_force_kN": 50,
+        "horizontal_test_space_mm": 445,
+        "vertical_test_space_mm": {
+          "min": 350,
+          "max": 1175,
+          "note": "G 최대 시험 공간 350~1175 mm, +500 mm 형 600~1680 mm"
+        },
+        "frame_stiffness_kN_mm": 500,
+        "weight_kg": {
+          "values": [
+            1700,
+            1750
+          ],
+          "note": "K 총 무게(표준 / +500 mm)"
+        },
+        "footprint_mm": {
+          "W": 860,
+          "D": 2000,
+          "H": 2320,
+          "note": "A 기둥 끝 높이 2320(정렬 지그 2430) / +500 mm 형 2820"
+        },
+        "item_no": "3010277 / 3010276(+500 mm), 유압 클램프·유압 조정",
+        "stroke_mm": {
+          "value": 100,
+          "note": "시험 액추에이터 피스톤 스트로크, 시스템 압력 280 bar"
+        }
+      },
+      "note": "HC Compact 50/100 kN: 액추에이터 아래 크로스헤드, 항온조·고온로 장착 가능(LCF 시험에 알맞음), 복합재 정·동적 시험"
+    },
+    {
+      "model": "HC Compact 100",
+      "specs": {
+        "dynamic_force_kN": 100,
+        "horizontal_test_space_mm": 445,
+        "vertical_test_space_mm": {
+          "min": 350,
+          "max": 1175,
+          "note": "G 최대 시험 공간 350~1175 mm, +500 mm 형 600~1680 mm"
+        },
+        "frame_stiffness_kN_mm": 500,
+        "weight_kg": {
+          "values": [
+            1700,
+            1750
+          ],
+          "note": "K 총 무게(표준 / +500 mm)"
+        },
+        "footprint_mm": {
+          "W": 860,
+          "D": 2000,
+          "H": 2320,
+          "note": "A 기둥 끝 높이 2320(정렬 지그 2430) / +500 mm 형 2820"
+        },
+        "item_no": "1085595 / 1085611(+500 mm), 유압 클램프·유압 조정",
+        "stroke_mm": {
+          "value": 100,
+          "note": "시험 액추에이터 피스톤 스트로크, 시스템 압력 280 bar"
+        }
+      },
+      "note": "HC Compact 50/100 kN: 액추에이터 아래 크로스헤드, 항온조·고온로 장착 가능(LCF 시험에 알맞음), 복합재 정·동적 시험"
+    }
+  ],
+  "utilities": "파워팩 전원 400 V 3PH/N/PE 50 Hz(또는 440 V 60 Hz). 냉각수 입구 15~28 °C, 최대 5 l/min(10/25 kN) / 30 l/min(50/100 kN)",
+  "features": [
+    "유압 파워팩 일체형(설치 면적 최소)",
+    "방진 레벨링 위의 닫힌 힘 흐름",
+    "정렬 지그(선택)",
+    "상부 크로스헤드 유압 조정(선택)",
+    "50/100 kN 파워팩 내부 냉각 회로"
+  ],
+  "relations": [
+    {
+      "type": "same_family_as",
+      "target": "zwickroell-servohydraulic-load-frames"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://www.zwickroell.com/products/dynamic-and-fatigue-testing-systems/servohydraulic-testing-machines/hc-compact-servohydraulic-testing-machine/",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지(HTML) 본문·표를 직접 읽음. 개요, 비교표, 기술 데이터 표(프레임·유압 파워팩). 각주 숫자는 떼고 옮겼다"
+    },
+    {
+      "file": "zwickroell/10_719_hc_compact_10_25_pi_en.pdf",
+      "pages": [
+        1,
+        2,
+        3
+      ]
+    },
+    {
+      "file": "zwickroell/10_587_hc_compact_50_100_pi_en.pdf",
+      "pages": [
+        1,
+        2,
+        3
+      ]
+    }
+  ],
+  "confidence": "catalog",
+  "notes": "본문은 총 무게를 약 1,200 kg(10/25) · 약 1,400 kg(50/100)이라 적고, 기술 데이터 표는 1080~1120 kg · 1700~1750 kg 이라 적어 서로 다르다 — 표 값을 specs 에 넣었다. 비교표의 파워팩 출력은 12 lpm / 30 lpm, 파워팩 표는 10.7 l/min / 30 l/min. 10 kN·50 kN 고유 열은 표에 없어 같은 크기 값을 함께 적었다. PDF(PI719·PI587)로 프레임·파워팩 표 값을 모두 확인하고 액추에이터 스트로크를 더했다. 본문 총 무게(약 1,200 / 1,400 kg)와 표 값의 차이는 PDF 에도 그대로 있다. 로드셀 정확도 등급 1(ISO 7500-1)."
+}

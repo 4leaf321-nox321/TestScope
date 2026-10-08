@@ -1468,14 +1468,36 @@ async def update_equipment(
 
 
 @mcp.tool()
-async def list_model_requests(ctx: Context, include_decided: bool = False) -> dict[str, Any]:
-    """카탈로그에 없다고 올라온 기종 요청 목록. 같은 표기끼리 묶음, 건수가 큰 순서.
+async def list_model_requests(
+    ctx: Context, include_decided: bool = False, gaps: bool = False, case: str | None = None
+) -> dict[str, Any]:
+    """카탈로그에 없다고 올라온 기종 요청 목록. `gaps=True`면 미연결 장비 전체의 보강 목록.
 
-    묶음마다 `normalized`(결정 시 쓰는 키) · `text`(대표 표기) · `count` · `proposals`(장비별
-    기재 내용과 못 찾은 이유) 포함. 다섯 부서가 같은 기종을 요청했으면 카탈로그에 있어야 할
-    기종일 가능성이 높고, 한 번 결정하면 다섯 대가 함께 연결됨. 한 번만 나온 요청은 자작 장비일
-    수 있음. 결정은 `decide_model_request`.
+    요청: 같은 표기끼리 묶음, 건수가 큰 순서. 묶음마다 `normalized`(결정 시 쓰는 키) ·
+    `text` · `count` · `proposals`(장비별 기재 내용과 못 찾은 이유) 포함. 한 번만 나온 요청은
+    자작 장비일 수 있음.
+
+    `gaps=True`(시스템 관리자 전용): 요청이 없는 미연결 장비까지 제조사+모델명 표기로 묶어
+    `case`별로 가름. `exact`(같은 기종 있음) · `similar`(비슷한 기종, 다른 기종일 수 있음) ·
+    `series_only`(계열만 있음) · `not_in_catalog`(제조사·계열부터 없음, 사양서 조사 대상) ·
+    `no_model`(모델명 없음, 대조 불가) · `excluded`(관리자가 대상 아님으로 정함). `case`로
+    좁힘. 묶음마다 `key` · 후보 `models`/`series`(후보일 뿐, 같은 기종이라는 판정 아님) ·
+    장비 앞 다섯 대. `by_category`의 `in_catalog=false`는 분류부터 카탈로그 정본에 없음.
+
+    결정은 `decide_model_request`(보강 목록 묶음은 `gap=True`와 `key`).
     """
+    if gaps:
+        found = await _get(ctx, "/equipment-models/gaps", params={"case": case})
+        if not isinstance(found, dict) or "groups" not in found:
+            return _listed(found, "groups")
+        # **응답 한도 안에 들게 줄인다** — 미연결 장비가 수백 대면 통째로는 잘린 채 도착한다.
+        # 요약 · 분류별 표는 그대로 두고 묶음과 장비 목록만 자른다(전체는 화면의 CSV).
+        groups = found["groups"]
+        found["groups"] = [
+            {**group, "units": group["units"][:5]} for group in groups[:GAP_GROUPS]
+        ]
+        found["groups_shown"] = len(found["groups"])
+        return dict(found)
     return _listed(
         await _get(
             ctx,
@@ -1486,6 +1508,10 @@ async def list_model_requests(ctx: Context, include_decided: bool = False) -> di
     )
 
 
+#: 보강 목록 묶음을 한 번에 몇 개까지 돌려주나. 큰 묶음이 앞이라 앞 쉰 개면 일의 대부분이다.
+GAP_GROUPS = 50
+
+
 @writes
 async def decide_model_request(
     ctx: Context,
@@ -1494,6 +1520,7 @@ async def decide_model_request(
     series_id: str | None = None,
     name: str | None = None,
     reject: bool = False,
+    gap: bool = False,
 ) -> dict[str, Any]:
     """기종 요청 한 묶음 결정: 연결 · 신규 기종 등록 · 거절 중 하나만. 시스템 관리자 전용.
 
@@ -1501,24 +1528,26 @@ async def decide_model_request(
     `series_id`+`name`(그 계열에 기종 신규 등록. 이름에 계열 이름 혼합 금지: 섞으면 `6800
     68FM-300`과 `68FM-300`이 별개 기종이 됨) · `reject=True`(자작 장비처럼 카탈로그 대상이
     아님). 아무것도 없으면 400. 결정하면 요청한 장비들이 일괄로 그 기종에 연결됨. 한 대가
-    막혀도 나머지는 연결되고, 막힌 줄은 `failed`로 반환.
+    막혀도 나머지는 연결되고, 막힌 줄은 `failed`로 반환. `gap=True`면 `normalized` 자리에
+    보강 목록(`list_model_requests(gaps=True)`)의 `key`: 요청이 없으면 만든 뒤 같은 규칙으로
+    결정.
 
     **결정 전 사람에게 보여 주고 확인 필수.** 기종을 고르면 그 계열의 시험 항목이 장비에
     복사되고 조건 판정이 그 기종 사양을 씀: 비슷한 기종으로 대체하면 그 장비의 하중·온도가 남의
     것이 되고 오답이 드러나지 않음. 확신이 없으면 결정하지 않고 둠(요청은 유지). `reject`는
     사람이 거절을 지시한 경우만. 시스템 관리자 토큰이 아니면 403(TSC-EQUIPMENT-0041).
     """
+    decision = {"model_id": model_id, "series_id": series_id, "name": name, "reject": reject}
+    if gap:
+        # 보강 목록 묶음 — 요청이 없으면 서버가 만든 뒤 같은 규칙으로 정한다.
+        return await _send(
+            ctx, "POST", "/equipment-models/gaps/resolve", {"key": normalized, **decision}
+        )
     return await _send(
         ctx,
         "POST",
         "/equipment-models/proposals/decide",
-        {
-            "normalized": normalized,
-            "model_id": model_id,
-            "series_id": series_id,
-            "name": name,
-            "reject": reject,
-        },
+        {"normalized": normalized, **decision},
     )
 
 

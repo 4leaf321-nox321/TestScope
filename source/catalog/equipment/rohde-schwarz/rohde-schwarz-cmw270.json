@@ -1,0 +1,72 @@
+{
+  "id": "rohde-schwarz-cmw270",
+  "kind": "equipment_series",
+  "name": "R&S CMW270 Wireless Connectivity Tester",
+  "name_ko": "로데슈바르츠 CMW270 무선 연결성 테스터",
+  "manufacturer": "rohde-schwarz",
+  "brand": "CMW",
+  "category": "radio_communication_tester",
+  "description": "WLAN·Bluetooth 연결성 기기용 테스터. Bluetooth SIG 인증 Bluetooth LE·BR·EDR RF 테스터이고, WLAN 11a/b/g/n/ac/ax 를 SISO·MIMO 로 최대 160 MHz 대역폭까지 신호 시험한다. WLAN 과 Bluetooth 를 함께 재는 이중 테스터 구성, WLAN 응용 시험용 서버, CMWrun 시퀀서, Bluetooth·WLAN·GNSS·방송용 범용 ARB 발생기를 갖춘다. Bluetooth 네트워크 에뮬레이션(OTA·전도), WLAN AP·STA 에뮬레이션, DPI 응용 시험을 한다.",
+  "test_items": [],
+  "limits": {
+    "bandwidth_Hz": {
+      "max": 160000000,
+      "note": "원문 SISO and MIMO operations with up to 160 MHz bandwidth(WLAN, 제품 페이지). CMW WLAN 응용 브로슈어: IEEE 802.11a/b/g/n/p/ac/ax 송신 측정 대역폭 최대 160 MHz(CMW 플랫폼 공통 문구)"
+    },
+    "radio_standards": {
+      "values": [
+        "Bluetooth LE",
+        "Bluetooth BR",
+        "Bluetooth EDR",
+        "WLAN 802.11a/b/g/n/ac/ax",
+        "GNSS(ARB)",
+        "방송(ARB)"
+      ],
+      "note": "GNSS·방송은 범용 ARB 발생기 신호로만 적혀 있다"
+    }
+  },
+  "models": [
+    {
+      "model": "CMW270",
+      "specs": {
+        "bandwidth_Hz": 160000000,
+        "radio_standards": "Bluetooth LE/BR/EDR, WLAN 802.11a/b/g/n/ac/ax"
+      }
+    }
+  ],
+  "features": [
+    "Bluetooth SIG 인증 Bluetooth RF 테스터(LE·BR·EDR)",
+    "WLAN SISO·MIMO 신호 시험(최대 160 MHz)",
+    "WLAN·Bluetooth 이중 테스터 구성",
+    "WLAN 응용 시험 서버, CMWrun 시퀀서",
+    "범용 ARB 발생기(Bluetooth·WLAN·GNSS·방송)",
+    "WLAN AP·STA 에뮬레이션, DPI"
+  ],
+  "relations": [
+    {
+      "type": "same_family_as",
+      "target": "rohde-schwarz-cmw500"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://www.rohde-schwarz.com/us/products/test-and-measurement/wireless-tester-network-emulator/rs-cmw270-wireless-connectivity-tester_63493-9552.html",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지. Key facts 와 지원 표준(160 MHz 대역폭)"
+    },
+    {
+      "file": "rohde-schwarz/cmw-testing-wlan_app-bro_en_5214-8631-92_v0201.pdf",
+      "pages": [
+        4,
+        5,
+        6,
+        9,
+        10,
+        12
+      ],
+      "note": "제조사 CMW WLAN 시험 응용 브로슈어(v02.01). CMW270 위치(비셀룰러 전문 — Bluetooth·WLAN·방송), WLAN 160 MHz, AP·STA 에뮬레이션, 2x2 MIMO AP 에뮬레이션, 네트워크 4개 동시 에뮬레이션, 내장 서버(DAU)"
+    }
+  ],
+  "confidence": "catalog",
+  "notes": "PDF 로 확인: WLAN 대역폭 160 MHz(CMW 플랫폼 공통), Bluetooth·WLAN·방송 지원, AP·STA 에뮬레이션, 2x2 MIMO AP, 내장 서버. 브로슈어는 플랫폼 공통으로 「6 GHz support」·「Up to 4 RF channels」 를 들지만 CMW270 기종 값으로 적지 않아 넣지 않았다. 주파수 범위·출력 레벨·RF 포트 수는 PDF 에도 없다."
+}

@@ -1,0 +1,130 @@
+{
+  "id": "lib-industry-ipx9k-test-device",
+  "kind": "equipment_series",
+  "name": "LIB IPX9K Test Device R9K-1200",
+  "name_ko": "LIB IPX9K 고압·고온 분사 시험기 R9K-1200",
+  "manufacturer": "lib-industry",
+  "category": "water_ingress_tester",
+  "form_factor": "floor",
+  "description": "IEC 60529 및 ISO 20653 의 IPX9K(고압·고온 분사수) 시험 전용 장치임. 회전 시험대 위 시편에 노즐 4개로 0°·30°·60°·90° 방향에서 위치마다 30초씩 분사함. 수압 8000~10000 kPa(조절), 유량 14~16 L/min, 수온 상온~+88 °C(조절), 분사 거리 10~15 cm, 시험대 5±1 rpm 임. 내부는 SUS304 스테인리스, 외부는 도장 강판이며 7인치 터치스크린 PLC 로 제어함. 자동차 전장 부품의 방수 시험용으로 소개됨.",
+  "test_items": [
+    "water_ingress"
+  ],
+  "materials": [
+    "automotive electrical components",
+    "electrical equipment"
+  ],
+  "standards": {
+    "compliance": [],
+    "test_methods": [
+      "IEC 60529",
+      "ISO 20653",
+      "DIN 40050-9",
+      "USCAR-2",
+      "GMW 3191"
+    ]
+  },
+  "limits": {
+    "ipx_levels": {
+      "note": "IPX9K"
+    },
+    "water_pressure_bar": {
+      "min": 80,
+      "max": 100,
+      "note": "원문 Water Pressure 8000-10000 Kpa (Adjustable)"
+    },
+    "spray_flow_L_min": {
+      "min": 14,
+      "max": 16,
+      "note": "원문 14L-16L/min"
+    },
+    "water_temperature_degC": {
+      "max": 88,
+      "note": "원문 Ambient ~ +88℃ (Adjustable). 하한은 상온으로만 적힘"
+    },
+    "turntable_speed_rpm": {
+      "values": [
+        5
+      ],
+      "note": "원문 Test Platform Speed 5±1 r.p.m (조절 범위가 아니라 공차)"
+    },
+    "turntable_diameter_mm": {
+      "max": 600
+    },
+    "chamber_volume_L": {
+      "max": 1200
+    }
+  },
+  "models": [
+    {
+      "model": "R9K-1200",
+      "specs": {
+        "ipx_levels": "IPX9K",
+        "inner_mm": {
+          "text": "1000×1200×1000",
+          "note": "원문 Internal Dimensions (mm) 1000*1200*1000. 축 순서 미기재"
+        },
+        "footprint_mm": {
+          "text": "1250×1700×2050",
+          "note": "원문 Overall Dimensions (mm). 축 순서 미기재"
+        },
+        "chamber_volume_L": 1200,
+        "spray_angles_deg": [
+          0,
+          30,
+          60,
+          90
+        ],
+        "nozzle_count": 4,
+        "spray_duration_s_per_position": 30,
+        "nozzle_distance_mm": {
+          "min": 100,
+          "max": 150,
+          "note": "원문 10~15cm"
+        },
+        "water_pressure_bar": {
+          "min": 80,
+          "max": 100
+        },
+        "spray_flow_L_min": {
+          "min": 14,
+          "max": 16
+        },
+        "water_temperature_degC": {
+          "max": 88,
+          "note": "상온부터 조절"
+        },
+        "turntable_speed_rpm": {
+          "value": 5,
+          "tolerance": 1
+        },
+        "turntable_diameter_mm": 600,
+        "turntable_height_mm": {
+          "min": 200,
+          "max": 400,
+          "uncertain": true,
+          "note": "원문 200-400 nm (Adjustable). 단위 nm 은 mm 의 오기로 보임"
+        },
+        "power": "380V 50Hz"
+      }
+    }
+  ],
+  "features": [
+    "SUS304 스테인리스 내부, 도장 강판 외부",
+    "노즐 4개(원형 분사), 위치마다 30초",
+    "다층 진공 유리 관찰창과 LED 조명",
+    "7인치 터치스크린 PLC 제어, 프로그램 운전",
+    "스테핑 모터로 회전 속도·분사 각도 조절",
+    "수온 제어 계통(상온~+88 °C)",
+    "높이 조절 캐스터"
+  ],
+  "sources": [
+    {
+      "url": "https://www.lib-climaticchamber.com/water-spray-test-chamber/ipx9k-test-device.html",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지(2등급). 사양표(Internal/Overall Dimensions, Interior Volume, Spray Angle/Temperature, Nozzle, Distance, Water Pressure, Flow Rate, Platform Speed/Height/Diameter, Power, Standards)와 특징 목록. 첨부 사양서(.doc)로는 아직 확인하지 않음"
+    }
+  ],
+  "confidence": "limited",
+  "notes": "회전대 적재 하중, 무게, 소비 전력(kW), 물탱크 용량은 페이지에 없음. 검색 요약 한 건에 R9K-1200 의 내부 1000 × 1000 × 1000 mm·외형 1300 × 1500 × 2030 mm 라는 다른 치수가 나왔으나 출처 쪽을 열어 확인하지 못함. 제품 페이지 표의 값을 따름. 제조사는 온톨로지에 없어 lib-industry 로 새 id 를 제안함."
+}

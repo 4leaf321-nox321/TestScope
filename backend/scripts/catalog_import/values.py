@@ -33,6 +33,7 @@ from app.modules.vocabulary.specs import (
 from catalog_import.source import (
     Catalog,
     _ontology,
+    _single,
     _variant_of,
 )
 
@@ -55,6 +56,9 @@ def _numbers(raw: Any, factor: float) -> tuple[float | None, float | None, str |
             # 진실이 된다 — 화면이 볼 수 있게 값 옆에 남긴다.
             note = f"{note} — 원본 확인 필요" if note else "원본 확인 필요"
         low, high = raw.get("min"), raw.get("max")
+        single = _single(raw)
+        if low is None and high is None and single is not None:
+            low = high = single
         values = [one for one in (raw.get("values") or []) if isinstance(one, int | float)]
         if low is None and values:
             low = min(values)
@@ -84,6 +88,8 @@ def _as_text(raw: Any) -> str | None:
         values = raw.get("values")
         if values:
             return " · ".join(str(one) for one in values)
+        if _single(raw) is not None:
+            return _fmt(float(raw["value"]))
         parts = [f"{k} {v}" for k, v in raw.items() if k not in ("note", "uncertain")]
         return " · ".join(parts) or raw.get("note")
     if raw is None:
@@ -139,6 +145,61 @@ def _value_fields(
     return {"text_value": text[:2000], "note": note}
 
 
+class _Taken(set[uuid.UUID]):
+    """이미 값이 있는 정의들 + **정본을 따라 고칠 수 있는 반입 값**(`refresh`).
+
+    `refresh` 는 이번 반입 **전부터** 있던 줄 가운데 반입이 넣고 아무도 안 고친 것이다
+    (`origin='catalog'` · `updated_by_id` 없음). 정본이 그 값을 바로잡았으면(PDF 대조 등)
+    재반입이 따라가야 한다 — 안 따라가면 정본을 고쳐도 운영 값은 영영 웹 요약 그대로다
+    (2026-10-08, 사양서 대조로 값 수백 개를 고친 뒤 드러남). 사람 · AI 가 고친 값은 그대로
+    지킨다.
+    """
+
+    refresh: dict[uuid.UUID, ModelSpecValue]
+
+
+#: 모델 id -> 아직 정본과 맞춰 보지 않은 반입 값. 한 기종이 기종 사양과 계열 사양표로 두 번
+#: 들어오므로(`step_models`) 반입 한 번 동안 들고 있다가 `finish_refresh` 가 정리한다.
+_REFRESH: dict[uuid.UUID, dict[uuid.UUID, ModelSpecValue]] = {}
+_REFRESHED = 0
+_DROPPED = 0
+_VALUE_FIELDS = ("num_value", "num_min", "num_max", "text_value", "bool_value")
+
+
+def _import_definition_keys(
+    promoted: dict[str, tuple[str, float]], aliases: dict[str, tuple[str, float]]
+) -> set[str]:
+    """반입이 값을 넣을 수 있는 정의 key 전부 — 짝표 · 승격 · 별칭 · 특수 짝표의 과녁."""
+    keys = {target for target, _ in SOURCE_SPEC_MAP.values()}
+    keys |= {target for target, _ in promoted.values()}
+    keys |= {target for target, _ in aliases.values()}
+    keys |= set(OPTION_RANGE_SOURCES.values()) | set(MAX_ONLY_SOURCES.values())
+    for pair in RANGE_PAIR_SOURCES.values():
+        keys |= set(pair)
+    for triple in DIMENSION_SOURCES.values():
+        keys |= set(triple)
+    keys.add(TEMPERATURE_PAIR[2])
+    return keys
+
+
+def finish_refresh(db: Session) -> tuple[int, int]:
+    """반입 한 번을 마친다 — **정본에서 빠진 반입 값은 지운다.** (갱신 수, 지운 수)를 돌려준다.
+
+    사양서 대조에서 「표 열이 섞여 확실하지 않다」 고 뺀 값이 DB 에 남아 있으면, 검색은 정본이
+    버린 숫자로 답한다. 지우는 것은 반입이 넣고 아무도 안 고친 줄뿐이다.
+    """
+    global _REFRESHED, _DROPPED
+    for leftovers in _REFRESH.values():
+        for row in leftovers.values():
+            db.delete(row)
+            _DROPPED += 1
+    _REFRESH.clear()
+    db.flush()
+    out = (_REFRESHED, _DROPPED)
+    _REFRESHED = _DROPPED = 0
+    return out
+
+
 def _put_spec(
     db: Session,
     model: EquipmentModel,
@@ -157,6 +218,16 @@ def _put_spec(
     (`power_W` 와 `power_kW` 는 둘 다 소비 전력이다). DB 만 보면 아직 flush 안 된
     같은 배치의 앞줄이 안 보여서, 유일 제약이 반입 도중에 터진다 — 실제로 그렇게 겪었다.
     """
+    refresh: dict[uuid.UUID, ModelSpecValue] | None = getattr(taken, "refresh", None)
+    held = (
+        refresh.pop(definition.id, None)
+        if refresh is not None and definition.id not in taken
+        else None
+    )
+    if held is not None and refresh is not None:
+        return _refresh_spec(
+            held, definition, raw, factor, taken, refresh, extra_note, source, page
+        )
     if definition.id in taken:
         # 있는 값은 안 덮는다. 다만 **부속 표시만은 켠다** — 표시가 없던 시절에 들어온
         # 값에 원본이 「옵션 부속 기준」 이라고 적혀 있으면, 그 값은 지금 검색이 갖고
@@ -193,6 +264,46 @@ def _put_spec(
         )
     )
     return True
+
+
+def _refresh_spec(
+    held: ModelSpecValue,
+    definition: SpecDefinition,
+    raw: Any,
+    factor: float,
+    taken: set[uuid.UUID],
+    refresh: dict[uuid.UUID, ModelSpecValue],
+    extra_note: str | None,
+    source: SpecSource | None,
+    page: int | None,
+) -> bool:
+    """반입이 넣고 아무도 안 고친 값을 **정본에 맞춘다.** 새로 만든 줄이 아니라 False."""
+    global _REFRESHED
+    fields = _value_fields(definition, raw, factor)
+    if fields is None:
+        # 이번 원본으로는 못 담는다 — 맞춰 볼 대상으로 되돌려 둔다(끝까지 안 맞으면 지운다).
+        refresh[definition.id] = held
+        return False
+    taken.add(definition.id)
+    note = " · ".join(x for x in (fields.pop("note", None), extra_note) if x) or None
+    wanted: dict[str, Any] = dict.fromkeys(_VALUE_FIELDS)
+    wanted.update(fields)
+    wanted["note"] = note
+    # 부속 표시는 **켜는 쪽으로만** 맞춘다 — 같은 정의로 모이는 원본 키가 여럿이면(온도 상 ·
+    # 하한) 한 키만 표시를 달고 오는데, 끄면 그 값은 갖고 있지도 않은 부속을 전제로 답한다.
+    wanted["requires_accessory"] = held.requires_accessory or (
+        isinstance(raw, dict) and bool(raw.get("requires_accessory"))
+    )
+    wanted["source_id"] = source.id if source else held.source_id
+    wanted["source_page"] = page if page is not None else held.source_page
+    changed = False
+    for name, value in wanted.items():
+        if getattr(held, name) != value:
+            setattr(held, name, value)
+            changed = True
+    if changed:
+        _REFRESHED += 1
+    return False
 
 
 def _merge_temperature(
@@ -404,6 +515,22 @@ def _put_free_spec(
         )
     )
     if exists is not None:
+        # **반입 뒤 아무도 안 고친 줄은 정본을 따른다.** 이 표에는 고친 사람 칸이 없어서
+        # 「만든 뒤 한 번도 안 바뀜」(updated_at == created_at)으로 가른다 — 고칠 때 시각을
+        # 그대로 되돌려 두어 다음 반입에도 같은 판단이 서게 한다.
+        if exists.origin == "catalog" and exists.updated_at == exists.created_at:
+            note = raw.get("note") if isinstance(raw, dict) else None
+            if (exists.value_text, exists.note, exists.unit) != (
+                text[:4000],
+                note,
+                unit or None,
+            ):
+                global _REFRESHED
+                exists.value_text = text[:4000]
+                exists.note = note
+                exists.unit = unit or None
+                exists.updated_at = exists.created_at
+                _REFRESHED += 1
         return False
     global _FREE_MADE
     _FREE_MADE += 1
@@ -459,11 +586,33 @@ def _import_specs(
     free_labels: dict[str, tuple[str, str | None, str]] | None = None,
 ) -> int:
     free_labels = free_labels or {}
-    taken = set(
-        db.scalars(
+    if model.id not in _REFRESH:
+        # **반입이 만들 수 있는 정의의 값만** 맞춰 본다. 「정의로 세우기」 로 옮긴 값도
+        # `origin='catalog'` 를 그대로 갖는데, 그 정의는 반입의 짝표에 없어서 여기 넣으면
+        # 「정본에서 빠짐」 으로 읽혀 지워진다.
+        reachable = {
+            definitions[key].id
+            for key in _import_definition_keys(promoted, aliases)
+            if key in definitions
+        }
+        _REFRESH[model.id] = {
+            row.definition_id: row
+            for row in db.scalars(
+                select(ModelSpecValue).where(ModelSpecValue.model_id == model.id)
+            )
+            if row.origin == "catalog"
+            and row.updated_by_id is None
+            and row.definition_id in reachable
+        }
+    refresh = _REFRESH[model.id]
+    taken = _Taken(
+        one
+        for one in db.scalars(
             select(ModelSpecValue.definition_id).where(ModelSpecValue.model_id == model.id)
         )
+        if one not in refresh
     )
+    taken.refresh = refresh
     made = 0
     if _merge_temperature(db, model, raw_specs, definitions, source, taken):
         made += 1

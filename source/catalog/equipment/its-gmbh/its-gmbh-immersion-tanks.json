@@ -1,0 +1,109 @@
+{
+  "id": "its-gmbh-immersion-tanks",
+  "kind": "equipment_series",
+  "name": "iTS Immersion Tanks (TS 500 immersion column, TT 1010 immersion tank)",
+  "name_ko": "iTS 침지 시험 수조(TS 500 침지 칼럼, TT 1010 침지 탱크)",
+  "manufacturer": "its-gmbh",
+  "category": "water_ingress_tester",
+  "form_factor": "floor",
+  "description": "DIN EN 60529 및 ISO 20653 의 IPX7(일시 침지) 시험용 수조 계열임. TS 500 은 지름 500 mm 투명 칼럼에 손으로 당기는 와이어 로프로 플랫폼을 오르내리고, 가이드 롤러가 플랫폼 기울어짐을 막으며, 캐스터로 실험실 안에서 옮길 수 있음. TT 1010 은 1000 × 1000 mm 바닥 면적의 탱크에 계단과 공압 승강 플랫폼, 7인치 터치 패널을 갖춤. TS 500 기술 설명서는 최대 침지 깊이 1300 mm 까지의 IPX8 시험도 적음.",
+  "test_items": [
+    "water_ingress"
+  ],
+  "standards": {
+    "compliance": [],
+    "test_methods": [
+      "IEC 60529",
+      "ISO 20653"
+    ]
+  },
+  "limits": {
+    "ipx_levels": {
+      "note": "IPX7 · IPX8 (IPX7 은 두 제품 페이지와 TS 500 기술 설명서에 명시. IPX8 은 TS 500 기술 설명서 2쪽: 침지 칼럼으로는 최대 침지 깊이 1300 mm 까지만)"
+    },
+    "immersion_depth_m": {
+      "max": 1.3,
+      "note": "TS 500 기술 설명서 2쪽: tests in accordance with IPX8 can only be carried out with the immersion column up to a maximum immersion depth of 1300 mm. 제품 페이지의 깊이 눈금 범위는 0~1500 mm. TT 1010 은 침지 깊이 미기재(탱크 높이 1400 mm)"
+    },
+    "payload_kg": {
+      "max": 80,
+      "note": "플랫폼 적재 하중. TS 500 20 kg, TT 1010 80 kg"
+    }
+  },
+  "models": [
+    {
+      "model": "TS 500",
+      "variant": "immersion column, mobile",
+      "specs": {
+        "ipx_levels": "IPX7 · IPX8",
+        "tank_diameter_mm": 500,
+        "tank_height_mm": 1400,
+        "overall_height_mm": 2100,
+        "payload_kg": 20,
+        "depth_scale_mm": {
+          "min": 0,
+          "max": 1500
+        },
+        "tank_volume_L": {
+          "value": 270,
+          "note": "기술 설명서 2쪽 Water capacity in the tank 270 litres(추출 텍스트에서 표 이름과 값이 떨어져 있으나 순서가 맞고, 지름 500 mm·높이 1400 mm 원통 부피 약 275 L 와도 맞음). 제품 페이지에는 없음"
+        },
+        "immersion_depth_m": {
+          "max": 1.3,
+          "note": "기술 설명서 2쪽, IPX8 최대 침지 깊이 1300 mm"
+        }
+      },
+      "note": "제품 페이지: Platform with hand-operated rope pull, Transparent column, Guide rollers prevent the platform from tilting, Mobile with casters. 제품 번호 11827 기술 설명서: 캐스터 3개(브레이크 포함), 가이드 롤러 6개, 물 교체 권장 최소 2개월마다, 물 착색 가능(2쪽). 호스 또는 바닥 볼 밸브로 급수, 볼 밸브로 배수, 핸드 크랭크 와이어 로프 호이스트(3쪽). 옵션 TSX7.OP-10 전동 로프 호이스트, 설정한 침지 시간 뒤 자동 상승(4쪽)"
+    },
+    {
+      "model": "TT 1010",
+      "variant": "immersion tank",
+      "specs": {
+        "ipx_levels": "IPX7",
+        "tank_base_mm": "1000 × 1000",
+        "tank_height_mm": 1400,
+        "overall_height_mm": 1600,
+        "payload_kg": 80
+      },
+      "note": "계단과 공압 승강 플랫폼, 7인치 터치 패널. 제품 번호 13147. 침지 깊이와 수량은 페이지에 없음"
+    }
+  ],
+  "features": [
+    "TS 500: 투명 칼럼으로 시편 관찰",
+    "TS 500: 수동 와이어 로프 승강 플랫폼, 가이드 롤러",
+    "TS 500: 캐스터로 이동, 외곽 프레임의 깊이 눈금(0~1500 mm)",
+    "TT 1010: 공압 승강 침지 플랫폼, 계단, 7인치 터치 패널"
+  ],
+  "sources": [
+    {
+      "url": "https://its-gmbh.de/en/shop/ts-500/",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지(2등급). TS 500 사양(지름 500 mm, 높이 1400 mm, 전체 높이 2100 mm, 플랫폼 20 kg, 눈금 0~1500 mm, IPX7 DIN EN 60529·ISO 20653). 같은 값을 기술 설명서 PDF 2쪽으로 확인"
+    },
+    {
+      "url": "https://its-gmbh.de/en/shop/tauchtank-tt1010-ipx7/",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지(2등급). TT 1010 사양(바닥 1000 × 1000 mm, 높이 1400 mm, 전체 높이 1600 mm, 플랫폼 80 kg)"
+    },
+    {
+      "url": "https://its-gmbh.de/wp-content/uploads/2026/01/iTS_technical_description_DipTank_TS500_Rev00.pdf",
+      "retrieved": "2026-10-08",
+      "note": "제조사 기술 설명서 PDF. 처음에는 웹 조회 도구가 본문 텍스트를 뽑지 못해 검색 엔진 색인 발췌로만 읽었고, 저장소 PDF(its-gmbh/ts500-technical-description.pdf)로 대조함"
+    },
+    {
+      "file": "its-gmbh/ts500-technical-description.pdf",
+      "pages": [
+        2,
+        3,
+        4
+      ],
+      "note": "TS 500 기술 설명서 Rev 00 (2026-03-06). 2쪽 규격·사양표, 3쪽 기능, 4쪽 옵션·설치 조건"
+    },
+    {
+      "file": "its-gmbh/its-brochure-en.pdf",
+      "note": "제조사 원본 문서. 이미지 브로슈어라 텍스트가 없음 — 값 대조에는 못 씀(값은 웹 출처 기준)"
+    }
+  ],
+  "confidence": "limited",
+  "notes": "가압식 IPX8 수조(수심 수십 m 상당)는 이 제조사 제품 목록에 없음. TT 1010 의 공압 플랫폼에 압축공기가 필요할 것으로 보이나 페이지에 연결 요구사항이 없어 relations 를 달지 않음. PDF 로 확인: TS 500 사양 전부(지름·높이·전체 높이·플랫폼 하중·눈금·물 용량·IPX8 최대 침지 깊이) / 웹 값 그대로: TT 1010 전부(limits.payload_kg 상한 80 포함). iTS 브로슈어 PDF(its-gmbh/its-brochure-en.pdf)는 추출 텍스트에 쪽 번호만 있어 쓰지 못함."
+}

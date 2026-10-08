@@ -1,0 +1,117 @@
+{
+  "id": "data-physics-signalforce-water-cooled-shakers",
+  "kind": "equipment_series",
+  "name": "Data Physics SignalForce Water-Cooled Electrodynamic Shakers (LE-2016-3 / LE-2516-3 / LE-5022-3)",
+  "name_ko": "데이터피직스 SignalForce 수랭식 전기동력 가진기",
+  "manufacturer": "data-physics",
+  "brand": "SignalForce",
+  "category": "vibration_shaker",
+  "drive": "electrodynamic",
+  "description": "이중 정압 베어링을 쓴 미국산 수랭식 대형 가진기. LE-2016-3 은 정현·랜덤 71~90 kN, LE-2516-3 은 75.5~111 kN, LE-5022-3 은 정현 178~222 kN·랜덤 160~200 kN. 세 기종 모두 속도 2 m/s, 변위 76.2 mm(3 in), LE-2016-3·2516-3 은 아마추어 440 mm·탑재 909 kg, LE-5022-3 은 탑재 1,365 kg.",
+  "test_items": [
+    "vibration_sine_random"
+  ],
+  "measurands": [
+    "resonance_frequency",
+    "transmissibility",
+    "fatigue_life"
+  ],
+  "limits": {
+    "force_kN": {
+      "min": 71,
+      "max": 222
+    },
+    "force_random_kN": {
+      "min": 71,
+      "max": 200
+    },
+    "velocity_m_s": {
+      "max": 2
+    },
+    "displacement_mm": {
+      "max": 76.2,
+      "note": "원문 Displacement: 3 in. (76.2 mm). p-p 여부는 페이지에 없음"
+    },
+    "payload_kg": {
+      "max": 1365
+    }
+  },
+  "models": [
+    {
+      "model": "LE-2016-3",
+      "specs": {
+        "force_kN": {
+          "min": 71,
+          "max": 90
+        },
+        "force_random_kN": {
+          "min": 71,
+          "max": 90
+        },
+        "velocity_m_s": 2,
+        "displacement_mm": 76.2,
+        "armature_diameter_mm": 440,
+        "payload_kg": 909
+      },
+      "note": "원문 16,000–20,000 lbf"
+    },
+    {
+      "model": "LE-2516-3",
+      "specs": {
+        "force_kN": {
+          "min": 75.5,
+          "max": 111
+        },
+        "force_random_kN": {
+          "min": 75.5,
+          "max": 111
+        },
+        "velocity_m_s": 2,
+        "displacement_mm": 76.2,
+        "armature_diameter_mm": 440,
+        "payload_kg": 909
+      },
+      "note": "원문 17,000–25,000 lbf"
+    },
+    {
+      "model": "LE-5022-3",
+      "specs": {
+        "force_kN": {
+          "min": 178,
+          "max": 222
+        },
+        "force_random_kN": {
+          "min": 160,
+          "max": 200
+        },
+        "velocity_m_s": 2,
+        "displacement_mm": 76.2,
+        "payload_kg": 1365
+      },
+      "note": "원문 정현 40,000–50,000 lbf, 랜덤 36,000–45,000 lbf"
+    }
+  ],
+  "features": [
+    "이중 정압 베어링(dual hydrostatic bearings)",
+    "미국 생산"
+  ],
+  "relations": [
+    {
+      "type": "performs",
+      "target": "vibration_sine_random"
+    },
+    {
+      "type": "same_family_as",
+      "target": "data-physics-signalforce-air-cooled-shakers"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://dataphysics.com/products/shakers-and-accessories/water-cooled-shakers/",
+      "retrieved": "2026-10-08",
+      "note": "제조사 수랭식 가진기 페이지"
+    }
+  ],
+  "confidence": "limited",
+  "notes": "주파수 범위는 페이지에 없다."
+}

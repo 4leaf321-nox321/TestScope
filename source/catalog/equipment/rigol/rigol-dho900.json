@@ -1,0 +1,95 @@
+{
+  "id": "rigol-dho900",
+  "kind": "equipment_series",
+  "name": "DHO900 Series Digital Oscilloscope",
+  "name_ko": "리골 DHO900 디지털 오실로스코프",
+  "manufacturer": "rigol",
+  "brand": "DHO",
+  "category": "oscilloscope",
+  "subcategory": "high_definition_oscilloscope",
+  "form_factor": "benchtop",
+  "description": "125·250 MHz 대역의 4채널 12 bit 오실로스코프 계열임. 1.25 GSa/s, 50 Mpts, 1 Mwfms/s, 16 디지털 채널.",
+  "test_items": [],
+  "limits": {
+    "bandwidth_Hz": {
+      "min": 125000000,
+      "max": 250000000
+    },
+    "sample_rate_Sa_s": {
+      "max": 1250000000
+    },
+    "record_length_pts": {
+      "max": 50000000
+    },
+    "channels": {
+      "values": [
+        4
+      ]
+    },
+    "logic_channel_count": {
+      "values": [
+        16
+      ]
+    },
+    "adc_resolution_bit": {
+      "values": [
+        12
+      ]
+    }
+  },
+  "models": [
+    {
+      "model": "DHO914",
+      "specs": {
+        "bandwidth_Hz": 125000000,
+        "channels": 4,
+        "logic_channel_count": 16,
+        "sample_rate_Sa_s": 1250000000,
+        "record_length_pts": 50000000,
+        "adc_resolution_bit": 12
+      }
+    },
+    {
+      "model": "DHO914S",
+      "specs": {
+        "bandwidth_Hz": 125000000,
+        "channels": 4,
+        "logic_channel_count": 16,
+        "sample_rate_Sa_s": 1250000000,
+        "record_length_pts": 50000000,
+        "adc_resolution_bit": 12
+      }
+    },
+    {
+      "model": "DHO924",
+      "specs": {
+        "bandwidth_Hz": 250000000,
+        "channels": 4,
+        "logic_channel_count": 16,
+        "sample_rate_Sa_s": 1250000000,
+        "record_length_pts": 50000000,
+        "adc_resolution_bit": 12
+      }
+    },
+    {
+      "model": "DHO924S",
+      "specs": {
+        "bandwidth_Hz": 250000000,
+        "channels": 4,
+        "logic_channel_count": 16,
+        "sample_rate_Sa_s": 1250000000,
+        "record_length_pts": 50000000,
+        "adc_resolution_bit": 12
+      }
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://www.rigolna.com/products/rigol-digital-oscilloscopes/dho900/",
+      "retrieved": "2026-10-08",
+      "note": "리골 북미 법인 사이트(rigolna.com)의 제품 페이지 기종 표. 원문 12 Bit, 125/250 MHz, 1.25 GSa/s, 50 Mpts, 1 Mwfms/s, 16 digital channels"
+    }
+  ],
+  "confidence": "limited",
+  "notes": "S 접미사의 뜻은 조회 페이지 범위에서 확인하지 못함."
+}

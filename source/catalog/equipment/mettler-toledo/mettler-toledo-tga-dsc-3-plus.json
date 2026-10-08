@@ -1,0 +1,72 @@
+{
+  "id": "mettler-toledo-tga-dsc-3-plus",
+  "kind": "equipment_series",
+  "name": "METTLER TOLEDO TGA/DSC 3+ Simultaneous Thermal Analyzer",
+  "name_ko": "메틀러토레도 TGA/DSC 3+ 동시열분석기",
+  "manufacturer": "mettler-toledo",
+  "category": "sta",
+  "description": "TGA 에 SDTA·DTA·DSC 센서를 달아 질량 변화 없는 열 효과도 함께 잰다. 상온~1600 °C, 저울에 따라 최대 5 g·분해능 0.1 µg.",
+  "test_items": [
+    "tga",
+    "dsc"
+  ],
+  "measurands": [
+    "thermal.decomposition_temp",
+    "thermal.char_residue",
+    "thermal.glass_transition",
+    "thermal.melting_point"
+  ],
+  "measurands_by_item": {
+    "tga": [
+      "thermal.decomposition_temp",
+      "thermal.char_residue"
+    ],
+    "dsc": [
+      "thermal.glass_transition",
+      "thermal.melting_point"
+    ]
+  },
+  "limits": {
+    "temperature_degC": {
+      "max": 1600,
+      "uncertain": true,
+      "note": "ambient to 1600 °C"
+    }
+  },
+  "models": [
+    {
+      "model": "TGA/DSC 3+",
+      "specs": {
+        "temperature_degC": {
+          "max": 1600,
+          "uncertain": true,
+          "note": "ambient to 1600 °C"
+        },
+        "sample_mass_mg": {
+          "max": 5000,
+          "uncertain": true,
+          "note": "up to 5 g, 저울 형식에 따라"
+        },
+        "balance_resolution_ug": {
+          "value": 0.1,
+          "uncertain": true
+        }
+      }
+    }
+  ],
+  "relations": [
+    {
+      "type": "successor_of",
+      "target": "mettler-tga-dsc-1"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://www.mt.com/us/en/home/products/Laboratory_Analytics_Browse/TA_Family_Browse/ta-instruments/thermal-analysis-system-TGA-DSC-3-plus.html",
+      "retrieved": "2026-10-08",
+      "note": "제조사 페이지가 자동 조회를 막아(HTTP 403/406) 직접 열지 못함. 값은 웹 검색 엔진이 이 페이지에서 뽑은 발췌로만 확인했다 — 값마다 uncertain. 상온~1600 °C, 저울 종류에 따라 최대 5 g·분해능 0.1 µg, SDTA/DTA/DSC 센서, 연속 5천만 점"
+    }
+  ],
+  "confidence": "limited",
+  "notes": "노(소형·대형·고온)와 저울 형식별 행은 확인하지 못했다. 원 객체 mettler-tga-dsc-1 의 설명이 TGA/DSC 3+ 를 현행 후속으로 적는다."
+}

@@ -1,0 +1,133 @@
+{
+  "id": "rhesca-scratch-testers",
+  "kind": "equipment_series",
+  "name": "RHESCA Scratch Testers (Scratch Tester CSR1000 / Oscillating Microscratch Tester CSR5100)",
+  "name_ko": "레스카 스크래치 시험기 (CSR1000 · CSR5100)",
+  "manufacturer": "rhesca",
+  "category": "scratch_hardness_tester",
+  "form_factor": "benchtop",
+  "description": "하중을 늘리며 압자를 긁어 막이 깨지는 임계 하중으로 박막 · 경질 코팅의 밀착 강도를 보는 스크래치 시험기 두 종. CSR1000 은 초경 등 금속 위 PVD · CVD 경질 코팅용으로 하중 최대 30 kg(분해능 0.1 %FS), 하중 속도 최대 30 kg/min, 스크래치 속도 0.01~1 mm/s 이고 마찰력 변화(옵션 AE 센서)로 파괴점을 찾는다. CSR5100 은 1 µm 이하(10 nm 까지) 박막용 가진형 마이크로 스크래치로 하중 1~1500 mN(분해능 0.3 mN), 가진 45 Hz · 진폭 0~100 µm, 다이아몬드 R5~100 µm · 사파이어 R250 · 500 µm 스타일러스를 쓴다.",
+  "test_items": [
+    "scratch_pencil_hardness"
+  ],
+  "measurands": [
+    "critical_load",
+    "scratch_resistance"
+  ],
+  "materials": [
+    "PVD coatings",
+    "CVD coatings",
+    "hard coatings",
+    "thin films"
+  ],
+  "limits": {
+    "load_N": {
+      "min": 0.001,
+      "max": 294.2,
+      "note": "CSR5100 원문 1~1500 mN, CSR1000 원문 30 kg MAX(294.2 N)"
+    },
+    "scratch_speed_mm_min": {
+      "max": 60,
+      "note": "CSR1000 원문 0.01~1 mm/s(0.6~60 mm/min), CSR5100 측정 0~20 µm/s"
+    },
+    "stylus_radius_um": {
+      "min": 5,
+      "max": 500,
+      "note": "CSR5100 다이아몬드 R5 · 10 · 15 · 25 · 50 · 100 µm, 사파이어 R250 · 500 µm"
+    }
+  },
+  "models": [
+    {
+      "model": "CSR1000",
+      "variant": "Scratch Tester",
+      "specs": {
+        "load_kg": {
+          "max": 30,
+          "note": "분해능 0.1 %FS (30 kg FS 센서 30 g, 1 kg FS 센서 1 g), 허용 과부하 300 %FS"
+        },
+        "loading_rate_mN_s": {
+          "max": 4903,
+          "note": "원문 하중 속도 30 kg/min MAX"
+        },
+        "scratch_speed_mm_min": {
+          "min": 0.6,
+          "max": 60,
+          "note": "원문 0.01~1 mm/s (0.01 단위)"
+        },
+        "stage_travel_mm": "X ±50 / Y ±50 / Z 최대 70",
+        "principle": "마찰력 변화로 막 파괴점 검출, 옵션 AE 센서",
+        "power": "AC 100~240 V"
+      }
+    },
+    {
+      "model": "CSR5100",
+      "variant": "Oscillating Microscratch Tester",
+      "specs": {
+        "load_N": {
+          "min": 0.001,
+          "max": 1.5,
+          "note": "원문 1~1500 mN, 분해능 0.3 mN, 허용 과부하 300 %FS"
+        },
+        "frequency_Hz": {
+          "values": [
+            45
+          ],
+          "note": "가진 주파수. 수평 신호 대역 20 Hz~10 kHz"
+        },
+        "stylus_radius_um": {
+          "values": [
+            5,
+            10,
+            15,
+            25,
+            50,
+            100,
+            250,
+            500
+          ],
+          "note": "다이아몬드 R5~100, 사파이어 R250 · 500"
+        },
+        "scratch_speed_mm_min": {
+          "max": 1.2,
+          "note": "원문 X축 측정 속도 0~20 µm/s"
+        },
+        "stage_travel_mm": "Z 20 (수동 조동 30 추가, 분해능 0.5 µm, 0.1~10 µm/s) / X 20 (분해능 0.5 µm) / 시료대 XY ±6.5 (마이크로미터)",
+        "footprint_mm": "540 × 520 × 630 (W × D × H)",
+        "weight_kg": {
+          "value": 37,
+          "note": "현미경 옵션 포함"
+        },
+        "power": "AC 100~240 V"
+      },
+      "note": "가진 진폭 0 · 5 · 10 · 20 · 40 · 50 · 80 · 100 µm. 1 µm 이하 막, 10 nm 두께까지 측정 사례"
+    }
+  ],
+  "relations": [
+    {
+      "type": "performs",
+      "target": "scratch_pencil_hardness"
+    },
+    {
+      "type": "same_family_as",
+      "target": "rhesca-friction-testers"
+    },
+    {
+      "type": "same_family_as",
+      "target": "anton-paar-step-platform-modules"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://www.rhesca.co.jp/product/scratch-tester-csr1000/",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지(CSR1000, 일본어)"
+    },
+    {
+      "url": "https://www.rhesca.co.jp/product/oscillating-microscratch-tester-csr5100/",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지(CSR5100, 일본어)"
+    }
+  ],
+  "notes": "박막 스크래치 밀착(임계 하중) 시험에 딱 맞는 시험 항목이 없어 기존 스크래치 계열과 같이 scratch_pencil_hardness 로 이었다. kg 하중은 1 kgf = 9.80665 N 으로 바꿨다.",
+  "confidence": "limited"
+}

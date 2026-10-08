@@ -1,0 +1,83 @@
+{
+  "id": "siglent-sds3000x-hd",
+  "kind": "equipment_series",
+  "name": "SDS3000X HD Series Digital Storage Oscilloscope",
+  "name_ko": "시글런트 SDS3000X HD 오실로스코프",
+  "manufacturer": "siglent",
+  "brand": "SDS",
+  "category": "oscilloscope",
+  "subcategory": "high_definition_oscilloscope",
+  "form_factor": "benchtop",
+  "description": "350 MHz~1 GHz 대역의 4채널 12 bit 오실로스코프 계열임. 4 GSa/s, 채널당 400 Mpts, 16 디지털 채널, 10.1 inch 화면.",
+  "test_items": [],
+  "limits": {
+    "bandwidth_Hz": {
+      "min": 350000000,
+      "max": 1000000000
+    },
+    "sample_rate_Sa_s": {
+      "max": 4000000000
+    },
+    "record_length_pts": {
+      "max": 400000000
+    },
+    "channels": {
+      "values": [
+        4
+      ]
+    },
+    "adc_resolution_bit": {
+      "values": [
+        12
+      ],
+      "note": "제품 개요 표기"
+    },
+    "logic_channel_count": {
+      "values": [
+        16
+      ]
+    },
+    "display_size_in": {
+      "values": [
+        10.1
+      ]
+    }
+  },
+  "models": [
+    {
+      "model": "SDS3034X HD",
+      "specs": {
+        "bandwidth_Hz": 350000000,
+        "channels": 4,
+        "sample_rate_Sa_s": 4000000000,
+        "record_length_pts": 400000000
+      }
+    },
+    {
+      "model": "SDS3054X HD",
+      "specs": {
+        "bandwidth_Hz": 500000000,
+        "channels": 4,
+        "sample_rate_Sa_s": 4000000000,
+        "record_length_pts": 400000000
+      }
+    },
+    {
+      "model": "SDS3104X HD",
+      "specs": {
+        "bandwidth_Hz": 1000000000,
+        "channels": 4,
+        "sample_rate_Sa_s": 4000000000,
+        "record_length_pts": 400000000
+      }
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://siglentna.com/digital-oscilloscopes/sds3000x-hd-digital-storage-oscilloscope/",
+      "retrieved": "2026-10-08",
+      "note": "시글런트 북미 법인 사이트(siglentna.com)의 제품 페이지 기종 표. 원문 4 + EXT, 4 GSa/s, 400 Mpts/ch. 개요: 12-bit, 16 digital, 10.1''"
+    }
+  ],
+  "confidence": "limited"
+}

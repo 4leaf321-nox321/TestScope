@@ -1,0 +1,176 @@
+{
+  "id": "shimadzu-emt",
+  "kind": "equipment_series",
+  "name": "EMT Series Electromagnetic Force Fatigue and Endurance Testing System",
+  "name_ko": "시마즈 EMT 시리즈 전자기력 피로·내구 시험기",
+  "manufacturer": "shimadzu",
+  "category": "electrodynamic_fatigue",
+  "drive": "electrodynamic",
+  "description": "전자기력 구동 피로·내구 시험기. 1 kN 형(±1 kN 정적·동적)과 5 kN 형(동적 ±5 kN, 정적 ±3.5 kN), 스트로크 ±30 / ±50 mm. 최대 주파수 200 Hz(EMT-5kNV-50 은 100 Hz), 최대 속도 1 m/s(EMT-1kNV-50 은 2 m/s). Servo Controller 4830, 시험력·스트로크 레인지리스. 운전 소음 62 dB(본체 앞 1 m). 프레임 구동 전동.",
+  "test_items": [
+    "fatigue"
+  ],
+  "measurands": [
+    "mechanical.fatigue_strength"
+  ],
+  "limits": {
+    "dynamic_force_kN": {
+      "values": [
+        1,
+        5
+      ],
+      "note": "원문 ± 값"
+    },
+    "frequency_Hz": {
+      "max": 200,
+      "note": "EMT-5kNV-50 은 100 Hz"
+    },
+    "stroke_mm": {
+      "values": [
+        60,
+        100
+      ],
+      "note": "원문 ±30 / ±50 mm 을 전 행정으로 옮김"
+    }
+  },
+  "models": [
+    {
+      "model": "EMT-1kNV-30",
+      "specs": {
+        "dynamic_force_kN": 1,
+        "static_force_kN": 1,
+        "stroke_mm": 60,
+        "frequency_Hz": {
+          "max": 200
+        },
+        "velocity_m_s": {
+          "max": 1
+        },
+        "horizontal_test_space_mm": 460,
+        "vertical_test_space_mm": {
+          "min": 0,
+          "max": 700,
+          "note": "지그 장착 간격 0~700 mm"
+        },
+        "weight_kg": 510,
+        "power": "50/60 Hz 3상 200 V 4 kVA",
+        "power_kW": {
+          "max": 4,
+          "note": "최대 하중 시 소비 전력"
+        }
+      },
+      "note": "원문 시험력 ±1 kN(정적·동적), 스트로크 ±30 mm. 무게: 본체 510 kg, 파워앰프 60 kg, 컨트롤러 8 kg"
+    },
+    {
+      "model": "EMT-1kNV-50",
+      "specs": {
+        "dynamic_force_kN": 1,
+        "static_force_kN": 1,
+        "stroke_mm": 100,
+        "frequency_Hz": {
+          "max": 200
+        },
+        "velocity_m_s": {
+          "max": 2
+        },
+        "horizontal_test_space_mm": 460,
+        "vertical_test_space_mm": {
+          "min": 0,
+          "max": 700,
+          "note": "지그 장착 간격 0~700 mm"
+        },
+        "weight_kg": 510,
+        "power": "50/60 Hz 3상 200 V 5 kVA",
+        "power_kW": {
+          "max": 5,
+          "note": "최대 하중 시 소비 전력"
+        }
+      },
+      "note": "원문 시험력 ±1 kN(정적·동적), 스트로크 ±50 mm. 무게: 본체 510 kg, 파워앰프 60 kg, 컨트롤러 8 kg"
+    },
+    {
+      "model": "EMT-5kNV-30",
+      "specs": {
+        "dynamic_force_kN": 5,
+        "static_force_kN": 3.5,
+        "stroke_mm": 60,
+        "frequency_Hz": {
+          "max": 200
+        },
+        "velocity_m_s": {
+          "max": 1
+        },
+        "horizontal_test_space_mm": 620,
+        "vertical_test_space_mm": {
+          "min": 0,
+          "max": 700,
+          "note": "지그 장착 간격 0~700 mm"
+        },
+        "weight_kg": 1150,
+        "power": "50/60 Hz 3상 200 V 9 kVA, 단상 100 V 300 VA",
+        "power_kW": {
+          "max": 5,
+          "note": "최대 하중 시 소비 전력"
+        }
+      },
+      "note": "원문 시험력 동적 ±5 kN, 정적 ±3.5 kN, 스트로크 ±30 mm. 무게: 본체 1150 kg, 파워앰프 300 kg, 컨트롤러 8 kg"
+    },
+    {
+      "model": "EMT-5kNV-50",
+      "specs": {
+        "dynamic_force_kN": 5,
+        "static_force_kN": 3.5,
+        "stroke_mm": 100,
+        "frequency_Hz": {
+          "max": 100
+        },
+        "velocity_m_s": {
+          "max": 1
+        },
+        "horizontal_test_space_mm": 620,
+        "vertical_test_space_mm": {
+          "min": 0,
+          "max": 700,
+          "note": "지그 장착 간격 0~700 mm"
+        },
+        "weight_kg": 1150,
+        "power": "50/60 Hz 3상 200 V 9 kVA, 단상 100 V 300 VA",
+        "power_kW": {
+          "max": 6,
+          "note": "최대 하중 시 소비 전력"
+        }
+      },
+      "note": "원문 시험력 동적 ±5 kN, 정적 ±3.5 kN, 스트로크 ±50 mm. 무게: 본체 1150 kg, 파워앰프 300 kg, 컨트롤러 8 kg"
+    }
+  ],
+  "accuracy": {
+    "force": "Rangeless, within ±0.5 % of indicated value or ±0.02 % of maximum test force",
+    "stroke": "Rangeless, within ±1 % of indicated value or ±0.1 % of rated value"
+  },
+  "utilities": "기초 공사는 필요 없으나 지하층이 없는 튼튼한 1층 바닥에 두고 앵커 볼트로 고정해야 한다(설치 조건)",
+  "features": [
+    "Servo Controller 4830",
+    "제어 항목: 시험력·스트로크(옵션으로 2개 추가)",
+    "운전 소음 62 dB(참고값, 본체 앞 1 m)"
+  ],
+  "relations": [
+    {
+      "type": "same_family_as",
+      "target": "shimadzu-mmt"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://www.shimadzu.com/an/products/materials-testing/fatigue-testingimpact-testing/emt-series/spec.html",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지(HTML) 본문·표를 직접 읽음. 기종별 사양 카드(시험력, 스트로크, 최대 속도, 최대 주파수, 시험 공간, 무게, 전원, 소음)"
+    },
+    {
+      "url": "https://www.shimadzu.com/an/products/materials-testing/fatigue-testingimpact-testing/index.html",
+      "retrieved": "2026-10-08",
+      "note": "제조사 분류 페이지. EMT 를 '조용한 전자기력을 쓰는 시스템' 으로 소개"
+    }
+  ],
+  "confidence": "limited",
+  "notes": "반복 속도와 진폭은 진폭 특성 도표를 보라고 적혀 있다. 스트로크는 원문 ± 값을 전 행정으로 옮겼다."
+}

@@ -1,0 +1,81 @@
+{
+  "id": "keyence-xm",
+  "kind": "equipment_series",
+  "name": "XM Series Handheld Probe Coordinate Measuring Machine",
+  "name_ko": "키엔스 XM 핸드헬드 프로브 3차원 측정기",
+  "manufacturer": "keyence",
+  "category": "coordinate_measuring_machine",
+  "form_factor": "portable",
+  "description": "카메라 유닛이 무선 프로브의 마커 7개(870 nm 광원)를 추적해 좌표를 얻는 휴대형 3차원 측정기 계열임. XM-5000 은 최대 측정 길이 W × D × H 2000 × 1200 × 1000 mm, 지시 오차 ±(7 + 9L/1000) µm(ISO 10360-2, 800 × 400 × 500 mm 범위, 20 °C ±1 °C), 반복 정밀도 ±3 µm. 카메라 유닛은 θ ±40°, 틸트 ±25° 로 회전함.",
+  "test_items": [],
+  "standards": {
+    "compliance": [
+      "ISO 10360-2"
+    ],
+    "test_methods": []
+  },
+  "limits": {
+    "measuring_range_x_mm": {
+      "max": 2000,
+      "note": "XM-5000 최대 측정 길이 W 2000 mm"
+    },
+    "measuring_range_y_mm": {
+      "max": 1200,
+      "note": "D 1200 mm"
+    },
+    "measuring_range_z_mm": {
+      "max": 1000,
+      "note": "H 1000 mm"
+    }
+  },
+  "models": [
+    {
+      "model": "XM-5000",
+      "variant": "핸드헬드 프로브 3차원 측정기",
+      "specs": {
+        "measuring_range_x_mm": 2000,
+        "measuring_range_y_mm": 1200,
+        "measuring_range_z_mm": 1000,
+        "length_measuring_error_mpe": "±(7 + 9L/1000) µm (ISO 10360-2, 800 × 400 × 500 mm 범위, 20 °C ±1 °C)",
+        "measuring_repeatability_um": {
+          "value": 3,
+          "note": "원문 ±3 µm"
+        },
+        "operating_temperature_degC": {
+          "min": 10,
+          "max": 35
+        },
+        "weight_kg": {
+          "value": 8,
+          "note": "카메라 유닛 약 8 kg"
+        }
+      },
+      "note": "최소 표시 단위 거리 0.0001 mm, 각도 0.0001°. 프로브: 마커 7개, M5 스타일러스, OLED 96 × 39 화소."
+    },
+    {
+      "model": "XM-5000A",
+      "variant": "핸드헬드 프로브 3차원 측정기",
+      "note": "기종명은 제조사 기종 페이지 제목에서 확인. 사양은 읽지 않음"
+    },
+    {
+      "model": "XM-1500",
+      "variant": "컨트롤러(단종)",
+      "note": "제조사 기종 페이지 제목 'Handheld Probe Coordinate Measuring Machine Controller - XM-1500'. 단종·후속 XM-5000 이라는 내용은 검색 결과 요약에서 읽음",
+      "uncertain": true
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://www.keyence.com/products/3d-measure/cmm/xm/models/xm-5000/",
+      "retrieved": "2026-10-08",
+      "note": "제조사 기종 페이지(사양표)"
+    },
+    {
+      "url": "https://www.keyence.com/products/3d-measure/cmm/xm/",
+      "retrieved": "2026-10-08",
+      "note": "제조사 계열 페이지(검색 결과로 확인)"
+    }
+  ],
+  "confidence": "limited",
+  "notes": "계열 이전 기종(XM-1200 등)은 확인하지 못함."
+}

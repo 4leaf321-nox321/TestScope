@@ -1,0 +1,75 @@
+{
+  "id": "mettler-toledo-dsc-5-plus",
+  "kind": "equipment_series",
+  "name": "METTLER TOLEDO DSC 5+ Differential Scanning Calorimeter",
+  "name_ko": "메틀러토레도 DSC 5+ 시차주사열량계",
+  "manufacturer": "mettler-toledo",
+  "category": "dsc",
+  "description": "MMS 1 센서(열전대 136개와 내장 히터 2개, 전력 보상 모드 지원)를 쓰는 DSC. -150~700 °C.",
+  "test_items": [
+    "dsc"
+  ],
+  "measurands": [
+    "thermal.glass_transition",
+    "thermal.melting_point",
+    "thermal.specific_heat",
+    "thermal.latent_heat_fusion"
+  ],
+  "measurands_by_item": {
+    "dsc": [
+      "thermal.glass_transition",
+      "thermal.melting_point",
+      "thermal.specific_heat",
+      "thermal.latent_heat_fusion"
+    ]
+  },
+  "limits": {
+    "temperature_degC": {
+      "min": -150,
+      "max": 700,
+      "uncertain": true
+    }
+  },
+  "models": [
+    {
+      "model": "DSC 5+",
+      "specs": {
+        "temperature_degC": {
+          "min": -150,
+          "max": 700,
+          "uncertain": true
+        },
+        "accuracy_degC": {
+          "value": 0.2,
+          "uncertain": true,
+          "note": "±0.2 K"
+        },
+        "measurement_time_constant_s": {
+          "value": 0.7,
+          "uncertain": true,
+          "note": "signal time constant"
+        },
+        "data_rate_Hz": {
+          "max": 50,
+          "uncertain": true,
+          "note": "50 data pts/sec"
+        }
+      }
+    }
+  ],
+  "relations": [
+    {
+      "type": "same_family_as",
+      "target": "mettler-toledo-dsc-3"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://www.mt.com/us/en/home/products/Laboratory_Analytics_Browse/TA_Family_Browse/ta-instruments/thermal-analysis-system-DSC-5-plus.html",
+      "retrieved": "2026-10-08",
+      "note": "제조사 페이지가 자동 조회를 막아(HTTP 403/406) 직접 열지 못함. 값은 웹 검색 엔진이 이 페이지에서 뽑은 발췌로만 확인했다 — 값마다 uncertain. -150~700 °C, 온도 정확도 ±0.2 K, 신호 시간 상수 0.7 s, 데이터 최대 50 점/s, MMS 1 센서(열전대 136개, 내장 히터 2개로 전력 보상 모드)"
+    }
+  ],
+  "confidence": "limited",
+  "notes": "브로슈어(HTML 안내 페이지 뒤의 PDF)는 열지 못했다."
+}

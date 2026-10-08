@@ -17,6 +17,8 @@ type EquipmentPage = components['schemas']['Page_EquipmentOut_']
 
 export type ModelProposal = components['schemas']['EquipmentModelProposalOut']
 export type ModelProposalGroup = components['schemas']['EquipmentModelProposalGroupOut']
+export type CatalogGaps = components['schemas']['CatalogGapsOut']
+export type CatalogGapGroup = components['schemas']['CatalogGapGroupOut']
 export type EquipmentSeries = components['schemas']['EquipmentSeriesOut']
 export type SeriesRelation = components['schemas']['SeriesRelationOut']
 export type EquipmentModel = components['schemas']['EquipmentModelOut']
@@ -176,6 +178,41 @@ export const modelProposalApi = {
     name?: string | null
     reject?: boolean
   }) => api.post<Record<string, unknown>>('/equipment-models/proposals/decide', body),
+}
+
+/** 경우 이름. 서버의 `case` 값과 같다. */
+export type CatalogGapCase =
+  'exact' | 'similar' | 'series_only' | 'not_in_catalog' | 'no_model' | 'excluded'
+
+/**
+ * 카탈로그 보강 — **미연결 장비를 왜 미연결인지로 가른 목록**(시스템 관리자).
+ *
+ * 고치는 길은 기종 등록 요청과 같다: `request` 는 요청을 만들고, `resolve` 는 요청을 만든 뒤
+ * 바로 정한다(`model_id` · `series_id`+`name` · `reject` 중 하나만).
+ */
+export const catalogGapApi = {
+  list: (
+    params: { case?: CatalogGapCase | ''; category_term_id?: string; q?: string } = {},
+  ) => {
+    const query = new URLSearchParams()
+    for (const [key, value] of Object.entries(params)) if (value) query.set(key, value)
+    const tail = query.toString()
+    return api.get<CatalogGaps>(`/equipment-models/gaps${tail ? `?${tail}` : ''}`)
+  },
+  /** 자산번호를 전부 실은 CSV — 제조사 사양서 조사의 출발점. */
+  export: () => downloadFile('/equipment-models/gaps/export', 'testscope-카탈로그-보강.csv'),
+  request: (keys: string[]) =>
+    api.post<{ requested: number; skipped: string[]; missing: string[] }>(
+      '/equipment-models/gaps/requests',
+      { keys },
+    ),
+  resolve: (body: {
+    key: string
+    model_id?: string | null
+    series_id?: string | null
+    name?: string | null
+    reject?: boolean
+  }) => api.post<Record<string, unknown>>('/equipment-models/gaps/resolve', body),
 }
 
 /**

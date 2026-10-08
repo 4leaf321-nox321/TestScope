@@ -1,0 +1,44 @@
+{
+  "id": "konica-minolta-ca-310",
+  "kind": "equipment_series",
+  "name": "Konica Minolta CA-310 Display Color Analyzer",
+  "name_ko": "코니카미놀타 CA-310 디스플레이 컬러 아날라이저(단종)",
+  "manufacturer": "konica-minolta",
+  "brand": "CA",
+  "category": "display_color_analyzer",
+  "form_factor": "probe",
+  "description": "LED 백라이트 LCD TV 측정용으로 나온 이전 세대 디스플레이 컬러 아날라이저. CIE 1931 등색함수에 더 가깝게 맞춘 색 센서로 저휘도에서도 측정 속도를 유지한다고 적혀 있다. 제조사 지원은 2026년 3월까지였고 후속 기종으로 CA-410 을 안내한다.",
+  "test_items": [
+    "photometry_colorimetry"
+  ],
+  "measurands": [
+    "luminance",
+    "chromaticity"
+  ],
+  "models": [
+    {
+      "model": "CA-310",
+      "note": "제품 페이지에 사양표 없음. 프로브 형번(CA-P32 등)도 페이지에 없어 넣지 않음"
+    }
+  ],
+  "relations": [
+    {
+      "type": "performs",
+      "target": "photometry_colorimetry"
+    },
+    {
+      "type": "same_family_as",
+      "target": "konica-minolta-ca-410",
+      "note": "후속 기종 CA-410"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://sensing.konicaminolta.us/us/products/ca-310-display-color-analyzer/",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지(HTML). 'Support for the CA-310 will be provided until March 2026', 후속 CA-410 안내"
+    }
+  ],
+  "confidence": "limited",
+  "notes": "단종(지원 2026-03 종료). 대장에 남은 CA-310 을 잇기 위한 객체로, 사양 값은 비웠다. CA-410 객체의 successor_of 가 가리키는 placeholder-konica-minolta-ca-310 을 이 객체로 바꿀 수 있다."
+}

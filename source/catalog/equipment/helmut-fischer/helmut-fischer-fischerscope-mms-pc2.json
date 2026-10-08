@@ -1,0 +1,62 @@
+{
+  "id": "helmut-fischer-fischerscope-mms-pc2",
+  "kind": "equipment_model",
+  "name": "Helmut Fischer FISCHERSCOPE MMS PC2",
+  "name_ko": "헬무트 피셔 FISCHERSCOPE MMS PC2 다기능 두께 · 재료 측정기",
+  "manufacturer": "helmut-fischer",
+  "brand": "FISCHERSCOPE MMS",
+  "category": "coating_surface_test",
+  "form_factor": "benchtop",
+  "description": "측정 모듈을 최대 8개 꽂아 도막 두께와 재료 특성을 함께 재는 탁상형 범용 측정기. 진폭 감응 와전류 · 위상 감응 와전류 · 자기 유도 · 미세 저항 · 베타 후방 산란 · 홀 효과 방식을 PERMASCOPE(두께 · 페라이트 함량), SIGMASCOPE/PHASCOPE(전도도), PHASCOPE DUPLEX, NICKELSCOPE(홀 효과), SR-SCOPE(PCB 미세 저항), 온도 모듈로 구성한다. 호환 프로브 60종 이상, 수동 또는 반자동 측정(전동 스탠드 · 프로그래머블 XY 테이블)을 지원한다.",
+  "test_items": [
+    "coating_thickness"
+  ],
+  "measurands": [
+    "coating_thickness",
+    "electrical_conductivity",
+    "ferrite_content"
+  ],
+  "materials": [
+    "electroplated coatings",
+    "PCB copper",
+    "duplex coatings",
+    "nickel layers"
+  ],
+  "models": [
+    {
+      "model": "FISCHERSCOPE MMS PC2",
+      "specs": {
+        "principle": "진폭 감응 와전류, 위상 감응 와전류, 자기 유도, 미세 저항, 베타 후방 산란, 홀 효과",
+        "channels": {
+          "max": 8,
+          "note": "측정 모듈 최대 8개"
+        }
+      },
+      "note": "모듈: PERMASCOPE · SIGMASCOPE/PHASCOPE · PHASCOPE DUPLEX · NICKELSCOPE · SR-SCOPE · TEMPERATURE; 센서: 호환 프로브 60종 이상"
+    }
+  ],
+  "options": [
+    "전동 스탠드",
+    "프로그래머블 XY 측정 테이블",
+    "FISCHER DataCenter 소프트웨어"
+  ],
+  "relations": [
+    {
+      "type": "performs",
+      "target": "coating_thickness"
+    },
+    {
+      "type": "same_family_as",
+      "target": "helmut-fischer-phascope-pmp10"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://www.helmut-fischer.com/products/tactile-measuring-devices/fischerscope-mms-pc2",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지. 측정 범위 · 정확도 수치 없음"
+    }
+  ],
+  "notes": "모듈별 측정 범위는 페이지에 없다. 자동화판 FISCHERSCOPE MMS Automation 은 넣지 않았다.",
+  "confidence": "limited"
+}

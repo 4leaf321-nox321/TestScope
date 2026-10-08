@@ -1,0 +1,54 @@
+{
+  "id": "keysight-e7515a-uxm",
+  "kind": "equipment_series",
+  "name": "Keysight E7515A UXM Wireless Test Set",
+  "name_ko": "키사이트 E7515A UXM 무선 시험 세트",
+  "manufacturer": "keysight",
+  "brand": "UXM",
+  "category": "radio_communication_tester",
+  "description": "단종(Obsolete)된 LTE-Advanced Pro 신호 시험 세트. 대체 기종은 E7515B UXM 5G 다. LTE/LTE-Advanced Pro 단말이 하향 최대 1 Gbps·상향 100 Mbps 를 유지하도록 시험하며, 반송파 집성(하향 최대 5 CC·상향 2 CC), FDD-TDD 혼합 CA, LTE-U/LAA·CSAT, W-CDMA·TD-SCDMA·GSM, IMS/VoLTE, WLAN 통화·오프로드, Cat 1·NB-IoT·CAT-M1 을 다룬다. 하향 MIMO 최대 8x4, 독립 셀 2개 내장, DSDA 병렬 RF 시험, 반송파별 독립 페이딩 내장 응용 서버, 배터리 소모 시험(eDRX), MIMO OTA 안테나 성능 검증을 지원한다.",
+  "test_items": [],
+  "limits": {
+    "radio_standards": {
+      "values": [
+        "LTE-Advanced Pro",
+        "LTE-U/LAA",
+        "W-CDMA",
+        "TD-SCDMA",
+        "GSM",
+        "IMS/VoLTE",
+        "WLAN calling/offload",
+        "Cat 1",
+        "NB-IoT",
+        "CAT-M1"
+      ],
+      "note": "제품 페이지 문구"
+    }
+  },
+  "models": [
+    {
+      "model": "E7515A",
+      "note": "단종(Obsolete). 대체 기종 E7515B. 주파수 범위는 페이지에 없다."
+    }
+  ],
+  "features": [
+    "하향 1 Gbps·상향 100 Mbps 데이터 속도",
+    "반송파 집성 하향 5 CC·상향 2 CC, FDD-TDD 혼합 CA",
+    "하향 MIMO 최대 8x4",
+    "독립 셀 2개 내장",
+    "DSDA 병렬 RF 시험",
+    "반송파별 독립 페이딩 내장 응용 서버",
+    "Wireshark 기반 프로토콜 로그 분석",
+    "배터리 소모 시험(eDRX)",
+    "MIMO OTA 안테나 성능 검증"
+  ],
+  "sources": [
+    {
+      "url": "https://www.keysight.com/us/en/product/E7515A/wireless-test-set.html",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지([Obsolete]). 대체 기종, 지원 기술, 데이터 속도, RF 기능"
+    }
+  ],
+  "confidence": "limited",
+  "notes": "주파수 범위·출력 레벨은 페이지에 없다. 데이터시트 PDF 는 pending_pdfs 에 적었다."
+}

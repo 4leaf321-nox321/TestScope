@@ -1,0 +1,108 @@
+{
+  "id": "zeiss-smartzoom",
+  "kind": "equipment_series",
+  "name": "ZEISS Smartzoom Digital Microscopes (Smartzoom 5 / Smartzoom 100)",
+  "name_ko": "자이스 Smartzoom 디지털 현미경",
+  "manufacturer": "zeiss",
+  "brand": "Smartzoom",
+  "category": "optical_microscope",
+  "subcategory": "digital_microscope",
+  "form_factor": "benchtop",
+  "description": "자이스 산업 품질(IQS) 사업부의 디지털 현미경. Smartzoom 5 는 인코딩·전동 구조의 자동 디지털 현미경으로 스마트 대물렌즈 4종에서 10x～2021x(웹 페이지 2020x), 암을 ±45° 기울여도 초점을 유지하고 분할 LED 링 조명·EDF(확장 피사계 심도)·충돌 감지·광학 손떨림 보정을 갖춘다. Smartzoom 100 은 4K(3840×2160, 8.5 MP) 60 fps 카메라와 25배 광학 줌, 자석식 대물렌즈(+3·+5·+10·+25)로 1.6x～328x, 작업 깊이 370 mm 의 소형 검사용이다.",
+  "test_items": [
+    "microscopy"
+  ],
+  "limits": {
+    "magnification": {
+      "min": 1.6,
+      "max": 2021,
+      "note": "Smartzoom 5 10x–2021x(상한은 PDF 의 PlanApo D 10x/0.6 사양 「Mag = 2021」, 웹 페이지는 2020x), Smartzoom 100 1.6x–328x"
+    },
+    "tilt_angle_deg": {
+      "min": -45,
+      "max": 45,
+      "note": "Smartzoom 5"
+    },
+    "working_distance_mm": {
+      "min": 10,
+      "max": 330,
+      "note": "Smartzoom 5 대물렌즈 FWD 10～78 mm(PDF), Smartzoom 100 대물렌즈별 34～330 mm(웹 페이지)"
+    },
+    "field_of_view_mm": {
+      "min": 1.9,
+      "max": 353,
+      "note": "Smartzoom 100 대물렌즈별"
+    }
+  },
+  "models": [
+    {
+      "model": "Smartzoom 5",
+      "specs": {
+        "magnification": {
+          "min": 10,
+          "max": 2021,
+          "note": "상한은 PlanApo D 10x/0.6 사양 「Mag = 2021」(PDF). 웹 페이지는 10x～2020x"
+        },
+        "tilt_angle_deg": {
+          "min": -45,
+          "max": 45
+        },
+        "working_distance_mm": {
+          "min": 10,
+          "max": 78,
+          "note": "대물렌즈 자유 작동 거리(FWD): 10x 10 mm, 5x 30 mm, 1.6x 36 mm, 0.5x 78 mm"
+        },
+        "spatial_resolution_um": {
+          "min": 0.55,
+          "note": "PlanApo D 10x/0.6 광학 분해능(원문 「Res = 0.55 m」 — µ 가 추출에서 빠짐)"
+        },
+        "objectives": "PlanApo D 0.5x/0.03(FWD 78 mm), PlanApo D 1.6x/0.1(FWD 36 mm), PlanApo D 5x/0.3(FWD 30 mm), PlanApo D 10x/0.6(FWD 10 mm, 동초점 거리 88.7 mm). 모두 코드화·베이어닛 교환"
+      },
+      "note": "대물렌즈 4종(인코딩). 조명 동축·분할 링·링 글레어 제거. 10x/0.6 은 평평한 시편에서 20° 기울임까지(조명 각 60°). 줌 범위·카메라·스테이지 이동량은 HTML 페이지와 이번 PDF 에 없음"
+    },
+    {
+      "model": "Smartzoom 100",
+      "specs": {
+        "magnification": {
+          "min": 1.6,
+          "max": 328
+        },
+        "zoom_ratio": 25,
+        "detector_megapixels": 8.5,
+        "detector_pixels": "3840×2160(4K)",
+        "data_rate_Hz": 60,
+        "working_distance_mm": {
+          "min": 34,
+          "max": 330
+        },
+        "field_of_view_mm": {
+          "min": 1.9,
+          "max": 353
+        }
+      },
+      "note": "대물렌즈 +3: 1.6x–40x, WD 330 mm, 시야 16–353 mm / +5: 2.8x–66x, 200 mm, 9.5–210 mm / +10: 5.4x–130x, 78 mm, 4.8–86 mm / +25: 13.2x–328x, 34 mm, 1.9–3.5 mm(원문 그대로). 작업 깊이 370 mm, 자동 초점·전동 높이 조절"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://www.zeiss.com/metrology/us/systems/industrial-microscopy/light-and-digital-microscopes/smartzoom-5.html",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지(HTML, zeiss.com) Smartzoom 5"
+    },
+    {
+      "url": "https://www.zeiss.com/metrology/en/systems/industrial-microscopy/light-and-digital-microscopes/smartzoom-100.html",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지(HTML, zeiss.com) Smartzoom 100"
+    },
+    {
+      "file": "zeiss/en_product-flyer_smartzoom5_10x_objective_a4_rel.1.0_618363_0.pdf",
+      "pages": [
+        1,
+        2
+      ],
+      "note": "Smartzoom 5 대물렌즈 PlanApo D 10x/0.6 플라이어 EN_43_012_155(2020-07) — 대물렌즈 4종 FWD·NA, 10x 사양"
+    }
+  ],
+  "confidence": "limited",
+  "notes": "PDF 는 Smartzoom 5 용 대물렌즈 PlanApo D 10x/0.6 플라이어라 Smartzoom 5 대물렌즈만 확인됨. PDF 로 확인: 대물렌즈 4종 이름·NA·FWD, 최대 배율 2021x(웹 2020x), 분해능 0.55 µm. 웹 값 그대로: Smartzoom 5 틸트 ±45°, Smartzoom 100 전부(PDF 없음). 줌 0.5x–5.0x 는 이번 PDF 에도 없음."
+}

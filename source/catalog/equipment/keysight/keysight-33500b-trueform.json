@@ -1,0 +1,289 @@
+{
+  "id": "keysight-33500b-trueform",
+  "kind": "equipment_series",
+  "name": "Keysight 33500B Series Trueform Waveform Generators",
+  "name_ko": "키사이트 33500B 트루폼 파형 발생기",
+  "manufacturer": "keysight",
+  "brand": "Trueform",
+  "category": "signal_generator",
+  "subcategory": "function_arbitrary_waveform",
+  "description": "Trueform 신호 생성 기술의 함수·임의파형 발생기 계열. 대역폭 20 MHz(33509B~33512B, 160 MSa/s)와 30 MHz(33519B~33522B, 250 MSa/s), 1채널·2채널이 있고, 16비트 분해능, 진폭 1 mVpp~10 Vpp, 채널당 파형 메모리 1 MSa(옵션 16 MSa)다. 기종에 따라 임의파형이 기본이거나 옵션이며, 20 MHz 기종은 30 MHz 로 올릴 수 있다. USB·LAN(LXI-C)·GPIB 를 갖춘다.",
+  "test_items": [],
+  "limits": {
+    "bandwidth_Hz": {
+      "values": [
+        20000000,
+        30000000
+      ],
+      "note": "제조사 표기 Bandwidth(사인파 최대 주파수 뜻으로 쓰임)"
+    },
+    "channels": {
+      "values": [
+        1,
+        2
+      ]
+    },
+    "sample_rate_Sa_s": {
+      "values": [
+        160000000,
+        250000000
+      ],
+      "note": "원문 160 MSa/s, 250 MSa/s"
+    },
+    "dac_resolution_bit": {
+      "values": [
+        16
+      ]
+    },
+    "output_voltage_V": {
+      "min": 0.001,
+      "max": 10,
+      "note": "원문 1 mVpp to 10 Vpp. 부하 조건은 페이지에 없다"
+    },
+    "waveform_memory_pts": {
+      "values": [
+        1000000,
+        16000000
+      ],
+      "note": "채널당. 표준 1 MSa, 옵션 16 MSa"
+    }
+  },
+  "models": [
+    {
+      "model": "33509B",
+      "specs": {
+        "bandwidth_Hz": 20000000,
+        "channels": 1,
+        "sample_rate_Sa_s": 160000000,
+        "dac_resolution_bit": 16,
+        "output_voltage_V": {
+          "min": 0.001,
+          "max": 10,
+          "note": "원문 1 mVpp to 10 Vpp"
+        },
+        "waveform_memory_pts": {
+          "values": [
+            1000000,
+            16000000
+          ],
+          "note": "채널당. 표준 1 MSa, 옵션 16 MSa"
+        },
+        "interfaces": "USB, LAN (LXI-C), GPIB"
+      },
+      "note": "임의파형은 업그레이드 옵션(point-by-point, 시퀀싱). 30 MHz 로 업그레이드 가능, 1채널→2채널 변경 불가."
+    },
+    {
+      "model": "33510B",
+      "specs": {
+        "bandwidth_Hz": 20000000,
+        "channels": 2,
+        "sample_rate_Sa_s": 160000000,
+        "dac_resolution_bit": 16,
+        "output_voltage_V": {
+          "min": 0.001,
+          "max": 10,
+          "note": "원문 1 mVpp to 10 Vpp"
+        },
+        "waveform_memory_pts": {
+          "values": [
+            1000000,
+            16000000
+          ],
+          "note": "채널당. 표준 1 MSa, 옵션 16 MSa"
+        },
+        "interfaces": "USB, LAN (LXI-C), GPIB"
+      },
+      "note": "임의파형은 업그레이드 옵션. 30 MHz 로 업그레이드 가능."
+    },
+    {
+      "model": "33511B",
+      "specs": {
+        "bandwidth_Hz": 20000000,
+        "channels": 1,
+        "sample_rate_Sa_s": 160000000,
+        "dac_resolution_bit": 16,
+        "output_voltage_V": {
+          "min": 0.001,
+          "max": 10,
+          "note": "원문 1 mVpp to 10 Vpp"
+        },
+        "waveform_memory_pts": {
+          "values": [
+            1000000,
+            16000000
+          ],
+          "note": "채널당. 표준 1 MSa, 옵션 16 MSa"
+        },
+        "interfaces": "USB, LAN (LXI-C), GPIB"
+      },
+      "note": "임의파형 기본(point-by-point, 시퀀싱). 30 MHz 로 업그레이드 가능."
+    },
+    {
+      "model": "33512B",
+      "specs": {
+        "bandwidth_Hz": 20000000,
+        "channels": 2,
+        "sample_rate_Sa_s": 160000000,
+        "dac_resolution_bit": 16,
+        "output_voltage_V": {
+          "min": 0.001,
+          "max": 10,
+          "note": "원문 1 mVpp to 10 Vpp"
+        },
+        "waveform_memory_pts": {
+          "values": [
+            1000000,
+            16000000
+          ],
+          "note": "채널당. 표준 1 MSa, 옵션 16 MSa"
+        },
+        "interfaces": "USB, LAN, GPIB"
+      },
+      "note": "임의파형 기본."
+    },
+    {
+      "model": "33519B",
+      "specs": {
+        "bandwidth_Hz": 30000000,
+        "channels": 1,
+        "sample_rate_Sa_s": 250000000,
+        "dac_resolution_bit": 16,
+        "output_voltage_V": {
+          "min": 0.001,
+          "max": 10,
+          "note": "원문 1 mVpp to 10 Vpp"
+        },
+        "waveform_memory_pts": {
+          "values": [
+            1000000,
+            16000000
+          ],
+          "note": "채널당. 표준 1 MSa, 옵션 16 MSa"
+        },
+        "interfaces": "USB, LAN (LXI-C), GPIB"
+      },
+      "note": "임의파형은 옵션(point-by-point, 시퀀싱)."
+    },
+    {
+      "model": "33520B",
+      "specs": {
+        "bandwidth_Hz": 30000000,
+        "channels": 2,
+        "sample_rate_Sa_s": 250000000,
+        "dac_resolution_bit": 16,
+        "output_voltage_V": {
+          "min": 0.001,
+          "max": 10,
+          "note": "원문 1 mVpp to 10 Vpp"
+        },
+        "waveform_memory_pts": {
+          "values": [
+            1000000,
+            16000000
+          ],
+          "note": "채널당. 표준 1 MSa, 옵션 16 MSa"
+        },
+        "interfaces": "USB, LAN (LXI-C), GPIB"
+      },
+      "note": "임의파형은 옵션(point-by-point, 시퀀싱). WG2-class."
+    },
+    {
+      "model": "33521B",
+      "specs": {
+        "bandwidth_Hz": 30000000,
+        "channels": 1,
+        "sample_rate_Sa_s": 250000000,
+        "dac_resolution_bit": 16,
+        "output_voltage_V": {
+          "min": 0.001,
+          "max": 10,
+          "note": "원문 1 mVpp to 10 Vpp"
+        },
+        "waveform_memory_pts": {
+          "values": [
+            1000000,
+            16000000
+          ],
+          "note": "채널당. 표준 1 MSa, 옵션 16 MSa"
+        },
+        "interfaces": "USB, LAN, GPIB"
+      },
+      "note": "임의파형 지원 여부는 페이지 요약에 없다(URL 이름은 -arb)."
+    },
+    {
+      "model": "33522B",
+      "specs": {
+        "bandwidth_Hz": 30000000,
+        "channels": 2,
+        "sample_rate_Sa_s": 250000000,
+        "dac_resolution_bit": 16,
+        "output_voltage_V": {
+          "min": 0.001,
+          "max": 10,
+          "note": "원문 1 mVpp to 10 Vpp"
+        },
+        "waveform_memory_pts": {
+          "values": [
+            1000000,
+            16000000
+          ],
+          "note": "채널당. 표준 1 MSa, 옵션 16 MSa"
+        },
+        "interfaces": "USB, LAN, GPIB"
+      },
+      "note": "임의파형 기본. WG2-class."
+    }
+  ],
+  "features": [
+    "Trueform 신호 생성 기술",
+    "16비트 분해능",
+    "point-by-point 임의파형·시퀀싱(기종·옵션에 따라)",
+    "20 MHz → 30 MHz 업그레이드",
+    "USB·LAN(LXI-C)·GPIB"
+  ],
+  "relations": [
+    {
+      "type": "same_family_as",
+      "target": "keysight-33600a-trueform"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://www.keysight.com/us/en/products/waveform-and-function-generators/trueform-series-waveform-and-function-generators.html",
+      "retrieved": "2026-10-08",
+      "note": "제조사 Trueform 파형 발생기 목록 페이지. 33512B·33522B 사양과 계열 기종명"
+    },
+    {
+      "url": "https://www.keysight.com/us/en/product/33509B/waveform-generator-20-mhz-1-channel.html",
+      "retrieved": "2026-10-08",
+      "note": "제조사 33509B 제품 페이지"
+    },
+    {
+      "url": "https://www.keysight.com/us/en/product/33510B/waveform-generator-20-mhz-2-channel.html",
+      "retrieved": "2026-10-08",
+      "note": "제조사 33510B 제품 페이지"
+    },
+    {
+      "url": "https://www.keysight.com/us/en/product/33511B/waveform-generator-20-mhz-1-channel-arb.html",
+      "retrieved": "2026-10-08",
+      "note": "제조사 33511B 제품 페이지"
+    },
+    {
+      "url": "https://www.keysight.com/us/en/product/33519B/waveform-generator-30-mhz-1-channel.html",
+      "retrieved": "2026-10-08",
+      "note": "제조사 33519B 제품 페이지"
+    },
+    {
+      "url": "https://www.keysight.com/us/en/product/33520B/waveform-generator-30-mhz-2-channel.html",
+      "retrieved": "2026-10-08",
+      "note": "제조사 33520B 제품 페이지"
+    },
+    {
+      "url": "https://www.keysight.com/us/en/product/33521B/waveform-generator-30-mhz-1-channel-arb.html",
+      "retrieved": "2026-10-08",
+      "note": "제조사 33521B 제품 페이지"
+    }
+  ],
+  "confidence": "limited",
+  "notes": "33512B·33522B 는 목록 페이지 값이다. 같은 목록의 FG33532A(100 MHz, 2채널, 320 MSa/s)는 다른 계열이라 넣지 않았다."
+}

@@ -1,0 +1,107 @@
+{
+  "id": "listen-inc-audio-interfaces",
+  "kind": "equipment_series",
+  "name": "Listen Audio Test Interfaces (AmpConnect ISC / AmpConnect 621 / AudioConnect 2 / 6x2 / 8x8)",
+  "name_ko": "Listen 오디오 시험 인터페이스",
+  "manufacturer": "listen-inc",
+  "category": "acoustic_measurement",
+  "form_factor": "rack",
+  "description": "SoundCheck 용 측정 인터페이스. 저잡음·평탄 응답에 최대 192 kHz 샘플링, SCM·IEPE 마이크 전원을 갖춘다. AmpConnect ISC 는 평형 입출력 2채널(44.1 kHz, 24/16 bit), 입력 동적 범위 110 dB·출력 114 dB(전형), 20 Hz~20 kHz ±0.25 dB, THD 0.001 %(1 kHz 전형), 파워 앰프 60 W RMS(4 Ω)/47 W RMS(8 Ω), USB 2.0. AmpConnect 621 은 입력 6·라인 출력 2·앰프 출력 1, AudioConnect 2 는 입력 2·출력 2·헤드폰, AudioConnect 8×8 은 8입력·8출력과 S/PDIF.",
+  "test_items": [
+    "audio_performance"
+  ],
+  "measurands": [
+    "frequency_response",
+    "thd_n"
+  ],
+  "limits": {
+    "data_rate_Hz": {
+      "max": 192000,
+      "note": "인터페이스 목록 페이지: sampling rates up to 192 kHz. AmpConnect ISC 는 44.1 kHz"
+    },
+    "channels": {
+      "values": [
+        2,
+        6,
+        8
+      ],
+      "note": "입력 채널 수"
+    }
+  },
+  "models": [
+    {
+      "model": "AmpConnect ISC",
+      "specs": {
+        "channels": 2,
+        "data_rate_Hz": 44100,
+        "adc_resolution_bit": 24,
+        "dynamic_range_dB": 110,
+        "frequency_Hz": {
+          "min": 20,
+          "max": 20000
+        },
+        "power_W": 60,
+        "interfaces": "USB 2.0"
+      },
+      "note": "출력 동적 범위 114 dB, THD 0.001 %(1 kHz), 연속 출력 47 W RMS(8 Ω). 원문은 「60W RMS into 4W」 로 옴(Ω)을 W 로 적었다. 마이크 이득 –20~+40 dB, IEPE 10 mA/20 VDC, ECM 바이어스. 17 in 폭 2U"
+    },
+    {
+      "model": "AmpConnect 621",
+      "specs": {
+        "channels": 6
+      },
+      "note": "입력 6, 라인 출력 2, 앰프 출력 1"
+    },
+    {
+      "model": "AudioConnect 2",
+      "specs": {
+        "channels": 2
+      },
+      "note": "입력 2, 출력 2, 헤드폰 출력"
+    },
+    {
+      "model": "AudioConnect 6x2",
+      "specs": {
+        "channels": 6
+      },
+      "note": "목록에 이름만 있음(6/2 채널은 SoundCheck 페이지 표기)",
+      "uncertain": true
+    },
+    {
+      "model": "AudioConnect 8x8",
+      "specs": {
+        "channels": 8
+      },
+      "note": "8입력·8출력, S/PDIF 입출력"
+    }
+  ],
+  "relations": [
+    {
+      "type": "performs",
+      "target": "audio_performance"
+    },
+    {
+      "type": "compatible_accessory",
+      "target": "listen-inc-soundcheck"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://www.listeninc.com/products/audio-testing-hardware/audio-interfaces-2/",
+      "retrieved": "2026-10-08",
+      "note": "제조사 인터페이스 목록 페이지"
+    },
+    {
+      "url": "https://www.listeninc.com/products/audio-testing-hardware/ampconnect-isc/",
+      "retrieved": "2026-10-08",
+      "note": "AmpConnect ISC 제품 페이지"
+    },
+    {
+      "url": "https://www.listeninc.com/products/soundcheck/",
+      "retrieved": "2026-10-08",
+      "note": "SoundCheck 페이지의 지원 하드웨어 목록(채널 구성)"
+    }
+  ],
+  "confidence": "limited",
+  "notes": "AmpConnect ISC 외 기종의 상세 수치는 조회하지 않았다."
+}

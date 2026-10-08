@@ -1,0 +1,127 @@
+{
+  "id": "lab-equipment-incline-impact-testers",
+  "kind": "equipment_series",
+  "name": "L.A.B. Equipment Incline Impact Testers (II1000 ~ II10000)",
+  "name_ko": "L.A.B. 경사 충격 시험기",
+  "manufacturer": "lab-equipment",
+  "category": "shock_test_machine",
+  "form_factor": "floor",
+  "description": "목상자·팔레트 적재물·철도 화차 하역 취급을 모사하는 경사 충격 시험기. 탑재 1,000~10,000 lbs(약 454~4,536 kg, 연장 12,000 lbs), 충격면 60~96 in 정사각, 대차 48~84 in 정사각, 충격 속도 8 ft/s(약 2.44 m/s), 18 in 자유낙하에 해당하는 충격. 백스톱 4×4~10×10 ft.",
+  "test_items": [
+    "mechanical_shock"
+  ],
+  "measurands": [
+    "peak_acceleration"
+  ],
+  "materials": [
+    "crates",
+    "palletized loads"
+  ],
+  "limits": {
+    "payload_kg": {
+      "min": 454,
+      "max": 4536,
+      "note": "원문 1,000~10,000 lbs 를 kg 으로 환산. 연장 12,000 lbs"
+    },
+    "impact_velocity_m_s": {
+      "values": [
+        2.44
+      ],
+      "note": "원문 8 ft/sec 를 환산"
+    }
+  },
+  "models": [
+    {
+      "model": "II1000",
+      "specs": {
+        "payload_kg": 454,
+        "table_size_mm": [
+          1219,
+          1219
+        ],
+        "impact_velocity_m_s": 2.44
+      },
+      "note": "원문 탑재 1,000 lbs, 충격면 60\"×60\", 대차 48\"×48\", 8 ft/sec. table_size_mm 는 대차 크기 환산"
+    },
+    {
+      "model": "II2000",
+      "specs": {
+        "payload_kg": 907,
+        "table_size_mm": [
+          1524,
+          1524
+        ],
+        "impact_velocity_m_s": 2.44
+      },
+      "note": "원문 탑재 2,000 lbs, 충격면 72\"×72\", 대차 60\"×60\", 8 ft/sec. table_size_mm 는 대차 크기 환산"
+    },
+    {
+      "model": "II4000",
+      "specs": {
+        "payload_kg": 1814,
+        "table_size_mm": [
+          1829,
+          1829
+        ],
+        "impact_velocity_m_s": 2.44
+      },
+      "note": "원문 탑재 4,000 lbs, 충격면 84\"×84\", 대차 72\"×72\", 8 ft/sec. table_size_mm 는 대차 크기 환산"
+    },
+    {
+      "model": "II6000",
+      "specs": {
+        "payload_kg": 2722,
+        "table_size_mm": [
+          1829,
+          1829
+        ],
+        "impact_velocity_m_s": 2.44
+      },
+      "note": "원문 탑재 6,000 lbs, 충격면 84\"×84\", 대차 72\"×72\", 8 ft/sec. table_size_mm 는 대차 크기 환산"
+    },
+    {
+      "model": "II8000",
+      "specs": {
+        "payload_kg": 3629,
+        "table_size_mm": [
+          1829,
+          1829
+        ],
+        "impact_velocity_m_s": 2.44
+      },
+      "note": "원문 탑재 8,000 lbs, 충격면 84\"×84\", 대차 72\"×72\", 8 ft/sec. table_size_mm 는 대차 크기 환산"
+    },
+    {
+      "model": "II10000",
+      "specs": {
+        "payload_kg": 4536,
+        "table_size_mm": [
+          2134,
+          2134
+        ],
+        "impact_velocity_m_s": 2.44
+      },
+      "note": "원문 탑재 10,000 lbs, 충격면 96\"×96\", 대차 84\"×84\", 8 ft/sec. table_size_mm 는 대차 크기 환산"
+    }
+  ],
+  "relations": [
+    {
+      "type": "performs",
+      "target": "mechanical_shock"
+    },
+    {
+      "type": "same_family_as",
+      "target": "lansmont-inclined-impact-testers",
+      "note": "같은 용도의 다른 제조사 기종"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://www.labequipment.com/incline-impact-testers/",
+      "retrieved": "2026-10-08",
+      "note": "제조사 경사 충격 시험기 페이지"
+    }
+  ],
+  "confidence": "limited",
+  "notes": "원문 단위는 lbs·in·ft/sec 이며 환산값을 적었다. 경사각·규격 번호는 페이지에 없다."
+}

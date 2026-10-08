@@ -1,0 +1,218 @@
+{
+  "id": "flir-e-series",
+  "kind": "equipment_series",
+  "name": "FLIR E-Series Pro / XT (E5, E6, E8)",
+  "name_ko": "플리어 E 시리즈 열화상 카메라(E5 · E6 · E8)",
+  "manufacturer": "flir",
+  "brand": "E-Series",
+  "category": "thermal_imager",
+  "form_factor": "handheld",
+  "description": "점검용 보급형 휴대 열화상 카메라 계열. 현행 Pro 판(E5 Pro · E6 Pro · E8 Pro)은 160 × 120 ~ 320 × 240 해상도, 열 감도 <40 ~ <60 mK, -20 ~ 400 °C(E5) 또는 -20 ~ 550 °C 를 두 레인지로 잰다. 단종된 XT 판(E5-XT · E6-XT · E8-XT)은 같은 해상도에 시야 45° × 34°. 모두 7.5 ~ 13 µm, 9 Hz, 확도 ±2 °C 또는 ±2 %.",
+  "test_items": [
+    "thermography"
+  ],
+  "measurands": [
+    "surface_temperature",
+    "temperature_distribution",
+    "hotspot_location"
+  ],
+  "limits": {
+    "temperature_degC": {
+      "min": -20,
+      "max": 550,
+      "note": "두 레인지. E5 계열은 400 °C 까지"
+    },
+    "ir_resolution_pixels": {
+      "min": 19200,
+      "max": 76800,
+      "note": "160 × 120 ~ 320 × 240"
+    },
+    "thermal_sensitivity_degC": {
+      "min": 0.04,
+      "max": 0.1,
+      "note": "원문 mK @ 30 °C"
+    },
+    "wavelength_nm": {
+      "min": 7500,
+      "max": 13000,
+      "note": "원문 7.5 ~ 13 µm"
+    },
+    "frame_rate_fps": {
+      "values": [
+        9
+      ],
+      "note": "원문 9 Hz"
+    }
+  },
+  "models": [
+    {
+      "model": "E5 Pro",
+      "specs": {
+        "detector_pixels": "160 × 120",
+        "ir_resolution_pixels": 19200,
+        "thermal_sensitivity_degC": 0.06,
+        "temperature_degC": {
+          "min": -20,
+          "max": 400
+        },
+        "accuracy": "±2 °C 또는 읽음값의 ±2 %(주위 10 ~ 35 °C, 대상 0 °C 이상)",
+        "wavelength_nm": {
+          "min": 7500,
+          "max": 13000
+        },
+        "frame_rate_fps": 9,
+        "field_of_view_deg": "33° × 25°",
+        "weight_kg": 0.59
+      },
+      "note": "NETD <0.06 °C / <60 mK @ 30 °C"
+    },
+    {
+      "model": "E6 Pro",
+      "specs": {
+        "detector_pixels": "240 × 180",
+        "ir_resolution_pixels": 43200,
+        "thermal_sensitivity_degC": 0.05,
+        "temperature_degC": {
+          "min": -20,
+          "max": 550
+        },
+        "accuracy": "±2 °C 또는 읽음값의 ±2 %(주위 10 ~ 35 °C, 대상 0 °C 이상)",
+        "wavelength_nm": {
+          "min": 7500,
+          "max": 13000
+        },
+        "frame_rate_fps": 9,
+        "field_of_view_deg": "33° × 25°",
+        "weight_kg": 0.59
+      },
+      "note": "페이지가 NETD 를 '<0.06 °C (0.11 °F) / <50 mK at 30 °C' 로 함께 적어 mK 값을 따름"
+    },
+    {
+      "model": "E8 Pro",
+      "specs": {
+        "detector_pixels": "320 × 240",
+        "ir_resolution_pixels": 76800,
+        "thermal_sensitivity_degC": 0.04,
+        "temperature_degC": {
+          "min": -20,
+          "max": 550
+        },
+        "accuracy": "±2 °C 또는 읽음값의 ±2 %(주위 10 ~ 35 °C, 대상 0 °C 이상)",
+        "wavelength_nm": {
+          "min": 7500,
+          "max": 13000
+        },
+        "frame_rate_fps": 9,
+        "field_of_view_deg": "33°",
+        "weight_kg": 0.61
+      },
+      "note": "NETD <0.04 °C / <40 mK @ 30 °C. 시야는 페이지에 33° 만 적힘"
+    },
+    {
+      "model": "E5-XT",
+      "specs": {
+        "detector_pixels": "160 × 120",
+        "ir_resolution_pixels": 19200,
+        "thermal_sensitivity_degC": 0.1,
+        "temperature_degC": {
+          "min": -20,
+          "max": 400
+        },
+        "accuracy": "±2 °C 또는 읽음값의 ±2 %(주위 10 ~ 35 °C, 대상 0 °C 이상)",
+        "wavelength_nm": {
+          "min": 7500,
+          "max": 13000
+        },
+        "frame_rate_fps": 9,
+        "field_of_view_deg": "45° × 34°",
+        "weight_kg": 0.575
+      },
+      "note": "단종, 후속 E5 Pro. NETD <0.10 °C / <100 mK. MSX, Wi-Fi, IP54, 2 m 낙하"
+    },
+    {
+      "model": "E6-XT",
+      "specs": {
+        "detector_pixels": "240 × 180",
+        "ir_resolution_pixels": 43200,
+        "thermal_sensitivity_degC": 0.06,
+        "temperature_degC": {
+          "min": -20,
+          "max": 550
+        },
+        "accuracy": "±2 °C 또는 읽음값의 ±2 %(주위 10 ~ 35 °C)",
+        "wavelength_nm": {
+          "min": 7500,
+          "max": 13000
+        },
+        "frame_rate_fps": 9,
+        "field_of_view_deg": "45° × 34°",
+        "weight_kg": 0.575
+      },
+      "note": "단종, 후속 E6 Pro. NETD <0.06 °C / <60 mK"
+    },
+    {
+      "model": "E8-XT",
+      "specs": {
+        "detector_pixels": "320 × 240",
+        "ir_resolution_pixels": 76800,
+        "thermal_sensitivity_degC": 0.05,
+        "temperature_degC": {
+          "min": -20,
+          "max": 550
+        },
+        "accuracy": "±2 °C 또는 읽음값의 ±2 %(주위 10 ~ 35 °C)",
+        "wavelength_nm": {
+          "min": 7500,
+          "max": 13000
+        },
+        "frame_rate_fps": 9,
+        "field_of_view_deg": "45° × 34°",
+        "weight_kg": 0.575
+      },
+      "note": "단종, 후속 E8 Pro. NETD <0.05 °C / <50 mK"
+    }
+  ],
+  "relations": [
+    {
+      "type": "performs",
+      "target": "thermography"
+    },
+    {
+      "type": "same_family_as",
+      "target": "flir-exx-series"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://www.flir.com/products/e5-pro/",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지(HTML)"
+    },
+    {
+      "url": "https://www.flir.com/products/e6-pro/",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지(HTML)"
+    },
+    {
+      "url": "https://www.flir.com/products/e8-pro/",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지(HTML)"
+    },
+    {
+      "url": "https://www.flir.com/products/e5-xt/",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지(HTML). 단종, E5 Pro 안내"
+    },
+    {
+      "url": "https://www.flir.com/products/e6-xt/",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지(HTML). 단종, E6 Pro 안내"
+    },
+    {
+      "url": "https://www.flir.com/products/e8-xt/",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지(HTML). 단종, E8 Pro 안내"
+    }
+  ],
+  "confidence": "limited"
+}

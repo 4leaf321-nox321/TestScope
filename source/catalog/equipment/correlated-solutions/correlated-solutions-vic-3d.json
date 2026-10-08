@@ -1,0 +1,228 @@
+{
+  "id": "correlated-solutions-vic-3d",
+  "kind": "equipment_series",
+  "name": "Correlated Solutions VIC-3D Digital Image Correlation Systems",
+  "name_ko": "코릴레이티드 솔루션스 VIC-3D 3차원 DIC 시스템",
+  "manufacturer": "correlated-solutions",
+  "brand": "VIC-3D",
+  "category": "dic_strain_measurement",
+  "subcategory": "stereo_dic",
+  "form_factor": "portable",
+  "description": "스테레오 카메라로 시편 표면의 3차원 형상·변위·변형률을 전 영역에서 재는 DIC 시스템 계열. 변형률 0.005 %～2,000 % 이상, 변형률 분해능 5 με까지(시간 평균), 면내 변위 분해능 ± 시야 × 1/200,000(고속형 1/100,000), 시편 크기 1 mm 미만～100 m 초과. 준정적용 카메라는 1.6 MP 227 Hz～24.4 MP 15 Hz, 동적형 2.8 MP 400 Hz～45 MP 15 Hz, 고속형 1 MP 76,000 Hz～9.4 MP 1,250 Hz, 초고속형은 전 화소 100만～2,000만 fps. 32코어 CPU 한 대로 초당 최대 1,000,000 점 처리(웹 페이지). 준정적·동적·고속·초고속·진동(HS FFT)·적외선·실체 현미경·다중 시스템 구성과 Blue Hawk(고정 초점 일체형), 3D 마이크로 DIC(Blue Falcon, 소시야)가 있다.",
+  "test_items": [
+    "tensile",
+    "compression",
+    "fatigue"
+  ],
+  "measurands": [
+    "full_field_displacement",
+    "axial_strain",
+    "transverse_strain",
+    "poisson_ratio",
+    "shape_3d"
+  ],
+  "limits": {
+    "strain_range_pct": {
+      "min": 0.005,
+      "max": 2000,
+      "note": "PDF 원문 from 0.005% to > 2,000%(상한은 초과). 웹 페이지는 50 microstrain to 2500%+"
+    },
+    "strain_resolution_microstrain": {
+      "min": 5,
+      "note": "PDF 원문 「down to 5 (with time averaging)」 — 단위 기호가 추출에서 빠졌으나 µε 로 봄. 웹 페이지는 10-50 microstrain or better"
+    },
+    "data_rate_Hz": {
+      "max": 20000000,
+      "note": "초고속 구성 전 화소 1 million ~ 20 million fps. 웹 페이지는 최대 5,000,000 fps"
+    },
+    "detector_megapixels": {
+      "min": 1,
+      "max": 45,
+      "note": "Quasi-Static 1.6~24.4 MP, Dynamic 2.8~45 MP, High-Speed 1~9.4 MP(사양서 1쪽). 기능 안내서는 준정적 2~45 MP. 웹 페이지는 준정적 2.3~45 MP"
+    },
+    "field_of_view_mm": {
+      "min": 0.7,
+      "note": "Stereo Microscope 0.7 mm × 0.9 mm 부터. 대형 시야는 이론 한계 없음(2 m 초과는 손 표적으로 교정). 6 mm 미만은 Blue Falcon 또는 Stereo Microscope 필요"
+    },
+    "specimen_size_mm": {
+      "min": 1,
+      "max": 100000,
+      "note": "원문 Specimen sizes: <1 mm to >100 m(100 m=100000 mm 로 적음). 양 끝은 미만·초과 — 웹 페이지 값"
+    }
+  },
+  "models": [
+    {
+      "model": "VIC-3D Quasi-Static",
+      "specs": {
+        "detector_megapixels": {
+          "min": 1.6,
+          "max": 24.4
+        },
+        "frame_rate_fps": {
+          "min": 15,
+          "max": 227,
+          "note": "1.6 MP @ 227 Hz ~ 24.4 MP @ 15 Hz"
+        },
+        "max_frame_rate_fps": {
+          "max": 100
+        },
+        "field_of_view_mm": {
+          "min": 1,
+          "note": "5 MP @ 1 mm × 0.8 mm 부터"
+        },
+        "strain_range_pct": {
+          "min": 0.005,
+          "max": 2000
+        }
+      },
+      "note": "표준(준정적) 구성. 웹 페이지의 「VIC-3D」 항목. 실시간 전 영역 해석 최대 10 Hz(10,000 점/스텝), VIC-Gauge 3D 실시간 최대 500 Hz(아날로그 출력 4개까지)"
+    },
+    {
+      "model": "VIC-3D Dynamic",
+      "specs": {
+        "detector_megapixels": {
+          "min": 2.8,
+          "max": 45
+        },
+        "frame_rate_fps": {
+          "min": 15,
+          "max": 400,
+          "note": "2.8 MP @ 400 Hz ~ 45 MP @ 15 Hz"
+        },
+        "max_frame_rate_fps": {
+          "max": 1500
+        },
+        "field_of_view_mm": {
+          "min": 6.7,
+          "note": "5 MP @ 6.7 mm × 5.6 mm 부터"
+        },
+        "strain_range_pct": {
+          "min": 0.005,
+          "max": 2000
+        }
+      }
+    },
+    {
+      "model": "VIC-3D High-Speed",
+      "specs": {
+        "detector_megapixels": {
+          "min": 1,
+          "max": 9.4
+        },
+        "frame_rate_fps": {
+          "min": 1250,
+          "max": 76000,
+          "note": "1 MP @ 76,000 Hz ~ 9.4 MP @ 1,250 Hz(사양서). 기능 안내서는 전 화소 2,000 ~ 75,000 fps"
+        },
+        "max_frame_rate_fps": {
+          "max": 1000000,
+          "note": "기능 안내서: 화소 축소 시 최대 1 million fps. 사양서 표의 High-Speed 열은 Up to 20 MHz(초고속 카메라 포함으로 보임)"
+        },
+        "field_of_view_mm": {
+          "min": 20,
+          "note": "1 MP @ 20 mm × 20 mm 부터"
+        }
+      },
+      "note": "고속 카메라 구성. 면내 변위 분해능 ± FOV × 1/100,000, 면외 ± FOV × 1/50,000. 실시간 해석 해당 없음"
+    },
+    {
+      "model": "VIC-3D Ultra High-Speed",
+      "specs": {
+        "frame_rate_fps": {
+          "min": 1000000,
+          "max": 20000000,
+          "note": "전 화소 1 million ~ 20 million fps. 웹 페이지는 최대 5,000,000 fps"
+        }
+      }
+    },
+    {
+      "model": "VIC-3D HS FFT",
+      "note": "고속 카메라로 과도·정상 진동의 작동 변형 형상(ODS)을 재는 특허 모듈. 웹 페이지 표기 Vibration Analysis/FFT"
+    },
+    {
+      "model": "VIC-3D IR",
+      "note": "적외선 카메라를 더한 3카메라 시스템. 온도장을 3D 데이터에 겹쳐 국부 CTE 측정. 웹 페이지 표기 Infrared (IR)"
+    },
+    {
+      "model": "VIC-3D Stereo Microscope",
+      "specs": {
+        "field_of_view_mm": {
+          "min": 0.7,
+          "max": 9,
+          "note": "0.7 mm × 0.9 mm ~ 7 mm × 9 mm"
+        },
+        "detector_megapixels": {
+          "values": [
+            2.3,
+            3.2,
+            5
+          ]
+        }
+      },
+      "note": "실체 현미경 결합. 웹 페이지 표기 Stereo Microscopy"
+    },
+    {
+      "model": "VIC-3D Multi-System",
+      "note": "PC 한 대에 카메라 16대까지, 시점 8개까지 한 좌표계로 결합"
+    },
+    {
+      "model": "VIC-3D Blue Falcon",
+      "specs": {
+        "field_of_view_mm": {
+          "min": 4,
+          "max": 29,
+          "note": "4 mm × 4 mm ~ 29 mm × 25 mm(고정 시야)"
+        },
+        "detector_megapixels": {
+          "min": 8,
+          "max": 24.6
+        }
+      },
+      "note": "소시야용 일체형. 웹 페이지 표기 Blue Falcon(3D-Micro-DIC)"
+    },
+    {
+      "model": "VIC-3D Blue Hawk",
+      "specs": {
+        "field_of_view_mm": {
+          "min": 40,
+          "max": 400
+        },
+        "detector_megapixels": {
+          "min": 2.3,
+          "max": 24.6
+        }
+      },
+      "note": "고정 초점 일체형, 레이저 정렬"
+    },
+    {
+      "model": "VIC-EDU",
+      "note": "교육용 저가 일체형 시스템. 수치 사양 없음"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://www.correlatedsolutions.com/vic-3d",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지(HTML, correlatedsolutions.com) VIC-3D. 상세 사양서·플라이어는 PDF"
+    },
+    {
+      "file": "correlated-solutions/vic-3d-11_system_specifications_2026.pdf",
+      "pages": [
+        1
+      ],
+      "note": "VIC-3D 11 System Specifications — 구성별 해상도·프레임 속도·시야·분해능 표"
+    },
+    {
+      "file": "correlated-solutions/vic-3d-11_system-features_2026.pdf",
+      "pages": [
+        3,
+        6,
+        9,
+        10
+      ],
+      "note": "VIC-3D 11 System Features — 카메라 범위, 특수 시스템(Blue Hawk·Blue Falcon·Stereo Microscope·Ultra High-Speed 등)"
+    }
+  ],
+  "confidence": "catalog",
+  "notes": "PDF 로 확인: 변형률 범위(상한 2,000 % 로 바로잡음), 변형률 분해능(5 με 로 바로잡음), 카메라 화소·프레임 속도(초고속 최대 20 million fps 로 바로잡음), 구성별 시야. 구성 이름은 PDF 표기로 바꿈(VIC-3D → VIC-3D Quasi-Static, FFT → HS FFT, Stereo Microscopy → Stereo Microscope, Blue Falcon → VIC-3D Blue Falcon). 웹 값 그대로: 시편 크기 범위. 32코어 CPU 초당 100만 점 처리는 PDF 에 없음. 사양서 표의 변위 분해능 ± FOV × 1/200,000(면내)·1/100,000(면외)은 Quasi-Static·Dynamic 공용으로 보이나 열이 섞여 기종 칸에 넣지 않음. vic-3d_114_flyer.pdf 는 소프트웨어 11.4 출시 안내라 수치 사양이 없어 출처로 쓰지 않음."
+}

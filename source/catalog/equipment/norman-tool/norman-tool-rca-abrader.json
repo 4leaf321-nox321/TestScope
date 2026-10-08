@@ -1,0 +1,100 @@
+{
+  "id": "norman-tool-rca-abrader",
+  "kind": "equipment_series",
+  "name": "Norman Tool RCA Abrasion Wear Tester (7-IBB / 7-IBB-CC)",
+  "name_ko": "노먼 툴 RCA 마모 시험기 (7-IBB · 7-IBB-CC)",
+  "manufacturer": "norman-tool",
+  "brand": "RCA",
+  "category": "abrasion_tester",
+  "form_factor": "benchtop",
+  "description": "인쇄 · 도막 표면을 RCA 마모지로 반복 문질러 내마모성을 보는 고사이클 가속 마모 시험기. 7-IBB-CC 는 하중 55 · 175 · 275 g, 마모지 속도 2.1 in/s, 약 20 cycles/min, 자동 정지를 갖추고 폭 약 7½~9 in 시료를 통과식으로 넣는다. 전원 120 · 220 · 240 V 판이 있다.",
+  "test_items": [
+    "abrasion"
+  ],
+  "measurands": [
+    "cycles_to_failure"
+  ],
+  "materials": [
+    "inks",
+    "coatings",
+    "keypads",
+    "membrane switches"
+  ],
+  "standards": {
+    "compliance": [],
+    "test_methods": [
+      "ASTM F2357",
+      "ASTM F3152"
+    ]
+  },
+  "limits": {
+    "load_g": {
+      "values": [
+        55,
+        175,
+        275
+      ]
+    },
+    "cycle_rate_cpm": {
+      "values": [
+        20
+      ],
+      "note": "약 20 cycles/min"
+    }
+  },
+  "models": [
+    {
+      "model": "7-IBB",
+      "note": "제품 목록에 기종명만 있고 사양은 7-IBB-CC 페이지에만 실림"
+    },
+    {
+      "model": "7-IBB-CC",
+      "specs": {
+        "load_g": [
+          55,
+          175,
+          275
+        ],
+        "cycle_rate_cpm": {
+          "value": 20,
+          "note": "약"
+        },
+        "weight_kg": {
+          "value": 16.8,
+          "note": "원문 37 lbs. (16.8 Kgs)"
+        },
+        "footprint_mm": "원문 10″ × 24″ (페이지의 '40mm x 95mm' 환산은 맞지 않음)",
+        "power": "120 / 220 / 240 V"
+      },
+      "note": "주문 기종 7-IBB-CC-110V · 7-IBB-CC-220V · 7-IBB-CC-240V(요청 시); 마모지 속도: 2.1 in/s; 최대 시료 폭: 약 7½~9 in (통과식)"
+    }
+  ],
+  "consumables": [
+    "RCA 마모지(RCA Wear Paper)",
+    "마모 휠 고무 O-링"
+  ],
+  "relations": [
+    {
+      "type": "performs",
+      "target": "abrasion"
+    },
+    {
+      "type": "same_family_as",
+      "target": "taber-linear-abraser-5770"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://normantool.com/test-equipment/rca-abrasion-wear-tester/",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지(7-IBB-CC)"
+    },
+    {
+      "url": "https://normantool.com/test-equipment/",
+      "retrieved": "2026-10-08",
+      "note": "제조사 시험 장비 목록(7-IBB · 7-IBB-CC)"
+    }
+  ],
+  "notes": "시험 규격 판은 ASTM F2357-04 · F2357-10 · F3152-16 으로 적혀 있다.",
+  "confidence": "limited"
+}

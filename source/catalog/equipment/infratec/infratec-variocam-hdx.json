@@ -1,0 +1,63 @@
+{
+  "id": "infratec-variocam-hdx",
+  "kind": "equipment_series",
+  "name": "InfraTec VarioCAM HDx head Uncooled Infrared Camera",
+  "name_ko": "인프라텍 VarioCAM HDx head 비냉각 적외선 카메라",
+  "manufacturer": "infratec",
+  "brand": "VarioCAM",
+  "category": "thermal_imager",
+  "form_factor": "camera",
+  "description": "비냉각 검출기의 고정형 적외선 카메라 헤드. 640 × 480(선택 1,024 × 768) 화소, 전 화면 30 Hz, 부분 화면 60 Hz. 잠금(Lock-in) 열화상 판이 있다.",
+  "test_items": [
+    "thermography"
+  ],
+  "measurands": [
+    "surface_temperature",
+    "temperature_distribution",
+    "hotspot_location"
+  ],
+  "limits": {
+    "ir_resolution_pixels": {
+      "max": 786432,
+      "note": "선택 1,024 × 768",
+      "uncertain": true
+    }
+  },
+  "models": [
+    {
+      "model": "VarioCAM HDx head",
+      "specs": {
+        "detector_pixels": "640 × 480",
+        "ir_resolution_pixels": 307200,
+        "frame_rate_fps": 30
+      },
+      "note": "선택 1,024 × 768. 부분 화면 60 Hz",
+      "uncertain": true
+    },
+    {
+      "model": "VarioCAM HDx head Lock-in",
+      "note": "검색 결과 페이지 제목에서 이름만 확인",
+      "uncertain": true
+    }
+  ],
+  "relations": [
+    {
+      "type": "performs",
+      "target": "thermography"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://www.infratec-infrared.com/thermography/infrared-camera/variocam-hdx-head-lock-in/",
+      "retrieved": "2026-10-08",
+      "note": "제조사 페이지 본문이 스크립트로 그려져 직접 읽지 못함(텍스트 38자). 검색 엔진이 보여 준 제조사 페이지 발췌로 읽음(페이지를 직접 열지 못함). 이 출처의 값은 uncertain"
+    },
+    {
+      "url": "https://www.infratec-infrared.com/thermography/infrared-camera/",
+      "retrieved": "2026-10-08",
+      "note": "제조사 페이지 본문이 스크립트로 그려져 직접 읽지 못함(텍스트 38자). 검색 엔진이 보여 준 제조사 페이지 발췌로 읽음(페이지를 직접 열지 못함). 이 출처의 값은 uncertain. 카메라 목록 페이지"
+    }
+  ],
+  "confidence": "limited",
+  "notes": "열 감도 · 측정 범위는 발췌에 없어 비웠다. 휴대형 VarioCAM HD research 등 다른 판은 확인하지 못함."
+}

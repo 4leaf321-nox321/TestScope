@@ -1,0 +1,118 @@
+{
+  "id": "lab-equipment-sd-series-shock",
+  "kind": "equipment_series",
+  "name": "L.A.B. Equipment SD-Series Mechanical Shock Test Systems (SD-10 / SD-16 / SD-24)",
+  "name_ko": "L.A.B. SD 시리즈 기계식 충격 시험기",
+  "manufacturer": "lab-equipment",
+  "brand": "SD-Series",
+  "category": "shock_test_machine",
+  "drive": "free_fall_pneumatic",
+  "form_factor": "floor",
+  "description": "자유낙하식 기계 충격 시험기. 군·산업 규격에 맞는 반정현·사각파·톱니 펄스를 재현성 있게 낸다(파형별 옵션 프로그래머). SD-10 은 254 mm 테이블·14 kg·3,500 G·최소 0.3 ms, SD-16 은 406 mm·91 kg·1,500 G·0.5 ms, SD-24 는 610 mm·181 kg·1,000 G·1 ms. 표준 낙하 높이 1,067~1,524 mm.",
+  "test_items": [
+    "mechanical_shock"
+  ],
+  "measurands": [
+    "peak_acceleration",
+    "shock_response_spectrum"
+  ],
+  "limits": {
+    "acceleration_g": {
+      "min": 1000,
+      "max": 3500
+    },
+    "pulse_duration_ms": {
+      "min": 0.3,
+      "note": "최소 펄스 폭"
+    },
+    "payload_kg": {
+      "min": 14,
+      "max": 181
+    },
+    "table_size_mm": {
+      "values": [
+        254,
+        406,
+        610
+      ]
+    },
+    "drop_height_mm": {
+      "values": [
+        1067,
+        1524
+      ],
+      "note": "표준 낙하 높이"
+    }
+  },
+  "models": [
+    {
+      "model": "SD-10",
+      "specs": {
+        "table_size_mm": [
+          254,
+          254
+        ],
+        "payload_kg": 14,
+        "acceleration_g": 3500,
+        "pulse_duration_ms": {
+          "min": 0.3
+        },
+        "drop_height_mm": 1067
+      }
+    },
+    {
+      "model": "SD-16",
+      "specs": {
+        "table_size_mm": [
+          406,
+          406
+        ],
+        "payload_kg": 91,
+        "acceleration_g": 1500,
+        "pulse_duration_ms": {
+          "min": 0.5
+        },
+        "drop_height_mm": 1524
+      }
+    },
+    {
+      "model": "SD-24",
+      "specs": {
+        "table_size_mm": [
+          610,
+          610
+        ],
+        "payload_kg": 181,
+        "acceleration_g": 1000,
+        "pulse_duration_ms": {
+          "min": 1
+        },
+        "drop_height_mm": 1524
+      }
+    }
+  ],
+  "pulse_waveforms": [
+    "반정현",
+    "사각파(square-wave)",
+    "톱니(sawtooth) — 파형별 옵션 프로그래머"
+  ],
+  "relations": [
+    {
+      "type": "performs",
+      "target": "mechanical_shock"
+    },
+    {
+      "type": "same_family_as",
+      "target": "lab-equipment-autoshock-ii"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://www.labequipment.com/sd-series/",
+      "retrieved": "2026-10-08",
+      "note": "제조사 SD-Series 페이지"
+    }
+  ],
+  "confidence": "limited",
+  "notes": "속도 변화·규격 번호는 페이지에 없다."
+}

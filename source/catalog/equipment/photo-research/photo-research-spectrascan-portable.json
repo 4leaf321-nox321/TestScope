@@ -1,0 +1,110 @@
+{
+  "id": "photo-research-spectrascan-portable",
+  "kind": "equipment_series",
+  "name": "Photo Research SpectraScan PR-655 / PR-670 Portable Spectroradiometer",
+  "name_ko": "포토리서치 SpectraScan PR-655 / PR-670 휴대형 분광복사계",
+  "manufacturer": "photo-research",
+  "brand": "SpectraScan",
+  "category": "spectroradiometer",
+  "form_factor": "portable",
+  "description": "Pritchard 광학계의 배터리식 휴대형 분광복사계. 측정 파장 380 ~ 780 nm, PR-670 은 256 소자 · 1.56 nm/화소, 측정 개구 1° · 1/2° · 1/4° · 1/8° 자동 전환, 휘도 0.2 ~ 2,500,000 fL. PR-655 는 128 소자 · 3.12 nm/화소, 1° 개구(선택 1/2°), 0.2 ~ 30,000 fL. 디스플레이 주사율에 맞추는 AutoSync, 터치 LCD, USB · SD 를 갖춘다.",
+  "test_items": [
+    "photometry_colorimetry"
+  ],
+  "measurands": [
+    "luminance",
+    "chromaticity",
+    "spectral_radiance",
+    "correlated_color_temperature",
+    "dominant_wavelength"
+  ],
+  "limits": {
+    "wavelength_nm": {
+      "min": 380,
+      "max": 780
+    },
+    "luminance_cd_m2": {
+      "min": 0.6852,
+      "max": 8565000,
+      "note": "원문 0.2 ~ 2,500,000 fL(PR-670). 1 fL = 3.426 cd/m² 로 환산"
+    },
+    "measuring_angle_deg": {
+      "values": [
+        1,
+        0.5,
+        0.25,
+        0.125
+      ]
+    }
+  },
+  "models": [
+    {
+      "model": "PR-655",
+      "specs": {
+        "wavelength_nm": {
+          "min": 380,
+          "max": 780
+        },
+        "wavelength_resolution_nm": 3.12,
+        "detector": "128 detector elements",
+        "luminance_cd_m2": {
+          "min": 0.6852,
+          "max": 102780
+        },
+        "measuring_angle_deg": [
+          1,
+          0.5
+        ],
+        "interfaces": "USB, optional Bluetooth or RS-232, SD"
+      },
+      "note": "휘도 원문 0.2 fL to 30,000 fL(외부 ND 필터 없이), 1 fL = 3.426 cd/m² 로 환산. 개구 1°(선택 1/2°). 부품 번호 6655-0001-00"
+    },
+    {
+      "model": "PR-670",
+      "specs": {
+        "wavelength_nm": {
+          "min": 380,
+          "max": 780
+        },
+        "wavelength_resolution_nm": 1.56,
+        "detector": "256 detector elements",
+        "luminance_cd_m2": {
+          "min": 0.6852,
+          "max": 8565000
+        },
+        "measuring_angle_deg": [
+          1,
+          0.5,
+          0.25,
+          0.125
+        ],
+        "interfaces": "USB, optional Bluetooth or RS-232, SD"
+      },
+      "note": "휘도 원문 0.2 fL to 2,500,000 fL(외부 ND 필터 없이), 1 fL = 3.426 cd/m² 로 환산. 개구 1°, 1/2°, 1/4°, 1/8° 자동. 부품 번호 6670-0001-00"
+    }
+  ],
+  "relations": [
+    {
+      "type": "performs",
+      "target": "photometry_colorimetry"
+    },
+    {
+      "type": "same_family_as",
+      "target": "photo-research-spectrascan-benchtop"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://novanta.com/precision-medicine/product/photo-research-pr-655/",
+      "retrieved": "2026-10-08",
+      "note": "제조사(Novanta) 제품 페이지(HTML). jadaktech.com 주소가 이리로 넘어감"
+    },
+    {
+      "url": "https://novanta.com/precision-medicine/product/photo-research-pr-670/",
+      "retrieved": "2026-10-08",
+      "note": "제조사(Novanta) 제품 페이지(HTML)"
+    }
+  ],
+  "confidence": "limited",
+  "notes": "휘도 · 색도 확도 수치는 제품 페이지에 없음. PR-680 은 현재 제조사 목록에 없어 넣지 않았다."
+}

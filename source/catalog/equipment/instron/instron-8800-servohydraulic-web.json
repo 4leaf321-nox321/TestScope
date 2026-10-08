@@ -1,0 +1,121 @@
+{
+  "id": "instron-8800-servohydraulic-web",
+  "kind": "equipment_series",
+  "name": "Instron 8800 Series Servohydraulic Fatigue Testing Systems (8872 / 8874 tabletop, 8801 / 8802 / 8862 floor)",
+  "name_ko": "인스트론 8800 시리즈 서보유압 피로시험기(웹 보강: 8802 · 8862)",
+  "manufacturer": "instron",
+  "category": "servohydraulic_fatigue",
+  "description": "원 객체 instron-8800-servohydraulic 에 기종 행이 없는 8802 와 8862 를 보탠다. 8802 는 2주식 바닥형 서보유압 피로시험기, 8862 는 저변형속도 LCF·TMF 용 서보전동식(전기 액추에이터) 시스템이다.",
+  "test_items": [
+    "fatigue"
+  ],
+  "models": [
+    {
+      "model": "8802",
+      "form_factor": "floor",
+      "specs": {
+        "dynamic_force_kN": {
+          "value": 250,
+          "note": "±250 kN(±56 kip). 액추에이터 정격 표준 100/250 kN"
+        },
+        "stroke_mm": {
+          "value": 150,
+          "note": "usable stroke 150 mm(5.9 in), 표준 구성"
+        },
+        "vertical_test_space_mm": {
+          "value": 1240,
+          "note": "Daylight opening 1240 mm(48.8 in) — 최대 용량 액추에이터 중간 스트로크에서 로드셀~액추에이터 최대. 크로스헤드~플래튼 간격 307~1515 mm(표준 높이) / 307~1975 mm(연장 높이)"
+        },
+        "frame_stiffness_kN_mm": {
+          "value": 585,
+          "note": "크로스헤드 높이 1000 mm 기준"
+        }
+      },
+      "note": "이중 작동 서보유압 액추에이터(하부 베이스 또는 상부 크로스헤드), Dynacell 로드셀. 하중 정확도 지시값 ±0.5% 또는 로드셀 용량 0.005% 중 큰 값. 유압 207 bar(3000 psi). 바닥 면적 1.2 m² 미만"
+    },
+    {
+      "model": "8801-TMF",
+      "form_factor": "floor",
+      "specs": {
+        "dynamic_force_kN": {
+          "value": 100,
+          "note": "±100 kN(±22 kip). 특징 문단은 100 kN 또는 250 kN 프레임을 말한다"
+        },
+        "stroke_mm": {
+          "value": 150,
+          "note": "actuator stroke(total) 150 mm(6 in)"
+        },
+        "vertical_test_space_mm": {
+          "value": 1403,
+          "note": "Daylight opening 1403 mm(55 in), 테이블~크로스헤드 최대"
+        },
+        "frame_stiffness_kN_mm": {
+          "value": 390,
+          "note": "daylight 1 m 기준"
+        },
+        "weight_kg": {
+          "value": 900,
+          "note": "약 900 kg(1984 lb), 참고값"
+        }
+      },
+      "note": "8801 서보유압 프레임을 고친 열기계 피로(TMF) 시스템. 유도 가열(시편 승온 최대 50 °C/s), 고온 신율계, 8800MT 제어기, ASTM E2368 · ISO 12111. 유압 207 bar(3000 psi)"
+    },
+    {
+      "model": "8862",
+      "form_factor": "floor",
+      "specs": {
+        "dynamic_force_kN": {
+          "value": 100,
+          "note": "8862-TMF 구성 ±100 kN(±22 kip)"
+        },
+        "stroke_mm": {
+          "value": 200,
+          "note": "actuator stroke(total) 200 mm(8 in)"
+        },
+        "vertical_test_space_mm": {
+          "value": 1515,
+          "note": "Daylight opening 1515 mm(60 in), 테이블~크로스헤드 최대"
+        },
+        "frame_stiffness_kN_mm": {
+          "value": 595,
+          "note": "daylight 1 m 기준"
+        },
+        "weight_kg": {
+          "value": 1100,
+          "note": "약 1100 kg(2425 lb), 참고값"
+        }
+      },
+      "note": "서보전동식(servo-electric, 백래시 없는 전기 액추에이터) — 서보유압이 아니다. 유압 공급 불필요. 값은 TMF 구성 사양(tmf-pod). 원 객체 이름에 8862 가 들어 있어 같은 계열로 둔다",
+      "variant": "8862-TMF"
+    }
+  ],
+  "supplements": "instron-8800-servohydraulic",
+  "sources": [
+    {
+      "url": "https://www.instron.com/en/products/testing-systems/dynamic-and-fatigue-systems/servohydraulic-fatigue/8801-8802/",
+      "retrieved": "2026-10-08",
+      "note": "제조사 페이지가 자동 조회를 막아(HTTP 403/406) 직접 열지 못함. 값은 웹 검색 엔진이 이 페이지에서 뽑은 발췌로만 확인했다 — 값마다 uncertain. 8801: ±100 kN, 사용 스트로크 150 mm / 8802: ±250 kN, 사용 스트로크 150 mm"
+    },
+    {
+      "url": "https://www.instron.com/en/products/testing-systems/dynamic-and-fatigue-systems/8862-electric-actuator/",
+      "retrieved": "2026-10-08",
+      "note": "제조사 페이지가 자동 조회를 막아(HTTP 403/406) 직접 열지 못함. 값은 웹 검색 엔진이 이 페이지에서 뽑은 발췌로만 확인했다 — 값마다 uncertain. 8862-TMF 구성: 동적 ±100 kN, 액추에이터 전 행정 200 mm, 서보전동식 LCF·TMF 시험"
+    },
+    {
+      "file": "instron/8802-servohydraulic-fatigue-testing-system-1.pdf",
+      "pages": [
+        1,
+        2
+      ]
+    },
+    {
+      "file": "instron/tmf-pod.pdf",
+      "pages": [
+        1,
+        4
+      ]
+    }
+  ],
+  "confidence": "catalog",
+  "notes": "PDF 로 확인: 8802 동적 하중·스트로크·daylight·프레임 강성(8802 사양서), 8862-TMF·8801-TMF 하중·스트로크·daylight·강성·무게(TMF 사양서). 8802 사양서 2쪽은 표와 도면이 섞여 추출돼 프레임 무게·외형 치수는 넣지 않았다. 검색 발췌의 8801 값(±100 kN, 사용 스트로크 150 mm)은 TMF 사양서의 8801-TMF 값과 같다. 8801·8872·8874 단독 데이터시트 PDF 는 pending_pdfs 에 적었다."
+}

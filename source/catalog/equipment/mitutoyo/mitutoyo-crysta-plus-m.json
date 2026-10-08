@@ -1,0 +1,144 @@
+{
+  "id": "mitutoyo-crysta-plus-m",
+  "kind": "equipment_series",
+  "name": "CRYSTA-Plus M Series Manual Floating Type CMM",
+  "name_ko": "미쓰토요 CRYSTA-Plus M 수동형 3차원 측정기",
+  "manufacturer": "mitutoyo",
+  "category": "coordinate_measuring_machine",
+  "form_factor": "floor",
+  "description": "손으로 움직이는 플로팅형 수동 3차원 측정기 계열(Series 196)임. 측정 범위 400 × 400 × 300 mm(M443), 500 × 700 × 400 mm(M574), 700 × 1000 × 600 mm(M7106). 고정밀 에어 베어링과 경량 가동부, 축별 원터치 에어 클램프, 전 범위 미세 이송, 온도 보정을 갖춤.",
+  "test_items": [],
+  "limits": {
+    "measuring_range_x_mm": {
+      "min": 400,
+      "max": 700
+    },
+    "measuring_range_y_mm": {
+      "min": 400,
+      "max": 1000
+    },
+    "measuring_range_z_mm": {
+      "min": 300,
+      "max": 600
+    }
+  },
+  "models": [
+    {
+      "model": "CRYSTA-Plus M443",
+      "specs": {
+        "measuring_range_x_mm": 400,
+        "measuring_range_y_mm": 400,
+        "measuring_range_z_mm": 300,
+        "length_measuring_error_mpe": "E = (3.0 + 4L/1000) µm, 20 °C, ISO 10360-2(MH20i/MH20/TP20, 스타일러스 L10 mm). 프로빙 오차 R 4.0 µm",
+        "specimen_height_mm": {
+          "value": 480,
+          "note": "원문 Workpiece maximum height 480 mm"
+        },
+        "specimen_mass_kg": {
+          "value": 180,
+          "note": "원문 Workpiece maximum mass 180 kg"
+        },
+        "table_size_mm": [
+          624,
+          805
+        ],
+        "weight_kg": {
+          "value": 410,
+          "note": "원문 Mass of main unit (including machine stand) 410 kg"
+        },
+        "footprint_mm": [
+          981,
+          1047,
+          1967
+        ]
+      },
+      "note": "Bulletin No. 2227 p.9 사양표. 분해능 0.0005 mm, 텍스트 추출에서 값 열이 한 줄 위로 밀려 있어 항목 순서로 맞춰 읽음(측정 범위가 기존 값과 일치)"
+    },
+    {
+      "model": "CRYSTA-Plus M574",
+      "specs": {
+        "measuring_range_x_mm": 500,
+        "measuring_range_y_mm": 700,
+        "measuring_range_z_mm": 400,
+        "length_measuring_error_mpe": "E = (3.5 + 4L/1000) µm, 20 °C, ISO 10360-2(MH20i/MH20/TP20, 스타일러스 L10 mm). 프로빙 오차 R 4.0 µm",
+        "specimen_height_mm": {
+          "value": 595,
+          "note": "원문 Workpiece maximum height 595 mm"
+        },
+        "specimen_mass_kg": {
+          "value": 180,
+          "note": "원문 Workpiece maximum mass 180 kg"
+        },
+        "table_size_mm": [
+          764,
+          1175
+        ],
+        "weight_kg": {
+          "value": 646,
+          "note": "원문 Mass of main unit (including machine stand) 646 kg"
+        },
+        "footprint_mm": [
+          1122,
+          1434,
+          2267
+        ]
+      },
+      "note": "Bulletin No. 2227 p.9 사양표. 분해능 0.0005 mm, 텍스트 추출에서 값 열이 한 줄 위로 밀려 있어 항목 순서로 맞춰 읽음(측정 범위가 기존 값과 일치)"
+    },
+    {
+      "model": "CRYSTA-Plus M7106",
+      "specs": {
+        "measuring_range_x_mm": 700,
+        "measuring_range_y_mm": 1000,
+        "measuring_range_z_mm": 600,
+        "length_measuring_error_mpe": "E = (4.5 + 4.5L/1000) µm, 20 °C, ISO 10360-2(MH20i/MH20/TP20, 스타일러스 L10 mm). 프로빙 오차 R 5.0 µm",
+        "specimen_height_mm": {
+          "value": 800,
+          "note": "원문 Workpiece maximum height 800 mm"
+        },
+        "specimen_mass_kg": {
+          "value": 800,
+          "note": "원문 Workpiece maximum mass 800 kg"
+        },
+        "table_size_mm": [
+          900,
+          1740
+        ],
+        "weight_kg": {
+          "value": 1800,
+          "note": "원문 Mass of main unit (including machine stand) 1800 kg"
+        },
+        "footprint_mm": [
+          1460,
+          2017,
+          2840
+        ]
+      },
+      "note": "Bulletin No. 2227 p.9 사양표. 분해능 0.0005 mm, 텍스트 추출에서 값 열이 한 줄 위로 밀려 있어 항목 순서로 맞춰 읽음(측정 범위가 기존 값과 일치)"
+    }
+  ],
+  "features": [
+    "전 측정 범위 연속 미세 이송",
+    "온도 보정",
+    "고정밀 에어 베어링 · 경량 가동부",
+    "축별 원터치 에어 클램프",
+    "블라인드 홀용 LED 조명(옵션)",
+    "프로브 방향 바꿀 때 오트리거 방지 스위치"
+  ],
+  "sources": [
+    {
+      "url": "https://willrich.com/product/mitutuyo-crysta-plus-m4435747106-series-196-manual-floating-type-cmm/",
+      "retrieved": "2026-10-08",
+      "note": "대리점(Willrich) 제품 페이지. 제조사 영문 제품 페이지를 찾지 못해 씀. 측정 범위 3종과 특징. 사양표는 이미지라 읽지 못함"
+    },
+    {
+      "file": "mitutoyo/mitutoyo_-crystaplusm.pdf",
+      "pages": [
+        4,
+        9
+      ]
+    }
+  ],
+  "confidence": "catalog",
+  "notes": "PDF(Mitutoyo America Bulletin No. 2227, 대리점 Willrich 표지)로 확인: 3기종 측정 범위, 길이 측정 오차 E · 프로빙 오차 R, 분해능, 작업물 최대 높이·질량, 측정 테이블 유효 크기, 외형(W×D×H)·질량. 정확도 보증 온도 15~30 °C(변화 2 °C/h·5 °C/24 h 이하, 기울기 1 °C/m 이하). M544 는 검색 결과 중고 매물 제목에만 보이고 PDF 에도 없어 넣지 않음."
+}

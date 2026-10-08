@@ -1,0 +1,64 @@
+{
+  "id": "helmut-fischer-phascope-pmp10",
+  "kind": "equipment_model",
+  "name": "Helmut Fischer PHASCOPE PMP10",
+  "name_ko": "헬무트 피셔 PHASCOPE PMP10 위상 감응 와전류 두께계",
+  "manufacturer": "helmut-fischer",
+  "brand": "PHASCOPE",
+  "category": "coating_surface_test",
+  "form_factor": "handheld",
+  "description": "위상 감응 와전류법으로 강 위 아연 · 니켈 · 구리 도금, PCB 도금 관통홀, 거친 면 · 곡면, 강 위 용사 알루미늄(TSA) 두께를 재는 휴대형 두께계. 측정 범위 1~200 µm(도막-기재 조합과 프로브에 따름), 강 · 알루미늄 기재 자동 인식, 측정값 20,000 개 저장, RS232(옵션 USB) 전송.",
+  "test_items": [
+    "coating_thickness"
+  ],
+  "measurands": [
+    "coating_thickness"
+  ],
+  "materials": [
+    "zinc on steel",
+    "nickel on steel",
+    "copper on steel",
+    "PCB plated-through holes",
+    "thermally sprayed aluminium"
+  ],
+  "limits": {
+    "coating_thickness_um": {
+      "min": 1,
+      "max": 200,
+      "note": "도막-기재 조합과 프로브에 따름"
+    }
+  },
+  "models": [
+    {
+      "model": "PHASCOPE PMP10",
+      "specs": {
+        "coating_thickness_um": {
+          "min": 1,
+          "max": 200
+        },
+        "principle": "위상 감응 와전류",
+        "interfaces": "RS232 (옵션 USB)"
+      },
+      "note": "저장: 20,000 개"
+    }
+  ],
+  "relations": [
+    {
+      "type": "performs",
+      "target": "coating_thickness"
+    },
+    {
+      "type": "same_family_as",
+      "target": "helmut-fischer-fischerscope-mms-pc2"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://www.helmut-fischer.com/products/tactile-measuring-devices/phascope-pmp10",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지"
+    }
+  ],
+  "notes": "정확도 · 외형은 페이지에 없다.",
+  "confidence": "limited"
+}

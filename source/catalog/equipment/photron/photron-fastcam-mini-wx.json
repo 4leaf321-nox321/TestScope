@@ -1,0 +1,119 @@
+{
+  "id": "photron-fastcam-mini-wx",
+  "kind": "equipment_series",
+  "name": "Photron FASTCAM Mini WX",
+  "name_ko": "포트론 FASTCAM Mini WX 고속 카메라",
+  "manufacturer": "photron",
+  "brand": "FASTCAM",
+  "category": "high_speed_swir_camera",
+  "subcategory": "high_speed_camera",
+  "form_factor": "camera",
+  "description": "4 메가픽셀(2,048 × 2,048) CMOS 센서의 고해상도 소형 고속 카메라 계열. WX100 은 2,048 × 2,048 에서 1,080 fps, Full HD(1,920 × 1,080) 에서 2,000 fps, 화소를 줄이면 최대 80,000 fps(type 80K). 셔터 1 ms ~ 2.7 µs, 컬러 ISO 2,000, 메모리 8·16·32 GB, 무게 1.6 kg.",
+  "test_items": [],
+  "limits": {
+    "resolution_pixels": {
+      "max": 4194304,
+      "note": "2,048 × 2,048"
+    },
+    "frame_rate_fps": {
+      "min": 750,
+      "max": 1080,
+      "note": "전 화소. WX50 750 / WX100 1,080 fps. WX100 은 Full HD 에서 2,000 fps"
+    },
+    "max_frame_rate_fps": {
+      "max": 80000,
+      "note": "WX100 type 80K"
+    },
+    "min_exposure_time_s": {
+      "min": 2.7e-06,
+      "note": "셔터 1 ms ~ 2.7 µs"
+    }
+  },
+  "models": [
+    {
+      "model": "Mini WX100",
+      "specs": {
+        "detector": "4-Megapixel CMOS Image Sensor",
+        "detector_pixels": "2048 × 2048",
+        "resolution_pixels": 4194304,
+        "frame_rate_fps": 1080,
+        "max_frame_rate_fps": 80000,
+        "min_exposure_time_s": 2.7e-06,
+        "memory_GB": [
+          8,
+          16,
+          32
+        ],
+        "interfaces": "Gigabit Ethernet",
+        "weight_kg": 1.6,
+        "pixel_pitch_um": 10,
+        "adc_resolution_bit": {
+          "value": 12,
+          "note": "원문 36-bit color(RGB 각 12 bit). 하드웨어 매뉴얼: 흑백 12 bit"
+        }
+      },
+      "note": "1,920 × 1,080 에서 2,000 fps. 최대 80,000 fps 는 Mini WX100 type 80K(256 × 32 화소). 컬러 ISO 2,000. 크기 120 × 120 × 99 mm. 하드웨어 매뉴얼은 type 80KC(컬러) · 80KM(흑백), 메모리 4 GB 판도 적고 최단 셔터를 1/360,000 s(약 2.8 µs)로 적음"
+    },
+    {
+      "model": "Mini WX50",
+      "specs": {
+        "detector": "CMOS image sensor",
+        "detector_pixels": "2048 × 2048",
+        "resolution_pixels": 4194304,
+        "pixel_pitch_um": 10,
+        "frame_rate_fps": 750,
+        "max_frame_rate_fps": 67500,
+        "min_exposure_time_s": {
+          "value": 2.8e-06,
+          "note": "최단 셔터 1/360,000 s(약 2.8 µs)"
+        },
+        "memory_GB": [
+          4,
+          8,
+          16,
+          32
+        ],
+        "adc_resolution_bit": {
+          "value": 12,
+          "note": "흑백 12 bit, 컬러 RGB 각 12 bit"
+        },
+        "interfaces": "Gigabit Ethernet",
+        "weight_kg": 1.6
+      },
+      "note": "하드웨어 매뉴얼(Rev 4.08)의 사양 · 형식표. 형식 type 67.5KC(컬러) · 67.5KM(흑백), 메모리 4 · 8 · 16 · 32 GB. 제품 페이지 · 데이터시트에는 WX100 만 실림"
+    }
+  ],
+  "features": [
+    "4 메가픽셀 고해상도",
+    "Full HD 2,000 fps",
+    "메모리 8·16·32 GB"
+  ],
+  "sources": [
+    {
+      "url": "https://photron.com/fastcam-mini-wx/",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지(HTML). WX100 사양만 실림"
+    },
+    {
+      "file": "photron/mini-wx_02.17.2023.pdf",
+      "pages": [
+        1,
+        2,
+        3
+      ],
+      "note": "제조사 Mini WX100 데이터시트 PDF(2023-02-17)"
+    },
+    {
+      "file": "photron/fastcam_mini_wx50_100_hw_manual_rev408eng.pdf",
+      "pages": [
+        16,
+        42,
+        43,
+        51
+      ],
+      "note": "제조사 Mini WX50/100 하드웨어 매뉴얼 PDF(Rev 4.08). WX50 사양"
+    }
+  ],
+  "confidence": "catalog",
+  "notes": "PDF 로 확인: WX100 의 해상도 · 전 화소 · Full HD · 최대 프레임 속도 · 셔터 2.7 µs · 메모리 · 인터페이스 · 무게(화소 10 µm, ADC 를 더함), WX50 의 사양 전체(하드웨어 매뉴얼에서 새로 채우고 uncertain 을 지움)."
+}

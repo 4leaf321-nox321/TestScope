@@ -1,0 +1,75 @@
+{
+  "id": "rigol-dho4000",
+  "kind": "equipment_series",
+  "name": "DHO4000 Series Digital Oscilloscope",
+  "name_ko": "리골 DHO4000 디지털 오실로스코프",
+  "manufacturer": "rigol",
+  "brand": "DHO",
+  "category": "oscilloscope",
+  "subcategory": "high_definition_oscilloscope",
+  "form_factor": "benchtop",
+  "description": "200~800 MHz 대역의 4채널 12 bit 오실로스코프 계열임. 4 GSa/s, 250 Mpts, 50 Kwfms/s.",
+  "test_items": [],
+  "limits": {
+    "bandwidth_Hz": {
+      "min": 200000000,
+      "max": 800000000
+    },
+    "sample_rate_Sa_s": {
+      "max": 4000000000
+    },
+    "record_length_pts": {
+      "max": 250000000
+    },
+    "channels": {
+      "values": [
+        4
+      ]
+    },
+    "adc_resolution_bit": {
+      "values": [
+        12
+      ]
+    }
+  },
+  "models": [
+    {
+      "model": "DHO4204",
+      "specs": {
+        "bandwidth_Hz": 200000000,
+        "channels": 4,
+        "sample_rate_Sa_s": 4000000000,
+        "record_length_pts": 250000000,
+        "adc_resolution_bit": 12
+      }
+    },
+    {
+      "model": "DHO4404",
+      "specs": {
+        "bandwidth_Hz": 400000000,
+        "channels": 4,
+        "sample_rate_Sa_s": 4000000000,
+        "record_length_pts": 250000000,
+        "adc_resolution_bit": 12
+      }
+    },
+    {
+      "model": "DHO4804",
+      "specs": {
+        "bandwidth_Hz": 800000000,
+        "channels": 4,
+        "sample_rate_Sa_s": 4000000000,
+        "record_length_pts": 250000000,
+        "adc_resolution_bit": 12
+      }
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://www.rigolna.com/products/digital-oscilloscopes/dho4000/",
+      "retrieved": "2026-10-08",
+      "note": "리골 북미 법인 사이트(rigolna.com)의 제품 페이지 기종 표. 원문 12 Bit, 4 GSa/s, 250 Mpts, 50 Kwfms/s"
+    }
+  ],
+  "confidence": "limited"
+}

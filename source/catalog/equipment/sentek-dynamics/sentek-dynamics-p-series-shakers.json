@@ -1,0 +1,130 @@
+{
+  "id": "sentek-dynamics-p-series-shakers",
+  "kind": "equipment_series",
+  "name": "Sentek Dynamics P-Series High-Performance Shakers",
+  "name_ko": "센텍 다이나믹스 P 시리즈 고성능 가진기",
+  "manufacturer": "sentek-dynamics",
+  "category": "vibration_shaker",
+  "drive": "electrodynamic",
+  "form_factor": "floor",
+  "description": "고가속도용 수랭식 가진기 세 기종. 정현 34.3/58.8/78.40 kN, 충격 68.6~156.80 kN, 2~3,000 Hz, 변위 51 mm, 속도 2.0 m/s, 최대 가속도 150 g, 아마추어 320~445 mm, 탑재 500~800 kg.",
+  "test_items": [
+    "vibration_sine_random",
+    "mechanical_shock"
+  ],
+  "measurands": [
+    "resonance_frequency",
+    "transmissibility",
+    "fatigue_life"
+  ],
+  "limits": {
+    "force_kN": {
+      "min": 34.3,
+      "max": 78.4,
+      "note": "정현 피크"
+    },
+    "force_random_kN": {
+      "min": 24,
+      "max": 78.4,
+      "note": "랜덤 rms"
+    },
+    "force_shock_kN": {
+      "min": 68.6,
+      "max": 156.8,
+      "note": "충격(6 ms)"
+    },
+    "frequency_Hz": {
+      "min": 2,
+      "max": 3000
+    },
+    "displacement_mm": {
+      "values": [
+        51
+      ],
+      "note": "원문 Continuous Displacement. p-p 여부는 페이지에 없음"
+    },
+    "acceleration_g": {
+      "max": 150,
+      "note": "정현 피크 최대"
+    },
+    "payload_kg": {
+      "min": 500,
+      "max": 800,
+      "note": "최대 정적 탑재"
+    }
+  },
+  "models": [
+    {
+      "model": "P3532M",
+      "specs": {
+        "force_kN": 34.3,
+        "force_random_kN": 24,
+        "force_shock_kN": 68.6,
+        "frequency_Hz": {
+          "min": 2,
+          "max": 2400
+        },
+        "displacement_mm": 51,
+        "velocity_m_s": 2.0,
+        "acceleration_g": 150,
+        "armature_diameter_mm": 320,
+        "armature_mass_kg": 23.3,
+        "payload_kg": 500
+      }
+    },
+    {
+      "model": "P6034M",
+      "specs": {
+        "force_kN": 58.8,
+        "force_random_kN": 39.2,
+        "force_shock_kN": 117.6,
+        "frequency_Hz": {
+          "min": 5,
+          "max": 2300
+        },
+        "displacement_mm": 51,
+        "velocity_m_s": 2.0,
+        "acceleration_g": 150,
+        "armature_diameter_mm": 340,
+        "armature_mass_kg": 40,
+        "payload_kg": 600
+      }
+    },
+    {
+      "model": "P8044A",
+      "specs": {
+        "force_kN": 78.4,
+        "force_random_kN": 78.4,
+        "force_shock_kN": 156.8,
+        "frequency_Hz": {
+          "min": 5,
+          "max": 3000
+        },
+        "displacement_mm": 51,
+        "velocity_m_s": 2.0,
+        "acceleration_g": 150,
+        "armature_diameter_mm": 445,
+        "armature_mass_kg": 53,
+        "payload_kg": 800
+      }
+    }
+  ],
+  "features": [
+    "수랭식"
+  ],
+  "relations": [
+    {
+      "type": "performs",
+      "target": "vibration_sine_random"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://www.sentekdynamics.com/high-performance-shaker",
+      "retrieved": "2026-10-08",
+      "note": "제조사 계열 페이지. 기종별 사양 표(kN·lbf, m/s²·g 병기)"
+    }
+  ],
+  "confidence": "limited",
+  "notes": ""
+}

@@ -1,0 +1,271 @@
+{
+  "id": "its-gmbh-spk-water-test-chambers",
+  "kind": "equipment_series",
+  "name": "iTS SPK Water Test Chambers (SPK R200 / R400 / R600 / R800)",
+  "name_ko": "iTS SPK 방수 시험 챔버",
+  "manufacturer": "its-gmbh",
+  "brand": "SPK",
+  "category": "water_ingress_tester",
+  "form_factor": "floor",
+  "description": "IEC 60529, ISO 20653 및 자동차 업계 사내 규격의 방수 시험을 한 챔버에서 수행하는 모듈형 방수 시험 챔버임. 기본 구성은 IPX3·IPX4(요동관 시험)이며, 모듈 추가로 IPX1·IPX2(적하), IPX4K, IPX5·IPX6(분류), IPX6K, IPX9·IPX9K(고압·고온 분사, 80 °C), JIS D0203 R1/R2·S1/S2, SAE J575, UL 50E/NEMA 250 Type 4 시험까지 확장됨. 모델명의 숫자는 요동관(swivel arc) 반경(mm)이며 시편 크기를 결정함. 높이 조절식 회전대(1~5 min⁻¹, 역회전 가능), 유량(0~5 l/min)·압력(0~6 bar) 계측, 와이퍼 달린 관찰창, 15인치 터치 패널을 기본으로 갖춤. 하우징, 조명, 커넥터, 차량 부품의 방수 시험에 쓰임.",
+  "test_items": [
+    "water_ingress"
+  ],
+  "materials": [
+    "enclosures",
+    "luminaires",
+    "connectors",
+    "sensors",
+    "control units",
+    "headlights",
+    "switch boxes",
+    "vehicle parts"
+  ],
+  "standards": {
+    "compliance": [],
+    "test_methods": [
+      "IEC 60529",
+      "ISO 20653",
+      "DIN 40050-9",
+      "IEC 60068-2-18",
+      "IEC 60598-1",
+      "LV 124",
+      "BMW GS 95003-4",
+      "SAE J575",
+      "JIS D 0203",
+      "UL 50E",
+      "NEMA 250"
+    ]
+  },
+  "limits": {
+    "ipx_levels": {
+      "note": "IPX1 · IPX2 · IPX3 · IPX4 · IPX4K · IPX5 · IPX6 · IPX6K · IPX9 · IPX9K (기본 구성은 IPX3·IPX4. 나머지 등급은 모듈(옵션)을 더해야 함)"
+    },
+    "oscillating_tube_radius_mm": {
+      "values": [
+        200,
+        400,
+        600,
+        800
+      ],
+      "note": "모델명 R200~R800 의 숫자가 요동관 반경(mm). 페이지 문장: The number in the name represents the radius of the swivel arc in millimeters"
+    },
+    "turntable_speed_rpm": {
+      "min": 1,
+      "max": 5,
+      "note": "원문 1–5 min⁻¹, 높이 조절식, 케이블 달린 시편을 위한 역회전 운전"
+    },
+    "spray_flow_L_min": {
+      "min": 0,
+      "max": 106,
+      "requires_accessory": true,
+      "note": "공급 능력이 아니라 계측 범위임. 기본 유량 계측 0~5 l/min(IPX3/4). IPX5/6 모듈의 전자식 유량 계측 0~106 l/min(순환 사용 시). IPX6K 모듈은 75 l/min 으로 적힘"
+    },
+    "water_pressure_bar": {
+      "min": 0,
+      "max": 160,
+      "requires_accessory": true,
+      "note": "기본 압력 계측 0~6 bar. IPX5/6 모듈 압력 0~1.6 bar, IPX6K 모듈 압력 계측 0~16 bar. IPX9K 옵션의 주파수 제어 고압 펌프 최대 160 bar"
+    },
+    "water_temperature_degC": {
+      "min": 10,
+      "max": 80,
+      "requires_accessory": true,
+      "note": "하한은 냉각 유닛(옵션)의 최저 10 °C, 상한은 IPX9K 온수 유닛(옵션)의 80 °C. 순환 출구 온도 감시로 20 °C ± 5 °C 를 확인함"
+    },
+    "specimen_size_mm": {
+      "max": 800,
+      "note": "IPX5/IPX6 페이지: up to 800 × 800 × 800 mm and up to 100 kg. 연장 터널로 2300 mm 늘어남"
+    },
+    "specimen_mass_kg": {
+      "max": 100,
+      "note": "IPX5/IPX6 페이지의 SPK 시편 상한"
+    },
+    "power_kW": {
+      "min": 6,
+      "max": 22,
+      "note": "기본형 6 kW, IPX9K 포함 시 22 kW"
+    }
+  },
+  "models": [
+    {
+      "model": "SPK R200",
+      "specs": {
+        "oscillating_tube_radius_mm": 200,
+        "inner_mm": {
+          "width": 960,
+          "depth": 960,
+          "height": 900,
+          "uncertain": true,
+          "note": "표 머리글 Test chamber dimensions (W × D × H, mm). 내부 치수인지 명시되지 않음"
+        },
+        "ipx_levels": "IPX3 · IPX4",
+        "turntable_speed_rpm": {
+          "min": 1,
+          "max": 5
+        }
+      },
+      "note": "페이지의 용도: small devices, connectors, sensors. ipx_levels 는 기본 구성 기준이며 모듈 추가 시 계열 limits 와 같음"
+    },
+    {
+      "model": "SPK R400",
+      "specs": {
+        "oscillating_tube_radius_mm": 400,
+        "inner_mm": {
+          "width": 1180,
+          "depth": 1180,
+          "height": 1500,
+          "uncertain": true,
+          "note": "표 머리글 Test chamber dimensions (W × D × H, mm). 내부 치수인지 명시되지 않음"
+        },
+        "ipx_levels": "IPX3 · IPX4",
+        "turntable_speed_rpm": {
+          "min": 1,
+          "max": 5
+        }
+      },
+      "note": "페이지의 용도: Lights, control units, small enclosures"
+    },
+    {
+      "model": "SPK R600",
+      "specs": {
+        "oscillating_tube_radius_mm": 600,
+        "inner_mm": {
+          "width": 1500,
+          "depth": 1690,
+          "height": 1500,
+          "uncertain": true,
+          "note": "표 머리글 Test chamber dimensions (W × D × H, mm). 내부 치수인지 명시되지 않음"
+        },
+        "ipx_levels": "IPX3 · IPX4",
+        "turntable_speed_rpm": {
+          "min": 1,
+          "max": 5
+        }
+      },
+      "note": "페이지의 용도: Headlights, switch boxes, medium-sized assemblies"
+    },
+    {
+      "model": "SPK R800",
+      "specs": {
+        "oscillating_tube_radius_mm": 800,
+        "inner_mm": {
+          "width": 2000,
+          "depth": 2000,
+          "height": 2000,
+          "uncertain": true,
+          "note": "표 머리글 Test chamber dimensions (W × D × H, mm). 내부 치수인지 명시되지 않음"
+        },
+        "ipx_levels": "IPX3 · IPX4",
+        "turntable_speed_rpm": {
+          "min": 1,
+          "max": 5
+        }
+      },
+      "note": "페이지의 용도: large housings and assemblies; XL extension tunnel"
+    }
+  ],
+  "features": [
+    "부식 방지 시험실, 모서리 문 2개",
+    "와이퍼 달린 관찰창",
+    "높이 조절식 회전대(1~5 min⁻¹, 역회전 운전)",
+    "요동관·펌프 외부 구동",
+    "유량 계측 0~5 l/min, 압력계 0~6 bar",
+    "15인치 터치 패널, 규격별 사전 설정 파라미터(독일어·영어·프랑스어·폴란드어)"
+  ],
+  "options": [
+    {
+      "name": "IPX1/IPX2 적하 모듈",
+      "note": "drip water"
+    },
+    {
+      "name": "IPX4K 모듈",
+      "note": "increased pressure splashing"
+    },
+    {
+      "name": "IPX5/IPX6 분류 모듈",
+      "note": "전자식 유량 계측 0~106 l/min(순환 사용 시), 압력 0~1.6 bar"
+    },
+    {
+      "name": "IPX6K 모듈",
+      "note": "75 l/min, 압력 계측 0~16 bar"
+    },
+    {
+      "name": "IPX9/IPX9K 온수 유닛",
+      "note": "140 l 온수 탱크(약 15 kW, 가열 시간 약 30분), 주파수 제어 고압 펌프 최대 160 bar, 80 °C. 스위블 랜스 또는 고정 랜스 4개"
+    },
+    {
+      "name": "JIS D0203 R1/R2, S1/S2",
+      "note": "일본 자동차 부품 강우·분무 시험"
+    },
+    {
+      "name": "SAE J575",
+      "note": "차량 등화 분무 시험"
+    },
+    {
+      "name": "UL 50E / NEMA 250 Type 4",
+      "note": "hose down"
+    },
+    {
+      "name": "물 순환 장치",
+      "note": "120 l, 조류 억제용 UV 램프, 출구 온도 감시"
+    },
+    {
+      "name": "냉각 유닛",
+      "note": "최저 10 °C"
+    },
+    {
+      "name": "연장 터널",
+      "note": "2300 mm 연장, 표준·XL"
+    },
+    {
+      "name": "시간 제어 전원 콘센트(시험실 내부)"
+    },
+    {
+      "name": "DUT 구동·감시용 디지털 채널",
+      "note": "최대 4채널"
+    }
+  ],
+  "power_requirements": "3 x 400 V (max. 32 A). 기본형 6 kW, IPX9K 포함 시 22 kW",
+  "utilities": "압축공기, 상수도, 배수 연결 필요(페이지 원문: 3 x 400 V (max. 32 A), compressed air, mains water, and a wastewater connection)",
+  "relations": [
+    {
+      "type": "requires",
+      "target": "utility-compressed-air",
+      "note": "페이지의 연결 요구사항에 압축공기 명시"
+    },
+    {
+      "type": "same_family_as",
+      "target": "its-gmbh-ipx-room-solutions",
+      "note": "같은 제조사의 방수 시험 계열. IPX9K 고압 유닛 등 모듈 개념을 공유함"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://its-gmbh.de/en/produkt/spritz-und-strahlwasserkammern/",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지(2등급). 크기 표(Size | Test chamber dimensions (W × D × H, mm) | Suitable for), 기본 장비, 옵션, 연결 요구사항, 규격 목록. PDF 로는 아직 확인하지 않음"
+    },
+    {
+      "url": "https://its-gmbh.de/en/ipx9k-pruefung/",
+      "retrieved": "2026-10-08",
+      "note": "제조사 시험 안내 페이지. SPK IPX9K 옵션(140 l 온수 탱크, 약 15 kW, 가열 약 30분, 고압 펌프 최대 160 bar, 80 °C)"
+    },
+    {
+      "url": "https://its-gmbh.de/en/ipx5-ipx6-pruefung/",
+      "retrieved": "2026-10-08",
+      "note": "제조사 시험 안내 페이지. SPK 시편 상한 800 × 800 × 800 mm·100 kg, 연장 터널 2300 mm, IPX5/6 모듈 유량 0~106 l/min·압력 0~1.6 bar, IPX6K 압력 계측 0~16 bar"
+    },
+    {
+      "url": "https://its-gmbh.de/en/ipx3-ipx4-pruefung/",
+      "retrieved": "2026-10-08",
+      "note": "제조사 시험 안내 페이지. 기본 계측 범위(유량 0~5 l/min, 압력 0~6 bar)와 크기 표 재확인"
+    },
+    {
+      "file": "its-gmbh/its-brochure-en.pdf",
+      "note": "제조사 원본 문서. 이미지 브로슈어라 텍스트가 없음 — 값 대조에는 못 씀(값은 웹 출처 기준)"
+    }
+  ],
+  "confidence": "limited",
+  "notes": "회전대 지름·적재 하중, 외형 치수, 무게는 페이지에 없음. 크기 표의 치수가 내부 치수인지 외형인지 명시되지 않아 inner_mm 에 uncertain 을 닮. 종합 브로슈어 PDF(iTS_Brochure_E.pdf)는 웹 조회 도구로 텍스트를 뽑지 못해 값 대조를 못 함. 같은 페이지 묶음의 DWT(ISO 16925 도장 고압수 시험기)는 IP 방수 시험이 아니라서 이 객체에 넣지 않음."
+}

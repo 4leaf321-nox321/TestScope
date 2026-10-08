@@ -1,0 +1,91 @@
+{
+  "id": "royce-instruments-bond-testers",
+  "kind": "equipment_series",
+  "name": "Royce Instruments Bond Testers (610 Wire Pull / 620 Multitest / 650 Universal)",
+  "name_ko": "로이스 인스트루먼츠 본드 테스터 (610 · 620 · 650)",
+  "manufacturer": "royce-instruments",
+  "brand": "Royce",
+  "category": "bond_tester",
+  "form_factor": "benchtop",
+  "description": "와이어 본드 · 다이 부착 시험용 본드 테스터 계열. 610 은 와이어 풀 전용(10 µs 마다 힘 데이터 수집), 620 은 수동 XY 위치 조정과 조이스틱을 쓰는 멀티테스트 기종, 650 은 300 mm 웨이퍼용 305 × 155 mm 스테이지에서 와이어 풀 · 볼 본드 전단 · 다이 전단 · 솔더 볼 전단 · 존 전단을 하는 범용 기종이다. 620 · 650 은 압축공기(420~550 kPa)와 진공(500 mmHg)이 필요하다.",
+  "test_items": [
+    "wire_bond_strength"
+  ],
+  "measurands": [
+    "pull_force",
+    "shear_force"
+  ],
+  "limits": {
+    "wafer_size_mm": {
+      "max": 300,
+      "note": "650 의 305 × 155 mm 스테이지"
+    },
+    "data_rate_Hz": {
+      "max": 100000,
+      "note": "610: 'Force data every 10 microseconds' 를 옮김"
+    }
+  },
+  "models": [
+    {
+      "model": "610",
+      "variant": "Wire Pull Bond Tester",
+      "specs": {
+        "footprint_mm": "460 (H) × 320 (W) × 560 (D)",
+        "weight_kg": 27,
+        "power": "90~264 VAC, 47~63 Hz",
+        "data_interval_ms": {
+          "value": 0.01,
+          "note": "원문 'Force data every 10 microseconds'"
+        }
+      }
+    },
+    {
+      "model": "620",
+      "variant": "Multitest Bond Tester",
+      "specs": {
+        "footprint_mm": "560 (H) × 432 (W) × 585 (D)",
+        "weight_kg": 50,
+        "power": "90~264 VAC, 47~63 Hz"
+      },
+      "note": "압축공기 공급: 420~550 kPa (60~80 psi); 진공 공급: 500 mmHg, 67.7 kPa (20 inHg)"
+    },
+    {
+      "model": "650",
+      "variant": "Universal Bond Tester",
+      "specs": {
+        "footprint_mm": "635 (H) × 432 (W) × 585 (D)",
+        "weight_kg": 55,
+        "power": "90~264 VAC, 47~63 Hz",
+        "stage_size_mm": "305 × 155 (300 mm 웨이퍼)"
+      },
+      "note": "압축공기 공급: 420~550 kPa; 진공 공급: 500 mmHg"
+    }
+  ],
+  "test_modes": [
+    "와이어 풀(Wire pull)",
+    "볼 본드 전단(Ball bond shear)",
+    "다이 전단(Die shear)",
+    "솔더 볼 전단(Solder ball shear)",
+    "존 전단(Zone shear)"
+  ],
+  "relations": [
+    {
+      "type": "performs",
+      "target": "wire_bond_strength"
+    },
+    {
+      "type": "requires",
+      "target": "utility-compressed-air",
+      "note": "620 · 650"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://vtekusa.com/bond-testers",
+      "retrieved": "2026-10-08",
+      "note": "royceinstruments.com 이 vtekusa.com 으로 301 이동한다 — V-TEK 사이트의 Royce Equipment > Bond Testers 페이지"
+    }
+  ],
+  "notes": "하중 범위 · 센서 용량 · 정확도는 페이지에 없다. 이 페이지를 제조사(브랜드 소유자) 페이지로 보았으나 V-TEK 과 Royce 의 관계는 페이지에 적혀 있지 않다.",
+  "confidence": "limited"
+}

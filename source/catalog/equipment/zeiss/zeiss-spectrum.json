@@ -1,0 +1,84 @@
+{
+  "id": "zeiss-spectrum",
+  "kind": "equipment_series",
+  "name": "ZEISS SPECTRUM Family Bridge-Type CMM",
+  "name_ko": "자이스 SPECTRUM 브리지형 3차원 측정기",
+  "manufacturer": "zeiss",
+  "category": "coordinate_measuring_machine",
+  "form_factor": "floor",
+  "description": "자이스 3차원 측정기의 입문 계열임. SPECTRUM 과 SPECTRUM verity 두 기종이 있고, 크기(dm)는 7/7/6 · 7/10/6 · 9/12/6 · 9/18/6. 길이 측정 오차는 SPECTRUM 1.8 + L/250 µm, SPECTRUM verity 1.7 + L/300 µm 까지. RDS-CR5-CAA(verity 는 RDS-CR1-CAA), VAST XXT TL3/TL1, VAST XXT direct, LineScan One 센서를 씀.",
+  "test_items": [],
+  "limits": {
+    "measuring_range_x_mm": {
+      "min": 700,
+      "max": 900
+    },
+    "measuring_range_y_mm": {
+      "min": 700,
+      "max": 1800
+    },
+    "measuring_range_z_mm": {
+      "values": [
+        600
+      ]
+    }
+  },
+  "models": [
+    {
+      "model": "SPECTRUM 7/7/6",
+      "specs": {
+        "measuring_range_x_mm": 700,
+        "measuring_range_y_mm": 700,
+        "measuring_range_z_mm": 600,
+        "length_measuring_error_mpe": "Up to: 1.8+L/250 µm"
+      },
+      "note": "크기는 패밀리 기술 데이터에 공통으로 적힘(크기 표기 dm)"
+    },
+    {
+      "model": "SPECTRUM 7/10/6",
+      "specs": {
+        "measuring_range_x_mm": 700,
+        "measuring_range_y_mm": 1000,
+        "measuring_range_z_mm": 600,
+        "length_measuring_error_mpe": "Up to: 1.8+L/250 µm"
+      },
+      "note": "크기는 패밀리 기술 데이터에 공통으로 적힘(크기 표기 dm)"
+    },
+    {
+      "model": "SPECTRUM 9/12/6",
+      "specs": {
+        "measuring_range_x_mm": 900,
+        "measuring_range_y_mm": 1200,
+        "measuring_range_z_mm": 600,
+        "length_measuring_error_mpe": "Up to: 1.8+L/250 µm"
+      },
+      "note": "크기는 패밀리 기술 데이터에 공통으로 적힘(크기 표기 dm)"
+    },
+    {
+      "model": "SPECTRUM 9/18/6",
+      "specs": {
+        "measuring_range_x_mm": 900,
+        "measuring_range_y_mm": 1800,
+        "measuring_range_z_mm": 600,
+        "length_measuring_error_mpe": "Up to: 1.8+L/250 µm"
+      },
+      "note": "크기는 패밀리 기술 데이터에 공통으로 적힘(크기 표기 dm)"
+    },
+    {
+      "model": "SPECTRUM verity",
+      "specs": {
+        "length_measuring_error_mpe": "Up to: 1.7+L/300 µm"
+      },
+      "note": "센서 RDS-CR1-CAA / VAST XXT TL3 / TL1 / VAST XT gold / VAST XXT direct / LineScan One. 크기는 패밀리 공통 표기(7/7/6; 7/10/6; 9/12/6; 9/18/6)"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://www.zeiss.com/metrology/en/systems/cmms/bridge-type-cmms/zeiss-spectrum-family.html",
+      "retrieved": "2026-10-08",
+      "note": "제조사 SPECTRUM 패밀리 페이지(기술 비교: 크기, MPE_E, 센서)"
+    }
+  ],
+  "confidence": "limited",
+  "notes": "최대 시편 질량·운전 온도 범위는 페이지에 없어 비움."
+}

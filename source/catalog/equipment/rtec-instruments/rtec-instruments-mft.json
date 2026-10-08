@@ -1,0 +1,240 @@
+{
+  "id": "rtec-instruments-mft",
+  "kind": "equipment_series",
+  "name": "Rtec Instruments Multi-Function Tribometers (MFT-5000 / MFT-2000 / MFT-1000)",
+  "name_ko": "알텍 인스트루먼츠 다기능 트라이보미터 (MFT-5000 · MFT-2000 · MFT-1000)",
+  "manufacturer": "rtec-instruments",
+  "brand": "MFT",
+  "category": "tribometer",
+  "form_factor": "benchtop",
+  "description": "교체식 모듈(회전 핀온디스크 · 직선 왕복 · 블록온링 · 프레팅 등)과 교체식 로드셀로 마찰 · 마모 · 윤활을 시험하는 다기능 트라이보미터 계열. MFT-5000 은 mN~10,000 N 하중, 0.001~10,000 rpm 회전, 왕복 행정 60 mm · 370 mm/s · 0.01~10 Hz, 챔버로 −120~1200 °C, 습도 5~95 %, 진공 10⁻⁷ Torr 까지 넓히고 인라인 3D 광학 표면 형상 측정을 붙인다. MFT-2000 은 1 mN~200 N · 0.1~2500 rpm(옵션 5000) · 왕복 최대 80 Hz 의 소형 기종, MFT-1000 은 0.1~100 N · 0.1~2500 rpm · 0.1~15 Hz 의 보급형이다.",
+  "test_items": [
+    "friction_wear_tribo"
+  ],
+  "measurands": [
+    "friction_coefficient",
+    "wear_depth",
+    "electrical_contact_resistance"
+  ],
+  "materials": [
+    "coatings",
+    "lubricants",
+    "metals",
+    "polymers",
+    "ceramics"
+  ],
+  "standards": {
+    "compliance": [],
+    "test_methods": [
+      "ASTM G99",
+      "ASTM G133",
+      "ASTM G181",
+      "ASTM G119",
+      "ASTM G176",
+      "ASTM G77",
+      "ASTM D4172",
+      "ASTM D2266",
+      "ASTM D2596",
+      "ASTM D2509",
+      "ASTM D2783",
+      "ASTM D6078",
+      "ASTM D2714"
+    ]
+  },
+  "limits": {
+    "force_N": {
+      "min": 0.001,
+      "max": 10000,
+      "note": "MFT-5000 원문 'mN to 10,000 N'(PDF p.2, 로드셀 쪽 p.3 은 mN to 12,000 N). MFT-2000 1 mN~200 N, MFT-1000 0.1~100 N(웹)"
+    },
+    "rotation_rpm": {
+      "min": 0.001,
+      "max": 30000,
+      "note": "MFT-5000 PDF p.10 Rotary Drive 최대 30,000 RPM · 최저 0.001 RPM. 본문(p.5)은 0.001~10,000 rpm"
+    },
+    "frequency_Hz": {
+      "min": 0.01,
+      "max": 500,
+      "note": "프레팅 최대 500 Hz(PDF p.6·10), 고속 왕복 최대 80 Hz(PDF p.10), 웹: 왕복 0.01~10 Hz(MFT-5000), MFT-2000 최대 80 Hz, SRV 300~500 Hz"
+    },
+    "stroke_mm": {
+      "min": 0.005,
+      "max": 60,
+      "note": "프레팅 5 µm~4 mm(PDF p.6·10), 고속 왕복 0.1~30 mm, 장행정 40 mm(PDF p.10). 직선 왕복 최대 60 mm 는 웹 값"
+    },
+    "sliding_speed_m_s": {
+      "max": 0.37,
+      "note": "직선 왕복 최대 370 mm/s"
+    },
+    "temperature_degC": {
+      "min": -120,
+      "max": 1200,
+      "note": "MFT-5000 챔버 −120~1200 °C(PDF p.4·10: 저온 −120 · −50 °C, 고온 500 · 1,000 · 1,200 °C)",
+      "requires_accessory": true
+    },
+    "humidity_pct": {
+      "min": 5,
+      "max": 95,
+      "note": "MFT-5000 PDF p.10 은 5~90 %RH. 95 % 는 웹(MFT-2000 · MFT-5000 페이지) 값"
+    }
+  },
+  "models": [
+    {
+      "model": "MFT-5000",
+      "specs": {
+        "force_N": {
+          "min": 0.001,
+          "max": 10000,
+          "note": "원문 'mN to 10,000 N'(PDF p.2). 로드셀 정전용량 · 압전 · 스트레인게이지(PDF p.3 은 mN to 12,000 N)"
+        },
+        "rotation_rpm": {
+          "min": 0.001,
+          "max": 30000,
+          "note": "원문 Rotary Drive Max Speed up to 30000 RPM, Min Speed 0.001 RPM(low speed drive)(PDF p.10). 본문 p.5 는 0.001~10,000 rpm. 웹 페이지는 최대 10,000 rpm"
+        },
+        "stroke_mm": {
+          "max": 60,
+          "note": "직선 왕복 60 mm 는 웹 값. PDF p.10: 고속 왕복 0.1~30 mm, 장행정 40 mm, 프레팅 5 µm~4 mm"
+        },
+        "frequency_Hz": {
+          "min": 0.01,
+          "max": 80,
+          "note": "원문 Fast Reciprocating Drive speed up to 80 Hz, stroke 0.1~30 mm; Long Stroke Fast Reciprocating 35 Hz, stroke 40 mm at 40 Hz(PDF p.10). 웹 페이지는 직선 왕복 0.01~10 Hz(행정 60 mm). 프레팅은 최대 500 Hz"
+        },
+        "sliding_speed_m_s": {
+          "max": 0.37,
+          "note": "직선 왕복 최대 370 mm/s(웹 값, PDF 에 없음)"
+        },
+        "temperature_degC": {
+          "min": -120,
+          "max": 1200,
+          "note": "원문 -120 °C to 1200 °C(PDF p.4·10). 챔버 −120 · −50 · 500 · 1,000 · 1,200 °C"
+        },
+        "humidity_pct": {
+          "min": 5,
+          "max": 90,
+          "note": "원문 5 to 90% RH(PDF p.10). 웹 페이지는 5~95 %"
+        }
+      },
+      "note": "진공: 10⁻⁷ Torr 까지(PDF p.4); 가스 압력: 최대 200 PSI(웹); 프레팅 모듈: 행정 5 µm~4 mm, 최대 500 Hz(PDF p.6·10, 웹은 최대 300 Hz); 블록온링 최대 7,000 RPM; 미니 트랙션 −200~200 % 비, −6~6 mm/s, 180 °C 까지(PDF p.10); SRV 모듈: 행정 5 µm~4 mm, 300~500 Hz, 하중 최대 3,000 N, −40~800 °C(웹); 모듈: 회전 · 직선 왕복 · 블록온링 · 프레팅(보이스 코일) · 트랙션 · 상부 회전(4볼)"
+    },
+    {
+      "model": "MFT-2000",
+      "specs": {
+        "force_N": {
+          "min": 0.001,
+          "max": 200
+        },
+        "rotation_rpm": {
+          "min": 0.1,
+          "max": 2500,
+          "note": "옵션 5000 rpm"
+        },
+        "frequency_Hz": {
+          "max": 80,
+          "note": "왕복 구동"
+        },
+        "stroke_mm": {
+          "max": 60
+        },
+        "sliding_speed_m_s": {
+          "max": 0.37
+        },
+        "temperature_degC": {
+          "min": -50,
+          "max": 1000,
+          "note": "옵션 챔버"
+        },
+        "humidity_pct": {
+          "min": 5,
+          "max": 95
+        }
+      },
+      "note": "모듈: 회전(핀온디스크) · 직선 왕복 · 블록온링 · 미니 트랙션 · 프레팅; 센서: 마찰, 마모 깊이, 전기 접촉 저항"
+    },
+    {
+      "model": "MFT-1000",
+      "specs": {
+        "force_N": {
+          "min": 0.1,
+          "max": 100,
+          "note": "교체식 로드셀 1 mN~100 N"
+        },
+        "rotation_rpm": {
+          "min": 0.1,
+          "max": 2500
+        },
+        "frequency_Hz": {
+          "min": 0.1,
+          "max": 15
+        },
+        "stroke_mm": {
+          "max": 60
+        },
+        "sliding_speed_m_s": {
+          "max": 0.37
+        },
+        "temperature_degC": {
+          "min": -20,
+          "max": 500,
+          "note": "옵션 챔버"
+        }
+      },
+      "note": "모듈: 직선 왕복 · 회전(핀온디스크); 센서: 마찰, 마모 깊이, 전기 접촉 저항"
+    }
+  ],
+  "features": [
+    "교체식 로드셀 자동 인식",
+    "인라인 3D 광학 표면 형상 측정(공초점 · 백색광 간섭 · 암시야 · 명시야)",
+    "폐루프 하중 제어(정하중 · 단계 · 점증)"
+  ],
+  "relations": [
+    {
+      "type": "performs",
+      "target": "friction_wear_tribo"
+    },
+    {
+      "type": "same_family_as",
+      "target": "anton-paar-tribometers"
+    },
+    {
+      "type": "same_family_as",
+      "target": "rtec-instruments-fbt-1000"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://rtec-instruments.com/products/universal-tribometer-mft-5000/",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지(MFT-5000)"
+    },
+    {
+      "url": "https://rtec-instruments.com/products/multi-function-tribometer-mft-2000/",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지(MFT-2000)"
+    },
+    {
+      "url": "https://rtec-instruments.com/products/multi-function-tribometer-mft-1000/",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지(MFT-1000)"
+    },
+    {
+      "url": "https://rtec-instruments.com/techniques/multi-function-tribometer/",
+      "retrieved": "2026-10-08",
+      "note": "제조사 다기능 트라이보미터 목록"
+    },
+    {
+      "file": "rtec-instruments/rtec-instruments-multi-function-tribometer-mft-5000-2025-b-01a-en.pdf",
+      "pages": [
+        2,
+        3,
+        4,
+        5,
+        6,
+        10
+      ]
+    }
+  ],
+  "notes": "PDF(MFT-5000 카탈로그)로 확인: MFT-5000 하중 mN~10,000 N, 온도 −120~1,200 °C, 진공 10⁻⁷ Torr, 프레팅 5 µm~4 mm · 500 Hz. PDF 로 바꾼 값: MFT-5000 회전 최대 30,000 RPM(웹 10,000), 습도 5~90 %(웹 95 %), 왕복 주파수 최대 80 Hz(웹 0.01~10 Hz 는 note). 웹 값 그대로: MFT-5000 직선 왕복 행정 60 mm · 370 mm/s, MFT-2000 · MFT-1000 전부(PDF 에 없음). MFT-5000 의 하중 하한은 'mN' 으로만 적혀 있어 0.001 N 으로 옮겼다. 같은 목록의 MVT-2(진공) · TWR-3000(트윈 디스크) · HPT-2(고압) · MPT-3000(마이크로 피팅) · UTT-3000(트랙션) · MVT-3.5 Kelvin 은 페이지를 열지 않아 넣지 않았다.",
+  "confidence": "limited"
+}

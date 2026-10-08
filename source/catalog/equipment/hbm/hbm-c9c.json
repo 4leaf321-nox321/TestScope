@@ -1,0 +1,79 @@
+{
+  "id": "hbm-c9c",
+  "kind": "sensor",
+  "name": "HBK (HBM) C9C Miniature Force Transducer",
+  "name_ko": "HBK(HBM) C9C 소형 힘 센서",
+  "manufacturer": "hbm",
+  "brand": "HBM",
+  "category": "force_pressure_sensor",
+  "subcategory": "strain_gauge_force_transducer",
+  "description": "정격 50 N～50 kN 의 소형 로드셀. HBK 정확도 등급 0.2. 출력은 mV/V(수동형), 0…10 V, 4…20 mA, IO-Link 중에서 고른다.",
+  "test_items": [],
+  "measurands": [
+    "force"
+  ],
+  "limits": {
+    "force_kN": {
+      "min": 0.05,
+      "max": 50,
+      "note": "50 N to 50 kN"
+    }
+  },
+  "models": [
+    {
+      "model": "C9C",
+      "specs": {
+        "force_kN": {
+          "min": 0.05,
+          "max": 50,
+          "values": [
+            0.05,
+            0.1,
+            0.2,
+            0.5,
+            1,
+            2,
+            5,
+            10,
+            20,
+            50
+          ],
+          "note": "정격 50 N, 100 N, 200 N, 0.5 kN, 1 kN, 2 kN, 5 kN, 10 kN, 20 kN, 50 kN(주문 번호 1-C9C/50N … 1-C9C/50KN)"
+        },
+        "accuracy_class": "0.2",
+        "analog_output_V": {
+          "min": 0,
+          "max": 10,
+          "note": "출력 선택지 mV/V(증폭기 없음), 0…10 V(인라인 증폭기 VA1), 4…20 mA(VA2), IO-Link(VAIO). 증폭기 일체형은 케이블 1.5 m·3 m 만"
+        },
+        "operating_temperature_degC": {
+          "min": -30,
+          "max": 85,
+          "uncertain": true,
+          "note": "PDF 원문 「30...+85」 — 추출 텍스트에서 음수 부호가 빠지고 온도 행 이름과 값이 어긋나 있음. 기준 23 °C, 공칭 온도 범위는 -10～+70 °C 로 읽힘"
+        }
+      },
+      "note": "압축형, 스테인리스 IP67, 측정부 밀봉 용접. 재현·반복 오차 < 0.2 %, 히스테리시스(reversibility) < 0.2 %. 브리지 공급 전압 0.5～12 V(기준 5 V), 4선식. 케이블 1.5·3·5·6·7·12 m. 무게 55·65·260 g(용량군별). TEDS 는 플러그 옵션과 함께만"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://www.hbkworld.com/en/products/transducers/force/c9c",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지(hbkworld.com)는 직접 조회 시 HTTP 403. 값은 웹 검색 결과에 나온 같은 페이지의 요약에서 옮김"
+    },
+    {
+      "file": "hbm/c9c-data-sheet-b03868.pdf",
+      "pages": [
+        1,
+        6,
+        7,
+        8,
+        10
+      ],
+      "note": "C9C 데이터시트 B03868 03 E00(2026-06) — 특징, 증폭기 배선, 사양, 주문 번호"
+    }
+  ],
+  "confidence": "catalog",
+  "notes": "HBM(현 HBK) 제품. PDF 로 확인: 정격 50 N～50 kN(10 단계), 정확도 등급 0.2, 출력 선택지. 정격 출력(mV/V)·고유 진동수·허용 편심 등 용량별 표는 추출 텍스트에서 열이 섞여 넣지 않음."
+}

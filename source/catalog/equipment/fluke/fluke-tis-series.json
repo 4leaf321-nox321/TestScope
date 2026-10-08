@@ -1,0 +1,186 @@
+{
+  "id": "fluke-tis-series",
+  "kind": "equipment_series",
+  "name": "Fluke TiS Series Thermal Camera (TiS20+, TiS55+, TiS60+, TiS75+)",
+  "name_ko": "플루크 TiS 시리즈 열화상 카메라",
+  "manufacturer": "fluke",
+  "brand": "TiS",
+  "category": "thermal_imager",
+  "form_factor": "handheld",
+  "description": "점검용 보급형 휴대 열화상 카메라 계열. 해상도 120 × 90(TiS20+) ~ 384 × 288(TiS75+), 열 감도 40 ~ 60 mK, 측정 범위 -20 ~ 150 °C(TiS20+)부터 -20 ~ 550 °C(TiS55+ · TiS75+)까지. 확도 ±2 °C 또는 ±2 %, 9 Hz 와 27 · 30 Hz 판이 있다.",
+  "test_items": [
+    "thermography"
+  ],
+  "measurands": [
+    "surface_temperature",
+    "temperature_distribution",
+    "hotspot_location"
+  ],
+  "limits": {
+    "temperature_degC": {
+      "min": -20,
+      "max": 550
+    },
+    "ir_resolution_pixels": {
+      "min": 10800,
+      "max": 110592,
+      "note": "120 × 90 ~ 384 × 288"
+    },
+    "thermal_sensitivity_degC": {
+      "min": 0.04,
+      "max": 0.06
+    },
+    "frame_rate_fps": {
+      "values": [
+        9,
+        27,
+        30
+      ],
+      "note": "원문 Hz, 판별"
+    }
+  },
+  "models": [
+    {
+      "model": "TiS20+",
+      "specs": {
+        "detector_pixels": "120 × 90",
+        "ir_resolution_pixels": 10800,
+        "thermal_sensitivity_degC": 0.06,
+        "temperature_degC": {
+          "min": -20,
+          "max": 150
+        },
+        "accuracy": "±2 °C 또는 ±2 % (25 °C 기준, 큰 값)",
+        "wavelength_nm": {
+          "min": 8000,
+          "max": 14000
+        },
+        "frame_rate_fps": 9,
+        "field_of_view_deg": "50° H × 38° V",
+        "weight_kg": 0.72
+      }
+    },
+    {
+      "model": "TiS20+ MAX",
+      "specs": {
+        "detector_pixels": "120 × 90",
+        "ir_resolution_pixels": 10800,
+        "thermal_sensitivity_degC": 0.06,
+        "temperature_degC": {
+          "min": -20,
+          "max": 400
+        },
+        "accuracy": "±2 °C 또는 ±2 % (25 °C 기준, 큰 값)",
+        "wavelength_nm": {
+          "min": 8000,
+          "max": 14000
+        },
+        "frame_rate_fps": 9,
+        "field_of_view_deg": "50° H × 38° V",
+        "weight_kg": 0.72
+      },
+      "note": "측정 범위만 TiS20+ 와 다름"
+    },
+    {
+      "model": "TiS55+",
+      "specs": {
+        "detector_pixels": "256 × 192",
+        "ir_resolution_pixels": 49152,
+        "thermal_sensitivity_degC": 0.04,
+        "temperature_degC": {
+          "min": -20,
+          "max": 550
+        },
+        "accuracy": "±2 °C 또는 ±2 % (25 °C 주위, 큰 값)",
+        "wavelength_nm": {
+          "min": 8000,
+          "max": 14000
+        },
+        "frame_rate_fps": [
+          9,
+          27
+        ],
+        "field_of_view_deg": "28° × 20°",
+        "weight_kg": 0.885
+      },
+      "note": "NETD 40 mK 는 검색 발췌 값(제품 페이지 본문에서는 확인 못 함). -10 °C 아래는 교정 안 됨. 파장 원문 ~8-14 µm"
+    },
+    {
+      "model": "TiS60+",
+      "specs": {
+        "detector_pixels": "320 × 240",
+        "ir_resolution_pixels": 76800,
+        "thermal_sensitivity_degC": 0.045,
+        "temperature_degC": {
+          "min": -20,
+          "max": 400
+        },
+        "accuracy": "±2 °C 또는 ±2 % (25 °C 기준, 큰 값)",
+        "wavelength_nm": {
+          "min": 7500,
+          "max": 14000
+        },
+        "frame_rate_fps": [
+          9,
+          30
+        ],
+        "field_of_view_deg": "34.1° H × 25.6°",
+        "weight_kg": 0.72
+      },
+      "note": "NETD ≤0.045 °C @ 30 °C. 9 Hz 미만 또는 30 Hz 판"
+    },
+    {
+      "model": "TiS75+",
+      "specs": {
+        "detector_pixels": "384 × 288",
+        "ir_resolution_pixels": 110592,
+        "thermal_sensitivity_degC": 0.04,
+        "temperature_degC": {
+          "min": -20,
+          "max": 550
+        },
+        "accuracy": "±2 °C 또는 ±2 % (25 °C 주위, 큰 값)",
+        "wavelength_nm": {
+          "min": 8000,
+          "max": 14000
+        },
+        "frame_rate_fps": [
+          9,
+          27
+        ],
+        "field_of_view_deg": "42° × 30°",
+        "weight_kg": 0.885
+      },
+      "note": "-10 °C 아래는 교정 안 됨. 파장 원문 ~8-14 µm"
+    }
+  ],
+  "relations": [
+    {
+      "type": "performs",
+      "target": "thermography"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://www.fluke.com/en-us/product/thermal-cameras/tis20plus",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지(HTML)"
+    },
+    {
+      "url": "https://www.fluke.com/en-us/product/thermal-cameras/tis55plus",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지(HTML)"
+    },
+    {
+      "url": "https://www.fluke.com/en-us/product/thermal-cameras/tis60plus",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지(HTML)"
+    },
+    {
+      "url": "https://www.fluke.com/en-us/product/thermal-cameras/tis75plus",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지(HTML)"
+    }
+  ],
+  "confidence": "limited"
+}

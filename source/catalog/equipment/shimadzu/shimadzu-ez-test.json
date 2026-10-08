@@ -1,0 +1,190 @@
+{
+  "id": "shimadzu-ez-test",
+  "kind": "equipment_series",
+  "name": "EZ Test Compact Tabletop Tester (EZ-SX / EZ-LX / EZ-LX HS)",
+  "name_ko": "시마즈 EZ Test 소형 탁상 시험기",
+  "manufacturer": "shimadzu",
+  "category": "universal_testing_machine",
+  "brand": "EZ Test",
+  "drive": "electromechanical",
+  "description": "백래시 없는 볼스크루 구동의 소형 탁상 시험기. EZ-SX 500 N(시험 공간 500 mm), EZ-LX 5 kN(920 mm), EZ-LX HS 2 kN·고속(0.001~2000 mm/min). 로드셀은 EZ-SX 9종(1~500 N), EZ-LX 12종(1 N~5 kN, HS 는 2 kN 까지). 힘 정확도 고정밀형 ±0.5 %·표준형 ±1 %(로드셀 용량의 1/500~1/1), 샘플링 최대 1 ms, 단일 시험(인장·압축)·반복 시험 제어, 정하중(크리프) 제어 기본.",
+  "test_items": [
+    "tensile",
+    "compression",
+    "creep"
+  ],
+  "measurands": [
+    "mechanical.tensile_strength",
+    "mechanical.yield_strength",
+    "mechanical.youngs_modulus",
+    "mechanical.elongation_at_break",
+    "mechanical.compressive_strength"
+  ],
+  "standards": {
+    "compliance": [
+      "JIS B 7721 class 0.5",
+      "ISO 7500-1 class 0.5",
+      "EN 10002-2 grade 0.5",
+      "ASTM E4"
+    ],
+    "test_methods": []
+  },
+  "limits": {
+    "force_kN": {
+      "min": 0.001,
+      "max": 5,
+      "values": [
+        0.001,
+        0.002,
+        0.005,
+        0.01,
+        0.02,
+        0.05,
+        0.1,
+        0.2,
+        0.5,
+        1,
+        2,
+        5
+      ],
+      "note": "로드셀 선택"
+    },
+    "crosshead_speed_mm_min": {
+      "min": 0.001,
+      "max": 2000
+    }
+  },
+  "models": [
+    {
+      "model": "EZ-SX",
+      "specs": {
+        "force_kN": 0.5,
+        "crosshead_speed_mm_min": {
+          "min": 0.001,
+          "max": 1000
+        },
+        "return_speed_mm_min": 1500,
+        "vertical_test_space_mm": {
+          "value": 500,
+          "note": "크로스헤드–지그 장착면 거리"
+        },
+        "grip_span_mm": {
+          "value": 395,
+          "note": "500 N 이하 로드셀 + 인장 지그"
+        },
+        "throat_depth_mm": {
+          "value": 100,
+          "note": "시험 공간 깊이(테이블 부분)"
+        },
+        "footprint_mm": {
+          "W": 400,
+          "D": 530,
+          "H": 885
+        },
+        "weight_kg": 33,
+        "power_VA": 700
+      }
+    },
+    {
+      "model": "EZ-LX",
+      "specs": {
+        "force_kN": 5,
+        "crosshead_speed_mm_min": {
+          "min": 0.001,
+          "max": 1000
+        },
+        "return_speed_mm_min": 1500,
+        "vertical_test_space_mm": {
+          "value": 920,
+          "note": "크로스헤드–지그 장착면 거리"
+        },
+        "grip_span_mm": {
+          "values": [
+            700,
+            755,
+            860
+          ],
+          "note": "5 kN 로드셀+5 kN 나사식 평판 그립 700 / 1 kN 로드셀+1 kN 그립 755 / 500 N 이하 로드셀+인장 지그 860 mm"
+        },
+        "throat_depth_mm": 100,
+        "footprint_mm": {
+          "W": 400,
+          "D": 530,
+          "H": 1315
+        },
+        "weight_kg": 55,
+        "power_VA": 850
+      }
+    },
+    {
+      "model": "EZ-LX HS",
+      "specs": {
+        "force_kN": 2,
+        "crosshead_speed_mm_min": {
+          "min": 0.001,
+          "max": 2000
+        },
+        "return_speed_mm_min": 3000,
+        "vertical_test_space_mm": {
+          "value": 920,
+          "note": "크로스헤드–지그 장착면 거리"
+        },
+        "throat_depth_mm": 100,
+        "footprint_mm": {
+          "W": 400,
+          "D": 530,
+          "H": 1315
+        },
+        "weight_kg": 55,
+        "power_VA": 850
+      },
+      "note": "고속형. 최대 그립 간격 칸은 EZ-LX 와 합쳐 인쇄돼 있다"
+    }
+  ],
+  "accuracy": {
+    "force": "±0.5 % of indicated value (high-precision type) / ±1 % (standard-precision type), within 1/500 to 1/1 of load cell rated capacity",
+    "speed": "within ±0.1 % of test speed",
+    "position": "±0.1 % of indicated value or ±0.01 mm, whichever is greater (display resolution 1 µm)"
+  },
+  "environment": {
+    "operating_temp_degC": [
+      5,
+      40
+    ],
+    "humidity_pct": [
+      20,
+      80
+    ],
+    "power": "단상 100~150 V 또는 200~230 V AC 50/60 Hz",
+    "note": "전압 변동 ±10 % 이내, 진동 10 Hz 이하·진폭 5 µm 이하"
+  },
+  "features": [
+    "시험력·변위 아날로그 출력 0~5 V DC",
+    "USB 인터페이스",
+    "파단 감지 자동 정지·복귀",
+    "접촉 하중 경보",
+    "샘플링 1 ms(TRAPEZIUM X-V / TRAPEZIUM LITE X 필요)"
+  ],
+  "relations": [
+    {
+      "type": "same_family_as",
+      "target": "shimadzu-ags-x"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://www.shimadzu.com/an/products/materials-testing/uni-ttm/ez-test/spec.html",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지(HTML) 본문·표를 직접 읽음. 사양표(용량, 로드셀, 정확도, 속도, 시험 공간, 표준 기능, 치수, 전원, 설치 조건)"
+    },
+    {
+      "file": "shimadzu/c224-e055.pdf",
+      "pages": [
+        4,
+        12
+      ]
+    }
+  ],
+  "confidence": "catalog",
+  "notes": "크리프는 표준 기능 '정하중(크리프) 제어' 를 따라 test_items 에 넣었다. PDF(C224-E055) 사양표로 용량·로드셀·정확도·속도·시험 공간·치수·전원·설치 조건을 모두 확인했다. 표준 정밀형 힘 정확도는 JIS B 7721·ISO 7500-1 class 1, EN 10002-2 grade 1, ASTM E4. 정하중(크리프) 제어는 시험기 용량의 70 % 이하에서 최대 12 시간."
+}

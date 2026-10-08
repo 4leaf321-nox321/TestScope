@@ -1,0 +1,69 @@
+{
+  "id": "napson-cresbox",
+  "kind": "equipment_model",
+  "name": "NAPSON Cresbox Semi-Automatic 4-Point Probe System",
+  "name_ko": "냅슨 Cresbox 반자동 4탐침 다점 측정기",
+  "manufacturer": "napson",
+  "category": "electrical_property_tester",
+  "subcategory": "four_point_probe",
+  "form_factor": "benchtop",
+  "description": "스테이지 일체형 반자동 4탐침 다점 측정 시스템. 측정 패턴 프로그래밍(원형·사각 매핑), 셀프 테스트, 실리콘 두께·주변 위치·온도 보정, 면저항과 금속막 두께 표시를 갖춘다. ～8인치 또는 ～156×156 mm 시료.",
+  "test_items": [
+    "electrical_transport"
+  ],
+  "measurands": [
+    "electrical.surface_resistivity",
+    "electrical.resistivity_volume"
+  ],
+  "limits": {
+    "surface_resistivity_ohm_sq": {
+      "min": 0.005,
+      "max": 10000000.0,
+      "note": "원문 5m～10MΩ/sq"
+    },
+    "resistivity_ohm_cm": {
+      "min": 0.001,
+      "max": 300000.0,
+      "note": "원문 1m～300kΩ･cm"
+    },
+    "wafer_size_mm": {
+      "max": 200,
+      "note": "원문 ～8インチ. 8인치=200 mm 로 적음"
+    },
+    "sample_size_mm": {
+      "max": 156,
+      "note": "～156×156 mm"
+    }
+  },
+  "models": [
+    {
+      "model": "Cresbox",
+      "specs": {
+        "surface_resistivity_ohm_sq": {
+          "min": 0.005,
+          "max": 10000000.0
+        },
+        "resistivity_ohm_cm": {
+          "min": 0.001,
+          "max": 300000.0
+        },
+        "footprint_mm": [
+          330,
+          600,
+          340
+        ],
+        "weight_kg": 36,
+        "principle": "4탐침법(접촉식)"
+      },
+      "note": "원문 W330×D600×H340mm, 약 36 kg"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://www.napson.co.jp/products/contact/semiauto/product01/",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지 Cresbox. 제조사 제품 페이지(일본어 HTML). 같은 페이지의 「電気抵抗測定の測定原理」 다운로드는 PDF 직링크가 아니라 신청 양식(form.napson.co.jp/form/form_download)이라 열지 않음"
+    }
+  ],
+  "confidence": "limited"
+}

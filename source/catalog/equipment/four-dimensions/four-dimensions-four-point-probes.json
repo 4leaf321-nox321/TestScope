@@ -1,0 +1,88 @@
+{
+  "id": "four-dimensions-four-point-probes",
+  "kind": "equipment_series",
+  "name": "Four Dimensions Four-Point Probes (280/680I, 300 Series, 520 Series)",
+  "name_ko": "포 디멘션스 4탐침 면저항 측정기",
+  "manufacturer": "four-dimensions",
+  "category": "electrical_property_tester",
+  "subcategory": "four_point_probe",
+  "description": "웨이퍼·기판의 면저항·저항률·두께를 재는 4탐침 측정기 계열. 280/680I 는 교류 파형을 쓰는 동적(Dynamic) 4탐침으로 10 mΩ/□～40 kΩ/□, 8인치까지, 5점 측정. 300 계열은 1 mΩ/□～800 kΩ/□, 8인치 또는 156×156 mm 까지. 520 계열은 단일 측정 20～400 Ω/□, 다중 측정 2×10⁻²～4×10⁹ Ω/□, 측정점 1～9(주문형 192), 156×156～220×220 mm 기판.",
+  "test_items": [
+    "electrical_transport"
+  ],
+  "measurands": [
+    "electrical.surface_resistivity",
+    "electrical.resistivity_volume"
+  ],
+  "limits": {
+    "surface_resistivity_ohm_sq": {
+      "min": 0.001,
+      "max": 4000000000.0,
+      "note": "300 계열 1 mΩ/□ 부터, 520 계열 다중 측정 4E+9 Ω/sq 까지"
+    },
+    "wafer_size_mm": {
+      "max": 200,
+      "note": "원문 up to 8\" wafer capability. 8인치=200 mm 로 적음"
+    },
+    "sample_size_mm": {
+      "max": 220,
+      "note": "520 계열 156x156 to 220x220(주문형 가능)"
+    }
+  },
+  "models": [
+    {
+      "model": "280/680I",
+      "specs": {
+        "surface_resistivity_ohm_sq": {
+          "min": 0.01,
+          "max": 40000
+        },
+        "wafer_size_mm": {
+          "max": 200
+        }
+      },
+      "note": "Dynamic Four-Point Probe. 교류 파형, 5점 측정 가능. 페이지 표기 그대로이며 280I·680I 로 나뉘는지 확인하지 못함",
+      "uncertain": true
+    },
+    {
+      "model": "300 Series",
+      "specs": {
+        "surface_resistivity_ohm_sq": {
+          "min": 0.001,
+          "max": 800000
+        },
+        "wafer_size_mm": {
+          "max": 200
+        },
+        "sample_size_mm": {
+          "max": 156
+        }
+      },
+      "note": "페이지에 개별 기종명 없이 계열명만 적힘"
+    },
+    {
+      "model": "520 Series",
+      "specs": {
+        "surface_resistivity_ohm_sq": {
+          "min": 0.02,
+          "max": 4000000000.0,
+          "note": "단일 측정 20～400 Ω/sq, 다중 측정 2E-2～4E+9 Ω/sq"
+        },
+        "sample_size_mm": {
+          "min": 156,
+          "max": 220
+        }
+      },
+      "note": "측정점 1～9, 주문형 최대 192. 개별 기종명 없음"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://www.4dimensions.com/four-point-probes",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지(HTML). 계열별 짧은 사양만 있고 개별 기종 페이지·PDF 링크 없음"
+    }
+  ],
+  "confidence": "limited",
+  "notes": "의뢰서의 「280 계열(280SI·280DI 등)」 기종명은 현재 페이지에 없음. 탐침 간격·전류·정확도·반복도는 페이지에 없음."
+}

@@ -1,0 +1,174 @@
+{
+  "id": "weiss-waterevent-swt",
+  "kind": "equipment_series",
+  "name": "Weiss Technik WaterEvent SWT Spray and Splash Water Test Chambers (SWT/1000, SWT/5800)",
+  "name_ko": "바이스 테크닉 WaterEvent SWT 분무·살수 방수 시험 챔버",
+  "manufacturer": "weiss-technik",
+  "brand": "WaterEvent",
+  "category": "water_ingress_tester",
+  "form_factor": "floor",
+  "description": "DIN EN 60529(VDE 0470-1)의 IPX3·IPX4 시험을 기본으로 하는 방수 시험 챔버임. 옵션 장비로 ISO 20653 IPX1K~IPX6K·IPX9K, DIN EN 60529 IPX1~IPX6·IPX9, SAE J 575, JIS D 0203, MIL STD 810, EN 60068-2-18, IEC 60598-1 시험까지 확장됨. 요동관 반경은 표준 200 mm 또는 600 mm, 최대 400 mm 또는 800 mm 임. 하우징·전기 부품의 IP 방수 등급 확인에 쓰이며, 전기차 리튬이온 배터리 방수 시험용 맞춤 구성도 제공됨. 제조사는 시험 장치가 규격의 해당 부분만 충족할 수 있다고 밝힘.",
+  "test_items": [
+    "water_ingress"
+  ],
+  "materials": [
+    "enclosures",
+    "electrical products and components",
+    "lithium-ion batteries (EV)"
+  ],
+  "standards": {
+    "compliance": [],
+    "test_methods": [
+      "IEC 60529",
+      "ISO 20653",
+      "SAE J575",
+      "JIS D 0203",
+      "MIL-STD-810",
+      "IEC 60068-2-18",
+      "IEC 60598-1"
+    ]
+  },
+  "limits": {
+    "ipx_levels": {
+      "note": "IPX1 · IPX2 · IPX3 · IPX4 · IPX4K · IPX5 · IPX6 · IPX6K · IPX9 · IPX9K (기본은 IPX3·IPX4. 나머지는 옵션. 제품 시트 1쪽 'IP classes from IPX1 to IPX9K', 2쪽 적하 IPX1/2·요동관 IPX3/4/4K·분류 터널 IPX5/6/6K·고압 IPX9/9K)"
+    },
+    "oscillating_tube_radius_mm": {
+      "min": 200,
+      "max": 800,
+      "note": "제품 시트 2쪽: SWT/1000 200~400 mm, SWT/5800 200~800 mm. 표준 구성은 200 mm(SWT/1000)·600 mm(SWT/5800). 제품 페이지·뉴스 페이지도 같음"
+    },
+    "chamber_volume_L": {
+      "min": 1015,
+      "max": 5832,
+      "note": "제품 시트 2쪽. SWT/1000 1015 l, SWT/5800 5832 l"
+    },
+    "payload_kg": {
+      "max": 35,
+      "note": "제품 시트 2쪽 Maximum load test space floor. SWT/1000 25 kg, SWT/5800 35 kg"
+    }
+  },
+  "models": [
+    {
+      "model": "SWT/1000",
+      "specs": {
+        "ipx_levels": "IPX3 · IPX4",
+        "oscillating_tube_radius_mm": {
+          "min": 200,
+          "standard": 200,
+          "max": 400
+        },
+        "chamber_volume_L": 1015,
+        "inner_mm": {
+          "width": 1000,
+          "height": 1015,
+          "depth": 1000
+        },
+        "footprint_mm": {
+          "W": 1500,
+          "H": 1900,
+          "D": 1100
+        },
+        "payload_kg": 25,
+        "footprint_mm_with_ipx9k_unit": {
+          "W": 1500,
+          "H": 1900,
+          "D": 1900
+        },
+        "drip_area_mm": "400 × 400 (W × D, IPX1/2 적하 옵션)"
+      },
+      "note": "제품 시트 PDF 2쪽 값. 내부 치수는 W × H × D. IPX9/9K 고압 장비를 붙이면 외형 깊이가 1900 mm 로 늘어남. 옵션 분류 터널(IPX5/6/6K)은 추출 텍스트에서 670 × 180 × 2900 mm 로 읽혀 SWT/5800(670 × 1800 × 2900)과 달라 확인 필요. 내부 치수 1000 × 1015 × 1000 mm 는 중고 장비 매물 페이지에서도 같은 값. ipx_levels 는 기본 구성 기준"
+    },
+    {
+      "model": "SWT/5800",
+      "specs": {
+        "ipx_levels": "IPX3 · IPX4",
+        "oscillating_tube_radius_mm": {
+          "min": 200,
+          "standard": 600,
+          "max": 800
+        },
+        "chamber_volume_L": 5832,
+        "inner_mm": {
+          "width": 1800,
+          "height": 1800,
+          "depth": 1800
+        },
+        "footprint_mm": {
+          "W": 2500,
+          "H": 2315,
+          "D": 1900
+        },
+        "footprint_mm_with_ipx9k_unit": {
+          "W": 2500,
+          "H": 2315,
+          "D": 2700
+        },
+        "payload_kg": 35,
+        "drip_area_mm": "400 × 400 (W × D, IPX1/2 적하 옵션)"
+      },
+      "note": "제품 시트 PDF 2쪽 값. IPX9/9K 고압 장비를 붙이면 외형 깊이가 2700 mm 로 늘어남. 옵션 분류 터널(IPX5/6/6K) 670 × 1800 × 2900 mm(W × H × D). ipx_levels 는 기본 구성 기준"
+    }
+  ],
+  "features": [
+    "스테인리스 시험실",
+    "웹 패널 조작",
+    "디지털 유량 측정",
+    "1000 lm LED 시험실 조명",
+    "측면 패널 100 mm 접근 포트",
+    "분무 장치 거리를 개별 조절"
+  ],
+  "options": [
+    {
+      "name": "IPX1/IPX2 적하"
+    },
+    {
+      "name": "IPX5/IPX6 분류 노즐"
+    },
+    {
+      "name": "IPX6K 고압 분류"
+    },
+    {
+      "name": "IPX9/IPX9K 고압·스팀 분사 장비",
+      "note": "외형(W × H × D) SWT/5800 2500 × 2315 × 2700 mm, SWT/1000 1500 × 1900 × 1900 mm, 제품 시트 2쪽"
+    },
+    {
+      "name": "요동관 반경 확대",
+      "note": "SWT/1000 최대 400 mm, SWT/5800 최대 800 mm"
+    },
+    {
+      "name": "전기차 리튬이온 배터리 방수 시험 맞춤 구성"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://www.weiss-technik.com/environmental-simulation/en/products/detail/spray-water-test-type-waterevent-swt~p3864",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지(2등급). 요동관 반경 200/600 mm(최대 400/800 mm), 기본 IPX3·IPX4, 옵션 규격·등급 목록. 사양표 없음"
+    },
+    {
+      "url": "https://www.weiss-technik.com/environmental-simulation/en/news/news/detail/ip-protection-rating-tests~n31886",
+      "retrieved": "2026-10-08",
+      "note": "제조사 뉴스 페이지. IPX5, IPX6, IPX6K, IPX9K 확장과 요동관 반경 200~800 mm"
+    },
+    {
+      "url": "https://kaitrade.sk/media/produkty/product-sheet-waterevent-en.pdf",
+      "retrieved": "2026-10-08",
+      "note": "유통사(kaitrade.sk)가 게시한 제조사 제품 시트 PDF(2차 출처). 처음에는 검색 엔진 색인 발췌로만 읽었고, 저장소 PDF(weiss-technik/waterevent-product-sheet.pdf)로 대조함"
+    },
+    {
+      "file": "weiss-technik/waterevent-product-sheet.pdf",
+      "pages": [
+        1,
+        2
+      ],
+      "note": "제조사 제품 시트(Weiss Technik GmbH). 1쪽 특징·IP 등급 범위, 2쪽 SWT/1000·SWT/5800 사양표·각주·표준 장비"
+    },
+    {
+      "url": "https://www.machineseeker.com/weiss+technik-swt+1000+%E2%80%93+ipx9k/i-22259677",
+      "retrieved": "2026-10-08",
+      "note": "중고 장비 매물 페이지(2차 출처, 판매자 미표기). SWT 1000 내부 치수 approx. 1,000 × 1,015 × 1,000 mm (W × H × D), IPX9K 고압 노즐·IPX5/6 분류 노즐 장착 매물. 교차 확인용"
+    }
+  ],
+  "confidence": "catalog",
+  "notes": "제조사 공식 페이지(.com, 북미 weiss-na.com)에는 사양표가 없음. 사양표와 features 의 표준 장비 목록은 제품 시트 PDF(weiss-technik/waterevent-product-sheet.pdf) 2쪽으로 확인. 추출 텍스트에서 표 이름 8개와 값 줄 8개가 따로 떨어져 있으나 순서가 맞음. 수압·유량·수온·회전대 사양은 어느 출처에도 없음."
+}

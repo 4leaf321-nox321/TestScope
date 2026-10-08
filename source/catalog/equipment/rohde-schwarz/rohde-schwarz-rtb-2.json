@@ -1,0 +1,163 @@
+{
+  "id": "rohde-schwarz-rtb-2",
+  "kind": "equipment_series",
+  "name": "R&S RTB 2 Oscilloscope",
+  "name_ko": "로데슈바르츠 RTB 2 오실로스코프",
+  "manufacturer": "rohde-schwarz",
+  "brand": "RTB",
+  "category": "oscilloscope",
+  "subcategory": "digital_storage_oscilloscope",
+  "form_factor": "benchtop",
+  "description": "70~300 MHz 대역의 2·4채널 보급형 오실로스코프 계열임. 10 bit ADC, 2.5 Gsample/s(인터리브), 채널당 10 Msample(인터리브 20 Msample, 세그먼트 160 Msample), 옵션 16 디지털 채널, 10.1 inch 터치 화면. RTB2000 의 후속.",
+  "test_items": [],
+  "limits": {
+    "bandwidth_Hz": {
+      "min": 70000000,
+      "max": 300000000
+    },
+    "sample_rate_Sa_s": {
+      "max": 2500000000,
+      "note": "원문 1.25 Gsample/s; 2.5 Gsample/s, interleaved"
+    },
+    "record_length_pts": {
+      "max": 20000000,
+      "min": 10000000,
+      "note": "원문 10 Msample; 20 Msample interleaved; 160 Msample segmented memory"
+    },
+    "channels": {
+      "values": [
+        2,
+        4
+      ]
+    },
+    "logic_channel_count": {
+      "values": [
+        16
+      ],
+      "note": "옵션"
+    },
+    "adc_resolution_bit": {
+      "values": [
+        10
+      ]
+    },
+    "display_size_in": {
+      "values": [
+        10.1
+      ]
+    }
+  },
+  "models": [
+    {
+      "model": "RTB22-70",
+      "specs": {
+        "bandwidth_Hz": 70000000,
+        "channels": 2,
+        "logic_channel_count": 16,
+        "sample_rate_Sa_s": 2500000000,
+        "record_length_pts": 20000000,
+        "adc_resolution_bit": 10,
+        "display_size_in": 10.1
+      }
+    },
+    {
+      "model": "RTB22-100",
+      "specs": {
+        "bandwidth_Hz": 100000000,
+        "channels": 2,
+        "logic_channel_count": 16,
+        "sample_rate_Sa_s": 2500000000,
+        "record_length_pts": 20000000,
+        "adc_resolution_bit": 10,
+        "display_size_in": 10.1
+      }
+    },
+    {
+      "model": "RTB22-200",
+      "specs": {
+        "bandwidth_Hz": 200000000,
+        "channels": 2,
+        "logic_channel_count": 16,
+        "sample_rate_Sa_s": 2500000000,
+        "record_length_pts": 20000000,
+        "adc_resolution_bit": 10,
+        "display_size_in": 10.1
+      }
+    },
+    {
+      "model": "RTB22-300",
+      "specs": {
+        "bandwidth_Hz": 300000000,
+        "channels": 2,
+        "logic_channel_count": 16,
+        "sample_rate_Sa_s": 2500000000,
+        "record_length_pts": 20000000,
+        "adc_resolution_bit": 10,
+        "display_size_in": 10.1
+      }
+    },
+    {
+      "model": "RTB24-70",
+      "specs": {
+        "bandwidth_Hz": 70000000,
+        "channels": 4,
+        "logic_channel_count": 16,
+        "sample_rate_Sa_s": 2500000000,
+        "record_length_pts": 20000000,
+        "adc_resolution_bit": 10,
+        "display_size_in": 10.1
+      }
+    },
+    {
+      "model": "RTB24-100",
+      "specs": {
+        "bandwidth_Hz": 100000000,
+        "channels": 4,
+        "logic_channel_count": 16,
+        "sample_rate_Sa_s": 2500000000,
+        "record_length_pts": 20000000,
+        "adc_resolution_bit": 10,
+        "display_size_in": 10.1
+      }
+    },
+    {
+      "model": "RTB24-200",
+      "specs": {
+        "bandwidth_Hz": 200000000,
+        "channels": 4,
+        "logic_channel_count": 16,
+        "sample_rate_Sa_s": 2500000000,
+        "record_length_pts": 20000000,
+        "adc_resolution_bit": 10,
+        "display_size_in": 10.1
+      }
+    },
+    {
+      "model": "RTB24-300",
+      "specs": {
+        "bandwidth_Hz": 300000000,
+        "channels": 4,
+        "logic_channel_count": 16,
+        "sample_rate_Sa_s": 2500000000,
+        "record_length_pts": 20000000,
+        "adc_resolution_bit": 10,
+        "display_size_in": 10.1
+      }
+    }
+  ],
+  "relations": [
+    {
+      "type": "successor_of",
+      "target": "rohde-schwarz-rtb2000"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://www.rohde-schwarz.com/us/products/test-and-measurement/oscilloscopes/rs-rtb-2-oscilloscope_334282.html",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지. 기종명 R&S®RTB22-70 … R&S®RTB24-300, \"1.25 Gsample/s; 2.5 Gsample/s, interleaved\", \"10 Msample; 20 Msample, interleaved; 160 Msample segmented memory\", 10 bit, 16 (optional), 10.1\". \"As a successor to the highly capable R&S®RTB2000\""
+    }
+  ],
+  "confidence": "limited",
+  "notes": "페이지는 R&S®RTB 22 · R&S®RTB 24 처럼 띄어 쓴 계열 이름도 함께 씀. 대장에는 RTB22 처럼 대역폭 접미사 없이 적힐 수 있음."
+}

@@ -1,0 +1,55 @@
+{
+  "id": "netzsch-tg-209-f1-libra",
+  "kind": "equipment_series",
+  "name": "NETZSCH TG 209 F1 Libra Thermobalance",
+  "name_ko": "네취 TG 209 F1 Libra 열천칭",
+  "manufacturer": "netzsch",
+  "category": "tga",
+  "description": "열중량분석기. 시료 온도 실온~1100 °C. 단종(legacy) 제품 목록에 있다.",
+  "test_items": [
+    "tga"
+  ],
+  "measurands": [
+    "thermal.decomposition_temp",
+    "thermal.char_residue"
+  ],
+  "measurands_by_item": {
+    "tga": [
+      "thermal.decomposition_temp",
+      "thermal.char_residue"
+    ]
+  },
+  "limits": {
+    "temperature_degC": {
+      "max": 1100,
+      "uncertain": true
+    }
+  },
+  "models": [
+    {
+      "model": "TG 209 F1 Libra",
+      "specs": {
+        "temperature_degC": {
+          "max": 1100,
+          "uncertain": true,
+          "note": "RT to 1100 °C at the sample"
+        }
+      }
+    }
+  ],
+  "relations": [
+    {
+      "type": "same_family_as",
+      "target": "netzsch-tg-209-f3-tarsus"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://analyzing-testing.netzsch.com/en/footer/legacy-products/tg-209-f1-libra",
+      "retrieved": "2026-10-08",
+      "note": "제조사 페이지가 자동 조회를 막아(HTTP 403/406) 직접 열지 못함. 값은 웹 검색 엔진이 이 페이지에서 뽑은 발췌로만 확인했다 — 값마다 uncertain. 시료 온도 RT~1100 °C. 주소가 legacy-products 아래에 있다"
+    }
+  ],
+  "confidence": "limited",
+  "notes": "NETZSCH 사이트가 자동 조회를 막는다(HTTP 403)."
+}

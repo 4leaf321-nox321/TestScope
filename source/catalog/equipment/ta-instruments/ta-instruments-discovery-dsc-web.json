@@ -1,0 +1,89 @@
+{
+  "id": "ta-instruments-discovery-dsc-web",
+  "kind": "equipment_series",
+  "name": "TA Instruments Discovery DSC (Differential Scanning Calorimeter)",
+  "name_ko": "TA 인스트루먼트 Discovery DSC(웹 보강: DSC 25 · 250 · 2500 · 25P)",
+  "manufacturer": "ta-instruments",
+  "category": "dsc",
+  "description": "원 객체 ta-instruments-discovery-dsc 의 기종 행(Discovery DSC 하나)을 DSC 25 / 250 / 2500 / 25P 로 나눠 보탠다. 세 기종 모두 -180~725 °C, 온도 정확도는 DSC 25 ±0.1 °C, DSC 250 ±0.05 °C, DSC 2500 ±0.025 °C. 액체질소 펌프(LN2P)가 -180 °C·냉각 140 °C/min 을 준다.",
+  "test_items": [
+    "dsc"
+  ],
+  "models": [
+    {
+      "model": "DSC 25",
+      "variant": "Discovery DSC 25",
+      "specs": {
+        "temperature_degC": {
+          "min": -180,
+          "max": 725,
+          "uncertain": true
+        },
+        "accuracy_degC": {
+          "value": 0.1,
+          "uncertain": true
+        }
+      }
+    },
+    {
+      "model": "DSC 250",
+      "variant": "Discovery DSC 250",
+      "specs": {
+        "temperature_degC": {
+          "min": -180,
+          "max": 725,
+          "uncertain": true
+        },
+        "accuracy_degC": {
+          "value": 0.05,
+          "uncertain": true
+        }
+      }
+    },
+    {
+      "model": "DSC 2500",
+      "variant": "Discovery DSC 2500",
+      "specs": {
+        "temperature_degC": {
+          "min": -180,
+          "max": 725,
+          "uncertain": true
+        },
+        "accuracy_degC": {
+          "value": 0.025,
+          "uncertain": true
+        }
+      }
+    },
+    {
+      "model": "DSC 25P",
+      "note": "Discovery Pressure DSC 25P. 사양 미확인",
+      "uncertain": true
+    }
+  ],
+  "supplements": "ta-instruments-discovery-dsc",
+  "sources": [
+    {
+      "url": "https://www.tainstruments.com/dsc-25/",
+      "retrieved": "2026-10-08",
+      "note": "제조사 페이지가 자동 조회를 막아(HTTP 403/406) 직접 열지 못함. 값은 웹 검색 엔진이 이 페이지에서 뽑은 발췌로만 확인했다 — 값마다 uncertain. DSC 25: -180~725 °C, 온도 정확도 ±0.1 °C"
+    },
+    {
+      "url": "https://www.tainstruments.com/dsc-250/",
+      "retrieved": "2026-10-08",
+      "note": "제조사 페이지가 자동 조회를 막아(HTTP 403/406) 직접 열지 못함. 값은 웹 검색 엔진이 이 페이지에서 뽑은 발췌로만 확인했다 — 값마다 uncertain. DSC 250: -180~725 °C, ±0.05 °C"
+    },
+    {
+      "url": "https://www.tainstruments.com/dsc-2500/",
+      "retrieved": "2026-10-08",
+      "note": "제조사 페이지가 자동 조회를 막아(HTTP 403/406) 직접 열지 못함. 값은 웹 검색 엔진이 이 페이지에서 뽑은 발췌로만 확인했다 — 값마다 uncertain. DSC 2500: -180~725 °C, ±0.025 °C"
+    },
+    {
+      "url": "https://www.tainstruments.com/discovery-dsc-25p/",
+      "retrieved": "2026-10-08",
+      "note": "Discovery Pressure DSC 25P 페이지(검색 결과 제목만 확인)"
+    }
+  ],
+  "confidence": "limited",
+  "notes": "원 객체가 적은 정확도 ±0.025 °C·정밀도 ±0.005 °C 는 DSC 2500 값과 맞는다. Discovery X3 DSC 는 검색에서 찾지 못했다."
+}

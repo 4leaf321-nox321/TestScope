@@ -1,0 +1,89 @@
+{
+  "id": "atlas-uvtest",
+  "kind": "equipment_model",
+  "name": "Atlas UVTest Fluorescent UV Instrument",
+  "name_ko": "아틀라스 UVTest 형광 UV 내후성 시험기",
+  "manufacturer": "atlas",
+  "brand": "UVTest",
+  "category": "weathering_tester",
+  "form_factor": "floor",
+  "description": "40 W 형광 UV 램프 8개(UVA-340·UVB-313·UVA-351)를 쓰는 형광 UV 촉진 내후성 시험기. 블랙패널 온도(BPT) 제어, 쌓아 올려 설치 가능. 조사 강도 제어(340·313·351 nm)와 순환 분무는 옵션.",
+  "test_items": [
+    "accelerated_weathering"
+  ],
+  "limits": {
+    "irradiance_control_nm": {
+      "values": [
+        340,
+        313,
+        351
+      ],
+      "note": "옵션(브로슈어 4쪽). 최대 조사 강도 >1.80 W/m²(UVA)·>1.70 W/m²(UVB)(2쪽, 협대역 제어 파장 값)"
+    },
+    "black_panel_temperature_degC": {
+      "min": 35,
+      "max": 80,
+      "note": "UV 단계 BPT 35~80 °C, 응축 단계 BPT 35~60 °C(브로슈어 4쪽)"
+    }
+  },
+  "models": [
+    {
+      "model": "UVTest",
+      "specs": {
+        "lamp_power_W": 40,
+        "irradiance_control_nm": {
+          "values": [
+            340,
+            313,
+            351
+          ],
+          "note": "옵션(브로슈어 4쪽). 최대 조사 강도 >1.80 W/m²(UVA)·>1.70 W/m²(UVB)(2쪽, 협대역 제어 파장 값)"
+        },
+        "black_panel_temperature_degC": {
+          "min": 35,
+          "max": 80,
+          "note": "UV 단계 BPT 35~80 °C, 응축 단계 BPT 35~60 °C(브로슈어 4쪽)"
+        },
+        "weight_kg": 140,
+        "power": "120 VAC ±10 % 1상 50/60 Hz 12 A 또는 230 VAC ±10 % 1상 50/60 Hz 8 A"
+      },
+      "note": "형광 UV 램프 8개 × 40 W(UVA-340, UVB-313, UVA-351), 램프 수명 2500 h(UVA-340 @ 1.55 W/m²). 시편 48개 + BPT(시편 홀더 24개). 응축 단계는 가열 수조로 100 %RH. 무게 약 140 kg(옵션에 따름). 순환 DI 수 옵션은 53 L 탱크"
+    }
+  ],
+  "features": [
+    "BPT 제어",
+    "보정용 조사 강도 포트(특허)",
+    "다국어 터치 화면",
+    "문 안전·과온 차단",
+    "CE, UL·CSA 인증"
+  ],
+  "options": [
+    "순환 분무수",
+    "조사 강도 제어(340 nm, 313 nm, 351 nm)"
+  ],
+  "relations": [
+    {
+      "type": "same_family_as",
+      "target": "q-lab-quv",
+      "note": "같은 형광 UV 방식(다른 제조사)"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://www.atlas-mts.com/products/standard-instruments/accelerated-uv-testing/uvtest",
+      "retrieved": "2026-10-08",
+      "note": "제조사 UVTest 페이지"
+    },
+    {
+      "file": "atlas/uv_test_broschre_e_06_2021_sas.pdf",
+      "pages": [
+        2,
+        3,
+        4
+      ],
+      "note": "UVTest 브로슈어(Publication No. 56352489, 06/21). 2쪽 특징·최대 조사 강도, 3쪽 응축 방식·램프·순환수 옵션, 4쪽 사양표·규격"
+    }
+  ],
+  "confidence": "catalog",
+  "notes": "BPT 범위·시편 수·무게·전원은 브로슈어 2~4쪽으로 채움. 4쪽 사양표는 추출 텍스트에서 구판·신판 글자가 겹쳐 찍혀, 겹치지 않은 줄(BPT 범위·무게·전원)만 옮김. 최대 조사 강도는 2쪽 문장 값. 협대역 조사 강도(W/(m²·nm))를 담을 키가 없어 note 로만 적음."
+}

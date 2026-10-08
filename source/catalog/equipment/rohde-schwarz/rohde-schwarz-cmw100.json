@@ -1,0 +1,75 @@
+{
+  "id": "rohde-schwarz-cmw100",
+  "kind": "equipment_series",
+  "name": "R&S CMW100 Communications Manufacturing Test Set",
+  "name_ko": "로데슈바르츠 CMW100 통신 생산 시험기",
+  "manufacturer": "rohde-schwarz",
+  "brand": "CMW",
+  "category": "radio_communication_tester",
+  "description": "LTE·5G NR·WLAN·Bluetooth·IoT 기기 생산 시험용 비신호(non-signaling, 분석기·발생기) 시험기. 연속 주파수 범위 최대 6 GHz, RF 대역폭 최대 160 MHz 이고, 양방향 RF 포트 최대 8개로 병렬 시험한다. CMW500 과 원격 제어·측정 개념이 호환되며, 팬이 없고 방진 하우징이다.",
+  "test_items": [],
+  "limits": {
+    "frequency_Hz": {
+      "max": 6000000000,
+      "note": "원문 Continuous frequency range up to 6 GHz. 하한은 페이지에 없다"
+    },
+    "bandwidth_Hz": {
+      "max": 160000000,
+      "note": "원문 RF bandwidth up to 160 MHz"
+    },
+    "rf_port_count": {
+      "max": 8,
+      "note": "원문 Parallel testing on up to eight bidirectional RF ports"
+    },
+    "radio_standards": {
+      "values": [
+        "LTE",
+        "5G NR",
+        "WLAN",
+        "Bluetooth",
+        "IoT"
+      ],
+      "note": "페이지 문구 그대로"
+    }
+  },
+  "models": [
+    {
+      "model": "CMW100",
+      "specs": {
+        "frequency_Hz": {
+          "max": 6000000000
+        },
+        "bandwidth_Hz": 160000000,
+        "rf_port_count": 8,
+        "radio_standards": "LTE, 5G NR, WLAN, Bluetooth, IoT"
+      }
+    }
+  ],
+  "features": [
+    "비신호 생산 시험(분석기·발생기 모드)",
+    "양방향 RF 포트 최대 8개 병렬 시험",
+    "CMW500 과 호환되는 원격 제어·측정 개념",
+    "무팬·방진 하우징",
+    "시험 시간 단축 기법"
+  ],
+  "relations": [
+    {
+      "type": "same_family_as",
+      "target": "rohde-schwarz-cmw500"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://www.rohde-schwarz.com/us/products/test-and-measurement/wireless-tester-rf-analyzer-generator/cmw100-communications-manufacturing-test-set_63493-143617.html",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지. Key facts(최대 6 GHz, 160 MHz, 양방향 RF 포트 8개)"
+    },
+    {
+      "url": "https://www.rohde-schwarz.com/us/products/test-and-measurement/wireless-tester-rf-analyzer-generator_255191.html",
+      "retrieved": "2026-10-08",
+      "note": "제조사 RF 분석기·발생기 목록 페이지. 같은 수치 재확인"
+    }
+  ],
+  "confidence": "limited",
+  "notes": "출력 레벨 범위는 페이지에 없다."
+}

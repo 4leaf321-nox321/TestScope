@@ -1,0 +1,90 @@
+{
+  "id": "taber-reciprocating-abraser-5900",
+  "kind": "equipment_model",
+  "name": "Taber Reciprocating Abraser Model 5900",
+  "name_ko": "테이버 왕복 마모시험기 5900",
+  "manufacturer": "taber",
+  "category": "abrasion_tester",
+  "form_factor": "benchtop",
+  "description": "높이 조절 갠트리에 피벗하는 균형 암과 고정 공구 홀더 아래로 시편 플랫폼이 수평 왕복하는 마모 · 스크래치 시험기. 행정 6~155 mm, 속도 3~75 cycles/min, 하중 1 · 2 · 2.5 · 5 · 10 · 24 N(최대 24 N), 시편 플랫폼 216 × 278 mm 이며 시험 암 키트 2개를 더 달아 세 시편을 동시에 시험한다.",
+  "test_items": [
+    "abrasion"
+  ],
+  "measurands": [
+    "cycles_to_failure",
+    "mass_loss"
+  ],
+  "materials": [
+    "coatings",
+    "plastics",
+    "printed surfaces"
+  ],
+  "limits": {
+    "stroke_mm": {
+      "min": 6,
+      "max": 155
+    },
+    "cycle_rate_cpm": {
+      "min": 3,
+      "max": 75
+    },
+    "load_N": {
+      "values": [
+        1,
+        2,
+        2.5,
+        5,
+        10,
+        24
+      ],
+      "note": "포함 추. 최대 24 N, 선택 보조 추 50~5000 g"
+    },
+    "specimen_size_mm": {
+      "max": 278,
+      "note": "시편 플랫폼 216 × 278 mm (8.5″ × 11″)"
+    },
+    "stations": {
+      "max": 3,
+      "note": "선택 시험 암 키트 2개 추가 시"
+    }
+  },
+  "models": [
+    {
+      "model": "5900",
+      "specs": {
+        "stroke_mm": {
+          "min": 6,
+          "max": 155
+        },
+        "cycle_rate_cpm": {
+          "min": 3,
+          "max": 75
+        },
+        "load_N": {
+          "max": 24
+        },
+        "specimen_size_mm": "216 × 278"
+      },
+      "note": "기본 구성 Wearaser 콜릿, CS-10 · H-18 Wearaser"
+    }
+  ],
+  "relations": [
+    {
+      "type": "performs",
+      "target": "abrasion"
+    },
+    {
+      "type": "same_family_as",
+      "target": "taber-linear-abraser-5770"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://www.taberindustries.com/reciprocating-abraser",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지(Model 5900)"
+    }
+  ],
+  "notes": "페이지는 ISO 1518 을 비슷한 장비를 쓰는 규격으로 언급할 뿐이라 시험법 목록에 넣지 않았다.",
+  "confidence": "limited"
+}

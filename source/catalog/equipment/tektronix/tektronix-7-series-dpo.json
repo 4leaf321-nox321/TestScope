@@ -1,0 +1,78 @@
+{
+  "id": "tektronix-7-series-dpo",
+  "kind": "equipment_series",
+  "name": "7 Series DPO Digital Phosphor Oscilloscope",
+  "name_ko": "텍트로닉스 7 시리즈 DPO 오실로스코프",
+  "manufacturer": "tektronix",
+  "brand": "7 Series DPO",
+  "category": "oscilloscope",
+  "subcategory": "real_time_oscilloscope",
+  "form_factor": "benchtop",
+  "description": "8~25 GHz 대역의 고성능 오실로스코프 계열임. 12 bit ADC, 최대 125 GS/s, 레코드 최대 2G points. DPO718AX 는 4채널 125 GS/s 또는 8채널 62.5 GS/s 중 선택.",
+  "test_items": [],
+  "limits": {
+    "bandwidth_Hz": {
+      "min": 8000000000,
+      "max": 25000000000
+    },
+    "sample_rate_Sa_s": {
+      "max": 125000000000
+    },
+    "record_length_pts": {
+      "max": 2000000000
+    },
+    "channels": {
+      "values": [
+        4,
+        8
+      ]
+    },
+    "adc_resolution_bit": {
+      "values": [
+        12
+      ]
+    }
+  },
+  "models": [
+    {
+      "model": "DPO714AX",
+      "specs": {
+        "bandwidth_Hz": {
+          "min": 8000000000,
+          "max": 25000000000,
+          "note": "원문 8 GHz – 25 GHz"
+        },
+        "channels": 4,
+        "sample_rate_Sa_s": 125000000000,
+        "record_length_pts": 2000000000,
+        "adc_resolution_bit": 12
+      },
+      "note": "원문 125 GS/s · Up to 2G points · 12 bits"
+    },
+    {
+      "model": "DPO718AX",
+      "specs": {
+        "bandwidth_Hz": {
+          "min": 8000000000,
+          "max": 25000000000,
+          "note": "원문 8 GHz – 25 GHz"
+        },
+        "channels": 8,
+        "sample_rate_Sa_s": {
+          "max": 125000000000,
+          "note": "원문 4 @ 125 GS/s; 8 @ 62.5 GS/s"
+        },
+        "record_length_pts": 2000000000,
+        "adc_resolution_bit": 12
+      }
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://www.tek.com/en/products/oscilloscopes/7-series-dpo",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지 기종 표. 원문 8 GHz – 25 GHz, 125 GS/s(DPO718AX 는 8채널 62.5 GS/s), Up to 2G points, 12 bits"
+    }
+  ],
+  "confidence": "limited"
+}

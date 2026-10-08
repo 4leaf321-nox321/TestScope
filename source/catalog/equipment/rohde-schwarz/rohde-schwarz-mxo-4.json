@@ -1,0 +1,116 @@
+{
+  "id": "rohde-schwarz-mxo-4",
+  "kind": "equipment_series",
+  "name": "R&S MXO 4 Oscilloscope",
+  "name_ko": "로데슈바르츠 MXO 4 오실로스코프",
+  "manufacturer": "rohde-schwarz",
+  "brand": "MXO",
+  "category": "oscilloscope",
+  "subcategory": "mixed_signal_oscilloscope",
+  "form_factor": "benchtop",
+  "description": "200 MHz~1.5 GHz 대역의 4채널 오실로스코프 계열임. 최대 5 Gsample/s(2채널; 4채널 2.5 Gsample/s), 채널당 400 Mpts(2채널 800 Mpoints), HD 모드 최대 18 bit, 옵션 16 디지털 채널, 13.3 inch 화면, 4,500,000 waveforms/s 초과 갱신율.",
+  "test_items": [],
+  "limits": {
+    "bandwidth_Hz": {
+      "min": 200000000,
+      "max": 1500000000
+    },
+    "sample_rate_Sa_s": {
+      "max": 5000000000,
+      "note": "원문 max. 5 Gsample/s on 2 channels, max. 2.5 Gsample/s on 4 channels"
+    },
+    "record_length_pts": {
+      "max": 800000000,
+      "min": 400000000,
+      "note": "원문 400 Mpoints with 4 active channel, 800 Mpoints with 2 active channel"
+    },
+    "channels": {
+      "values": [
+        4
+      ]
+    },
+    "logic_channel_count": {
+      "values": [
+        16
+      ],
+      "note": "옵션"
+    },
+    "display_size_in": {
+      "values": [
+        13.3
+      ]
+    }
+  },
+  "models": [
+    {
+      "model": "MXO44-242",
+      "specs": {
+        "bandwidth_Hz": 200000000,
+        "channels": 4,
+        "logic_channel_count": 16,
+        "sample_rate_Sa_s": 5000000000,
+        "record_length_pts": 400000000,
+        "display_size_in": 13.3
+      }
+    },
+    {
+      "model": "MXO44-243",
+      "specs": {
+        "bandwidth_Hz": 350000000,
+        "channels": 4,
+        "logic_channel_count": 16,
+        "sample_rate_Sa_s": 5000000000,
+        "record_length_pts": 400000000,
+        "display_size_in": 13.3
+      }
+    },
+    {
+      "model": "MXO44-245",
+      "specs": {
+        "bandwidth_Hz": 500000000,
+        "channels": 4,
+        "logic_channel_count": 16,
+        "sample_rate_Sa_s": 5000000000,
+        "record_length_pts": 400000000,
+        "display_size_in": 13.3
+      }
+    },
+    {
+      "model": "MXO44-2410",
+      "specs": {
+        "bandwidth_Hz": 1000000000,
+        "channels": 4,
+        "logic_channel_count": 16,
+        "sample_rate_Sa_s": 5000000000,
+        "record_length_pts": 400000000,
+        "display_size_in": 13.3
+      }
+    },
+    {
+      "model": "MXO44-2415",
+      "specs": {
+        "bandwidth_Hz": 1500000000,
+        "channels": 4,
+        "logic_channel_count": 16,
+        "sample_rate_Sa_s": 5000000000,
+        "record_length_pts": 400000000,
+        "display_size_in": 13.3
+      }
+    }
+  ],
+  "options": [
+    {
+      "name": "MXO4-B243·B245·B2410·B2415",
+      "note": "대역폭 업그레이드"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://www.rohde-schwarz.com/us/products/test-and-measurement/oscilloscopes/rs-mxo-4-oscilloscope_63493-1164992.html",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지. 기종 R&S®MXO44-242 … MXO44-2415, \"max. 5 Gsample/s on 2 channels\", \"max. 2.5 Gsample/s on 4 channels\", \"400 Mpts per channel\", \"800 Mpoints with 2 active channel\", up to 18 bit with HD mode, 13.3\", > 4 500 000 waveforms/s"
+    }
+  ],
+  "confidence": "limited",
+  "notes": "ADC 비트 수는 페이지에 「HD 모드 최대 18 bit」 로만 있어 vertical_resolution_bit 를 비움."
+}

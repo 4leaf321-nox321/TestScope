@@ -1,0 +1,163 @@
+{
+  "id": "waygate-technologies-phoenix-micromex-nanomex-neo",
+  "kind": "equipment_series",
+  "name": "Waygate Technologies Phoenix Microme|x Neo / Nanome|x Neo",
+  "name_ko": "웨이게이트 피닉스 microme|x neo · nanome|x neo 2D/3D X-ray 검사 장비",
+  "manufacturer": "waygate-technologies",
+  "brand": "phoenix|x-ray",
+  "category": "xray_inspection",
+  "form_factor": "floor",
+  "description": "전자부품·반도체 패키지의 2D 투시와 3D CT 를 하는 고분해능 오프라인 X-ray 검사 장비. Microme|x Neo 160 · 180 은 개방형 마이크로포커스 튜브(160 kV 또는 180 kV, 20 W)로 디테일 검출 0.5 µm, Nanome|x Neo 180 은 개방형 나노포커스 튜브(180 kV, 20 W)로 0.2 µm 를 낸다. 세 기종 모두 최대 검사 영역 18″ × 14″(회전 없이 24″ × 20″), 시료 27″ × 25″ · 10 kg, 3D CT 와 planar|CT 옵션, 70° 경사 관찰과 5축 매니퓰레이터를 갖춘다.",
+  "test_items": [
+    "xray_void_inspection"
+  ],
+  "materials": [
+    "PCB assemblies",
+    "semiconductor packages"
+  ],
+  "limits": {
+    "tube_voltage_kV": {
+      "values": [
+        160,
+        180
+      ],
+      "note": "원문 180 kV / 20 W(Nanome|x Neo 180 · Microme|x Neo 180), 160 kV / 20 W(Microme|x Neo 160), PDF p.5"
+    },
+    "tube_power_W": {
+      "max": 20
+    },
+    "feature_recognition_um": {
+      "min": 0.2,
+      "note": "원문 Detail detectability up to 0.2 µm(Nanome|x Neo 180) / up to 0.5 µm(Microme|x Neo), PDF p.5"
+    },
+    "spatial_resolution_um": {
+      "min": 0.8,
+      "note": "JIMA 구조 분해능. Nanome|x Neo 180 0.8 µm, Microme|x Neo 2 µm(웹 값, PDF 에 없음)"
+    },
+    "inspection_area_mm": {
+      "max": 610,
+      "note": "원문 460 mm x 360 mm (18\" x 14\"), 610 mm x 510 mm (24\" x 20\") without rotation table(PDF p.5). 웹 페이지 인치값 환산은 609.6 mm"
+    },
+    "sample_size_mm": {
+      "max": 680,
+      "note": "원문 680 mm x 635 mm (27\" x 25\") / 10 kg(PDF p.5). 웹 페이지 인치값 환산은 685.8 mm"
+    },
+    "sample_weight_kg": {
+      "max": 10,
+      "note": "원문 10 kg / 22 lbs"
+    },
+    "voxel_size_um": {
+      "min": 2,
+      "note": "원문 Max. voxel resolution: down to 2 µm(CT 옵션, PDF p.5)"
+    },
+    "oblique_view_angle_deg": {
+      "max": 70,
+      "note": "원문 continuously adjustable view angle up to 70°, rotation 0~360°"
+    },
+    "magnification": {
+      "max": 2300,
+      "note": "원문 기하 배율 max. 2,300x(DXR S100 Pro) · 2,100x(DXR250RT/DXR S140, DXR S85). 모니터 포함 총배율 최대 92,500x(DXR S85). CT 기하 배율 최대 100x"
+    }
+  },
+  "models": [
+    {
+      "model": "Phoenix Microme|x Neo 160",
+      "specs": {
+        "xray_source": "개방형 마이크로포커스",
+        "tube_voltage_kV": 160,
+        "tube_power_W": 20,
+        "feature_recognition_um": 0.5,
+        "spatial_resolution_um": {
+          "min": 2,
+          "note": "JIMA 구조"
+        },
+        "sample_weight_kg": 10,
+        "magnification": {
+          "max": 2100,
+          "note": "원문 Magnification max. 2,100x(DXR S85), total magnification max. 92,500x(27\" 2K 모니터)"
+        },
+        "detector": "DXR S85(85 µm 화소, 13 cm × 13 cm)"
+      },
+      "note": "PDF(BHFF31343EN p.5) 사양표. 관전압·출력·디테일 검출·시료 한계 확인. JIMA 분해능은 웹 값"
+    },
+    {
+      "model": "Phoenix Microme|x Neo 180",
+      "specs": {
+        "xray_source": "개방형 마이크로포커스",
+        "tube_voltage_kV": 180,
+        "tube_power_W": 20,
+        "feature_recognition_um": 0.5,
+        "spatial_resolution_um": {
+          "min": 2,
+          "note": "JIMA 구조"
+        },
+        "sample_weight_kg": 10,
+        "magnification": {
+          "max": 2300,
+          "note": "원문 Magnification DXR250RT/DXR S140: max. 2,100x; DXR S100 Pro: max. 2,300x. Total magnification max. 38,600x(DXR250RT) · 39,200x(DXR S140) · 43,200x(DXR S100 Pro)"
+        },
+        "detector": "DXR S100 Pro(100 µm, 30 cm × 25 cm) · DXR S140(139 µm, 1536 × 1536, 25 fps) · DXR250RT(200 µm, 30 fps) 중 선택"
+      },
+      "note": "PDF(BHFF31343EN p.5) 사양표. 관전압·출력·디테일 검출·시료 한계 확인. JIMA 분해능은 웹 값. Shadow|target(선량 저감)은 Microme|x Neo 180 전용"
+    },
+    {
+      "model": "Phoenix Nanome|x Neo 180",
+      "specs": {
+        "xray_source": "개방형 나노포커스",
+        "tube_voltage_kV": 180,
+        "tube_power_W": 20,
+        "feature_recognition_um": 0.2,
+        "spatial_resolution_um": {
+          "min": 0.8,
+          "note": "JIMA 구조"
+        },
+        "sample_weight_kg": 10,
+        "magnification": {
+          "max": 2300,
+          "note": "원문 Magnification DXR250RT/DXR S140: max. 2,100x; DXR S100 Pro: max. 2,300x. Total magnification max. 38,600x(DXR250RT) · 39,200x(DXR S140) · 43,200x(DXR S100 Pro)"
+        },
+        "detector": "DXR S100 Pro(100 µm, 30 cm × 25 cm) · DXR S140(139 µm, 1536 × 1536, 25 fps) · DXR250RT(200 µm, 30 fps) 중 선택"
+      },
+      "note": "PDF(BHFF31343EN p.5) 사양표. 관전압·출력·디테일 검출·시료 한계 확인. JIMA 분해능은 웹 값"
+    }
+  ],
+  "detectors": [
+    "DXR S85 (85 µm, Microme|x Neo 160)",
+    "DXR 250RT (200 µm)",
+    "DXR S140 (139 µm)",
+    "DXR S100 Pro (100 µm)"
+  ],
+  "features": [
+    "360° 회전과 최대 70° 경사 관찰",
+    "5축 매니퓰레이터(X · Y · Z · tilt · rotate)",
+    "3D CT · planar|CT 옵션",
+    "CT 기하 배율 최대 100배(페이지 표기 'Geometric magnification up to 100x (CT)')"
+  ],
+  "relations": [
+    {
+      "type": "performs",
+      "target": "xray_void_inspection"
+    },
+    {
+      "type": "same_family_as",
+      "target": "waygate-technologies-phoenix-vtomex"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://www.bakerhughes.com/node/120151",
+      "retrieved": "2026-10-08",
+      "note": "제조사(Baker Hughes) 제품 페이지 'phoenix micromex and nanomex neo'. 기종별 사양 표"
+    },
+    {
+      "file": "waygate-technologies/wt_bhff31343en_high_performance_x-ray_a4_v05_2.pdf",
+      "pages": [
+        3,
+        4,
+        5
+      ]
+    }
+  ],
+  "notes": "PDF(BHFF31343EN 브로셔 p.5 사양표)로 확인: 관전압·출력, 디테일 검출 0.2 · 0.5 µm, 검사 영역, 시료 크기·무게, 70° 경사, 복셀 2 µm, CT 기하 배율 100x. PDF 로 바꾼 값: 검사 영역 최대 610 mm(웹 환산 609.6), 시료 680 mm(웹 환산 685.8), DXR S85 화소 85 µm(웹 75 µm). 검출기별 2D 기하 배율·총배율을 더함. 웹 값 그대로: JIMA 구조 분해능 0.8 · 2 µm. 기종명 표기는 제조사 표 'Phoenix Microme|x Neo 160' 그대로 두었다(대장에는 'micromex neo' 처럼 세로줄 없이 적힐 수 있다).",
+  "confidence": "catalog"
+}

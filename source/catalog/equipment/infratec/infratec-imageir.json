@@ -1,0 +1,148 @@
+{
+  "id": "infratec-imageir",
+  "kind": "equipment_series",
+  "name": "InfraTec ImageIR Cooled Infrared Camera Series",
+  "name_ko": "인프라텍 ImageIR 냉각형 적외선 카메라",
+  "manufacturer": "infratec",
+  "brand": "ImageIR",
+  "category": "thermal_imager",
+  "subcategory": "cooled_ir",
+  "form_factor": "camera",
+  "description": "냉각 검출기(InSb · MCT)를 쓰는 연구 · 시험용 고성능 적외선 카메라 계열. ImageIR 8300 계열은 640 × 512, 9400 은 1,280 × 1,024(MicroScan 2,560 × 2,048), 10300 은 1,920 × 1,536. 전 화면 프레임 속도는 113 ~ 1,105 Hz 이고 부분 화면에서 최대 30,330 Hz(8300 hs). 온도 분해능 0.02 K 수준.",
+  "test_items": [
+    "thermography"
+  ],
+  "measurands": [
+    "surface_temperature",
+    "temperature_distribution",
+    "hotspot_location"
+  ],
+  "limits": {
+    "ir_resolution_pixels": {
+      "min": 327680,
+      "max": 2949120,
+      "note": "640 × 512 ~ 1,920 × 1,536",
+      "uncertain": true
+    },
+    "frame_rate_fps": {
+      "min": 113,
+      "max": 1105,
+      "note": "전 화면, 원문 Hz",
+      "uncertain": true
+    },
+    "max_frame_rate_fps": {
+      "max": 30330,
+      "note": "8300 hs 부분 화면",
+      "uncertain": true
+    },
+    "thermal_sensitivity_degC": {
+      "min": 0.02,
+      "max": 0.035,
+      "note": "원문 K / mK",
+      "uncertain": true
+    }
+  },
+  "models": [
+    {
+      "model": "ImageIR 8300",
+      "specs": {
+        "detector_pixels": "640 × 512",
+        "ir_resolution_pixels": 327680,
+        "thermal_sensitivity_degC": 0.02,
+        "frame_rate_fps": 205,
+        "max_frame_rate_fps": 5000
+      },
+      "note": "전 / 1/2 / 1/4 / 부분 화면: MCT 151 / 540 / 1,520 / 2,807 Hz, InSb 205 / 570 / 1,020 / 5,000 Hz. 온도 분해능 20 mK",
+      "uncertain": true
+    },
+    {
+      "model": "ImageIR 8300 hp",
+      "specs": {
+        "detector_pixels": "640 × 512",
+        "ir_resolution_pixels": 327680,
+        "frame_rate_fps": 355,
+        "pixel_pitch_um": 15,
+        "max_frame_rate_fps": 5000
+      },
+      "note": "화소 간격 15 µm. MCT 232 / 828 / 2,300 / 3,725 Hz, InSb 355 / 670 / 1,200 / 5,000 Hz",
+      "uncertain": true
+    },
+    {
+      "model": "ImageIR 8300 hs",
+      "specs": {
+        "detector_pixels": "640 × 512",
+        "ir_resolution_pixels": 327680,
+        "thermal_sensitivity_degC": 0.02,
+        "frame_rate_fps": 1105,
+        "max_frame_rate_fps": 30330
+      },
+      "note": "1,105 / 1,957 / 3,731 / 30,330 Hz. 온도 분해능 30 °C 에서 0.02 K 보다 좋음",
+      "uncertain": true
+    },
+    {
+      "model": "ImageIR 9400",
+      "specs": {
+        "detector_pixels": "1280 × 1024",
+        "ir_resolution_pixels": 1310720,
+        "frame_rate_fps": 180,
+        "pixel_pitch_um": 10,
+        "max_frame_rate_fps": 2601
+      },
+      "note": "MicroScan 2,560 × 2,048. 화소 간격 10 µm. 180 / 342 / 622 / 2,601 Hz",
+      "uncertain": true
+    },
+    {
+      "model": "ImageIR 10300",
+      "specs": {
+        "detector_pixels": "1920 × 1536",
+        "ir_resolution_pixels": 2949120,
+        "thermal_sensitivity_degC": 0.022,
+        "frame_rate_fps": 400,
+        "pixel_pitch_um": 10,
+        "max_frame_rate_fps": 2493
+      },
+      "note": "화소 간격 10 µm. 113 / 216 / 396 / 1,915 Hz, 고속 모드 400 / 692 / 1,088 / 2,493 Hz. 온도 분해능 0.035 K, 고속 모드 0.022 K",
+      "uncertain": true
+    },
+    {
+      "model": "ImageIR 9500",
+      "note": "검색 결과 페이지 제목(Infrared camera series ImageIR 9500 series)에서 이름만 확인",
+      "uncertain": true
+    }
+  ],
+  "relations": [
+    {
+      "type": "performs",
+      "target": "thermography"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://www.infratec-infrared.com/thermography/infrared-camera/imageir-8300/",
+      "retrieved": "2026-10-08",
+      "note": "제조사 페이지 본문이 스크립트로 그려져 직접 읽지 못함(텍스트 38자). 검색 엔진이 보여 준 제조사 페이지 발췌로 읽음(페이지를 직접 열지 못함). 이 출처의 값은 uncertain"
+    },
+    {
+      "url": "https://www.infratec.eu/thermography/infrared-camera/imageir-8300-hs/",
+      "retrieved": "2026-10-08",
+      "note": "제조사 페이지 본문이 스크립트로 그려져 직접 읽지 못함(텍스트 38자). 검색 엔진이 보여 준 제조사 페이지 발췌로 읽음(페이지를 직접 열지 못함). 이 출처의 값은 uncertain"
+    },
+    {
+      "url": "https://www.infratec-infrared.com/thermography/infrared-camera/imageir-8300-hp/",
+      "retrieved": "2026-10-08",
+      "note": "제조사 페이지 본문이 스크립트로 그려져 직접 읽지 못함(텍스트 38자). 검색 엔진이 보여 준 제조사 페이지 발췌로 읽음(페이지를 직접 열지 못함). 이 출처의 값은 uncertain"
+    },
+    {
+      "url": "https://www.infratec-infrared.com/thermography/infrared-camera/imageir-9400/",
+      "retrieved": "2026-10-08",
+      "note": "제조사 페이지 본문이 스크립트로 그려져 직접 읽지 못함(텍스트 38자). 검색 엔진이 보여 준 제조사 페이지 발췌로 읽음(페이지를 직접 열지 못함). 이 출처의 값은 uncertain"
+    },
+    {
+      "url": "https://www.infratec.eu/thermography/infrared-camera/imageir-10300/",
+      "retrieved": "2026-10-08",
+      "note": "제조사 페이지 본문이 스크립트로 그려져 직접 읽지 못함(텍스트 38자). 검색 엔진이 보여 준 제조사 페이지 발췌로 읽음(페이지를 직접 열지 못함). 이 출처의 값은 uncertain"
+    }
+  ],
+  "confidence": "limited",
+  "notes": "측정 온도 범위 · 분광 범위 · 확도는 발췌에 없어 비웠다. 8300 hp · 9400 의 열 감도도 발췌에 없음."
+}

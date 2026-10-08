@@ -189,6 +189,73 @@ def _as_condition(
     return specs.to_axis(definition, key, low, high)
 
 
+def fill_missing_conditions(
+    db: Session, equipment: Equipment
+) -> list[tuple[uuid.UUID, uuid.UUID]]:
+    """사양에서 나오는데 이 장비의 시험 조건에 **없는** 축만 채운다. (시험 항목, 축) 목록.
+
+    시험 조건은 **등록할 때** 기종 사양에서 복사된다(ADR 0004). 그래서 사양 정의가 검색축에
+    새로 이어지면(2026-10-08 낙하 높이 · 승온·하강 속도 · 변위) 이미 등록된 장비만 그 축이
+    비고, 검색은 그 장비를 「모름」 으로 답한다. 그 빈 칸을 채우는 자리다.
+
+    - **있는 조건은 안 건드린다** — 사람이 적은 것이든 사양에서 온 것이든. 등록 뒤 기종 사양이
+      바뀌어도 장비가 안 바뀐다는 복사 규칙은 그대로다. 비어 있는 축만 채운다.
+    - **실측이 기종 사양을 이긴다** — 이 장비에 실측이 있으면 그 값으로, 없으면 기종 사양으로.
+      꼬리표는 등록 복사 · 실측 반영과 같다(「사양 …에서 따옴」 · 「실측 …에서 따옴」).
+
+    커밋은 부르는 쪽이 한다 — 미리보기는 되돌리고 적용은 커밋한다
+    (`scripts/fill_spec_conditions.py`).
+    """
+    derived = specs.conditions_from_specs(db, equipment.model_id) if equipment.model_id else {}
+    measured: dict[uuid.UUID, tuple[float | None, float | None, str]] = {}
+    for row, definition, key in db.execute(
+        select(EquipmentSpecValue, SpecDefinition, ConditionKey)
+        .join(SpecDefinition, SpecDefinition.id == EquipmentSpecValue.definition_id)
+        .join(ConditionKey, ConditionKey.id == SpecDefinition.condition_key_id)
+        .where(EquipmentSpecValue.equipment_id == equipment.id)
+    ):
+        bounds = _as_condition(definition, key, row)
+        if bounds is not None:
+            measured[key.id] = (bounds[0], bounds[1], definition.label)
+    axes = set(derived) | set(measured)
+    if not axes:
+        return []
+
+    added: list[tuple[uuid.UUID, uuid.UUID]] = []
+    for test_item in db.scalars(
+        select(EquipmentTestItem).where(EquipmentTestItem.equipment_id == equipment.id)
+    ):
+        have = set(
+            db.scalars(
+                select(EquipmentTestCondition.condition_key_id).where(
+                    EquipmentTestCondition.equipment_test_item_id == test_item.id
+                )
+            )
+        )
+        for key_id in sorted(axes - have, key=str):
+            if key_id in measured:
+                low, high, label = measured[key_id]
+                accessory = False
+                note = f"{_FROM_MEASURED} {label}에서 따옴"
+            else:
+                low, high, label, accessory = derived[key_id]
+                note = f"{_FROM_SPEC} {label}에서 따옴" + (
+                    " · 옵션 부속 기준" if accessory else ""
+                )
+            db.add(
+                EquipmentTestCondition(
+                    equipment_test_item_id=test_item.id,
+                    condition_key_id=key_id,
+                    min_value=low,
+                    max_value=high,
+                    requires_accessory=accessory,
+                    note=note,
+                )
+            )
+            added.append((test_item.id, key_id))
+    return added
+
+
 def _reflect(
     db: Session, equipment: Equipment, definition: SpecDefinition, row: EquipmentSpecValue
 ) -> bool:

@@ -1,0 +1,197 @@
+{
+  "id": "lab-equipment-autoshock-ii",
+  "kind": "equipment_series",
+  "name": "L.A.B. Equipment AutoShock II Automated Shock Test Systems",
+  "name_ko": "L.A.B. AutoShock II 자동 충격 시험기",
+  "manufacturer": "lab-equipment",
+  "brand": "AutoShock II",
+  "category": "shock_test_machine",
+  "form_factor": "floor",
+  "description": "완전 자동 충격 시험기 계열. 반정현·사각파·톱니 펄스를 내며, 테이블 61×81 cm(AS-II 24×32)부터 152×152 cm(AS-II 60)까지, 탑재 600~900 kg, 최대 600 g(AS-II 60 은 500 g), 펄스 2.0~65 ms, 속도 변화 자유낙하 7.0~7.3 m/s·가속 11.3~12.2 m/s.",
+  "test_items": [
+    "mechanical_shock"
+  ],
+  "measurands": [
+    "peak_acceleration",
+    "shock_response_spectrum"
+  ],
+  "limits": {
+    "acceleration_g": {
+      "max": 600
+    },
+    "pulse_duration_ms": {
+      "min": 2.0,
+      "max": 65
+    },
+    "velocity_change_m_s": {
+      "min": 7.0,
+      "max": 12.2,
+      "note": "자유낙하 7.0~7.3, 가속 11.3~12.2"
+    },
+    "payload_kg": {
+      "min": 600,
+      "max": 900
+    },
+    "table_size_mm": {
+      "min": 610,
+      "max": 1520
+    }
+  },
+  "models": [
+    {
+      "model": "AS-II 24×32",
+      "specs": {
+        "table_size_mm": [
+          610,
+          810
+        ],
+        "payload_kg": 600,
+        "acceleration_g": 600,
+        "pulse_duration_ms": {
+          "min": 2.0,
+          "max": 65
+        },
+        "velocity_change_m_s": {
+          "min": 7.3,
+          "max": 12.2
+        }
+      },
+      "note": "속도 변화 자유낙하 7.3 m/s, 가속 12.2 m/s. 테이블 원문 cm"
+    },
+    {
+      "model": "AS-II 36",
+      "specs": {
+        "table_size_mm": [
+          910,
+          910
+        ],
+        "payload_kg": 600,
+        "acceleration_g": 600,
+        "pulse_duration_ms": {
+          "min": 2.0,
+          "max": 65
+        },
+        "velocity_change_m_s": {
+          "min": 7.0,
+          "max": 11.6
+        }
+      },
+      "note": "속도 변화 자유낙하 7.0 m/s, 가속 11.6 m/s. 테이블 원문 cm"
+    },
+    {
+      "model": "AS-II 36×42",
+      "specs": {
+        "table_size_mm": [
+          910,
+          1070
+        ],
+        "payload_kg": 600,
+        "acceleration_g": 600,
+        "pulse_duration_ms": {
+          "min": 2.0,
+          "max": 60
+        },
+        "velocity_change_m_s": {
+          "min": 7.0,
+          "max": 11.6
+        }
+      },
+      "note": "속도 변화 자유낙하 7.0 m/s, 가속 11.6 m/s. 테이블 원문 cm"
+    },
+    {
+      "model": "AS-II 48",
+      "specs": {
+        "table_size_mm": [
+          1220,
+          1220
+        ],
+        "payload_kg": 900,
+        "acceleration_g": 600,
+        "pulse_duration_ms": {
+          "min": 3.0,
+          "max": 60
+        },
+        "velocity_change_m_s": {
+          "min": 7.0,
+          "max": 11.6
+        }
+      },
+      "note": "속도 변화 자유낙하 7.0 m/s, 가속 11.6 m/s. 테이블 원문 cm"
+    },
+    {
+      "model": "AS-II 48×60",
+      "specs": {
+        "table_size_mm": [
+          1220,
+          1520
+        ],
+        "payload_kg": 900,
+        "acceleration_g": 600,
+        "pulse_duration_ms": {
+          "min": 3.0,
+          "max": 60
+        },
+        "velocity_change_m_s": {
+          "min": 7.0,
+          "max": 11.6
+        }
+      },
+      "note": "속도 변화 자유낙하 7.0 m/s, 가속 11.6 m/s. 테이블 원문 cm"
+    },
+    {
+      "model": "AS-II 60",
+      "specs": {
+        "table_size_mm": [
+          1520,
+          1520
+        ],
+        "payload_kg": 900,
+        "acceleration_g": 500,
+        "pulse_duration_ms": {
+          "min": 3.0,
+          "max": 60
+        },
+        "velocity_change_m_s": {
+          "min": 7.0,
+          "max": 11.3
+        }
+      },
+      "note": "속도 변화 자유낙하 7.0 m/s, 가속 11.3 m/s. 테이블 원문 cm"
+    }
+  ],
+  "accessories": [
+    {
+      "name": "반정현 엘라스토머 키트",
+      "note": "AutoShock II·SD-Series 공용, 수십만 회 충격 내구"
+    }
+  ],
+  "pulse_waveforms": [
+    "반정현",
+    "사각파",
+    "톱니"
+  ],
+  "relations": [
+    {
+      "type": "performs",
+      "target": "mechanical_shock"
+    },
+    {
+      "type": "same_family_as",
+      "target": "lab-equipment-sd-series-shock"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://www.labequipment.com/autoshock-ii/",
+      "retrieved": "2026-10-08",
+      "note": "제조사 AutoShock II 페이지"
+    },
+    {
+      "url": "https://www.labequipment.com/shock-test-systems/",
+      "retrieved": "2026-10-08",
+      "note": "제조사 충격 시험기 목록"
+    }
+  ],
+  "confidence": "limited",
+  "notes": "기종명의 ×는 페이지 표기를 따랐다. 낙하 높이·반복 속도·규격 번호는 페이지에 없다."
+}

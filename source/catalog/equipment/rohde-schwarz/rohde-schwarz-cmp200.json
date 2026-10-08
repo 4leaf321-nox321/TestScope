@@ -1,0 +1,82 @@
+{
+  "id": "rohde-schwarz-cmp200",
+  "kind": "equipment_series",
+  "name": "R&S CMP200 Radio Communication Tester",
+  "name_ko": "로데슈바르츠 CMP200 무선통신 테스터",
+  "manufacturer": "rohde-schwarz",
+  "brand": "CMP",
+  "category": "radio_communication_tester",
+  "description": "벡터 신호 분석기와 ARB 기반 발생기를 합친 IF 테스터. IF 범위 6~20 GHz 이고, 원격 무선 헤드 R&S CMPHEAD30 을 최대 3대 붙여 5G FR2 주파수로 상·하향 변환한다. 여러 CMPHEAD30 에 걸쳐 안테나·프로브 경로를 최대 6개 두어 빔포밍·전력 측정을 한다. 여러 DUT 병렬 시험, 빠른 측정, 자동 경로 보정을 내세운다.",
+  "test_items": [],
+  "limits": {
+    "frequency_Hz": {
+      "min": 6000000000,
+      "max": 20000000000,
+      "note": "원문 IF range from 6 GHz to 20 GHz(CMPQ 브로슈어·제품 페이지). 5G FR2 RF 는 CMPHEAD30 원격 헤드로 변환: CMPQ 브로슈어 24.25~31.80 GHz, 37.00~43.50 GHz"
+    },
+    "radio_standards": {
+      "values": [
+        "5G FR2 (CMPHEAD30 원격 헤드 사용)"
+      ],
+      "note": "페이지 문구 upconverting/downconverting signals to 5G FR2 frequencies"
+    }
+  },
+  "models": [
+    {
+      "model": "CMP200",
+      "specs": {
+        "frequency_Hz": {
+          "min": 6000000000,
+          "max": 20000000000,
+          "note": "IF 범위"
+        }
+      }
+    }
+  ],
+  "features": [
+    "VSA + ARB 발생기 IF 테스터",
+    "여러 DUT 병렬 시험",
+    "빠른 측정 속도",
+    "완전 자동 경로 보정",
+    "빔포밍·전력 측정(안테나·프로브 경로 최대 6개)"
+  ],
+  "options": [
+    {
+      "name": "R&S CMPHEAD30 원격 무선 헤드",
+      "note": "최대 3대. 5G FR2 주파수로 상·하향 변환. CMPQ 브로슈어: 24.25~31.80 GHz·37.00~43.50 GHz, 내장 mmWave RF 스위치로 mmWave RF 경로 2개(단일 편파 안테나 2개), 250 mm × 190 mm × 30 mm"
+    },
+    {
+      "name": "R&S UWB HEAD CM-Z310A",
+      "note": "목록 페이지: 4~13 GHz, CMP200 포트당 RF 경로 4개 추가, 저잡음 증폭기 내장"
+    }
+  ],
+  "relations": [
+    {
+      "type": "same_family_as",
+      "target": "rohde-schwarz-cmp180"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://www.rohde-schwarz.com/us/products/test-and-measurement/wireless-tester-rf-analyzer-generator/cmp200-radio-communication-tester_63493-601281.html",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지. Key facts(IF 6~20 GHz), CMPHEAD30 구성"
+    },
+    {
+      "url": "https://www.rohde-schwarz.com/us/products/test-and-measurement/wireless-tester-rf-analyzer-generator_255191.html",
+      "retrieved": "2026-10-08",
+      "note": "제조사 RF 분석기·발생기 목록 페이지. UWB HEAD CM-Z310A 사양"
+    },
+    {
+      "file": "rohde-schwarz/cmpq_bro_3609-3742-12_v0100.pdf",
+      "pages": [
+        4,
+        5,
+        6
+      ],
+      "note": "제조사 CMPQ(5G mmWave RF 시험 시스템) 브로슈어. CMP200 Key facts(IF 6~20 GHz, CMPHEAD30 최대 3대)와 CMPHEAD30 주파수 범위"
+    }
+  ],
+  "confidence": "catalog",
+  "notes": "PDF 로 확인: IF 6~20 GHz, CMPHEAD30 최대 3대·헤드당 mmWave 경로 2개(합계 6), CMPHEAD30 FR2 주파수 24.25~31.80·37.00~43.50 GHz. 출력 레벨은 PDF 에도 없다. 같은 브로슈어의 CMPQ 는 CMP200·CMPHEAD30·CMQ200 차폐 상자를 묶은 시스템이라 별도 계열로 두고 넣지 않았다. 참고: CMW 플랫폼 브로슈어(5214-2833-12 v05.00) 5쪽은 CMP200 을 「RF frequencies from 4 GHz to 20 GHz」 로 적어 CMPQ 브로슈어·제품 페이지(6~20 GHz)와 하한이 다르다 — 값은 6 GHz 로 두었다."
+}

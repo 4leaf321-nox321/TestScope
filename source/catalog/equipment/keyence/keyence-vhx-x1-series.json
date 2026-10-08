@@ -1,0 +1,116 @@
+{
+  "id": "keyence-vhx-x1-series",
+  "kind": "equipment_series",
+  "name": "KEYENCE VHX-X1 Series Digital Microscope (VHX-X1 / VHX-X1F)",
+  "name_ko": "키엔스 VHX-X1 디지털 현미경",
+  "manufacturer": "keyence",
+  "brand": "VHX",
+  "category": "optical_microscope",
+  "subcategory": "digital_microscope",
+  "form_factor": "benchtop",
+  "description": "키엔스 VHX 계열의 현행 최상위 디지털 현미경. 5x～6000x 자동 관찰, 새 조명·촬상 모드, 자동 조명 탐색(Search Lighting), 화상 비교, 성분 분석·금속 조직 분석용 고해상도 대물렌즈, 웨이퍼 등 대형 부품용 300 mm 스테이지를 갖춘다. 카메라는 VHX-7020(1/1.8인치 319만 화소, 50 fps) 또는 일체형 헤드 VHX-7100(1/1.7인치 1,222만 화소, 30 fps)을 쓰고, 고정밀 모드에서 12000×9000 화소까지 합성한다. 27인치 4K 모니터.",
+  "test_items": [
+    "microscopy"
+  ],
+  "measurands": [
+    "surface_morphology",
+    "dimension_2d",
+    "height_3d"
+  ],
+  "limits": {
+    "magnification": {
+      "min": 5,
+      "max": 6000,
+      "note": "웹 검색 결과 요약(keyence.com)의 「5x to 6000x」. 렌즈 VHX-E100 100x–500x, VH-Z250T 250x–2500x, VHX-E2500 2500x–6000x",
+      "uncertain": true
+    },
+    "detector_megapixels": {
+      "min": 3.19,
+      "max": 12.22
+    },
+    "data_rate_Hz": {
+      "max": 50,
+      "note": "VHX-7020 50 fps, VHX-7100 30 fps"
+    },
+    "operating_temperature_degC": {
+      "min": 5,
+      "max": 40
+    }
+  },
+  "models": [
+    {
+      "model": "VHX-X1",
+      "specs": {
+        "detector_megapixels": {
+          "values": [
+            3.19,
+            12.22
+          ]
+        },
+        "detector_pixels": "VHX-7020: 2064×1554(가상 2048×1536) / VHX-7100: 4168×3062(가상 4024×3036). 고정밀 모드 6144×4608 또는 12000×9000",
+        "weight_kg": 10.8,
+        "operating_temperature_degC": {
+          "min": 5,
+          "max": 40
+        }
+      },
+      "note": "본체. 27인치 3840×2160 모니터, 100–240 VAC 250 VA, CE·CSA/UL"
+    },
+    {
+      "model": "VHX-X1F",
+      "specs": {
+        "detector_megapixels": 3.19,
+        "detector_pixels": "2064×1554(가상 2048×1536)",
+        "data_rate_Hz": 50,
+        "weight_kg": 10.8,
+        "operating_temperature_degC": {
+          "min": 5,
+          "max": 40
+        }
+      },
+      "note": "기본형(Base Model, VHX-XF 계열 페이지). VHX-7020 카메라 조합"
+    }
+  ],
+  "options": [
+    {
+      "name": "VHX-E100",
+      "note": "고해상도 중배율 대물렌즈 100x–500x, 관찰 거리 24 mm, 시야 100x 에서 3.05×2.28 mm, 500x 에서 0.61×0.46 mm"
+    },
+    {
+      "name": "VHX-E2500",
+      "note": "고해상도 최고배율 대물렌즈 2500x–6000x(페이지 제목)"
+    },
+    {
+      "name": "VH-Z250T",
+      "note": "듀얼 라이트 고배율 줌 렌즈 250x–2500x(페이지 제목)"
+    },
+    {
+      "name": "VH-F",
+      "note": "파이버스코프 어태치먼트"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://www.keyence.com/products/microscope/digital-microscope/vhx-x1/",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품·기종 페이지(HTML, keyence.com) 계열 개요(300 mm 스테이지, 기능)"
+    },
+    {
+      "url": "https://www.keyence.com/products/microscope/digital-microscope/vhx-x1/models/vhx-x1/",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품·기종 페이지(HTML, keyence.com) VHX-X1 사양"
+    },
+    {
+      "url": "https://www.keyence.com/products/microscope/digital-microscope/vhx-xf/models/vhx-x1f/",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품·기종 페이지(HTML, keyence.com) VHX-X1F 사양"
+    },
+    {
+      "url": "https://www.keyence.com/products/microscope/digital-microscope/vhx-x1/models/vhx-e100/",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품·기종 페이지(HTML, keyence.com) VHX-E100 렌즈 사양"
+    }
+  ],
+  "confidence": "limited",
+  "notes": "기종 목록(Models) 페이지는 스크립트로 채워져 읽지 못함. 스테이지 이동량·렌즈별 작동 거리 전체 표는 확보하지 못함."
+}

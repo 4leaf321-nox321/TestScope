@@ -1,0 +1,78 @@
+{
+  "id": "yokogawa-dlm3000hd",
+  "kind": "equipment_series",
+  "name": "DLM3000HD Series High-Definition Oscilloscope",
+  "name_ko": "요코가와 DLM3000HD 고분해능 오실로스코프",
+  "manufacturer": "yokogawa",
+  "brand": "DLM",
+  "category": "oscilloscope",
+  "subcategory": "high_definition_oscilloscope",
+  "form_factor": "benchtop",
+  "description": "350·500 MHz 대역의 4채널 고분해능 오실로스코프 계열임. 12 bit ADC(고분해능 모드 최대 16 bit), 4채널 동시 2.5 GS/s, 최대 1 GigaPoints(홀수 채널), 반복 수집 125 M points, 8 bit 로직 입력, 8.4 inch 터치 화면, 히스토리 최대 200,000 트리거.",
+  "test_items": [],
+  "limits": {
+    "channels": {
+      "values": [
+        4
+      ]
+    },
+    "logic_channel_count": {
+      "values": [
+        8
+      ]
+    },
+    "bandwidth_Hz": {
+      "values": [
+        350000000,
+        500000000
+      ],
+      "note": "원문 350 or 500 MHz"
+    },
+    "sample_rate_Sa_s": {
+      "max": 2500000000,
+      "note": "원문 2.5 GS/s (four channels simultaneously)"
+    },
+    "record_length_pts": {
+      "min": 125000000,
+      "max": 1000000000,
+      "note": "원문 Up to 1 GigaPoints (odd channels only); 125 M points in repetitive acquisition"
+    },
+    "adc_resolution_bit": {
+      "values": [
+        12
+      ],
+      "note": "고분해능 모드 최대 16 bit"
+    },
+    "display_size_in": {
+      "values": [
+        8.4
+      ]
+    }
+  },
+  "models": [
+    {
+      "model": "DLM3034HD",
+      "specs": {
+        "channels": 4,
+        "logic_channel_count": 8
+      },
+      "note": "기종명은 페이지의 사용 설명서 제목(DLM3034HD, DLM3054HD …). 기종별 대역폭은 페이지에 표로 없음"
+    },
+    {
+      "model": "DLM3054HD",
+      "specs": {
+        "channels": 4,
+        "logic_channel_count": 8
+      },
+      "note": "기종명은 페이지의 사용 설명서 제목. 기종별 대역폭은 페이지에 표로 없음"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://tmi.yokogawa.com/solutions/products/oscilloscopes/digital-and-mixed-signal-oscilloscopes/dlm3000hd-series-mixed-signal-oscilloscope/",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지. 원문 350 or 500 MHz, 2.5 GS/s (four channels simultaneously), 12-bit, up to 16-bit, up to 1 GigaPoints, 8-bit logic, 8.4 inches, 문서 제목 \"DLM3034HD, DLM3054HD High Definition Oscilloscope\""
+    }
+  ],
+  "confidence": "limited"
+}

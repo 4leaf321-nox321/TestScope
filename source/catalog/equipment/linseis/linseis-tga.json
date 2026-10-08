@@ -1,0 +1,216 @@
+{
+  "id": "linseis-tga",
+  "kind": "equipment_series",
+  "name": "LINSEIS TGA thermogravimetric analyzers (TGA L81 / L81 HiRes / L83 / HP L85 / L87 MSB)",
+  "name_ko": "린세이스 TGA 열중량분석기 계열",
+  "manufacturer": "linseis",
+  "category": "tga",
+  "description": "열중량분석기 계열. TGA L81 은 고온형(2400 °C, 시료 5/25 g, 0.01/0.02 µg; 웹의 HiRes 형 5 g, 0.1 µg), TGA L83 은 실온~1100 °C·0.001~250 K/min·90 위치 자동 시료기, TGA HP L85 는 150 bar 고압형, TGA L87 MSB 는 자기부상 저울로 -196~2400 °C·고압 조건을 다룬다.",
+  "test_items": [
+    "tga"
+  ],
+  "measurands": [
+    "thermal.decomposition_temp",
+    "thermal.char_residue"
+  ],
+  "measurands_by_item": {
+    "tga": [
+      "thermal.decomposition_temp",
+      "thermal.char_residue"
+    ]
+  },
+  "limits": {
+    "temperature_degC": {
+      "min": -196,
+      "max": 2400
+    },
+    "pressure_bar": {
+      "max": 350,
+      "note": "L87 MSB 본문 기준, 제목은 150 bar"
+    }
+  },
+  "models": [
+    {
+      "model": "TGA L81",
+      "specs": {
+        "temperature_degC": {
+          "min": -150,
+          "max": 2400,
+          "note": "-150 up to 2400 °C(사양표). 노 표: -150~500/700/1000 °C, RT~1000/1600/1750/2000/2400 °C(흑연 2800 °C 노도 있음)"
+        },
+        "sample_mass_mg": {
+          "values": [
+            5000,
+            25000
+          ],
+          "note": "저울 1 시료 5 g / 저울 2 시료 25 g"
+        },
+        "balance_resolution_ug": {
+          "values": [
+            0.01,
+            0.02
+          ],
+          "note": "저울 1 0.01 µg / 저울 2 0.02 µg(브로슈어 사양표). 웹 페이지 Hard Facts 는 0.5 µg(25 g)"
+        },
+        "dynamic_weighing_range_mg": {
+          "value": 2500,
+          "note": "질량 변화 ±2500 mg"
+        },
+        "heating_rate_K_min": {
+          "min": 0.01,
+          "max": 100,
+          "note": "0.01 up to 100 °C/min(노에 따라)"
+        },
+        "temperature_precision_degC": 0.01,
+        "pressure_bar": {
+          "max": 5,
+          "note": "선택 가압 up to 5 bar"
+        }
+      },
+      "note": "진공 10⁻⁵ mbar(펌프에 따라), 시료 로봇 42 위치(선택), 노 2개 동시 장착, TG 센서 여러 종, 계산 DTA 포함, USB"
+    },
+    {
+      "model": "TGA L81 HiRes",
+      "specs": {
+        "temperature_degC": {
+          "min": -150,
+          "max": 2400,
+          "note": "-150~500/700/1000 °C, RT~1000/1400/1600/1650/1750/2000/2400 °C"
+        },
+        "sample_mass_mg": {
+          "max": 5000,
+          "note": "Max. 5 g"
+        },
+        "balance_resolution_ug": 0.1
+      },
+      "note": "원문 표기 'TGA L81 HIRES'(웹). 진공 10E-5 mbar. 브로슈어 사양표에는 HiRes 이름이 없고 저울 1(시료 5 g, 0.01 µg)·저울 2(25 g, 0.02 µg)만 있다 — HiRes 가 저울 1 인지 확인되지 않아 웹 값(5 g, 0.1 µg)을 그대로 둔다"
+    },
+    {
+      "model": "TGA L83",
+      "specs": {
+        "temperature_degC": {
+          "min": 20,
+          "max": 1100,
+          "note": "RT up to 1100 °C"
+        },
+        "heating_rate_K_min": {
+          "min": 0.001,
+          "max": 250,
+          "note": "승·냉각 0.001 up to 250 °C/min"
+        },
+        "cooling_rate_K_min": {
+          "max": 250
+        },
+        "balance_resolution_ug": {
+          "values": [
+            0.01,
+            0.02,
+            0.1
+          ],
+          "note": "고분해능 저울 1 / 2 / 3"
+        },
+        "dynamic_weighing_range_mg": {
+          "value": 2500,
+          "note": "up to ±2500 mg"
+        },
+        "sample_mass_mg": {
+          "values": [
+            5000,
+            25000,
+            35000
+          ],
+          "note": "저울 1 / 2 / 3 시료 5 g / 25 g / 35 g"
+        }
+      },
+      "note": "탑 로딩. 최대 90 위치 자동 시료기, 진공 10⁻³ mbar, MFC 블록 내장(퍼지 1 + 반응 가스 2), 냉각 1100→100 °C 12 min 미만, FTIR·MS·GC-MS 연결(선택), USB"
+    },
+    {
+      "model": "TGA HP L85",
+      "specs": {
+        "temperature_degC": {
+          "min": 20,
+          "max": 1200,
+          "note": "RT up to 1200 °C"
+        },
+        "pressure_bar": {
+          "max": 150
+        },
+        "sample_mass_mg": {
+          "max": 5000,
+          "note": "up to 5 g"
+        },
+        "balance_resolution_ug": 0.1
+      },
+      "note": "고압 열천칭. 진공 10E-4 mbar, TG·TG-DSC 센서 E/K/S/B/C, 수증기 발생기(선택), 가스 1~3종"
+    },
+    {
+      "model": "TGA L87 MSB",
+      "specs": {
+        "temperature_degC": {
+          "min": -196,
+          "max": 2400
+        },
+        "pressure_bar": {
+          "max": 350,
+          "note": "본문 'up to 350 bar', 페이지 제목은 'up to 150 bar'"
+        },
+        "sample_mass_mg": {
+          "max": 25000,
+          "note": "up to 25 g"
+        },
+        "balance_resolution_ug": {
+          "values": [
+            1,
+            10
+          ]
+        }
+      },
+      "note": "자기부상 저울(MSB). 진공 10⁻⁵ mbar, 관찰 창, MFC 다중 가스·습도·증기 제어"
+    }
+  ],
+  "relations": [
+    {
+      "type": "same_family_as",
+      "target": "linseis-sta"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://www.linseis.com/en/instruments/tga-thermogravimetry/tga-l81/",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지(HTML) 본문·표를 직접 읽음. Hard Facts 표(TGA L81, TGA L81 HIRES)"
+    },
+    {
+      "url": "https://www.linseis.com/en/instruments/tga-thermogravimetry/tga-l83/",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지(HTML) 본문·표를 직접 읽음"
+    },
+    {
+      "url": "https://www.linseis.com/en/instruments/tga-thermogravimetry/tga-hp-l85/",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지(HTML) 본문·표를 직접 읽음. Hard Facts 표"
+    },
+    {
+      "url": "https://www.linseis.com/en/instruments/tga-thermogravimetry/tga-l87-msb/",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지(HTML) 본문·표를 직접 읽음"
+    },
+    {
+      "file": "linseis/linseis_tga-l81_product-brochure.pdf",
+      "pages": [
+        8,
+        14,
+        15,
+        26
+      ]
+    },
+    {
+      "file": "linseis/specifications-tga-l83.pdf",
+      "pages": [
+        1
+      ]
+    }
+  ],
+  "confidence": "limited",
+  "notes": "TGA L87 MSB 의 압력 상한이 제목(150 bar)과 본문(350 bar)에서 다르다. 확인 필요. PDF 로 확인: TGA L81(온도·진공·가압·승온 속도·온도 정밀도·저울 분해능·시료 무게, 브로슈어 26쪽 — 저울 분해능은 웹 0.5 µg 에서 0.01/0.02 µg 로 바꿈), TGA L83(사양서 1쪽, 웹 값과 같음). 웹 값 그대로: TGA L81 HiRes · TGA HP L85 · TGA L87 MSB — 이번 PDF 에 사양표가 없다."
+}

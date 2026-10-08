@@ -1,0 +1,50 @@
+{
+  "id": "anritsu-mt8852b",
+  "kind": "equipment_series",
+  "name": "Anritsu Bluetooth Test Set MT8852B",
+  "name_ko": "안리쓰 MT8852B 블루투스 시험 세트",
+  "manufacturer": "anritsu",
+  "category": "radio_communication_tester",
+  "description": "Bluetooth Basic Rate·Enhanced Data Rate·Low Energy 기기 시험 세트. Bluetooth Core v6.0 을 지원하고 LE 2M PHY·LE Coded PHY·AoA/AoD(옵션)를 다룬다. BR 9개·EDR 8개·LE 30개 시험 항목과 수신 감도 시험을 버튼 하나로 10초 안에 끝낸다. SCO 3채널 오디오 시험(µ-Law·A-Law·CVSD), BlueSuite Pro3 그래프, AFH 간섭 분석(옵션), UART·USB·HCI 제어, LE 2선 제어 인터페이스를 지원한다.",
+  "test_items": [],
+  "limits": {
+    "radio_standards": {
+      "values": [
+        "Bluetooth Basic Rate",
+        "Bluetooth Enhanced Data Rate",
+        "Bluetooth Low Energy",
+        "Bluetooth Core v6.0",
+        "LE 2M PHY",
+        "LE Coded PHY"
+      ],
+      "note": "LE Coded PHY·AoA/AoD 는 옵션"
+    }
+  },
+  "models": [
+    {
+      "model": "MT8852B",
+      "specs": {
+        "radio_standards": "Bluetooth BR/EDR/LE, Core v6.0",
+        "interfaces": "UART, USB, HCI, LE 2-Wire"
+      }
+    }
+  ],
+  "features": [
+    "버튼 하나로 시험(10초 미만)",
+    "BR 9개·EDR 8개·LE 30개 시험 항목",
+    "수신 감도 시험",
+    "SCO 3채널 오디오(µ-Law·A-Law·CVSD)",
+    "BlueSuite Pro3 그래프",
+    "AFH 간섭 분석(옵션)",
+    "AoA/AoD(옵션)"
+  ],
+  "sources": [
+    {
+      "url": "https://www.anritsu.com/en-us/test-measurement/products/mt8852b",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지. 지원 Bluetooth 버전·PHY, 시험 항목 수, 제어 인터페이스"
+    }
+  ],
+  "confidence": "limited",
+  "notes": "주파수 범위·출력 레벨은 페이지에 없다."
+}

@@ -1,0 +1,144 @@
+{
+  "id": "correlated-solutions-vic-2d",
+  "kind": "equipment_series",
+  "name": "Correlated Solutions VIC-2D Digital Image Correlation",
+  "name_ko": "코릴레이티드 솔루션스 VIC-2D 2차원 DIC",
+  "manufacturer": "correlated-solutions",
+  "brand": "VIC-2D",
+  "category": "dic_strain_measurement",
+  "subcategory": "2d_dic",
+  "form_factor": "portable",
+  "description": "평면 시편의 면내 변위·변형률을 카메라 한 대로 전 영역 측정하는 2D DIC(버전 8, iris 엔진). 1/100 화소 움직임 분해능, 서브마이크로미터 변위, 변형률 0.005 %～2,000 % 이상(사양서; 웹 페이지는 50 με～2500 % 이상), 나노미터～100 m 초과 시편. 변형률 계산에 교정이 필요 없고, 시간 필터, 아날로그 데이터 동기 수집, 속도·변형률 속도·면내 회전 계산, 실시간 2D 해석(라이선스)을 지원한다. 구성은 Quasi-Static·Dynamic·High-Speed.",
+  "test_items": [
+    "tensile",
+    "compression",
+    "fatigue"
+  ],
+  "measurands": [
+    "full_field_displacement",
+    "axial_strain",
+    "transverse_strain",
+    "strain_rate"
+  ],
+  "limits": {
+    "strain_range_pct": {
+      "min": 0.005,
+      "max": 2000,
+      "note": "PDF 원문 from 0.005% to > 2,000%(상한은 초과). 웹 페이지는 50 microstrain to over 2500%"
+    },
+    "detector_megapixels": {
+      "min": 1,
+      "max": 45,
+      "note": "Quasi-Static 1.6~24.4 MP, Dynamic 2.8~45 MP, High-Speed 1~9.4 MP(전 화소 프레임 속도에서)"
+    },
+    "frame_rate_fps": {
+      "min": 15,
+      "max": 76000,
+      "note": "전 화소 기준. High-Speed 1 MP @ 76,000 Hz"
+    },
+    "max_frame_rate_fps": {
+      "max": 20000000,
+      "note": "화소 축소 시 High-Speed 최대 20 MHz. 카메라 모델에 따라 다름"
+    }
+  },
+  "models": [
+    {
+      "model": "VIC-2D",
+      "specs": {
+        "strain_range_pct": {
+          "min": 0.005,
+          "max": 2000,
+          "note": "웹 페이지는 50 microstrain ~ 2500 % 초과"
+        }
+      },
+      "note": "버전 8 소프트웨어(공통). 움직임 분해능 1/100 pixel(웹 페이지)"
+    },
+    {
+      "model": "VIC-2D Quasi-Static",
+      "specs": {
+        "detector_megapixels": {
+          "min": 1.6,
+          "max": 24.4
+        },
+        "frame_rate_fps": {
+          "min": 15,
+          "max": 227,
+          "note": "1.6 MP @ 227 Hz ~ 24.4 MP @ 15 Hz"
+        },
+        "max_frame_rate_fps": {
+          "max": 325
+        },
+        "strain_range_pct": {
+          "min": 0.005,
+          "max": 2000
+        }
+      },
+      "note": "실시간 전 영역 해석 최대 10 Hz, VIC-Gauge 2D 실시간 최대 500 Hz(아날로그 출력 4개까지)"
+    },
+    {
+      "model": "VIC-2D Dynamic",
+      "specs": {
+        "detector_megapixels": {
+          "min": 2.8,
+          "max": 45
+        },
+        "frame_rate_fps": {
+          "min": 15,
+          "max": 400,
+          "note": "2.8 MP @ 400 Hz ~ 45 MP @ 15 Hz"
+        },
+        "max_frame_rate_fps": {
+          "max": 1500
+        },
+        "strain_range_pct": {
+          "min": 0.005,
+          "max": 2000
+        }
+      }
+    },
+    {
+      "model": "VIC-2D High-Speed",
+      "specs": {
+        "detector_megapixels": {
+          "min": 1,
+          "max": 9.4
+        },
+        "frame_rate_fps": {
+          "min": 1250,
+          "max": 76000,
+          "note": "1 MP @ 76,000 Hz ~ 9.4 MP @ 1250 Hz"
+        },
+        "max_frame_rate_fps": {
+          "max": 20000000,
+          "note": "원문 Up to 20 MHz"
+        },
+        "field_of_view_mm": {
+          "min": 20,
+          "note": "1 MP @ 20 mm × 20 mm 부터, 대형 시야는 이론 한계 없음"
+        },
+        "strain_range_pct": {
+          "min": 0.005,
+          "max": 2000
+        }
+      },
+      "note": "면내 변위 분해능 ± FOV × 1/100,000. 실시간 해석 해당 없음"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://www.correlatedsolutions.com/vic-2d",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지(HTML, correlatedsolutions.com) VIC-2D"
+    },
+    {
+      "file": "correlated-solutions/vic-2d_8_flyer_final.pdf",
+      "pages": [
+        1,
+        2
+      ],
+      "note": "VIC-2D 8 플라이어 — 2쪽 VIC-2D 8 Specifications 표"
+    }
+  ],
+  "confidence": "catalog",
+  "notes": "PDF 로 확인: 변형률 범위(상한 2,000 % 로 바로잡음), 구성별 카메라 화소·프레임 속도. 표에서 열이 섞여 어느 구성 값인지 확실하지 않아 넣지 않은 것: 「5 MP @ 6.7 mm × 5.6 mm」 시야 하한(Quasi-Static 열에 찍혔지만 Dynamic 과 공용일 수 있음), 면내 변위 분해능 ± FOV × 1/200,000(Quasi-Static·Dynamic 공용으로 보임), 변형률 분해능 「down to 10 (with averaging)」(단위 기호가 추출에서 빠짐 — µε 로 보임). 1/100 화소 움직임 분해능과 시편 크기 범위는 웹 값 그대로."
+}

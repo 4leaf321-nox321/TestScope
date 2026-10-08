@@ -1,0 +1,47 @@
+{
+  "id": "fluke-287-289",
+  "kind": "equipment_series",
+  "name": "Fluke 287 / 289 True-RMS Data Logging Multimeters",
+  "name_ko": "플루크 287 · 289 데이터 로깅 멀티미터",
+  "manufacturer": "fluke",
+  "category": "dmm_daq",
+  "form_factor": "handheld",
+  "description": "데이터 로깅 기능을 가진 True RMS 휴대형 멀티미터. 289 는 50,000 카운트 1/4 VGA 화면, DC 전압 1000 V(0.025%), 전류 10 A, 저항 50 MΩ, 정전용량 100 mF, 주파수 999.99 kHz, 온도 -200.0~1350.0 °C, 측정값 최대 15,000개 저장, 절연 광 인터페이스.",
+  "test_items": [],
+  "models": [
+    {
+      "model": "289",
+      "specs": {
+        "dmm_display_counts": 50000,
+        "voltage_V": {
+          "max": 1000,
+          "note": "DC 0.025%, AC 0.4%(True RMS)"
+        },
+        "current_A": {
+          "max": 10,
+          "note": "DC 0.05%, AC 0.6%(True RMS)"
+        },
+        "resistance_ohm": {
+          "max": 50000000,
+          "note": "0.05%"
+        },
+        "accuracy": "DC V 0.025%, AC V 0.4%, DC A 0.05%, AC A 0.6%, 저항 0.05%, 정전용량 1.0%, 주파수 0.005%, 온도 1.0%(기본 확도)",
+        "interfaces": "절연 광 인터페이스(ir3000 FC 로 무선 선택)",
+        "weight_kg": 0.8709
+      },
+      "note": "정전용량 최대 100 mF, 주파수 최대 999.99 kHz, 온도 -200.0~1350.0 °C, 저장 15,000 readings. 크기 22.2×10.2×6 cm. 단자-접지 최대 1000 V(IEC/EN 61010-1 3판)"
+    },
+    {
+      "model": "287",
+      "note": "289 페이지에 관련 전자용 로깅 멀티미터로만 나옴. 사양은 이번에 확인하지 않음"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://www.fluke.com/en-us/product/electrical-testing/digital-multimeters/fluke-289",
+      "retrieved": "2026-10-08",
+      "note": "제조사 289 제품 페이지 사양. 관련 기종 Fluke 287 언급"
+    }
+  ],
+  "confidence": "limited"
+}

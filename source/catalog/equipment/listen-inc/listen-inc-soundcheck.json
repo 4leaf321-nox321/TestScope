@@ -1,0 +1,61 @@
+{
+  "id": "listen-inc-soundcheck",
+  "kind": "software",
+  "name": "Listen SoundCheck Audio Measurement System",
+  "name_ko": "Listen SoundCheck 오디오 측정 소프트웨어",
+  "manufacturer": "listen-inc",
+  "brand": "SoundCheck",
+  "category": "acoustic_measurement",
+  "description": "아날로그·디지털 오디오 측정 소프트웨어. 단순한 전기음향 변환기부터 무선·음성 인식 기기까지 스피커·마이크로스피커·헤드폰·헤드셋·마이크·스마트 기기·통신 시스템·보청기·차량 오디오를 시험한다. Listen 인터페이스(AudioConnect·AmpConnect)와 타사 오디오 인터페이스를 쓰며 최대 64채널을 다룬다. 파형 분석·통계·일괄 처리·시간-주파수 맵을 갖춘다.",
+  "test_items": [
+    "audio_performance"
+  ],
+  "measurands": [
+    "frequency_response",
+    "thd_n",
+    "sensitivity"
+  ],
+  "materials": [
+    "loudspeakers",
+    "microspeakers",
+    "headphones",
+    "headsets",
+    "microphones",
+    "smart devices",
+    "hearing aids",
+    "automotive audio"
+  ],
+  "limits": {
+    "channels": {
+      "max": 64,
+      "note": "원문 Supports up to 64 channels"
+    }
+  },
+  "models": [
+    {
+      "model": "SoundCheck",
+      "specs": {
+        "channels": 64
+      }
+    }
+  ],
+  "relations": [
+    {
+      "type": "performs",
+      "target": "audio_performance"
+    },
+    {
+      "type": "compatible_accessory",
+      "target": "listen-inc-audio-interfaces"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://www.listeninc.com/products/soundcheck/",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지"
+    }
+  ],
+  "confidence": "limited",
+  "notes": "버전 번호는 페이지에 없다."
+}

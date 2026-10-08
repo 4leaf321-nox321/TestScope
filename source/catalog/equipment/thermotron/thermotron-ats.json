@@ -1,0 +1,194 @@
+{
+  "id": "thermotron-ats",
+  "kind": "equipment_series",
+  "name": "Thermotron ATS Air-to-Air Thermal Shock Chambers (Vertical / Double Duty)",
+  "name_ko": "써모트론 ATS 기상식 열충격 챔버 (수직형·더블 듀티)",
+  "manufacturer": "thermotron",
+  "brand": "ATS",
+  "category": "thermal_shock_chamber",
+  "drive": "thermal",
+  "form_factor": "floor",
+  "description": "시편 캐리어 하나가 고온조와 저온조 사이를 오가며 급격한 온도 변화를 주는 기상식 열충격 챔버. 수직형(V)은 독립 제어되는 고온조·저온조가 위아래로 있고, 더블 듀티(DD)는 저온조를 위아래 고온조 둘 사이에 둔다. DD 는 저온조에 제상 히터가 있어 온도 사이클 챔버로도 운전한다. 8825 컨트롤러, 조절식 선반 1개 기본.",
+  "test_items": [
+    "thermal_shock",
+    "temperature_cycling"
+  ],
+  "models": [
+    {
+      "model": "ATS-100-V-LN2",
+      "variant": "vertical",
+      "specs": {
+        "inner_mm": {
+          "note": "작업 공간 12 x 12 x 12 in (30 x 30 x 30 cm) (페이지 표기, 축 순서 미표기)"
+        },
+        "test_zones": "수직 2조(고온·저온)"
+      }
+    },
+    {
+      "model": "ATS-195-V-LN2",
+      "variant": "vertical",
+      "specs": {
+        "inner_mm": {
+          "note": "작업 공간 15 x 15 x 15 in (38 x 38 x 38 cm) (페이지 표기, 축 순서 미표기)"
+        },
+        "test_zones": "수직 2조(고온·저온)"
+      }
+    },
+    {
+      "model": "ATS-195-V-3-3",
+      "variant": "vertical",
+      "specs": {
+        "inner_mm": {
+          "note": "작업 공간 15 x 15 x 15 in (38 x 38 x 38 cm) (페이지 표기, 축 순서 미표기)"
+        },
+        "test_zones": "수직 2조(고온·저온)"
+      }
+    },
+    {
+      "model": "ATS-195-V-5-5",
+      "variant": "vertical",
+      "specs": {
+        "inner_mm": {
+          "note": "작업 공간 15 x 15 x 15 in (38 x 38 x 38 cm) (페이지 표기, 축 순서 미표기)"
+        },
+        "test_zones": "수직 2조(고온·저온)"
+      }
+    },
+    {
+      "model": "ATS-320-V-LN2",
+      "variant": "vertical",
+      "specs": {
+        "inner_mm": {
+          "note": "작업 공간 25 x 15 x 15 in (64 x 38 x 38 cm) (페이지 표기, 축 순서 미표기)"
+        },
+        "test_zones": "수직 2조(고온·저온)"
+      }
+    },
+    {
+      "model": "ATS-320-V-3-3",
+      "variant": "vertical",
+      "specs": {
+        "inner_mm": {
+          "note": "작업 공간 25 x 15 x 15 in (64 x 38 x 38 cm) (페이지 표기, 축 순서 미표기)"
+        },
+        "test_zones": "수직 2조(고온·저온)"
+      }
+    },
+    {
+      "model": "ATS-320-V-10-7.5",
+      "variant": "vertical",
+      "specs": {
+        "inner_mm": {
+          "note": "작업 공간 25 x 15 x 15 in (64 x 38 x 38 cm) (페이지 표기, 축 순서 미표기)"
+        },
+        "test_zones": "수직 2조(고온·저온)"
+      }
+    },
+    {
+      "model": "ATS-900-V-LN2",
+      "variant": "vertical",
+      "specs": {
+        "inner_mm": {
+          "note": "작업 공간 25 x 25 x 25 in (64 x 64 x 64 cm) (페이지 표기, 축 순서 미표기)"
+        },
+        "test_zones": "수직 2조(고온·저온)"
+      }
+    },
+    {
+      "model": "ATS-900-V-7.5-7.5",
+      "variant": "vertical",
+      "specs": {
+        "inner_mm": {
+          "note": "작업 공간 25 x 25 x 25 in (64 x 64 x 64 cm) (페이지 표기, 축 순서 미표기)"
+        },
+        "test_zones": "수직 2조(고온·저온)"
+      }
+    },
+    {
+      "model": "ATS-900-V-15-15",
+      "variant": "vertical",
+      "specs": {
+        "inner_mm": {
+          "note": "작업 공간 25 x 25 x 25 in (64 x 64 x 64 cm) (페이지 표기, 축 순서 미표기)"
+        },
+        "test_zones": "수직 2조(고온·저온)"
+      }
+    },
+    {
+      "model": "ATS-900-V-25-25",
+      "variant": "vertical",
+      "specs": {
+        "inner_mm": {
+          "note": "작업 공간 25 x 25 x 25 in (64 x 64 x 64 cm) (페이지 표기, 축 순서 미표기)"
+        },
+        "test_zones": "수직 2조(고온·저온)"
+      }
+    },
+    {
+      "model": "ATS-320-DD-LN2",
+      "variant": "double duty",
+      "specs": {
+        "inner_mm": {
+          "note": "작업 공간 25 x 15 x 15 in (64 x 38 x 38 cm) (페이지 표기, 축 순서 미표기)"
+        },
+        "test_zones": "더블 듀티 3조(고온·저온·고온)"
+      }
+    },
+    {
+      "model": "ATS-320-DD-10-7.5",
+      "variant": "double duty",
+      "specs": {
+        "inner_mm": {
+          "note": "작업 공간 25 x 15 x 15 in (64 x 38 x 38 cm) (페이지 표기, 축 순서 미표기)"
+        },
+        "test_zones": "더블 듀티 3조(고온·저온·고온)"
+      }
+    },
+    {
+      "model": "ATS-1040-DD-LN2",
+      "variant": "double duty",
+      "specs": {
+        "inner_mm": {
+          "note": "작업 공간 30 x 25 x 24 in (76 x 64 x 61 cm) (페이지 표기, 축 순서 미표기)"
+        },
+        "test_zones": "더블 듀티 3조(고온·저온·고온)"
+      }
+    },
+    {
+      "model": "ATS-1040-DD-30-25",
+      "variant": "double duty",
+      "specs": {
+        "inner_mm": {
+          "note": "작업 공간 30 x 25 x 24 in (76 x 64 x 61 cm) (페이지 표기, 축 순서 미표기)"
+        },
+        "test_zones": "더블 듀티 3조(고온·저온·고온)"
+      }
+    }
+  ],
+  "features": [
+    "독립 제어 고온조·저온조",
+    "단일 시편 캐리어 자동 이송",
+    "더블 듀티: 저온조 제상 히터로 온도 사이클 운전",
+    "8825 컨트롤러"
+  ],
+  "relations": [
+    {
+      "type": "requires",
+      "target": "utility-liquid-nitrogen",
+      "note": "기종명 끝이 -LN2 인 기종"
+    },
+    {
+      "type": "simulates_environment",
+      "target": "environment-thermal-shock"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://thermotron.com/equipment/specialty-environmental-chamber/thermal-shock-chamber/",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지. 기종 15개와 작업 공간 치수, 구성(수직·더블 듀티), 컨트롤러"
+    }
+  ],
+  "confidence": "limited",
+  "notes": "고온조·저온조 온도 범위, 회복 시간, 이송 시간, 시편 하중은 페이지에 없어 비웠다. 기종명 뒤 숫자(-3-3, -10-7.5 등)의 뜻은 페이지가 밝히지 않아 해석하지 않았다. 가로형(H) 기종은 이 페이지에 없다."
+}

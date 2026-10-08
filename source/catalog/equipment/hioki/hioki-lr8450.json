@@ -1,0 +1,117 @@
+{
+  "id": "hioki-lr8450",
+  "kind": "equipment_series",
+  "name": "Hioki Memory HiLogger LR8450 / LR8450-01",
+  "name_ko": "히오키 메모리 하이로거 LR8450",
+  "manufacturer": "hioki",
+  "brand": "Memory HiLogger",
+  "category": "dmm_daq",
+  "form_factor": "portable",
+  "description": "플러그인 모듈과 무선 모듈(LR8450-01)로 채널을 꾸리는 다채널 데이터 로거. LR8450 은 플러그인 모듈로 최대 120채널, 무선 LAN 기종 LR8450-01 은 최대 330채널(절연 입력). 최고 1 ms(U8553·U8554·U8556 모듈), 기록 간격 1 ms·2 ms·5 ms·10 ms~1 h. 전압·열전대·습도·저항·변형·전류·서미스터·CAN 입력.",
+  "test_items": [],
+  "limits": {
+    "channels": {
+      "max": 330,
+      "note": "LR8450 플러그인 최대 120ch, LR8450-01 무선 포함 최대 330ch. CAN 유닛 U8555 는 유닛당 최대 500ch(CAN 신호)",
+      "requires_accessory": true
+    },
+    "data_interval_ms": {
+      "max": 1,
+      "note": "최고 1 ms(U8553·U8554·U8556), 기록 간격 1 ms, 2 ms, 5 ms, 10 ms~1 h"
+    }
+  },
+  "models": [
+    {
+      "model": "LR8450",
+      "specs": {
+        "channels": {
+          "max": 120,
+          "requires_accessory": true
+        },
+        "data_interval_ms": 1,
+        "interfaces": "LAN(100BASE-TX/1000BASE-T), USB, SD 카드",
+        "weight_kg": 1.108,
+        "footprint_mm": {
+          "W": 272,
+          "H": 145,
+          "D": 43,
+          "note": "모듈 없이. 모듈 4개 장착 시 272×252×63 mm"
+        }
+      },
+      "note": "7인치 TFT 컬러 LCD(WVGA 800×480). 전원 AC 어댑터 Z1014, 배터리 팩 Z1007(연속 4시간), 외부 DC 10~30 V. PDF(전류 측정 브로셔 p.2): 플러그인 모듈 최대 4개, 전류 채널 최대 20(U8556 × 4), 펄스 입력 8ch, 알람 출력 8ch"
+    },
+    {
+      "model": "LR8450-01",
+      "variant": "무선 LAN 기종",
+      "specs": {
+        "channels": {
+          "max": 330,
+          "note": "절연 입력, 플러그인·무선 모듈",
+          "requires_accessory": true
+        },
+        "data_interval_ms": 1
+      },
+      "note": "PDF(전류 측정 브로셔 p.2): 플러그인 모듈 4개 + 무선 모듈 7개, 전류 채널 최대 55(U8556 × 4 + 무선 전류 모듈 LR8536 × 7), 펄스 입력 8ch, 알람 출력 8ch"
+    }
+  ],
+  "options": [
+    {
+      "name": "U8550",
+      "note": "15ch, 10 ms, 전압·열전대·습도"
+    },
+    {
+      "name": "U8551",
+      "note": "15ch, 10 ms, 전압·온도·습도·저항"
+    },
+    {
+      "name": "U8552",
+      "note": "30ch, 20 ms(15ch 이하 10 ms), 전압·온도·습도"
+    },
+    {
+      "name": "U8553",
+      "note": "5ch, 1 ms, 전압"
+    },
+    {
+      "name": "U8554",
+      "note": "5ch, 1 ms, 변형·전압·변형 게이지 변환기"
+    },
+    {
+      "name": "U8555",
+      "note": "CAN/CAN FD 입출력, 최대 500ch, 10 ms(50ch)·100 ms"
+    },
+    {
+      "name": "U8556",
+      "note": "5ch, 1 ms, 전류(PDF p.2 로 확인: 5ch 동시 샘플링, 데이터 갱신 1 ms, 입력 단자 Hioki PL14)"
+    },
+    {
+      "name": "U8557",
+      "note": "15ch, 50 ms, 서미스터 온도·저항"
+    }
+  ],
+  "relations": [
+    {
+      "type": "same_family_as",
+      "target": "hioki-lr8400"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://www.hioki.com/us-en/products/multichannel-data-loggers/multichannel/id_6767",
+      "retrieved": "2026-10-08",
+      "note": "제조사 LR8450 페이지. 모듈 표(U8550~U8557), 채널 수, 기록 간격, 화면, 인터페이스, 치수·무게, 전원"
+    },
+    {
+      "url": "https://www.hioki.com/us-en/products/multichannel-data-loggers/multichannel/id_6768",
+      "retrieved": "2026-10-08",
+      "note": "제조사 LR8450-01(무선 LAN 기종) 페이지 제목(검색 결과로 확인). 본문은 LR8450 페이지에서 함께 확인"
+    },
+    {
+      "file": "hioki/41035.pdf",
+      "pages": [
+        2
+      ]
+    }
+  ],
+  "confidence": "limited",
+  "notes": "PDF(41035, EV 전류 측정 브로셔)로 확인: 기종별 장착 모듈 수(LR8450 플러그인 4, LR8450-01 플러그인 4 + 무선 7), U8556 5ch · 1 ms. 웹 값 그대로: 최대 채널 120 · 330, 기록 간격, 화면·인터페이스·치수·무게, U8550~U8557(U8556 제외). PDF 에 무선 전류 모듈 LR8536(5ch, 1 ms, 배터리 5 h 이상)과 AC/DC 전류 센서 CT7812(2 A) · CT7822(20 A)가 새로 나오나 옵션 목록에는 넣지 않음."
+}

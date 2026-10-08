@@ -1,0 +1,57 @@
+{
+  "id": "anritsu-mt8862a",
+  "kind": "equipment_series",
+  "name": "Anritsu Wireless Connectivity Test Set MT8862A",
+  "name_ko": "안리쓰 MT8862A 무선 연결성(WLAN) 시험 세트",
+  "manufacturer": "anritsu",
+  "category": "radio_communication_tester",
+  "description": "WLAN 기기의 RF 송수신 특성을 재는 시험 세트. IEEE 802.11a/b/g/n/ac/ax/be 를 2.4 GHz·5 GHz·6 GHz 대역에서 시험하며, 채널 대역폭은 802.11ax 160 MHz·802.11be 320 MHz 다. WLAN 프로토콜 신호로 접속하는 네트워크 모드와 직접 모드로 송신 전력, 변조 정확도(EVM), 수신 감도(두 대로 2x2 MIMO), ACK 프레임 기반 PER, 배스터브 곡선을 잰다. AP·STA 를 흉내 내고 WEP·WPA·WPA2·WPA3(Personal) 암호화를 지원한다. 웹 브라우저로 조작한다.",
+  "test_items": [],
+  "limits": {
+    "bandwidth_Hz": {
+      "max": 320000000,
+      "note": "802.11ax 160 MHz, 802.11be 320 MHz 채널 대역폭"
+    },
+    "rf_output_level_dBm": {
+      "min": -120,
+      "max": 0,
+      "uncertain": true,
+      "note": "페이지 문구 Power level range -120 to 0 dBm. 출력 레벨인지 문맥으로 확정하지 못했다"
+    },
+    "radio_standards": {
+      "values": [
+        "IEEE 802.11a/b/g/n/ac/ax/be"
+      ],
+      "note": "2.4 GHz·5 GHz·6 GHz 대역"
+    }
+  },
+  "models": [
+    {
+      "model": "MT8862A",
+      "specs": {
+        "bandwidth_Hz": 320000000,
+        "radio_standards": "IEEE 802.11a/b/g/n/ac/ax/be (2.4/5/6 GHz)",
+        "interfaces": "Ethernet(원격 제어·IP 데이터), 웹 브라우저 GUI"
+      }
+    }
+  ],
+  "features": [
+    "네트워크 모드(WLAN 신호)·직접 모드",
+    "송신 전력·EVM·수신 감도·PER 측정",
+    "배스터브 곡선",
+    "두 대로 2x2 MIMO 측정",
+    "AP·STA 에뮬레이션",
+    "WEP·WPA·WPA2·WPA3 Personal",
+    "프레임 캡처 로그(pcap)",
+    "DHCP 클라이언트"
+  ],
+  "sources": [
+    {
+      "url": "https://www.anritsu.com/en-us/test-measurement/products/mt8862a",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지. 지원 표준, 대역, 채널 대역폭, 측정 기능, 레벨 범위"
+    }
+  ],
+  "confidence": "limited",
+  "notes": "주파수 대역은 2.4·5·6 GHz 라는 대역 이름만 있고 경계 수치가 없어 frequency_Hz 를 비웠다."
+}

@@ -1,0 +1,50 @@
+{
+  "id": "zeiss-axio-imager-2-materials",
+  "kind": "equipment_series",
+  "name": "ZEISS Axio Imager 2 for Materials (Axio Imager.A2m / D2m / M2m / Z2m)",
+  "name_ko": "자이스 Axio Imager 2 재료용 정립 현미경",
+  "manufacturer": "zeiss",
+  "brand": "Axio Imager",
+  "category": "optical_microscope",
+  "subcategory": "upright_metallurgical_microscope",
+  "form_factor": "benchtop",
+  "description": "재료 분석용 모듈형 정립 현미경. 스탠드 4종 — A2m(인코딩), D2m(사전 설정 버튼 5개), M2m(터치스크린), Z2m(사용자 버튼 10개·터치스크린, 전동). 반사광 명시야·암시야·DIC·C-DIC·편광·형광, 투과광 명시야·암시야·DIC·편광·원편광. 콘트라스트 매니저로 조명 설정을 재현한다. 입자 분석, 비금속 개재물(NMI), 액정, 반도체 MEMS, 공초점·상관 현미경에 쓰이고 Linkam 가열 스테이지와 함께 열현미경 관찰도 한다.",
+  "test_items": [
+    "microscopy"
+  ],
+  "limits": {},
+  "models": [
+    {
+      "model": "Axio Imager.A2m",
+      "note": "인코딩 스탠드"
+    },
+    {
+      "model": "Axio Imager.D2m",
+      "note": "사전 설정 버튼 5개"
+    },
+    {
+      "model": "Axio Imager.M2m",
+      "note": "터치스크린 제어"
+    },
+    {
+      "model": "Axio Imager.Z2m",
+      "note": "사용자 정의 버튼 10개, 터치스크린 제어"
+    }
+  ],
+  "features": [
+    "반사: BF, DF, DIC, C-DIC, POL, FL",
+    "투과: BF, DF, DIC, POL, 원편광",
+    "콘트라스트 매니저",
+    "모듈형 설계",
+    "Linkam 가열 스테이지 호환"
+  ],
+  "sources": [
+    {
+      "url": "https://www.zeiss.com/microscopy/en/products/light-microscopes/widefield-microscopes/axio-imager-2-for-materials.html",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지(HTML, zeiss.com) Axio Imager 2 for Materials"
+    }
+  ],
+  "confidence": "limited",
+  "notes": "수치 사양(스테이지, 시료 높이, 배율)은 페이지에 없음. 제품 정보 PDF 는 다운로드 센터 경유라 열지 않음."
+}

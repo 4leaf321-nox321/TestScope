@@ -1,0 +1,111 @@
+{
+  "id": "tektronix-afg1000",
+  "kind": "equipment_series",
+  "name": "Tektronix AFG1000 Arbitrary/Function Generator",
+  "name_ko": "텍트로닉스 AFG1000 임의/함수 발생기",
+  "manufacturer": "tektronix",
+  "brand": "AFG1000",
+  "category": "signal_generator",
+  "subcategory": "function_arbitrary_waveform",
+  "description": "보급형 2채널 임의/함수 발생기. AFG1022 는 1 µHz~25 MHz·125 MS/s, AFG1062 는 1 µHz~60 MHz·300 MS/s 이고, 둘 다 14비트, 진폭 1 mVpp~10 Vpp, 레코드 길이 8k 포인트다. 내장 임의파형 50개와 연속·변조·스윕·버스트 모드를 갖춘다.",
+  "test_items": [],
+  "limits": {
+    "output_frequency_Hz": {
+      "min": 1e-06,
+      "max": 60000000,
+      "note": "원문 1 uHz to 25 MHz(AFG1022), 1 uHz to 60 MHz(AFG1062)"
+    },
+    "channels": {
+      "values": [
+        2
+      ]
+    },
+    "sample_rate_Sa_s": {
+      "values": [
+        125000000,
+        300000000
+      ],
+      "note": "원문 125 MS/s, 300 MS/s"
+    },
+    "dac_resolution_bit": {
+      "values": [
+        14
+      ]
+    },
+    "output_voltage_V": {
+      "min": 0.001,
+      "max": 10,
+      "note": "원문 1 mVpp to 10 Vpp"
+    },
+    "waveform_memory_pts": {
+      "values": [
+        8000
+      ],
+      "note": "원문 8k points"
+    }
+  },
+  "models": [
+    {
+      "model": "AFG1022",
+      "specs": {
+        "output_frequency_Hz": {
+          "min": 1e-06,
+          "max": 25000000
+        },
+        "channels": 2,
+        "sample_rate_Sa_s": 125000000,
+        "dac_resolution_bit": 14,
+        "output_voltage_V": {
+          "min": 0.001,
+          "max": 10
+        },
+        "waveform_memory_pts": {
+          "values": [
+            8000
+          ],
+          "note": "원문 8k points"
+        }
+      }
+    },
+    {
+      "model": "AFG1062",
+      "specs": {
+        "output_frequency_Hz": {
+          "min": 1e-06,
+          "max": 60000000
+        },
+        "channels": 2,
+        "sample_rate_Sa_s": 300000000,
+        "dac_resolution_bit": 14,
+        "output_voltage_V": {
+          "min": 0.001,
+          "max": 10
+        },
+        "waveform_memory_pts": {
+          "values": [
+            8000
+          ],
+          "note": "원문 8k points"
+        }
+      }
+    }
+  ],
+  "features": [
+    "내장 임의파형 50개",
+    "연속·변조·스윕·버스트 모드"
+  ],
+  "relations": [
+    {
+      "type": "same_family_as",
+      "target": "tektronix-afg31000"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://www.tek.com/en/products/signal-generators/arbitrary-function-generator/afg1000",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지. 기종별 출력 주파수, 채널, 샘플 속도, 분해능, 진폭, 레코드 길이"
+    }
+  ],
+  "confidence": "limited"
+}

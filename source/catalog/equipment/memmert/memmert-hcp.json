@@ -1,0 +1,132 @@
+{
+  "id": "memmert-hcp",
+  "kind": "equipment_series",
+  "name": "Memmert HCP Humidity Chambers (HCP50 / HCP105 / HCP150 / HCP240)",
+  "name_ko": "메머트 HCP 항습 챔버",
+  "manufacturer": "memmert",
+  "brand": "HCP",
+  "category": "climatic_chamber",
+  "drive": "thermal",
+  "form_factor": "floor",
+  "description": "+90 °C 까지, 20~95 %RH 를 능동 가습·제습으로 거는 항습 챔버. IEC 60068-2-67 · IEC 60068-2-78 의 85 °C/85 %RH 시험, 가속 수명 시험에 쓴다. 내문(유리) 포함 6면 가열로 결로를 줄인다. 내용적 56~241 L 네 크기.",
+  "test_items": [
+    "damp_heat"
+  ],
+  "standards": {
+    "compliance": [],
+    "test_methods": [
+      "IEC 60068-2-67",
+      "IEC 60068-2-78"
+    ]
+  },
+  "limits": {
+    "temperature_degC": {
+      "max": 90,
+      "note": "페이지 'up to +90 °C'. 하한은 페이지에 없음"
+    },
+    "humidity_pct": {
+      "min": 20,
+      "max": 95
+    },
+    "chamber_volume_L": {
+      "min": 56,
+      "max": 241,
+      "values": [
+        56,
+        107,
+        156,
+        241
+      ]
+    }
+  },
+  "models": [
+    {
+      "model": "HCP50",
+      "specs": {
+        "chamber_volume_L": 56,
+        "inner_mm": {
+          "note": "400 × 425 × 330 mm (페이지 표기 그대로)"
+        },
+        "temperature_degC": {
+          "max": 90
+        },
+        "humidity_pct": {
+          "min": 20,
+          "max": 95
+        }
+      }
+    },
+    {
+      "model": "HCP105",
+      "specs": {
+        "chamber_volume_L": 107,
+        "inner_mm": {
+          "note": "560 × 480 × 400 mm (페이지 표기 그대로)"
+        },
+        "temperature_degC": {
+          "max": 90
+        },
+        "humidity_pct": {
+          "min": 20,
+          "max": 95
+        }
+      }
+    },
+    {
+      "model": "HCP150",
+      "specs": {
+        "chamber_volume_L": 156,
+        "inner_mm": {
+          "note": "560 × 700 × 400 mm (페이지 표기 그대로)"
+        },
+        "temperature_degC": {
+          "max": 90
+        },
+        "humidity_pct": {
+          "min": 20,
+          "max": 95
+        }
+      }
+    },
+    {
+      "model": "HCP240",
+      "specs": {
+        "chamber_volume_L": 241,
+        "inner_mm": {
+          "note": "600 × 810 × 500 mm (페이지 표기 그대로)"
+        },
+        "temperature_degC": {
+          "max": 90
+        },
+        "humidity_pct": {
+          "min": 20,
+          "max": 95
+        }
+      }
+    }
+  ],
+  "environment": {
+    "reference_ambient": "22 °C ± 3 K, 상대습도 < 50 % (페이지가 밝힌 기준 주위 조건)"
+  },
+  "features": [
+    "능동 가습·제습",
+    "가열 유리 내문 포함 6면 가열",
+    "ControlCOCKPIT 조작부",
+    "AtmoCONTROL 프로그램 소프트웨어"
+  ],
+  "relations": [
+    {
+      "type": "simulates_environment",
+      "target": "environment-damp-heat"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://www.memmert.com/products/climate-chambers/humidity-chamber/",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지. 기종 목록(내용적·내부 치수), 온도 상한, 습도 범위, 적용 규격"
+    }
+  ],
+  "confidence": "limited",
+  "notes": "온도 하한, 온습도 변동·편차는 페이지에 없어 비웠다."
+}

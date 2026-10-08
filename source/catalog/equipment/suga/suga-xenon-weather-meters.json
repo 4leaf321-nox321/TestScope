@@ -1,0 +1,157 @@
+{
+  "id": "suga-xenon-weather-meters",
+  "kind": "equipment_series",
+  "name": "Suga Xenon Weather Meters (SX75 / NX75 / SX120 / SX75-2D / X75 / X75L / NX25 / X25A / XT750 / NX90 …)",
+  "name_ko": "스가시험기 제논 웨더미터",
+  "manufacturer": "suga",
+  "brand": "Xenon Weather Meter",
+  "category": "weathering_tester",
+  "form_factor": "floor",
+  "description": "스가시험기(Suga Test Instruments)의 제논 아크 촉진 내후성 시험기 계열. 고조도형 SX75(180 W/m²)·SX120(160 W/m², φ960 mm 회전 틀), 범용 X75(300–400 nm 25~70 W/m²), 냉동기 장착 X75L(조 내 12~80 °C), 공랭 X25A, 테이블형 XT750/XT750L, 2조 독립형 SX75-2D 등.",
+  "test_items": [
+    "accelerated_weathering"
+  ],
+  "limits": {
+    "irradiance_W_m2": {
+      "min": 25,
+      "max": 180,
+      "note": "X75 25~70(300–400 nm), SX120 160, SX75 180"
+    }
+  },
+  "models": [
+    {
+      "model": "SX75",
+      "specs": {
+        "irradiance_W_m2": {
+          "max": 180,
+          "note": "페이지 '180W/㎡(高照度)'. 파장 대역은 페이지에 없음"
+        }
+      },
+      "note": "スーパーキセノンウェザーメーター. 태양광의 약 3배 고조도"
+    },
+    {
+      "model": "NX75",
+      "note": "キセノンウェザーメーター. ISO·SAE·ASTM·JIS·JASO 대응 고조도형"
+    },
+    {
+      "model": "SX120",
+      "specs": {
+        "irradiance_W_m2": {
+          "max": 160,
+          "note": "페이지 '160W/㎡ 高照度'"
+        }
+      },
+      "note": "スーパーキセノンウェザーメーター 대형. φ960 mm 시료 회전 틀"
+    },
+    {
+      "model": "SX75-2D",
+      "note": "スーパーキセノンウェザーメーター 2조 독립형(좌·우 조 별도 시험)"
+    },
+    {
+      "model": "X75",
+      "specs": {
+        "irradiance_W_m2": {
+          "min": 25,
+          "max": 70,
+          "note": "300–400 nm"
+        }
+      },
+      "note": "キセノンウェザーメーター 범용. φ960 mm 시료 회전 틀"
+    },
+    {
+      "model": "X75L",
+      "specs": {
+        "temperature_degC": {
+          "min": 12,
+          "max": 80,
+          "note": "램프 점등 중 조 내 온도 제어"
+        }
+      },
+      "note": "냉동기 장착형. -30 °C·-40 °C 저온 시험이 되는 기종도 있다고 적힘"
+    },
+    {
+      "model": "NX25",
+      "note": "분무 없는 모델, 실내 제품용"
+    },
+    {
+      "model": "X25A",
+      "note": "공랭식, 램프 냉각수 불필요"
+    },
+    {
+      "model": "XT750",
+      "form_factor": "benchtop",
+      "specs": {
+        "stage_size_mm": {
+          "note": "250 × 250 mm 대형 시료대"
+        }
+      },
+      "note": "キセノンウェザーメーター(테이블형), 공랭식"
+    },
+    {
+      "model": "XT750L",
+      "form_factor": "benchtop",
+      "note": "테이블형, 온도 제어. 100,000 lx 까지 되는 기종 있음"
+    },
+    {
+      "model": "SX-S80-2D",
+      "note": "2조 독립형 — 제논과 다른 광원 조합"
+    },
+    {
+      "model": "NX90",
+      "note": "신개발 장수명 수랭식 제논 램프로 넓은 범위를 균일하게 조사"
+    },
+    {
+      "model": "MV-SX-2D",
+      "note": "2조 독립형 — 고객 요구에 맞춘 광원 조합"
+    }
+  ],
+  "relations": [
+    {
+      "type": "simulates_environment",
+      "target": "environment-solar-radiation"
+    },
+    {
+      "type": "same_family_as",
+      "target": "suga-sunshine-weather-meters"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://www.sugatest.co.jp/productlist/plistcat/pcat1/%e3%82%b0%e3%83%ad%e3%83%bc%e3%83%90%e3%83%ab%e3%82%b9%e3%82%bf%e3%83%b3%e3%83%80%e3%83%bc%e3%83%89%e8%a9%a6%e9%a8%93%e6%a9%9f/",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 목록(グローバルスタンダード試験機) — 기종명과 한 줄 사양"
+    },
+    {
+      "url": "https://www.sugatest.co.jp/productlist/sx75-2/",
+      "retrieved": "2026-10-08",
+      "note": "제조사 SX75 페이지(개요만)"
+    },
+    {
+      "url": "https://www.sugatest.co.jp/productlist/nx75-3/",
+      "retrieved": "2026-10-08",
+      "note": "제조사 NX75 페이지(개요만)"
+    },
+    {
+      "url": "https://www.sugatest.co.jp/productlist/sx120-3/",
+      "retrieved": "2026-10-08",
+      "note": "제조사 SX120 페이지(개요만)"
+    },
+    {
+      "url": "https://www.sugatest.co.jp/productlist/sx752d/",
+      "retrieved": "2026-10-08",
+      "note": "제조사 SX75-2D 페이지(개요만)"
+    },
+    {
+      "url": "https://www.sugatest.co.jp/productlist/x75/",
+      "retrieved": "2026-10-08",
+      "note": "제조사 X75 페이지. 300–400 nm 25~70 W/m²"
+    },
+    {
+      "url": "https://www.sugatest.co.jp/productlist/x75l-2/",
+      "retrieved": "2026-10-08",
+      "note": "제조사 X75L 페이지. 조 내 12~80 °C"
+    }
+  ],
+  "confidence": "limited",
+  "notes": "제조사 기종 페이지는 개요 한두 줄만 있고 상세 사양(램프 kW, 블랙패널 온도, 습도, 시편 수)은 카탈로그 PDF 에 있어 비웠다. SX75 의 180 W/m² 는 파장 대역이 페이지에 없어 note 로 남겼다. 과제의 'SX2D' 는 'SX75-2D' 로 보인다."
+}

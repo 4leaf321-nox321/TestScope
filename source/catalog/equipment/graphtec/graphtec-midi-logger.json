@@ -1,0 +1,125 @@
+{
+  "id": "graphtec-midi-logger",
+  "kind": "equipment_series",
+  "name": "Graphtec midi LOGGER GL260 / GL860 / GL240 Data Loggers",
+  "name_ko": "그래프텍 midi LOGGER 데이터 로거",
+  "manufacturer": "graphtec",
+  "brand": "midi LOGGER",
+  "category": "dmm_daq",
+  "form_factor": "portable",
+  "description": "전 채널 절연 입력의 다채널 데이터 로거 계열. 전압·열전대·RTD(GL860)·습도(센서 선택)·4~20 mA(션트 선택)·로직·펄스를 함께 기록한다. GL260 은 본체 일체형 10채널(최고 10 ms), GL860 은 단자 유닛에 따라 20·30채널에서 최대 200채널(최고 5 ms)까지 늘어난다. 내장 8 GB 플래시와 SD 카드.",
+  "test_items": [],
+  "limits": {
+    "channels": {
+      "min": 10,
+      "max": 200,
+      "note": "GL260 10ch, GL860 20/30ch 기본·확장 최대 200ch(목록 페이지는 expandable to 1000ch)"
+    },
+    "data_interval_ms": {
+      "max": 10,
+      "note": "최고 샘플링 간격 GL860 5 ms(1채널), GL260 10 ms(1채널, 전압만)"
+    },
+    "voltage_V": {
+      "min": 0.02,
+      "max": 100,
+      "note": "전압 레인지 20 mV~100 V F.S., 1-5 V"
+    }
+  },
+  "models": [
+    {
+      "model": "GL260",
+      "specs": {
+        "channels": 10,
+        "data_interval_ms": 10,
+        "data_rate_Hz": 100,
+        "voltage_V": {
+          "min": 0.02,
+          "max": 100,
+          "note": "20·50·100·200·500 mV, 1·2·5·10·20·50·100 V, 1-5 V F.S."
+        },
+        "interfaces": "USB(Hi-speed), WLAN(B-568 선택)",
+        "weight_kg": 0.5,
+        "footprint_mm": {
+          "W": 188,
+          "D": 117,
+          "H": 42,
+          "note": "원문 188 x 117 x 42 mm(돌출부 제외, 축 이름 없음)"
+        }
+      },
+      "note": "열전대 K, J, E, T, R, S, B, N, C(W: WRe5-26). 시그마-델타 16비트(유효 분해능 측정 범위의 1/40000). 4.3인치 TFT 컬러 LCD. 내장 8 GB + SD(최대 32 GB). 전 채널 절연·평형 입력"
+    },
+    {
+      "model": "GL860",
+      "specs": {
+        "channels": {
+          "min": 20,
+          "max": 200,
+          "note": "단자 B-563·B-563SL·B-565 20ch, B-563SL-30 30ch. 확장 유닛으로 최대 200ch"
+        },
+        "data_interval_ms": 5,
+        "data_rate_Hz": 200,
+        "voltage_V": {
+          "min": 0.02,
+          "max": 100,
+          "note": "20·50·100·200·500 mV, 1·2·5·10·20·50·100 V, 1-5 V F.S."
+        },
+        "interfaces": "USB 2.0, Ethernet(10BASE-T/100BASE-TX), 무선 LAN(B-568 선택)",
+        "weight_kg": 1.035,
+        "footprint_mm": {
+          "W": 240,
+          "D": 166,
+          "H": 52.5,
+          "note": "원문 240×166×52.5 mm(B-565 단자, 돌출부 제외, 축 이름 없음)"
+        }
+      },
+      "note": "열전대 K, J, E, T, R, S, B, N, C, W(WRe5-26), RTD Pt100·JPt100·Pt1000. 5 ms 는 전압·습도 1채널. 내장 8 GB 플래시. 무게 1035 g(B-565 단자)"
+    },
+    {
+      "model": "GL240",
+      "note": "GL260 페이지에 관련 기종으로 나옴. 현행 목록 페이지에는 없음. 사양은 이번에 확인하지 않음"
+    }
+  ],
+  "options": [
+    {
+      "name": "B-530",
+      "note": "습도 센서(0~100%)"
+    },
+    {
+      "name": "B-551",
+      "note": "4~20 mA 측정용 션트 저항"
+    },
+    {
+      "name": "B-568",
+      "note": "무선 LAN 유닛"
+    },
+    {
+      "name": "B-563 / B-563SL / B-563SL-30 / B-565",
+      "note": "GL860 입력 단자(20ch 나사식·20ch 나사 없는 식·30ch 나사 없는 식·20ch 고내압 고정밀)"
+    }
+  ],
+  "relations": [
+    {
+      "type": "same_family_as",
+      "target": "graphtec-gl-high-speed-loggers"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://graphteciwatsu.com/en/product/logger/",
+      "retrieved": "2026-10-08",
+      "note": "제조사(GRAPHTEC IWATSU Test Instruments) 데이터 로거 목록 페이지. GL860 20ch–200ch(expandable to 1000ch) 200 S/s(5 ms/1ch), GL260 10ch 100 S/s(10 ms/1ch)"
+    },
+    {
+      "url": "https://graphteciwatsu.com/en/product/logger/gl260/",
+      "retrieved": "2026-10-08",
+      "note": "제조사 GL260 페이지 사양. 옛 주소 graphteccorp.com/logger/gl260/ 에서 옮겨짐"
+    },
+    {
+      "url": "https://graphteciwatsu.com/en/product/logger/gl860/",
+      "retrieved": "2026-10-08",
+      "note": "제조사 GL860 페이지 사양. 옛 주소 graphteccorp.com/logger/gl860/ 에서 옮겨짐"
+    }
+  ],
+  "confidence": "limited",
+  "notes": "Graphtec 데이터 로거 페이지가 graphteciwatsu.com 으로 옮겨졌고 페이지의 회사명은 GRAPHTEC IWATSU Test Instruments Co.,Ltd. 이다. GL240 의 사양·단종 여부는 제조사 페이지로 확인하지 못함."
+}

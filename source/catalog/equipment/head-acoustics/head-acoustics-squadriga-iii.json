@@ -1,0 +1,80 @@
+{
+  "id": "head-acoustics-squadriga-iii",
+  "kind": "equipment_model",
+  "name": "HEAD acoustics SQuadriga III Mobile Recording and Playback System",
+  "name_ko": "HEAD acoustics SQuadriga III 이동형 녹음·재생 시스템",
+  "manufacturer": "head-acoustics",
+  "brand": "SQuadriga",
+  "category": "acoustic_measurement",
+  "form_factor": "portable",
+  "description": "소음·진동 측정용 이동형 8채널 녹음·재생 장치. BNC 6개와 바이노럴 헤드셋 BHS II 입력, 최대 16채널 확장, 절연 펄스 입력 2, CAN FD/OBD2 2, FlexRay 1, GPS 수신기를 갖춘다. 프런트엔드 운용 시 측정 체인이 IEC 61672 Class 1 로 검증된다. 7인치 터치스크린, 내장 메모리 64 GB, 내장 배터리로 최대 8시간. 시간 신호·FFT·옥타브·라우드니스·샤프니스·차수 분석을 기기에서 바로 본다.",
+  "test_items": [],
+  "measurands": [
+    "sound_pressure_level",
+    "loudness",
+    "sharpness",
+    "vibration"
+  ],
+  "materials": [
+    "vehicles",
+    "industrial machinery",
+    "household appliances"
+  ],
+  "standards": {
+    "compliance": [
+      "IEC 61672 Class 1 (측정 체인 검증, 프런트엔드 운용)"
+    ],
+    "test_methods": []
+  },
+  "limits": {
+    "channels": {
+      "min": 8,
+      "max": 16,
+      "note": "기본 8채널, 확장 시 16채널"
+    }
+  },
+  "models": [
+    {
+      "model": "SQuadriga III",
+      "specs": {
+        "channels": 8,
+        "accuracy_class": "IEC 61672 Class 1 (측정 체인)",
+        "interfaces": "BNC 6, BHS II, 펄스 2(절연), CAN FD/OBD2 2, FlexRay 1, USB-A 3, 헤드폰 출력, GPS"
+      }
+    },
+    {
+      "model": "SQuadriga III-V1",
+      "specs": {
+        "channels": 8
+      },
+      "note": "항공용판. 내장 충전지 없이 외부 전원만"
+    }
+  ],
+  "features": [
+    "TEDS 지원",
+    "ICP 2 mA/4 mA 선택",
+    "DC 결합 가능 AC 입력(고역 통과 전환)",
+    "CAN FD·FlexRay 실시간 복호",
+    "800 MHz 듀얼 코어"
+  ],
+  "relations": [
+    {
+      "type": "same_family_as",
+      "target": "head-acoustics-sqobold"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://www.head-acoustics.com/products/data-acquisition/squadriga-iii/",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지"
+    },
+    {
+      "url": "https://www.head-acoustics.com/products/data-acquisition/",
+      "retrieved": "2026-10-08",
+      "note": "제조사 데이터 수집 제품 목록"
+    }
+  ],
+  "confidence": "limited",
+  "notes": "샘플링 주파수·동적 범위는 페이지에 없다. 측정 장비(녹음기)라 test_items 를 비움."
+}

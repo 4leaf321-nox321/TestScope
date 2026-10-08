@@ -1,0 +1,99 @@
+{
+  "id": "hitachi-nexta-dma200",
+  "kind": "equipment_series",
+  "name": "Hitachi High-Tech NEXTA DMA200 Dynamic Mechanical Analyzer",
+  "name_ko": "히타치 하이테크 NEXTA DMA200 동적기계분석기",
+  "manufacturer": "hitachi-high-tech",
+  "category": "dma",
+  "brand": "NEXTA",
+  "description": "점탄성(저장·손실 탄성률, tan δ)과 유리전이를 재는 DMA. 최대 힘 20 N, 힘 분해능 5E-6 N, 사인파 0.01~200 Hz(최대 20 주파수), 합성파 5 주파수. 냉각은 액체질소(-150~600 °C)·전기 가스 냉각(-100~600 °C)·공랭(실온~600 °C). 스프링 지지 구동축(압축공기 불필요), LVDT, Real View 카메라, 리사주 모니터, TTS 마스터 곡선·활성화 에너지 기본 포함.",
+  "test_items": [
+    "dma"
+  ],
+  "measurands": [
+    "mechanical.storage_modulus",
+    "mechanical.loss_modulus",
+    "mechanical.loss_tangent",
+    "thermal.glass_transition"
+  ],
+  "measurands_by_item": {
+    "dma": [
+      "mechanical.storage_modulus",
+      "mechanical.loss_modulus",
+      "mechanical.loss_tangent",
+      "thermal.glass_transition"
+    ]
+  },
+  "standards": {
+    "compliance": [],
+    "test_methods": [
+      "ISO 6721-11",
+      "ASTM D7028-07",
+      "IPC 2.4.24.2",
+      "JIS K7095"
+    ]
+  },
+  "limits": {
+    "temperature_degC": {
+      "min": -150,
+      "max": 600,
+      "note": "액체질소 냉각 기준. 전기 가스 냉각 -100 °C, 공랭 실온부터"
+    },
+    "frequency_Hz": {
+      "min": 0.01,
+      "max": 200
+    },
+    "force_N": {
+      "max": 20
+    }
+  },
+  "models": [
+    {
+      "model": "DMA200",
+      "specs": {
+        "force_N": {
+          "max": 20
+        },
+        "frequency_Hz": {
+          "min": 0.01,
+          "max": 200
+        },
+        "modulus_Pa": {
+          "min": 1000.0,
+          "max": 31600000000000.0,
+          "note": "원문 '103 to 1013.5 Pa'(위첨자가 사라진 10^3~10^13.5 Pa 로 읽음)"
+        },
+        "temperature_degC": {
+          "min": -150,
+          "max": 600
+        },
+        "footprint_mm": {
+          "W": 420,
+          "D": 630,
+          "H": 725
+        }
+      },
+      "note": "변형 모드: 인장(기본), 단·양 외팔보, 3점 굽힘, 전단, 필름 전단, 압축(옵션). 모드별 측정 범위: 인장 10^5~10^12 Pa, 양 외팔보 10^5~10^12, 전단 10^3~10^9, 필름 전단 10^4~10^10, 압축 10^5~10^9, 3점 굽힘 10^6.5~10^13.5 Pa"
+    }
+  ],
+  "relations": [
+    {
+      "type": "same_family_as",
+      "target": "hitachi-tma7000"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://hha.hitachi-hightech.com/en/product-range/products/thermal-analyzer-series/dynamic-mechanical-analyzer-dma200",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지(HTML) 본문·표를 직접 읽음. 제품 사양표(변형 모드, 최대 힘, 탄성률 범위, 주파수, 온도, 치수)"
+    },
+    {
+      "url": "https://hha.hitachi-hightech.com/en/product-range/products/thermal-analyzer-series/dynamic-mechanical-analyzer-dma7100",
+      "retrieved": "2026-10-08",
+      "note": "DMA7100 주소로 열면 이 DMA200 페이지가 나온다(2026-10-08 확인)"
+    }
+  ],
+  "confidence": "limited",
+  "notes": "DMA7100 제품 주소가 DMA200 페이지로 넘어간다 — DMA7100 고유 사양은 이번에 찾지 못했다."
+}

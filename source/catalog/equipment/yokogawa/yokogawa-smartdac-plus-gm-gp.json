@@ -1,0 +1,137 @@
+{
+  "id": "yokogawa-smartdac-plus-gm-gp",
+  "kind": "equipment_series",
+  "name": "Yokogawa SMARTDAC+ GM10 Data Acquisition System / GP10 · GP20 Paperless Recorder",
+  "name_ko": "요코가와 SMARTDAC+ GM10 데이터 수집 시스템 · GP10/GP20 휴대형 페이퍼리스 기록계",
+  "manufacturer": "yokogawa",
+  "brand": "SMARTDAC+",
+  "category": "dmm_daq",
+  "description": "SMARTDAC+ 의 모듈형 데이터 수집 계열. GM10 은 화면 없는 블록 I/O 데이터 수집 모듈(단독 최대 100채널, GM10-2 다중 유닛 420채널), GP10·GP20 은 같은 I/O 모듈에 터치 화면을 더한 휴대형 페이퍼리스 기록계(GP10 100채널, GP20 표준 100·대용량 450채널). 직류 전압·전류, 열전대, RTD, 접점, 펄스 입력, 최고 1 ms(고속 모듈 1채널).",
+  "test_items": [],
+  "limits": {
+    "channels": {
+      "max": 450,
+      "note": "아날로그 입력 GM10-2 최대 420ch(I/O 500), GP20-2 최대 450ch(I/O 500), GM10-1 · GP10 · GP20-1 최대 100ch(GS 04L55B01 p.1·6, GS 04L52B01 p.1). MATH·통신 채널 포함 1000ch 는 웹 값",
+      "requires_accessory": true
+    },
+    "data_interval_ms": {
+      "max": 1,
+      "note": "고속 아날로그 입력 모듈로 최단 1 ms(GS p.1). 이중 주기 측정의 최단은 GM10-2 · GP20-2 1 ms, GM10-1 · GP10 · GP20-1 5 ms(GS 04L55B01 p.7, 04L52B01 p.3)"
+    }
+  },
+  "models": [
+    {
+      "model": "GM10",
+      "variant": "GM10-1(내부 메모리 500 MB) / GM10-2(1.2 GB)",
+      "form_factor": "modular",
+      "specs": {
+        "channels": {
+          "max": 420,
+          "note": "원문 up to 420 channels (GM10-2) and up to 100 channels (GM10-1) for analog input. GM10-2 I/O 최대 500ch, 모듈 최대 42개(GS 04L55B01 p.4·6)",
+          "requires_accessory": true
+        },
+        "data_interval_ms": 1,
+        "operating_temperature_degC": {
+          "min": -20,
+          "max": 60,
+          "note": "원문 Ambient temperature: -20 to 60 °C(GS 04L55B01 p.6)"
+        }
+      },
+      "note": "I/O 모듈 GM10-1 최대 10개 · GM10-2 최대 42개(PDF)(GX90XA 아날로그 입력 4~10ch 등). Ethernet(Modbus TCP, EtherNet/IP, OPC-UA, PROFINET), Modbus RTU·RS-422/485, USB, Bluetooth, Wi-Fi. DIN 레일·벽·탁상 설치. 내부 메모리 GM10-1 500 MB · GM10-2 1.2 GB(PDF 확인)"
+    },
+    {
+      "model": "GP10",
+      "form_factor": "portable",
+      "specs": {
+        "channels": {
+          "max": 100,
+          "note": "원문 a maximum of 100 channels in GP10 with expandable I/O, GM sub unit(GS 04L52B01 p.1). 본체 단독 30ch 는 웹 값",
+          "requires_accessory": true
+        },
+        "data_interval_ms": 1,
+        "operating_temperature_degC": {
+          "min": 0,
+          "max": 50,
+          "note": "원문 Normal Operating Conditions Ambient temperature: 0 to 50 °C(GS 04L52B01 p.11)"
+        },
+        "weight_kg": {
+          "value": 1.9,
+          "note": "원문 GP10: Approx. 1.9 kg (excluding modules)"
+        },
+        "footprint_mm": [
+          144,
+          168,
+          248
+        ]
+      },
+      "note": "12 V 전원 지원(차량 안 사용, 전원 코드 2: 12 VDC). 내부 메모리 500 MB, 모듈 장착 시 144 × 168 × 248 mm(GS 04L52B01 p.1·10)"
+    },
+    {
+      "model": "GP20",
+      "form_factor": "portable",
+      "specs": {
+        "channels": {
+          "max": 450,
+          "note": "원문 a maximum of 100 channels in GP20 standard type (GP20-1) ... a maximum of 450 channels in GP20 large memory type (GP20-2)(GS 04L52B01 p.1). GP20-2 모듈 최대 45개",
+          "requires_accessory": true
+        },
+        "data_interval_ms": 1,
+        "operating_temperature_degC": {
+          "min": 0,
+          "max": 50,
+          "note": "원문 Normal Operating Conditions Ambient temperature: 0 to 50 °C(GS 04L52B01 p.11)"
+        },
+        "weight_kg": {
+          "value": 5.4,
+          "note": "원문 GP20: Approx. 5.4 kg (excluding modules)"
+        },
+        "footprint_mm": [
+          288,
+          318,
+          248
+        ]
+      },
+      "variant": "GP20-1(표준, 내부 메모리 500 MB) / GP20-2(대용량, 1.2 GB)",
+      "note": "모듈 장착 시 288 × 318 × 248 mm(GS 04L52B01 p.10)"
+    }
+  ],
+  "features": [
+    "입력: 직류 전압·전류, 열전대, RTD(4선 포함), 접점, 펄스",
+    "다중 포인트 터치 패널(GP), 방진·방수",
+    "SD·USB 외부 저장",
+    "Health Monitor, 수학·리포트(/MT), 멀티 배치(/BT), FDA 21 CFR Part 11 지원(/AS) 옵션(GM10)"
+  ],
+  "sources": [
+    {
+      "url": "https://www.yokogawa.com/sg/solutions/products-and-services/measurement/data-acquisition-products/data-logger/modular-gm10/",
+      "retrieved": "2026-10-08",
+      "note": "제조사 GM10 페이지. GM10-1(500 MB, 100ch)·GM10-2(1.2 GB, 100ch 단독·420ch 다중), 최고 1 ms, 입력 종류, GX90XA 등 I/O 모듈 최대 10개, 통신"
+    },
+    {
+      "url": "https://www.yokogawa.com/us/solutions/products-and-services/measurement/data-acquisition-products/portable-data-acquisition/touch-screen-gp10-gp20/",
+      "retrieved": "2026-10-08",
+      "note": "제조사 GP10/GP20 페이지. GP10 100ch, GP20 표준 100ch·대용량 450ch, MATH·통신 채널 포함 1000ch, 입력 종류, 고속 모듈 1 ms, GP10 12 V 전원"
+    },
+    {
+      "file": "yokogawa/gs04l52b01-01en.pdf",
+      "pages": [
+        1,
+        2,
+        3,
+        10,
+        11
+      ]
+    },
+    {
+      "file": "yokogawa/gs04l55b01-01en.pdf",
+      "pages": [
+        1,
+        4,
+        6,
+        7
+      ]
+    }
+  ],
+  "confidence": "catalog",
+  "notes": "PDF(General Specifications GS 04L55B01-01EN GM, GS 04L52B01-01EN GP10/GP20)로 확인: 기종별 최대 채널(GM10-1 100 · GM10-2 420 · GP10 100 · GP20-1 100 · GP20-2 450), 최단 1 ms, 내부 메모리, GM10 운전 온도 −20~60 °C, GP 운전 온도 0~50 °C · 외형 · 무게. 웹 값 그대로: MATH·통신 채널 포함 1000ch, GP10 본체 단독 30ch. SMARTDAC+ 는 Yokogawa 계측 제품으로, 정본 제조사 id yokogawa(Test & Measurement) 에 붙임. GM10 페이지 요약의 DCV 확도 문구는 단위가 의심스러워 적지 않음. GX10/GX20 패널형 기록계는 넣지 않음."
+}

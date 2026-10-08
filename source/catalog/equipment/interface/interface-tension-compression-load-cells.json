@@ -1,0 +1,89 @@
+{
+  "id": "interface-tension-compression-load-cells",
+  "kind": "sensor",
+  "name": "Interface Tension/Compression and Mini Load Cells (WMC / SML / SM / SSM / MB)",
+  "name_ko": "인터페이스 인장·압축 및 소형 로드셀",
+  "manufacturer": "interface",
+  "category": "force_pressure_sensor",
+  "subcategory": "strain_gauge_load_cell",
+  "description": "인장·압축 겸용 로드셀과 소형(Mini) 로드셀 계열. SML 저높이형 22 N～9 kN, SM S형 50～5000 N, SSM 밀봉 S형 200 N～50 kN, MB 소형 빔형 0.02～1.25 kN, WMC 로드 엔드형.",
+  "test_items": [],
+  "measurands": [
+    "force"
+  ],
+  "limits": {
+    "force_kN": {
+      "min": 0.02,
+      "max": 50,
+      "note": "WMC 를 뺀 범위. WMC 는 원문 표기에 의문이 있어 따로 둠"
+    }
+  },
+  "models": [
+    {
+      "model": "WMC Rod End",
+      "specs": {
+        "force_kN": {
+          "min": 65,
+          "max": 900
+        }
+      },
+      "note": "원문 15K-200K lbf (65-900 kN). 원문 그대로. lbf 값과 kN 값이 맞지 않음 — 확인 필요",
+      "uncertain": true
+    },
+    {
+      "model": "SML Low Height",
+      "specs": {
+        "force_kN": {
+          "min": 0.022,
+          "max": 9
+        }
+      },
+      "note": "원문 5-2,000 lbf (22 N-9 kN)"
+    },
+    {
+      "model": "SM S-Type",
+      "specs": {
+        "force_kN": {
+          "min": 0.05,
+          "max": 5
+        }
+      },
+      "note": "원문 10-1,000 lbf (50-5000 N)"
+    },
+    {
+      "model": "SSM Sealed S-Type",
+      "specs": {
+        "force_kN": {
+          "min": 0.2,
+          "max": 50
+        }
+      },
+      "note": "원문 50 lbf-10K lbf (200 N-50 kN). Mini 계열. SSM 또는 SSM2"
+    },
+    {
+      "model": "MB Miniature Beam",
+      "specs": {
+        "force_kN": {
+          "min": 0.02,
+          "max": 1.25
+        }
+      },
+      "note": "원문 5-250 lbf (0.02-1.25 kN). Mini 계열"
+    }
+  ],
+  "relations": [
+    {
+      "type": "same_family_as",
+      "target": "interface-lowprofile-load-cells"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://www.interfaceforce.com/product-category/load-cells/",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 목록 페이지(HTML, interfaceforce.com). 계열명과 용량 범위만 확인"
+    }
+  ],
+  "confidence": "limited",
+  "notes": "목록 페이지 일부(115,784자 중 앞 100,000자)만 읽어 그 밖의 계열은 빠졌을 수 있다."
+}

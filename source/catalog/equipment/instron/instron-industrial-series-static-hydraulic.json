@@ -1,0 +1,186 @@
+{
+  "id": "instron-industrial-series-static-hydraulic",
+  "kind": "equipment_series",
+  "name": "Instron Industrial Series Static Hydraulic Universal Testing Systems (DX / HDX / KPX)",
+  "name_ko": "인스트론 인더스트리얼 시리즈 정적 유압 만능시험기(DX·HDX·KPX)",
+  "manufacturer": "instron",
+  "category": "hydraulic_utm",
+  "drive": "hydraulic",
+  "description": "금속·선재·강연선·볼트·콘크리트·목재·복합재의 인장·압축·굽힘·전단 시험용 정적 유압 만능시험기. DX 600 kN, HDX 1,000 kN(이중 시험 공간), KPX 1,500·2,000 kN.",
+  "test_items": [
+    "tensile",
+    "compression",
+    "flexure",
+    "shear"
+  ],
+  "measurands": [
+    "mechanical.tensile_strength",
+    "mechanical.yield_strength",
+    "mechanical.youngs_modulus",
+    "mechanical.elongation_at_break",
+    "mechanical.compressive_strength",
+    "mechanical.flexural_strength"
+  ],
+  "limits": {
+    "force_kN": {
+      "values": [
+        600,
+        1000,
+        1500,
+        2000
+      ]
+    },
+    "crosshead_speed_mm_min": {
+      "min": 0.1,
+      "max": 203,
+      "note": "최고 속도 600DX 80 / 1000HDX 100 / KPX 203 mm/min"
+    },
+    "crosshead_travel_mm": {
+      "values": [
+        152,
+        254,
+        610
+      ]
+    }
+  },
+  "models": [
+    {
+      "model": "600DX",
+      "specs": {
+        "force_kN": {
+          "value": 600,
+          "note": "600 kN(135,000 lbf)"
+        },
+        "crosshead_speed_mm_min": {
+          "min": 0.1,
+          "max": 80,
+          "note": "0.004~3.2 in/min"
+        },
+        "crosshead_travel_mm": {
+          "value": 152,
+          "note": "152 mm(6 in)"
+        },
+        "vertical_test_space_mm": {
+          "values": [
+            965,
+            1372
+          ],
+          "note": "프레임 높이 (E1) 965 / (E2) 1372 mm"
+        },
+        "footprint_mm": {
+          "H": [
+            2925,
+            3330
+          ],
+          "note": "높이 (E1) 2925 / (E2) 3330 mm. 폭·깊이는 표 열이 섞여 넣지 않음"
+        }
+      }
+    },
+    {
+      "model": "1000HDX",
+      "specs": {
+        "force_kN": {
+          "value": 1000,
+          "note": "1,000 kN(225,000 lbf). 웹 페이지는 220,000 lbf"
+        },
+        "crosshead_speed_mm_min": {
+          "min": 0.1,
+          "max": 100,
+          "note": "0.004~3.9 in/min"
+        },
+        "crosshead_travel_mm": {
+          "value": 254,
+          "note": "254 mm(10 in)"
+        },
+        "vertical_test_space_mm": {
+          "values": [
+            1016,
+            1524
+          ],
+          "note": "프레임 높이 (G7B) 1016 / (G7C) 1524 mm"
+        },
+        "footprint_mm": {
+          "H": [
+            3380,
+            3890
+          ],
+          "note": "높이 (G7B) 3380 / (G7C) 3890 mm. 폭·깊이는 표 열이 섞여 넣지 않음"
+        }
+      },
+      "note": "이중 시험 공간, 긴 시험 스트로크"
+    },
+    {
+      "model": "1500KPX",
+      "specs": {
+        "force_kN": {
+          "value": 1500,
+          "note": "1,500 kN(337,500 lbf)"
+        },
+        "crosshead_speed_mm_min": {
+          "min": 0.1,
+          "max": 203,
+          "note": "0.004~8 in/min"
+        },
+        "crosshead_travel_mm": {
+          "value": 610,
+          "note": "610 mm(24 in)"
+        }
+      }
+    },
+    {
+      "model": "2000KPX",
+      "specs": {
+        "force_kN": {
+          "value": 2000,
+          "note": "2,000 kN(450,000 lbf)"
+        },
+        "crosshead_speed_mm_min": {
+          "min": 0.1,
+          "max": 203,
+          "note": "0.004~8 in/min"
+        },
+        "crosshead_travel_mm": {
+          "value": 610,
+          "note": "610 mm(24 in)"
+        }
+      }
+    },
+    {
+      "model": "600KPX",
+      "note": "검색 요약에만 나온 이름 — 고하중 브로슈어(2024) 사양표에도 없다. 확인 필요",
+      "uncertain": true
+    },
+    {
+      "model": "1000KPX",
+      "note": "검색 요약에만 나온 이름 — 고하중 브로슈어(2024) 사양표에도 없다. 확인 필요",
+      "uncertain": true
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://www.instron.com/en/products/testing-systems/universal-testing-systems/high-force-universal-testing-systems/static-hydraulic/dx",
+      "retrieved": "2026-10-08",
+      "note": "제조사 페이지가 자동 조회를 막아(HTTP 403/406) 직접 열지 못함. 값은 웹 검색 엔진이 이 페이지에서 뽑은 발췌로만 확인했다 — 값마다 uncertain. 600DX 600 kN(135,000 lbf)"
+    },
+    {
+      "url": "https://www.instron.com/en/products/testing-systems/universal-testing-systems/static-hydraulic/hdx/",
+      "retrieved": "2026-10-08",
+      "note": "제조사 페이지가 자동 조회를 막아(HTTP 403/406) 직접 열지 못함. 값은 웹 검색 엔진이 이 페이지에서 뽑은 발췌로만 확인했다 — 값마다 uncertain. 1000HDX 1,000 kN(220,000 lbf), 이중 시험 공간·긴 스트로크"
+    },
+    {
+      "url": "https://www.instron.com/en/products/testing-systems/universal-testing-systems/static-hydraulic/kpx/",
+      "retrieved": "2026-10-08",
+      "note": "제조사 페이지가 자동 조회를 막아(HTTP 403/406) 직접 열지 못함. 값은 웹 검색 엔진이 이 페이지에서 뽑은 발췌로만 확인했다 — 값마다 uncertain. KPX 최고 용량 1,500 kN·2,000 kN"
+    },
+    {
+      "file": "instron/high-force-universal-testing-machines-1.pdf",
+      "pages": [
+        9,
+        14,
+        23
+      ]
+    }
+  ],
+  "confidence": "catalog",
+  "notes": "PDF 로 확인: 4 기종 용량·최소/최고 속도·크로스헤드 이동량, 600DX·1000HDX 수직 시험 공간·높이(고하중 브로슈어 23쪽 정적 유압 표). KPX 수직 시험 공간·높이는 프레임 기호(J3A/J3C/J3D)가 두 기종에 걸쳐 섞여 넣지 않았다 — 기호로 맞추면 1500KPX (J3C) 2921 / (J3D) 3226 mm, 2000KPX (J3A) 2311 / (J3D) 3226 mm, 높이 1500KPX 5135/5440, 2000KPX 4675/5590 mm 로 읽힌다. 수평 시험 공간(524·741·876·876 mm)과 바닥 치수(974×1205, 1228×832, 1878×1219, 1816×1410 mm)도 줄이 밀려 기종 대응이 확실하지 않아 넣지 않았다. 600KPX·1000KPX 는 이 표에 없다. LX 형식(구형) 운전 설명서 PDF 는 열지 않았다."
+}

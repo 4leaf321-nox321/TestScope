@@ -1,0 +1,103 @@
+{
+  "id": "fluke-tix-expert-series",
+  "kind": "equipment_series",
+  "name": "Fluke TiX Expert Series Thermal Camera (TiX501, TiX580)",
+  "name_ko": "플루크 TiX 엑스퍼트 열화상 카메라",
+  "manufacturer": "fluke",
+  "brand": "TiX",
+  "category": "thermal_imager",
+  "form_factor": "handheld",
+  "description": "640 × 480 검출기와 회전형 5.7 인치 화면의 상위 휴대 열화상 카메라. TiX580 은 SuperResolution(1,280 × 960), 열 감도 ≤50 mK, -20 ~ 1,000 °C, TiX501 은 ≤75 mK, -20 ~ 650 °C. 7.5 ~ 14 µm, 60 Hz 또는 9 Hz 판, 무게 1.54 kg.",
+  "test_items": [
+    "thermography"
+  ],
+  "measurands": [
+    "surface_temperature",
+    "temperature_distribution",
+    "hotspot_location"
+  ],
+  "limits": {
+    "temperature_degC": {
+      "min": -20,
+      "max": 1000
+    },
+    "ir_resolution_pixels": {
+      "max": 307200,
+      "note": "640 × 480"
+    },
+    "thermal_sensitivity_degC": {
+      "min": 0.05,
+      "max": 0.075
+    }
+  },
+  "models": [
+    {
+      "model": "TiX501",
+      "specs": {
+        "detector_pixels": "640 × 480",
+        "ir_resolution_pixels": 307200,
+        "thermal_sensitivity_degC": 0.075,
+        "temperature_degC": {
+          "min": -20,
+          "max": 650
+        },
+        "accuracy": "±2 °C 또는 ±2 % (25 °C 기준, 큰 값)",
+        "wavelength_nm": {
+          "min": 7500,
+          "max": 14000
+        },
+        "frame_rate_fps": [
+          9,
+          60
+        ],
+        "field_of_view_deg": "34° H × 24° V",
+        "weight_kg": 1.54
+      },
+      "note": "SuperResolution 없음"
+    },
+    {
+      "model": "TiX580",
+      "specs": {
+        "detector_pixels": "640 × 480",
+        "ir_resolution_pixels": 307200,
+        "thermal_sensitivity_degC": 0.05,
+        "temperature_degC": {
+          "min": -20,
+          "max": 1000
+        },
+        "accuracy": "±2 °C 또는 ±2 % (25 °C 기준, 큰 값)",
+        "wavelength_nm": {
+          "min": 7500,
+          "max": 14000
+        },
+        "frame_rate_fps": [
+          9,
+          60
+        ],
+        "field_of_view_deg": "34° H × 24° V",
+        "weight_kg": 1.54
+      },
+      "note": "SuperResolution 1,280 × 960(카메라 · 소프트웨어). 5.7 인치 640 × 480 LCD. 부품 번호 4842073(60 Hz) · 4841945(9 Hz)"
+    }
+  ],
+  "relations": [
+    {
+      "type": "performs",
+      "target": "thermography"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://www.fluke.com/en-us/product/thermal-cameras/tix501",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지(HTML)"
+    },
+    {
+      "url": "https://www.fluke.com/en-us/product/thermal-cameras/tix580",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지(HTML)"
+    }
+  ],
+  "confidence": "limited",
+  "notes": "Ti480 PRO 페이지가 TiX 상위 기종(TiX620 등)을 적지 않아 두 기종만 넣었다."
+}

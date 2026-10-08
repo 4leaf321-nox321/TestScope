@@ -1,0 +1,49 @@
+{
+  "id": "lansmont-model-23c-cushion-tester",
+  "kind": "equipment_model",
+  "name": "Lansmont Model 23C Cushioning Tester",
+  "name_ko": "랜스몬트 Model 23C 완충재 시험기",
+  "manufacturer": "lansmont",
+  "category": "shock_test_machine",
+  "form_factor": "floor",
+  "description": "포장 완충재(폼 등)의 충격 성능을 평가하는 시험기. 중량 플래튼 23×23 cm·5.8 kg, 경량 플래튼 21.6×21.6 cm·0.9 kg, 시스템 높이 244 cm, 설치 면적 46×46 cm. 100~230 VAC 단상, 공기 80~120 psi.",
+  "test_items": [],
+  "measurands": [
+    "peak_acceleration",
+    "cushion_curve"
+  ],
+  "materials": [
+    "cushioning materials",
+    "foams"
+  ],
+  "models": [
+    {
+      "model": "Model 23C",
+      "specs": {
+        "table_size_mm": [
+          230,
+          230
+        ],
+        "height_mm": 2440
+      },
+      "note": "중량 플래튼 기준. 경량 플래튼 216×216 mm"
+    }
+  ],
+  "power_requirements": "100-230 VAC, 50/60 Hz 단상",
+  "relations": [
+    {
+      "type": "same_family_as",
+      "target": "lansmont-model-15-23-shock-test-systems"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://www.lansmont.com/products/shock-testers/model-23c",
+      "retrieved": "2026-10-08",
+      "note": "제조사 Model 23C 페이지"
+    }
+  ],
+  "confidence": "limited",
+  "notes": "완충재 시험(ASTM D1596 류)은 test_items 에 맞는 항목이 없어 비웠다. 최대 탑재·가속도·낙하 높이는 페이지에 없다.",
+  "utilities": "공기 80~120 psi (5.6~8.4 kg/cm²)"
+}

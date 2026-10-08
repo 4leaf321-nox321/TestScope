@@ -1,0 +1,148 @@
+{
+  "id": "tektronix-5-series-b-mso",
+  "kind": "equipment_series",
+  "name": "5 Series B MSO Mixed Signal Oscilloscope",
+  "name_ko": "텍트로닉스 5 시리즈 B MSO 혼합 신호 오실로스코프",
+  "manufacturer": "tektronix",
+  "brand": "5 Series MSO",
+  "category": "oscilloscope",
+  "subcategory": "mixed_signal_oscilloscope",
+  "form_factor": "benchtop",
+  "description": "350 MHz~2 GHz 대역의 4·6·8채널 혼합 신호 오실로스코프 계열임. 6.25 GS/s, 12 bit ADC, 레코드 62.5 M~500 M, 옵션 디지털 채널 최대 32·48·64, 15.6 inch(1920×1080) 화면. 2U 높이의 8채널 저형상(Low Profile) 기종 MSO58LP 를 함께 넣음.",
+  "test_items": [],
+  "limits": {
+    "bandwidth_Hz": {
+      "min": 350000000,
+      "max": 2000000000
+    },
+    "sample_rate_Sa_s": {
+      "max": 6250000000
+    },
+    "record_length_pts": {
+      "min": 62500000,
+      "max": 500000000
+    },
+    "channels": {
+      "values": [
+        4,
+        6,
+        8
+      ]
+    },
+    "logic_channel_count": {
+      "values": [
+        32,
+        48,
+        64
+      ],
+      "note": "옵션. 최대값"
+    },
+    "adc_resolution_bit": {
+      "values": [
+        12
+      ]
+    },
+    "display_size_in": {
+      "values": [
+        15.6
+      ]
+    }
+  },
+  "models": [
+    {
+      "model": "MSO54B",
+      "specs": {
+        "bandwidth_Hz": {
+          "min": 350000000,
+          "max": 2000000000,
+          "note": "원문 350 MHz - 2 GHz"
+        },
+        "channels": 4,
+        "logic_channel_count": 32,
+        "sample_rate_Sa_s": 6250000000,
+        "record_length_pts": {
+          "min": 62500000,
+          "max": 500000000,
+          "note": "원문 62.5 M - 500 M"
+        },
+        "adc_resolution_bit": 12,
+        "display_size_in": 15.6
+      }
+    },
+    {
+      "model": "MSO56B",
+      "specs": {
+        "bandwidth_Hz": {
+          "min": 350000000,
+          "max": 2000000000,
+          "note": "원문 350 MHz - 2 GHz"
+        },
+        "channels": 6,
+        "logic_channel_count": 48,
+        "sample_rate_Sa_s": 6250000000,
+        "record_length_pts": {
+          "min": 62500000,
+          "max": 500000000,
+          "note": "원문 62.5 M - 500 M"
+        },
+        "adc_resolution_bit": 12,
+        "display_size_in": 15.6
+      }
+    },
+    {
+      "model": "MSO58B",
+      "specs": {
+        "bandwidth_Hz": {
+          "min": 350000000,
+          "max": 2000000000,
+          "note": "원문 350 MHz - 2 GHz"
+        },
+        "channels": 8,
+        "logic_channel_count": 64,
+        "sample_rate_Sa_s": 6250000000,
+        "record_length_pts": {
+          "min": 62500000,
+          "max": 500000000,
+          "note": "원문 62.5 M - 500 M"
+        },
+        "adc_resolution_bit": 12,
+        "display_size_in": 15.6
+      }
+    },
+    {
+      "model": "MSO58LP",
+      "variant": "Low Profile",
+      "form_factor": "rackmount",
+      "specs": {
+        "bandwidth_Hz": {
+          "min": 500000000,
+          "max": 1000000000,
+          "note": "원문 500 MHz – 1 GHz"
+        },
+        "channels": 8,
+        "sample_rate_Sa_s": 6250000000,
+        "record_length_pts": {
+          "min": 125000000,
+          "max": 500000000,
+          "note": "원문 125 M to 500 M"
+        },
+        "adc_resolution_bit": 12
+      },
+      "note": "2U(3.5 inch 높이) 저형상 디지타이저, 8 input channels (plus AUX Trig)"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://www.tek.com/en/products/oscilloscopes/5-series-mso",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지. 5 Series B MSO 기종 표(MSO54B·MSO56B·MSO58B). 원문 6.25 GS/s, 62.5 M - 500 M, 12-bits, 15.6-inch"
+    },
+    {
+      "url": "https://www.tek.com/en/products/oscilloscopes/high-speed-digitizers/5-series-mso-low-profile",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지. MSO58LP: 500 MHz – 1 GHz, 8 ch, 6.25 GS/s, 125 M to 500 M, 12 bits, 2U"
+    }
+  ],
+  "confidence": "limited",
+  "notes": "B 이전의 5 Series MSO(MSO54·MSO56·MSO58)는 현재 페이지에 없어 넣지 않음."
+}

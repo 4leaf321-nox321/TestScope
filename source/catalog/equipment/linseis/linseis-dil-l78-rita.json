@@ -1,0 +1,237 @@
+{
+  "id": "linseis-dil-l78-rita",
+  "kind": "equipment_series",
+  "name": "LINSEIS L78 RITA quenching / deformation dilatometer",
+  "name_ko": "린세이스 L78 RITA 급랭·변형 딜라토미터",
+  "manufacturer": "linseis",
+  "category": "dilatometer",
+  "description": "급랭·변형 딜라토미터. 기계 힘 22 kN(압축·인장), -150~1600 °C(구성에 따라 더 높게), 승·냉각 최대 4000 K/s(급랭 모드, 중공 시편)·125 K/s(변형·인장 모드). 길이 변화 분해능 5 nm(선택 1 nm), 측정 범위 ±1.2 mm(급랭)·±5 mm(변형), 데이터 1 kHz(온도·길이·힘 동기), 시편에 직접 용접한 열전대 최대 3개, 스트로크·힘·진변형률 속도 제어.",
+  "test_items": [
+    "dilatometry"
+  ],
+  "measurands": [
+    "thermal.expansion_linear"
+  ],
+  "measurands_by_item": {
+    "dilatometry": [
+      "thermal.expansion_linear"
+    ]
+  },
+  "limits": {
+    "temperature_degC": {
+      "min": -150,
+      "max": 1600
+    },
+    "force_kN": {
+      "max": 22
+    }
+  },
+  "models": [
+    {
+      "model": "L78 RITA",
+      "variant": "DIL L78 RITA",
+      "specs": {
+        "temperature_degC": {
+          "min": -150,
+          "max": 1600,
+          "note": "-150 up to 1600 °C(more on request), Q/D 는 시료에 따라 1750 °C"
+        },
+        "force_kN": {
+          "max": 22,
+          "note": "압축·인장"
+        },
+        "heating_rate_K_min": {
+          "max": 240000,
+          "note": "원문 up to 4000 K/s(급랭 모드, 중공 시편), 125 K/s(변형·인장 모드)"
+        },
+        "cooling_rate_K_min": {
+          "max": 240000,
+          "note": "원문 4000 K/s"
+        },
+        "displacement_resolution_nm": {
+          "value": 5,
+          "note": "선택 1 nm"
+        },
+        "displacement_mm": {
+          "values": [
+            1.2,
+            5
+          ],
+          "note": "±1.2 mm(급랭) / ±5 mm(변형)"
+        },
+        "data_rate_Hz": {
+          "max": 1000
+        }
+      },
+      "note": "계열 요약 행. 형식별 사양은 아래 Q · Q/D · Q/D/T 행"
+    },
+    {
+      "model": "DIL L78 RITA Q",
+      "variant": "Quenching",
+      "specs": {
+        "specimen_diameter_mm": {
+          "value": 3,
+          "note": "Ø3 mm, 중공 3.5 mm OD / 3 mm ID, 길이 10 mm. 열처리용 선택 10×10×60 mm"
+        },
+        "specimen_length_mm": {
+          "value": 10
+        },
+        "temperature_degC": {
+          "min": -150,
+          "max": 1600,
+          "note": "more on request"
+        },
+        "heating_rate_K_min": {
+          "max": 240000,
+          "note": "원문 4000 K/s(최대, 중공 시편)"
+        },
+        "cooling_rate_K_min": {
+          "max": 240000,
+          "note": "원문 4000 K/s(최대, 중공 시편)"
+        },
+        "displacement_mm": {
+          "value": 1.2,
+          "note": "길이 변화 측정 ±1.2 mm"
+        },
+        "displacement_resolution_nm": 5,
+        "data_rate_Hz": {
+          "max": 1000,
+          "note": "온도·길이·힘 동기, 24-bit"
+        },
+        "footprint_mm": {
+          "W": 600,
+          "D": 600,
+          "H": 1100,
+          "note": "60×60×110 cm(부속 제외)"
+        },
+        "power": "16 A, 208–230 V"
+      },
+      "note": "유도 가열로, 시편 용접 열전대 최대 3개"
+    },
+    {
+      "model": "DIL L78 RITA Q/D",
+      "variant": "Quenching + Deformation",
+      "specs": {
+        "specimen_diameter_mm": {
+          "value": 3,
+          "note": "Ø3 mm, 중공 3.5 mm OD / 3 mm ID, 길이 10 mm. 열처리용 선택 10×10×60 mm"
+        },
+        "specimen_length_mm": {
+          "value": 10
+        },
+        "temperature_degC": {
+          "min": -150,
+          "max": 1600,
+          "note": "급랭 모드. 시료에 따라 1750 °C"
+        },
+        "heating_rate_K_min": {
+          "max": 7500,
+          "note": "원문 125 K/s(압축 모드 사양표 값)"
+        },
+        "cooling_rate_K_min": {
+          "max": 7500,
+          "note": "원문 125 K/s"
+        },
+        "displacement_mm": {
+          "values": [
+            5,
+            1.2
+          ],
+          "note": "길이 변화 측정 압축 모드 ±5 mm / 급랭 모드 ±1.2 mm"
+        },
+        "displacement_resolution_nm": {
+          "value": 5,
+          "note": "선택 1 nm"
+        },
+        "force_kN": {
+          "max": 22,
+          "note": "압축 힘 22 kN(max)"
+        },
+        "crosshead_speed_mm_min": {
+          "min": 0.3,
+          "max": 6000,
+          "note": "원문 stroke rate 0.005~100 mm/s(more on request)"
+        },
+        "data_rate_Hz": {
+          "max": 1000,
+          "note": "온도·길이·힘 동기"
+        }
+      },
+      "note": "유도 가열로. 압축 시편 Ø5 mm × 10 mm(중실). 진변형률(압축) -0.02~-1.2, 기계 제어 모드: 스트로크·힘·진변형률 속도"
+    },
+    {
+      "model": "DIL L78 RITA Q/D/T",
+      "variant": "Quenching, Deformation and Tensile",
+      "specs": {
+        "specimen_diameter_mm": {
+          "value": 3,
+          "note": "Ø3 mm, 중공 3.5 mm OD / 3 mm ID, 길이 10 mm. 열처리용 선택 10×10×60 mm"
+        },
+        "specimen_length_mm": {
+          "value": 10
+        },
+        "temperature_degC": {
+          "min": -150,
+          "max": 1600,
+          "note": "Q/D/T 사양표에는 온도 행이 없다 — 계열 범위"
+        },
+        "heating_rate_K_min": {
+          "max": 7500,
+          "note": "원문 125 K/s(압축 모드 사양표 값)"
+        },
+        "cooling_rate_K_min": {
+          "max": 7500,
+          "note": "원문 125 K/s"
+        },
+        "displacement_mm": {
+          "values": [
+            5,
+            1.2
+          ],
+          "note": "길이 변화 측정 압축 모드 ±5 mm / 급랭 모드 ±1.2 mm"
+        },
+        "displacement_resolution_nm": {
+          "value": 5,
+          "note": "선택 1 nm"
+        },
+        "force_kN": {
+          "max": 22,
+          "note": "22 kN(max). 웹 페이지: 압축·인장"
+        },
+        "crosshead_speed_mm_min": {
+          "min": 0.3,
+          "max": 6000,
+          "note": "원문 stroke rate(압축·인장) 0.005~100 mm/s"
+        },
+        "data_rate_Hz": {
+          "max": 1000,
+          "note": "온도·길이·힘 동기"
+        }
+      },
+      "note": "유도 가열로. 인장 시편 원형·박판. 진변형률(압축) -0.02~-1.2, 제어 모드 스트로크·힘·진변형률 속도"
+    }
+  ],
+  "relations": [
+    {
+      "type": "same_family_as",
+      "target": "linseis-dil-l75-l76"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://www.linseis.com/en/instruments/dilatometer/dil-l78-quenching-dilatometer/",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지(HTML) 본문·표를 직접 읽음. Specifications 목록"
+    },
+    {
+      "file": "linseis/specifications-dil-l78-rita.pdf",
+      "pages": [
+        1,
+        2,
+        3
+      ]
+    }
+  ],
+  "confidence": "catalog",
+  "notes": "K/s 를 K/min 키로 옮겼다(×60). PDF 로 확인: 온도 범위·승냉각 속도·길이 변화 범위·분해능·데이터 속도·힘(형식별 사양서 1~3쪽). 형식 Q · Q/D · Q/D/T 를 기종 행으로 더했다. 사양서 2·3쪽은 항목 이름과 값이 따로 추출돼 줄 순서로 맞췄다(값 순서는 항목 순서와 일치). Q/D/T 쪽에는 온도 행이 없다."
+}

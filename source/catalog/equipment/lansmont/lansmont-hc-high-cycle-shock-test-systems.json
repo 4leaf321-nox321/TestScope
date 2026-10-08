@@ -1,0 +1,124 @@
+{
+  "id": "lansmont-hc-high-cycle-shock-test-systems",
+  "kind": "equipment_series",
+  "name": "Lansmont HC18 / HC23 High Cycle Shock Test Systems",
+  "name_ko": "랜스몬트 HC 고반복 충격 시험 시스템",
+  "manufacturer": "lansmont",
+  "category": "shock_test_machine",
+  "form_factor": "floor",
+  "description": "연속 충격을 많이 주는 시험용 고반복 충격 시험기. 분당 최대 50회 충격, 최대 탑재 9 kg, 최대 가속도 5,000 g, 펄스 0.3~2 ms(충격 펄스 프로그래머 옵션), 속도 변화 8.38 m/s. HC18 은 18×18 cm, HC23 은 23×23 cm 테이블(윗면·앞면). 단조 알루미늄 테이블, 고속 리프트·위치 결정 장치, 바닥 전달을 줄이는 부동 지진 기초를 갖춘다.",
+  "test_items": [
+    "mechanical_shock"
+  ],
+  "measurands": [
+    "peak_acceleration",
+    "shock_response_spectrum"
+  ],
+  "materials": [
+    "electronic components",
+    "small devices"
+  ],
+  "standards": {
+    "compliance": [],
+    "test_methods": [
+      "JESD22-B104C (HC23 키트 옵션)"
+    ]
+  },
+  "limits": {
+    "acceleration_g": {
+      "max": 5000
+    },
+    "pulse_duration_ms": {
+      "min": 0.3,
+      "max": 2,
+      "requires_accessory": true,
+      "note": "충격 펄스 프로그래머 옵션"
+    },
+    "velocity_change_m_s": {
+      "values": [
+        8.38
+      ]
+    },
+    "payload_kg": {
+      "max": 9
+    },
+    "cycle_rate_cpm": {
+      "max": 50,
+      "note": "분당 충격 횟수"
+    },
+    "table_size_mm": {
+      "values": [
+        180,
+        230
+      ]
+    }
+  },
+  "models": [
+    {
+      "model": "HC18",
+      "specs": {
+        "table_size_mm": [
+          180,
+          180
+        ],
+        "payload_kg": 9,
+        "acceleration_g": 5000,
+        "pulse_duration_ms": {
+          "min": 0.3,
+          "max": 2
+        },
+        "velocity_change_m_s": 8.38,
+        "cycle_rate_cpm": 50
+      }
+    },
+    {
+      "model": "HC23",
+      "specs": {
+        "table_size_mm": [
+          230,
+          230
+        ],
+        "payload_kg": 9,
+        "acceleration_g": 5000,
+        "pulse_duration_ms": {
+          "min": 0.3,
+          "max": 2
+        },
+        "velocity_change_m_s": 8.38,
+        "cycle_rate_cpm": 50
+      },
+      "note": "JEDEC JESD22-B104C 키트 옵션으로 반정현 펄스"
+    }
+  ],
+  "options": [
+    "충격 펄스 프로그래머",
+    "JESD22-B104C 키트(HC23)",
+    "Test Partner 4 데이터 수집"
+  ],
+  "pulse_waveforms": [
+    "반정현(Half Sine)"
+  ],
+  "relations": [
+    {
+      "type": "performs",
+      "target": "mechanical_shock"
+    },
+    {
+      "type": "same_family_as",
+      "target": "lansmont-model-15-23-shock-test-systems"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://www.lansmont.com/products/shock/high-cycle-shock-test-systems/model-hc18",
+      "retrieved": "2026-10-08",
+      "note": "제조사 HC18 페이지"
+    },
+    {
+      "url": "https://www.lansmont.com/products/shock/high-cycle-shock-test-systems/model-hc23",
+      "retrieved": "2026-10-08",
+      "note": "제조사 HC23 페이지"
+    }
+  ],
+  "confidence": "limited"
+}

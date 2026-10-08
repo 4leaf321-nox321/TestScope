@@ -50,7 +50,7 @@ from catalog_import.models import step_models
 from catalog_import.properties import proposed_links, step_property_links, step_property_terms
 from catalog_import.series import step_relations, step_series
 from catalog_import.source import DEFAULT_ROOT, PROMOTE_THRESHOLD, Catalog
-from catalog_import.terms import _term, step_ontology, step_slug_axes
+from catalog_import.terms import _term, step_maker_aliases, step_ontology, step_slug_axes
 from catalog_import.values import _value_fields
 
 survive_cp949()
@@ -77,6 +77,7 @@ def main() -> int:
         actor = db.scalar(select(User).where(User.is_system_admin.is_(True)))
 
         makers, categories, items, item_aliases = step_ontology(db, cat, actor)
+        maker_aliases = step_maker_aliases(db, cat, makers)
         properties, aliases = step_property_terms(db, cat, actor)
         methods = step_methods(db, cat, items, actor)
         definitions, pending = step_definitions(db, cat, categories)
@@ -87,6 +88,7 @@ def main() -> int:
         )
         promoted_methods = step_promote_pending(db)
         models, values, flagged, kept = step_models(db, cat, series, form_factors, actor)
+        refreshed, dropped = values_step.finish_refresh(db)
         relations = step_relations(db, cat, series)
         links, promoted, unmapped = step_property_links(db, cat, items, properties, actor)
         # 7. 검토함 — 반입이 못 정한 것을 후보·추천과 함께 세운다. 정본(`proposals/`)에
@@ -125,8 +127,8 @@ def main() -> int:
 
         print(f"객체 {len(cat.objects)}건에서:")
         print(
-            f"  제조사 {len(makers)} · 분류 {len(categories)} · 시험 항목 {len(items)}"
-            f" (별칭 새로 {item_aliases})"
+            f"  제조사 {len(makers)} (별칭 새로 {maker_aliases}) · 분류 {len(categories)}"
+            f" · 시험 항목 {len(items)} (별칭 새로 {item_aliases})"
         )
         print(
             f"  물성 {len(properties)} (별칭 새로 {aliases})"
@@ -147,6 +149,9 @@ def main() -> int:
             f"  기종 새로 {models} · 사양값 새로 {values}"
             f" · 이 기종만의 사양 새로 {values_step._FREE_MADE}"
         )
+        if refreshed or dropped:
+            # 반입이 넣고 아무도 안 고친 값만 정본을 따른다 — 사람·AI 가 고친 값은 그대로.
+            print(f"  반입 값을 정본에 맞춤 {refreshed} · 정본에서 빠져 지움 {dropped}")
         if kept:
             print(f"  원문 보존 {kept}건 (정의가 없는 값도 통째로 남는다)")
         if flagged:

@@ -1,0 +1,106 @@
+{
+  "id": "hioki-im7580-impedance-analyzers",
+  "kind": "equipment_series",
+  "name": "Hioki Impedance Analyzer IM7580 Series (IM7580A / IM7581 / IM7583 / IM7585 / IM7587)",
+  "name_ko": "히오키 임피던스 분석기 IM7580 시리즈",
+  "manufacturer": "hioki",
+  "brand": "IM",
+  "category": "network_lcr_analyzer",
+  "form_factor": "benchtop",
+  "description": "100 kHz~3 GHz 를 다섯 기종으로 나눈 고주파 임피던스 분석기 계열. 측정 시간 0.5 ms(FAST, 아날로그 측정 시간 typ). 기본 확도는 IM7580A·IM7581 ±0.72%, IM7583·IM7585·IM7587 ±0.65%.",
+  "test_items": [],
+  "limits": {
+    "frequency_Hz": {
+      "min": 100000,
+      "max": 3000000000,
+      "note": "IM7581 100 kHz 부터, IM7587 3 GHz 까지"
+    },
+    "measurement_time_s": {
+      "max": 0.0005,
+      "note": "FAST 0.5 ms(아날로그 측정 시간, typ)"
+    }
+  },
+  "models": [
+    {
+      "model": "IM7580A",
+      "specs": {
+        "frequency_Hz": {
+          "min": 1000000,
+          "max": 300000000
+        },
+        "accuracy": "±0.72%",
+        "measurement_time_s": 0.0005
+      },
+      "note": "목록 페이지 값"
+    },
+    {
+      "model": "IM7581",
+      "specs": {
+        "frequency_Hz": {
+          "min": 100000,
+          "max": 300000000
+        },
+        "accuracy": "±0.72%",
+        "measurement_time_s": 0.0005
+      },
+      "note": "목록 페이지 값"
+    },
+    {
+      "model": "IM7583",
+      "specs": {
+        "frequency_Hz": {
+          "min": 1000000,
+          "max": 600000000
+        },
+        "accuracy": "±0.65%",
+        "measurement_time_s": 0.0005
+      },
+      "note": "목록 페이지 값"
+    },
+    {
+      "model": "IM7585",
+      "specs": {
+        "frequency_Hz": {
+          "min": 1000000,
+          "max": 1300000000
+        },
+        "accuracy": "±0.65%",
+        "measurement_time_s": 0.0005
+      },
+      "note": "목록 페이지 값"
+    },
+    {
+      "model": "IM7587",
+      "specs": {
+        "frequency_Hz": {
+          "min": 1000000,
+          "max": 3000000000,
+          "note": "100 kHz 설정 분해능"
+        },
+        "accuracy": "Z ±0.65% rdg. θ ±0.38°",
+        "measurement_time_s": 0.0005,
+        "impedance_ohm": {
+          "min": 0.1,
+          "max": 5000
+        },
+        "test_signal_level": "전력 -40.0 dBm~+1.0 dBm, 전압 4 mV~502 mVrms, 전류 0.09 mA~10.04 mArms",
+        "interfaces": "EXT I/O(Handler), USB, USB 메모리, LAN, RS-232C(선택), GP-IB(선택)"
+      },
+      "note": "IM7587-01(연결 케이블 1 m), IM7587-02(2 m)"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://www.hioki.com/global/products/lcr-meters/3-ghz",
+      "retrieved": "2026-10-08",
+      "note": "제조사 'Impedance Analyzers, up to 3 GHz' 목록 페이지. 기종별 주파수·확도·측정 시간"
+    },
+    {
+      "url": "https://www.hioki.com/global/products/lcr-meters/3-ghz/id_6618",
+      "retrieved": "2026-10-08",
+      "note": "제조사 IM7587 페이지. IM7587-01/-02, 1 MHz to 3 GHz, Z ±0.65% θ ±0.38°, 100 mΩ to 5 kΩ, 신호 레벨, 인터페이스. 'five models covering 1 MHz to 3 GHz'"
+    }
+  ],
+  "confidence": "limited",
+  "notes": "IM7587 외 기종의 -01/-02 변형·측정 범위는 이번에 기종 페이지를 열지 않아 적지 않음."
+}

@@ -1,0 +1,73 @@
+{
+  "id": "keysight-infiniivision-hd3",
+  "kind": "equipment_series",
+  "name": "InfiniiVision HD3-Series Oscilloscopes",
+  "name_ko": "키사이트 InfiniiVision HD3 오실로스코프",
+  "manufacturer": "keysight",
+  "brand": "InfiniiVision",
+  "category": "oscilloscope",
+  "subcategory": "mixed_signal_oscilloscope",
+  "form_factor": "benchtop",
+  "description": "14 bit ADC 를 쓰는 200 MHz~1 GHz 4채널 혼합 신호 오실로스코프 계열임. 3.2 GSa/s, 100 Mpts, 16 디지털 채널, 10.1 inch 정전식 터치 화면, 1,300,000 wfms/s 갱신율, 잡음 바닥 50 µVrms. 키사이트 현재 분류로는 XR3-class.",
+  "test_items": [],
+  "limits": {
+    "bandwidth_Hz": {
+      "min": 200000000,
+      "max": 1000000000
+    },
+    "sample_rate_Sa_s": {
+      "max": 3200000000
+    },
+    "record_length_pts": {
+      "max": 100000000
+    },
+    "channels": {
+      "values": [
+        4
+      ]
+    },
+    "logic_channel_count": {
+      "values": [
+        16
+      ]
+    },
+    "adc_resolution_bit": {
+      "values": [
+        14
+      ]
+    },
+    "display_size_in": {
+      "values": [
+        10.1
+      ]
+    }
+  },
+  "models": [
+    {
+      "model": "HD304MSO",
+      "specs": {
+        "bandwidth_Hz": {
+          "min": 200000000,
+          "max": 1000000000,
+          "note": "원문 200 MHz to 1 GHz (selectable). 200·350·500 MHz·1 GHz 구성"
+        },
+        "channels": 4,
+        "logic_channel_count": 16,
+        "sample_rate_Sa_s": 3200000000,
+        "record_length_pts": 100000000,
+        "adc_resolution_bit": 14,
+        "display_size_in": 10.1
+      },
+      "note": "원문 3.2 GSa/s · 100 Mpts · 14 bits · 10.1-inch · 1,300,000 waveforms/second"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://www.keysight.com/us/en/product/HD304MSO/infiniivision-oscilloscope-4-analog-channels.html",
+      "retrieved": "2026-10-08",
+      "note": "제조사 기종 페이지. 200 MHz to 1 GHz, 4 analog, 16 digital, 3.2 GSa/s, 100 Mpts, 14 bits, 10.1-inch, 1,300,000 waveforms/s"
+    }
+  ],
+  "confidence": "limited",
+  "notes": "2채널 기종 등 HD3 계열의 다른 기종은 조회 페이지에 없어 넣지 않음."
+}

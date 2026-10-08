@@ -1,0 +1,205 @@
+{
+  "id": "gras-headphone-test-fixtures",
+  "kind": "equipment_series",
+  "name": "GRAS Headphone / Hearing-protector Test Fixtures (45CA / 45CC)",
+  "name_ko": "GRAS 헤드폰·청력 보호구 시험 고정구 (45CA · 45CC)",
+  "manufacturer": "gras",
+  "category": "acoustic_measurement",
+  "form_factor": "fixture",
+  "description": "45CA 는 청력 보호구(귀마개·귀덮개)의 차음을 ISO 4869-3 으로, 이어폰·헤드폰을 IEC 60318-1 또는 60318-4 로 시험하는 고정구다. 탄성 받침 위에 머리를 올려 잡음 바닥을 낮췄고, 시험 대상과 규격에 따라 마이크 또는 귀 시뮬레이터를 끼운 사전 구성 13종(45CA-1~-13)이 있다. 45CA-1·-2 의 자체 삽입 손실은 80~250 Hz 에서 >50 dB, 350~4000 Hz 에서 >65 dB, 5~20 kHz 에서 >55 dB. Hi-Res 구성(45CA-11·-12)은 50 kHz 까지. 45CC 는 헤드폰·헤드셋 2채널 시험용 플랫폼이다.",
+  "test_items": [
+    "audio_performance"
+  ],
+  "measurands": [
+    "insertion_gain",
+    "frequency_response"
+  ],
+  "materials": [
+    "headphones",
+    "earphones",
+    "earplugs",
+    "earmuffs",
+    "hearing protectors"
+  ],
+  "standards": {
+    "compliance": [],
+    "test_methods": [
+      "ISO 4869-3",
+      "IEC 60318-1",
+      "IEC 60318-4"
+    ]
+  },
+  "limits": {
+    "insertion_gain": {
+      "min": 50,
+      "max": 65,
+      "note": "45CA-1·-2 자체 삽입 손실(하한값): 80~250 Hz >50 dB, 350~4000 Hz >65 dB, 5~20 kHz >55 dB"
+    },
+    "frequency_Hz": {
+      "max": 50000,
+      "note": "표준 구성 20 kHz(45CA-9·-10 고주파 구성은 20 kHz 명시), Hi-Res 구성(45CA-11·-12) 50 kHz"
+    },
+    "weight_kg": {
+      "max": 11.6,
+      "note": "45CA"
+    }
+  },
+  "models": [
+    {
+      "model": "45CA",
+      "specs": {
+        "weight_kg": 11.6
+      },
+      "note": "기본 고정구"
+    },
+    {
+      "model": "45CA-1",
+      "specs": {
+        "channels": 2
+      },
+      "note": "ISO 4869-3 1\" 마이크 LEMO. 40EN 1\" 외부 분극 압력 마이크 2개. 귀덮개 삽입 손실·헤드폰 음질. 자체 삽입 손실 >50 dB(80~250 Hz), >65 dB(350~4000 Hz), >55 dB(5~20 kHz)"
+    },
+    {
+      "model": "45CA-2",
+      "specs": {
+        "channels": 2
+      },
+      "note": "ISO 4869-3 1/2\" 마이크 CCP. 40AD 1/2\" 사전 분극 압력 마이크 2개. 귀덮개 삽입 손실·헤드폰 음질. 자체 삽입 손실 >50 dB(80~250 Hz), >65 dB(350~4000 Hz), >55 dB(5~20 kHz)"
+    },
+    {
+      "model": "45CA-3",
+      "specs": {
+        "channels": 2
+      },
+      "note": "IEC 60318-1 LEMO. RA0039 귀 시뮬레이터 2개 + 40AG 1/2\" 외부 분극 마이크. 귀덮개 삽입 손실·헤드폰 음질. 귓바퀴 시뮬레이터와 함께 쓸 수 없어 인이어 이어폰 측정 불가"
+    },
+    {
+      "model": "45CA-4",
+      "specs": {
+        "channels": 2
+      },
+      "note": "IEC 60318-1 CCP. RA0039 귀 시뮬레이터 2개 + 40AO 1/2\" 사전 분극 마이크. 용도는 45CA-3 과 같음"
+    },
+    {
+      "model": "45CA-5",
+      "specs": {
+        "channels": 2
+      },
+      "note": "IEC 60318-4 LEMO. RA0045 외부 분극 귀 시뮬레이터 2개 + KEMAR 귓바퀴(55 Shore OO). 귀덮개·귀마개 삽입 손실(ISO 4869-3), 이어폰·헤드폰 음질"
+    },
+    {
+      "model": "45CA-6",
+      "specs": {
+        "channels": 2
+      },
+      "note": "IEC 60318-4 CCP. RA0045-S1 사전 분극 귀 시뮬레이터 2개 + KEMAR 귓바퀴(55 Shore OO). 귀덮개 삽입 손실, 이어폰·보청기 음질"
+    },
+    {
+      "model": "45CA-7",
+      "specs": {
+        "channels": 2
+      },
+      "note": "IEC 60318-4 LEMO. RA0045 외부 분극 귀 시뮬레이터 2개 + 인체계측 귓바퀴(35 Shore OO). 귀덮개·귀마개 삽입 손실, 이어폰·헤드폰 음질"
+    },
+    {
+      "model": "45CA-8",
+      "specs": {
+        "channels": 2
+      },
+      "note": "IEC 60318-4 CCP. RA0045-S1 사전 분극 귀 시뮬레이터 2개 + 인체계측 귓바퀴. 귀덮개 삽입 손실, 이어폰·보청기 음질"
+    },
+    {
+      "model": "45CA-9",
+      "specs": {
+        "channels": 2,
+        "frequency_Hz": {
+          "max": 20000
+        }
+      },
+      "note": "IEC 60318-4 LEMO. RA0401 외부 분극 고주파 귀 시뮬레이터 2개 + 인체계측 귓바퀴. 보청기·이어폰·헤드폰 20 kHz 까지"
+    },
+    {
+      "model": "45CA-10",
+      "specs": {
+        "channels": 2,
+        "frequency_Hz": {
+          "max": 20000
+        }
+      },
+      "note": "IEC 60318-4 CCP. RA0402 사전 분극 고주파 귀 시뮬레이터 2개 + 인체계측 귓바퀴. 보청기·이어폰·헤드폰 20 kHz 까지"
+    },
+    {
+      "model": "45CA-11",
+      "specs": {
+        "frequency_Hz": {
+          "max": 50000
+        },
+        "channels": 2
+      },
+      "note": "IEC 60318-4 LEMO. RA0403 외부 분극 Hi-Res 귀 시뮬레이터 2개 + 인체계측 귓바퀴. 보청기·이어폰·헤드폰 50 kHz 까지"
+    },
+    {
+      "model": "45CA-12",
+      "specs": {
+        "frequency_Hz": {
+          "max": 50000
+        },
+        "channels": 2
+      },
+      "note": "IEC 60318-4 CCP. RA0404 사전 분극 Hi-Res 귀 시뮬레이터 2개 + 인체계측 귓바퀴. 보청기·이어폰·헤드폰 50 kHz 까지"
+    },
+    {
+      "model": "45CA-13",
+      "specs": {},
+      "note": "IEC 60318-4. 43BB 저잡음 귀 시뮬레이터 시스템 + 인체계측 귓바퀴. 보청기·이어폰·헤드폰"
+    },
+    {
+      "model": "45CC",
+      "specs": {
+        "channels": 2
+      },
+      "note": "헤드폰·헤드셋 2채널 시험용 구성형 플랫폼(같은 목록 페이지)"
+    }
+  ],
+  "relations": [
+    {
+      "type": "performs",
+      "target": "audio_performance"
+    },
+    {
+      "type": "same_family_as",
+      "target": "gras-kemar-45bb-45bc"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://www.grasacoustics.com/products/product/734-45ca",
+      "retrieved": "2026-10-08",
+      "note": "45CA 제품 페이지: 규격, 무게, 삽입 손실, 구성 13종"
+    },
+    {
+      "url": "https://www.grasacoustics.com/products/test-fixtures/for-ear-and-headphone-test",
+      "retrieved": "2026-10-08",
+      "note": "제조사 이어·헤드폰 시험 고정구 목록(45CC·45EB·45CA)"
+    },
+    {
+      "file": "gras/734-45ca.pdf",
+      "pages": [
+        1,
+        2,
+        3,
+        4,
+        6,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13
+      ],
+      "note": "GRAS 45CA 데이터시트. 1쪽 규격, 2~4쪽 구성별 설명, 6쪽 사양(무게·자체 삽입 손실), 8~13쪽 구성별 주문 정보"
+    }
+  ],
+  "confidence": "catalog",
+  "notes": "45CA-1~-13 구성 내용은 데이터시트 PDF(2~4쪽 설명, 8~13쪽 주문 정보)로 확인. 주문 정보 8쪽은 '12 different pre-configurations' 라 적으나 목록은 45CA-1~-13 의 13종임. 6쪽 사양표에 ITU-T P.380 도 있음(standards 칸에 옮기지 않음). 45CC 값은 웹 목록 페이지 그대로."
+}

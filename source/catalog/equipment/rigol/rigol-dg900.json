@@ -1,0 +1,76 @@
+{
+  "id": "rigol-dg900",
+  "kind": "equipment_series",
+  "name": "RIGOL DG900 Series Function/Arbitrary Waveform Generators",
+  "name_ko": "리골 DG900 함수·임의파형 발생기",
+  "manufacturer": "rigol",
+  "brand": "DG900",
+  "category": "signal_generator",
+  "subcategory": "function_arbitrary_waveform",
+  "description": "단종(OBSOLETE)된 2채널 함수·임의파형 발생기 계열. DG972(사인파 70 MHz)·DG992(사인파 100 MHz), 16비트 수직 분해능, 임의파형 길이 16 M, SiFi II 기술, 4.3인치 터치스크린, 팬 없는 구조, 8차 고조파 발생기를 갖춘다. DG972 의 대체 기종은 DG902 Pro 다.",
+  "test_items": [],
+  "limits": {
+    "output_frequency_Hz": {
+      "max": 100000000,
+      "note": "사인파 70·100 MHz, 구형파 20·25 MHz"
+    },
+    "channels": {
+      "values": [
+        2
+      ]
+    },
+    "dac_resolution_bit": {
+      "values": [
+        16
+      ]
+    },
+    "waveform_memory_pts": {
+      "values": [
+        16000000
+      ],
+      "note": "원문 16 M"
+    }
+  },
+  "models": [
+    {
+      "model": "DG972",
+      "specs": {
+        "output_frequency_Hz": {
+          "max": 70000000,
+          "note": "사인파 70 MHz, 구형파 20 MHz"
+        },
+        "channels": 2,
+        "waveform_memory_pts": 16000000
+      },
+      "note": "단종(OBSOLETE). 대체 기종 DG902 Pro"
+    },
+    {
+      "model": "DG992",
+      "specs": {
+        "output_frequency_Hz": {
+          "max": 100000000,
+          "note": "사인파 100 MHz, 구형파 25 MHz"
+        },
+        "channels": 2,
+        "waveform_memory_pts": 16000000
+      },
+      "note": "단종(OBSOLETE)"
+    }
+  ],
+  "features": [
+    "16비트 수직 분해능",
+    "SiFi II",
+    "4.3인치 터치스크린",
+    "팬 없는 구조",
+    "8차 고조파 발생기"
+  ],
+  "sources": [
+    {
+      "url": "https://www.rigolna.com/products/waveform-generators/dg900/",
+      "retrieved": "2026-10-08",
+      "note": "제조사 미국 법인 제품 페이지. 기종 표(단종 표시·대체 기종)와 주요 기능"
+    }
+  ],
+  "confidence": "limited",
+  "notes": "페이지에 DG972·DG992 만 있다. 샘플 속도·진폭 범위는 페이지에 없다."
+}

@@ -1,0 +1,107 @@
+{
+  "id": "3ctest-eds-esd-simulators",
+  "kind": "equipment_series",
+  "name": "3ctest EDS ESD Simulators (EDS 30T / EDS 30V)",
+  "name_ko": "3ctest EDS ESD 시뮬레이터",
+  "manufacturer": "3ctest",
+  "brand": "EDS",
+  "category": "esd_simulator",
+  "form_factor": "handheld",
+  "description": "중국 3ctest 의 30 kV ESD 시뮬레이터. EDS 30T 는 IEC 61000-4-2 용 일체형(200~30,000 V ±5 %, 100 V 단위, 교체식 방전 모듈 DM1~DM10), EDS 30V 는 ISO 10605 자동차용(기중·접촉 200~30,000 V, RC 4종).",
+  "test_items": [
+    "esd_immunity"
+  ],
+  "standards": {
+    "compliance": [],
+    "test_methods": [
+      "IEC 61000-4-2",
+      "ISO 10605",
+      "IEC 61000-4-29 (EDS 30T)",
+      "IEC 61340-3-1 (EDS 30T)",
+      "MIL-STD-461 CS118 (EDS 30V)",
+      "RTCA DO-160 (EDS 30V)",
+      "IEC 60601-1-2 (EDS 30V)"
+    ]
+  },
+  "limits": {
+    "esd_voltage_kV": {
+      "min": 0.2,
+      "max": 30,
+      "note": "±5 %"
+    },
+    "discharge_mode": {
+      "values": [
+        "contact",
+        "air"
+      ]
+    }
+  },
+  "models": [
+    {
+      "model": "EDS 30T",
+      "specs": {
+        "esd_voltage_kV": {
+          "min": 0.2,
+          "max": 30,
+          "note": "200 – 30,000 V (±5 %), 100 V 단위"
+        }
+      },
+      "note": "배터리 16시간. 방전 모듈 DM1-RFCI 150 pF/330 Ω ~ DM10 500 pF/5000 Ω"
+    },
+    {
+      "model": "EDS 30V",
+      "specs": {
+        "air_discharge_V": {
+          "min": 200,
+          "max": 30000,
+          "note": "±5 %"
+        },
+        "contact_discharge_V": {
+          "min": 200,
+          "max": 30000,
+          "note": "±5 %"
+        },
+        "polarity": {
+          "values": [
+            "positive",
+            "negative"
+          ]
+        },
+        "frequency_Hz": {
+          "values": [
+            "single",
+            0.1,
+            0.2,
+            0.5,
+            1,
+            2,
+            5,
+            10,
+            20
+          ]
+        }
+      },
+      "note": "RC 330 pF/2000 Ω, 150 pF/2000 Ω, 330 pF/330 Ω, 150 pF/330 Ω. 유지 시간 > 5 s, 상승 시간 0.7~1.0 ns. 배터리 접촉 +30 kV@1 Hz 8시간. 무게 표기 'Approx.11kg'"
+    }
+  ],
+  "relations": [
+    {
+      "type": "performs",
+      "target": "esd_immunity"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://theemcshop.com/electrostatic-discharge-esd-guns/3ctest-eds-30t-electrostatic-discharge-simulator-for-iec-61000-4-2/",
+      "retrieved": "2026-10-08",
+      "note": "대리점(The EMC Shop) 상품 페이지 — 제조사(3ctest.cn) 영문 제품 페이지를 찾지 못해 씀"
+    },
+    {
+      "url": "https://theemcshop.com/electrostatic-discharge-esd-guns/3ctest-eds-30v-automotive-esd-simulator-for-iso-10605/",
+      "retrieved": "2026-10-08",
+      "note": "대리점(The EMC Shop) 상품 페이지"
+    }
+  ],
+  "confidence": "limited",
+  "notes": "EDS 30V 의 무게 '약 11 kg' 는 휴대형 건으로는 커서 본체·부속 포함 값일 수 있다 — 페이지 표기 그대로 note 에만 두었다."
+}

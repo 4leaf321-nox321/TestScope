@@ -1,0 +1,114 @@
+{
+  "id": "aikoh-cbl-5s-cord-bending",
+  "kind": "equipment_series",
+  "name": "AIKOH ENGINEERING Cord Bending Endurance Tester CBL/5S",
+  "name_ko": "아이코 엔지니어링 코드 굴곡 내구 시험기 CBL/5S",
+  "manufacturer": "aikoh",
+  "category": "component_life_tester",
+  "description": "코드·케이블·튜브의 반복 굴곡 내구 시험기임. JIS C 8306 과 UL 817 에 준거한다고 적혀 있음. 분동으로 장력을 준 시료를 좌우로 흔들어 굽히며, 케이블 단선을 검지하면 자동 정지함. 5채널이 함께 움직이는 연동형과 채널마다 따로 움직이는 단동형이 있음. 굽힘 속도 최대 120회/분(JIS), 회전 속도 최대 60회전/분, 시험 굽힘 각도 ±60°(JIS)로 적혀 있고, 설명문에는 요동각을 ±45°와 ±90°로 전환할 수 있다고 적혀 있음.",
+  "test_items": [
+    "mechanical_endurance"
+  ],
+  "measurands": [
+    "cycles_to_failure"
+  ],
+  "materials": [
+    "cords",
+    "cables",
+    "tubes"
+  ],
+  "standards": {
+    "compliance": [],
+    "test_methods": [
+      "JIS C 8306",
+      "UL 817"
+    ]
+  },
+  "limits": {
+    "cycle_rate_cpm": {
+      "max": 60,
+      "note": "원문 曲げ速度 120回/min(最大)(JIS), 回転速度 60回転/min(最大). 크랭크 1회전 = 왕복 1회(굽힘 2회)로 보아 60 cpm 으로 적음. 굽힘 1회를 1사이클로 세면 120",
+      "uncertain": true
+    },
+    "fold_angle_deg": {
+      "max": 90,
+      "values": [
+        45,
+        60,
+        90
+      ],
+      "note": "사양표 試験曲げ角度 ±60度(JIS), 설명문 遥動角は±45度と±90度の切替ができます. 한쪽 값. 두 문구의 관계(±60° 가 별도 설정인지)는 페이지에 설명 없음",
+      "uncertain": true
+    },
+    "stations": {
+      "values": [
+        5
+      ]
+    }
+  },
+  "models": [
+    {
+      "model": "CBL/5S",
+      "variant": "5채널, 연동형 또는 단동형",
+      "specs": {
+        "stations": 5,
+        "cycle_rate_cpm": {
+          "max": 60,
+          "note": "曲げ速度 120回/min(最大), 回転速度 60回転/min(最大)",
+          "uncertain": true
+        },
+        "fold_angle_deg": {
+          "max": 90,
+          "values": [
+            45,
+            60,
+            90
+          ],
+          "note": "±60度(JIS) / ±45度·±90度 전환",
+          "uncertain": true
+        },
+        "footprint_mm": {
+          "W": 1400,
+          "D": 720,
+          "H": 1296
+        },
+        "weight_kg": 250
+      },
+      "note": "치수·질량은 페이지 사양표의 5CH 값(約250kg). 형번 '5S' 의 뜻은 페이지에 없음. 채널 수는 주문에 따라 바꿀 수 있다는 취지의 문구가 요약에 나왔으나 원문을 확인하지 못해 옮기지 않음"
+    }
+  ],
+  "environment": {
+    "power": "단상 AC100V"
+  },
+  "features": [
+    "케이블 단선 검지 시 자동 정지",
+    "프리셋 횟수 999999(×10)",
+    "흔들림 방지(振れ止め) 위치 300 mm·스팬 40 mm(JIS)",
+    "추 위치 특별 규정 없음(JIS), 추 무게와 선재 굽힘 지름은 의뢰에 따름(JIS)",
+    "5채널 연동형과 채널별 단동형",
+    "표준 세트: 시험기 본체, 훅 달린 분동(100 g) × 5개"
+  ],
+  "options": [
+    "분동(分銅)",
+    "안전 커버",
+    "치구(治具)"
+  ],
+  "sources": [
+    {
+      "url": "https://www.aikoh.co.jp/endurance/cbl5s/",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지 사양표(용도, 규격, 프리셋 횟수, 굽힘·회전 속도, 굽힘 각도, 흔들림 방지 위치·스팬, 추, 선재 굽힘 지름, 5CH 치수·질량, 전원, 표준 세트, 옵션)와 설명문(요동각 전환, 연동형·단동형)"
+    },
+    {
+      "url": "https://www.aikoh.co.jp/category/endurance/",
+      "retrieved": "2026-10-08",
+      "note": "耐久試験機 분류 페이지 요약 문구(요동각 ±45°/±90° 전환, JIS·UL 준거)"
+    },
+    {
+      "file": "aikoh/cbl-5s-outline-drawing.pdf",
+      "note": "제조사 원본 문서. 외형도라 텍스트가 거의 없음 — 값 대조에는 못 씀(값은 웹 출처 기준)"
+    }
+  ],
+  "confidence": "limited",
+  "notes": "제조사 id aikoh 는 신규 제안. 외형도 PDF(https://www.aikoh.co.jp/wp-content/uploads/dim_cbl.pdf, 138,233 B)는 열지 않음. 신규 spec 키: cycle_rate_cpm, fold_angle_deg(굴곡기의 좌우 요동 각도를 담음)."
+}

@@ -235,7 +235,13 @@ def maintenance(
                 key="equipment_without_model",
                 label="카탈로그에 안 이어진 장비",
                 count=unlinked,
-                link="/equipment?catalog=unlinked",
+                # 시스템 관리자는 **왜 안 이어졌는지로 가른 목록**으로 간다 — 같은 기종이
+                # 있는 것 · 계열만 있는 것 · 정본에 없는 것마다 할 일이 다르다.
+                link=(
+                    "/admin/catalog-gaps"
+                    if user.is_system_admin
+                    else "/equipment?catalog=unlinked"
+                ),
                 severity="info",
             )
         )

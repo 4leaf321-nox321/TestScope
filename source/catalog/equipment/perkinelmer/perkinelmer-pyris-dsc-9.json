@@ -1,0 +1,100 @@
+{
+  "id": "perkinelmer-pyris-dsc-9",
+  "kind": "equipment_series",
+  "name": "PerkinElmer Pyris DSC 9 Differential Scanning Calorimeter",
+  "name_ko": "퍼킨엘머 Pyris DSC 9 시차주사열량계",
+  "manufacturer": "perkinelmer",
+  "category": "dsc",
+  "brand": "Pyris",
+  "description": "Pyris 9 시리즈 DSC. 새 노 설계로 -100~750 °C, 동적 범위 ±175 mW. 인듐 응답비 >19 mW/°C(인듐 7 mg, 1 °C/min, 열저항 보정 없음), 인듐 용융 시간 3.3 초(용융 피크 시작~정점).",
+  "test_items": [
+    "dsc"
+  ],
+  "measurands": [
+    "thermal.glass_transition",
+    "thermal.melting_point",
+    "thermal.specific_heat",
+    "thermal.latent_heat_fusion"
+  ],
+  "measurands_by_item": {
+    "dsc": [
+      "thermal.glass_transition",
+      "thermal.melting_point",
+      "thermal.specific_heat",
+      "thermal.latent_heat_fusion"
+    ]
+  },
+  "limits": {
+    "temperature_degC": {
+      "min": -100,
+      "max": 750,
+      "note": "웹 페이지는 -180~750 °C"
+    },
+    "heating_rate_K_min": {
+      "min": 0.1,
+      "max": 100
+    }
+  },
+  "models": [
+    {
+      "model": "Pyris DSC 9",
+      "specs": {
+        "temperature_degC": {
+          "min": -100,
+          "max": 750,
+          "note": "웹 페이지는 -180 °C 부터"
+        },
+        "heat_flow_mW": {
+          "value": 175,
+          "note": "dynamic range ±175 mW"
+        },
+        "heating_rate_K_min": {
+          "min": 0.1,
+          "max": 100,
+          "note": "제어 승온 0.1~100 °C/min"
+        },
+        "cooling_rate_K_min": {
+          "min": 0.1,
+          "max": 100,
+          "note": "제어 냉각 0.1~100 °C/min"
+        },
+        "accuracy_degC": {
+          "value": 0.05,
+          "note": "온도 정확도 ±0.05 °C"
+        },
+        "data_rate_Hz": {
+          "value": 10,
+          "note": "10 data points/s"
+        },
+        "accuracy": "온도 정밀도 <0.02 %(RSD), 열량 정확도 ±0.2 %, 열량 정밀도 <0.2 %(RSD). 인듐 응답비 >19 mW/°C(인듐 7 mg, 1 °C/min, 열저항 보정 없음), 인듐 용융 시간 3.3 s",
+        "weight_kg": 12,
+        "footprint_mm": {
+          "W": 370,
+          "D": 340,
+          "H": 320
+        }
+      }
+    }
+  ],
+  "relations": [
+    {
+      "type": "same_family_as",
+      "target": "perkinelmer-pyris-tga-9"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://www.perkinelmer.com/library/spc-pyris-dsc-9-specifications-sheet.html",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지(HTML) 본문·표를 직접 읽음. 사양서 소개문(동적 범위 ±175 mW, -180~750 °C, 인듐 응답비·용융 시간). 전체 사양표는 PDF"
+    },
+    {
+      "file": "perkinelmer/spc-pyris-dsc-9-specifications-sheet.pdf",
+      "pages": [
+        1
+      ]
+    }
+  ],
+  "confidence": "catalog",
+  "notes": "기존 perkinelmer-dsc-8000(DSC 4000/6000/8000/8500)과 다른 신형 계열이다. PDF 사양서로 확인: 동적 범위 ±175 mW, 상한 750 °C, 인듐 응답비·용융 시간. 온도 하한은 PDF 가 -100 °C 라 웹 값(-180 °C)에서 고쳤다. 승온·냉각 속도, 온도·열량 정확도, 무게·치수를 PDF 에서 더했다. 퍼지 가스 질소·헬륨·아르곤(불활성), 압축공기·산소(산화성). MDSC 모드(Pyris v14.5 이상)."
+}

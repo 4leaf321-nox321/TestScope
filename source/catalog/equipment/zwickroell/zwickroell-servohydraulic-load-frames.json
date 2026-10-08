@@ -1,0 +1,406 @@
+{
+  "id": "zwickroell-servohydraulic-load-frames",
+  "kind": "equipment_series",
+  "name": "ZwickRoell servohydraulic load frames HC / HA / HB series (10 kN – 2,500 kN)",
+  "name_ko": "즈윅로엘 서보유압 로드 프레임 HC·HA·HB 시리즈",
+  "manufacturer": "zwickroell",
+  "category": "servohydraulic_fatigue",
+  "drive": "servohydraulic",
+  "description": "S-N(HCF)·LCF·파괴역학 시험용 2주식 서보유압 로드 프레임. 별도 유압 파워팩이 필요하다. HC(10·25 kN)는 액추에이터가 위에 있는 테이블형(콘크리트 받침으로 작업 높이를 맞춤), HA(50·100·250·500 kN)는 액추에이터가 아래 크로스헤드에 있는 바닥형으로 항온조·고온로 시험에 알맞고 스트로크 100 또는 250 mm, 시스템 압력 210 또는 280 bar, HB(50·100·250·500·1,000·2,500 kN)는 액추에이터가 위에 있고 T 홈 플랫폼을 달면 굽힘·부품 시험도 한다. 정렬 정확도 1 m 당 +0.1 mm(350 mm 미만은 0.05 mm 일정), 장착면 평행도 100 mm 당 0.03 mm 이하.",
+  "test_items": [
+    "fatigue",
+    "fracture_toughness"
+  ],
+  "measurands": [
+    "mechanical.fatigue_strength",
+    "mechanical.fracture_toughness",
+    "mechanical.crack_growth_rate"
+  ],
+  "standards": {
+    "compliance": [],
+    "test_methods": [
+      "ISO 12106",
+      "ASTM E606",
+      "DIN 50100",
+      "ASTM E399",
+      "ASTM E647",
+      "ASTM E466"
+    ]
+  },
+  "limits": {
+    "dynamic_force_kN": {
+      "min": 10,
+      "max": 2500,
+      "values": [
+        10,
+        25,
+        50,
+        100,
+        250,
+        500,
+        1000,
+        2500
+      ]
+    },
+    "stroke_mm": {
+      "values": [
+        100,
+        150,
+        250,
+        400
+      ],
+      "note": "HA: 적합 액추에이터 최대 스트로크 250(50 kN)/150(100·250 kN)/100(500 kN) mm, 본문 '100 mm 또는 250 mm'. HB: 100/250/400 mm 액추에이터 높이가 표에 있음"
+    },
+    "frame_stiffness_kN_mm": {
+      "min": 300,
+      "max": 2100,
+      "note": "크로스헤드 간격 1000 mm 기준"
+    },
+    "temperature_degC": {
+      "max": 1000,
+      "requires_accessory": true,
+      "note": "LCF 용 3구역 고온로로 시편 온도 최대 1,000 °C. 항온조·고온로는 별도"
+    }
+  },
+  "models": [
+    {
+      "model": "HC10",
+      "specs": {
+        "dynamic_force_kN": 10
+      },
+      "note": "본문: HC 시리즈는 10 kN·25 kN 둘 다 테이블형. 기술 데이터 표는 25 kN 열만 있어 10 kN 고유 값은 없다"
+    },
+    {
+      "model": "HC25",
+      "specs": {
+        "dynamic_force_kN": 25,
+        "horizontal_test_space_mm": 460,
+        "frame_stiffness_kN_mm": 300,
+        "vertical_test_space_mm": {
+          "values": [
+            1070,
+            1320,
+            1570
+          ],
+          "note": "G 최대 시험 공간 높이: 표준 / +250 mm / +500 mm"
+        },
+        "crosshead_travel_mm": 700,
+        "weight_kg": {
+          "values": [
+            300,
+            315,
+            330
+          ]
+        },
+        "footprint_mm": {
+          "W": 660,
+          "D": 450,
+          "H": 1325,
+          "note": "A 최대 프레임 높이 1325 / 1575 / 1825 mm"
+        },
+        "item_no": "1037238 / 1037462 / 1037469 (수동 클램프·수동 조정; 표준 / +250 / +500 mm)"
+      },
+      "note": "테이블형, 액추에이터 위, 경질 크롬 T 홈 플랫폼. 작업 시험 공간 310~1010 mm(표준). 프레임 강성은 크로스헤드 간격 1000 mm 기준. 10 kN·25 kN 축 액추에이터, 최대 250 Nm 인장·압축/비틀림 복합 액추에이터에 맞는다"
+    },
+    {
+      "model": "HA 50",
+      "specs": {
+        "dynamic_force_kN": 50,
+        "horizontal_test_space_mm": 565,
+        "frame_stiffness_kN_mm": 673,
+        "stroke_mm": 250,
+        "vertical_test_space_mm": {
+          "value": 1450,
+          "note": "높이 +500 mm 변형 1950"
+        },
+        "crosshead_travel_mm": {
+          "value": 1000,
+          "note": "높이 +500 mm 변형 1250"
+        },
+        "weight_kg": {
+          "value": 920,
+          "note": "높이 +500 mm 변형 970"
+        },
+        "footprint_mm": {
+          "W": 1079,
+          "D": 780,
+          "H": 2750
+        },
+        "item_no": "039825 / 073968(+500 mm)"
+      },
+      "note": "액추에이터 아래 크로스헤드. 적합 액추에이터 최대 스트로크 250 mm. 기둥 지름 80 mm"
+    },
+    {
+      "model": "HA 100",
+      "specs": {
+        "dynamic_force_kN": 100,
+        "horizontal_test_space_mm": 565,
+        "frame_stiffness_kN_mm": 673,
+        "stroke_mm": 150,
+        "vertical_test_space_mm": {
+          "value": 1450,
+          "note": "높이 +500 mm 변형 1950"
+        },
+        "crosshead_travel_mm": {
+          "value": 1000,
+          "note": "높이 +500 mm 변형 1250"
+        },
+        "weight_kg": {
+          "value": 920,
+          "note": "높이 +500 mm 변형 970"
+        },
+        "footprint_mm": {
+          "W": 1079,
+          "D": 780,
+          "H": 2750
+        },
+        "item_no": "025238 / 935832(+500 mm)"
+      },
+      "note": "적합 액추에이터 최대 스트로크 150 mm. 기둥 지름 80 mm"
+    },
+    {
+      "model": "HA 250",
+      "specs": {
+        "dynamic_force_kN": 250,
+        "horizontal_test_space_mm": 670,
+        "frame_stiffness_kN_mm": 967,
+        "stroke_mm": 150,
+        "vertical_test_space_mm": {
+          "value": 1750,
+          "note": "높이 +500 mm 변형 2250"
+        },
+        "crosshead_travel_mm": {
+          "value": 1150,
+          "note": "높이 +500 mm 변형 1400"
+        },
+        "weight_kg": {
+          "value": 1520,
+          "note": "높이 +500 mm 변형 1600"
+        },
+        "footprint_mm": {
+          "W": 1179,
+          "D": 790,
+          "H": 3040
+        },
+        "item_no": "924810 / 073969(+500 mm)"
+      },
+      "note": "적합 액추에이터 최대 스트로크 150 mm. 기둥 지름 100 mm"
+    },
+    {
+      "model": "HA 500",
+      "specs": {
+        "dynamic_force_kN": 500,
+        "horizontal_test_space_mm": 800,
+        "frame_stiffness_kN_mm": 2100,
+        "stroke_mm": 100,
+        "vertical_test_space_mm": {
+          "value": 2000,
+          "note": "높이 +500 mm 변형 2500"
+        },
+        "crosshead_travel_mm": {
+          "value": 1250,
+          "note": "높이 +500 mm 변형 1400"
+        },
+        "weight_kg": {
+          "value": 3600,
+          "note": "높이 +500 mm 변형 3720"
+        },
+        "footprint_mm": {
+          "W": 1525,
+          "D": 1390,
+          "H": 3430
+        },
+        "item_no": "935267 / 073970(+500 mm)"
+      },
+      "note": "적합 액추에이터 최대 스트로크 100 mm. 기둥 지름 120 mm"
+    },
+    {
+      "model": "HB 50",
+      "specs": {
+        "dynamic_force_kN": 50,
+        "horizontal_test_space_mm": 565,
+        "frame_stiffness_kN_mm": {
+          "value": 730,
+          "note": "T 홈 플랫폼 형 870"
+        },
+        "vertical_test_space_mm": {
+          "value": 1510,
+          "note": "높이 +500 mm 변형 2010"
+        },
+        "crosshead_travel_mm": {
+          "value": 1000,
+          "note": "높이 +500 mm 변형 1250"
+        },
+        "weight_kg": {
+          "value": 899,
+          "note": "T 홈 플랫폼 형 1137, 높이 +500 mm 변형 945 / 1182"
+        },
+        "footprint_mm": {
+          "W": 1079,
+          "D": 780,
+          "note": "A 기둥 높이 2690(3190) mm, T 홈 형 깊이 1020"
+        },
+        "item_no": "077533 (T 홈 077370)"
+      },
+      "note": "액추에이터 위. 100 / 250 mm 스트로크 액추에이터 높이만 표에 있다(400 mm 없음)"
+    },
+    {
+      "model": "HB 100",
+      "specs": {
+        "dynamic_force_kN": 100,
+        "horizontal_test_space_mm": 565,
+        "frame_stiffness_kN_mm": {
+          "value": 730,
+          "note": "T 홈 플랫폼 형 870"
+        },
+        "vertical_test_space_mm": {
+          "value": 1510,
+          "note": "높이 +500 mm 변형 2010"
+        },
+        "crosshead_travel_mm": {
+          "value": 1000,
+          "note": "높이 +500 mm 변형 1250"
+        },
+        "weight_kg": {
+          "value": 895,
+          "note": "T 홈 플랫폼 형 1133, 높이 +500 mm 변형 941 / 1178"
+        },
+        "footprint_mm": {
+          "W": 1079,
+          "D": 780,
+          "note": "A 기둥 높이 2690(3190) mm"
+        },
+        "item_no": "924779 (T 홈 079752)"
+      },
+      "note": "액추에이터 위. 100 / 250 / 400 mm 스트로크 액추에이터 높이가 표에 있다"
+    },
+    {
+      "model": "HB 250",
+      "specs": {
+        "dynamic_force_kN": 250,
+        "horizontal_test_space_mm": 670,
+        "frame_stiffness_kN_mm": {
+          "value": 988,
+          "note": "T 홈 플랫폼 형 1332"
+        },
+        "vertical_test_space_mm": {
+          "value": 1705,
+          "note": "높이 +500 mm 변형 2205"
+        },
+        "crosshead_travel_mm": {
+          "value": 1150,
+          "note": "높이 +500 mm 변형 1400"
+        },
+        "weight_kg": {
+          "value": 1361,
+          "note": "T 홈 플랫폼 형 2082, 높이 +500 mm 변형 1430 / 2232"
+        },
+        "footprint_mm": {
+          "W": 1197,
+          "D": 1130,
+          "note": "A 기둥 높이 2900(3400) mm"
+        },
+        "item_no": "040159 (T 홈 040158)"
+      },
+      "note": "액추에이터 위. 100 / 250 / 400 mm 스트로크 액추에이터"
+    },
+    {
+      "model": "HB 500",
+      "specs": {
+        "dynamic_force_kN": 500,
+        "horizontal_test_space_mm": 800,
+        "frame_stiffness_kN_mm": {
+          "value": 1529,
+          "note": "T 홈 플랫폼 형 1848"
+        },
+        "vertical_test_space_mm": {
+          "value": 2120,
+          "note": "높이 +500 mm 변형 2620"
+        },
+        "crosshead_travel_mm": {
+          "value": 1250,
+          "note": "높이 +500 mm 변형 1400"
+        },
+        "weight_kg": {
+          "value": 3660,
+          "note": "T 홈 플랫폼 형 4860, 높이 +500 mm 변형 3780 / 4980"
+        },
+        "footprint_mm": {
+          "W": 1525,
+          "D": 1130,
+          "note": "A 기둥 높이 3250(3750) mm, T 홈 형 깊이 1370"
+        },
+        "item_no": "079720 (T 홈 079728)"
+      },
+      "note": "액추에이터 위. 100 / 250 / 400 mm 스트로크 액추에이터"
+    },
+    {
+      "model": "HB 1000",
+      "specs": {
+        "dynamic_force_kN": 1000
+      },
+      "note": "본문에 표준 형식으로만 적혀 있고 기술 데이터 표에 열이 없다"
+    },
+    {
+      "model": "HB 2500",
+      "specs": {
+        "dynamic_force_kN": 2500
+      },
+      "note": "본문에 표준 형식으로만 적혀 있고 기술 데이터 표에 열이 없다"
+    }
+  ],
+  "features": [
+    "2주식 닫힌 힘 흐름 프레임, 방진 레벨링 발",
+    "상부 크로스헤드 조정(유압 클램프·승강 실린더 선택)",
+    "testControl 측정·제어 전자장치: 24 bit, 10 kHz",
+    "testXpert R 동적 시험 소프트웨어(블록 편집기 최대 100 블록)",
+    "디스플레이 달린 리모컨",
+    "CE 기계 지침 안전 하우징(선택)"
+  ],
+  "options": [
+    "유압 파워팩",
+    "서보유압 시험 액추에이터",
+    "유압 분배 장치",
+    "항온조·고온로(LCF 용 3구역 고온로)"
+  ],
+  "relations": [
+    {
+      "type": "same_family_as",
+      "target": "zwickroell-hc-compact"
+    },
+    {
+      "type": "controlled_by",
+      "target": "zwickroell-testcontrol-ii-and-control-cube"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://www.zwickroell.com/products/dynamic-and-fatigue-testing-systems/servohydraulic-testing-machines/servohydraulic-load-frames/",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지(HTML) 본문·표를 직접 읽음. 시리즈 소개와 HA·HB·HC 기술 데이터 표. 표의 각주 번호가 숫자 뒤에 붙어 읽혀(예 '2750 (3250)1') 각주 숫자는 떼고 옮겼다"
+    },
+    {
+      "file": "zwickroell/10_519_ha_series_pi_en.pdf",
+      "pages": [
+        1,
+        2
+      ]
+    },
+    {
+      "file": "zwickroell/10_520_hb_series_pi_en.pdf",
+      "pages": [
+        1,
+        2
+      ]
+    },
+    {
+      "file": "zwickroell/10_539_hc_series_pi_en.pdf",
+      "pages": [
+        1,
+        2
+      ]
+    }
+  ],
+  "confidence": "catalog",
+  "notes": "모델명은 페이지 본문 표기('HA 250 kN', 'HC10 kN')를 따라 'HA 250', 'HC10' 처럼 적었다. 괄호 값은 높이 +500 mm 변형. HC 표의 품번은 HC Compact 페이지 표와 같은 값으로 맞춰 적었다(로드 프레임 페이지의 첫 표에는 +250 mm 열 품번이 1037238 로 겹쳐 인쇄됨). PDF(PI519·PI520·PI539)로 HA·HB·HC 기술 데이터 표 값을 확인했다(웹 표와 같다). HC +500 mm 형 무게(330 kg)는 PDF 추출에서 칸이 비어 확인하지 못했다. HB 1000·2500 은 PDF 본문 '50 kN ~ 2500 kN' 범위로만 나오고 표에는 50~500 kN 열만 있다."
+}

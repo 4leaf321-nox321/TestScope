@@ -1,0 +1,718 @@
+{
+  "id": "omron-zw",
+  "kind": "equipment_series",
+  "name": "ZW-8000 / ZW-7000 / ZW-5000 Series Confocal Fiber Displacement Sensor",
+  "name_ko": "옴론 ZW 공초점 파이버 변위 센서",
+  "manufacturer": "omron",
+  "category": "thickness_displacement_gauge",
+  "description": "백색광 공초점 방식의 파이버형 변위 센서 계열임. 컨트롤러는 초고정밀형 ZW-8000T(투명체·경면), 초고속형 ZW-7000T(이동 중 거친 면), 표준형 ZW-5000T 의 세 가지. 센서 헤드는 사각 직선형·펜 직선형·펜 직각형이 있고 측정 범위 7±0.3 mm ~ 40±3 mm, 스폿 지름 4~190 µm. 정적 분해능 0.25 µm, 직선성 ±0.3 µm, 응답 시간 최소 20 µs, 각도 특성 ±25°, 케이블 0.3~30 m, 로깅 200만 값, EtherCAT 연결.",
+  "test_items": [],
+  "limits": {
+    "measurement_distance_mm": {
+      "min": 7,
+      "max": 40,
+      "note": "원문 Measurement center distance 7 mm(ZW-SP/SPR··07) ~ 40 mm(ZW-S7040), 데이터시트 p.7~9"
+    },
+    "displacement_mm": {
+      "min": -3,
+      "max": 3,
+      "note": "원문 Measuring range ±0.3 mm(ZW-SP··07) ~ ±3 mm(ZW-S7040). 텍스트 추출에서 ± 가 빠져 '0.3 mm' 로 보이나 p.2 그림의 6.7·7·7.3 mm 로 ± 확인"
+    },
+    "spot_size_um": {
+      "min": 4,
+      "max": 190,
+      "note": "원문 Spot diameter 4 µm dia.(ZW-S8010) ~ 190 µm dia.(ZW-SPR7010), 1/e² 기준"
+    },
+    "position_resolution_nm": {
+      "note": "원문 Static resolution 0.25 µm(전 헤드, 16,384회 평균)",
+      "values": [
+        250
+      ]
+    },
+    "linearity_um": {
+      "note": "원문 Linearity ±0.3 µm(ZW-S8010 · ZW-SP8007, 경면). 헤드별 ±0.3 ~ ±3.0 µm",
+      "values": [
+        0.3
+      ]
+    },
+    "sampling_cycle_us": {
+      "min": 20,
+      "max": 7500,
+      "note": "원문 Measurement cycle 20 µs to 400 µs(ZW-7000T) / 60 µs to 7,500 µs(ZW-8000T) / 80 µs to 1,600 µs(ZW-5000T)"
+    }
+  },
+  "models": [
+    {
+      "model": "ZW-8000T",
+      "variant": "컨트롤러 · 초고정밀형",
+      "note": "투명체·경면 대상",
+      "specs": {
+        "sampling_cycle_us": {
+          "min": 60,
+          "max": 7500,
+          "note": "원문 Measurement cycle 60 µs to 7,500 µs"
+        }
+      }
+    },
+    {
+      "model": "ZW-7000T",
+      "variant": "컨트롤러 · 초고속형",
+      "note": "센서 이동 중 거친 면 측정",
+      "specs": {
+        "sampling_cycle_us": {
+          "min": 20,
+          "max": 400,
+          "note": "원문 Measurement cycle 20 µs to 400 µs"
+        }
+      }
+    },
+    {
+      "model": "ZW-5000T",
+      "variant": "컨트롤러 · 표준형",
+      "specs": {
+        "sampling_cycle_us": {
+          "min": 80,
+          "max": 1600,
+          "note": "원문 Measurement cycle 80 µs to 1,600 µs"
+        }
+      }
+    },
+    {
+      "model": "ZW-S8010",
+      "variant": "센서 헤드 · 사각 직선형(Square-shaped straight)",
+      "note": "ZW-8000T 전용. 데이터시트 p.7 사양표. 케이블 0.3 m · 2 m 형식(… 0.3M / … 2M)",
+      "specs": {
+        "measurement_distance_mm": {
+          "value": 10,
+          "note": "원문 Measurement center distance 10 mm"
+        },
+        "displacement_mm": {
+          "min": -0.5,
+          "max": 0.5,
+          "note": "원문 Measuring range ±0.5 mm"
+        },
+        "position_resolution_nm": {
+          "value": 250,
+          "note": "원문 Static resolution 0.25 µm"
+        },
+        "linearity_um": {
+          "value": 0.3,
+          "note": "원문 Linearity ±0.3 µm(경면)"
+        },
+        "spot_size_um": {
+          "value": 4,
+          "note": "원문 Spot diameter 4 µm dia."
+        }
+      }
+    },
+    {
+      "model": "ZW-S8020",
+      "variant": "센서 헤드 · 사각 직선형(Square-shaped straight)",
+      "note": "ZW-8000T 전용. 데이터시트 p.7 사양표. 케이블 0.3 m · 2 m 형식(… 0.3M / … 2M)",
+      "specs": {
+        "measurement_distance_mm": {
+          "value": 20,
+          "note": "원문 Measurement center distance 20 mm"
+        },
+        "displacement_mm": {
+          "min": -1,
+          "max": 1,
+          "note": "원문 Measuring range ±1 mm"
+        },
+        "position_resolution_nm": {
+          "value": 250,
+          "note": "원문 Static resolution 0.25 µm"
+        },
+        "linearity_um": {
+          "value": 0.6,
+          "note": "원문 Linearity ±0.6 µm(경면)"
+        },
+        "spot_size_um": {
+          "value": 7,
+          "note": "원문 Spot diameter 7 µm dia."
+        }
+      }
+    },
+    {
+      "model": "ZW-S8030",
+      "variant": "센서 헤드 · 사각 직선형(Square-shaped straight)",
+      "note": "ZW-8000T 전용. 데이터시트 p.7 사양표. 케이블 0.3 m · 2 m 형식(… 0.3M / … 2M)",
+      "specs": {
+        "measurement_distance_mm": {
+          "value": 30,
+          "note": "원문 Measurement center distance 30 mm"
+        },
+        "displacement_mm": {
+          "min": -2,
+          "max": 2,
+          "note": "원문 Measuring range ±2 mm"
+        },
+        "position_resolution_nm": {
+          "value": 250,
+          "note": "원문 Static resolution 0.25 µm"
+        },
+        "linearity_um": {
+          "value": 1.3,
+          "note": "원문 Linearity ±1.3 µm(경면)"
+        },
+        "spot_size_um": {
+          "value": 10,
+          "note": "원문 Spot diameter 10 µm dia."
+        }
+      }
+    },
+    {
+      "model": "ZW-SP8007",
+      "variant": "센서 헤드 · 펜 직선형(Pen-shaped straight)",
+      "specs": {
+        "measurement_distance_mm": {
+          "value": 7,
+          "note": "원문 Measurement center distance 7 mm"
+        },
+        "displacement_mm": {
+          "min": -0.3,
+          "max": 0.3,
+          "note": "원문 Measuring range ±0.3 mm"
+        },
+        "position_resolution_nm": {
+          "value": 250,
+          "note": "원문 Static resolution 0.25 µm"
+        },
+        "linearity_um": {
+          "value": 0.3,
+          "note": "원문 Linearity ±0.3 µm(경면)"
+        },
+        "spot_size_um": {
+          "value": 7,
+          "note": "원문 Spot diameter 7 µm dia."
+        }
+      },
+      "note": "ZW-8000T 전용. 데이터시트 p.7 사양표. 케이블 0.3 m · 2 m 형식(… 0.3M / … 2M)"
+    },
+    {
+      "model": "ZW-SP8010",
+      "variant": "센서 헤드 · 펜 직선형(Pen-shaped straight)",
+      "specs": {
+        "measurement_distance_mm": {
+          "value": 10,
+          "note": "원문 Measurement center distance 10 mm"
+        },
+        "displacement_mm": {
+          "min": -0.7,
+          "max": 0.7,
+          "note": "원문 Measuring range ±0.7 mm"
+        },
+        "position_resolution_nm": {
+          "value": 250,
+          "note": "원문 Static resolution 0.25 µm"
+        },
+        "linearity_um": {
+          "value": 0.45,
+          "note": "원문 Linearity ±0.45 µm(경면)"
+        },
+        "spot_size_um": {
+          "value": 10,
+          "note": "원문 Spot diameter 10 µm dia."
+        }
+      },
+      "note": "ZW-8000T 전용. 데이터시트 p.7 사양표. 케이블 0.3 m · 2 m 형식(… 0.3M / … 2M)"
+    },
+    {
+      "model": "ZW-SPR8007",
+      "variant": "센서 헤드 · 펜 직각형(Pen-shaped right angle)",
+      "specs": {
+        "measurement_distance_mm": {
+          "value": 7,
+          "note": "원문 Measurement center distance 7 mm"
+        },
+        "displacement_mm": {
+          "min": -0.3,
+          "max": 0.3,
+          "note": "원문 Measuring range ±0.3 mm"
+        },
+        "position_resolution_nm": {
+          "value": 250,
+          "note": "원문 Static resolution 0.25 µm"
+        },
+        "linearity_um": {
+          "value": 0.45,
+          "note": "원문 Linearity ±0.45 µm(경면)"
+        },
+        "spot_size_um": {
+          "value": 8,
+          "note": "원문 Spot diameter 8 µm dia."
+        }
+      },
+      "note": "ZW-8000T 전용. 데이터시트 p.7 사양표. 케이블 0.3 m · 2 m 형식(… 0.3M / … 2M)"
+    },
+    {
+      "model": "ZW-SPR8010",
+      "variant": "센서 헤드 · 펜 직각형(Pen-shaped right angle)",
+      "specs": {
+        "measurement_distance_mm": {
+          "value": 10,
+          "note": "원문 Measurement center distance 10 mm"
+        },
+        "displacement_mm": {
+          "min": -0.7,
+          "max": 0.7,
+          "note": "원문 Measuring range ±0.7 mm"
+        },
+        "position_resolution_nm": {
+          "value": 250,
+          "note": "원문 Static resolution 0.25 µm"
+        },
+        "linearity_um": {
+          "value": 0.7,
+          "note": "원문 Linearity ±0.7 µm(경면)"
+        },
+        "spot_size_um": {
+          "value": 11,
+          "note": "원문 Spot diameter 11 µm dia."
+        }
+      },
+      "note": "ZW-8000T 전용. 데이터시트 p.7 사양표. 케이블 0.3 m · 2 m 형식(… 0.3M / … 2M)"
+    },
+    {
+      "model": "ZW-S7010",
+      "variant": "센서 헤드 · 사각 직선형(Square-shaped straight)",
+      "specs": {
+        "measurement_distance_mm": {
+          "value": 10,
+          "note": "원문 Measurement center distance 10 mm"
+        },
+        "displacement_mm": {
+          "min": -0.5,
+          "max": 0.5,
+          "note": "원문 Measuring range ±0.5 mm"
+        },
+        "position_resolution_nm": {
+          "value": 250,
+          "note": "원문 Static resolution 0.25 µm"
+        },
+        "linearity_um": {
+          "value": 0.45,
+          "note": "원문 Linearity ±0.45 µm(경면)"
+        },
+        "spot_size_um": {
+          "value": 50,
+          "note": "원문 Spot diameter 50 µm dia."
+        }
+      },
+      "note": "ZW-7000T 전용. 데이터시트 p.8 사양표. 케이블 0.3 m · 2 m 형식(… 0.3M / … 2M)"
+    },
+    {
+      "model": "ZW-S7020",
+      "variant": "센서 헤드 · 사각 직선형(Square-shaped straight)",
+      "specs": {
+        "measurement_distance_mm": {
+          "value": 20,
+          "note": "원문 Measurement center distance 20 mm"
+        },
+        "displacement_mm": {
+          "min": -1,
+          "max": 1,
+          "note": "원문 Measuring range ±1 mm"
+        },
+        "position_resolution_nm": {
+          "value": 250,
+          "note": "원문 Static resolution 0.25 µm"
+        },
+        "linearity_um": {
+          "value": 0.9,
+          "note": "원문 Linearity ±0.9 µm(경면)"
+        },
+        "spot_size_um": {
+          "value": 70,
+          "note": "원문 Spot diameter 70 µm dia."
+        }
+      },
+      "note": "ZW-7000T 전용. 데이터시트 p.8 사양표. 케이블 0.3 m · 2 m 형식(… 0.3M / … 2M)"
+    },
+    {
+      "model": "ZW-S7030",
+      "variant": "센서 헤드 · 사각 직선형(Square-shaped straight)",
+      "specs": {
+        "measurement_distance_mm": {
+          "value": 30,
+          "note": "원문 Measurement center distance 30 mm"
+        },
+        "displacement_mm": {
+          "min": -2,
+          "max": 2,
+          "note": "원문 Measuring range ±2 mm"
+        },
+        "position_resolution_nm": {
+          "value": 250,
+          "note": "원문 Static resolution 0.25 µm"
+        },
+        "linearity_um": {
+          "value": 2.0,
+          "note": "원문 Linearity ±2.0 µm(경면)"
+        },
+        "spot_size_um": {
+          "value": 100,
+          "note": "원문 Spot diameter 100 µm dia."
+        }
+      },
+      "note": "ZW-7000T 전용. 데이터시트 p.8 사양표. 케이블 0.3 m · 2 m 형식(… 0.3M / … 2M)"
+    },
+    {
+      "model": "ZW-S7040",
+      "variant": "센서 헤드 · 사각 직선형(Square-shaped straight)",
+      "specs": {
+        "measurement_distance_mm": {
+          "value": 40,
+          "note": "원문 Measurement center distance 40 mm"
+        },
+        "displacement_mm": {
+          "min": -3,
+          "max": 3,
+          "note": "원문 Measuring range ±3 mm"
+        },
+        "position_resolution_nm": {
+          "value": 250,
+          "note": "원문 Static resolution 0.25 µm"
+        },
+        "linearity_um": {
+          "value": 3.0,
+          "note": "원문 Linearity ±3.0 µm(경면)"
+        },
+        "spot_size_um": {
+          "value": 120,
+          "note": "원문 Spot diameter 120 µm dia."
+        }
+      },
+      "note": "ZW-7000T 전용. 데이터시트 p.8 사양표. 케이블 0.3 m · 2 m 형식(… 0.3M / … 2M)"
+    },
+    {
+      "model": "ZW-SP7007",
+      "variant": "센서 헤드 · 펜 직선형(Pen-shaped straight)",
+      "specs": {
+        "measurement_distance_mm": {
+          "value": 7,
+          "note": "원문 Measurement center distance 7 mm"
+        },
+        "displacement_mm": {
+          "min": -0.3,
+          "max": 0.3,
+          "note": "원문 Measuring range ±0.3 mm"
+        },
+        "position_resolution_nm": {
+          "value": 250,
+          "note": "원문 Static resolution 0.25 µm"
+        },
+        "linearity_um": {
+          "value": 0.45,
+          "note": "원문 Linearity ±0.45 µm(경면)"
+        },
+        "spot_size_um": {
+          "value": 130,
+          "note": "원문 Spot diameter 130 µm dia."
+        }
+      },
+      "note": "ZW-7000T 전용. 데이터시트 p.8 사양표. 케이블 0.3 m · 2 m 형식(… 0.3M / … 2M)"
+    },
+    {
+      "model": "ZW-SP7010",
+      "variant": "센서 헤드 · 펜 직선형(Pen-shaped straight)",
+      "specs": {
+        "measurement_distance_mm": {
+          "value": 10,
+          "note": "원문 Measurement center distance 10 mm"
+        },
+        "displacement_mm": {
+          "min": -0.7,
+          "max": 0.7,
+          "note": "원문 Measuring range ±0.7 mm"
+        },
+        "position_resolution_nm": {
+          "value": 250,
+          "note": "원문 Static resolution 0.25 µm"
+        },
+        "linearity_um": {
+          "value": 0.7,
+          "note": "원문 Linearity ±0.7 µm(경면)"
+        },
+        "spot_size_um": {
+          "value": 170,
+          "note": "원문 Spot diameter 170 µm dia."
+        }
+      },
+      "note": "ZW-7000T 전용. 데이터시트 p.8 사양표. 케이블 0.3 m · 2 m 형식(… 0.3M / … 2M)"
+    },
+    {
+      "model": "ZW-SPR7007",
+      "variant": "센서 헤드 · 펜 직각형(Pen-shaped right angle)",
+      "specs": {
+        "measurement_distance_mm": {
+          "value": 7,
+          "note": "원문 Measurement center distance 7 mm"
+        },
+        "displacement_mm": {
+          "min": -0.3,
+          "max": 0.3,
+          "note": "원문 Measuring range ±0.3 mm"
+        },
+        "position_resolution_nm": {
+          "value": 250,
+          "note": "원문 Static resolution 0.25 µm"
+        },
+        "linearity_um": {
+          "value": 0.7,
+          "note": "원문 Linearity ±0.7 µm(경면)"
+        },
+        "spot_size_um": {
+          "value": 150,
+          "note": "원문 Spot diameter 150 µm dia."
+        }
+      },
+      "note": "ZW-7000T 전용. 데이터시트 p.8 사양표. 케이블 0.3 m · 2 m 형식(… 0.3M / … 2M)"
+    },
+    {
+      "model": "ZW-SPR7010",
+      "variant": "센서 헤드 · 펜 직각형(Pen-shaped right angle)",
+      "specs": {
+        "measurement_distance_mm": {
+          "value": 10,
+          "note": "원문 Measurement center distance 10 mm"
+        },
+        "displacement_mm": {
+          "min": -0.7,
+          "max": 0.7,
+          "note": "원문 Measuring range ±0.7 mm"
+        },
+        "position_resolution_nm": {
+          "value": 250,
+          "note": "원문 Static resolution 0.25 µm"
+        },
+        "linearity_um": {
+          "value": 1.1,
+          "note": "원문 Linearity ±1.1 µm(경면)"
+        },
+        "spot_size_um": {
+          "value": 190,
+          "note": "원문 Spot diameter 190 µm dia."
+        }
+      },
+      "note": "ZW-7000T 전용. 데이터시트 p.8 사양표. 케이블 0.3 m · 2 m 형식(… 0.3M / … 2M)"
+    },
+    {
+      "model": "ZW-S5010",
+      "variant": "센서 헤드 · 사각 직선형(Square-shaped straight)",
+      "specs": {
+        "measurement_distance_mm": {
+          "value": 10,
+          "note": "원문 Measurement center distance 10 mm"
+        },
+        "displacement_mm": {
+          "min": -0.5,
+          "max": 0.5,
+          "note": "원문 Measuring range ±0.5 mm"
+        },
+        "position_resolution_nm": {
+          "value": 250,
+          "note": "원문 Static resolution 0.25 µm"
+        },
+        "linearity_um": {
+          "value": 0.45,
+          "note": "원문 Linearity ±0.45 µm(경면)"
+        },
+        "spot_size_um": {
+          "value": 9,
+          "note": "원문 Spot diameter 9 µm dia."
+        }
+      },
+      "note": "ZW-5000T 전용. 데이터시트 p.9 사양표. 케이블 0.3 m · 2 m 형식(… 0.3M / … 2M)"
+    },
+    {
+      "model": "ZW-S5020",
+      "variant": "센서 헤드 · 사각 직선형(Square-shaped straight)",
+      "specs": {
+        "measurement_distance_mm": {
+          "value": 20,
+          "note": "원문 Measurement center distance 20 mm"
+        },
+        "displacement_mm": {
+          "min": -1,
+          "max": 1,
+          "note": "원문 Measuring range ±1 mm"
+        },
+        "position_resolution_nm": {
+          "value": 250,
+          "note": "원문 Static resolution 0.25 µm"
+        },
+        "linearity_um": {
+          "value": 0.9,
+          "note": "원문 Linearity ±0.9 µm(경면)"
+        },
+        "spot_size_um": {
+          "value": 13,
+          "note": "원문 Spot diameter 13 µm dia."
+        }
+      },
+      "note": "ZW-5000T 전용. 데이터시트 p.9 사양표. 케이블 0.3 m · 2 m 형식(… 0.3M / … 2M)"
+    },
+    {
+      "model": "ZW-S5030",
+      "variant": "센서 헤드 · 사각 직선형(Square-shaped straight)",
+      "specs": {
+        "measurement_distance_mm": {
+          "value": 30,
+          "note": "원문 Measurement center distance 30 mm"
+        },
+        "displacement_mm": {
+          "min": -2,
+          "max": 2,
+          "note": "원문 Measuring range ±2 mm"
+        },
+        "position_resolution_nm": {
+          "value": 250,
+          "note": "원문 Static resolution 0.25 µm"
+        },
+        "linearity_um": {
+          "value": 2.0,
+          "note": "원문 Linearity ±2.0 µm(경면)"
+        },
+        "spot_size_um": {
+          "value": 18,
+          "note": "원문 Spot diameter 18 µm dia."
+        }
+      },
+      "note": "ZW-5000T 전용. 데이터시트 p.9 사양표. 케이블 0.3 m · 2 m 형식(… 0.3M / … 2M)"
+    },
+    {
+      "model": "ZW-SP5007",
+      "variant": "센서 헤드 · 펜 직선형(Pen-shaped straight)",
+      "specs": {
+        "measurement_distance_mm": {
+          "value": 7,
+          "note": "원문 Measurement center distance 7 mm"
+        },
+        "displacement_mm": {
+          "min": -0.3,
+          "max": 0.3,
+          "note": "원문 Measuring range ±0.3 mm"
+        },
+        "position_resolution_nm": {
+          "value": 250,
+          "note": "원문 Static resolution 0.25 µm"
+        },
+        "linearity_um": {
+          "value": 0.45,
+          "note": "원문 Linearity ±0.45 µm(경면)"
+        },
+        "spot_size_um": {
+          "value": 13,
+          "note": "원문 Spot diameter 13 µm dia."
+        }
+      },
+      "note": "ZW-5000T 전용. 데이터시트 p.9 사양표. 케이블 0.3 m · 2 m 형식(… 0.3M / … 2M)"
+    },
+    {
+      "model": "ZW-SP5010",
+      "variant": "센서 헤드 · 펜 직선형(Pen-shaped straight)",
+      "specs": {
+        "measurement_distance_mm": {
+          "value": 10,
+          "note": "원문 Measurement center distance 10 mm"
+        },
+        "displacement_mm": {
+          "min": -0.7,
+          "max": 0.7,
+          "note": "원문 Measuring range ±0.7 mm"
+        },
+        "position_resolution_nm": {
+          "value": 250,
+          "note": "원문 Static resolution 0.25 µm"
+        },
+        "linearity_um": {
+          "value": 0.7,
+          "note": "원문 Linearity ±0.7 µm(경면)"
+        },
+        "spot_size_um": {
+          "value": 18,
+          "note": "원문 Spot diameter 18 µm dia."
+        }
+      },
+      "note": "ZW-5000T 전용. 데이터시트 p.9 사양표. 케이블 0.3 m · 2 m 형식(… 0.3M / … 2M)"
+    },
+    {
+      "model": "ZW-SPR5007",
+      "variant": "센서 헤드 · 펜 직각형(Pen-shaped right angle)",
+      "specs": {
+        "measurement_distance_mm": {
+          "value": 7,
+          "note": "원문 Measurement center distance 7 mm"
+        },
+        "displacement_mm": {
+          "min": -0.3,
+          "max": 0.3,
+          "note": "원문 Measuring range ±0.3 mm"
+        },
+        "position_resolution_nm": {
+          "value": 250,
+          "note": "원문 Static resolution 0.25 µm"
+        },
+        "linearity_um": {
+          "value": 0.7,
+          "note": "원문 Linearity ±0.7 µm(경면)"
+        },
+        "spot_size_um": {
+          "value": 15,
+          "note": "원문 Spot diameter 15 µm dia."
+        }
+      },
+      "note": "ZW-5000T 전용. 데이터시트 p.9 사양표. 케이블 0.3 m · 2 m 형식(… 0.3M / … 2M)"
+    },
+    {
+      "model": "ZW-SPR5010",
+      "variant": "센서 헤드 · 펜 직각형(Pen-shaped right angle)",
+      "specs": {
+        "measurement_distance_mm": {
+          "value": 10,
+          "note": "원문 Measurement center distance 10 mm"
+        },
+        "displacement_mm": {
+          "min": -0.7,
+          "max": 0.7,
+          "note": "원문 Measuring range ±0.7 mm"
+        },
+        "position_resolution_nm": {
+          "value": 250,
+          "note": "원문 Static resolution 0.25 µm"
+        },
+        "linearity_um": {
+          "value": 1.1,
+          "note": "원문 Linearity ±1.1 µm(경면)"
+        },
+        "spot_size_um": {
+          "value": 20,
+          "note": "원문 Spot diameter 20 µm dia."
+        }
+      },
+      "note": "ZW-5000T 전용. 데이터시트 p.9 사양표. 케이블 0.3 m · 2 m 형식(… 0.3M / … 2M)"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://industrial.omron.eu/en/products/zw-series",
+      "retrieved": "2026-10-08",
+      "note": "제조사(유럽) 계열 페이지. 컨트롤러 3종, 헤드 측정 범위·스폿 범위, 분해능·직선성·응답 시간"
+    },
+    {
+      "file": "omron/zw-8000-zw-7000-zw-5000-datasheet.pdf",
+      "pages": [
+        2,
+        3,
+        4,
+        7,
+        8,
+        9,
+        10
+      ]
+    }
+  ],
+  "confidence": "catalog",
+  "notes": "PDF(데이터시트)로 확인: 센서 헤드 22종(8000·7000·5000 계열)의 측정 중심 거리·측정 범위·정적 분해능·직선성·스폿, 컨트롤러별 측정 주기. 헤드는 컨트롤러 계열 전용(ZW-S80/SP80/SPR80 ↔ ZW-8000T 등). 웹 값과 어긋난 값은 없음."
+}

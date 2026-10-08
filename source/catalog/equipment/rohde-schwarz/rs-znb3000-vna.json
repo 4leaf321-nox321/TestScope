@@ -1,0 +1,114 @@
+{
+  "id": "rs-znb3000-vna",
+  "kind": "equipment_series",
+  "name": "R&S ZNB3000 Vector Network Analyzer",
+  "name_ko": "로데슈바르즈 ZNB3000 벡터 네트워크 분석기",
+  "manufacturer": "rohde-schwarz",
+  "category": "network_lcr_analyzer",
+  "form_factor": "benchtop",
+  "description": "대량 생산과 고난도 응용을 위한 범용 벡터 네트워크 분석기. 최대 54 GHz, 2·4 포트. 동적 범위 최대 150 dB(24 GHz), 138 dB(54 GHz), 트레이스 잡음 0.0008 dB RMS(typ). 1 MHz~54 GHz 1601점 스윕 11.7 ms. 단종된 R&S ZNB 의 후속 기종으로 안내된다.",
+  "test_items": [],
+  "limits": {
+    "frequency_Hz": {
+      "min": 9000,
+      "max": 54000000000,
+      "note": "최소 9 kHz 는 제조사 페이지 요약문(검색 결과)의 'from 9 kHz up to 54 GHz'. 기종별 상한 4.5/20/32/43.5 GHz, 업그레이드로 9/26.5/43.5/54 GHz"
+    },
+    "rf_port_count": {
+      "values": [
+        2,
+        4
+      ]
+    },
+    "dynamic_range_dB": {
+      "max": 150,
+      "note": "150 dB at 24 GHz, 138 dB at 54 GHz"
+    },
+    "rf_output_level_dBm": {
+      "max": 18,
+      "note": "목록 페이지 up to +18 dBm. 제품 페이지 +11 dBm @ 26.5 GHz, +3 dBm at 54 GHz"
+    }
+  },
+  "models": [
+    {
+      "model": "ZNB3004",
+      "specs": {
+        "frequency_Hz": {
+          "max": 4500000000,
+          "note": "9 GHz 까지 업그레이드"
+        },
+        "rf_port_count": {
+          "values": [
+            2,
+            4
+          ]
+        }
+      }
+    },
+    {
+      "model": "ZNB3020",
+      "specs": {
+        "frequency_Hz": {
+          "max": 20000000000,
+          "note": "26.5 GHz 까지 업그레이드"
+        },
+        "rf_port_count": {
+          "values": [
+            2,
+            4
+          ]
+        }
+      }
+    },
+    {
+      "model": "ZNB3032",
+      "specs": {
+        "frequency_Hz": {
+          "max": 32000000000,
+          "note": "43.5 GHz 까지 업그레이드"
+        },
+        "rf_port_count": {
+          "values": [
+            2,
+            4
+          ]
+        }
+      }
+    },
+    {
+      "model": "ZNB3044",
+      "specs": {
+        "frequency_Hz": {
+          "max": 43500000000,
+          "note": "54 GHz 까지 업그레이드"
+        },
+        "rf_port_count": {
+          "values": [
+            2,
+            4
+          ]
+        }
+      }
+    }
+  ],
+  "performance": "트레이스 잡음 typ. 0.0008 dB RMS. 스윕 11.7 ms(1 MHz~54 GHz, 1601점). 2포트 전 오차 보정 21.2 ms(1 MHz~26.5 GHz, 1601점, IF 500 kHz). 온도 안정도 크기 0.01 dB/°C 미만, 위상 0.15°/°C",
+  "sources": [
+    {
+      "url": "https://www.rohde-schwarz.com/us/products/test-and-measurement/vnas/rs-znb3000-vector-network-analyzer_334291.html",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지. ZNB3004 4.5 GHz(9 GHz 업그레이드), ZNB3020 20 GHz(26.5 GHz), ZNB3032 32 GHz(43.5 GHz), ZNB3044 43.5 GHz(54 GHz), 각 2·4포트. 동적 범위 150 dB@24 GHz·138 dB@54 GHz, 출력 +11 dBm@26.5 GHz·+3 dBm@54 GHz"
+    },
+    {
+      "url": "https://www.rohde-schwarz.com/us/products/test-and-measurement/network-analyzers_64043.html",
+      "retrieved": "2026-10-08",
+      "note": "제조사 네트워크 분석기 목록 페이지. ZNB3000 Max Frequency 54 GHz, Port Count 2 or 4, Test Port Output Power up to +18 dBm"
+    },
+    {
+      "url": "https://www.rohde-schwarz.com/us/products/test-and-measurement/vnas/rs-znb-vector-network-analyzer_63493-11648.html",
+      "retrieved": "2026-10-08",
+      "note": "제조사 ZNB 페이지. ZNB 는 단종(discontinued), 후속 ZNB3000. 사양 없음"
+    }
+  ],
+  "confidence": "limited",
+  "notes": "구형 R&S ZNB 는 제조사 페이지가 단종만 알리고 사양·기종을 적지 않아 객체를 만들지 않음. 기종의 '업그레이드' 상한은 옵션으로 늘어나는 값."
+}

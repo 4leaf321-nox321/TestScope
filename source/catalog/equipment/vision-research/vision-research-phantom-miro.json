@@ -1,0 +1,100 @@
+{
+  "id": "vision-research-phantom-miro",
+  "kind": "equipment_series",
+  "name": "Phantom Miro Series (C / LC / R)",
+  "name_ko": "팬텀 Miro 고속 카메라",
+  "manufacturer": "vision-research",
+  "brand": "Phantom",
+  "category": "high_speed_swir_camera",
+  "subcategory": "high_speed_camera",
+  "form_factor": "camera",
+  "description": "Phantom 의 소형·견고형 Miro 계열. Miro C321 은 1,920 × 1,080 에서 1,480 fps(640 × 8 에서 94,510 fps), C211 은 1,280 × 1,024 에서 1,800 fps(64 × 8 에서 67,140 fps). 321S 계열(LC321S · R321S)은 1,920 × 1,200 에서 1,380 fps.",
+  "test_items": [],
+  "limits": {
+    "frame_rate_fps": {
+      "min": 1380,
+      "max": 1800,
+      "note": "각 기종 최대 해상도 기준",
+      "uncertain": true
+    },
+    "max_frame_rate_fps": {
+      "max": 325000,
+      "note": "Miro R321S @ 64 × 8",
+      "uncertain": true
+    }
+  },
+  "models": [
+    {
+      "model": "Miro C321",
+      "specs": {
+        "detector_pixels": "1920 × 1080",
+        "resolution_pixels": 2073600,
+        "frame_rate_fps": 1480,
+        "max_frame_rate_fps": 94510
+      },
+      "note": "1,990 fps @ 1,920 × 800, 2,210 fps @ 1,280 × 720, 94,510 fps @ 640 × 8",
+      "uncertain": true
+    },
+    {
+      "model": "Miro C321 Air",
+      "note": "제품 페이지 제목(Phantom C321 Air)만 확인. 사양 미확인",
+      "uncertain": true
+    },
+    {
+      "model": "Miro C211",
+      "specs": {
+        "detector_pixels": "1280 × 1024",
+        "resolution_pixels": 1310720,
+        "frame_rate_fps": 1800,
+        "max_frame_rate_fps": 67140
+      },
+      "note": "1.3 MP. 2,290 fps @ 1,280 × 800, 2,540 fps @ 1,280 × 720, 67,140 fps @ 64 × 8",
+      "uncertain": true
+    },
+    {
+      "model": "Miro LC321S",
+      "specs": {
+        "detector_pixels": "1920 × 1200",
+        "resolution_pixels": 2304000,
+        "frame_rate_fps": 1380
+      },
+      "note": "1,540 fps @ 1,920 × 1,080, 3,280 fps @ 1,280 × 720",
+      "uncertain": true
+    },
+    {
+      "model": "Miro R321S",
+      "specs": {
+        "detector_pixels": "1920 × 1200",
+        "resolution_pixels": 2304000,
+        "frame_rate_fps": 1380,
+        "max_frame_rate_fps": 325000
+      },
+      "note": "검색 발췌 표기 'Miro R-321S'. Full HD 1,500 fps, 3,280 fps @ 1,280 × 720, 325,000 fps @ 64 × 8",
+      "uncertain": true
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://www.phantomhighspeed.com/products/cameras/mirocnn/c321",
+      "retrieved": "2026-10-08",
+      "note": "제조사 사이트가 직접 조회를 막아(HTTP 403) 검색 엔진의 제조사 페이지 발췌로 읽음. 값 전부 uncertain"
+    },
+    {
+      "url": "https://www.phantomhighspeed.com/products/cameras/mirocnn/c321-air",
+      "retrieved": "2026-10-08",
+      "note": "제조사 사이트가 직접 조회를 막아(HTTP 403) 검색 엔진의 제조사 페이지 발췌로 읽음. 값 전부 uncertain. 제목만"
+    },
+    {
+      "url": "https://www.phantomhighspeed.com/products/cameras/mirocnn/c211",
+      "retrieved": "2026-10-08",
+      "note": "제조사 사이트가 직접 조회를 막아(HTTP 403) 검색 엔진의 제조사 페이지 발췌로 읽음. 값 전부 uncertain"
+    },
+    {
+      "url": "https://www.phantomhighspeed.com/products/cameras/miromidsize/miro321s",
+      "retrieved": "2026-10-08",
+      "note": "제조사 사이트가 직접 조회를 막아(HTTP 403) 검색 엔진의 제조사 페이지 발췌로 읽음. 값 전부 uncertain"
+    }
+  ],
+  "confidence": "limited",
+  "notes": "321S 계열의 정확한 기종 표기(LC321S · R321S · M321S 등)는 HTML 을 직접 읽지 못해 확정하지 못했다."
+}

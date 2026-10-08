@@ -1,0 +1,111 @@
+{
+  "id": "tektronix-dpo70000sx",
+  "kind": "equipment_series",
+  "name": "DPO70000SX ATI Performance Oscilloscope",
+  "name_ko": "텍트로닉스 DPO70000SX ATI 고성능 오실로스코프",
+  "manufacturer": "tektronix",
+  "brand": "DPO70000SX",
+  "category": "oscilloscope",
+  "subcategory": "real_time_oscilloscope",
+  "form_factor": "benchtop",
+  "description": "33~70 GHz 대역의 초고대역 오실로스코프 계열임. 최고 대역에서 쓸 수 있는 채널 수가 줄고 낮은 대역에서 채널이 늘어나는 구성(예: 1 at 70 GHz, 2 at 33 GHz). 100 또는 200 GS/s, 레코드 1G points. DPS 기종은 두 대를 묶은 시스템.",
+  "test_items": [],
+  "limits": {
+    "bandwidth_Hz": {
+      "min": 33000000000,
+      "max": 70000000000,
+      "note": "원문 33 GHz~70 GHz"
+    },
+    "sample_rate_Sa_s": {
+      "min": 100000000000,
+      "max": 200000000000
+    },
+    "record_length_pts": {
+      "max": 1000000000,
+      "note": "원문 1G points"
+    }
+  },
+  "models": [
+    {
+      "model": "DPO73304SX",
+      "specs": {
+        "bandwidth_Hz": 33000000000,
+        "sample_rate_Sa_s": 100000000000,
+        "record_length_pts": 1000000000
+      },
+      "note": "원문 채널 구성 2 at 33 GHz, 4 at 23 GHz"
+    },
+    {
+      "model": "DPO75002SX",
+      "specs": {
+        "bandwidth_Hz": 50000000000,
+        "sample_rate_Sa_s": 200000000000,
+        "record_length_pts": 1000000000
+      },
+      "note": "원문 채널 구성 1 at 50 GHz, 2 at 33 GHz"
+    },
+    {
+      "model": "DPO75902SX",
+      "specs": {
+        "bandwidth_Hz": 59000000000,
+        "sample_rate_Sa_s": 200000000000,
+        "record_length_pts": 1000000000
+      },
+      "note": "원문 채널 구성 1 at 59 GHz, 2 at 33 GHz"
+    },
+    {
+      "model": "DPO77002SX",
+      "specs": {
+        "bandwidth_Hz": 70000000000,
+        "sample_rate_Sa_s": 200000000000,
+        "record_length_pts": 1000000000
+      },
+      "note": "원문 채널 구성 1 at 70 GHz, 2 at 33 GHz"
+    },
+    {
+      "model": "DPS73308SX",
+      "specs": {
+        "bandwidth_Hz": 33000000000,
+        "sample_rate_Sa_s": 100000000000,
+        "record_length_pts": 1000000000
+      },
+      "note": "원문 채널 구성 4 at 33 GHz, 8 at 23 GHz"
+    },
+    {
+      "model": "DPS75004SX",
+      "specs": {
+        "bandwidth_Hz": 50000000000,
+        "sample_rate_Sa_s": 200000000000,
+        "record_length_pts": 1000000000
+      },
+      "note": "원문 채널 구성 2 at 50 GHz, 4 at 33 GHz"
+    },
+    {
+      "model": "DPS75904SX",
+      "specs": {
+        "bandwidth_Hz": 59000000000,
+        "sample_rate_Sa_s": 200000000000,
+        "record_length_pts": 1000000000
+      },
+      "note": "원문 채널 구성 2 at 59 GHz, 4 at 33 GHz"
+    },
+    {
+      "model": "DPS77004SX",
+      "specs": {
+        "bandwidth_Hz": 70000000000,
+        "sample_rate_Sa_s": 200000000000,
+        "record_length_pts": 1000000000
+      },
+      "note": "원문 채널 구성 2 at 70 GHz, 4 at 33 GHz"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://www.tek.com/en/products/oscilloscopes/dpo70000sx",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지 기종 표. 원문 채널 구성(예 1 at 70 GHz, 2 at 33 GHz), 100 GS/s·200 GS/s, 1G points"
+    }
+  ],
+  "confidence": "limited",
+  "notes": "채널 수가 대역폭에 따라 달라 channels 는 비우고 기종 비고에 원문을 둠."
+}

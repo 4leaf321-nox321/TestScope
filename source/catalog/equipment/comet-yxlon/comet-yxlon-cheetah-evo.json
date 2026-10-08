@@ -1,0 +1,105 @@
+{
+  "id": "comet-yxlon-cheetah-evo",
+  "kind": "equipment_series",
+  "name": "Comet Yxlon Cheetah EVO",
+  "name_ko": "코멧 익스론 Cheetah EVO 마이크로포커스 X-ray 검사 장비",
+  "manufacturer": "comet-yxlon",
+  "brand": "Cheetah EVO",
+  "category": "xray_inspection",
+  "form_factor": "floor",
+  "description": "SMT·반도체·실험실 검사용 마이크로포커스 X-ray 검사 장비. FeinFocus 튜브 FXT-160.50(마이크로포커스) 또는 FXT-160.51(멀티포커스)을 달아 20~160 kV 로 쓰고, 수랭식 FXT-160.51 은 옵션이다. 평판 검출기 1308 · 1313 · 1616(화소 피치 127 µm, 16 bit) 중에서 고르고, ±70°(전체 140°) 경사 관찰과 라미노그래피(micro3Dslice) · CT QuickScan · QualityScan 3D 모드를 갖춘다. 최대 시료 800 × 500 mm, 최대 투시 영역 460 × 410 mm.",
+  "test_items": [
+    "xray_void_inspection"
+  ],
+  "materials": [
+    "PCB assemblies",
+    "semiconductor packages"
+  ],
+  "limits": {
+    "tube_voltage_kV": {
+      "min": 20,
+      "max": 160
+    },
+    "pixel_pitch_um": {
+      "values": [
+        127
+      ]
+    },
+    "sample_size_mm": {
+      "max": 800,
+      "note": "최대 시료 800 × 500 mm (31″ × 19″)"
+    },
+    "inspection_area_mm": {
+      "max": 460,
+      "note": "최대 투시 영역 460 × 410 mm (18″ × 16″)"
+    },
+    "sample_weight_kg": {
+      "max": 20,
+      "note": "페이지 표기 '≤20 kg (optional reinforced configuration)' — 강화 구성 옵션의 값. 표준 구성 하중은 따로 없음",
+      "requires_accessory": true
+    },
+    "oblique_view_angle_deg": {
+      "max": 70,
+      "note": "±70° (전체 140°)"
+    }
+  },
+  "models": [
+    {
+      "model": "Cheetah EVO",
+      "specs": {
+        "xray_source": "FeinFocus FXT-160.50 Microfocus 또는 FXT-160.51 Multifocus",
+        "tube_voltage_kV": {
+          "min": 20,
+          "max": 160
+        },
+        "detector": "평판 검출기 1308 (1004 × 620 px) / 1313 (1004 × 1004 px) / 1616 (1276 × 1276 px), 16 bit",
+        "pixel_pitch_um": 127,
+        "sample_size_mm": "800 × 500",
+        "inspection_area_mm": "460 × 410",
+        "oblique_view_angle_deg": 70,
+        "footprint_mm": "1650 × 1400 × 2050 (W × D × H)",
+        "weight_kg": 2200
+      }
+    }
+  ],
+  "features": [
+    "FeinFocus 마이크로포커스·멀티포커스 튜브(20~160 kV)",
+    "±70° 경사 관찰",
+    "라미노그래피(micro3Dslice) · CT QuickScan · QualityScan",
+    "2D · 2.5D · 3D 에서 서브마이크론(<1 µm) 결함 검출을 내세움"
+  ],
+  "options": [
+    {
+      "name": "수랭식 FXT-160.51 튜브",
+      "note": "열 안정성 개선"
+    },
+    {
+      "name": "강화 구성",
+      "note": "시료 하중 ≤20 kg"
+    }
+  ],
+  "relations": [
+    {
+      "type": "performs",
+      "target": "xray_void_inspection"
+    },
+    {
+      "type": "same_family_as",
+      "target": "comet-yxlon-cougar-evo"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://yxlon.comet.tech/en/products/cheetah-evo",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지. 튜브·검출기·시료 크기·외형·무게"
+    },
+    {
+      "url": "https://yxlon.comet.tech/en/product-range-en",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품군 목록 페이지. 계열별 대표 사양 한 줄"
+    }
+  ],
+  "confidence": "limited",
+  "notes": "튜브 출력(W) · 초점 크기 · 기하 배율은 페이지에 없다. 데이터시트는 다운로드 양식 뒤에 있어 열지 않았다."
+}

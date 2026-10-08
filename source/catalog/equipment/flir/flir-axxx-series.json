@@ -1,0 +1,131 @@
+{
+  "id": "flir-axxx-series",
+  "kind": "equipment_series",
+  "name": "FLIR Axxx-Series Fixed Thermal Camera (A400, A500, A700)",
+  "name_ko": "플리어 A400 · A500 · A700 고정형 열화상 카메라",
+  "manufacturer": "flir",
+  "brand": "A-Series",
+  "category": "thermal_imager",
+  "form_factor": "camera",
+  "description": "공정 감시 · 자동화 · 연구용 고정형 열화상 카메라 계열. Image Streaming(GigE Vision · RTSP 방사 측정 영상)과 Smart Sensor(카메라 안 분석 · 경보) 구성이 있다. 해상도 A400 320 × 240, A500 464 × 348, A700 640 × 480, 측정 범위 -20 ~ 120 · 0 ~ 650 · 300 ~ 1,500 °C(A700 은 2,000 °C 까지). 7.5 ~ 14 µm, 30 Hz, 무게 0.82 kg.",
+  "test_items": [
+    "thermography"
+  ],
+  "measurands": [
+    "surface_temperature",
+    "temperature_distribution",
+    "hotspot_location"
+  ],
+  "limits": {
+    "temperature_degC": {
+      "min": -20,
+      "max": 2000,
+      "note": "레인지 전환. A400 · A500 1,500 °C, A700 2,000 °C"
+    },
+    "ir_resolution_pixels": {
+      "min": 76800,
+      "max": 307200
+    },
+    "wavelength_nm": {
+      "min": 7500,
+      "max": 14000,
+      "note": "원문 7.5 ~ 14 µm"
+    },
+    "frame_rate_fps": {
+      "values": [
+        30
+      ],
+      "note": "원문 30 Hz"
+    }
+  },
+  "models": [
+    {
+      "model": "A400",
+      "variant": "Image Streaming / Smart Sensor",
+      "specs": {
+        "detector_pixels": "320 × 240",
+        "ir_resolution_pixels": 76800,
+        "temperature_degC": {
+          "min": -20,
+          "max": 1500
+        },
+        "accuracy": "±2 °C 또는 읽음값의 ±2 %",
+        "wavelength_nm": {
+          "min": 7500,
+          "max": 14000
+        },
+        "frame_rate_fps": 30,
+        "weight_kg": 0.82,
+        "pixel_pitch_um": 17
+      },
+      "note": "Image Streaming · Smart Sensor 두 구성. 확도 ±2 °C 또는 ±2 %(주위 15 ~ 35 °C, 대상 0 °C 이상). NETD 는 렌즈에 따름(Lens dependent). 검출기 간격 17 µm"
+    },
+    {
+      "model": "A500",
+      "variant": "Image Streaming / Smart Sensor",
+      "specs": {
+        "detector_pixels": "464 × 348",
+        "ir_resolution_pixels": 161472,
+        "thermal_sensitivity_degC": 0.03,
+        "temperature_degC": {
+          "min": -20,
+          "max": 1500
+        },
+        "accuracy": "±2 °C 또는 읽음값의 ±2 %",
+        "wavelength_nm": {
+          "min": 7500,
+          "max": 14000
+        },
+        "frame_rate_fps": 30,
+        "weight_kg": 0.82,
+        "pixel_pitch_um": 17
+      },
+      "note": "Image Streaming · Smart Sensor 두 구성. 확도 ±2 °C 또는 ±2 %(주위 15 ~ 35 °C, 대상 0 °C 이상). NETD 42° <30, 24° <40, 14° <50 mK. 검출기 간격 17 µm"
+    },
+    {
+      "model": "A700",
+      "variant": "Image Streaming / Smart Sensor",
+      "specs": {
+        "detector_pixels": "640 × 480",
+        "ir_resolution_pixels": 307200,
+        "temperature_degC": {
+          "min": -20,
+          "max": 2000
+        },
+        "accuracy": "±2 °C 또는 읽음값의 ±2 %",
+        "wavelength_nm": {
+          "min": 7500,
+          "max": 14000
+        },
+        "frame_rate_fps": 30,
+        "weight_kg": 0.82,
+        "pixel_pitch_um": 12
+      },
+      "note": "Image Streaming · Smart Sensor 두 구성. 확도 ±2 °C 또는 ±2 %(주위 15 ~ 35 °C, 대상 0 °C 이상). NETD 는 렌즈에 따름. 검출기 간격 12 µm. Smart Sensor 는 Wi-Fi 선택"
+    }
+  ],
+  "options": [
+    "렌즈 6° · 14° · 24° · 42° · 80°, 2.0× 매크로, 이중 시야(14° + 24°)",
+    "연구용 Science Kit(Standard / Professional)"
+  ],
+  "relations": [
+    {
+      "type": "performs",
+      "target": "thermography"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://www.flir.com/products/axxx-series-image-streaming/",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지(HTML). 기종별 해상도 · 레인지 · 렌즈 · 검출기 간격 · 무게"
+    },
+    {
+      "url": "https://www.flir.com/products/axxx-series-smart-sensor/",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지(HTML). Smart Sensor 구성의 같은 기종 사양과 인터페이스"
+    }
+  ],
+  "confidence": "limited",
+  "notes": "A400 레인지 상한의 화씨 병기가 '300 °C to 1500 °C (572 °F to 3632 °F)' 로 페이지에 적혀 섭씨 값을 따랐다(3632 °F 는 2,000 °C)."
+}

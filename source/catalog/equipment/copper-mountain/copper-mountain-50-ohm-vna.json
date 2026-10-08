@@ -1,0 +1,324 @@
+{
+  "id": "copper-mountain-50-ohm-vna",
+  "kind": "equipment_series",
+  "name": "Copper Mountain Technologies 50 Ohm Vector Network Analyzers",
+  "name_ko": "코퍼 마운틴 50 Ω 벡터 네트워크 분석기",
+  "manufacturer": "copper-mountain",
+  "category": "network_lcr_analyzer",
+  "description": "50 Ω 벡터 네트워크 분석기 제품군. 2포트 소형·범용 기종(최대 22 GHz), 4~16포트 다포트 기종(9 GHz), 1포트 반사계, PXIe 모듈이 있다. 제조사 '50 Ohm VNAs' 페이지의 기종 목록을 한 객체로 묶었다.",
+  "test_items": [],
+  "limits": {
+    "frequency_Hz": {
+      "min": 9000,
+      "max": 22000000000,
+      "note": "기종별. 최저 9 kHz(SC 계열), 최고 22 GHz(A2202 계열)"
+    },
+    "rf_port_count": {
+      "values": [
+        1,
+        2,
+        4,
+        6,
+        8,
+        10,
+        12,
+        14,
+        16
+      ]
+    },
+    "dynamic_range_dB": {
+      "max": 140,
+      "note": "SN0906~SN0916 140 dB, V·A·M·S 계열 130 dB. 나머지는 페이지에 없음"
+    }
+  },
+  "models": [
+    {
+      "model": "SC0402",
+      "variant": "소형(SC) 계열",
+      "specs": {
+        "frequency_Hz": {
+          "min": 9000,
+          "max": 4500000000
+        },
+        "rf_port_count": 2
+      }
+    },
+    {
+      "model": "SC0602",
+      "variant": "소형(SC) 계열",
+      "specs": {
+        "frequency_Hz": {
+          "min": 9000,
+          "max": 6500000000
+        },
+        "rf_port_count": 2
+      }
+    },
+    {
+      "model": "SC0902",
+      "variant": "소형(SC) 계열",
+      "specs": {
+        "frequency_Hz": {
+          "min": 9000,
+          "max": 9000000000
+        },
+        "rf_port_count": 2
+      }
+    },
+    {
+      "model": "SN0904",
+      "variant": "다포트(SN) 계열",
+      "specs": {
+        "frequency_Hz": {
+          "min": 300000,
+          "max": 9000000000
+        },
+        "rf_port_count": 4
+      }
+    },
+    {
+      "model": "SN0906",
+      "variant": "다포트(SN) 계열",
+      "specs": {
+        "frequency_Hz": {
+          "min": 300000,
+          "max": 9000000000
+        },
+        "rf_port_count": 6,
+        "dynamic_range_dB": 140
+      }
+    },
+    {
+      "model": "SN0908",
+      "variant": "다포트(SN) 계열",
+      "specs": {
+        "frequency_Hz": {
+          "min": 300000,
+          "max": 9000000000
+        },
+        "rf_port_count": 8,
+        "dynamic_range_dB": 140
+      }
+    },
+    {
+      "model": "SN0910",
+      "variant": "다포트(SN) 계열",
+      "specs": {
+        "frequency_Hz": {
+          "min": 300000,
+          "max": 9000000000
+        },
+        "rf_port_count": 10,
+        "dynamic_range_dB": 140
+      }
+    },
+    {
+      "model": "SN0912",
+      "variant": "다포트(SN) 계열",
+      "specs": {
+        "frequency_Hz": {
+          "min": 300000,
+          "max": 9000000000
+        },
+        "rf_port_count": 12,
+        "dynamic_range_dB": 140
+      }
+    },
+    {
+      "model": "SN0914",
+      "variant": "다포트(SN) 계열",
+      "specs": {
+        "frequency_Hz": {
+          "min": 300000,
+          "max": 9000000000
+        },
+        "rf_port_count": 14,
+        "dynamic_range_dB": 140
+      }
+    },
+    {
+      "model": "SN0916",
+      "variant": "다포트(SN) 계열",
+      "specs": {
+        "frequency_Hz": {
+          "min": 300000,
+          "max": 9000000000
+        },
+        "rf_port_count": 16,
+        "dynamic_range_dB": 140
+      }
+    },
+    {
+      "model": "VTR0102",
+      "variant": "VTR 계열",
+      "specs": {
+        "frequency_Hz": {
+          "min": 50000000,
+          "max": 1500000000
+        },
+        "rf_port_count": 2
+      }
+    },
+    {
+      "model": "VTR0302",
+      "variant": "VTR 계열",
+      "specs": {
+        "frequency_Hz": {
+          "min": 50000000,
+          "max": 3500000000
+        },
+        "rf_port_count": 2
+      }
+    },
+    {
+      "model": "V0402",
+      "variant": "V 계열",
+      "specs": {
+        "frequency_Hz": {
+          "min": 100000,
+          "max": 4500000000
+        },
+        "rf_port_count": 2,
+        "dynamic_range_dB": 130
+      }
+    },
+    {
+      "model": "V0602",
+      "variant": "V 계열",
+      "specs": {
+        "frequency_Hz": {
+          "min": 100000,
+          "max": 6500000000
+        },
+        "rf_port_count": 2,
+        "dynamic_range_dB": 130
+      }
+    },
+    {
+      "model": "V0902",
+      "variant": "V 계열",
+      "specs": {
+        "frequency_Hz": {
+          "min": 100000,
+          "max": 9000000000
+        },
+        "rf_port_count": 2,
+        "dynamic_range_dB": 130
+      }
+    },
+    {
+      "model": "A2202",
+      "variant": "A 계열",
+      "specs": {
+        "frequency_Hz": {
+          "min": 100000,
+          "max": 22000000000
+        },
+        "rf_port_count": 2,
+        "dynamic_range_dB": 130
+      }
+    },
+    {
+      "model": "A2202-Fx",
+      "variant": "A 계열",
+      "specs": {
+        "frequency_Hz": {
+          "min": 100000,
+          "max": 22000000000
+        },
+        "rf_port_count": 2,
+        "dynamic_range_dB": 130
+      }
+    },
+    {
+      "model": "A2202-D",
+      "variant": "A 계열",
+      "specs": {
+        "frequency_Hz": {
+          "min": 100000,
+          "max": 22000000000
+        },
+        "rf_port_count": 2,
+        "dynamic_range_dB": 130
+      }
+    },
+    {
+      "model": "A2202-DFx",
+      "variant": "A 계열",
+      "specs": {
+        "frequency_Hz": {
+          "min": 100000,
+          "max": 22000000000
+        },
+        "rf_port_count": 2,
+        "dynamic_range_dB": 130
+      }
+    },
+    {
+      "model": "M5180",
+      "variant": "M 계열",
+      "specs": {
+        "frequency_Hz": {
+          "min": 300000,
+          "max": 18000000000
+        },
+        "rf_port_count": 2,
+        "dynamic_range_dB": 130
+      }
+    },
+    {
+      "model": "S5180B",
+      "variant": "S 계열",
+      "specs": {
+        "frequency_Hz": {
+          "min": 100000,
+          "max": 18000000000
+        },
+        "rf_port_count": 2,
+        "dynamic_range_dB": 130
+      }
+    },
+    {
+      "model": "R60",
+      "variant": "1포트 반사계(R) 계열",
+      "specs": {
+        "frequency_Hz": {
+          "min": 1000000,
+          "max": 6000000000
+        },
+        "rf_port_count": 1
+      }
+    },
+    {
+      "model": "R140B",
+      "variant": "1포트 반사계(R) 계열",
+      "specs": {
+        "frequency_Hz": {
+          "min": 85000000,
+          "max": 14000000000
+        },
+        "rf_port_count": 1
+      }
+    },
+    {
+      "model": "PXIe-S5090",
+      "variant": "PXIe 모듈",
+      "specs": {
+        "frequency_Hz": {
+          "min": 300000,
+          "max": 9000000000
+        },
+        "rf_port_count": 2
+      }
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://coppermountaintech.com/50-ohm-vnas/",
+      "retrieved": "2026-10-08",
+      "note": "제조사 50 Ohm VNAs 페이지. 기종별 주파수 범위·포트 수·동적 범위(적힌 것만) 목록"
+    }
+  ],
+  "confidence": "limited",
+  "notes": "제조사가 여러 하위 계열(SC·SN·VTR·V·A·M·S·R·PXIe)을 한 페이지에 늘어놓아 객체 하나로 묶고 기종의 variant 에 하위 계열을 적음. 75 Ω 기종과 mmWave 확장기는 넣지 않음."
+}

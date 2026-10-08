@@ -1,0 +1,155 @@
+{
+  "id": "rohde-schwarz-rtb2000",
+  "kind": "equipment_series",
+  "name": "R&S RTB2000 Oscilloscope",
+  "name_ko": "로데슈바르츠 RTB2000 오실로스코프",
+  "manufacturer": "rohde-schwarz",
+  "brand": "RTB",
+  "category": "oscilloscope",
+  "subcategory": "digital_storage_oscilloscope",
+  "form_factor": "benchtop",
+  "description": "로데슈바르츠 보급형 오실로스코프 계열(단종). 제조사 페이지는 단종과 후속 RTB 2 만 알리고 사양은 싣지 않음.",
+  "test_items": [],
+  "limits": {
+    "bandwidth_Hz": {
+      "min": 70000000,
+      "max": 300000000,
+      "note": "팩트시트: 70 MHz 표준, 대역폭 옵션으로 100·200·300 MHz(RTB-B221/B222/B223 2채널, B241/B242/B243 4채널)"
+    },
+    "channels": {
+      "values": [
+        2,
+        4
+      ],
+      "note": "팩트시트: 2 or 4 analog channels"
+    },
+    "logic_channel_count": {
+      "values": [
+        16
+      ],
+      "requires_accessory": true,
+      "note": "MSO 옵션(RTB-B1 혼합 신호 업그레이드, 250 MHz)"
+    },
+    "sample_rate_Sa_s": {
+      "max": 2500000000,
+      "note": "원문 2.5 Gsample/s (interleaved), 1.25 Gsample/s (all channels)"
+    },
+    "record_length_pts": {
+      "min": 10000000,
+      "max": 20000000,
+      "note": "원문 10 Msample(채널당), 20 Msample(interleaved)"
+    },
+    "adc_resolution_bit": {
+      "values": [
+        10
+      ],
+      "note": "원문 10-bit ADC"
+    },
+    "display_size_in": {
+      "values": [
+        10.1
+      ],
+      "note": "10.1\" 정전식 터치, 1280 × 800"
+    }
+  },
+  "models": [
+    {
+      "model": "RTB2002",
+      "specs": {
+        "bandwidth_Hz": {
+          "min": 70000000,
+          "max": 300000000,
+          "note": "표준 70 MHz, RTB-B221/B222/B223 로 100/200/300 MHz"
+        },
+        "channels": 2,
+        "logic_channel_count": {
+          "values": [
+            16
+          ],
+          "note": "MSO 옵션(RTB-B1)"
+        },
+        "sample_rate_Sa_s": 2500000000,
+        "record_length_pts": 20000000,
+        "adc_resolution_bit": 10,
+        "display_size_in": 10.1,
+        "interfaces": "LAN, USB host·device"
+      },
+      "note": "팩트시트 주문 정보의 2채널 기종"
+    },
+    {
+      "model": "RTB2004",
+      "specs": {
+        "bandwidth_Hz": {
+          "min": 70000000,
+          "max": 300000000,
+          "note": "표준 70 MHz, RTB-B241/B242/B243 로 100/200/300 MHz"
+        },
+        "channels": 4,
+        "logic_channel_count": {
+          "values": [
+            16
+          ],
+          "note": "MSO 옵션(RTB-B1)"
+        },
+        "sample_rate_Sa_s": 2500000000,
+        "record_length_pts": 20000000,
+        "adc_resolution_bit": 10,
+        "display_size_in": 10.1,
+        "interfaces": "LAN, USB host·device"
+      },
+      "note": "팩트시트 주문 정보의 4채널 기종"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://www.rohde-schwarz.com/us/products/test-and-measurement/oscilloscopes/rs-rtb2000-oscilloscope_63493-266306.html",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지. \"This is a discontinued product. Please note the following successor product(s): R&S®RTB 2\". 사양 없음"
+    },
+    {
+      "url": "https://www.rohde-schwarz.com/us/manual/r-s-rtb2-r-s-rtb2000-user-manual-manuals_78701-402707.html",
+      "retrieved": "2026-10-08",
+      "note": "제조사 매뉴얼 안내 페이지 제목(검색 결과). R&S®RTB2 / R&S®RTB2000 User Manual. 열지 않음"
+    },
+    {
+      "file": "rohde-schwarz/fact_sheet_-_rtb_v200.pdf",
+      "pages": [
+        1,
+        2
+      ],
+      "note": "제조사 RTB2000 팩트시트(v02.00, 2020-04). Key specifications(대역폭·채널·샘플 속도·메모리·화면·ADC·갱신 속도·연결)와 주문 정보(기종·대역폭 옵션)"
+    }
+  ],
+  "confidence": "catalog",
+  "notes": "팩트시트로 기종명(RTB2002·RTB2004)과 사양을 확인했다. 팩트시트 주문 정보의 2채널 기종 칸에는 「R&S RTC1002」 로 찍혀 있으나 바로 아래 대역폭 옵션이 「for R&S RTB2002」 라 RTB2002 로 두었다. 파형 갱신 50,000 wfm/s, 3년 보증.",
+  "options": [
+    {
+      "name": "RTB-B221 / B222 / B223",
+      "note": "RTB2002 대역폭 100 / 200 / 300 MHz"
+    },
+    {
+      "name": "RTB-B241 / B242 / B243",
+      "note": "RTB2004 대역폭 100 / 200 / 300 MHz"
+    },
+    {
+      "name": "RTB-B1",
+      "note": "혼합 신호(MSO) 업그레이드, 디지털 16채널, 250 MHz"
+    },
+    {
+      "name": "RTB-B6",
+      "note": "임의파형 발생기"
+    },
+    {
+      "name": "RTB-K1 / K2 / K3",
+      "note": "트리거·디코드 I2C/SPI / UART/RS-232/422/485 / CAN/LIN"
+    },
+    {
+      "name": "RTB-K15",
+      "note": "히스토리·세그먼트 메모리"
+    },
+    {
+      "name": "RTB-K36",
+      "note": "주파수 응답 분석(보드 선도)"
+    }
+  ]
+}

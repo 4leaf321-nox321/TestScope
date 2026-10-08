@@ -1,0 +1,152 @@
+{
+  "id": "rion-nl-sound-level-meters",
+  "kind": "equipment_series",
+  "name": "RION NL Series Sound Level Meters (NL-43 / NL-53 / NL-63, NL-52 / NL-62)",
+  "name_ko": "리온 NL 시리즈 소음계",
+  "manufacturer": "rion",
+  "brand": "NL",
+  "category": "acoustic_measurement",
+  "form_factor": "handheld",
+  "description": "리온의 휴대형 적분 소음계 계열. 현행 NL-43(Class 2)·NL-53(Class 1)·NL-63(Class 1, 1 Hz 부터 저주파음 측정, G 특성)은 IEC 61672-1:2013·JIS C 1516:2020·JIS C 1509-1:2017 을 따르고, 컬러 LCD 터치 패널, 방수 구조(마이크 제외 IP54), SD 카드 저장(최대 1000시간), LAN 원격 제어·웹 브라우저 측정을 갖춘다. 단종된 NL-52·NL-62 는 3인치 컬러 LCD·생활 방수의 Class 1 소음계이고, NL-52·NL-52A 의 후속은 NL-53 이다.",
+  "test_items": [],
+  "measurands": [
+    "sound_pressure_level",
+    "equivalent_continuous_sound_level"
+  ],
+  "materials": [
+    "environmental noise",
+    "machinery noise",
+    "building acoustics"
+  ],
+  "standards": {
+    "compliance": [
+      "IEC 61672-1:2013",
+      "JIS C 1516:2020",
+      "JIS C 1509-1:2017",
+      "ANSI/ASA S1.4"
+    ],
+    "test_methods": []
+  },
+  "limits": {
+    "frequency_Hz": {
+      "min": 1,
+      "note": "NL-63 저주파음 1 Hz 부터. 다른 기종의 주파수 범위는 페이지에 없음"
+    },
+    "accuracy_class": {
+      "values": [
+        "Class 1",
+        "Class 2"
+      ]
+    }
+  },
+  "models": [
+    {
+      "model": "NL-43",
+      "specs": {
+        "accuracy_class": "IEC 61672-1:2013 class 2"
+      }
+    },
+    {
+      "model": "NL-53",
+      "specs": {
+        "accuracy_class": "IEC 61672-1:2013 class 1"
+      }
+    },
+    {
+      "model": "NL-63",
+      "specs": {
+        "accuracy_class": "IEC 61672-1:2013 class 1",
+        "frequency_Hz": {
+          "min": 1
+        }
+      },
+      "note": "저주파음 측정(1 Hz 부터), A·G 특성"
+    },
+    {
+      "model": "NL-52",
+      "specs": {
+        "accuracy_class": "Class 1"
+      },
+      "note": "단종, 후속 NL-53"
+    },
+    {
+      "model": "NL-52A",
+      "specs": {
+        "accuracy_class": "Class 1 (IEC 61672-1)"
+      },
+      "note": "단종, 후속 NL-53"
+    },
+    {
+      "model": "NL-62",
+      "specs": {
+        "accuracy_class": "Class 1"
+      },
+      "note": "단종품 페이지. 페이지 본문이 NL-52 단종 안내와 섞여 있음"
+    },
+    {
+      "model": "NL-62A",
+      "specs": {},
+      "note": "단종품 페이지 주소만 검색 결과에서 확인",
+      "uncertain": true
+    },
+    {
+      "model": "NL-42A",
+      "specs": {},
+      "note": "NL-52A 페이지의 문서 제목에 함께 나옴",
+      "uncertain": true
+    }
+  ],
+  "options": [
+    "NX-43WR 파형 녹음",
+    "NX-43RT 옥타브·1/3 옥타브 실시간 분석",
+    "NX-63RT (NL-63 용 옥타브 분석)",
+    "NX-43RV 잔향 시간",
+    "NX-43FT FFT 분석(출시 예정 표기)",
+    "AS-60 데이터 관리 소프트웨어"
+  ],
+  "relations": [
+    {
+      "type": "same_family_as",
+      "target": "rion-na-28"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://rion-sv.com/nl-43_53_63/index.html",
+      "retrieved": "2026-10-08",
+      "note": "제조사 NL-43/53/63 소개 페이지"
+    },
+    {
+      "url": "https://rion-sv.com/products/NL-53.html",
+      "retrieved": "2026-10-08",
+      "note": "NL-53 제품 페이지"
+    },
+    {
+      "url": "https://rion-sv.com/products/NL-63.html",
+      "retrieved": "2026-10-08",
+      "note": "NL-63 제품 페이지"
+    },
+    {
+      "url": "https://rion-sv.com/products/NL-43.html",
+      "retrieved": "2026-10-08",
+      "note": "NL-43 제품 페이지"
+    },
+    {
+      "url": "https://rion-sv.com/products/unavailable/NL-52.html",
+      "retrieved": "2026-10-08",
+      "note": "NL-52 단종품 페이지"
+    },
+    {
+      "url": "https://rion-sv.com/products/unavailable/NL-52A.html",
+      "retrieved": "2026-10-08",
+      "note": "NL-52A 단종품 페이지"
+    },
+    {
+      "url": "https://rion-sv.com/products/unavailable/NL-62.html",
+      "retrieved": "2026-10-08",
+      "note": "NL-62 단종품 페이지"
+    }
+  ],
+  "confidence": "limited",
+  "notes": "측정 범위(dB)·주파수 범위·마이크 형식은 데이터시트 PDF 에만 있다. 개요 페이지의 「up to four channels」 는 동시 측정 채널 수인지 확인하지 못했다. 측정 장비라 test_items 를 비움."
+}

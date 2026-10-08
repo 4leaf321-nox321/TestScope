@@ -1,0 +1,265 @@
+{
+  "id": "keysight-infiniivision-3000g-x",
+  "kind": "equipment_series",
+  "name": "InfiniiVision 3000G X-Series Oscilloscopes",
+  "name_ko": "키사이트 InfiniiVision 3000G X 오실로스코프",
+  "manufacturer": "keysight",
+  "brand": "InfiniiVision",
+  "category": "oscilloscope",
+  "subcategory": "mixed_signal_oscilloscope",
+  "form_factor": "benchtop",
+  "description": "100 MHz~1 GHz 대역의 2·4채널 오실로스코프 계열(20종)로 전 기종 파형 발생기 내장. 8.5 inch 정전식 터치 화면, 1,000,000 wfms/s 갱신율, 존 터치 트리거. MSOX 기종은 16 디지털 채널. 키사이트 현재 분류로는 XR2-class.",
+  "test_items": [],
+  "limits": {
+    "bandwidth_Hz": {
+      "min": 100000000,
+      "max": 1000000000,
+      "note": "원문 100 MHz~1 GHz"
+    },
+    "sample_rate_Sa_s": {
+      "max": 5000000000,
+      "note": "원문 5 GSa/s (MSOX3104G 페이지)"
+    },
+    "record_length_pts": {
+      "max": 4000000,
+      "note": "원문 4 Mpts"
+    },
+    "channels": {
+      "values": [
+        2,
+        4
+      ]
+    },
+    "logic_channel_count": {
+      "values": [
+        16
+      ],
+      "note": "MSOX 기종. 숫자는 MSOX3104G·MSOX3054G·MSOX3032G 페이지에서 확인"
+    },
+    "adc_resolution_bit": {
+      "values": [
+        8
+      ]
+    },
+    "display_size_in": {
+      "values": [
+        8.5
+      ]
+    }
+  },
+  "models": [
+    {
+      "model": "DSOX3012G",
+      "specs": {
+        "bandwidth_Hz": 100000000,
+        "channels": 2,
+        "record_length_pts": 4000000
+      },
+      "note": "파형 발생기 내장(제품 머리글 with built-in waveform generator)"
+    },
+    {
+      "model": "DSOX3014G",
+      "specs": {
+        "bandwidth_Hz": 100000000,
+        "channels": 4
+      },
+      "note": "파형 발생기 내장(제품 머리글 with built-in waveform generator)"
+    },
+    {
+      "model": "DSOX3022G",
+      "specs": {
+        "bandwidth_Hz": 200000000,
+        "channels": 2
+      },
+      "note": "파형 발생기 내장(제품 머리글 with built-in waveform generator)"
+    },
+    {
+      "model": "DSOX3024G",
+      "specs": {
+        "bandwidth_Hz": 200000000,
+        "channels": 4
+      },
+      "note": "파형 발생기 내장(제품 머리글 with built-in waveform generator)"
+    },
+    {
+      "model": "DSOX3032G",
+      "specs": {
+        "bandwidth_Hz": 350000000,
+        "channels": 2
+      },
+      "note": "파형 발생기 내장(제품 머리글 with built-in waveform generator)"
+    },
+    {
+      "model": "DSOX3034G",
+      "specs": {
+        "bandwidth_Hz": 350000000,
+        "channels": 4,
+        "record_length_pts": 4000000
+      },
+      "note": "파형 발생기 내장(제품 머리글 with built-in waveform generator)"
+    },
+    {
+      "model": "DSOX3052G",
+      "specs": {
+        "bandwidth_Hz": 500000000,
+        "channels": 2
+      },
+      "note": "파형 발생기 내장(제품 머리글 with built-in waveform generator)"
+    },
+    {
+      "model": "DSOX3054G",
+      "specs": {
+        "bandwidth_Hz": 500000000,
+        "channels": 4
+      },
+      "note": "파형 발생기 내장(제품 머리글 with built-in waveform generator)"
+    },
+    {
+      "model": "DSOX3102G",
+      "specs": {
+        "bandwidth_Hz": 1000000000,
+        "channels": 2
+      },
+      "note": "파형 발생기 내장(제품 머리글 with built-in waveform generator)"
+    },
+    {
+      "model": "DSOX3104G",
+      "specs": {
+        "bandwidth_Hz": 1000000000,
+        "channels": 4
+      },
+      "note": "파형 발생기 내장(제품 머리글 with built-in waveform generator)"
+    },
+    {
+      "model": "MSOX3012G",
+      "variant": "mixed signal",
+      "specs": {
+        "bandwidth_Hz": 100000000,
+        "channels": 2
+      },
+      "note": "혼합 신호·파형 발생기 내장(제품 머리글 mixed signal with built-in waveform generator)"
+    },
+    {
+      "model": "MSOX3014G",
+      "variant": "mixed signal",
+      "specs": {
+        "bandwidth_Hz": 100000000,
+        "channels": 4
+      },
+      "note": "혼합 신호·파형 발생기 내장(제품 머리글 mixed signal with built-in waveform generator)"
+    },
+    {
+      "model": "MSOX3022G",
+      "variant": "mixed signal",
+      "specs": {
+        "bandwidth_Hz": 200000000,
+        "channels": 2
+      },
+      "note": "혼합 신호·파형 발생기 내장(제품 머리글 mixed signal with built-in waveform generator)"
+    },
+    {
+      "model": "MSOX3024G",
+      "variant": "mixed signal",
+      "specs": {
+        "bandwidth_Hz": 200000000,
+        "channels": 4
+      },
+      "note": "혼합 신호·파형 발생기 내장(제품 머리글 mixed signal with built-in waveform generator)"
+    },
+    {
+      "model": "MSOX3032G",
+      "variant": "mixed signal",
+      "specs": {
+        "bandwidth_Hz": {
+          "value": 350000000,
+          "uncertain": true,
+          "note": "제품 머리글은 300 MHz, 본문은 350 MHz 로 적음"
+        },
+        "channels": 2,
+        "logic_channel_count": 16
+      },
+      "note": "혼합 신호·파형 발생기 내장(제품 머리글 mixed signal with built-in waveform generator)"
+    },
+    {
+      "model": "MSOX3034G",
+      "variant": "mixed signal",
+      "specs": {
+        "bandwidth_Hz": {
+          "value": 300000000,
+          "uncertain": true,
+          "note": "제품 머리글 원문 300 MHz. 같은 페이지 형식의 MSOX3032G 는 본문에 350 MHz 로 적어 머리글 오기일 수 있음"
+        },
+        "channels": 4
+      },
+      "note": "혼합 신호·파형 발생기 내장(제품 머리글 mixed signal with built-in waveform generator)"
+    },
+    {
+      "model": "MSOX3052G",
+      "variant": "mixed signal",
+      "specs": {
+        "bandwidth_Hz": 500000000,
+        "channels": 2
+      },
+      "note": "혼합 신호·파형 발생기 내장(제품 머리글 mixed signal with built-in waveform generator)"
+    },
+    {
+      "model": "MSOX3054G",
+      "variant": "mixed signal",
+      "specs": {
+        "bandwidth_Hz": 500000000,
+        "channels": 4,
+        "logic_channel_count": 16,
+        "record_length_pts": 4000000
+      },
+      "note": "혼합 신호·파형 발생기 내장(제품 머리글 mixed signal with built-in waveform generator)"
+    },
+    {
+      "model": "MSOX3102G",
+      "variant": "mixed signal",
+      "specs": {
+        "bandwidth_Hz": 1000000000,
+        "channels": 2
+      },
+      "note": "혼합 신호·파형 발생기 내장(제품 머리글 mixed signal with built-in waveform generator)"
+    },
+    {
+      "model": "MSOX3104G",
+      "variant": "mixed signal",
+      "specs": {
+        "bandwidth_Hz": 1000000000,
+        "channels": 4,
+        "logic_channel_count": 16,
+        "sample_rate_Sa_s": 5000000000,
+        "record_length_pts": 4000000,
+        "adc_resolution_bit": 8,
+        "display_size_in": 8.5
+      },
+      "note": "제조사 페이지: 1 GHz · 4 analog + 16 digital · 5 GSa/s · 4 Mpts · 8 bits · 8.5-inch · 1,000,000 wfms/s"
+    }
+  ],
+  "features": [
+    "전 기종 파형 발생기 내장",
+    "8.5 inch 정전식 터치 화면",
+    "존 터치 트리거",
+    "1,000,000 wfms/s 갱신율"
+  ],
+  "sources": [
+    {
+      "url": "https://www.keysight.com/us/en/product/MSOX3104G/",
+      "retrieved": "2026-10-08",
+      "note": "제조사 기종 페이지. 1 GHz, 4 analog + 16 digital, 5 GSa/s, 4 Mpts, 8 bits, 8.5-inch, 1,000,000 wfms/s"
+    },
+    {
+      "url": "https://www.keysight.com/us/en/product/DSOX3014G/",
+      "retrieved": "2026-10-08",
+      "note": "제조사 기종 페이지 머리글. 나머지 DSOX30xxG·MSOX30xxG 도 같은 주소 형식(/us/en/product/<기종>/)의 페이지 머리글로 대역폭·채널 수를 확인"
+    },
+    {
+      "url": "https://www.keysight.com/us/en/product/DSOX3034G/oscilloscope-350-mhz-4-analog-channels.html",
+      "retrieved": "2026-10-08",
+      "note": "검색 결과 발췌: 20 models ranging from 100 MHz to 1 GHz, 8.5-inch capacitive touch. DSOX3012G·DSOX3034G 4 Mpts, MSOX3054G 4 analog plus 16 digital, 4 Mpts"
+    }
+  ],
+  "confidence": "limited",
+  "notes": "MSOX3032G·MSOX3034G 의 제품 머리글은 300 MHz 로 적혀 있어 확인이 필요함(uncertain)."
+}

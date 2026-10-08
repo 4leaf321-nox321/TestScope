@@ -1,0 +1,415 @@
+{
+  "id": "espec-hr-high-rate",
+  "kind": "equipment_series",
+  "name": "ESPEC High-Rate Thermal Cycle Chambers (HRS / HRG)",
+  "name_ko": "에스펙 고속 온도 사이클 챔버 (HRS 온습도·HRG 온도)",
+  "manufacturer": "espec",
+  "category": "climatic_chamber",
+  "drive": "thermal",
+  "form_factor": "floor",
+  "description": "온도 변화 속도 20 또는 25 K/min 의 고속 온도 사이클 챔버. -70~+180 °C, HRS 는 습도 20~98 %rh 를 더한다. 내용적 357·600·800·1800 L.",
+  "test_items": [
+    "temperature_cycling",
+    "damp_heat"
+  ],
+  "limits": {
+    "temperature_degC": {
+      "min": -70,
+      "max": 180
+    },
+    "humidity_pct": {
+      "min": 20,
+      "max": 98,
+      "note": "HRS 만"
+    },
+    "heating_rate_K_min": {
+      "min": 20,
+      "max": 25,
+      "note": "페이지 'Temp. change rate' 20 또는 25 K/min(승온·강온 구분 없음)"
+    },
+    "cooling_rate_K_min": {
+      "min": 20,
+      "max": 25,
+      "note": "페이지 'Temp. change rate' 20 또는 25 K/min"
+    },
+    "chamber_volume_L": {
+      "min": 357,
+      "max": 1800,
+      "values": [
+        357,
+        600,
+        800,
+        1800
+      ]
+    }
+  },
+  "models": [
+    {
+      "model": "HRS-357HS-20",
+      "variant": "온습도",
+      "specs": {
+        "temperature_degC": {
+          "min": -70,
+          "max": 180
+        },
+        "chamber_volume_L": 357,
+        "inner_mm": "W700×H850×D600",
+        "heating_rate_K_min": {
+          "max": 20,
+          "note": "페이지 'Temp. change rate'"
+        },
+        "cooling_rate_K_min": {
+          "max": 20,
+          "note": "페이지 'Temp. change rate'"
+        },
+        "humidity_pct": {
+          "min": 20,
+          "max": 98
+        }
+      }
+    },
+    {
+      "model": "HRS-600HS-20",
+      "variant": "온습도",
+      "specs": {
+        "temperature_degC": {
+          "min": -70,
+          "max": 180
+        },
+        "chamber_volume_L": 600,
+        "inner_mm": "W1000×H1000×D600",
+        "heating_rate_K_min": {
+          "max": 20,
+          "note": "페이지 'Temp. change rate'"
+        },
+        "cooling_rate_K_min": {
+          "max": 20,
+          "note": "페이지 'Temp. change rate'"
+        },
+        "humidity_pct": {
+          "min": 20,
+          "max": 98
+        }
+      }
+    },
+    {
+      "model": "HRS-800HS-20",
+      "variant": "온습도",
+      "specs": {
+        "temperature_degC": {
+          "min": -70,
+          "max": 180
+        },
+        "chamber_volume_L": 800,
+        "inner_mm": "W1000×H1000×D800",
+        "heating_rate_K_min": {
+          "max": 20,
+          "note": "페이지 'Temp. change rate'"
+        },
+        "cooling_rate_K_min": {
+          "max": 20,
+          "note": "페이지 'Temp. change rate'"
+        },
+        "humidity_pct": {
+          "min": 20,
+          "max": 98
+        }
+      }
+    },
+    {
+      "model": "HRS-1800HS-20",
+      "variant": "온습도",
+      "specs": {
+        "temperature_degC": {
+          "min": -70,
+          "max": 180
+        },
+        "chamber_volume_L": 1800,
+        "inner_mm": "W1500×H1200×D1000",
+        "heating_rate_K_min": {
+          "max": 20,
+          "note": "페이지 'Temp. change rate'"
+        },
+        "cooling_rate_K_min": {
+          "max": 20,
+          "note": "페이지 'Temp. change rate'"
+        },
+        "humidity_pct": {
+          "min": 20,
+          "max": 98
+        }
+      }
+    },
+    {
+      "model": "HRS-357HS-25",
+      "variant": "온습도",
+      "specs": {
+        "temperature_degC": {
+          "min": -70,
+          "max": 180
+        },
+        "chamber_volume_L": 357,
+        "inner_mm": "W700×H850×D600",
+        "heating_rate_K_min": {
+          "max": 25,
+          "note": "페이지 'Temp. change rate'"
+        },
+        "cooling_rate_K_min": {
+          "max": 25,
+          "note": "페이지 'Temp. change rate'"
+        },
+        "humidity_pct": {
+          "min": 20,
+          "max": 98
+        }
+      }
+    },
+    {
+      "model": "HRS-600HS-25",
+      "variant": "온습도",
+      "specs": {
+        "temperature_degC": {
+          "min": -70,
+          "max": 180
+        },
+        "chamber_volume_L": 600,
+        "inner_mm": "W1000×H1000×D600",
+        "heating_rate_K_min": {
+          "max": 25,
+          "note": "페이지 'Temp. change rate'"
+        },
+        "cooling_rate_K_min": {
+          "max": 25,
+          "note": "페이지 'Temp. change rate'"
+        },
+        "humidity_pct": {
+          "min": 20,
+          "max": 98
+        }
+      }
+    },
+    {
+      "model": "HRS-800HS-25",
+      "variant": "온습도",
+      "specs": {
+        "temperature_degC": {
+          "min": -70,
+          "max": 180
+        },
+        "chamber_volume_L": 800,
+        "inner_mm": "W1000×H1000×D800",
+        "heating_rate_K_min": {
+          "max": 25,
+          "note": "페이지 'Temp. change rate'"
+        },
+        "cooling_rate_K_min": {
+          "max": 25,
+          "note": "페이지 'Temp. change rate'"
+        },
+        "humidity_pct": {
+          "min": 20,
+          "max": 98
+        }
+      }
+    },
+    {
+      "model": "HRS-1800HS-25",
+      "variant": "온습도",
+      "specs": {
+        "temperature_degC": {
+          "min": -70,
+          "max": 180
+        },
+        "chamber_volume_L": 1800,
+        "inner_mm": "W1500×H1200×D1000",
+        "heating_rate_K_min": {
+          "max": 25,
+          "note": "페이지 'Temp. change rate'"
+        },
+        "cooling_rate_K_min": {
+          "max": 25,
+          "note": "페이지 'Temp. change rate'"
+        },
+        "humidity_pct": {
+          "min": 20,
+          "max": 98
+        }
+      }
+    },
+    {
+      "model": "HRG-357HS-20",
+      "variant": "온도 전용",
+      "specs": {
+        "temperature_degC": {
+          "min": -70,
+          "max": 180
+        },
+        "chamber_volume_L": 357,
+        "inner_mm": "W700×H850×D600",
+        "heating_rate_K_min": {
+          "max": 20,
+          "note": "페이지 'Temp. change rate'"
+        },
+        "cooling_rate_K_min": {
+          "max": 20,
+          "note": "페이지 'Temp. change rate'"
+        }
+      }
+    },
+    {
+      "model": "HRG-600HS-20",
+      "variant": "온도 전용",
+      "specs": {
+        "temperature_degC": {
+          "min": -70,
+          "max": 180
+        },
+        "chamber_volume_L": 600,
+        "inner_mm": "W1000×H1000×D600",
+        "heating_rate_K_min": {
+          "max": 20,
+          "note": "페이지 'Temp. change rate'"
+        },
+        "cooling_rate_K_min": {
+          "max": 20,
+          "note": "페이지 'Temp. change rate'"
+        }
+      }
+    },
+    {
+      "model": "HRG-800HS-20",
+      "variant": "온도 전용",
+      "specs": {
+        "temperature_degC": {
+          "min": -70,
+          "max": 180
+        },
+        "chamber_volume_L": 800,
+        "inner_mm": "W1000×H1000×D800",
+        "heating_rate_K_min": {
+          "max": 20,
+          "note": "페이지 'Temp. change rate'"
+        },
+        "cooling_rate_K_min": {
+          "max": 20,
+          "note": "페이지 'Temp. change rate'"
+        }
+      }
+    },
+    {
+      "model": "HRG-1800HS-20",
+      "variant": "온도 전용",
+      "specs": {
+        "temperature_degC": {
+          "min": -70,
+          "max": 180
+        },
+        "chamber_volume_L": 1800,
+        "inner_mm": "W1500×H1200×D1000",
+        "heating_rate_K_min": {
+          "max": 20,
+          "note": "페이지 'Temp. change rate'"
+        },
+        "cooling_rate_K_min": {
+          "max": 20,
+          "note": "페이지 'Temp. change rate'"
+        }
+      }
+    },
+    {
+      "model": "HRG-357HS-25",
+      "variant": "온도 전용",
+      "specs": {
+        "temperature_degC": {
+          "min": -70,
+          "max": 180
+        },
+        "chamber_volume_L": 357,
+        "inner_mm": "W700×H850×D600",
+        "heating_rate_K_min": {
+          "max": 25,
+          "note": "페이지 'Temp. change rate'"
+        },
+        "cooling_rate_K_min": {
+          "max": 25,
+          "note": "페이지 'Temp. change rate'"
+        }
+      }
+    },
+    {
+      "model": "HRG-600HS-25",
+      "variant": "온도 전용",
+      "specs": {
+        "temperature_degC": {
+          "min": -70,
+          "max": 180
+        },
+        "chamber_volume_L": 600,
+        "inner_mm": "W1000×H1000×D600",
+        "heating_rate_K_min": {
+          "max": 25,
+          "note": "페이지 'Temp. change rate'"
+        },
+        "cooling_rate_K_min": {
+          "max": 25,
+          "note": "페이지 'Temp. change rate'"
+        }
+      }
+    },
+    {
+      "model": "HRG-800HS-25",
+      "variant": "온도 전용",
+      "specs": {
+        "temperature_degC": {
+          "min": -70,
+          "max": 180
+        },
+        "chamber_volume_L": 800,
+        "inner_mm": "W1000×H1000×D800",
+        "heating_rate_K_min": {
+          "max": 25,
+          "note": "페이지 'Temp. change rate'"
+        },
+        "cooling_rate_K_min": {
+          "max": 25,
+          "note": "페이지 'Temp. change rate'"
+        }
+      }
+    },
+    {
+      "model": "HRG-1800HS-25",
+      "variant": "온도 전용",
+      "specs": {
+        "temperature_degC": {
+          "min": -70,
+          "max": 180
+        },
+        "chamber_volume_L": 1800,
+        "inner_mm": "W1500×H1200×D1000",
+        "heating_rate_K_min": {
+          "max": 25,
+          "note": "페이지 'Temp. change rate'"
+        },
+        "cooling_rate_K_min": {
+          "max": 25,
+          "note": "페이지 'Temp. change rate'"
+        }
+      }
+    }
+  ],
+  "relations": [
+    {
+      "type": "same_family_as",
+      "target": "espec-platinous-chambers"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://www.espec.co.jp/english/products/env-test/hr/",
+      "retrieved": "2026-10-08",
+      "note": "제조사 영문 페이지 사양표(기종 16행)"
+    }
+  ],
+  "confidence": "limited",
+  "notes": "무게·온도 변동은 페이지에 없다."
+}

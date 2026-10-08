@@ -1,0 +1,95 @@
+{
+  "id": "rigol-dho800",
+  "kind": "equipment_series",
+  "name": "DHO800 Series Digital Oscilloscope",
+  "name_ko": "리골 DHO800 디지털 오실로스코프",
+  "manufacturer": "rigol",
+  "brand": "DHO",
+  "category": "oscilloscope",
+  "subcategory": "high_definition_oscilloscope",
+  "form_factor": "benchtop",
+  "description": "70·100 MHz 대역의 2·4채널 12 bit 오실로스코프 계열임. 1.25 GSa/s, 25 Mpts, 7 inch HD 터치 화면.",
+  "test_items": [],
+  "limits": {
+    "bandwidth_Hz": {
+      "min": 70000000,
+      "max": 100000000
+    },
+    "sample_rate_Sa_s": {
+      "max": 1250000000
+    },
+    "record_length_pts": {
+      "max": 25000000
+    },
+    "channels": {
+      "values": [
+        2,
+        4
+      ]
+    },
+    "adc_resolution_bit": {
+      "values": [
+        12
+      ]
+    },
+    "display_size_in": {
+      "values": [
+        7
+      ]
+    }
+  },
+  "models": [
+    {
+      "model": "DHO802",
+      "specs": {
+        "bandwidth_Hz": 70000000,
+        "channels": 2,
+        "sample_rate_Sa_s": 1250000000,
+        "record_length_pts": 25000000,
+        "adc_resolution_bit": 12,
+        "display_size_in": 7
+      }
+    },
+    {
+      "model": "DHO804",
+      "specs": {
+        "bandwidth_Hz": 70000000,
+        "channels": 4,
+        "sample_rate_Sa_s": 1250000000,
+        "record_length_pts": 25000000,
+        "adc_resolution_bit": 12,
+        "display_size_in": 7
+      }
+    },
+    {
+      "model": "DHO812",
+      "specs": {
+        "bandwidth_Hz": 100000000,
+        "channels": 2,
+        "sample_rate_Sa_s": 1250000000,
+        "record_length_pts": 25000000,
+        "adc_resolution_bit": 12,
+        "display_size_in": 7
+      }
+    },
+    {
+      "model": "DHO814",
+      "specs": {
+        "bandwidth_Hz": 100000000,
+        "channels": 4,
+        "sample_rate_Sa_s": 1250000000,
+        "record_length_pts": 25000000,
+        "adc_resolution_bit": 12,
+        "display_size_in": 7
+      }
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://www.rigolna.com/products/rigol-digital-oscilloscopes/dho800/",
+      "retrieved": "2026-10-08",
+      "note": "리골 북미 법인 사이트(rigolna.com)의 제품 페이지 기종 표. 원문 1.25 GSa/s, 25 Mpts, 12 Bit. 7-inch HD Touchscreen 은 특징 항목"
+    }
+  ],
+  "confidence": "limited"
+}

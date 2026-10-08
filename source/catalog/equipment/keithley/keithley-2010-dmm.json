@@ -1,0 +1,35 @@
+{
+  "id": "keithley-2010-dmm",
+  "kind": "equipment_series",
+  "name": "Keithley 2010 Series 7½-Digit Multimeter with Scanning",
+  "name_ko": "키슬리 2010 7½자리 스캐닝 멀티미터",
+  "manufacturer": "keithley",
+  "brand": "2010",
+  "category": "dmm_daq",
+  "form_factor": "benchtop",
+  "description": "정밀 센서·변환기·A/D·D/A 변환기·레귤레이터·기준 전압·커넥터·스위치·릴레이 시험용 7½자리 멀티미터. DCV 반복도 7 ppm, 잡음 바닥 100 nV rms, 측정 기능 15종(RTD·열전대 온도 포함), 10 Ω 저항 레인지, 저전력 저항 측정 전류 100 μA 까지, 건식 회로 시험·오프셋 보상 저항 등 저항 측정 기능 4종.",
+  "test_items": [],
+  "models": [
+    {
+      "model": "2010",
+      "specs": {
+        "dmm_resolution_digits": 7.5,
+        "accuracy": "DCV 반복도 7 ppm(원문 7ppm DCV repeatability)",
+        "interfaces": "GPIB, RS-232"
+      }
+    }
+  ],
+  "features": [
+    "측정 기능 15종(RTD·열전대 포함)",
+    "건식 회로 시험·오프셋 보상 저항 측정",
+    "스캐닝"
+  ],
+  "sources": [
+    {
+      "url": "https://www.tek.com/en/products/keithley/digital-multimeter/2010-series",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지. 7.5 digits, 7ppm DCV repeatability, 100nV rms noise floor, 15 functions, GPIB/RS232"
+    }
+  ],
+  "confidence": "limited"
+}

@@ -1,0 +1,67 @@
+{
+  "id": "testo-883",
+  "kind": "equipment_series",
+  "name": "testo 883 Thermal Imager",
+  "name_ko": "테스토 883 열화상 카메라",
+  "manufacturer": "testo",
+  "category": "thermal_imager",
+  "form_factor": "handheld",
+  "description": "정비 · 설비 점검용 testo 열화상 카메라. 적외 해상도 320 × 240(SuperResolution 640 × 480), 열 감도 <0.04 °C, 영상 갱신 27 Hz. 수동 초점 · 앱 · 레이저 판(883-2)이 있다.",
+  "test_items": [
+    "thermography"
+  ],
+  "measurands": [
+    "surface_temperature",
+    "temperature_distribution",
+    "hotspot_location"
+  ],
+  "limits": {
+    "ir_resolution_pixels": {
+      "max": 76800,
+      "note": "320 × 240",
+      "uncertain": true
+    },
+    "thermal_sensitivity_degC": {
+      "max": 0.04,
+      "uncertain": true
+    }
+  },
+  "models": [
+    {
+      "model": "testo 883",
+      "specs": {
+        "detector_pixels": "320 × 240",
+        "ir_resolution_pixels": 76800,
+        "thermal_sensitivity_degC": 0.04,
+        "frame_rate_fps": 27
+      },
+      "note": "SuperResolution 640 × 480. 값은 검색 발췌",
+      "uncertain": true
+    },
+    {
+      "model": "testo 883-2",
+      "note": "제품 페이지 제목 'testo 883-2 - thermal imager (320 x 240 pixels, manual focus, App, laser)'. 주문 번호 0560 8836",
+      "uncertain": true
+    }
+  ],
+  "relations": [
+    {
+      "type": "performs",
+      "target": "thermography"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://www.testo.com/en-US/products/testo-883-for-maintenance",
+      "retrieved": "2026-10-08",
+      "note": "제조사 소개 페이지. 검색 엔진이 보여 준 제조사 페이지 발췌로 읽음(페이지를 직접 열지 못함). 이 출처의 값은 uncertain"
+    },
+    {
+      "url": "https://www.testo.com/en-UK/testo-883-2/p/0560-8836",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지. 검색 엔진이 보여 준 제조사 페이지 발췌로 읽음(페이지를 직접 열지 못함). 이 출처의 값은 uncertain"
+    }
+  ],
+  "confidence": "limited",
+  "notes": "측정 범위 · 파장은 검색 발췌에 없었다. testo.com 제품 페이지는 조회 제한(429)으로 직접 읽지 못했다."
+}

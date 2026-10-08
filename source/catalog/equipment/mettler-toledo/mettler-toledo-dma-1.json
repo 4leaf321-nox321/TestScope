@@ -1,0 +1,90 @@
+{
+  "id": "mettler-toledo-dma-1",
+  "kind": "equipment_series",
+  "name": "METTLER TOLEDO DMA 1 Dynamic Mechanical Analyzer",
+  "name_ko": "메틀러토레도 DMA 1 동적기계분석기",
+  "manufacturer": "mettler-toledo",
+  "category": "dma",
+  "description": "DMA. -190~600 °C, 힘 0.001~10 N, 주파수 0.001~300 Hz, 변위 ±1 mm, 강성 범위 50~10⁵ N/m. 담금(액중)·습도 제어 부속이 있다.",
+  "test_items": [
+    "dma"
+  ],
+  "measurands": [
+    "mechanical.storage_modulus",
+    "mechanical.loss_modulus",
+    "mechanical.loss_tangent",
+    "thermal.glass_transition"
+  ],
+  "measurands_by_item": {
+    "dma": [
+      "mechanical.storage_modulus",
+      "mechanical.loss_modulus",
+      "mechanical.loss_tangent",
+      "thermal.glass_transition"
+    ]
+  },
+  "limits": {
+    "temperature_degC": {
+      "min": -190,
+      "max": 600,
+      "uncertain": true
+    },
+    "frequency_Hz": {
+      "min": 0.001,
+      "max": 300,
+      "uncertain": true
+    }
+  },
+  "models": [
+    {
+      "model": "DMA 1",
+      "specs": {
+        "temperature_degC": {
+          "min": -190,
+          "max": 600,
+          "uncertain": true
+        },
+        "force_N": {
+          "min": 0.001,
+          "max": 10,
+          "uncertain": true
+        },
+        "frequency_Hz": {
+          "min": 0.001,
+          "max": 300,
+          "uncertain": true
+        },
+        "displacement_mm": {
+          "value": 1,
+          "uncertain": true,
+          "note": "±1 mm"
+        },
+        "accuracy_degC": {
+          "value": 0.75,
+          "uncertain": true,
+          "note": "±0.75 K"
+        }
+      },
+      "note": "강성 범위 50 N/m~10⁵ N/m(검색 발췌)"
+    }
+  ],
+  "options": [
+    "Submersion(액중 DMA)",
+    "Humidity(습도 제어 DMA)"
+  ],
+  "relations": [
+    {
+      "type": "same_family_as",
+      "target": "mettler-dma-sdta861e"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://www.mt.com/us/en/home/products/Laboratory_Analytics_Browse/TA_Family_Browse/ta-instruments/thermal-analysis-system-DMA-1.html",
+      "retrieved": "2026-10-08",
+      "note": "제조사 페이지가 자동 조회를 막아(HTTP 403/406) 직접 열지 못함. 값은 웹 검색 엔진이 이 페이지에서 뽑은 발췌로만 확인했다 — 값마다 uncertain. -190~600 °C, 힘 0.001~10 N, 주파수 0.001~300 Hz, 온도 정확도 ±0.75 K, 변위 ±1 mm, 강성 50~10⁵ N/m"
+    }
+  ],
+  "confidence": "limited",
+  "notes": "DMA/SDTA 1+ 제품 페이지도 있으나 이번에 사양을 확인하지 못했다. 원 객체 mettler-dma-sdta861e 의 후속인지는 확인하지 못해 same_family_as 로만 잇는다."
+}

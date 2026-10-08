@@ -1,0 +1,85 @@
+{
+  "id": "lab-equipment-truedrop-drop-testers",
+  "kind": "equipment_series",
+  "name": "L.A.B. Equipment TrueDrop / AccuDrop Drop Test Systems (TrueDrop 160 / 500 / 1300, AccuDrop 125)",
+  "name_ko": "L.A.B. TrueDrop·AccuDrop 낙하 시험기",
+  "manufacturer": "lab-equipment",
+  "brand": "TrueDrop",
+  "category": "drop_tester",
+  "drive": "pneumatic",
+  "form_factor": "floor",
+  "description": "정밀 자유낙하 시험기 계열. TrueDrop 160 은 탑재 73 kg, 낙하 높이 305~1,829 mm, 충격 구역 914×813 mm(포장 깊이 813 mm 까지), 정밀 리니어 레일·단일 낙하 암, LCD 핸드헬드 제어기, 공기 620 kPa·60 lpm, 기계 무게 590 kg. TrueDrop 500·1300(대형 제품·포장용)과 소형 포장용 AccuDrop 125 가 같은 목록에 있다.",
+  "test_items": [
+    "free_fall_drop"
+  ],
+  "measurands": [
+    "drop_survival_height"
+  ],
+  "materials": [
+    "packaged products"
+  ],
+  "limits": {
+    "payload_kg": {
+      "max": 73,
+      "note": "TrueDrop 160 기준. 다른 기종 값은 미확인"
+    },
+    "drop_height_mm": {
+      "min": 305,
+      "max": 1829,
+      "note": "TrueDrop 160"
+    }
+  },
+  "models": [
+    {
+      "model": "TrueDrop 160",
+      "specs": {
+        "payload_kg": 73,
+        "drop_height_mm": {
+          "min": 305,
+          "max": 1829
+        },
+        "package_size_mm": 813,
+        "weight_kg": 590
+      },
+      "note": "충격 구역 914×813 mm(W×D). 100~220 VAC 1상 7 A, 공기 90 PSI(620 kPa)/2 cfm(60 lpm). 크기 103×36×69 in(H×W×D)"
+    },
+    {
+      "model": "TrueDrop 500",
+      "specs": {},
+      "note": "목록 이름만(링크 주소는 accudrop-500)",
+      "uncertain": true
+    },
+    {
+      "model": "TrueDrop 1300",
+      "specs": {},
+      "note": "목록 설명: 가장 큰 시험품·포장용 초대형 자유낙하",
+      "uncertain": true
+    },
+    {
+      "model": "AccuDrop 125",
+      "specs": {},
+      "note": "목록 설명: 작은 포장용 고정밀 낙하",
+      "uncertain": true
+    }
+  ],
+  "relations": [
+    {
+      "type": "performs",
+      "target": "free_fall_drop"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://www.labequipment.com/truedrop-160/",
+      "retrieved": "2026-10-08",
+      "note": "제조사 TrueDrop 160 페이지"
+    },
+    {
+      "url": "https://www.labequipment.com/drop-test-systems/",
+      "retrieved": "2026-10-08",
+      "note": "제조사 낙하 시험기 목록"
+    }
+  ],
+  "confidence": "limited",
+  "notes": "페이지는 ISTA·ASTM·ISO·MIL STD 등을 만족한다고만 하고 규격 번호를 적지 않았다. TrueDrop 160 외 기종의 수치는 조회하지 않았다."
+}

@@ -1,0 +1,139 @@
+{
+  "id": "keysight-mxg-x-series",
+  "kind": "equipment_series",
+  "name": "Keysight MXG X-Series Signal Generators (N5181B / N5182B / N5183B)",
+  "name_ko": "키사이트 MXG X-시리즈 신호발생기",
+  "manufacturer": "keysight",
+  "brand": "MXG",
+  "category": "signal_generator",
+  "subcategory": "rf_microwave",
+  "description": "연구개발용 RF·마이크로파 신호발생기 계열. N5182B 는 9 kHz~6 GHz 벡터 신호발생기로 공장 등화된 160 MHz RF 대역폭(업그레이드 옵션)을 내고, N5181B 는 같은 주파수의 아날로그 신호발생기, N5183B 는 9 kHz~40 GHz 마이크로파 아날로그 신호발생기다. 1 GHz·20 kHz 오프셋 위상 잡음 -146 dBc/Hz 다. N5182B·N5181B 는 단종 예정이며 각각 N5186A·N5185A 로 대체된다.",
+  "test_items": [],
+  "limits": {
+    "output_frequency_Hz": {
+      "min": 9000,
+      "max": 40000000000,
+      "note": "N5181B·N5182B 9 kHz~6 GHz, N5183B 9 kHz~40 GHz"
+    },
+    "bandwidth_Hz": {
+      "max": 160000000,
+      "note": "N5182B 최대 변조 대역폭 160 MHz(업그레이드 옵션)"
+    },
+    "rf_output_level_dBm": {
+      "max": 24,
+      "note": "1 GHz 에서 N5181B·N5182B 24 dBm, N5183B 23 dBm. 최소 레벨은 페이지에 없다"
+    },
+    "phase_noise_dBc_Hz": {
+      "values": [
+        -146
+      ],
+      "note": "1 GHz 반송파, 20 kHz 오프셋. 세 기종 같음"
+    },
+    "channels": {
+      "values": [
+        1
+      ],
+      "note": "출력 1개"
+    }
+  },
+  "models": [
+    {
+      "model": "N5182B",
+      "variant": "vector",
+      "specs": {
+        "output_frequency_Hz": {
+          "min": 9000,
+          "max": 6000000000
+        },
+        "bandwidth_Hz": 160000000,
+        "rf_output_level_dBm": {
+          "max": 24,
+          "note": "1 GHz"
+        },
+        "phase_noise_dBc_Hz": {
+          "values": [
+            -146
+          ],
+          "note": "1 GHz 반송파, 20 kHz 오프셋"
+        },
+        "channels": 1
+      },
+      "note": "단종 예정, 대체 기종 N5186A. 고조파 -35 dBc(1 GHz), 주파수 전환 800 µs. 페이지 요약에 base model 3 GHz(주파수 옵션) 언급"
+    },
+    {
+      "model": "N5181B",
+      "variant": "analog",
+      "specs": {
+        "output_frequency_Hz": {
+          "min": 9000,
+          "max": 6000000000
+        },
+        "rf_output_level_dBm": {
+          "max": 24,
+          "note": "1 GHz"
+        },
+        "phase_noise_dBc_Hz": {
+          "values": [
+            -146
+          ],
+          "note": "1 GHz 반송파, 20 kHz 오프셋"
+        },
+        "channels": 1
+      },
+      "note": "단종 예정, 대체 기종 N5185A. 고조파 -35 dBc(1 GHz), 주파수 전환 800 µs"
+    },
+    {
+      "model": "N5183B",
+      "variant": "microwave analog",
+      "specs": {
+        "output_frequency_Hz": {
+          "min": 9000,
+          "max": 40000000000
+        },
+        "rf_output_level_dBm": {
+          "max": 23,
+          "note": "1 GHz"
+        },
+        "phase_noise_dBc_Hz": {
+          "values": [
+            -146
+          ],
+          "note": "1 GHz 반송파, 20 kHz 오프셋"
+        },
+        "channels": 1
+      },
+      "note": "고조파 -33 dBc(1 GHz), 주파수 전환 600 µs, 2U. 스텝 감쇠기 옵션 115 dB. 고출력 옵션 구성에서 20 GHz +19 dBm·고조파 -55 dBc·스퓨리어스 -68 dBc 로 적힘"
+    }
+  ],
+  "features": [
+    "낮은 위상 잡음·스퓨리어스",
+    "공장 등화 160 MHz RF 대역폭(N5182B)",
+    "AM·FM·위상 변조(N5183B)",
+    "Signal Studio 로 표준 신호 생성"
+  ],
+  "relations": [
+    {
+      "type": "same_family_as",
+      "target": "keysight-exg-x-series"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://www.keysight.com/us/en/product/N5182B/mxg-x-series-rf-vector-signal-generator-9-khz-6-ghz.html",
+      "retrieved": "2026-10-08",
+      "note": "제조사 N5182B 제품 페이지. 주파수, 변조 대역폭, 출력, 위상 잡음, 단종 예정 안내"
+    },
+    {
+      "url": "https://www.keysight.com/us/en/product/N5181B/mxg-x-series-rf-analog-signal-generator-9-khz-6-ghz.html",
+      "retrieved": "2026-10-08",
+      "note": "제조사 N5181B 제품 페이지. 주파수, 출력, 위상 잡음, 단종 예정 안내"
+    },
+    {
+      "url": "https://www.keysight.com/us/en/product/N5183B/mxg-x-series-microwave-analog-signal-generator-9-khz-40-ghz.html",
+      "retrieved": "2026-10-08",
+      "note": "제조사 N5183B 제품 페이지. 주파수, 출력, 위상 잡음, 옵션"
+    }
+  ],
+  "confidence": "limited",
+  "notes": "출력 레벨 하한·ACPR·EVM 수치는 제품 페이지에 없다(데이터시트 PDF 대기)."
+}

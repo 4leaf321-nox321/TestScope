@@ -1,0 +1,111 @@
+{
+  "id": "teledyne-lecroy-wavemaster-8000hd",
+  "kind": "equipment_series",
+  "name": "WaveMaster 8000HD High Definition Oscilloscopes",
+  "name_ko": "텔레다인 르크로이 WaveMaster 8000HD 오실로스코프",
+  "manufacturer": "teledyne-lecroy",
+  "brand": "WaveMaster",
+  "category": "oscilloscope",
+  "subcategory": "high_definition_oscilloscope",
+  "form_factor": "benchtop",
+  "description": "20~65 GHz 대역의 12 bit 고분해능 초고대역 오실로스코프 계열임. 20·25·33 GHz 기종은 4채널 160 GS/s·8000 Mpts/ch, 50·59·65 GHz 기종은 1.85 mm 입력 기준 320 GS/s·16000 Mpts(1·2채널), 입력 조합에 따라 2·3·4채널.",
+  "test_items": [],
+  "limits": {
+    "bandwidth_Hz": {
+      "min": 20000000000,
+      "max": 65000000000
+    },
+    "sample_rate_Sa_s": {
+      "min": 160000000000,
+      "max": 320000000000
+    },
+    "record_length_pts": {
+      "min": 8000000000,
+      "max": 16000000000
+    },
+    "channels": {
+      "values": [
+        4
+      ]
+    },
+    "adc_resolution_bit": {
+      "values": [
+        12
+      ]
+    }
+  },
+  "models": [
+    {
+      "model": "WaveMaster 8200HD",
+      "specs": {
+        "bandwidth_Hz": 20000000000,
+        "channels": 4,
+        "sample_rate_Sa_s": 160000000000,
+        "record_length_pts": 8000000000,
+        "adc_resolution_bit": 12
+      },
+      "note": "원문 160 GS/s · 8000 Mpts/ch"
+    },
+    {
+      "model": "WaveMaster 8250HD",
+      "specs": {
+        "bandwidth_Hz": 25000000000,
+        "channels": 4,
+        "sample_rate_Sa_s": 160000000000,
+        "record_length_pts": 8000000000,
+        "adc_resolution_bit": 12
+      },
+      "note": "원문 160 GS/s · 8000 Mpts/ch"
+    },
+    {
+      "model": "WaveMaster 8330HD",
+      "specs": {
+        "bandwidth_Hz": 33000000000,
+        "channels": 4,
+        "sample_rate_Sa_s": 160000000000,
+        "record_length_pts": 8000000000,
+        "adc_resolution_bit": 12
+      },
+      "note": "원문 160 GS/s · 8000 Mpts/ch"
+    },
+    {
+      "model": "WaveMaster 8500HD",
+      "specs": {
+        "bandwidth_Hz": 50000000000,
+        "sample_rate_Sa_s": 320000000000,
+        "record_length_pts": 16000000000,
+        "adc_resolution_bit": 12
+      },
+      "note": "원문 4 (ProAxial 33 GHz 또는 ProBus 2 GHz 입력 조합), 3, or 2 (1.85mm inputs @ full BW) · 320 GS/s · 16000 Mpts"
+    },
+    {
+      "model": "WaveMaster 8590HD",
+      "specs": {
+        "bandwidth_Hz": 59000000000,
+        "sample_rate_Sa_s": 320000000000,
+        "record_length_pts": 16000000000,
+        "adc_resolution_bit": 12
+      },
+      "note": "원문 채널 4/3/2 (입력 조합), 1.85mm inputs: 320 GS/s, 16000 Mpts on 1 or 2 Ch, 12 bits; up to 15 bits with ERES"
+    },
+    {
+      "model": "WaveMaster 8650HD",
+      "specs": {
+        "bandwidth_Hz": 65000000000,
+        "sample_rate_Sa_s": 320000000000,
+        "record_length_pts": 16000000000,
+        "adc_resolution_bit": 12
+      },
+      "note": "원문 채널 4/3/2 (입력 조합), 1.85mm inputs: 320 GS/s, 16000 Mpts on 1 or 2 Ch, 12 bits; up to 15 bits with ERES"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://www.teledynelecroy.com/wavemaster-hd",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지 기종 표. 원문 대역폭·채널 구성·Sample Rate·Memory·12 bits"
+    }
+  ],
+  "confidence": "limited",
+  "notes": "50 GHz 이상 기종은 입력 조합에 따라 채널 수가 달라 channels 를 비우고 비고에 원문을 둠."
+}

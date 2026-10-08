@@ -1,0 +1,148 @@
+{
+  "id": "teseq-nsg-437-435",
+  "kind": "equipment_series",
+  "name": "Teseq NSG 437 / NSG 435 ESD Simulators",
+  "name_ko": "테세크 NSG 437·NSG 435 ESD 시뮬레이터",
+  "manufacturer": "teseq",
+  "brand": "NSG",
+  "category": "esd_simulator",
+  "form_factor": "handheld",
+  "description": "Teseq(AMETEK CTS) 의 ESD 시뮬레이터. NSG 437 은 기중·접촉 방전 30 kV, ISO 10605·IEC 61000-4-2 사전 설정, 60종 넘는 교체식 방전 회로망. NSG 435 는 200 V~16.5 kV 프로그래머블, IEC 61000-4-2, 단종(2030-10-31 까지 지원).",
+  "test_items": [
+    "esd_immunity"
+  ],
+  "standards": {
+    "compliance": [],
+    "test_methods": [
+      "IEC 61000-4-2",
+      "ISO 10605 (NSG 437)"
+    ]
+  },
+  "limits": {
+    "esd_voltage_kV": {
+      "min": 0.2,
+      "max": 30,
+      "note": "NSG 435 0.2~16.5 kV, NSG 437 최대 30 kV"
+    },
+    "discharge_mode": {
+      "values": [
+        "contact",
+        "air"
+      ]
+    },
+    "frequency_Hz": {
+      "max": 25,
+      "note": "NSG 437 기중 25 Hz, 접촉 20 Hz 까지"
+    }
+  },
+  "models": [
+    {
+      "model": "NSG 437",
+      "specs": {
+        "esd_voltage_kV": {
+          "min": 0.2,
+          "max": 30
+        },
+        "air_discharge_V": {
+          "min": 200,
+          "max": 30000,
+          "note": "100 V 단계"
+        },
+        "contact_discharge_V": {
+          "min": 200,
+          "max": 30000,
+          "note": "100 V 단계"
+        },
+        "discharge_mode": {
+          "values": [
+            "contact",
+            "air"
+          ]
+        },
+        "polarity": {
+          "values": [
+            "positive",
+            "negative",
+            "alternating"
+          ],
+          "note": "원문 Positive, negative / automatic change"
+        },
+        "frequency_Hz": {
+          "values": [
+            0.5,
+            1,
+            5,
+            10,
+            20,
+            25
+          ],
+          "note": "기중 0.5/1/5/10/20/25 Hz, 접촉 0.5/1/5/10/20 Hz, 연속 운전 가능"
+        },
+        "weight_kg": 1.2,
+        "operating_temperature_degC": {
+          "min": 5,
+          "max": 40
+        },
+        "operating_humidity_pct": {
+          "min": 20,
+          "max": 80,
+          "note": "결로 없음, 68~106 kPa"
+        }
+      },
+      "note": "컬러 터치 화면, 전압 유지 기능, 방전 검출(임계값 선택), 활동 기록. 방전 회로망 60종 이상 옵션. 사양서(691-055B, 2014-03) 2쪽: 유지 시간 > 5 s(±5 %), 충전 저항 50 MΩ, 충전 전압 정확도 ±5 % 이내, 카운터 0~9999, RC 회로망 R 0~20 kΩ·C 50~2000 pF 범위, 무게 방전 건(케이블 제외) 약 1.2 kg·베이스 약 5.7 kg, 상용 전원 어댑터 100~250 VAC"
+    },
+    {
+      "model": "NSG 435",
+      "specs": {
+        "esd_voltage_kV": {
+          "min": 0.2,
+          "max": 16.5
+        },
+        "discharge_mode": {
+          "values": [
+            "contact",
+            "air"
+          ]
+        }
+      },
+      "note": "단종 — 2030-10-31 까지 지원(16.5 kV 카테고리 페이지). 배터리 구동, 선택 사양 상용 전원. 단발·반복 방전, 수동·자동 극성 전환"
+    }
+  ],
+  "relations": [
+    {
+      "type": "performs",
+      "target": "esd_immunity"
+    },
+    {
+      "type": "same_family_as",
+      "target": "teseq-nsg-438"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://www.ametek-cts.com/products/brands/teseq/nsg-437",
+      "retrieved": "2026-10-08",
+      "note": "제조사 NSG 437 페이지"
+    },
+    {
+      "url": "https://www.ametek-cts.com/products/brands/teseq/nsg-435-disc",
+      "retrieved": "2026-10-08",
+      "note": "제조사 NSG 435 페이지(단종 표기)"
+    },
+    {
+      "url": "https://www.ametek-cts.com/products/productgroups/electrostatic-discharge-esd/16-5-kv",
+      "retrieved": "2026-10-08",
+      "note": "제조사 16.5 kV 카테고리 — NSG 435 지원 종료일"
+    },
+    {
+      "file": "teseq/nsg_437.pdf",
+      "pages": [
+        1,
+        2
+      ],
+      "note": "NSG 437 사양서(691-055B, March 2014). 1쪽 특징, 2쪽 기술 사양"
+    }
+  ],
+  "confidence": "catalog",
+  "notes": "NSG 437 값은 사양서 PDF(691-055B, 2014-03) 2쪽으로 채움. NSG 435 값(0.2~16.5 kV)은 웹 페이지 그대로."
+}

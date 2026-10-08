@@ -1,0 +1,64 @@
+{
+  "id": "ta-instruments-discovery-sdt-650",
+  "kind": "equipment_series",
+  "name": "TA Instruments Discovery SDT 650 Simultaneous DSC-TGA",
+  "name_ko": "TA 인스트루먼트 Discovery SDT 650 동시열분석기",
+  "manufacturer": "ta-instruments",
+  "category": "sta",
+  "description": "Discovery 계열 동시 DSC-TGA. 상온~1500 °C.",
+  "test_items": [
+    "tga",
+    "dsc"
+  ],
+  "measurands": [
+    "thermal.decomposition_temp",
+    "thermal.char_residue",
+    "thermal.glass_transition",
+    "thermal.melting_point"
+  ],
+  "measurands_by_item": {
+    "tga": [
+      "thermal.decomposition_temp",
+      "thermal.char_residue"
+    ],
+    "dsc": [
+      "thermal.glass_transition",
+      "thermal.melting_point"
+    ]
+  },
+  "limits": {
+    "temperature_degC": {
+      "max": 1500,
+      "uncertain": true,
+      "note": "ambient to 1500 °C"
+    }
+  },
+  "models": [
+    {
+      "model": "SDT 650",
+      "variant": "Discovery SDT 650",
+      "specs": {
+        "temperature_degC": {
+          "max": 1500,
+          "uncertain": true,
+          "note": "ambient to 1500 °C"
+        }
+      }
+    }
+  ],
+  "relations": [
+    {
+      "type": "same_family_as",
+      "target": "ta-instruments-sdt-q600"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://www.tainstruments.com/sdt-650/",
+      "retrieved": "2026-10-08",
+      "note": "제조사 페이지가 자동 조회를 막아(HTTP 403/406) 직접 열지 못함. 값은 웹 검색 엔진이 이 페이지에서 뽑은 발췌로만 확인했다 — 값마다 uncertain. 상온~1500 °C"
+    }
+  ],
+  "confidence": "limited",
+  "notes": "SDT Q600 은 원 객체 ta-instruments-sdt-q600 에 있다."
+}

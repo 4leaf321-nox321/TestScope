@@ -1,0 +1,244 @@
+{
+  "id": "saginomiya-smh-material-fatigue",
+  "kind": "equipment_series",
+  "name": "Saginomiya SMH Material Fatigue Test System (FT Series / ST Series)",
+  "name_ko": "사기노미야 SMH 재료 피로시험 시스템(FT·ST 시리즈)",
+  "manufacturer": "saginomiya",
+  "category": "servohydraulic_fatigue",
+  "drive": "servohydraulic",
+  "description": "금속·플라스틱·콘크리트·목재·암석 등의 인장·압축 시험과 온습도 등 특수 조건 시험용 서보유압 재료 피로시험 시스템. FT 시리즈는 표준 프레임(액추에이터를 위 크로스헤드에 다는 것도 가능)으로 동적 ±20~±200 kN, ST 시리즈는 액추에이터를 위 크로스헤드에 달아 작은 시편부터 구조물까지 다루며 동적 ±20~±300 kN. 제어 채널 최대 4개(하중·변위 등), 자동 레인지 8단(×1~×128), 정적 하중 정확도 로드셀 용량의 ±0.2 %, 정적 변위 정확도 전 행정의 ±0.2 %, 제어 안정도 각 레인지 FS 의 ±1.0 %. 로드셀 FLC 형(전단 변형식), 변위계 차동변압기(액추에이터 내장).",
+  "test_items": [
+    "fatigue",
+    "tensile",
+    "compression"
+  ],
+  "measurands": [
+    "mechanical.fatigue_strength"
+  ],
+  "limits": {
+    "dynamic_force_kN": {
+      "min": 20,
+      "max": 300,
+      "values": [
+        20,
+        30,
+        50,
+        100,
+        200,
+        300
+      ]
+    },
+    "static_force_kN": {
+      "min": 23,
+      "max": 350
+    }
+  },
+  "models": [
+    {
+      "model": "FT-2",
+      "variant": "FT Series (표준 프레임)",
+      "specs": {
+        "dynamic_force_kN": 20,
+        "static_force_kN": 23,
+        "stroke_mm": {
+          "values": [
+            60,
+            100
+          ],
+          "note": "최대 변위 ±30 또는 ±50 mm"
+        }
+      },
+      "note": "액추에이터 EFH-20, 유압원 HPT-5. 원문 동적 ±20 kN, 정적 ±23 kN"
+    },
+    {
+      "model": "FT-3",
+      "variant": "FT Series (표준 프레임)",
+      "specs": {
+        "dynamic_force_kN": 30,
+        "static_force_kN": 35,
+        "stroke_mm": {
+          "values": [
+            60,
+            100
+          ],
+          "note": "최대 변위 ±30 또는 ±50 mm"
+        }
+      },
+      "note": "액추에이터 EFH-30, 유압원 HPT-5. 원문 동적 ±30 kN, 정적 ±35 kN"
+    },
+    {
+      "model": "FT-5",
+      "variant": "FT Series (표준 프레임)",
+      "specs": {
+        "dynamic_force_kN": 50,
+        "static_force_kN": 58,
+        "stroke_mm": {
+          "values": [
+            60,
+            100
+          ],
+          "note": "최대 변위 ±30 또는 ±50 mm"
+        }
+      },
+      "note": "액추에이터 EFH-50, 유압원 HPT-7. 원문 동적 ±50 kN, 정적 ±58 kN"
+    },
+    {
+      "model": "FT-10",
+      "variant": "FT Series (표준 프레임)",
+      "specs": {
+        "dynamic_force_kN": 100,
+        "static_force_kN": 116,
+        "stroke_mm": {
+          "values": [
+            60,
+            100
+          ],
+          "note": "최대 변위 ±30 또는 ±50 mm"
+        }
+      },
+      "note": "액추에이터 EFH-100, 유압원 HPT-15. 원문 동적 ±100 kN, 정적 ±116 kN"
+    },
+    {
+      "model": "FT-20",
+      "variant": "FT Series (표준 프레임)",
+      "specs": {
+        "dynamic_force_kN": 200,
+        "static_force_kN": 230,
+        "stroke_mm": {
+          "values": [
+            60,
+            100
+          ],
+          "note": "최대 변위 ±30 또는 ±50 mm"
+        }
+      },
+      "note": "액추에이터 EFH-200, 유압원 HPT-19. 원문 동적 ±200 kN, 정적 ±230 kN"
+    },
+    {
+      "model": "ST-2",
+      "variant": "ST Series (액추에이터 상부 크로스헤드)",
+      "specs": {
+        "dynamic_force_kN": 20,
+        "static_force_kN": 23,
+        "stroke_mm": {
+          "values": [
+            100,
+            200
+          ],
+          "note": "최대 변위 ±50 또는 ±100 mm"
+        }
+      },
+      "note": "액추에이터 EFH-20, 유압원 HPT-5. 원문 동적 ±20 kN, 정적 ±23 kN"
+    },
+    {
+      "model": "ST-3",
+      "variant": "ST Series (액추에이터 상부 크로스헤드)",
+      "specs": {
+        "dynamic_force_kN": 30,
+        "static_force_kN": 35,
+        "stroke_mm": {
+          "values": [
+            100,
+            200
+          ],
+          "note": "최대 변위 ±50 또는 ±100 mm"
+        }
+      },
+      "note": "액추에이터 EFH-30, 유압원 HPT-7. 원문 동적 ±30 kN, 정적 ±35 kN"
+    },
+    {
+      "model": "ST-5",
+      "variant": "ST Series (액추에이터 상부 크로스헤드)",
+      "specs": {
+        "dynamic_force_kN": 50,
+        "static_force_kN": 58,
+        "stroke_mm": {
+          "values": [
+            100,
+            200
+          ],
+          "note": "최대 변위 ±50 또는 ±100 mm"
+        }
+      },
+      "note": "액추에이터 EFH-50, 유압원 HPT-15. 원문 동적 ±50 kN, 정적 ±58 kN"
+    },
+    {
+      "model": "ST-10",
+      "variant": "ST Series (액추에이터 상부 크로스헤드)",
+      "specs": {
+        "dynamic_force_kN": 100,
+        "static_force_kN": 116,
+        "stroke_mm": {
+          "values": [
+            100,
+            200
+          ],
+          "note": "최대 변위 ±50 또는 ±100 mm"
+        }
+      },
+      "note": "액추에이터 EFH-100, 유압원 HPT-22. 원문 동적 ±100 kN, 정적 ±116 kN"
+    },
+    {
+      "model": "ST-20",
+      "variant": "ST Series (액추에이터 상부 크로스헤드)",
+      "specs": {
+        "dynamic_force_kN": 200,
+        "static_force_kN": 230,
+        "stroke_mm": {
+          "values": [
+            100,
+            200
+          ],
+          "note": "최대 변위 ±50 또는 ±100 mm"
+        }
+      },
+      "note": "액추에이터 EFH-200, 유압원 HPT-45. 원문 동적 ±200 kN, 정적 ±230 kN"
+    },
+    {
+      "model": "ST-30",
+      "variant": "ST Series (액추에이터 상부 크로스헤드)",
+      "specs": {
+        "dynamic_force_kN": 300,
+        "static_force_kN": 350,
+        "stroke_mm": {
+          "values": [
+            100,
+            200
+          ],
+          "note": "최대 변위 ±50 또는 ±100 mm"
+        }
+      },
+      "note": "액추에이터 EFH-300, 유압원 HPT-55. 원문 동적 ±300 kN, 정적 ±350 kN"
+    }
+  ],
+  "accuracy": {
+    "static_load": "±0.2% of load cell capacity",
+    "static_displacement": "±0.2% of full stroke",
+    "control_stability": "±1.0% of FS in each range"
+  },
+  "features": [
+    "로드 프레임: FT 시리즈 NFT / FTC / FTB, ST 시리즈 ST-10S·20S·30S / ST-10W·20W·30W",
+    "프레임 강성(크로스헤드 테이블 500 mm, mm/kN): FT 시리즈 NFT 0.0016 · FTB 0.0012 · 0.00065, ST 시리즈 0.002 · 0.001 · 0.00067",
+    "그립: 환봉 그립, 옵션 분할형 환봉 그립"
+  ],
+  "relations": [
+    {
+      "type": "same_family_as",
+      "target": "saginomiya-bmh-lst"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://www.saginomiya.co.jp/en/dynamic/material/smh.html",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지(HTML) 본문·표를 직접 읽음. SMH201 FT Series·SMH202 ST Series 사양표"
+    },
+    {
+      "url": "https://www.saginomiya.co.jp/en/dynamic/material/index.html",
+      "retrieved": "2026-10-08",
+      "note": "제조사 재료 피로시험 시스템 목록(SMH·BMH·EMH·DMH·CMH·FMH·GMH·HMH·IMH·JMH·KMH·LMH·MMH·NMH)"
+    }
+  ],
+  "confidence": "limited",
+  "notes": "표의 프레임·유압원 행은 칸이 기종 열과 1:1 로 맞지 않아(프레임 3종 대 기종 5종) 프레임 강성은 features 에 원문 그대로 두었다. 액추에이터·유압원 형식은 표의 칸 순서대로 기종에 대응시켰다(칸 수가 기종 수와 같다)."
+}

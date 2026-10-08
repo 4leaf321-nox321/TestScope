@@ -122,6 +122,24 @@ export default function ReviewPage() {
         </div>
       </div>
 
+      {/**
+       * **요청이 없는 미연결 장비까지** — 대장으로 들인 장비는 요청 없이 미연결로 남는다.
+       * 왜 미연결인지(같은 기종 있음 · 계열만 있음 · 정본에 없음 · 모델명 없음)로 갈라 둔
+       * 목록이라, 요청 화면 옆에 문을 둔다.
+       */}
+      <div className="rounded-md border p-4">
+        <h2 className="text-base font-semibold">카탈로그 보강</h2>
+        <p className="text-muted-foreground mt-1 text-sm">
+          카탈로그 기종에 연결되지 않은 장비 전체를 사유별로 분류. 같은 기종이 있으면 연결,
+          계열만 있으면 기종 등록, 카탈로그에 없으면 CSV로 사양서 조사. 시스템 관리자 전용.
+        </p>
+        <div className="mt-3">
+          <Button asChild size="sm" variant="outline">
+            <Link to="/admin/catalog-gaps">보기</Link>
+          </Button>
+        </div>
+      </div>
+
       <p className="text-muted-foreground text-xs">
         후보 출처: 반입(카탈로그)과 정본의 추천(
         <span className="font-mono">source/catalog/proposals</span>). 추천은 정답이 아님. 근거

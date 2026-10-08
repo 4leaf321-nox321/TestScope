@@ -1,0 +1,81 @@
+{
+  "id": "imv-k-series-shaker",
+  "kind": "equipment_series",
+  "name": "IMV K-Series Water-cooled Large Vibration Test Systems",
+  "name_ko": "IMV K 시리즈 수랭식 대형 진동 시험 장치",
+  "manufacturer": "imv",
+  "brand": "K-series",
+  "category": "vibration_shaker",
+  "form_factor": "floor",
+  "description": "수랭식 대형 범용 진동 시험 장치. 흡·배기 소음이 없어 조용하고 허용 편심 모멘트가 커서 무거운 시료를 안정되게 가진한다. 개요 기준 가진력 30.8~350 kN, 탑재 질량 500~3,000 kg, 충격 가진력 최대 750 kN. 페이지의 구성 예로 K125 2대(X·Y축)와 K060(Z축) 조합, 진동대 2,000×2,500 mm·최대 탑재 질량 2,000 kg 이 실려 있다.",
+  "test_items": [
+    "vibration_sine_random",
+    "mechanical_shock"
+  ],
+  "measurands": [
+    "resonance_frequency",
+    "transmissibility",
+    "fatigue_life"
+  ],
+  "materials": [
+    "large products",
+    "automotive components",
+    "batteries"
+  ],
+  "limits": {
+    "force_kN": {
+      "min": 30.8,
+      "max": 350,
+      "note": "개요 페이지 30.8KN～350kN"
+    },
+    "force_shock_kN": {
+      "max": 750,
+      "note": "원문 最大で750kNもの大きなショック加振力"
+    },
+    "payload_kg": {
+      "min": 500,
+      "max": 3000,
+      "note": "개요 페이지 500～3,000kg"
+    }
+  },
+  "models": [
+    {
+      "model": "K125",
+      "specs": {},
+      "note": "3축 구성 예에서 X·Y축용으로 2대. 정격은 페이지에 없음"
+    },
+    {
+      "model": "K060",
+      "specs": {},
+      "note": "3축 구성 예에서 Z축용. 정격은 페이지에 없음"
+    }
+  ],
+  "features": [
+    "수랭식(흡·배기 소음 없음)",
+    "큰 허용 편심 모멘트"
+  ],
+  "relations": [
+    {
+      "type": "performs",
+      "target": "vibration_sine_random"
+    },
+    {
+      "type": "same_family_as",
+      "target": "imv-a-series-shaker"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://we-are-imv.com/business/products/item/vibrationtest-kseries/",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지(일본어)"
+    },
+    {
+      "url": "https://we-are-imv.com/business/products/vibrationtest/",
+      "retrieved": "2026-10-08",
+      "note": "제조사 진동 시험기 개요"
+    }
+  ],
+  "confidence": "limited",
+  "notes": "K125·K060 외 기종명과 기종별 정격은 페이지에 없다."
+}

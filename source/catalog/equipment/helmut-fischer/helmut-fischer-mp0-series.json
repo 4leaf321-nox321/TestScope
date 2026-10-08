@@ -1,0 +1,95 @@
+{
+  "id": "helmut-fischer-mp0-series",
+  "kind": "equipment_series",
+  "name": "Helmut Fischer MP0 Series (DUALSCOPE / ISOSCOPE / PERMASCOPE MP0, MP0-FP, MP0R, MP0R-FP, MP0R-FPW)",
+  "name_ko": "헬무트 피셔 MP0 소형 도막 두께계",
+  "manufacturer": "helmut-fischer",
+  "category": "coating_surface_test",
+  "form_factor": "handheld",
+  "description": "소형 휴대형 도막 두께계 계열. 측정 방식에 따라 DUALSCOPE MP0(진폭 감응 와전류 + 자기 유도, 0~2,000 µm), ISOSCOPE MP0(와전류, 0~1,200 µm), PERMASCOPE MP0(자기 유도, 0~2,500 µm) 세 구성이 있고, 기본형 MP0 · MP0-FP(케이블 프로브)는 측정값 1,000 개, 상위형 MP0R · MP0R-FP · MP0R-FPW(각진 케이블 프로브)는 10,000 개 저장과 USB 전송, 자동 회전 화면, IMO PSPC · SSPC-PA2 측정 모드를 갖춘다.",
+  "test_items": [
+    "coating_thickness"
+  ],
+  "measurands": [
+    "coating_thickness"
+  ],
+  "limits": {
+    "coating_thickness_um": {
+      "min": 0,
+      "max": 2500,
+      "note": "DUALSCOPE 0~2,000 · ISOSCOPE 0~1,200 · PERMASCOPE 0~2,500 µm"
+    }
+  },
+  "models": [
+    {
+      "model": "MP0",
+      "variant": "기본형, 일체 프로브",
+      "note": "DUALSCOPE · ISOSCOPE · PERMASCOPE 구성; 저장: 1,000 개"
+    },
+    {
+      "model": "MP0-FP",
+      "variant": "기본형, 케이블 프로브",
+      "note": "DUALSCOPE · ISOSCOPE · PERMASCOPE 구성; 저장: 1,000 개"
+    },
+    {
+      "model": "MP0R",
+      "variant": "상위형",
+      "specs": {
+        "interfaces": "USB"
+      },
+      "note": "DUALSCOPE · ISOSCOPE · PERMASCOPE 구성; 저장: 10,000 개"
+    },
+    {
+      "model": "MP0R-FP",
+      "variant": "상위형, 케이블 프로브",
+      "specs": {
+        "interfaces": "USB"
+      },
+      "note": "DUALSCOPE · ISOSCOPE · PERMASCOPE 구성; 저장: 10,000 개"
+    },
+    {
+      "model": "MP0R-FPW",
+      "variant": "상위형, 각진 케이블 프로브",
+      "specs": {
+        "interfaces": "USB"
+      },
+      "note": "DUALSCOPE · ISOSCOPE · PERMASCOPE 구성; 저장: 10,000 개"
+    }
+  ],
+  "range_table": [
+    {
+      "device": "DUALSCOPE MP0",
+      "method": "진폭 감응 와전류 + 자기 유도",
+      "range": "0~2,000 µm"
+    },
+    {
+      "device": "ISOSCOPE MP0",
+      "method": "진폭 감응 와전류",
+      "range": "0~1,200 µm"
+    },
+    {
+      "device": "PERMASCOPE MP0",
+      "method": "자기 유도",
+      "range": "0~2,500 µm"
+    }
+  ],
+  "relations": [
+    {
+      "type": "performs",
+      "target": "coating_thickness"
+    },
+    {
+      "type": "same_family_as",
+      "target": "helmut-fischer-dmp10-40-series"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://www.helmut-fischer.com/products/tactile-measuring-devices/mp0-series",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지"
+    }
+  ],
+  "notes": "기종명은 페이지 표기대로 MP0 · MP0R 등으로 적고 측정 방식(DUALSCOPE 등)은 note 와 range_table 로 남겼다 — 대장에는 'DUALSCOPE MP0R' 처럼 붙어 적힐 수 있다. 세 구성 × 다섯 기종의 모든 조합이 실제로 파는지는 페이지가 말하지 않는다. 정확도는 페이지에 없다.",
+  "confidence": "limited"
+}

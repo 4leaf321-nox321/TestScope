@@ -1,0 +1,136 @@
+{
+  "id": "hioki-im35xx-lcr-meters",
+  "kind": "equipment_series",
+  "name": "Hioki LCR Meters IM3523A / IM3533 / IM3536",
+  "name_ko": "히오키 LCR 미터 IM3523A · IM3533 · IM3536",
+  "manufacturer": "hioki",
+  "brand": "IM",
+  "category": "network_lcr_analyzer",
+  "form_factor": "benchtop",
+  "description": "히오키의 10 MHz 이하 LCR 미터 계열. 기본 확도 Z ±0.05% rdg., θ ±0.03°, 측정 범위 100 mΩ~100 MΩ(10 레인지). IM3523A 는 40 Hz~200 kHz 생산 라인용(2 ms), IM3533 은 1 mHz~200 kHz(IM3533-01 은 주파수 스윕 추가), IM3536 은 DC·4 Hz~8 MHz 에 최고 1 ms.",
+  "test_items": [],
+  "limits": {
+    "frequency_Hz": {
+      "min": 0.001,
+      "max": 8000000,
+      "note": "IM3533 1 mHz 부터, IM3536 8 MHz 까지(DC 측정도 함). IM3523A 40 Hz~200 kHz"
+    },
+    "impedance_ohm": {
+      "min": 0.1,
+      "max": 100000000,
+      "note": "세 기종 모두 100 mΩ to 100 MΩ, 10 ranges"
+    },
+    "measurement_time_s": {
+      "max": 0.002,
+      "note": "IM3536 최고 1 ms, IM3523A·IM3533 2 ms(1 kHz, FAST)"
+    }
+  },
+  "models": [
+    {
+      "model": "IM3523A",
+      "specs": {
+        "frequency_Hz": {
+          "min": 40,
+          "max": 200000,
+          "note": "5자리 설정 분해능"
+        },
+        "accuracy": "Z ±0.05% rdg. θ ±0.03°",
+        "measurement_time_s": 0.002,
+        "test_signal_level": "V·CV 모드 5 mV~5 Vrms(1 mVrms 단계), CC 모드 10 μA~50 mArms",
+        "impedance_ohm": {
+          "min": 0.1,
+          "max": 100000000,
+          "note": "10 레인지"
+        },
+        "interfaces": "EXT I/O(handler), USB, LAN"
+      },
+      "note": "측정 시간 2 ms 는 1 kHz, FAST, 대표값"
+    },
+    {
+      "model": "IM3533",
+      "specs": {
+        "frequency_Hz": {
+          "min": 0.001,
+          "max": 200000,
+          "note": "최소 분해능 1 mHz"
+        },
+        "accuracy": "Z ±0.05% rdg. θ ±0.03°",
+        "measurement_time_s": 0.002,
+        "test_signal_level": "일반 모드 V·CV 5 mV~5 Vrms, CC 10 μA~50 mArms; 저임피던스 모드 V·CV 5 mV~2.5 Vrms, CC 10 μA~100 mArms",
+        "impedance_ohm": {
+          "min": 0.1,
+          "max": 100000000,
+          "note": "10 레인지"
+        },
+        "interfaces": "EXT I/O(Handler), USB, USB 메모리, 선택 1종(RS-232C·GP-IB·LAN)"
+      },
+      "note": "외부 DC 바이어스 유닛 9268-10(±40 V)·9269-10(최대 2 A) 선택"
+    },
+    {
+      "model": "IM3533-01",
+      "variant": "주파수 스윕 시험 기능을 더한 고급 기능 모델",
+      "specs": {
+        "frequency_Hz": {
+          "min": 0.001,
+          "max": 200000
+        },
+        "accuracy": "Z ±0.05% rdg. θ ±0.03°",
+        "impedance_ohm": {
+          "min": 0.1,
+          "max": 100000000,
+          "note": "10 레인지"
+        }
+      }
+    },
+    {
+      "model": "IM3536",
+      "specs": {
+        "frequency_Hz": {
+          "min": 4,
+          "max": 8000000,
+          "note": "DC 측정 가능, 5자리 설정 분해능(최소 10 mHz)"
+        },
+        "accuracy": "Z ±0.05% rdg. θ ±0.03°(대표값, 측정 가능 범위 1 mΩ~200 MΩ)",
+        "measurement_time_s": 0.001,
+        "test_signal_level": "일반 모드 4 Hz~1 MHz 10 mV~5 Vrms(최대 50 mA), 1.0001~8 MHz 10 mV~1 Vrms(최대 10 mA); 저임피던스 모드 4 Hz~1 MHz 10 mV~1 Vrms(최대 100 mA)",
+        "impedance_ohm": {
+          "min": 0.1,
+          "max": 100000000,
+          "note": "10 레인지"
+        },
+        "interfaces": "EXT I/O(HANDLER), USB, USB 플래시, LAN, GP-IB, RS-232C, BCD"
+      },
+      "note": "내장 DC 바이어스 0 V~2.50 V(10 mV 분해능, 저임피던스 모드에서는 좁아짐). 측정 파라미터 Z, Y, θ, X, G, B, Q, Rdc, Rs(ESR), Rp, Ls, Lp, Cs, Cp, D(tanδ), σ, ε"
+    }
+  ],
+  "relations": [
+    {
+      "type": "same_family_as",
+      "target": "hioki-im3570-impedance-analyzer"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://www.hioki.com/global/products/lcr-meters/10-mhz",
+      "retrieved": "2026-10-08",
+      "note": "제조사 'LCR Meters, up to 10 MHz' 목록 페이지. IM3523A 40 Hz to 200 kHz·±0.05%·2 ms, IM3536 DC 또는 4 Hz to 8 MHz, IM3533 1 mHz to 200 kHz·±0.05%·2 ms"
+    },
+    {
+      "url": "https://www.hioki.com/global/products/lcr-meters/10-mhz/id_1265475",
+      "retrieved": "2026-10-08",
+      "note": "제조사 IM3523A 페이지. 사양(주파수·확도·속도·신호 레벨·범위·인터페이스)"
+    },
+    {
+      "url": "https://www.hioki.com/global/products/lcr-meters/10-mhz/id_6065",
+      "retrieved": "2026-10-08",
+      "note": "제조사 IM3533 페이지. IM3533 / IM3533-01 사양"
+    },
+    {
+      "url": "https://www.hioki.com/global/products/lcr-meters/10-mhz/id_6057",
+      "retrieved": "2026-10-08",
+      "note": "제조사 IM3536 페이지. 사양(4 Hz to 8 MHz, DC, 1 ms, DC 바이어스 0~2.50 V 등)"
+    }
+  ],
+  "confidence": "limited",
+  "notes": "계열 이름은 제조사 분류명(LCR Meters, up to 10 MHz)을 따라 세 기종을 묶음. 구형 IM3523 은 현행 목록에 IM3523A 로 나옴."
+}

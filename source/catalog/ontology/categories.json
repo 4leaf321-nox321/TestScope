@@ -1,5 +1,5 @@
 {
- "_comment": "장비 분류 트리. parent 가 없으면 최상위. TestScope 축 equipment_category 의 값 후보. headline_specs 는 이 분류의 기종을 목록 한 줄에서 가를 대표 사양이다 — 값이 아니라 **무엇으로 판단하나**를 적는다(TestScope 사양 정의 key, 앞이 더 결정적). 안 적으면 반입이 검색축에 이어진 사양으로 대신한다.",
+ "_comment": "장비 분류 트리. parent 가 없으면 최상위. TestScope 축 equipment_category 의 값 후보. headline_specs 는 이 분류의 기종을 목록 한 줄에서 가를 대표 사양이다 — 값이 아니라 **무엇으로 판단하나**를 적는다(TestScope 사양 정의 key, 앞이 더 결정적). 안 적으면 반입이 검색축에 이어진 사양으로 대신한다. aliases 는 운영 TestScope 에서 손으로 만든 분류의 다른 표기다 — 반입이 코드 · 이름으로 못 찾으면 이것으로 찾아 코드를 붙인다(같은 분류가 두 줄로 서지 않게).",
  "categories": [
   {
    "id": "abrasion_tester",
@@ -49,7 +49,11 @@
    "id": "altitude_chamber",
    "label_ko": "저기압·고도 챔버",
    "label": "Altitude / low-pressure chamber",
-   "parent": "environmental_simulation"
+   "parent": "environmental_simulation",
+   "headline_specs": [
+    "altitude",
+    "chamber_pressure"
+   ]
   },
   {
    "id": "atomic_force_microscope",
@@ -144,7 +148,11 @@
    "id": "component_life_tester",
    "label_ko": "부품 수명 시험기(키·커넥터·케이블)",
    "label": "Component life tester",
-   "parent": "mechanical_dynamics"
+   "parent": "mechanical_dynamics",
+   "headline_specs": [
+    "cycle_rate",
+    "test_stations"
+   ]
   },
   {
    "id": "composition_spectrometer",
@@ -159,6 +167,18 @@
    "label_ko": "접촉각·표면장력 측정기",
    "label": "Contact angle analyzer",
    "registered": "2026-09-12 MaterialTwin 계측기 반입"
+  },
+  {
+   "id": "coordinate_measuring_machine",
+   "parent": "dimensional_metrology",
+   "label_ko": "3차원 측정기",
+   "label": "Coordinate measuring machine (CMM)",
+   "aliases": [
+    "3차원측정기",
+    "삼차원 측정기",
+    "CMM"
+   ],
+   "registered": "2026-10-08 운영 미연결 장비 분류(카탈로그 보강 목록)에서 등록"
   },
   {
    "id": "corrosion_chamber",
@@ -196,6 +216,18 @@
    ]
   },
   {
+   "id": "dic_strain_measurement",
+   "parent": "accessory",
+   "label_ko": "스트레인 DIC",
+   "label": "Digital image correlation (DIC) strain measurement",
+   "aliases": [
+    "DIC",
+    "스트레인/DIC",
+    "비접촉 변형 측정(DIC)"
+   ],
+   "registered": "2026-10-08 운영 미연결 장비 분류(카탈로그 보강 목록)에서 등록"
+  },
+  {
    "id": "dilatometer",
    "parent": "thermal_analysis",
    "label_ko": "열팽창계 (DIL)",
@@ -204,6 +236,18 @@
     "test_temperature",
     "displacement_range"
    ]
+  },
+  {
+   "id": "dimensional_metrology",
+   "label_ko": "치수·형상 측정장비",
+   "label": "Dimensional & form measurement",
+   "aliases": [
+    "치수형상측정장비",
+    "치수 형상 측정장비",
+    "치수/형상 측정장비",
+    "치수·형상 측정 장비"
+   ],
+   "registered": "2026-10-08 운영 미연결 장비 분류(카탈로그 보강 목록)에서 등록"
   },
   {
    "id": "display_color_analyzer",
@@ -220,6 +264,20 @@
     "frequency_range",
     "test_temperature"
    ]
+  },
+  {
+   "id": "dmm_daq",
+   "parent": "electronic_measurement",
+   "label_ko": "DMM/DAQ",
+   "label": "Digital multimeter / data acquisition",
+   "aliases": [
+    "DMM·DAQ",
+    "DMM, DAQ",
+    "디지털 멀티미터·데이터 수집",
+    "멀티미터/데이터 로거"
+   ],
+   "note": "디지털 멀티미터와 데이터 수집 장치(로거). 운영 분류가 한 칸으로 묶어 두어 정본도 한 칸으로 둠",
+   "registered": "2026-10-08 운영 미연결 장비 분류(카탈로그 보강 목록)에서 등록"
   },
   {
    "id": "drop_tester",
@@ -303,6 +361,17 @@
    ]
   },
   {
+   "id": "electronic_measurement",
+   "label_ko": "전자계측장비",
+   "label": "Electronic test & measurement",
+   "aliases": [
+    "전자 계측 장비",
+    "전자계측기",
+    "전자 계측기"
+   ],
+   "registered": "2026-10-08 운영 미연결 장비 분류(카탈로그 보강 목록)에서 등록"
+  },
+  {
    "id": "electronics_inspection",
    "label_ko": "전자부품 검사·본딩 시험장비",
    "label": "Electronics inspection & bonding test"
@@ -353,6 +422,19 @@
    "label_ko": "박막 두께 측정기 (반사율·엘립소미터)",
    "label": "Thin-film thickness analyzer",
    "registered": "2026-09-12 MaterialTwin 계측기 반입"
+  },
+  {
+   "id": "force_pressure_sensor",
+   "parent": "accessory",
+   "label_ko": "힘·압력 센서",
+   "label": "Force / pressure sensor",
+   "aliases": [
+    "힘/압력",
+    "힘·압력",
+    "힘/압력 센서"
+   ],
+   "note": "로드셀(load_cell)과 다른 칸: 시험기에 붙는 하중계가 아니라 독립 측정용 힘·압력 센서·지시계",
+   "registered": "2026-10-08 운영 미연결 장비 분류(카탈로그 보강 목록)에서 등록"
   },
   {
    "id": "force_tester",
@@ -439,6 +521,19 @@
    "headline_specs": [
     "helium_pumping_speed"
    ]
+  },
+  {
+   "id": "high_speed_swir_camera",
+   "parent": "optical_measurement",
+   "label_ko": "고속·SWIR 카메라",
+   "label": "High-speed / SWIR camera",
+   "aliases": [
+    "고속 SWIR 카메라",
+    "고속/SWIR 카메라",
+    "고속 카메라",
+    "SWIR 카메라"
+   ],
+   "registered": "2026-10-08 운영 미연결 장비 분류(카탈로그 보강 목록)에서 등록"
   },
   {
    "id": "high_speed_tensile",
@@ -566,6 +661,20 @@
    ]
   },
   {
+   "id": "network_lcr_analyzer",
+   "parent": "electronic_measurement",
+   "label_ko": "VNA/LCR",
+   "label": "Network analyzer / LCR meter",
+   "aliases": [
+    "VNA·LCR",
+    "VNA, LCR",
+    "네트워크 분석기·LCR 미터",
+    "네트워크 분석기/LCR 미터"
+   ],
+   "note": "벡터 네트워크 분석기와 LCR·임피던스 미터. 운영 분류가 한 칸으로 묶어 두어 정본도 한 칸으로 둠",
+   "registered": "2026-10-08 운영 미연결 장비 분류(카탈로그 보강 목록)에서 등록"
+  },
+  {
    "id": "nmr_spectrometer",
    "parent": "materials_analysis",
    "label_ko": "핵자기공명 분광기 (NMR)",
@@ -576,6 +685,18 @@
    "id": "optical_measurement",
    "label_ko": "광학·디스플레이 측정장비",
    "label": "Optical & display measurement"
+  },
+  {
+   "id": "optical_microscope",
+   "parent": "materials_analysis",
+   "label_ko": "광학 현미경",
+   "label": "Optical / digital microscope",
+   "aliases": [
+    "광학현미경",
+    "디지털 현미경",
+    "실체 현미경"
+   ],
+   "registered": "2026-10-08 운영 미연결 장비 분류(카탈로그 보강 목록)에서 등록"
   },
   {
    "id": "optical_profilometer",
@@ -589,6 +710,16 @@
    "label_ko": "분광광도계·형광분광기 (UV-Vis·PL)",
    "label": "Optical spectrometer",
    "registered": "2026-09-12 MaterialTwin 계측기 반입"
+  },
+  {
+   "id": "oscilloscope",
+   "parent": "electronic_measurement",
+   "label_ko": "오실로스코프",
+   "label": "Oscilloscope",
+   "aliases": [
+    "오실로 스코프"
+   ],
+   "registered": "2026-10-08 운영 미연결 장비 분류(카탈로그 보강 목록)에서 등록"
   },
   {
    "id": "particle_size_analyzer",
@@ -639,6 +770,18 @@
    "label_ko": "밀도·기공 분석기 (피크노미터·포로시미터)",
    "label": "Pycnometer / porosimeter",
    "registered": "2026-09-12 MaterialTwin 계측기 반입"
+  },
+  {
+   "id": "radio_communication_tester",
+   "parent": "electronic_measurement",
+   "label_ko": "무선통신 테스터",
+   "label": "Radio communication tester",
+   "aliases": [
+    "무선 통신 테스터",
+    "무선통신 시험기",
+    "통신 테스터"
+   ],
+   "registered": "2026-10-08 운영 미연결 장비 분류(카탈로그 보강 목록)에서 등록"
   },
   {
    "id": "resonance_fatigue",
@@ -731,6 +874,16 @@
     "hardness_scales",
     "specimen_thickness"
    ]
+  },
+  {
+   "id": "signal_generator",
+   "parent": "electronic_measurement",
+   "label_ko": "신호발생기",
+   "label": "Signal generator",
+   "aliases": [
+    "신호 발생기"
+   ],
+   "registered": "2026-10-08 운영 미연결 장비 분류(카탈로그 보강 목록)에서 등록"
   },
   {
    "id": "solderability_tester",
@@ -830,6 +983,19 @@
    "id": "thermomechanical_polymer",
    "label_ko": "고분자 열변형 시험기",
    "label": "Polymer thermo-mechanical"
+  },
+  {
+   "id": "thickness_displacement_gauge",
+   "parent": "dimensional_metrology",
+   "label_ko": "두께·변위 측정기",
+   "label": "Thickness / displacement gauge",
+   "aliases": [
+    "두께/변위",
+    "두께·변위",
+    "두께/변위 측정기",
+    "변위 센서"
+   ],
+   "registered": "2026-10-08 운영 미연결 장비 분류(카탈로그 보강 목록)에서 등록"
   },
   {
    "id": "tma",
@@ -933,7 +1099,11 @@
    "id": "water_ingress_tester",
    "label_ko": "방수(IPX) 시험 설비",
    "label": "Water ingress (IPX) test equipment",
-   "parent": "environmental_simulation"
+   "parent": "environmental_simulation",
+   "headline_specs": [
+    "ipx",
+    "water_pressure"
+   ]
   },
   {
    "id": "weathering_tester",

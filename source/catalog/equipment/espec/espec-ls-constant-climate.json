@@ -1,0 +1,129 @@
+{
+  "id": "espec-ls-constant-climate",
+  "kind": "equipment_series",
+  "name": "ESPEC LS Series Constant Climate Cabinets (LH / LHL / LHU / LU-114, LHU / LU-124)",
+  "name_ko": "에스펙 LS 계열 소형 항온항습 캐비닛",
+  "manufacturer": "espec",
+  "category": "climatic_chamber",
+  "drive": "thermal",
+  "form_factor": "floor",
+  "description": "소형 항온(항습) 캐비닛. LH 는 (주위+10 °C)~+85 °C·45~95 %rh, LHL 은 +5~+85 °C·40~95 %rh, LHU 는 -20~+85 °C·40~95 %rh, LU 는 -20~+85 °C 온도 전용. 114 는 W500×H600×D390, 124 는 W500×H750×D590 내부.",
+  "test_items": [
+    "damp_heat"
+  ],
+  "limits": {
+    "temperature_degC": {
+      "min": -20,
+      "max": 85
+    },
+    "humidity_pct": {
+      "min": 40,
+      "max": 95,
+      "note": "LH 는 45~95 %rh, LU 는 습도 없음"
+    }
+  },
+  "models": [
+    {
+      "model": "LH-114",
+      "specs": {
+        "temperature_degC": {
+          "max": 85,
+          "note": "(주위 온도 +10 °C) ~ +85 °C"
+        },
+        "humidity_pct": {
+          "min": 45,
+          "max": 95
+        },
+        "inner_mm": "W500×H600×D390",
+        "footprint_mm": "W680×H1090×D826"
+      }
+    },
+    {
+      "model": "LHL-114",
+      "specs": {
+        "temperature_degC": {
+          "min": 5,
+          "max": 85
+        },
+        "humidity_pct": {
+          "min": 40,
+          "max": 95
+        }
+      }
+    },
+    {
+      "model": "LHU-114",
+      "specs": {
+        "temperature_degC": {
+          "min": -20,
+          "max": 85
+        },
+        "humidity_pct": {
+          "min": 40,
+          "max": 95
+        },
+        "inner_mm": "W500×H600×D390",
+        "footprint_mm": "W680×H1090×D826"
+      }
+    },
+    {
+      "model": "LHU-124",
+      "specs": {
+        "temperature_degC": {
+          "min": -20,
+          "max": 85
+        },
+        "humidity_pct": {
+          "min": 40,
+          "max": 95
+        },
+        "inner_mm": "W500×H750×D590",
+        "footprint_mm": "W680×H1240×D1026"
+      }
+    },
+    {
+      "model": "LU-114",
+      "variant": "온도 전용",
+      "specs": {
+        "temperature_degC": {
+          "min": -20,
+          "max": 85
+        },
+        "inner_mm": "W500×H600×D390",
+        "footprint_mm": "W680×H1090×D826"
+      }
+    },
+    {
+      "model": "LU-124",
+      "variant": "온도 전용",
+      "specs": {
+        "temperature_degC": {
+          "min": -20,
+          "max": 85
+        },
+        "inner_mm": "W500×H750×D590",
+        "footprint_mm": "W680×H1240×D1026"
+      }
+    }
+  ],
+  "relations": [
+    {
+      "type": "same_family_as",
+      "target": "espec-lab-series",
+      "note": "앞 세대 113 계열(LU/LH/LHL/LHU-113)"
+    },
+    {
+      "type": "simulates_environment",
+      "target": "environment-damp-heat"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://www.espec.co.jp/english/products/env-test/ls/",
+      "retrieved": "2026-10-08",
+      "note": "제조사 영문 페이지 사양표(Model · Temperature range · Humidity range · Inside/Outside dimensions)"
+    }
+  ],
+  "confidence": "limited",
+  "notes": "LHL-114 의 치수는 페이지에서 읽히지 않았다. 내용적·변동·무게는 페이지에 없다."
+}

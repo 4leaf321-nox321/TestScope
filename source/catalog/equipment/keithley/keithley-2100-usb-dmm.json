@@ -1,0 +1,36 @@
+{
+  "id": "keithley-2100-usb-dmm",
+  "kind": "equipment_series",
+  "name": "Keithley 2100 Series 6½-Digit USB Multimeter",
+  "name_ko": "키슬리 2100 6½자리 USB 멀티미터",
+  "manufacturer": "keithley",
+  "brand": "2100",
+  "category": "dmm_daq",
+  "form_factor": "benchtop",
+  "description": "USB(TMC) 연결 6½자리 탁상형 멀티미터. 기본 DCV 확도 0.0038%, 측정 기능 11종, 수학 기능 8종, 앞·뒤 입력 선택. 전원 전압별로 네 가지 구성이 있다.",
+  "test_items": [],
+  "models": [
+    {
+      "model": "2100",
+      "variant": "2100/100(100 Vac), 2100/120(120 Vac), 2100/220(220 Vac), 2100/230-240(230-240 Vac)",
+      "specs": {
+        "dmm_resolution_digits": 6.5,
+        "accuracy": "기본 DCV 확도 0.0038%",
+        "interfaces": "USB 2.0(TMC)"
+      }
+    }
+  ],
+  "features": [
+    "앞·뒤 입력 선택",
+    "PC 소프트웨어(그래프·데이터 공유) 포함",
+    "측정 기능 11종, 수학 기능 8종"
+  ],
+  "sources": [
+    {
+      "url": "https://www.tek.com/en/products/keithley/digital-multimeter/2100-series",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지. 6.5 Digit USB Multimeter, 0.0038%, 11 functions, 8 math functions, USB 2.0 TMC, 2100/100·/120·/220·/230-240"
+    }
+  ],
+  "confidence": "limited"
+}

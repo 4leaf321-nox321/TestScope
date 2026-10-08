@@ -1,0 +1,130 @@
+{
+  "id": "techno-optis-sr-5100",
+  "kind": "equipment_series",
+  "name": "Techno Optis (Topcon Technohouse) SR-5100 2D Spectroradiometer",
+  "name_ko": "테크노옵티스 SR-5100 2D 분광복사계",
+  "manufacturer": "techno-optis",
+  "brand": "SR",
+  "category": "spectroradiometer",
+  "subcategory": "2d_spectroradiometer",
+  "form_factor": "benchtop",
+  "description": "5 MP(2,448 × 2,048) CMOS 로 면 전체의 분광 복사휘도를 재는 2D 분광복사계(SR-5000 계열). 측정 파장 380 ~ 780 nm, 파장 분해능 1 nm, 반치폭 7 nm. 분광 모드 휘도 0.5 ~ 17,000,000,000 cd/m², 휘도 확도 ±2 %, 색도 확도 ±0.0035 ~ ±0.005(렌즈별). XYZ 필터 모드는 0.005 ~ 100,000 cd/m². 표준 · 망원 · 접사 렌즈 판이 있다.",
+  "test_items": [
+    "photometry_colorimetry"
+  ],
+  "measurands": [
+    "luminance",
+    "chromaticity",
+    "spectral_radiance",
+    "uniformity"
+  ],
+  "limits": {
+    "resolution_pixels": {
+      "max": 5013504,
+      "note": "2,448 × 2,048"
+    },
+    "wavelength_nm": {
+      "min": 380,
+      "max": 780
+    },
+    "luminance_cd_m2": {
+      "min": 0.005,
+      "max": 17000000000,
+      "note": "분광 모드 0.5 ~ 17,000,000,000, XYZ 필터 모드 0.005 ~ 100,000 cd/m²"
+    },
+    "chromaticity_accuracy_xy": {
+      "min": 0.0035,
+      "max": 0.005,
+      "note": "분광 모드, 렌즈별. XYZ 필터 모드 ±0.003 ~ ±0.0085"
+    }
+  },
+  "models": [
+    {
+      "model": "SR-5100HWS",
+      "variant": "Standard lens(광각 어태치먼트 선택)",
+      "specs": {
+        "detector": "5.0 mega pixel CMOS image sensor",
+        "detector_pixels": "2448 × 2048",
+        "resolution_pixels": 5013504,
+        "wavelength_nm": {
+          "min": 380,
+          "max": 780
+        },
+        "wavelength_resolution_nm": 1,
+        "spectral_bandwidth_nm": 7,
+        "luminance_cd_m2": {
+          "min": 0.5,
+          "max": 17000000000
+        },
+        "luminance_accuracy_pct": 2,
+        "interfaces": "USB3.0 / External trigger"
+      }
+    },
+    {
+      "model": "SR-5100HT",
+      "variant": "Telescope lens",
+      "specs": {
+        "detector": "5.0 mega pixel CMOS image sensor",
+        "detector_pixels": "2448 × 2048",
+        "resolution_pixels": 5013504,
+        "wavelength_nm": {
+          "min": 380,
+          "max": 780
+        },
+        "wavelength_resolution_nm": 1,
+        "spectral_bandwidth_nm": 7,
+        "luminance_cd_m2": {
+          "min": 0.5,
+          "max": 17000000000
+        },
+        "luminance_accuracy_pct": 2,
+        "interfaces": "USB3.0 / External trigger"
+      }
+    },
+    {
+      "model": "SR-5100HM",
+      "variant": "Macro lens",
+      "specs": {
+        "detector": "5.0 mega pixel CMOS image sensor",
+        "detector_pixels": "2448 × 2048",
+        "resolution_pixels": 5013504,
+        "wavelength_nm": {
+          "min": 380,
+          "max": 780
+        },
+        "wavelength_resolution_nm": 1,
+        "spectral_bandwidth_nm": 7,
+        "luminance_cd_m2": {
+          "min": 0.5,
+          "max": 17000000000
+        },
+        "luminance_accuracy_pct": 2,
+        "interfaces": "USB3.0 / External trigger"
+      }
+    }
+  ],
+  "relations": [
+    {
+      "type": "performs",
+      "target": "photometry_colorimetry"
+    },
+    {
+      "type": "same_family_as",
+      "target": "techno-optis-sr-5-series"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://www.techno-optis.com/en/products/sr-5100/",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지(HTML). 렌즈별 판, 분광 · XYZ 필터 모드 사양, 무게 약 5.8 ~ 8.2 kg(렌즈별)"
+    },
+    {
+      "url": "https://www.techno-optis.com/en/products-series/sr-5000/",
+      "retrieved": "2026-10-08",
+      "note": "제조사 계열 페이지(HTML). 'high luminance 17 billion cd/m2'"
+    }
+  ],
+  "confidence": "limited",
+  "notes": "이미징 콜로리미터처럼 면 분포를 재지만 분광 방식이라 분광복사계로 분류했다. 분광 정확도 ±0.5 nm, XYZ 필터 모드 휘도 확도 ±3.0 ~ ±3.5 %."
+}

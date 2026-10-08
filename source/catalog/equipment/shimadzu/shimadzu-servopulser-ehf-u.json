@@ -1,0 +1,140 @@
+{
+  "id": "shimadzu-servopulser-ehf-u",
+  "kind": "equipment_series",
+  "name": "Servopulser EHF-U Series Overhead Actuator Type Fatigue and Endurance Testing Machine",
+  "name_ko": "시마즈 서보펄서 EHF-U 시리즈 상부 액추에이터형 피로·내구 시험기",
+  "manufacturer": "shimadzu",
+  "category": "servohydraulic_fatigue",
+  "brand": "Servopulser",
+  "drive": "servohydraulic",
+  "description": "시험편·구조물·실물 부품용 다기능 서보유압 피로·내구 시험기. 액추에이터가 위에 있고 시험대에 T 홈이 있다. 최대 동적 시험력 ±50 / ±100 / ±200 kN(정적 ±60 / ±120 / ±240 kN), 피스톤 스트로크 ±25 mm(k1) 또는 ±50 mm(k2). 넓은 시험 공간에 대형 시편·지그·환경 장치를 붙일 수 있고, 핸들 하나로 크로스헤드 승강과 클램프를 한다.",
+  "test_items": [
+    "fatigue"
+  ],
+  "measurands": [
+    "mechanical.fatigue_strength"
+  ],
+  "limits": {
+    "dynamic_force_kN": {
+      "min": 50,
+      "max": 200,
+      "values": [
+        50,
+        100,
+        200
+      ],
+      "note": "원문 ± 값(진폭)"
+    },
+    "static_force_kN": {
+      "min": 60,
+      "max": 240,
+      "values": [
+        60,
+        120,
+        240
+      ],
+      "note": "원문 ± 값"
+    },
+    "stroke_mm": {
+      "values": [
+        50,
+        100
+      ],
+      "note": "원문 ±25 / ±50 mm 을 전 행정으로 옮김"
+    }
+  },
+  "models": [
+    {
+      "model": "EHF-UV050k1",
+      "specs": {
+        "dynamic_force_kN": 50,
+        "static_force_kN": 60,
+        "stroke_mm": 50
+      },
+      "note": "원문 동적 ±50 kN, 정적 ±60 kN, 피스톤 스트로크 ±25 mm"
+    },
+    {
+      "model": "EHF-UV050k2",
+      "specs": {
+        "dynamic_force_kN": 50,
+        "static_force_kN": 60,
+        "stroke_mm": 100
+      },
+      "note": "원문 동적 ±50 kN, 정적 ±60 kN, 피스톤 스트로크 ±50 mm"
+    },
+    {
+      "model": "EHF-UV100k1",
+      "specs": {
+        "dynamic_force_kN": 100,
+        "static_force_kN": 120,
+        "stroke_mm": 50
+      },
+      "note": "원문 동적 ±100 kN, 정적 ±120 kN, 피스톤 스트로크 ±25 mm"
+    },
+    {
+      "model": "EHF-UV100k2",
+      "specs": {
+        "dynamic_force_kN": 100,
+        "static_force_kN": 120,
+        "stroke_mm": 100
+      },
+      "note": "원문 동적 ±100 kN, 정적 ±120 kN, 피스톤 스트로크 ±50 mm"
+    },
+    {
+      "model": "EHF-UV200k1",
+      "specs": {
+        "dynamic_force_kN": 200,
+        "static_force_kN": 240,
+        "stroke_mm": 50
+      },
+      "note": "원문 동적 ±200 kN, 정적 ±240 kN, 피스톤 스트로크 ±25 mm"
+    },
+    {
+      "model": "EHF-UV200k2",
+      "specs": {
+        "dynamic_force_kN": 200,
+        "static_force_kN": 240,
+        "stroke_mm": 100
+      },
+      "note": "원문 동적 ±200 kN, 정적 ±240 kN, 피스톤 스트로크 ±50 mm"
+    }
+  ],
+  "accuracy": {
+    "force": "Within 0.5 % of indicated value or ±0.02 % of maximum dynamic test force, whichever is greater (24-bit rangeless)"
+  },
+  "utilities": "적용 유압원: QF-10B, QF-20B, QF-40B, QF-70B, QF-110, QF-140, AF-10B, AF-20B. 전원은 유압원에 따라 다름",
+  "features": [
+    "제어 항목: 시험력·스트로크(옵션으로 2개 추가)",
+    "시험력 24 bit 레인지리스",
+    "파형: 사인·삼각·사각·램프·헤버사인",
+    "크로스헤드 유압 구동(유압 클램프)"
+  ],
+  "relations": [
+    {
+      "type": "compatible_accessory",
+      "target": "shimadzu-servopulser-fatigue-grips-and-jigs"
+    },
+    {
+      "type": "same_family_as",
+      "target": "shimadzu-servopulser-ehf-e"
+    },
+    {
+      "type": "same_family_as",
+      "target": "shimadzu-servopulser-ehf-l"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://www.shimadzu.com/an/products/materials-testing/fatigue-testingimpact-testing/ehf-u-series/spec.html",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지(HTML) 본문·표를 직접 읽음. 기종별 사양 카드(최대 동적·정적 시험력, 스트로크, 정확도, 유압원)"
+    },
+    {
+      "url": "https://www.shimadzu.com/an/products/materials-testing/fatigue-testingimpact-testing/ehf-u-series/index.html",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지(HTML) 본문·표를 직접 읽음. 개요(다기능 피로시험기, 고강성 프레임, 원터치 크로스헤드 유압 구동)"
+    }
+  ],
+  "confidence": "limited",
+  "notes": "하중·스트로크는 페이지에 ± 로 적혀 있다. 하중은 진폭 그대로(±50 kN → 50), 스트로크는 기존 객체 관례대로 전 행정으로 옮겼다(±25 mm → 50 mm). 반복 속도·진폭은 '진폭 특성 도표 참조' 라고만 적혀 있어 주파수 값이 없다. 전원은 유압원에 따라 다르다고만 적혀 있다(카탈로그 34·35쪽 참조 문구)."
+}

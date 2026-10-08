@@ -92,6 +92,21 @@ def _ontology_roles(cat: Catalog) -> dict[str, str]:
     return {row["key"]: row.get("role") or "measure" for row in _ontology(cat)["keys"]}
 
 
+def _single(raw: dict[str, Any]) -> float | None:
+    """`{"value": 수치, "note": …}` 의 수치. 그 꼴이 아니면 None.
+
+    기종 사양 칸은 형식이 자유라, 수치 하나에 비고를 붙일 때 이 꼴이 나온다(사양서 대조 · 웹
+    조사가 수백 곳에 썼다). 반입이 이것을 못 읽던 때는 그 값이 **조용히 빠졌다** — 정의 종류도
+    글로 잘못 정해졌다.
+    """
+    one = raw.get("value")
+    if isinstance(one, bool) or not isinstance(one, int | float):
+        return None
+    if set(raw) - {"value", "note", "uncertain", "requires_accessory"}:
+        return None
+    return float(one)
+
+
 def _key_shape(cat: Catalog, key: str) -> str:
     """그 키의 값이 실제로 어떤 모양인가 — 정의의 `kind` 를 여기서 정한다.
 
@@ -112,8 +127,14 @@ def _key_shape(cat: Catalog, key: str) -> str:
             elif isinstance(raw, int | float):
                 shapes.add("number")
             elif isinstance(raw, dict):
-                inner = set(raw) - {"note", "uncertain"}
-                shapes.add("range" if inner & {"min", "max", "values"} else "text")
+                inner = set(raw) - {"note", "uncertain", "requires_accessory"}
+                if inner & {"min", "max", "values"}:
+                    shapes.add("range")
+                elif _single(raw) is not None:
+                    # `{"value": 20000, "note": …}` — 수치 하나에 단서를 붙인 꼴(2026-10-08).
+                    shapes.add("number")
+                else:
+                    shapes.add("text")
             else:
                 shapes.add("text")
     if "range" in shapes:

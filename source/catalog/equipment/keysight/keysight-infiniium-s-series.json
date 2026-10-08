@@ -1,0 +1,104 @@
+{
+  "id": "keysight-infiniium-s-series",
+  "kind": "equipment_series",
+  "name": "Infiniium S-Series High-Definition Oscilloscopes",
+  "name_ko": "키사이트 Infiniium S 시리즈 오실로스코프",
+  "manufacturer": "keysight",
+  "brand": "Infiniium",
+  "category": "oscilloscope",
+  "subcategory": "real_time_oscilloscope",
+  "form_factor": "benchtop",
+  "description": "500 MHz~8 GHz 대역의 고분해능(10 bit ADC) 실시간 오실로스코프 계열임. 20 GSa/s, 채널당 표준 100 Mpts, 15 inch XGA 정전식 터치 화면. MSOS 기종은 16 디지털 채널. 요청 목록은 단종으로 보았으나 DSOS254A 기종 페이지(2026-10-08)에는 단종 표시가 없음.",
+  "test_items": [],
+  "limits": {
+    "bandwidth_Hz": {
+      "min": 2500000000,
+      "max": 8000000000,
+      "note": "원문 2.5 GHz·8 GHz (조회한 기종 기준)"
+    },
+    "sample_rate_Sa_s": {
+      "max": 20000000000
+    },
+    "record_length_pts": {
+      "max": 100000000
+    },
+    "channels": {
+      "values": [
+        4
+      ]
+    },
+    "logic_channel_count": {
+      "values": [
+        16
+      ]
+    },
+    "adc_resolution_bit": {
+      "values": [
+        10
+      ]
+    },
+    "display_size_in": {
+      "values": [
+        15
+      ]
+    }
+  },
+  "models": [
+    {
+      "model": "DSOS254A",
+      "specs": {
+        "bandwidth_Hz": 2500000000,
+        "channels": 4,
+        "sample_rate_Sa_s": 20000000000,
+        "record_length_pts": 100000000,
+        "adc_resolution_bit": 10,
+        "display_size_in": 15
+      },
+      "note": "원문 2.5 GHz (upgradable) · 20 GSa/s · 100 Mpts/channel(표준) · 10-bit ADC · 15-inch XGA · 고분해능 모드 최대 16 bits"
+    },
+    {
+      "model": "MSOS254A",
+      "variant": "mixed signal",
+      "specs": {
+        "bandwidth_Hz": 2500000000,
+        "channels": 4,
+        "logic_channel_count": 16
+      },
+      "note": "검색 결과의 키사이트 페이지 주소(high-definition-oscilloscope-2-5ghz-4-analog-16-digital-channels) 기준",
+      "uncertain": true
+    },
+    {
+      "model": "DSOS804A",
+      "specs": {
+        "bandwidth_Hz": 8000000000,
+        "sample_rate_Sa_s": 20000000000
+      },
+      "note": "검색 결과 발췌(8 GHz, 20 GSa/s). 페이지 본문은 열지 않음",
+      "uncertain": true
+    },
+    {
+      "model": "MSOS804A",
+      "variant": "mixed signal",
+      "specs": {
+        "bandwidth_Hz": 8000000000,
+        "channels": 4,
+        "logic_channel_count": 16
+      },
+      "note": "제조사 지원 페이지 제목(검색 결과): MSOS804A High-Definition Oscilloscope: 8 GHz, 4 Analog Plus 16 Digital Channels"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://www.keysight.com/us/en/product/DSOS254A/",
+      "retrieved": "2026-10-08",
+      "note": "제조사 기종 페이지. DSOS254A High-Definition Oscilloscope: 2.5 GHz, 4 Analog Channels, 20 GSa/s, 100 Mpts/channel, 10-bit ADC, 15-inch XGA. 단종 표시 없음"
+    },
+    {
+      "url": "https://www.keysight.com/us/en/support/MSOS804A/high-definition-oscilloscope-8-ghz-4-analog-16-digital-channels.html",
+      "retrieved": "2026-10-08",
+      "note": "제조사 지원 페이지 제목(검색 결과). 본문은 열지 않음"
+    }
+  ],
+  "confidence": "limited",
+  "notes": "DSOS054A·DSOS104A·DSOS204A·DSOS404A·DSOS604A 등 다른 대역폭 기종은 이번 조회에서 페이지로 확인하지 못해 넣지 않음. 단종 여부 확인 필요."
+}

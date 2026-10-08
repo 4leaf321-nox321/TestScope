@@ -1,0 +1,321 @@
+{
+  "id": "keyence-cl-3000",
+  "kind": "equipment_series",
+  "name": "CL-3000 Series Confocal Displacement Sensor",
+  "name_ko": "키엔스 CL-3000 공초점 변위 센서",
+  "manufacturer": "keyence",
+  "category": "thickness_displacement_gauge",
+  "description": "다색 공초점(confocal) 방식의 비접촉 변위 센서 계열임. 센서 헤드와 광학 유닛(기종명 끝 N, 수출 규제품은 G)을 한 쌍으로 쓰며, 헤드 안에 전기 부품이 없어 열·노이즈 영향이 적음. 기준 거리 10~70 mm, 측정 범위 ±0.3~±10 mm, 분해능 0.25 µm, 샘플링 주기 100~1000 µs(4단). 투명체·경면·곡면 측정을 겨냥하고, 프로파일 측정형(CL-PT010)과 진공·내열형(CL-V 계열)이 있음.",
+  "test_items": [],
+  "limits": {
+    "displacement_mm": {
+      "min": -10,
+      "max": 10,
+      "note": "헤드별 측정 범위 ±0.3 mm(CL-PT010) ~ ±10 mm(CL-P070)"
+    },
+    "measurement_distance_mm": {
+      "min": 10,
+      "max": 70
+    },
+    "spot_size_um": {
+      "min": 3.5,
+      "max": 300
+    },
+    "linearity_um": {
+      "min": 0.22,
+      "max": 2.2
+    },
+    "position_resolution_nm": {
+      "min": 250,
+      "note": "원문 0.25 µm"
+    }
+  },
+  "models": [
+    {
+      "model": "CL-L015",
+      "variant": "15 mm · 쿼드형",
+      "specs": {
+        "measurement_distance_mm": 15,
+        "displacement_mm": {
+          "min": -1.3,
+          "max": 1.3,
+          "note": "원문 ±1.3 mm(기준 모드)"
+        },
+        "spot_size_um": 300,
+        "linearity_um": {
+          "value": 0.49,
+          "note": "원문 ±0.49 µm(기준 모드)"
+        },
+        "position_resolution_nm": {
+          "value": 250,
+          "note": "원문 Resolution 0.25 µm"
+        },
+        "sampling_cycle_us": {
+          "values": [
+            100,
+            200,
+            500,
+            1000
+          ],
+          "note": "원문 100/200/500/1000 µs (Adjustable 4-stage)"
+        }
+      },
+      "note": "광학 유닛 CL-L015N 와 짝을 이룸(헤드와 광학 유닛이 한 쌍). 레이저 Class 1."
+    },
+    {
+      "model": "CL-P015",
+      "variant": "15 mm · 집광 스폿형",
+      "specs": {
+        "measurement_distance_mm": 15,
+        "displacement_mm": {
+          "min": -1.3,
+          "max": 1.3,
+          "note": "원문 ±1.3 mm(기준 모드)"
+        },
+        "spot_size_um": 25,
+        "linearity_um": {
+          "value": 0.49,
+          "note": "원문 ±0.49 µm(기준 모드)"
+        },
+        "position_resolution_nm": {
+          "value": 250,
+          "note": "원문 Resolution 0.25 µm"
+        },
+        "sampling_cycle_us": {
+          "values": [
+            100,
+            200,
+            500,
+            1000
+          ],
+          "note": "원문 100/200/500/1000 µs (Adjustable 4-stage)"
+        }
+      },
+      "note": "광학 유닛 CL-P015N 와 짝을 이룸(헤드와 광학 유닛이 한 쌍). 레이저 Class 1. 고정밀 모드: 측정 범위 ±0.5 mm, 직선성 ±0.41 µm. 수출 규제 대상 광학 유닛 CL-P015G 가 따로 있음."
+    },
+    {
+      "model": "CL-P030",
+      "variant": "30 mm · 집광 스폿형",
+      "specs": {
+        "measurement_distance_mm": 30,
+        "displacement_mm": {
+          "min": -3.7,
+          "max": 3.7,
+          "note": "원문 ±3.7 mm(기준 모드)"
+        },
+        "spot_size_um": 38,
+        "linearity_um": {
+          "value": 0.94,
+          "note": "원문 ±0.94 µm(기준 모드)"
+        },
+        "position_resolution_nm": {
+          "value": 250,
+          "note": "원문 Resolution 0.25 µm"
+        },
+        "sampling_cycle_us": {
+          "values": [
+            100,
+            200,
+            500,
+            1000
+          ],
+          "note": "원문 100/200/500/1000 µs (Adjustable 4-stage)"
+        }
+      },
+      "note": "광학 유닛 CL-P030N 와 짝을 이룸(헤드와 광학 유닛이 한 쌍). 레이저 Class 1."
+    },
+    {
+      "model": "CL-P070",
+      "variant": "70 mm · 집광 스폿형",
+      "specs": {
+        "measurement_distance_mm": 70,
+        "displacement_mm": {
+          "min": -10,
+          "max": 10,
+          "note": "원문 ±10 mm(기준 모드)"
+        },
+        "spot_size_um": 50,
+        "linearity_um": {
+          "value": 2.2,
+          "note": "원문 ±2.2 µm(기준 모드)"
+        },
+        "position_resolution_nm": {
+          "value": 250,
+          "note": "원문 Resolution 0.25 µm"
+        },
+        "sampling_cycle_us": {
+          "values": [
+            100,
+            200,
+            500,
+            1000
+          ],
+          "note": "원문 100/200/500/1000 µs (Adjustable 4-stage)"
+        }
+      },
+      "note": "광학 유닛 CL-P070N 와 짝을 이룸(헤드와 광학 유닛이 한 쌍). 레이저 Class 1. 고정밀 모드: 측정 범위 ±3.0 mm, 직선성 ±2.0 µm."
+    },
+    {
+      "model": "CL-PT010",
+      "variant": "프로파일 측정형",
+      "specs": {
+        "measurement_distance_mm": 10,
+        "displacement_mm": {
+          "min": -0.3,
+          "max": 0.3,
+          "note": "원문 ±0.3 mm(기준 모드)"
+        },
+        "spot_size_um": 3.5,
+        "linearity_um": {
+          "value": 0.22,
+          "note": "원문 ±0.22 µm(기준 모드)"
+        },
+        "position_resolution_nm": {
+          "value": 250,
+          "note": "원문 Resolution 0.25 µm"
+        },
+        "sampling_cycle_us": {
+          "values": [
+            100,
+            200,
+            500,
+            1000
+          ],
+          "note": "원문 100/200/500/1000 µs (Adjustable 4-stage)"
+        }
+      },
+      "note": "광학 유닛 CL-PT010N 와 짝을 이룸(헤드와 광학 유닛이 한 쌍). 레이저 Class 1. 고정밀 모드: 측정 범위 ±0.15 mm, 직선성 ±0.2 µm. 헤드 IP64."
+    },
+    {
+      "model": "CL-S015",
+      "variant": "15 mm 특수형",
+      "specs": {
+        "measurement_distance_mm": 15,
+        "displacement_mm": {
+          "min": -1.0,
+          "max": 1.0,
+          "note": "원문 ±1.0 mm(기준 모드)"
+        },
+        "spot_size_um": 10,
+        "linearity_um": {
+          "value": 0.35,
+          "note": "원문 ±0.35 µm(기준 모드)"
+        },
+        "position_resolution_nm": {
+          "value": 250,
+          "note": "원문 Resolution 0.25 µm"
+        },
+        "sampling_cycle_us": {
+          "values": [
+            100,
+            200,
+            500,
+            1000
+          ],
+          "note": "원문 100/200/500/1000 µs (Adjustable 4-stage)"
+        }
+      },
+      "note": "광학 유닛 CL-S015N 와 짝을 이룸(헤드와 광학 유닛이 한 쌍). 레이저 Class 1."
+    },
+    {
+      "model": "CL-V020",
+      "variant": "20 mm 진공·내열형",
+      "specs": {
+        "measurement_distance_mm": 20,
+        "displacement_mm": {
+          "min": -1.3,
+          "max": 1.3,
+          "note": "원문 ±1.3 mm(기준 모드)"
+        },
+        "spot_size_um": 20,
+        "linearity_um": {
+          "value": 0.45,
+          "note": "원문 ±0.45 µm(기준 모드)"
+        },
+        "position_resolution_nm": {
+          "value": 250,
+          "note": "원문 Resolution 0.25 µm"
+        },
+        "sampling_cycle_us": {
+          "values": [
+            100,
+            200,
+            500,
+            1000
+          ],
+          "note": "원문 100/200/500/1000 µs (Adjustable 4-stage)"
+        }
+      },
+      "note": "광학 유닛 CL-V020N 와 짝을 이룸(헤드와 광학 유닛이 한 쌍). 레이저 Class 1."
+    },
+    {
+      "model": "CL-V050",
+      "variant": "50 mm 진공·내열형",
+      "specs": {
+        "measurement_distance_mm": 50,
+        "displacement_mm": {
+          "min": -4,
+          "max": 4,
+          "note": "원문 ±4 mm(기준 모드)"
+        },
+        "spot_size_um": 40,
+        "linearity_um": {
+          "value": 1.4,
+          "note": "원문 ±1.4 µm(기준 모드)"
+        },
+        "position_resolution_nm": {
+          "value": 250,
+          "note": "원문 Resolution 0.25 µm"
+        },
+        "sampling_cycle_us": {
+          "values": [
+            100,
+            200,
+            500,
+            1000
+          ],
+          "note": "원문 100/200/500/1000 µs (Adjustable 4-stage)"
+        }
+      },
+      "note": "광학 유닛 CL-V050N 와 짝을 이룸(헤드와 광학 유닛이 한 쌍). 레이저 Class 1. 고정밀 모드: 측정 범위 ±1.6 mm, 직선성 ±1.3 µm. 초고진공(10⁻⁶ Pa 에서 확인) 환경용."
+    }
+  ],
+  "environment": {
+    "operating_temperature_degC": "0 ~ 50 °C(광학 유닛 페이지)",
+    "ambient_light": "주변광 30,000 lux 까지(CL-P015N 페이지)"
+  },
+  "sources": [
+    {
+      "url": "https://www.keyence.com/products/measure/laser-1d/cl-3000/specs/",
+      "retrieved": "2026-10-08",
+      "note": "제조사 계열 사양 페이지(광학 유닛 8종 표: 기준 거리·측정 범위·스폿·직선성·분해능)"
+    },
+    {
+      "url": "https://www.keyence.com/products/measure/laser-1d/cl-3000/models/cl-p015/",
+      "retrieved": "2026-10-08",
+      "note": "센서 헤드 기종 페이지. 사양은 짝이 되는 광학 유닛 페이지에 있다고 적음"
+    },
+    {
+      "url": "https://www.keyence.com/products/measure/laser-1d/cl-3000/models/cl-p015n/",
+      "retrieved": "2026-10-08",
+      "note": "광학 유닛 기종 페이지(고정밀 모드 값 포함)"
+    },
+    {
+      "url": "https://www.keyence.com/products/measure/laser-1d/cl-3000/models/cl-p070n/",
+      "retrieved": "2026-10-08",
+      "note": "광학 유닛 기종 페이지"
+    },
+    {
+      "url": "https://www.keyence.com/products/measure/laser-1d/cl-3000/models/cl-pt010n/",
+      "retrieved": "2026-10-08",
+      "note": "광학 유닛 기종 페이지"
+    },
+    {
+      "url": "https://www.keyence.com/products/measure/laser-1d/cl-3000/models/cl-v050n/",
+      "retrieved": "2026-10-08",
+      "note": "광학 유닛 기종 페이지"
+    }
+  ],
+  "confidence": "limited",
+  "notes": "대장에는 센서 헤드명(CL-P015) 또는 광학 유닛명(CL-P015N)이 적힐 수 있어 기종 note 에 짝을 적음. 컨트롤러 기종명은 사양 페이지에서 읽지 못했음. 반복 정밀도는 사양 페이지 표에 없었음."
+}

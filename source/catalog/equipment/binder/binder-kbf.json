@@ -1,0 +1,386 @@
+{
+  "id": "binder-kbf",
+  "kind": "equipment_series",
+  "name": "BINDER KBF / KBF PRO Constant Climate Chambers (KBF 130 … 1600, KBF PRO 130 … 1600)",
+  "name_ko": "바인더 KBF·KBF PRO 항온항습 챔버",
+  "manufacturer": "binder",
+  "brand": "KBF",
+  "category": "climatic_chamber",
+  "drive": "thermal",
+  "form_factor": "floor",
+  "description": "안정성 시험용 항온항습 챔버. KBF 는 0~+70 °C·10~80 %RH, KBF PRO 는 -20~+100 °C·10~98 %RH 를 건다. 두 계열 모두 내용적 127·262·472·727·1070·1610 L 여섯 크기. ICH 광안정성 시험용 조명 모듈과 식물 생장용 LED 모듈을 옵션으로 단다(KBF 260 페이지).",
+  "test_items": [
+    "damp_heat"
+  ],
+  "limits": {
+    "temperature_degC": {
+      "min": -20,
+      "max": 100,
+      "note": "KBF 0~+70 °C, KBF PRO -20~+100 °C. 습도 운전 온도 KBF +10~+70 °C, KBF PRO +10~+90 °C"
+    },
+    "humidity_pct": {
+      "min": 10,
+      "max": 98,
+      "note": "KBF 10~80 %RH, KBF PRO 10~98 %RH"
+    },
+    "chamber_volume_L": {
+      "min": 127,
+      "max": 1610,
+      "values": [
+        127,
+        262,
+        472,
+        727,
+        1070,
+        1610
+      ]
+    }
+  },
+  "models": [
+    {
+      "model": "KBF 130",
+      "variant": "KBF",
+      "specs": {
+        "temperature_degC": {
+          "min": 0,
+          "max": 70,
+          "note": "습도 운전 온도 +10~+70 °C"
+        },
+        "humidity_pct": {
+          "min": 10,
+          "max": 80
+        },
+        "chamber_volume_L": 127,
+        "inner_mm": "W656×H500×D386",
+        "weight_kg": 126,
+        "power_kW": 1.6
+      }
+    },
+    {
+      "model": "KBF 260",
+      "variant": "KBF",
+      "specs": {
+        "temperature_degC": {
+          "min": 0,
+          "max": 70,
+          "note": "습도 운전 온도 +10~+70 °C"
+        },
+        "humidity_pct": {
+          "min": 10,
+          "max": 80
+        },
+        "chamber_volume_L": 262,
+        "inner_mm": "W656×H695×D575",
+        "weight_kg": 188,
+        "power_kW": 1.4,
+        "footprint_mm": "W930×H1396×D900",
+        "temperature_uniformity_degC": {
+          "min": 0.2,
+          "max": 0.3,
+          "note": "±0.3 K(25 °C/60 %RH), ±0.2 K(40 °C/75 %RH)"
+        },
+        "temperature_fluctuation_degC": {
+          "max": 0.1,
+          "note": "±0.1 K(25 °C/60 %RH 및 40 °C/75 %RH)"
+        },
+        "humidity_fluctuation_pct": {
+          "max": 1.5,
+          "note": "±1.5 %RH(25 °C/60 %RH 및 40 °C/75 %RH)"
+        },
+        "power": "220–240 V 또는 120 V"
+      }
+    },
+    {
+      "model": "KBF 470",
+      "variant": "KBF",
+      "specs": {
+        "temperature_degC": {
+          "min": 0,
+          "max": 70,
+          "note": "습도 운전 온도 +10~+70 °C"
+        },
+        "humidity_pct": {
+          "min": 10,
+          "max": 80
+        },
+        "chamber_volume_L": 472,
+        "inner_mm": "W656×H1250×D575",
+        "weight_kg": 225,
+        "power_kW": 1.4
+      }
+    },
+    {
+      "model": "KBF 720",
+      "variant": "KBF",
+      "specs": {
+        "temperature_degC": {
+          "min": 0,
+          "max": 70,
+          "note": "습도 운전 온도 +10~+70 °C"
+        },
+        "humidity_pct": {
+          "min": 10,
+          "max": 80
+        },
+        "chamber_volume_L": 727,
+        "inner_mm": "W1011×H1250×D575",
+        "weight_kg": 298,
+        "power_kW": 1.6
+      }
+    },
+    {
+      "model": "KBF 1060",
+      "variant": "KBF",
+      "specs": {
+        "temperature_degC": {
+          "min": 0,
+          "max": 70,
+          "note": "습도 운전 온도 +10~+70 °C"
+        },
+        "humidity_pct": {
+          "min": 10,
+          "max": 80
+        },
+        "chamber_volume_L": 1070,
+        "inner_mm": "W1011×H1250×D847",
+        "weight_kg": 340,
+        "power_kW": 1.6
+      }
+    },
+    {
+      "model": "KBF 1600",
+      "variant": "KBF",
+      "specs": {
+        "temperature_degC": {
+          "min": 0,
+          "max": 70,
+          "note": "습도 운전 온도 +10~+70 °C"
+        },
+        "humidity_pct": {
+          "min": 10,
+          "max": 80
+        },
+        "chamber_volume_L": 1610,
+        "inner_mm": "W1521×H1250×D847",
+        "weight_kg": 438,
+        "power_kW": 1.7
+      }
+    },
+    {
+      "model": "KBF PRO 130",
+      "variant": "KBF PRO",
+      "specs": {
+        "temperature_degC": {
+          "min": -20,
+          "max": 100,
+          "note": "습도 운전 온도 +10~+90 °C"
+        },
+        "humidity_pct": {
+          "min": 10,
+          "max": 98
+        },
+        "chamber_volume_L": 127,
+        "inner_mm": "W656×H500×D386",
+        "weight_kg": 142,
+        "power_kW": 1.9
+      }
+    },
+    {
+      "model": "KBF PRO 260",
+      "variant": "KBF PRO",
+      "specs": {
+        "temperature_degC": {
+          "min": -20,
+          "max": 100,
+          "note": "습도 운전 온도 +10~+90 °C"
+        },
+        "humidity_pct": {
+          "min": 10,
+          "max": 98
+        },
+        "chamber_volume_L": 262,
+        "inner_mm": "W656×H695×D575",
+        "weight_kg": 197,
+        "power_kW": 1.6,
+        "footprint_mm": "W930×H1396×D900",
+        "temperature_uniformity_degC": {
+          "max": 0.2,
+          "note": "±0.2 K(25 °C/60 %RH 및 40 °C/75 %RH)"
+        },
+        "temperature_fluctuation_degC": {
+          "max": 0.1,
+          "note": "±0.1 K"
+        },
+        "humidity_fluctuation_pct": {
+          "max": 1,
+          "note": "±1 %RH"
+        },
+        "power": "208–240 V, 기기 퓨즈 16 A"
+      }
+    },
+    {
+      "model": "KBF PRO 470",
+      "variant": "KBF PRO",
+      "specs": {
+        "temperature_degC": {
+          "min": -20,
+          "max": 100,
+          "note": "습도 운전 온도 +10~+90 °C"
+        },
+        "humidity_pct": {
+          "min": 10,
+          "max": 98
+        },
+        "chamber_volume_L": 472,
+        "inner_mm": "W656×H1250×D575",
+        "weight_kg": 249,
+        "power_kW": 1.6
+      }
+    },
+    {
+      "model": "KBF PRO 720",
+      "variant": "KBF PRO",
+      "specs": {
+        "temperature_degC": {
+          "min": -20,
+          "max": 100,
+          "note": "습도 운전 온도 +10~+90 °C"
+        },
+        "humidity_pct": {
+          "min": 10,
+          "max": 98
+        },
+        "chamber_volume_L": 727,
+        "inner_mm": "W1011×H1250×D575",
+        "weight_kg": 312,
+        "power_kW": 1.8
+      }
+    },
+    {
+      "model": "KBF PRO 1060",
+      "variant": "KBF PRO",
+      "specs": {
+        "temperature_degC": {
+          "min": -20,
+          "max": 100,
+          "note": "습도 운전 온도 +10~+90 °C"
+        },
+        "humidity_pct": {
+          "min": 10,
+          "max": 98
+        },
+        "chamber_volume_L": 1070,
+        "inner_mm": "W1011×H1250×D847",
+        "weight_kg": 360,
+        "power_kW": 1.9
+      }
+    },
+    {
+      "model": "KBF PRO 1600",
+      "variant": "KBF PRO",
+      "specs": {
+        "temperature_degC": {
+          "min": -20,
+          "max": 100,
+          "note": "습도 운전 온도 +10~+90 °C"
+        },
+        "humidity_pct": {
+          "min": 10,
+          "max": 98
+        },
+        "chamber_volume_L": 1610,
+        "inner_mm": "W1521×H1250×D847",
+        "weight_kg": 450,
+        "power_kW": 1.9
+      }
+    }
+  ],
+  "options": [
+    {
+      "name": "ICH 광안정성 시험용 조명 모듈",
+      "note": "KBF 260 페이지 'optional light modules for ICH photostability tests'"
+    },
+    {
+      "name": "식물 생장용 LED 조명 모듈"
+    }
+  ],
+  "relations": [
+    {
+      "type": "simulates_environment",
+      "target": "environment-damp-heat"
+    },
+    {
+      "type": "same_family_as",
+      "target": "binder-kbf-s-eco"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://www.binder-world.com/int-en/products/climate-chambers/constant-climate-chambers/constant-climate-product-list",
+      "retrieved": "2026-10-08",
+      "note": "제조사 항온항습 제품 목록. 기종명과 온도·습도 범위"
+    },
+    {
+      "url": "https://www.binder-world.com/int-en/product/kbf-130",
+      "retrieved": "2026-10-08",
+      "note": "제조사 기종 페이지"
+    },
+    {
+      "url": "https://www.binder-world.com/int-en/product/kbf-260",
+      "retrieved": "2026-10-08",
+      "note": "제조사 기종 페이지"
+    },
+    {
+      "url": "https://www.binder-world.com/int-en/product/kbf-470",
+      "retrieved": "2026-10-08",
+      "note": "제조사 기종 페이지"
+    },
+    {
+      "url": "https://www.binder-world.com/int-en/product/kbf-720",
+      "retrieved": "2026-10-08",
+      "note": "제조사 기종 페이지"
+    },
+    {
+      "url": "https://www.binder-world.com/int-en/product/kbf-1060",
+      "retrieved": "2026-10-08",
+      "note": "제조사 기종 페이지"
+    },
+    {
+      "url": "https://www.binder-world.com/int-en/product/kbf-1600",
+      "retrieved": "2026-10-08",
+      "note": "제조사 기종 페이지"
+    },
+    {
+      "url": "https://www.binder-world.com/int-en/product/kbf-pro-130",
+      "retrieved": "2026-10-08",
+      "note": "제조사 기종 페이지"
+    },
+    {
+      "url": "https://www.binder-world.com/int-en/product/kbf-pro-260",
+      "retrieved": "2026-10-08",
+      "note": "제조사 기종 페이지"
+    },
+    {
+      "url": "https://www.binder-world.com/int-en/product/kbf-pro-470",
+      "retrieved": "2026-10-08",
+      "note": "제조사 기종 페이지"
+    },
+    {
+      "url": "https://www.binder-world.com/int-en/product/kbf-pro-720",
+      "retrieved": "2026-10-08",
+      "note": "제조사 기종 페이지"
+    },
+    {
+      "url": "https://www.binder-world.com/int-en/product/kbf-pro-1060",
+      "retrieved": "2026-10-08",
+      "note": "제조사 기종 페이지"
+    },
+    {
+      "url": "https://www.binder-world.com/int-en/product/kbf-pro-1600",
+      "retrieved": "2026-10-08",
+      "note": "제조사 기종 페이지"
+    }
+  ],
+  "confidence": "limited",
+  "notes": "온도 편차·변동·습도 변동은 KBF 260 · KBF PRO 260 페이지에만 있어 그 두 기종에만 적었다. 구형 KBF 115 / KBF 240 / KBF 720 / KBF P / KBF LQC 는 현행 제조사 페이지가 열리지 않아 넣지 않았다 — 구형 'KBF 720' 은 현행 'KBF 720'(727 L)과 이름이 같으니 대장에 이어질 때 연식을 확인해야 한다."
+}

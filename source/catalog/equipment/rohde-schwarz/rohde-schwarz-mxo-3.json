@@ -1,0 +1,173 @@
+{
+  "id": "rohde-schwarz-mxo-3",
+  "kind": "equipment_series",
+  "name": "R&S MXO 3 Oscilloscope",
+  "name_ko": "로데슈바르츠 MXO 3 오실로스코프",
+  "manufacturer": "rohde-schwarz",
+  "brand": "MXO",
+  "category": "oscilloscope",
+  "subcategory": "mixed_signal_oscilloscope",
+  "form_factor": "benchtop",
+  "description": "100 MHz~1 GHz 대역의 4·8채널 오실로스코프 계열임. 12 bit ADC(HD 모드 최대 18 bit), 최대 5 Gsample/s, 표준 125 Mpoints(옵션 최대 500 Mpoints/채널), 옵션 16 디지털 채널, 11.6 inch Full HD 화면.",
+  "test_items": [],
+  "limits": {
+    "bandwidth_Hz": {
+      "min": 100000000,
+      "max": 1000000000,
+      "note": "원문 100·200·350·500 MHz·1 GHz"
+    },
+    "channels": {
+      "values": [
+        4,
+        8
+      ]
+    },
+    "sample_rate_Sa_s": {
+      "max": 5000000000,
+      "note": "원문 max. 5 Gsample/s"
+    },
+    "record_length_pts": {
+      "min": 125000000,
+      "max": 500000000,
+      "note": "원문 Standard 125 Mpoints, 옵션 max. 500 Mpoints per channel"
+    },
+    "adc_resolution_bit": {
+      "values": [
+        12
+      ],
+      "note": "HD 모드 최대 18 bit"
+    },
+    "logic_channel_count": {
+      "values": [
+        16
+      ],
+      "note": "옵션"
+    },
+    "display_size_in": {
+      "values": [
+        11.6
+      ]
+    }
+  },
+  "models": [
+    {
+      "model": "MXO34-100",
+      "specs": {
+        "bandwidth_Hz": {
+          "value": 100000000,
+          "uncertain": true,
+          "note": "기종명 접미사(MHz)와 페이지 대역폭 목록이 맞음. 기종별 표는 확인 못 함"
+        },
+        "channels": 4
+      }
+    },
+    {
+      "model": "MXO34-200",
+      "specs": {
+        "bandwidth_Hz": {
+          "value": 200000000,
+          "uncertain": true,
+          "note": "기종명 접미사(MHz)와 페이지 대역폭 목록이 맞음. 기종별 표는 확인 못 함"
+        },
+        "channels": 4
+      }
+    },
+    {
+      "model": "MXO34-350",
+      "specs": {
+        "bandwidth_Hz": {
+          "value": 350000000,
+          "uncertain": true,
+          "note": "기종명 접미사(MHz)와 페이지 대역폭 목록이 맞음. 기종별 표는 확인 못 함"
+        },
+        "channels": 4
+      }
+    },
+    {
+      "model": "MXO34-500",
+      "specs": {
+        "bandwidth_Hz": {
+          "value": 500000000,
+          "uncertain": true,
+          "note": "기종명 접미사(MHz)와 페이지 대역폭 목록이 맞음. 기종별 표는 확인 못 함"
+        },
+        "channels": 4
+      }
+    },
+    {
+      "model": "MXO34-1000",
+      "specs": {
+        "bandwidth_Hz": {
+          "value": 1000000000,
+          "uncertain": true,
+          "note": "기종명 접미사(MHz)와 페이지 대역폭 목록이 맞음. 기종별 표는 확인 못 함"
+        },
+        "channels": 4
+      }
+    },
+    {
+      "model": "MXO38-100",
+      "specs": {
+        "bandwidth_Hz": {
+          "value": 100000000,
+          "uncertain": true,
+          "note": "기종명 접미사(MHz)와 페이지 대역폭 목록이 맞음. 기종별 표는 확인 못 함"
+        },
+        "channels": 8
+      }
+    },
+    {
+      "model": "MXO38-200",
+      "specs": {
+        "bandwidth_Hz": {
+          "value": 200000000,
+          "uncertain": true,
+          "note": "기종명 접미사(MHz)와 페이지 대역폭 목록이 맞음. 기종별 표는 확인 못 함"
+        },
+        "channels": 8
+      }
+    },
+    {
+      "model": "MXO38-350",
+      "specs": {
+        "bandwidth_Hz": {
+          "value": 350000000,
+          "uncertain": true,
+          "note": "기종명 접미사(MHz)와 페이지 대역폭 목록이 맞음. 기종별 표는 확인 못 함"
+        },
+        "channels": 8
+      }
+    },
+    {
+      "model": "MXO38-500",
+      "specs": {
+        "bandwidth_Hz": {
+          "value": 500000000,
+          "uncertain": true,
+          "note": "기종명 접미사(MHz)와 페이지 대역폭 목록이 맞음. 기종별 표는 확인 못 함"
+        },
+        "channels": 8
+      }
+    },
+    {
+      "model": "MXO38-1000",
+      "specs": {
+        "bandwidth_Hz": {
+          "value": 1000000000,
+          "uncertain": true,
+          "note": "기종명 접미사(MHz)와 페이지 대역폭 목록이 맞음. 기종별 표는 확인 못 함"
+        },
+        "channels": 8
+      }
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://www.rohde-schwarz.com/us/products/test-and-measurement/oscilloscopes/rs-mxo-3-oscilloscope_334309.html",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지. 기종명 R&S®MXO34·MXO38 과 -100 … -1000 접미사 기종, \"12-bit ADC, up to 18-bit with HD mode\", \"max. 5 Gsample/s\", \"Standard: 125 Mpoints\", max. 500 Mpoints per channel(옵션), 16 digital(opt.), 11.6\" 1920 × 1080"
+    }
+  ],
+  "confidence": "limited",
+  "notes": "페이지는 접미사 없는 R&S®MXO34·MXO38 도 함께 적음. 대장에는 MXO34 처럼 접미사 없이 적힐 수 있음."
+}

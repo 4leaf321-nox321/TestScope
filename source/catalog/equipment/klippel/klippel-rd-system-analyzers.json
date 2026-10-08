@@ -1,0 +1,95 @@
+{
+  "id": "klippel-rd-system-analyzers",
+  "kind": "equipment_series",
+  "name": "KLIPPEL R&D System Analyzer Hardware (KA3 / DA2 / PM8)",
+  "name_ko": "클리펠 R&D 시스템 분석기 하드웨어",
+  "manufacturer": "klippel",
+  "brand": "R&D System",
+  "category": "acoustic_measurement",
+  "form_factor": "rack",
+  "description": "스피커 변환기·오디오 측정용 KLIPPEL R&D 시스템의 하드웨어. KA3(Klippel Analyzer 3)는 19\" 2HE 프레임에 슬롯 6개를 두고 기본으로 스피커 카드(SpeakON 스피커 채널 2·앰프 입력 1), 레이저 카드(BNC 출력 1, 24 VDC 공급 LEMO 입력 2, IEPE BNC 입력 2), XLR 카드(XLR 출력 2, 팬텀 전원 XLR 입력 2)를 갖추며 24 bit·최대 192 kHz 로 수집해 USB 2.0 으로 dB-Lab 에 잇는다. 단종된 DA2(Distortion Analyzer 2)는 2채널 라인 입력과 스피커 전압·전류 2채널, 48 kHz, SNR >100 dB. PM8(Power Monitor 8)은 최대 8개 시료의 파워 시험을 감시한다.",
+  "test_items": [
+    "audio_performance"
+  ],
+  "measurands": [
+    "frequency_response",
+    "thd_n",
+    "loudspeaker_parameters",
+    "displacement"
+  ],
+  "materials": [
+    "loudspeakers",
+    "microspeakers",
+    "transducers",
+    "audio systems"
+  ],
+  "limits": {
+    "data_rate_Hz": {
+      "min": 48000,
+      "max": 192000,
+      "note": "KA3 최대 192 kHz, DA2 최대 48 kHz"
+    },
+    "adc_resolution_bit": {
+      "values": [
+        24
+      ],
+      "note": "KA3"
+    }
+  },
+  "models": [
+    {
+      "model": "KA3",
+      "specs": {
+        "adc_resolution_bit": 24,
+        "data_rate_Hz": 192000,
+        "interfaces": "USB 2.0, SpeakON, BNC, LEMO, XLR"
+      },
+      "note": "Klippel Analyzer 3. 외부 24 VDC 전원. 카드 구성 변경은 주문 시에만"
+    },
+    {
+      "model": "DA2",
+      "specs": {
+        "data_rate_Hz": 48000,
+        "channels": 2
+      },
+      "note": "Distortion Analyzer 2, 단종. 단자 전압 <240 V, 전류 <50 A 측정, SNR >100 dB, 레이저 센서 연결"
+    },
+    {
+      "model": "PM8",
+      "specs": {
+        "channels": 8
+      },
+      "note": "Power Monitor 8. 최대 8개 시료 감시(channels 는 감시 시료 수)"
+    }
+  ],
+  "options": [
+    "SCN 스캐닝 진동계",
+    "NFS 근접장 스캐너",
+    "BFS B-필드 스캐너"
+  ],
+  "relations": [
+    {
+      "type": "performs",
+      "target": "audio_performance"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://www.klippel.de/products.html",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 목록"
+    },
+    {
+      "url": "https://www.klippel.de/products/rd-system/analyzer-hardware/ka3-klippel-analyzer-3.html",
+      "retrieved": "2026-10-08",
+      "note": "KA3 페이지"
+    },
+    {
+      "url": "https://www.klippel.de/products/rd-system/analyzer-hardware/da2-klippel-distortion-analyzer.html",
+      "retrieved": "2026-10-08",
+      "note": "DA2 페이지(단종 표시)"
+    }
+  ],
+  "confidence": "limited",
+  "notes": "최대 출력 전압·전류, 크기·무게는 페이지에 없고 사양서 PDF 에 있다고 한다."
+}

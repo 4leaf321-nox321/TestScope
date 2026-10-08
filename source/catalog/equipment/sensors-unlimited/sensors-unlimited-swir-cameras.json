@@ -1,0 +1,104 @@
+{
+  "id": "sensors-unlimited-swir-cameras",
+  "kind": "equipment_series",
+  "name": "Sensors Unlimited SWIR Area Cameras (320CSX, 640CSX, 1280JSX)",
+  "name_ko": "센서스 언리미티드 SWIR 카메라",
+  "manufacturer": "sensors-unlimited",
+  "category": "high_speed_swir_camera",
+  "subcategory": "swir_camera",
+  "form_factor": "camera",
+  "description": "Collins Aerospace(RTX) 소속 Sensors Unlimited 의 InGaAs SWIR 면 카메라 계열. 화소 간격 12.5 µm 로 320 × 256(320CSX), 640 × 512(640CSX), 1,280 × 1,024(1280JSX) 해상도를 갖고, 전 화소 30 또는 60 fps, 12-bit Camera Link 출력. 감도 파장 0.9 ~ 1.7 µm 이고 640CSX 는 0.7 µm, 1280JSX 는 0.5 µm 까지 넓힌 판이 있다.",
+  "test_items": [],
+  "limits": {
+    "resolution_pixels": {
+      "min": 81920,
+      "max": 1310720
+    },
+    "wavelength_nm": {
+      "min": 500,
+      "max": 1700,
+      "note": "표준 900 ~ 1,700 nm(원문 0.9 µm to 1.7 µm), 확장판 700 · 500 nm 부터"
+    },
+    "frame_rate_fps": {
+      "values": [
+        30,
+        60
+      ],
+      "note": "전 화소 30 또는 60 fps"
+    },
+    "pixel_pitch_um": {
+      "values": [
+        12.5
+      ]
+    }
+  },
+  "models": [
+    {
+      "model": "320CSX",
+      "specs": {
+        "detector_pixels": "320 × 256",
+        "resolution_pixels": 81920,
+        "pixel_pitch_um": 12.5
+      },
+      "note": "응용 페이지에 '320 x 256 @ 12.5µm' 만 적힘"
+    },
+    {
+      "model": "640CSX",
+      "specs": {
+        "detector_pixels": "640 × 512",
+        "resolution_pixels": 327680,
+        "pixel_pitch_um": 12.5,
+        "wavelength_nm": {
+          "min": 900,
+          "max": 1700
+        },
+        "frame_rate_fps": 60,
+        "adc_resolution_bit": 12,
+        "interfaces": "Camera Link base (12-bit)",
+        "weight_kg": 0.045
+      },
+      "note": "Micro-SWIR 640CSX. 30 또는 60 fps. NIR/SWIR 판 0.7 ~ 1.7 µm. 무게 <45 g(외함) / <41 g(OEM)"
+    },
+    {
+      "model": "1280JSX",
+      "specs": {
+        "detector_pixels": "1280 × 1024",
+        "resolution_pixels": 1310720,
+        "pixel_pitch_um": 12.5,
+        "wavelength_nm": {
+          "min": 900,
+          "max": 1700
+        },
+        "frame_rate_fps": 60,
+        "adc_resolution_bit": 12,
+        "interfaces": "Camera Link base (12-bit)",
+        "weight_kg": 0.235,
+        "operating_temperature_degC": {
+          "min": -40,
+          "max": 70
+        },
+        "power_W": 3.0
+      },
+      "note": "GA1280JSX 로도 표기. 30 또는 60 fps. VIS/SWIR 판 0.5 ~ 1.7 µm. 무게 ≤235 g(외함) / ≤120 g(OEM), 소비 전력 ≤3.0 W, M42 마운트"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://www.sensorsinc.com/products/detail/microswir-camera",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지(HTML). 640CSX 사양, 다른 SWIR 면 카메라 이름"
+    },
+    {
+      "url": "https://www.sensorsinc.com/products/detail/mini-swir-jsx-snapshot-camera-60-fps",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지(HTML). 1280JSX 사양"
+    },
+    {
+      "url": "https://www.sensorsinc.com/applications/general/high-speed-swir-imaging",
+      "retrieved": "2026-10-08",
+      "note": "제조사 응용 페이지(HTML). 320CSX 해상도·화소 간격"
+    }
+  ],
+  "confidence": "limited",
+  "notes": "같은 응용 페이지가 '640 × 512 InGaAs 카메라 880 fps' 를 말하나 기종명이 특정되지 않아 넣지 않았다. 640HSX2 등 출시 예정 기종도 제외."
+}

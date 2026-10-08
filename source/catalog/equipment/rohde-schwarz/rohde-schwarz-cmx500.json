@@ -1,0 +1,120 @@
+{
+  "id": "rohde-schwarz-cmx500",
+  "kind": "equipment_series",
+  "name": "R&S CMX500 5G One-Box Signaling Tester",
+  "name_ko": "로데슈바르츠 CMX500 5G 원박스 신호 시험기",
+  "manufacturer": "rohde-schwarz",
+  "brand": "CMX",
+  "category": "radio_communication_tester",
+  "description": "LTE·5G NR 단말을 한 장비에서 신호 시험하는 원박스 테스터. FR1 최대 8 GHz 와 FR2(밀리미터파) 최대 50 GHz 를 한 장비에 담는다. SA·NSA 모드, LTE-5G 반송파 집성, MIMO 송수신 측정, 내장 RF 페이딩·채널 에뮬레이션, 3GPP TS 38.521 적합성 시험, BLER, RF 파라미터 시험, 프로토콜 시험, VoLTE·VoNR·ViLTE·ViNR 음성·영상 시험, 종단 간 응용 시험을 한다. NR-NTN·NB-NTN·Direct-To-Cell 과 LEO·MEO·GEO 다궤도 시험, WLAN IEEE 802.11bn(Wi-Fi 8) STA·AP 시험도 지원한다. 웹 기반 CMsquares 소프트웨어로 조작한다.",
+  "test_items": [],
+  "standards": {
+    "compliance": [],
+    "test_methods": [
+      "3GPP TS 38.521"
+    ]
+  },
+  "limits": {
+    "frequency_Hz": {
+      "max": 50000000000,
+      "note": "브로슈어 Key facts: LTE·FR1·WLAN 8 GHz 까지(RF unit CMX-B600B), FR2 원격 무선 헤드 24~50 GHz(IF unit CMX-B500A + CMXHEAD50, CMXHEAD50 전체 21.84~50.2 GHz, 50 GHz 는 CMX-ZG501A). 하한은 없다"
+    },
+    "radio_standards": {
+      "values": [
+        "5G NR (SA/NSA)",
+        "LTE",
+        "WLAN IEEE 802.11bn (Wi-Fi 8)",
+        "NR-NTN",
+        "NB-NTN",
+        "Direct-To-Cell (D2C/DTC)"
+      ],
+      "note": "제품 페이지·목록 페이지 문구"
+    },
+    "bandwidth_Hz": {
+      "max": 1000000000,
+      "note": "브로슈어: RF unit CMX-B600B 의 TX 당 순시 대역폭 1 GHz, LTE·NR FR1 셀 반송파 대역폭 최대 200 MHz, WLAN 802.11bn(Wi-Fi 8) 320 MHz 송신 측정. 장비 전체 순시 대역폭 최대 16 GHz(원문 up to 16 GHz instantaneous bandwidth)"
+    },
+    "rf_port_count": {
+      "values": [
+        8
+      ],
+      "note": "RF unit 하나에 TX 포트 4·RX 포트 2·TRX 포트 2. RF unit 을 더 꽂으면 늘고, CMX-Z25 포트 확장기는 포트 수를 두 배로"
+    }
+  },
+  "models": [
+    {
+      "model": "CMX500",
+      "specs": {
+        "frequency_Hz": {
+          "max": 50000000000,
+          "note": "FR1 최대 8 GHz, FR2 최대 50 GHz"
+        },
+        "radio_standards": "5G NR, LTE, WLAN 802.11bn, NR-NTN, NB-NTN, D2C",
+        "bandwidth_Hz": {
+          "max": 1000000000,
+          "note": "RF unit TX 당 순시 대역폭. 반송파 최대 200 MHz"
+        },
+        "rf_port_count": {
+          "values": [
+            8
+          ],
+          "note": "RF unit 당 TX 4·RX 2·TRX 2"
+        }
+      },
+      "note": "표준 구성 5가지: OBTlite, OBT, OBTplus, OBT FR1 specialist, OBT FR2 specialist(브로슈어)"
+    }
+  ],
+  "features": [
+    "FR1(최대 8 GHz)·FR2(최대 50 GHz) 한 장비",
+    "내장 RF 페이딩·채널 에뮬레이션",
+    "LTE-5G 반송파 집성, MIMO 송수신 측정",
+    "3GPP TS 38.521 적합성 시험, BLER",
+    "VoLTE·VoNR·ViLTE·ViNR 시험",
+    "NTN 다궤도(LEO·MEO·GEO·GSO) 시험",
+    "웹 기반 CMsquares 수동·자동 시퀀스"
+  ],
+  "options": [
+    {
+      "name": "R&S CMXHEAD50 원격 무선 헤드(신호 시험용)",
+      "note": "목록 페이지: Full frequency range from 21.84 GHz to 50.2 GHz, EVM down to 0.5 % / -46 dB, 이중 LO, mmWave RF 스위치 매트릭스 내장. 브로슈어: CMXHEAD50·CMXHEAD50-Evo 21.84~50.2 GHz(FR2·Ka 대역), EVM 0.5 % 는 -Evo"
+    },
+    {
+      "name": "R&S CMX-Z25 CMX RF 포트 확장기",
+      "note": "CMX500 포트 수 확장, LTE·5G FR1 대역 최대 8 GHz"
+    },
+    {
+      "name": "R&S CMX-RF42E 능동 RF 프런트엔드(50 GHz)",
+      "note": "5G mmWave 동적 범위 확장, FR2 대역 간 반송파 집성. 브로슈어: 원격 무선 헤드 최대 4대 신호를 모으는 능동 프런트엔드(21.84~50.2 GHz)"
+    },
+    {
+      "name": "R&S CMX-RF42 능동 RF 프런트엔드(44 GHz)",
+      "note": "5G mmWave 동적 범위 확장, FR2 대역 간 반송파 집성"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://www.rohde-schwarz.com/us/products/test-and-measurement/wireless-tester-network-emulator/cmx500-5g-one-box-signaling-tester_63493-601282.html",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지. FR1 8 GHz·FR2 50 GHz, 지원 표준, 기능"
+    },
+    {
+      "url": "https://www.rohde-schwarz.com/us/products/test-and-measurement/wireless-tester-network-emulator_86475.html",
+      "retrieved": "2026-10-08",
+      "note": "제조사 네트워크 에뮬레이터 목록 페이지. CMX500 요약과 부속(CMXHEAD50·CMX-Z25·CMX-RF42E·CMX-RF42) 사양"
+    },
+    {
+      "file": "rohde-schwarz/cmx500_bro_en_5216-4127-12_v0800.pdf",
+      "pages": [
+        2,
+        3,
+        4,
+        13,
+        15,
+        16
+      ],
+      "note": "제조사 브로슈어(v08.00). Key facts(LTE·FR1·WLAN 8 GHz, FR2 24~50 GHz), RF unit(TX 당 1 GHz, 반송파 200 MHz, 포트 4TX·2RX·2TRX), 표준 구성, CMXHEAD50, 주문 정보"
+    }
+  ],
+  "confidence": "catalog",
+  "notes": "PDF 로 확인: FR1 8 GHz·FR2 24~50 GHz, RF unit 대역폭·포트 수, 표준 구성, CMXHEAD50 주파수, Wi-Fi 8 시험. 출력 레벨은 브로슈어에도 없다."
+}

@@ -1,0 +1,123 @@
+{
+  "id": "hitachi-tma7000",
+  "kind": "equipment_series",
+  "name": "Hitachi High-Tech TMA7100 / TMA7300 Thermomechanical Analyzers",
+  "name_ko": "히타치 하이테크 TMA7100·TMA7300 열기계분석기",
+  "manufacturer": "hitachi-high-tech",
+  "category": "tma",
+  "description": "시료 치수 변화를 온도·시간의 함수로 재는 TMA. TMA7100 은 -170~600 °C(석영·금속 실린더), TMA7300 은 상온~1,500 °C(알루미나). 측정 범위 ±5 mm, 감도 0.01 µm, 하중 ±5.8 N, 스캔 0.01~100 °C/min, 시료 길이 자동 측정. NEXTA 소프트웨어로 크리프·응력완화·DMA 측정도 한다. 프로브 7종(선택), 팽윤·진공·체적 팽창·경화 측정 부속.",
+  "test_items": [
+    "tma",
+    "creep",
+    "relaxation",
+    "dma"
+  ],
+  "measurands": [
+    "thermal.expansion_linear",
+    "thermal.glass_transition"
+  ],
+  "measurands_by_item": {
+    "tma": [
+      "thermal.expansion_linear",
+      "thermal.glass_transition"
+    ]
+  },
+  "standards": {
+    "compliance": [],
+    "test_methods": [
+      "ASTM E1269",
+      "ASTM E1641-16",
+      "ASTM E794-06",
+      "ASTM E793-06",
+      "ISO 11357-4",
+      "ISO 11358-3",
+      "ISO 11357-3",
+      "ISO 11357-2",
+      "ISO 22768"
+    ]
+  },
+  "limits": {
+    "temperature_degC": {
+      "min": -170,
+      "max": 1500
+    },
+    "force_N": {
+      "max": 5.8,
+      "note": "±5.8 N"
+    },
+    "heating_rate_K_min": {
+      "min": 0.01,
+      "max": 100
+    }
+  },
+  "models": [
+    {
+      "model": "TMA7100",
+      "specs": {
+        "temperature_degC": {
+          "min": -170,
+          "max": 600
+        },
+        "displacement_mm": {
+          "value": 5,
+          "note": "±5 mm"
+        },
+        "displacement_resolution_nm": {
+          "value": 10,
+          "note": "TMA sensitivity 0.01 µm"
+        },
+        "force_N": {
+          "value": 5.8,
+          "note": "±5.8 N"
+        },
+        "heating_rate_K_min": {
+          "min": 0.01,
+          "max": 100
+        }
+      },
+      "note": "시료 실린더 석영·금속. 최대 시료: 팽창·침입 Φ10 × L25 mm, 인장 W1 × T5 × L25 mm"
+    },
+    {
+      "model": "TMA7300",
+      "specs": {
+        "temperature_degC": {
+          "min": 20,
+          "max": 1500,
+          "note": "Ambient to 1,500 °C"
+        },
+        "displacement_mm": {
+          "value": 5,
+          "note": "±5 mm"
+        },
+        "displacement_resolution_nm": {
+          "value": 10,
+          "note": "TMA sensitivity 0.01 µm"
+        },
+        "force_N": {
+          "value": 5.8,
+          "note": "±5.8 N"
+        },
+        "heating_rate_K_min": {
+          "min": 0.01,
+          "max": 100
+        }
+      },
+      "note": "시료 실린더 알루미나. 최대 시료: 팽창 Φ10 × L25 mm"
+    }
+  ],
+  "relations": [
+    {
+      "type": "same_family_as",
+      "target": "hitachi-nexta-dma200"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://hha.hitachi-hightech.com/en/product-range/products/thermal-analyzer-series/thermomechanical-analyzer-tma7100-and-tma7300",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지(HTML) 본문·표를 직접 읽음. 제품 비교표(시료 실린더, 온도, 측정 범위, 감도, 하중, 스캔 속도, 최대 시료)"
+    }
+  ],
+  "confidence": "limited",
+  "notes": "페이지는 시리즈를 'TMA7000' 으로도 부른다. TMA7300 의 하한은 'Ambient' 라 20 °C 로 적고 note 에 원문을 남겼다. 액체질소 소비 30 % 절감 노 설계."
+}

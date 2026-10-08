@@ -1,0 +1,81 @@
+{
+  "id": "audio-precision-apx511-b-series",
+  "kind": "equipment_model",
+  "name": "Audio Precision APx511 B Series Audio Analyzer (Hearing Instrument Test)",
+  "name_ko": "오디오프리시전 APx511 B 보청기 시험용 오디오 분석기",
+  "manufacturer": "audio-precision",
+  "brand": "APx",
+  "category": "audio_analyzer",
+  "form_factor": "benchtop",
+  "description": "보청기 생산 시험에 필요한 측정과 입출력만 갖춘 분석기. 스피커 출력 100 Hz~10 kHz·최대 4 W RMS(8 Ω), 텔레코일 출력 100 Hz~20 kHz·최대 100 mA RMS(20 Ω 까지), 잔류 THD+N –80 dB(스피커 2 W/8 Ω, 텔레코일 100 mA/1 Ω). 마이크 입력 최대 8.5 Vrms, 잔류 잡음 <1.3 µV, 평탄도 ±0.03 dB(100 Hz~20 kHz). IEC 60118-7·ANSI S3.22 자동 루틴과 배터리 전류 측정을 갖춘다.",
+  "test_items": [
+    "audio_performance"
+  ],
+  "measurands": [
+    "frequency_response",
+    "thd_n"
+  ],
+  "materials": [
+    "hearing aids",
+    "hearing instruments"
+  ],
+  "standards": {
+    "compliance": [],
+    "test_methods": [
+      "IEC 60118-7",
+      "ANSI S3.22"
+    ]
+  },
+  "limits": {
+    "frequency_Hz": {
+      "min": 100,
+      "max": 20000,
+      "note": "스피커 100 Hz~10 kHz, 텔레코일 100 Hz~20 kHz"
+    },
+    "power_W": {
+      "max": 4,
+      "note": "스피커 출력 4 W RMS into 8 Ω"
+    },
+    "residual_thd_n_dB": {
+      "max": -80,
+      "note": "스피커 2 W/8 Ω, 텔레코일 100 mA/1 Ω"
+    },
+    "residual_noise_uV": {
+      "max": 1.3,
+      "note": "마이크 입력, 20 kHz BW, 원문 < 1.3 uV"
+    }
+  },
+  "models": [
+    {
+      "model": "APx511 B Series",
+      "specs": {
+        "frequency_Hz": {
+          "min": 100,
+          "max": 20000
+        },
+        "power_W": 4,
+        "residual_thd_n_dB": -80,
+        "residual_noise_uV": 1.3
+      }
+    }
+  ],
+  "options": [
+    "SW-POLQA-2 (POLQA)",
+    "SW-ABC-MRT (ABC-MRT)",
+    "SW-STI (Speech Transmission Index)"
+  ],
+  "relations": [
+    {
+      "type": "performs",
+      "target": "audio_performance"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://www.audioprecision.com/analyzers-accessories/apx511",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지"
+    }
+  ],
+  "confidence": "limited"
+}

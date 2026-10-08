@@ -1,0 +1,133 @@
+{
+  "id": "photron-fastcam-mini-ax",
+  "kind": "equipment_series",
+  "name": "Photron FASTCAM Mini AX",
+  "name_ko": "포트론 FASTCAM Mini AX 고속 카메라",
+  "manufacturer": "photron",
+  "brand": "FASTCAM",
+  "category": "high_speed_swir_camera",
+  "subcategory": "high_speed_camera",
+  "form_factor": "camera",
+  "description": "1 메가픽셀(1,024 × 1,024) CMOS 센서를 쓴 소형 고속 카메라 계열. 전 화소에서 AX50 은 2,000 fps, AX100 은 4,000 fps, AX200 은 6,400 fps 로 찍고, 화소를 줄이면 형식에 따라 최대 170,000~900,000 fps 까지 오른다. 셔터는 프레임 속도와 무관하게 1 ms ~ 1 µs, 감도는 흑백 ISO 50,000 / 컬러 ISO 25,000. 내장 메모리 8·16·32 GB 중 선택, Gigabit Ethernet 으로 제어한다.",
+  "test_items": [],
+  "limits": {
+    "resolution_pixels": {
+      "max": 1048576,
+      "note": "1,024 × 1,024 (세 기종 같음)"
+    },
+    "frame_rate_fps": {
+      "min": 2000,
+      "max": 6400,
+      "note": "전 화소(1,024 × 1,024) 기준. AX50 2,000 / AX100 4,000 / AX200 6,400 fps"
+    },
+    "max_frame_rate_fps": {
+      "max": 900000,
+      "note": "화소를 줄였을 때. AX50 170,000, AX100 212,500 또는 540,000, AX200 216,000·540,000·900,000 fps(형식별)"
+    },
+    "min_exposure_time_s": {
+      "min": 1e-06,
+      "note": "셔터 1 ms ~ 1 µs, 프레임 속도와 무관(PDF 사양표는 「1.05 µs」 로도 적음). Mini AX200 900K-S 형식은 260 ns 선택"
+    },
+    "memory_GB": {
+      "values": [
+        8,
+        16,
+        32
+      ]
+    },
+    "adc_resolution_bit": {
+      "values": [
+        12
+      ],
+      "note": "흑백 12-bit / 컬러 36-bit"
+    }
+  },
+  "models": [
+    {
+      "model": "Mini AX50",
+      "specs": {
+        "detector": "1-megapixel CMOS image sensor",
+        "detector_pixels": "1024 × 1024",
+        "resolution_pixels": 1048576,
+        "min_exposure_time_s": 1e-06,
+        "memory_GB": [
+          8,
+          16,
+          32
+        ],
+        "adc_resolution_bit": 12,
+        "interfaces": "Gigabit Ethernet",
+        "weight_kg": 1.5,
+        "frame_rate_fps": 2000,
+        "max_frame_rate_fps": 170000,
+        "pixel_pitch_um": 20
+      }
+    },
+    {
+      "model": "Mini AX100",
+      "specs": {
+        "detector": "1-megapixel CMOS image sensor",
+        "detector_pixels": "1024 × 1024",
+        "resolution_pixels": 1048576,
+        "min_exposure_time_s": 1e-06,
+        "memory_GB": [
+          8,
+          16,
+          32
+        ],
+        "adc_resolution_bit": 12,
+        "interfaces": "Gigabit Ethernet",
+        "weight_kg": 1.5,
+        "frame_rate_fps": 4000,
+        "max_frame_rate_fps": 540000,
+        "pixel_pitch_um": 20
+      },
+      "note": "최대 프레임 속도는 형식에 따라 212,500 또는 540,000 fps(128 × 16 화소)"
+    },
+    {
+      "model": "Mini AX200",
+      "specs": {
+        "detector": "1-megapixel CMOS image sensor",
+        "detector_pixels": "1024 × 1024",
+        "resolution_pixels": 1048576,
+        "min_exposure_time_s": 1e-06,
+        "memory_GB": [
+          8,
+          16,
+          32
+        ],
+        "adc_resolution_bit": 12,
+        "interfaces": "Gigabit Ethernet",
+        "weight_kg": 1.5,
+        "frame_rate_fps": 6400,
+        "max_frame_rate_fps": 900000,
+        "pixel_pitch_um": 20
+      },
+      "note": "최대 프레임 속도는 형식에 따라 216,000 · 540,000 · 900,000 fps(128 × 16 화소). 900K-S 형식은 260 ns 셔터 선택(수출 통제 대상)"
+    }
+  ],
+  "features": [
+    "프레임 속도와 무관한 1 ms ~ 1 µs 전자 셔터",
+    "흑백 ISO 50,000 / 컬러 ISO 25,000",
+    "내장 메모리 8·16·32 GB",
+    "Gigabit Ethernet 제어"
+  ],
+  "sources": [
+    {
+      "url": "https://photron.com/fastcam-mini-ax/",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지(HTML). 기종별 전 화소·최대 프레임 속도, 셔터, 감도, 메모리, 크기 120 × 120 × 94 mm, 무게 1.5 kg"
+    },
+    {
+      "file": "photron/mini-ax-2025.pdf",
+      "pages": [
+        1,
+        2,
+        3
+      ],
+      "note": "제조사 데이터시트 PDF(2025)"
+    }
+  ],
+  "confidence": "catalog",
+  "notes": "PDF 로 확인: 세 기종의 전 화소 · 최대 프레임 속도, 셔터, 감도, ADC, 메모리, 인터페이스, 무게(화소 20 µm 를 더함). PDF 의 센서 크기 20.48 × 20.48 mm, 운전 온도 0 ~ 40 °C, 전원 DC 22 ~ 32 V 55 VA."
+}

@@ -1,0 +1,247 @@
+{
+  "id": "spectral-dynamics-air-cooled-shakers",
+  "kind": "equipment_series",
+  "name": "Spectral Dynamics Air-Cooled Electrodynamic Shakers (SD-xxx-xxxM)",
+  "name_ko": "스펙트럴 다이나믹스 공랭식 전기동력 가진기",
+  "manufacturer": "spectral-dynamics",
+  "category": "vibration_shaker",
+  "drive": "electrodynamic",
+  "form_factor": "floor",
+  "description": "넓은 주파수 대역의 공랭식 전기동력 진동 시험 시스템 13 기종. 정현·랜덤 112~15,432 lbf(약 0.5~68.6 kN), 아마추어 120~450 mm, 스트로크 20~76 mm, 최대 가속도 30~115 g, 속도 1.2~2 m/s, 탑재 20~1,000 kg 이상. LS3 기종은 롱 스트로크(76/63 mm)다.",
+  "test_items": [
+    "vibration_sine_random"
+  ],
+  "measurands": [
+    "resonance_frequency",
+    "transmissibility",
+    "fatigue_life"
+  ],
+  "limits": {
+    "force_kN": {
+      "min": 0.5,
+      "max": 68.64,
+      "note": "원문 lbf(112~15,432)를 kN 으로 환산"
+    },
+    "displacement_mm": {
+      "min": 20,
+      "max": 76,
+      "note": "원문 Stroke (mm). 76/63 처럼 두 값이 적힌 뜻은 페이지에 없음"
+    },
+    "acceleration_g": {
+      "max": 115
+    },
+    "velocity_m_s": {
+      "max": 2
+    },
+    "payload_kg": {
+      "min": 20,
+      "max": 1000,
+      "note": "대형 기종은 원문 1,000+"
+    }
+  },
+  "models": [
+    {
+      "model": "SD-110-120M",
+      "specs": {
+        "force_kN": 0.5,
+        "force_random_kN": 0.35,
+        "armature_diameter_mm": 120,
+        "displacement_mm": 20.0,
+        "acceleration_g": 30,
+        "velocity_m_s": 1.2,
+        "payload_kg": 20
+      },
+      "note": "원문 정현/랜덤 112/79 lbf, Stroke 20 mm"
+    },
+    {
+      "model": "SD-220-120M",
+      "specs": {
+        "force_kN": 0.98,
+        "force_random_kN": 0.98,
+        "armature_diameter_mm": 120,
+        "displacement_mm": 25.0,
+        "acceleration_g": 65,
+        "velocity_m_s": 1.6,
+        "payload_kg": 70
+      },
+      "note": "원문 정현/랜덤 220/220 lbf, Stroke 25 mm"
+    },
+    {
+      "model": "SD-660-150M",
+      "specs": {
+        "force_kN": 2.94,
+        "force_random_kN": 2.94,
+        "armature_diameter_mm": 150,
+        "displacement_mm": 38.0,
+        "acceleration_g": 100,
+        "velocity_m_s": 2,
+        "payload_kg": 70
+      },
+      "note": "원문 정현/랜덤 661/661 lbf, Stroke 38 mm"
+    },
+    {
+      "model": "SD-500-150M",
+      "specs": {
+        "force_kN": 2.22,
+        "force_random_kN": 2.22,
+        "armature_diameter_mm": 150,
+        "displacement_mm": 38.0,
+        "acceleration_g": 75,
+        "velocity_m_s": 2,
+        "payload_kg": 70
+      },
+      "note": "원문 정현/랜덤 500/500 lbf, Stroke 38 mm"
+    },
+    {
+      "model": "SD-1510-230M",
+      "specs": {
+        "force_kN": 6.77,
+        "force_random_kN": 6.77,
+        "armature_diameter_mm": 230,
+        "displacement_mm": {
+          "values": [
+            48.0,
+            52.0
+          ]
+        },
+        "acceleration_g": 100,
+        "velocity_m_s": 2,
+        "payload_kg": 300
+      },
+      "note": "원문 정현/랜덤 1,521/1,521 lbf, Stroke 48/52 mm"
+    },
+    {
+      "model": "SD-2420-240M",
+      "specs": {
+        "force_kN": 10.79,
+        "force_random_kN": 10.79,
+        "armature_diameter_mm": 240,
+        "displacement_mm": 51.0,
+        "acceleration_g": 100,
+        "velocity_m_s": 2,
+        "payload_kg": 300
+      },
+      "note": "원문 정현/랜덤 2,425/2,425 lbf, Stroke 51 mm"
+    },
+    {
+      "model": "SD-2420-335M",
+      "specs": {
+        "force_kN": 10.79,
+        "force_random_kN": 10.79,
+        "armature_diameter_mm": 335,
+        "displacement_mm": 51.0,
+        "acceleration_g": 85,
+        "velocity_m_s": 2,
+        "payload_kg": 300
+      },
+      "note": "원문 정현/랜덤 2,425/2,425 lbf, Stroke 51 mm"
+    },
+    {
+      "model": "SD-4840-335M",
+      "specs": {
+        "force_kN": 21.57,
+        "force_random_kN": 21.57,
+        "armature_diameter_mm": 335,
+        "displacement_mm": 51.0,
+        "acceleration_g": 115,
+        "velocity_m_s": 2,
+        "payload_kg": 300
+      },
+      "note": "원문 정현/랜덤 4,850/4,850 lbf, Stroke 51 mm"
+    },
+    {
+      "model": "SD-6600-340M",
+      "specs": {
+        "force_kN": 29.42,
+        "force_random_kN": 29.42,
+        "armature_diameter_mm": 340,
+        "displacement_mm": 51.0,
+        "acceleration_g": 115,
+        "velocity_m_s": 2,
+        "payload_kg": 500
+      },
+      "note": "원문 정현/랜덤 6,614/6,614 lbf, Stroke 51 mm"
+    },
+    {
+      "model": "SD-8360-440M",
+      "specs": {
+        "force_kN": 37.27,
+        "force_random_kN": 37.27,
+        "armature_diameter_mm": 440,
+        "displacement_mm": 51.0,
+        "acceleration_g": 115,
+        "velocity_m_s": 2,
+        "payload_kg": 500
+      },
+      "note": "원문 정현/랜덤 8,378/8,378 lbf, Stroke 51 mm"
+    },
+    {
+      "model": "SD-11000LS3-445M",
+      "specs": {
+        "force_kN": 49.03,
+        "force_random_kN": 49.03,
+        "armature_diameter_mm": 445,
+        "displacement_mm": {
+          "values": [
+            76.0,
+            63.0
+          ]
+        },
+        "acceleration_g": 110,
+        "velocity_m_s": 2,
+        "payload_kg": 1000
+      },
+      "note": "원문 정현/랜덤 11,023/11,023 lbf, Stroke 76/63 mm, 탑재 원문 1,000+ kg"
+    },
+    {
+      "model": "SD-13200-445M",
+      "specs": {
+        "force_kN": 58.84,
+        "force_random_kN": 58.84,
+        "armature_diameter_mm": 445,
+        "displacement_mm": 51.0,
+        "acceleration_g": 100,
+        "velocity_m_s": 2,
+        "payload_kg": 1000
+      },
+      "note": "원문 정현/랜덤 13,228/13,228 lbf, Stroke 51 mm, 탑재 원문 1,000+ kg"
+    },
+    {
+      "model": "SD-15400LS3-450M",
+      "specs": {
+        "force_kN": 68.64,
+        "force_random_kN": 68.64,
+        "armature_diameter_mm": 450,
+        "displacement_mm": {
+          "values": [
+            76.0,
+            63.0
+          ]
+        },
+        "acceleration_g": 100,
+        "velocity_m_s": 2,
+        "payload_kg": 1000
+      },
+      "note": "원문 정현/랜덤 15,432/15,432 lbf, Stroke 76/63 mm, 탑재 원문 1,000+ kg"
+    }
+  ],
+  "relations": [
+    {
+      "type": "performs",
+      "target": "vibration_sine_random"
+    },
+    {
+      "type": "same_family_as",
+      "target": "spectral-dynamics-water-cooled-shakers"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://www.spectraldynamics.com/shakers/air-cooled",
+      "retrieved": "2026-10-08",
+      "note": "제조사 공랭식 가진기 페이지. 비교 표(lbf)"
+    }
+  ],
+  "confidence": "limited",
+  "notes": "힘은 원문 lbf 를 kN 으로 환산했다(×4.448222 N). 주파수 범위·충격 정격은 페이지에 없다."
+}

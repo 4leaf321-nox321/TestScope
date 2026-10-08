@@ -1,0 +1,116 @@
+{
+  "id": "keyence-vk-x3000-series",
+  "kind": "equipment_series",
+  "name": "KEYENCE VK-X3000 Series 3D Surface Profiler / Laser Scanning Microscope (VK-X3000 / VK-X3100 / VK-X3050)",
+  "name_ko": "키엔스 VK-X3000 3D 레이저 공초점 현미경(형상 측정기)",
+  "manufacturer": "keyence",
+  "brand": "VK-X",
+  "category": "optical_profilometer",
+  "subcategory": "laser_scanning_confocal_microscope",
+  "form_factor": "benchtop",
+  "description": "레이저 공초점, 초점 변화(focus variation), 백색광 간섭, 분광 간섭을 한 장치에서 쓰는 3D 표면 형상 측정기(레이저 현미경). 컨트롤러 VK-X3000 에 측정 헤드 VK-X3100(404 nm, 높이 표시 분해능 0.1 nm) 또는 VK-X3050(661 nm, 1 nm)을 붙인다. 총 배율 42～28800×, 시야 11～7398 μm, 높이 정확도 0.2+L/100 μm, 폭 정확도 ±2 %. XY 스테이지 수동 70×70 mm, 전동 100×100 mm, 측정 면적 최대 50×50 mm(이어붙이기). 단종 — 후속 VK-X4000 계열(VK-X4100·VK-X4050).",
+  "test_items": [
+    "surface_topography",
+    "microscopy"
+  ],
+  "measurands": [
+    "surface.roughness_ra",
+    "surface.roughness_sq",
+    "step_height",
+    "surface_morphology"
+  ],
+  "limits": {
+    "laser_wavelength_nm": {
+      "values": [
+        404,
+        661
+      ]
+    },
+    "magnification": {
+      "min": 42,
+      "max": 28800,
+      "note": "23인치 모니터 기준"
+    },
+    "field_of_view_mm": {
+      "min": 0.011,
+      "max": 7.398,
+      "note": "원문 11 to 7398 μm"
+    },
+    "vertical_resolution_nm": {
+      "min": 0.1,
+      "max": 1,
+      "note": "레이저 공초점 높이 표시 분해능. 계열 개요 페이지는 0.01 nm 라고 적음(측정 방식 다름으로 보임)"
+    },
+    "stage_travel_mm": {
+      "max": 100,
+      "note": "수동 70×70, 전동 100×100"
+    },
+    "scan_range_mm": {
+      "max": 50,
+      "note": "scan areas up to 50 × 50 mm"
+    }
+  },
+  "models": [
+    {
+      "model": "VK-X3000",
+      "note": "컨트롤러"
+    },
+    {
+      "model": "VK-X3100",
+      "specs": {
+        "laser_wavelength_nm": 404,
+        "vertical_resolution_nm": 0.1,
+        "magnification": {
+          "min": 42,
+          "max": 28800
+        },
+        "field_of_view_mm": {
+          "min": 0.011,
+          "max": 7.398
+        },
+        "principle": "Laser confocal, Focus variation, White light interferometry, Spectral interference",
+        "accuracy": "높이 0.2+L/100 μm 이하, 폭 측정값 ±2 % 이하",
+        "weight_kg": 13
+      },
+      "note": "측정 헤드. 높이 반복도 σ 10× 100 nm, 20× 40 nm, 50× 12 nm. 폭 반복도 3σ 10× 200 nm, 20× 100 nm, 50× 40 nm. 레이저 최대 1.0 mW Class 2. 레이저 측정 속도 면 125 Hz, 선 7900 Hz. 단종 — 후속 VK-X4100"
+    },
+    {
+      "model": "VK-X3050",
+      "specs": {
+        "laser_wavelength_nm": 661,
+        "vertical_resolution_nm": 1,
+        "magnification": {
+          "min": 42,
+          "max": 28800
+        },
+        "field_of_view_mm": {
+          "min": 0.011,
+          "max": 7.398
+        },
+        "principle": "Laser confocal, Focus variation, White light interferometry, Spectral interference",
+        "accuracy": "높이 0.2+L/100 μm 이하, 폭 측정값 ±2 % 이하",
+        "weight_kg": 13
+      },
+      "note": "측정 헤드. 높이 반복도 σ 10× 100 nm, 20× 40 nm, 50× 20 nm. 폭 반복도 3σ 10× 400 nm, 20× 100 nm, 50× 50 nm. 단종 — 후속 VK-X4050"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://www.keyence.com/products/microscope/laser-microscope/vk-x3000/",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품·기종 페이지(HTML, keyence.com) 계열 개요(0.01 nm, 50 × 50 mm, 측정 방식 3가지)"
+    },
+    {
+      "url": "https://www.keyence.com/products/microscope/laser-microscope/vk-x3000/models/vk-x3100/",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품·기종 페이지(HTML, keyence.com) VK-X3100 사양"
+    },
+    {
+      "url": "https://www.keyence.com/products/microscope/laser-microscope/vk-x3000/models/vk-x3050/",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품·기종 페이지(HTML, keyence.com) VK-X3050 사양"
+    }
+  ],
+  "confidence": "limited",
+  "notes": "분류 판단: 제조사가 「3D Surface Profiler」 로 부르는 형상 측정 장비라 optical_microscope 가 아니라 optical_profilometer 에 넣음(Evident OLS5100 과 같은 판단). 운영 대장에서 「광학 현미경」 이면 사람이 옮길 것. 후속 VK-X4000 계열은 이번에 조사하지 않음."
+}

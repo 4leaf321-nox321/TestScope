@@ -1,0 +1,251 @@
+{
+  "id": "csz-thermal-shock",
+  "kind": "equipment_series",
+  "name": "CSZ Thermal Shock Chambers (VTS Compact / VTS Large / Horizontal DTS·HTS / TSB Liquid)",
+  "name_ko": "CSZ 열충격 챔버 (VTS 수직형·DTS/HTS 가로형·TSB 액체식)",
+  "manufacturer": "csz",
+  "category": "thermal_shock_chamber",
+  "drive": "thermal",
+  "form_factor": "floor",
+  "description": "Cincinnati Sub-Zero 의 열충격 챔버. 소형 전자부품용 수직형 VTS Compact(30·85 L, -75~+190 °C), 대형·배치용 VTS Large(255·311 L), 큰 하중용 가로형 DTS·HTS(453~1274 L), IC 용 액체식 TSB(고온 배스 ~+160 °C, 저온 배스 ~-75 °C).",
+  "test_items": [
+    "thermal_shock",
+    "temperature_cycling"
+  ],
+  "limits": {
+    "high_temp_degC": {
+      "max": 210,
+      "note": "VTS Large·DTS 고온조 상한 +210 °C"
+    },
+    "low_temp_degC": {
+      "min": -75,
+      "note": "VTS·DTS·TSB 저온 하한 -75 °C"
+    },
+    "chamber_volume_L": {
+      "min": 30,
+      "max": 1274
+    }
+  },
+  "models": [
+    {
+      "model": "VTS-1",
+      "variant": "VTS Compact(수직형)",
+      "specs": {
+        "chamber_volume_L": 30,
+        "temperature_degC": {
+          "min": -75,
+          "max": 190
+        },
+        "load_kg": {
+          "max": 9.1,
+          "note": "원문 20 lbs"
+        }
+      },
+      "note": "원문 '1 cu. ft. (30L)'"
+    },
+    {
+      "model": "VTS-3",
+      "variant": "VTS Compact(수직형)",
+      "specs": {
+        "chamber_volume_L": 85,
+        "temperature_degC": {
+          "min": -75,
+          "max": 190
+        },
+        "load_kg": {
+          "max": 29.9,
+          "note": "원문 66 lbs"
+        }
+      },
+      "note": "원문 '3 cu. ft. (85L)'"
+    },
+    {
+      "model": "VTS-9",
+      "variant": "VTS Large(수직형)",
+      "specs": {
+        "chamber_volume_L": 255,
+        "inner_mm": {
+          "note": "원문 25\" x 25\" x 25\""
+        },
+        "high_temp_degC": {
+          "min": 115,
+          "max": 210,
+          "note": "원문 hot zone '115°C to +210°C'"
+        },
+        "low_temp_degC": {
+          "min": -75,
+          "max": 190,
+          "note": "원문 cold zone '-75°C to +190°C'"
+        }
+      },
+      "note": "원문 '9 cu. ft. (255L)'"
+    },
+    {
+      "model": "VTS-11",
+      "variant": "VTS Large(수직형)",
+      "specs": {
+        "chamber_volume_L": 311,
+        "inner_mm": {
+          "note": "원문 30\"W x 25\"D x 25\"H"
+        },
+        "high_temp_degC": {
+          "min": 85,
+          "max": 210
+        },
+        "low_temp_degC": {
+          "min": -75,
+          "note": "원문 '-75°C to +Ambient'"
+        }
+      },
+      "note": "원문 '11 cu. ft. (311L)'"
+    },
+    {
+      "model": "DTS-16",
+      "variant": "Horizontal(가로형)",
+      "specs": {
+        "chamber_volume_L": 453,
+        "inner_mm": {
+          "note": "시편 캐리어 762 × 762 × 762 mm(30\"W x 30\"D x 30\"H)"
+        },
+        "high_temp_degC": {
+          "min": 70,
+          "max": 210
+        },
+        "low_temp_degC": {
+          "min": -75,
+          "max": 190
+        }
+      }
+    },
+    {
+      "model": "DTS-27",
+      "variant": "Horizontal(가로형)",
+      "specs": {
+        "chamber_volume_L": 765,
+        "inner_mm": {
+          "note": "시편 캐리어 914 × 914 × 914 mm(36\"W x 36\"D x 36\"H)"
+        },
+        "high_temp_degC": {
+          "min": 70,
+          "max": 210
+        },
+        "low_temp_degC": {
+          "min": -75,
+          "max": 190
+        }
+      }
+    },
+    {
+      "model": "HTS-16",
+      "variant": "Horizontal(가로형)",
+      "specs": {
+        "chamber_volume_L": 453,
+        "inner_mm": {
+          "note": "시편 캐리어 762 × 762 × 762 mm"
+        },
+        "high_temp_degC": {
+          "max": 200,
+          "note": "원문 'Ambient +55°C to +200°C'"
+        },
+        "low_temp_degC": {
+          "min": -70,
+          "note": "원문 '-70°C to Ambient'"
+        }
+      }
+    },
+    {
+      "model": "HTS-27",
+      "variant": "Horizontal(가로형)",
+      "specs": {
+        "chamber_volume_L": 765,
+        "inner_mm": {
+          "note": "시편 캐리어 914 × 914 × 914 mm"
+        },
+        "high_temp_degC": {
+          "max": 200,
+          "note": "원문 'Ambient +55°C to +200°C'"
+        },
+        "low_temp_degC": {
+          "min": -70,
+          "note": "원문 '-70°C to Ambient'"
+        }
+      }
+    },
+    {
+      "model": "HTS-45",
+      "variant": "Horizontal(가로형)",
+      "specs": {
+        "chamber_volume_L": 1274,
+        "inner_mm": {
+          "note": "시편 캐리어 1524 × 914 × 914 mm(60\"W x 36\"D x 36\"H)"
+        },
+        "high_temp_degC": {
+          "max": 200,
+          "note": "원문 'Ambient +55°C to +200°C'"
+        },
+        "low_temp_degC": {
+          "min": -70,
+          "note": "원문 '-70°C to Ambient'"
+        }
+      }
+    },
+    {
+      "model": "TSB",
+      "variant": "액체식",
+      "specs": {
+        "high_temp_degC": {
+          "max": 160,
+          "note": "고온 배스 'Ambient to +160°C'"
+        },
+        "low_temp_degC": {
+          "min": -75,
+          "note": "저온 배스 'Ambient to -75°C'"
+        },
+        "load_kg": {
+          "values": [
+            0.9,
+            2.3
+          ],
+          "note": "IC 2 lbs(0.9 kg)·5 lbs(2.3 kg)"
+        }
+      },
+      "note": "액체식(Liquid-to-Liquid) 열충격. 페이지가 계열 이름 'TSB Liquid' 만 적고 기종별 이름을 싣지 않았다",
+      "uncertain": true
+    }
+  ],
+  "relations": [
+    {
+      "type": "simulates_environment",
+      "target": "environment-thermal-shock"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://www.cszindustrial.com/Products/Thermal-Shock-Chambers.aspx",
+      "retrieved": "2026-10-08",
+      "note": "제조사 열충격 제품군 목록(VTS Compact·VTS Large·Horizontal·TSB Liquid)"
+    },
+    {
+      "url": "https://www.cszindustrial.com/Products/Thermal-Shock-Chambers/VTS-Compact.aspx",
+      "retrieved": "2026-10-08",
+      "note": "제조사 페이지. VTS-1·VTS-3 용적·온도 범위·최대 하중"
+    },
+    {
+      "url": "https://www.cszindustrial.com/Products/Thermal-Shock-Chambers/VTS-Large.aspx",
+      "retrieved": "2026-10-08",
+      "note": "제조사 페이지. VTS-9·VTS-11 치수·용적·고온조/저온조 범위"
+    },
+    {
+      "url": "https://www.cszindustrial.com/Products/Thermal-Shock-Chambers/Horizontal-Thermal-Shock.aspx",
+      "retrieved": "2026-10-08",
+      "note": "제조사 페이지. DTS-16/27, HTS-16/27/45 용적·캐리어 치수·고온조/저온조 범위"
+    },
+    {
+      "url": "https://www.cszindustrial.com/Products/Thermal-Shock-Chambers/TSB-Liquid.aspx",
+      "retrieved": "2026-10-08",
+      "note": "제조사 페이지. TSB 액체식 하중·배스 온도 범위"
+    }
+  ],
+  "confidence": "limited",
+  "notes": "회복 시간·이송 시간은 페이지에 없다. VTS-9 고온조 하한 '115°C' 와 저온조 상한 '+190°C' 는 페이지 표기 그대로다. 하중 lbs → kg 환산(1 lb = 0.4536 kg)."
+}

@@ -1,0 +1,76 @@
+{
+  "id": "zeiss-contura",
+  "kind": "equipment_series",
+  "name": "ZEISS CONTURA Bridge-Type CMM",
+  "name_ko": "자이스 CONTURA 브리지형 3차원 측정기",
+  "manufacturer": "zeiss",
+  "category": "coordinate_measuring_machine",
+  "form_factor": "floor",
+  "description": "성능 등급(performance class)의 브리지형 3차원 측정기 계열임. 크기(dm)는 X 7~12, Y 7~24, Z 6~10 으로 가장 작은 7/7/6 부터 가장 큰 12/24/10 까지 있음. 정확도 1.4 + L/350 µm 부터, 최대 시편 질량 730~1200 kg(크기별). VAST XT gold · VAST XTR gold · RDS · VAST XXT · XDT 접촉 프로브와 DotScan · ViScan · LineScan 광학 센서를 바꿔 달 수 있고(mass technology), 소프트웨어는 ZEISS CALYPSO.",
+  "test_items": [],
+  "limits": {
+    "measuring_range_x_mm": {
+      "min": 700,
+      "max": 1200,
+      "note": "원문 Size in dm: X 7-12"
+    },
+    "measuring_range_y_mm": {
+      "min": 700,
+      "max": 2400,
+      "note": "원문 Y 7-24"
+    },
+    "measuring_range_z_mm": {
+      "min": 600,
+      "max": 1000,
+      "note": "원문 Z 6-10"
+    },
+    "specimen_mass_kg": {
+      "min": 730,
+      "max": 1200,
+      "note": "원문 730 – 1200 kg (depending on size)"
+    }
+  },
+  "models": [
+    {
+      "model": "CONTURA 7/7/6",
+      "specs": {
+        "measuring_range_x_mm": 700,
+        "measuring_range_y_mm": 700,
+        "measuring_range_z_mm": 600
+      },
+      "note": "페이지가 가장 작은 크기로 적음(크기 표기 dm)"
+    },
+    {
+      "model": "CONTURA 12/24/10",
+      "specs": {
+        "measuring_range_x_mm": 1200,
+        "measuring_range_y_mm": 2400,
+        "measuring_range_z_mm": 1000
+      },
+      "note": "페이지가 가장 큰 크기로 적음(크기 표기 dm)"
+    }
+  ],
+  "accuracy": {
+    "length_measuring_error_mpe": "Accuracy from 1,4 + L/350 µm"
+  },
+  "options": [
+    "ZEISS VAST XT gold",
+    "ZEISS VAST XTR gold",
+    "ZEISS RDS",
+    "ZEISS VAST XXT",
+    "ZEISS XDT",
+    "ZEISS DotScan",
+    "ZEISS ViScan",
+    "ZEISS LineScan",
+    "ZEISS direct VAST XXT"
+  ],
+  "sources": [
+    {
+      "url": "https://www.zeiss.com/metrology/en/systems/cmms/bridge-type-cmms/contura.html",
+      "retrieved": "2026-10-08",
+      "note": "제조사 제품 페이지(기술 데이터: 크기 범위, 정확도, 프로브, 최대 시편 질량)"
+    }
+  ],
+  "confidence": "limited",
+  "notes": "중간 크기(7/10/6, 10/12/6 등)는 페이지에 낱낱이 적혀 있지 않아 넣지 않음. 크기 표기 dm 를 mm 로 바꿈."
+}
