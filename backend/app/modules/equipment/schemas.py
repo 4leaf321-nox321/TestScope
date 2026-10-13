@@ -535,6 +535,9 @@ class FreeSpecOut(BaseModel):
     same_key_models: int = 0
     """같은 원본 키를 가진 **다른** 기종 수. 0 이 아니면 정의로 세울 때가 된 것이다 —
     여러 기종이 공유하는 값은 비교할 수 있어야 한다."""
+    promoted_to: str | None = None
+    """이 원본 키가 이미 정식 정의로 승격됐는데 **이 줄은 못 옮겨진** 경우 그 정의 이름 —
+    값이 그 정의의 종류로 안 읽혔다. 화면은 「정식 칸으로 옮기지 못함」 으로 보여 준다."""
 
 
 class FreeSpecUpsertRequest(Request):
@@ -560,12 +563,22 @@ class FreeSpecPromoteRequest(Request):
     기종만의 사양」 으로 남아 같은 값이 두 자리에 산다."""
 
 
+class UnmovedSpec(BaseModel):
+    """정의의 종류로 못 읽어 기종 고유 사양에 남은 줄 하나."""
+
+    model_id: uuid.UUID
+    model: str
+    value: str
+
+
 class FreeSpecPromoteResult(BaseModel):
     definition_id: uuid.UUID
     moved: int
     """정의 값으로 옮긴 줄 수."""
     left: int
     """수치로 못 읽어 그대로 둔 줄 수 — 「약 300」 같은 것은 사람이 봐야 한다."""
+    unmoved: list[UnmovedSpec] = []
+    """그대로 둔 줄 — **어느 기종의 무슨 값인지.** 수만 주면 어디를 고칠지 모른다."""
 
 
 class PendingMethodOut(BaseModel):

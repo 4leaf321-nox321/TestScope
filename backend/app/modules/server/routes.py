@@ -43,6 +43,7 @@ from app.modules.server.schemas import (
 )
 from app.modules.test_items.models import (
     EquipmentTestItem,
+    SeriesPendingMethod,
     SeriesTestItem,
     SeriesTestItemMethod,
 )
@@ -310,6 +311,28 @@ def maintenance(
                 # 정한 것. 정하는 순간 인용한 계열에 붙는다 — 그 전까지는 「가능 장비 없음」
                 # 으로 서서 못 하는 시험처럼 읽힌다.
                 severity="info",
+            )
+        )
+
+    # **시험 항목은 정했는데 인용 계열에 안 이어진 규격.** 그 계열에 그 시험 항목이 없어서다
+    # — 후보 밖 항목으로 정하면 생기고, 화면에는 처리가 끝난 것처럼 보였다(2026-10-13).
+    # 계열에 시험 항목을 더하거나(규격 화면 「인용 계열에 시험 항목 추가」) 항목을 다시 본다.
+    broken = _count(
+        db,
+        TestMethod,
+        TestMethod.deleted_at.is_(None),
+        TestMethod.id.in_(select(TestMethodItem.method_id).distinct()),
+        TestMethod.id.in_(select(SeriesPendingMethod.method_id).distinct()),
+    )
+    if broken:
+        items.append(
+            MaintenanceItemOut(
+                key="method_citation_unlinked",
+                label="시험 항목은 정했는데 인용 계열에 안 이어진 규격",
+                count=broken,
+                link="/methods?cited=unlinked",
+                # 경고다 — 그 계열의 장비는 이 규격으로 검색에 안 걸린다.
+                severity="warning",
             )
         )
 

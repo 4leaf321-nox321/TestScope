@@ -677,6 +677,7 @@ def test_쓰기_도구가_부르는_경로는_모두_범위_표에_있다() -> N
 #: 도구 이름처럼 생겼지만 **도구가 아닌 것** — 칸 · 인자 · 스크립트 이름. 여기에 더할
 #: 때는 그것이 정말 도구가 아닌지(없는 도구를 가리키는 오타가 아닌지) 한 번 본다.
 NOT_TOOLS = {
+    "add_to_citing",  # decide_review_item 인자(규격의 시험 항목 — 인용 계열에 추가)
     "import_catalog",  # 반입 스크립트(`scripts/import_catalog.py`)
     "link_id",  # update_record · delete_record 의 ids 칸
     "merge_into",  # update_record(attribute_definition) 의 fields 칸

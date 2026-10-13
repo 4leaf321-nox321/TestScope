@@ -7,6 +7,8 @@ export type TestMethod = components['schemas']['MethodOut']
 export type Requirement = components['schemas']['RequirementOut']
 export type RequirementImportResult = components['schemas']['RequirementImportResult']
 export type RequirementImportRow = components['schemas']['RequirementImportRow']
+export type LinkCitationsResult = components['schemas']['LinkCitationsResult']
+export type DetachImpact = components['schemas']['DetachImpact']
 type MethodPage = components['schemas']['Page_MethodOut_']
 
 export const methodApi = {
@@ -16,7 +18,8 @@ export const methodApi = {
     testItem?: string
     /** `none` 이면 요구 조건이 안 적힌 규격만. 홈의 「남은 일」 이 이걸로 온다. */
     requirement?: string
-    /** `none` 이면 어느 계열의 시험 항목에도 안 이어진 규격만. */
+    /** `none` 이면 어느 계열의 시험 항목에도 안 이어진 규격만, `unlinked` 면 시험 항목은
+     *  정했는데 인용 계열 일부가 그 시험 항목이 없어 안 이어진 규격만. */
     cited?: string
     /** `owned` 면 보유 장비의 시험 항목이 실제로 가리키는 규격만 — 요구 조건은 여기부터. */
     used?: string
@@ -40,6 +43,18 @@ export const methodApi = {
   update: (id: string, body: Record<string, unknown>) =>
     api.patch<TestMethod>(`/methods/${id}`, body),
   remove: (id: string) => api.delete<void>(`/methods/${id}`),
+  /** 안 이어진 인용 계열에 규격의 시험 항목을 더해 잇는다 — 시스템 관리자. */
+  linkCitations: (id: string) =>
+    api.post<LinkCitationsResult>(`/methods/${id}/link-citations`),
+  /** 이 규격을 다른 규격으로 합친다 — 시스템 관리자. 남는 쪽을 돌려준다. */
+  merge: (id: string, targetId: string, reason: string) =>
+    api.post<TestMethod>(`/methods/${id}/merge`, { target_id: targetId, reason }),
+  /** 시험 항목을 떼기 **전에** — 끊기는 계열 · 남는 계열. */
+  detachPreview: (id: string, termId: string) =>
+    api.get<DetachImpact>(`/methods/${id}/test-items/${termId}/detach-preview`),
+  /** 잘못 걸린 시험 항목을 뗀다 — 시스템 관리자, 사유는 감사 기록에. */
+  detachTestItem: (id: string, termId: string, reason: string) =>
+    api.post<DetachImpact>(`/methods/${id}/test-items/${termId}/detach`, { reason }),
   putRequirement: (methodId: string, body: Record<string, unknown>) =>
     api.put<Requirement>(`/methods/${methodId}/requirements`, body),
   removeRequirement: (methodId: string, requirementId: string) =>

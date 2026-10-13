@@ -183,6 +183,11 @@ class _Lookup:
         self.methods: dict[str, list[TestMethod]] = {}
         for row in db.scalars(visible(db, user)):
             self.methods.setdefault(method_key(row.code), []).append(row)
+        # 옛 번호로 적힌 표도 받는다 — 규격서 표지를 옮겨 적으면 옛 번호인 경우가 흔하다.
+        for row in db.scalars(visible(db, user)):
+            for old in row.former_codes or []:
+                if method_key(old) not in self.methods:
+                    self.methods.setdefault(method_key(old), []).append(row)
         self.keys: dict[str, ConditionKey] = {}
         for key in db.scalars(select(ConditionKey)):
             self.keys[compare_key(key.key)] = key

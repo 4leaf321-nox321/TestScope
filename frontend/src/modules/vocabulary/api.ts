@@ -11,6 +11,12 @@ export type SpecGroup = components['schemas']['SpecGroupOut']
 export type SpecDefinition = components['schemas']['SpecDefinitionOut']
 export type ReferenceGroup = components['schemas']['ReferenceGroupOut']
 
+/** 코드가 열쇠인 축 — 검토함 · 정본이 값을 코드로 고른다. 서버 `CODED_AXES` 와 같다. */
+export const CODED_AXES = new Set(['test_item', 'property'])
+/** 서버 `CODE_RULE_TEXT` 와 같은 말 — 어긋나면 400 이 이 말로 온다. */
+export const CODE_RULE_TEXT =
+  '코드 규칙: 공백 없이 2~120자. 권장 꼴: 영문 소문자·숫자·밑줄(예: tensile, vibration_sine_random), 물성은 분야.이름(예: mechanical.tensile_strength). 비우면 custom_001 형식으로 자동 생성.'
+
 export const vocabularyApi = {
   list: () => api.get<Vocabulary[]>('/vocabularies'),
   terms: (slug: string, query?: string) =>

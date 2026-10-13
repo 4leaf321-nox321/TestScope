@@ -29,7 +29,8 @@ from tests.api.test_pending_methods import _method, _pend, _series
 
 def _item(client: TestClient, admin: Signed, prefix: str) -> tuple[str, str]:
     """코드 있는 시험 항목. 검토함은 **코드**로 정본과 잇는다."""
-    code = f"{prefix}_{uuid.uuid4().hex[:6]}"
+    # 코드에는 공백이 못 든다(`CODE_RULE`) — 이름에 띄어쓰기가 있어도 코드는 붙여 쓴다.
+    code = f"{prefix.replace(' ', '_')}_{uuid.uuid4().hex[:6]}"
     made = client.post(
         "/api/vocabularies/test_item/terms",
         json={"value": f"{prefix}-{code[-6:]}", "code": code},
@@ -236,7 +237,9 @@ def test_정본의_추천과_결정이_따라온다(
     hinted = rows[recommended["id"]]
     assert hinted["status"] == "open"
     picked = next(one for one in hinted["candidates"] if one["recommended"])
-    assert (picked["code"], picked["reason"]) == (a, "규격 제목이 Tensile")
+    # 후보 제 근거(인용 계열의 수행 시험)는 남고, 줄의 추천 이유가 덧붙는다.
+    assert picked["code"] == a
+    assert picked["reason"].endswith("추천 이유: 규격 제목이 Tensile")
 
     # 정본이 이미 결정한 줄은 **적용되고 닫힌다** — 운영에서 다시 묻지 않는다.
     done = rows[settled["id"]]

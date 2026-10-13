@@ -34,7 +34,7 @@ import {
 } from '@/shared/components/ui/dialog'
 import { Input } from '@/shared/components/ui/input'
 import { Label } from '@/shared/components/ui/label'
-import { vocabularyApi } from '@/modules/vocabulary/api'
+import { CODED_AXES, CODE_RULE_TEXT, vocabularyApi } from '@/modules/vocabulary/api'
 import type { Term, Vocabulary } from '@/modules/vocabulary/api'
 import { TermReferences } from '@/modules/vocabulary/TermReferences'
 
@@ -194,6 +194,9 @@ export function TermEditorDialog({
                 placeholder="코드가 참조하는 이름. 변경 시 반입·검색에서 찾지 못함"
                 className="font-mono"
               />
+              {CODED_AXES.has(axis.slug) && (
+                <p className="text-muted-foreground text-xs">{CODE_RULE_TEXT}</p>
+              )}
             </div>
           </div>
 

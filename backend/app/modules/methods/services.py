@@ -7,7 +7,7 @@ from dataclasses import dataclass
 from datetime import UTC, datetime
 from typing import Any
 
-from sqlalchemy import Select, func, select
+from sqlalchemy import Select, Text, func, select
 from sqlalchemy.orm import Session
 
 from app.modules.accounts.models import User
@@ -18,6 +18,8 @@ from app.modules.equipment.models import EquipmentSeries
 from app.modules.methods.models import MethodRequirement, TestMethod, TestMethodItem
 from app.modules.methods.schemas import (
     CitedSeriesOut,
+    DetachImpact,
+    LinkCitationsResult,
     MethodOut,
     MethodTestItemOut,
     RequirementOut,
@@ -32,7 +34,7 @@ from app.modules.test_items.models import (
 from app.modules.vocabulary.models import ConditionKey, VocabularyTerm
 from app.modules.workspaces.models import Workspace
 from app.shared import audit
-from app.shared.errors import AppError, Conflict, NotFound
+from app.shared.errors import AppError, Conflict, Forbidden, NotFound
 from app.shared.pagination import Page
 from app.shared.permissions import (
     require_owner_edit,
@@ -40,7 +42,7 @@ from app.shared.permissions import (
     visible_owner_clause,
 )
 from app.shared.request_context import get_actor_token
-from app.shared.text import clean
+from app.shared.text import clean, method_key
 
 _WHAT = "시험법"
 _CODE = "TSC-METHODS-0002"
@@ -126,6 +128,73 @@ def promote_pending(db: Session, method: TestMethod) -> int:
         moved += 1
     db.flush()
     return moved
+
+
+def citing_split(
+    db: Session, method_id: uuid.UUID, item_ids_: list[uuid.UUID]
+) -> tuple[list[EquipmentSeries], list[EquipmentSeries]]:
+    """항목 미정으로 인용한 계열을 (이 항목들로 이어질 것, 안 이어질 것)으로 가른다.
+
+    규격의 시험 항목을 정하면 **그 시험 항목을 가진 계열만** 이어진다(`promote_pending`).
+    후보 밖 항목을 고르면 나머지는 미정으로 남는데, 그 사실이 화면 어디에도 안 보여 처리가 끝난
+    것으로 읽혔다(2026-10-13). 정하기 전에 이것으로 미리 보여 준다.
+    """
+    wanted = set(item_ids_)
+    has: dict[uuid.UUID, set[uuid.UUID]] = {}
+    for series_id, term_id in db.execute(
+        select(SeriesTestItem.series_id, SeriesTestItem.test_item_term_id)
+        .join(SeriesPendingMethod, SeriesPendingMethod.series_id == SeriesTestItem.series_id)
+        .where(SeriesPendingMethod.method_id == method_id)
+    ):
+        has.setdefault(series_id, set()).add(term_id)
+    linked: list[EquipmentSeries] = []
+    unlinked: list[EquipmentSeries] = []
+    for series in db.scalars(
+        select(EquipmentSeries)
+        .join(SeriesPendingMethod, SeriesPendingMethod.series_id == EquipmentSeries.id)
+        .where(
+            SeriesPendingMethod.method_id == method_id, EquipmentSeries.deleted_at.is_(None)
+        )
+        .order_by(EquipmentSeries.name)
+    ):
+        (linked if has.get(series.id, set()) & wanted else unlinked).append(series)
+    return linked, unlinked
+
+
+def add_items_to_citing(db: Session, method: TestMethod) -> list[str]:
+    """**안 이어진 인용 계열에 규격의 시험 항목을 더하고 잇는다.** 더한 계열 이름을 돌려준다.
+
+    「이 계열이 그 규격을 인용했다」 는 카탈로그의 말을 믿는 쪽이다 — 규격의 시험 항목을 그
+    계열이 한다는 뜻이니 계열에 그 시험을 더한다. 계열이 그 시험을 정말 하는지는 사람이 정한
+    것이라(검토함 확정 · 규격 화면) 여기서 묻지 않는다. 커밋은 부르는 쪽.
+    """
+    items = item_ids(db, method.id)
+    if not items:
+        return []
+    _, unlinked = citing_split(db, method.id, items)
+    added: list[str] = []
+    for series in unlinked:
+        have = set(
+            db.scalars(
+                select(SeriesTestItem.test_item_term_id).where(
+                    SeriesTestItem.series_id == series.id
+                )
+            )
+        )
+        for term_id in items:
+            if term_id in have:
+                continue
+            db.add(
+                SeriesTestItem(
+                    series_id=series.id,
+                    test_item_term_id=term_id,
+                    note=f"규격 {method.code} 인용으로 더함",
+                )
+            )
+        added.append(series.name)
+    db.flush()
+    promote_pending(db, method)
+    return added
 
 
 def series_counts(
@@ -299,6 +368,7 @@ def method_out(
     return MethodOut(
         id=row.id,
         code=row.code,
+        former_codes=list(row.former_codes or []),
         edition=row.edition,
         title=row.title,
         test_items=[MethodTestItemOut(term_id=one.id, value=one.value) for one in items],
@@ -336,7 +406,12 @@ def list_methods(
     stmt = visible(db, user)
     if query:
         text = f"%{clean(query)}%"
-        stmt = stmt.where(TestMethod.code.ilike(text) | TestMethod.title.ilike(text))
+        # 옛 번호로도 찾는다 — 번호를 고친 뒤에도 사람은 한동안 옛 번호로 묻는다.
+        stmt = stmt.where(
+            TestMethod.code.ilike(text)
+            | TestMethod.title.ilike(text)
+            | TestMethod.former_codes.cast(Text).ilike(text)
+        )
     if test_item_term_id:
         # 규격 하나가 항목 여럿을 덮으므로 **있는가**를 묻는다(N:M).
         stmt = stmt.where(
@@ -350,6 +425,13 @@ def list_methods(
         # **어느 시험의 규격인지 안 정해진 것.** 인용한 계열이 있어도 못 이어진다 — 홈의
         # 「남은 일」 이 이 조건으로 온다. 세는 조건과 거르는 조건이 같아야 한다.
         stmt = stmt.where(TestMethod.id.not_in(select(TestMethodItem.method_id).distinct()))
+    if cited == "unlinked":
+        # **끊긴 연결.** 시험 항목은 정했는데(`TestMethodItem`) 인용한 계열이 미정으로 남은
+        # 것 — 그 계열에 그 시험 항목이 없어서다. 홈의 「남은 일」 과 같은 조건.
+        stmt = stmt.where(
+            TestMethod.id.in_(select(TestMethodItem.method_id).distinct()),
+            TestMethod.id.in_(select(SeriesPendingMethod.method_id).distinct()),
+        )
     if cited == "none":
         # 어느 계열의 시험 항목에도 안 이어진 규격. 「못 하는 시험」 과 「끊긴 연결」 을
         # 여기서 가른다 — 항목 미정 인용(pending)이 있으면 끊긴 것이다.
@@ -436,6 +518,93 @@ def create(db: Session, user: User, payload: dict[str, Any]) -> TestMethod:
 _PLAIN_FIELDS = ("title", "edition", "body_term_id", "summary")
 
 
+def code_index(db: Session) -> dict[str, TestMethod]:
+    """비교키(`method_key`) -> 규격. **옛 번호(`former_codes`)도 그 규격을 가리킨다.**
+
+    번호를 열쇠로 쓰는 곳(카탈로그 반입 · 요구 조건 표 반입 · 검토함)이 이것을 쓴다. 번호를
+    고친 규격을 옛 번호로 못 찾으면 반입이 같은 규격을 하나 더 만든다. 지금 번호가 다른 규격의
+    옛 번호와 겹치면 지금 번호가 이긴다.
+    """
+    rows = list(db.scalars(select(TestMethod).where(TestMethod.deleted_at.is_(None))))
+    out: dict[str, TestMethod] = {}
+    for row in rows:
+        for old in row.former_codes or []:
+            out.setdefault(method_key(old), row)
+    for row in rows:
+        out[method_key(row.code)] = row
+    return out
+
+
+def _ensure_unique(db: Session, row: TestMethod, code: str, edition: str | None) -> None:
+    """(번호, 판)이 다른 규격과 겹치지 않는가. **다른 규격의 옛 번호와도** 안 겹쳐야 한다 —
+    겹치면 그 번호로 들어오는 반입 · 검토함이 어느 규격인지 가를 수 없다."""
+    key = method_key(code)
+    for other in db.scalars(
+        select(TestMethod).where(TestMethod.deleted_at.is_(None), TestMethod.id != row.id)
+    ):
+        if method_key(other.code) == key and (other.edition or None) == (edition or None):
+            raise Conflict(
+                "TSC-METHODS-0003",
+                f"이미 등록된 규격: {other.code} {other.edition or ''}".strip(),
+                details={"method_id": str(other.id)},
+            )
+        if key in {method_key(old) for old in other.former_codes or []}:
+            raise Conflict(
+                "TSC-METHODS-0011",
+                f"다른 규격({other.code})의 옛 번호와 같은 번호. "
+                "그 규격과 합칠지 먼저 확인 필요.",
+                details={"method_id": str(other.id)},
+            )
+
+
+def _change_code(db: Session, user: User, row: TestMethod, code: str) -> str | None:
+    """번호를 바꾼다 — **시스템 관리자만.** 옛 번호를 `former_codes` 에 남기고 돌려준다
+    (안 바뀌었으면 None).
+
+    규격은 여러 부서와 카탈로그가 함께 가리키는 열쇠라 번호를 고치는 자격을 좁힌다. 제목이
+    번호 그대로였으면(반입이 만든 규격) 제목도 새 번호로 바꾼다 — 안 바꾸면 옛 번호가 제목으로
+    보인다.
+    """
+    if not user.is_system_admin:
+        raise Forbidden("TSC-METHODS-0010", "규격 번호 수정은 시스템 관리자 전용.")
+    code = clean(code)
+    if not code:
+        raise AppError("TSC-METHODS-0012", "규격 번호 입력 필요.", status=400)
+    old = row.code
+    if code == old:
+        return None
+    former = [one for one in row.former_codes or [] if method_key(one) != method_key(code)]
+    if method_key(old) != method_key(code) and old not in former:
+        former.append(old)
+    row.former_codes = former
+    if row.title == old:
+        row.title = code
+    row.code = code
+    return old
+
+
+def _rekey_review(db: Session, row: TestMethod) -> None:
+    """검토함의 규격 물음 줄을 새 번호로 옮긴다 — 열쇠가 번호라 안 옮기면 그 줄이 「규격이
+    지워짐」 으로 닫히고, 새 번호로 같은 물음이 또 선다."""
+    key = method_key(row.code)
+    label = row.code if row.title == row.code else f"{row.code} — {row.title}"
+    for proposal in db.scalars(
+        select(ReviewProposal).where(
+            ReviewProposal.queue == "method_test_items", ReviewProposal.subject_id == row.id
+        )
+    ):
+        clash = db.scalar(
+            select(ReviewProposal.id).where(
+                ReviewProposal.queue == "method_test_items",
+                ReviewProposal.subject_key == key,
+                ReviewProposal.id != proposal.id,
+            )
+        )
+        if clash is None:
+            proposal.subject_key = key
+        proposal.subject_label = label
+
+
 def item_ids(db: Session, method_id: uuid.UUID) -> list[uuid.UUID]:
     """이 규격이 덮는 시험 항목 id 들."""
     return list(
@@ -464,16 +633,162 @@ def items_of(
     return out
 
 
-def set_test_items(db: Session, method_id: uuid.UUID, term_ids: list[uuid.UUID]) -> None:
-    """**통째로** 바꾼다. 같은 값이 두 번 와도 한 줄만 남는다."""
+def set_test_items(db: Session, method_id: uuid.UUID, term_ids: list[uuid.UUID]) -> list[str]:
+    """**통째로** 바꾼다. 같은 값이 두 번 와도 한 줄만 남는다. 끊긴 계열 이름을 돌려준다.
+
+    **빠진 항목으로 걸린 계열 연결도 걷는다.** 전에는 규격의 항목만 바뀌고 그 항목으로 이어진
+    계열 연결은 남아, 잘못 걸린 항목을 고쳐도 검색이 옛 항목으로 그 규격을 찾았다
+    (2026-10-13). 다른 항목으로도 이어진 계열은 그대로 남고, 그것으로만 이어졌던 계열은
+    「인용했는데 항목 미정」 으로 돌아간다 — 인용했다는 사실은 잃지 않는다.
+    """
+    wanted = list(dict.fromkeys(term_ids))
+    before = set(item_ids(db, method_id))
+    cut, _ = detach_split(db, method_id, before - set(wanted))
+    _unlink_items(db, method_id, before - set(wanted), cut)
     for link in db.scalars(
         select(TestMethodItem).where(TestMethodItem.method_id == method_id)
     ):
         db.delete(link)
     db.flush()
-    for term_id in dict.fromkeys(term_ids):
+    for term_id in wanted:
         db.add(TestMethodItem(method_id=method_id, test_item_term_id=term_id))
     db.flush()
+    return [one.name for one in cut]
+
+
+def detach_split(
+    db: Session, method_id: uuid.UUID, gone: set[uuid.UUID]
+) -> tuple[list[EquipmentSeries], list[EquipmentSeries]]:
+    """이 항목들을 규격에서 빼면 (**끊기는** 계열, 다른 항목으로 **남는** 계열).
+
+    끊기는 계열 = 빠질 항목으로만 이 규격에 이어진 계열. 그 계열의 장비는 빼고 나면 이 규격으로
+    검색되지 않는다 — 빼기 전에 사람에게 보여 준다.
+    """
+    if not gone:
+        return [], []
+    via: dict[uuid.UUID, set[uuid.UUID]] = {}
+    for series_id, term_id in db.execute(
+        select(SeriesTestItem.series_id, SeriesTestItem.test_item_term_id)
+        .join(
+            SeriesTestItemMethod, SeriesTestItemMethod.series_test_item_id == SeriesTestItem.id
+        )
+        .where(SeriesTestItemMethod.method_id == method_id)
+    ):
+        via.setdefault(series_id, set()).add(term_id)
+    touched = [series_id for series_id, terms in via.items() if terms & gone]
+    if not touched:
+        return [], []
+    cut: list[EquipmentSeries] = []
+    kept: list[EquipmentSeries] = []
+    for series in db.scalars(
+        select(EquipmentSeries)
+        .where(EquipmentSeries.id.in_(touched), EquipmentSeries.deleted_at.is_(None))
+        .order_by(EquipmentSeries.name)
+    ):
+        (kept if via[series.id] - gone else cut).append(series)
+    return cut, kept
+
+
+def _unlink_items(
+    db: Session, method_id: uuid.UUID, gone: set[uuid.UUID], cut: list[EquipmentSeries]
+) -> None:
+    """빠질 항목으로 걸린 계열 연결을 걷고, 끊기는 계열은 항목 미정 인용으로 되돌린다."""
+    if not gone:
+        return
+    for link in db.scalars(
+        select(SeriesTestItemMethod)
+        .join(SeriesTestItem, SeriesTestItem.id == SeriesTestItemMethod.series_test_item_id)
+        .where(
+            SeriesTestItemMethod.method_id == method_id,
+            SeriesTestItem.test_item_term_id.in_(gone),
+        )
+    ):
+        db.delete(link)
+    pending = set(
+        db.scalars(
+            select(SeriesPendingMethod.series_id).where(
+                SeriesPendingMethod.method_id == method_id
+            )
+        )
+    )
+    for series in cut:
+        if series.id not in pending:
+            db.add(SeriesPendingMethod(series_id=series.id, method_id=method_id))
+    db.flush()
+
+
+def detach_preview(
+    db: Session, user: User, method_id: uuid.UUID, term_id: uuid.UUID
+) -> DetachImpact:
+    """해제하기 **전에** 끊기는 계열 · 남는 계열."""
+    row = get_method(db, user, method_id)
+    if term_id not in set(item_ids(db, row.id)):
+        raise NotFound("TSC-METHODS-0015", "이 규격에 걸린 시험 항목이 아님.")
+    cut, kept = detach_split(db, row.id, {term_id})
+    return DetachImpact(cut=[one.name for one in cut], kept=[one.name for one in kept])
+
+
+def detach_test_item(
+    db: Session, user: User, method_id: uuid.UUID, term_id: uuid.UUID, reason: str
+) -> DetachImpact:
+    """규격에 **잘못 걸린 시험 항목을 뗀다** — 시스템 관리자, 사유는 감사 기록에 남는다.
+
+    전에는 뗄 길이 없었다 — 화면은 더하기만 했고 검토함은 결정한 줄을 다시 열어도 걸린 항목이
+    그대로였다(2026-10-13). 그 항목으로만 이어진 계열은 항목 미정 인용으로 돌아간다. 항목이
+    하나도 안 남으면 검토함의 결정 줄을 다시 연다 — 물음이 다시 살아 있어야 누가 정한다.
+    """
+    if not user.is_system_admin:
+        raise Forbidden("TSC-METHODS-0016", "규격의 시험 항목 해제는 시스템 관리자 전용.")
+    said = reason.strip()
+    if not said:
+        raise AppError("TSC-METHODS-0017", "해제 사유 필요.", status=400)
+    row = get_method(db, user, method_id)
+    have = item_ids(db, row.id)
+    if term_id not in set(have):
+        raise NotFound("TSC-METHODS-0015", "이 규격에 걸린 시험 항목이 아님.")
+    term = db.get(VocabularyTerm, term_id)
+    _, kept = detach_split(db, row.id, {term_id})
+    cut = set_test_items(db, row.id, [one for one in have if one != term_id])
+    reopened = False
+    if len(have) == 1:
+        decided = db.scalar(
+            select(ReviewProposal).where(
+                ReviewProposal.queue == "method_test_items",
+                ReviewProposal.subject_id == row.id,
+                ReviewProposal.status == "decided",
+            )
+        )
+        if decided is not None:
+            decided.status = "open"
+            decided.note = (
+                f"시험 항목 해제로 다시 열림. 이전 결정: {decided.choice} "
+                f"({decided.decided_by_label})"
+            )
+            decided.choice = None
+            decided.followed = None
+            decided.decided_by_id = None
+            decided.decided_by_label = None
+            decided.decided_at = None
+            reopened = True
+    audit.record(
+        db,
+        action=audit.METHOD_TEST_ITEM_DETACHED,
+        actor=user,
+        target_table="test_methods",
+        target_id=row.id,
+        target_label=f"{row.code} {row.edition or ''}".strip(),
+        workspace_id=row.owner_workspace_id,
+        changes={
+            "test_item": term.value if term else str(term_id),
+            "reason": said,
+            "cut_series": cut,
+            "kept_series": [one.name for one in kept],
+            "review_reopened": reopened,
+        },
+        reason=said,
+    )
+    db.commit()
+    return DetachImpact(cut=cut, kept=[one.name for one in kept], reopened=reopened)
 
 
 def _refuse_machine_decision(db: Session, row: TestMethod) -> None:
@@ -508,9 +823,29 @@ def update(
     row = get_method(db, user, method_id)
     require_owner_edit(db, user, row.owner_workspace_id, what=_WHAT, code=_CODE)
 
+    edition = changes.get("edition", row.edition)
+    renamed: str | None = None
+    if changes.get("code") is not None:
+        _ensure_unique(db, row, clean(changes["code"]), edition)
+        renamed = _change_code(db, user, row, changes["code"])
+    elif "edition" in changes and edition != row.edition:
+        # 판만 바꿔도 (번호, 판)이 겹칠 수 있다 — 유일 제약에 걸려 500 이 되기 전에 말한다.
+        _ensure_unique(db, row, row.code, edition)
     for field in _PLAIN_FIELDS:
         if field in changes:
             setattr(row, field, changes[field])
+    if renamed is not None:
+        _rekey_review(db, row)
+        audit.record(
+            db,
+            action=audit.METHOD_CODE_CHANGED,
+            actor=user,
+            target_table="test_methods",
+            target_id=row.id,
+            target_label=f"{row.code} {row.edition or ''}".strip(),
+            workspace_id=row.owner_workspace_id,
+            changes={"code": {"before": renamed, "after": row.code}},
+        )
     if changes.get("test_item_term_ids") is not None:
         _refuse_machine_decision(db, row)
         set_test_items(db, row.id, list(changes["test_item_term_ids"]))
@@ -559,6 +894,33 @@ def update(
     return row
 
 
+def link_citations(db: Session, user: User, method_id: uuid.UUID) -> LinkCitationsResult:
+    """안 이어진 인용 계열에 규격의 시험 항목을 더해 잇는다 — 시스템 관리자."""
+    if not user.is_system_admin:
+        raise Forbidden("TSC-METHODS-0013", "인용 계열에 시험 항목 추가는 시스템 관리자 전용.")
+    row = get_method(db, user, method_id)
+    if not item_ids(db, row.id):
+        raise AppError(
+            "TSC-METHODS-0014",
+            "규격의 시험 항목이 아직 없음. 시험 항목을 먼저 지정 필요.",
+            status=400,
+        )
+    added = add_items_to_citing(db, row)
+    _, unlinked = citing_split(db, row.id, item_ids(db, row.id))
+    if added:
+        audit.record(
+            db,
+            action=audit.METHOD_CITATIONS_LINKED,
+            actor=user,
+            target_table="test_methods",
+            target_id=row.id,
+            target_label=f"{row.code} {row.edition or ''}".strip(),
+            changes={"added_to_series": added},
+        )
+    db.commit()
+    return LinkCitationsResult(added_to=added, still_unlinked=len(unlinked))
+
+
 def delete(db: Session, user: User, method_id: uuid.UUID) -> None:
     """소프트 삭제.
 
@@ -601,8 +963,34 @@ def detach_citations(db: Session, method_id: uuid.UUID) -> int:
     return removed
 
 
+def merge_by_admin(
+    db: Session, user: User, source_id: uuid.UUID, target_id: uuid.UUID, reason: str
+) -> TestMethod:
+    """규격 상세의 「다른 규격으로 병합」 — 시스템 관리자. 사유는 감사 기록에 남는다.
+
+    검토함에서 더한 규격이 카탈로그의 같은 규격과 표기만 달라 둘이 서도 합칠 길이 검토함의
+    정본 줄뿐이었다(2026-10-13). 지운 쪽의 번호는 남는 쪽의 옛 번호가 된다 — 반입 · 검색 ·
+    검토함이 그 번호로 와도 남는 쪽을 찾는다.
+    """
+    if not user.is_system_admin:
+        raise Forbidden("TSC-METHODS-0018", "규격 병합은 시스템 관리자 전용.")
+    source = get_method(db, user, source_id)
+    target = get_method(db, user, target_id)
+    if source.id == target.id:
+        raise AppError("TSC-METHODS-0019", "같은 규격으로는 병합 불가.", status=400)
+    merge_into(db, user, source.id, target.id, reason=reason.strip() or None)
+    db.commit()
+    db.refresh(target)
+    return target
+
+
 def merge_into(
-    db: Session, actor: User | None, source_id: uuid.UUID, target_id: uuid.UUID
+    db: Session,
+    actor: User | None,
+    source_id: uuid.UUID,
+    target_id: uuid.UUID,
+    *,
+    reason: str | None = None,
 ) -> TestMethod:
     """표기만 다른 규격 둘을 하나로. **인용·요구 조건·장비 시험 항목이 남는 쪽으로 옮겨 가고**
     원래 줄은 소프트 삭제된다.
@@ -675,7 +1063,15 @@ def merge_into(
         target_id=target.id,
         target_label=target.code,
         changes={"merged_from": source.code, "into": target.code},
+        reason=reason,
     )
+    # **지운 쪽 번호는 옛 번호로 남는다** — 반입 · 검색 · 검토함이 그 번호로 와도 남는 쪽을
+    # 찾게(번호 고치기와 같은 규칙).
+    known = {method_key(one) for one in [target.code, *(target.former_codes or [])]}
+    for code in [source.code, *(source.former_codes or [])]:
+        if method_key(code) not in known:
+            target.former_codes = [*(target.former_codes or []), code]
+            known.add(method_key(code))
     source.deleted_at = datetime.now(UTC)
     return target
 

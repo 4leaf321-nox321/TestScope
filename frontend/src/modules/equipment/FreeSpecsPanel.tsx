@@ -108,9 +108,13 @@ function PromoteDialog({
         unit,
         apply_same_key: applySameKey,
       })
+      // **어느 기종의 무슨 값이 남았는지** — 수만 주면 어디를 고칠지 모른다.
+      const unmoved = (got.unmoved ?? []).map((one) => `${one.model}: ${one.value}`)
       onDone(
         `‘${label}’ 정의 등록 완료. ${got.moved}줄 이동` +
-          (got.left > 0 ? `, 수치로 읽지 못한 ${got.left}줄은 그대로 유지.` : '.'),
+          (got.left > 0
+            ? `, ${kind}(으)로 읽지 못한 ${got.left}줄은 그대로 유지: ${unmoved.join(' · ')}.`
+            : '.'),
       )
     } catch (caught) {
       setError(caught instanceof ApiError ? caught.message : '알 수 없는 오류')
@@ -352,9 +356,19 @@ export function FreeSpecsPanel({
                       <span className="text-muted-foreground block text-xs">{row.note}</span>
                     )}
                   </span>
-                  {row.same_key_models > 0 && (
+                  {row.same_key_models > 0 && !row.promoted_to && (
                     <span className="rounded bg-amber-500/10 px-1.5 py-0.5 text-xs text-amber-700">
                       다른 기종 {row.same_key_models}개도
+                    </span>
+                  )}
+                  {/* **승격됐는데 이 줄은 남았다** — 값이 정의의 종류로 안 읽혔다. 값을 고친 뒤
+                      그 정의 칸에 직접 적거나 이 줄을 고쳐 둔다. */}
+                  {row.promoted_to && (
+                    <span
+                      className="rounded bg-amber-500/10 px-1.5 py-0.5 text-xs text-amber-700"
+                      title={`‘${row.promoted_to}’ 정의로 승격됐으나 이 값은 그 종류로 읽을 수 없어 남음`}
+                    >
+                      정식 칸으로 옮기지 못함: {row.promoted_to}
                     </span>
                   )}
                   {canEdit && (

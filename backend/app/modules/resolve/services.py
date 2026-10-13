@@ -28,7 +28,7 @@ import uuid
 from collections.abc import Sequence
 from typing import Any
 
-from sqlalchemy import select
+from sqlalchemy import Text, select
 from sqlalchemy.orm import Session
 
 from app.modules.accounts.models import User
@@ -280,13 +280,25 @@ def _resolve_method(db: Session, text: str, limit: int) -> ResolveResponse:
 
     rows = db.scalars(stmt.where(TestMethod.code.ilike(clean(text)))).all()
     exact = [row for row in rows if compare_key(row.code) == key]
+    if not exact:
+        # **옛 번호로도 같다.** 시스템 관리자가 번호를 고친 규격을 사람 · AI 가 옛 번호로
+        # 물으면 「없음」 이 아니라 그 규격이다(`former_codes`).
+        exact = [
+            row
+            for row in db.scalars(
+                stmt.where(TestMethod.former_codes.cast(Text).ilike(f"%{clean(text)}%"))
+            )
+            if any(compare_key(old) == key for old in row.former_codes or [])
+        ]
     if len(exact) == 1:
         row = exact[0]
         return _answer(
             ResolveCandidate(
                 id=row.id,
                 label=f"{row.code} {row.edition or ''}".strip(),
-                detail=row.title,
+                detail=row.title
+                if compare_key(row.code) == key
+                else f"{row.title} (옛 번호 {clean(text)})",
                 why=_EXACT,
             ),
             [],

@@ -10,7 +10,7 @@
  */
 
 import { beforeEach, describe, expect, it, vi } from 'vitest'
-import { act, render, screen } from '@testing-library/react'
+import { act, fireEvent, render, screen, within } from '@testing-library/react'
 import { MemoryRouter, Route, Routes } from 'react-router-dom'
 
 function method(over: Record<string, unknown> = {}) {
@@ -41,14 +41,25 @@ function method(over: Record<string, unknown> = {}) {
 }
 
 const calls: { method: string; url: string; body?: unknown }[] = []
+/** 상세가 돌려줄 규격 — 시험마다 덮는다. */
+let detail: Record<string, unknown> = {}
 
 vi.mock('@/shared/api/client', () => ({
   api: {
     get: vi.fn(async (url: string) => {
       calls.push({ method: 'get', url })
-      if (url.startsWith('/methods/')) return method()
+      if (url.includes('/detach-preview')) return { cut: ['6800'], kept: ['AG-X'] }
+      if (url.startsWith('/methods/')) return method(detail)
       if (url.startsWith('/methods')) {
-        return { items: [method()], total: 1, limit: 50, offset: 0 }
+        return {
+          // 병합 창의 찾기(q=)에만 두 번째 규격이 뜬다.
+          items: url.includes('q=')
+            ? [method(), method({ id: 'm2', code: 'ASTM E8/E8M', title: 'Tension (metric)' })]
+            : [method()],
+          total: 2,
+          limit: 50,
+          offset: 0,
+        }
       }
       if (url.includes('/terms')) return [{ id: 't1', value: '인장', aliases: [] }]
       return []
@@ -60,7 +71,12 @@ vi.mock('@/shared/api/client', () => ({
         pending_series_count: 0,
       })
     }),
-    post: vi.fn(),
+    post: vi.fn(async (url: string, body?: unknown) => {
+      calls.push({ method: 'post', url, body })
+      if (url.endsWith('/detach')) return { cut: ['6800'], kept: ['AG-X'], reopened: false }
+      if (url.endsWith('/merge')) return method({ id: 'm2', code: 'ASTM E8/E8M' })
+      return { added_to: ['6800'], still_unlinked: 0 }
+    }),
   },
   ApiError: class extends Error {},
 }))
@@ -87,6 +103,7 @@ async function open(url: string) {
 
 beforeEach(() => {
   calls.length = 0
+  detail = {}
 })
 
 describe('시험법 목록', () => {
@@ -120,5 +137,63 @@ describe('시험법 상세', () => {
     const button = screen.getByText('적용 규격으로 지정')
     // 고르기 전에는 못 누른다.
     expect((button as HTMLButtonElement).disabled).toBe(true)
+  })
+
+  it('시험 항목은 정했는데 안 이어진 인용 계열을 알리고, 이을 길을 준다', async () => {
+    detail = { test_items: [{ term_id: 't1', value: '인장' }], pending_series_count: 1 }
+    await open('/methods/m1')
+    // 처리가 끝난 것처럼 보이면 안 된다 — 그 계열의 장비는 이 규격으로 검색되지 않는다.
+    expect(screen.getByText('연결되지 않은 인용 계열 1개.')).toBeTruthy()
+    await act(async () => {
+      screen.getByRole('button', { name: '인용 계열에 시험 항목 추가' }).click()
+    })
+    expect(
+      calls.some((one) => one.method === 'post' && one.url === '/methods/m1/link-citations'),
+    ).toBe(true)
+    expect(screen.getByText(/인용 계열 1개에 시험 항목 추가 후 연결/)).toBeTruthy()
+  })
+
+  it('잘못 걸린 시험 항목을 떼기 전에 끊기는 계열을 보여 주고 사유를 받는다', async () => {
+    detail = { test_items: [{ term_id: 't1', value: '인장' }], pending_series_count: 0 }
+    await open('/methods/m1')
+    await act(async () => {
+      fireEvent.click(screen.getByRole('button', { name: '인장 해제' }))
+    })
+    expect(screen.getByText('1개 계열이 이 규격과 끊김.')).toBeTruthy()
+    expect(within(screen.getByRole('dialog')).getByText('6800')).toBeTruthy()
+    const confirm = screen.getByRole('button', { name: '해제 (1개 계열 끊김)' })
+    // 사유 없이는 못 뗀다.
+    expect((confirm as HTMLButtonElement).disabled).toBe(true)
+    fireEvent.change(screen.getByLabelText(/해제 사유/), {
+      target: { value: '이 규격은 굽힘만 다룸' },
+    })
+    await act(async () => {
+      fireEvent.click(confirm)
+    })
+    expect(calls).toContainEqual({
+      method: 'post',
+      url: '/methods/m1/test-items/t1/detach',
+      body: { reason: '이 규격은 굽힘만 다룸' },
+    })
+    expect(screen.getByText(/끊긴 계열 1개는 미연결 인용으로 남음: 6800/)).toBeTruthy()
+  })
+
+  it('표기만 다른 규격을 다른 규격으로 병합한다', async () => {
+    await open('/methods/m1')
+    await act(async () => {
+      fireEvent.click(screen.getByRole('button', { name: '다른 규격으로 병합' }))
+    })
+    // 자기 자신은 후보에 없다.
+    await act(async () => {
+      fireEvent.click(screen.getByRole('radio'))
+    })
+    await act(async () => {
+      fireEvent.click(screen.getByRole('button', { name: 'ASTM E8/E8M(으)로 병합' }))
+    })
+    expect(calls).toContainEqual({
+      method: 'post',
+      url: '/methods/m1/merge',
+      body: { target_id: 'm2', reason: '' },
+    })
   })
 })

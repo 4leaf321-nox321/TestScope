@@ -5,6 +5,7 @@
 
 from __future__ import annotations
 
+import re
 import uuid
 from typing import Any
 
@@ -257,6 +258,56 @@ def _find_by_key(db: Session, vocabulary_id: uuid.UUID, key: str) -> VocabularyT
     return db.get(VocabularyTerm, alias.term_id) if alias else None
 
 
+#: 코드가 열쇠인 축 — 검토함 · 카탈로그 정본 · 반입이 이 축의 값을 **코드로** 가리킨다. 코드
+#: 없이 만들면 검토함에서 고를 수 없어서(2026-10-13), 비우면 서버가 짓는다.
+CODED_AXES = frozenset({"test_item", "property"})
+#: 코드 규칙 — **막는 것은 공백뿐**(2~120자). 코드는 정본 · MCP · CSV 가 값을 가리키는 열쇠라
+#: 공백이 들면 그 자리들이 끊긴다. 꼴은 권장으로 알린다 — 정본의 시험 항목은 `tensile`,
+#: 물성은 `mechanical.tensile_strength` 꼴이고, 이미 다른 꼴로 쓰는 설치를 막지 않는다.
+CODE_RULE = re.compile(r"^\S{2,120}$")
+CODE_RULE_TEXT = (
+    "코드 규칙: 공백 없이 2~120자. 권장 꼴: 영문 소문자·숫자·밑줄(예: tensile, "
+    "vibration_sine_random), 물성은 분야.이름(예: mechanical.tensile_strength). 비우면 "
+    "custom_001 형식으로 자동 생성."
+)
+#: 서버가 지은 코드의 머리. 반입이 같은 이름의 정본 코드를 만나면 이 코드를 바꿔 끼운다.
+AUTO_CODE_PREFIX = "custom_"
+
+
+def _auto_code(db: Session, vocabulary_id: uuid.UUID) -> str:
+    """`custom_001` 부터 비어 있는 번호. 사람이 읽을 수 있고, 정본 코드와 안 겹친다."""
+    used = set(
+        db.scalars(
+            select(VocabularyTerm.code).where(
+                VocabularyTerm.vocabulary_id == vocabulary_id,
+                VocabularyTerm.code.like(f"{AUTO_CODE_PREFIX}%"),
+            )
+        )
+    )
+    number = 1
+    while f"{AUTO_CODE_PREFIX}{number:03d}" in used:
+        number += 1
+    return f"{AUTO_CODE_PREFIX}{number:03d}"
+
+
+def ensure_code(db: Session, term: VocabularyTerm) -> str:
+    """코드 없이 남은 값(자동 생성 전에 만든 것)에 코드를 지어 붙인다 — 검토함이 고를 때."""
+    if not term.code:
+        term.code = _auto_code(db, term.vocabulary_id)
+        db.flush()
+    return term.code
+
+
+def _checked_code(slug: str, code: str | None) -> str | None:
+    """코드가 열쇠인 축이면 규칙을 본다 — 어긋나면 400 으로 **규칙을 말한다**."""
+    cleaned = clean(code) if code else None
+    if cleaned and slug in CODED_AXES and not CODE_RULE.match(cleaned):
+        raise AppError(
+            "TSC-VOCAB-0019", f"코드 형식 오류: {cleaned}. {CODE_RULE_TEXT}", status=400
+        )
+    return cleaned
+
+
 def create_term(
     db: Session,
     *,
@@ -288,13 +339,16 @@ def create_term(
             f"이미 있는 값: {existing.value}",
             details={"term_id": str(existing.id), "value": existing.value},
         )
-    _require_free_code(db, vocabulary.id, clean(code) if code else None, exclude=None)
+    picked = _checked_code(slug, code)
+    if picked is None and slug in CODED_AXES:
+        picked = _auto_code(db, vocabulary.id)
+    _require_free_code(db, vocabulary.id, picked, exclude=None)
 
     term = VocabularyTerm(
         vocabulary_id=vocabulary.id,
         value=text,
         normalized=key,
-        code=clean(code) if code else None,
+        code=picked,
         parent_term_id=parent_term_id,
         attributes=attributes,
         created_by_id=actor.id,
@@ -368,7 +422,12 @@ def update_term(
         term.normalized = key
 
     if code is not None:
-        cleaned = clean(code) or None
+        axis = db.get(Vocabulary, term.vocabulary_id)
+        slug = axis.slug if axis else ""
+        cleaned = _checked_code(slug, code) or None
+        if cleaned is None and slug in CODED_AXES:
+            # 코드가 열쇠인 축에서 코드를 지우면 검토함이 그 값을 못 고른다 — 다시 짓는다.
+            cleaned = _auto_code(db, term.vocabulary_id)
         _require_free_code(db, term.vocabulary_id, cleaned, exclude=term.id)
         term.code = cleaned
     if parent_term_id is not None:

@@ -13,6 +13,10 @@ from app.modules.accounts.models import User
 from app.modules.equipment.schemas import ImportColumn
 from app.modules.methods import imports, services
 from app.modules.methods.schemas import (
+    DetachImpact,
+    DetachRequest,
+    LinkCitationsResult,
+    MergeRequest,
     MethodCreateRequest,
     MethodOut,
     MethodUpdateRequest,
@@ -21,7 +25,7 @@ from app.modules.methods.schemas import (
     RequirementOut,
     RequirementUpsertRequest,
 )
-from app.shared.auth import current_user
+from app.shared.auth import current_user, require_system_admin
 from app.shared.pagination import MAX_LIMIT, Page, clamp_limit
 
 router = APIRouter(prefix="/methods", tags=["methods"])
@@ -32,7 +36,7 @@ def list_methods(
     q: str | None = Query(default=None, max_length=200),
     test_item: str | None = Query(default=None),
     requirement: str | None = Query(default=None, pattern="^none$"),
-    cited: str | None = Query(default=None, pattern="^none$"),
+    cited: str | None = Query(default=None, pattern="^(none|unlinked)$"),
     used: str | None = Query(default=None, pattern="^owned$"),
     include_superseded: bool = Query(default=False),
     attr: list[str] = Query(default_factory=list, max_length=10),
@@ -42,6 +46,10 @@ def list_methods(
     db: Session = Depends(get_db),
 ) -> Page[MethodOut]:
     """규격 목록.
+
+    `cited=none` 은 어느 계열에도 안 이어진 규격, `cited=unlinked` 는 **시험 항목은 정했는데
+    인용한 계열 중 일부가 그 시험 항목이 없어 안 이어진 규격**이다 — 홈의 「남은 일」 이 그
+    조건으로 온다.
 
     `attr` 은 **속성 값으로 거른다** — 여러 번 주면 모두 만족해야 한다(`attr=<키><연산><값>`,
     연산은 `>=` `<=` `>` `<` `=` `!=` `~`(포함) `*`(적혀 있기만 하면) `!*`(**안 적힌 것**)).
@@ -133,6 +141,58 @@ def update_method(
 ) -> MethodOut:
     row = services.update(db, user, method_id, payload.model_dump(exclude_unset=True))
     return services.method_out(db, row, user)
+
+
+@router.post("/{method_id}/link-citations", response_model=LinkCitationsResult)
+def link_citations(
+    method_id: uuid.UUID,
+    user: User = Depends(require_system_admin),
+    db: Session = Depends(get_db),
+) -> LinkCitationsResult:
+    """**안 이어진 인용 계열에 규격의 시험 항목을 더해 잇는다** — 시스템 관리자.
+
+    규격의 시험 항목을 정해도 그 시험 항목이 없는 인용 계열은 미정으로 남는다. 그 계열이 그
+    규격을 인용했다는 카탈로그의 말을 믿고 계열에 그 시험을 더한다(계열 화면에서 한 줄씩 더하는
+    것과 같다).
+    """
+    return services.link_citations(db, user, method_id)
+
+
+@router.get("/{method_id}/test-items/{term_id}/detach-preview", response_model=DetachImpact)
+def detach_preview(
+    method_id: uuid.UUID,
+    term_id: uuid.UUID,
+    user: User = Depends(current_user),
+    db: Session = Depends(get_db),
+) -> DetachImpact:
+    """시험 항목을 떼기 **전에** — 끊기는 계열 · 남는 계열."""
+    return services.detach_preview(db, user, method_id, term_id)
+
+
+@router.post("/{method_id}/test-items/{term_id}/detach", response_model=DetachImpact)
+def detach_test_item(
+    method_id: uuid.UUID,
+    term_id: uuid.UUID,
+    payload: DetachRequest,
+    user: User = Depends(require_system_admin),
+    db: Session = Depends(get_db),
+) -> DetachImpact:
+    """규격에 잘못 걸린 시험 항목을 뗀다 — 시스템 관리자. 사유는 감사 기록에 남는다. 그
+    항목으로만 이어진 계열은 항목 미정 인용으로 돌아간다."""
+    return services.detach_test_item(db, user, method_id, term_id, payload.reason)
+
+
+@router.post("/{method_id}/merge", response_model=MethodOut)
+def merge_method(
+    method_id: uuid.UUID,
+    payload: MergeRequest,
+    user: User = Depends(require_system_admin),
+    db: Session = Depends(get_db),
+) -> MethodOut:
+    """이 규격을 다른 규격으로 합친다 — 인용 · 요구 조건 · 장비 시험 항목이 남는 쪽으로 옮겨
+    가고 이 규격은 지워진다. 이 규격의 번호는 남는 쪽의 옛 번호가 된다. 남는 쪽을 돌려준다."""
+    row = services.merge_by_admin(db, user, method_id, payload.target_id, payload.reason)
+    return services.method_out(db, row, user, with_series=True)
 
 
 @router.delete("/{method_id}", status_code=204)

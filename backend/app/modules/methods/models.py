@@ -32,6 +32,7 @@ from sqlalchemy import (
     UniqueConstraint,
     func,
 )
+from sqlalchemy.dialects.postgresql import JSONB
 from sqlalchemy.dialects.postgresql import UUID as PgUUID
 from sqlalchemy.orm import Mapped, mapped_column
 
@@ -56,6 +57,10 @@ class TestMethod(Base):
     )
     code: Mapped[str] = mapped_column(String(100), index=True)
     """규격 번호. ASTM E8/E8M · ISO 6892-1 · KS B 0802."""
+    former_codes: Mapped[list[str]] = mapped_column(JSONB, default=list, server_default="[]")
+    """**고치기 전의 번호들.** 시스템 관리자가 번호를 고치면 옛 번호가 여기 남고, 번호를 열쇠로
+    쓰는 곳(카탈로그 반입 · 요구 조건 표 반입 · 검토함 · 목록 검색)이 이것으로도 찾는다 — 안
+    그러면 다음 반입이 옛 번호로 같은 규격을 하나 더 만든다."""
     edition: Mapped[str | None] = mapped_column(String(30), nullable=True)
     """판. 2024 · 22. **비워 둘 수 있다** — 사내 시험법에는 판이 없다."""
     title: Mapped[str] = mapped_column(String(300))

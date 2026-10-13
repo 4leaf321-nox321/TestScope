@@ -71,6 +71,12 @@ EQUIPMENT_MODEL_PROPOSAL_DECIDED = "equipment_model_proposal.decided"
 """카탈로그 기종 등록 요청을 정했다 — 그 요청을 낸 장비들이 한꺼번에 이어진다."""
 EQUIPMENT_DELETED = "equipment.deleted"
 METHOD_SUPERSEDED = "method.superseded"
+METHOD_CITATIONS_LINKED = "method.citations_linked"
+"""규격의 시험 항목을 그것을 인용한 계열에 더해 이었다 — 어느 계열에 더했는지가 남는다."""
+METHOD_CODE_CHANGED = "method.code_changed"
+METHOD_TEST_ITEM_DETACHED = "method.test_item_detached"
+"""규격 번호를 고쳤다(시스템 관리자). 옛 번호는 `former_codes` 에 남지만, 누가 언제 무엇에서
+무엇으로 바꿨는지는 여기뿐이다 — 「이 규격 번호가 왜 바뀌었지」 에 답하는 자리."""
 METHOD_MERGED = "method.merged"
 """표기만 다른 규격 둘을 하나로 — 인용·요구 조건·장비 시험 항목이 남는 쪽으로 옮겨 가고 원래
 줄은 지워진다. 어느 줄이 어디로 갔는지가 남아야 「내가 걸어 둔 규격이 사라졌다」 에 답한다."""

@@ -13,6 +13,7 @@ from sqlalchemy.orm import Session
 import app.all_models  # noqa: F401  (DB 를 만지는 스크립트는 반드시 이것을 읽는다)
 from app.modules.accounts.models import User
 from app.modules.methods.models import TestMethod, TestMethodItem
+from app.modules.methods.services import code_index
 from app.modules.test_items.models import (
     SeriesPendingMethod,
 )
@@ -94,10 +95,9 @@ def step_methods(
             key = str(code).strip()
             seen.setdefault(key, by_standard.get(method_key(key)))
 
-    known = {
-        method_key(row.code): row
-        for row in db.scalars(select(TestMethod).where(TestMethod.deleted_at.is_(None)))
-    }
+    # 옛 번호(`former_codes`)도 그 규격이다 — 운영에서 번호를 고친 규격을 정본의 옛 번호로
+    # 또 만들지 않게(`methods.services.code_index`).
+    known = code_index(db)
     filled = 0
     titled = 0
     for code, item_id in sorted(seen.items()):

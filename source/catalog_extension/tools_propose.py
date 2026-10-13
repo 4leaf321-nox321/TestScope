@@ -32,7 +32,7 @@
 시험 항목 이름은 문장 어디에나 나온다(「compression」 이 압축 공기일 수 있다). 그래서 **이 기종을 언급한
 문장 안에서만** 본다 — 논문의 `usage_snippets`(기종명 앞뒤 350자)와 제조사 페이지의 응용 문장(「used for …」
 「tests of …」). 낱말은 `TEST_WORDS` 의 정규식으로 잡고, 카탈로그 객체에 **이미 있는 시험은 뺀다.**
-논문 둘 이상 또는 제조사 문장에 나오면 추천.
+논문 둘 이상, 또는 **기종 이름이 같은 문장에 든** 제조사 문장에 나오면 그 후보만 추천(후보마다 제 근거로).
 
 ## 소개 문장 (`series_summary`)
 
@@ -277,12 +277,20 @@ def _mention_sentence(text: str) -> str:
 
 
 def build_test_items(objects: list[dict], items: dict[str, dict]) -> list[dict]:
-    """이 계열이 이 시험도 하나 — 기종을 언급한 논문 문장과 제조사 응용 문장에서."""
+    """이 계열이 이 시험도 하나 — 기종을 언급한 논문 문장과 제조사 응용 문장에서.
+
+    **추천은 후보마다 제 근거로만 붙는다**(2026-10-13): 논문 둘 이상이 이 기종으로 그 시험을 했거나,
+    제조사 페이지의 **한 문장에 이 기종 이름과 그 시험이 함께** 나올 때. 전에는 제조사 페이지의 아무
+    응용 문장이나 셌다 — 나노인덴터 페이지의 「viscoelastic properties」 가 회전 레올로지 추천이 됐다.
+    """
+    from tools_harvest import tokens_of
+
     rows = []
     decided_before = _decided_before(OUT_ITEMS)
     for obj in objects:
         oid = obj["id"]
         have = set(obj.get("test_items") or [])
+        toks = [t.lower() for t in tokens_of(obj) if len(t) >= 3]
         hits: dict[str, dict] = {}
 
         def add(item: str, kind: str, source: str, quote: str) -> None:
@@ -313,6 +321,9 @@ def build_test_items(objects: list[dict], items: dict[str, dict]) -> list[dict]:
                 sentence = sentence.strip()
                 if not (40 <= len(sentence) <= 300) or not CUE.search(sentence):
                     continue
+                # 이 기종 이름 토막이 **같은 문장에** 있어야 한다 — 페이지의 다른 장비 얘기를 거른다.
+                if not any(t in sentence.lower() for t in toks):
+                    continue
                 for item, rx in TEST_RE.items():
                     if item in have or item not in items:
                         continue
@@ -327,10 +338,17 @@ def build_test_items(objects: list[dict], items: dict[str, dict]) -> list[dict]:
                 parts.append(f"제조사 문장 {len(h['pages'])}")
             if h["papers"]:
                 parts.append(f"논문 {len(h['papers'])}편")
+            why = ""
+            if recommended:
+                why = (
+                    "추천: 제조사 문장에 이 기종과 함께 나옴. "
+                    if h["pages"]
+                    else "추천: 논문 둘 이상이 이 기종으로 수행. "
+                )
             cands.append(
                 {
                     "code": item,
-                    "reason": " · ".join(parts) + " — 「" + h["quotes"][0][:160] + "」",
+                    "reason": why + " · ".join(parts) + " — 「" + h["quotes"][0][:160] + "」",
                     "sources": h["pages"][:3] + h["papers"][:3],
                     "_w": score,
                     "_r": recommended,
@@ -349,7 +367,8 @@ def build_test_items(objects: list[dict], items: dict[str, dict]) -> list[dict]:
             "manufacturer": obj["manufacturer"],
             "candidates": cands,
             "recommended": recommended,
-            "reason": "논문 둘 이상이 이 기종으로 그 시험을 했거나, 제조사 문장이 말한다" if recommended else None,
+            # 줄 단위 추천 이유는 두지 않는다 — 후보마다 제 근거가 reason 에 있다.
+            "reason": None,
             "hint": "낱말이 문장에 나온 것뿐이다 — 인용문을 읽고 이 계열이 그 시험을 **하는** 것인지 본다(옆 장비 얘기일 수 있다)",
         }
         if oid in decided_before:

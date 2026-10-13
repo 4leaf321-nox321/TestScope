@@ -43,13 +43,21 @@ import { ErrorNotice } from '@/shared/components/ErrorNotice'
 import { PageHeader } from '@/shared/components/PageHeader'
 import { SearchablePicker } from '@/shared/components/SearchablePicker'
 import { Button } from '@/shared/components/ui/button'
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogFooter,
+  DialogHeader,
+  DialogTitle,
+} from '@/shared/components/ui/dialog'
 import { Input } from '@/shared/components/ui/input'
 import { useAuth } from '@/shared/auth/AuthContext'
 import { useResource } from '@/shared/hooks/useResource'
 import { shownDateTime } from '@/shared/lib/datetime'
 import { AXIS, vocabularyApi } from '@/modules/vocabulary/api'
-import { reviewApi } from '@/modules/review/api'
-import type { ReviewProposal } from '@/modules/review/api'
+import { SKIP_REASONS, reviewApi } from '@/modules/review/api'
+import type { ChoicePreview, ReviewProposal, SkipReason } from '@/modules/review/api'
 
 const PAGE = 50
 
@@ -105,17 +113,43 @@ export function bulkBlock(row: ReviewProposal): string | null {
   return null
 }
 
+/**
+ * 이 줄을 **MCP 의견대로 한꺼번에** 확정할 수 없는 이유. 고를 수 있으면 `null`.
+ *
+ * 서버의 `decide_by_mcp_votes` 와 같은 판단 — MCP 의견이 있고, 그것끼리 같고, 사람 의견이 그와
+ * 다르지 않아야 한다. 사람의 판단을 AI 의견으로 덮지 않는다.
+ */
+export function mcpBlock(row: ReviewProposal): string | null {
+  const machine = row.votes.filter((one) => one.mcp)
+  if (machine.length === 0) return 'MCP 의견 없는 줄.'
+  const key = (choice: string[]) => [...choice].sort().join('|')
+  const picks = new Set(machine.map((one) => key(one.choice)))
+  if (picks.size > 1) return `MCP 의견이 ${picks.size}갈래. 개별 결정 필요.`
+  const [agreed] = picks
+  const dissent = row.votes.filter((one) => !one.mcp && key(one.choice) !== agreed).length
+  if (dissent > 0) return `MCP 의견과 다른 사람 의견 ${dissent}건. 개별 결정 필요.`
+  return null
+}
+
 export default function ReviewQueuePage() {
   const { queue = '' } = useParams<{ queue: string }>()
   const { user } = useAuth()
   const isAdmin = user?.is_system_admin ?? false
   const [params, setParams] = useSearchParams()
   const status = params.get('status') ?? 'open'
+  /** MCP 로 낸 의견이 있는 줄만 — AI 가 대신 낸 의견을 모아 보고 그대로 확정하는 자리. */
+  const onlyMcp = params.get('votes') === 'mcp'
   const [offset, setOffset] = useState(0)
   const queues = useResource(() => reviewApi.queues(), [])
   const page = useResource(
-    () => reviewApi.list(queue, { status, limit: PAGE, offset }),
-    [queue, status, offset],
+    () =>
+      reviewApi.list(queue, {
+        status,
+        votes: onlyMcp ? 'mcp' : undefined,
+        limit: PAGE,
+        offset,
+      }),
+    [queue, status, onlyMcp, offset],
   )
   // 직접 고르기의 어휘. 96·12개라 한 번에 받아 둔다.
   const axis = directAxis(queue)
@@ -133,16 +167,20 @@ export default function ReviewQueuePage() {
     [axis],
   )
   const directOptions = useMemo(() => {
+    // 코드 없이 만든 시험 항목도 고른다 — 값 id 를 보내면 서버가 코드로 바꾼다(없으면 짓는다).
     if (axis === 'test_item')
-      return (testItems.data ?? [])
-        .filter((one) => one.code)
-        .map((one) => ({ id: one.code as string, label: one.value }))
+      return (testItems.data ?? []).map((one) => ({
+        id: one.code ?? one.id,
+        label: one.value,
+      }))
     if (axis === 'condition')
       return (conditions.data ?? []).map((one) => ({ id: one.key, label: one.label }))
     if (axis === 'property')
-      return (properties.data ?? [])
-        .filter((one) => one.code)
-        .map((one) => ({ id: one.code as string, label: one.value, detail: one.code }))
+      return (properties.data ?? []).map((one) => ({
+        id: one.code ?? one.id,
+        label: one.value,
+        detail: one.code,
+      }))
     return []
   }, [axis, testItems.data, conditions.data, properties.data])
 
@@ -155,6 +193,10 @@ export default function ReviewQueuePage() {
   const [bulkBusy, setBulkBusy] = useState(false)
   /** 확정하지 못하고 돌아온 줄 — 이유와 함께 목록 위에 남긴다. */
   const [bounced, setBounced] = useState<{ label: string; message: string }[]>([])
+  /** 확정했는데 **안 이어진 인용 계열**이 남은 규격 — 줄은 목록에서 빠지므로 여기 남긴다. */
+  const [leftovers, setLeftovers] = useState<
+    { label: string; series: string[]; link: string | null }[]
+  >([])
   const [error, setError] = useState<ApiError | Error | null>(null)
 
   const meta = (queues.data ?? []).find((one) => one.key === queue)
@@ -162,17 +204,19 @@ export default function ReviewQueuePage() {
   const total = page.data?.total ?? 0
   /** 정한 줄 · 사라진 줄에서는 고를 것이 없다 — 이미 닫혔다. */
   const selectable = isAdmin && status !== 'decided' && status !== 'gone'
-  const eligible = rows.filter((one) => bulkBlock(one) === null)
+  /** 한꺼번에 확정하는 기준 — MCP 의견만 볼 때는 MCP 의견, 아니면 추천. */
+  const blockOf = onlyMcp ? mcpBlock : bulkBlock
+  const eligible = rows.filter((one) => blockOf(one) === null)
   const picked = rows.filter((one) => chosen.has(one.id))
 
   async function decideChosen() {
     setBulkBusy(true)
     setError(null)
     try {
-      const result = await reviewApi.decideRecommended(
-        queue,
-        picked.map((one) => one.id),
-      )
+      const ids = picked.map((one) => one.id)
+      const result = onlyMcp
+        ? await reviewApi.decideByMcpVotes(queue, ids)
+        : await reviewApi.decideRecommended(queue, ids)
       setGone((current) => {
         const next = new Set(current)
         for (const id of result.done) next.add(id)
@@ -233,12 +277,34 @@ export default function ReviewQueuePage() {
                   setChosen(new Set())
                   setBounced([])
                   setAsking(false)
-                  setParams(value === 'open' ? {} : { status: value })
+                  const next: Record<string, string> =
+                    value === 'open' ? {} : { status: value }
+                  if (onlyMcp) next.votes = 'mcp'
+                  setParams(next)
                 }}
               >
                 {label}
               </Button>
             ))}
+            {/* MCP 의견만 — 상태 단추와 겹쳐 쓴다(미처리 중 MCP 의견 있는 줄 …). */}
+            <Button
+              size="sm"
+              variant={onlyMcp ? 'secondary' : 'ghost'}
+              aria-pressed={onlyMcp}
+              title="MCP(AI)로 낸 의견이 있는 줄만 표시"
+              onClick={() => {
+                setOffset(0)
+                setGone(new Set())
+                setChosen(new Set())
+                setBounced([])
+                setAsking(false)
+                const next: Record<string, string> = status === 'open' ? {} : { status }
+                if (!onlyMcp) next.votes = 'mcp'
+                setParams(next)
+              }}
+            >
+              MCP 의견만
+            </Button>
           </div>
         }
       />
@@ -262,7 +328,9 @@ export default function ReviewQueuePage() {
           >
             {chosen.size === eligible.length && eligible.length > 0
               ? '선택 해제'
-              : `추천 있는 줄 고르기 (${eligible.length})`}
+              : onlyMcp
+                ? `MCP 의견 일치 줄 고르기 (${eligible.length})`
+                : `추천 있는 줄 고르기 (${eligible.length})`}
           </Button>
           <span className="text-muted-foreground">
             {picked.length}건 선택
@@ -275,8 +343,9 @@ export default function ReviewQueuePage() {
               {/* **한 번 더 묻는다.** 확정하면 기존 규칙(규격 → 인용 계열에 붙임 …)이 바로
                   돌고, 다시 열어도 이미 일어난 일은 안 되돌린다. */}
               <span>
-                {picked.length}건을 <strong>각자의 추천대로</strong> 확정하시겠습니까? 즉시
-                적용됨.
+                {picked.length}건을{' '}
+                <strong>{onlyMcp ? '각자의 MCP 의견대로' : '각자의 추천대로'}</strong>{' '}
+                확정하시겠습니까? 즉시 적용됨.
               </span>
               {/* 이름을 줄의 「확정」 과 **다르게** 둔다 — 같은 이름의 단추가 둘이면 어느 쪽이
                   몇 건을 정하는지 눌러 보기 전에는 모른다. */}
@@ -289,9 +358,35 @@ export default function ReviewQueuePage() {
             </>
           ) : (
             <Button size="sm" disabled={picked.length === 0} onClick={() => setAsking(true)}>
-              고른 {picked.length}건 추천대로 확정
+              고른 {picked.length}건 {onlyMcp ? 'MCP 의견대로' : '추천대로'} 확정
             </Button>
           )}
+        </div>
+      )}
+
+      {leftovers.length > 0 && (
+        // **처리가 끝난 것이 아니다.** 그 계열의 장비는 이 규격으로 검색되지 않는다 — 규격
+        // 화면의 「인용 계열에 시험 항목 추가」 나 남은 일 「인용 계열 미연결」 에서 잇는다.
+        <div className="rounded-md border border-amber-500/40 bg-amber-500/5 p-3 text-sm">
+          <p className="font-medium">미연결 인용 계열이 남은 규격 {leftovers.length}건</p>
+          <ul className="mt-1 space-y-0.5">
+            {leftovers.map((one) => (
+              <li key={one.label}>
+                {one.link ? (
+                  <Link to={one.link} className="underline-offset-2 hover:underline">
+                    {one.label}
+                  </Link>
+                ) : (
+                  one.label
+                )}
+                : <span className="text-muted-foreground">{one.series.join(', ')}</span>
+              </li>
+            ))}
+          </ul>
+          <p className="text-muted-foreground mt-1 text-xs">
+            그 계열에 선택한 시험 항목이 없어 이 규격이 연결되지 않음. 규격 화면의 ‘인용 계열에
+            시험 항목 추가’로 연결 가능.
+          </p>
         </div>
       )}
 
@@ -323,7 +418,8 @@ export default function ReviewQueuePage() {
               row={row}
               selectable={selectable}
               selected={chosen.has(row.id)}
-              blocked={bulkBlock(row)}
+              blocked={blockOf(row)}
+              bulkHint={onlyMcp ? '선택 후 위 버튼으로 MCP 의견대로 일괄 확정' : undefined}
               onSelect={() =>
                 setChosen((current) => {
                   const next = new Set(current)
@@ -337,10 +433,25 @@ export default function ReviewQueuePage() {
               directOptions={directOptions}
               readOnly={status === 'decided' || status === 'gone'}
               isAdmin={isAdmin}
-              onDecide={(choice, note) =>
-                act(row, () => reviewApi.decide(queue, row.id, choice, note))
+              onDecide={(choice, note, addToCiting) =>
+                act(row, async () => {
+                  const done = await reviewApi.decide(queue, row.id, choice, note, addToCiting)
+                  const left = (done.payload?.unlinked_series as string[] | undefined) ?? []
+                  if (left.length > 0)
+                    setLeftovers((current) => [
+                      ...current,
+                      { label: row.subject_label, series: left, link: row.link },
+                    ])
+                })
               }
-              onSkip={() => act(row, () => reviewApi.skip(queue, row.id))}
+              onPreview={
+                queue === 'method_test_items' || queue === 'free_spec_definitions'
+                  ? (choice) => reviewApi.preview(queue, row.id, choice)
+                  : undefined
+              }
+              onSkip={(reason, note) =>
+                act(row, () => reviewApi.skip(queue, row.id, reason, note))
+              }
               onVote={(choice, note) => reviewApi.vote(queue, row.id, choice, note)}
               onWithdraw={() => reviewApi.withdrawVote(queue, row.id)}
               onReopen={
@@ -392,8 +503,10 @@ function ProposalRow({
   selectable,
   selected,
   blocked,
+  bulkHint,
   onSelect,
   onDecide,
+  onPreview,
   onSkip,
   onVote,
   onWithdraw,
@@ -405,14 +518,19 @@ function ProposalRow({
   selected: boolean
   /** 고를 수 없는 이유. 고를 수 있으면 `null` — 칸을 끄고 이 말을 올려 둔다. */
   blocked: string | null
+  /** 고를 수 있는 칸에 올리는 말 — 일괄 확정의 기준(추천 · MCP 의견)마다 다르다. */
+  bulkHint?: string
   onSelect: () => void
   multi: boolean
   emptyWord: string
   directOptions: { id: string; label: string; detail?: string | null }[]
   readOnly: boolean
   isAdmin: boolean
-  onDecide: (choice: string[], note?: string) => Promise<void>
-  onSkip: () => Promise<void>
+  onDecide: (choice: string[], note?: string, addToCiting?: boolean) => Promise<void>
+  /** 규격의 시험 항목 물음 — 확정 **전에** 이어질 계열 · 안 이어질 계열을 묻는다. */
+  onPreview?: (choice: string[]) => Promise<ChoicePreview>
+  /** 보류(보류된 줄이면 해제) — 사유와 메모를 남긴다. */
+  onSkip: (reason?: SkipReason, note?: string) => Promise<void>
   /** 의견 — 줄은 남고 의견만 갱신된다. */
   onVote: (choice: string[], note?: string) => Promise<ReviewProposal>
   onWithdraw: () => Promise<ReviewProposal>
@@ -447,6 +565,22 @@ function ProposalRow({
   const [note, setNote] = useState('')
   const [busy, setBusy] = useState(false)
   const recommended = row.candidates.find((one) => one.recommended)
+  /** 보류 사유를 고르는 중. */
+  const [skipping, setSkipping] = useState(false)
+  const [skipReason, setSkipReason] = useState<SkipReason>('evidence')
+  const [skipNote, setSkipNote] = useState('')
+  /** 코드의 **이름** — 후보 → 직접 선택 어휘 → 결정 때 남긴 이름. 후보 밖에서 고른 것이 내부
+   *  코드(custom_001 …)로 보이면 무엇을 정했는지 모른다(2026-10-13). */
+  const choiceLabels = (row.payload?.choice_labels as Record<string, string> | undefined) ?? {}
+  const labelOf = (code: string) =>
+    row.candidates.find((one) => one.code === code)?.label ??
+    directOptions.find((one) => one.id === code)?.label ??
+    choiceLabels[code] ??
+    code
+  /** 결정했는데 안 이어진 인용 계열 — 규격의 시험 항목 물음만 채운다. */
+  const unlinkedSeries = (row.payload?.unlinked_series as string[] | undefined) ?? []
+  /** 사양 정의 승격에서 옮기지 못하고 기종 고유 사양에 남은 값(「기종: 값」). */
+  const unmovedSpecs = (row.payload?.unmoved as string[] | undefined) ?? []
 
   function toggle(code: string) {
     setDirect('')
@@ -462,10 +596,30 @@ function ProposalRow({
   const choice = direct ? (multi ? [...picked, direct] : [direct]) : picked
   const canDecide = choice.length > 0 || multi
 
-  async function submit(chosen: string[]) {
+  /** 안 이어질 인용 계열이 있어 확인을 기다리는 확정. */
+  const [pending, setPending] = useState<{ chosen: string[]; preview: ChoicePreview } | null>(
+    null,
+  )
+
+  async function submit(chosen: string[], confirmed = false, addToCiting = false) {
     setBusy(true)
     try {
-      await onDecide(chosen, note.trim() || undefined)
+      // **확정 전에 묻는다.** 후보 밖 항목을 고르면 그 시험 항목이 없는 인용 계열은 연결되지
+      // 않는데, 확정만 하면 처리가 끝난 것으로 보였다(2026-10-13).
+      if (onPreview && chosen.length > 0 && !confirmed) {
+        const preview = await onPreview(chosen)
+        // 사양 정의 승격 — 못 옮기는 값이 있으면 확정 전에 보여 준다(옮길 것이 없으면 거절된다).
+        if ((preview.unmovable ?? []).length > 0) {
+          setPending({ chosen, preview })
+          return
+        }
+        if (preview.unlinked.length > 0 || (preview.cut ?? []).length > 0) {
+          setPending({ chosen, preview })
+          return
+        }
+      }
+      setPending(null)
+      await onDecide(chosen, note.trim() || undefined, addToCiting)
     } finally {
       setBusy(false)
     }
@@ -483,7 +637,7 @@ function ProposalRow({
             aria-label={`${row.subject_label} 고르기`}
             checked={selected}
             disabled={blocked !== null}
-            title={blocked ?? '선택 후 위 버튼으로 추천대로 일괄 확정'}
+            title={blocked ?? bulkHint ?? '선택 후 위 버튼으로 추천대로 일괄 확정'}
             onChange={onSelect}
           />
         )}
@@ -501,9 +655,22 @@ function ProposalRow({
               >
                 의견 {votes.length}
                 {split ? ' · 의견 불일치' : votes.length > 1 ? ' · 의견 일치' : ''}
+                {votes.some((one) => one.mcp) &&
+                  ` · MCP ${votes.filter((one) => one.mcp).length}`}
               </span>
             )}
           </p>
+          {row.status === 'skipped' && (
+            // **왜 보류했나가 남는다** — 안 남기면 다시 볼 때 같은 고민을 처음부터 한다.
+            <p className="mt-1 text-xs text-amber-800 dark:text-amber-300">
+              보류: {row.skip_reason_label ?? '사유 없음'}
+              {row.skipped_by && ` · ${row.skipped_by}`}
+              {row.skipped_at && ` · ${shownDateTime(row.skipped_at)}`}
+              {row.note && (
+                <span className="text-muted-foreground block">메모: {row.note}</span>
+              )}
+            </p>
+          )}
           {/* **무엇을 묻는지가 먼저다.** 「3400」 만 주고 후보를 세우면 도메인 전문가도 못 정한다 —
               물음은 완전한 문장으로, 그 아래 대상을 이해할 사실 몇 줄(제조사·분류·소개·지금
               하는 시험 …). 후보 옆의 근거가 「왜 이 후보인가」 라면 여기는 「대상이 무엇인가」. */}
@@ -552,12 +719,7 @@ function ProposalRow({
                 <span className="font-medium">
                   {(row.choice ?? []).length === 0
                     ? '해당 없음'
-                    : (row.choice ?? [])
-                        .map(
-                          (code) =>
-                            row.candidates.find((one) => one.code === code)?.label ?? code,
-                        )
-                        .join(' · ')}
+                    : (row.choice ?? []).map(labelOf).join(' · ')}
                 </span>
                 <span className="text-muted-foreground">
                   {' '}
@@ -570,6 +732,16 @@ function ProposalRow({
             {row.note && (
               <span className="text-muted-foreground block text-xs">{row.note}</span>
             )}
+            {unlinkedSeries.length > 0 && (
+              <span className="block text-xs text-amber-700 dark:text-amber-400">
+                미연결 인용 계열: {unlinkedSeries.join(', ')} (규격 화면에서 연결 가능)
+              </span>
+            )}
+            {unmovedSpecs.length > 0 && (
+              <span className="block text-xs text-amber-700 dark:text-amber-400">
+                정식 칸으로 옮기지 못한 값 {unmovedSpecs.length}개: {unmovedSpecs.join(' · ')}
+              </span>
+            )}
             {votes.length > 0 && (
               <span className="text-muted-foreground block text-xs">
                 의견:{' '}
@@ -579,12 +751,7 @@ function ProposalRow({
                       `${one.user} → ${
                         one.choice.length === 0
                           ? '해당 없음'
-                          : one.choice
-                              .map(
-                                (code) =>
-                                  row.candidates.find((c) => c.code === code)?.label ?? code,
-                              )
-                              .join('·')
+                          : one.choice.map(labelOf).join('·')
                       }`,
                   )
                   .join(' · ')}
@@ -613,6 +780,12 @@ function ProposalRow({
         </div>
       ) : (
         <>
+          {row.queue === 'method_test_items' && (
+            <p className="text-muted-foreground mt-3 text-xs">
+              후보: 이 규격을 인용한 계열이 이미 수행하는 시험 항목(또는 다른 판·규격 제목의
+              근거). 후보 밖 항목은 그 시험 항목이 없는 인용 계열에 연결되지 않음.
+            </p>
+          )}
           <ul className="mt-3 space-y-1">
             {row.candidates.map((one) => {
               const on = picked.includes(one.code) && !direct
@@ -636,6 +809,13 @@ function ProposalRow({
                       {one.recommended && (
                         <span className="ml-2 rounded bg-amber-100 px-1.5 py-0.5 text-xs text-amber-900 dark:bg-amber-900/40 dark:text-amber-200">
                           추천
+                        </span>
+                      )}
+                      {/* **고르기 전에 볼 것** — 분류와 맞지 않음 · 표기만 다른 같은 규격 …
+                          경고가 붙은 후보는 추천하지 않는다. */}
+                      {one.warning && (
+                        <span className="block text-xs text-amber-700 dark:text-amber-400">
+                          {one.warning}
                         </span>
                       )}
                       {/* **근거는 추천 옆에 늘 붙는다.** 근거 없는 추천은 첫 보기를 누르게 할 뿐이다. */}
@@ -676,6 +856,18 @@ function ProposalRow({
                 placeholder="직접 입력 (후보에 없는 표기)"
                 aria-label="별칭 직접 입력"
                 className="w-56"
+              />
+            )}
+            {/* 규격은 번호를 적는다 — 카탈로그에 있는 번호(옛 번호 포함)면 그 규격에 연결되고,
+                없으면 새로 생긴다. 의견과 확정이 같은 번호를 받는다. */}
+            {row.queue === 'series_standards' && (
+              <Input
+                value={direct}
+                onChange={(event) => setDirect(event.target.value)}
+                placeholder="직접 입력 (규격 번호, 예: ASTM D638)"
+                aria-label="규격 번호 직접 입력"
+                title="카탈로그에 있는 번호면 그 규격에 연결, 없으면 새 규격 생성"
+                className="w-64"
               />
             )}
             {directOptions.length > 0 && (
@@ -742,7 +934,7 @@ function ProposalRow({
                 {multi && choice.length === 0 ? `${emptyWord}으로 확정` : '확정'}
               </Button>
             )}
-            {isAdmin && (
+            {isAdmin && row.status === 'skipped' && (
               <Button
                 size="sm"
                 variant="ghost"
@@ -756,6 +948,16 @@ function ProposalRow({
                   }
                 }}
               >
+                보류 해제
+              </Button>
+            )}
+            {isAdmin && row.status !== 'skipped' && !skipping && (
+              <Button
+                size="sm"
+                variant="ghost"
+                disabled={busy}
+                onClick={() => setSkipping(true)}
+              >
                 보류
               </Button>
             )}
@@ -768,8 +970,167 @@ function ProposalRow({
               <span className="text-muted-foreground text-xs">다수 의견으로 미리 선택됨.</span>
             )}
           </div>
+          {skipping && (
+            // **보류 사유와 메모** — 보류 목록에 그대로 보인다.
+            <div className="bg-muted/40 mt-3 flex flex-wrap items-end gap-2 rounded-md border p-3">
+              <label className="space-y-1 text-xs">
+                <span className="block font-medium">보류 사유</span>
+                <select
+                  aria-label="보류 사유"
+                  className="border-input bg-background h-8 rounded-md border px-2 text-sm"
+                  value={skipReason}
+                  onChange={(event) => setSkipReason(event.target.value as SkipReason)}
+                >
+                  {SKIP_REASONS.map(([value, label]) => (
+                    <option key={value} value={value}>
+                      {label}
+                    </option>
+                  ))}
+                </select>
+              </label>
+              <Input
+                value={skipNote}
+                onChange={(event) => setSkipNote(event.target.value)}
+                placeholder="메모 (선택): 확인할 것·막힌 이유"
+                aria-label="보류 메모"
+                className="max-w-sm"
+                maxLength={1000}
+              />
+              <Button
+                size="sm"
+                disabled={busy}
+                onClick={async () => {
+                  setBusy(true)
+                  try {
+                    await onSkip(skipReason, skipNote.trim() || note.trim() || undefined)
+                    setSkipping(false)
+                  } finally {
+                    setBusy(false)
+                  }
+                }}
+              >
+                보류 확정
+              </Button>
+              <Button
+                size="sm"
+                variant="ghost"
+                disabled={busy}
+                onClick={() => setSkipping(false)}
+              >
+                취소
+              </Button>
+            </div>
+          )}
         </>
       )}
+      <Dialog
+        open={pending !== null}
+        onOpenChange={(open) => !open && !busy && setPending(null)}
+      >
+        <DialogContent>
+          <DialogHeader>
+            <DialogTitle>
+              {pending && (pending.preview.unmovable ?? []).length > 0
+                ? '정식 칸으로 옮기지 못하는 값 있음'
+                : '연결되지 않는 인용 계열 있음'}
+            </DialogTitle>
+            <DialogDescription asChild>
+              <div className="space-y-2 text-sm">
+                {pending && (pending.preview.unmovable ?? []).length > 0 && (
+                  // **승격 전에 어느 기종의 무슨 값이 남는지** — 남은 줄은 기종 화면에
+                  // 「정식 칸으로 옮기지 못함」 으로 보인다.
+                  <>
+                    <p>
+                      정의 종류({pending.preview.kind ?? '?'})로 읽을 수 없어 기종 고유 사양에
+                      남는 값 {(pending.preview.unmovable ?? []).length}개:
+                    </p>
+                    <ul className="max-h-40 list-disc overflow-y-auto pl-5">
+                      {(pending.preview.unmovable ?? []).map((name) => (
+                        <li key={name}>{name}</li>
+                      ))}
+                    </ul>
+                    {(pending.preview.movable ?? []).length === 0 ? (
+                      <p className="text-amber-700 dark:text-amber-400">
+                        옮길 수 있는 값이 없어 승격이 거절됨. ‘유지’로 결정하거나, ‘상세’의
+                        기종 화면에서 값을 ‘0 ~ 10’·‘min 0 · max 10’·‘10’ 꼴로 고친 뒤 다시
+                        확정.
+                      </p>
+                    ) : (
+                      <p className="text-muted-foreground text-xs">
+                        옮겨지는 값 {(pending.preview.movable ?? []).length}개. 남는 값은 기종
+                        화면에 ‘정식 칸으로 옮기지 못함’으로 표시됨.
+                      </p>
+                    )}
+                  </>
+                )}
+                {pending && (pending.preview.cut ?? []).length > 0 && (
+                  // **다시 정하면 교체다** — 빠지는 항목으로만 이어진 계열은 끊긴다.
+                  <p>
+                    <strong>
+                      {(pending.preview.cut ?? []).length}개 계열이 이 규격과 끊김:
+                    </strong>{' '}
+                    {(pending.preview.cut ?? []).join(', ')}. 이전 선택에서 빠지는 시험
+                    항목으로만 연결되어 있었음.
+                  </p>
+                )}
+                {pending && pending.preview.off_candidates.length > 0 && (
+                  <p>
+                    후보 밖 항목: <strong>{pending.preview.off_candidates.join(', ')}</strong>.
+                    후보는 이 규격을 인용한 계열이 이미 수행하는 시험 항목임.
+                  </p>
+                )}
+                {pending && pending.preview.unlinked.length > 0 && (
+                  <>
+                    <p>
+                      아래 인용 계열은 선택한 시험 항목이 없어 이 규격이 연결되지 않음. 그대로
+                      확정하면 그 계열의 장비는 이 규격으로 검색되지 않음.
+                    </p>
+                    <ul className="list-disc pl-5">
+                      {pending.preview.unlinked.map((name) => (
+                        <li key={name}>{name}</li>
+                      ))}
+                    </ul>
+                  </>
+                )}
+                {pending && pending.preview.linked.length > 0 && (
+                  <p className="text-muted-foreground text-xs">
+                    연결되는 인용 계열: {pending.preview.linked.join(', ')}
+                  </p>
+                )}
+              </div>
+            </DialogDescription>
+          </DialogHeader>
+          <DialogFooter>
+            <Button variant="ghost" disabled={busy} onClick={() => setPending(null)}>
+              취소
+            </Button>
+            {pending && pending.preview.kind ? (
+              <Button
+                disabled={busy || (pending.preview.movable ?? []).length === 0}
+                onClick={() => void submit(pending.chosen, true, false)}
+              >
+                옮길 수 있는 값만 옮기고 승격
+              </Button>
+            ) : (
+              <>
+                <Button
+                  variant="outline"
+                  disabled={busy}
+                  onClick={() => pending && void submit(pending.chosen, true, false)}
+                >
+                  연결 없이 확정
+                </Button>
+                <Button
+                  disabled={busy}
+                  onClick={() => pending && void submit(pending.chosen, true, true)}
+                >
+                  인용 계열에 시험 항목 추가 후 확정
+                </Button>
+              </>
+            )}
+          </DialogFooter>
+        </DialogContent>
+      </Dialog>
     </li>
   )
 }

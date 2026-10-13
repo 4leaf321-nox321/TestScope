@@ -2203,8 +2203,10 @@ async def create_term(
     실제로 그렇게 함). 같은 것인지는 사람만 판단 가능.
 
     `code`는 정본·반입이 참조하는 이름(시험 항목의 `tensile` 등). 모르면 비움(지어내면 다음
-    반입이 다른 코드로 같은 값을 또 생성). `parent_term_id`는 계층이 있는 축(장비 분류의 군 →
-    유형)에서만.
+    반입이 다른 코드로 같은 값을 또 생성). 시험 항목 · 물성은 비우면 서버가 `custom_001` 꼴로
+    지음(검토함이 코드로 고름 — 반입이 정본 코드로 바꿔 끼움). 적을 때 규칙: 공백 없이, 권장
+    꼴은 소문자·숫자·밑줄(물성은 `분야.이름`). `parent_term_id`는 계층이 있는 축(장비 분류의
+    군 → 유형)에서만.
 
     `entry_policy`가 `closed`인 축(제정기관·조건 …)은 시스템 관리자만 추가 가능. 거절되면
     사람에게 인계.
@@ -3394,20 +3396,27 @@ async def list_review_queues(ctx: Context) -> dict[str, Any]:
 
 @mcp.tool()
 async def list_review_items(
-    ctx: Context, queue: str, status: str = "open", limit: int = 20, offset: int = 0
+    ctx: Context,
+    queue: str,
+    status: str = "open",
+    limit: int = 20,
+    offset: int = 0,
+    votes: str | None = None,
 ) -> dict[str, Any]:
     """한 물음의 줄 목록: 대상 · 물음 문장 · 근거 자료 · 후보 · 추천과 이유.
 
     `queue`는 `list_review_queues`의 `key`. `status`: open · voted · decided · skipped · gone ·
-    all.
+    all. `votes="mcp"`면 MCP로 낸 의견이 있는 줄만(의견의 `mcp`가 true, 이름에 `(MCP)`).
+    보류 줄은 `skip_reason_label` · `note`(메모)에 보류 이유가 있음.
 
     줄의 `question`은 그 줄이 묻는 내용을 담은 완전한 문장, `facts`는 판단에 필요한 사실.
     **추천(`recommended`)은 정답이 아님**: 근거(`reason`)를 함께 읽고, 사람에게 전달할 때도
     둘을 함께 전달. 결정은 `decide_review_item`.
     """
-    return await _get(
-        ctx, f"/review/{queue}", {"status": status, "limit": limit, "offset": offset}
-    )
+    params: dict[str, Any] = {"status": status, "limit": limit, "offset": offset}
+    if votes:
+        params["votes"] = votes
+    return await _get(ctx, f"/review/{queue}", params)
 
 
 @writes
@@ -3418,6 +3427,8 @@ async def decide_review_item(
     action: str = "decide",
     choice: list[str] | None = None,
     note: str | None = None,
+    add_to_citing: bool = False,
+    skip_reason: str | None = None,
 ) -> dict[str, Any]:
     """검토함 한 줄의 확정 · 의견 · 보류 · 다시 열기. 확정·보류·다시 열기는 시스템 관리자.
 
@@ -3426,8 +3437,15 @@ async def decide_review_item(
         decide   확정. choice 필수(후보의 code 목록, 빈 목록은 해당 없음). 카탈로그에 바로
                  적용됨(규격의 시험 항목이면 인용 계열에 붙음 등)
         vote     의견. 누구나 가능, 데이터 변경 없음
-        skip     보류 전환(다시 호출하면 해제)
+        skip     보류 전환(다시 호출하면 해제). skip_reason: evidence · expert · source ·
+                 no_answer · other, note는 메모
         reopen   결정 취소 후 다시 열기. 이미 적용된 변경은 되돌리지 않음
+        preview  확정 전 결과. 규격의 시험 항목: 이어질 · 안 이어질 · 끊길(cut) 계열과 후보 밖
+                 항목. 사양 정의 승격(choice ["promote"]): 옮겨질(movable) · 남을(unmovable) 값
+
+    규격의 시험 항목: 후보는 인용 계열이 이미 하는 시험. 후보 밖 항목은 그 시험 항목이 없는 인용
+    계열에 연결 안 됨(응답 `payload.unlinked_series`). `add_to_citing=True`면 그 계열에 시험
+    항목을 더해 연결 — 사람이 지시한 경우만. 확정 전 `preview`로 확인 후 사람에게 제시.
 
     **확정은 사용자가 대상과 선택을 지시한 경우에만.** 지시가 분명하면(예: 추천대로) 그대로
     확정. 모호하면 `list_review_items`의 question · facts · 후보 · 추천과 근거 · 다른
@@ -3442,7 +3460,11 @@ async def decide_review_item(
             ctx,
             "POST",
             f"/review/{queue}/{proposal_id}/decide",
-            {"choice": choice, "note": note},
+            {"choice": choice, "note": note, "add_to_citing": add_to_citing},
+        )
+    if action == "preview":
+        return await _get(
+            ctx, f"/review/{queue}/{proposal_id}/preview", params={"choice": choice or []}
         )
     if action == "vote":
         return await _send(
@@ -3452,12 +3474,17 @@ async def decide_review_item(
             {"choice": choice or [], "note": note},
         )
     if action == "skip":
-        return await _send(ctx, "POST", f"/review/{queue}/{proposal_id}/skip")
+        return await _send(
+            ctx,
+            "POST",
+            f"/review/{queue}/{proposal_id}/skip",
+            {"reason": skip_reason, "note": note},
+        )
     if action == "reopen":
         return await _send(ctx, "POST", f"/review/{queue}/{proposal_id}/reopen")
     return {
         "error": f"알 수 없는 action: {action}",
-        "actions": ["decide", "vote", "skip", "reopen"],
+        "actions": ["decide", "vote", "skip", "reopen", "preview"],
     }
 
 

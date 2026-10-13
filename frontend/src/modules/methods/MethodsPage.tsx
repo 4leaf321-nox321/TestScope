@@ -68,7 +68,11 @@ export default function MethodsPage() {
     [query, requirement, testItem, cited, used, includeSuperseded, attrs],
   )
   const filtered =
-    requirement === 'none' || testItem === 'none' || cited === 'none' || used === 'owned'
+    requirement === 'none' ||
+    testItem === 'none' ||
+    cited === 'none' ||
+    cited === 'unlinked' ||
+    used === 'owned'
 
   /** 거르기 하나를 켜고 끈다. 다른 거르기는 그대로 — 「보유 장비가 쓰는 것 중 조건 없는 것」
    *  처럼 겹쳐 쓰는 것이 이 목록의 쓸모다. */
@@ -154,6 +158,13 @@ export default function MethodsPage() {
           >
             연결된 계열 없음
           </Button>
+          <Button
+            size="sm"
+            variant={cited === 'unlinked' ? 'default' : 'outline'}
+            onClick={() => toggle('cited', 'unlinked')}
+          >
+            인용 계열 미연결
+          </Button>
         </div>
       </div>
 
@@ -178,6 +189,13 @@ export default function MethodsPage() {
                 <strong>시험 항목 미지정 규격만</strong> 표시 중. 카탈로그 인용은 있으나 시험이
                 여럿인 계열이라 반입 시 미결정. 상세에서 시험 항목 지정 시 인용 계열에 바로
                 연결됨.
+              </>
+            )}
+            {cited === 'unlinked' && (
+              <>
+                <strong>시험 항목은 지정했으나 인용 계열 일부가 연결되지 않은 규격만</strong>{' '}
+                표시 중. 그 계열에 해당 시험 항목이 없어 미연결 상태이며, 그 계열의 장비는 이
+                규격으로 검색되지 않음. 상세에서 ‘인용 계열에 시험 항목 추가’로 연결 가능.
               </>
             )}
             {cited === 'none' && (

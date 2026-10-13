@@ -38,6 +38,40 @@ class CitedSeriesOut(BaseModel):
     pending: bool
 
 
+class MergeRequest(Request):
+    """이 규격을 다른 규격으로 합친다 — 시스템 관리자. 사유는 감사 기록에 남는다."""
+
+    target_id: uuid.UUID
+    reason: str = Field(default="", max_length=500)
+
+
+class DetachRequest(Request):
+    """규격의 시험 항목 해제 — 사유는 감사 기록에 남는다."""
+
+    reason: str = Field(min_length=1, max_length=500)
+
+
+class DetachImpact(BaseModel):
+    """시험 항목을 떼면 **끊기는** 계열(그 항목으로만 이어졌다) · 다른 항목으로 **남는** 계열.
+
+    끊기는 계열은 「인용했는데 항목 미정」 으로 돌아간다 — 인용 사실은 남고 검색에서는 빠진다.
+    """
+
+    cut: list[str]
+    kept: list[str]
+    reopened: bool = False
+    """항목이 하나도 안 남아 검토함의 결정 줄을 다시 열었나."""
+
+
+class LinkCitationsResult(BaseModel):
+    """안 이어진 인용 계열에 시험 항목을 더한 결과."""
+
+    added_to: list[str]
+    """시험 항목을 더해 이은 계열 이름."""
+    still_unlinked: int
+    """그래도 안 이어진 계열 수(규격의 시험 항목이 없으면 그대로)."""
+
+
 class MethodTestItemOut(BaseModel):
     """이 규격이 덮는 시험 항목 하나."""
 
@@ -50,6 +84,8 @@ class MethodOut(BaseModel):
 
     id: uuid.UUID
     code: str
+    former_codes: list[str] = []
+    """고치기 전의 번호들 — 이 번호로도 찾아온다."""
     edition: str | None
     title: str
     test_items: list[MethodTestItemOut]
@@ -92,6 +128,9 @@ class MethodCreateRequest(Request):
 
 
 class MethodUpdateRequest(Request):
+    code: str | None = Field(default=None, min_length=1, max_length=100)
+    """규격 번호. **시스템 관리자만** 고친다 — 옛 번호는 `former_codes` 에 남아 반입 · 검토함 ·
+    검색이 계속 찾는다."""
     title: str | None = Field(default=None, min_length=1, max_length=300)
     edition: str | None = None
     test_item_term_ids: list[uuid.UUID] | None = None

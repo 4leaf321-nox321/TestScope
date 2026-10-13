@@ -21,6 +21,7 @@
 from __future__ import annotations
 
 import json
+import re
 import uuid
 from dataclasses import dataclass
 from datetime import UTC, datetime
@@ -38,7 +39,11 @@ from app.modules.equipment import free_specs
 from app.modules.equipment.models import EquipmentModel, EquipmentSeries, ModelFreeSpec
 from app.modules.methods.models import TestMethod, TestMethodItem
 from app.modules.methods.services import (
+    add_items_to_citing,
+    citing_split,
+    code_index,
     detach_citations,
+    detach_split,
     merge_into,
     promote_pending,
     set_test_items,
@@ -70,11 +75,12 @@ from app.modules.vocabulary.models import (
     VocabularyTerm,
 )
 from app.modules.vocabulary.specs import SpecDefinition, SpecGroup
+from app.modules.vocabulary.terms import ensure_code
 from app.shared import audit
 from app.shared.attribute_text import display_attribute
 from app.shared.errors import AppError, Forbidden, NotFound
 from app.shared.request_context import get_actor_token
-from app.shared.text import clean, compare_key, method_key
+from app.shared.text import clean, compare_key, method_base, method_key
 
 #: 정본의 후보·결정 파일이 사는 곳. 반입 스크립트의 카탈로그 뿌리와 같다.
 PROPOSALS_DIR = REPO_DIR / "source" / "catalog" / "proposals"
@@ -101,9 +107,11 @@ QUEUES: dict[str, Queue] = {
     "method_test_items": Queue(
         "method_test_items",
         "규격의 시험 항목",
-        "카탈로그가 인용한 규격이 어느 시험의 규격인지 결정. 결정하면 인용한 계열에 "
-        "자동 연결. 여러 개 선택 가능(규격 하나가 시험 항목 둘을 포함하는 경우가 많음. "
-        "예: IEC 60529는 IP 코드의 방진과 방수를 한 문서에서 정의).",
+        "카탈로그가 인용한 규격이 어느 시험의 규격인지 결정. 결정하면 인용한 계열 중 그 시험 "
+        "항목을 가진 계열에 자동 연결. 후보는 인용 계열이 이미 하는 시험(또는 다른 판·규격 "
+        "제목의 근거). 후보 밖 항목은 그 시험 항목이 없는 계열에 연결되지 않으므로, 확정 때 "
+        "인용 계열에 추가 여부 선택. 여러 개 선택 가능(예: IEC 60529는 IP 코드의 방진과 "
+        "방수를 한 문서에서 정의).",
         # 하나만 고르게 두었던 것은 모델이 칸 하나였기 때문이다 — N:M 이 되면서 풀린다.
         True,
         "/methods/{id}",
@@ -230,6 +238,63 @@ def _axis_terms(db: Session, slug: str) -> dict[str, VocabularyTerm]:
     }
 
 
+#: 보류 사유 — 고르게 둔다. 메모만 받으면 사람마다 다르게 적어 「왜 보류했나」 로 모아 볼 수
+#: 없다(2026-10-13). 메모는 함께 남는다.
+SKIP_REASONS = {
+    "evidence": "근거 부족",
+    "expert": "도메인 전문가 확인 필요",
+    "source": "원문(규격서·사양서) 확인 필요",
+    "no_answer": "후보에 맞는 답 없음",
+    "other": "기타",
+}
+
+
+def _actor_label(user: User) -> str:
+    """줄에 남는 이름 — **MCP 로 한 일은 「(MCP)」 가 붙는다.** 확정 · 의견 · 보류가 같은
+    규칙이라 화면에서 사람이 한 것과 AI 가 사람 대신 한 것을 가를 수 있다."""
+    name = user.display_name or user.email
+    return f"{name}(MCP)" if get_actor_token() else name
+
+
+#: 고르는 것이 시험 항목 · 물성인 물음 — 코드로도, 값 id 로도 고른다.
+_TERM_QUEUES = {
+    "method_test_items": "test_item",
+    "series_test_items": "test_item",
+    "test_item_properties": "property",
+}
+
+
+def _normalize_choice(db: Session, queue: str, choice: list[str]) -> list[str]:
+    """값 id 로 고른 것을 **코드로** 바꾼다. 코드 없이 만든 시험 항목도 고를 수 있어야 하고
+    (2026-10-13), 결정 줄 · 정본 내보내기는 코드로 말한다. 모르는 것은 그대로 둔다 — 적용
+    단계가 「알 수 없는 코드」 로 거절하며 무엇이 틀렸는지 말한다."""
+    slug = _TERM_QUEUES.get(queue)
+    if slug is None:
+        return choice
+    axis_id = db.scalar(select(Vocabulary.id).where(Vocabulary.slug == slug))
+    by_id = {
+        str(term.id): term
+        for term in db.scalars(
+            select(VocabularyTerm).where(VocabularyTerm.vocabulary_id == axis_id)
+        )
+    }
+    out: list[str] = []
+    for one in choice:
+        term = by_id.get(one)
+        # 코드 없이 남은 값이면 지금 코드를 지어 붙인다 — 자동 생성 전에 만든 값.
+        out.append(ensure_code(db, term) if term is not None else one)
+    return out
+
+
+def _choice_labels(db: Session, queue: str, choice: list[str]) -> dict[str, str]:
+    """고른 코드의 **이름** — 후보 밖에서 고른 것도 결정 줄에 이름으로 보이게(2026-10-13)."""
+    slug = _TERM_QUEUES.get(queue)
+    if slug is None:
+        return {}
+    terms = _axis_terms(db, slug)
+    return {code: terms[code].value for code in choice if code in terms}
+
+
 # --- 정본 파일 -----------------------------------------------------------------
 
 
@@ -249,23 +314,144 @@ def _mark(
     out: list[dict[str, Any]] = []
     shown = False
     for one in candidates:
-        picked = one["code"] in wanted
-        # 근거는 **한 번만** — 축 셋을 추천하면서 같은 문장을 세 번 붙이면 읽기만 길어진다.
+        # **경고가 붙은 후보는 추천하지 않는다** — 「분류와 맞지 않음」 을 추천하면 사람은
+        # 추천을 믿고 누른다.
+        picked = one["code"] in wanted and not one.get("warning")
+        own = one.get("reason")
+        # 줄의 추천 이유는 **한 번만** — 축 셋을 추천하면서 같은 문장을 세 번 붙이면 읽기만
+        # 길어진다. 후보 **제 근거는 늘 남긴다** — 두 번째 추천부터 근거가 비어 「근거 없는
+        # 추천」 으로 보였다(2026-10-13).
+        said = own
+        if picked and reason and not shown:
+            said = f"{own} · 추천 이유: {reason}" if own else reason
         out.append(
             {
                 "code": one["code"],
                 "label": one["label"],
                 "recommended": picked,
-                "reason": (
-                    ((reason if not shown else None) if reason else one.get("reason"))
-                    if picked
-                    else one.get("reason")
-                ),
+                "reason": said,
                 "sources": list(one.get("sources") or []),
+                "warning": one.get("warning"),
             }
         )
-        shown = shown or picked
+        shown = shown or (picked and bool(reason))
     return out
+
+
+def _merge_by_series(
+    db: Session,
+    queue: str,
+    makers: dict[str, VocabularyTerm],
+    filed: dict[str, dict[str, Any]],
+) -> list[tuple[str, EquipmentSeries, dict[str, Any]]]:
+    """정본 줄을 **계열로 묶는다** — (대표 subject, 계열, 합친 줄).
+
+    카탈로그 객체 둘(원래 것 · 보강한 것)이 같은 계열로 반입되면 같은 계열이 출처만 달리해 두
+    줄로 떴다(2026-10-13). 한 줄로 합친다: 같은 후보는 근거 · 출처를 함께 싣고, 어느 쪽이든
+    추천이면 추천. 대표는 이미 결정된 줄 → 이미 있는 줄 → 이름순. 대표가 아닌 줄이 열려 있으면
+    「같은 계열 줄로 합침」 으로 닫는다.
+    """
+    groups: dict[uuid.UUID, tuple[EquipmentSeries, list[str]]] = {}
+    for subject, filed_row in filed.items():
+        series = _series_of_row(db, makers, filed_row)
+        if series is None:
+            continue
+        groups.setdefault(series.id, (series, []))[1].append(subject)
+    existing = {
+        row.subject_key: row
+        for row in db.scalars(select(ReviewProposal).where(ReviewProposal.queue == queue))
+    }
+
+    def rank(subject: str) -> tuple[int, str]:
+        row = existing.get(subject)
+        if row is None:
+            return (2, subject)
+        return (0 if row.status == "decided" else 1, subject)
+
+    out: list[tuple[str, EquipmentSeries, dict[str, Any]]] = []
+    for series, subjects in groups.values():
+        subjects.sort(key=rank)
+        lead = subjects[0]
+        merged = dict(filed[lead])
+        if len(subjects) > 1:
+            merged["candidates"] = _merge_candidates([filed[one] for one in subjects])
+            merged["recommended"] = list(
+                dict.fromkeys(
+                    code
+                    for one in subjects
+                    for code in (
+                        [filed[one]["recommended"]]
+                        if isinstance(filed[one].get("recommended"), str)
+                        else (filed[one].get("recommended") or [])
+                    )
+                )
+            )
+            if not merged.get("decided"):
+                merged["decided"] = next(
+                    (filed[one]["decided"] for one in subjects if filed[one].get("decided")),
+                    None,
+                )
+            for other in subjects[1:]:
+                row = existing.get(other)
+                if row is not None and row.status in ("open", "skipped"):
+                    _gone(row, f"같은 계열 줄로 합침({lead})")
+        out.append((lead, series, merged))
+    return out
+
+
+def _merge_candidates(rows: list[dict[str, Any]]) -> list[dict[str, Any]]:
+    """후보를 코드로 합친다. 같은 코드에 다른 글(소개 문장)이면 새 코드를 붙여 둘 다 남긴다."""
+    merged: dict[str, dict[str, Any]] = {}
+    for filed_row in rows:
+        for one in filed_row.get("candidates") or []:
+            if not isinstance(one, dict):
+                continue
+            code = str(one["code"])
+            held = merged.get(code)
+            if held is not None and held.get("label") != one.get("label"):
+                number = 2
+                while f"{code}_{number}" in merged:
+                    number += 1
+                merged[f"{code}_{number}"] = {**one, "code": f"{code}_{number}"}
+                continue
+            if held is None:
+                merged[code] = {**one, "sources": list(one.get("sources") or [])}
+                continue
+            reasons = [r for r in (held.get("reason"), one.get("reason")) if r]
+            held["reason"] = " / ".join(dict.fromkeys(reasons)) or None
+            held["sources"] = list(
+                dict.fromkeys([*held.get("sources", []), *(one.get("sources") or [])])
+            )
+    return list(merged.values())
+
+
+def _close_twins(db: Session, row: ReviewProposal, choice: list[str], by: str) -> None:
+    """같은 계열의 **다른 줄**을 같은 결정으로 닫는다 — 합치기 전에 생긴 중복 줄.
+
+    한쪽을 정하면 다른 쪽은 이미 적용된 것을 다시 묻는 줄이 된다. 그 줄의 후보 중 고른 것만
+    결정으로 적는다(적용은 이미 됐다 — 같은 계열이다).
+    """
+    if row.queue not in _SERIES_QUEUES or row.subject_id is None:
+        return
+    for twin in db.scalars(
+        select(ReviewProposal).where(
+            ReviewProposal.queue == row.queue,
+            ReviewProposal.subject_id == row.subject_id,
+            ReviewProposal.id != row.id,
+            ReviewProposal.status.in_(("open", "skipped")),
+        )
+    ):
+        offered = {str(one.get("code")) for one in twin.candidates or []}
+        _settle(db, twin, [code for code in choice if code in offered], by)
+        twin.note = f"같은 계열의 다른 줄({row.subject_key}) 결정을 따름"
+
+
+#: 계열 물음의 줄이 정본에서 사라졌을 때의 말. 계열이 지워진 것만이 아니라 정본을 다시 세우며
+#: 후보가 빠진 것일 수도 있다 — 「계열이 지워짐」 만 쓰면 사실과 다르다(2026-10-13).
+_SERIES_GONE = "계열이 지워졌거나 정본 후보에서 빠짐"
+
+#: 대상이 계열인 물음 — 같은 계열 줄이 둘이면 하나로 합치고, 하나를 정하면 다른 쪽도 닫는다.
+_SERIES_QUEUES = frozenset({"series_standards", "series_test_items", "series_summary"})
 
 
 def _upsert(
@@ -417,6 +603,9 @@ def _refresh_method_test_items(
     for method in methods:
         key = method_key(method.code)
         filed_row = filed.get(method.code) or filed.get(key)
+        for old in method.former_codes or []:
+            # 번호를 고친 규격 — 정본은 옛 번호로 말한다.
+            filed_row = filed_row or filed.get(old) or filed.get(method_key(old))
         cited = citing.get(method.id, set())
         derived: set[uuid.UUID] = set()
         for series_id in cited:
@@ -497,7 +686,9 @@ def _refresh_method_test_items(
         )
         question = (
             f"규격 {method.code}의 시험 항목 선택. 정하면 이 규격을 인용한 계열 "
-            f"{len(cited)}개의 해당 시험에 연결되고, 이 규격 기준으로 장비 검색 가능."
+            f"{len(cited)}개 중 그 시험 항목을 가진 계열에 연결되고, 이 규격 기준으로 "
+            "장비 검색 가능. 후보 밖 항목은 그 시험 항목이 없는 계열에 연결되지 않음"
+            "(확정 때 인용 계열에 추가 선택 가능)."
         )
         row = _upsert(
             db,
@@ -759,10 +950,8 @@ def _refresh_method_cleanup(
     db: Session, filed: dict[str, dict[str, Any]], sheet: Sheet
 ) -> None:
     """규격 목록 정리 — 정본이 고른 규격만. 후보: 둔다 · 지운다 · 「…」 로 합친다."""
-    methods = {
-        method_key(m.code): m
-        for m in db.scalars(select(TestMethod).where(TestMethod.deleted_at.is_(None)))
-    }
+    # 옛 번호도 그 규격이다 — 정본은 고치기 전 번호로 말한다.
+    methods = code_index(db)
     for subject, filed_row in filed.items():
         key = method_key(subject)
         method = methods.get(key)
@@ -816,7 +1005,55 @@ def _refresh_method_cleanup(
         if decided and row.status == "open":
             _apply(db, row, list(decided.get("choice") or []), actor=None)
             _settle(db, row, list(decided.get("choice") or []), decided.get("by") or "정본")
+    _derive_method_twins(db, {method_key(one) for one in filed})
     _sweep_gone(db, "method_cleanup", set(methods), "규격이 지워짐")
+
+
+def _derive_method_twins(db: Session, filed_keys: set[str]) -> None:
+    """**판만 다른 규격**을 정식 규격으로의 병합 후보로 세운다 — 정본에 없는 것만.
+
+    검토함 · 직접 입력으로 「ASTM D638-14」 가 생기면 카탈로그의 「ASTM D638」 과 두 줄이
+    되는데, 그것을 찾는 자리가 없었다(2026-10-13). 정식 규격은 판 표시가 없는 쪽(없으면 먼저
+    생긴 쪽).
+    """
+    official = _official_methods(db)
+    for method in db.scalars(select(TestMethod).where(TestMethod.deleted_at.is_(None))):
+        key = method_key(method.code)
+        if key in filed_keys:
+            continue
+        target = official.get(method_key(method_base(method.code)))
+        if target is None or target.id == method.id:
+            continue
+        row = db.scalar(
+            select(ReviewProposal).where(
+                ReviewProposal.queue == "method_cleanup", ReviewProposal.subject_key == key
+            )
+        )
+        if row is not None and row.status == "decided":
+            continue
+        origin = (
+            "검토함에서 더한 규격"
+            if (method.summary or "").startswith("검토함에서 더함")
+            else "판 표시만 다른 규격"
+        )
+        _upsert(
+            db,
+            "method_cleanup",
+            key,
+            subject_id=method.id,
+            subject_label=method.code,
+            context=f"{origin} · 정식 규격 {target.code}",
+            candidates=_mark(
+                [
+                    {"code": "keep", "label": "그대로 유지"},
+                    {"code": f"merge:{target.code}", "label": f"{target.code}에 병합"},
+                    {"code": "delete", "label": "목록에서 삭제"},
+                ],
+                f"merge:{target.code}",
+                f"판 표시만 다른 같은 규격 — {target.code}(정식)로 병합하면 연결이 한 곳에"
+                " 모임",
+            ),
+        )
 
 
 def _refresh_test_item_properties(
@@ -934,21 +1171,51 @@ def _series_of_row(
 def _refresh_series_test_items(
     db: Session, filed: dict[str, dict[str, Any]], sheet: Sheet
 ) -> None:
-    """계열이 하는 시험 더하기 — 정본의 후보 중 계열에 아직 없는 시험 항목."""
+    """계열이 하는 시험 더하기 — 정본의 후보 중 계열에 아직 없는 시험 항목.
+
+    **분류와 맞지 않는 후보에는 경고를 붙이고 추천하지 않는다**(2026-10-13) — 같은 장비 분류의
+    다른 계열이 아무도 하지 않는 시험이다(나노인덴터에 「배터리 남용」). 낱말이 문장에 나온 것
+    뿐일 가능성이 크다.
+    """
     makers = _axis_terms(db, "manufacturer")
     items = _axis_terms(db, "test_item")
     have: dict[uuid.UUID, set[uuid.UUID]] = {}
-    for series_id, term_id in db.execute(
-        select(SeriesTestItem.series_id, SeriesTestItem.test_item_term_id)
+    category_of: dict[uuid.UUID, uuid.UUID | None] = {}
+    for series_id, term_id, category_id in db.execute(
+        select(
+            SeriesTestItem.series_id,
+            SeriesTestItem.test_item_term_id,
+            EquipmentSeries.category_term_id,
+        )
+        .join(EquipmentSeries, EquipmentSeries.id == SeriesTestItem.series_id)
+        .where(EquipmentSeries.deleted_at.is_(None))
     ):
         have.setdefault(series_id, set()).add(term_id)
-    alive: set[str] = set()
-    for subject, filed_row in filed.items():
-        series = _series_of_row(db, makers, filed_row)
-        if series is None:
+        category_of[series_id] = category_id
+    # 분류마다 **다른 계열이** 하는 시험 — 계열마다 자기 것을 빼고 본다.
+    by_category: dict[uuid.UUID, dict[uuid.UUID, int]] = {}
+    for series_id, terms in have.items():
+        category_id = category_of.get(series_id)
+        if category_id is None:
             continue
+        for term_id in terms:
+            seen = by_category.setdefault(category_id, {})
+            seen[term_id] = seen.get(term_id, 0) + 1
+    alive: set[str] = set()
+    for subject, series, filed_row in _merge_by_series(db, "series_test_items", makers, filed):
         alive.add(subject)
         mine = have.get(series.id, set())
+        peers = by_category.get(series.category_term_id, {}) if series.category_term_id else {}
+        # 이 계열 말고 같은 분류의 계열이 하나라도 시험 항목을 가져야 판단할 근거가 있다.
+        judged = any(count > (1 if term_id in mine else 0) for term_id, count in peers.items())
+        category = (
+            db.get(VocabularyTerm, series.category_term_id)
+            if judged and series.category_term_id
+            else None
+        )
+        where = category.value if category is not None else "이 분류"
+        misfit = f"분류와 맞지 않음: {where}의 다른 계열에 없는 시험" if judged else None
+
         candidates = _mark(
             [
                 {
@@ -956,13 +1223,26 @@ def _refresh_series_test_items(
                     "label": items[one["code"]].value,
                     "reason": one.get("reason"),
                     "sources": one.get("sources") or [],
+                    "warning": misfit if peers.get(items[one["code"]].id, 0) == 0 else None,
                 }
                 for one in (filed_row.get("candidates") or [])
                 if isinstance(one, dict)
                 and one["code"] in items
                 and items[one["code"]].id not in mine
             ],
-            filed_row.get("recommended"),
+            # **후보마다 제 근거가 있을 때만 추천** — 근거 · 출처가 빈 후보는 줄이 추천해도
+            # 추천하지 않는다.
+            [
+                code
+                for code in (filed_row.get("recommended") or [])
+                if any(
+                    isinstance(one, dict)
+                    and one.get("code") == code
+                    and one.get("reason")
+                    and one.get("sources")
+                    for one in filed_row.get("candidates") or []
+                )
+            ],
             filed_row.get("reason"),
         )
         row = db.scalar(
@@ -995,7 +1275,7 @@ def _refresh_series_test_items(
         if decided and row.status == "open":
             _apply(db, row, list(decided.get("choice") or []), actor=None)
             _settle(db, row, list(decided.get("choice") or []), decided.get("by") or "정본")
-    _sweep_gone(db, "series_test_items", alive, "계열이 지워짐")
+    _sweep_gone(db, "series_test_items", alive, _SERIES_GONE)
 
 
 def _refresh_series_summary(
@@ -1004,10 +1284,7 @@ def _refresh_series_summary(
     """계열 소개에 넣을 문장 — 정본의 문장 중 아직 소개에 안 들어간 것."""
     makers = _axis_terms(db, "manufacturer")
     alive: set[str] = set()
-    for subject, filed_row in filed.items():
-        series = _series_of_row(db, makers, filed_row)
-        if series is None:
-            continue
+    for subject, series, filed_row in _merge_by_series(db, "series_summary", makers, filed):
         alive.add(subject)
         summary = series.summary or ""
         candidates = _mark(
@@ -1053,7 +1330,7 @@ def _refresh_series_summary(
         if decided and row.status == "open":
             _apply(db, row, list(decided.get("choice") or []), actor=None)
             _settle(db, row, list(decided.get("choice") or []), decided.get("by") or "정본")
-    _sweep_gone(db, "series_summary", alive, "계열이 지워짐")
+    _sweep_gone(db, "series_summary", alive, _SERIES_GONE)
 
 
 def _refresh_test_item_aliases(
@@ -1380,30 +1657,28 @@ def _refresh_series_standards(
         )
     ):
         cited.setdefault(series_id, set()).add(method_key(code))
+    index = code_index(db)
+
+    def current(code: str) -> str:
+        """옛 번호면 지금 번호의 비교키 — 이미 이어진 규격을 옛 번호로 또 묻지 않게."""
+        found = index.get(method_key(code))
+        return method_key(found.code) if found is not None else method_key(code)
+
+    official = _official_methods(db)
     alive: set[str] = set()
-    for subject, filed_row in filed.items():
-        series = _series_of_row(db, makers, filed_row)
-        if series is None:
-            continue
+    for subject, series, filed_row in _merge_by_series(db, "series_standards", makers, filed):
         alive.add(subject)
         have = cited.get(series.id, set())
         raw = [one for one in (filed_row.get("candidates") or []) if isinstance(one, dict)]
-        candidates = _mark(
-            [
-                {
-                    "code": one["code"],
-                    "label": (
-                        f"{one['code']} — {one['title']}" if one.get("title") else one["code"]
-                    ),
-                    "reason": one.get("reason"),
-                    "sources": one.get("sources") or [],
-                }
-                for one in raw
-                if method_key(one["code"]) not in have
-            ],
-            filed_row.get("recommended"),
-            filed_row.get("reason"),
+        wanted = filed_row.get("recommended") or []
+        grouped, recommended = _group_standards(
+            [one for one in raw if current(one["code"]) not in have],
+            [wanted] if isinstance(wanted, str) else list(wanted),
+            official=official,
+            linked={key for key in have},
+            index=index,
         )
+        candidates = _mark(grouped, recommended, filed_row.get("reason"))
         row = db.scalar(
             select(ReviewProposal).where(
                 ReviewProposal.queue == "series_standards",
@@ -1435,7 +1710,135 @@ def _refresh_series_standards(
         if decided and row.status == "open":
             _apply(db, row, list(decided.get("choice") or []), actor=None)
             _settle(db, row, list(decided.get("choice") or []), decided.get("by") or "정본")
-    _sweep_gone(db, "series_standards", alive, "계열이 지워짐")
+    _sweep_gone(db, "series_standards", alive, _SERIES_GONE)
+
+
+def _official_methods(db: Session) -> dict[str, TestMethod]:
+    """판 표시를 뗀 비교키 → **정식 규격**(판 표시가 없는 쪽, 없으면 먼저 생긴 쪽)."""
+    out: dict[str, TestMethod] = {}
+    for method in db.scalars(
+        select(TestMethod)
+        .where(TestMethod.deleted_at.is_(None))
+        .order_by(TestMethod.created_at, TestMethod.code)
+    ):
+        base = method_key(method_base(method.code))
+        held = out.get(base)
+        if held is None or (method_key(method.code) == base and method_key(held.code) != base):
+            out[base] = method
+    return out
+
+
+def _group_standards(
+    raw: list[dict[str, Any]],
+    recommended: list[str],
+    *,
+    official: dict[str, TestMethod],
+    linked: set[str],
+    index: dict[str, TestMethod],
+) -> tuple[list[dict[str, Any]], list[str]]:
+    """**표기만 다른 후보를 정식 규격으로 묶는다** — (후보, 추천).
+
+    「ASTM D638-14」 처럼 판만 붙은 후보를 고르면 카탈로그의 「ASTM D638」 옆에 새 규격이 하나
+    더 섰다(2026-10-13). 카탈로그에 같은 규격이 있으면 **그 규격을 후보로 앞에 세우고** 추천을
+    그리로 옮긴다. 판만 다른 후보가 여럿이고 카탈로그에 없으면 판을 뗀 번호 하나로 묶는다. 이미
+    이어진 규격의 다른 표기면 경고를 붙인다.
+    """
+    wanted = set(recommended)
+    out: list[dict[str, Any]] = []
+    picks: list[str] = []
+    seen: dict[str, dict[str, Any]] = {}
+    bases: dict[str, list[dict[str, Any]]] = {}
+    for one in raw:
+        bases.setdefault(method_key(method_base(one["code"])), []).append(one)
+
+    def label(code: str, title: str | None) -> str:
+        return f"{code} — {title}" if title and title != code else code
+
+    for base, members in bases.items():
+        found = index.get(method_key(members[0]["code"])) if len(members) == 1 else None
+        catalog = found or official.get(base)
+        evidence = [r for r in (one.get("reason") for one in members) if r]
+        sources = list(dict.fromkeys(s for one in members for s in one.get("sources") or []))
+        liked = any(one["code"] in wanted for one in members)
+        if catalog is not None and method_key(catalog.code) in linked:
+            # 이미 이어진 규격의 다른 표기 — 고를 일이 거의 없다.
+            for one in members:
+                out.append(
+                    {
+                        "code": one["code"],
+                        "label": label(one["code"], one.get("title")),
+                        "reason": one.get("reason"),
+                        "sources": one.get("sources") or [],
+                        "warning": f"이미 연결된 {catalog.code}의 다른 표기(판)",
+                    }
+                )
+            continue
+        if catalog is not None:
+            # 카탈로그의 같은 규격이 앞에 선다. 표기가 정확히 같으면 그 한 줄이다.
+            variants = [
+                one for one in members if method_key(one["code"]) != method_key(catalog.code)
+            ]
+            if catalog.code in seen:
+                continue
+            head = {
+                "code": catalog.code,
+                "label": label(catalog.code, catalog.title) + " (카탈로그 규격)",
+                "reason": " / ".join(dict.fromkeys(evidence))
+                + (
+                    f" · 표기 묶음: {', '.join(one['code'] for one in variants)}"
+                    if variants
+                    else ""
+                )
+                or None,
+                "sources": sources,
+            }
+            seen[catalog.code] = head
+            out.append(head)
+            if liked:
+                picks.append(catalog.code)
+            for one in variants:
+                out.append(
+                    {
+                        "code": one["code"],
+                        "label": label(one["code"], one.get("title")),
+                        "reason": one.get("reason"),
+                        "sources": one.get("sources") or [],
+                        "warning": f"카탈로그 {catalog.code}와 같은 규격(표기만 다름). "
+                        "고르면 새 규격이 생김 — 카탈로그 규격 선택 권장",
+                    }
+                )
+            continue
+        if len(members) > 1:
+            # 판만 다른 후보 여럿 — 판을 뗀 번호 하나로.
+            code = method_base(members[0]["code"])
+            out.append(
+                {
+                    "code": code,
+                    "label": label(code, next((m.get("title") for m in members), None)),
+                    "reason": " / ".join(dict.fromkeys(evidence))
+                    + f" · 표기 묶음: {', '.join(one['code'] for one in members)}",
+                    "sources": sources,
+                }
+            )
+            if liked:
+                picks.append(code)
+            continue
+        one = members[0]
+        out.append(
+            {
+                "code": one["code"],
+                "label": label(one["code"], one.get("title")),
+                "reason": one.get("reason"),
+                "sources": one.get("sources") or [],
+            }
+        )
+        if one["code"] in wanted:
+            picks.append(one["code"])
+    return out, picks
+
+
+#: 직접 적은 규격 번호의 꼴 — 기관 이름(글자) 뒤 어딘가에 숫자.
+_STANDARD_SHAPE = re.compile(r"^[A-Za-z][A-Za-z/.]{1,15}[ -]?[A-Za-z]{0,6}[ -]?\d")
 
 
 def _link_series_standard(
@@ -1452,14 +1855,8 @@ def _link_series_standard(
     있으면 거기에, 계열의 시험이 하나뿐이면 그 시험에(소거), 아니면 항목 미정 인용으로 둔다 —
     그러면 「규격의 시험 항목」 물음이 이어받는다.
     """
-    method = next(
-        (
-            m
-            for m in db.scalars(select(TestMethod).where(TestMethod.deleted_at.is_(None)))
-            if method_key(m.code) == method_key(code)
-        ),
-        None,
-    )
+    # 옛 번호로 고른 것도 그 규격이다 — 같은 규격을 새로 만들지 않게.
+    method = code_index(db).get(method_key(code))
     if method is None:
         head = code.split()[0].split("/")[0]
         body = _axis_terms(db, "standard_body").get(head) if head.isalpha() else None
@@ -1504,8 +1901,19 @@ def _link_series_standard(
         db.add(SeriesPendingMethod(series_id=series.id, method_id=method.id))
 
 
-def _apply(db: Session, row: ReviewProposal, choice: list[str], *, actor: User | None) -> None:
-    """고른 것을 **기존 규칙으로** 적용한다. 큐마다 다르다."""
+def _apply(
+    db: Session,
+    row: ReviewProposal,
+    choice: list[str],
+    *,
+    actor: User | None,
+    add_to_citing: bool = False,
+) -> None:
+    """고른 것을 **기존 규칙으로** 적용한다. 큐마다 다르다.
+
+    `add_to_citing` 은 규격의 시험 항목 물음에서만 — 그 시험 항목이 없어 안 이어지는 인용
+    계열에 시험 항목을 더해 잇는다.
+    """
     queue = row.queue
     if queue == "method_test_items":
         if not choice:
@@ -1521,8 +1929,19 @@ def _apply(db: Session, row: ReviewProposal, choice: list[str], *, actor: User |
         # 담을 수 있어 첫 줄만 쓰였다 — IEC 60529 처럼 방진·방수를 둘 다 덮는 규격이
         # 그래서 한쪽을 잃었다.
         picked = [items[code].id for code in choice if code in items]
+        # **교체다.** 다시 열어 다르게 고르면 빠진 항목으로 걸린 계열 연결도 걷힌다.
         set_test_items(db, method.id, picked)
+        added = add_items_to_citing(db, method) if add_to_citing else []
         promote_pending(db, method)
+        # **무엇이 안 이어졌는지 남긴다.** 후보 밖 항목을 고르면 그 시험 항목이 없는 인용
+        # 계열은 미정으로 남는데, 그것이 아무 데도 안 보여 처리가 끝난 것으로 읽혔다
+        # (2026-10-13).
+        _, left = citing_split(db, method.id, picked)
+        row.payload = {
+            **(row.payload or {}),
+            "unlinked_series": [one.name for one in left],
+            "added_to_series": added,
+        }
     elif queue == "test_item_axes":
         if row.subject_id is None:
             raise NotFound("TSC-REVIEW-0003", "시험 항목을 찾을 수 없음.")
@@ -1580,19 +1999,40 @@ def _apply(db: Session, row: ReviewProposal, choice: list[str], *, actor: User |
         model = db.get(EquipmentModel, sample.model_id)
         if model is None:
             return
-        free_specs.promote(
-            db,
-            model,
-            sample.id,
-            {
-                "key": payload["key"],
-                "label": payload.get("label") or sample.label,
-                "group_id": uuid.UUID(str(payload["group_id"])),
-                "kind": payload.get("kind") or "number",
-                "unit": payload.get("unit") or "",
-                "apply_same_key": True,
-            },
-        )
+        kind = payload.get("kind") or "number"
+        try:
+            done = free_specs.promote(
+                db,
+                model,
+                sample.id,
+                {
+                    "key": payload["key"],
+                    "label": payload.get("label") or sample.label,
+                    "group_id": uuid.UUID(str(payload["group_id"])),
+                    "kind": kind,
+                    "unit": payload.get("unit") or "",
+                    "apply_same_key": True,
+                },
+            )
+        except AppError as refused:
+            if refused.code != "TSC-SPEC-0023":
+                raise
+            # **검토함 안에서 할 수 있는 일을 말한다** — 「값을 고치라」 만 주면 어디서 무엇을
+            # 하는지 모른다(2026-10-13).
+            raise AppError(
+                "TSC-REVIEW-0022",
+                f"승격 불가: 어느 기종 값도 {kind}(으)로 읽을 수 없음"
+                f"(예: {sample.value_text}). 검토함에서: 「유지」로 결정(기종 고유 사양으로"
+                " 둠), 또는 「상세」의 기종 화면에서 값을 「0 ~ 10」 · 「min 0 · max 10」 ·"
+                " 「10」 꼴로 고친 뒤 다시 확정.",
+                status=400,
+            ) from refused
+        # **옮기지 못한 기종과 값을 남긴다** — 수만 주면 어디를 고칠지 모른다(2026-10-13).
+        row.payload = {
+            **(row.payload or {}),
+            "moved": done.moved,
+            "unmoved": [f"{one.model}: {one.value}" for one in done.unmoved],
+        }
     elif queue == "attribute_drafts":
         draft = db.get(AttributeDefinition, row.subject_id) if row.subject_id else None
         if draft is None:
@@ -1724,14 +2164,28 @@ def _apply(db: Session, row: ReviewProposal, choice: list[str], *, actor: User |
         if series is None:
             raise NotFound("TSC-REVIEW-0003", "계열을 찾을 수 없음.")
         offered = {one["code"]: one for one in row.candidates}
-        unknown = [code for code in choice if code not in offered]
+        # **후보 밖 번호도 받는다** — 의견에서 받는 번호를 확정에서 거절하면 의견대로 정할 수
+        # 없었다(2026-10-13). 카탈로그에 있는 번호(옛 번호 포함)면 그 규격에 잇고, 없으면
+        # 만든다.
+        index = code_index(db)
+        unknown = [
+            code
+            for code in choice
+            if code not in offered
+            and method_key(code) not in index
+            and not _STANDARD_SHAPE.match(code.strip())
+        ]
         if unknown:
-            raise NotFound("TSC-REVIEW-0002", f"후보에 없는 규격: {', '.join(unknown)}")
+            raise NotFound(
+                "TSC-REVIEW-0002",
+                f"규격 번호 형식이 아님: {', '.join(unknown)} (예: ASTM D638)",
+            )
         for code in choice:
-            label = str(offered[code].get("label") or "")
+            label = str((offered.get(code) or {}).get("label") or "")
+            label = label.removesuffix(" (카탈로그 규격)")
             # 라벨이 「코드 — 제목」 이면 제목을 새 시험법의 이름으로
             title = label.split(" — ", 1)[1] if " — " in label else None
-            _link_series_standard(db, series, code, actor=actor, title=title)
+            _link_series_standard(db, series, clean(code), actor=actor, title=title)
     elif queue == "series_test_items":
         series = db.get(EquipmentSeries, row.subject_id) if row.subject_id else None
         if series is None:
@@ -1999,6 +2453,10 @@ def proposal_out(
         note=row.note,
         decided_by=row.decided_by_label,
         decided_at=row.decided_at,
+        skip_reason=row.skip_reason,
+        skip_reason_label=SKIP_REASONS.get(row.skip_reason or ""),
+        skipped_by=row.skipped_by,
+        skipped_at=row.skipped_at,
         votes=[
             VoteOut(
                 user_id=one.user_id,
@@ -2006,6 +2464,7 @@ def proposal_out(
                 choice=list(one.choice or []),
                 note=one.note,
                 at=one.updated_at,
+                mcp=bool(one.submitted_via),
             )
             for one in votes
         ],
@@ -2025,10 +2484,19 @@ def list_proposals(
     limit: int,
     offset: int,
     viewer_id: uuid.UUID | None = None,
+    votes_from: str | None = None,
 ) -> tuple[list[ProposalOut], int]:
+    """`votes_from="mcp"` 면 **MCP 로 낸 의견이 있는 줄만** — AI 가 대신 낸 의견을 모아 보고
+    한꺼번에 확정하는 자리(2026-10-13)."""
     if queue not in QUEUES:
         raise NotFound("TSC-REVIEW-0006", f"알 수 없는 검토함: {queue}")
     base = select(ReviewProposal).where(ReviewProposal.queue == queue)
+    if votes_from == "mcp":
+        base = base.where(
+            ReviewProposal.id.in_(
+                select(ReviewVote.proposal_id).where(ReviewVote.submitted_via.is_not(None))
+            )
+        )
     if status == "voted":
         # 열린 것 중 의견이 모인 줄 — 확정할 사람이 먼저 보는 자리.
         base = base.where(
@@ -2065,8 +2533,10 @@ def vote(
     if held is None:
         held = ReviewVote(proposal_id=row.id, user_id=user.id)
         db.add(held)
-    held.user_label = user.display_name or user.email
-    held.choice = choice
+    # **MCP 로 낸 의견에는 표시가 붙는다** — 확정 줄과 같은 규칙(2026-10-13).
+    held.user_label = _actor_label(user)
+    held.submitted_via = get_actor_token()
+    held.choice = _normalize_choice(db, row.queue, choice)
     held.note = note
     db.commit()
     db.refresh(row)
@@ -2087,8 +2557,87 @@ def withdraw_vote(db: Session, user: User, proposal_id: uuid.UUID) -> ReviewProp
     return row
 
 
+def preview_choice(db: Session, proposal_id: uuid.UUID, choice: list[str]) -> dict[str, Any]:
+    """확정하기 **전에** 무엇이 이어지고 무엇이 안 이어지는지 — 규격의 시험 항목 물음만.
+
+    후보는 인용 계열이 이미 하는 시험이라, 후보 밖 항목을 고르면 그 시험 항목이 없는 계열은
+    연결되지 않는다. 그것을 확정 전에 말해야 사람이 「인용 계열에도 추가」 를 고를 수 있다.
+    """
+    row = get_proposal(db, proposal_id)
+    if row.queue == "free_spec_definitions":
+        return _preview_promote(db, row, choice)
+    if row.queue != "method_test_items" or row.subject_id is None:
+        raise AppError(
+            "TSC-REVIEW-0016",
+            "미리보기는 규격의 시험 항목 · 사양 정의 승격 물음 전용.",
+            status=400,
+        )
+    choice = _normalize_choice(db, row.queue, choice)
+    items = _axis_terms(db, "test_item")
+    unknown = [code for code in choice if code not in items]
+    if unknown:
+        raise NotFound("TSC-REVIEW-0002", f"알 수 없는 시험 항목 코드: {unknown[0]}")
+    picked = [items[code].id for code in choice]
+    linked, unlinked = citing_split(db, row.subject_id, picked)
+    offered = {str(one.get("code")) for one in row.candidates or []}
+    # **다시 정할 때 빠지는 항목** — 그 항목으로만 이어진 계열은 끊긴다(새 항목이 그 계열에
+    # 있으면 그것으로 다시 이어진다). 재확정은 교체라 이것을 먼저 보여 준다(2026-10-13).
+    gone = set(method_items(db, row.subject_id)) - set(picked)
+    dropped, _ = detach_split(db, row.subject_id, gone)
+    has = _series_items(db, [one.id for one in dropped])
+    cut = [one.name for one in dropped if not has.get(one.id, set()) & set(picked)]
+    return {
+        "linked": [one.name for one in linked],
+        "unlinked": [one.name for one in unlinked],
+        "off_candidates": [items[code].value for code in choice if code not in offered],
+        "cut": cut,
+    }
+
+
+def _preview_promote(db: Session, row: ReviewProposal, choice: list[str]) -> dict[str, Any]:
+    """사양 정의 승격 **전에** — 어느 기종의 값이 옮겨지고 어느 것이 남는지."""
+    kind = str((row.payload or {}).get("kind") or "number")
+    empty: dict[str, Any] = {
+        "linked": [],
+        "unlinked": [],
+        "off_candidates": [],
+        "kind": kind,
+    }
+    if choice != ["promote"]:
+        return empty
+    source_key, _, unit = row.subject_key.partition("|")
+    stmt = select(ModelFreeSpec).where(ModelFreeSpec.source_key == source_key)
+    if unit:
+        stmt = stmt.where(ModelFreeSpec.unit == unit)
+    movable, unmovable = free_specs.split_movable(db, list(db.scalars(stmt)), kind)
+    return {
+        **empty,
+        "movable": [f"{one.model}: {one.value}" for one in movable],
+        "unmovable": [f"{one.model}: {one.value}" for one in unmovable],
+    }
+
+
+def _series_items(db: Session, series_ids: list[uuid.UUID]) -> dict[uuid.UUID, set[uuid.UUID]]:
+    out: dict[uuid.UUID, set[uuid.UUID]] = {}
+    if not series_ids:
+        return out
+    for series_id, term_id in db.execute(
+        select(SeriesTestItem.series_id, SeriesTestItem.test_item_term_id).where(
+            SeriesTestItem.series_id.in_(series_ids)
+        )
+    ):
+        out.setdefault(series_id, set()).add(term_id)
+    return out
+
+
 def decide(
-    db: Session, user: User, proposal_id: uuid.UUID, *, choice: list[str], note: str | None
+    db: Session,
+    user: User,
+    proposal_id: uuid.UUID,
+    *,
+    choice: list[str],
+    note: str | None,
+    add_to_citing: bool = False,
 ) -> ReviewProposal:
     """고른 것을 적용하고 결정으로 남긴다. **추천을 따랐는지**도 남긴다."""
     _require_admin(user)
@@ -2103,7 +2652,15 @@ def decide(
         raise AppError("TSC-REVIEW-0009", "대상이 삭제된 항목.", status=409)
     if not QUEUES[row.queue].multi and len(choice) > 1:
         raise AppError("TSC-REVIEW-0004", "하나만 선택 가능한 항목.", status=400)
-    _apply(db, row, choice, actor=user)
+    if add_to_citing and row.queue != "method_test_items":
+        raise AppError(
+            "TSC-REVIEW-0017", "인용 계열에 추가는 규격의 시험 항목 물음 전용.", status=400
+        )
+    choice = _normalize_choice(db, row.queue, choice)
+    _apply(db, row, choice, actor=user, add_to_citing=add_to_citing)
+    labels = _choice_labels(db, row.queue, choice)
+    if labels:
+        row.payload = {**(row.payload or {}), "choice_labels": labels}
     row.status = "decided"
     row.choice = choice
     row.followed = _followed(row.candidates, choice)
@@ -2112,9 +2669,9 @@ def decide(
     # **MCP 로 정한 것은 줄에서도 보인다** — 감사에는 토큰 이름이 남지만, 검토함 화면은 이
     # 글자만 보여 준다. 사람이 고른 것과 AI 가 사람 대신 고른 것을 화면에서 가를 수 있어야
     # 한다.
-    by = user.display_name or user.email
-    row.decided_by_label = f"{by}(MCP)" if get_actor_token() else by
+    row.decided_by_label = _actor_label(user)
     row.decided_at = datetime.now(UTC)
+    _close_twins(db, row, choice, row.decided_by_label)
     audit.record(
         db,
         action=audit.REVIEW_DECIDED,
@@ -2127,6 +2684,9 @@ def decide(
             "subject": row.subject_key,
             "choice": choice,
             "followed": row.followed,
+            # 규격의 시험 항목 물음이면 — 안 이어진 인용 계열과, 시험 항목을 더해 이은 계열.
+            "unlinked_series": (row.payload or {}).get("unlinked_series"),
+            "added_to_series": (row.payload or {}).get("added_to_series"),
             # 그때 모여 있던 의견 — 확정이 다수와 달랐는지 나중에 볼 수 있게.
             "votes": [
                 {"user": one.user_label, "choice": list(one.choice or [])}
@@ -2213,15 +2773,95 @@ def decide_recommended(
     return {"requested": len(ids), "done": done, "failed": failed}
 
 
-def skip(db: Session, user: User, proposal_id: uuid.UUID) -> ReviewProposal:
+def skip(
+    db: Session,
+    user: User,
+    proposal_id: uuid.UUID,
+    *,
+    reason: str | None = None,
+    note: str | None = None,
+) -> ReviewProposal:
+    """보류한다(보류된 줄이면 되돌린다). **사유와 메모를 남긴다** — 안 남기면 나중에 왜
+    보류했는지 알 수 없었다(2026-10-13). 사유는 `SKIP_REASONS` 에서 고른다."""
     _require_admin(user)
     row = get_proposal(db, proposal_id)
     if row.status in ("decided", "gone"):
         raise AppError("TSC-REVIEW-0008", "이미 닫힌 항목.", status=409)
-    row.status = "skipped" if row.status == "open" else "open"
+    if reason is not None and reason not in SKIP_REASONS:
+        raise AppError(
+            "TSC-REVIEW-0018",
+            f"알 수 없는 보류 사유: {reason}. 가능: {', '.join(SKIP_REASONS)}",
+            status=400,
+        )
+    if row.status == "open":
+        row.status = "skipped"
+        row.skip_reason = reason or "other"
+        row.note = (note or "").strip() or None
+        row.skipped_by = _actor_label(user)
+        row.skipped_at = datetime.now(UTC)
+    else:
+        row.status = "open"
+        row.skip_reason = None
+        row.skipped_by = None
+        row.skipped_at = None
     db.commit()
     db.refresh(row)
     return row
+
+
+def decide_by_mcp_votes(
+    db: Session,
+    user: User,
+    queue: str,
+    ids: list[uuid.UUID],
+    *,
+    note: str | None,
+) -> dict[str, Any]:
+    """고른 줄들을 **MCP 로 낸 의견대로** 확정한다 — 줄마다 `decide` 를 그대로 돈다.
+
+    MCP 의견이 없거나 MCP 의견끼리 갈리면 확정하지 않고 이유와 함께 돌려준다. 사람이 낸 의견이
+    MCP 의견과 다르면 그것도 돌려준다 — 사람의 판단을 AI 의견으로 덮지 않는다.
+    """
+    _require_admin(user)
+    said = note.strip() if note and note.strip() else "MCP 의견대로 한꺼번에 확정"
+    done: list[uuid.UUID] = []
+    failed: list[dict[str, Any]] = []
+    for proposal_id in ids:
+        try:
+            row = get_proposal(db, proposal_id)
+            if row.queue != queue:
+                raise AppError("TSC-REVIEW-0013", "이 검토함의 항목이 아님.", status=400)
+            votes = _votes(db, [row.id]).get(row.id, [])
+            machine = [one for one in votes if one.submitted_via]
+            if not machine:
+                raise AppError("TSC-REVIEW-0019", "MCP 의견이 없는 항목.", status=409)
+            picks = {tuple(sorted(one.choice or [])) for one in machine}
+            if len(picks) > 1:
+                raise AppError(
+                    "TSC-REVIEW-0020",
+                    f"MCP 의견이 {len(picks)}갈래로 나뉨. 하나씩 열어 결정 필요.",
+                    status=409,
+                )
+            choice = list(next(iter(picks)))
+            dissent = [
+                one
+                for one in votes
+                if not one.submitted_via and set(one.choice or []) != set(choice)
+            ]
+            if dissent:
+                raise AppError(
+                    "TSC-REVIEW-0021",
+                    f"MCP 의견과 다른 사람 의견 {len(dissent)}건 있음. 하나씩 결정 필요.",
+                    status=409,
+                )
+            decide(db, user, proposal_id, choice=choice, note=said)
+            done.append(proposal_id)
+        except AppError as refused:
+            db.rollback()
+            failed.append(
+                {"id": proposal_id, "code": refused.code, "message": refused.message}
+            )
+    return {"requested": len(ids), "done": done, "failed": failed}
 
 
 def reopen(db: Session, user: User, proposal_id: uuid.UUID) -> ReviewProposal:

@@ -11,13 +11,16 @@ from app.database import get_db
 from app.modules.accounts.models import User
 from app.modules.review import services
 from app.modules.review.schemas import (
+    CHOICE_LIMIT,
     BulkDecideResult,
+    ChoicePreviewOut,
     DecideRecommendedRequest,
     DecideRequest,
     ProposalOut,
     ProposalPage,
     QueueOut,
     RefreshResult,
+    SkipRequest,
     VoteRequest,
 )
 from app.shared.auth import current_user, require_system_admin
@@ -37,15 +40,22 @@ def list_queues(
 def list_proposals(
     queue: str,
     status: str = Query(default="open", pattern="^(open|voted|decided|skipped|gone|all)$"),
+    votes: str | None = Query(default=None, pattern="^mcp$"),
     limit: int = Query(default=50, ge=1, le=200),
     offset: int = Query(default=0, ge=0),
     user: User = Depends(current_user),
     db: Session = Depends(get_db),
 ) -> ProposalPage:
     """한 물음의 줄들 — 대상 · 후보(추천과 근거) · 모인 의견 · 상세 링크.
-    `status=voted` 는 열린 것 중 의견이 모인 줄."""
+    `status=voted` 는 열린 것 중 의견이 모인 줄. `votes=mcp` 는 MCP 로 낸 의견이 있는 줄만."""
     items, total = services.list_proposals(
-        db, queue, status=status, limit=limit, offset=offset, viewer_id=user.id
+        db,
+        queue,
+        status=status,
+        limit=limit,
+        offset=offset,
+        viewer_id=user.id,
+        votes_from=votes,
     )
     return ProposalPage(items=items, total=total)
 
@@ -85,8 +95,28 @@ def decide(
 ) -> ProposalOut:
     """고른다. 기존 규칙(규격 → 인용 계열에 붙임, 사양 → 같은 키 함께 올림)이 그대로 돈다.
     **누가 골랐고 추천을 따랐는지**가 감사와 이 줄에 남는다."""
-    row = services.decide(db, user, proposal_id, choice=payload.choice, note=payload.note)
+    row = services.decide(
+        db,
+        user,
+        proposal_id,
+        choice=payload.choice,
+        note=payload.note,
+        add_to_citing=payload.add_to_citing,
+    )
     return services.with_votes(db, row, user.id)
+
+
+@router.get("/{queue}/{proposal_id}/preview", response_model=ChoicePreviewOut)
+def preview(
+    queue: str,
+    proposal_id: uuid.UUID,
+    choice: list[str] = Query(default_factory=list, max_length=CHOICE_LIMIT),
+    _: User = Depends(current_user),
+    db: Session = Depends(get_db),
+) -> ChoicePreviewOut:
+    """**확정 전에** 이 선택으로 어느 인용 계열이 이어지고 어느 계열이 안 이어지는지 — 규격의
+    시험 항목 물음 전용. 후보 밖 항목은 그 시험 항목이 없는 계열에 연결되지 않는다."""
+    return ChoicePreviewOut(**services.preview_choice(db, proposal_id, choice))
 
 
 @router.post("/{queue}/decide-recommended", response_model=BulkDecideResult)
@@ -109,11 +139,34 @@ def decide_recommended(
 def skip(
     queue: str,
     proposal_id: uuid.UUID,
+    payload: SkipRequest | None = None,
     user: User = Depends(require_system_admin),
     db: Session = Depends(get_db),
 ) -> ProposalOut:
-    """건너뛴다(다시 누르면 되돌린다). 결정이 아니라 「지금은 모르겠다」 다."""
-    return services.with_votes(db, services.skip(db, user, proposal_id), user.id)
+    """보류한다(다시 누르면 되돌린다). 결정이 아니라 「지금은 모르겠다」 다. **사유와 메모가
+    남는다** — 보류 목록에 보인다."""
+    row = services.skip(
+        db,
+        user,
+        proposal_id,
+        reason=payload.reason if payload else None,
+        note=payload.note if payload else None,
+    )
+    return services.with_votes(db, row, user.id)
+
+
+@router.post("/{queue}/decide-mcp-votes", response_model=BulkDecideResult)
+def decide_by_mcp_votes(
+    queue: str,
+    payload: DecideRecommendedRequest,
+    user: User = Depends(require_system_admin),
+    db: Session = Depends(get_db),
+) -> BulkDecideResult:
+    """고른 줄들을 **MCP 로 낸 의견대로** 확정한다. MCP 의견이 없거나 갈리거나, 사람 의견이
+    다르면 확정하지 않고 이유와 함께 돌려준다."""
+    return BulkDecideResult(
+        **services.decide_by_mcp_votes(db, user, queue, payload.ids, note=payload.note)
+    )
 
 
 @router.post("/{queue}/{proposal_id}/reopen", response_model=ProposalOut)

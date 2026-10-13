@@ -43,7 +43,7 @@ import {
 } from '@/shared/components/ui/table'
 import { Textarea } from '@/shared/components/ui/textarea'
 import { useResource } from '@/shared/hooks/useResource'
-import { vocabularyApi } from '@/modules/vocabulary/api'
+import { CODED_AXES, CODE_RULE_TEXT, vocabularyApi } from '@/modules/vocabulary/api'
 import type { Term, Vocabulary } from '@/modules/vocabulary/api'
 import { TermEditorDialog } from '@/modules/vocabulary/TermEditorDialog'
 
@@ -317,7 +317,9 @@ export function AxisPanel({ slug, canEdit }: { slug: string; canEdit: boolean })
               <Input
                 value={code}
                 onChange={(event) => setCode(event.target.value)}
-                placeholder="코드 (선택)"
+                placeholder={CODED_AXES.has(current) ? '코드 (비우면 자동)' : '코드 (선택)'}
+                title={CODED_AXES.has(current) ? CODE_RULE_TEXT : undefined}
+                aria-label="코드"
                 className="w-40 font-mono"
               />
               <Button
@@ -335,6 +337,11 @@ export function AxisPanel({ slug, canEdit }: { slug: string; canEdit: boolean })
                       한다. 있는 것에 잇는 단추(시험 항목 추가·표기 추가)는 「추가」 로 남긴다. */}
                 {axis ? `${axis.label} 등록` : '등록'}
               </Button>
+              {/* **코드가 열쇠인 축은 규칙을 적어 둔다** — 코드 없이 만든 시험 항목을 검토함이
+                  못 골랐다(2026-10-13). 이제 서버가 짓지만, 적을 때의 꼴은 보여야 한다. */}
+              {CODED_AXES.has(current) && (
+                <p className="text-muted-foreground w-full text-xs">{CODE_RULE_TEXT}</p>
+              )}
             </>
           )}
           <Input

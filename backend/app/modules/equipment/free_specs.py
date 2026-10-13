@@ -24,7 +24,7 @@ from sqlalchemy import func, select
 from sqlalchemy.orm import Session
 
 from app.modules.equipment.models import EquipmentModel, ModelFreeSpec, ModelSpecValue
-from app.modules.equipment.schemas import FreeSpecOut, FreeSpecPromoteResult
+from app.modules.equipment.schemas import FreeSpecOut, FreeSpecPromoteResult, UnmovedSpec
 from app.modules.equipment.specs import category_of
 from app.modules.vocabulary.specs import SpecDefinition, SpecDefinitionCategory, SpecGroup
 from app.shared.errors import AppError, Conflict, NotFound
@@ -36,6 +36,13 @@ _NUMBER = re.compile(r"^[-+]?\d+(?:\.\d+)?(?:[eE][-+]?\d+)?$")
 _RANGE = re.compile(
     r"^([-+]?\d+(?:\.\d+)?(?:[eE][-+]?\d+)?)?\s*(?:~|\u2013|-|to|\u2026)\s*"
     r"([-+]?\d+(?:\.\d+)?(?:[eE][-+]?\d+)?)?$"
+)
+#: 반입이 범위 값을 글자로 적는 꼴 — 「min 0 · max 152」 · 「max 60」 · 「min 5」. 이것을 못
+#: 읽어 범위 정의로 승격하면 값이 안 옮겨지거나 거절됐다(2026-10-13).
+_MIN_MAX = re.compile(
+    r"^(?:min\s*([-+]?\d+(?:\.\d+)?(?:[eE][-+]?\d+)?))?\s*[·,/]?\s*"
+    r"(?:max\s*([-+]?\d+(?:\.\d+)?(?:[eE][-+]?\d+)?))?$",
+    re.IGNORECASE,
 )
 
 
@@ -63,6 +70,7 @@ def list_out(db: Session, model_id: uuid.UUID) -> list[FreeSpecOut]:
         )
     )
     counts = _same_key_counts(db, rows)
+    promoted = _promoted_labels(db, {row.source_key for row in rows if row.source_key})
     return [
         FreeSpecOut(
             id=row.id,
@@ -75,9 +83,45 @@ def list_out(db: Session, model_id: uuid.UUID) -> list[FreeSpecOut]:
             source_id=row.source_id,
             source_page=row.source_page,
             same_key_models=counts.get(row.source_key or "", 0),
+            promoted_to=promoted.get(row.source_key or ""),
         )
         for row in rows
     ]
+
+
+def _promoted_labels(db: Session, keys: set[str]) -> dict[str, str]:
+    """원본 키 → 그 키로 승격된 정의 이름. 승격 뒤에도 남은 줄은 값이 그 정의의 종류로 안
+    읽힌 것이다."""
+    if not keys:
+        return {}
+    out: dict[str, str] = {}
+    for definition in db.scalars(
+        select(SpecDefinition).where(func.jsonb_array_length(SpecDefinition.source_keys) > 0)
+    ):
+        for key in definition.source_keys or []:
+            if key in keys:
+                out.setdefault(key, definition.label)
+    return out
+
+
+def split_movable(
+    db: Session, rows: list[ModelFreeSpec], kind: str
+) -> tuple[list[UnmovedSpec], list[UnmovedSpec]]:
+    """(옮길 수 있는 줄, 못 옮기는 줄) — 승격 **전에** 보여 준다."""
+    names = {
+        model.id: model.name
+        for model in db.scalars(
+            select(EquipmentModel).where(EquipmentModel.id.in_({one.model_id for one in rows}))
+        )
+    }
+    movable: list[UnmovedSpec] = []
+    unmovable: list[UnmovedSpec] = []
+    for one in rows:
+        shown = UnmovedSpec(
+            model_id=one.model_id, model=names.get(one.model_id, "?"), value=one.value_text
+        )
+        (movable if _fields_for(kind, one.value_text) is not None else unmovable).append(shown)
+    return movable, unmovable
 
 
 def _get(db: Session, model: EquipmentModel, free_id: uuid.UUID) -> ModelFreeSpec:
@@ -144,6 +188,12 @@ def _fields_for(kind: str, text: str) -> dict[str, Any] | None:
         if _NUMBER.match(text):
             # 값 하나뿐이면 상한으로 본다 — 「1500」 은 「1500 까지」 다.
             return {"num_max": float(text)}
+        words = _MIN_MAX.match(text)
+        if words is not None and (words.group(1) or words.group(2)):
+            return {
+                "num_min": float(words.group(1)) if words.group(1) else None,
+                "num_max": float(words.group(2)) if words.group(2) else None,
+            }
         match = _RANGE.match(text)
         if match is None or (match.group(1) is None and match.group(2) is None):
             return None
@@ -207,6 +257,7 @@ def promote(
             row,
         ]
 
+    _, unmoved = split_movable(db, targets, kind)
     moved = left = 0
     for one in targets:
         fields = _fields_for(kind, one.value_text)
@@ -236,4 +287,6 @@ def promote(
             status=400,
         )
     db.commit()
-    return FreeSpecPromoteResult(definition_id=definition.id, moved=moved, left=left)
+    return FreeSpecPromoteResult(
+        definition_id=definition.id, moved=moved, left=left, unmoved=unmoved
+    )

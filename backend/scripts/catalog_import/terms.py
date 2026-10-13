@@ -18,6 +18,7 @@ from app.modules.vocabulary.models import (
     VocabularyAlias,
     VocabularyTerm,
 )
+from app.modules.vocabulary.terms import AUTO_CODE_PREFIX
 from app.shared.text import clean, compare_key
 from catalog_import.source import (
     Catalog,
@@ -73,6 +74,10 @@ def _term(
     )
     if found is not None:
         if code and not found.code:
+            found.code = code
+        elif code and (found.code or "").startswith(AUTO_CODE_PREFIX):
+            # 사람이 코드 없이 만들어 서버가 지은 코드(`custom_001`) — 정본의 코드로 바꾼다.
+            # 안 바꾸면 같은 값이 정본 코드로 또 생기거나, 정본이 그 값을 못 가리킨다.
             found.code = code
         elif code and found.code != code:
             _CODE_CLASHES.append(

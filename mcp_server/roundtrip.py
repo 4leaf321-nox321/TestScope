@@ -884,6 +884,14 @@ async def _write_chain(ctx: _Ctx) -> int:
     bad += not reached
     label = "decide_review_item(없는 줄)"
     print(f"  {'  ok' if reached else '실패'} {label:34s} {_short(missing, 70)}")
+    # 확정 전 미리보기 — 규격의 시험 항목 물음 전용. 없는 줄이면 TSC-REVIEW 로 거절된다.
+    peek = await server.decide_review_item(
+        ctx, "method_test_items", nowhere, action="preview", choice=["tensile"]
+    )
+    seen = "TSC-REVIEW" in str(peek.get("error", ""))
+    bad += not seen
+    label = "decide_review_item(preview, 없는 줄)"
+    print(f"  {'  ok' if seen else '실패'} {label:34s} {_short(peek, 70)}")
     bulk = await server.decide_review_recommended(ctx, "attribute_drafts", [nowhere])
     settled = "error" not in bulk and len(bulk.get("failed", [])) == 1
     bad += not settled

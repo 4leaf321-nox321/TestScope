@@ -12,14 +12,24 @@
 
 import { useState } from 'react'
 import { Trash2 } from 'lucide-react'
-import { Link, useParams } from 'react-router-dom'
+import { Link, useNavigate, useParams } from 'react-router-dom'
 
 import { ApiError } from '@/shared/api/client'
 import { EmptyState } from '@/shared/components/EmptyState'
 import { ErrorNotice } from '@/shared/components/ErrorNotice'
 import { PageHeader } from '@/shared/components/PageHeader'
 import { Button } from '@/shared/components/ui/button'
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogFooter,
+  DialogHeader,
+  DialogTitle,
+} from '@/shared/components/ui/dialog'
 import { Input } from '@/shared/components/ui/input'
+import { Label } from '@/shared/components/ui/label'
+import { Textarea } from '@/shared/components/ui/textarea'
 import {
   Select,
   SelectContent,
@@ -43,10 +53,333 @@ import { AXIS, vocabularyApi } from '@/modules/vocabulary/api'
 import { AttributeValuesPanel } from '@/modules/attributes/AttributeValuesPanel'
 import { GraphPanel } from '@/modules/graph/GraphPanel'
 import { methodApi } from '@/modules/methods/api'
+import type { DetachImpact, TestMethod } from '@/modules/methods/api'
 
 /** "제한 없음" 을 0 으로 적지 않는다 — 하한이 0 인 요구와 구별되지 않는다. */
 function shownBound(value: number | null, unit: string): string {
   return value === null ? '—' : `${value} ${unit}`.trim()
+}
+
+/**
+ * 규격 수정 — 번호 · 판 · 제목 · 요약.
+ *
+ * **번호는 시스템 관리자만** 고친다. 번호는 반입 · 검토함 · 검색이 규격을 찾는 열쇠라, 고치면 옛
+ * 번호가 별칭으로 남아 그 자리들이 계속 찾는다(서버가 판정 — 여기는 칸을 잠글 뿐).
+ */
+function MethodEditDialog({
+  method,
+  isAdmin,
+  onClose,
+  onSaved,
+}: {
+  method: TestMethod
+  isAdmin: boolean
+  onClose: () => void
+  onSaved: () => void
+}) {
+  const [code, setCode] = useState(method.code)
+  const [edition, setEdition] = useState(method.edition ?? '')
+  const [title, setTitle] = useState(method.title)
+  const [summary, setSummary] = useState(method.summary ?? '')
+  const [busy, setBusy] = useState(false)
+  const [error, setError] = useState<Error | null>(null)
+
+  async function save() {
+    setBusy(true)
+    setError(null)
+    try {
+      const body: Record<string, unknown> = {
+        edition: edition.trim() || null,
+        title: title.trim(),
+        summary: summary.trim() || null,
+      }
+      if (isAdmin && code.trim() !== method.code) body.code = code.trim()
+      await methodApi.update(method.id, body)
+      onSaved()
+    } catch (caught) {
+      setError(caught instanceof Error ? caught : new Error('알 수 없는 오류'))
+    } finally {
+      setBusy(false)
+    }
+  }
+
+  return (
+    <Dialog open onOpenChange={(open) => !open && !busy && onClose()}>
+      <DialogContent>
+        <DialogHeader>
+          <DialogTitle>규격 수정</DialogTitle>
+          <DialogDescription>
+            번호 수정은 시스템 관리자 전용. 바꾼 뒤에도 옛 번호로 반입·검색·검토함이 이 규격을
+            찾음.
+          </DialogDescription>
+        </DialogHeader>
+        <ErrorNotice error={error} />
+        <div className="space-y-3">
+          <div className="space-y-1">
+            <Label htmlFor="method-code">규격 번호</Label>
+            <Input
+              id="method-code"
+              value={code}
+              onChange={(event) => setCode(event.target.value)}
+              disabled={!isAdmin}
+              maxLength={100}
+            />
+          </div>
+          <div className="space-y-1">
+            <Label htmlFor="method-edition">판</Label>
+            <Input
+              id="method-edition"
+              value={edition}
+              onChange={(event) => setEdition(event.target.value)}
+              placeholder="예: 2024"
+              maxLength={30}
+            />
+          </div>
+          <div className="space-y-1">
+            <Label htmlFor="method-title">제목</Label>
+            <Input
+              id="method-title"
+              value={title}
+              onChange={(event) => setTitle(event.target.value)}
+              maxLength={300}
+            />
+          </div>
+          <div className="space-y-1">
+            <Label htmlFor="method-summary">요약</Label>
+            <Textarea
+              id="method-summary"
+              value={summary}
+              onChange={(event) => setSummary(event.target.value)}
+              rows={3}
+            />
+          </div>
+        </div>
+        <DialogFooter>
+          <Button variant="outline" disabled={busy} onClick={onClose}>
+            취소
+          </Button>
+          <Button disabled={busy || !title.trim() || !code.trim()} onClick={() => void save()}>
+            저장
+          </Button>
+        </DialogFooter>
+      </DialogContent>
+    </Dialog>
+  )
+}
+
+/**
+ * 이 규격을 **다른 규격으로 병합** — 인용 · 요구 조건 · 장비 시험 항목이 남는 쪽으로 옮겨 가고
+ * 이 규격은 지워진다. 이 규격의 번호는 남는 쪽의 옛 번호가 되어 반입 · 검색 · 검토함이 계속 찾는다.
+ */
+function MergeDialog({
+  method,
+  onClose,
+  onMerged,
+}: {
+  method: TestMethod
+  onClose: () => void
+  onMerged: (target: TestMethod) => void
+}) {
+  // 판 표시를 뗀 번호로 먼저 찾아 둔다 — 「ASTM D638-14」 면 「ASTM D638」 이 첫 후보.
+  const [query, setQuery] = useState(
+    method.code.replace(/[-:(]\s*(19|20)?\d{2}[a-z]?\)?$/, ''),
+  )
+  const found = useResource(
+    () =>
+      query.trim().length >= 2
+        ? methodApi.list({ q: query.trim() })
+        : Promise.resolve({ items: [], total: 0, limit: 0, offset: 0 }),
+    [query],
+  )
+  const [target, setTarget] = useState<TestMethod | null>(null)
+  const [reason, setReason] = useState('')
+  const [busy, setBusy] = useState(false)
+  const [error, setError] = useState<Error | null>(null)
+  const options = (found.data?.items ?? []).filter((row) => row.id !== method.id)
+
+  async function merge() {
+    if (!target) return
+    setBusy(true)
+    setError(null)
+    try {
+      onMerged(await methodApi.merge(method.id, target.id, reason.trim()))
+    } catch (caught) {
+      setError(caught instanceof Error ? caught : new Error('알 수 없는 오류'))
+    } finally {
+      setBusy(false)
+    }
+  }
+
+  return (
+    <Dialog open onOpenChange={(open) => !open && !busy && onClose()}>
+      <DialogContent>
+        <DialogHeader>
+          <DialogTitle>다른 규격으로 병합: {method.code}</DialogTitle>
+          <DialogDescription>
+            인용 계열·요구 조건·장비 시험 항목이 고른 규격으로 옮겨지고 이 규격은 삭제됨. 이
+            번호는 고른 규격의 옛 번호로 남음.
+          </DialogDescription>
+        </DialogHeader>
+        <ErrorNotice error={found.error ?? error} />
+        <div className="space-y-2">
+          <Label htmlFor="merge-query">남길 규격 찾기</Label>
+          <Input
+            id="merge-query"
+            value={query}
+            onChange={(event) => {
+              setQuery(event.target.value)
+              setTarget(null)
+            }}
+            placeholder="규격 번호"
+          />
+          <ul className="max-h-48 space-y-1 overflow-y-auto text-sm">
+            {options.map((row) => (
+              <li key={row.id}>
+                <label className="flex cursor-pointer items-start gap-2">
+                  <input
+                    type="radio"
+                    name="merge-target"
+                    className="mt-1"
+                    checked={target?.id === row.id}
+                    onChange={() => setTarget(row)}
+                  />
+                  <span>
+                    {row.code}
+                    {row.edition ? ` ${row.edition}` : ''}
+                    <span className="text-muted-foreground block text-xs">{row.title}</span>
+                  </span>
+                </label>
+              </li>
+            ))}
+            {found.data && options.length === 0 && (
+              <li className="text-muted-foreground">일치하는 규격 없음</li>
+            )}
+          </ul>
+        </div>
+        <div className="space-y-1">
+          <Label htmlFor="merge-reason">사유 (감사 기록에 남음)</Label>
+          <Input
+            id="merge-reason"
+            value={reason}
+            onChange={(event) => setReason(event.target.value)}
+            placeholder="예: 판 표시만 다른 같은 규격"
+            maxLength={500}
+          />
+        </div>
+        <DialogFooter>
+          <Button variant="outline" disabled={busy} onClick={onClose}>
+            취소
+          </Button>
+          <Button
+            variant="destructive"
+            disabled={busy || !target}
+            onClick={() => void merge()}
+          >
+            {target ? `${target.code}(으)로 병합` : '병합'}
+          </Button>
+        </DialogFooter>
+      </DialogContent>
+    </Dialog>
+  )
+}
+
+/**
+ * 규격에 걸린 시험 항목 해제 — **떼기 전에 끊기는 계열을 보여 준다.**
+ *
+ * 그 항목으로만 이 규격에 이어진 계열은 끊겨 미연결 인용으로 돌아간다 — 그 계열의 장비는 이
+ * 규격으로 검색되지 않는다. 사유는 필수이고 감사 기록에 남는다.
+ */
+function DetachDialog({
+  methodId,
+  termId,
+  value,
+  onClose,
+  onDone,
+}: {
+  methodId: string
+  termId: string
+  value: string
+  onClose: () => void
+  onDone: (impact: DetachImpact) => void
+}) {
+  const impact = useResource(
+    () => methodApi.detachPreview(methodId, termId),
+    [methodId, termId],
+  )
+  const [reason, setReason] = useState('')
+  const [busy, setBusy] = useState(false)
+  const [error, setError] = useState<Error | null>(null)
+
+  async function detach() {
+    setBusy(true)
+    setError(null)
+    try {
+      onDone(await methodApi.detachTestItem(methodId, termId, reason.trim()))
+    } catch (caught) {
+      setError(caught instanceof Error ? caught : new Error('알 수 없는 오류'))
+    } finally {
+      setBusy(false)
+    }
+  }
+
+  const cut = impact.data?.cut ?? []
+  const kept = impact.data?.kept ?? []
+  return (
+    <Dialog open onOpenChange={(open) => !open && !busy && onClose()}>
+      <DialogContent>
+        <DialogHeader>
+          <DialogTitle>시험 항목 해제: {value}</DialogTitle>
+          <DialogDescription>
+            이 규격에서 ‘{value}’를 뗌. 그 항목으로 걸린 계열 연결도 함께 걷힘.
+          </DialogDescription>
+        </DialogHeader>
+        <ErrorNotice error={impact.error ?? error} />
+        {impact.data && (
+          <div className="space-y-2 text-sm">
+            {cut.length > 0 ? (
+              <div className="rounded-md border border-amber-300 bg-amber-50 p-3 dark:bg-amber-950/30">
+                <p>
+                  <strong>{cut.length}개 계열이 이 규격과 끊김.</strong> 이 항목으로만 이어져
+                  있어 미연결 인용으로 돌아감. 그 계열의 장비는 이 규격으로 검색되지 않음.
+                </p>
+                <p className="text-muted-foreground mt-1 text-xs">{cut.join(', ')}</p>
+              </div>
+            ) : (
+              <p className="text-muted-foreground">끊기는 계열 없음.</p>
+            )}
+            {kept.length > 0 && (
+              <p className="text-muted-foreground text-xs">
+                다른 시험 항목으로 연결이 남는 계열 {kept.length}개: {kept.join(', ')}
+              </p>
+            )}
+          </div>
+        )}
+        <div className="space-y-1">
+          <Label htmlFor="detach-reason">해제 사유 (필수, 감사 기록에 남음)</Label>
+          <Textarea
+            id="detach-reason"
+            value={reason}
+            onChange={(event) => setReason(event.target.value)}
+            placeholder="예: 이 규격은 방수만 다룸. 방진은 잘못 걸림."
+            rows={2}
+            maxLength={500}
+          />
+        </div>
+        <DialogFooter>
+          <Button variant="outline" disabled={busy} onClick={onClose}>
+            취소
+          </Button>
+          <Button
+            variant="destructive"
+            disabled={busy || !impact.data || !reason.trim()}
+            onClick={() => void detach()}
+          >
+            {cut.length > 0 ? `해제 (${cut.length}개 계열 끊김)` : '해제'}
+          </Button>
+        </DialogFooter>
+      </DialogContent>
+    </Dialog>
+  )
 }
 
 export default function MethodDetailPage() {
@@ -63,6 +396,15 @@ export default function MethodDetailPage() {
   const [min, setMin] = useState('')
   const [max, setMax] = useState('')
   const [error, setError] = useState<ApiError | Error | null>(null)
+  const [editing, setEditing] = useState(false)
+  const [linking, setLinking] = useState(false)
+  const [linked, setLinked] = useState<string | null>(null)
+  const [linkError, setLinkError] = useState<Error | null>(null)
+  /** 떼려는 시험 항목 — 창을 연다. */
+  const [detaching, setDetaching] = useState<{ termId: string; value: string } | null>(null)
+  const [detached, setDetached] = useState<string | null>(null)
+  const [merging, setMerging] = useState(false)
+  const navigate = useNavigate()
 
   if (method.error) return <ErrorNotice error={method.error} />
   if (!method.data) return null
@@ -87,6 +429,29 @@ export default function MethodDetailPage() {
       setError(caught instanceof Error ? caught : new Error('알 수 없는 오류'))
     }
   }
+
+  /** 안 이어진 인용 계열에 이 규격의 시험 항목을 더해 잇는다 — 시스템 관리자. */
+  async function linkCitations() {
+    setLinking(true)
+    setLinkError(null)
+    try {
+      const done = await methodApi.linkCitations(id)
+      setLinked(
+        done.added_to.length > 0
+          ? `인용 계열 ${done.added_to.length}개에 시험 항목 추가 후 연결: ${done.added_to.join(', ')}`
+          : '연결할 인용 계열 없음',
+      )
+      method.reload()
+    } catch (caught) {
+      setLinkError(caught instanceof Error ? caught : new Error('알 수 없는 오류'))
+    } finally {
+      setLinking(false)
+    }
+  }
+
+  /** 시험 항목은 정했는데 그 시험 항목이 없어 미정으로 남은 인용 계열. */
+  const unlinked =
+    one.test_items.length > 0 ? one.cited_series.filter((row) => row.pending) : []
 
   async function addRequirement() {
     if (!conditionKey) return
@@ -113,7 +478,30 @@ export default function MethodDetailPage() {
         back={{ to: '/methods', label: '시험법·규격' }}
         title={`${one.code}${one.edition ? ` ${one.edition}` : ''}`}
         description={one.title}
+        actions={
+          one.can_edit || user?.is_system_admin ? (
+            <div className="flex gap-2">
+              {one.can_edit && (
+                <Button variant="outline" onClick={() => setEditing(true)}>
+                  수정
+                </Button>
+              )}
+              {/* 표기만 다른 같은 규격을 하나로 — 시스템 관리자. */}
+              {user?.is_system_admin && (
+                <Button variant="outline" onClick={() => setMerging(true)}>
+                  다른 규격으로 병합
+                </Button>
+              )}
+            </div>
+          ) : undefined
+        }
       />
+      {/* 옛 번호 — 번호를 고쳐도 이 번호로 찾아온다(반입 · 검색 · 검토함). */}
+      {(one.former_codes ?? []).length > 0 && (
+        <p className="text-muted-foreground -mt-4 text-xs">
+          옛 번호: {(one.former_codes ?? []).join(', ')}
+        </p>
+      )}
 
       <dl className="grid grid-cols-2 gap-4 rounded-md border p-4 sm:grid-cols-4">
         <div>
@@ -122,6 +510,30 @@ export default function MethodDetailPage() {
           <dd className="text-sm">
             {one.test_items.length === 0 ? (
               <span className="text-amber-600">미지정</span>
+            ) : user?.is_system_admin ? (
+              // **잘못 걸린 항목을 뗀다** — 시스템 관리자. 전에는 뗄 길이 없었다(2026-10-13).
+              <span className="flex flex-wrap gap-1">
+                {one.test_items.map((item) => (
+                  <span
+                    key={item.term_id}
+                    className="bg-muted inline-flex items-center gap-1 rounded px-1.5 py-0.5"
+                  >
+                    {item.value}
+                    <button
+                      type="button"
+                      className="text-muted-foreground hover:text-destructive"
+                      aria-label={`${item.value} 해제`}
+                      title="이 규격에서 시험 항목 해제"
+                      onClick={() => {
+                        setDetached(null)
+                        setDetaching({ termId: item.term_id, value: item.value })
+                      }}
+                    >
+                      ×
+                    </button>
+                  </span>
+                ))}
+              </span>
             ) : (
               one.test_items.map((item) => item.value).join(' · ')
             )}
@@ -225,6 +637,29 @@ export default function MethodDetailPage() {
           }}
         />
       </section>
+
+      {unlinked.length > 0 && (
+        // **끊긴 연결.** 시험 항목은 정했는데 그 시험 항목이 없어 미정으로 남은 인용 계열 —
+        // 그 계열의 장비는 이 규격으로 검색되지 않는다(2026-10-13).
+        <div className="space-y-2 rounded-md border border-amber-300 bg-amber-50 p-4 dark:bg-amber-950/30">
+          <p className="text-sm">
+            <strong>연결되지 않은 인용 계열 {unlinked.length}개.</strong> 이 규격의 시험 항목(
+            {one.test_items.map((item) => item.value).join(' · ')})이 그 계열에 없어 미연결
+            상태. 그 계열의 장비는 이 규격으로 검색되지 않음.
+          </p>
+          <p className="text-muted-foreground text-xs">
+            {unlinked.map((row) => row.series_name).join(', ')}
+          </p>
+          {user?.is_system_admin && (
+            <Button size="sm" disabled={linking} onClick={() => void linkCitations()}>
+              인용 계열에 시험 항목 추가
+            </Button>
+          )}
+        </div>
+      )}
+      <ErrorNotice error={linkError} />
+      {linked && <p className="text-sm">{linked}</p>}
+      {detached && <p className="text-sm">{detached}</p>}
 
       <section className="space-y-3">
         <h2 className="text-base font-semibold">인용한 계열</h2>
@@ -345,6 +780,46 @@ export default function MethodDetailPage() {
 
         <ErrorNotice error={error} />
       </section>
+      {merging && (
+        <MergeDialog
+          method={one}
+          onClose={() => setMerging(false)}
+          onMerged={(target) => {
+            setMerging(false)
+            void navigate(`/methods/${target.id}`)
+          }}
+        />
+      )}
+      {detaching && (
+        <DetachDialog
+          methodId={id}
+          termId={detaching.termId}
+          value={detaching.value}
+          onClose={() => setDetaching(null)}
+          onDone={(impact) => {
+            setDetaching(null)
+            setDetached(
+              `‘${detaching.value}’ 해제됨.` +
+                (impact.cut.length > 0
+                  ? ` 끊긴 계열 ${impact.cut.length}개는 미연결 인용으로 남음: ${impact.cut.join(', ')}.`
+                  : '') +
+                (impact.reopened ? ' 남은 시험 항목이 없어 검토함 질문을 다시 엶.' : ''),
+            )
+            method.reload()
+          }}
+        />
+      )}
+      {editing && (
+        <MethodEditDialog
+          method={one}
+          isAdmin={Boolean(user?.is_system_admin)}
+          onClose={() => setEditing(false)}
+          onSaved={() => {
+            setEditing(false)
+            method.reload()
+          }}
+        />
+      )}
     </div>
   )
 }

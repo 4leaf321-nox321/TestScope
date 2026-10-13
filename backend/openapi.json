@@ -1822,7 +1822,7 @@
           "review"
         ],
         "summary": "List Proposals",
-        "description": "한 물음의 줄들 — 대상 · 후보(추천과 근거) · 모인 의견 · 상세 링크.\n`status=voted` 는 열린 것 중 의견이 모인 줄.",
+        "description": "한 물음의 줄들 — 대상 · 후보(추천과 근거) · 모인 의견 · 상세 링크.\n`status=voted` 는 열린 것 중 의견이 모인 줄. `votes=mcp` 는 MCP 로 낸 의견이 있는 줄만.",
         "operationId": "list_proposals_api_review__queue__get",
         "parameters": [
           {
@@ -1843,6 +1843,23 @@
               "pattern": "^(open|voted|decided|skipped|gone|all)$",
               "default": "open",
               "title": "Status"
+            }
+          },
+          {
+            "name": "votes",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string",
+                  "pattern": "^mcp$"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Votes"
             }
           },
           {
@@ -2070,6 +2087,72 @@
         }
       }
     },
+    "/api/review/{queue}/{proposal_id}/preview": {
+      "get": {
+        "tags": [
+          "review"
+        ],
+        "summary": "Preview",
+        "description": "**확정 전에** 이 선택으로 어느 인용 계열이 이어지고 어느 계열이 안 이어지는지 — 규격의\n시험 항목 물음 전용. 후보 밖 항목은 그 시험 항목이 없는 계열에 연결되지 않는다.",
+        "operationId": "preview_api_review__queue___proposal_id__preview_get",
+        "parameters": [
+          {
+            "name": "queue",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Queue"
+            }
+          },
+          {
+            "name": "proposal_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "title": "Proposal Id"
+            }
+          },
+          {
+            "name": "choice",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
+              "maxItems": 200,
+              "title": "Choice"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ChoicePreviewOut"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/api/review/{queue}/decide-recommended": {
       "post": {
         "tags": [
@@ -2129,7 +2212,7 @@
           "review"
         ],
         "summary": "Skip",
-        "description": "건너뛴다(다시 누르면 되돌린다). 결정이 아니라 「지금은 모르겠다」 다.",
+        "description": "보류한다(다시 누르면 되돌린다). 결정이 아니라 「지금은 모르겠다」 다. **사유와 메모가\n남는다** — 보류 목록에 보인다.",
         "operationId": "skip_api_review__queue___proposal_id__skip_post",
         "parameters": [
           {
@@ -2152,6 +2235,23 @@
             }
           }
         ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "anyOf": [
+                  {
+                    "$ref": "#/components/schemas/SkipRequest"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "title": "Payload"
+              }
+            }
+          }
+        },
         "responses": {
           "200": {
             "description": "Successful Response",
@@ -2159,6 +2259,59 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/ProposalOut"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/review/{queue}/decide-mcp-votes": {
+      "post": {
+        "tags": [
+          "review"
+        ],
+        "summary": "Decide By Mcp Votes",
+        "description": "고른 줄들을 **MCP 로 낸 의견대로** 확정한다. MCP 의견이 없거나 갈리거나, 사람 의견이\n다르면 확정하지 않고 이유와 함께 돌려준다.",
+        "operationId": "decide_by_mcp_votes_api_review__queue__decide_mcp_votes_post",
+        "parameters": [
+          {
+            "name": "queue",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Queue"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/DecideRecommendedRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BulkDecideResult"
                 }
               }
             }
@@ -6239,7 +6392,7 @@
           "methods"
         ],
         "summary": "List Methods",
-        "description": "규격 목록.\n\n`attr` 은 **속성 값으로 거른다** — 여러 번 주면 모두 만족해야 한다(`attr=<키><연산><값>`,\n연산은 `>=` `<=` `>` `<` `=` `!=` `~`(포함) `*`(적혀 있기만 하면) `!*`(**안 적힌 것**)).\n왼쪽은 속성 정의의 `key` 다 — 이름은 관리자가 고치면 바뀌고, 그때 저장해 둔 주소가\n조용히 빈 답을 낸다.",
+        "description": "규격 목록.\n\n`cited=none` 은 어느 계열에도 안 이어진 규격, `cited=unlinked` 는 **시험 항목은 정했는데\n인용한 계열 중 일부가 그 시험 항목이 없어 안 이어진 규격**이다 — 홈의 「남은 일」 이 그\n조건으로 온다.\n\n`attr` 은 **속성 값으로 거른다** — 여러 번 주면 모두 만족해야 한다(`attr=<키><연산><값>`,\n연산은 `>=` `<=` `>` `<` `=` `!=` `~`(포함) `*`(적혀 있기만 하면) `!*`(**안 적힌 것**)).\n왼쪽은 속성 정의의 `key` 다 — 이름은 관리자가 고치면 바뀌고, 그때 저장해 둔 주소가\n조용히 빈 답을 낸다.",
         "operationId": "list_methods_api_methods_get",
         "parameters": [
           {
@@ -6300,7 +6453,7 @@
               "anyOf": [
                 {
                   "type": "string",
-                  "pattern": "^none$"
+                  "pattern": "^(none|unlinked)$"
                 },
                 {
                   "type": "null"
@@ -6650,6 +6803,222 @@
         "responses": {
           "204": {
             "description": "Successful Response"
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/methods/{method_id}/link-citations": {
+      "post": {
+        "tags": [
+          "methods"
+        ],
+        "summary": "Link Citations",
+        "description": "**안 이어진 인용 계열에 규격의 시험 항목을 더해 잇는다** — 시스템 관리자.\n\n규격의 시험 항목을 정해도 그 시험 항목이 없는 인용 계열은 미정으로 남는다. 그 계열이 그\n규격을 인용했다는 카탈로그의 말을 믿고 계열에 그 시험을 더한다(계열 화면에서 한 줄씩 더하는\n것과 같다).",
+        "operationId": "link_citations_api_methods__method_id__link_citations_post",
+        "parameters": [
+          {
+            "name": "method_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "title": "Method Id"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LinkCitationsResult"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/methods/{method_id}/test-items/{term_id}/detach-preview": {
+      "get": {
+        "tags": [
+          "methods"
+        ],
+        "summary": "Detach Preview",
+        "description": "시험 항목을 떼기 **전에** — 끊기는 계열 · 남는 계열.",
+        "operationId": "detach_preview_api_methods__method_id__test_items__term_id__detach_preview_get",
+        "parameters": [
+          {
+            "name": "method_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "title": "Method Id"
+            }
+          },
+          {
+            "name": "term_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "title": "Term Id"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DetachImpact"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/methods/{method_id}/test-items/{term_id}/detach": {
+      "post": {
+        "tags": [
+          "methods"
+        ],
+        "summary": "Detach Test Item",
+        "description": "규격에 잘못 걸린 시험 항목을 뗀다 — 시스템 관리자. 사유는 감사 기록에 남는다. 그\n항목으로만 이어진 계열은 항목 미정 인용으로 돌아간다.",
+        "operationId": "detach_test_item_api_methods__method_id__test_items__term_id__detach_post",
+        "parameters": [
+          {
+            "name": "method_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "title": "Method Id"
+            }
+          },
+          {
+            "name": "term_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "title": "Term Id"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/DetachRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DetachImpact"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/methods/{method_id}/merge": {
+      "post": {
+        "tags": [
+          "methods"
+        ],
+        "summary": "Merge Method",
+        "description": "이 규격을 다른 규격으로 합친다 — 인용 · 요구 조건 · 장비 시험 항목이 남는 쪽으로 옮겨\n가고 이 규격은 지워진다. 이 규격의 번호는 남는 쪽의 옛 번호가 된다. 남는 쪽을 돌려준다.",
+        "operationId": "merge_method_api_methods__method_id__merge_post",
+        "parameters": [
+          {
+            "name": "method_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "title": "Method Id"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/MergeRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MethodOut"
+                }
+              }
+            }
           },
           "422": {
             "description": "Validation Error",
@@ -13482,6 +13851,17 @@
             "type": "array",
             "title": "Sources",
             "default": []
+          },
+          "warning": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Warning"
           }
         },
         "type": "object",
@@ -14319,6 +14699,74 @@
         ],
         "title": "ChangePasswordRequest"
       },
+      "ChoicePreviewOut": {
+        "properties": {
+          "linked": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Linked"
+          },
+          "unlinked": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Unlinked"
+          },
+          "off_candidates": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Off Candidates"
+          },
+          "cut": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Cut",
+            "default": []
+          },
+          "movable": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Movable",
+            "default": []
+          },
+          "unmovable": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Unmovable",
+            "default": []
+          },
+          "kind": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Kind"
+          }
+        },
+        "type": "object",
+        "required": [
+          "linked",
+          "unlinked",
+          "off_candidates"
+        ],
+        "title": "ChoicePreviewOut",
+        "description": "확정 전 미리보기 — 규격의 시험 항목 물음."
+      },
       "CitedMethodOut": {
         "properties": {
           "id": {
@@ -15014,7 +15462,7 @@
               "type": "string"
             },
             "type": "array",
-            "maxItems": 20,
+            "maxItems": 200,
             "title": "Choice"
           },
           "note": {
@@ -15028,6 +15476,11 @@
               }
             ],
             "title": "Note"
+          },
+          "add_to_citing": {
+            "type": "boolean",
+            "title": "Add To Citing",
+            "default": false
           }
         },
         "additionalProperties": false,
@@ -15037,6 +15490,53 @@
         ],
         "title": "DecideRequest",
         "description": "고른 것. 후보에 없는 코드도 된다(「직접 고르기」) — 다만 그 큐의 어휘여야 한다."
+      },
+      "DetachImpact": {
+        "properties": {
+          "cut": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Cut"
+          },
+          "kept": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Kept"
+          },
+          "reopened": {
+            "type": "boolean",
+            "title": "Reopened",
+            "default": false
+          }
+        },
+        "type": "object",
+        "required": [
+          "cut",
+          "kept"
+        ],
+        "title": "DetachImpact",
+        "description": "시험 항목을 떼면 **끊기는** 계열(그 항목으로만 이어졌다) · 다른 항목으로 **남는** 계열.\n\n끊기는 계열은 「인용했는데 항목 미정」 으로 돌아간다 — 인용 사실은 남고 검색에서는 빠진다."
+      },
+      "DetachRequest": {
+        "properties": {
+          "reason": {
+            "type": "string",
+            "maxLength": 500,
+            "minLength": 1,
+            "title": "Reason"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "reason"
+        ],
+        "title": "DetachRequest",
+        "description": "규격의 시험 항목 해제 — 사유는 감사 기록에 남는다."
       },
       "DiskOut": {
         "properties": {
@@ -18516,6 +19016,17 @@
             "type": "integer",
             "title": "Same Key Models",
             "default": 0
+          },
+          "promoted_to": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Promoted To"
           }
         },
         "type": "object",
@@ -18593,6 +19104,14 @@
           "left": {
             "type": "integer",
             "title": "Left"
+          },
+          "unmoved": {
+            "items": {
+              "$ref": "#/components/schemas/UnmovedSpec"
+            },
+            "type": "array",
+            "title": "Unmoved",
+            "default": []
           }
         },
         "type": "object",
@@ -19122,6 +19641,28 @@
         ],
         "title": "LinkBulkResult"
       },
+      "LinkCitationsResult": {
+        "properties": {
+          "added_to": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Added To"
+          },
+          "still_unlinked": {
+            "type": "integer",
+            "title": "Still Unlinked"
+          }
+        },
+        "type": "object",
+        "required": [
+          "added_to",
+          "still_unlinked"
+        ],
+        "title": "LinkCitationsResult",
+        "description": "안 이어진 인용 계열에 시험 항목을 더한 결과."
+      },
       "LoginRequest": {
         "properties": {
           "email": {
@@ -19343,6 +19884,28 @@
         "title": "MembershipsRequest",
         "description": "이 사람의 **소속을 통째로** 정한다 — 있던 것은 지우고 준 것만 남긴다.\n\n**떼기와 붙이기를 따로 두지 않는 이유**: 부서를 옮기는 일은 두 걸음인데, 두 번에\n나누면 그 사이에 아무 데도 안 속한 사람이 남고 두 번째가 실패하면 그 상태로 굳는다.\n\n비우는 것은 **된다** — 내보내는 일이 실제로 있다. 그때 대표 소속도 함께 비워진다."
       },
+      "MergeRequest": {
+        "properties": {
+          "target_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Target Id"
+          },
+          "reason": {
+            "type": "string",
+            "maxLength": 500,
+            "title": "Reason",
+            "default": ""
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "target_id"
+        ],
+        "title": "MergeRequest",
+        "description": "이 규격을 다른 규격으로 합친다 — 시스템 관리자. 사유는 감사 기록에 남는다."
+      },
       "MethodCreateRequest": {
         "properties": {
           "code": {
@@ -19430,6 +19993,14 @@
           "code": {
             "type": "string",
             "title": "Code"
+          },
+          "former_codes": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Former Codes",
+            "default": []
           },
           "edition": {
             "anyOf": [
@@ -19589,6 +20160,19 @@
       },
       "MethodUpdateRequest": {
         "properties": {
+          "code": {
+            "anyOf": [
+              {
+                "type": "string",
+                "maxLength": 100,
+                "minLength": 1
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Code"
+          },
           "title": {
             "anyOf": [
               {
@@ -21693,6 +22277,51 @@
               }
             ],
             "title": "Decided At"
+          },
+          "skip_reason": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Skip Reason"
+          },
+          "skip_reason_label": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Skip Reason Label"
+          },
+          "skipped_by": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Skipped By"
+          },
+          "skipped_at": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "date-time"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Skipped At"
           },
           "votes": {
             "items": {
@@ -24071,6 +24700,38 @@
         ],
         "title": "SignupRequest"
       },
+      "SkipRequest": {
+        "properties": {
+          "reason": {
+            "anyOf": [
+              {
+                "type": "string",
+                "pattern": "^(evidence|expert|source|no_answer|other)$"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Reason"
+          },
+          "note": {
+            "anyOf": [
+              {
+                "type": "string",
+                "maxLength": 1000
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Note"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "title": "SkipRequest",
+        "description": "보류 — 사유와 메모. 둘 다 비워도 되지만 비우면 나중에 왜 보류했는지 모른다."
+      },
       "SkippedConditionOut": {
         "properties": {
           "label": {
@@ -26331,6 +26992,31 @@
         ],
         "title": "TypeNodeOut"
       },
+      "UnmovedSpec": {
+        "properties": {
+          "model_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Model Id"
+          },
+          "model": {
+            "type": "string",
+            "title": "Model"
+          },
+          "value": {
+            "type": "string",
+            "title": "Value"
+          }
+        },
+        "type": "object",
+        "required": [
+          "model_id",
+          "model",
+          "value"
+        ],
+        "title": "UnmovedSpec",
+        "description": "정의의 종류로 못 읽어 기종 고유 사양에 남은 줄 하나."
+      },
       "UnreadCountOut": {
         "properties": {
           "unread": {
@@ -26999,6 +27685,11 @@
             "type": "string",
             "format": "date-time",
             "title": "At"
+          },
+          "mcp": {
+            "type": "boolean",
+            "title": "Mcp",
+            "default": false
           }
         },
         "type": "object",
@@ -27019,7 +27710,7 @@
               "type": "string"
             },
             "type": "array",
-            "maxItems": 20,
+            "maxItems": 200,
             "title": "Choice"
           },
           "note": {

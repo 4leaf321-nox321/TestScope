@@ -85,6 +85,10 @@ class ReviewProposal(Base):
     decided_by_label: Mapped[str | None] = mapped_column(String(200), nullable=True)
     """그때의 이름. 계정이 지워져도 「누가 정했나」 는 남아야 한다."""
     decided_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True), nullable=True)
+    skip_reason: Mapped[str | None] = mapped_column(String(20), nullable=True)
+    """보류 사유(`SKIP_REASONS` 의 키). 메모는 `note` 에 — 나중에 왜 보류했는지 알게."""
+    skipped_by: Mapped[str | None] = mapped_column(String(200), nullable=True)
+    skipped_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True), nullable=True)
 
     created_at: Mapped[datetime] = mapped_column(
         DateTime(timezone=True), server_default=func.now(), nullable=False
@@ -117,7 +121,10 @@ class ReviewVote(Base):
         PgUUID(as_uuid=True), ForeignKey("users.id", ondelete="CASCADE"), index=True
     )
     user_label: Mapped[str] = mapped_column(String(200))
-    """그때의 이름. 계정이 지워져도 누구 의견이었는지 남는다."""
+    """그때의 이름. 계정이 지워져도 누구 의견이었는지 남는다. MCP 로 냈으면 「이름(MCP)」."""
+    submitted_via: Mapped[str | None] = mapped_column(String(100), nullable=True)
+    """기계 자격이면 그 토큰 이름 — 비어 있으면 화면에서 낸 의견이다. 확정 줄의
+    `decided_by_label` 과 같은 방식으로 사람의 의견과 AI 가 대신 낸 의견을 가른다."""
     choice: Mapped[list[str]] = mapped_column(JSONB, default=list)
     note: Mapped[str | None] = mapped_column(Text, nullable=True)
     created_at: Mapped[datetime] = mapped_column(

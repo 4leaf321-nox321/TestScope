@@ -31,6 +31,25 @@ def compare_key(raw: str) -> str:
     return unicodedata.normalize("NFKC", clean(raw)).casefold()
 
 
+#: 규격 번호 끝의 **판 표시** — 「:2019」 「:2019/A1:2021」 「(2019)」. 부(part) 번호
+#: 「-1」 「-2-14」 는 다른 규격이라 건드리지 않는다.
+_EDITION_TAIL = re.compile(
+    r"\s*(?::\s*(?:19|20)\d{2}(?:\s*[+/]\s*A\d+(?::\s*(?:19|20)\d{2})?)*"
+    r"|\(\s*(?:19|20)\d{2}\s*\))\s*$"
+)
+#: ASTM 은 판을 붙여 쓴다 — 「D638-14」 「E8/E8M-16a」 「D1238-13e1」. ASTM 에는 부 번호가
+#: 없다.
+_ASTM_YEAR = re.compile(r"^(ASTM\s.*?)-\d{2}[a-z]?(?:\s*e\d+)?$", re.IGNORECASE)
+
+
+def method_base(code: str) -> str:
+    """판 표시를 뗀 규격 번호 — 「ASTM D638-14」 → 「ASTM D638」, 「ISO 527-2:2012」 →
+    「ISO 527-2」. 표기만 다른 규격(판만 붙은 것)을 정식 규격으로 묶을 때 쓴다."""
+    stripped = _EDITION_TAIL.sub("", clean(code))
+    astm = _ASTM_YEAR.match(stripped)
+    return astm.group(1) if astm else stripped
+
+
 def method_key(code: str) -> str:
     """규격 번호의 비교키. **공백을 지운다** — 「JIS B 0601」 과 「JIS B0601」 은 같은 규격인데
     출처마다 표기가 갈린다(MaterialTwin 은 붙여 쓰고 카탈로그는 띄어 쓴다). 두 행이 되면

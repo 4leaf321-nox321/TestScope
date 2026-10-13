@@ -727,7 +727,7 @@ export interface paths {
         /**
          * List Proposals
          * @description 한 물음의 줄들 — 대상 · 후보(추천과 근거) · 모인 의견 · 상세 링크.
-         *     `status=voted` 는 열린 것 중 의견이 모인 줄.
+         *     `status=voted` 는 열린 것 중 의견이 모인 줄. `votes=mcp` 는 MCP 로 낸 의견이 있는 줄만.
          */
         get: operations["list_proposals_api_review__queue__get"];
         put?: never;
@@ -784,6 +784,27 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/api/review/{queue}/{proposal_id}/preview": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * Preview
+         * @description **확정 전에** 이 선택으로 어느 인용 계열이 이어지고 어느 계열이 안 이어지는지 — 규격의
+         *     시험 항목 물음 전용. 후보 밖 항목은 그 시험 항목이 없는 계열에 연결되지 않는다.
+         */
+        get: operations["preview_api_review__queue___proposal_id__preview_get"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/api/review/{queue}/decide-recommended": {
         parameters: {
             query?: never;
@@ -818,9 +839,31 @@ export interface paths {
         put?: never;
         /**
          * Skip
-         * @description 건너뛴다(다시 누르면 되돌린다). 결정이 아니라 「지금은 모르겠다」 다.
+         * @description 보류한다(다시 누르면 되돌린다). 결정이 아니라 「지금은 모르겠다」 다. **사유와 메모가
+         *     남는다** — 보류 목록에 보인다.
          */
         post: operations["skip_api_review__queue___proposal_id__skip_post"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/review/{queue}/decide-mcp-votes": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /**
+         * Decide By Mcp Votes
+         * @description 고른 줄들을 **MCP 로 낸 의견대로** 확정한다. MCP 의견이 없거나 갈리거나, 사람 의견이
+         *     다르면 확정하지 않고 이유와 함께 돌려준다.
+         */
+        post: operations["decide_by_mcp_votes_api_review__queue__decide_mcp_votes_post"];
         delete?: never;
         options?: never;
         head?: never;
@@ -2092,6 +2135,10 @@ export interface paths {
          * List Methods
          * @description 규격 목록.
          *
+         *     `cited=none` 은 어느 계열에도 안 이어진 규격, `cited=unlinked` 는 **시험 항목은 정했는데
+         *     인용한 계열 중 일부가 그 시험 항목이 없어 안 이어진 규격**이다 — 홈의 「남은 일」 이 그
+         *     조건으로 온다.
+         *
          *     `attr` 은 **속성 값으로 거른다** — 여러 번 주면 모두 만족해야 한다(`attr=<키><연산><값>`,
          *     연산은 `>=` `<=` `>` `<` `=` `!=` `~`(포함) `*`(적혀 있기만 하면) `!*`(**안 적힌 것**)).
          *     왼쪽은 속성 정의의 `key` 다 — 이름은 관리자가 고치면 바뀌고, 그때 저장해 둔 주소가
@@ -2192,6 +2239,92 @@ export interface paths {
         head?: never;
         /** Update Method */
         patch: operations["update_method_api_methods__method_id__patch"];
+        trace?: never;
+    };
+    "/api/methods/{method_id}/link-citations": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /**
+         * Link Citations
+         * @description **안 이어진 인용 계열에 규격의 시험 항목을 더해 잇는다** — 시스템 관리자.
+         *
+         *     규격의 시험 항목을 정해도 그 시험 항목이 없는 인용 계열은 미정으로 남는다. 그 계열이 그
+         *     규격을 인용했다는 카탈로그의 말을 믿고 계열에 그 시험을 더한다(계열 화면에서 한 줄씩 더하는
+         *     것과 같다).
+         */
+        post: operations["link_citations_api_methods__method_id__link_citations_post"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/methods/{method_id}/test-items/{term_id}/detach-preview": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * Detach Preview
+         * @description 시험 항목을 떼기 **전에** — 끊기는 계열 · 남는 계열.
+         */
+        get: operations["detach_preview_api_methods__method_id__test_items__term_id__detach_preview_get"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/methods/{method_id}/test-items/{term_id}/detach": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /**
+         * Detach Test Item
+         * @description 규격에 잘못 걸린 시험 항목을 뗀다 — 시스템 관리자. 사유는 감사 기록에 남는다. 그
+         *     항목으로만 이어진 계열은 항목 미정 인용으로 돌아간다.
+         */
+        post: operations["detach_test_item_api_methods__method_id__test_items__term_id__detach_post"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/methods/{method_id}/merge": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /**
+         * Merge Method
+         * @description 이 규격을 다른 규격으로 합친다 — 인용 · 요구 조건 · 장비 시험 항목이 남는 쪽으로 옮겨
+         *     가고 이 규격은 지워진다. 이 규격의 번호는 남는 쪽의 옛 번호가 된다. 남는 쪽을 돌려준다.
+         */
+        post: operations["merge_method_api_methods__method_id__merge_post"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
         trace?: never;
     };
     "/api/methods/{method_id}/requirements": {
@@ -4606,6 +4739,8 @@ export interface components {
              * @default []
              */
             sources: string[];
+            /** Warning */
+            warning?: string | null;
         };
         /**
          * CapabilityItemOut
@@ -4931,6 +5066,35 @@ export interface components {
             new_password: string;
         };
         /**
+         * ChoicePreviewOut
+         * @description 확정 전 미리보기 — 규격의 시험 항목 물음.
+         */
+        ChoicePreviewOut: {
+            /** Linked */
+            linked: string[];
+            /** Unlinked */
+            unlinked: string[];
+            /** Off Candidates */
+            off_candidates: string[];
+            /**
+             * Cut
+             * @default []
+             */
+            cut: string[];
+            /**
+             * Movable
+             * @default []
+             */
+            movable: string[];
+            /**
+             * Unmovable
+             * @default []
+             */
+            unmovable: string[];
+            /** Kind */
+            kind?: string | null;
+        };
+        /**
          * CitedMethodOut
          * @description 이 시험 항목이 인용하는 규격 하나. **표로 이어져 있다** — 비고의 글자가 아니다.
          */
@@ -5209,6 +5373,36 @@ export interface components {
             choice: string[];
             /** Note */
             note?: string | null;
+            /**
+             * Add To Citing
+             * @default false
+             */
+            add_to_citing: boolean;
+        };
+        /**
+         * DetachImpact
+         * @description 시험 항목을 떼면 **끊기는** 계열(그 항목으로만 이어졌다) · 다른 항목으로 **남는** 계열.
+         *
+         *     끊기는 계열은 「인용했는데 항목 미정」 으로 돌아간다 — 인용 사실은 남고 검색에서는 빠진다.
+         */
+        DetachImpact: {
+            /** Cut */
+            cut: string[];
+            /** Kept */
+            kept: string[];
+            /**
+             * Reopened
+             * @default false
+             */
+            reopened: boolean;
+        };
+        /**
+         * DetachRequest
+         * @description 규격의 시험 항목 해제 — 사유는 감사 기록에 남는다.
+         */
+        DetachRequest: {
+            /** Reason */
+            reason: string;
         };
         /** DiskOut */
         DiskOut: {
@@ -6318,6 +6512,8 @@ export interface components {
              * @default 0
              */
             same_key_models: number;
+            /** Promoted To */
+            promoted_to?: string | null;
         };
         /**
          * FreeSpecPromoteRequest
@@ -6358,6 +6554,11 @@ export interface components {
             moved: number;
             /** Left */
             left: number;
+            /**
+             * Unmoved
+             * @default []
+             */
+            unmoved: components["schemas"]["UnmovedSpec"][];
         };
         /** FreeSpecUpsertRequest */
         FreeSpecUpsertRequest: {
@@ -6570,6 +6771,16 @@ export interface components {
             /** Links */
             links: components["schemas"]["TestItemPropertyOut"][];
         };
+        /**
+         * LinkCitationsResult
+         * @description 안 이어진 인용 계열에 시험 항목을 더한 결과.
+         */
+        LinkCitationsResult: {
+            /** Added To */
+            added_to: string[];
+            /** Still Unlinked */
+            still_unlinked: number;
+        };
         /** LoginRequest */
         LoginRequest: {
             /** Email */
@@ -6680,6 +6891,22 @@ export interface components {
             /** Items */
             items?: components["schemas"]["MembershipItem"][];
         };
+        /**
+         * MergeRequest
+         * @description 이 규격을 다른 규격으로 합친다 — 시스템 관리자. 사유는 감사 기록에 남는다.
+         */
+        MergeRequest: {
+            /**
+             * Target Id
+             * Format: uuid
+             */
+            target_id: string;
+            /**
+             * Reason
+             * @default
+             */
+            reason: string;
+        };
         /** MethodCreateRequest */
         MethodCreateRequest: {
             /** Code */
@@ -6706,6 +6933,11 @@ export interface components {
             id: string;
             /** Code */
             code: string;
+            /**
+             * Former Codes
+             * @default []
+             */
+            former_codes: string[];
             /** Edition */
             edition: string | null;
             /** Title */
@@ -6763,6 +6995,8 @@ export interface components {
         };
         /** MethodUpdateRequest */
         MethodUpdateRequest: {
+            /** Code */
+            code?: string | null;
             /** Title */
             title?: string | null;
             /** Edition */
@@ -7466,6 +7700,14 @@ export interface components {
             decided_by: string | null;
             /** Decided At */
             decided_at: string | null;
+            /** Skip Reason */
+            skip_reason?: string | null;
+            /** Skip Reason Label */
+            skip_reason_label?: string | null;
+            /** Skipped By */
+            skipped_by?: string | null;
+            /** Skipped At */
+            skipped_at?: string | null;
             /** Votes */
             votes: components["schemas"]["VoteOut"][];
             /** My Vote */
@@ -8338,6 +8580,16 @@ export interface components {
             workspace_slug: string;
         };
         /**
+         * SkipRequest
+         * @description 보류 — 사유와 메모. 둘 다 비워도 되지만 비우면 나중에 왜 보류했는지 모른다.
+         */
+        SkipRequest: {
+            /** Reason */
+            reason?: string | null;
+            /** Note */
+            note?: string | null;
+        };
+        /**
          * SkippedConditionOut
          * @description 물음에서 뺀 조건과 그 이유. **조용히 빼지 않는다** — 다 본 것처럼 읽힌다.
          */
@@ -9135,6 +9387,21 @@ export interface components {
             /** Detail Path */
             detail_path: string | null;
         };
+        /**
+         * UnmovedSpec
+         * @description 정의의 종류로 못 읽어 기종 고유 사양에 남은 줄 하나.
+         */
+        UnmovedSpec: {
+            /**
+             * Model Id
+             * Format: uuid
+             */
+            model_id: string;
+            /** Model */
+            model: string;
+            /** Value */
+            value: string;
+        };
         /** UnreadCountOut */
         UnreadCountOut: {
             /** Unread */
@@ -9401,6 +9668,11 @@ export interface components {
              * Format: date-time
              */
             at: string;
+            /**
+             * Mcp
+             * @default false
+             */
+            mcp: boolean;
         };
         /**
          * VoteRequest
@@ -10995,6 +11267,7 @@ export interface operations {
         parameters: {
             query?: {
                 status?: string;
+                votes?: string | null;
                 limit?: number;
                 offset?: number;
             };
@@ -11130,6 +11403,40 @@ export interface operations {
             };
         };
     };
+    preview_api_review__queue___proposal_id__preview_get: {
+        parameters: {
+            query?: {
+                choice?: string[];
+            };
+            header?: never;
+            path: {
+                queue: string;
+                proposal_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ChoicePreviewOut"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
     decide_recommended_api_review__queue__decide_recommended_post: {
         parameters: {
             query?: never;
@@ -11175,7 +11482,11 @@ export interface operations {
             };
             cookie?: never;
         };
-        requestBody?: never;
+        requestBody?: {
+            content: {
+                "application/json": components["schemas"]["SkipRequest"] | null;
+            };
+        };
         responses: {
             /** @description Successful Response */
             200: {
@@ -11184,6 +11495,41 @@ export interface operations {
                 };
                 content: {
                     "application/json": components["schemas"]["ProposalOut"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    decide_by_mcp_votes_api_review__queue__decide_mcp_votes_post: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                queue: string;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["DecideRecommendedRequest"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["BulkDecideResult"];
                 };
             };
             /** @description Validation Error */
@@ -13799,6 +14145,140 @@ export interface operations {
         requestBody: {
             content: {
                 "application/json": components["schemas"]["MethodUpdateRequest"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["MethodOut"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    link_citations_api_methods__method_id__link_citations_post: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                method_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["LinkCitationsResult"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    detach_preview_api_methods__method_id__test_items__term_id__detach_preview_get: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                method_id: string;
+                term_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["DetachImpact"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    detach_test_item_api_methods__method_id__test_items__term_id__detach_post: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                method_id: string;
+                term_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["DetachRequest"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["DetachImpact"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    merge_method_api_methods__method_id__merge_post: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                method_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["MergeRequest"];
             };
         };
         responses: {

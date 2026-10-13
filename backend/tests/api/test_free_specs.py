@@ -133,6 +133,8 @@ def test_정의로_세우면_같은_키의_다른_기종도_함께_옮긴다(
         "definition_id": promoted.json()["definition_id"],
         "moved": 2,
         "left": 1,
+        # 남은 줄은 **어느 기종의 무슨 값인지**와 함께 — 수만 주면 어디를 고칠지 모른다.
+        "unmoved": [{"model_id": third["id"], "model": third["name"], "value": "약 300"}],
     }
 
     # 옮겨 간 값은 정의 사양표에 선다 — 「0 ~ 152」 는 범위, 「203」 은 상한.

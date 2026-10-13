@@ -46,6 +46,8 @@ class CandidateOut(BaseModel):
     sources: list[str] = []
     """근거의 출처 — 페이지 url 이나 논문 id. 「계열이 하는 규격」 처럼 밖에서 온 후보는
     사람이 링크를 열어 보고 판단한다."""
+    warning: str | None = None
+    """고르기 전에 볼 것 — 「분류와 맞지 않음」 처럼. 경고가 있는 후보는 추천하지 않는다."""
 
 
 class VoteOut(BaseModel):
@@ -56,6 +58,8 @@ class VoteOut(BaseModel):
     choice: list[str]
     note: str | None
     at: datetime
+    mcp: bool = False
+    """MCP(기계 자격)로 낸 의견인가 — 이름에도 「(MCP)」 가 붙는다."""
 
 
 class ProposalOut(BaseModel):
@@ -79,6 +83,11 @@ class ProposalOut(BaseModel):
     note: str | None
     decided_by: str | None
     decided_at: datetime | None
+    skip_reason: str | None = None
+    """보류 사유 키(evidence · expert · source · no_answer · other). 메모는 `note`."""
+    skip_reason_label: str | None = None
+    skipped_by: str | None = None
+    skipped_at: datetime | None = None
     votes: list[VoteOut]
     """모인 의견. 갈리는 줄이 보이게 — 확정하는 사람이 다수를 미리 본다."""
     my_vote: list[str] | None
@@ -90,12 +99,48 @@ class ProposalPage(BaseModel):
     total: int
 
 
+#: 한 줄에서 고르는 수의 상한. 20 으로 두었더니 인용 규격이 스무 개 넘는 계열을 다 반영할 수
+#: 없었다(후보는 한 줄 30 개까지 — 2026-10-13). 후보 수보다 넉넉히 둔다.
+CHOICE_LIMIT = 200
+
+
+class SkipRequest(Request):
+    """보류 — 사유와 메모. 둘 다 비워도 되지만 비우면 나중에 왜 보류했는지 모른다."""
+
+    reason: str | None = Field(
+        default=None, pattern="^(evidence|expert|source|no_answer|other)$"
+    )
+    note: str | None = Field(default=None, max_length=1000)
+
+
 class DecideRequest(Request):
     """고른 것. 후보에 없는 코드도 된다(「직접 고르기」) — 다만 그 큐의 어휘여야 한다."""
 
-    choice: list[str] = Field(max_length=20)
+    choice: list[str] = Field(max_length=CHOICE_LIMIT)
     """빈 목록은 「해당 없음」 — 검색축이 없는 게 맞다 같은 결정."""
     note: str | None = Field(default=None, max_length=1000)
+    add_to_citing: bool = False
+    """규격의 시험 항목 물음 전용 — 고른 시험 항목이 없어 안 이어지는 인용 계열에 그 시험
+    항목을 더해 잇는다. 안 주면 그 계열은 미정으로 남는다(응답 `payload.unlinked_series`)."""
+
+
+class ChoicePreviewOut(BaseModel):
+    """확정 전 미리보기 — 규격의 시험 항목 물음."""
+
+    linked: list[str]
+    """이 선택으로 이어지는 인용 계열."""
+    unlinked: list[str]
+    """그 시험 항목이 없어 **안 이어지는** 인용 계열."""
+    off_candidates: list[str]
+    """고른 것 중 후보 밖 시험 항목."""
+    cut: list[str] = []
+    """다시 정할 때 — 빠지는 항목으로만 이어져 있어 **끊기는** 계열."""
+    movable: list[str] = []
+    """사양 정의 승격 — 정의 값으로 옮겨질 줄(「기종: 값」)."""
+    unmovable: list[str] = []
+    """사양 정의 승격 — 정의의 종류로 못 읽어 **기종 고유 사양에 남을** 줄(「기종: 값」)."""
+    kind: str | None = None
+    """사양 정의 승격 — 세울 정의의 종류(number · range · text · boolean)."""
 
 
 #: 한 번에 확정하는 줄 수의 상한. 한 쪽이 50 줄이라 넉넉하다 — 다른 일괄 처리와 같은 값.
@@ -133,7 +178,7 @@ class BulkDecideResult(BaseModel):
 class VoteRequest(Request):
     """의견 하나. 후보에 없는 코드도 된다(직접 고르기)."""
 
-    choice: list[str] = Field(max_length=20)
+    choice: list[str] = Field(max_length=CHOICE_LIMIT)
     note: str | None = Field(default=None, max_length=1000)
 
 
