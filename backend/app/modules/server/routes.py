@@ -27,6 +27,7 @@ from app.modules.equipment.models import (
     EquipmentSeries,
     ModelSpecValue,
 )
+from app.modules.methods.impact import superseded_refs
 from app.modules.methods.models import MethodRequirement, TestMethod, TestMethodItem
 from app.modules.reliability.models import ReliabilityTest, TestItemProposal
 from app.modules.review.models import ReviewProposal
@@ -48,7 +49,7 @@ from app.modules.test_items.models import (
     SeriesTestItemMethod,
 )
 from app.modules.vocabulary.models import VocabularyTerm
-from app.modules.workspaces.models import Workspace
+from app.modules.workspaces.models import Workspace, WorkspaceMember
 from app.shared import embeddings, semantic
 from app.shared.auth import current_user, require_system_admin
 from app.shared.permissions import my_division_term_ids
@@ -497,6 +498,38 @@ def maintenance(
                         key=key, label=label, count=groups, link=link, severity="info"
                     )
                 )
+
+    # **대체된 규격을 아직 가리키는 곳.** 고칠 사람(시스템 관리자 · 그 사업부와 부서의 관리자)
+    # 에게만 — 판이 바뀐 것을 아무도 모른 채 옛 판의 조건으로 시험을 돌리던 자리(2026-10-16).
+    managed = (
+        None
+        if user.is_system_admin
+        else set(
+            db.scalars(
+                select(WorkspaceMember.workspace_id).where(
+                    WorkspaceMember.user_id == user.id, WorkspaceMember.role == "manager"
+                )
+            )
+        )
+    )
+    if managed is None or managed:
+        refs = (
+            superseded_refs(db)
+            if managed is None
+            else superseded_refs(
+                db, divisions=my_division_term_ids(db, user), workspaces=managed
+            )
+        )
+        if refs:
+            items.append(
+                MaintenanceItemOut(
+                    key="method_superseded_refs",
+                    label="대체된 규격을 근거로 하는 신뢰성 시험·장비 시험 항목",
+                    count=len(refs),
+                    link="/methods/superseded-refs",
+                    severity="warning",
+                )
+            )
 
     # **확인을 기다리는 신뢰성 시험(후보).** 확인하는 사람(그 사업부의 부서 관리자 · 시스템
     # 관리자)에게만 — 멤버에게 보여 주면 할 수 없는 일이 남은 일로 선다.

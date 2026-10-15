@@ -6689,6 +6689,54 @@
         }
       }
     },
+    "/api/methods/superseded-refs": {
+      "get": {
+        "tags": [
+          "methods"
+        ],
+        "summary": "Superseded Refs",
+        "description": "**대체된 규격을 아직 가리키는 곳** — 신뢰성 시험의 근거 규격 · 장비 시험 항목.\n\n기본은 **내 소속**(부서 · 그 사업부)의 것. `all=true` 거나 시스템 관리자면 전부.\n새 판으로 고치면 목록에서 저절로 빠진다(계산이지 기록이 아니다).",
+        "operationId": "superseded_refs_api_methods_superseded_refs_get",
+        "parameters": [
+          {
+            "name": "all",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "boolean",
+              "default": false,
+              "title": "All"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/SupersededRefOut"
+                  },
+                  "title": "Response Superseded Refs Api Methods Superseded Refs Get"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/api/methods/{method_id}": {
       "get": {
         "tags": [
@@ -8425,6 +8473,57 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/CapabilityOut"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/reliability-tests/coverage": {
+      "get": {
+        "tags": [
+          "reliability"
+        ],
+        "summary": "Coverage",
+        "description": "**수행 가능 현황** — 확정된 최신판 신뢰성 시험마다 지금 돌릴 수 있는 장비 수.\n\n「되는 장비」 와 같은 판정(조건 · 장비 상태)에 교정을 더한다: 교정 만료 장비는 빼고, 교정\n대상인데 이력이 없으면 「확인 필요」. 시험의 상태는 가장 적은 시험 항목(병목)이 정한다 —\n불가 · 확인 필요 · 1대뿐 · 교정 임박 · 항목 없음 · 여유. `division` 은 사업부 코드.",
+        "operationId": "coverage_api_reliability_tests_coverage_get",
+        "parameters": [
+          {
+            "name": "division",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string",
+                  "maxLength": 120
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Division"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CoverageOut"
                 }
               }
             }
@@ -15380,6 +15479,165 @@
         ],
         "title": "ConditionReachValueOut",
         "description": "실제로 **적힌** 값 하나와 그 값을 적은 시험 수 — 쓰임이 드러낸 경계."
+      },
+      "CoverageItemOut": {
+        "properties": {
+          "term_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Term Id"
+          },
+          "value": {
+            "type": "string",
+            "title": "Value"
+          },
+          "ready": {
+            "type": "integer",
+            "title": "Ready"
+          },
+          "in_division": {
+            "type": "integer",
+            "title": "In Division"
+          },
+          "soon": {
+            "type": "integer",
+            "title": "Soon"
+          },
+          "check": {
+            "type": "integer",
+            "title": "Check"
+          },
+          "expired": {
+            "type": "integer",
+            "title": "Expired"
+          }
+        },
+        "type": "object",
+        "required": [
+          "term_id",
+          "value",
+          "ready",
+          "in_division",
+          "soon",
+          "check",
+          "expired"
+        ],
+        "title": "CoverageItemOut",
+        "description": "현황판 — 시험 항목 하나의 장비 수."
+      },
+      "CoverageOut": {
+        "properties": {
+          "computed_at": {
+            "type": "string",
+            "format": "date-time",
+            "title": "Computed At"
+          },
+          "horizon_days": {
+            "type": "integer",
+            "title": "Horizon Days"
+          },
+          "counts": {
+            "additionalProperties": {
+              "type": "integer"
+            },
+            "type": "object",
+            "title": "Counts"
+          },
+          "rows": {
+            "items": {
+              "$ref": "#/components/schemas/CoverageRowOut"
+            },
+            "type": "array",
+            "title": "Rows"
+          }
+        },
+        "type": "object",
+        "required": [
+          "computed_at",
+          "horizon_days",
+          "counts",
+          "rows"
+        ],
+        "title": "CoverageOut",
+        "description": "신뢰성 시험 수행 가능 현황."
+      },
+      "CoverageRowOut": {
+        "properties": {
+          "test_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Test Id"
+          },
+          "name": {
+            "type": "string",
+            "title": "Name"
+          },
+          "division_code": {
+            "type": "string",
+            "title": "Division Code"
+          },
+          "division_name": {
+            "type": "string",
+            "title": "Division Name"
+          },
+          "state": {
+            "type": "string",
+            "enum": [
+              "none",
+              "check",
+              "single",
+              "soon",
+              "no_items",
+              "ok"
+            ],
+            "title": "State"
+          },
+          "bottleneck": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Bottleneck"
+          },
+          "ready": {
+            "type": "integer",
+            "title": "Ready"
+          },
+          "items": {
+            "items": {
+              "$ref": "#/components/schemas/CoverageItemOut"
+            },
+            "type": "array",
+            "title": "Items"
+          },
+          "conditions_asked": {
+            "type": "integer",
+            "title": "Conditions Asked"
+          },
+          "skipped_conditions": {
+            "type": "integer",
+            "title": "Skipped Conditions"
+          }
+        },
+        "type": "object",
+        "required": [
+          "test_id",
+          "name",
+          "division_code",
+          "division_name",
+          "state",
+          "bottleneck",
+          "ready",
+          "items",
+          "conditions_asked",
+          "skipped_conditions"
+        ],
+        "title": "CoverageRowOut",
+        "description": "현황판 — 신뢰성 시험 한 줄."
       },
       "CreateAccountRequest": {
         "properties": {
@@ -25852,6 +26110,102 @@
           "truncated"
         ],
         "title": "SubgraphOut"
+      },
+      "SupersededRefOut": {
+        "properties": {
+          "kind": {
+            "type": "string",
+            "title": "Kind"
+          },
+          "target_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Target Id"
+          },
+          "target_label": {
+            "type": "string",
+            "title": "Target Label"
+          },
+          "owner": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Owner"
+          },
+          "owner_id": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "uuid"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Owner Id"
+          },
+          "detail": {
+            "type": "string",
+            "title": "Detail"
+          },
+          "link": {
+            "type": "string",
+            "title": "Link"
+          },
+          "method_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Method Id"
+          },
+          "method_label": {
+            "type": "string",
+            "title": "Method Label"
+          },
+          "successor_id": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "uuid"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Successor Id"
+          },
+          "successor_label": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Successor Label"
+          }
+        },
+        "type": "object",
+        "required": [
+          "kind",
+          "target_id",
+          "target_label",
+          "owner",
+          "owner_id",
+          "detail",
+          "link",
+          "method_id",
+          "method_label",
+          "successor_id",
+          "successor_label"
+        ],
+        "title": "SupersededRefOut",
+        "description": "대체된 규격을 아직 가리키는 줄 하나 — 신뢰성 시험의 근거 규격이나 장비 시험 항목."
       },
       "SystemAdminRequest": {
         "properties": {

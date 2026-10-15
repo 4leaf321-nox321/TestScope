@@ -172,6 +172,12 @@ export default function ReliabilityTestsPage() {
         back={useBackFromReference()}
         title="신뢰성 시험"
         description="전 부서의 제품 개발·검증 시험을 한 표로 조회. 등록·수정은 해당 부서 화면(사이드바 아래 부서 이름)에서 가능."
+        actions={
+          // 시험마다 「지금 돌릴 장비가 몇 대인가」 — 0대 · 1대뿐 · 교정 임박을 한눈에.
+          <Button variant="outline" asChild>
+            <Link to="/reliability-tests/coverage">수행 가능 현황</Link>
+          </Button>
+        }
       />
 
       {/* 조건 속성으로 거르기 — 「-40 °C 이하로 내려가는 시험」 을 물을 수 있어야 조건을 적는다. */}

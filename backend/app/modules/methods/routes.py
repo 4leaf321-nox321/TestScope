@@ -11,7 +11,7 @@ from sqlalchemy.orm import Session
 from app.database import get_db
 from app.modules.accounts.models import User
 from app.modules.equipment.schemas import ImportColumn
-from app.modules.methods import imports, services
+from app.modules.methods import impact, imports, services
 from app.modules.methods.schemas import (
     DetachImpact,
     DetachRequest,
@@ -24,9 +24,11 @@ from app.modules.methods.schemas import (
     RequirementImportResult,
     RequirementOut,
     RequirementUpsertRequest,
+    SupersededRefOut,
 )
 from app.shared.auth import current_user, require_system_admin
 from app.shared.pagination import MAX_LIMIT, Page, clamp_limit
+from app.shared.permissions import division_map, my_workspace_ids
 
 router = APIRouter(prefix="/methods", tags=["methods"])
 
@@ -119,6 +121,26 @@ def import_requirements(
     옛 규격으로 장비를 좁힌다.
     """
     return imports.run(db, user, payload.text, dry_run=dry_run)
+
+
+@router.get("/superseded-refs", response_model=list[SupersededRefOut])
+def superseded_refs(
+    everything: bool = Query(default=False, alias="all"),
+    user: User = Depends(current_user),
+    db: Session = Depends(get_db),
+) -> list[SupersededRefOut]:
+    """**대체된 규격을 아직 가리키는 곳** — 신뢰성 시험의 근거 규격 · 장비 시험 항목.
+
+    기본은 **내 소속**(부서 · 그 사업부)의 것. `all=true` 거나 시스템 관리자면 전부.
+    새 판으로 고치면 목록에서 저절로 빠진다(계산이지 기록이 아니다).
+    """
+    if everything or user.is_system_admin:
+        return impact.superseded_refs(db)
+    workspaces = set(my_workspace_ids(db, user))
+    divisions = {
+        found for wid in workspaces if (found := division_map(db).get(wid)) is not None
+    }
+    return impact.superseded_refs(db, divisions=divisions, workspaces=workspaces)
 
 
 @router.get("/{method_id}", response_model=MethodOut)

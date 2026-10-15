@@ -9,6 +9,7 @@ export type RequirementImportResult = components['schemas']['RequirementImportRe
 export type RequirementImportRow = components['schemas']['RequirementImportRow']
 export type LinkCitationsResult = components['schemas']['LinkCitationsResult']
 export type DetachImpact = components['schemas']['DetachImpact']
+export type SupersededRef = components['schemas']['SupersededRefOut']
 type MethodPage = components['schemas']['Page_MethodOut_']
 
 export const methodApi = {
@@ -39,6 +40,9 @@ export const methodApi = {
     return api.get<MethodPage>(`/methods${query ? `?${query}` : ''}`)
   },
   read: (id: string) => api.get<TestMethod>(`/methods/${id}`),
+  /** 대체된 규격을 아직 가리키는 곳. 기본은 내 소속, `all` 이면 전부(시스템 관리자는 늘 전부). */
+  supersededRefs: (all = false) =>
+    api.get<SupersededRef[]>(`/methods/superseded-refs${all ? '?all=true' : ''}`),
   create: (body: Record<string, unknown>) => api.post<TestMethod>('/methods', body),
   update: (id: string, body: Record<string, unknown>) =>
     api.patch<TestMethod>(`/methods/${id}`, body),

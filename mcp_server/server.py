@@ -116,6 +116,7 @@ ROUTING = """물음별 첫 도구 (상세는 각 도구 설명과 get_guide):
   말로만 아는 대상 찾기          resolve · search_semantic · graph_search
   이름 하나를 id로               resolve (계열·기종·값·규격·시험·장비·부서 전부)
   우리 부서 시험 절차            list_reliability_tests · test_capability
+  장비가 모자란 시험(현황)       test_capability(division=…)  (test_id 없이)
   장비 대장 반입                 import_equipment (한 대면 register_equipment)
   장비 한 대 수정                get_equipment · update_equipment · add_equipment_test_item
   교정 이력/만료 시점            get_calibrations · list_calibrations_due
@@ -3081,10 +3082,15 @@ async def compare_revisions(ctx: Context, before: str, after: str) -> dict[str, 
 
 
 @mcp.tool()
-async def test_capability(ctx: Context, test_id: str) -> dict[str, Any]:
+async def test_capability(
+    ctx: Context, test_id: str | None = None, division: str | None = None
+) -> dict[str, Any]:
     """**이 시험을 수행할 수 있는 장비** 조회. 이 시스템이 답하는 물음의 마지막 단계.
 
-    `test_id`는 `resolve(kind="reliability_test", …)`가 준 값 사용.
+    `test_id`는 `resolve(kind="reliability_test", …)`가 준 값 사용. **`test_id` 없이 부르면
+    수행 가능 현황**: 확정된 최신판 시험마다 돌릴 수 있는 장비 수와 상태(`none` 불가 · `check`
+    확인 필요 · `single` 1대뿐 · `soon` 교정 임박 · `no_items` · `ok`). `division`은 사업부 코드.
+    「장비가 모자란 시험」 · 「1대뿐인 시험」 은 이것 한 번.
 
     이 시험의 조건 속성이 그대로 검색 조건이 되어(범위 하나는 상한·하한 두 물음) 시험 항목마다
     장비를 판정. 부서로 좁히지 않음(옆 부서 장비도 대여 가능).
@@ -3106,6 +3112,14 @@ async def test_capability(ctx: Context, test_id: str) -> dict[str, Any]:
     금지(그런 장비는 시험 항목 미기재로 검색에 안 걸리며 기재는 사람의 몫). 구매 후보는
     `search_catalog` 한 번.
     """
+    if not test_id:
+        board = await _get(
+            ctx, "/reliability-tests/coverage", {"division": division} if division else None
+        )
+        return _then(
+            board,
+            "이것이 답. 상태는 병목 시험 항목이 정함 — 한 시험의 장비 목록은 test_id로 재호출.",
+        )
     found = await _get(ctx, f"/reliability-tests/{test_id}/equipment")
     total = (
         sum(int(one.get("total") or 0) for one in found.get("items", []))

@@ -20,6 +20,7 @@ ACCOUNT_PENDING = "account.pending"
 ACCOUNT_APPROVED = "account.approved"
 CALIBRATION_DUE = "calibration.due"
 EQUIPMENT_STATUS_CHANGED = "equipment.status_changed"
+METHOD_SUPERSEDED = "method.superseded"
 
 
 def notify(

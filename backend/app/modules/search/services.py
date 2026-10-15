@@ -140,7 +140,14 @@ def _series_by_equipment(
 _CONFIDENCE_RANK = {"verified": 0, "catalog": 1, "limited": 2}
 
 
-def search(db: Session, user: User, request: SearchRequest) -> SearchResponse:
+def judge(
+    db: Session, user: User, request: SearchRequest
+) -> tuple[list[tuple[EquipmentTestItem, str, list[ConditionMatch]]], int]:
+    """**판정만** — (시험 항목, 종합 판정, 조건별 판정) 목록과 조건에 걸려 빠진 수.
+
+    `search` 가 이것으로 결과 줄을 만들고, 신뢰성 시험 현황판(`reliability.coverage`)은 줄을
+    안 만들고 이것만 센다 — 판정 규칙이 두 벌이면 같은 장비를 놓고 두 화면이 다른 답을 한다.
+    """
     candidates = _candidates(db, user, request)
     limits = _limits_by_key(db, [one.id for one in candidates])
 
@@ -159,7 +166,7 @@ def search(db: Session, user: User, request: SearchRequest) -> SearchResponse:
         db, user, set(series_of.values()), request.conditions, keys
     )
 
-    hits: list[SearchHit] = []
+    judged: list[tuple[EquipmentTestItem, str, list[ConditionMatch]]] = []
     unmet = 0
     for test_item in candidates:
         matches: list[ConditionMatch] = []
@@ -188,7 +195,14 @@ def search(db: Session, user: User, request: SearchRequest) -> SearchResponse:
         if verdict is None:
             unmet += 1
             continue
+        judged.append((test_item, verdict, matches))
+    return judged, unmet
 
+
+def search(db: Session, user: User, request: SearchRequest) -> SearchResponse:
+    judged, unmet = judge(db, user, request)
+    hits: list[SearchHit] = []
+    for test_item, verdict, matches in judged:
         equipment = db.get(Equipment, test_item.equipment_id)
         if equipment is None:  # pragma: no cover - FK 가 막는다
             continue

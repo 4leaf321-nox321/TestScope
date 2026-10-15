@@ -50,6 +50,8 @@ const EquipmentPage = lazy(() => import('@/modules/equipment/EquipmentPage'))
 const MembersPage = lazy(() => import('@/modules/workspaces/MembersPage'))
 const MethodDetailPage = lazy(() => import('@/modules/methods/MethodDetailPage'))
 const MethodsPage = lazy(() => import('@/modules/methods/MethodsPage'))
+const SupersededRefsPage = lazy(() => import('@/modules/methods/SupersededRefsPage'))
+const CoveragePage = lazy(() => import('@/modules/reliability/CoveragePage'))
 const NoticesPage = lazy(() => import('@/modules/notices/NoticesPage'))
 const NotificationsPage = lazy(() => import('@/modules/notifications/NotificationsPage'))
 const ProfilePage = lazy(() => import('@/modules/auth/ProfilePage'))
@@ -129,6 +131,9 @@ export const router = createBrowserRouter([
           // 부서 하나의 신뢰성 시험 — 사이드바 「신뢰성 시험」 아래 자식. 「시험 항목」
           // (카탈로그)과 다른 층이라 주소도 다르다. 모양은 navigation.ts 의 reliabilityHref 와 같다.
           { path: 'reliability-tests', element: <ReliabilityTestsPage /> },
+          // 수행 가능 현황 — `:slug`(사업부 코드)보다 앞에 둔다. 고정 경로가 이기지만 읽는
+          // 사람에게도 그 순서가 보이게.
+          { path: 'reliability-tests/coverage', element: <CoveragePage /> },
           { path: 'reliability-tests/:slug', element: <WorkspaceReliabilityPage /> },
 
           // 카탈로그 — 세상에 있는 것. 보유 장비가 이 둘을 엮은 인스턴스다(ADR 0004).
@@ -143,6 +148,7 @@ export const router = createBrowserRouter([
           { path: 'catalog/test-items', element: <TestItemsCatalogPage /> },
           { path: 'catalog/test-items/:id', element: <TestItemCatalogDetailPage /> },
           { path: 'methods', element: <MethodsPage /> },
+          { path: 'methods/superseded-refs', element: <SupersededRefsPage /> },
           { path: 'methods/:id', element: <MethodDetailPage /> },
           ...stubs,
 

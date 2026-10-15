@@ -343,6 +343,55 @@ class CapabilitySetOut(BaseModel):
     items: list[CapabilityItemOut]
 
 
+class CoverageItemOut(BaseModel):
+    """현황판 — 시험 항목 하나의 장비 수."""
+
+    term_id: uuid.UUID
+    value: str
+    ready: int
+    """돌릴 수 있는 장비 — 조건이 다 맞고(match · accessory) 교정이 유효하다."""
+    in_division: int
+    """`ready` 중 시험의 사업부가 가진 것. 나머지는 옆 사업부에서 빌린다."""
+    soon: int
+    """`ready` 중 교정이 곧(`horizon_days` 안에) 끝나는 것."""
+    check: int
+    """확인 필요 — 조건 일부가 장비에 안 적혀 있거나 교정 대상인데 이력이 없다."""
+    expired: int
+    """교정 기한이 지나 뺀 장비."""
+
+
+class CoverageRowOut(BaseModel):
+    """현황판 — 신뢰성 시험 한 줄."""
+
+    test_id: uuid.UUID
+    name: str
+    division_code: str
+    division_name: str
+    state: Literal["none", "check", "single", "soon", "no_items", "ok"]
+    """병목 항목이 정한다: none(0대) · check(0대, 확인할 것 있음) · single(1대뿐) ·
+    soon(교정이 끝나면 1대 이하) · no_items(시험 항목 없음) · ok(여유)."""
+    bottleneck: str | None
+    """상태를 정한 시험 항목."""
+    ready: int
+    """병목 항목의 `ready`."""
+    items: list[CoverageItemOut]
+    conditions_asked: int
+    """검색에 넘긴 조건 물음 수(범위 하나는 물음 둘)."""
+    skipped_conditions: int
+    """단위를 못 옮겨 빼고 물은 조건 수 — 0 이 아니면 답이 실제보다 넓다."""
+
+
+class CoverageOut(BaseModel):
+    """신뢰성 시험 수행 가능 현황."""
+
+    computed_at: datetime
+    horizon_days: int
+    """「교정 임박」 의 기간(일). 알림 · 홈과 같은 값."""
+    counts: dict[str, int]
+    """상태마다 시험 수."""
+    rows: list[CoverageRowOut]
+
+
 class CapabilityOut(BaseModel):
     """「이 시험, 어느 장비로 돌리나」 의 답 — 조건 속성을 그대로 검색 조건으로 옮긴 것."""
 

@@ -2222,6 +2222,29 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/api/methods/superseded-refs": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * Superseded Refs
+         * @description **대체된 규격을 아직 가리키는 곳** — 신뢰성 시험의 근거 규격 · 장비 시험 항목.
+         *
+         *     기본은 **내 소속**(부서 · 그 사업부)의 것. `all=true` 거나 시스템 관리자면 전부.
+         *     새 판으로 고치면 목록에서 저절로 빠진다(계산이지 기록이 아니다).
+         */
+        get: operations["superseded_refs_api_methods_superseded_refs_get"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/api/methods/{method_id}": {
         parameters: {
             query?: never;
@@ -2789,6 +2812,30 @@ export interface paths {
          *     **`/{test_id}` 보다 먼저 선언한다.**
          */
         post: operations["capability_preview_api_reliability_tests_capability_preview_post"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/reliability-tests/coverage": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * Coverage
+         * @description **수행 가능 현황** — 확정된 최신판 신뢰성 시험마다 지금 돌릴 수 있는 장비 수.
+         *
+         *     「되는 장비」 와 같은 판정(조건 · 장비 상태)에 교정을 더한다: 교정 만료 장비는 빼고, 교정
+         *     대상인데 이력이 없으면 「확인 필요」. 시험의 상태는 가장 적은 시험 항목(병목)이 정한다 —
+         *     불가 · 확인 필요 · 1대뿐 · 교정 임박 · 항목 없음 · 여유. `division` 은 사업부 코드.
+         */
+        get: operations["coverage_api_reliability_tests_coverage_get"];
+        put?: never;
+        post?: never;
         delete?: never;
         options?: never;
         head?: never;
@@ -5328,6 +5375,80 @@ export interface components {
             count: number;
             /** Attr */
             attr: string | null;
+        };
+        /**
+         * CoverageItemOut
+         * @description 현황판 — 시험 항목 하나의 장비 수.
+         */
+        CoverageItemOut: {
+            /**
+             * Term Id
+             * Format: uuid
+             */
+            term_id: string;
+            /** Value */
+            value: string;
+            /** Ready */
+            ready: number;
+            /** In Division */
+            in_division: number;
+            /** Soon */
+            soon: number;
+            /** Check */
+            check: number;
+            /** Expired */
+            expired: number;
+        };
+        /**
+         * CoverageOut
+         * @description 신뢰성 시험 수행 가능 현황.
+         */
+        CoverageOut: {
+            /**
+             * Computed At
+             * Format: date-time
+             */
+            computed_at: string;
+            /** Horizon Days */
+            horizon_days: number;
+            /** Counts */
+            counts: {
+                [key: string]: number;
+            };
+            /** Rows */
+            rows: components["schemas"]["CoverageRowOut"][];
+        };
+        /**
+         * CoverageRowOut
+         * @description 현황판 — 신뢰성 시험 한 줄.
+         */
+        CoverageRowOut: {
+            /**
+             * Test Id
+             * Format: uuid
+             */
+            test_id: string;
+            /** Name */
+            name: string;
+            /** Division Code */
+            division_code: string;
+            /** Division Name */
+            division_name: string;
+            /**
+             * State
+             * @enum {string}
+             */
+            state: "none" | "check" | "single" | "soon" | "no_items" | "ok";
+            /** Bottleneck */
+            bottleneck: string | null;
+            /** Ready */
+            ready: number;
+            /** Items */
+            items: components["schemas"]["CoverageItemOut"][];
+            /** Conditions Asked */
+            conditions_asked: number;
+            /** Skipped Conditions */
+            skipped_conditions: number;
         };
         /**
          * CreateAccountRequest
@@ -8938,6 +9059,40 @@ export interface components {
             offset: number;
             /** Truncated */
             truncated: boolean;
+        };
+        /**
+         * SupersededRefOut
+         * @description 대체된 규격을 아직 가리키는 줄 하나 — 신뢰성 시험의 근거 규격이나 장비 시험 항목.
+         */
+        SupersededRefOut: {
+            /** Kind */
+            kind: string;
+            /**
+             * Target Id
+             * Format: uuid
+             */
+            target_id: string;
+            /** Target Label */
+            target_label: string;
+            /** Owner */
+            owner: string | null;
+            /** Owner Id */
+            owner_id: string | null;
+            /** Detail */
+            detail: string;
+            /** Link */
+            link: string;
+            /**
+             * Method Id
+             * Format: uuid
+             */
+            method_id: string;
+            /** Method Label */
+            method_label: string;
+            /** Successor Id */
+            successor_id: string | null;
+            /** Successor Label */
+            successor_label: string | null;
         };
         /**
          * SystemAdminRequest
@@ -14073,6 +14228,37 @@ export interface operations {
             };
         };
     };
+    superseded_refs_api_methods_superseded_refs_get: {
+        parameters: {
+            query?: {
+                all?: boolean;
+            };
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["SupersededRefOut"][];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
     read_method_api_methods__method_id__get: {
         parameters: {
             query?: never;
@@ -15097,6 +15283,37 @@ export interface operations {
                 };
                 content: {
                     "application/json": components["schemas"]["CapabilityOut"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    coverage_api_reliability_tests_coverage_get: {
+        parameters: {
+            query?: {
+                division?: string | null;
+            };
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["CoverageOut"];
                 };
             };
             /** @description Validation Error */

@@ -13,11 +13,13 @@ from app.modules.accounts.models import User
 from app.modules.attributes import services as attributes
 from app.modules.attributes.schemas import AttributeValueOut
 from app.modules.reliability import capability as capability_service
+from app.modules.reliability import coverage as coverage_service
 from app.modules.reliability import proposals as proposal_service
 from app.modules.reliability import services
 from app.modules.reliability.schemas import (
     CapabilityOut,
     CapabilityPreviewRequest,
+    CoverageOut,
     DivisionOut,
     ReliabilityBatchOut,
     ReliabilityBatchRequest,
@@ -163,6 +165,24 @@ def capability_preview(
         user,
         test_item_term_ids=payload.test_item_term_ids,
         items=payload.attributes,
+    )
+
+
+@router.get("/coverage", response_model=CoverageOut)
+def coverage(
+    division: str | None = Query(default=None, max_length=120),
+    user: User = Depends(current_user),
+    db: Session = Depends(get_db),
+) -> CoverageOut:
+    """**수행 가능 현황** — 확정된 최신판 신뢰성 시험마다 지금 돌릴 수 있는 장비 수.
+
+    「되는 장비」 와 같은 판정(조건 · 장비 상태)에 교정을 더한다: 교정 만료 장비는 빼고, 교정
+    대상인데 이력이 없으면 「확인 필요」. 시험의 상태는 가장 적은 시험 항목(병목)이 정한다 —
+    불가 · 확인 필요 · 1대뿐 · 교정 임박 · 항목 없음 · 여유. `division` 은 사업부 코드.
+    """
+    term = services.division_by_code(db, division) if division else None
+    return coverage_service.board(
+        db, user, division_term_id=term.id if term is not None else None
     )
 
 

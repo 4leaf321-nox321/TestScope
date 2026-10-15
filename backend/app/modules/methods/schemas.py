@@ -38,6 +38,27 @@ class CitedSeriesOut(BaseModel):
     pending: bool
 
 
+class SupersededRefOut(BaseModel):
+    """대체된 규격을 아직 가리키는 줄 하나 — 신뢰성 시험의 근거 규격이나 장비 시험 항목."""
+
+    kind: str
+    """`reliability_test` · `equipment`."""
+    target_id: uuid.UUID
+    target_label: str
+    owner: str | None
+    """신뢰성 시험이면 사업부, 장비면 보유 부서."""
+    owner_id: uuid.UUID | None
+    detail: str
+    """무엇으로 가리키나 — 신뢰성 시험이면 속성 이름(근거 규격), 장비면 시험 항목."""
+    link: str
+    method_id: uuid.UUID
+    method_label: str
+    """대체된 규격(옛 판)."""
+    successor_id: uuid.UUID | None
+    successor_label: str | None
+    """대체한 규격(새 판). 적혀 있지 않으면 없다."""
+
+
 class MergeRequest(Request):
     """이 규격을 다른 규격으로 합친다 — 시스템 관리자. 사유는 감사 기록에 남는다."""
 

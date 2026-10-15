@@ -209,12 +209,21 @@ export default function DivisionReliabilityPage() {
             : undefined
         }
         actions={
-          canEdit && (
-            <Button onClick={() => setCreating(true)}>
-              <Plus className="size-4" />
-              신뢰성 시험 등록
-            </Button>
-          )
+          <div className="flex gap-2">
+            {division && (
+              <Button variant="outline" asChild>
+                <Link to={`/reliability-tests/coverage?division=${division.code}`}>
+                  수행 가능 현황
+                </Link>
+              </Button>
+            )}
+            {canEdit && (
+              <Button onClick={() => setCreating(true)}>
+                <Plus className="size-4" />
+                신뢰성 시험 등록
+              </Button>
+            )}
+          </div>
         }
       />
 

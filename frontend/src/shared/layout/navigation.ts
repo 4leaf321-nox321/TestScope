@@ -24,6 +24,7 @@ import {
   ScrollText,
   Search,
   Server,
+  ShieldCheck,
   Tags,
   UserCog,
   Users,
@@ -116,6 +117,14 @@ export const NAV_GROUPS: NavGroup[] = [
         to: '/reliability-tests',
         expands: 'reliability-divisions',
         summary: '부서별 수행 신뢰성 시험 전체 표. 아래에서 부서 선택 시 부서별 조회.',
+      },
+      {
+        // **그 시험을 지금 돌릴 수 있나.** 시험마다 장비 수 — 0대 · 1대뿐 · 교정 임박. 「되는
+        // 장비」 창을 하나씩 열면 답은 있지만 모자란 시험을 한눈에 볼 자리가 없었다(2026-10-16).
+        label: '수행 가능 현황',
+        icon: ShieldCheck,
+        to: '/reliability-tests/coverage',
+        summary: '신뢰성 시험마다 지금 돌릴 수 있는 장비 수. 0대·1대뿐·교정 임박 시험 확인.',
       },
       {
         // **실물이다.** 카탈로그의 모델을 가리켜 만든 개체 — 자산번호·자리·상태·

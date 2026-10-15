@@ -13,6 +13,8 @@
   할 일이고, 관리자가 장비를 책임진다.
 - **교정 만료 임박·초과** → 소유 부서의 관리자. 외부 교정을 잡는 사람. 60일 전과 지난 뒤
   두 번.
+- **대체된 규격을 아직 가리킴** → 그 신뢰성 시험의 사업부 · 그 장비의 부서 관리자. 규격 하나에
+  한 번 — 옛 판을 근거로 한 시험 · 장비 시험 항목 수를 함께 말한다(2026-10-16).
 
 가입 **거절**은 안 보낸다 — 거절된 계정은 로그인을 못 하니 읽을 수 없고, 읽을 수 없는
 알림은 「보냈다」 는 기록만 남긴다. 사유는 계정의 `decision_note` 에 있다.
@@ -28,14 +30,17 @@ from __future__ import annotations
 
 import uuid
 from datetime import date
+from typing import Any
 
 from sqlalchemy import func, select
 from sqlalchemy.orm import Session
 
 from app.modules.accounts.models import User
 from app.modules.equipment.models import Equipment, EquipmentCalibration
+from app.modules.methods.impact import superseded_refs
 from app.modules.notifications import services
 from app.modules.workspaces.models import Workspace, WorkspaceMember
+from app.shared.permissions import my_division_term_ids
 
 #: 교정 만료를 「곧」 으로 볼 기간. 서버 화면의 「곧 만료」 와 같은 60일이다.
 CALIBRATION_HORIZON_DAYS = 60
@@ -121,6 +126,50 @@ def equipment_status_changed(
             body=f"변경자: {actor.display_name or actor.email}",
             link=f"/equipment/{equipment.id}",
         )
+
+
+def sweep_superseded(db: Session, user: User) -> int:
+    """이 사람이 관리하는 부서 · 사업부에서 **대체된 규격을 아직 가리키는 곳**을 규격마다
+    알린다.
+
+    규격 하나에 한 번(`dedupe_key`) — 같은 규격을 가리키는 줄이 늘어도 다시 안 운다. 지금
+    몇 곳이 남았는지는 홈 「남은 일」 이 늘 센다.
+    """
+    workspaces = set(
+        db.scalars(
+            select(WorkspaceMember.workspace_id).where(
+                WorkspaceMember.user_id == user.id, WorkspaceMember.role == "manager"
+            )
+        )
+    )
+    if not workspaces:
+        return 0
+    refs = superseded_refs(db, divisions=my_division_term_ids(db, user), workspaces=workspaces)
+    by_method: dict[uuid.UUID, list[Any]] = {}
+    for one in refs:
+        by_method.setdefault(one.method_id, []).append(one)
+    made = 0
+    for method_id, rows in by_method.items():
+        tests = sum(1 for one in rows if one.kind == "reliability_test")
+        items = sum(1 for one in rows if one.kind == "equipment")
+        first = rows[0]
+        parts = [
+            f"신뢰성 시험 {tests}건" if tests else "",
+            f"장비 시험 항목 {items}건" if items else "",
+        ]
+        after = f" → {first.successor_label}" if first.successor_label else ""
+        row = services.notify(
+            db,
+            user_id=user.id,
+            kind=services.METHOD_SUPERSEDED,
+            title=f"대체된 규격 {first.method_label}{after}",
+            body=f"{' · '.join(part for part in parts if part)}이 옛 판을 근거로 함",
+            link="/methods/superseded-refs",
+            dedupe_key=f"{services.METHOD_SUPERSEDED}:{method_id}",
+        )
+        if row is not None:
+            made += 1
+    return made
 
 
 def sweep_calibration(db: Session, user: User, *, today: date | None = None) -> int:

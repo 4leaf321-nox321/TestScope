@@ -128,6 +128,35 @@ def _due(db: Session, row: Equipment) -> tuple[date | None, bool, bool]:
     return _due_from(row, last if last is None else (last[0], last[1]))
 
 
+def calibration_dues(
+    db: Session, equipment_ids: list[uuid.UUID]
+) -> dict[uuid.UUID, tuple[date | None, bool, bool]]:
+    """장비마다 (다음 교정일 · 계산값인가 · 대상인데 이력이 없나) — 목록 · 상세와 **같은 셈**
+    (`_due_from`). 여러 대를 한 번에 — 신뢰성 시험 현황판이 쓴다."""
+    if not equipment_ids:
+        return {}
+    last = {
+        equipment_id: (calibrated_on, next_due_on)
+        for equipment_id, calibrated_on, next_due_on in db.execute(
+            select(
+                EquipmentCalibration.equipment_id,
+                EquipmentCalibration.calibrated_on,
+                EquipmentCalibration.next_due_on,
+            )
+            .where(EquipmentCalibration.equipment_id.in_(equipment_ids))
+            .distinct(EquipmentCalibration.equipment_id)
+            .order_by(
+                EquipmentCalibration.equipment_id,
+                EquipmentCalibration.calibrated_on.desc(),
+            )
+        ).all()
+    }
+    return {
+        row.id: _due_from(row, last.get(row.id))
+        for row in db.scalars(select(Equipment).where(Equipment.id.in_(equipment_ids)))
+    }
+
+
 def _due_from(
     row: Equipment, last: tuple[date | None, date | None] | None
 ) -> tuple[date | None, bool, bool]:

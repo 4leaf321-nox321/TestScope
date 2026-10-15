@@ -141,6 +141,14 @@ def _conditions(
     return queries, skipped
 
 
+def asked_conditions(
+    db: Session, test_id: uuid.UUID
+) -> tuple[list[ConditionQuery], list[SkippedConditionOut]]:
+    """이 시험이 **모든 묶음을 한꺼번에** 묻는 조건 — `capability` 의 `items` 와 같은 물음.
+    현황판(`coverage`)이 같은 물음으로 세게 연다."""
+    return _conditions(db, test_id)
+
+
 def capability(db: Session, user: User, test: ReliabilityTest) -> CapabilityOut:
     """시험 항목마다 「이 조건으로 이 항목이 되는 장비」.
 

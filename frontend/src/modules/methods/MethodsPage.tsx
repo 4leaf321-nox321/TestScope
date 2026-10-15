@@ -92,6 +92,10 @@ export default function MethodsPage() {
         actions={
           isAnyManager(user) ? (
             <div className="flex flex-wrap gap-2">
+              {/* 옛 판(대체됨)을 아직 근거로 하는 시험·장비 — 남은 일과 알림이 같은 목록으로 온다. */}
+              <Button variant="outline" asChild>
+                <Link to="/methods/superseded-refs">대체된 규격 참조</Link>
+              </Button>
               <Button variant="outline" onClick={() => setImporting(true)}>
                 <Upload className="size-4" />
                 요구 조건 일괄 등록

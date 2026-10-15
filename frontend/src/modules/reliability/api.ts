@@ -16,6 +16,9 @@ export type RevisionCompare = components['schemas']['RevisionCompareOut']
 export type AttributeValueRow = components['schemas']['AttributeValueOut']
 export type SiblingTest = components['schemas']['SiblingTestOut']
 export type Page = components['schemas']['Page_ReliabilityTestOut_']
+export type Coverage = components['schemas']['CoverageOut']
+export type CoverageRow = components['schemas']['CoverageRowOut']
+export type CoverageState = CoverageRow['state']
 
 /** 한 쪽에 몇 줄. **운영에서 한 사업부에 1784건이 들어왔다** — 통째로 그리면 브라우저가
  *  멎는다(줄마다 속성·시험 항목·장비 수가 딸려 온다). */
@@ -46,6 +49,11 @@ export const reliabilityApi = {
   /** 사업부 목록 — 줄마다 **내가 올릴 수 있는지**(`can_register`)가 온다. 사이드바가
    *  이것으로 서고, 등록 창이 고를 것을 이것으로 좁힌다. */
   divisions: () => api.get<Division[]>('/reliability-tests/divisions'),
+  /** 수행 가능 현황 — 확정된 최신판 시험마다 지금 돌릴 수 있는 장비 수. `division` 은 사업부 코드. */
+  coverage: (division?: string) =>
+    api.get<Coverage>(
+      `/reliability-tests/coverage${division ? `?division=${encodeURIComponent(division)}` : ''}`,
+    ),
   /** 한 사업부의 신뢰성 시험 전부 — **후보까지.** 검토하는 자리가 사업부 화면이라 후보가
    *  먼저 온다. 시험마다 쓰는 시험 항목과 그 항목이 되는 이 사업부 장비 수. */
   list: (

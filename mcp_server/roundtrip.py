@@ -234,6 +234,12 @@ async def _write_chain(ctx: _Ctx) -> int:
         await server.test_capability(ctx, test["id"]),
         ["conditions_asked", "skipped"],
     )
+    # test_id 없이 — 수행 가능 현황(시험마다 장비 수 · 상태).
+    step(
+        "test_capability(현황)",
+        await server.test_capability(ctx, division="mx"),
+        ["counts", "rows"],
+    )
     step(
         "graph_node(새 시험)",
         await server.graph_node(ctx, f"reliability_test:{test['id']}"),

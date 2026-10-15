@@ -35,7 +35,10 @@ def _sweep(db: Session, user: User) -> None:
     if last is not None and (now - last).total_seconds() < SWEEP_EVERY_SECONDS:
         return
     _swept_at[user.id] = now
-    if rules.sweep_calibration(db, user):
+    # **둘 다 돈다** — `or` 로 묶으면 앞이 새로 만들었을 때 뒤가 안 돈다.
+    calibrations = rules.sweep_calibration(db, user)
+    superseded = rules.sweep_superseded(db, user)
+    if calibrations or superseded:
         db.commit()
 
 

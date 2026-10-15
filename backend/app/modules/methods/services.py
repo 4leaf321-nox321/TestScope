@@ -13,6 +13,7 @@ from sqlalchemy.orm import Session
 from app.modules.accounts.models import User
 from app.modules.attributes import filters as attribute_filters
 from app.modules.attributes import services as attributes
+from app.modules.attributes.models import AttributeValue
 from app.modules.attributes.schemas import AttributeValueIn
 from app.modules.equipment.models import EquipmentSeries
 from app.modules.methods.models import MethodRequirement, TestMethod, TestMethodItem
@@ -1046,6 +1047,12 @@ def merge_into(
         select(EquipmentTestItem).where(EquipmentTestItem.method_id == source.id)
     ):
         item.method_id = target.id
+    # **신뢰성 시험이 근거로 적은 규격도 옮긴다.** 안 옮기면 지워진 규격을 가리킨 채 남아
+    # 규격으로 찾을 때 안 걸린다(2026-10-16).
+    for value in db.scalars(
+        select(AttributeValue).where(AttributeValue.ref_method_id == source.id)
+    ):
+        value.ref_method_id = target.id
     for other in db.scalars(
         select(TestMethod).where(TestMethod.superseded_by_id == source.id)
     ):
