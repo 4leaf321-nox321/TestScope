@@ -25,6 +25,7 @@ from app.modules.auth import routes as auth_routes
 from app.modules.documents import routes as documents_routes
 from app.modules.equipment import routes as equipment_routes
 from app.modules.graph import routes as graph_routes
+from app.modules.hub import routes as hub_routes
 from app.modules.methods import routes as methods_routes
 from app.modules.notices import routes as notices_routes
 from app.modules.notifications import routes as notifications_routes
@@ -90,6 +91,7 @@ def _api_router() -> APIRouter:
     router.include_router(notifications_routes.router)
     router.include_router(audit_routes.router)
     router.include_router(server_routes.router)
+    router.include_router(hub_routes.router)
 
     return router
 

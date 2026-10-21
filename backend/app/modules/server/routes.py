@@ -27,6 +27,7 @@ from app.modules.equipment.models import (
     EquipmentSeries,
     ModelSpecValue,
 )
+from app.modules.hub.models import CoreSyncRun, HubConnection
 from app.modules.methods.impact import superseded_refs
 from app.modules.methods.models import MethodRequirement, TestMethod, TestMethodItem
 from app.modules.reliability.models import ReliabilityTest, TestItemProposal
@@ -442,6 +443,34 @@ def maintenance(
                     severity="warning",
                 )
             )
+        # **기준정보 허브 수신** — 마지막 수신이 실패했거나 허브 구조가 바뀌었으면. 연계를
+        # 고치는 사람은 시스템 관리자다(요청서 FR-02 · FR-13).
+        # 사람은 시스템 관리자다(요청서 FR-02 · FR-13).
+        hub_conn = db.scalar(select(HubConnection).limit(1))
+        if hub_conn is not None and hub_conn.base_url:
+            last_run = db.scalar(
+                select(CoreSyncRun).order_by(CoreSyncRun.started_at.desc()).limit(1)
+            )
+            if last_run is not None and last_run.status in ("failed", "partial"):
+                items.append(
+                    MaintenanceItemOut(
+                        key="hub_sync_failed",
+                        label="기준정보 허브 수신 실패",
+                        count=len(last_run.errors or []) or 1,
+                        link="/admin/hub",
+                        severity="warning",
+                    )
+                )
+            if hub_conn.catalog_changed_at is not None:
+                items.append(
+                    MaintenanceItemOut(
+                        key="hub_catalog_changed",
+                        label="기준정보 허브 구조 변경 확인",
+                        count=1,
+                        link="/admin/hub",
+                        severity="info",
+                    )
+                )
 
         pending = _count(db, User, User.status == "pending", User.deleted_at.is_(None))
         if pending:

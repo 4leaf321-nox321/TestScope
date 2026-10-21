@@ -19,7 +19,7 @@ from fastapi.testclient import TestClient
 
 from tests.api.conftest import Signed
 
-DOMAINS = {"equipment", "catalog", "method", "common"}
+DOMAINS = {"equipment", "catalog", "method", "common", "hub"}
 
 
 def _axes(client: TestClient, admin: Signed) -> list[dict[str, Any]]:

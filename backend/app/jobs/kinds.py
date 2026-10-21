@@ -17,3 +17,5 @@ from __future__ import annotations
 #: 저장하는 사람이 그 대가를 매번 치르게 된다. 주기로도 돈다 — 카탈로그가 바뀌었는데
 #: 색인이 옛 것이면 검색이 조용히 옛 답을 준다.
 SEARCH_REINDEX = "search.reindex"
+#: 기준정보 허브 수신 — 야간 1회 · 수동 · 주간 전량 대조(`app.modules.hub.jobs`).
+HUB_SYNC = "hub.sync"

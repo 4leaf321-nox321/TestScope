@@ -30,6 +30,13 @@ from app.modules.equipment.models import (
     SeriesRelation,
     SpecSource,
 )
+from app.modules.hub.models import (
+    CoreItem,
+    CoreRelation,
+    CoreSyncRun,
+    CoreSyncState,
+    HubConnection,
+)
 from app.modules.methods.models import MethodRequirement, TestMethod, TestMethodItem
 from app.modules.notices.models import Notice, NoticeRead
 from app.modules.notifications.models import Notification
@@ -71,6 +78,10 @@ __all__ = [
     "AuditEntry",
     "Base",
     "ConditionKey",
+    "CoreItem",
+    "CoreRelation",
+    "CoreSyncRun",
+    "CoreSyncState",
     "Equipment",
     "EquipmentCalibration",
     "EquipmentModel",
@@ -79,6 +90,7 @@ __all__ = [
     "EquipmentSpecValue",
     "EquipmentTestCondition",
     "EquipmentTestItem",
+    "HubConnection",
     "Job",
     "MethodRequirement",
     "ModelFreeSpec",

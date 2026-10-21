@@ -13,6 +13,8 @@ import {
   Building2,
   CheckSquare,
   ClipboardList,
+  CloudDownload,
+  Database,
   FileText,
   Gauge,
   Home,
@@ -240,6 +242,14 @@ export const NAV_GROUPS: NavGroup[] = [
         to: '/graph',
       },
       {
+        // **기준정보 허브(StandardPlatform)에서 받은 것.** 개발모델 · 과제 같은 플랫폼 공통
+        // 기준정보 — 누구나 보고, 고치는 곳은 허브다(2026-10-21).
+        label: '허브 기준정보',
+        icon: Database,
+        to: '/hub',
+        summary: '기준정보 허브에서 받은 개발모델·과제 등. 조회 전용, 시험·장비 칸에서 선택.',
+      },
+      {
         // **후보와 근거를 보고 도메인 전문가가 고르는 자리.** 반입이 못 정한 것(어느 시험의
         // 규격인가 · 무슨 조건을 묻나 …)이 흩어진 화면마다 「미정」 으로 서 있었다.
         label: '검토함',
@@ -304,6 +314,13 @@ export const NAV_GROUPS: NavGroup[] = [
         label: '카탈로그 보강',
         icon: PackageSearch,
         to: '/admin/catalog-gaps',
+        audience: 'system_admin',
+      },
+      {
+        // **허브에서 받는 연계** — 주소 · 토큰 · 받을 타입 · 야간 시각, 수신 현황과 이력.
+        label: '허브 연계',
+        icon: CloudDownload,
+        to: '/admin/hub',
         audience: 'system_admin',
       },
       {

@@ -13,6 +13,8 @@
   할 일이고, 관리자가 장비를 책임진다.
 - **교정 만료 임박·초과** → 소유 부서의 관리자. 외부 교정을 잡는 사람. 60일 전과 지난 뒤
   두 번.
+- **허브 수신 실패 · 허브 구조 변경** → 시스템 관리자 전원. 연계를 고치는 사람이다(요청서
+  FR-02 · FR-13).
 - **대체된 규격을 아직 가리킴** → 그 신뢰성 시험의 사업부 · 그 장비의 부서 관리자. 규격 하나에
   한 번 — 옛 판을 근거로 한 시험 · 장비 시험 항목 수를 함께 말한다(2026-10-16).
 
@@ -125,6 +127,34 @@ def equipment_status_changed(
             f"{STATUS_LABEL.get(before, before)} → {STATUS_LABEL.get(after, after)}",
             body=f"변경자: {actor.display_name or actor.email}",
             link=f"/equipment/{equipment.id}",
+        )
+
+
+def hub_sync_failed(db: Session, run: Any) -> None:
+    """허브 수신 실패 → 시스템 관리자 전원. 실행 한 번에 한 번."""
+    first = (run.errors or [{}])[0]
+    for admin in _admins(db):
+        services.notify(
+            db,
+            user_id=admin.id,
+            kind=services.HUB_SYNC_FAILED,
+            title=f"허브 수신 실패({len(run.errors or [])}건)",
+            body=f"{first.get('type') or '카탈로그'}: {first.get('message') or ''}"[:500],
+            link="/admin/hub",
+            dedupe_key=f"{services.HUB_SYNC_FAILED}:{run.id}",
+        )
+
+
+def hub_catalog_changed(db: Session, summary: str) -> None:
+    """허브 구조(타입 · 칸 · 관계 종류)가 실제로 바뀜 → 시스템 관리자 전원."""
+    for admin in _admins(db):
+        services.notify(
+            db,
+            user_id=admin.id,
+            kind=services.HUB_CATALOG_CHANGED,
+            title="허브 기준정보 구조 변경",
+            body=summary[:500],
+            link="/admin/hub",
         )
 
 

@@ -52,6 +52,8 @@ const MethodDetailPage = lazy(() => import('@/modules/methods/MethodDetailPage')
 const MethodsPage = lazy(() => import('@/modules/methods/MethodsPage'))
 const SupersededRefsPage = lazy(() => import('@/modules/methods/SupersededRefsPage'))
 const CoveragePage = lazy(() => import('@/modules/reliability/CoveragePage'))
+const HubAdminPage = lazy(() => import('@/modules/hub/HubAdminPage'))
+const HubDataPage = lazy(() => import('@/modules/hub/HubDataPage'))
 const NoticesPage = lazy(() => import('@/modules/notices/NoticesPage'))
 const NotificationsPage = lazy(() => import('@/modules/notifications/NotificationsPage'))
 const ProfilePage = lazy(() => import('@/modules/auth/ProfilePage'))
@@ -184,6 +186,8 @@ export const router = createBrowserRouter([
           { path: 'admin/item-proposals', element: <ItemProposalsPage /> },
           { path: 'admin/model-proposals', element: <ModelProposalsPage /> },
           { path: 'admin/catalog-gaps', element: <CatalogGapsPage /> },
+          { path: 'admin/hub', element: <HubAdminPage /> },
+          { path: 'hub', element: <HubDataPage /> },
           { path: 'admin/review/:queue', element: <ReviewQueuePage /> },
 
           // 부서 스코프

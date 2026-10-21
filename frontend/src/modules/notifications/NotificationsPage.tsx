@@ -6,7 +6,15 @@
  */
 
 import { Link } from 'react-router-dom'
-import { Bell, CalendarClock, FileWarning, UserCheck, UserPlus, Wrench } from 'lucide-react'
+import {
+  Bell,
+  CalendarClock,
+  CloudDownload,
+  FileWarning,
+  UserCheck,
+  UserPlus,
+  Wrench,
+} from 'lucide-react'
 
 import { api } from '@/shared/api/client'
 import { EmptyState } from '@/shared/components/EmptyState'
@@ -35,6 +43,7 @@ function KindIcon({ kind }: { kind: string }) {
   if (kind === 'calibration.due') return <CalendarClock className={className} />
   if (kind === 'equipment.status_changed') return <Wrench className={className} />
   if (kind === 'method.superseded') return <FileWarning className={className} />
+  if (kind.startsWith('hub.')) return <CloudDownload className={className} />
   return <Bell className={className} />
 }
 

@@ -70,7 +70,8 @@ TERM_STATUSES = ("active", "deprecated")
 #:   catalog    카탈로그 — 제조사가 파는 계열·기종에 붙는다
 #:   method     시험법 — 규격에 붙는다
 #:   common     여러 층이 함께 쓴다. **얼버무리는 자리가 아니다**
-VOCABULARY_DOMAINS = ("equipment", "catalog", "method", "common")
+#:   hub        기준정보 허브(StandardPlatform)에서 받는다 — **잠겨 있다**(`hub_type_slug`)
+VOCABULARY_DOMAINS = ("equipment", "catalog", "method", "common", "hub")
 
 #: 화면이 쓰는 이름. 코드가 slug 를 걸고 사람은 이 말을 읽는다.
 VOCABULARY_DOMAIN_LABELS = {
@@ -78,6 +79,7 @@ VOCABULARY_DOMAIN_LABELS = {
     "catalog": "카탈로그",
     "method": "시험법",
     "common": "공통",
+    "hub": "허브 기준정보",
 }
 
 
@@ -133,6 +135,10 @@ class Vocabulary(Base):
     같은 답을 수만 번 저장하는 셈이고, 잘못된 축을 가리키는 값이 생긴다."""
 
     sort_order: Mapped[int] = mapped_column(Integer, default=0, server_default="0")
+    hub_type_slug: Mapped[str | None] = mapped_column(String(100), nullable=True, unique=True)
+    """**기준정보 허브에서 받는 축이면 그 타입**(`plm_model` …). 차 있으면 축이 잠긴다 —
+    값의 추가 · 수정 · 별칭 · 병합을 화면 · API · MCP 어디서도 못 한다(공개 측 우선, 요청서
+    FR-10). 고치는 길은 허브뿐이고, 바뀐 것은 다음 수신이 가져온다."""
     created_at: Mapped[datetime] = mapped_column(
         DateTime(timezone=True), server_default=func.now()
     )

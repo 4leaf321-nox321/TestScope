@@ -36,6 +36,7 @@ from app.modules.equipment.schemas import (
     EquipmentOut,
     FilterOption,
 )
+from app.modules.hub import links as hub_links
 from app.modules.notifications import rules
 from app.modules.test_items.models import EquipmentTestItem
 from app.modules.vocabulary.models import VocabularyTerm
@@ -49,6 +50,7 @@ from app.shared.permissions import (
     resolve_owner_workspace,
     visible_equipment,
 )
+from app.shared.request_context import get_actor_token
 from app.shared.text import clean
 
 logger = logging.getLogger(__name__)
@@ -1073,13 +1075,18 @@ def update(
         row.retired_on = None
     _check_identity(db, row.category_term_id, row.model_id)
     if changes.get("attributes") is not None:
-        attributes.set_values(
-            db,
-            user,
-            target="equipment",
-            object_id=row.id,
-            items=_attribute_items(changes["attributes"]),
-        )
+        items = _attribute_items(changes["attributes"])
+        if get_actor_token() is not None and hub_links.is_hub_patch(db, "equipment", items):
+            # 기계 자격이 허브 칸만 보냈다 — 그 칸만 바꾸고 다른 값은 둔다(`hub.links`).
+            hub_links.patch(db, target="equipment", object_id=row.id, items=items)
+        else:
+            attributes.set_values(
+                db,
+                user,
+                target="equipment",
+                object_id=row.id,
+                items=items,
+            )
 
     if not commit:
         return row

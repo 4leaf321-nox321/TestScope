@@ -2850,20 +2850,32 @@ async def set_reliability_attributes(
 
     확정된 시험은 수정 불가(409): 사람이 화면에서 다시 후보로 버튼을 눌러야 함. 여러 건은
     목록에서 체크해 한 번에 해제 가능(사유 기재). 막힌 줄이 여럿이면 하나씩이 아니라 건수를
-    세어 일괄 해제 요청.
+    세어 일괄 해제 요청. **예외: 허브 기준정보 칸**(허브 축 값을 고르는 칸 — 개발모델 · 과제
+    등)은 확정된 시험에도 붙이고 뗄 수 있음. 보낸 칸이 전부 허브 칸이면 그 칸만 바뀜.
     """
     now = await _get(ctx, f"/reliability-tests/{test_id}")
     if isinstance(now, dict) and now.get("error"):
         # 못 읽었으면 **보내지 않는다** — 빈 목록으로 덮으면 스물둘이 한 번에 사라진다.
         return now
 
+    sent = await _send(
+        ctx,
+        "PATCH",
+        f"/reliability-tests/{test_id}",
+        {"attributes": merge(now.get("attributes", []), attributes)},
+    )
+    if "TSC-RELIABILITY-0005" in str(sent.get("error", "")):
+        # 확정된 시험 — **보낸 칸만** 다시. 전부 허브 기준정보 칸이면 서버가 그 칸만 바꾸고,
+        # 하나라도 아니면 같은 409 다(그때도 다른 값은 안 지워진다).
+        only = [
+            {key: value for key, value in one.items() if key not in ("remove", "term_id")}
+            if one.get("remove")
+            else one
+            for one in attributes
+        ]
+        sent = await _send(ctx, "PATCH", f"/reliability-tests/{test_id}", {"attributes": only})
     return _then(
-        await _send(
-            ctx,
-            "PATCH",
-            f"/reliability-tests/{test_id}",
-            {"attributes": merge(now.get("attributes", []), attributes)},
-        ),
+        sent,
         "보낸 칸만 변경, 나머지는 유지. 고친 칸이 조건(`kind=\"condition\"`)이면"
         " 장비 판정도 바뀜: `test_capability`로 재확인 후 전달.",
     )

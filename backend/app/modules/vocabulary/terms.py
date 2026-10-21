@@ -30,6 +30,18 @@ from app.shared.errors import AppError, Conflict, NotFound
 from app.shared.text import clean, compare_key
 
 
+def _require_unlocked(vocabulary: Vocabulary | None) -> None:
+    """**허브에서 받은 축은 못 고친다**(요청서 FR-10, 공개 측 우선). 고치는 길은 허브뿐이고,
+    바뀐 것은 다음 수신이 가져온다. 이 축의 값을 시험 · 장비에 **고르는** 것은 막지 않는다."""
+    if vocabulary is not None and vocabulary.hub_type_slug:
+        raise Conflict(
+            "TSC-VOCAB-0020",
+            f"{vocabulary.label}: 기준정보 허브에서 받는 축이라 수정 불가."
+            " 허브에서 고치면 다음 수신에 반영.",
+            details={"hub_type": vocabulary.hub_type_slug},
+        )
+
+
 def get_vocabulary(db: Session, slug: str) -> Vocabulary:
     found = db.scalar(select(Vocabulary).where(Vocabulary.slug == slug))
     if found is None:
@@ -69,6 +81,7 @@ def list_vocabularies(db: Session) -> list[VocabularyOut]:
             sort_order=row.sort_order,
             attribute_schema=[AttributeField(**one) for one in row.attribute_schema or []],
             term_count=_term_count(db, row.id),
+            hub_type_slug=row.hub_type_slug,
         )
         for row in rows
     ]
@@ -87,6 +100,7 @@ def vocabulary_out(db: Session, row: Vocabulary) -> VocabularyOut:
         sort_order=row.sort_order,
         attribute_schema=[AttributeField(**one) for one in row.attribute_schema or []],
         term_count=_term_count(db, row.id),
+        hub_type_slug=row.hub_type_slug,
     )
 
 
@@ -142,6 +156,7 @@ def create_vocabulary(db: Session, *, payload: dict[str, Any]) -> Vocabulary:
 def update_vocabulary(db: Session, *, slug: str, changes: dict[str, Any]) -> Vocabulary:
     """축의 이름·설명·정책·속성 칸. **slug 와 소속은 안 받는다** — 코드가 건다."""
     row = get_vocabulary(db, slug)
+    _require_unlocked(row)
     if "label" in changes and changes["label"] is not None:
         row.label = clean(changes["label"])
     if "description" in changes:
@@ -320,6 +335,7 @@ def create_term(
     is_admin: bool,
 ) -> VocabularyTerm:
     vocabulary = get_vocabulary(db, slug)
+    _require_unlocked(vocabulary)
 
     # closed 축은 관리자만 채운다. **검색의 축이 되는 것**이라 오타 하나가 값이
     # 되면 그 장비는 영영 검색에 안 걸린다.
@@ -398,6 +414,7 @@ def update_term(
     actor: User,
 ) -> VocabularyTerm:
     term = get_term(db, term_id)
+    _require_unlocked(db.get(Vocabulary, term.vocabulary_id))
 
     if value is not None:
         text = clean(value)
@@ -444,6 +461,7 @@ def update_term(
 
 def add_alias(db: Session, *, term_id: uuid.UUID, value: str) -> VocabularyTerm:
     term = get_term(db, term_id)
+    _require_unlocked(db.get(Vocabulary, term.vocabulary_id))
     text = clean(value)
     key = compare_key(text)
 
@@ -468,6 +486,7 @@ def remove_alias(db: Session, *, term_id: uuid.UUID, value: str) -> VocabularyTe
     """표기 하나를 뗀다. 병합이 남긴 옛 이름을 떼면 같은 오타가 또 들어올 수 있다 —
     그래도 잘못 붙은 표기를 못 떼는 것보다는 낫다. 떼는 것은 관리자다."""
     term = get_term(db, term_id)
+    _require_unlocked(db.get(Vocabulary, term.vocabulary_id))
     key = compare_key(value)
     alias = db.scalar(
         select(VocabularyAlias).where(
@@ -540,6 +559,7 @@ def merge_terms(
     """
     source = get_term(db, source_id)
     target = get_term(db, target_id)
+    _require_unlocked(db.get(Vocabulary, source.vocabulary_id))
     if source.id == target.id:
         raise AppError("TSC-VOCAB-0006", "같은 값끼리는 병합 불가.", status=400)
     if source.vocabulary_id != target.vocabulary_id:

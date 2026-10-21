@@ -25,6 +25,7 @@ from app.modules.attributes.schemas import AttributeValueIn
 from app.modules.documents import services as documents
 from app.modules.documents.models import SpecDocument, SpecDocumentRevision
 from app.modules.equipment.models import Equipment
+from app.modules.hub import links as hub_links
 from app.modules.reliability.models import ReliabilityTest, ReliabilityTestItem
 from app.modules.reliability.schemas import (
     DivisionOut,
@@ -906,7 +907,7 @@ def create(db: Session, user: User, payload: dict[str, Any]) -> ReliabilityTest:
     return row
 
 
-def _refuse_machine_edit(row: ReliabilityTest) -> None:
+def _refuse_machine_edit(row: ReliabilityTest, *, hub_patch: bool = False) -> None:
     """**확정된 시험은 기계 자격으로 못 고친다.**
 
     후보로 받는 것만으로는 부족하다 — AI 가 후보를 만들고, 사람이 확인한 뒤, AI 가 그 줄을
@@ -917,8 +918,12 @@ def _refuse_machine_edit(row: ReliabilityTest) -> None:
     그 문을 누가 열었는지는 감사에 남는다.
 
     사람 세션은 안 막는다. 그 사람의 권한이 이미 한계다.
+
+    **허브 기준정보 칸만은 예외다**(2026-10-21 사용자 결정) — 개발모델 · 과제 같은 기준정보를
+    잇는 것은 시험 내용이 아니라 분류 표시이고, 운영에서는 그 연결을 MCP 로 한다
+    (`hub.links`). 그 칸만 보낸 요청이면 확정을 유지한 채 받는다.
     """
-    if _machine() is None or row.status != CONFIRMED:
+    if _machine() is None or row.status != CONFIRMED or hub_patch:
         return
     raise Conflict(
         "TSC-RELIABILITY-0005",
@@ -928,7 +933,9 @@ def _refuse_machine_edit(row: ReliabilityTest) -> None:
     )
 
 
-def require_editable(db: Session, user: User, test_id: uuid.UUID) -> None:
+def require_editable(
+    db: Session, user: User, test_id: uuid.UUID, *, hub_patch: bool = False
+) -> None:
     """이 시험을 고칠 수 있나. **첨부도 같은 물음을 쓴다** — 판정이 두 벌이면
     「시험은 못 고치는데 그림은 붙는」 사람이 생긴다.
 
@@ -941,7 +948,7 @@ def require_editable(db: Session, user: User, test_id: uuid.UUID) -> None:
             "TSC-RELIABILITY-0007",
             "이 사업부의 신뢰성 시험 수정 불가. 해당 사업부에 속한 부서의 관리자만 수정 가능.",
         )
-    _refuse_machine_edit(row)
+    _refuse_machine_edit(row, hub_patch=hub_patch)
 
 
 def _audit_view(db: Session, row: ReliabilityTest) -> dict[str, str | None]:
@@ -1019,7 +1026,41 @@ def update(
     어느 토큰인지 — 는 감사가 스스로 적는다.
     """
     row = get(db, test_id)
-    require_editable(db, user, test_id)
+    items = (
+        _attribute_items(changes["attributes"])
+        if changes.get("attributes") is not None
+        else None
+    )
+    # **기계 자격이 허브 칸만 보냈으면 그 칸만 바꾼다** — 확정된 시험도(`hub.links`).
+    hub_patch = (
+        _machine() is not None
+        and set(changes) == {"attributes"}
+        and items is not None
+        and hub_links.is_hub_patch(db, "reliability_test", items)
+    )
+    require_editable(db, user, test_id, hub_patch=hub_patch)
+    if hub_patch and items is not None:
+        linked = hub_links.patch(
+            db,
+            target="reliability_test",
+            object_id=row.id,
+            items=items,
+            revision_id=row.document_revision_id,
+        )
+        if linked:
+            row.updated_at = datetime.now(UTC)
+            audit.record(
+                db,
+                action=audit.RELIABILITY_HUB_LINKED,
+                actor=user,
+                target_table="reliability_tests",
+                target_id=row.id,
+                target_label=row.name,
+                changes=linked,
+            )
+        db.commit()
+        db.refresh(row)
+        return row
     division = db.get(VocabularyTerm, row.division_term_id)
     assert division is not None
     before = _audit_view(db, row)

@@ -291,12 +291,21 @@ export function AxisPanel({ slug, canEdit }: { slug: string; canEdit: boolean })
   )
   const parentOptions = axis?.parent_slug ? (parentTerms.data ?? []) : (terms.data ?? [])
   const byId = new Map((terms.data ?? []).map((one) => [one.id, one]))
+  /** 허브에서 받은 축 — **고칠 수 없다**(고치는 곳은 허브). 고르는 것만 된다. */
+  const locked = Boolean(axis?.hub_type_slug)
+  const editable = canEdit && !locked
 
   return (
     <div className="space-y-6">
       <div className="min-w-0 flex-1 space-y-4">
-        {axis && canEdit && <AxisEditor axis={axis} onSaved={() => axes.reload()} />}
-        {axis && !canEdit && (
+        {axis && editable && <AxisEditor axis={axis} onSaved={() => axes.reload()} />}
+        {axis && locked && (
+          <p className="rounded-md border border-sky-300 bg-sky-50 px-3 py-2 text-sm dark:bg-sky-950/30">
+            기준정보 허브에서 받는 축(<span className="font-mono">{axis.hub_type_slug}</span>)
+            — TestScope에서 수정 불가. 허브에서 고치면 다음 수신에 반영.
+          </p>
+        )}
+        {axis && !editable && (
           <div className="space-y-1">
             <h2 className="text-base font-semibold">{axis.label}</h2>
             {axis.description && (
@@ -306,7 +315,7 @@ export function AxisPanel({ slug, canEdit }: { slug: string; canEdit: boolean })
         )}
 
         <div className="flex flex-wrap items-end gap-2">
-          {canEdit && (
+          {editable && (
             <>
               <Input
                 value={value}
@@ -409,7 +418,7 @@ export function AxisPanel({ slug, canEdit }: { slug: string; canEdit: boolean })
                   )}
                 </TableCell>
                 <TableCell className="text-right">
-                  {canEdit && (
+                  {editable && (
                     <Button
                       variant="ghost"
                       size="sm"

@@ -39,6 +39,9 @@ class VocabularyOut(BaseModel):
     term_count: int
     """값이 몇 개인가. **축 목록에서 이걸 못 보면** 비어 있는 축과 채워진 축이
     같아 보이고, 어디를 채워야 하는지 알 수 없다."""
+    hub_type_slug: str | None = None
+    """기준정보 허브에서 받는 축이면 그 타입. 차 있으면 **잠긴 축**이다 — 값을 고칠 수 없고
+    고를 수만 있다."""
 
 
 class VocabularyCreateRequest(Request):

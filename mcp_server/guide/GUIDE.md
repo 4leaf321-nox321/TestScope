@@ -477,6 +477,23 @@ workspace=…)`. **공개 규격과 사내 규격서는 다른 표라 서로의 
 시험마다 ‘규격서’ 칸에 그 문서 연결(`document_id`). 뽑아낸 값이 틀려도 한 번 눌러 원본을 여는
 것이 되짚을 유일한 방법.
 
+## 허브 기준정보 연결: 시험 · 장비에 개발모델 · 과제 붙이기
+
+StandardPlatform 기준정보 허브에서 받은 타입은 온톨로지 축(`hub_<타입>`, `list_axes` 의
+도메인 `hub`)으로 서고, 객체가 그 축의 값이다(코드 = 허브 식별자). **이 축은 잠겨 있다** —
+`create_term` · 이름 수정 · 별칭 · 병합은 409 `TSC-VOCAB-0020`. 값은 허브에서만 바뀐다.
+
+1. 붙일 칸 찾기: `list_attribute_definitions(target="reliability_test" 또는 "equipment")` 에서
+   `kind="term"` 이고 허브 축을 가리키는 칸. 없으면 시스템 관리자가 `create_attribute_definition`
+   (`kind="term"`, `vocabulary_id`=허브 축 id) — 칸을 새로 만들기 전에 사용자 확인.
+2. 값 찾기: `resolve(kind="term", axis="hub_<타입>", text=…)`. 옛 식별자로 물어도 풀림(별칭).
+3. 붙이기: `set_reliability_attributes` · `set_equipment_attributes` 에 `{"definition_id", "term_id"}`.
+   떼기는 `{"definition_id", "remove": true}`.
+
+**확정된 신뢰성 시험에도 허브 칸만은 붙이고 뗄 수 있다**(사용자 결정 — 분류 표시라서). 허브 칸이
+아닌 칸을 섞으면 종전대로 409. 바꾼 것은 감사 `reliability_test.hub_linked` 에 남는다. 사용 중지
+(`status=deprecated`)된 값은 허브에서 지워졌거나 병합된 것 — 새로 붙이지 않는다.
+
 ## 이 시험을 돌릴 장비: `test_capability`
 
 `test_capability(test_id)`가 마지막 단계. **응답의 다음 셋은 반드시 사람에게 전달:**

@@ -21,6 +21,8 @@ ACCOUNT_APPROVED = "account.approved"
 CALIBRATION_DUE = "calibration.due"
 EQUIPMENT_STATUS_CHANGED = "equipment.status_changed"
 METHOD_SUPERSEDED = "method.superseded"
+HUB_SYNC_FAILED = "hub.sync_failed"
+HUB_CATALOG_CHANGED = "hub.catalog_changed"
 
 
 def notify(

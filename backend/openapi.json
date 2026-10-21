@@ -11845,6 +11845,407 @@
           }
         }
       }
+    },
+    "/api/hub/connection": {
+      "get": {
+        "tags": [
+          "hub"
+        ],
+        "summary": "Read Connection",
+        "description": "연계 설정. 토큰은 **설정됨 여부만** — 평문은 다시 안 보인다.",
+        "operationId": "read_connection_api_hub_connection_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HubConnectionOut"
+                }
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "hub"
+        ],
+        "summary": "Update Connection",
+        "operationId": "update_connection_api_hub_connection_put",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/HubConnectionRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HubConnectionOut"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/hub/check": {
+      "post": {
+        "tags": [
+          "hub"
+        ],
+        "summary": "Check",
+        "description": "연결 점검 — 카탈로그를 받아 본다. 공개 타입이 타입 고르기에 선다.",
+        "operationId": "check_api_hub_check_post",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HubCheckOut"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/hub/catalog-seen": {
+      "post": {
+        "tags": [
+          "hub"
+        ],
+        "summary": "Catalog Seen",
+        "description": "구조 변경 알림을 확인했다.",
+        "operationId": "catalog_seen_api_hub_catalog_seen_post",
+        "responses": {
+          "204": {
+            "description": "Successful Response"
+          }
+        }
+      }
+    },
+    "/api/hub/status": {
+      "get": {
+        "tags": [
+          "hub"
+        ],
+        "summary": "Status",
+        "description": "수신 현황 — 타입마다 기준 시각 · 마지막 수신 · 건수(카탈로그 수와 견줌) · 결과.",
+        "operationId": "status_api_hub_status_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HubStatusOut"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/hub/run": {
+      "post": {
+        "tags": [
+          "hub"
+        ],
+        "summary": "Run",
+        "description": "수동 실행 — 워커가 받는다. `full` 이면 전량 수신과 부재 대조.",
+        "operationId": "run_api_hub_run_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/HubRunRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "202": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HubRunQueued"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/hub/runs": {
+      "get": {
+        "tags": [
+          "hub"
+        ],
+        "summary": "Runs",
+        "description": "수신 이력 — 실행마다 타입별 건수 · 결과 · 오류 · `request_id`.",
+        "operationId": "runs_api_hub_runs_get",
+        "parameters": [
+          {
+            "name": "limit",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "maximum": 200,
+              "minimum": 1,
+              "default": 30,
+              "title": "Limit"
+            }
+          },
+          {
+            "name": "offset",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "minimum": 0,
+              "default": 0,
+              "title": "Offset"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/HubRunOut"
+                  },
+                  "title": "Response Runs Api Hub Runs Get"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/hub/types": {
+      "get": {
+        "tags": [
+          "hub"
+        ],
+        "summary": "Public Types",
+        "description": "받아 둔 타입 — 누구나.",
+        "operationId": "public_types_api_hub_types_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/HubPublicTypeOut"
+                  },
+                  "type": "array",
+                  "title": "Response Public Types Api Hub Types Get"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/hub/types/{type_slug}/items": {
+      "get": {
+        "tags": [
+          "hub"
+        ],
+        "summary": "Items",
+        "description": "받은 객체 목록 — 식별자 · 이름 검색, 상태(사용 · 사용 중지 · 병합 …).",
+        "operationId": "items_api_hub_types__type_slug__items_get",
+        "parameters": [
+          {
+            "name": "type_slug",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Type Slug"
+            }
+          },
+          {
+            "name": "q",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string",
+                  "maxLength": 200
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Q"
+            }
+          },
+          {
+            "name": "state",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string",
+                  "pattern": "^(active|inactive)$"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "State"
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "maximum": 200,
+              "minimum": 1,
+              "default": 50,
+              "title": "Limit"
+            }
+          },
+          {
+            "name": "offset",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "minimum": 0,
+              "default": 0,
+              "title": "Offset"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HubItemPage"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/hub/types/{type_slug}/items/{key}": {
+      "get": {
+        "tags": [
+          "hub"
+        ],
+        "summary": "Item Detail",
+        "description": "받은 객체 하나와 관계. 옛 식별자로 물어도 지금 객체를 준다.",
+        "operationId": "item_detail_api_hub_types__type_slug__items__key__get",
+        "parameters": [
+          {
+            "name": "type_slug",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Type Slug"
+            }
+          },
+          {
+            "name": "key",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Key"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HubItemDetailOut"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
     }
   },
   "components": {
@@ -19544,6 +19945,978 @@
         ],
         "title": "HomeWorkspaceRequest",
         "description": "대표 소속을 정한다.\n\n**비우는 길은 두지 않는다.** 대표 소속이 없으면 로그인이 소속 중 첫 부서로\n떨어지는데 그것은 사람이 정한 값이 아니다. 지우고 싶은 상황은 실제로는\n\"다른 부서로 옮긴다\" 이므로 그때도 새 값을 준다."
+      },
+      "HubCheckOut": {
+        "properties": {
+          "ok": {
+            "type": "boolean",
+            "title": "Ok"
+          },
+          "message": {
+            "type": "string",
+            "title": "Message"
+          },
+          "system": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "System"
+          },
+          "revision": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Revision"
+          },
+          "as_of": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "As Of"
+          },
+          "types": {
+            "items": {
+              "$ref": "#/components/schemas/HubTypeOut"
+            },
+            "type": "array",
+            "title": "Types",
+            "default": []
+          },
+          "request_id": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Request Id"
+          }
+        },
+        "type": "object",
+        "required": [
+          "ok",
+          "message"
+        ],
+        "title": "HubCheckOut",
+        "description": "연결 점검 — 카탈로그를 받아 본 결과."
+      },
+      "HubConnectionOut": {
+        "properties": {
+          "base_url": {
+            "type": "string",
+            "title": "Base Url"
+          },
+          "has_token": {
+            "type": "boolean",
+            "title": "Has Token"
+          },
+          "token_readable": {
+            "type": "boolean",
+            "title": "Token Readable"
+          },
+          "token_set_at": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "date-time"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Token Set At"
+          },
+          "ca_bundle": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Ca Bundle"
+          },
+          "selected_types": {
+            "anyOf": [
+              {
+                "items": {
+                  "type": "string"
+                },
+                "type": "array"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Selected Types"
+          },
+          "nightly_at": {
+            "type": "string",
+            "title": "Nightly At"
+          },
+          "enabled": {
+            "type": "boolean",
+            "title": "Enabled"
+          },
+          "catalog_revision": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Catalog Revision"
+          },
+          "catalog_as_of": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Catalog As Of"
+          },
+          "catalog_changed_at": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "date-time"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Catalog Changed At"
+          },
+          "types": {
+            "items": {
+              "$ref": "#/components/schemas/HubTypeOut"
+            },
+            "type": "array",
+            "title": "Types"
+          }
+        },
+        "type": "object",
+        "required": [
+          "base_url",
+          "has_token",
+          "token_readable",
+          "token_set_at",
+          "ca_bundle",
+          "selected_types",
+          "nightly_at",
+          "enabled",
+          "catalog_revision",
+          "catalog_as_of",
+          "catalog_changed_at",
+          "types"
+        ],
+        "title": "HubConnectionOut"
+      },
+      "HubConnectionRequest": {
+        "properties": {
+          "base_url": {
+            "type": "string",
+            "maxLength": 500,
+            "title": "Base Url",
+            "default": ""
+          },
+          "token": {
+            "anyOf": [
+              {
+                "type": "string",
+                "maxLength": 4000
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Token"
+          },
+          "clear_token": {
+            "type": "boolean",
+            "title": "Clear Token",
+            "default": false
+          },
+          "ca_bundle": {
+            "anyOf": [
+              {
+                "type": "string",
+                "maxLength": 500
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Ca Bundle"
+          },
+          "selected_types": {
+            "anyOf": [
+              {
+                "items": {
+                  "type": "string"
+                },
+                "type": "array"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Selected Types"
+          },
+          "nightly_at": {
+            "type": "string",
+            "pattern": "^([01]\\d|2[0-3]):[0-5]\\d$",
+            "title": "Nightly At",
+            "default": "01:00"
+          },
+          "enabled": {
+            "type": "boolean",
+            "title": "Enabled",
+            "default": false
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "title": "HubConnectionRequest",
+        "description": "연계 설정. **토큰은 쓰기만 한다** — 비우면 그대로, `clear_token` 이면 지운다."
+      },
+      "HubItemDetailOut": {
+        "properties": {
+          "key": {
+            "type": "string",
+            "title": "Key"
+          },
+          "label": {
+            "type": "string",
+            "title": "Label"
+          },
+          "status": {
+            "type": "string",
+            "title": "Status"
+          },
+          "state": {
+            "type": "string",
+            "title": "State"
+          },
+          "merged_into": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Merged Into"
+          },
+          "previous_keys": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Previous Keys"
+          },
+          "properties": {
+            "additionalProperties": true,
+            "type": "object",
+            "title": "Properties"
+          },
+          "references": {
+            "additionalProperties": {
+              "type": "string"
+            },
+            "type": "object",
+            "title": "References"
+          },
+          "hub_updated_at": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Hub Updated At"
+          },
+          "received_at": {
+            "type": "string",
+            "format": "date-time",
+            "title": "Received At"
+          },
+          "term_id": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "uuid"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Term Id"
+          },
+          "outgoing": {
+            "items": {
+              "$ref": "#/components/schemas/HubRelationOut"
+            },
+            "type": "array",
+            "title": "Outgoing"
+          },
+          "incoming": {
+            "items": {
+              "$ref": "#/components/schemas/HubRelationOut"
+            },
+            "type": "array",
+            "title": "Incoming"
+          }
+        },
+        "type": "object",
+        "required": [
+          "key",
+          "label",
+          "status",
+          "state",
+          "merged_into",
+          "previous_keys",
+          "properties",
+          "references",
+          "hub_updated_at",
+          "received_at",
+          "term_id",
+          "outgoing",
+          "incoming"
+        ],
+        "title": "HubItemDetailOut"
+      },
+      "HubItemOut": {
+        "properties": {
+          "key": {
+            "type": "string",
+            "title": "Key"
+          },
+          "label": {
+            "type": "string",
+            "title": "Label"
+          },
+          "status": {
+            "type": "string",
+            "title": "Status"
+          },
+          "state": {
+            "type": "string",
+            "title": "State"
+          },
+          "merged_into": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Merged Into"
+          },
+          "previous_keys": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Previous Keys"
+          },
+          "properties": {
+            "additionalProperties": true,
+            "type": "object",
+            "title": "Properties"
+          },
+          "references": {
+            "additionalProperties": {
+              "type": "string"
+            },
+            "type": "object",
+            "title": "References"
+          },
+          "hub_updated_at": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Hub Updated At"
+          },
+          "received_at": {
+            "type": "string",
+            "format": "date-time",
+            "title": "Received At"
+          },
+          "term_id": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "uuid"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Term Id"
+          }
+        },
+        "type": "object",
+        "required": [
+          "key",
+          "label",
+          "status",
+          "state",
+          "merged_into",
+          "previous_keys",
+          "properties",
+          "references",
+          "hub_updated_at",
+          "received_at",
+          "term_id"
+        ],
+        "title": "HubItemOut",
+        "description": "받은 객체 하나 — 누구나 본다(수신 데이터 조회)."
+      },
+      "HubItemPage": {
+        "properties": {
+          "items": {
+            "items": {
+              "$ref": "#/components/schemas/HubItemOut"
+            },
+            "type": "array",
+            "title": "Items"
+          },
+          "total": {
+            "type": "integer",
+            "title": "Total"
+          }
+        },
+        "type": "object",
+        "required": [
+          "items",
+          "total"
+        ],
+        "title": "HubItemPage"
+      },
+      "HubPublicTypeOut": {
+        "properties": {
+          "slug": {
+            "type": "string",
+            "title": "Slug"
+          },
+          "label": {
+            "type": "string",
+            "title": "Label"
+          },
+          "axis_slug": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Axis Slug"
+          },
+          "active": {
+            "type": "integer",
+            "title": "Active"
+          },
+          "total": {
+            "type": "integer",
+            "title": "Total"
+          },
+          "last_received_at": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "date-time"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Last Received At"
+          }
+        },
+        "type": "object",
+        "required": [
+          "slug",
+          "label",
+          "axis_slug",
+          "active",
+          "total",
+          "last_received_at"
+        ],
+        "title": "HubPublicTypeOut",
+        "description": "받아 둔 타입 하나 — 누구나 본다."
+      },
+      "HubRelationOut": {
+        "properties": {
+          "src": {
+            "type": "string",
+            "title": "Src"
+          },
+          "relation": {
+            "type": "string",
+            "title": "Relation"
+          },
+          "dst": {
+            "type": "string",
+            "title": "Dst"
+          },
+          "dst_type": {
+            "type": "string",
+            "title": "Dst Type"
+          },
+          "dst_label": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Dst Label"
+          },
+          "deleted": {
+            "type": "boolean",
+            "title": "Deleted"
+          }
+        },
+        "type": "object",
+        "required": [
+          "src",
+          "relation",
+          "dst",
+          "dst_type",
+          "dst_label",
+          "deleted"
+        ],
+        "title": "HubRelationOut"
+      },
+      "HubRunOut": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Id"
+          },
+          "started_at": {
+            "type": "string",
+            "format": "date-time",
+            "title": "Started At"
+          },
+          "finished_at": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "date-time"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Finished At"
+          },
+          "trigger": {
+            "type": "string",
+            "title": "Trigger"
+          },
+          "full": {
+            "type": "boolean",
+            "title": "Full"
+          },
+          "status": {
+            "type": "string",
+            "title": "Status"
+          },
+          "triggered_by": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Triggered By"
+          },
+          "counts": {
+            "additionalProperties": true,
+            "type": "object",
+            "title": "Counts"
+          },
+          "errors": {
+            "items": {
+              "additionalProperties": true,
+              "type": "object"
+            },
+            "type": "array",
+            "title": "Errors"
+          },
+          "request_ids": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Request Ids"
+          },
+          "duration_ms": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Duration Ms"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "started_at",
+          "finished_at",
+          "trigger",
+          "full",
+          "status",
+          "triggered_by",
+          "counts",
+          "errors",
+          "request_ids",
+          "duration_ms"
+        ],
+        "title": "HubRunOut"
+      },
+      "HubRunQueued": {
+        "properties": {
+          "job_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Job Id"
+          },
+          "full": {
+            "type": "boolean",
+            "title": "Full"
+          }
+        },
+        "type": "object",
+        "required": [
+          "job_id",
+          "full"
+        ],
+        "title": "HubRunQueued"
+      },
+      "HubRunRequest": {
+        "properties": {
+          "full": {
+            "type": "boolean",
+            "title": "Full",
+            "default": false
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "title": "HubRunRequest"
+      },
+      "HubStateOut": {
+        "properties": {
+          "as_of": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "As Of"
+          },
+          "last_run_at": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "date-time"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Last Run At"
+          },
+          "last_status": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Last Status"
+          },
+          "last_error": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Last Error"
+          },
+          "last_full_at": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "date-time"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Last Full At"
+          },
+          "stopped": {
+            "type": "boolean",
+            "title": "Stopped"
+          }
+        },
+        "type": "object",
+        "required": [
+          "as_of",
+          "last_run_at",
+          "last_status",
+          "last_error",
+          "last_full_at",
+          "stopped"
+        ],
+        "title": "HubStateOut"
+      },
+      "HubStatusOut": {
+        "properties": {
+          "configured": {
+            "type": "boolean",
+            "title": "Configured"
+          },
+          "enabled": {
+            "type": "boolean",
+            "title": "Enabled"
+          },
+          "nightly_at": {
+            "type": "string",
+            "title": "Nightly At"
+          },
+          "catalog_changed_at": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "date-time"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Catalog Changed At"
+          },
+          "pending_job": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Pending Job"
+          },
+          "last_run": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/HubRunOut"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "types": {
+            "items": {
+              "$ref": "#/components/schemas/HubTypeStatusOut"
+            },
+            "type": "array",
+            "title": "Types"
+          }
+        },
+        "type": "object",
+        "required": [
+          "configured",
+          "enabled",
+          "nightly_at",
+          "catalog_changed_at",
+          "pending_job",
+          "last_run",
+          "types"
+        ],
+        "title": "HubStatusOut"
+      },
+      "HubTypeOut": {
+        "properties": {
+          "slug": {
+            "type": "string",
+            "title": "Slug"
+          },
+          "label": {
+            "type": "string",
+            "title": "Label"
+          },
+          "description": {
+            "type": "string",
+            "title": "Description",
+            "default": ""
+          },
+          "count": {
+            "type": "integer",
+            "title": "Count"
+          },
+          "properties": {
+            "type": "integer",
+            "title": "Properties"
+          },
+          "relations": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Relations"
+          },
+          "selected": {
+            "type": "boolean",
+            "title": "Selected"
+          }
+        },
+        "type": "object",
+        "required": [
+          "slug",
+          "label",
+          "count",
+          "properties",
+          "relations",
+          "selected"
+        ],
+        "title": "HubTypeOut",
+        "description": "카탈로그의 공개 타입 하나 — 받을지 고르는 자리."
+      },
+      "HubTypeStatusOut": {
+        "properties": {
+          "slug": {
+            "type": "string",
+            "title": "Slug"
+          },
+          "label": {
+            "type": "string",
+            "title": "Label"
+          },
+          "axis_slug": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Axis Slug"
+          },
+          "selected": {
+            "type": "boolean",
+            "title": "Selected"
+          },
+          "catalog_count": {
+            "type": "integer",
+            "title": "Catalog Count"
+          },
+          "received": {
+            "type": "integer",
+            "title": "Received"
+          },
+          "active": {
+            "type": "integer",
+            "title": "Active"
+          },
+          "relations": {
+            "type": "integer",
+            "title": "Relations"
+          },
+          "rows": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/HubStateOut"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "relation_state": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/HubStateOut"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          }
+        },
+        "type": "object",
+        "required": [
+          "slug",
+          "label",
+          "axis_slug",
+          "selected",
+          "catalog_count",
+          "received",
+          "active",
+          "relations",
+          "rows",
+          "relation_state"
+        ],
+        "title": "HubTypeStatusOut"
       },
       "ImportChange": {
         "properties": {
@@ -27930,6 +29303,17 @@
           "term_count": {
             "type": "integer",
             "title": "Term Count"
+          },
+          "hub_type_slug": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Hub Type Slug"
           }
         },
         "type": "object",

@@ -37,4 +37,9 @@ def enqueue_due(db: Session) -> list[str]:
         # 뒤에 또 하는 것보다 하루 뒤에 하는 편이 맞다.
         queue.enqueue(db, kind=kind, max_attempts=1)
         added.append(kind)
+    # **정해진 시각에 도는 것** — 간격이 아니라 야간 시각(KST)이다. 허브 수신이 그렇다.
+    from app.modules.hub.jobs import enqueue_nightly
+
+    if enqueue_nightly(db):
+        added.append(kinds.HUB_SYNC)
     return added

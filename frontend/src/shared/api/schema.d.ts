@@ -4070,6 +4070,187 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/api/hub/connection": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * Read Connection
+         * @description 연계 설정. 토큰은 **설정됨 여부만** — 평문은 다시 안 보인다.
+         */
+        get: operations["read_connection_api_hub_connection_get"];
+        /** Update Connection */
+        put: operations["update_connection_api_hub_connection_put"];
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/hub/check": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /**
+         * Check
+         * @description 연결 점검 — 카탈로그를 받아 본다. 공개 타입이 타입 고르기에 선다.
+         */
+        post: operations["check_api_hub_check_post"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/hub/catalog-seen": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /**
+         * Catalog Seen
+         * @description 구조 변경 알림을 확인했다.
+         */
+        post: operations["catalog_seen_api_hub_catalog_seen_post"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/hub/status": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * Status
+         * @description 수신 현황 — 타입마다 기준 시각 · 마지막 수신 · 건수(카탈로그 수와 견줌) · 결과.
+         */
+        get: operations["status_api_hub_status_get"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/hub/run": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /**
+         * Run
+         * @description 수동 실행 — 워커가 받는다. `full` 이면 전량 수신과 부재 대조.
+         */
+        post: operations["run_api_hub_run_post"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/hub/runs": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * Runs
+         * @description 수신 이력 — 실행마다 타입별 건수 · 결과 · 오류 · `request_id`.
+         */
+        get: operations["runs_api_hub_runs_get"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/hub/types": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * Public Types
+         * @description 받아 둔 타입 — 누구나.
+         */
+        get: operations["public_types_api_hub_types_get"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/hub/types/{type_slug}/items": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * Items
+         * @description 받은 객체 목록 — 식별자 · 이름 검색, 상태(사용 · 사용 중지 · 병합 …).
+         */
+        get: operations["items_api_hub_types__type_slug__items_get"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/hub/types/{type_slug}/items/{key}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * Item Detail
+         * @description 받은 객체 하나와 관계. 옛 식별자로 물어도 지금 객체를 준다.
+         */
+        get: operations["item_detail_api_hub_types__type_slug__items__key__get"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
 }
 export type webhooks = Record<string, never>;
 export interface components {
@@ -6748,6 +6929,327 @@ export interface components {
         HomeWorkspaceRequest: {
             /** Workspace Slug */
             workspace_slug: string;
+        };
+        /**
+         * HubCheckOut
+         * @description 연결 점검 — 카탈로그를 받아 본 결과.
+         */
+        HubCheckOut: {
+            /** Ok */
+            ok: boolean;
+            /** Message */
+            message: string;
+            /** System */
+            system?: string | null;
+            /** Revision */
+            revision?: string | null;
+            /** As Of */
+            as_of?: string | null;
+            /**
+             * Types
+             * @default []
+             */
+            types: components["schemas"]["HubTypeOut"][];
+            /** Request Id */
+            request_id?: string | null;
+        };
+        /** HubConnectionOut */
+        HubConnectionOut: {
+            /** Base Url */
+            base_url: string;
+            /** Has Token */
+            has_token: boolean;
+            /** Token Readable */
+            token_readable: boolean;
+            /** Token Set At */
+            token_set_at: string | null;
+            /** Ca Bundle */
+            ca_bundle: string | null;
+            /** Selected Types */
+            selected_types: string[] | null;
+            /** Nightly At */
+            nightly_at: string;
+            /** Enabled */
+            enabled: boolean;
+            /** Catalog Revision */
+            catalog_revision: string | null;
+            /** Catalog As Of */
+            catalog_as_of: string | null;
+            /** Catalog Changed At */
+            catalog_changed_at: string | null;
+            /** Types */
+            types: components["schemas"]["HubTypeOut"][];
+        };
+        /**
+         * HubConnectionRequest
+         * @description 연계 설정. **토큰은 쓰기만 한다** — 비우면 그대로, `clear_token` 이면 지운다.
+         */
+        HubConnectionRequest: {
+            /**
+             * Base Url
+             * @default
+             */
+            base_url: string;
+            /** Token */
+            token?: string | null;
+            /**
+             * Clear Token
+             * @default false
+             */
+            clear_token: boolean;
+            /** Ca Bundle */
+            ca_bundle?: string | null;
+            /** Selected Types */
+            selected_types?: string[] | null;
+            /**
+             * Nightly At
+             * @default 01:00
+             */
+            nightly_at: string;
+            /**
+             * Enabled
+             * @default false
+             */
+            enabled: boolean;
+        };
+        /** HubItemDetailOut */
+        HubItemDetailOut: {
+            /** Key */
+            key: string;
+            /** Label */
+            label: string;
+            /** Status */
+            status: string;
+            /** State */
+            state: string;
+            /** Merged Into */
+            merged_into: string | null;
+            /** Previous Keys */
+            previous_keys: string[];
+            /** Properties */
+            properties: {
+                [key: string]: unknown;
+            };
+            /** References */
+            references: {
+                [key: string]: string;
+            };
+            /** Hub Updated At */
+            hub_updated_at: string | null;
+            /**
+             * Received At
+             * Format: date-time
+             */
+            received_at: string;
+            /** Term Id */
+            term_id: string | null;
+            /** Outgoing */
+            outgoing: components["schemas"]["HubRelationOut"][];
+            /** Incoming */
+            incoming: components["schemas"]["HubRelationOut"][];
+        };
+        /**
+         * HubItemOut
+         * @description 받은 객체 하나 — 누구나 본다(수신 데이터 조회).
+         */
+        HubItemOut: {
+            /** Key */
+            key: string;
+            /** Label */
+            label: string;
+            /** Status */
+            status: string;
+            /** State */
+            state: string;
+            /** Merged Into */
+            merged_into: string | null;
+            /** Previous Keys */
+            previous_keys: string[];
+            /** Properties */
+            properties: {
+                [key: string]: unknown;
+            };
+            /** References */
+            references: {
+                [key: string]: string;
+            };
+            /** Hub Updated At */
+            hub_updated_at: string | null;
+            /**
+             * Received At
+             * Format: date-time
+             */
+            received_at: string;
+            /** Term Id */
+            term_id: string | null;
+        };
+        /** HubItemPage */
+        HubItemPage: {
+            /** Items */
+            items: components["schemas"]["HubItemOut"][];
+            /** Total */
+            total: number;
+        };
+        /**
+         * HubPublicTypeOut
+         * @description 받아 둔 타입 하나 — 누구나 본다.
+         */
+        HubPublicTypeOut: {
+            /** Slug */
+            slug: string;
+            /** Label */
+            label: string;
+            /** Axis Slug */
+            axis_slug: string | null;
+            /** Active */
+            active: number;
+            /** Total */
+            total: number;
+            /** Last Received At */
+            last_received_at: string | null;
+        };
+        /** HubRelationOut */
+        HubRelationOut: {
+            /** Src */
+            src: string;
+            /** Relation */
+            relation: string;
+            /** Dst */
+            dst: string;
+            /** Dst Type */
+            dst_type: string;
+            /** Dst Label */
+            dst_label: string | null;
+            /** Deleted */
+            deleted: boolean;
+        };
+        /** HubRunOut */
+        HubRunOut: {
+            /**
+             * Id
+             * Format: uuid
+             */
+            id: string;
+            /**
+             * Started At
+             * Format: date-time
+             */
+            started_at: string;
+            /** Finished At */
+            finished_at: string | null;
+            /** Trigger */
+            trigger: string;
+            /** Full */
+            full: boolean;
+            /** Status */
+            status: string;
+            /** Triggered By */
+            triggered_by: string | null;
+            /** Counts */
+            counts: {
+                [key: string]: unknown;
+            };
+            /** Errors */
+            errors: {
+                [key: string]: unknown;
+            }[];
+            /** Request Ids */
+            request_ids: string[];
+            /** Duration Ms */
+            duration_ms: number | null;
+        };
+        /** HubRunQueued */
+        HubRunQueued: {
+            /**
+             * Job Id
+             * Format: uuid
+             */
+            job_id: string;
+            /** Full */
+            full: boolean;
+        };
+        /** HubRunRequest */
+        HubRunRequest: {
+            /**
+             * Full
+             * @default false
+             */
+            full: boolean;
+        };
+        /** HubStateOut */
+        HubStateOut: {
+            /** As Of */
+            as_of: string | null;
+            /** Last Run At */
+            last_run_at: string | null;
+            /** Last Status */
+            last_status: string | null;
+            /** Last Error */
+            last_error: string | null;
+            /** Last Full At */
+            last_full_at: string | null;
+            /** Stopped */
+            stopped: boolean;
+        };
+        /** HubStatusOut */
+        HubStatusOut: {
+            /** Configured */
+            configured: boolean;
+            /** Enabled */
+            enabled: boolean;
+            /** Nightly At */
+            nightly_at: string;
+            /** Catalog Changed At */
+            catalog_changed_at: string | null;
+            /** Pending Job */
+            pending_job: string | null;
+            last_run: components["schemas"]["HubRunOut"] | null;
+            /** Types */
+            types: components["schemas"]["HubTypeStatusOut"][];
+        };
+        /**
+         * HubTypeOut
+         * @description 카탈로그의 공개 타입 하나 — 받을지 고르는 자리.
+         */
+        HubTypeOut: {
+            /** Slug */
+            slug: string;
+            /** Label */
+            label: string;
+            /**
+             * Description
+             * @default
+             */
+            description: string;
+            /** Count */
+            count: number;
+            /** Properties */
+            properties: number;
+            /** Relations */
+            relations: string[];
+            /** Selected */
+            selected: boolean;
+        };
+        /** HubTypeStatusOut */
+        HubTypeStatusOut: {
+            /** Slug */
+            slug: string;
+            /** Label */
+            label: string;
+            /** Axis Slug */
+            axis_slug: string | null;
+            /** Selected */
+            selected: boolean;
+            /** Catalog Count */
+            catalog_count: number;
+            /** Received */
+            received: number;
+            /** Active */
+            active: number;
+            /** Relations */
+            relations: number;
+            rows: components["schemas"]["HubStateOut"] | null;
+            relation_state: components["schemas"]["HubStateOut"] | null;
         };
         /**
          * ImportChange
@@ -9784,6 +10286,8 @@ export interface components {
             attribute_schema: components["schemas"]["AttributeField"][];
             /** Term Count */
             term_count: number;
+            /** Hub Type Slug */
+            hub_type_slug?: string | null;
         };
         /**
          * VocabularyUpdateRequest
@@ -17420,6 +17924,270 @@ export interface operations {
                 };
                 content: {
                     "application/json": components["schemas"]["CalibrationDueOut"][];
+                };
+            };
+        };
+    };
+    read_connection_api_hub_connection_get: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HubConnectionOut"];
+                };
+            };
+        };
+    };
+    update_connection_api_hub_connection_put: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["HubConnectionRequest"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HubConnectionOut"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    check_api_hub_check_post: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HubCheckOut"];
+                };
+            };
+        };
+    };
+    catalog_seen_api_hub_catalog_seen_post: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            204: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    status_api_hub_status_get: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HubStatusOut"];
+                };
+            };
+        };
+    };
+    run_api_hub_run_post: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["HubRunRequest"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            202: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HubRunQueued"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    runs_api_hub_runs_get: {
+        parameters: {
+            query?: {
+                limit?: number;
+                offset?: number;
+            };
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HubRunOut"][];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    public_types_api_hub_types_get: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HubPublicTypeOut"][];
+                };
+            };
+        };
+    };
+    items_api_hub_types__type_slug__items_get: {
+        parameters: {
+            query?: {
+                q?: string | null;
+                state?: string | null;
+                limit?: number;
+                offset?: number;
+            };
+            header?: never;
+            path: {
+                type_slug: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HubItemPage"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    item_detail_api_hub_types__type_slug__items__key__get: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                type_slug: string;
+                key: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HubItemDetailOut"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
                 };
             };
         };

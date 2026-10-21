@@ -75,6 +75,8 @@ METHOD_CITATIONS_LINKED = "method.citations_linked"
 """규격의 시험 항목을 그것을 인용한 계열에 더해 이었다 — 어느 계열에 더했는지가 남는다."""
 METHOD_CODE_CHANGED = "method.code_changed"
 METHOD_TEST_ITEM_DETACHED = "method.test_item_detached"
+HUB_CONNECTION_UPDATED = "hub.connection_updated"
+RELIABILITY_HUB_LINKED = "reliability_test.hub_linked"
 """규격 번호를 고쳤다(시스템 관리자). 옛 번호는 `former_codes` 에 남지만, 누가 언제 무엇에서
 무엇으로 바꿨는지는 여기뿐이다 — 「이 규격 번호가 왜 바뀌었지」 에 답하는 자리."""
 METHOD_MERGED = "method.merged"
