@@ -55,6 +55,7 @@ class RefreshToken(Base):
 #:   read            모든 읽기
 #:   equipment:write 보유 장비·시험 항목·교정
 #:   catalog:write   계열·기종·사양·온톨로지
+#:   admin:write     계정·부서·공지·허브 연계·VOC — **사람 확인을 받아야만**(ADR 0013)
 #:
 #: **왜 나누나.** 카탈로그 쓰기는 시스템 관리자 몫인데, MCP 용 토큰에 그 계정을
 #: 주면 계정 관리와 서버 설정까지 함께 열린다. 자동화가 필요한 것은 그중 둘뿐이다.
@@ -62,7 +63,11 @@ class RefreshToken(Base):
 #: 사람 세션에는 이것을 안 건다 — **그 사람의 권한이 이미 한계**다. 범위는 기계
 #: 자격에만 있는 개념이고, 둘을 같은 축으로 섞으면 화면에서 되던 일이 이유 없이
 #: 막힌다.
-PAT_SCOPES = ("read", "equipment:write", "catalog:write")
+#:
+#: `admin:write` 는 그것만으로 아무것도 못 쓴다 — 요청마다 사람이 AI 화면의 확인 창에서
+#: 수락해야 한다(`shared/auth._CONFIRMED_WRITES`). 그래도 범위로 따로 두는 것은, 관리 일을
+#: AI 에 맡길지를 토큰을 만드는 사람이 **고르게** 하려는 것이다.
+PAT_SCOPES = ("read", "equipment:write", "catalog:write", "admin:write")
 
 
 class PersonalAccessToken(Base):

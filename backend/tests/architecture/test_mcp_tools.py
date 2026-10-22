@@ -37,6 +37,10 @@ WRITE_PREFIXES = (
     # 계열 잇기(`link_series`)가 `@mcp.tool()` 로 달려 읽기 전용 프로필에도 실렸다.
     "link_",
     "delete_",
+    # 관리 작업(`admin_action`) — 목록 읽기도 있지만 쓰기가 본업이고, 쓰기는
+    # `admin:write` 범위와 사람 확인이 있어야 한다. 읽기 전용 프로필에 실리면 고르는
+    # 일만 어려워진다.
+    "admin_",
 )
 
 
@@ -489,9 +493,18 @@ def test_도구_목록이_조용히_불어나지_않는다() -> None:
     고르는 길만 있었다. 확정 · 의견 · 보류 · 다시 열기를 `action` 하나로 묶었다(넷을 따로 두면
     도구가 셋 더 는다). 일괄은 화면의 「추천대로 확정」 과 같은 규칙(추천 없거나 다른 의견
     있으면 안 정함)이라 따로 둔다.
+
+    96 -> 98 (2026-10-22): `decide_reliability_tests` · `admin_action`. **사람 몫의
+    결정을 AI 에 연다 — 대신 AI 화면의 확인 창에서 사람이 수락해야 한다**(사용자 결정,
+    ADR 0013). 신뢰성 시험 확정 · 반려 · 다시 후보로 · 개정 확인과 계정 · 부서 · 공지 ·
+    허브 수신은 「화면에서만」 이었고, 그래서 AI 는 일의 마지막 걸음마다 사람을 화면으로
+    보냈다. 확정 넷을 따로 두면 도구가 셋 더 늘어 `action` 하나로 묶었고(일괄 API 하나를
+    부른다), 관리 서른두 가지는 `target`·`action` 표 하나로 묶었다. 확정된 시험 고치기 ·
+    MCP 의견대로 확정 · 규격 병합 · 시험 항목 해제 · 장비 일괄 삭제는 **있던 도구에** 확인
+    창을 달았다.
     """
     tools = _tools()
-    assert len(tools) <= 96, f"도구가 {len(tools)}개입니다 — 묶거나 상한을 다시 정하세요"
+    assert len(tools) <= 98, f"도구가 {len(tools)}개입니다 — 묶거나 상한을 다시 정하세요"
     for tool in tools:
         doc = ast.get_docstring(tool) or ""
         assert len(doc) <= 1600, (
@@ -670,6 +683,15 @@ def test_쓰기_도구가_부르는_경로는_모두_범위_표에_있다() -> N
             concrete = "/api" + re.sub(r"\{[^}]+\}", "x", path)
             if _needed_scope(concrete) is None:
                 missing.append(f"{tool.name}: {method} {path}")
+    # 지우기 · 고치기 표는 도구 밖(모듈)에 있다 — 사람 확인 해석기와 도구가 같이 쓴다.
+    for name in ("_DELETE_KINDS", "_UPDATE_KINDS"):
+        start = source.index(f"{name}: dict")
+        segment = source[start : source.index("\n}\n", start)]
+        for method, path in re.findall(r'"(POST|PUT|PATCH|DELETE)",\s*f?"([^"]+)"', segment):
+            checked += 1
+            concrete = "/api" + re.sub(r"\{[^}]+\}", "x", path)
+            if _needed_scope(concrete) is None:
+                missing.append(f"{name}: {method} {path}")
     assert checked > 30, f"쓰기 경로를 {checked}개밖에 못 읽었습니다 — 읽는 방식을 보세요"
     assert not missing, "범위 표에 없는 경로(토큰으로 늘 403): " + " · ".join(missing)
 
@@ -677,11 +699,13 @@ def test_쓰기_도구가_부르는_경로는_모두_범위_표에_있다() -> N
 #: 도구 이름처럼 생겼지만 **도구가 아닌 것** — 칸 · 인자 · 스크립트 이름. 여기에 더할
 #: 때는 그것이 정말 도구가 아닌지(없는 도구를 가리키는 오타가 아닌지) 한 번 본다.
 NOT_TOOLS = {
+    "add_member",  # admin_action 의 action 값(부서에 멤버 추가)
     "add_to_citing",  # decide_review_item 인자(규격의 시험 항목 — 인용 계열에 추가)
     "import_catalog",  # 반입 스크립트(`scripts/import_catalog.py`)
     "link_id",  # update_record · delete_record 의 ids 칸
     "merge_into",  # update_record(attribute_definition) 의 fields 칸
     "search_axis",  # set_spec 응답 칸
+    "set_member_role",  # admin_action 의 action 값(멤버 역할 바꾸기)
     "set_label",  # 신뢰성 시험 속성의 묶음 칸
     "update_existing",  # import_equipment 인자
 }
@@ -705,7 +729,7 @@ def test_설명과_길잡이가_가리키는_도구가_실재한다() -> None:
     texts.append((SERVER.parent / "guide" / "GUIDE.md").read_text(encoding="utf-8"))
     verbs = (
         "get|list|search|create|set|add|update|register|import|merge|promote|detach|"
-        "confirm|suggest|propose|attach|extract|decide|link|delete|graph|compare"
+        "confirm|suggest|propose|attach|extract|decide|link|delete|graph|compare|admin"
     )
     pattern = re.compile(rf"(?<![\w.])((?:{verbs})_[a-z0-9_]+)")
     mentioned = {one for text in texts for one in pattern.findall(text)}
@@ -713,3 +737,36 @@ def test_설명과_길잡이가_가리키는_도구가_실재한다() -> None:
     assert not missing, f"없는 도구를 가리킨다: {missing}"
     stale = sorted(NOT_TOOLS & names)
     assert not stale, f"도구가 된 이름이 NOT_TOOLS 에 남았다: {stale}"
+
+
+def test_관리_작업은_사람_확인_경로로만_간다() -> None:
+    """`admin_action` 의 표(`ADMIN_ACTIONS`)가 가리키는 쓰기는 **사람 확인 경로**여야 한다.
+
+    범위 표(`_WRITE_SCOPES`)에 있는 경로를 이 표에 두면 확인 창 없이 지나가고, 비밀값 경로
+    (토큰 발급 · 임시 비밀번호)를 두면 사람이 수락해도 403 이다 — 둘 다 표만 보고는 안 보인다.
+    표는 서버를 띄우지 않고 글자로 읽는다(`server.py` 는 `mcp` 패키지를 들여와서
+    import 가 무겁다).
+    """
+    import re
+    import sys
+
+    sys.path.insert(0, str(SERVER.parents[1] / "backend"))
+    from app.shared.auth import _SECRET_WRITES, _confirmed_scope, _needed_scope
+
+    source = SERVER.read_text(encoding="utf-8")
+    start = source.index("ADMIN_ACTIONS: dict")
+    table = source[start : source.index("\n}\n", start)]
+    rows = re.findall(
+        r'\("(\w+)", "(\w+)"\): \("(GET|POST|PUT|PATCH|DELETE)", "([^"]+)"\)', table
+    )
+    assert len(rows) >= 30, f"관리 작업 표를 {len(rows)}줄밖에 못 읽었습니다"
+    wrong: list[str] = []
+    for target, action, method, path in rows:
+        if method == "GET":
+            continue
+        concrete = "/api" + re.sub(r"\{[^}]+\}", "x", path)
+        if _needed_scope(concrete) is not None:
+            wrong.append(f"{target}.{action}: 확인 없이 지나는 경로 {path}")
+        elif _confirmed_scope(concrete) is None or _SECRET_WRITES.match(concrete):
+            wrong.append(f"{target}.{action}: 기계 자격으로 못 쓰는 경로 {path}")
+    assert not wrong, "관리 작업 표가 사람 확인 경로를 벗어난다: " + " · ".join(wrong)

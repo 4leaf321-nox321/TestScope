@@ -68,14 +68,24 @@ def test_토큰은_준_범위_안에서만_쓴다(client: TestClient, admin: Sig
         assert reading.status_code == 200, f"{path}: {reading.text}"
 
     # **표에 없는 경로는 어느 범위로도 못 쓴다.** 새 엔드포인트가 생길 때마다
-    # 자동으로 열리면 그것을 알아채는 사람이 아무도 없다.
+    # 자동으로 열리면 그것을 알아채는 사람이 아무도 없다. 비밀값(토큰 발급)이 그 예다.
     elsewhere = client.post(
-        "/api/notices",
-        json={"title": "기계가 쓰면 안 되는 것", "body": "x"},
+        "/api/auth/tokens",
+        json={"name": "기계가 만들면 안 되는 것"},
         headers=writer,
     )
     assert elsewhere.status_code == 403
     assert elsewhere.json()["error"]["code"] == "TSC-AUTH-0105"
+
+    # 관리 경로(공지)는 `admin:write` 를 고른 토큰이어야 한다 — 그 위에 사람 확인까지
+    # (`test_human_confirm.py`).
+    notice = client.post(
+        "/api/notices",
+        json={"title": "기계가 혼자 쓰면 안 되는 것", "body": "x"},
+        headers=writer,
+    )
+    assert notice.status_code == 403
+    assert notice.json()["error"]["code"] == "TSC-AUTH-0106"
 
 
 def test_새_도구가_쓰는_경로도_범위_안이다(client: TestClient, admin: Signed) -> None:

@@ -41,6 +41,7 @@ from app.modules.reliability.schemas import (
 from app.modules.test_items.models import EquipmentTestItem
 from app.modules.vocabulary.models import Vocabulary, VocabularyTerm
 from app.shared import audit
+from app.shared import confirm as human
 from app.shared.errors import AppError, Conflict, Forbidden, NotFound
 from app.shared.pagination import MAX_LIMIT, Page, clamp_limit
 from app.shared.permissions import (
@@ -48,7 +49,7 @@ from app.shared.permissions import (
     my_division_term_ids,
     visible_equipment_ids,
 )
-from app.shared.request_context import get_actor_token
+from app.shared.request_context import get_actor_token, is_confirmed
 from app.shared.text import compare_key
 
 #: 사업부 축의 slug. 코드가 축을 이 이름으로 건다.
@@ -907,8 +908,31 @@ def create(db: Session, user: User, payload: dict[str, Any]) -> ReliabilityTest:
     return row
 
 
-def _refuse_machine_edit(row: ReliabilityTest, *, hub_patch: bool = False) -> None:
-    """**확정된 시험은 기계 자격으로 못 고친다.**
+def _needs_human() -> bool:
+    """기계 통로이고 **아직 사람이 확인 창에서 수락하지 않은** 요청인가."""
+    return _machine() is not None and not is_confirmed()
+
+
+#: 확인 창에 싣는 시험 내용의 상한(자). 카드 칸이 스물이 넘어도 창 하나에 읽히게.
+_SUMMARY_LIMIT = 1800
+
+
+def _shown(db: Session, row: ReliabilityTest) -> str:
+    """확인 창에 싣는 **시험 내용** — 이름 · 목적 · 시험 항목 · 칸마다의 글자(감사와 같음)."""
+    lines = [f"· {key}: {value}" for key, value in _audit_view(db, row).items() if value]
+    text = "\n".join(lines)
+    return text if len(text) <= _SUMMARY_LIMIT else text[:_SUMMARY_LIMIT] + " …(이하 생략)"
+
+
+def _label(db: Session, row: ReliabilityTest) -> str:
+    division = db.get(VocabularyTerm, row.division_term_id)
+    return f"{division.value if division else '?'} · {row.name}"
+
+
+def _refuse_machine_edit(
+    db: Session, row: ReliabilityTest, *, hub_patch: bool = False, what: str = "수정"
+) -> None:
+    """**확정된 시험은 기계 자격으로 못 고친다 — 사람이 AI 화면에서 수락하기 전에는.**
 
     후보로 받는 것만으로는 부족하다 — AI 가 후보를 만들고, 사람이 확인한 뒤, AI 가 그 줄을
     다시 고치면 확인은 지나간 일이 되고 아무도 그것을 모른다. 확정은 **그 시점의 내용**에
@@ -922,13 +946,19 @@ def _refuse_machine_edit(row: ReliabilityTest, *, hub_patch: bool = False) -> No
     **허브 기준정보 칸만은 예외다**(2026-10-21 사용자 결정) — 개발모델 · 과제 같은 기준정보를
     잇는 것은 시험 내용이 아니라 분류 표시이고, 운영에서는 그 연결을 MCP 로 한다
     (`hub.links`). 그 칸만 보낸 요청이면 확정을 유지한 채 받는다.
+
+    **사람이 AI 화면의 확인 창에서 수락하면 고친다**(2026-10-22 사용자 결정, ADR 0013). 막은
+    이유가 「사람 확인 없이 확정된 값이 바뀐다」 였으므로, 사람이 바뀌는 내용을 보고 수락한
+    요청은 그 이유에 안 걸린다. 수락한 요청은 감사에 통로 `mcp:confirmed` 로 남는다.
     """
-    if _machine() is None or row.status != CONFIRMED or hub_patch:
+    if row.status != CONFIRMED or hub_patch or not _needs_human():
         return
-    raise Conflict(
+    human.require(
         "TSC-RELIABILITY-0005",
-        "확정된 신뢰성 시험은 기계 자격으로 수정 불가. "
-        "화면에서 다시 후보로 되돌린 뒤 수정 가능.",
+        f"확정된 신뢰성 시험의 {what}는 사용자 확인 필요(또는 다시 후보로 되돌린 뒤).",
+        summary=f"확정된 신뢰성 시험 {what}: {_label(db, row)}"
+        + (" — 확정 상태 그대로 내용이 바뀜." if what == "수정" else " — 목록에서 내려감."),
+        status=409,
         details={"test_id": str(row.id), "status": row.status},
     )
 
@@ -948,7 +978,7 @@ def require_editable(
             "TSC-RELIABILITY-0007",
             "이 사업부의 신뢰성 시험 수정 불가. 해당 사업부에 속한 부서의 관리자만 수정 가능.",
         )
-    _refuse_machine_edit(row, hub_patch=hub_patch)
+    _refuse_machine_edit(db, row, hub_patch=hub_patch)
 
 
 def _audit_view(db: Session, row: ReliabilityTest) -> dict[str, str | None]:
@@ -1122,20 +1152,26 @@ def update(
     return row
 
 
-def _human_only(row: ReliabilityTest, what: str) -> None:
-    """확인하고 다시 여는 것은 **사람만.**
+def _human_only(db: Session, row: ReliabilityTest, what: str, head: str) -> None:
+    """확인하고 다시 여는 것은 **사람이 정한다** — 화면에서, 또는 AI 화면의 확인 창에서.
 
     기계 자격이 스스로 확인할 수 있으면 후보라는 상태에 아무 뜻이 없다 — AI 가 올리고
     AI 가 확인하면 그냥 바로 쓰는 것과 같다. MCP 에 도구를 안 만드는 것만으로는 부족하다:
     PAT 는 이 경로를 직접 부를 수 있다.
+
+    **AI 화면의 확인 창도 사람의 확인이다**(2026-10-22 사용자 결정, ADR 0013). 확인 창에는
+    시험 내용(이름 · 목적 · 시험 항목 · 칸마다의 글자)을 싣는다 — 「확정합니까」 만 물으면
+    무엇을 확정하는지 모른 채 누른다. 증표 없이 온 기계 요청은 그 내용을 실어 거절하고,
+    MCP 서버가 그것으로 창을 띄운다.
     """
-    if _machine() is None:
+    if not _needs_human():
         return
-    raise Forbidden(
+    human.require(
         "TSC-RELIABILITY-0006",
         # `what` 에 조사까지 실어 받는다 — 여기서 「는」 을 붙이면 받침에 따라 틀린다
         # (「확인는」). 한국어 조사는 앞말을 봐야 정해지므로 부르는 쪽이 준다.
-        f"{what} 화면에서만 수행 가능. 기계 자격(토큰, MCP)으로는 불가.",
+        f"{what} 사용자 확인 필요.",
+        summary=f"{head}: {_label(db, row)}\n{_shown(db, row)}",
         details={"test_id": str(row.id)},
     )
 
@@ -1147,7 +1183,7 @@ def confirm(db: Session, user: User, test_id: uuid.UUID) -> ReliabilityTest:
     줄을 동시에 보고 둘 다 누를 수 있다.
     """
     row = get(db, test_id)
-    _human_only(row, "확인은")
+    _human_only(db, row, "확인은", "신뢰성 시험 확정(이후 AI 는 확인 없이 못 고침)")
     require_editable(db, user, test_id)
     if row.status == CONFIRMED:
         return row
@@ -1189,7 +1225,9 @@ def reopen(
     반려가 사유를 받는 것과 같은 이유다.
     """
     row = get(db, test_id)
-    _human_only(row, "다시 후보로 되돌리기는")
+    _human_only(
+        db, row, "다시 후보로 되돌리기는", "다시 후보로(이후 AI 가 확인 없이 고칠 수 있음)"
+    )
     require_editable(db, user, test_id)
     if row.status == CANDIDATE:
         return row
@@ -1251,7 +1289,7 @@ def reject(db: Session, user: User, test_id: uuid.UUID, reason: str) -> None:
     아무도 모른다 — 계정 거절이 사유를 받는 것과 같은 이유다.
     """
     row = get(db, test_id)
-    _human_only(row, "반려는")
+    _human_only(db, row, "반려는", f"반려(목록에서 내려감, 사유: {reason.strip() or '없음'})")
     require_editable(db, user, test_id)
     if row.status != CANDIDATE:
         raise Conflict(
@@ -1271,10 +1309,65 @@ def reject(db: Session, user: User, test_id: uuid.UUID, reason: str) -> None:
 BULK_LIMIT = 500
 
 
+#: 확인 창에 이름을 늘어놓는 줄 수. 넘는 것은 「외 N건」 으로.
+_SUMMARY_ROWS = 20
+
+_BULK_WHAT = {
+    "confirm": "확정(이후 AI 는 확인 없이 못 고침)",
+    "reject": "반려(목록에서 내려감)",
+    "reopen": "다시 후보로(이후 AI 가 확인 없이 고칠 수 있음)",
+    "reviewed": "규격서 개정을 봤다고 표시",
+    "delete": "삭제(확정된 줄 포함)",
+}
+
+
+def _ask_bulk(
+    db: Session, ids: list[uuid.UUID], action: str, reason: str, revision_id: uuid.UUID | None
+) -> None:
+    """묶음 하나에 **한 번** 묻는다 — 줄마다 물으면 오백 번 창이 뜬다.
+
+    지우기는 확정된 줄이 섞였을 때만 묻는다(후보를 거두는 것은 AI 가 혼자 한다). 한 건이면
+    시험 내용까지 싣는다 — 확정은 「내용을 읽고 맞다」 는 보증이라, 이름만 보고 누르면 안 된다.
+    """
+    if not _needs_human():
+        return
+    rows = list(db.scalars(select(ReliabilityTest).where(ReliabilityTest.id.in_(ids))))
+    if action == "delete":
+        rows = [one for one in rows if one.status == CONFIRMED]
+        if not rows:
+            return
+    head = f"신뢰성 시험 {len(rows)}건 {_BULK_WHAT[action]}"
+    if reason:
+        head += f" — 사유: {reason}"
+    if action == "reviewed":
+        revision = db.get(SpecDocumentRevision, revision_id) if revision_id else None
+        head += f" — 개정: {revision.label if revision else '없음(표를 도로 붙임)'}"
+    if len(rows) == 1:
+        body = _shown(db, rows[0]) if action == "confirm" else ""
+        summary = f"{head}\n· {_label(db, rows[0])}" + (f"\n{body}" if body else "")
+    else:
+        names = [f"· {_label(db, one)}" for one in rows[:_SUMMARY_ROWS]]
+        if len(rows) > _SUMMARY_ROWS:
+            names.append(f"… 외 {len(rows) - _SUMMARY_ROWS}건")
+        summary = head + "\n" + "\n".join(names)
+    human.require(
+        "TSC-RELIABILITY-0006",
+        f"신뢰성 시험 {len(rows)}건 {_BULK_WHAT[action].split('(')[0]} — 사용자 확인 필요.",
+        summary=summary,
+        details={"action": action, "count": len(rows)},
+    )
+
+
 def bulk(
-    db: Session, user: User, *, ids: list[uuid.UUID], action: str, reason: str | None
+    db: Session,
+    user: User,
+    *,
+    ids: list[uuid.UUID],
+    action: str,
+    reason: str | None,
+    revision_id: uuid.UUID | None = None,
 ) -> dict[str, Any]:
-    """여러 줄을 한 번에 — 확인 · 반려 · 지우기 · **다시 후보로.**
+    """여러 줄을 한 번에 — 확인 · 반려 · 지우기 · **다시 후보로** · 개정 확인.
 
     **AI 가 몇천 건을 올린다.** 줄마다 창을 열어 확인을 누르는 것은 사람이 할 수 있는
     일이 아니고, 못 하면 후보가 쌓인 채로 아무도 안 본다 — 그러면 확인이라는 단계가
@@ -1300,6 +1393,7 @@ def bulk(
         "reject": reject,
         "delete": delete,
         "reopen": reopen,
+        "reviewed": _mark_reviewed,
     }.get(action)
     if run is None:
         raise AppError("TSC-RELIABILITY-0011", f"알 수 없는 동작: {action}")
@@ -1309,6 +1403,9 @@ def bulk(
     if action in ("reject", "reopen") and not said:
         what = "반려" if action == "reject" else "다시 후보로 되돌리기"
         raise AppError("TSC-RELIABILITY-0011", f"{what} 사유 입력 필요.")
+    # **사람 확인은 묶음 앞에서 한 번.** 줄마다 거절하면 오백 줄이 같은 이유로 실패하고
+    # (200 으로), MCP 서버는 그것을 확인 요구로 못 알아본다.
+    _ask_bulk(db, ids, action, said, revision_id)
 
     done: list[str] = []
     failed: list[dict[str, str]] = []
@@ -1316,6 +1413,8 @@ def bulk(
         try:
             if action in ("reject", "reopen"):
                 run(db, user, test_id, said)  # type: ignore[operator]
+            elif action == "reviewed":
+                run(db, user, test_id, revision_id)  # type: ignore[operator]
             else:
                 run(db, user, test_id)  # type: ignore[operator]
             done.append(str(test_id))
@@ -1327,6 +1426,12 @@ def bulk(
                 {"id": str(test_id), "code": refused.code, "message": refused.message}
             )
     return {"done": done, "failed": failed, "requested": len(ids)}
+
+
+def _mark_reviewed(
+    db: Session, user: User, test_id: uuid.UUID, revision_id: uuid.UUID | None
+) -> None:
+    documents.mark_reviewed(db, user, test_id, revision_id)
 
 
 #: 사내 규격서를 가리키는 속성의 key. 묶음 등록이 이 칸에 문서를 건다.
@@ -1483,7 +1588,7 @@ def _merge_revision(
     돌려주는 것: `updated` 면 바뀐 칸 이름, `skipped` 면 바뀐 것이 없다는 뜻이다.
     """
     require_editable(db, user, row.id)
-    _refuse_machine_edit(row)
+    _refuse_machine_edit(db, row)
     # **덮기 전에 지금 값을 적어 둔다.** 덮고 나서는 무엇이 있었는지 알 길이 없다.
     before = _value_marks(db, row.id, revision_id)
     seen = _audit_view(db, row)
@@ -1678,7 +1783,7 @@ def delete(db: Session, user: User, test_id: uuid.UUID) -> None:
     require_editable(db, user, test_id)
     # **확정된 것은 기계가 못 내린다.** 고치는 것을 막고 지우는 것을 열어 두면, 그 길로
     # 가면 결과는 더 나쁘다. 제가 만든 후보를 거두는 것은 된다.
-    _refuse_machine_edit(row)
+    _refuse_machine_edit(db, row, what="삭제")
     # **반년 뒤에 「그 시험 어디 갔어」 를 묻는다.** 지운 줄은 화면에서 사라지므로
     # 감사에 남는다.
     _take_down(db, user, row, action=audit.RELIABILITY_TEST_DELETED, reason=None)

@@ -24,11 +24,12 @@ MatNexus 의 MCP 서버를 본떴다. 그쪽에서 실측으로 얻은 것 넷�
 
 from __future__ import annotations
 
+import json
 import os
 import re
 import time
 from pathlib import Path
-from typing import Any
+from typing import Annotated, Any
 
 import shlex
 from pathlib import Path
@@ -36,10 +37,19 @@ from urllib.parse import quote
 
 import bind
 import calltrace
+import confirm as human_confirm
 import httpx
 from merge import merge
-from mcp.server.mcpserver import Context, MCPServer
+from mcp.server.mcpserver import (
+    AcceptedElicitation,
+    Context,
+    Elicit,
+    ElicitationResult,
+    MCPServer,
+    Resolve,
+)
 from mcp.server.transport_security import TransportSecuritySettings
+from pydantic import BaseModel, Field
 
 
 def _load_env_defaults() -> None:
@@ -86,6 +96,11 @@ _load_env_defaults()
 #: 백엔드 API. 같은 기계에서 도는 것이 기본이다(개발 8021 · 운영 8020).
 API_BASE = os.environ.get("TESTSCOPE_API_BASE", "http://127.0.0.1:8021/api").rstrip("/")
 
+#: **사람 확인 증표**의 서명 열쇠(ADR 0013). 백엔드와 같은 `JWT_SECRET` 에서 뽑는다 — 확인 창에서
+#: 사람이 수락한 요청에만 이것으로 서명한다(`confirm.py`). 이것은 권한이 아니다: 증표는 호출자의
+#: 토큰에 묶이고, 토큰 없이는 아무것도 인증하지 않는다.
+CONFIRM_KEY = human_confirm.load_key(Path(__file__).resolve().parent.parent / "backend" / ".env")
+
 #: 한 번에 돌려주는 목록의 상한. **도구가 스스로 막는다** — 상한이 없으면 한 번의
 #: 호출이 수만 자가 되어 대화가 끊긴다.
 MAX_LIMIT = 50
@@ -129,6 +144,8 @@ ROUTING = """물음별 첫 도구 (상세는 각 도구 설명과 get_guide):
   카탈로그에 없는 기종 요청      list_model_requests -> decide_model_request (사람 확인 후)
   축에 없는 시험 항목 요청       list_test_item_requests -> decide_test_item_request
   전용 도구 없는 수정·삭제·생성  update_record · delete_record(확인 후 confirm) · create_record
+  신뢰성 시험 확정·반려·되돌리기 decide_reliability_tests  (사용자 확인 창)
+  계정·부서·공지·허브 수신 관리  admin_action  (쓰기는 사용자 확인 창)
   남은 일·우선순위               list_pending_work"""
 
 mcp = MCPServer(
@@ -283,17 +300,38 @@ async def _send(
     path: str,
     body: dict[str, Any] | None = None,
     params: dict[str, Any] | None = None,
+    *,
+    human: bool = False,
 ) -> Any:
     """POST·PATCH·PUT 하나. **쓰기는 이 함수만 지난다** — 오류 모양을 한 곳에 둔다.
 
     쿼리는 `params` 로 준다. 경로에 `?` 를 붙이면 「도구가 부르는 경로가 실재하나」 를
     보는 구조 시험이 그 경로를 못 찾는다.
+
+    `human=True` 는 **사람이 확인 창에서 수락한 뒤에만** 준다(`_after_consent`). 그때 본문을
+    바이트로 직접 만들고 그 바이트 · 경로 · 토큰에 서명해 `X-Human-Confirm` 으로 싣는다 —
+    httpx 가 본문을 다시 만들면 서명한 것과 보낸 것이 어긋난다.
     """
+    headers = _headers(ctx)
+    clean = {key: value for key, value in (params or {}).items() if value is not None}
+    url = httpx.URL(API_BASE + path, params=clean or None)
+    raw = json.dumps(body or {}, ensure_ascii=False).encode()
+    if human:
+        headers["Content-Type"] = "application/json"
+        headers[human_confirm.HEADER] = human_confirm.proof(
+            CONFIRM_KEY,
+            method=method,
+            path=url.path,
+            query=url.query.decode("latin-1"),
+            token=headers.get("Authorization", "")[7:],
+            body=raw,
+        )
     try:
-        async with httpx.AsyncClient(base_url=API_BASE, timeout=60.0) as client:
-            got = await client.request(
-                method, path, json=body or {}, params=params, headers=_headers(ctx)
-            )
+        async with httpx.AsyncClient(timeout=60.0) as client:
+            if human:
+                got = await client.request(method, url, content=raw, headers=headers)
+            else:
+                got = await client.request(method, url, json=body or {}, headers=headers)
     except httpx.RequestError as failed:
         return {"error": f"백엔드 연결 실패({API_BASE}): {failed}"}
     problem = _auth_error(got)
@@ -358,6 +396,121 @@ def _then(payload: Any, advice: str) -> Any:
     if isinstance(payload, dict) and "error" not in payload:
         payload["next"] = advice
     return payload
+
+
+# ── 사람 확인 — AI 화면의 확인 창 (ADR 0013) ────────────────────────────────────
+
+
+class _Approve(BaseModel):
+    """확인 창의 칸 — 하나뿐이다. 사람이 수락하면 실행, 거절 · 취소 · 체크 해제면 안 한다."""
+
+    approve: bool = Field(default=True, title="이 내용대로 실행")
+
+
+#: 확인 창에 싣는 「AI 가 보낸 값」 의 상한(자). 서버가 준 요약이 앞에 서므로 이것은 덧붙임이다.
+_ASKED_LIMIT = 1500
+
+
+def _asks(got: Any) -> bool:
+    """서버가 **사람 확인을 요구했나**(`details.needs_confirmation`). 코드가 아니라 표식으로
+    본다 — 막는 자리마다 코드가 다르다(시험 확정 · 확정된 시험 수정 · 관리 작업 …)."""
+    return isinstance(got, dict) and bool((got.get("details") or {}).get("needs_confirmation"))
+
+
+def _can_ask(ctx: Context) -> bool:
+    """이 클라이언트가 확인 창(폼 elicitation)을 띄울 수 있다고 밝혔나.
+
+    밝히지 않은 클라이언트에 물으면 SDK 가 프로토콜 오류로 끊는다 — 그 전에 사람이 읽을
+    문장으로 돌려준다. 왕복 시험의 흉내 자격(`roundtrip._Ctx`)은 이 칸이 없다: 그쪽은 확인
+    창을 스스로 흉내 내므로 띄울 수 있다고 본다.
+    """
+    try:
+        caps = ctx.client_capabilities
+    except AttributeError:
+        return True
+    except Exception:
+        return False
+    found = caps.elicitation if caps is not None else None
+    return found is not None and (found.form is not None or found.url is None)
+
+
+def _question(ctx: Context, refused: dict[str, Any], asked: Any) -> Any:
+    """서버의 거절(확인 요구)을 **확인 창 질문**으로 바꾼다. 못 띄우면 오류 문장.
+
+    창에는 서버가 쓴 요약(무엇이 어떻게 바뀌나)과 AI 가 보낸 값을 함께 싣는다 — AI 가 적은
+    설명이 아니라 **실제로 보낼 것**을 보여 준다. 질문은 같은 요청이면 글자까지 같아야 한다
+    (새 프로토콜은 질문을 한 번 묻고 그 답을 다음 차례에 글자로 맞춰 본다).
+    """
+    summary = str((refused.get("details") or {}).get("confirm") or refused.get("error") or "")
+    if not _can_ask(ctx):
+        return {
+            "error": "사람 확인이 필요한 작업인데 이 AI 클라이언트는 확인 창(MCP elicitation)을"
+            " 띄울 수 없음. 실행 안 함 — 확인 창을 지원하는 클라이언트(Claude Code 등)나"
+            " TestScope 화면에서.",
+            "confirm": summary,
+        }
+    text = json.dumps(asked, ensure_ascii=False, indent=1)
+    if len(text) > _ASKED_LIMIT:
+        text = text[:_ASKED_LIMIT] + " …(이하 생략)"
+    message = (
+        "TestScope — 사람 확인이 필요한 작업\n\n"
+        f"{summary}\n\n"
+        f"AI 가 보낸 값:\n{text}\n\n"
+        "수락하면 이 내용 그대로 한 번 실행되고 변경 이력에 「MCP·사용자 확인」 으로 남음."
+        " 거절하면 실행 안 함."
+    )
+    return Elicit(message, _Approve)
+
+
+async def _probe(
+    ctx: Context,
+    method: str,
+    path: str,
+    body: dict[str, Any] | None,
+    params: dict[str, Any] | None,
+    asked: Any,
+) -> Any:
+    """**먼저 그냥 보내 본다.** 사람 확인이 필요 없으면 그것으로 끝(결과를 돌려준다), 필요하면
+    서버가 아무것도 안 바꾸고 거절하므로 그 거절로 확인 창 질문을 만든다.
+
+    같은 일을 「확인이 필요한가」 로 따로 묻는 엔드포인트를 두면 판정이 두 벌이 된다 — 막는
+    자리는 서버의 그 한 곳뿐이어야 한다.
+    """
+    if method == "GET":
+        return await _get(ctx, path, params)
+    got = await _send(ctx, method, path, body, params)
+    return _question(ctx, got, asked) if _asks(got) else got
+
+
+def _declined() -> dict[str, Any]:
+    return {
+        "error": "사용자가 확인 창에서 거절함. 실행 안 함.",
+        "declined": True,
+        "next": "같은 내용으로 다시 부르지 말 것. 사용자에게 무엇을 바꿀지 확인.",
+    }
+
+
+async def _after_consent(
+    ctx: Context,
+    consent: Any,
+    method: str,
+    path: str,
+    body: dict[str, Any] | None = None,
+    params: dict[str, Any] | None = None,
+) -> Any:
+    """확인 창의 답대로 — 수락이면 **증표를 실어** 다시 보내고, 아니면 안 보낸다.
+
+    해석기가 이미 끝낸 요청(확인이 필요 없었거나 다른 이유로 거절된 것)은 그 결과를 그대로
+    돌려준다 — 두 번 보내지 않는다.
+    """
+    if isinstance(consent, AcceptedElicitation):
+        data = consent.data
+        if isinstance(data, _Approve):
+            if not data.approve:
+                return _declined()
+            return await _send(ctx, method, path, body, params, human=True)
+        return data
+    return _declined()
 
 
 # ── 안내 ──────────────────────────────────────────────────────────────────────
@@ -2791,10 +2944,43 @@ async def create_reliability_tests(
     )
 
 
+def _test_patch(
+    name: str | None,
+    purpose: str | None,
+    test_item_term_ids: list[str] | None,
+    attributes: list[dict[str, Any]] | None,
+) -> dict[str, Any]:
+    body: dict[str, Any] = {}
+    if name is not None:
+        body["name"] = name
+    if purpose is not None:
+        body["purpose"] = purpose
+    if test_item_term_ids is not None:
+        body["test_item_term_ids"] = test_item_term_ids
+    if attributes is not None:
+        body["attributes"] = attributes
+    return body
+
+
+async def _consent_test_update(
+    ctx: Context,
+    test_id: str,
+    name: str | None,
+    purpose: str | None,
+    test_item_term_ids: list[str] | None,
+    attributes: list[dict[str, Any]] | None,
+) -> Elicit[_Approve] | dict[str, Any]:
+    """후보면 그대로 고치고, 확정된 시험이면 확인 창을 띄운다."""
+    body = _test_patch(name, purpose, test_item_term_ids, attributes)
+    got: Any = await _probe(ctx, "PATCH", f"/reliability-tests/{test_id}", body, None, body)
+    return got
+
+
 @writes
 async def update_reliability_test(
     ctx: Context,
     test_id: str,
+    consent: Annotated[ElicitationResult[_Approve], Resolve(_consent_test_update)],
     name: str | None = None,
     purpose: str | None = None,
     test_item_term_ids: list[str] | None = None,
@@ -2802,9 +2988,8 @@ async def update_reliability_test(
 ) -> dict[str, Any]:
     """신뢰성 시험 수정. **보내지 않은 칸은 유지.**
 
-    **확정된 시험은 수정 불가**(409 `TSC-RELIABILITY-0005`). 사람이 내용을 확인한 것이라
-    수정하려면 확인부터 해제해야 함: 사용자에게 화면의 다시 후보로 버튼을 눌러 달라고 요청.
-    AI가 해제하는 방법은 없음. 수정 가능한 것은 후보 상태 시험.
+    **확정된 시험**은 사용자 확인 창을 거쳐 수정(확정 유지, 변경 이력에 남음). 사용자가 거절하면
+    `declined` — 다시 부르지 말 것. 확정을 풀려면 `decide_reliability_tests(action="reopen")`.
 
     `test_id`는 `resolve(kind="reliability_test", …)`로 확정(이름만 보고 고르면 같은 이름의
     다른 부서 시험을 수정하게 됨).
@@ -2815,21 +3000,50 @@ async def update_reliability_test(
     칸 몇 개만 고칠 때는 `set_reliability_attributes` 사용. 그 도구는 현재 값을 읽어 겹치는
     줄만 교체(스물두 칸을 다시 적다 하나를 빠뜨리는 사고가 실제로 발생).
     """
-    body: dict[str, Any] = {}
-    if name is not None:
-        body["name"] = name
-    if purpose is not None:
-        body["purpose"] = purpose
-    if test_item_term_ids is not None:
-        body["test_item_term_ids"] = test_item_term_ids
-    if attributes is not None:
-        body["attributes"] = attributes
-    return await _send(ctx, "PATCH", f"/reliability-tests/{test_id}", body)
+    body = _test_patch(name, purpose, test_item_term_ids, attributes)
+    sent: dict[str, Any] = await _after_consent(
+        ctx, consent, "PATCH", f"/reliability-tests/{test_id}", body
+    )
+    return sent
+
+
+def _only_sent(attributes: list[dict[str, Any]]) -> list[dict[str, Any]]:
+    """보낸 칸만 — 떼기 줄은 값 없이(허브 칸 떼기는 정의만 보내면 된다)."""
+    return [
+        {key: value for key, value in one.items() if key not in ("remove", "term_id")}
+        if one.get("remove")
+        else one
+        for one in attributes
+    ]
+
+
+async def _consent_attributes(
+    ctx: Context, test_id: str, attributes: list[dict[str, Any]]
+) -> Elicit[_Approve] | dict[str, Any]:
+    """후보면 겹쳐 고치고, 확정된 시험이면 **허브 칸만인지 먼저** 보고 아니면 확인 창."""
+    path = f"/reliability-tests/{test_id}"
+    now = await _get(ctx, path)
+    if isinstance(now, dict) and now.get("error"):
+        # 못 읽었으면 **보내지 않는다** — 빈 목록으로 덮으면 스물둘이 한 번에 사라진다.
+        return now
+    got = await _send(ctx, "PATCH", path, {"attributes": merge(now.get("attributes", []), attributes)})
+    if not _asks(got):
+        return got
+    # 확정된 시험 — **보낸 칸만** 다시. 전부 허브 기준정보 칸이면 서버가 그 칸만 바꾸고(확인
+    # 없이), 하나라도 아니면 같은 확인 요구다(그때도 다른 값은 안 지워진다).
+    only = await _send(ctx, "PATCH", path, {"attributes": _only_sent(attributes)})
+    if not _asks(only):
+        return only
+    asked: dict[str, Any] = _question(ctx, got, {"attributes": attributes})
+    return asked
 
 
 @writes
 async def set_reliability_attributes(
-    ctx: Context, test_id: str, attributes: list[dict[str, Any]]
+    ctx: Context,
+    test_id: str,
+    attributes: list[dict[str, Any]],
+    consent: Annotated[ElicitationResult[_Approve], Resolve(_consent_attributes)],
 ) -> dict[str, Any]:
     """신뢰성 시험의 **칸 몇 개만** 수정. 나머지는 유지.
 
@@ -2848,32 +3062,19 @@ async def set_reliability_attributes(
     삭제는 명시적으로: `{"definition_id": "…", "remove": true}`. 빈 값 전송으로는 삭제되지
     않음(빈 문자열과 미기재는 다름). 묶음이 있는 줄은 묶음까지 같아야 삭제됨.
 
-    확정된 시험은 수정 불가(409): 사람이 화면에서 다시 후보로 버튼을 눌러야 함. 여러 건은
-    목록에서 체크해 한 번에 해제 가능(사유 기재). 막힌 줄이 여럿이면 하나씩이 아니라 건수를
-    세어 일괄 해제 요청. **예외: 허브 기준정보 칸**(허브 축 값을 고르는 칸 — 개발모델 · 과제
-    등)은 확정된 시험에도 붙이고 뗄 수 있음. 보낸 칸이 전부 허브 칸이면 그 칸만 바뀜.
+    **확정된 시험**은 사용자 확인 창을 거쳐 수정(확정 유지). 거절이면 `declined`. **예외: 허브
+    기준정보 칸**(허브 축 값을 고르는 칸 — 개발모델 · 과제 등)만 보내면 확인 없이 그 칸만 바뀜.
     """
-    now = await _get(ctx, f"/reliability-tests/{test_id}")
-    if isinstance(now, dict) and now.get("error"):
-        # 못 읽었으면 **보내지 않는다** — 빈 목록으로 덮으면 스물둘이 한 번에 사라진다.
-        return now
-
-    sent = await _send(
-        ctx,
-        "PATCH",
-        f"/reliability-tests/{test_id}",
-        {"attributes": merge(now.get("attributes", []), attributes)},
-    )
-    if "TSC-RELIABILITY-0005" in str(sent.get("error", "")):
-        # 확정된 시험 — **보낸 칸만** 다시. 전부 허브 기준정보 칸이면 서버가 그 칸만 바꾸고,
-        # 하나라도 아니면 같은 409 다(그때도 다른 값은 안 지워진다).
-        only = [
-            {key: value for key, value in one.items() if key not in ("remove", "term_id")}
-            if one.get("remove")
-            else one
-            for one in attributes
-        ]
-        sent = await _send(ctx, "PATCH", f"/reliability-tests/{test_id}", {"attributes": only})
+    path = f"/reliability-tests/{test_id}"
+    if isinstance(consent, AcceptedElicitation) and isinstance(consent.data, _Approve):
+        # 수락한 뒤 — 지금 값을 **다시 읽어** 겹친다(창을 읽는 동안 바뀌었을 수 있다).
+        now = await _get(ctx, path)
+        if isinstance(now, dict) and now.get("error"):
+            return now
+        body = {"attributes": merge(now.get("attributes", []), attributes)}
+        sent = await _after_consent(ctx, consent, "PATCH", path, body)
+    else:
+        sent = await _after_consent(ctx, consent, "PATCH", path)
     return _then(
         sent,
         "보낸 칸만 변경, 나머지는 유지. 고친 칸이 조건(`kind=\"condition\"`)이면"
@@ -3230,16 +3431,10 @@ async def create_attribute_definition(
 # ── 일반 — 전용 도구가 없는 고치기 · 지우기 · 만들기 ─────────────────────────────
 
 
-async def _by_kind(
-    ctx: Context,
-    table: dict[str, tuple[str, str]],
-    kind: str,
-    ids: dict[str, str] | None,
-    body: dict[str, Any] | None = None,
-    *,
-    preview: bool = False,
+def _kind_plan(
+    table: dict[str, tuple[str, str]], kind: str, ids: dict[str, str] | None
 ) -> dict[str, Any]:
-    """`kind` 표에서 메서드·경로를 고르고 `ids` 로 경로를 채워 부른다.
+    """`kind` 표에서 메서드·경로를 고르고 `ids` 로 경로를 채운다. 오류면 `{"error": …}`.
 
     경로에 안 쓰인 `ids` 의 칸은 질의로 간다(표기 떼기의 `value`). **자격은 서버가 가른다**
     — 이 표는 길만 안다(얇은 프록시, AGENTS.md). 그래서 역할마다 다른 표를 두지 않는다:
@@ -3255,86 +3450,203 @@ async def _by_kind(
         return {"error": f"{kind}: ids 누락({', '.join(lacking)})", "needs": names}
     path = template.format(**{name: given[name] for name in names})
     params = {key: value for key, value in given.items() if key not in names} or None
-    if preview:
-        return {
+    return {"method": method, "path": path, "params": params, "ids": given}
+
+
+async def _by_kind(
+    ctx: Context,
+    table: dict[str, tuple[str, str]],
+    kind: str,
+    ids: dict[str, str] | None,
+    body: dict[str, Any] | None = None,
+) -> dict[str, Any]:
+    """`kind` 표로 길을 찾아 바로 부른다(사람 확인이 없는 만들기)."""
+    plan = _kind_plan(table, kind, ids)
+    if "error" in plan:
+        return plan
+    result = await _send(ctx, plan["method"], plan["path"], body, params=plan["params"])
+    return result if isinstance(result, dict) else {"result": result}
+
+
+#: 지우기 — kind → (메서드, 경로). 규격의 시험 항목 해제 · 장비 일괄 삭제는 지우기의 한 갈래다
+#: (되돌릴 수 없는 내림). 둘은 기계 자격이면 서버가 사람 확인을 요구한다(ADR 0013).
+_DELETE_KINDS: dict[str, tuple[str, str]] = {
+    "reliability_test": ("DELETE", "/reliability-tests/{test_id}"),
+    "equipment": ("DELETE", "/equipment/{equipment_id}"),
+    "equipment_bulk": ("POST", "/equipment/bulk-delete"),
+    "equipment_test_item": ("DELETE", "/equipment-test-items/{equipment_test_item_id}"),
+    "test_condition": (
+        "DELETE",
+        "/equipment-test-items/{equipment_test_item_id}/limits/{limit_id}",
+    ),
+    "equipment_spec": ("DELETE", "/equipment/{equipment_id}/specs/{definition_id}"),
+    "spec_document": ("DELETE", "/spec-documents/{document_id}"),
+    "attachment": ("DELETE", "/attachments/{attachment_id}"),
+    "method": ("DELETE", "/methods/{method_id}"),
+    "method_test_item": ("POST", "/methods/{method_id}/test-items/{term_id}/detach"),
+    "requirement": ("DELETE", "/methods/{method_id}/requirements/{requirement_id}"),
+    "series": ("DELETE", "/equipment-series/{series_id}"),
+    "series_test_item": (
+        "DELETE",
+        "/equipment-series/{series_id}/test-items/{series_test_item_id}",
+    ),
+    "series_condition": (
+        "DELETE",
+        "/equipment-series/{series_id}/test-items/{series_test_item_id}/limits/{limit_id}",
+    ),
+    "series_relation": ("DELETE", "/equipment-series/{series_id}/relations/{relation_id}"),
+    "model": ("DELETE", "/equipment-models/{model_id}"),
+    "model_spec": ("DELETE", "/equipment-models/{model_id}/specs/{definition_id}"),
+    "free_spec": ("DELETE", "/equipment-models/{model_id}/free-specs/{free_spec_id}"),
+    "attribute_definition": ("DELETE", "/attribute-definitions/{definition_id}"),
+    "spec_definition": ("DELETE", "/spec-definitions/{definition_id}"),
+    "spec_group": ("DELETE", "/spec-groups/{group_id}"),
+    "property_link": ("DELETE", "/test-item-properties/{link_id}"),
+    "term_alias": ("DELETE", "/vocabularies/terms/{term_id}/aliases"),
+}
+
+
+def _delete_plan(kind: str, ids: dict[str, str], reason: str | None) -> dict[str, Any]:
+    """지우기의 길과 본문. 일괄 삭제는 `ids.equipment_ids`(쉼표로 이은 id)를 목록 본문으로."""
+    bulk = kind == "equipment_bulk"
+    plan = _kind_plan(_DELETE_KINDS, kind, {} if bulk else ids)
+    if "error" in plan:
+        return plan
+    if bulk:
+        chosen = [one.strip() for one in str(ids.get("equipment_ids", "")).split(",") if one.strip()]
+        if not chosen:
+            return {"error": "equipment_bulk: ids.equipment_ids 필요(쉼표로 이은 장비 id)."}
+        plan["body"] = {"ids": chosen}
+    elif kind == "method_test_item":
+        if not (reason or "").strip():
+            return {"error": "method_test_item: reason 필요(감사 기록에 남음)."}
+        plan["body"] = {"reason": reason}
+    else:
+        plan["body"] = None
+    return plan
+
+
+async def _consent_delete(
+    ctx: Context, kind: str, ids: dict[str, str], confirm: bool, reason: str | None
+) -> Elicit[_Approve] | dict[str, Any]:
+    """`confirm` 없이는 대상만(지우지 않음), 있으면 보내 보고 서버가 확인을 요구하면 확인 창."""
+    plan = _delete_plan(kind, ids, reason)
+    if "error" in plan:
+        return plan
+    if not confirm:
+        shown: dict[str, Any] = {
             "preview": True,
-            "will": f"{method} {path}",
+            "will": f"{plan['method']} {plan['path']}",
             "kind": kind,
-            "ids": given,
+            "ids": ids,
             "next": "대상을 사용자에게 제시하고 확인을 받은 뒤 confirm=True로 재호출.",
         }
-    result = await _send(ctx, method, path, body, params=params)
-    return result if isinstance(result, dict) else {"result": result}
+        if kind == "method_test_item":
+            # 끊기는 계열을 미리 보여 준다 — 그 계열은 검색에서 이 시험이 빠진다.
+            shown["impact"] = await _get(ctx, plan["path"] + "-preview")
+        return shown
+    asked = {"kind": kind, "ids": ids, "reason": reason}
+    got: Any = await _probe(ctx, plan["method"], plan["path"], plan["body"], plan["params"], asked)
+    return got
 
 
 @writes
 async def delete_record(
-    ctx: Context, kind: str, ids: dict[str, str], confirm: bool = False
+    ctx: Context,
+    kind: str,
+    ids: dict[str, str],
+    consent: Annotated[ElicitationResult[_Approve], Resolve(_consent_delete)],
+    confirm: bool = False,
+    reason: str | None = None,
 ) -> dict[str, Any]:
     """기록 하나의 삭제. confirm 없이 호출하면 삭제 없이 대상만 반환. 자격 판단은 서버.
 
     kind · ids · 자격:
 
-        reliability_test     test_id  (확인 전 후보만. 확정 건은 기계 자격으로 삭제 불가)
+        reliability_test     test_id  (후보. 확정 건은 decide_reliability_tests(delete))
         equipment            equipment_id  (그 부서 관리자)
+        equipment_bulk       equipment_ids(쉼표로 이은 id, 최대 500) — 사용자 확인 창
         equipment_test_item  equipment_test_item_id  (그 부서 멤버)
         test_condition       equipment_test_item_id · limit_id  (그 부서 멤버)
         equipment_spec       equipment_id · definition_id  (장비 실측값, 그 부서 멤버)
         spec_document        document_id  (그 부서 관리자)
         attachment           attachment_id  (붙은 대상의 수정 자격)
-        method · requirement method_id · requirement_id  (공개 규격은 시스템 관리자,
-                             사내 시험법은 그 부서 관리자)
+        method · requirement method_id · requirement_id  (공개 규격은 시스템 관리자)
         이하 시스템 관리자:
+        method_test_item     method_id · term_id + reason — 규격의 시험 항목 해제(확인 창)
         series · series_test_item · series_condition · series_relation
                              series_id · series_test_item_id · limit_id · relation_id
         model · model_spec · free_spec   model_id · definition_id · free_spec_id
         attribute_definition · spec_definition   definition_id
-        spec_group           group_id
-        property_link        link_id
-        term_alias           term_id · value
+        spec_group · property_link · term_alias   group_id · link_id · term_id+value
 
-    **삭제 전 사용자 확인 필수.** confirm 없이 호출해 대상을 받고, 사용자에게 제시해 확인을
-    받은 뒤 confirm=True로 재호출. 사용 중인 정의·값은 서버가 409로 거절. 그때는 사용 중지
-    (update_record) 또는 사용자에게 인계. 신뢰성 시험 확정·반려, 검토함 확정은 사람 전용.
+    **삭제 전 사용자 확인 필수.** confirm 없이 호출해 대상을 받고(시험 항목 해제는 끊기는
+    계열까지), 사용자에게 제시해 확인을 받은 뒤 confirm=True로 재호출. 일괄 삭제 · 시험 항목
+    해제는 그때 AI 화면에 확인 창이 한 번 더 뜸(거절이면 `declined`). 사용 중인 정의·값은
+    서버가 409로 거절 — 사용 중지(update_record) 또는 사용자에게 인계.
     """
-    table = {
-        "reliability_test": ("DELETE", "/reliability-tests/{test_id}"),
-        "equipment": ("DELETE", "/equipment/{equipment_id}"),
-        "equipment_test_item": ("DELETE", "/equipment-test-items/{equipment_test_item_id}"),
-        "test_condition": (
-            "DELETE",
-            "/equipment-test-items/{equipment_test_item_id}/limits/{limit_id}",
-        ),
-        "equipment_spec": ("DELETE", "/equipment/{equipment_id}/specs/{definition_id}"),
-        "spec_document": ("DELETE", "/spec-documents/{document_id}"),
-        "attachment": ("DELETE", "/attachments/{attachment_id}"),
-        "method": ("DELETE", "/methods/{method_id}"),
-        "requirement": ("DELETE", "/methods/{method_id}/requirements/{requirement_id}"),
-        "series": ("DELETE", "/equipment-series/{series_id}"),
-        "series_test_item": (
-            "DELETE",
-            "/equipment-series/{series_id}/test-items/{series_test_item_id}",
-        ),
-        "series_condition": (
-            "DELETE",
-            "/equipment-series/{series_id}/test-items/{series_test_item_id}/limits/{limit_id}",
-        ),
-        "series_relation": ("DELETE", "/equipment-series/{series_id}/relations/{relation_id}"),
-        "model": ("DELETE", "/equipment-models/{model_id}"),
-        "model_spec": ("DELETE", "/equipment-models/{model_id}/specs/{definition_id}"),
-        "free_spec": ("DELETE", "/equipment-models/{model_id}/free-specs/{free_spec_id}"),
-        "attribute_definition": ("DELETE", "/attribute-definitions/{definition_id}"),
-        "spec_definition": ("DELETE", "/spec-definitions/{definition_id}"),
-        "spec_group": ("DELETE", "/spec-groups/{group_id}"),
-        "property_link": ("DELETE", "/test-item-properties/{link_id}"),
-        "term_alias": ("DELETE", "/vocabularies/terms/{term_id}/aliases"),
-    }
-    return await _by_kind(ctx, table, kind, ids, preview=not confirm)
+    plan = _delete_plan(kind, ids, reason)
+    if "error" in plan:
+        return plan
+    result = await _after_consent(
+        ctx, consent, plan["method"], plan["path"], plan["body"], plan["params"]
+    )
+    return result if isinstance(result, dict) else {"result": result}
+
+
+#: 고치기 — kind → (메서드, 경로). 병합은 `fields.merge_into` 로 고르는 갈래다.
+_UPDATE_KINDS: dict[str, tuple[str, str]] = {
+    "equipment_test_item": ("PATCH", "/equipment-test-items/{equipment_test_item_id}"),
+    "spec_document": ("PATCH", "/spec-documents/{document_id}"),
+    "attachment": ("PATCH", "/attachments/{attachment_id}"),
+    "method": ("PATCH", "/methods/{method_id}"),
+    "method_merge": ("POST", "/methods/{method_id}/merge"),
+    "series": ("PATCH", "/equipment-series/{series_id}"),
+    "model": ("PATCH", "/equipment-models/{model_id}"),
+    "free_spec": ("PUT", "/equipment-models/{model_id}/free-specs/{free_spec_id}"),
+    "condition_key": ("PATCH", "/condition-keys/{condition_key_id}"),
+    "spec_definition": ("PATCH", "/spec-definitions/{definition_id}"),
+    "spec_group": ("PATCH", "/spec-groups/{group_id}"),
+    "attribute_definition": ("PATCH", "/attribute-definitions/{definition_id}"),
+    "attribute_definition_merge": ("POST", "/attribute-definitions/{definition_id}/merge"),
+    "property_link": ("PATCH", "/test-item-properties/{link_id}"),
+}
+
+
+def _update_plan(kind: str, ids: dict[str, str], fields: dict[str, Any]) -> dict[str, Any]:
+    """고치기의 길과 본문. `merge_into` 가 있으면 병합 갈래로 간다."""
+    if kind in ("attribute_definition", "method") and "merge_into" in fields:
+        plan = _kind_plan(_UPDATE_KINDS, f"{kind}_merge", ids)
+        body: dict[str, Any] = {"target_id": fields["merge_into"]}
+        if kind == "method":
+            body["reason"] = str(fields.get("reason") or "")
+    else:
+        plan = _kind_plan(_UPDATE_KINDS, kind, ids)
+        body = fields
+    if "error" not in plan:
+        plan["body"] = body
+    return plan
+
+
+async def _consent_update(
+    ctx: Context, kind: str, ids: dict[str, str], fields: dict[str, Any]
+) -> Elicit[_Approve] | dict[str, Any]:
+    """보내 보고, 서버가 사람 확인을 요구하면(규격 병합) 확인 창."""
+    plan = _update_plan(kind, ids, fields)
+    if "error" in plan:
+        return plan
+    asked = {"kind": kind, "ids": ids, "fields": fields}
+    got: Any = await _probe(ctx, plan["method"], plan["path"], plan["body"], plan["params"], asked)
+    return got
 
 
 @writes
 async def update_record(
-    ctx: Context, kind: str, ids: dict[str, str], fields: dict[str, Any]
+    ctx: Context,
+    kind: str,
+    ids: dict[str, str],
+    fields: dict[str, Any],
+    consent: Annotated[ElicitationResult[_Approve], Resolve(_consent_update)],
 ) -> dict[str, Any]:
     """기록 하나의 수정. 보낸 칸만 변경. 장비·신뢰성 시험·축·값은 전용 update_* 도구 사용.
 
@@ -3344,7 +3656,8 @@ async def update_record(
         spec_document         document_id  (그 부서 관리자)
         attachment            attachment_id  (설명 등, 붙은 대상의 수정 자격)
         method                method_id  (공개 규격은 시스템 관리자,
-                              사내 시험법은 그 부서 관리자)
+                              사내 시험법은 그 부서 관리자. fields={"merge_into": "<id>",
+                              "reason": "…"} 이면 그 규격으로 병합 — 사용자 확인 창)
         이하 시스템 관리자:
         series · model       series_id · model_id
         free_spec            model_id · free_spec_id
@@ -3357,26 +3670,13 @@ async def update_record(
     칸 이름은 화면·API 스키마와 동일. 모르는 칸은 서버가 422로 반환하므로 추측으로 채우지
     말고 오류의 칸 목록 확인. 삭제는 delete_record, 전용 생성 도구가 없는 것은 create_record.
     """
-    table = {
-        "equipment_test_item": ("PATCH", "/equipment-test-items/{equipment_test_item_id}"),
-        "spec_document": ("PATCH", "/spec-documents/{document_id}"),
-        "attachment": ("PATCH", "/attachments/{attachment_id}"),
-        "method": ("PATCH", "/methods/{method_id}"),
-        "series": ("PATCH", "/equipment-series/{series_id}"),
-        "model": ("PATCH", "/equipment-models/{model_id}"),
-        "free_spec": ("PUT", "/equipment-models/{model_id}/free-specs/{free_spec_id}"),
-        "condition_key": ("PATCH", "/condition-keys/{condition_key_id}"),
-        "spec_definition": ("PATCH", "/spec-definitions/{definition_id}"),
-        "spec_group": ("PATCH", "/spec-groups/{group_id}"),
-        "attribute_definition": ("PATCH", "/attribute-definitions/{definition_id}"),
-        "attribute_definition_merge": ("POST", "/attribute-definitions/{definition_id}/merge"),
-        "property_link": ("PATCH", "/test-item-properties/{link_id}"),
-    }
-    if kind == "attribute_definition" and "merge_into" in fields:
-        return await _by_kind(
-            ctx, table, "attribute_definition_merge", ids, {"target_id": fields["merge_into"]}
-        )
-    return await _by_kind(ctx, table, kind, ids, fields)
+    plan = _update_plan(kind, ids, fields)
+    if "error" in plan:
+        return plan
+    result = await _after_consent(
+        ctx, consent, plan["method"], plan["path"], plan["body"], plan["params"]
+    )
+    return result if isinstance(result, dict) else {"result": result}
 
 
 @writes
@@ -3514,25 +3814,226 @@ async def decide_review_item(
     }
 
 
+def _bulk_review_path(queue: str, by: str) -> str:
+    if by == "mcp_votes":
+        return f"/review/{queue}/decide-mcp-votes"
+    return f"/review/{queue}/decide-recommended"
+
+
+async def _consent_review_bulk(
+    ctx: Context, queue: str, ids: list[str], note: str | None, by: str
+) -> Elicit[_Approve] | dict[str, Any]:
+    """추천대로는 그대로 정하고, MCP 의견대로는 확인 창(AI 의견을 AI 가 확정하므로)."""
+    body = {"ids": ids, "note": note}
+    got: Any = await _probe(ctx, "POST", _bulk_review_path(queue, by), body, None, body)
+    return got
+
+
 @writes
 async def decide_review_recommended(
-    ctx: Context, queue: str, ids: list[str], note: str | None = None
+    ctx: Context,
+    queue: str,
+    ids: list[str],
+    consent: Annotated[ElicitationResult[_Approve], Resolve(_consent_review_bulk)],
+    note: str | None = None,
+    by: str = "recommended",
 ) -> dict[str, Any]:
-    """검토함 여러 줄을 줄마다의 추천대로 일괄 확정. 시스템 관리자. 줄마다 결과 반환.
+    """검토함 여러 줄을 추천대로(또는 MCP 의견대로) 일괄 확정. 시스템 관리자. 줄마다 결과.
 
-    추천이 없는 줄, 추천과 다른 의견이 있는 줄은 확정하지 않고 `failed`로 사유와 함께 반환
-    (하나씩 `decide_review_item`으로). 한 번에 최대 500줄. `note`는 감사에 남음(비우면
-    기본 문구 `추천대로 한꺼번에 확정`).
+    `by="recommended"`(기본): 줄마다의 추천대로. 추천이 없는 줄, 추천과 다른 의견이 있는 줄은
+    확정하지 않고 `failed`로 사유와 함께 반환(하나씩 `decide_review_item`으로).
+    `by="mcp_votes"`: 줄마다 **MCP로 낸 의견대로**(화면의 「MCP 의견대로 확정」). MCP 의견이
+    없거나 갈리거나 사람 의견이 다른 줄은 `failed`. 이쪽은 사용자 확인 창을 거침(거절이면
+    `declined`). 한 번에 최대 500줄. `note`는 감사에 남음.
 
     **사용자가 일괄 확정을 지시한 경우에만.** 대상 줄 수와 대표 줄(대상 · 추천 · 근거)을 먼저
     제시하고 승인을 받은 뒤 호출. 확정하면 카탈로그에 바로 적용됨.
     """
-    return await _send(
-        ctx,
-        "POST",
-        f"/review/{queue}/decide-recommended",
-        {"ids": ids, "note": note},
+    sent: dict[str, Any] = await _after_consent(
+        ctx, consent, "POST", _bulk_review_path(queue, by), {"ids": ids, "note": note}
     )
+    return sent
+
+
+# ── 사람 몫의 결정 — 사용자 확인 창을 거친다 (ADR 0013) ─────────────────────────
+
+
+async def _consent_reliability(
+    ctx: Context,
+    action: str,
+    test_ids: list[str],
+    reason: str | None,
+    revision_id: str | None,
+) -> Elicit[_Approve] | dict[str, Any]:
+    """확정 · 반려 · 다시 후보로 · 개정 확인은 늘 확인 창, 후보만 지우는 것은 그대로."""
+    body = {"ids": test_ids, "action": action, "reason": reason, "revision_id": revision_id}
+    asked = {"action": action, "건수": len(test_ids), "reason": reason, "revision_id": revision_id}
+    got: Any = await _probe(ctx, "POST", "/reliability-tests/bulk", body, None, asked)
+    return got
+
+
+@writes
+async def decide_reliability_tests(
+    ctx: Context,
+    action: str,
+    test_ids: list[str],
+    consent: Annotated[ElicitationResult[_Approve], Resolve(_consent_reliability)],
+    reason: str | None = None,
+    revision_id: str | None = None,
+) -> dict[str, Any]:
+    """신뢰성 시험 확정 · 반려 · 다시 후보로 · 개정 확인 · 삭제(여러 건). 사용자 확인 창을 거침.
+
+    `action`: `confirm`(후보 확정) · `reject`(후보 반려, `reason` 필수) · `reopen`(확정을 풀어
+    다시 후보로, `reason` 필수) · `reviewed`(규격서 개정 `revision_id`까지 봤다고 표시) ·
+    `delete`(내림 — 확정된 줄이 섞이면 확인 창, 제가 올린 후보만이면 바로).
+
+    사람 몫의 결정이라 **AI 화면에 확인 창**이 떠 사용자가 내용(시험 이름 · 칸마다의 값 · 건수 ·
+    사유)을 보고 수락해야 실행(변경 이력에 MCP·사용자 확인으로 남음). 거절이면 `declined` —
+    같은 내용으로 다시 부르지 말고 사용자에게 무엇을 바꿀지 확인. 확인 창을 못 띄우는
+    클라이언트면 실행 안 됨(TestScope 화면에서).
+
+    **부르기 전에** 대상과 동작을 사용자에게 정리해 지시를 받을 것 — 확인 창은 마지막 확인이지
+    판단을 대신하지 않음. 확정 전에는 `get_reliability_test`로 내용을 읽고 빈 칸 · 의심 값을
+    먼저 알릴 것. 한 번에 최대 500건, 줄마다 결과(`done` · `failed`).
+    """
+    body = {"ids": test_ids, "action": action, "reason": reason, "revision_id": revision_id}
+    sent: dict[str, Any] = await _after_consent(
+        ctx, consent, "POST", "/reliability-tests/bulk", body
+    )
+    return sent
+
+
+#: 관리 작업 — (대상, 동작) → (메서드, 경로). 경로의 `{id}` 는 `target_id`, `{user_id}` 는
+#: `fields["user_id"]`. 쓰기는 전부 사람 확인을 받는다(백엔드 `auth._CONFIRMED_WRITES`) —
+#: 토큰 발급 · 비밀번호 · 허브 토큰은 여기 없다(평문 비밀이 대화 기록에 남는다).
+ADMIN_ACTIONS: dict[tuple[str, str], tuple[str, str]] = {
+    ("account", "list"): ("GET", "/accounts"),
+    ("account", "approve"): ("POST", "/accounts/{id}/approve"),
+    ("account", "reject"): ("POST", "/accounts/{id}/reject"),
+    ("account", "suspend"): ("POST", "/accounts/{id}/suspend"),
+    ("account", "activate"): ("POST", "/accounts/{id}/activate"),
+    ("account", "delete"): ("DELETE", "/accounts/{id}"),
+    ("account", "system_admin"): ("POST", "/accounts/{id}/system-admin"),
+    ("account", "memberships"): ("PUT", "/accounts/{id}/memberships"),
+    ("account", "home_workspace"): ("POST", "/accounts/{id}/home-workspace"),
+    ("workspace", "list"): ("GET", "/workspaces"),
+    ("workspace", "create"): ("POST", "/workspaces"),
+    ("workspace", "update"): ("PATCH", "/workspaces/{id}"),
+    ("workspace", "delete"): ("DELETE", "/workspaces/{id}"),
+    ("workspace", "move"): ("POST", "/workspaces/{id}/move"),
+    ("workspace", "reorder"): ("POST", "/workspaces/{id}/reorder"),
+    ("workspace", "members"): ("GET", "/workspaces/{id}/members"),
+    ("workspace", "add_member"): ("POST", "/workspaces/{id}/members"),
+    ("workspace", "set_member_role"): ("PATCH", "/workspaces/{id}/members/{user_id}"),
+    ("workspace", "remove_member"): ("DELETE", "/workspaces/{id}/members/{user_id}"),
+    ("notice", "list"): ("GET", "/notices"),
+    ("notice", "create"): ("POST", "/notices"),
+    ("notice", "update"): ("PATCH", "/notices/{id}"),
+    ("notice", "delete"): ("DELETE", "/notices/{id}"),
+    ("notice", "publish"): ("POST", "/notices/{id}/publish"),
+    ("hub", "status"): ("GET", "/hub/status"),
+    ("hub", "runs"): ("GET", "/hub/runs"),
+    ("hub", "check"): ("POST", "/hub/check"),
+    ("hub", "run"): ("POST", "/hub/run"),
+    ("hub", "settings"): ("PUT", "/hub/connection"),
+    ("hub", "catalog_seen"): ("POST", "/hub/catalog-seen"),
+    ("voc", "list"): ("GET", "/voc"),
+    ("voc", "create"): ("POST", "/voc"),
+    ("voc", "move"): ("POST", "/voc/{id}/move"),
+}
+
+#: 허브 연계 설정에서 AI 가 바꿀 수 있는 칸. 토큰은 없다 — 화면에서만.
+_HUB_SETTINGS = ("base_url", "ca_bundle", "selected_types", "nightly_at", "enabled")
+
+
+async def _admin_plan(
+    ctx: Context,
+    target: str,
+    action: str,
+    target_id: str | None,
+    fields: dict[str, Any] | None,
+) -> dict[str, Any]:
+    """무엇을 어디로 보낼지. 오류면 `{"error": …}`."""
+    found = ADMIN_ACTIONS.get((target, action))
+    if found is None:
+        known = sorted({f"{one}.{two}" for one, two in ADMIN_ACTIONS})
+        return {"error": f"알 수 없는 관리 작업: {target}.{action}", "known": known}
+    method, template = found
+    given = dict(fields or {})
+    if "{id}" in template and not target_id:
+        return {"error": f"{target}.{action} 에는 target_id 필요."}
+    user_id = given.pop("user_id", None)
+    if "{user_id}" in template and not user_id:
+        return {"error": f"{target}.{action} 에는 fields.user_id 필요."}
+    path = template.replace("{id}", quote(str(target_id or ""), safe="")).replace(
+        "{user_id}", quote(str(user_id or ""), safe="")
+    )
+    if (target, action) == ("hub", "settings"):
+        secret = sorted(set(given) & {"token", "clear_token"})
+        if secret:
+            return {
+                "error": "허브 토큰은 MCP 로 못 넣고 못 지움(평문 비밀이 대화 기록에 남음)."
+                " TestScope 화면(관리 > 허브 연계)에서."
+            }
+        now = await _get(ctx, "/hub/connection")
+        if isinstance(now, dict) and now.get("error"):
+            return dict(now)
+        # PUT 은 통째로 갈아 끼운다 — 안 보낸 칸이 지워지지 않게 지금 값에 겹친다.
+        given = {key: given.get(key, now.get(key)) for key in _HUB_SETTINGS}
+    if method in ("GET", "DELETE"):
+        return {"method": method, "path": path, "body": None, "params": given or None}
+    return {"method": method, "path": path, "body": given, "params": None}
+
+
+async def _consent_admin(
+    ctx: Context,
+    target: str,
+    action: str,
+    target_id: str | None,
+    fields: dict[str, Any] | None,
+) -> Elicit[_Approve] | dict[str, Any]:
+    """읽기는 그대로, 쓰기는 서버가 확인을 요구하면 확인 창."""
+    plan = await _admin_plan(ctx, target, action, target_id, fields)
+    if "error" in plan:
+        return plan
+    asked = {"작업": f"{target}.{action}", "target_id": target_id, "fields": fields}
+    got: Any = await _probe(ctx, plan["method"], plan["path"], plan["body"], plan["params"], asked)
+    # 질문은 그대로 넘긴다 — 목록 감싸기에 넣으면 빈 목록이 되어 확인 창이 안 뜬다.
+    return got if isinstance(got, Elicit) else _listed(got, "items")
+
+
+@writes
+async def admin_action(
+    ctx: Context,
+    target: str,
+    action: str,
+    consent: Annotated[ElicitationResult[_Approve], Resolve(_consent_admin)],
+    target_id: str | None = None,
+    fields: dict[str, Any] | None = None,
+) -> dict[str, Any]:
+    """관리 작업 — 계정 · 부서 · 멤버 · 공지 · 허브 수신 · VOC. 쓰기는 사용자 확인 창을 거침.
+
+    `target`.`action`: account(list · approve · reject · suspend · activate · delete ·
+    system_admin · memberships · home_workspace), workspace(list · create · update · delete ·
+    move · reorder · members · add_member · set_member_role · remove_member), notice(list ·
+    create · update · delete · publish), hub(status · runs · check · run · settings ·
+    catalog_seen), voc(list · create · move). `target_id`: 계정 id · 부서 slug · 공지 id · VOC id.
+    `fields`: 본문(list · delete 는 질의). 칸 이름은 `get_guide("관리 작업")`.
+
+    토큰에 `admin:write` 범위 필요(없으면 403 `TSC-AUTH-0106` — 사용자에게 토큰 재발급 요청).
+    자격(시스템 관리자 · 부서 관리자)은 서버가 판정. 쓰기마다 **AI 화면에 확인 창**이 뜨고
+    사용자가 수락해야 실행(거절이면 `declined` — 다시 부르지 말 것).
+
+    **토큰 발급 · 비밀번호 · 허브 토큰 입력은 불가**(평문 비밀이 대화에 남음) — 화면에서.
+    부르기 전에 무엇을 바꿀지 사용자에게 정리해 지시를 받을 것.
+    """
+    plan = await _admin_plan(ctx, target, action, target_id, fields)
+    if "error" in plan:
+        return plan
+    sent: Any = await _after_consent(
+        ctx, consent, plan["method"], plan["path"], plan["body"], plan["params"]
+    )
+    return _listed(sent, "items")
 
 
 # ── 지식 그래프 — 무엇이 무엇과 이어지나 (읽기) ──────────────────────────────

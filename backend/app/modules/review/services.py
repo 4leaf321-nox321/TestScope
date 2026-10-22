@@ -76,10 +76,10 @@ from app.modules.vocabulary.models import (
 )
 from app.modules.vocabulary.specs import SpecDefinition, SpecGroup
 from app.modules.vocabulary.terms import ensure_code
-from app.shared import audit
+from app.shared import audit, confirm
 from app.shared.attribute_text import display_attribute
 from app.shared.errors import AppError, Forbidden, NotFound
-from app.shared.request_context import get_actor_token
+from app.shared.request_context import get_actor_token, is_confirmed
 from app.shared.text import clean, compare_key, method_base, method_key
 
 #: 정본의 후보·결정 파일이 사는 곳. 반입 스크립트의 카탈로그 뿌리와 같다.
@@ -2809,6 +2809,37 @@ def skip(
     return row
 
 
+#: 확인 창에 늘어놓는 줄 수. 넘는 것은 「외 N건」 으로.
+_SUMMARY_ROWS = 20
+
+
+def _ask_mcp_votes(db: Session, queue: str, ids: list[uuid.UUID]) -> None:
+    """MCP 의견대로 확정 — 기계 통로면 **줄마다의 MCP 의견**을 실어 사람 확인을 요구한다."""
+    if get_actor_token() is None or is_confirmed():
+        return
+    rows = list(db.scalars(select(ReviewProposal).where(ReviewProposal.id.in_(ids))))
+    votes = _votes(db, [one.id for one in rows])
+    lines = []
+    for one in rows[:_SUMMARY_ROWS]:
+        picks = sorted(
+            {
+                " · ".join(vote.choice or []) or "(비움)"
+                for vote in votes.get(one.id, [])
+                if vote.submitted_via
+            }
+        )
+        lines.append(f"· {one.subject_label}: {' / '.join(picks) or 'MCP 의견 없음'}")
+    if len(rows) > _SUMMARY_ROWS:
+        lines.append(f"… 외 {len(rows) - _SUMMARY_ROWS}건")
+    confirm.require(
+        "TSC-REVIEW-0022",
+        f"MCP 의견대로 {len(ids)}건 확정은 사용자 확인 필요.",
+        summary=f"검토함 {queue}: MCP 의견대로 {len(ids)}건 확정(카탈로그가 바뀜)\n"
+        + "\n".join(lines),
+        details={"queue": queue, "count": len(ids)},
+    )
+
+
 def decide_by_mcp_votes(
     db: Session,
     user: User,
@@ -2821,8 +2852,13 @@ def decide_by_mcp_votes(
 
     MCP 의견이 없거나 MCP 의견끼리 갈리면 확정하지 않고 이유와 함께 돌려준다. 사람이 낸 의견이
     MCP 의견과 다르면 그것도 돌려준다 — 사람의 판단을 AI 의견으로 덮지 않는다.
+
+    **기계 자격이 부르면 사람이 AI 화면의 확인 창에서 수락해야 한다**(ADR 0013). AI 가 낸
+    의견을 AI 가 한꺼번에 확정하면 의견이라는 단계가 이름만 남는다 — 확인 창에 줄마다의
+    MCP 의견을 싣는다.
     """
     _require_admin(user)
+    _ask_mcp_votes(db, queue, ids)
     said = note.strip() if note and note.strip() else "MCP 의견대로 한꺼번에 확정"
     done: list[uuid.UUID] = []
     failed: list[dict[str, Any]] = []

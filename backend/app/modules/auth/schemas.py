@@ -86,11 +86,12 @@ class PatCreateRequest(Request):
     감사 기록에 이 이름이 남는다."""
     expires_in_days: int | None = Field(default=None, ge=1, le=3650)
     scopes: list[str] = Field(default_factory=lambda: ["read"])
-    """이 토큰으로 할 수 있는 일: `read` · `equipment:write` · `catalog:write`.
+    """이 토큰으로 할 수 있는 일: `read` · `equipment:write` · `catalog:write` · `admin:write`.
 
     **안 주면 읽기뿐이다.** 기본값이 전권이면 「일단 만들고 나중에 좁히자」 가 되고,
     나중은 오지 않는다. MCP 로 카탈로그를 채울 토큰이라면 read 와 catalog:write
-    둘만 주면 된다 — 계정 관리와 서버 설정은 어느 범위로도 안 열린다."""
+    둘만 주면 된다. `admin:write`(계정 · 부서 · 공지 · 허브 연계)는 요청마다 사람이 AI 화면의
+    확인 창에서 수락해야 쓰이고, 토큰 발급 · 비밀번호는 어느 범위로도 안 열린다."""
 
 
 class PatOut(BaseModel):

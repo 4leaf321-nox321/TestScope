@@ -35,6 +35,7 @@ from app.modules.test_items.models import (
 from app.modules.vocabulary.models import ConditionKey, VocabularyTerm
 from app.modules.workspaces.models import Workspace
 from app.shared import audit
+from app.shared import confirm as human
 from app.shared.errors import AppError, Conflict, Forbidden, NotFound
 from app.shared.pagination import Page
 from app.shared.permissions import (
@@ -748,7 +749,17 @@ def detach_test_item(
     if term_id not in set(have):
         raise NotFound("TSC-METHODS-0015", "이 규격에 걸린 시험 항목이 아님.")
     term = db.get(VocabularyTerm, term_id)
-    _, kept = detach_split(db, row.id, {term_id})
+    will_cut, kept = detach_split(db, row.id, {term_id})
+    # **기계 자격이면 사람이 AI 화면에서 수락해야 뗀다**(ADR 0013) — 끊기는 계열을 확인 창에
+    # 싣는다. 그 계열들은 항목 미정 인용으로 돌아가 검색에서 이 시험이 빠진다.
+    human.require(
+        "TSC-METHODS-0020",
+        "규격의 시험 항목 해제는 사용자 확인 필요.",
+        summary=f"규격 {row.code} 의 시험 항목 해제: {term.value if term else term_id}"
+        f" — 끊기는 계열 {len(will_cut)}개"
+        + (f"({', '.join(one.name for one in will_cut[:10])})" if will_cut else "")
+        + f", 남는 계열 {len(kept)}개. 사유: {said}",
+    )
     cut = set_test_items(db, row.id, [one for one in have if one != term_id])
     reopened = False
     if len(have) == 1:
@@ -979,6 +990,14 @@ def merge_by_admin(
     target = get_method(db, user, target_id)
     if source.id == target.id:
         raise AppError("TSC-METHODS-0019", "같은 규격으로는 병합 불가.", status=400)
+    # **기계 자격이면 사람이 AI 화면에서 수락해야 합친다**(ADR 0013). 되돌릴 길이 없다.
+    human.require(
+        "TSC-METHODS-0021",
+        "규격 병합은 사용자 확인 필요.",
+        summary=f"규격 병합: {source.code} {source.edition or ''} → {target.code}"
+        f" {target.edition or ''} — 인용 · 요구 조건 · 장비 시험 항목이 옮겨 가고"
+        f" {source.code} 는 지워짐(남는 쪽의 옛 번호가 됨). 사유: {reason.strip() or '없음'}",
+    )
     merge_into(db, user, source.id, target.id, reason=reason.strip() or None)
     db.commit()
     db.refresh(target)

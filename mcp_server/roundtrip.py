@@ -14,9 +14,11 @@ curl 로는 멀쩡한데 도구로는 죽는 고장(반환 모양 검증 · 경�
 from __future__ import annotations
 
 import asyncio
+import inspect
 import io
 import json
 import sys
+import typing
 import uuid
 import zipfile
 from typing import Any
@@ -24,6 +26,8 @@ from typing import Any
 import httpx
 import probe
 import server
+from mcp import Client, types
+from mcp.server.mcpserver import AcceptedElicitation, DeclinedElicitation
 
 for _stream in (sys.stdout, sys.stderr):
     _reconfigure = getattr(_stream, "reconfigure", None)
@@ -69,6 +73,46 @@ def _docx() -> bytes:
 class _Ctx:
     def __init__(self, token: str) -> None:
         self.headers = {"Authorization": f"Bearer {token}"}
+
+
+#: 흉내 낸 확인 창에 뜬 글 — 사슬이 「창에 무엇이 실렸나」 를 본다.
+ASKED: list[str] = []
+
+
+async def _call(tool: Any, ctx: Any, /, *args: Any, human: bool = True, **kwargs: Any) -> Any:
+    """도구를 **SDK 처럼** 부른다 — 사람 확인 해석기(`Resolve`)를 먼저 돌리고 그 답을 넣는다.
+
+    이 스크립트는 MCP 클라이언트 없이 도구 함수를 바로 부른다. 확인 창이 붙은 도구는 해석기가
+    채우는 칸(`consent`)이 있어서, 여기서 SDK 가 하는 일을 흉내 낸다: 해석기가 질문(`Elicit`)을
+    돌려주면 확인 창이 뜬 것이고, `human` 이 수락(True) · 거절(False)이다. 진짜 SDK 를 지나는
+    왕복은 `_sdk_roundtrip` 이 따로 본다.
+    """
+    signature = inspect.signature(tool)
+    hints = typing.get_type_hints(tool, include_extras=True)
+    given = signature.bind_partial(ctx, *args, **kwargs).arguments
+    defaults = {
+        one.name: one.default
+        for one in signature.parameters.values()
+        if one.default is not inspect.Parameter.empty
+    }
+    for name, hint in hints.items():
+        marker = next(
+            (one for one in getattr(hint, "__metadata__", ()) if isinstance(one, server.Resolve)),
+            None,
+        )
+        if marker is None:
+            continue
+        everything = {**defaults, **given}
+        wanted = inspect.signature(marker.fn).parameters
+        asked = await marker.fn(**{one: ctx if one == "ctx" else everything.get(one) for one in wanted})
+        if isinstance(asked, server.Elicit):
+            ASKED.append(asked.message)
+            kwargs[name] = (
+                AcceptedElicitation(data=server._Approve()) if human else DeclinedElicitation()
+            )
+        else:
+            kwargs[name] = AcceptedElicitation[Any].model_construct(data=asked)
+    return await tool(ctx, *args, **kwargs)
 
 
 def _short(value: Any, limit: int = 100) -> str:
@@ -306,7 +350,7 @@ async def _write_chain(ctx: _Ctx) -> int:
 
     fixed = step(
         "update_reliability_test",
-        await server.update_reliability_test(ctx, test["id"], purpose="고침 확인"),
+        await _call(server.update_reliability_test, ctx, test["id"], purpose="고침 확인"),
         ["purpose"],
     )
     if fixed is not None and len(fixed.get("test_items", [])) != 1:
@@ -321,7 +365,8 @@ async def _write_chain(ctx: _Ctx) -> int:
     # 여기서만 실제로 확인된다.
     added = step(
         "set_reliability_attributes(더하기)",
-        await server.set_reliability_attributes(
+        await _call(
+            server.set_reliability_attributes,
             ctx,
             test["id"],
             [{"new_label": f"MCP확인 비고-{tag}", "new_kind": "text", "text_value": "메모"}],
@@ -348,7 +393,8 @@ async def _write_chain(ctx: _Ctx) -> int:
 
     narrowed = step(
         "set_reliability_attributes(한 칸만)",
-        await server.set_reliability_attributes(
+        await _call(
+            server.set_reliability_attributes,
             ctx,
             test["id"],
             [{"definition_id": definition["id"], "num_min": -55, "num_max": 125}],
@@ -372,7 +418,8 @@ async def _write_chain(ctx: _Ctx) -> int:
         if extra is not None:
             emptied = step(
                 "set_reliability_attributes(빼기)",
-                await server.set_reliability_attributes(
+                await _call(
+            server.set_reliability_attributes,
                     ctx,
                     test["id"],
                     [{"definition_id": extra["definition_id"], "remove": True}],
@@ -389,7 +436,8 @@ async def _write_chain(ctx: _Ctx) -> int:
     # 사라진다. 그 병합은 MCP 안에서 일어나므로 살아 있는 서버가 있는 여기서만 잡힌다.
     grouped = step(
         "set_reliability_attributes(묶음 둘)",
-        await server.set_reliability_attributes(
+        await _call(
+            server.set_reliability_attributes,
             ctx,
             test["id"],
             [
@@ -425,7 +473,8 @@ async def _write_chain(ctx: _Ctx) -> int:
         # 묶음 하나만 고친다 — 나머지 묶음은 그대로여야 한다.
         moved = step(
             "set_reliability_attributes(묶음 하나만)",
-            await server.set_reliability_attributes(
+            await _call(
+            server.set_reliability_attributes,
                 ctx,
                 test["id"],
                 [
@@ -456,7 +505,8 @@ async def _write_chain(ctx: _Ctx) -> int:
         # 점으로 적은 조건 — 폭이 없다. 「-40 이상」 으로 읽히면 없는 여유가 생긴다.
         pointed = step(
             "set_reliability_attributes(점)",
-            await server.set_reliability_attributes(
+            await _call(
+            server.set_reliability_attributes,
                 ctx,
                 test["id"],
                 [
@@ -522,7 +572,8 @@ async def _write_chain(ctx: _Ctx) -> int:
             # 전용 도구가 없던 수정 — `update_record` 가 `kind` 로 길을 고른다(2026-10-04).
             renamed = step(
                 "update_record(spec_document)",
-                await server.update_record(
+                await _call(
+                    server.update_record,
                     ctx,
                     "spec_document",
                     {"document_id": paper["id"]},
@@ -867,7 +918,7 @@ async def _write_chain(ctx: _Ctx) -> int:
     if group is not None:
         looked_first = step(
             "delete_record(미리 보기)",
-            await server.delete_record(ctx, "spec_group", {"group_id": group["id"]}),
+            await _call(server.delete_record, ctx, "spec_group", {"group_id": group["id"]}),
             ["preview", "will"],
         )
         if looked_first is not None and looked_first.get("preview") is not True:
@@ -875,8 +926,8 @@ async def _write_chain(ctx: _Ctx) -> int:
             print("  실패 confirm 없이 불렀는데 지웠습니다")
         step(
             "delete_record(confirm)",
-            await server.delete_record(
-                ctx, "spec_group", {"group_id": group["id"]}, confirm=True
+            await _call(
+                server.delete_record, ctx, "spec_group", {"group_id": group["id"]}, confirm=True
             ),
         )
 
@@ -898,12 +949,135 @@ async def _write_chain(ctx: _Ctx) -> int:
     bad += not seen
     label = "decide_review_item(preview, 없는 줄)"
     print(f"  {'  ok' if seen else '실패'} {label:34s} {_short(peek, 70)}")
-    bulk = await server.decide_review_recommended(ctx, "attribute_drafts", [nowhere])
+    bulk = await _call(server.decide_review_recommended, ctx, "attribute_drafts", [nowhere])
     settled = "error" not in bulk and len(bulk.get("failed", [])) == 1
     bad += not settled
     label = "decide_review_recommended(없는 줄)"
     print(f"  {'  ok' if settled else '실패'} {label:34s} {_short(bulk, 70)}")
+
+    # 13. **사람 확인 — AI 화면의 확인 창**(ADR 0013). 사람 몫의 결정은 확인 창에서 수락해야
+    # 지난다: 거절하면 안 바뀌고, 수락하면 증표를 실어 바뀐다. 흉내 창이라도 증표는 진짜다 —
+    # 백엔드가 서명을 검증하므로, MCP 와 백엔드의 서명 · 열쇠가 어긋나면 여기서 막힌다.
+    bad += await _human_chain(ctx, test["id"], test["name"], tag)
     return 1 if bad else 0
+
+
+async def _human_chain(ctx: _Ctx, test_id: str, name: str, tag: str) -> int:
+    """확정 거절 → 확정 수락 → 확정된 시험 고치기 → 다시 후보로 → 관리 작업(공지)."""
+    bad = 0
+
+    def check(label: str, ok: bool, got: Any) -> None:
+        nonlocal bad
+        bad += not ok
+        print(f"  {'  ok' if ok else '실패'} {label:34s} {_short(got, 70)}")
+
+    ASKED.clear()
+    no = await _call(server.decide_reliability_tests, ctx, "confirm", [test_id], human=False)
+    check("decide_reliability_tests(거절)", bool(no.get("declined")), no)
+    check(
+        "확인 창에 시험 이름이 실림",
+        any(name in one for one in ASKED),
+        ASKED[-1][:60] if ASKED else "창이 안 뜸",
+    )
+    still = await server.get_reliability_test(ctx, test_id)
+    check("거절하면 그대로 후보", still.get("status") == "candidate", still.get("status"))
+
+    yes = await _call(server.decide_reliability_tests, ctx, "confirm", [test_id])
+    check("decide_reliability_tests(확정)", yes.get("done") == [test_id], yes)
+    edited = await _call(
+        server.update_reliability_test, ctx, test_id, purpose=f"확인 창 수락 후 고침-{tag}"
+    )
+    check(
+        "update_reliability_test(확정된 시험)",
+        edited.get("status") == "confirmed" and edited.get("purpose", "").endswith(tag),
+        {key: edited.get(key) for key in ("status", "purpose", "error")},
+    )
+    back = await _call(
+        server.decide_reliability_tests, ctx, "reopen", [test_id], reason="MCP 왕복 확인"
+    )
+    check("decide_reliability_tests(다시 후보로)", back.get("done") == [test_id], back)
+
+    # 관리 작업 — 읽기는 확인 없이, 쓰기는 확인 창. 공지는 만들고 바로 지운다.
+    ASKED.clear()
+    listed = await _call(server.admin_action, ctx, "account", "list", fields={"limit": 5})
+    check("admin_action(account.list, 창 없음)", "error" not in listed and not ASKED, listed)
+    made = await _call(
+        server.admin_action,
+        ctx,
+        "notice",
+        "create",
+        fields={"title": f"MCP확인 공지-{tag}", "body": "왕복 확인 — 곧 지움"},
+    )
+    check("admin_action(notice.create)", bool(made.get("id")) and bool(ASKED), made)
+    if made.get("id"):
+        gone = await _call(server.admin_action, ctx, "notice", "delete", target_id=made["id"])
+        check("admin_action(notice.delete)", "error" not in gone, gone)
+    secret = await _call(
+        server.admin_action, ctx, "hub", "settings", fields={"token": "평문-비밀"}
+    )
+    check("admin_action(허브 토큰) -> 거절", "토큰" in str(secret.get("error", "")), secret)
+
+    # 일괄 삭제는 지우기 갈래지만 확인 창을 거친다 — 없는 장비 하나로 길만 본다(아무것도 안 지움).
+    ASKED.clear()
+    nothing = await _call(
+        server.delete_record,
+        ctx,
+        "equipment_bulk",
+        {"equipment_ids": str(uuid.uuid4())},
+        confirm=True,
+    )
+    check(
+        "delete_record(equipment_bulk, 창)",
+        bool(ASKED) and len(nothing.get("failed", [])) == 1,
+        nothing,
+    )
+
+    bad += await _sdk_roundtrip(ctx, test_id)
+    return bad
+
+
+async def _sdk_roundtrip(ctx: _Ctx, test_id: str) -> int:
+    """**진짜 SDK 를 지나** 확인 창을 띄운다 — 구 프로토콜(요청 중 되묻기)과 새 프로토콜
+    (`2026-07-28`, 입력 필요 결과로 되묻기) 둘 다. 해석기 · 질문 글자 맞추기 · 증표가 실제
+    클라이언트 경로에서 맞물리는지는 이렇게 불러 봐야만 드러난다.
+
+    같은 프로세스 안의 클라이언트라 HTTP 머리가 없다 — 토큰은 `_headers` 를 덮어 싣는다.
+    """
+    bad = 0
+    plain = server._headers
+    server._headers = lambda _ctx: {"X-Client": "mcp", **ctx.headers}  # type: ignore[assignment]
+    try:
+        for mode in ("legacy", "2026-07-28"):
+            shown: list[str] = []
+
+            async def accept(_context: Any, params: Any) -> types.ElicitResult:
+                shown.append(params.message)
+                return types.ElicitResult(action="accept", content={"approve": True})
+
+            async with Client(server.mcp, mode=mode, elicitation_callback=accept) as client:
+                for action, reason in (("confirm", None), ("reopen", "SDK 왕복 확인")):
+                    result = await client.call_tool(
+                        "decide_reliability_tests",
+                        {"action": action, "test_ids": [test_id], "reason": reason},
+                    )
+                    got = result.structured_content or {}
+                    ok = got.get("done") == [test_id] and len(shown) >= 1
+                    bad += not ok
+                    label = f"SDK {mode} {action}"
+                    print(f"  {'  ok' if ok else '실패'} {label:34s} {_short(got, 70)}")
+            # 확인 창을 못 띄우는 클라이언트 — 사람이 읽을 문장으로 거절, 실행 안 함.
+            async with Client(server.mcp, mode=mode) as client:
+                result = await client.call_tool(
+                    "decide_reliability_tests", {"action": "confirm", "test_ids": [test_id]}
+                )
+                got = result.structured_content or {}
+                ok = "확인 창" in str(got.get("error", ""))
+                bad += not ok
+                label = f"SDK {mode} 창 없는 클라이언트"
+                print(f"  {'  ok' if ok else '실패'} {label:34s} {_short(got, 70)}")
+    finally:
+        server._headers = plain  # type: ignore[assignment]
+    return bad
 
 
 async def main() -> int:

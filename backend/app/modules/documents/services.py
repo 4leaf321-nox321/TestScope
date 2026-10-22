@@ -393,14 +393,18 @@ def mark_reviewed(
 ) -> None:
     """이 시험을 **어느 개정까지 봤다**고 적는다. `None` 이면 표를 도로 붙인다.
 
-    **사람만 한다** — 기계가 「봤다」 고 적으면 사람의 확인이 이름만 남는다. 확정과 같은
-    규칙이다(ADR 0009).
+    **사람이 한다** — 기계가 「봤다」 고 적으면 사람의 확인이 이름만 남는다. 확정과 같은
+    규칙이다(ADR 0009). AI 화면의 확인 창에서 사람이 수락한 것은 된다(ADR 0013).
     """
     from app.modules.reliability import services as reliability
 
     test = reliability.get(db, test_id)
+    # **확인 요구를 먼저.** 편집 판정을 먼저 보면 확정된 시험에서 「수정은 확인 필요」 가 떠,
+    # 사람이 확인 창에서 엉뚱한 일(수정)을 수락하게 된다.
+    reliability._human_only(
+        db, test, "개정 확인은", "규격서 개정을 봤다고 표시(「아직 안 봄」 표가 떨어짐)"
+    )
     reliability.require_editable(db, user, test_id)
-    reliability._human_only(test, "개정 확인")
     if revision_id is not None:
         found = db.get(SpecDocumentRevision, revision_id)
         if found is None:

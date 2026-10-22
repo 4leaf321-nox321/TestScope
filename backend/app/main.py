@@ -8,7 +8,7 @@ from __future__ import annotations
 
 import logging
 
-from fastapi import APIRouter, FastAPI
+from fastapi import APIRouter, Depends, FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import FileResponse
 from fastapi.staticfiles import StaticFiles
@@ -41,6 +41,7 @@ from app.modules.voc import routes as voc_routes
 from app.modules.vocabulary import routes as vocabulary_routes
 from app.modules.workspaces import routes as workspaces_routes
 from app.schema_version import warn_if_behind
+from app.shared import confirm
 from app.shared.access_log import AccessLogMiddleware
 from app.shared.errors import NotFound, register_error_handlers
 from app.shared.request_context import RequestIdMiddleware
@@ -150,6 +151,10 @@ def create_app() -> FastAPI:
         version=version.current(),
         docs_url=f"{API_PREFIX}/docs",
         openapi_url=f"{API_PREFIX}/openapi.json",
+        # **사람 확인 증표**(ADR 0013). 모든 경로에 건다 — 증표가 없으면 아무 일도 안 하고,
+        # 있으면 검증해 「사람이 AI 화면에서 수락한 요청」 으로 표시한다. 경로마다 달면 빠뜨린
+        # 경로에서 사람이 수락한 것이 「확인 필요」 로 되돌아와 확인 창이 끝없이 뜬다.
+        dependencies=[Depends(confirm.read_proof)],
     )
 
     # 순서가 중요하다. add_middleware 는 **나중에 더한 것이 바깥**이므로 아래 두

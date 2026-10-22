@@ -54,6 +54,27 @@ def get_actor_token() -> str | None:
     return (_actor.get() or {}).get("token")
 
 
+def is_confirmed() -> bool:
+    """사람이 AI 화면의 확인 창에서 이 요청을 수락했나(`shared/confirm.py` 가 증표를 본 뒤)."""
+    return bool((_actor.get() or {}).get("confirmed"))
+
+
+def mark_confirmed() -> None:
+    """증표가 맞았다 — 사람 몫의 결정을 기계 통로로 지나게 한다. **감사의 통로도 바꾼다**:
+    `mcp` 만 남기면 AI 가 혼자 한 것과 사람이 확인 창에서 수락한 것이 구별되지 않는다.
+
+    `set_actor_token` 과 같은 이유로 dict 를 고친다(스레드풀에서 불려도 전파된다).
+    """
+    holder = _actor.get()
+    if holder is not None:
+        holder["confirmed"] = "1"
+        holder["client"] = CONFIRMED_CLIENT
+
+
+#: 증표가 맞은 요청의 통로 표식. 감사(`audit_entries.actor_client`)와 화면이 이 글자로 가른다.
+CONFIRMED_CLIENT = "mcp:confirmed"
+
+
 def set_actor_token(name: str | None) -> None:
     """인증이 끝난 뒤 부른다 — 어느 토큰이 이 요청을 냈나.
 

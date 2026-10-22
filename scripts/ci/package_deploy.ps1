@@ -156,6 +156,7 @@ if (Test-Path .\mcp_server\server.py) {
     # 새 모듈을 더하면 여기에도 더한다 — 잊으면 test_mcp_tools.py 가 잡는다.
     Copy-Item -Force .\mcp_server\bind.py .\deploy\mcp_server\bind.py
     Copy-Item -Force .\mcp_server\calltrace.py .\deploy\mcp_server\calltrace.py
+    Copy-Item -Force .\mcp_server\confirm.py .\deploy\mcp_server\confirm.py
     Copy-Item -Force .\mcp_server\merge.py .\deploy\mcp_server\merge.py
     Copy-Item -Force .\mcp_server\requirements.txt .\deploy\mcp_server\requirements.txt
     Copy-Item -Force .\mcp_server\README.md .\deploy\mcp_server\README.md

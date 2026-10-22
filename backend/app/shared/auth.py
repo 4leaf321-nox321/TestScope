@@ -12,6 +12,7 @@
 from __future__ import annotations
 
 import logging
+import re
 
 from fastapi import Depends, Request
 from sqlalchemy.orm import Session
@@ -19,6 +20,7 @@ from sqlalchemy.orm import Session
 from app.database import get_db
 from app.modules.accounts.models import User
 from app.modules.auth import security, services
+from app.shared import confirm
 from app.shared.errors import AppError, Forbidden
 from app.shared.request_context import set_actor_token
 
@@ -71,6 +73,28 @@ _WRITE_SCOPES: tuple[tuple[str, str], ...] = (
     ("/api/review", "catalog:write"),
 )
 
+#: **사람 확인을 받으면** 기계 자격으로도 쓰는 경로 — 관리 일(ADR 0013, 2026-10-22 사용자
+#: 결정).
+#:
+#: 위 표는 「토큰이 혼자 해도 되는 일」 이고 이 표는 「사람이 AI 화면의 확인 창에서 내용을
+#: 보고 수락해야 되는 일」 이다(`shared/confirm.py`). 범위는 `admin:write` 하나 — 사람이
+#: 따로 골라 준 토큰만 연다. 자격(시스템 관리자 · 부서 관리자)은 종전대로 각 엔드포인트가
+#: 본다.
+_CONFIRMED_WRITES: tuple[tuple[str, str], ...] = (
+    ("/api/accounts", "admin:write"),
+    ("/api/workspaces", "admin:write"),
+    ("/api/notices", "admin:write"),
+    ("/api/hub", "admin:write"),
+    ("/api/voc", "admin:write"),
+)
+
+#: **비밀값을 다루는 경로는 어떤 확인으로도 기계 자격에 안 연다**(2026-10-22 사용자 결정).
+#: 토큰 발급 · 폐기, 임시 비밀번호(계정 만들기 · 비밀번호 초기화), 로그인 · 가입 — 열면 평문
+#: 비밀이 AI 대화 기록에 남는다. 허브 토큰 입력은 같은 이유로 허브 서비스가 막는다.
+_SECRET_WRITES = re.compile(
+    r"^/api/(auth/.*|accounts|accounts/signup|accounts/[^/]+/reset-password)$"
+)
+
 _SAFE_METHODS = frozenset({"GET", "HEAD", "OPTIONS"})
 
 #: POST 지만 **아무것도 안 바꾸는** 것들. 본문에 물음을 싣기 때문에 POST 일 뿐이다.
@@ -112,17 +136,51 @@ def _enforce_token_scope(request: Request, token_scopes: list[str], path: str) -
 
     needed = _needed_scope(path)
     if needed is None:
-        raise Forbidden(
-            "TSC-AUTH-0105",
-            "개인 토큰으로는 이 경로 수정 불가. 화면에서 수정 필요.",
-            details={"path": path},
-        )
+        _enforce_confirmed_write(request, token_scopes, path)
+        return
     if needed not in token_scopes:
         raise Forbidden(
             "TSC-AUTH-0106",
             f"이 토큰에 {needed} 범위 없음.",
             details={"needed": needed, "granted": token_scopes},
         )
+
+
+def _confirmed_scope(path: str) -> str | None:
+    for prefix, scope in _CONFIRMED_WRITES:
+        if path == prefix or path.startswith(prefix + "/"):
+            return scope
+    return None
+
+
+def _enforce_confirmed_write(request: Request, token_scopes: list[str], path: str) -> None:
+    """범위 표 밖의 쓰기 — **사람 확인을 받은 관리 일만** 지난다.
+
+    순서가 뜻이다: 비밀값 경로는 무엇으로도 안 열고(①), 관리 경로는 `admin:write` 를 고른
+    토큰이어야 하고(②), 그 위에 사람이 확인 창에서 수락해야 한다(③). ②를 ③보다 먼저 보는
+    것은, 범위 없는 토큰으로 확인 창부터 띄우면 사람이 수락하고 나서야 403 을 받기 때문이다.
+    """
+    scope = _confirmed_scope(path)
+    if scope is None or _SECRET_WRITES.match(path):
+        raise Forbidden(
+            "TSC-AUTH-0105",
+            "개인 토큰으로는 이 경로 수정 불가. 화면에서 수정 필요."
+            + (" 비밀값(토큰 · 비밀번호)을 다루는 경로." if scope is not None else ""),
+            details={"path": path},
+        )
+    if scope not in token_scopes:
+        raise Forbidden(
+            "TSC-AUTH-0106",
+            f"이 토큰에 {scope} 범위 없음(관리 작업 — 계정 · 부서 · 공지 · 허브 · VOC).",
+            details={"needed": scope, "granted": token_scopes},
+        )
+    confirm.require(
+        "TSC-AUTH-0107",
+        "관리 작업은 사용자 확인 필요.",
+        summary=f"관리 작업 {request.method} {path}",
+        # 토큰 이름은 이 판정 **뒤에** 남는다 — 여기서는 기계 통로임을 직접 말한다.
+        machine=True,
+    )
 
 
 def current_user(request: Request, db: Session = Depends(get_db)) -> User:

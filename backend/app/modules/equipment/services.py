@@ -42,6 +42,7 @@ from app.modules.test_items.models import EquipmentTestItem
 from app.modules.vocabulary.models import VocabularyTerm
 from app.modules.workspaces.models import Workspace
 from app.shared import audit
+from app.shared import confirm as human
 from app.shared.errors import AppError, Conflict
 from app.shared.pagination import Page
 from app.shared.permissions import (
@@ -1107,6 +1108,30 @@ def _attribute_items(raw: Any) -> list[AttributeValueIn]:
 BULK_LIMIT = 500
 
 
+#: 확인 창에 늘어놓는 장비 수. 넘는 것은 「외 N대」 로.
+_SUMMARY_ROWS = 20
+
+
+def _ask_bulk_delete(db: Session, ids: list[uuid.UUID]) -> None:
+    """일괄 삭제는 기계 자격이면 **사람이 AI 화면에서 수락해야** 한다(ADR 0013) — 묶음에 한 번.
+
+    한 대씩 지우는 것은 AI 혼자 한다(종전대로). 수십 대를 한 번에 내리는 것은 잘못 고른 한 줄이
+    부서 장비 목록을 통째로 비우는 일이라, 무엇이 내려가는지 사람이 한 번 본다.
+    """
+    if get_actor_token() is None:
+        return
+    rows = list(db.scalars(select(Equipment).where(Equipment.id.in_(ids))))
+    names = [f"· {one.asset_no} {one.name}" for one in rows[:_SUMMARY_ROWS]]
+    if len(rows) > _SUMMARY_ROWS:
+        names.append(f"… 외 {len(rows) - _SUMMARY_ROWS}대")
+    human.require(
+        "TSC-EQUIPMENT-0048",
+        f"보유 장비 {len(ids)}대 일괄 삭제는 사용자 확인 필요.",
+        summary=f"보유 장비 {len(ids)}대 삭제(목록에서 내림, 기록은 남음)\n"
+        + "\n".join(names),
+    )
+
+
 def bulk_delete(db: Session, user: User, *, ids: list[uuid.UUID]) -> dict[str, Any]:
     """고른 장비를 한 번에 내린다.
 
@@ -1120,6 +1145,7 @@ def bulk_delete(db: Session, user: User, *, ids: list[uuid.UUID]) -> dict[str, A
             "TSC-EQUIPMENT-0020",
             f"한 번에 최대 {BULK_LIMIT}대까지 가능(선택: {len(ids)}대). 나눠서 실행 필요.",
         )
+    _ask_bulk_delete(db, ids)
     done: list[str] = []
     failed: list[dict[str, str]] = []
     for equipment_id in ids:

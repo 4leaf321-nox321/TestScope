@@ -36,7 +36,8 @@ from app.modules.hub.schemas import (
 )
 from app.modules.vocabulary.models import Vocabulary
 from app.shared import audit, secretbox
-from app.shared.errors import AppError, Conflict, NotFound
+from app.shared.errors import AppError, Conflict, Forbidden, NotFound
+from app.shared.request_context import get_actor_token
 
 #: 수신 데이터 목록의 상한.
 MAX_ITEMS = 200
@@ -82,7 +83,18 @@ def connection_out(db: Session) -> HubConnectionOut:
 
 
 def update_connection(db: Session, user: User, payload: dict[str, Any]) -> HubConnectionOut:
-    """연계 설정을 바꾼다. **토큰은 감사에도 안 남긴다** — 바뀌었다는 사실만."""
+    """연계 설정을 바꾼다. **토큰은 감사에도 안 남긴다** — 바뀌었다는 사실만.
+
+    **기계 자격은 토큰을 못 넣고 못 지운다**(2026-10-22 사용자 결정). 다른 설정은 사람이 AI
+    화면에서 수락하면 MCP 로도 바꾸지만(ADR 0013), 토큰을 실어 보내면 평문 비밀이 AI 대화
+    기록에 남는다 — 그래서 토큰 칸은 화면에서만.
+    """
+    if get_actor_token() is not None and (payload.get("token") or payload.get("clear_token")):
+        raise Forbidden(
+            "TSC-HUB-0007",
+            "허브 토큰은 화면(관리 > 허브 연계)에서만 입력 · 삭제. 평문 비밀이 AI 대화 기록에"
+            " 남음. 다른 설정(주소 · 받을 타입 · 야간 시각 · 켜기)은 MCP 로 가능.",
+        )
     conn = sync.connection(db)
     base_url = str(payload.get("base_url") or "").strip()
     if base_url:

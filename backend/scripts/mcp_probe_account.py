@@ -40,6 +40,7 @@ from app.modules.equipment.models import (
     EquipmentSeries,
 )
 from app.modules.methods.models import MethodRequirement, TestMethod
+from app.modules.notices.models import Notice
 from app.modules.properties.models import TestItemProperty
 from app.modules.reliability.models import ReliabilityTest, ReliabilityTestItem
 from app.modules.review.models import ReviewProposal
@@ -92,7 +93,9 @@ def mint() -> int:
             PersonalAccessToken(
                 user_id=user.id,
                 name=NAME,
-                scopes=["read", "catalog:write", "equipment:write"],
+                # 관리 쓰기는 **사람 확인을 받아야만** 쓰인다(ADR 0013) — 왕복이 확인 창을
+                # 흉내 내어 공지 하나를 만들고 지운다.
+                scopes=["read", "catalog:write", "equipment:write", "admin:write"],
                 prefix=prefix,
                 token_hash=token_hash,
             )
@@ -222,6 +225,10 @@ def cleanup() -> int:
             )
             db.delete(unit)
             gone.append(f"장비 {unit.asset_no} {unit.name}")
+        # 사람 확인 왕복이 만든 공지(제목에 표) — 왕복이 지우지만, 중간에 끊기면 남는다.
+        for notice in db.scalars(select(Notice).where(Notice.title.like(f"{TAG}%"))):
+            db.delete(notice)
+            gone.append(f"공지 {notice.title}")
         db.flush()
         gone += _catalog_and_documents(db)
         # **먼저 밀어 넣는다.** 한 트랜잭션에 두면 users 를 먼저 지우려 들고, 그 값을 만든

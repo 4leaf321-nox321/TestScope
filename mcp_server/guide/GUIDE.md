@@ -267,16 +267,19 @@ search_models(series="6800 Series Universal Testing Systems")  ->  그 계열의
 
 ### AI가 올린 시험은 후보: 바로 쓰이지 않음
 
-`create_reliability_test`로 올린 시험은 `status="candidate"`로 생성됨. 사람이 화면에서 읽고
-확인해야 확정되며, 그 전에는 전사 목록에도 안 나옴. **사용자에게는 ‘등록 완료’가 아니라
+`create_reliability_test`로 올린 시험은 `status="candidate"`로 생성됨. 사람이 읽고 확인해야
+확정되며(화면, 또는 AI 화면의 확인 창 — `decide_reliability_tests`), 그 전에는 전사 목록에도
+안 나옴. **사용자에게는 ‘등록 완료’가 아니라
 ‘후보로 등록, 확인 필요’로 전달.**
 
 **모르는 칸은 비워 두고 못 채운 칸을 알림.** 그럴듯하게 채우면 검토자가 가려낼 수 없음(빈
 칸은 눈에 띄지만 그럴듯한 오답은 안 띔).
 
-확정된 시험은 수정 불가(409 `TSC-RELIABILITY-0005`): 칸, 그림, 삭제 모두. 사람이 확인한
-내용이므로 바꾸려면 확인부터 풀어야 함. 사용자에게 화면의 ‘다시 후보로’ 실행을 요청.
-**확인과 되돌리기 모두 AI는 불가.**
+확정된 시험은 **사람 확인 없이** 못 바꿈: 칸(`update_reliability_test` ·
+`set_reliability_attributes`)은 AI 화면에 확인 창이 떠 사용자가 수락하면 확정 유지한 채 바뀜.
+그림 · 재적재처럼 확인 창이 없는 길은 409 `TSC-RELIABILITY-0005` — 먼저
+`decide_reliability_tests(action="reopen", reason=…)`로 다시 후보로. 확정 · 반려 · 되돌리기 ·
+개정 확인은 `decide_reliability_tests`(늘 확인 창, 아래 「사람 확인 창」).
 
 올린 시험의 확인 여부는 `list_reliability_tests(workspace=…, status="candidate")`로 조회.
 `resolve` 결과의 후보 시험에는 ‘후보(확인 전)’ 표시가 붙음. **그런 줄을 근거로 ‘이 부서는
@@ -459,7 +462,7 @@ workspace=…)`. **공개 규격과 사내 규격서는 다른 표라 서로의 
     3. 그림 낱장으로        extract_document_images(첨부 id)  -> 서버가 zip 해제
     4. 시험 세우기          create_reliability_test x N        -> 전부 후보
     5. 그림 걸기            attach_references([{그림 id, 시험 id, 칸}, …])  (한 번에)
-    6. 확인                 사람이 화면에서 (AI 불가)
+    6. 확인                 decide_reliability_tests(confirm, 묶음) — 사용자 확인 창
 
 3번이 반환하는 줄마다 `caption`이 있음(문서에서 그 그림 자리의 제목과 글, 예: ‘3.2 열충격:
 온습도 프로파일’). AI는 그림을 볼 수 없으므로 이 글자가 유일한 단서. **설명이 비어 있으면
@@ -518,13 +521,61 @@ StandardPlatform 기준정보 허브에서 받은 타입은 온톨로지 축(`hu
   의견을 제시하고 선택을 받음. 추천은 정답이 아님.
 - 줄에는 결정자 이름이 ‘이름(MCP)’으로, 감사에는 토큰 이름이 기록됨. 의견과 보류도 같음.
 - 의견(`action="vote"`)은 누구나 가능하며 데이터 변경 없음. 의견은 사람마다 하나 — 같은
-  사용자가 화면에서 낸 의견을 덮어씀. MCP 의견을 모은 일괄 확정은 사람이 화면에서 함.
+  사용자가 화면에서 낸 의견을 덮어씀. MCP 의견대로 일괄 확정은
+  `decide_review_recommended(by="mcp_votes")` — 사용자 확인 창을 거침.
 - 보류(`action="skip"`)는 `skip_reason`(evidence · expert · source · no_answer · other)과
   메모(`note`)를 함께. 보류 줄의 `skip_reason_label` · `note`가 보류 이유.
 - 확정 전 `action="preview"`로 결과를 확인해 사용자에게 제시: 규격의 시험 항목은 안 이어질
   계열(`unlinked`)·끊길 계열(`cut`), 사양 정의 승격은 남을 값(`unmovable`).
 - 후보의 `warning`(분류와 맞지 않음, 표기만 다른 같은 규격)은 추천하지 않은 이유. 함께 전달.
 - 규격의 시험 항목을 `set_method_test_items`로 직접 고치는 우회는 금지(서버 409).
+
+## 사람 확인 창: 사람 몫의 결정
+
+신뢰성 시험 확정 · 관리 작업 같은 **사람 몫의 결정**도 AI 가 실행함 — 대신 그때마다 AI 화면에
+**확인 창**이 떠 사용자가 내용을 보고 수락해야 함(ADR 0013). 창에는 서버가 쓴 요약(무엇이
+어떻게 바뀌나: 시험 이름 · 칸마다의 값 · 건수 · 사유)과 AI 가 보낸 값이 그대로 실림. 수락한
+요청만 서버가 받고, 변경 이력에 통로 `mcp:confirmed`(MCP·사용자 확인)로 남음.
+
+    거절 · 취소      `declined` 반환. 같은 내용으로 다시 부르지 말고 무엇을 바꿀지 물을 것
+    창 미지원        「확인 창을 띄울 수 없음」 오류. 실행 안 됨 — 지원 클라이언트나 화면에서
+
+**확인 창은 판단을 대신하지 않음.** 부르기 전에 대상 · 동작 · 이유를 사용자에게 말로 정리해
+지시를 받고, 확정이라면 `get_reliability_test`로 내용을 먼저 읽어 빈 칸 · 의심 값을 알릴 것.
+여러 건은 묶어서 한 번에(창도 한 번) — 하나씩 부르면 창이 그만큼 뜸.
+
+후보만 지우기 · 허브 기준정보 칸 붙이기처럼 확인이 필요 없는 것은 창 없이 바로 실행됨.
+
+## 관리 작업: 계정 · 부서 · 공지 · 허브 수신 (`admin_action`)
+
+토큰에 `admin:write` 범위 필요, 자격(시스템 관리자 · 부서 관리자)은 서버가 판정. 읽기(list ·
+members · status · runs)는 창 없이, 쓰기는 확인 창. `fields` 칸(목록 · 삭제는 질의로 감):
+
+    account.list            status · limit · offset
+    account.approve         workspace_slug · role(member · manager)
+    account.reject          note(필수)
+    account.suspend · activate · delete      (없음)
+    account.system_admin    is_system_admin
+    account.memberships     items: [{workspace_slug, role}]  (통째로 교체 — 빈 목록은 내보내기)
+    account.home_workspace  workspace_slug
+    workspace.list          all
+    workspace.create        slug · name · parent_slug · division_code
+    workspace.update        name · is_active · restricted · division_code
+    workspace.delete        reassign_to(옮겨 받을 부서 slug)
+    workspace.move          parent_slug      workspace.reorder   direction(up · down)
+    workspace.members       (없음)           workspace.add_member  email · role
+    workspace.set_member_role  user_id · role    workspace.remove_member  user_id
+    notice.list             include_drafts
+    notice.create           title · body · level · is_popup · publish · expires_at
+    notice.update           title · body · level · is_popup · expires_at
+    notice.delete · publish (없음)
+    hub.status · runs · check · catalog_seen   (없음)       hub.run   full
+    hub.settings            base_url · ca_bundle · selected_types · nightly_at · enabled
+    voc.list                status · mine    voc.create  title · body · page_path
+    voc.move                to_status · note
+
+`target_id`는 계정 id · 부서 slug · 공지 id · VOC id. 허브 설정은 지금 값에 겹쳐 보냄(안 보낸
+칸은 유지). **허브 토큰 · 토큰 발급 · 비밀번호는 불가** — 화면에서.
 
 ## 지식 그래프: 연결 관계 탐색
 
@@ -556,12 +607,17 @@ StandardPlatform 기준정보 허브에서 받은 타입은 온톨로지 축(`hu
     read             모든 읽기
     catalog:write    계열 · 기종 · 사양 정의 · 온톨로지 · 규격 · 시험 항목 축 · 속성 정의
     equipment:write  보유 장비 · 장비 시험 항목 · 교정 · 신뢰성 시험 · 사내 규격서 · 첨부
+    admin:write      계정 · 부서 · 멤버 · 공지 · 허브 수신 · VOC (쓰기마다 사용자 확인 창)
 
-계정 관리, 부서 멤버 관리, 서버 설정, 공지는 어느 범위로도 열리지 않음(화면 전용).
+토큰 발급 · 폐기, 비밀번호, 허브 토큰 입력은 어느 범위로도 안 열림(평문 비밀이 대화에 남음 —
+화면 전용).
 
 오류 코드로 원인 구분:
 
     TSC-AUTH-0106       범위 없음      토큰 재발급으로 해결
+    TSC-AUTH-0105       기계 자격 불가  비밀값 경로 — 화면에서
+    TSC-AUTH-0107       사용자 확인 필요 도구가 확인 창을 띄움(직접 처리할 일 없음)
+    TSC-AUTH-0108       확인 증표 불일치 MCP 서버 · 백엔드 설정 문제 — 관리자에게 전달
     TSC-AUTH-0103       자격 없음      관리자에게 요청하도록 안내
     TSC-WORKSPACES-0003 부서 관리자 전용
     TSC-VOCAB-0002      닫힌 축        시스템 관리자만 값 추가
@@ -574,7 +630,7 @@ StandardPlatform 기준정보 허브에서 받은 타입은 온톨로지 축(`hu
     보유 장비          등록 · 수정          + 삭제                  전부
     장비 시험 항목·조건 등록 · 수정 · 삭제   같음                    전부
     장비 실측 사양      입력 · 삭제          같음                    전부
-    신뢰성 시험        읽기만               그 사업부 후보 등록·수정·  전부(확정 건은 사람만)
+    신뢰성 시험        읽기만               그 사업부 후보 등록·수정·  전부(확정 · 반려는 확인 창)
                                           후보 삭제
     사내 규격서        읽기만               등록 · 수정 · 삭제        전부
     사내 시험법(부서)   읽기만               등록 · 수정 · 삭제        전부
@@ -588,11 +644,17 @@ StandardPlatform 기준정보 허브에서 받은 타입은 온톨로지 축(`hu
 (`kind`로 대상 선택). `delete_record`는 `confirm` 없이 호출하면 대상만 반환하며, 사용자 확인
 후 `confirm=True`로 재호출.
 
-### 사람 전용(도구 없음)
+### 사용자 확인 창을 거치는 것
 
-- 신뢰성 시험의 확정 · 반려 · 재검토. 확정된 시험은 기계 자격으로 수정·삭제 불가.
-- 신뢰성 시험의 검토 완료 개정 지정, 장비 일괄 삭제, 신뢰성 시험 일괄 처리.
-- 계정 · 부서 멤버 · 토큰 · 공지 관리.
+아래는 사람 몫의 결정이라 **AI 화면의 확인 창에서 사용자가 수락해야** 실행됨(「사람 확인 창」).
+
+- 신뢰성 시험 확정 · 반려 · 다시 후보로 · 개정 확인 · 확정된 시험 수정 · 확정 건 삭제.
+- 검토함 MCP 의견대로 일괄 확정, 규격 병합, 규격의 시험 항목 해제, 장비 일괄 삭제.
+- 관리 작업(`admin_action`): 계정 · 부서 · 멤버 · 공지 · 허브 수신 · VOC.
+
+### 화면 전용
+
+- 토큰 발급 · 폐기, 계정 만들기 · 비밀번호 초기화(임시 비밀번호), 허브 토큰 입력.
 
 **값 추가와 이름 변경은 구분.** 열린 축(제조사 · 거점 등)의 값 추가는 누구나 가능하나, 이름
 변경 · 병합 · 축 생성은 시스템 관리자 전용(`update_term` · `update_axis` · `merge_terms` ·

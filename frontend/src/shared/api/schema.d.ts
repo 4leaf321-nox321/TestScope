@@ -3079,7 +3079,10 @@ export interface paths {
         put?: never;
         /**
          * Bulk Reliability Tests
-         * @description 여러 줄을 한 번에 — 확인 · 반려 · 지우기 · **다시 후보로.**
+         * @description 여러 줄을 한 번에 — 확인 · 반려 · 지우기 · **다시 후보로** · 개정 확인.
+         *
+         *     기계 자격은 **사람이 AI 화면의 확인 창에서 수락해야** 확인 · 반려 · 다시 후보로 · 개정
+         *     확인 · 확정된 줄 지우기를 한다(ADR 0013) — 줄마다가 아니라 묶음 하나에 한 번 묻는다.
          *
          *     `reopen` 과 `reject` 는 **사유가 필수**다 — 여럿을 한 번에 푸는 것은 줄마다 보고
          *     누르는 일이 아니라 한 가지 이유로 묶어 푸는 일이고, 그 이유가 안 남으면 반년 뒤에
@@ -8488,9 +8491,11 @@ export interface components {
              * Action
              * @enum {string}
              */
-            action: "confirm" | "reject" | "delete" | "reopen";
+            action: "confirm" | "reject" | "delete" | "reopen" | "reviewed";
             /** Reason */
             reason?: string | null;
+            /** Revision Id */
+            revision_id?: string | null;
         };
         /**
          * ReliabilityMergeOut

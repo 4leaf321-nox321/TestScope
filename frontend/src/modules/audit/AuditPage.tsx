@@ -29,6 +29,10 @@ interface AuditEntry {
   action: string
   /** **그때의 이름이다.** 계정이 지워져도 누가 했는지는 남아야 한다. */
   actor_label: string
+  /** 어느 통로로 — 비면 화면, `mcp` 면 AI 도구, `mcp:confirmed` 면 AI 화면에서 사람이 수락. */
+  actor_client: string | null
+  /** 쓴 개인 토큰의 이름. */
+  actor_token: string | null
   target_table: string
   target_id: string | null
   target_label: string
@@ -37,6 +41,17 @@ interface AuditEntry {
   /** 접근 로그·파일 로그와 잇는 끈. 이 값으로 그 요청의 전말을 볼 수 있다. */
   request_id: string | null
   created_at: string
+}
+
+/**
+ * 누가 **어느 통로로** 했나. 「관리자가 바꿨다」 만으로는 그 관리자가 직접 눌렀는지, 자기 토큰을 쥔
+ * AI 가 혼자 했는지, AI 화면의 확인 창에서 수락했는지 모른다 — 셋은 다른 이야기다.
+ */
+function shownChannel(one: AuditEntry): string {
+  if (one.actor_client === 'mcp:confirmed') return 'MCP · 사용자 확인'
+  if (one.actor_token) return 'MCP'
+  if (one.actor_client === 'mcp') return 'MCP'
+  return '화면'
 }
 
 function shownChanges(changes: AuditEntry['changes']): string {
@@ -68,6 +83,7 @@ export default function AuditPage() {
               <TableHead>시각</TableHead>
               <TableHead>작업</TableHead>
               <TableHead>수행자</TableHead>
+              <TableHead>통로</TableHead>
               <TableHead>대상</TableHead>
               <TableHead>변경 내용</TableHead>
               <TableHead>요청 ID</TableHead>
@@ -81,6 +97,12 @@ export default function AuditPage() {
                 </TableCell>
                 <TableCell className="font-mono text-xs">{one.action}</TableCell>
                 <TableCell>{one.actor_label}</TableCell>
+                <TableCell className="text-xs whitespace-nowrap">
+                  {shownChannel(one)}
+                  {one.actor_token && (
+                    <span className="text-muted-foreground block">{one.actor_token}</span>
+                  )}
+                </TableCell>
                 <TableCell>{one.target_label}</TableCell>
                 <TableCell className="text-muted-foreground text-xs">
                   {shownChanges(one.changes)}

@@ -55,6 +55,16 @@ const WRITE_SCOPES = [
     label: '장비·시험 쓰기',
     hint: '보유 장비·시험 항목·교정·신뢰성 시험',
   },
+  /*
+   * **관리 일 — 사람이 AI 화면에서 수락해야만 쓰인다**(ADR 0013). 범위로 따로 두는 것은 관리를
+   * AI 에 맡길지를 토큰을 만드는 사람이 고르게 하려는 것이다. 자격(시스템 관리자 · 부서 관리자)은
+   * 그대로 서버가 본다.
+   */
+  {
+    value: 'admin:write',
+    label: '관리 쓰기',
+    hint: '계정·부서·멤버·공지·허브 연계 — AI 화면의 확인 창에서 수락해야 실행',
+  },
 ] as const
 
 const SCOPE_LABEL: Record<string, string> = Object.fromEntries(
@@ -211,7 +221,9 @@ export default function ProfilePage() {
             ))}
             {/* 어느 범위로도 안 열리는 것이 있다 — 고르고 나서 알면 늦다. */}
             <p className="text-muted-foreground text-xs">
-              계정 관리와 서버 설정은 어떤 범위로도 허용되지 않음.
+              토큰 발급·비밀번호·허브 토큰 입력은 어떤 범위로도 허용되지 않음(평문 비밀이 AI
+              대화에 남음). 신뢰성 시험 확정·반려처럼 사람이 정할 일은 AI 화면의 확인 창에서
+              수락해야 실행됨.
             </p>
           </fieldset>
         </form>
