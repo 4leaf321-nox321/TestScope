@@ -38,6 +38,8 @@ from app.modules.equipment.models import (
     EquipmentModel,
     EquipmentModelProposal,
     EquipmentSeries,
+    EquipmentSpecValue,
+    ModelSpecValue,
 )
 from app.modules.methods.models import MethodRequirement, TestMethod
 from app.modules.notices.models import Notice
@@ -45,7 +47,13 @@ from app.modules.properties.models import TestItemProperty
 from app.modules.reliability.models import ReliabilityTest, ReliabilityTestItem
 from app.modules.review.models import ReviewProposal
 from app.modules.test_items.models import EquipmentTestItem
-from app.modules.vocabulary.models import VocabularyAlias, VocabularyTerm
+from app.modules.vocabulary.models import (
+    ConditionKey,
+    Vocabulary,
+    VocabularyAlias,
+    VocabularyTerm,
+)
+from app.modules.vocabulary.specs import SpecDefinition, SpecGroup
 from app.modules.workspaces.models import Workspace, WorkspaceMember
 
 survive_cp949()
@@ -157,6 +165,36 @@ def _catalog_and_documents(db: Session) -> list[str]:
     return gone
 
 
+def _ontology_and_specs(db: Session) -> list[str]:
+    """왕복이 세운 축 · 조건 키 · 사양 정의 · 사양 그룹(안 불리던 도구 사슬, 2026-10-25).
+
+    **장비 · 기종을 지운 뒤에 부른다** — 사양 정의는 그 값이 가리킨다(RESTRICT). 축은 값이
+    따라 지워지고(CASCADE), 값은 앞에서 이름으로 이미 지웠다.
+    """
+    gone: list[str] = []
+    definitions = list(
+        db.scalars(select(SpecDefinition).where(SpecDefinition.label.like(f"{TAG}%")))
+    )
+    if definitions:
+        ids = [one.id for one in definitions]
+        db.execute(delete(ModelSpecValue).where(ModelSpecValue.definition_id.in_(ids)))
+        db.execute(delete(EquipmentSpecValue).where(EquipmentSpecValue.definition_id.in_(ids)))
+        for one in definitions:
+            db.delete(one)
+            gone.append(f"사양 정의 {one.label}")
+        db.flush()
+    for group in db.scalars(select(SpecGroup).where(SpecGroup.label.like(f"{TAG}%"))):
+        db.delete(group)
+        gone.append(f"사양 그룹 {group.label}")
+    for key in db.scalars(select(ConditionKey).where(ConditionKey.label.like(f"{TAG}%"))):
+        db.delete(key)
+        gone.append(f"조건 키 {key.label}")
+    for axis in db.scalars(select(Vocabulary).where(Vocabulary.label.like(f"{TAG}%"))):
+        db.delete(axis)
+        gone.append(f"축 {axis.label}")
+    return gone
+
+
 def cleanup() -> int:
     db = SessionLocal()
     gone: list[str] = []
@@ -200,18 +238,6 @@ def cleanup() -> int:
             )
             db.delete(method)
             gone.append(f"규격 {method.code}")
-        for term in db.scalars(
-            select(VocabularyTerm).where(VocabularyTerm.value.like(f"{TAG}%"))
-        ):
-            db.execute(
-                delete(TestItemProperty).where(
-                    (TestItemProperty.test_item_term_id == term.id)
-                    | (TestItemProperty.property_term_id == term.id)
-                )
-            )
-            db.execute(delete(VocabularyAlias).where(VocabularyAlias.term_id == term.id))
-            db.delete(term)
-            gone.append(f"값 {term.value}")
         # 확인용으로 등록한 장비와 그 기종 등록 요청. **요청부터 지운다** — 장비를 먼저
         # 지우면 CASCADE 가 지우긴 하지만, 여기서 세는 줄이 사라져 무엇이 지워졌는지 못 적는다.
         for unit in db.scalars(select(Equipment).where(Equipment.name.like(f"{TAG}%"))):
@@ -231,6 +257,24 @@ def cleanup() -> int:
             gone.append(f"공지 {notice.title}")
         db.flush()
         gone += _catalog_and_documents(db)
+        db.flush()
+        # **값은 장비 · 계열 · 규격을 지운 뒤에.** 값을 가리키는 줄(장비 · 계열의 시험 항목,
+        # 규격의 시험 항목)이 RESTRICT 라, 먼저 지우면 전체가 되돌아간다 — 안 불리던 도구
+        # 사슬(2026-10-25)이 계열에 시험 항목을 붙이면서 실제로 그랬다.
+        for term in db.scalars(
+            select(VocabularyTerm).where(VocabularyTerm.value.like(f"{TAG}%"))
+        ):
+            db.execute(
+                delete(TestItemProperty).where(
+                    (TestItemProperty.test_item_term_id == term.id)
+                    | (TestItemProperty.property_term_id == term.id)
+                )
+            )
+            db.execute(delete(VocabularyAlias).where(VocabularyAlias.term_id == term.id))
+            db.delete(term)
+            gone.append(f"값 {term.value}")
+        db.flush()
+        gone += _ontology_and_specs(db)
         # **먼저 밀어 넣는다.** 한 트랜잭션에 두면 users 를 먼저 지우려 들고, 그 값을 만든
         # 사람이 이 계정이라 FK 에 걸려 전체가 되돌아간다 — 아무것도 안 지워진다.
         db.flush()

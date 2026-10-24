@@ -37,6 +37,7 @@ from app.modules.reliability.schemas import (
     RevisionDifferenceOut,
     RevisionTestBriefOut,
     SiblingTestOut,
+    UnreviewedRevisionOut,
 )
 from app.modules.test_items.models import EquipmentTestItem
 from app.modules.vocabulary.models import Vocabulary, VocabularyTerm
@@ -176,6 +177,8 @@ def _outs(db: Session, user: User, rows: list[ReliabilityTest]) -> list[Reliabil
             )
         )
     }
+    # 아직 안 본 규격서 최신판 — **한 번에.**
+    unseen = documents.unreviewed_of(db, [row.id for row in rows])
     out: list[ReliabilityTestOut] = []
     for row in rows:
         division = divisions[row.division_term_id]
@@ -205,6 +208,9 @@ def _outs(db: Session, user: User, rows: list[ReliabilityTest]) -> list[Reliabil
                 ],
                 attributes=attribute_values[row.id],
                 attachment_count=shots.get(row.id, 0),
+                unreviewed_revision=UnreviewedRevisionOut(**unseen[row.id])
+                if row.id in unseen
+                else None,
                 can_edit=editable[row.division_term_id],
                 created_at=row.created_at,
                 updated_at=row.updated_at,
@@ -329,6 +335,8 @@ class RowFilters:
     purpose: str | None = None
     test_item: str | None = None
     equipment: str | None = None
+    unreviewed: bool = False
+    """가리키는 규격서의 **최신판을 아직 안 본** 줄만(`documents.unreviewed_rows`)."""
 
 
 #: 「안 적힘」 을 묻는 말. 목록 API 가 이미 `test_item=none` · `models=none` 으로 쓰고 있다 —
@@ -345,12 +353,16 @@ def _by_rows(
     """속성 아닌 열의 조건을 한 번에 — 여러 개면 **모두** 만족해야 한다(속성과 같다)."""
     if rows is None:
         return stmt
-    return _by_equipment(
+    narrowed = _by_equipment(
         db,
         user,
         _by_item(_by_purpose(_by_name(stmt, rows.name), rows.purpose), rows.test_item),
         rows.equipment,
     )
+    if rows.unreviewed:
+        unseen = documents.unreviewed_rows().subquery()
+        narrowed = narrowed.where(ReliabilityTest.id.in_(select(unseen.c.id)))
+    return narrowed
 
 
 def _by_name(
@@ -1431,6 +1443,18 @@ def bulk(
 def _mark_reviewed(
     db: Session, user: User, test_id: uuid.UUID, revision_id: uuid.UUID | None
 ) -> None:
+    """일괄 「개정 확인」 — 판을 안 주면 **그 시험이 아직 안 본 최신판**까지.
+
+    서로 다른 규격서의 시험을 한 번에 확인하는 일이 흔하다(「개정 미확인」 으로 거른 목록).
+    판 하나만 받으면 그 일이 문서마다 따로가 된다. 볼 판이 없는 줄은 이유와 함께 실패한다.
+    """
+    if revision_id is None:
+        unseen = documents.unreviewed_of(db, [test_id]).get(test_id)
+        if unseen is None:
+            raise AppError(
+                "TSC-RELIABILITY-0019", "아직 안 본 규격서 개정 없음(이미 최신판까지 확인됨)."
+            )
+        revision_id = unseen["revision_id"]
     documents.mark_reviewed(db, user, test_id, revision_id)
 
 

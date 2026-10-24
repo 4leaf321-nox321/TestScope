@@ -221,6 +221,14 @@ search_models(series="6800 Series Universal Testing Systems")  ->  그 계열의
 것을 `import_requirements`로 옮김: 먼저 `dry_run`으로 판정을 보여 주고 확인 후 입력. **값
 지어내기 금지**(틀린 조건은 빈 조건보다 나쁨).
 
+**대체된 규격을 아직 쓰는 곳**: `list_methods(superseded_refs=True)` — 신뢰성 시험의 근거
+규격 · 장비 시험 항목 중 옛 판을 가리키는 줄과 새 판(`successor_id`). 사용자에게 제시하고
+지시받은 뒤 고침: 신뢰성 시험은 `set_reliability_attributes`(method 칸), 장비는
+`update_record(kind="equipment_test_item", fields={"method_id": 새 판})`. 고치면 목록에서 빠짐.
+시험 항목 없이 인용만 한 계열이 많으면(`pending_series_count`) 시스템 관리자는
+`update_record(kind="method_link_citations", ids={"method_id": …}, fields={})`로 그 규격의 시험
+항목을 인용 계열에 한꺼번에 이음.
+
 ## 사양에 맞는 칸이 없을 때: 이 기종만의 사양
 
 `list_spec_definitions`에 칸이 없는 값은 `add_free_spec`으로 그 기종에 이름·값·단위로 추가
@@ -281,9 +289,26 @@ search_models(series="6800 Series Universal Testing Systems")  ->  그 계열의
 `decide_reliability_tests(action="reopen", reason=…)`로 다시 후보로. 확정 · 반려 · 되돌리기 ·
 개정 확인은 `decide_reliability_tests`(늘 확인 창, 아래 「사람 확인 창」).
 
-올린 시험의 확인 여부는 `list_reliability_tests(workspace=…, status="candidate")`로 조회.
+올린 시험의 확인 여부는 `list_reliability_tests(division=…, status="candidate")`로 조회.
 `resolve` 결과의 후보 시험에는 ‘후보(확인 전)’ 표시가 붙음. **그런 줄을 근거로 ‘이 부서는
 이 시험을 수행함’이라고 답하기 금지.**
+
+### 규격서가 개정되면: 다시 볼 시험
+
+개정(`add_spec_document_revision`)이 올라와도 딸린 시험은 확정 그대로이고 **「개정 미확인」**
+표가 붙음. 어느 시험인지는 `list_reliability_tests(unreviewed=True)`(줄의 `unreviewed_revision`
+— 아직 안 본 최신판). 개정의 `summary`와 시험 내용을 견줘 사용자에게 제시하고, 고칠 것은 먼저
+고친 뒤, 사용자가 봤다고 하면 `decide_reliability_tests(action="reviewed", test_ids=[…])` —
+`revision_id`를 안 주면 줄마다 그 시험의 최신판까지(서로 다른 규격서도 한 번에), 확인 창을
+거침. 그 최신판에서 올린 줄은 다시 볼 것이 없어 목록에 안 나옴.
+
+### 쓰기 전에 볼 것: 같은 이름 · 옛 판 · 장비 미리보기
+
+- `get_reliability_test(id, siblings=True)`: 같은 사업부의 이름이 같은 다른 시험과 무엇으로
+  갈렸는지(적용군 · 규격서 · 판). 같은 것을 또 올리면 409 — 먼저 확인.
+- `get_reliability_test(id, history=True)`: 판을 가로지른 값 이력(「개정 14에서는 몇 도였나」).
+- `test_capability(test_item_term_ids=…, attributes=…)`: **저장 전** 조건으로 장비 판정. 「95
+  °C로 올리면 0대」 를 등록 전에 사용자에게 알림.
 
 등록(`create_reliability_test`) 시 **조건은 문장이 아니라 수치로 기재.** 조건 속성
 (`kind="condition"`)에 -40~125를 적으면 `test_capability`가 그 온도를 내는 장비만 답함.
@@ -489,7 +514,9 @@ StandardPlatform 기준정보 허브에서 받은 타입은 온톨로지 축(`hu
 1. 붙일 칸 찾기: `list_attribute_definitions(target="reliability_test" 또는 "equipment")` 에서
    `kind="term"` 이고 허브 축을 가리키는 칸. 없으면 시스템 관리자가 `create_attribute_definition`
    (`kind="term"`, `vocabulary_id`=허브 축 id) — 칸을 새로 만들기 전에 사용자 확인.
-2. 값 찾기: `resolve(kind="term", axis="hub_<타입>", text=…)`. 옛 식별자로 물어도 풀림(별칭).
+2. 값 찾기: `search_hub(type_slug, q=…)`의 줄 `term_id`, 또는 `resolve(kind="term",
+   axis="hub_<타입>", text=…)`. 옛 식별자로 물어도 풀림(별칭). 객체 사이 관계(「이 과제의
+   개발모델」)는 `search_hub(type_slug, key=…)`의 `outgoing` · `incoming`.
 3. 붙이기: `set_reliability_attributes` · `set_equipment_attributes` 에 `{"definition_id", "term_id"}`.
    떼기는 `{"definition_id", "remove": true}`.
 
@@ -552,6 +579,8 @@ StandardPlatform 기준정보 허브에서 받은 타입은 온톨로지 축(`hu
 members · status · runs)는 창 없이, 쓰기는 확인 창. `fields` 칸(목록 · 삭제는 질의로 감):
 
     account.list            status · limit · offset
+    account.summary         (없음) — 활성 시스템 관리자 수 · 대기 계정 수
+    account.list_memberships (없음) — 지금 소속. memberships 는 통째로 교체라 먼저 읽을 것
     account.approve         workspace_slug · role(member · manager)
     account.reject          note(필수)
     account.suspend · activate · delete      (없음)
@@ -559,6 +588,10 @@ members · status · runs)는 창 없이, 쓰기는 확인 창. `fields` 칸(목
     account.memberships     items: [{workspace_slug, role}]  (통째로 교체 — 빈 목록은 내보내기)
     account.home_workspace  workspace_slug
     workspace.list          all
+    workspace.references    (없음) — 무엇이 이 부서를 가리키나. 삭제 전에 볼 것
+    workspace.reassign_preview  to — 합치면 무엇이 옮겨지고 무엇이 겹치나. delete(reassign_to) 전에
+    workspace.import        text · update_existing · dry_run(기본 true=미리보기, false 로 반입)
+    workspace.tree          items — 부서 트리 통째로 적용
     workspace.create        slug · name · parent_slug · division_code
     workspace.update        name · is_active · restricted · division_code
     workspace.delete        reassign_to(옮겨 받을 부서 slug)
@@ -571,11 +604,20 @@ members · status · runs)는 창 없이, 쓰기는 확인 창. `fields` 칸(목
     notice.delete · publish (없음)
     hub.status · runs · check · catalog_seen   (없음)       hub.run   full
     hub.settings            base_url · ca_bundle · selected_types · nightly_at · enabled
-    voc.list                status · mine    voc.create  title · body · page_path
+    voc.list                status · mine    voc.get (없음)    voc.create  title · body · page_path
     voc.move                to_status · note
+
+    review.refresh          (없음) — 검토함 후보 다시 세우기(반입 뒤). 확인 창 없음
 
 `target_id`는 계정 id · 부서 slug · 공지 id · VOC id. 허브 설정은 지금 값에 겹쳐 보냄(안 보낸
 칸은 유지). **허브 토큰 · 토큰 발급 · 비밀번호는 불가** — 화면에서.
+
+## 변경 이력: `list_changes`
+
+「누가 언제 이 시험을 확정했나」 · 「지난주 AI 가 혼자 바꾼 것」 은 `list_changes`. 부서 관리자
+이상. `target_id`(대상 하나) · `target_table` · `action`(예: `reliability_test.confirmed`) ·
+`channel`(`screen` 화면 · `mcp` AI 혼자 · `confirmed` AI 화면에서 사람이 수락). 되돌릴 수 없거나
+권한이 실린 일만 남음 — 값 하나 고친 것은 없을 수 있음(신뢰성 시험 칸 변경은 남음).
 
 ## 지식 그래프: 연결 관계 탐색
 

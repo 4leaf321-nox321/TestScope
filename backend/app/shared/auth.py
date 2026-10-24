@@ -102,7 +102,13 @@ _SAFE_METHODS = frozenset({"GET", "HEAD", "OPTIONS"})
 #: 이걸 빼먹으면 읽기 전용 토큰이 **검색을 못 한다** — 그리고 검색은 이 시스템이
 #: 존재하는 이유다. 실측으로 드러났다: 범위를 준 토큰이 `/api/resolve` 와
 #: `/api/search/test-items` 에서 403 을 받았다.
-_READ_ONLY_POSTS = ("/api/resolve", "/api/search/")
+_READ_ONLY_POSTS = (
+    "/api/resolve",
+    "/api/search/",
+    # 저장 **안 한** 조건으로 장비를 본다 — 조건을 본문에 실을 뿐 아무것도 안 바꾼다. 적으면서
+    # 「이 조건이면 장비 0대」 를 먼저 보는 자리라 읽기 토큰으로도 돼야 한다(2026-10-25).
+    "/api/reliability-tests/capability-preview",
+)
 
 
 def _needed_scope(path: str) -> str | None:

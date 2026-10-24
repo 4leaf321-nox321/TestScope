@@ -65,11 +65,16 @@ import {
   AttributeHeadCells,
   useAttributeColumns,
 } from '@/modules/attributes/AttributeColumns'
-import { CandidateBadge, isCandidate } from '@/modules/reliability/CandidateReview'
+import {
+  CandidateBadge,
+  UnreviewedBadge,
+  isCandidate,
+} from '@/modules/reliability/CandidateReview'
 import {
   NameHead,
   PurposeHead,
   RowFilterChips,
+  UnreviewedToggle,
   TestItemHead,
   useRowFilters,
 } from '@/modules/reliability/ColumnFilters'
@@ -250,6 +255,7 @@ export default function DivisionReliabilityPage() {
           />
           과거 판 포함
         </label>
+        <UnreviewedToggle rows={rowFilters} />
         <AttributeColumnPicker columns={columns} />
       </div>
 
@@ -325,6 +331,16 @@ export default function DivisionReliabilityPage() {
             }}
           >
             다시 후보로
+          </Button>
+          {/* **규격서 개정을 봤다** — 줄마다 그 시험이 아직 안 본 최신판까지. 「개정 미확인만」
+              으로 거른 뒤 개정 내용과 견줘 보고 누른다. */}
+          <Button
+            size="sm"
+            variant="outline"
+            disabled={bulk.busy}
+            onClick={() => runBulk('reviewed')}
+          >
+            개정 확인
           </Button>
           <Button
             size="sm"
@@ -417,6 +433,7 @@ export default function DivisionReliabilityPage() {
                 <TableCell>
                   <RowOpener name={row.name} onOpen={() => setViewing(row)}>
                     <CandidateBadge row={row} />
+                    <UnreviewedBadge row={row} />
                   </RowOpener>
                 </TableCell>
                 {/* **줄 수를 묶는다.** 전문은 줄을 눌러 보기 창에서 읽는다. */}

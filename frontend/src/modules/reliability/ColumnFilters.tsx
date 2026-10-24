@@ -26,7 +26,7 @@ import { Input } from '@/shared/components/ui/input'
 import { Popover, PopoverContent, PopoverTrigger } from '@/shared/components/ui/popover'
 
 /** 서버가 받는 이름 그대로 — 주소에 그대로 실려 링크가 된다. */
-export const ROW_KEYS = ['name', 'purpose', 'test_item', 'equipment'] as const
+export const ROW_KEYS = ['name', 'purpose', 'test_item', 'equipment', 'unreviewed'] as const
 export type RowKey = (typeof ROW_KEYS)[number]
 export type RowFilters = Partial<Record<RowKey, string>>
 
@@ -38,11 +38,13 @@ const SAID: Record<RowKey, string> = {
   purpose: '목적',
   test_item: '시험 항목',
   equipment: '보유 장비',
+  unreviewed: '개정 미확인',
 }
 
 /** 「purpose=none」 을 「목적 안 적음」 으로. 칩이 조건을 사람 말로 적어야 뺄 수 있다. */
 export function describeRow(key: RowKey, value: string): string {
   if (key === 'equipment') return '보유 장비 없음'
+  if (key === 'unreviewed') return '규격서 개정 미확인'
   if (value === NONE) return key === 'purpose' ? '목적 미입력' : '시험 항목 미지정'
   return `${SAID[key]} 포함: ${value}`
 }
@@ -207,6 +209,24 @@ export function FilterBlank({
 }
 
 /** 걸린 조건을 칩으로 — 열 머리글에서 걸었든 **푸는 자리는 한 곳**이다. */
+/**
+ * 「규격서 최신판을 아직 안 본 시험만」 — 개정이 올라온 뒤 **다시 볼 시험**을 한 번에 모은다.
+ * 열 머리글이 없는 조건이라 따로 둔다(주소에는 다른 조건처럼 실린다 — 남은 일이 이것으로 잇는다).
+ */
+export function UnreviewedToggle({ rows }: { rows: RowFilterState }) {
+  return (
+    <label className="text-muted-foreground flex items-center gap-1.5 text-sm">
+      <input
+        type="checkbox"
+        checked={rows.value.unreviewed === 'true'}
+        onChange={(event) => rows.set('unreviewed', event.target.checked ? 'true' : '')}
+        className="size-3.5"
+      />
+      개정 미확인만
+    </label>
+  )
+}
+
 export function RowFilterChips({ rows }: { rows: RowFilterState }) {
   if (rows.count === 0) return null
   return (

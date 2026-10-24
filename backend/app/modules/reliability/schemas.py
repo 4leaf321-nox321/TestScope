@@ -46,7 +46,8 @@ class ReliabilityBulkRequest(Request):
     풀리면 반년 뒤에 「왜 풀렸나」 를 묻는 사람이 반드시 있다 — 그때 감사에 「누가
     열었나」 만 있으면 답할 수 없다."""
     revision_id: uuid.UUID | None = None
-    """`reviewed` 일 때 — 어느 개정까지 봤나."""
+    """`reviewed` 일 때 — 어느 개정까지 봤나. **비우면 줄마다 그 시험이 가리키는 규격서의
+    최신판**까지(서로 다른 규격서의 시험을 한 번에 확인할 수 있게)."""
 
 
 class ReliabilityBulkOut(BaseModel):
@@ -67,6 +68,17 @@ class DivisionOut(BaseModel):
     can_register: bool
     """내가 이 사업부에 시험을 올릴 수 있나. **줄마다 말한다** — 못 고를 것을 숨기면
     「왜 우리 사업부가 없지」 가 되고, 표시 없이 보이면 다 적고 나서 거절당한다."""
+
+
+class UnreviewedRevisionOut(BaseModel):
+    """이 시험이 **아직 안 본** 규격서 최신판. 확정은 그대로이고, 사람이 보고 「개정 확인」
+    해야 표가 떨어진다(ADR 0009 · 0013)."""
+
+    revision_id: uuid.UUID
+    label: str
+    document_id: uuid.UUID
+    document_code: str | None = None
+    document_title: str | None = None
 
 
 class ReliabilityTestOut(BaseModel):
@@ -92,6 +104,8 @@ class ReliabilityTestOut(BaseModel):
     attributes: list[AttributeValueOut]
     """항목 값 — 정식이 먼저, 초안이 뒤. `status` 로 가른다."""
     attachment_count: int = 0
+    unreviewed_revision: UnreviewedRevisionOut | None = None
+    """가리키는 규격서의 최신판을 아직 안 봤으면 그 판. 비면 볼 것이 없다."""
     """붙은 그림 수. **목록이 낱장을 받지 않는다** — 줄마다 그림을 받아 오면 스무 줄에
     쉰 번을 왕복한다. 수만 보이고, 누르면 그때 받는다."""
     can_edit: bool

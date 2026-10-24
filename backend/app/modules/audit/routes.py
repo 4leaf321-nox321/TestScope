@@ -6,6 +6,9 @@ shared/audit.record 하나뿐이고 그것은 도메인 코드가 부른다.
 
 from __future__ import annotations
 
+import uuid
+from typing import Literal
+
 from fastapi import APIRouter, Depends, Query
 from sqlalchemy import func, select
 from sqlalchemy.orm import Session
@@ -18,6 +21,7 @@ from app.shared.auth import current_user, require_system_admin
 from app.shared.errors import Forbidden
 from app.shared.pagination import MAX_LIMIT, Page, clamp_limit
 from app.shared.permissions import is_any_manager
+from app.shared.request_context import CONFIRMED_CLIENT
 
 router = APIRouter(prefix="/audit", tags=["audit"])
 
@@ -26,6 +30,8 @@ router = APIRouter(prefix="/audit", tags=["audit"])
 def list_entries(
     action: str | None = Query(default=None, max_length=60),
     target_table: str | None = Query(default=None, max_length=60),
+    target_id: uuid.UUID | None = Query(default=None),
+    channel: Literal["screen", "mcp", "confirmed"] | None = Query(default=None),
     limit: int = Query(default=50, ge=1, le=MAX_LIMIT),
     offset: int = Query(default=0, ge=0),
     user: User = Depends(current_user),
@@ -35,6 +41,10 @@ def list_entries(
 
     부서 관리자도 본다 — 자기 부서의 장비가 왜 폐기됐는지 물을 사람은 시스템
     관리자가 아니라 그 부서다.
+
+    `target_id` 는 **그 대상 하나의 이력**(「이 시험을 누가 언제 확정했나」). `channel` 은
+    통로 — `screen`(화면) · `mcp`(AI 혼자, 증표 없이) · `confirmed`(AI 화면의 확인 창에서
+    사람이 수락, ADR 0013). 사람이 정한 것과 AI 가 혼자 한 것을 갈라 보는 물음이 실제로 온다.
     """
     if not is_any_manager(db, user):
         raise Forbidden("TSC-AUDIT-0001", "부서 관리자만 조회 가능.")
@@ -44,6 +54,18 @@ def list_entries(
         stmt = stmt.where(AuditEntry.action == action)
     if target_table:
         stmt = stmt.where(AuditEntry.target_table == target_table)
+    if target_id is not None:
+        stmt = stmt.where(AuditEntry.target_id == target_id)
+    if channel == "confirmed":
+        stmt = stmt.where(AuditEntry.actor_client == CONFIRMED_CLIENT)
+    elif channel == "mcp":
+        # 토큰으로 들어왔는데 확인 증표가 없던 것 — `X-Client` 는 누구나 적으니 토큰으로 본다.
+        stmt = stmt.where(
+            AuditEntry.actor_token.is_not(None),
+            AuditEntry.actor_client.is_distinct_from(CONFIRMED_CLIENT),
+        )
+    elif channel == "screen":
+        stmt = stmt.where(AuditEntry.actor_token.is_(None))
 
     total = db.scalar(select(func.count()).select_from(stmt.subquery())) or 0
     rows = db.scalars(stmt.order_by(AuditEntry.created_at.desc()).limit(limit).offset(offset))

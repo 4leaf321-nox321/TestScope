@@ -11,7 +11,7 @@
  */
 
 import { useState } from 'react'
-import { AlertTriangle, Check, Undo2 } from 'lucide-react'
+import { AlertTriangle, Check, FileClock, Undo2 } from 'lucide-react'
 
 import { ApiError } from '@/shared/api/client'
 import { ErrorNotice } from '@/shared/components/ErrorNotice'
@@ -58,6 +58,84 @@ function when(iso: string | null | undefined): string {
  *
  * 저장 안 한 새 시험(`row === null`)에는 안 붙는다 — 아직 상태랄 것이 없다.
  */
+/** 규격서 최신판을 **아직 안 본** 시험의 표. 확정은 그대로라, 이 표가 없으면 다시 볼 줄이 안 보인다. */
+export function UnreviewedBadge({
+  row,
+}: {
+  row: Pick<ReliabilityTest, 'unreviewed_revision'>
+}) {
+  const unseen = row.unreviewed_revision
+  if (!unseen) return null
+  return (
+    <Badge
+      variant="outline"
+      className="border-amber-400 text-amber-700 dark:text-amber-300"
+      title={`${unseen.document_code ?? '규격서'} 개정 ${unseen.label} 아직 안 봄`}
+    >
+      <FileClock />
+      개정 {unseen.label} 미확인
+    </Badge>
+  )
+}
+
+/**
+ * 「이 개정 봤음」 — 규격서가 개정됐는데 이 시험을 아직 안 봤다는 띠.
+ *
+ * 개정이 올라와도 확정은 그대로 둔다(수십 건이 한꺼번에 내려가면 그날 일이 멈춘다). 대신 이
+ * 띠가 서고, 사람이 개정 내용(`summary`)과 이 시험을 견줘 본 뒤 누르면 떨어진다. 고칠 것이
+ * 있으면 먼저 고치고 누른다.
+ */
+export function RevisionBanner({
+  row,
+  onChanged,
+}: {
+  row: ReliabilityTest | null
+  onChanged: (next: ReliabilityTest) => void
+}) {
+  const [busy, setBusy] = useState(false)
+  const [error, setError] = useState<ApiError | Error | null>(null)
+  const unseen = row?.unreviewed_revision
+  if (!row || !unseen) return null
+
+  async function seen() {
+    if (!row || !unseen) return
+    setBusy(true)
+    setError(null)
+    try {
+      await reliabilityApi.markReviewed(row.id, unseen.revision_id)
+      onChanged(await reliabilityApi.read(row.id))
+    } catch (caught) {
+      setError(caught instanceof Error ? caught : new Error('알 수 없는 오류'))
+    } finally {
+      setBusy(false)
+    }
+  }
+
+  return (
+    <Alert className="border-amber-300 bg-amber-50 dark:bg-amber-950/30">
+      <div className="flex flex-wrap items-center gap-2 text-sm">
+        <FileClock className="size-4 text-amber-600" />
+        <span>
+          규격서 {unseen.document_code ?? unseen.document_title ?? ''} 개정 {unseen.label}을
+          아직 안 봄. 바뀐 내용과 견줘 보고 고칠 것이 없으면 확인.
+        </span>
+        {row.can_edit && (
+          <Button
+            type="button"
+            size="sm"
+            variant="outline"
+            disabled={busy}
+            onClick={() => void seen()}
+          >
+            이 개정 봤음
+          </Button>
+        )}
+      </div>
+      <ErrorNotice error={error} />
+    </Alert>
+  )
+}
+
 export function ReviewBanner({
   row,
   onChanged,

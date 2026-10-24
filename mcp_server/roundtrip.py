@@ -958,8 +958,289 @@ async def _write_chain(ctx: _Ctx) -> int:
     # 13. **사람 확인 — AI 화면의 확인 창**(ADR 0013). 사람 몫의 결정은 확인 창에서 수락해야
     # 지난다: 거절하면 안 바뀌고, 수락하면 증표를 실어 바뀐다. 흉내 창이라도 증표는 진짜다 —
     # 백엔드가 서명을 검증하므로, MCP 와 백엔드의 서명 · 열쇠가 어긋나면 여기서 막힌다.
+    bad += await _untested_chain(ctx, tag, term["id"], test["id"], conditions)
     bad += await _human_chain(ctx, test["id"], test["name"], tag)
     return 1 if bad else 0
+
+
+async def _untested_chain(
+    ctx: _Ctx, tag: str, item_id: str, test_id: str, conditions: dict[str, Any]
+) -> int:
+    """**한 번도 안 불리던 쓰기 도구**(2026-10-25 전수 대조에서 19개)와 이번에 연 자리.
+
+    경로와 칸 이름은 구조 시험이 보지만, 응답 모양 때문에 도구가 통째로 죽는 고장은 불러 봐야만
+    드러난다(도구 41개 중 넷이 그랬다). 여기서 만드는 것에는 전부 「MCP확인」 표가 붙고
+    `mcp_probe_account.py cleanup` 이 지운다 — 축 · 조건 키 · 사양 정의 · 사양 그룹까지.
+    앞 사슬과 따로 서게 제 것을 만들어 쓴다(앞 걸음이 막혀도 이 걸음은 돈다).
+    """
+    bad = 0
+
+    def step(label: str, got: Any, keys: list[str] | None = None) -> Any:
+        nonlocal bad
+        failed = not isinstance(got, dict) or "error" in got
+        bad += failed
+        view = {key: got.get(key) for key in keys} if keys and not failed else got
+        print(f"  {'실패' if failed else '  ok'} {label:34s} {_short(view)}")
+        return None if failed else got
+
+    print(f"\n안 불리던 도구 (표 {tag})")
+    # A. 온톨로지 — 축 · 값 고치기 · 별칭 · 병합 · 조건 키.
+    slug = f"mcp_check_{tag}"
+    axis = step(
+        "create_axis",
+        await server.create_axis(ctx, slug=slug, label=f"MCP확인 축-{tag}"),
+        ["slug"],
+    )
+    if axis is not None:
+        step("update_axis", await server.update_axis(ctx, slug, description="왕복 확인"))
+        first = step(
+            "create_term(내 축)", await server.create_term(ctx, slug, f"MCP확인 값A-{tag}")
+        )
+        second = step(
+            "create_term(내 축, 둘째)", await server.create_term(ctx, slug, f"MCP확인 값B-{tag}")
+        )
+        if first is not None:
+            step(
+                "update_term",
+                await server.update_term(ctx, first["id"], value=f"MCP확인 값A2-{tag}"),
+                ["value"],
+            )
+            step(
+                "add_term_alias", await server.add_term_alias(ctx, first["id"], f"MCP확인 별칭-{tag}")
+            )
+            if second is not None:
+                step("merge_terms", await server.merge_terms(ctx, second["id"], first["id"]))
+    step(
+        "create_condition_key",
+        await server.create_condition_key(
+            ctx,
+            key=f"mcp_check_{tag}",
+            label=f"MCP확인 조건-{tag}",
+            dimension="temperature",
+            si_unit="K",
+            display_unit="degC",
+        ),
+        ["key"],
+    )
+
+    # B. 카탈로그 — 계열의 시험 항목 · 계열 잇기 · 고유 사양과 그 승격.
+    part = step(
+        "create_series(부속)", await server.create_series(ctx, name=f"MCP계열-{tag}-부속"), ["name"]
+    )
+    body = step(
+        "create_series(본체)", await server.create_series(ctx, name=f"MCP계열-{tag}-본체"), ["name"]
+    )
+    promoted: dict[str, Any] | None = None
+    if part is not None:
+        step(
+            "add_test_item", await server.add_test_item(ctx, part["id"], test_item_term_id=item_id)
+        )
+        if body is not None:
+            step(
+                "link_series",
+                await server.link_series(ctx, body["id"], part["id"], "compatible_accessory"),
+            )
+        model = step(
+            "create_model(고유 사양)",
+            await server.create_model(ctx, series_id=part["id"], name=f"MCP기종-{tag}-2"),
+            ["name"],
+        )
+        if model is not None:
+            free = step(
+                "add_free_spec",
+                await server.add_free_spec(ctx, model["id"], f"MCP확인 고유-{tag}", "3동 201호"),
+            )
+            group = step(
+                "create_record(spec_group, 승격용)",
+                await server.create_record(
+                    ctx,
+                    "spec_group",
+                    {"slug": f"mcp_check2_{tag}", "label": f"MCP확인 그룹2-{tag}"},
+                ),
+            )
+            free_id = (free or {}).get("id") or next(
+                (
+                    one.get("id")
+                    for one in (free or {}).get("free_specs", [])
+                    if one.get("label") == f"MCP확인 고유-{tag}"
+                ),
+                None,
+            )
+            if group is not None and free_id:
+                promoted = step(
+                    "promote_free_spec",
+                    await server.promote_free_spec(
+                        ctx,
+                        model["id"],
+                        free_id,
+                        key=f"mcp_check_{tag}",
+                        label=f"MCP확인 사양-{tag}",
+                        group_id=group["id"],
+                        kind="text",
+                    ),
+                )
+
+    # C. 규격 — 시험 항목 정하기 · 요구 조건 표 반입.
+    method = step(
+        "create_method(둘째)",
+        await server.create_method(ctx, code=f"MCP {tag}-2", title="MCP확인 규격2"),
+        ["code"],
+    )
+    if method is not None:
+        step("set_method_test_items", await server.set_method_test_items(ctx, method["id"], [item_id]))
+        step(
+            "import_requirements",
+            await server.import_requirements(
+                ctx,
+                f"규격,판,조건,최소,최대,값,필수,비고\nMCP {tag}-2,,force,20,,,,왕복 확인",
+                dry_run=False,
+            ),
+        )
+
+    # D. 보유 장비 — 등록 · 시험 항목 · 조건 · 실측 사양 · 교정 · 대장 반입(미리보기).
+    teams = await server.list_workspaces(ctx)
+    team = next(iter((teams or {}).get("workspaces") or []), None)
+    sites = ((await server.list_terms(ctx, "site")) or {}).get("terms") or []
+    kinds = ((await server.list_terms(ctx, "equipment_category")) or {}).get("terms") or []
+    temperature = next(
+        (one for one in conditions.get("conditions", []) if one["key"] == "temperature"), None
+    )
+    if team is not None and sites and kinds:
+        unit = step(
+            "register_equipment(둘째)",
+            await server.register_equipment(
+                ctx,
+                asset_no=f"MCP2-{tag}",
+                name=f"MCP확인 측정기-{tag}",
+                workspace_slug=team["slug"],
+                site_term_id=sites[0]["id"],
+                location="1동",
+                category_term_id=kinds[0]["id"],
+            ),
+            ["asset_no"],
+        )
+        if unit is not None:
+            line = step(
+                "add_equipment_test_item",
+                await server.add_equipment_test_item(
+                    ctx, unit["id"], item_id, method_id=(method or {}).get("id")
+                ),
+            )
+            if line is not None and temperature is not None:
+                step(
+                    "set_test_condition",
+                    await server.set_test_condition(
+                        ctx, line["id"], temperature["id"], min_value=-40, max_value=150
+                    ),
+                )
+            if promoted is not None:
+                definition_id = promoted.get("definition_id") or (
+                    promoted.get("definition") or {}
+                ).get("id")
+                if definition_id:
+                    step(
+                        "set_equipment_spec",
+                        await server.set_equipment_spec(
+                            ctx, unit["id"], definition_id, text_value="3동 실측"
+                        ),
+                    )
+            step(
+                "add_calibration",
+                await server.add_calibration(
+                    ctx,
+                    unit["id"],
+                    "2026-01-15",
+                    next_due_on="2027-01-15",
+                    certificate_no=f"MCP-{tag}",
+                ),
+            )
+            # F. 쓰임 떼기 — 시험 항목 값 하나를 장비에 붙였다가 그 쓰임을 해제.
+            peel = step(
+                "create_term(시험 항목, 뗄 것)",
+                await server.create_term(ctx, "test_item", f"MCP확인 박리-{tag}"),
+            )
+            if peel is not None:
+                step(
+                    "add_equipment_test_item(뗄 것)",
+                    await server.add_equipment_test_item(ctx, unit["id"], peel["id"]),
+                )
+                uses = step("get_term_references", await server.get_term_references(ctx, peel["id"]))
+                row = next(
+                    (
+                        (group["key"], one["id"])
+                        for group in (uses or {}).get("groups", [])
+                        for one in group.get("rows", [])
+                    ),
+                    None,
+                )
+                if row is None:
+                    bad += 1
+                    print("  실패 붙인 쓰임이 get_term_references 에 없습니다")
+                else:
+                    step(
+                        "detach_term_reference",
+                        await server.detach_term_reference(ctx, peel["id"], row[0], row[1]),
+                    )
+        columns = step("import_columns", await server.import_columns(ctx))
+        if columns is not None:
+            sheet = (
+                "자산번호,장비명,부서,거점,위치,장비유형\n"
+                f"MCP3-{tag},MCP확인 반입-{tag},{team['slug']},{sites[0]['value']},2동,"
+                f"{kinds[0]['value']}"
+            )
+            preview = step(
+                "import_equipment(미리보기)",
+                await server.import_equipment(ctx, sheet, dry_run=True),
+                ["ready", "problems"],
+            )
+            # **미리보기가 줄을 받아들였나** — 반입 열 이름이 바뀌면 여기서 드러난다.
+            if preview is not None and preview.get("ready") != 1:
+                bad += 1
+                print(f"  실패 반입 미리보기가 줄을 못 받았습니다: {_short(preview, 120)}")
+
+    # E. 물성 연결 — 제안하고 확정.
+    prop = await server.create_term(ctx, "property", f"MCP확인 경도-{tag}")
+    if isinstance(prop, dict) and "error" not in prop:
+        link = step(
+            "suggest_property_link(확정용)",
+            await server.suggest_property_link(ctx, item_id, prop["id"], note="왕복 확인"),
+        )
+        if link is not None:
+            step(
+                "confirm_property_links",
+                await server.confirm_property_links(ctx, [link["id"]]),
+            )
+
+    # G. 이번에 연 자리 — 개정 미확인 · 대체된 규격 · 이력 · 같은 이름 · 미리보기 · 허브 · 관리 읽기.
+    step(
+        "list_reliability_tests(unreviewed)",
+        await server.list_reliability_tests(ctx, unreviewed=True, limit=3),
+        ["count"],
+    )
+    step("list_methods(superseded_refs)", await server.list_methods(ctx, superseded_refs=True))
+    looked = step(
+        "get_reliability_test(history, siblings)",
+        await server.get_reliability_test(ctx, test_id, history=True, siblings=True),
+    )
+    if looked is not None and not ("value_history" in looked and "siblings" in looked):
+        bad += 1
+        print("  실패 값 이력 · 같은 이름 시험이 안 붙었습니다")
+    step(
+        "test_capability(저장 전)",
+        await server.test_capability(ctx, test_item_term_ids=[item_id], attributes=[]),
+    )
+    step("search_hub(타입)", await server.search_hub(ctx))
+    step("list_changes(대상)", await server.list_changes(ctx, target_id=test_id), ["count"])
+    step(
+        "admin_action(account.summary)",
+        await _call(server.admin_action, ctx, "account", "summary"),
+    )
+    if team is not None:
+        step(
+            "admin_action(workspace.references)",
+            await _call(server.admin_action, ctx, "workspace", "references", target_id=team["slug"]),
+        )
+    return bad
 
 
 async def _human_chain(ctx: _Ctx, test_id: str, name: str, tag: str) -> int:

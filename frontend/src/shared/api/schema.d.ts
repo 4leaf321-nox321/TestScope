@@ -2755,6 +2755,9 @@ export interface paths {
          *     `revision` 에 규격서 판 id 를 주면 **그 판의 목록**이 온다 — 판마다 한 벌이라 계산이
          *     없다. `document` 에 사내 규격서 id 를 주면 **그 문서에서 나온 줄만** 온다 — 묶음으로 올라온
          *     스무 건을 한 자리에서 보고 한 번에 확인·반려하는 길이다.
+         *
+         *     `unreviewed=true` 는 **가리키는 규격서의 최신판을 아직 안 본** 줄만 — 개정이 올라온 뒤
+         *     다시 볼 시험이다. 줄마다 `unreviewed_revision` 에 그 판이 온다.
          */
         get: operations["list_reliability_tests_api_reliability_tests_get"];
         put?: never;
@@ -3953,6 +3956,10 @@ export interface paths {
          *
          *     부서 관리자도 본다 — 자기 부서의 장비가 왜 폐기됐는지 물을 사람은 시스템
          *     관리자가 아니라 그 부서다.
+         *
+         *     `target_id` 는 **그 대상 하나의 이력**(「이 시험을 누가 언제 확정했나」). `channel` 은
+         *     통로 — `screen`(화면) · `mcp`(AI 혼자, 증표 없이) · `confirmed`(AI 화면의 확인 창에서
+         *     사람이 수락, ADR 0013). 사람이 정한 것과 AI 가 혼자 한 것을 갈라 보는 물음이 실제로 온다.
          */
         get: operations["list_entries_api_audit_entries_get"];
         put?: never;
@@ -8613,6 +8620,7 @@ export interface components {
              * @default 0
              */
             attachment_count: number;
+            unreviewed_revision?: components["schemas"]["UnreviewedRevisionOut"] | null;
             /** Can Edit */
             can_edit: boolean;
             /**
@@ -10068,6 +10076,29 @@ export interface components {
         UnreadCountOut: {
             /** Unread */
             unread: number;
+        };
+        /**
+         * UnreviewedRevisionOut
+         * @description 이 시험이 **아직 안 본** 규격서 최신판. 확정은 그대로이고, 사람이 보고 「개정 확인」
+         *     해야 표가 떨어진다(ADR 0009 · 0013).
+         */
+        UnreviewedRevisionOut: {
+            /**
+             * Revision Id
+             * Format: uuid
+             */
+            revision_id: string;
+            /** Label */
+            label: string;
+            /**
+             * Document Id
+             * Format: uuid
+             */
+            document_id: string;
+            /** Document Code */
+            document_code?: string | null;
+            /** Document Title */
+            document_title?: string | null;
         };
         /**
          * UploadTicketOut
@@ -15690,6 +15721,7 @@ export interface operations {
                 test_item?: string | null;
                 equipment?: "none" | null;
                 include_superseded?: boolean;
+                unreviewed?: boolean;
                 limit?: number;
                 offset?: number;
             };
@@ -17792,6 +17824,8 @@ export interface operations {
             query?: {
                 action?: string | null;
                 target_table?: string | null;
+                target_id?: string | null;
+                channel?: ("screen" | "mcp" | "confirmed") | null;
                 limit?: number;
                 offset?: number;
             };

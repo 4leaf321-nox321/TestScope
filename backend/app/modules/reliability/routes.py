@@ -55,6 +55,7 @@ def list_reliability_tests(
     test_item: str | None = Query(default=None, max_length=200),
     equipment: Literal["none"] | None = Query(default=None),
     include_superseded: bool = Query(default=False),
+    unreviewed: bool = Query(default=False),
     limit: int = Query(default=50, ge=1, le=MAX_LIMIT),
     offset: int = Query(default=0, ge=0),
     user: User = Depends(current_user),
@@ -99,9 +100,16 @@ def list_reliability_tests(
     `revision` 에 규격서 판 id 를 주면 **그 판의 목록**이 온다 — 판마다 한 벌이라 계산이
     없다. `document` 에 사내 규격서 id 를 주면 **그 문서에서 나온 줄만** 온다 — 묶음으로 올라온
     스무 건을 한 자리에서 보고 한 번에 확인·반려하는 길이다.
+
+    `unreviewed=true` 는 **가리키는 규격서의 최신판을 아직 안 본** 줄만 — 개정이 올라온 뒤
+    다시 볼 시험이다. 줄마다 `unreviewed_revision` 에 그 판이 온다.
     """
     rows = services.RowFilters(
-        name=name, purpose=purpose, test_item=test_item, equipment=equipment
+        name=name,
+        purpose=purpose,
+        test_item=test_item,
+        equipment=equipment,
+        unreviewed=unreviewed,
     )
     if division:
         return services.list_for_division(

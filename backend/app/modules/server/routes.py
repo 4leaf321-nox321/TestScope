@@ -19,6 +19,7 @@ from app.config import get_settings
 from app.database import engine, get_db
 from app.jobs import kinds, queue
 from app.modules.accounts.models import User
+from app.modules.documents import services as documents
 from app.modules.equipment.models import (
     Equipment,
     EquipmentCalibration,
@@ -583,6 +584,31 @@ def maintenance(
                     # 후보는 부서 화면에서 확인한다 — 전사 목록은 확정만 보여 준다.
                     link=f"/reliability-tests/{home.slug}" if home else "/reliability-tests",
                     severity="info",
+                )
+            )
+
+        # **규격서가 개정됐는데 아직 안 본 시험.** 확정은 그대로 두므로(개정마다 수십 건이
+        # 내려가면 일이 멈춘다) 이 줄이 없으면 다시 볼 시험이 아무 데도 안 선다. 확인하는
+        # 사람(그 사업부의 부서 관리자 · 시스템 관리자)에게만.
+        unseen = documents.unreviewed_rows().subquery()
+        stale_stmt = select(func.count(func.distinct(unseen.c.id)))
+        if divisions is not None:
+            stale_stmt = stale_stmt.where(
+                unseen.c.id.in_(
+                    select(ReliabilityTest.id).where(
+                        ReliabilityTest.division_term_id.in_(divisions)
+                    )
+                )
+            )
+        stale = int(db.scalar(stale_stmt) or 0)
+        if stale:
+            items.append(
+                MaintenanceItemOut(
+                    key="reliability_unreviewed_revisions",
+                    label="규격서 개정 후 다시 볼 신뢰성 시험",
+                    count=stale,
+                    link="/reliability-tests?unreviewed=true",
+                    severity="warning",
                 )
             )
 

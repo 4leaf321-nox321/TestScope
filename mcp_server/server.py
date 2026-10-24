@@ -145,6 +145,10 @@ ROUTING = """물음별 첫 도구 (상세는 각 도구 설명과 get_guide):
   축에 없는 시험 항목 요청       list_test_item_requests -> decide_test_item_request
   전용 도구 없는 수정·삭제·생성  update_record · delete_record(확인 후 confirm) · create_record
   신뢰성 시험 확정·반려·되돌리기 decide_reliability_tests  (사용자 확인 창)
+  규격서 개정 후 다시 볼 시험     list_reliability_tests(unreviewed=True)
+  대체된 규격을 아직 쓰는 곳      list_methods(superseded_refs=True)
+  허브 기준정보(개발모델·과제)    search_hub  (값 id는 resolve)
+  누가 언제 바꿨나(변경 이력)     list_changes
   계정·부서·공지·허브 수신 관리  admin_action  (쓰기는 사용자 확인 창)
   남은 일·우선순위               list_pending_work"""
 
@@ -1868,6 +1872,8 @@ async def list_methods(
     used: str | None = None,
     include_superseded: bool = False,
     limit: int = 50,
+    superseded_refs: bool = False,
+    everywhere: bool = False,
 ) -> dict[str, Any]:
     """규격 목록. **수행 불가 시험과 연결 끊김을 구분.**
 
@@ -1881,7 +1887,20 @@ async def list_methods(
     필터: `test_item`은 값 id 또는 `none`(미정만) · `requirement=none`(요구 조건 없는 것만) ·
     `cited=none`(어느 계열에도 미연결만) · `used=owned`(보유 장비가 실제로 가리키는 것만. 요구
     조건은 여기부터 채움).
+
+    `superseded_refs=True`: 규격 목록 대신 **대체된 규격을 아직 가리키는 곳**(신뢰성 시험의
+    근거 규격 · 장비 시험 항목). 줄마다 옛 규격(`method_id`)과 새 판(`successor_id`). 기본은
+    내 소속 것, `everywhere=True`면 전부. 고치기: 신뢰성 시험은 `set_reliability_attributes`
+    (method 칸을 새 판으로), 장비는 `update_record(kind="equipment_test_item",
+    fields={"method_id": 새 판})`. 고치면 목록에서 저절로 빠짐.
     """
+    if superseded_refs:
+        refs = await _get(ctx, "/methods/superseded-refs", {"all": everywhere or None})
+        return _then(
+            _listed(refs, "refs"),
+            "새 판(successor_id)이 있으면 그것으로 고칠 것을 사용자에게 제시. 없으면 대체 규격을"
+            " 사람에게 확인.",
+        )
     return await _get(
         ctx,
         "/methods",
@@ -2510,6 +2529,7 @@ async def list_reliability_tests(
     purpose: str | None = None,
     test_item: str | None = None,
     equipment: str | None = None,
+    unreviewed: bool = False,
     limit: int = 50,
     offset: int = 0,
 ) -> dict[str, Any]:
@@ -2549,7 +2569,8 @@ async def list_reliability_tests(
     줄마다 `status`: `candidate`(후보) · `confirmed`(확정). **후보는 AI가 올리고 사람이 아직
     확인하지 않은 것**: 이를 근거로 이 부서가 이 시험을 수행한다고 말하기 금지. `status` 생략
     시 전사는 확정만, 사업부 지정 시 후보 포함. 전사로 후보까지 보려면 `status="all"` 한 번
-    (사업부마다 반복 호출 불필요).
+    (사업부마다 반복 호출 불필요). `unreviewed=True`: 규격서 최신판을 아직 안 본 줄(줄의
+    `unreviewed_revision`).
     """
     got = await _get(
         ctx,
@@ -2564,6 +2585,7 @@ async def list_reliability_tests(
             "purpose": purpose,
             "test_item": test_item,
             "equipment": equipment,
+            "unreviewed": unreviewed or None,
             "limit": limit,
             "offset": offset,
         },
@@ -2605,13 +2627,31 @@ async def list_reliability_tests(
 
 
 @mcp.tool()
-async def get_reliability_test(ctx: Context, test_id: str) -> dict[str, Any]:
+async def get_reliability_test(
+    ctx: Context, test_id: str, history: bool = False, siblings: bool = False
+) -> dict[str, Any]:
     """신뢰성 시험 하나: 목적 · 적용 시험 항목 · 속성 값 전체.
 
     속성의 `status`가 `draft`면 **초안**: 표시와 수집만 하고 검색·판정·색인 카드에는 미포함.
-    초안 값을 근거로 이 조건으로 검색된다고 말하기 금지.
+    초안 값을 근거로 이 조건으로 검색된다고 말하기 금지. `unreviewed_revision`이 있으면 규격서
+    최신판을 아직 안 본 시험.
+
+    `history=True`: 판을 가로지른 값 이력(`value_history` — 줄마다 판 이름 · 지금 판 여부).
+    「옛 판에서는 몇 도였나」 는 이것. `siblings=True`: 같은 사업부의 이름이 같은 다른 시험과
+    무엇으로 갈렸는지(적용군 · 규격서 · 판, `siblings`) — 중복 등록 전에 확인.
     """
-    return await _get(ctx, f"/reliability-tests/{test_id}")
+    found = await _get(ctx, f"/reliability-tests/{test_id}")
+    if not isinstance(found, dict) or "error" in found:
+        return dict(found) if isinstance(found, dict) else {"error": "시험을 못 읽음."}
+    if history:
+        found["value_history"] = await _get(ctx, f"/reliability-tests/{test_id}/value-history")
+    if siblings:
+        found["siblings"] = await _get(
+            ctx,
+            "/reliability-tests/siblings",
+            {"division": found.get("division_code"), "name": found.get("name"), "exclude": test_id},
+        )
+    return found
 
 
 @writes
@@ -2884,9 +2924,9 @@ async def create_reliability_test(
                 "attributes": attributes or [],
             },
         ),
-        "후보로 등록됨. 사람이 부서 화면에서 확인해야 확정이며 그 전에는 전사 목록에 미표시."
-        " 등록 완료가 아니라 후보 등록 후 확인 필요로 안내하고, 못 채운 칸이 있으면 함께"
-        " 알림. 확인은 AI 불가(사람이 화면에서 수행).",
+        "후보로 등록됨. 사람이 확인해야 확정이며 그 전에는 전사 목록에 미표시. 등록 완료가"
+        " 아니라 후보 등록 후 확인 필요로 안내하고, 못 채운 칸이 있으면 함께 알림. 사용자가"
+        " 확정을 지시하면 decide_reliability_tests(action=\"confirm\") — 사용자 확인 창을 거침.",
     )
 
 
@@ -3257,7 +3297,8 @@ async def add_spec_document_revision(
     없음.
 
     개정을 추가해도 딸린 시험은 확정 상태 유지(수십 건이 한꺼번에 후보로 내려가면 업무가 멈춤).
-    대신 이 개정 미확인 표시가 붙음. **표시 해제는 사람 전용**(AI 불가).
+    대신 이 개정 미확인 표시가 붙음. 어느 시험인지는 `list_reliability_tests(unreviewed=True)`,
+    표시 해제는 사람이 정함 — `decide_reliability_tests(action="reviewed")`(사용자 확인 창).
     """
     return _then(
         await _send(
@@ -3266,8 +3307,9 @@ async def add_spec_document_revision(
             f"/spec-documents/{document_id}/revisions",
             {"label": label, "issued_on": issued_on, "summary": summary},
         ),
-        "개정 추가됨. 딸린 시험은 확정 상태 유지, 이 개정 미확인 표시가 붙음(해제는 사람이"
-        " 화면에서 수행). 해당 시험 건수를 함께 전달.",
+        "개정 추가됨. 딸린 시험은 확정 상태 유지, 이 개정 미확인 표시가 붙음. 해당 시험 건수를"
+        " 전달하고, 다시 볼 시험은 list_reliability_tests(unreviewed=True). 사용자가 봤다고"
+        " 하면 decide_reliability_tests(action=\"reviewed\") — 사용자 확인 창을 거침.",
     )
 
 
@@ -3296,9 +3338,16 @@ async def compare_revisions(ctx: Context, before: str, after: str) -> dict[str, 
 
 @mcp.tool()
 async def test_capability(
-    ctx: Context, test_id: str | None = None, division: str | None = None
+    ctx: Context,
+    test_id: str | None = None,
+    division: str | None = None,
+    test_item_term_ids: list[str] | None = None,
+    attributes: list[dict[str, Any]] | None = None,
 ) -> dict[str, Any]:
     """**이 시험을 수행할 수 있는 장비** 조회. 이 시스템이 답하는 물음의 마지막 단계.
+
+    **저장 전 미리보기**: `test_id` 대신 `test_item_term_ids` · `attributes`(등록과 같은 줄
+    모양)를 주면 아직 저장 안 한 조건으로 판정 — 「95 °C로 올리면 0대」 를 등록 전에 확인.
 
     `test_id`는 `resolve(kind="reliability_test", …)`가 준 값 사용. **`test_id` 없이 부르면
     수행 가능 현황**: 확정된 최신판 시험마다 돌릴 수 있는 장비 수와 상태(`none` 불가 · `check`
@@ -3325,6 +3374,14 @@ async def test_capability(
     금지(그런 장비는 시험 항목 미기재로 검색에 안 걸리며 기재는 사람의 몫). 구매 후보는
     `search_catalog` 한 번.
     """
+    if not test_id and (test_item_term_ids or attributes):
+        preview = await _send(
+            ctx,
+            "POST",
+            "/reliability-tests/capability-preview",
+            {"test_item_term_ids": test_item_term_ids or [], "attributes": attributes or []},
+        )
+        return _then(preview, "저장 전 판정. 등록하면 같은 답 — 0대면 조건을 사용자와 다시 볼 것.")
     if not test_id:
         board = await _get(
             ctx, "/reliability-tests/coverage", {"division": division} if division else None
@@ -3601,6 +3658,7 @@ _UPDATE_KINDS: dict[str, tuple[str, str]] = {
     "attachment": ("PATCH", "/attachments/{attachment_id}"),
     "method": ("PATCH", "/methods/{method_id}"),
     "method_merge": ("POST", "/methods/{method_id}/merge"),
+    "method_link_citations": ("POST", "/methods/{method_id}/link-citations"),
     "series": ("PATCH", "/equipment-series/{series_id}"),
     "model": ("PATCH", "/equipment-models/{model_id}"),
     "free_spec": ("PUT", "/equipment-models/{model_id}/free-specs/{free_spec_id}"),
@@ -3658,6 +3716,8 @@ async def update_record(
         method                method_id  (공개 규격은 시스템 관리자,
                               사내 시험법은 그 부서 관리자. fields={"merge_into": "<id>",
                               "reason": "…"} 이면 그 규격으로 병합 — 사용자 확인 창)
+        method_link_citations method_id, fields {} — 시험 항목 없이 인용만 한 계열에 그
+                              규격의 시험 항목을 더해 잇기(시스템 관리자)
         이하 시스템 관리자:
         series · model       series_id · model_id
         free_spec            model_id · free_spec_id
@@ -3691,6 +3751,8 @@ async def create_record(
         series_condition  ids: series_id · series_test_item_id
                           fields: condition_key_id · min_value · max_value · text_value · note
                           (같은 조건이 있으면 덮어씀)
+        model_gap_requests  fields: keys(보강 목록 `list_model_requests(gaps=True)`의 key들)
+                          — 묶음을 기종 등록 요청으로 올림(모델명 없는 묶음은 건너뜀)
 
     **사양 정의 생성 전 list_spec_definitions로 중복 확인.** 같은 뜻의 칸이 둘이면 기종마다
     다른 칸에 기록되어 검색 결과가 절반만 나옴. 값의 단위는 축 단위(list_conditions의 unit).
@@ -3698,6 +3760,7 @@ async def create_record(
     table = {
         "spec_definition": ("POST", "/spec-definitions"),
         "spec_group": ("POST", "/spec-groups"),
+        "model_gap_requests": ("POST", "/equipment-models/gaps/requests"),
         "series_condition": (
             "PUT",
             "/equipment-series/{series_id}/test-items/{series_test_item_id}/limits",
@@ -3884,7 +3947,8 @@ async def decide_reliability_tests(
     """신뢰성 시험 확정 · 반려 · 다시 후보로 · 개정 확인 · 삭제(여러 건). 사용자 확인 창을 거침.
 
     `action`: `confirm`(후보 확정) · `reject`(후보 반려, `reason` 필수) · `reopen`(확정을 풀어
-    다시 후보로, `reason` 필수) · `reviewed`(규격서 개정 `revision_id`까지 봤다고 표시) ·
+    다시 후보로, `reason` 필수) · `reviewed`(규격서 개정을 봤다고 표시 — `revision_id`를 안
+    주면 줄마다 그 시험의 최신판까지, 대상은 `list_reliability_tests(unreviewed=True)`) ·
     `delete`(내림 — 확정된 줄이 섞이면 확인 창, 제가 올린 후보만이면 바로).
 
     사람 몫의 결정이라 **AI 화면에 확인 창**이 떠 사용자가 내용(시험 이름 · 칸마다의 값 · 건수 ·
@@ -3908,6 +3972,8 @@ async def decide_reliability_tests(
 #: 토큰 발급 · 비밀번호 · 허브 토큰은 여기 없다(평문 비밀이 대화 기록에 남는다).
 ADMIN_ACTIONS: dict[tuple[str, str], tuple[str, str]] = {
     ("account", "list"): ("GET", "/accounts"),
+    ("account", "summary"): ("GET", "/accounts/summary"),
+    ("account", "list_memberships"): ("GET", "/accounts/{id}/memberships"),
     ("account", "approve"): ("POST", "/accounts/{id}/approve"),
     ("account", "reject"): ("POST", "/accounts/{id}/reject"),
     ("account", "suspend"): ("POST", "/accounts/{id}/suspend"),
@@ -3917,6 +3983,10 @@ ADMIN_ACTIONS: dict[tuple[str, str], tuple[str, str]] = {
     ("account", "memberships"): ("PUT", "/accounts/{id}/memberships"),
     ("account", "home_workspace"): ("POST", "/accounts/{id}/home-workspace"),
     ("workspace", "list"): ("GET", "/workspaces"),
+    ("workspace", "references"): ("GET", "/workspaces/{id}/references"),
+    ("workspace", "reassign_preview"): ("GET", "/workspaces/{id}/reassign-preview"),
+    ("workspace", "import"): ("POST", "/workspaces/import"),
+    ("workspace", "tree"): ("PUT", "/workspaces/tree"),
     ("workspace", "create"): ("POST", "/workspaces"),
     ("workspace", "update"): ("PATCH", "/workspaces/{id}"),
     ("workspace", "delete"): ("DELETE", "/workspaces/{id}"),
@@ -3938,9 +4008,15 @@ ADMIN_ACTIONS: dict[tuple[str, str], tuple[str, str]] = {
     ("hub", "settings"): ("PUT", "/hub/connection"),
     ("hub", "catalog_seen"): ("POST", "/hub/catalog-seen"),
     ("voc", "list"): ("GET", "/voc"),
+    ("voc", "get"): ("GET", "/voc/{id}"),
     ("voc", "create"): ("POST", "/voc"),
     ("voc", "move"): ("POST", "/voc/{id}/move"),
+    # 검토함 후보를 다시 세운다 — 반입 뒤. 카탈로그 범위로 열린 경로라 확인 창이 없다.
+    ("review", "refresh"): ("POST", "/review/refresh"),
 }
+
+#: 쓰기여도 **질의로 가는** 칸 — 부서 반입의 미리보기 여부.
+_ADMIN_QUERY = ("dry_run",)
 
 #: 허브 연계 설정에서 AI 가 바꿀 수 있는 칸. 토큰은 없다 — 화면에서만.
 _HUB_SETTINGS = ("base_url", "ca_bundle", "selected_types", "nightly_at", "enabled")
@@ -3982,7 +4058,8 @@ async def _admin_plan(
         given = {key: given.get(key, now.get(key)) for key in _HUB_SETTINGS}
     if method in ("GET", "DELETE"):
         return {"method": method, "path": path, "body": None, "params": given or None}
-    return {"method": method, "path": path, "body": given, "params": None}
+    query = {key: given.pop(key) for key in _ADMIN_QUERY if key in given}
+    return {"method": method, "path": path, "body": given, "params": query or None}
 
 
 async def _consent_admin(
@@ -4013,12 +4090,13 @@ async def admin_action(
 ) -> dict[str, Any]:
     """관리 작업 — 계정 · 부서 · 멤버 · 공지 · 허브 수신 · VOC. 쓰기는 사용자 확인 창을 거침.
 
-    `target`.`action`: account(list · approve · reject · suspend · activate · delete ·
-    system_admin · memberships · home_workspace), workspace(list · create · update · delete ·
-    move · reorder · members · add_member · set_member_role · remove_member), notice(list ·
-    create · update · delete · publish), hub(status · runs · check · run · settings ·
-    catalog_seen), voc(list · create · move). `target_id`: 계정 id · 부서 slug · 공지 id · VOC id.
-    `fields`: 본문(list · delete 는 질의). 칸 이름은 `get_guide("관리 작업")`.
+    `target`.`action`: account(list · summary · list_memberships · approve · reject · suspend ·
+    activate · delete · system_admin · memberships · home_workspace), workspace(list · members ·
+    references · reassign_preview · create · update · delete · move · reorder · add_member ·
+    set_member_role · remove_member · import · tree), notice(list · create · update · delete ·
+    publish), hub(status · runs · check · run · settings · catalog_seen), voc(list · get ·
+    create · move), review(refresh). `target_id`: 계정 id · 부서 slug · 공지 id · VOC id.
+    `fields`: 본문(읽기 · delete 는 질의). 칸 이름은 `get_guide("관리 작업")`.
 
     토큰에 `admin:write` 범위 필요(없으면 403 `TSC-AUTH-0106` — 사용자에게 토큰 재발급 요청).
     자격(시스템 관리자 · 부서 관리자)은 서버가 판정. 쓰기마다 **AI 화면에 확인 창**이 뜨고
@@ -4034,6 +4112,81 @@ async def admin_action(
         ctx, consent, plan["method"], plan["path"], plan["body"], plan["params"]
     )
     return _listed(sent, "items")
+
+
+# ── 허브 기준정보 · 변경 이력 (읽기) ────────────────────────────────────────────
+
+
+@mcp.tool()
+async def search_hub(
+    ctx: Context,
+    type_slug: str | None = None,
+    q: str | None = None,
+    key: str | None = None,
+    state: str | None = None,
+    limit: int = 20,
+) -> dict[str, Any]:
+    """기준정보 허브(StandardPlatform)에서 받은 객체 — 개발모델 · 과제 · 프로젝트 … 와 관계.
+
+    인자 없이: 받은 타입 목록(줄의 `slug` · `label` · `axis_slug` · 받은 수). `type_slug`만: 그
+    타입의 객체 목록(`q` 글자 · `state`: active · inactive). `type_slug`+`key`: 객체 하나 — 칸
+    (properties) · 상태(삭제 · 병합 · 옛 식별자) · **관계**(`outgoing` · `incoming` — 「이
+    과제의 개발모델」 은 이것). 옛 식별자로 물어도 지금 객체를 줌.
+
+    줄의 `term_id`가 시험 · 장비 칸(허브 축을 가리키는 term 칸)에 붙일 값 id — 이름으로는
+    `resolve(kind="term", axis=<axis_slug>, text=…)`. 사용 중지된(active 아닌) 객체는 새로 붙이지
+    않음. 수정은 허브에서만(TestScope 에서는 읽기만).
+    """
+    if not type_slug:
+        return _listed(await _get(ctx, "/hub/types"), "types")
+    if key:
+        return await _get(ctx, f"/hub/types/{quote(type_slug, safe='')}/items/{quote(key, safe='')}")
+    return await _get(
+        ctx,
+        f"/hub/types/{quote(type_slug, safe='')}/items",
+        {"q": q, "state": state, "limit": min(limit, MAX_LIMIT)},
+    )
+
+
+@mcp.tool()
+async def list_changes(
+    ctx: Context,
+    target_id: str | None = None,
+    target_table: str | None = None,
+    action: str | None = None,
+    channel: str | None = None,
+    limit: int = 20,
+    offset: int = 0,
+) -> dict[str, Any]:
+    """변경 이력(감사) — 누가 · 언제 · 어느 통로로 무엇을 바꿨나. 부서 관리자 이상.
+
+    `target_id`: 그 대상 하나의 이력(「이 시험을 누가 언제 확정했나」 — 신뢰성 시험 · 장비 ·
+    규격 등의 id). `target_table`: `reliability_tests` · `equipment` · `test_methods` ….
+    `action`: `reliability_test.confirmed` 같은 작업 이름. `channel`: `screen`(화면) ·
+    `mcp`(AI 혼자) · `confirmed`(AI 화면의 확인 창에서 사람이 수락).
+
+    줄마다 `actor_label`(사람) · `actor_client`(통로) · `actor_token`(토큰 이름) · `changes`
+    (전 → 후) · `reason`. 값 하나 고친 것까지는 안 남음 — 되돌릴 수 없거나 권한이 실린 일만.
+    """
+    got = await _get(
+        ctx,
+        "/audit/entries",
+        {
+            "target_id": target_id,
+            "target_table": target_table,
+            "action": action,
+            "channel": channel,
+            "limit": min(limit, MAX_LIMIT),
+            "offset": offset,
+        },
+    )
+    if isinstance(got, dict) and "items" in got:
+        return {
+            "entries": got["items"],
+            "count": got.get("total", len(got["items"])),
+            "shown": len(got["items"]),
+        }
+    return _listed(got, "entries")
 
 
 # ── 지식 그래프 — 무엇이 무엇과 이어지나 (읽기) ──────────────────────────────

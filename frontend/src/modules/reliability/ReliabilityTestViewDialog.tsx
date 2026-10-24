@@ -34,7 +34,11 @@ import type { Attachment } from '@/modules/attachments/api'
 import { attributeApi } from '@/modules/attributes/api'
 import type { AttributeValue } from '@/modules/attributes/api'
 import { SECTIONS, anchorOf } from '@/modules/attributes/StandardAttributeFields'
-import { CandidateBadge, ReviewBanner } from '@/modules/reliability/CandidateReview'
+import {
+  CandidateBadge,
+  ReviewBanner,
+  RevisionBanner,
+} from '@/modules/reliability/CandidateReview'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/shared/components/ui/tabs'
 import { ValueHistory } from '@/modules/reliability/ValueHistory'
 import { reliabilityApi } from '@/modules/reliability/api'
@@ -283,6 +287,7 @@ export function ReliabilityTestViewDialog({
         </DialogHeader>
 
         <ReviewBanner row={test} onChanged={(next) => onChanged?.(next)} />
+        <RevisionBanner row={test} onChanged={(next) => onChanged?.(next)} />
         <ErrorNotice error={defs.error ?? shots.error} />
 
         {/**

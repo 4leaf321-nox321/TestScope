@@ -8151,7 +8151,7 @@
           "reliability"
         ],
         "summary": "List Reliability Tests",
-        "description": "신뢰성 시험 — **부서가 등록한 절차**다. 「시험 항목」(장비가 할 수 있는 측정, 전사\n공용)과 다르다. `division` 에 사업부 코드(`mx`…)를 주면 그 사업부 것만, 안 주면 전사\n전부(사업부 순). 시험마다 쓰는 시험 항목과, 그 항목이 되는 **그 사업부의** 장비 수를\n함께 준다 — 0 이면 시험은 정했는데\n돌릴 장비가 없다는 뜻이다.\n\n`attr` 은 **속성 값으로 거른다** — 여러 번 주면 모두 만족해야 한다(`attr=<키><연산><값>`,\n연산은 `>=` `<=` `>` `<` `=` `!=` `~`(포함) `*`(적혀 있기만 하면) `!*`(**안 적힌 것**)).\n왼쪽은 속성 정의의 `key` 다 — 이름은 관리자가 고치면 바뀌고, 그때 저장해 둔 주소가\n조용히 빈 답을 낸다.\n\n`status` 를 **안 주면 자리에 따라 다르다** — 사업부를 주면 후보까지(검토하는 자리라서),\n전사면 확정된 것만(「저 사업부가 무슨 시험을 하나」 에 후보는 아직 답이 아니다). 일부러\n보려면 `status=\"all\"`, 후보만 세려면 `status=\"candidate\"`.\n\n`q` 는 이름·목적에 든 글자다 — **쪽을 나누면 찾기도 서버가 해야 한다.** 화면 안에서\n훑으면 지금 쪽의 쉰 줄만 뒤지고, 뒤쪽에 있는 줄은 영영 안 걸린다.\n\n**표가 열로 보여 주는 것은 열로 거른다** — `name`(이름) · `purpose`(목적) ·\n`test_item`(시험 항목 이름) · `equipment`. 여럿이면 모두 만족해야 한다(`attr` 과 같다).\n셋은 `none` 으로 **안 적힌 것**을 묻는다: `purpose=none` 은 목적이 빈 줄,\n`test_item=none` 은 시험 항목을 하나도 안 정한 줄, `equipment=none` 은 **그 사업부에\n돌릴 장비가 한 대도 없는 줄**이다(목록이 노란 「0대」 로 적고 있는 바로 그 줄).\n\n「안 정함」 과 「장비 없음」 은 다르다 — 앞은 시험 항목을 아직 안 이은 것이고, 뒤는\n이었는데 그 항목이 되는 장비가 없는 것이다. 해야 할 일이 다르다.\n\n**쪽으로 끊어 온다**(`items` · `total` · `limit` · `offset`). 한 사업부에 1784건이\n들어온 적이 있고, 통째로 그리면 브라우저가 멎는다 — 줄마다 속성·시험 항목·장비 수가\n딸려 오므로 응답부터 무겁다.\n\n**기본은 최신판만 온다.** 판마다 줄이 서므로(0049) 안 가리면 목록이 판 수만큼 부푼다 —\n「개정 14의 열충격」 과 「개정 18의 열충격」 은 다른 줄이다. 지난 판까지 보려면\n`include_superseded=true`, 특정 판만 보려면 `revision=` 이다(`revision` 을 주면 자동으로\n지난 판도 보인다 — 안 그러면 그 물음이 늘 0건이다).\n\n`revision` 에 규격서 판 id 를 주면 **그 판의 목록**이 온다 — 판마다 한 벌이라 계산이\n없다. `document` 에 사내 규격서 id 를 주면 **그 문서에서 나온 줄만** 온다 — 묶음으로 올라온\n스무 건을 한 자리에서 보고 한 번에 확인·반려하는 길이다.",
+        "description": "신뢰성 시험 — **부서가 등록한 절차**다. 「시험 항목」(장비가 할 수 있는 측정, 전사\n공용)과 다르다. `division` 에 사업부 코드(`mx`…)를 주면 그 사업부 것만, 안 주면 전사\n전부(사업부 순). 시험마다 쓰는 시험 항목과, 그 항목이 되는 **그 사업부의** 장비 수를\n함께 준다 — 0 이면 시험은 정했는데\n돌릴 장비가 없다는 뜻이다.\n\n`attr` 은 **속성 값으로 거른다** — 여러 번 주면 모두 만족해야 한다(`attr=<키><연산><값>`,\n연산은 `>=` `<=` `>` `<` `=` `!=` `~`(포함) `*`(적혀 있기만 하면) `!*`(**안 적힌 것**)).\n왼쪽은 속성 정의의 `key` 다 — 이름은 관리자가 고치면 바뀌고, 그때 저장해 둔 주소가\n조용히 빈 답을 낸다.\n\n`status` 를 **안 주면 자리에 따라 다르다** — 사업부를 주면 후보까지(검토하는 자리라서),\n전사면 확정된 것만(「저 사업부가 무슨 시험을 하나」 에 후보는 아직 답이 아니다). 일부러\n보려면 `status=\"all\"`, 후보만 세려면 `status=\"candidate\"`.\n\n`q` 는 이름·목적에 든 글자다 — **쪽을 나누면 찾기도 서버가 해야 한다.** 화면 안에서\n훑으면 지금 쪽의 쉰 줄만 뒤지고, 뒤쪽에 있는 줄은 영영 안 걸린다.\n\n**표가 열로 보여 주는 것은 열로 거른다** — `name`(이름) · `purpose`(목적) ·\n`test_item`(시험 항목 이름) · `equipment`. 여럿이면 모두 만족해야 한다(`attr` 과 같다).\n셋은 `none` 으로 **안 적힌 것**을 묻는다: `purpose=none` 은 목적이 빈 줄,\n`test_item=none` 은 시험 항목을 하나도 안 정한 줄, `equipment=none` 은 **그 사업부에\n돌릴 장비가 한 대도 없는 줄**이다(목록이 노란 「0대」 로 적고 있는 바로 그 줄).\n\n「안 정함」 과 「장비 없음」 은 다르다 — 앞은 시험 항목을 아직 안 이은 것이고, 뒤는\n이었는데 그 항목이 되는 장비가 없는 것이다. 해야 할 일이 다르다.\n\n**쪽으로 끊어 온다**(`items` · `total` · `limit` · `offset`). 한 사업부에 1784건이\n들어온 적이 있고, 통째로 그리면 브라우저가 멎는다 — 줄마다 속성·시험 항목·장비 수가\n딸려 오므로 응답부터 무겁다.\n\n**기본은 최신판만 온다.** 판마다 줄이 서므로(0049) 안 가리면 목록이 판 수만큼 부푼다 —\n「개정 14의 열충격」 과 「개정 18의 열충격」 은 다른 줄이다. 지난 판까지 보려면\n`include_superseded=true`, 특정 판만 보려면 `revision=` 이다(`revision` 을 주면 자동으로\n지난 판도 보인다 — 안 그러면 그 물음이 늘 0건이다).\n\n`revision` 에 규격서 판 id 를 주면 **그 판의 목록**이 온다 — 판마다 한 벌이라 계산이\n없다. `document` 에 사내 규격서 id 를 주면 **그 문서에서 나온 줄만** 온다 — 묶음으로 올라온\n스무 건을 한 자리에서 보고 한 번에 확인·반려하는 길이다.\n\n`unreviewed=true` 는 **가리키는 규격서의 최신판을 아직 안 본** 줄만 — 개정이 올라온 뒤\n다시 볼 시험이다. 줄마다 `unreviewed_revision` 에 그 판이 온다.",
         "operationId": "list_reliability_tests_api_reliability_tests_get",
         "parameters": [
           {
@@ -8332,6 +8332,16 @@
               "type": "boolean",
               "default": false,
               "title": "Include Superseded"
+            }
+          },
+          {
+            "name": "unreviewed",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "boolean",
+              "default": false,
+              "title": "Unreviewed"
             }
           },
           {
@@ -11609,7 +11619,7 @@
           "audit"
         ],
         "summary": "List Entries",
-        "description": "무엇이 바뀌었는가.\n\n부서 관리자도 본다 — 자기 부서의 장비가 왜 폐기됐는지 물을 사람은 시스템\n관리자가 아니라 그 부서다.",
+        "description": "무엇이 바뀌었는가.\n\n부서 관리자도 본다 — 자기 부서의 장비가 왜 폐기됐는지 물을 사람은 시스템\n관리자가 아니라 그 부서다.\n\n`target_id` 는 **그 대상 하나의 이력**(「이 시험을 누가 언제 확정했나」). `channel` 은\n통로 — `screen`(화면) · `mcp`(AI 혼자, 증표 없이) · `confirmed`(AI 화면의 확인 창에서\n사람이 수락, ADR 0013). 사람이 정한 것과 AI 가 혼자 한 것을 갈라 보는 물음이 실제로 온다.",
         "operationId": "list_entries_api_audit_entries_get",
         "parameters": [
           {
@@ -11644,6 +11654,44 @@
                 }
               ],
               "title": "Target Table"
+            }
+          },
+          {
+            "name": "target_id",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string",
+                  "format": "uuid"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Target Id"
+            }
+          },
+          {
+            "name": "channel",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "enum": [
+                    "screen",
+                    "mcp",
+                    "confirmed"
+                  ],
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Channel"
             }
           },
           {
@@ -24686,6 +24734,16 @@
             "title": "Attachment Count",
             "default": 0
           },
+          "unreviewed_revision": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/UnreviewedRevisionOut"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
           "can_edit": {
             "type": "boolean",
             "title": "Can Edit"
@@ -28769,6 +28827,54 @@
           "unread"
         ],
         "title": "UnreadCountOut"
+      },
+      "UnreviewedRevisionOut": {
+        "properties": {
+          "revision_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Revision Id"
+          },
+          "label": {
+            "type": "string",
+            "title": "Label"
+          },
+          "document_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Document Id"
+          },
+          "document_code": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Document Code"
+          },
+          "document_title": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Document Title"
+          }
+        },
+        "type": "object",
+        "required": [
+          "revision_id",
+          "label",
+          "document_id"
+        ],
+        "title": "UnreviewedRevisionOut",
+        "description": "이 시험이 **아직 안 본** 규격서 최신판. 확정은 그대로이고, 사람이 보고 「개정 확인」\n해야 표가 떨어진다(ADR 0009 · 0013)."
       },
       "UploadTicketOut": {
         "properties": {

@@ -74,11 +74,12 @@ import {
   AttributeHeadCells,
   useAttributeColumns,
 } from '@/modules/attributes/AttributeColumns'
-import { CandidateBadge } from '@/modules/reliability/CandidateReview'
+import { CandidateBadge, UnreviewedBadge } from '@/modules/reliability/CandidateReview'
 import {
   NameHead,
   PurposeHead,
   RowFilterChips,
+  UnreviewedToggle,
   TestItemHead,
   useRowFilters,
 } from '@/modules/reliability/ColumnFilters'
@@ -223,6 +224,7 @@ export default function ReliabilityTestsPage() {
           />
           과거 판 포함
         </label>
+        <UnreviewedToggle rows={rowFilters} />
         <AttributeColumnPicker columns={columns} />
       </div>
 
@@ -284,6 +286,7 @@ export default function ReliabilityTestsPage() {
                 <TableCell>
                   <RowOpener name={row.name} onOpen={() => setViewing(row)}>
                     <CandidateBadge row={row} />
+                    <UnreviewedBadge row={row} />
                   </RowOpener>
                 </TableCell>
                 {/* **줄 수를 묶는다.** 목적이 열 줄이면 표가 그만큼 성기어져 위아래 줄을

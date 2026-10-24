@@ -33,7 +33,8 @@ export const MAX_PAGE = 200
 export type TestItemProposal = components['schemas']['TestItemProposalOut']
 export type TestItemProposalGroup = components['schemas']['TestItemProposalGroupOut']
 /** 여럿에게 한 번에 할 수 있는 일. */
-export type BulkAction = 'confirm' | 'reject' | 'delete' | 'reopen'
+/** `reviewed` = 규격서 개정을 봤다 — 판을 안 주면 줄마다 그 시험이 아직 안 본 최신판까지. */
+export type BulkAction = 'confirm' | 'reject' | 'delete' | 'reopen' | 'reviewed'
 export type ReliabilityTestWrite = {
   name: string
   purpose: string

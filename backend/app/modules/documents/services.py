@@ -11,7 +11,7 @@ import uuid
 from datetime import UTC, datetime
 from typing import Any
 
-from sqlalchemy import func, or_, select, true
+from sqlalchemy import Select, func, select, true
 from sqlalchemy.orm import Session
 
 from app.modules.accounts.models import User
@@ -288,27 +288,83 @@ def revisions_of(db: Session, document_id: uuid.UUID) -> list[SpecDocumentRevisi
     ]
 
 
+def unreviewed_rows() -> Select[tuple[uuid.UUID, uuid.UUID, uuid.UUID, str]]:
+    """(시험 id, 규격서 id, 최신판 id, 판 이름) — **규격서 최신판을 아직 안 본 시험.**
+
+    개정이 올라와도 확정은 그대로 두므로(사람이 고른 규칙) 이것이 「다시 볼 시험」 이다. 셋을
+    뺀다: 지운 줄, 새 판 줄로 대체된 줄(0049 — 그 판의 줄이 따로 있다), **그 최신판에서 나온
+    줄**(그 판을 보고 적은 것이라 다시 볼 것이 없다). 판이 없는 규격서는 볼 판도 없다.
+
+    목록 필터(`unreviewed=true`) · 시험의 `unreviewed_revision` · 개정의 `stale_test_count` 가
+    **이 한 기준**을 쓴다 — 셋이 다르게 세면 「3건 남음」 을 눌렀는데 목록이 2건이 된다.
+    """
+    ranked = (
+        select(
+            SpecDocumentRevision.document_id.label("document_id"),
+            SpecDocumentRevision.id.label("revision_id"),
+            SpecDocumentRevision.label.label("label"),
+        )
+        .distinct(SpecDocumentRevision.document_id)
+        .order_by(
+            SpecDocumentRevision.document_id,
+            SpecDocumentRevision.sort_order.desc(),
+            SpecDocumentRevision.label.desc(),
+        )
+        .subquery()
+    )
+    return (
+        select(ReliabilityTest.id, ranked.c.document_id, ranked.c.revision_id, ranked.c.label)
+        .join(
+            AttributeValue,
+            (AttributeValue.reliability_test_id == ReliabilityTest.id)
+            & AttributeValue.is_current.is_(True),
+        )
+        .join(ranked, ranked.c.document_id == AttributeValue.ref_document_id)
+        .where(
+            ReliabilityTest.deleted_at.is_(None),
+            ReliabilityTest.superseded_by_id.is_(None),
+            ReliabilityTest.reviewed_revision_id.is_distinct_from(ranked.c.revision_id),
+            ReliabilityTest.document_revision_id.is_distinct_from(ranked.c.revision_id),
+        )
+    )
+
+
 def _stale_count(db: Session, document_id: uuid.UUID, revision_id: uuid.UUID) -> int:
-    """그 문서를 가리키면서 **이 개정을 아직 안 본** 시험 수."""
+    """그 문서를 가리키면서 **이 개정(최신판)을 아직 안 본** 시험 수(`unreviewed_rows`)."""
+    rows = unreviewed_rows().subquery()
     return int(
         db.scalar(
-            select(func.count())
-            .select_from(ReliabilityTest)
-            .where(
-                ReliabilityTest.deleted_at.is_(None),
-                ReliabilityTest.id.in_(
-                    select(AttributeValue.reliability_test_id).where(
-                        AttributeValue.ref_document_id == document_id
-                    )
-                ),
-                or_(
-                    ReliabilityTest.reviewed_revision_id.is_(None),
-                    ReliabilityTest.reviewed_revision_id != revision_id,
-                ),
+            select(func.count(func.distinct(rows.c.id))).where(
+                rows.c.document_id == document_id, rows.c.revision_id == revision_id
             )
         )
         or 0
     )
+
+
+def unreviewed_of(db: Session, test_ids: list[uuid.UUID]) -> dict[uuid.UUID, dict[str, Any]]:
+    """시험마다 아직 안 본 최신판 하나 — 목록 줄에 붙인다(한 번에)."""
+    if not test_ids:
+        return {}
+    rows = unreviewed_rows().subquery()
+    found = db.execute(
+        select(rows, SpecDocument.code, SpecDocument.title)
+        .join(SpecDocument, SpecDocument.id == rows.c.document_id)
+        .where(rows.c.id.in_(test_ids))
+    ).all()
+    out: dict[uuid.UUID, dict[str, Any]] = {}
+    for test_id, document_id, revision_id, label, code, title in found:
+        out.setdefault(
+            test_id,
+            {
+                "revision_id": revision_id,
+                "label": label,
+                "document_id": document_id,
+                "document_code": code,
+                "document_title": title,
+            },
+        )
+    return out
 
 
 def revision_of(db: Session, revision_id: uuid.UUID) -> SpecDocumentRevision:

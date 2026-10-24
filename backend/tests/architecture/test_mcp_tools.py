@@ -502,9 +502,16 @@ def test_도구_목록이_조용히_불어나지_않는다() -> None:
     부른다), 관리 서른두 가지는 `target`·`action` 표 하나로 묶었다. 확정된 시험 고치기 ·
     MCP 의견대로 확정 · 규격 병합 · 시험 항목 해제 · 장비 일괄 삭제는 **있던 도구에** 확인
     창을 달았다.
+
+    98 -> 100 (2026-10-25): `search_hub` · `list_changes`. **기능은 있는데 AI 가 끝까지 못
+    쓰던 자리**를 전수로 대조했다(API 244개 · 도구 98개). 둘은 읽기라 묶을 쓰기 도구가 없다 —
+    허브 객체의 관계(「이 과제의 개발모델」)는 온톨로지 값에 없고, 변경 이력(「누가 언제
+    확정했나」 · 「AI 화면에서 수락한 것만」)은 어느 도구에도 없었다. 나머지 빈자리(개정
+    미확인 · 대체된 규격 · 값 이력 · 같은 이름 시험 · 저장 전 판정 · 관리 읽기)는 **있던 도구의
+    인자와 표**로 넣었다.
     """
     tools = _tools()
-    assert len(tools) <= 98, f"도구가 {len(tools)}개입니다 — 묶거나 상한을 다시 정하세요"
+    assert len(tools) <= 100, f"도구가 {len(tools)}개입니다 — 묶거나 상한을 다시 정하세요"
     for tool in tools:
         doc = ast.get_docstring(tool) or ""
         assert len(doc) <= 1600, (
@@ -703,6 +710,7 @@ NOT_TOOLS = {
     "add_to_citing",  # decide_review_item 인자(규격의 시험 항목 — 인용 계열에 추가)
     "import_catalog",  # 반입 스크립트(`scripts/import_catalog.py`)
     "link_id",  # update_record · delete_record 의 ids 칸
+    "list_memberships",  # admin_action 의 action 값(계정의 지금 소속)
     "merge_into",  # update_record(attribute_definition) 의 fields 칸
     "search_axis",  # set_spec 응답 칸
     "set_member_role",  # admin_action 의 action 값(멤버 역할 바꾸기)
@@ -760,9 +768,11 @@ def test_관리_작업은_사람_확인_경로로만_간다() -> None:
         r'\("(\w+)", "(\w+)"\): \("(GET|POST|PUT|PATCH|DELETE)", "([^"]+)"\)', table
     )
     assert len(rows) >= 30, f"관리 작업 표를 {len(rows)}줄밖에 못 읽었습니다"
+    #: 확인 창 없이 지나는 것으로 **정한** 줄 — 검토함 후보 다시 세우기(정한 것은 안 바꾼다).
+    no_confirm = {("review", "refresh")}
     wrong: list[str] = []
     for target, action, method, path in rows:
-        if method == "GET":
+        if method == "GET" or (target, action) in no_confirm:
             continue
         concrete = "/api" + re.sub(r"\{[^}]+\}", "x", path)
         if _needed_scope(concrete) is not None:
