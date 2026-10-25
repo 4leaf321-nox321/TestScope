@@ -2071,7 +2071,9 @@ async def suggest_property_link(
     `suggested`, 출처는 `agent`. **AI의 자체 확인 금지.** 확인은 사람이 검토했다는 뜻이며
     카탈로그 정본에 실리므로 사람이 물성 화면이나 `confirm_property_links`로 수행.
 
-    둘 다 id(`resolve(kind="term", axis="test_item"|"property")`). 이미 연결되어 있으면 409.
+    둘 다 id(`resolve(kind="term", axis="test_item"|"property")`). 이미 연결되어 있으면 409 —
+    그 연결이 제안(`suggested`) 상태여도 「연결해줘」 는 **확정 지시가 아님**: 이미 제안돼 있다고
+    알리고 확정할지 사용자에게 물을 것(`confirm_property_links` 는 그 답을 받은 뒤).
     `note`에는 부가 조건(예: 신율계 필요)이나 근거(규격 번호) 기재.
     """
     return await _send(
@@ -2099,7 +2101,9 @@ async def confirm_property_links(
     이미 그 상태인 것은 세지 않고 실제 바뀐 수를 `changed`로 반환.
 
     **AI의 자체 확인 금지.** 확인은 사람이 검토했다는 뜻이며 내보내기가 카탈로그 정본에 싣는
-    값. 사람이 말한 것만 기록.
+    값. 사용자가 그 줄을 **확정 · 확인하라고 말한 것만** 기록. 「연결해줘」 · 「추가해줘」 는 제안
+    지시(`suggest_property_link`) — 이미 제안돼 있으면 그 사실을 알리고 확정할지 먼저 묻는다
+    (측정 2026-10-25 q25: 이미 제안된 줄을 「연결해줘」 에 확정함).
     """
     return await _send(
         ctx, "PATCH", "/test-item-properties/bulk", {"link_ids": link_ids, "status": status}

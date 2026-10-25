@@ -38,6 +38,15 @@ beforeAll(() => {
   })
 })
 
+// **모듈을 처음 불러오는 값은 시험 하나가 떠안지 않게 미리 치른다.** 첫 시험이 캔버스 모듈
+// (과 그 안에서 lazy 로 받는 그림 라이브러리)의 변환 · 로드를 혼자 물었는데, 전체 실행에서 다른
+// 파일과 동시에 돌면 그것만으로 15초를 넘겼다(2026-10-25 — 단독 실행은 4초). 재는 것은 클래스가
+// 바뀌는가이지 처음 불러오는 속도가 아니다.
+beforeAll(async () => {
+  await import('@/modules/graph/GraphCanvas')
+  await import('react-force-graph-2d')
+}, 60_000)
+
 const NODES: CanvasNode[] = [
   { id: 'a', label: '가', color: '#2563eb', radius: 6, shape: 'circle' },
   { id: 'b', label: '나', color: '#dc2626', radius: 6, shape: 'circle' },
