@@ -358,14 +358,13 @@
         "get_guide"
       ],
       "must_call": [
-        "list_review_items",
-        "decide_review_item"
+        "list_review_items"
       ],
       "must_not_call": [
         "set_method_test_items"
       ],
       "max_calls": 4,
-      "note": "2026-10-04 부터 시스템 관리자의 토큰은 검토함을 정한다. 지시(첫 줄 · 추천대로)가 분명하므로 줄을 읽고 decide_review_item 으로 확정하는 것이 맞는 자취. set_method_test_items 우회는 여전히 금지(서버 409, TSC-METHODS-0007). 개발 DB 기준 첫 줄(AASHTO T315)에 추천이 있다."
+      "note": "2026-10-04 부터 시스템 관리자의 토큰은 검토함을 정한다. 첫 줄에 추천이 있으면 줄을 읽고 decide_review_item 으로 확정하는 것이, 없으면 추천이 없다고 알리는 것이 맞는 자취 — 그래서 decide_review_item 은 필수가 아니다(2026-10-26 개발 DB 정리로 추천 있는 줄이 전부 확정돼 남은 112줄에 추천이 없다). set_method_test_items 우회는 어느 쪽이든 금지(서버 409, TSC-METHODS-0007)."
     },
     {
       "id": "q23",
@@ -406,13 +405,12 @@
         "search_properties",
         "get_guide"
       ],
-      "must_call": [
-        "suggest_property_link"
-      ],
+      "must_call": [],
       "must_not_call": [
         "confirm_property_links"
       ],
-      "max_calls": 6
+      "max_calls": 6,
+      "note": "맞는 자취가 연결의 상태에 달려 있다 — 없으면 suggest_property_link 로 제안, 제안으로 있으면 알리고 확정할지 묻기, 이미 확정이면 그렇다고 알리기. 그래서 필수 도구가 없다. 「연결해줘」 는 어느 쪽이든 확정 지시가 아니라 confirm_property_links 가 금지다(2026-10-25 실측: 제안으로 있던 연결을 확정했다 — v0.65.1 에서 설명을 고침)."
     },
     {
       "id": "q26",
