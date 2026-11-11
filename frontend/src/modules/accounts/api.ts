@@ -10,8 +10,14 @@ export type Membership = components['schemas']['MembershipOut']
 
 export const accountApi = {
   summary: () => api.get<AccountSummary>('/accounts/summary'),
-  list: (status?: string) =>
-    api.get<Account[]>(`/accounts${status ? `?status=${status}` : ''}`),
+  list: (status?: string, limit?: number, offset?: number) => {
+    const query = new URLSearchParams()
+    if (status) query.set('status', status)
+    if (limit !== undefined) query.set('limit', String(limit))
+    if (offset) query.set('offset', String(offset))
+    const text = query.toString()
+    return api.get<Account[]>(`/accounts${text ? `?${text}` : ''}`)
+  },
   create: (body: Record<string, unknown>) => api.post<TemporaryPassword>('/accounts', body),
   approve: (id: string, body: { workspace_slug?: string | null; role?: string }) =>
     api.post<Account>(`/accounts/${id}/approve`, body),

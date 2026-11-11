@@ -22,18 +22,75 @@ import {
 } from '@/shared/components/ui/table'
 import { useSearchParams } from 'react-router-dom'
 
+import { Textarea } from '@/shared/components/ui/textarea'
 import { useResource } from '@/shared/hooks/useResource'
+import { copyText } from '@/shared/lib/clipboard'
 import { shownDate } from '@/shared/lib/datetime'
 import { accountApi } from '@/modules/accounts/api'
 import type { Account } from '@/modules/accounts/api'
 import { MembershipsDialog } from '@/modules/accounts/MembershipsDialog'
+
+/** 서버가 한 번에 주는 계정 수의 상한(`list_accounts` 의 `le=100`). */
+const PAGE = 100
+/** 왕복 상한 — 1만 명. 넘으면 덜 받았다고 적는다. */
+const ROUNDS = 100
+
+/**
+ * 계정을 **끝까지** 받는다.
+ *
+ * 서버는 한 번에 50명(기본)·100명(상한)까지만 준다. 그냥 부르면 51번째부터는 화면에
+ * 안 나오고, 그러면 메일 주소를 「전체 선택」 해 복사해도 앞 50명뿐이다. 응답에 `total`
+ * 이 없으니 **한 쪽이 덜 차면 끝**으로 본다.
+ */
+async function listEveryAccount(
+  status?: string,
+): Promise<{ items: Account[]; done: boolean }> {
+  const items: Account[] = []
+  for (let round = 0; round < ROUNDS; round += 1) {
+    const got = await accountApi.list(status, PAGE, items.length)
+    items.push(...got)
+    if (got.length < PAGE) return { items, done: true }
+  }
+  return { items, done: false }
+}
+
+/** 메일 주소로 보이는가. 아이디는 메일 형식을 강제하지 않는다(`admin` 같은 짧은 아이디). */
+const MAIL = /^[^\s@]+@[^\s@]+$/
+
+/**
+ * 받는 사람 칸에 붙여 넣을 글자. **`; ` 로 잇는다** — Outlook 의 기본 구분자다(쉼표는
+ * 설정을 켜야 갈린다). 메일 형식이 아닌 아이디는 빼고, 뺀 것을 돌려준다 — 말없이 빼면
+ * 「다 보냈다」 로 읽는다.
+ */
+function mailList(accounts: Account[]) {
+  const addresses: string[] = []
+  const skipped: string[] = []
+  for (const one of accounts) {
+    if (MAIL.test(one.email)) addresses.push(one.email)
+    else skipped.push(one.email)
+  }
+  return { text: addresses.join('; '), count: addresses.length, skipped }
+}
+
+/** 복사한 결과. `text` 가 있으면 **브라우저가 막은 것**이라 손으로 복사할 칸을 띄운다. */
+interface Copied {
+  count: number
+  skipped: string[]
+  text?: string
+}
 
 export default function AccountsAdminPage() {
   // **홈의 「남은 일」 이 `?status=pending` 으로 온다.** 승인 대기가 며칠씩 방치되는
   // 것을 막으려고 만든 링크인데, 안 읽으면 그 줄은 아무 일도 안 한다.
   const [params] = useSearchParams()
   const status = params.get('status') ?? undefined
-  const list = useResource(() => accountApi.list(status), [status])
+  const list = useResource(() => listEveryAccount(status), [status])
+  const rows = list.data?.items ?? []
+  /** 메일 주소를 복사할 계정. 목록이 바뀌어 없어진 id 는 `picked` 에서 저절로 빠진다. */
+  const [selected, setSelected] = useState<Set<string>>(new Set())
+  const picked = rows.filter((one) => selected.has(one.id))
+  const allPicked = rows.length > 0 && picked.length === rows.length
+  const [copied, setCopied] = useState<Copied | null>(null)
 
   /** 걸러져 있으면 그 사실을 적는다. 안 적으면 「계정이 이것뿐인가」 로 읽힌다. */
   const filtered = status === 'pending'
@@ -52,6 +109,35 @@ export default function AccountsAdminPage() {
       summary.reload()
     } catch (caught) {
       setError(caught instanceof Error ? caught : new Error('알 수 없는 오류'))
+    }
+  }
+
+  function pick(ids: string[], on: boolean) {
+    setCopied(null)
+    setSelected((before) => {
+      const next = new Set(before)
+      for (const id of ids) {
+        if (on) next.add(id)
+        else next.delete(id)
+      }
+      return next
+    })
+  }
+
+  // **누른 자리에서 곧장 복사한다** — 사이에 await 를 두지 않는다. 평문 http 의 복사
+  // (`execCommand`)는 사용자가 누른 그 순간에만 허락되고, 무엇을 받아 오느라 한 박자
+  // 늦으면 브라우저가 거절한다. 주소는 이미 화면에 있는 목록에서 만든다.
+  async function copyMails() {
+    const built = mailList(picked)
+    if (built.count === 0) {
+      setCopied({ count: 0, skipped: built.skipped })
+      return
+    }
+    try {
+      await copyText(built.text)
+      setCopied({ count: built.count, skipped: built.skipped })
+    } catch {
+      setCopied({ count: built.count, skipped: built.skipped, text: built.text })
     }
   }
 
@@ -87,9 +173,75 @@ export default function AccountsAdminPage() {
 
       <ErrorNotice error={error ?? list.error} />
 
+      {list.data && !list.data.done && (
+        <p className="text-sm text-amber-700 dark:text-amber-400">
+          계정이 많아 앞 {rows.length.toLocaleString()}명만 표시.
+        </p>
+      )}
+
+      <div className="space-y-2">
+        <div className="flex flex-wrap items-center gap-3">
+          <Button
+            size="sm"
+            variant="outline"
+            disabled={picked.length === 0}
+            onClick={copyMails}
+          >
+            메일 주소 복사{picked.length > 0 ? ` (${picked.length})` : ''}
+          </Button>
+          <span className="text-muted-foreground text-sm">
+            {picked.length === 0
+              ? '계정 선택 시 받는 사람 칸에 붙여 넣을 주소를 한 번에 복사.'
+              : `${picked.length}명 선택.`}
+          </span>
+        </div>
+        {copied && (
+          <div className="space-y-2 text-sm">
+            <p>
+              {copied.count === 0
+                ? `복사할 메일 주소 없음. 선택한 아이디가 모두 메일 형식이 아님: ${copied.skipped.join(', ')}`
+                : copied.text === undefined
+                  ? `메일 주소 ${copied.count}개 복사함. 메일의 받는 사람 칸에 붙여넣기(; 로 구분).`
+                  : `브라우저가 복사를 막음. 아래 칸의 주소 ${copied.count}개를 직접 복사(칸을 누르면 전체 선택).`}
+              {copied.count > 0 && copied.skipped.length > 0 && (
+                <span className="text-muted-foreground">
+                  {' '}
+                  메일 형식이 아닌 아이디 {copied.skipped.length}개 제외:{' '}
+                  {copied.skipped.join(', ')}
+                </span>
+              )}
+            </p>
+            {copied.text !== undefined && (
+              <Textarea
+                readOnly
+                aria-label="복사할 메일 주소"
+                className="font-mono text-xs"
+                value={copied.text}
+                onFocus={(event) => event.currentTarget.select()}
+                autoFocus
+              />
+            )}
+          </div>
+        )}
+      </div>
+
       <Table>
         <TableHeader>
           <TableRow>
+            <TableHead className="w-8">
+              <input
+                type="checkbox"
+                aria-label="전체 선택"
+                checked={allPicked}
+                disabled={rows.length === 0}
+                onChange={(event) =>
+                  pick(
+                    rows.map((one) => one.id),
+                    event.target.checked,
+                  )
+                }
+              />
+            </TableHead>
             <TableHead>아이디</TableHead>
             <TableHead>이름</TableHead>
             <TableHead>상태</TableHead>
@@ -99,8 +251,16 @@ export default function AccountsAdminPage() {
           </TableRow>
         </TableHeader>
         <TableBody>
-          {(list.data ?? []).map((one) => (
+          {rows.map((one) => (
             <TableRow key={one.id}>
+              <TableCell>
+                <input
+                  type="checkbox"
+                  aria-label={`${one.email} 선택`}
+                  checked={selected.has(one.id)}
+                  onChange={(event) => pick([one.id], event.target.checked)}
+                />
+              </TableCell>
               <TableCell className="font-mono text-xs">{one.email}</TableCell>
               <TableCell>
                 {one.display_name}
